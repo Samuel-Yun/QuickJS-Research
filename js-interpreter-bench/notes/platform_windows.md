@@ -88,8 +88,8 @@ Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 ### P0: upstream QuickJS
 
 - x64 MinGW GCC 13.1、G++ 和 `mingw32-make` 可用。
-- MSYS2 和普通 `make` 不可用；当前官方 Makefile 在纯 PowerShell/MinGW 环境中的实际构建结果仍为 `UNKNOWN`。
-- 尚未产生 Release/optimized `qjs.exe`，也未验证 computed-goto dispatch 的最终二进制。
+- MSYS2 和普通 `make` 不可用；使用 Git for Windows Bash 提供的 MSYS/POSIX 环境配合现有 MinGW64，upstream Makefile 已成功完成干净构建。
+- 已产生 `-O2` optimized `qjs.exe`，并由预处理、符号和反汇编确认 computed-goto dispatch；详见 `notes/quickjs_windows_build.md` 与 `notes/quickjs_interpreter_validation.md`。
 
 ### P0: V8 Ignition
 
@@ -105,6 +105,6 @@ Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 ## 当前门禁状态
 
 - Windows 原生平台已选定并完成环境快照。
-- P0 benchmark：`BLOCKED`，原因是 QuickJS 与 V8 尚未完成 Release build 和 interpreter-only 验证。
+- P0 benchmark：`BLOCKED`；QuickJS baseline 已完成，但 V8、benchmark 固定和统一计时协议尚未完成。
 - P1 JSC：`DEFERRED`。
 - PrimJS：`REFERENCE_ONLY`。

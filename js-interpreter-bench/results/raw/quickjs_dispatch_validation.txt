@@ -1,0 +1,242 @@
+﻿QUICKJS_INTERPRETER_DISPATCH_VALIDATION
+timestamp_utc=2026-09-20T07:05:05.1776800Z
+repository=https://github.com/bellard/quickjs.git
+commit=04be246001599f5995fa2f2d8c91a0f198d3f34c
+version=2026-06-04
+compiler=gcc.exe (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 13.1.0
+compiler_target=x86_64-w64-mingw32
+object=C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\quickjs-upstream\.obj\quickjs.o
+binary=C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\quickjs-upstream\qjs.exe
+--- source evidence ---
+C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\quickjs-upstream\quickjs.c:53:#define DIRECT_DISPATCH  0
+C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\quickjs-upstream\quickjs.c:55:#define DIRECT_DISPATCH  1
+C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\quickjs-upstream\quickjs.c:17777:#define SWITCH(pc)      goto *dispatch_table[opcode = *pc++];
+--- preprocessor evidence ---
+#define DIRECT_DISPATCH 1
+--- symbols ---
+00000000000065a0 r dispatch_table.8
+0000000000010310 t JS_CallInternal
+000000000000003a t JS_CallInternal.cold
+--- indirect jumps in JS_CallInternal ---
+   10593:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   105c7:	ff e0                	jmp    rax
+   1065a:	ff e0                	jmp    rax
+   107f5:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   108e2:	ff e0                	jmp    rax
+   10c48:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   10ff5:	ff e0                	jmp    rax
+   111f4:	ff e0                	jmp    rax
+   1125e:	ff e0                	jmp    rax
+   114af:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   114d9:	ff e0                	jmp    rax
+   1166a:	ff e0                	jmp    rax
+   116a1:	ff e0                	jmp    rax
+   116dd:	ff e0                	jmp    rax
+   11721:	ff e0                	jmp    rax
+   1175e:	ff e0                	jmp    rax
+   1179e:	ff e0                	jmp    rax
+   117de:	ff e0                	jmp    rax
+   1181b:	ff e0                	jmp    rax
+   11880:	ff e0                	jmp    rax
+   118b9:	ff e0                	jmp    rax
+   11907:	ff e0                	jmp    rax
+   11957:	ff e0                	jmp    rax
+   11a6d:	ff e0                	jmp    rax
+   11aa1:	ff e0                	jmp    rax
+   11b71:	ff e0                	jmp    rax
+   11be5:	ff e0                	jmp    rax
+   11c54:	ff e0                	jmp    rax
+   11cda:	ff e0                	jmp    rax
+   11ded:	ff e0                	jmp    rax
+   11e32:	ff e0                	jmp    rax
+   11e8a:	ff e0                	jmp    rax
+   11eb9:	ff e0                	jmp    rax
+   11ef2:	ff e0                	jmp    rax
+   11f37:	ff e0                	jmp    rax
+   11f70:	ff e0                	jmp    rax
+   11fce:	ff e0                	jmp    rax
+   12033:	ff e0                	jmp    rax
+   12078:	ff e0                	jmp    rax
+   120ac:	ff e0                	jmp    rax
+   120de:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   1211e:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   12178:	ff e0                	jmp    rax
+   121ac:	ff e0                	jmp    rax
+   121f4:	ff e0                	jmp    rax
+   122e7:	ff e0                	jmp    rax
+   123b4:	ff e0                	jmp    rax
+   123ff:	ff e0                	jmp    rax
+   124ba:	ff e0                	jmp    rax
+   124d6:	ff e0                	jmp    rax
+   12567:	ff e0                	jmp    rax
+   125c5:	ff e0                	jmp    rax
+   12607:	ff e0                	jmp    rax
+   12659:	ff e0                	jmp    rax
+   126ab:	ff e0                	jmp    rax
+   126fd:	ff e0                	jmp    rax
+   1275d:	ff e0                	jmp    rax
+   127cc:	ff e0                	jmp    rax
+   1280d:	ff e0                	jmp    rax
+   1284b:	ff e0                	jmp    rax
+   128aa:	ff e0                	jmp    rax
+   128e3:	ff e0                	jmp    rax
+   1291c:	ff e0                	jmp    rax
+   1297d:	ff e0                	jmp    rax
+   12a17:	ff e0                	jmp    rax
+   12ac7:	ff e0                	jmp    rax
+   12b86:	ff e0                	jmp    rax
+   12bd6:	ff e0                	jmp    rax
+   12ce3:	ff e0                	jmp    rax
+   12e0b:	ff e0                	jmp    rax
+   12f12:	ff e0                	jmp    rax
+   12f7a:	ff e0                	jmp    rax
+   12fc5:	ff e0                	jmp    rax
+   13017:	ff e0                	jmp    rax
+   13069:	ff e0                	jmp    rax
+   130a8:	ff e0                	jmp    rax
+   130e8:	ff e0                	jmp    rax
+   13128:	ff e0                	jmp    rax
+   13168:	ff e0                	jmp    rax
+   131b0:	ff e0                	jmp    rax
+   131f9:	ff e0                	jmp    rax
+   13242:	ff e0                	jmp    rax
+   1328b:	ff e0                	jmp    rax
+   132e3:	ff e0                	jmp    rax
+   1333c:	ff e0                	jmp    rax
+   13395:	ff e0                	jmp    rax
+   133ee:	ff e0                	jmp    rax
+   13430:	ff e0                	jmp    rax
+   1347f:	ff e0                	jmp    rax
+   134b8:	ff e0                	jmp    rax
+   134f1:	ff e0                	jmp    rax
+   13532:	ff e0                	jmp    rax
+   13575:	ff e0                	jmp    rax
+   135b8:	ff e0                	jmp    rax
+   135fb:	ff e0                	jmp    rax
+   1364b:	ff e0                	jmp    rax
+   1369d:	ff e0                	jmp    rax
+   136ef:	ff e0                	jmp    rax
+   13741:	ff e0                	jmp    rax
+   13779:	ff e0                	jmp    rax
+   137b2:	ff e0                	jmp    rax
+   13802:	ff e0                	jmp    rax
+   13854:	ff e0                	jmp    rax
+   13897:	ff e0                	jmp    rax
+   138da:	ff e0                	jmp    rax
+   138f9:	ff e0                	jmp    rax
+   13a12:	ff e0                	jmp    rax
+   13a63:	ff e0                	jmp    rax
+   13aa8:	ff e0                	jmp    rax
+   13b42:	ff e0                	jmp    rax
+   13bda:	ff e0                	jmp    rax
+   13c28:	ff e0                	jmp    rax
+   13c86:	ff e0                	jmp    rax
+   13cbe:	ff e0                	jmp    rax
+   13cf7:	ff e0                	jmp    rax
+   13d30:	ff e0                	jmp    rax
+   13d69:	ff e0                	jmp    rax
+   13daa:	ff e0                	jmp    rax
+   13ded:	ff e0                	jmp    rax
+   13e2e:	ff e0                	jmp    rax
+   13e7c:	ff e0                	jmp    rax
+   13eda:	ff e0                	jmp    rax
+   13f1e:	ff e0                	jmp    rax
+   13f6c:	ff e0                	jmp    rax
+   13fbc:	ff e0                	jmp    rax
+   1401a:	ff e0                	jmp    rax
+   1426a:	ff e0                	jmp    rax
+   142dd:	ff e0                	jmp    rax
+   1434b:	ff e0                	jmp    rax
+   1441d:	ff e0                	jmp    rax
+   145cd:	ff e0                	jmp    rax
+   1464d:	ff e0                	jmp    rax
+   1469e:	ff e0                	jmp    rax
+   1472f:	ff e0                	jmp    rax
+   147ae:	ff e0                	jmp    rax
+   147ff:	ff e0                	jmp    rax
+   148a5:	ff e0                	jmp    rax
+   148c5:	ff e0                	jmp    rax
+   14914:	ff e0                	jmp    rax
+   1493d:	ff e0                	jmp    rax
+   14a40:	ff e0                	jmp    rax
+   14aab:	ff e0                	jmp    rax
+   14b04:	ff e0                	jmp    rax
+   14b64:	ff e0                	jmp    rax
+   14bf0:	ff e0                	jmp    rax
+   14d43:	ff e0                	jmp    rax
+   14dda:	ff e0                	jmp    rax
+   14e17:	ff e0                	jmp    rax
+   14e5b:	ff e0                	jmp    rax
+   14e88:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   14eb7:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   14f38:	ff e0                	jmp    rax
+   1505d:	ff e0                	jmp    rax
+   15190:	ff e0                	jmp    rax
+   15280:	ff e0                	jmp    rax
+   15358:	ff e0                	jmp    rax
+   1539d:	ff e0                	jmp    rax
+   15458:	ff e0                	jmp    rax
+   15494:	ff e0                	jmp    rax
+   154bc:	ff e0                	jmp    rax
+   15501:	ff e0                	jmp    rax
+   15545:	ff e0                	jmp    rax
+   1557b:	ff e0                	jmp    rax
+   155a2:	ff e0                	jmp    rax
+   155e3:	ff e0                	jmp    rax
+   15640:	ff e0                	jmp    rax
+   15665:	ff e0                	jmp    rax
+   156c9:	ff e0                	jmp    rax
+   158a4:	ff e0                	jmp    rax
+   158f9:	ff e0                	jmp    rax
+   1591f:	ff e0                	jmp    rax
+   15945:	ff e0                	jmp    rax
+   15983:	ff e0                	jmp    rax
+   159b2:	ff e0                	jmp    rax
+   159fa:	ff e0                	jmp    rax
+   15a40:	ff e0                	jmp    rax
+   15aa8:	ff e0                	jmp    rax
+   15adb:	ff e0                	jmp    rax
+   15b19:	ff e0                	jmp    rax
+   15b3f:	ff e0                	jmp    rax
+   15b82:	ff e0                	jmp    rax
+   15bc9:	ff e0                	jmp    rax
+   15bfe:	ff e0                	jmp    rax
+   15c33:	ff e0                	jmp    rax
+   15c71:	ff e0                	jmp    rax
+   15c9d:	ff e0                	jmp    rax
+   15d87:	ff e0                	jmp    rax
+   15ded:	ff e0                	jmp    rax
+   15e19:	ff e0                	jmp    rax
+   15e4e:	ff e0                	jmp    rax
+   15e8c:	ff e0                	jmp    rax
+   15ed2:	ff e0                	jmp    rax
+   15f21:	ff e0                	jmp    rax
+   15f59:	ff e0                	jmp    rax
+   15ffa:	ff e0                	jmp    rax
+   1604e:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   160a4:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   160d2:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   160fd:	ff e0                	jmp    rax
+   16302:	ff e0                	jmp    rax
+   16390:	ff e0                	jmp    rax
+   163d5:	ff e0                	jmp    rax
+   1642a:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   16481:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+   1651c:	ff e0                	jmp    rax
+   1676c:	ff e0                	jmp    rax
+   167a4:	ff e0                	jmp    rax
+   16867:	ff e0                	jmp    rax
+   1689a:	ff e0                	jmp    rax
+   16902:	ff e0                	jmp    rax
+--- PE/architecture ---
+
+C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\quickjs-upstream\qjs.exe:     file format pei-x86-64
+architecture: i386:x86-64, flags 0x0000013b:
+HAS_RELOC, EXEC_P, HAS_DEBUG, HAS_SYMS, HAS_LOCALS, D_PAGED
+start address 0x00000001400013f0
+
+--- imported DLLs ---
+	DLL Name: KERNEL32.dll
+	DLL Name: msvcrt.dll
+	DLL Name: libwinpthread-1.dll
+DISPATCH_STATUS=PASS

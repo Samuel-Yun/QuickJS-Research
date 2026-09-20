@@ -178,3 +178,59 @@ Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 **下一步**
 
 按用户要求在计划调整完成后停止。后续如获指令，应先补齐并验证 P0 所需 Windows 原生工具链，再分别建立 QuickJS 和 V8 的 Release/optimized binary 与 interpreter-only 证据；在 P0 门禁满足前不运行正式 benchmark。
+
+---
+
+## 2026-09-20 — 阶段 2：upstream QuickJS Windows baseline
+
+**做了什么**
+
+从官方仓库检出阶段 1 已固定的 upstream QuickJS commit，在 Windows 11 x64 上使用 Git for Windows Bash + MinGW64 完成干净 optimized build。运行六项功能 smoke test，并通过源码、预处理、对象符号和反汇编验证 computed-goto interpreter dispatch。没有修改 QuickJS 源码或 Makefile，没有运行 benchmark。
+
+**命令**
+
+```powershell
+git clone --filter=blob:none --no-checkout `
+  https://github.com/bellard/quickjs.git `
+  .\engines\quickjs-upstream
+
+git -C .\engines\quickjs-upstream checkout --detach `
+  04be246001599f5995fa2f2d8c91a0f198d3f34c
+
+powershell -NoProfile -ExecutionPolicy Bypass `
+  -File .\scripts\build_quickjs_windows.ps1
+```
+
+构建脚本通过 Bash helper 执行：
+
+```bash
+export MSYSTEM=MINGW64
+mingw32-make.exe clean
+mingw32-make.exe -j8 qjs.exe
+```
+
+验证使用 MinGW64 `gcc -dM -E`、`nm -a` 和 `objdump -d -Mintel --disassemble=JS_CallInternal`。
+
+**结果**
+
+- Repository：`https://github.com/bellard/quickjs.git`。
+- Commit：`04be246001599f5995fa2f2d8c91a0f198d3f34c`；version `2026-06-04`。
+- Compiler：MinGW-Builds GCC 13.1.0，target `x86_64-w64-mingw32`。
+- Optimization：upstream `CFLAGS_OPT=-O2`；LTO、sanitizer、profile 未启用。
+- `qjs.exe`：5,263,029 bytes；SHA-256 `6ef16219978ed1cf7d6590b9c9603c65874ad30ac465c67e5fb819da8786b573`。
+- arithmetic、loop、function、array、object property、string smoke test 全部通过，退出码 0。
+- 预处理结果为 `#define DIRECT_DISPATCH 1`。
+- `.obj/quickjs.o` 含 `dispatch_table` 和 `JS_CallInternal`，反汇编含 indexed table jump 与 register indirect jump。
+- QuickJS tracked source diff 为空；不需要 build-system patch，`patches/` 未新增内容。
+- 新增构建脚本、Bash helper、smoke 脚本、两份说明文档和三份 raw evidence。
+
+**问题**
+
+- `qjs.exe` 动态依赖 `libwinpthread-1.dll`，执行环境必须记录并提供相同 MinGW runtime。
+- 本次使用 Git Bash 的 MSYS 环境，而非独立 MSYS2 安装；脚本仍优先识别标准 `C:\msys64` 布局。
+- PE 重链接可能改变 binary checksum；正式实验必须对实际使用的每个 binary 重新记录 SHA-256。
+- QuickJS 门禁已通过，但 P0 benchmark 仍因 V8、SunSpider 固定和计时协议未完成而 `BLOCKED`。
+
+**下一步**
+
+按用户要求在 QuickJS baseline 完成后停止。不下载 V8，不运行 SunSpider。后续只有收到新指令后才进入下一阶段。

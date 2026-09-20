@@ -14,7 +14,7 @@
 
 | Priority | Engine | Version/Commit | Interpreter | Interpreter-only 方法 | Windows x64 当前状态 | 验证方法 | 风险/问题 |
 |---|---|---|---|---|---|---|---|
-| P0 | upstream QuickJS | `2026-06-04`；`master` @ `04be246001599f5995fa2f2d8c91a0f198d3f34c` | QuickJS bytecode interpreter；预期 computed-goto direct dispatch | 无 JIT；确认 Release binary 使用预期 dispatch | GCC 13.1/MinGW 可用；MSYS2/普通 make 不可用；尚未构建 | 固定 commit 与 binary checksum；保存 build flags；预处理/符号/反汇编确认 `JS_CallInternal` 分派 | 纯 PowerShell/MinGW 构建可行性和最终 dispatch 尚为 `UNKNOWN` |
+| P0 | upstream QuickJS | `2026-06-04`；`master` @ `04be246001599f5995fa2f2d8c91a0f198d3f34c` | QuickJS bytecode interpreter；computed-goto direct dispatch | 无 JIT；Release binary 已确认使用预期 dispatch | Git Bash + MinGW GCC 13.1 已成功构建 | commit/checksum/build log 已保存；预处理为 `DIRECT_DISPATCH=1`；符号与反汇编确认跳表间接跳转 | QuickJS 门禁 `PASS`；最终 P0 仍等待 V8 与 benchmark 协议 |
 | P0 | V8 Ignition | `main` @ `68a0ee4aa9a2cba8a43cbd1ed1700828adad618f`；产品版本 `UNKNOWN` | Ignition | `--jitless --no-sparkplug --no-maglev --no-turbofan`，以当前 binary flag dump 为准 | 架构支持；VS C++、SDK、depot_tools、Ninja 均未就绪 | 保存 `--print-flag-values`；确认 JIT tiers 全关；字节码和 Ignition trace 作为补充 | V8 原生 Windows 工具链缺失；`d8.exe` 尚未生成 |
 | P1 | JavaScriptCore LLInt | WebKit `main` @ `fd3406f133a4e56d7aaf399ba5611ae44b8da7e9`；产品版本 `UNKNOWN` | OfflineASM X86_64 LLInt | 保持 `useLLInt=true`，运行时 `useJIT=false` 并显式关闭 Baseline/DFG/FTL | 源码有 x86-64 backend；本机官方构建链不完整 | option dump；确认非 C-loop；调试器/profile 看到 `llint_*` | Windows JSC build 未验证；属于扩展项，不阻塞 P0 |
 
@@ -33,16 +33,16 @@ upstream QuickJS 没有 JIT，不会自动 tier-up。P0 需要验证的是 Windo
 
 - 当前有 MinGW GCC/G++ 13.1 和 `mingw32-make`。
 - 当前没有 MSYS2 和普通 `make`。
-- [`Makefile`](https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/Makefile) 含 MinGW/Windows 相关配置，但在现有纯 PowerShell 环境中的实际构建成功状态为 `UNKNOWN`。
-- 本轮没有下载、构建或运行 QuickJS。
+- [`Makefile`](https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/Makefile) 在 Git for Windows Bash 的 `MSYSTEM=MINGW64` 环境中自动选择 Windows 分支，并已成功调用现有 MinGW64 工具链。
+- `qjs.exe` 使用 upstream `CFLAGS_OPT=-O2` 构建，大小 5,263,029 bytes；源码无 tracked 修改、无需 build patch。
 
 ### P0 验证要求
 
-1. 固定 checkout，并保存 `git rev-parse HEAD`。
-2. 使用 Release/optimized 配置，保存 GCC 路径、版本和完整 flags。
-3. 保存 `qjs.exe` checksum。
-4. 用预处理输出、符号/反汇编或调试器确认 `JS_CallInternal` 的 computed-goto dispatch。
-5. 完成最小功能 smoke test；smoke test 不是 benchmark。
+1. 固定 checkout，并保存 `git rev-parse HEAD`：`PASS`。
+2. 使用 Release/optimized 配置，保存 GCC 路径、版本和完整 flags：`PASS`。
+3. 保存 `qjs.exe` checksum：`PASS`。
+4. 用预处理、符号和反汇编确认 `JS_CallInternal` 的 computed-goto dispatch：`PASS`。
+5. 完成最小功能 smoke test：`PASS`；smoke test 不是 benchmark。
 
 ## P0-2. V8 Ignition
 
@@ -111,7 +111,7 @@ jsc.exe --useLLInt=true \
 ## 当前结论
 
 - Windows 11 x64 原生主机是唯一正式实验环境。
-- P0 当前为 `BLOCKED`：QuickJS 和 V8 都尚未取得 Windows Release binary 与 interpreter-only 运行证据。
+- P0 当前仍为 `BLOCKED`：QuickJS Windows baseline 与 dispatch 门禁已通过，V8 和统一 benchmark 协议尚未完成。
 - 一旦 QuickJS 与 V8 完成 P0 门禁，即可开始 P0 benchmark；无需等待 JSC。
 - JSC 为 `DEFERRED`，PrimJS 为 `REFERENCE_ONLY`。
 - 本轮没有开始大型源码下载、构建或 benchmark。
