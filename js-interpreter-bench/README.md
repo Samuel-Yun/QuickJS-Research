@@ -12,7 +12,7 @@
 - P1：JavaScriptCore LLInt，作为后续扩展；不得阻塞 P0。
 - PrimJS：只作为文献和工程实现参考，不参加 benchmark，不出现在性能排名或主实验统计中。
 
-第一套候选 benchmark 为 SunSpider。在 P0 的解释器执行模式、版本、构建和运行配置得到验证之前，不进行正式 P0 benchmark。
+第一套 benchmark 为固定的 SunSpider 1.0.2。P0 的解释器执行模式、版本、构建和运行配置均已验证，SunSpider 正式运行已经完成。
 
 ## 固定实验平台
 
@@ -25,15 +25,16 @@
 
 当前 Windows 环境快照见 [`notes/platform_windows.md`](notes/platform_windows.md)。
 
-## 当前阶段边界
+## 当前实验状态
 
 - 不修改任何引擎源码做性能优化。
-- 不运行正式 benchmark。
 - 不下载大型源码树。
 - V8 必须验证为 Ignition-only；JSC 扩展实验必须验证为 LLInt-only。
 - 所有判断必须依据固定 checkout 的源码、固定官方 artifact、对应版本的官方文档或实际运行证据。
 - 无法验证的信息统一标记为 `UNKNOWN`，不得猜测。
-- QuickJS 与 V8 的 P0 门禁满足后即可开始 P0 benchmark，无需等待 JSC。
+- QuickJS 与 V8 的 P0 门禁已经通过；统一 correctness suite 为 24/24 PASS，SunSpider correctness gate 为 52/52 PASS。
+- SunSpider 1.0.2 正式运行已完成：每个 engine/case 30 次，共 1,560 个有效样本；本阶段不解释性能差异原因。
+- JSC 仍为 P1 扩展，不影响已完成的 P0 结果。
 
 ## 目录结构
 
@@ -46,7 +47,7 @@ js-interpreter-bench/
 │   ├── raw/            # 不可改写的原始实验输出
 │   └── processed/      # 汇总和统计结果
 ├── notes/              # 实验协议、平台记录、研究日志和分析笔记
-└── patches/            # 后续实验性补丁；基线阶段保持为空
+└── patches/            # benchmark standalone 移植补丁；不包含引擎性能修改
 ```
 
 ## 文档
@@ -55,4 +56,5 @@ js-interpreter-bench/
 - [`notes/experiment_protocol.md`](notes/experiment_protocol.md)：实验约束、P0/P1 门禁和可复现性要求。
 - [`notes/engine_feasibility.md`](notes/engine_feasibility.md)：各 interpreter 的当前可行性与验证方法。
 - [`notes/v8_prebuilt.md`](notes/v8_prebuilt.md)：固定的 V8 官方预编译 artifact、来源与校验值。
+- [`notes/sunspider_results.md`](notes/sunspider_results.md)：SunSpider 来源、移植、方法、correctness 与正式结果。
 - [`notes/research_log.md`](notes/research_log.md)：按时间记录命令、结果、问题和下一步。

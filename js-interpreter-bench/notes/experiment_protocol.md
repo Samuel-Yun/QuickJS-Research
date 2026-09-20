@@ -80,9 +80,10 @@ P0 与 P1 使用独立门禁。QuickJS 和 V8 完成验证后即可开始 P0 ben
 3. QuickJS interpreter 路径与 V8 Ignition-only 模式均已取得运行或二进制证据。
 4. V8 的 Sparkplug、Maglev、TurboFan 已确认关闭。
 5. 当前 Windows 主机环境快照已保存。
-6. SunSpider 的来源、版本和校验值已固定。
-7. 计时边界、进程模型、预热策略、重复次数、超时和异常样本规则已预先确定。
-8. 原始结果格式、命名规则和保存目录已确定。
+6. QuickJS 与 V8 Ignition-only 必须通过同一套 correctness suite，所有测试行均为 `valid=true`。
+7. SunSpider 的来源、版本和校验值已固定。
+8. 计时边界、进程模型、预热策略、重复次数、超时和异常样本规则已预先确定。
+9. 原始结果格式、命名规则和保存目录已确定。
 
 JSC 和 PrimJS 不属于 P0 准入条件。
 
@@ -108,4 +109,6 @@ JSC 只有在固定 commit、完成 Windows x64 Release/optimized build、证明
 
 ## 10. 当前状态
 
-当前已完成 QuickJS Windows baseline，固定 V8 `15.6.21` 官方 win64 prebuilt artifact，并通过 V8 Ignition-only 运行验证。第 6 节第 1–5 项已满足；SunSpider 固定和正式计时/数据协议（第 6–8 项）尚未完成，所以正式 benchmark 为 `NOT_STARTED`，本阶段没有运行 benchmark。
+当前已完成 QuickJS Windows baseline，固定 V8 `15.6.21` 官方 win64 prebuilt artifact，通过 V8 Ignition-only 运行验证，并由统一 correctness suite 得到 24/24 行 `valid=true`。SunSpider 1.0.2 的官方来源、固定 commit、文件哈希、standalone patch、计时边界、进程模型、重复次数和数据格式均已归档，第 6 节第 1–9 项全部满足。
+
+SunSpider correctness gate 为 52/52 PASS。正式实验已按每个 engine/case 30 次执行，共保存 1,560 个样本，全部为 `exit_code=0`、`valid=true`；没有删除任何 outlier。原始数据为 `results/raw/sunspider.csv`，统计结果为 `results/processed/sunspider_summary.csv`，完整记录见 `notes/sunspider_results.md`。

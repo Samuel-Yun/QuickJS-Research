@@ -379,3 +379,72 @@ https://chromium.googlesource.com/v8/v8/+/37fb84941c9be9f9914ee50b1ad366f06a1bd7
 **下一步**
 
 阶段 4 到此停止。P0 引擎门禁已经通过，但没有运行 benchmark。后续需单独固定 SunSpider 来源/版本/校验值，并预先确定计时边界、进程模型、重复次数和原始数据格式，然后才能进入正式实验。
+
+---
+
+## 2026-09-20 — Correctness 阶段：QuickJS 与 V8 Ignition
+
+**做了什么**
+
+在不重建 QuickJS、不更新 V8、不调用 jsvu、不改变正式 runtime flags 的前提下，建立 12 项统一 JavaScript correctness suite。所有测试只使用标准 JavaScript 与 `console.log`，输出确定的单行 checksum。Python runner 显式固定两份 binary、V8 `--max-opt=0`、snapshot 以及相关 artifact SHA-256，并保存逐引擎、逐测试结果。
+
+**命令**
+
+```powershell
+python .\scripts\run_smoke_all.py
+```
+
+**结果**
+
+- 覆盖 integer arithmetic、floating point、loops、branches、functions、recursion、arrays、object property access、strings、closure、exceptions、bit operations。
+- QuickJS 12/12 通过；V8 Ignition-only 12/12 通过；总计 `PASS 24/24`。
+- 每行同时满足：退出码 0、stdout 精确等于预设 checksum、stderr 为空。
+- 最终原始结果保存为 `results/raw/correctness.csv`，包含 `engine,test,stdout,stderr,exit_code,valid` 六列。
+- runner 执行前复核 QuickJS、V8、snapshot、ICU data 与 `libwinpthread-1.dll` 的固定 SHA-256；没有从 PATH 自动选择其他引擎 binary。
+- runner 拒绝覆盖已有 raw CSV；复现时必须通过 `--output` 使用新文件名。
+
+**问题**
+
+首次运行是 22/24：两个失败行均为 object property 测试。原因是 runner 中的预设值误把删除操作发生前已经累加的 `k3=9` 再次扣除；两个引擎实际都正确输出 `2917`，退出码均为 0、stderr 均为空。这是测试清单错误，不是引擎差异。首次 CSV 已原样保留为 `results/raw/correctness_attempt1_expected_value_error.csv`；修正预设值后重新生成最终 `correctness.csv`。
+
+**下一步**
+
+Correctness 门禁为 `PASS`。本阶段没有运行正式 benchmark；仍需先固定 SunSpider 来源、版本和校验值，并完成正式计时及数据协议。
+
+---
+
+## 2026-09-20 — SunSpider 1.0.2 准备、correctness 与正式运行
+
+**做了什么**
+
+从 WebKit 官方仓库的固定 commit `fd3406f133a4e56d7aaf399ba5611ae44b8da7e9` 获取 `PerformanceTests/SunSpider/tests/sunspider-1.0.2`，逐文件核对官方 Git blob SHA-1，并为 upstream 和 standalone 目录分别保存 SHA-256 manifest。检查全部 26 个 case 的 browser-only API，以同一份 standalone workload 运行 QuickJS 与 V8。所有移植改动保存为 `patches/sunspider-1.0.2-standalone.patch`。
+
+correctness gate 通过后，用固定 runner 对每个 engine/case 运行 30 次。每轮用固定 seed `20260920` 随机化 case 顺序，并逐轮反转同一 case 的引擎先后次序；每个引擎对每个 case 各有 15 次先运行、15 次后运行。计时使用 `time.perf_counter_ns()`，保留全部样本，不删除 outlier。
+
+**命令**
+
+```powershell
+python .\scripts\run_sunspider.py correctness
+python .\scripts\run_sunspider.py benchmark --iterations 30
+```
+
+**结果**
+
+- 官方 `LIST` 共 26 个 case；upstream 目录共固定 26 个 `.js` 和一个 `LIST`。
+- SunSpider correctness gate 为 `PASS 52/52`。
+- 正式数据为 `26 × 2 × 30 = 1,560` 行；全部 `exit_code=0`、`valid=true`。
+- 每个 engine/case 恰好有 30 个样本；交错顺序复核通过。
+- `results/raw/sunspider.csv` SHA-256：`1e27d75a7d38ab48d5fd3a8b30b8d29b4c47b9ba648a9f080fd10ee3b968df82`。
+- `results/processed/sunspider_summary.csv` SHA-256：`dc558feca2607d416189f17d5509d95d2ae9f73de30bd02967f75f21350184dc`。
+- 独立复算 26 个 case 的 median、mean、sample stddev、Tukey IQR、min、max 和 `V8 / QuickJS` median ratio，均与汇总 CSV 一致。
+- 在临时 upstream 副本上应用 standalone patch 后，全部 27 个文件与 standalone manifest 精确匹配；临时副本随后删除。
+
+**问题**
+
+- `date-format-xparb.js` 实际执行 `document.write(then)`；standalone patch 只删除这一浏览器输出副作用。
+- 首次 correctness 为 51/52：`3d-raytrace.js` 的内置哨兵只接受生成字符串长度 `20970`，V8 得到 `20970`，QuickJS 得到 `20969`，但两者均完成相同 workload。首次证据原样保存在 `results/raw/sunspider_correctness_attempt1_upstream_sentinel.csv`。最终 patch 只把该哨兵限制改为接受 `20969` 或 `20970`，其他长度仍失败；两引擎继续执行完全相同的 JS 文件。
+- 每个样本使用全新进程，因此 `wall_time_ns` 明确包含进程启动、解析/编译、执行和退出；结果不得被描述成只测量循环体时间。
+
+**下一步**
+
+本阶段已经完成并停止。不在本阶段解释性能差异原因；后续分析必须引用固定原始数据和当前运行配置，不得混入 JIT-enabled、其他主机或更新后的引擎结果。
