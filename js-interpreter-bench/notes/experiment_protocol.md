@@ -23,20 +23,22 @@ P0 与 P1 使用独立门禁。QuickJS 和 V8 完成验证后即可开始 P0 ben
 
 每次可用于比较的实验必须完整记录：
 
-- engine 名称、version、branch 和精确 commit；无法确认时标记 `UNKNOWN`，不得纳入正式结果。
+- 对源码构建记录 engine 名称、version、branch 和精确 commit。对官方预编译 V8，允许 source commit 为 `UNKNOWN`，但必须固定精确 V8 version、官方 archive URL、archive SHA-256、实际 binary/data artifact SHA-256，缺一不得纳入正式结果。
 - CPU 型号、物理核心数、逻辑处理器数、OS 名称与版本、x64 architecture。
-- compiler 名称、完整 version 和实际可执行文件路径。
-- build type，以及完整 build flags、GN args、CMake cache 选项或等价配置。
+- 自行构建记录 compiler 名称、完整 version、实际可执行文件路径、build type 与完整 build flags/GN args/CMake 配置。
+- 官方预编译 artifact 记录发布物携带的全部 build metadata；无法从官方发布物确认的 compiler revision 或 build flag 必须标为 `UNKNOWN` 并作为结论限制，不得猜测。
 - 完整 runtime flags 和环境变量。
 - standalone shell binary 的路径、文件校验值和构建时间。
 - benchmark 名称、版本/commit、文件校验值以及任何本地改动。
 - 执行命令、工作目录、时间戳、退出状态和原始输出位置。
 
-所有判断必须来自固定 checkout 的源码、与该版本相符的官方文档或实际运行证据。无法确认的内容必须写为 `UNKNOWN`，不得依据记忆、旧博客或推测补全。
+所有判断必须来自固定 checkout 的源码、固定官方 artifact、与该版本相符的官方文档或实际运行证据。无法确认的内容必须写为 `UNKNOWN`，不得依据记忆、旧博客或推测补全。
 
 ## 4. 构建原则
 
 - 所有参测引擎必须使用 Release/optimized build；Debug、sanitizer、coverage 或 assertions-heavy 构建不得作为正式性能结果。
+- V8 可以使用 V8/Chromium 官方发布渠道提供的 Release binary；不得使用 Node.js、jsvu wrapper 或第三方未知构建代替真实 V8 shell binary。
+- 官方预编译 V8 必须连同所需 data files 和原始 archive 一起版本化固定，不得在实验过程中由 jsvu 自动更新 latest。
 - 不强制不同项目使用相同 compiler。QuickJS、V8 和 WebKit/JSC 可以使用各自官方支持或源码要求的工具链。
 - 工具链不同是实验配置的一部分，必须完整记录并在结论中作为限制因素说明。
 - 不得为了提高性能修改引擎源码。基线必须来自未修改的固定 commit。
@@ -55,7 +57,8 @@ P0 与 P1 使用独立门禁。QuickJS 和 V8 完成验证后即可开始 P0 ben
 ### V8 Ignition
 
 - 必须使用当前 checkout 定义并实际接受的 interpreter-only flags。
-- 当前候选方案为 `--jitless --no-sparkplug --no-maglev --no-turbofan`，正式使用前必须由该 checkout 的 flag 定义和 `d8` 实际输出再次确认。
+- 当前首选候选方案为 `--max-opt=0`；源码定义表明它把最大 tier 设为 Ignition，并 weak-disable Sparkplug、Maglev、TurboFan。正式使用前必须由固定 `d8` 的实际 flag dump 和运行证据确认。
+- `--jitless` 是更强但改变更多 VM 行为的备选，不得在未验证 binary 支持及副作用前用作默认方案。
 - 必须保存 flag dump，证明 Sparkplug、Maglev 和 TurboFan 均未参与。
 - 只看到 Ignition bytecode 不足以排除后续 tier-up。
 
@@ -72,8 +75,8 @@ P0 与 P1 使用独立门禁。QuickJS 和 V8 完成验证后即可开始 P0 ben
 
 只有同时满足以下条件，才能开始 QuickJS 与 V8 的正式 P0 benchmark：
 
-1. QuickJS 与 V8 的精确 commit 均已固定。
-2. 两者都已完成 Windows x64 Release/optimized build，且编译器和完整 build flags 已归档。
+1. QuickJS 的精确 commit 已固定；V8 已固定精确官方 artifact version、URL、archive/binary/data SHA-256。
+2. QuickJS 已完成 Windows x64 Release/optimized build并归档工具链/flags；V8 已确认为官方渠道的 Windows x64 Release artifact并归档可用 build metadata。
 3. QuickJS interpreter 路径与 V8 Ignition-only 模式均已取得运行或二进制证据。
 4. V8 的 Sparkplug、Maglev、TurboFan 已确认关闭。
 5. 当前 Windows 主机环境快照已保存。
@@ -105,4 +108,4 @@ JSC 只有在固定 commit、完成 Windows x64 Release/optimized build、证明
 
 ## 10. 当前状态
 
-当前只完成 Windows 原生环境复查和计划调整。尚未下载大型源码、构建引擎或运行 benchmark。P0 正式 benchmark 状态为 `BLOCKED`，直到第 6 节门禁全部满足。
+当前已完成 QuickJS Windows baseline，并固定 V8 `15.6.21` 官方 win64 prebuilt artifact；尚未完成该 V8 binary 的 Ignition-only 运行验证，也未运行 benchmark。P0 正式 benchmark 状态为 `BLOCKED`，直到第 6 节门禁全部满足。

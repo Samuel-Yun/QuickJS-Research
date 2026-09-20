@@ -270,6 +270,7 @@ curl -I --connect-timeout 20 --max-time 30 \
 - depot_tools revision `0306e4682b4ac35287c726fa35a983157a625902`，`.git` 已保留。
 - gclient/CIPD bootstrap 无法完成；直接连接 `chrome-infra-packages.appspot.com` 20 秒超时，curl exit 28。
 - `build_v8_windows.ps1 -PreflightOnly` 已验证会因 `.cipd_bin\vpython3.exe` 缺失退出 1，不会误报通过或创建 checkout。
+- 按当前官方 VS 2026/SDK 28000 要求更新脚本后，最终 preflight 会更早在 VS 2026 + ATL/MFC 门禁处退出 1；上述 CIPD 结果保留为较早一次 preflight 证据。
 - `run_v8_ignition.ps1` 已验证会在 `d8.exe` 缺失时退出 1，不会创建伪造的 validation evidence。
 - 未运行 `fetch v8`；actual V8 commit、compiler、GN args、`d8.exe` size 均为 `UNKNOWN`。
 - 在线当前源码显示 `max_opt=0` 表示最大 tier 为 Ignition，且比 `jitless` 更少改变其他 VM 行为；但没有 current checkout/runtime 证据。
@@ -286,3 +287,44 @@ curl -I --connect-timeout 20 --max-time 30 \
 **下一步**
 
 按用户要求在无法证明纯 interpreter 模式时停止。需要先恢复 `chromium.googlesource.com` 与 `chrome-infra-packages.appspot.com` 的原生 Windows 网络访问；之后从 depot_tools bootstrap 重新开始，不得用裸 V8 clone 绕过。
+
+---
+
+## 2026-09-20 — 阶段 3 调整：V8 官方预编译 artifact
+
+**做了什么**
+
+停止源码构建路线，不再继续 VS 2026、SDK 28000、depot_tools/CIPD 或 `fetch v8`。检查 Node/npm，固定 `jsvu@3.0.5`，只查询 win64 V8。jsvu 查得当前版本 `15.6.21` 并预测 Google 官方 archive URL；jsvu 下载长时间无进度后，直接下载同一官方 archive。保存原始 ZIP，解包并哈希实际 `d8.exe` 与 data files，随后运行版本命令和最小 smoke test。没有运行 benchmark、SunSpider 或 JSC，也没有修改 QuickJS。
+
+**命令**
+
+```text
+node --version
+npm --version
+npx --yes jsvu@3.0.5 --help
+jsvu v8@15.6.21 --os=win64
+curl --ipv4 -L https://storage.googleapis.com/chromium-v8/official/canary/v8-win64-rel-15.6.21.zip
+d8.exe --snapshot_blob=...\snapshot_blob.bin --version
+d8.exe --snapshot_blob=...\snapshot_blob.bin scripts\v8_prebuilt_smoke.js
+```
+
+**结果**
+
+- Node.js `v18.12.1`；npm `8.19.2`；jsvu `3.0.5`。
+- jsvu 查询 URL 返回 V8 `15.6.21`；版本已固定，不再自动更新 latest。
+- 官方 archive 为 `v8-win64-rel-15.6.21.zip`，17,273,292 bytes，SHA-256 `c36f9ddeec335dcf45735c91c930f99971504259f865a39d9c6ddf0b4a9b119f`。
+- 原始 `d8.exe` 为 34,526,208 bytes，SHA-256 `1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87`。
+- 伴随 artifact：`icudtl.dat`、`snapshot_blob.bin`、`v8_build_config.json`；原始 ZIP 也已保留。
+- `V8 version 15.6.21`，退出码 0。
+- `V8_PREBUILT_SMOKE=PASS total=10`，退出码 0。
+- 正式 binary 是 archive 原始 `d8.exe`，不使用 jsvu wrapper 或 Node.js。
+
+**问题**
+
+- jsvu 自身下载停滞，最终使用它预测的同一 Google 官方 URL 直接下载。
+- `v8_build_config.json` 显示 `has_jitless=false`、`official_build=false`，但 `has_maglev=true`、`has_turbofan=true`；这些值必须在 interpreter-only 方案中如实考虑。
+- 尚未取得 flag dump、bytecode、Ignition execution 或 tier trace；正式 interpreter 命令仍为 `BLOCKED`。
+
+**下一步**
+
+按用户要求在 artifact 获取、固定和 smoke test 后停止。不运行 SunSpider；下一阶段只有在收到新指令后，才对这份固定 binary 验证 `--max-opt=0` 及 Sparkplug/Maglev/TurboFan 未参与。

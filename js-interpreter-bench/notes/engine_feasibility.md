@@ -8,14 +8,14 @@
 - PrimJS：仅作文献和工程参考，不参加 benchmark。
 - 所有参测引擎使用 Release/optimized build。允许按项目采用不同官方工具链，但必须完整记录 compiler/version、build flags 和 runtime flags。
 
-以下 commit 沿用阶段 1 的候选固定点。实际 checkout 后仍须用 `git rev-parse HEAD` 复核。
+QuickJS 与 JSC 的源码 commit 沿用阶段 1 固定点；V8 已改用版本化官方 prebuilt artifact，源码 commit 保持 `UNKNOWN`，不再作为该路线的准入条件。
 
 ## 主实验与扩展实验总表
 
 | Priority | Engine | Version/Commit | Interpreter | Interpreter-only 方法 | Windows x64 当前状态 | 验证方法 | 风险/问题 |
 |---|---|---|---|---|---|---|---|
 | P0 | upstream QuickJS | `2026-06-04`；`master` @ `04be246001599f5995fa2f2d8c91a0f198d3f34c` | QuickJS bytecode interpreter；computed-goto direct dispatch | 无 JIT；Release binary 已确认使用预期 dispatch | Git Bash + MinGW GCC 13.1 已成功构建 | commit/checksum/build log 已保存；预处理为 `DIRECT_DISPATCH=1`；符号与反汇编确认跳表间接跳转 | QuickJS 门禁 `PASS`；最终 P0 仍等待 V8 与 benchmark 协议 |
-| P0 | V8 Ignition | 阶段 1 候选 `68a0ee4aa9a2cba8a43cbd1ed1700828adad618f`；实际 checkout `UNKNOWN` | Ignition | 首选候选 `--max-opt=0`；`--jitless` 为更强但改变更广的候选 | 当前 VS 2026 / SDK 28000 门禁未满足；depot_tools CIPD 与 googlesource 也被网络阻断 | 必须保存 flag dump、bytecode、Ignition trace、Sparkplug/Maglev/TurboFan tier trace | `BLOCKED`；没有 checkout 或 `d8.exe`，不能确定正式命令 |
+| P0 | V8 Ignition | 官方 prebuilt `15.6.21`；源码 checkout/commit `UNKNOWN` | Ignition | 首选候选 `--max-opt=0`；`--jitless` 为更强但改变更广的候选 | 源码 build blocked；Google 官方 win64 prebuilt artifact 已固定并通过 smoke | 必须保存实际 binary 的 flag dump、bytecode、Ignition trace、Sparkplug/Maglev/TurboFan tier trace | artifact `PASS`；interpreter-only 仍 `BLOCKED`，不能确定正式命令 |
 | P1 | JavaScriptCore LLInt | WebKit `main` @ `fd3406f133a4e56d7aaf399ba5611ae44b8da7e9`；产品版本 `UNKNOWN` | OfflineASM X86_64 LLInt | 保持 `useLLInt=true`，运行时 `useJIT=false` 并显式关闭 Baseline/DFG/FTL | 源码有 x86-64 backend；本机官方构建链不完整 | option dump；确认非 C-loop；调试器/profile 看到 `llint_*` | Windows JSC build 未验证；属于扩展项，不阻塞 P0 |
 
 ## P0-1. upstream QuickJS
@@ -68,7 +68,8 @@ d8.exe --max-opt=0 script.js
 - x64 架构支持 Ignition。
 - VS 2022/MSVC x64/SDK 26100 虽已安装，但低于当前官方 Windows 文档要求的 VS 2026/SDK 28000；ATL/MFC 与 Debugging Tools 也未满足。
 - depot_tools 官方 bundle 已安装，但 CIPD bootstrap 因官方 endpoint 连接超时而失败；`chromium.googlesource.com` 也不可达。
-- 为避免不完整 checkout，本轮没有启动 `fetch v8`，也没有生成 `d8.exe`。
+- 为避免不完整 checkout，没有启动 `fetch v8`；该源码构建路线永久保留为 `BLOCKED`。
+- 后续已从 Google 官方 `chromium-v8/official/canary` 固定 V8 `15.6.21` win64 Release artifact；原始 `d8.exe` 版本与 smoke test 通过，详见 `notes/v8_prebuilt.md`。
 
 ### P0 验证要求
 
@@ -110,7 +111,7 @@ jsc.exe --useLLInt=true \
 ## 当前结论
 
 - Windows 11 x64 原生主机是唯一正式实验环境。
-- P0 当前仍为 `BLOCKED`：QuickJS Windows baseline 与 dispatch 门禁已通过，V8 和统一 benchmark 协议尚未完成。
+- P0 当前仍为 `BLOCKED`：QuickJS Windows baseline 与 dispatch 门禁已通过，V8 artifact 已固定，但 Ignition-only 运行验证和统一 benchmark 协议尚未完成。
 - 一旦 QuickJS 与 V8 完成 P0 门禁，即可开始 P0 benchmark；无需等待 JSC。
 - JSC 为 `DEFERRED`，PrimJS 为 `REFERENCE_ONLY`。
 - 本轮没有开始大型源码下载、构建或 benchmark。

@@ -2,9 +2,9 @@
 
 ## 状态
 
-`BLOCKED`。
+`BLOCKED`（interpreter-only 运行验证尚未执行）。
 
-由于没有完整 V8 checkout 和 `d8.exe`，无法取得当前 binary 的 flag dump、bytecode evidence、Ignition trace 或 tier/compilation trace。下面的 flag 分析来自调查日期当天的 V8 官方在线源码，只能作为候选方案设计，不能替代用户要求的 current-checkout 与运行时证据。
+源码构建路线仍然失败，但现在已经固定 Google 官方预编译 V8 `15.6.21` Windows x64 artifact，并通过版本与功能 smoke test。当前尚未对这份 binary 取得 flag dump、bytecode evidence、Ignition trace 或 tier/compilation trace。下面的 flag 分析仍只能作为候选方案设计，不能替代实际 runtime 证据。
 
 ## 当前官方源码中的 flag 含义
 
@@ -69,7 +69,7 @@
 
 bytecode 输出本身不充分，因为函数仍可能在后续 tier-up。只有 flag dump、Ignition execution trace，以及 Sparkplug/Maglev/TurboFan compilation/entry 均未出现的证据组合才能通过门禁。
 
-当前预期证据目录 `results/raw/v8_validation/` 未创建，因为 `d8.exe` 不存在。不得创建伪 flag dump 或空 trace 冒充验证结果。
+当前预期证据目录 `results/raw/v8_validation/` 尚未创建。本阶段只获取并固定 prebuilt artifact，没有执行 interpreter-only 验证；不得创建伪 flag dump 或空 trace 冒充验证结果。artifact 详情见 [`v8_prebuilt.md`](v8_prebuilt.md)。
 
 ## 最终判定
 
@@ -84,4 +84,4 @@ OFFICIAL_V8_INTERPRETER_COMMAND=BLOCKED
 CANDIDATE_V8_INTERPRETER_COMMAND=d8.exe --max-opt=0
 ```
 
-在完整 checkout、Release `d8.exe`、flag dump、bytecode、Ignition trace 和 tier trace 全部存在以前，不得将候选命令提升为正式实验命令，也不得开始 P0 benchmark。
+在固定 prebuilt `d8.exe` 的 flag dump、bytecode、Ignition trace 和 tier trace 全部存在以前，不得将候选命令提升为正式实验命令，也不得开始 P0 benchmark。源码 checkout 已不再是该路线的准入条件。

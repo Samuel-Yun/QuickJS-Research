@@ -94,4 +94,27 @@ autoninja -C out\x64.release d8
 | `d8.exe` size | `UNKNOWN` |
 | `d8.exe` SHA-256 | `UNKNOWN` |
 
-没有下载 V8，没有运行 SunSpider，QuickJS baseline 未改变。
+在上述源码构建尝试期间没有下载 V8 源码或生成 binary；没有运行 SunSpider，QuickJS baseline 未改变。
+
+## 后续路线：官方预编译 runtime
+
+本文件以上内容是源码构建路线的永久失败记录，状态继续为 `SOURCE_BUILD_BLOCKED`；不删除、不覆盖，也不再继续安装 VS 2026/SDK 28000 或尝试 depot_tools/CIPD/fetch。
+
+源码构建失败不再阻塞预编译路线。随后通过固定的 `jsvu@3.0.5` 查询 Google 官方 `chromium-v8/official/canary` 渠道，选择并冻结 V8 `15.6.21` 的 Windows x64 `rel` archive。jsvu 内置下载长时间停滞后，按实验方案直接下载了它预测出的同一官方 archive。
+
+预编译 artifact 已保存于：
+
+```text
+C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\v8-official-15.6.21
+```
+
+实际 shell 是 archive 原始 `runtime\d8.exe`，不是 Node.js，也不是 jsvu `.cmd` wrapper。版本与 smoke test 已通过；完整 URL、文件清单、大小和 SHA-256 见 [`v8_prebuilt.md`](v8_prebuilt.md)。
+
+当前分离状态：
+
+| 路线 | 状态 |
+|---|---|
+| 自行源码构建 V8 | `BLOCKED`，保留历史证据，不再继续 |
+| 官方预编译 V8 runtime | `ARTIFACT_ACQUIRED`，V8 `15.6.21` |
+| Ignition-only 运行验证 | `PENDING`；尚未获得 flag/bytecode/tier evidence |
+| 正式 benchmark | `BLOCKED`；未运行 SunSpider |

@@ -1,0 +1,22 @@
+V8_PREBUILT_VALIDATION
+timestamp_local=2026-09-20T20:01:12.8676402+08:00
+jsvu_version=3.0.5
+target=win64
+v8_version=15.6.21
+archive_url=https://storage.googleapis.com/chromium-v8/official/canary/v8-win64-rel-15.6.21.zip
+archive_sha256=c36f9ddeec335dcf45735c91c930f99971504259f865a39d9c6ddf0b4a9b119f
+d8_sha256=1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87
+
+[version]
+V8 version 15.6.21
+exit_code=0
+
+[smoke]
+V8_PREBUILT_SMOKE=PASS total=10
+exit_code=0
+
+[scope]
+benchmark=NOT_RUN
+sunspider=NOT_RUN
+quickjs=UNCHANGED
+

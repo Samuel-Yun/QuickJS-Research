@@ -18,9 +18,9 @@
 
 - 所有正式 benchmark 统一在同一台 Windows 11 x64 原生主机上运行。
 - WSL 不作为主实验环境，也不混入正式结果。
-- 所有引擎使用各自项目支持的 Release/optimized build。
+- 所有参测 runtime 必须是 Release/optimized 配置。QuickJS 使用固定源码构建；V8 允许使用 V8/Chromium 官方发布渠道的可追溯预编译 artifact。
 - 不强制不同项目使用相同 compiler；V8、WebKit 和 QuickJS 可以采用各自官方或源码支持的工具链。
-- 每个构建必须完整记录 compiler、compiler version、build flags 和 runtime flags。
+- 自行构建必须完整记录 compiler、compiler version 和 build flags；官方预编译 artifact 必须记录精确版本、官方 URL、binary/data hashes、可用 build metadata 和全部 runtime flags，无法从发布物确认的字段写 `UNKNOWN`。
 - 比较对象是 interpreter，不是完整 JIT engine，也不比较 JIT 性能。
 
 当前 Windows 环境快照见 [`notes/platform_windows.md`](notes/platform_windows.md)。
@@ -31,7 +31,7 @@
 - 不运行正式 benchmark。
 - 不下载大型源码树。
 - V8 必须验证为 Ignition-only；JSC 扩展实验必须验证为 LLInt-only。
-- 所有判断必须依据固定 checkout 的源码、对应版本的官方文档或实际运行证据。
+- 所有判断必须依据固定 checkout 的源码、固定官方 artifact、对应版本的官方文档或实际运行证据。
 - 无法验证的信息统一标记为 `UNKNOWN`，不得猜测。
 - QuickJS 与 V8 的 P0 门禁满足后即可开始 P0 benchmark，无需等待 JSC。
 
@@ -39,7 +39,7 @@
 
 ```text
 js-interpreter-bench/
-├── engines/            # 固定版本的引擎源码或其来源记录
+├── engines/            # 固定版本的引擎源码或官方 binary/data artifact
 ├── benchmarks/         # benchmark 源文件及版本信息
 ├── scripts/            # 构建、运行和结果处理脚本
 ├── results/
@@ -54,4 +54,5 @@ js-interpreter-bench/
 - [`notes/platform_windows.md`](notes/platform_windows.md)：Windows 原生实验主机与工具链快照。
 - [`notes/experiment_protocol.md`](notes/experiment_protocol.md)：实验约束、P0/P1 门禁和可复现性要求。
 - [`notes/engine_feasibility.md`](notes/engine_feasibility.md)：各 interpreter 的当前可行性与验证方法。
+- [`notes/v8_prebuilt.md`](notes/v8_prebuilt.md)：固定的 V8 官方预编译 artifact、来源与校验值。
 - [`notes/research_log.md`](notes/research_log.md)：按时间记录命令、结果、问题和下一步。

@@ -97,7 +97,8 @@ Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 - 已安装的 VS 2022 17.14.41 / SDK 10.0.26100.0 低于当前官方要求的 VS 2026 / SDK 10.0.28000.2270；ATL/MFC 和 Debugging Tools 也缺失。
 - 官方 VS 2026 引导程序已验证签名，但管理员安装因 UAC 操作取消而失败；没有新增 VS 2026 instance。
 - 已从官方 bundle 安装 depot_tools revision `0306e4682b4ac35287c726fa35a983157a625902`，但官方 CIPD endpoint 连接超时，bootstrap 未完成。
-- `chromium.googlesource.com` 同样不可达，因此没有启动 `fetch v8`；`d8.exe` 的 Release build 和 Ignition-only 运行验证仍为 `BLOCKED`。
+- `chromium.googlesource.com` 同样不可达，因此没有启动 `fetch v8`；源码构建路线保持 `BLOCKED` 且不再继续。
+- 后续已固定 Google 官方预编译 V8 `15.6.21` win64 Release artifact，`d8.exe --version` 与最小 smoke test 通过；Ignition-only 运行验证仍为 `BLOCKED`。
 
 ### P1: JavaScriptCore LLInt
 
@@ -107,6 +108,6 @@ Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 ## 当前门禁状态
 
 - Windows 原生平台已选定并完成环境快照。
-- P0 benchmark：`BLOCKED`；QuickJS baseline 已完成，但 V8、benchmark 固定和统一计时协议尚未完成。
+- P0 benchmark：`BLOCKED`；QuickJS baseline 与 V8 prebuilt artifact 已固定，但 V8 Ignition-only 运行验证、benchmark 固定和统一计时协议尚未完成。
 - P1 JSC：`DEFERRED`。
 - PrimJS：`REFERENCE_ONLY`。
