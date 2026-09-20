@@ -118,3 +118,63 @@ node --version
 **下一步**
 
 按用户要求在阶段 1 停止，等待后续指令。若进入下一阶段，应先决定是否迁移到 PrimJS 支持的 arm64 共同平台，再逐一完成轻量构建与 interpreter-only 运行时验证；在验证通过前不运行正式 benchmark。
+
+---
+
+## 2026-09-20 — 调整为 Windows x64 原生 P0/P1 计划
+
+**做了什么**
+
+重新只读检查 Windows 原生主机、固定磁盘和开发工具；将实验对象调整为 P0 QuickJS + V8、P1 JSC，并将 PrimJS 改为文献和工程参考。更新 README、实验协议、引擎可行性文档，并新增 Windows 平台快照。没有使用 WSL、下载大型源码、构建引擎或运行 benchmark。
+
+**命令**
+
+```powershell
+Get-CimInstance Win32_OperatingSystem
+Get-CimInstance Win32_Processor
+Get-CimInstance Win32_ComputerSystem
+[System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture
+[System.IO.DriveInfo]::GetDrives()
+
+Get-Command git, powershell, pwsh, python, python3, py, cl, `
+  msbuild, nmake, cmake, ninja, clang, clang-cl, gcc, g++, `
+  make, mingw32-make, node, gclient, fetch, gn, autoninja
+
+git --version
+powershell -NoProfile -Command '$PSVersionTable.PSVersion.ToString()'
+python --version
+cmake --version
+gcc --version
+g++ --version
+mingw32-make --version
+node --version
+
+& 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe' `
+  -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -format json
+
+Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
+```
+
+同时只读检查 Windows SDK、MSYS2 和 depot_tools 的 PATH 标记及少量常见安装位置；没有进行全盘扫描。
+
+**结果**
+
+- Windows 11 `10.0.26200` build `26200`，x64。
+- AMD Ryzen 7 5800H，8 个物理核心、16 个逻辑处理器，约 15.86 GiB RAM。
+- 项目所在 `C:` 剩余 33.59 GiB；`D:` 13.18 GiB；`E:` 1.54 GiB；`F:` 15.34 GiB。
+- 可用：Git 2.38.1、Windows PowerShell 5.1、Python 3.11.4、CMake 4.0.1、MinGW GCC/G++ 13.1、`mingw32-make` 4.2.1、Node.js 18.12.1。
+- 未检测到：可用 Visual Studio C++/Build Tools、`cl.exe`、可用 Windows SDK、Ninja、Clang、MSYS2、depot_tools。
+- P0 改为 QuickJS + V8；两者完成 Release build 和 interpreter-only 验证即可进入 P0 benchmark。
+- JSC 改为 P1，不阻塞 P0；PrimJS 改为 `REFERENCE_ONLY`。
+- 新增 `notes/platform_windows.md`，更新 `README.md`、`notes/experiment_protocol.md` 和 `notes/engine_feasibility.md`。
+
+**问题**
+
+- QuickJS 在当前纯 PowerShell/MinGW 环境中的 Release 构建尚为 `UNKNOWN`。
+- V8 所需 Windows 原生构建工具链尚未就绪。
+- JSC Windows 构建继续为 `UNKNOWN`，但不再影响 P0。
+- P0 正式 benchmark 仍为 `BLOCKED`；尚未固定 SunSpider 与计时协议，也没有运行时验证证据。
+
+**下一步**
+
+按用户要求在计划调整完成后停止。后续如获指令，应先补齐并验证 P0 所需 Windows 原生工具链，再分别建立 QuickJS 和 V8 的 Release/optimized binary 与 interpreter-only 证据；在 P0 门禁满足前不运行正式 benchmark。
