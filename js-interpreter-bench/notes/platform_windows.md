@@ -6,7 +6,7 @@
 - 目标环境：Windows 11 x64 原生环境。
 - WSL 不作为主实验环境；本次没有调用 WSL 内的工具。
 - 检查方式：Windows CIM、.NET runtime 信息、`Get-Command`、版本命令、`vswhere`、Windows SDK 注册表/目录以及少量常见安装位置。
-- 本次只做只读检查；没有下载大型源码、没有构建引擎、没有运行 benchmark。
+- 阶段 1 的初始快照只做只读检查。阶段 3 已安装 V8 所需的 Windows C++ 工具链和 depot_tools bundle；没有下载 V8 源码、没有构建 V8、没有运行 benchmark。
 
 ## Windows 与硬件
 
@@ -34,12 +34,12 @@ Get-CimInstance Win32_ComputerSystem
 
 | Drive | Filesystem | Total | Free | 与项目关系 |
 |---|---|---:|---:|---|
-| `C:\` | NTFS | 200.00 GiB | 33.59 GiB | 项目 workspace 所在盘 |
-| `D:\` | NTFS | 100.00 GiB | 13.18 GiB | Git、Python、Node 所在盘 |
-| `E:\` | NTFS | 100.00 GiB | 1.54 GiB | GCC/MinGW、CMake 所在盘；空间很低 |
-| `F:\` | NTFS | 75.69 GiB | 15.34 GiB | 当前未用于项目 |
+| `C:\` | NTFS | 200.00 GiB | 30.00 GiB | 项目 workspace 所在盘 |
+| `D:\` | NTFS | 100.00 GiB | 15.68 GiB | Git、Python、Node 所在盘 |
+| `E:\` | NTFS | 100.00 GiB | 2.04 GiB | GCC/MinGW、CMake 所在盘；空间很低 |
+| `F:\` | NTFS | 75.69 GiB | 69.81 GiB | VS Build Tools 与 depot_tools 所在盘；计划中的 V8 checkout 盘 |
 
-磁盘数据来自 `[System.IO.DriveInfo]::GetDrives()` 的本次快照。正式下载 V8 或 WebKit 前必须重新确认源码、依赖、构建输出和原始结果的目标盘；本轮不进行下载。
+磁盘数据来自阶段 3 完成工具安装后的 `[System.IO.DriveInfo]::GetDrives()` 快照；数值会随系统使用变化。当前 Chromium Windows 文档建议至少 100 GB NTFS 空闲空间；该建议面向 Chromium checkout，V8-only 实际需求为 `UNKNOWN`，因此记录为风险而不推测是否足够。
 
 ## 工具链与开发工具
 
@@ -51,12 +51,13 @@ Get-CimInstance Win32_ComputerSystem
 | Python | `D:\python3\python.exe`；3.11.4 | 可用 |
 | Python launcher | `C:\Windows\py.exe`；3.11.4 | 可用 |
 | `python3` | WindowsApps alias | 别名存在但不可作为已验证 Python 使用 |
-| Visual Studio / Build Tools | `vswhere` 对 VC x86/x64 component 返回 `[]` | 未检测到可用安装 |
-| `cl.exe` | — | `NOT_FOUND` |
-| MSBuild / NMake | — | `NOT_FOUND` |
-| Windows SDK | `Windows Kits\10` 仅发现 `UnionMetadata`，没有可用 `Include`/`Lib`/版本化 `bin`；注册表未返回 Kits root | 未检测到可用 SDK |
+| Visual Studio / Build Tools | `F:\VSBuildTools`；Visual Studio Build Tools 2022 17.14.41（17.14.37710.0） | 可用，但不满足当前 V8 文档要求的 VS 2026 >=18.0 |
+| Desktop development with C++ | VS 2022 `Microsoft.VisualStudio.Workload.VCTools` 可用 | 当前文档要求的 VS 2026 NativeDesktop 与 ATL/MFC 未安装 |
+| `cl.exe` | MSVC toolset 14.44.35207；19.44.35229.0 | 可用，但不通过当前 V8 版本门禁 |
+| MSBuild / NMake | `F:\VSBuildTools\MSBuild\Current\Bin\MSBuild.exe`；MSVC x64 tool directory 中的 `nmake.exe` | 可用（通过 VS developer environment） |
+| Windows SDK | `C:\Program Files (x86)\Windows Kits\10`；10.0.26100.0 | 可用，但不满足当前要求的 10.0.28000.2270；Debugging Tools 也未安装 |
 | CMake | `E:\CMake\bin\cmake.exe`；4.0.1 | 可用 |
-| Ninja | — | `NOT_FOUND` |
+| Ninja | 系统 PATH 中没有；depot_tools CIPD 尚未提供 binary | `NOT_FOUND` / bootstrap blocked |
 | Clang / clang-cl | — | `NOT_FOUND` |
 | GCC | `E:\mingw64\bin\gcc.exe`；MinGW-Builds GCC 13.1.0 `x86_64-posix-seh` | 可用 |
 | G++ | `E:\mingw64\bin\g++.exe`；13.1.0 | 可用 |
@@ -64,7 +65,7 @@ Get-CimInstance Win32_ComputerSystem
 | `make` | — | `NOT_FOUND` |
 | MSYS2 | PATH 及检查的 `C:/D:/E:/F:\msys64` 等常见位置均未发现 | `NOT_FOUND` |
 | Node.js | `D:\nodejs\node.exe`；v18.12.1 | 可用 |
-| depot_tools | `gclient`、`fetch`、`gn`、`autoninja` 均不在 PATH；常见目录及 PATH 标记均未发现 | `NOT_FOUND` |
+| depot_tools | `F:\depot_tools`；revision `0306e4682b4ac35287c726fa35a983157a625902` | 官方 bundle 已安装；CIPD bootstrap blocked，`vpython3.exe`/Ninja 不可用 |
 
 `C:\Windows\System32\bash.exe` 存在，但它是 Windows/WSL 入口，不是 MSYS2。根据当前实验计划，不使用它作为主实验工具。
 
@@ -81,7 +82,7 @@ Get-Command git, powershell, pwsh, python, python3, py, cl, `
 Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 ```
 
-本检查没有对所有磁盘进行穷举扫描。因此“未检测到”严格表示当前 shell、标准注册信息和所列常见路径中不可用；未知的非标准安装位置不视为可用工具链。
+阶段 1 没有对所有磁盘进行穷举扫描。阶段 3 对 Visual Studio、Windows SDK 与 depot_tools 的明确安装位置进行了复核；其他“未检测到”仍严格表示当前 shell、标准注册信息和所列常见路径中不可用。
 
 ## 对 P0/P1 的影响
 
@@ -93,13 +94,14 @@ Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 
 ### P0: V8 Ignition
 
-- 当前没有可用 Visual Studio C++ Build Tools、`cl.exe`、Windows SDK、Ninja 或 depot_tools。
-- 因此原生 Windows V8 构建环境尚未就绪；本轮没有安装依赖或下载 V8。
-- `d8.exe` 的 Release build 和 Ignition-only 运行验证均未完成。
+- 已安装的 VS 2022 17.14.41 / SDK 10.0.26100.0 低于当前官方要求的 VS 2026 / SDK 10.0.28000.2270；ATL/MFC 和 Debugging Tools 也缺失。
+- 官方 VS 2026 引导程序已验证签名，但管理员安装因 UAC 操作取消而失败；没有新增 VS 2026 instance。
+- 已从官方 bundle 安装 depot_tools revision `0306e4682b4ac35287c726fa35a983157a625902`，但官方 CIPD endpoint 连接超时，bootstrap 未完成。
+- `chromium.googlesource.com` 同样不可达，因此没有启动 `fetch v8`；`d8.exe` 的 Release build 和 Ignition-only 运行验证仍为 `BLOCKED`。
 
 ### P1: JavaScriptCore LLInt
 
-- 当前 Windows WebKit/JSC 工具链不完整；Clang、Ninja、Visual Studio C++、Windows SDK 等均未检测到。
+- Visual Studio C++ 与 Windows SDK 已就绪，但 Clang/Ninja 与 WebKit/JSC 的其余官方依赖未验证，工具链仍不完整。
 - JSC 作为 P1 延后处理，不阻塞 QuickJS + V8 的 P0 计划。
 
 ## 当前门禁状态

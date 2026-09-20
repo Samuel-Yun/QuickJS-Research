@@ -15,7 +15,7 @@
 | Priority | Engine | Version/Commit | Interpreter | Interpreter-only 方法 | Windows x64 当前状态 | 验证方法 | 风险/问题 |
 |---|---|---|---|---|---|---|---|
 | P0 | upstream QuickJS | `2026-06-04`；`master` @ `04be246001599f5995fa2f2d8c91a0f198d3f34c` | QuickJS bytecode interpreter；computed-goto direct dispatch | 无 JIT；Release binary 已确认使用预期 dispatch | Git Bash + MinGW GCC 13.1 已成功构建 | commit/checksum/build log 已保存；预处理为 `DIRECT_DISPATCH=1`；符号与反汇编确认跳表间接跳转 | QuickJS 门禁 `PASS`；最终 P0 仍等待 V8 与 benchmark 协议 |
-| P0 | V8 Ignition | `main` @ `68a0ee4aa9a2cba8a43cbd1ed1700828adad618f`；产品版本 `UNKNOWN` | Ignition | `--jitless --no-sparkplug --no-maglev --no-turbofan`，以当前 binary flag dump 为准 | 架构支持；VS C++、SDK、depot_tools、Ninja 均未就绪 | 保存 `--print-flag-values`；确认 JIT tiers 全关；字节码和 Ignition trace 作为补充 | V8 原生 Windows 工具链缺失；`d8.exe` 尚未生成 |
+| P0 | V8 Ignition | 阶段 1 候选 `68a0ee4aa9a2cba8a43cbd1ed1700828adad618f`；实际 checkout `UNKNOWN` | Ignition | 首选候选 `--max-opt=0`；`--jitless` 为更强但改变更广的候选 | 当前 VS 2026 / SDK 28000 门禁未满足；depot_tools CIPD 与 googlesource 也被网络阻断 | 必须保存 flag dump、bytecode、Ignition trace、Sparkplug/Maglev/TurboFan tier trace | `BLOCKED`；没有 checkout 或 `d8.exe`，不能确定正式命令 |
 | P1 | JavaScriptCore LLInt | WebKit `main` @ `fd3406f133a4e56d7aaf399ba5611ae44b8da7e9`；产品版本 `UNKNOWN` | OfflineASM X86_64 LLInt | 保持 `useLLInt=true`，运行时 `useJIT=false` 并显式关闭 Baseline/DFG/FTL | 源码有 x86-64 backend；本机官方构建链不完整 | option dump；确认非 C-loop；调试器/profile 看到 `llint_*` | Windows JSC build 未验证；属于扩展项，不阻塞 P0 |
 
 ## P0-1. upstream QuickJS
@@ -53,23 +53,22 @@ upstream QuickJS 没有 JIT，不会自动 tier-up。P0 需要验证的是 Windo
 - standalone shell：`d8.exe`，见官方 [`d8` 文档](https://v8.dev/docs/d8)。
 - interpreter：Ignition。
 
-当前 commit 的 [`src/flags/flag-definitions.h`](https://chromium.googlesource.com/v8/v8/+/68a0ee4aa9a2cba8a43cbd1ed1700828adad618f/src/flags/flag-definitions.h) 中，`jitless` 对 TurboFan、Sparkplug 和 Maglev 有负向 implication，并令 RegExp 走解释路径。`disable_optimizing_compilers` 仍允许 baseline compiler，因此不能替代 `--jitless`。
+当前官方在线 [`src/flags/flag-definitions.h`](https://chromium.googlesource.com/v8/v8/+/refs/heads/main/src/flags/flag-definitions.h) 把 `max_opt=0` 定义为 Ignition/interpreter 最大 tier，并以 weak implications 关闭 Sparkplug、Maglev 和 TurboFan。`jitless` 同样关闭这些 tier，但还禁止 executable memory、强制 RegExp 解释执行并改变其他 VM 行为。`disable_optimizing_compilers` 仍允许 baseline compiler，不能用于 interpreter-only。
 
-计划中的可审计运行方式为：
+当前首选候选为：
 
 ```text
-d8.exe --jitless --no-sparkplug --no-maglev --no-turbofan \
-       --print-flag-values --print-bytecode script.js
+d8.exe --max-opt=0 script.js
 ```
 
-`--print-bytecode` 只能证明产生 Ignition bytecode，不能单独证明没有 tier-up；正式准入必须保存 flag dump，确认 `jitless=true` 且 Sparkplug、Maglev、TurboFan 为 false。所有 flag 必须由实际构建的 `d8.exe` 接受，否则状态保持 `UNKNOWN`。
+该候选尚未由 current checkout 或运行时验证。`--print-bytecode` 只能证明产生 Ignition bytecode，不能单独证明没有 tier-up；正式准入必须保存 flag dump、Ignition trace 和所有 tier compilation trace。当前正式命令为 `BLOCKED`。
 
 ### Windows 原生构建状态
 
 - x64 架构支持 Ignition。
-- 当前未检测到 Visual Studio C++ Build Tools、`cl.exe`、可用 Windows SDK、Ninja 或 depot_tools。
-- 官方 Windows 流程所需的 `fetch`、`gclient`、GN/autoninja 当前均不可用。
-- 本轮没有安装依赖、下载 V8 或生成 `d8.exe`。
+- VS 2022/MSVC x64/SDK 26100 虽已安装，但低于当前官方 Windows 文档要求的 VS 2026/SDK 28000；ATL/MFC 与 Debugging Tools 也未满足。
+- depot_tools 官方 bundle 已安装，但 CIPD bootstrap 因官方 endpoint 连接超时而失败；`chromium.googlesource.com` 也不可达。
+- 为避免不完整 checkout，本轮没有启动 `fetch v8`，也没有生成 `d8.exe`。
 
 ### P0 验证要求
 

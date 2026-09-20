@@ -1,0 +1,81 @@
+V8_WINDOWS_PREFLIGHT
+timestamp_local=2026-09-20 Asia/Shanghai
+status=BLOCKED
+
+[initial environment]
+visual_studio_instances=[]
+desktop_cpp_workload=[]
+cl=NOT_FOUND
+windows_sdk_include_versions=[]
+depot_tools=NOT_FOUND
+git=2.38.1.windows.1
+python=3.11.4
+disk_C_free_gib=33.60
+disk_D_free_gib=15.68
+disk_E_free_gib=2.04
+disk_F_free_gib=73.25
+
+[visual studio remediation]
+installer=https://aka.ms/vs/17/release/vs_BuildTools.exe
+installer_authenticode=Valid; Microsoft Corporation
+requested_workload=Microsoft.VisualStudio.Workload.VCTools
+install_path=F:\VSBuildTools
+install_exit=0
+visual_studio_product=Visual Studio Build Tools 2022
+visual_studio_version=17.14.41 / 17.14.37710.0
+instance_complete=true
+reboot_required=false
+msvc_toolset=14.44.35207
+cl_version=19.44.35229.0
+windows_sdk=10.0.26100.0
+sdk_rc_mt=present
+windows_debugging_tools=NOT_FOUND
+
+[current official toolchain recheck]
+official_windows_doc_checked=2026-09-20
+required_visual_studio=Visual Studio 2026; >=18.0.0
+required_cpp_components=Desktop development with C++; MFC/ATL
+required_windows_sdk=10.0.28000.2270
+required_debugging_tools=10.0.26100.3323 or higher
+installed_visual_studio_requirement=NOT_MET; only 17.14.41 present
+installed_atlmfc=NOT_FOUND
+installed_windows_sdk_requirement=NOT_MET; only 10.0.26100.0 present
+visual_studio_2026_bootstrapper=https://aka.ms/vs/stable/vs_BuildTools.exe
+visual_studio_2026_bootstrapper_version=18.10.12210.168
+visual_studio_2026_bootstrapper_authenticode=Valid; Microsoft Corporation
+visual_studio_2026_bootstrapper_sha256=c71a953a56448193b971b21a5a79ed8c32b4376b9e88fb0365e5c46a6013a804
+visual_studio_2026_install=FAILED; UAC operation canceled; 0x80070642
+
+[depot_tools]
+official_git_clone_attempt_1=FAILED; chromium.googlesource.com:443 timeout
+official_git_clone_attempt_2=FAILED; chromium.googlesource.com:443 timeout
+distribution=https://storage.googleapis.com/chrome-infra/depot_tools.zip
+bundle_sha256=17b729b8c0164eb8374778735d86c4a6d7736a0be8711faeb47eb950feef176d
+install_path=F:\depot_tools
+git_metadata=present
+revision=0306e4682b4ac35287c726fa35a983157a625902
+
+[blocking evidence]
+current_official_visual_studio_requirement=NOT_MET
+current_official_windows_sdk_requirement=NOT_MET
+gclient_bootstrap=FAILED_TO_COMPLETE
+cipd_bootstrap=FAILED_TO_COMPLETE
+cipd_endpoint=https://chrome-infra-packages.appspot.com
+cipd_endpoint_probe=curl connect timeout after 20000ms; exit 28
+build_script_preflight_initial=BLOCKED; .cipd_bin\vpython3.exe missing; exit 1
+build_script_preflight_final=BLOCKED; no VS 2026 >=18.0 with Desktop C++ and ATL/MFC; exit 1
+validation_script_preflight=BLOCKED; d8.exe missing; exit 1
+v8_source_checkout=NOT_STARTED
+v8_actual_commit=UNKNOWN
+d8_binary=NOT_BUILT
+
+[final disk snapshot]
+disk_C_free_gib=30.00
+disk_D_free_gib=15.68
+disk_E_free_gib=2.04
+disk_F_free_gib=69.81
+temporary_download_caches=REMOVED_AFTER_HASH_RECORDING
+
+[scope]
+quickjs_baseline=UNCHANGED
+sunspider=NOT_RUN

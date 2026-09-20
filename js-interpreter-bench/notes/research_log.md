@@ -234,3 +234,55 @@ mingw32-make.exe -j8 qjs.exe
 **下一步**
 
 按用户要求在 QuickJS baseline 完成后停止。不下载 V8，不运行 SunSpider。后续只有收到新指令后才进入下一阶段。
+
+---
+
+## 2026-09-20 — 阶段 3：V8 Windows preflight 与网络阻断
+
+**做了什么**
+
+按 V8 当前官方 Windows/source checkout 文档检查并补齐 Visual Studio C++ 与 Windows SDK；安装官方 depot_tools bundle并尝试首次 gclient/CIPD bootstrap。由于官方 googlesource 和 CIPD endpoint 无法连接，没有开始 V8 source checkout、构建或运行时验证。QuickJS baseline 未改变，未运行 SunSpider。
+
+**命令**
+
+```text
+vswhere -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64
+vs_BuildTools.exe --quiet --wait --norestart --nocache \
+  --installPath F:\VSBuildTools \
+  --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended
+
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git F:\depot_tools
+curl -L https://storage.googleapis.com/chrome-infra/depot_tools.zip
+gclient --version
+cipd_bin_setup.bat
+curl -I --connect-timeout 20 --max-time 30 \
+  https://chrome-infra-packages.appspot.com
+```
+
+**结果**
+
+- Visual Studio Build Tools 2022 17.14.41 安装成功，`vswhere` 报告 complete/launchable/no reboot；MSVC toolset 14.44.35207，`cl` 19.44.35229.0；Windows SDK 10.0.26100.0 可用。
+- 再次读取 V8 指向的当前 Chromium Windows 文档后，确认其已经要求 VS 2026 >=18.0、NativeDesktop + ATL/MFC、SDK 10.0.28000.2270 与 Debugging Tools >=10.0.26100.3323；现有 VS 2022/SDK 26100 不满足。
+- 微软官方 VS 2026 Build Tools 引导程序版本 18.10.12210.168，签名有效，SHA-256 `c71a953a56448193b971b21a5a79ed8c32b4376b9e88fb0365e5c46a6013a804`；管理员安装因 UAC 操作取消而失败（`0x80070642`），`vswhere` 未发现 VS 2026。
+- 哈希与失败证据记录完成后，删除 workspace 中的 depot_tools ZIP 与两个 VS bootstrapper 临时缓存；`F:\depot_tools` 和已安装的 VS 2022 保留。
+- depot_tools 官方 Git clone 两次因 `chromium.googlesource.com:443` 超时失败。
+- 官方 depot_tools bundle 下载成功，SHA-256 `17b729b8c0164eb8374778735d86c4a6d7736a0be8711faeb47eb950feef176d`。
+- depot_tools revision `0306e4682b4ac35287c726fa35a983157a625902`，`.git` 已保留。
+- gclient/CIPD bootstrap 无法完成；直接连接 `chrome-infra-packages.appspot.com` 20 秒超时，curl exit 28。
+- `build_v8_windows.ps1 -PreflightOnly` 已验证会因 `.cipd_bin\vpython3.exe` 缺失退出 1，不会误报通过或创建 checkout。
+- `run_v8_ignition.ps1` 已验证会在 `d8.exe` 缺失时退出 1，不会创建伪造的 validation evidence。
+- 未运行 `fetch v8`；actual V8 commit、compiler、GN args、`d8.exe` size 均为 `UNKNOWN`。
+- 在线当前源码显示 `max_opt=0` 表示最大 tier 为 Ignition，且比 `jitless` 更少改变其他 VM 行为；但没有 current checkout/runtime 证据。
+
+**问题**
+
+- V8 官方源码与 CIPD 服务从当前 Windows 原生网络不可达。
+- 当前官方 VS 2026、SDK 28000、ATL/MFC 与 Debugging Tools 工具链门禁也未满足。
+- depot_tools 无法引导 vpython/GN，完整 checkout 不可建立。
+- 本机单盘空闲空间低于 Chromium Windows 文档的 100 GB 建议；V8-only 实际需求未验证。
+- 无法证明 Ignition 正在运行，或 Sparkplug/Maglev/TurboFan 未参与。
+- 阶段状态：`BLOCKED`。
+
+**下一步**
+
+按用户要求在无法证明纯 interpreter 模式时停止。需要先恢复 `chromium.googlesource.com` 与 `chrome-infra-packages.appspot.com` 的原生 Windows 网络访问；之后从 depot_tools bootstrap 重新开始，不得用裸 V8 clone 绕过。
