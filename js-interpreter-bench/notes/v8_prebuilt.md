@@ -6,7 +6,7 @@
 
 V8 `15.6.21` 的 Windows x64 Release artifact 已从 Google 官方 `chromium-v8` Cloud Storage 渠道取得、解包并固定。版本命令与最小 JavaScript smoke test 均通过。
 
-这只解除“没有可运行 d8/V8 shell”的阻塞，不等于 Ignition-only 已验证。当前尚未保存 flag dump、bytecode evidence 或 tier trace，因此正式 interpreter-only 命令仍为 `BLOCKED`，也不得开始 benchmark。
+artifact 获取本身只解除“没有可运行 d8/V8 shell”的阻塞。后续阶段 4 已对同一 SHA-256 的 binary 保存 flag dump、bytecode 和 tier trace，并通过 Ignition-only 门禁；验证细节见 [`v8_interpreter_validation.md`](v8_interpreter_validation.md)。本文件继续只负责记录 artifact 来源与完整性。
 
 ## 本机与 jsvu
 
@@ -129,5 +129,4 @@ smoke 脚本为 [`scripts/v8_prebuilt_smoke.js`](../scripts/v8_prebuilt_smoke.js
 1. 正式使用前重新核对 `d8.exe`、`icudtl.dat`、`snapshot_blob.bin` 和原始 ZIP 的 SHA-256。
 2. 不再用 jsvu latest 更新此目录；若研究新版本，必须建立新的版本化 artifact 目录与独立记录。
 3. 不修改、重命名或重新打包 runtime 文件。
-4. interpreter-only 验证通过前，不运行 SunSpider 或其他正式 benchmark。
-
+4. interpreter-only 验证已通过；在后续 benchmark 协议完成前仍不运行 SunSpider 或其他正式 benchmark。

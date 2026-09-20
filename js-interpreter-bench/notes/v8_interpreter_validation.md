@@ -1,87 +1,121 @@
 # V8 Ignition-only 验证
 
-## 状态
+## 结论
 
-`BLOCKED`（interpreter-only 运行验证尚未执行）。
+状态：`PASS`。
 
-源码构建路线仍然失败，但现在已经固定 Google 官方预编译 V8 `15.6.21` Windows x64 artifact，并通过版本与功能 smoke test。当前尚未对这份 binary 取得 flag dump、bytecode evidence、Ignition trace 或 tier/compilation trace。下面的 flag 分析仍只能作为候选方案设计，不能替代实际 runtime 证据。
-
-## 当前官方源码中的 flag 含义
-
-官方 [`flag-definitions.h`](https://chromium.googlesource.com/v8/v8/+/refs/heads/main/src/flags/flag-definitions.h) 当前定义：
-
-### `--max-opt`
-
-`max_opt` 是最大优化 tier：
-
-- `0`：Ignition/interpreter；
-- `1`：Sparkplug/baseline；
-- `2`：Maglev；
-- `3`：TurboFan；
-- 大于 3：不限制。
-
-源码用 weak value implications 在 `max_opt < 1/2/3` 时分别关闭 Sparkplug、Maglev、TurboFan。`--max-opt=0` 的目标正是把 JavaScript 执行上限设为 Ignition，同时不要求全面禁用可执行内存或 regexp JIT。
-
-### `--jitless`
-
-`jitless` 的定义是禁止运行时分配 executable memory。它会关闭 TurboFan、Turboshaft、Sparkplug、Maglev 等，还会强制 `regexp_interpret_all`，并改变若干依赖生成代码的 VM 行为。它能阻止 JS tier-up，但作用范围明显大于“只把 JS 最大 tier 固定为 Ignition”。
-
-### `--sparkplug`
-
-控制 Sparkplug baseline compiler。默认 Release build 通常启用；若不限制，热点函数可从 Ignition tier-up 到 Sparkplug。最终默认值必须由实际 `d8 --print-flag-values` 确认。
-
-### `--maglev`
-
-控制 Maglev optimizing compiler。是否编译进 binary 以及默认值受当前 build 配置影响，必须由实际 flag dump 确认。
-
-### `--turbofan`
-
-控制 TurboFan optimizing compiler。`disable_optimizing_compilers` 不是 interpreter-only，因为当前源码明确说明它保留 baseline compiler，JavaScript 仍可在 Ignition 或 Sparkplug 中执行。
-
-### 三个 compiler 的直接关闭形式
-
-当前源码把 `sparkplug`、`maglev`、`turbofan` 都定义为布尔 flag，因此各自的直接关闭形式是：
+固定的 V8 `15.6.21` Windows x64 binary 已通过运行时门禁。正式模式选择候选 A：`--max-opt=0`。同一热点探针在默认模式下实际触发了 Sparkplug、Maglev 和 TurboFan，而在候选 A 下始终报告 `INTERPRETED_FUNCTION`，没有出现三个更高 tier 的编译、状态或 OSR entry 事件。
 
 ```text
---no-sparkplug --no-maglev --no-turbofan
+OFFICIAL_V8_INTERPRETER_COMMAND=C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\v8-official-15.6.21\runtime\d8.exe --snapshot_blob=C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\v8-official-15.6.21\runtime\snapshot_blob.bin --max-opt=0
 ```
 
-候选 A 不额外附加这三项，因为 `max_opt=0` 的当前定义已经通过 weak value implications 将它们设为 false，命令也更直接表达“最大 tier 为 Ignition”。但 weak implication 不是不可覆盖的硬约束，所以实际 binary 的 flag dump 必须显示三者最终均为 false；否则候选 A 判定失败，不能用于实验。
+此结论只适用于 SHA-256 为 `1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87` 的固定 `d8.exe` 及当前固定 data artifact。若 binary、snapshot 或 flags 发生变化，必须重新执行验证。
 
-## 两个候选方案
+## Binary 与源码对应关系
 
-| 候选 | 命令 | JS tier 限制 | 额外 VM 行为变化 | 源码层面评价 |
-|---|---|---|---|---|
-| A | `d8.exe --max-opt=0 script.js` | 最大 tier 为 Ignition | 相对较少 | 更准确匹配“始终在 Ignition，尽量少改变其他 VM 行为” |
-| B | `d8.exe --jitless script.js` | 关闭 JIT tiers | 禁止 executable memory、regexp 解释化及其他 implication | 更强，但改变范围更大 |
+| 项目 | 固定值 |
+|---|---|
+| Binary version | `V8 version 15.6.21` |
+| Binary | `engines/v8-official-15.6.21/runtime/d8.exe` |
+| Binary SHA-256 | `1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87` |
+| 官方源码 tag | [`15.6.21`](https://chromium.googlesource.com/v8/v8/+/refs/tags/15.6.21) |
+| Tag 对应 commit | [`37fb84941c9be9f9914ee50b1ad366f06a1bd764`](https://chromium.googlesource.com/v8/v8/+/37fb84941c9be9f9914ee50b1ad366f06a1bd764) |
+| Flag 定义 | [`src/flags/flag-definitions.h`](https://chromium.googlesource.com/v8/v8/+/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/flags/flag-definitions.h) |
 
-源码层面的首选候选是 A：`--max-opt=0`。但 `max_opt` 使用 weak implications，最终值可受显式 flag/配置影响，所以必须查看实际 binary 的最终 flag dump；没有运行证据时不能把 A 宣布为正式命令。
+官方 tag 页面显示 `15.6.21` 指向上述 commit，并标记为 “Version 15.6.21”。因此本次源码解释没有使用 `main` 或其他版本代替固定 binary 对应版本。
 
-## 计划中的运行时验证
+对应 commit 的关键定义如下：
 
-脚本：[`run_v8_ignition.ps1`](../scripts/run_v8_ignition.ps1)。探针：[`v8_ignition_probe.js`](../scripts/v8_ignition_probe.js)。脚本为 A/B 分别保存：
+- `max_opt`：源码第 851–864 行将 `0` 定义为 `ignition/interpreter`，并在 `max_opt < 1`、`< 2`、`< 3` 时分别以 weak implication 关闭 Sparkplug、Maglev、TurboFan。
+- `jitless`：第 901–919 行定义为禁止运行时分配 executable memory，并额外启用 `regexp_interpret_all`、关闭 Sparkplug/Maglev/TurboFan 等。
+- `maglev`、`sparkplug`、`turbofan` 的主开关分别位于第 522、1199、1338 行附近。
 
-1. `--print-flag-values`：核对 `max_opt`/`jitless`、Sparkplug、Maglev、TurboFan 最终值；
-2. `--print-bytecode --print-bytecode-filter=hot`：证明 Ignition bytecode 已生成；
-3. `--trace-ignition`：证明探针函数实际由 Ignition 执行；
-4. `--trace-baseline --trace-baseline-exec`：检查 Sparkplug 编译和执行；
-5. `--trace-opt --trace-opt-status --trace-deopt --trace-osr`：检查 Maglev/TurboFan/OSR tiering。
+`max_opt` 的 implications 是 weak，显式传入冲突 flag 可覆盖它们。因此正式 runner 不得在命令后追加 `--sparkplug`、`--maglev` 或 `--turbofan`；每次更换 binary/flags 后都必须重新检查最终 flag values。
 
-bytecode 输出本身不充分，因为函数仍可能在后续 tier-up。只有 flag dump、Ignition execution trace，以及 Sparkplug/Maglev/TurboFan compilation/entry 均未出现的证据组合才能通过门禁。
+## 实际 binary 支持的诊断 flags
 
-当前预期证据目录 `results/raw/v8_validation/` 尚未创建。本阶段只获取并固定 prebuilt artifact，没有执行 interpreter-only 验证；不得创建伪 flag dump 或空 trace 冒充验证结果。artifact 详情见 [`v8_prebuilt.md`](v8_prebuilt.md)。
+完整输出保存在 [`results/raw/v8_validation/help.txt`](../results/raw/v8_validation/help.txt) 和 [`default_flag_values.txt`](../results/raw/v8_validation/default_flag_values.txt)。实际 `--help` 确认：
 
-## 最终判定
+| Flag | 当前 binary | 用途 |
+|---|---|---|
+| `--max-opt` | 支持 | 限制最大优化 tier；help 明示 `0 == ignition/interpreter` |
+| `--jitless` | 支持 | 禁止运行时分配 executable memory |
+| `--sparkplug` | 支持 | Sparkplug baseline compiler 开关 |
+| `--maglev` | 支持 | Maglev optimizing compiler 开关 |
+| `--turbofan` | 支持 | TurboFan JavaScript optimizing compiler 开关 |
+| `--print-bytecode` | 支持 | 打印 Ignition 生成的 bytecode |
+| `--trace-baseline` | 支持 | 跟踪 baseline compilation |
+| `--trace-opt` | 支持 | 跟踪 optimized compilation |
+| `--trace-opt-status` | 支持 | 跟踪 tiering 时的函数状态 |
+| `--trace-deopt` | 支持 | 跟踪 deoptimization |
+| `--trace-osr` | 支持 | 跟踪 OSR |
+| `--trace-baseline-exec` | **不支持** | 未传入命令 |
+| `--trace-ignition` | **不支持** | 未传入命令 |
 
-- Ignition 正在运行：`UNKNOWN`。
-- Sparkplug 未参与：`UNKNOWN`。
-- Maglev 未参与：`UNKNOWN`。
-- TurboFan 未参与：`UNKNOWN`。
-- Candidate A 相比 B 更少改变 VM 行为：源码层面支持，运行时未验证。
+没有假定或伪造缺失的 trace flag。当前 prebuilt 没有 `--trace-ignition`，但 `--trace-opt-status` 的实际运行输出能够直接区分 `INTERPRETED_FUNCTION`、`BASELINE`、`MAGLEV` 和 `TURBOFAN_JS` 状态。
+
+## 候选 A/B 的最终 flag values
+
+以下值来自当前 binary 的完整 `--print-flag-values` 输出，不是根据 flag 名推测：
+
+| 模式 | `max_opt` | `jitless` | Sparkplug | Maglev | TurboFan | RegExp 全解释 |
+|---|---:|---|---|---|---|---|
+| Default | `999` | `false` | `true` | `true` | `true` | `false` |
+| A: `--max-opt=0` | `0` | `false` | `false` | `false` | `false` | `false` |
+| B: `--jitless` | `999` | `true` | `false` | `false` | `false` | `true` |
+
+候选 A 满足要求的四个直接检查：`--max-opt=0`、`--no-sparkplug`、`--no-maglev`、`--no-turbofan`。它同时保持 `--no-jitless` 和 `--no-regexp-interpret-all`，而候选 B 会启用 `--jitless` 与 `--regexp-interpret-all`。因此 A 更准确表达“只把 JavaScript 最大执行 tier 限制为 Ignition，并尽量少改变其他 VM 行为”。
+
+## 热点探针与运行时对照
+
+探针是 [`benchmarks/probes/v8_tier_probe.js`](../benchmarks/probes/v8_tier_probe.js)，固定执行 `tierProbeTarget` 500,000 次并输出 checksum。这是 tier 验证探针，不是性能 benchmark。
+
+两种模式都正常退出，并得到相同结果：
 
 ```text
-OFFICIAL_V8_INTERPRETER_COMMAND=BLOCKED
-CANDIDATE_V8_INTERPRETER_COMMAND=d8.exe --max-opt=0
+V8_TIER_PROBE iterations=500000 checksum=1301262660
 ```
 
-在固定 prebuilt `d8.exe` 的 flag dump、bytecode、Ignition trace 和 tier trace 全部存在以前，不得将候选命令提升为正式实验命令，也不得开始 P0 benchmark。源码 checkout 已不再是该路线的准入条件。
+最终一次固定证据中的事件计数：
+
+| 事件 | Default | `--max-opt=0` |
+|---|---:|---:|
+| Sparkplug/baseline compilation | 9 | 0 |
+| Maglev compilation | 6 | 0 |
+| TurboFan compilation | 3 | 0 |
+| OSR entry | 3 | 0 |
+| `INTERPRETED_FUNCTION` status | 6 | 333 |
+| `BASELINE` status | 121 | 0 |
+| `^MAGLEV` status | 4 | 0 |
+| `^TURBOFAN` status | 1 | 0 |
+
+Default trace 明确包含：
+
+- `[Concurrent Sparkplug] compiling ...`；
+- `target MAGLEV`；
+- `target TURBOFAN_JS` 以及 OSR entry。
+
+这证明探针足以触发更高 tier。候选 A 对同一探针只产生 `INTERPRETED_FUNCTION` 状态，没有 baseline、Maglev、TurboFan 或 OSR entry；同时 [`candidate_a_bytecode.txt`](../results/raw/v8_validation/candidate_a_bytecode.txt) 包含 `generated bytecode for function: tierProbeTarget`。源码语义、有效 flag 值、bytecode 和运行时 tier trace 四类证据相互一致。
+
+## 原始证据与复现
+
+可复现脚本：[`scripts/run_v8_ignition.ps1`](../scripts/run_v8_ignition.ps1)。脚本会先核对 V8 version 和 `d8.exe` SHA-256，再仅使用实际 `--help` 中存在的 trace flags，最后自动执行 PASS/BLOCKED 门禁。
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass `
+  -File .\scripts\run_v8_ignition.ps1 `
+  -OutputDir .\results\raw\v8_validation_reproduction_YYYYMMDD
+```
+
+脚本拒绝覆盖已有 raw evidence；复现时必须给出新的输出目录。
+
+原始目录 [`results/raw/v8_validation/`](../results/raw/v8_validation/) 包含：
+
+- `version.txt`、完整 `help.txt`；
+- default、候选 A、候选 B 的完整 flag values；
+- default 与候选 A 的 bytecode；
+- default 与候选 A 的 tier/compilation trace；
+- 自动检查结果 `summary.txt`，最终状态为 `PASS`。
+
+诊断运行使用的 trace flags 会触发 developer-only 警告；正式 benchmark 命令不包含这些诊断 flags。阶段 4 没有运行 SunSpider，也没有修改 V8 或 QuickJS 源码。

@@ -98,7 +98,7 @@ Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows Kits\Installed Roots'
 - 官方 VS 2026 引导程序已验证签名，但管理员安装因 UAC 操作取消而失败；没有新增 VS 2026 instance。
 - 已从官方 bundle 安装 depot_tools revision `0306e4682b4ac35287c726fa35a983157a625902`，但官方 CIPD endpoint 连接超时，bootstrap 未完成。
 - `chromium.googlesource.com` 同样不可达，因此没有启动 `fetch v8`；源码构建路线保持 `BLOCKED` 且不再继续。
-- 后续已固定 Google 官方预编译 V8 `15.6.21` win64 Release artifact，`d8.exe --version` 与最小 smoke test 通过；Ignition-only 运行验证仍为 `BLOCKED`。
+- 后续已固定 Google 官方预编译 V8 `15.6.21` win64 Release artifact，`d8.exe --version`、最小 smoke test 与 `--max-opt=0` Ignition-only 运行验证均已通过。
 
 ### P1: JavaScriptCore LLInt
 

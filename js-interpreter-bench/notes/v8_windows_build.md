@@ -116,5 +116,5 @@ C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\v8-official-15.6.21
 |---|---|
 | 自行源码构建 V8 | `BLOCKED`，保留历史证据，不再继续 |
 | 官方预编译 V8 runtime | `ARTIFACT_ACQUIRED`，V8 `15.6.21` |
-| Ignition-only 运行验证 | `PENDING`；尚未获得 flag/bytecode/tier evidence |
-| 正式 benchmark | `BLOCKED`；未运行 SunSpider |
+| Ignition-only 运行验证 | `PASS`；`--max-opt=0` 的 flag/bytecode/tier evidence 已归档 |
+| 正式 benchmark | `NOT_STARTED`；未运行 SunSpider，仍等待 benchmark 协议阶段 |

@@ -56,8 +56,8 @@ P0 与 P1 使用独立门禁。QuickJS 和 V8 完成验证后即可开始 P0 ben
 
 ### V8 Ignition
 
-- 必须使用当前 checkout 定义并实际接受的 interpreter-only flags。
-- 当前首选候选方案为 `--max-opt=0`；源码定义表明它把最大 tier 设为 Ignition，并 weak-disable Sparkplug、Maglev、TurboFan。正式使用前必须由固定 `d8` 的实际 flag dump 和运行证据确认。
+- 必须使用与固定 binary 版本对应的官方源码定义，并确认实际 binary 接受 interpreter-only flags。
+- V8 `15.6.21` 已选择 `--max-opt=0`：对应官方源码把最大 tier 设为 Ignition，并 weak-disable Sparkplug、Maglev、TurboFan；固定 `d8` 的最终 flag dump 和运行时对照已经确认该模式。
 - `--jitless` 是更强但改变更多 VM 行为的备选，不得在未验证 binary 支持及副作用前用作默认方案。
 - 必须保存 flag dump，证明 Sparkplug、Maglev 和 TurboFan 均未参与。
 - 只看到 Ignition bytecode 不足以排除后续 tier-up。
@@ -108,4 +108,4 @@ JSC 只有在固定 commit、完成 Windows x64 Release/optimized build、证明
 
 ## 10. 当前状态
 
-当前已完成 QuickJS Windows baseline，并固定 V8 `15.6.21` 官方 win64 prebuilt artifact；尚未完成该 V8 binary 的 Ignition-only 运行验证，也未运行 benchmark。P0 正式 benchmark 状态为 `BLOCKED`，直到第 6 节门禁全部满足。
+当前已完成 QuickJS Windows baseline，固定 V8 `15.6.21` 官方 win64 prebuilt artifact，并通过 V8 Ignition-only 运行验证。第 6 节第 1–5 项已满足；SunSpider 固定和正式计时/数据协议（第 6–8 项）尚未完成，所以正式 benchmark 为 `NOT_STARTED`，本阶段没有运行 benchmark。

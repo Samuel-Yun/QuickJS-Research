@@ -1,0 +1,43 @@
+﻿V8_INTERPRETER_VALIDATION
+timestamp_utc=2026-09-20T12:19:02.5181615Z
+v8_version=15.6.21
+v8_source_commit=37fb84941c9be9f9914ee50b1ad366f06a1bd764
+v8_source_tag_url=https://chromium.googlesource.com/v8/v8/+/refs/tags/15.6.21
+v8_flag_source_url=https://chromium.googlesource.com/v8/v8/+/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/flags/flag-definitions.h
+d8=C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\v8-official-15.6.21\runtime\d8.exe
+d8_sha256=1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87
+snapshot_blob=C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\v8-official-15.6.21\runtime\snapshot_blob.bin
+probe=C:\Users\mzyx\Desktop\0921\js-interpreter-bench\benchmarks\probes\v8_tier_probe.js
+iterations=500000
+candidate_a=d8.exe --snapshot_blob=<fixed snapshot_blob.bin> --max-opt=0
+candidate_b=d8.exe --snapshot_blob=<fixed snapshot_blob.bin> --jitless
+--- trace flag support from actual --help ---
+trace-baseline=true
+trace-baseline-exec=false
+trace-opt=true
+trace-opt-status=true
+trace-deopt=true
+trace-osr=true
+trace-ignition=false
+supported_trace_arguments=--trace-baseline --trace-opt --trace-opt-status --trace-deopt --trace-osr
+--- candidate A effective flag checks ---
+max_opt=0=true
+sparkplug=false=true
+maglev=false=true
+turbofan=false=true
+candidate_a_effective_flags_pass=true
+candidate_a_bytecode_present=true
+default_and_candidate_a_probe_result_equal=true
+--- trace event counts: default,candidate A ---
+baseline_compile:default=9,candidate_a=0
+maglev_compile:default=6,candidate_a=0
+turbofan_compile:default=3,candidate_a=0
+osr_entry:default=3,candidate_a=0
+interpreted_status:default=6,candidate_a=333
+baseline_status:default=121,candidate_a=0
+maglev_status:default=4,candidate_a=0
+turbofan_status:default=1,candidate_a=0
+default_control_tiers_up=true
+candidate_a_no_higher_tier_events=true
+candidate_a_interpreted_status_present=true
+STATUS=PASS
