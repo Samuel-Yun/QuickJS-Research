@@ -1,0 +1,432 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% Overleaf/XeLaTeX 自带字体，不依赖本地字体文件。
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Latin Modern Mono}
+\setCJKsansfont{FandolHei-Regular}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{DeepBlue}{HTML}{17365D}
+\definecolor{MidBlue}{HTML}{315B7D}
+\definecolor{TextGray}{HTML}{2F3439}
+\definecolor{RuleGray}{HTML}{C9CED3}
+\definecolor{NoteGray}{HTML}{70777E}
+\definecolor{SoftBlue}{HTML}{EEF3F7}
+
+\setbeamercolor{normal text}{fg=TextGray,bg=white}
+\setbeamercolor{structure}{fg=DeepBlue}
+\setbeamercolor{frametitle}{fg=DeepBlue,bg=white}
+\setbeamercolor{footline}{fg=NoteGray,bg=white}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamerfont{footline}{size=\fontsize{7}{8}\selectfont}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{DeepBlue}\raise0.15ex\hbox{\rule{0.55ex}{0.55ex}}}
+\setbeamertemplate{itemize subitem}{\color{MidBlue}\raise0.15ex\hbox{\rule{0.45ex}{0.45ex}}}
+\setbeamertemplate{enumerate item}{\color{DeepBlue}\insertenumlabel.}
+\setbeamersize{text margin left=0.68cm,text margin right=0.68cm}
+
+\setbeamertemplate{frametitle}{%
+  \vspace{0.16cm}%
+  \insertframetitle\par
+  \vspace{0.10cm}%
+  {\color{RuleGray}\rule{\textwidth}{0.45pt}}%
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.84\paperwidth,ht=2.6ex,dp=1.15ex,leftskip=.68cm]{footline}%
+      QuickJS vs V8 Ignition：解释器实测
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.16\paperwidth,ht=2.6ex,dp=1.15ex,rightskip=.68cm plus1fil]{footline}%
+      \hfill\insertframenumber/\inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+\newcommand{\sourcenote}[1]{%
+  {\color{NoteGray}\fontsize{6.7}{8}\selectfont #1}%
+}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\accent}[1]{\textcolor{DeepBlue}{\textbf{#1}}}
+\newcommand{\tightitems}{\setlength{\itemsep}{0.26em}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+\begin{frame}{QuickJS vs V8 字节码解释器：本周进入实测}
+\fontsize{8.8}{10.2}\selectfont
+
+\begin{center}
+\begin{tikzpicture}[
+  >=Latex,
+  every node/.style={font=\fontsize{8.6}{9.8}\selectfont,align=center},
+  engine/.style={draw=DeepBlue,line width=.75pt,inner sep=3pt,text width=2.25cm},
+  stage/.style={draw=RuleGray,line width=.65pt,inner sep=3pt,text width=2.25cm},
+  arrow/.style={->,DeepBlue,line width=.8pt}
+]
+  \node[engine] (qjs) at (0,0.42) {upstream QuickJS};
+  \node[engine] (v8) at (0,-0.42) {V8 Ignition\\仅解释器模式};
+  \node[stage] (work) at (3.35,0) {统一 JavaScript\\workload};
+  \node[stage] (correct) at (6.65,0) {正确性验证};
+  \node[stage,text width=2.75cm] (sun) at (10.15,0) {SunSpider 1.0.2\\26 个独立 workload};
+  \draw[arrow] (qjs.east) -- (work.west);
+  \draw[arrow] (v8.east) -- (work.west);
+  \draw[arrow] (work.east) -- (correct.west);
+  \draw[arrow] (correct.east) -- (sun.west);
+\end{tikzpicture}
+\end{center}
+
+\vspace{-0.08cm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.48\textwidth}
+  {\color{DeepBlue}\bfseries QuickJS baseline}
+  \begin{itemize}\setlength{\itemsep}{0.04em}\setlength{\parskip}{0pt}
+    \item upstream 2026-06-04，commit \code{04be246...}；
+    \item Windows x64，MinGW GCC 13.1，\code{-O2}；
+    \item 计算跳转（Computed Goto）：根据操作码（opcode）直接跳到对应 handler；实际 binary 路径已验证。
+  \end{itemize}
+\end{column}
+\begin{column}{0.49\textwidth}
+  {\color{DeepBlue}\bfseries V8 baseline}
+  \begin{itemize}\setlength{\itemsep}{0.04em}\setlength{\parskip}{0pt}
+    \item V8 15.6.21，Google 官方渠道的 Windows x64 binary；
+    \item 固定 \code{d8.exe} 与 snapshot；运行参数 \code{--max-opt=0}；
+    \item Ignition 是 V8 的字节码解释器（Bytecode Interpreter）；仅解释器模式（interpreter-only）指不进入后续即时编译（JIT）层。
+  \end{itemize}
+\end{column}
+\end{columns}
+
+\vspace{0.06cm}
+\textbf{SunSpider：}经典 JavaScript 基准测试套件，由若干独立 JavaScript workload 组成。
+
+\vfill
+\accent{本周比较解释器执行路径，不是默认 V8 的多层 JIT。}\quad 先确认比较对象，再测性能。
+
+\vspace{0.04cm}
+\sourcenote{来源：notes/quickjs\_windows\_build.md；notes/quickjs\_interpreter\_validation.md；notes/v8\_prebuilt.md。}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+\begin{frame}{实验门禁：先验证执行模式}
+\fontsize{8.5}{9.8}\selectfont
+
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.48\textwidth}
+  \textbf{QuickJS：确认实际采用计算跳转}
+  \begin{itemize}\setlength{\itemsep}{0.02em}\setlength{\parskip}{0pt}
+    \item 源码、GCC 预处理：\code{DIRECT\_DISPATCH=1}；
+    \item optimized object：存在 \code{dispatch\_table}；
+    \item \code{JS\_CallInternal}：存在索引间接跳转。
+  \end{itemize}
+  \vspace{-0.02cm}
+  \colorbox{SoftBlue}{%
+    \parbox{0.91\linewidth}{%
+      \vspace{0.05cm}\ttfamily\fontsize{8.5}{9.8}\selectfont
+      10593:\quad jmp QWORD PTR [r15+rax*8]
+      \vspace{0.05cm}%
+    }%
+  }
+\end{column}
+
+\begin{column}{0.49\textwidth}
+  \textbf{V8：为什么使用 \code{--max-opt=0}}
+
+  默认模式会继续进入后续编译层：
+  \begin{center}
+    \vspace{-0.07cm}
+    \textcolor{DeepBlue}{Ignition $\rightarrow$ Sparkplug $\rightarrow$ Maglev $\rightarrow$ TurboFan}
+    \vspace{-0.07cm}
+  \end{center}
+  \begin{itemize}\setlength{\itemsep}{0.02em}\setlength{\parskip}{0pt}
+    \item \code{--max-opt=0} 限制最大 tier 为 Ignition，三个 JIT 开关均为 false；
+    \item 热点函数调用 \accent{500,000 次}，对照实际 tier 事件。
+  \end{itemize}
+\end{column}
+\end{columns}
+
+\vspace{0.03cm}
+\centering
+{\fontsize{8.5}{9.8}\selectfont
+\begin{tabular}{lrr}
+\toprule
+\textbf{热点 probe 事件} & \textbf{Default} & \textbf{\code{--max-opt=0}} \\
+\midrule
+Sparkplug compilation & 9 & 0 \\
+Maglev compilation & 6 & 0 \\
+TurboFan compilation & 3 & 0 \\
+栈上替换进入（OSR entry） & 3 & 0 \\
+\code{INTERPRETED\_FUNCTION} status & 6 & 333 \\
+\bottomrule
+\end{tabular}}
+
+\vspace{0.05cm}
+\raggedright
+Default 对照触发更高 tier，说明 probe 足够热；\code{--max-opt=0} 下 JIT compilation 与 OSR 均为 0，解释状态计数为 333。\accent{正式 benchmark 使用 V8 Ignition-only。}
+
+\vfill
+\sourcenote{来源：results/raw/v8\_validation/summary.txt；results/raw/quickjs\_dispatch\_validation.txt。probe checksum 在两种 V8 模式下一致。}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+\begin{frame}{SunSpider：workload 与运行流程}
+\fontsize{8.8}{10.3}\selectfont
+
+SunSpider 是由独立 JavaScript workload 组成的基准测试套件；本实验让两个 shell 执行\accent{完全相同的 standalone \code{.js} 文件}，不是安装某个 SunSpider 软件。
+
+\vspace{0.14cm}
+\begin{center}
+\begin{tikzpicture}[
+  >=Latex,
+  every node/.style={font=\fontsize{8.5}{9.8}\selectfont,align=center},
+  box/.style={draw=RuleGray,line width=.65pt,inner sep=2.6pt,minimum height=.62cm},
+  engine/.style={box,draw=DeepBlue,text width=2.45cm},
+  arrow/.style={->,DeepBlue,line width=.75pt}
+]
+  \node[box,text width=1.45cm] (cases) at (0,0) {26 个 cases};
+  \node[engine] (q) at (2.55,0.45) {QuickJS \code{qjs.exe}};
+  \node[engine] (v) at (2.55,-0.45) {V8 \code{d8.exe}\\\code{--max-opt=0}};
+  \node[box,text width=2.30cm] (runner) at (5.65,0) {Python 统一 runner\\计时与保存};
+  \node[box,text width=1.65cm] (repeat) at (8.35,0) {每组重复\\30 次};
+  \node[box,text width=1.85cm] (save) at (10.85,0) {原始样本\\+ 统计};
+  \draw[arrow] (cases.east) -- (q.west);
+  \draw[arrow] (cases.east) -- (v.west);
+  \draw[arrow] (q.east) -- (runner.west);
+  \draw[arrow] (v.east) -- (runner.west);
+  \draw[arrow] (runner.east) -- (repeat.west);
+  \draw[arrow] (repeat.east) -- (save.west);
+\end{tikzpicture}
+\end{center}
+
+\vspace{-0.08cm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.48\textwidth}
+  \textbf{相同 workload 与正确性门禁}
+  \begin{itemize}\setlength{\itemsep}{0.12em}\setlength{\parskip}{0pt}
+    \item 固定 SunSpider 1.0.2，共 26 个 JavaScript cases；
+    \item 两个 shell 执行完全相同的 standalone \code{.js} 文件；
+    \item 移植修改保存为 patch，不修改任何 engine；
+    \item SunSpider correctness：\accent{52/52 PASS}；
+    \item 独立 smoke/correctness：\accent{24/24 PASS}。
+  \end{itemize}
+\end{column}
+
+\begin{column}{0.49\textwidth}
+  \textbf{正式运行规模与顺序}
+  \begin{itemize}\setlength{\itemsep}{0.12em}\setlength{\parskip}{0pt}
+    \item 每个 engine/case 重复 30 次；
+    \item $26\times2\times30=\textcolor{DeepBlue}{\mathbf{1{,}560}}$ 个正式样本；
+    \item 使用固定 seed 随机化每轮 case 顺序；
+    \item 每个 case 两引擎各 15 次先运行、15 次后运行；
+    \item 保存全部原始样本，不删除 outlier。
+  \end{itemize}
+\end{column}
+\end{columns}
+
+\vfill
+\sourcenote{来源：scripts/run\_sunspider.py；results/raw/correctness.csv；results/raw/sunspider\_correctness.csv；results/raw/sunspider.csv。}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+\begin{frame}{计时边界与统计口径}
+\fontsize{8.8}{10.3}\selectfont
+
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.40\textwidth}
+  \textbf{记录的统计量}
+  \begin{itemize}\setlength{\itemsep}{0.14em}\setlength{\parskip}{0pt}
+    \item \textbf{Median}：中位数，本实验的主要统计量；
+    \item Mean：算术平均值；
+    \item Standard Deviation：样本标准差；
+    \item \textbf{IQR}：四分位距（Interquartile Range），反映中间 50\% 样本的波动；
+    \item Min / Max：全部样本的最小值与最大值。
+  \end{itemize}
+
+  \vspace{0.12cm}
+  计时器：\code{time.perf\_counter\_ns()}；每个统计量使用同一 engine/case 的全部 30 个样本。
+\end{column}
+
+\begin{column}{0.57\textwidth}
+  \textbf{每个样本的实际计时范围}
+
+  每次启动一个新的 engine process：
+
+  \vspace{0.12cm}
+  \begin{center}
+  \begin{tikzpicture}[
+    every node/.style={font=\fontsize{8.5}{9.8}\selectfont,align=center},
+    >=Latex,
+    arrow/.style={->,DeepBlue,line width=.75pt}
+  ]
+    \node (a) {进程启动};
+    \node[right=.48cm of a] (b) {VM 初始化};
+    \node[right=.48cm of b] (c) {源码解析 /\\字节码生成};
+    \node[below=.55cm of c] (d) {解释执行};
+    \node[left=.65cm of d] (e) {进程退出};
+    \draw[arrow] (a) -- (b);
+    \draw[arrow] (b) -- (c);
+    \draw[arrow] (c) -- (d);
+    \draw[arrow] (d) -- (e);
+  \end{tikzpicture}
+  \end{center}
+
+  \vspace{0.20cm}
+  \colorbox{SoftBlue}{%
+    \parbox{0.91\linewidth}{%
+      \vspace{0.13cm}
+      \textbf{当前结果首先反映短程序从源码启动到结束的端到端延迟（end-to-end latency），不是纯 interpreter loop 时间。}
+      \vspace{0.13cm}%
+    }%
+  }
+
+  \vspace{0.18cm}
+  因此，后续不能把 case ratio 直接解释成纯字节码解释循环的速度差。
+\end{column}
+\end{columns}
+
+\vfill
+\sourcenote{来源：scripts/run\_sunspider.py；results/raw/sunspider.csv；results/processed/sunspider\_summary.csv。}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+\begin{frame}{SunSpider 第一轮结果：端到端延迟}
+
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.27\textwidth}
+  \centering
+  {\color{DeepBlue}\fontsize{17}{19}\selectfont\bfseries 24 / 26}\par
+  {\fontsize{8.8}{10}\selectfont QuickJS median 较低}
+\end{column}
+\begin{column}{0.27\textwidth}
+  \centering
+  {\color{DeepBlue}\fontsize{17}{19}\selectfont\bfseries 2 / 26}\par
+  {\fontsize{8.8}{10}\selectfont V8 Ignition median 较低}
+\end{column}
+\begin{column}{0.42\textwidth}
+  \centering
+  {\color{DeepBlue}\fontsize{17}{19}\selectfont\bfseries $\approx 1.69$}\par
+  {\fontsize{8.8}{10}\selectfont 26 个 case 的 V8 / QuickJS\\端到端 median ratio 几何平均}
+\end{column}
+\end{columns}
+
+\vspace{0.03cm}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  xbar,
+  width=10.10cm,
+  height=4.15cm,
+  xmin=0,
+  xmax=3.18,
+  bar width=8pt,
+  axis x line*=bottom,
+  axis y line*=left,
+  y axis line style={draw=none},
+  ytick style={draw=none},
+  xmajorgrids=true,
+  grid style={RuleGray!55},
+  xtick={0,0.5,1,1.5,2,2.5,3},
+  xlabel={V8 / QuickJS median ratio},
+  xlabel style={font=\fontsize{8.8}{10}\selectfont},
+  tick label style={font=\fontsize{8.5}{9.5}\selectfont},
+  symbolic y coords={regexp-dna,string-unpack-code,controlflow-recursive,math-spectral-norm,bitops-nsieve-bits,crypto-md5,crypto-sha1},
+  ytick=data,
+  yticklabel style={font=\ttfamily\fontsize{8.5}{9.5}\selectfont,text width=3.45cm,align=right},
+  enlarge y limits=0.12,
+  clip=false
+]
+  \addplot[
+    fill=DeepBlue,
+    draw=DeepBlue,
+    nodes near coords={\pgfmathprintnumber[fixed,precision=3]{\pgfplotspointmeta}},
+    nodes near coords style={font=\fontsize{8.5}{9.5}\selectfont,anchor=west,color=TextGray}
+  ] coordinates {
+    (0.455025019,regexp-dna)
+    (0.686354839,string-unpack-code)
+    (2.371755287,controlflow-recursive)
+    (2.420819714,math-spectral-norm)
+    (2.631816641,bitops-nsieve-bits)
+    (2.636598602,crypto-md5)
+    (2.807502038,crypto-sha1)
+  };
+  \draw[gray,densely dashed,line width=1pt]
+    (axis cs:1,regexp-dna) -- (axis cs:1,crypto-sha1);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace{-0.08cm}
+{\fontsize{8.7}{10}\selectfont
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.52\textwidth}
+\textcolor{DeepBlue}{ratio $>1$：}V8 用时更长，QuickJS 端到端延迟更低。
+\end{column}
+\begin{column}{0.45\textwidth}
+\textcolor{DeepBlue}{ratio $<1$：}V8 Ignition 用时更短；灰色虚线为 1。
+\end{column}
+\end{columns}}
+
+\vfill
+\sourcenote{来源：results/processed/sunspider\_summary.csv。几何平均由 26 个 case 的 V8/QuickJS median ratio 计算，原值 1.693695。图中包含两个 V8 更快的反例。}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+\begin{frame}{当前结论：能说明什么，暂时不能说明什么}
+\fontsize{8.8}{10.3}\selectfont
+
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.47\textwidth}
+  {\normalsize\color{DeepBlue}\bfseries 目前可以确认}
+  \vspace{0.06cm}
+  \begin{enumerate}\setlength{\itemsep}{0.10em}\setlength{\parskip}{0pt}
+    \item 固定 Windows 11 x64 环境、engine 版本、binary 与 flags，已经建立可复现 baseline。
+    \item SunSpider 26 个短程序中，QuickJS 在 \accent{24 个 case} 上的端到端 median latency 更低。
+    \item \code{regexp-dna} 与 \code{string-unpack-code} 是反例：V8 Ignition 的端到端时间更短。
+  \end{enumerate}
+\end{column}
+
+\begin{column}{0.03\textwidth}
+  \centering
+  {\color{RuleGray}\rule{0.5pt}{3.55cm}}
+\end{column}
+
+\begin{column}{0.47\textwidth}
+  {\normalsize\color{DeepBlue}\bfseries 目前不能直接推出}
+  \vspace{0.06cm}
+  \begin{enumerate}\setlength{\itemsep}{0.10em}\setlength{\parskip}{0pt}
+    \item $1.69$ 是各 case ratio 的几何平均，不能改写成“QuickJS interpreter 快 $1.69\times$”。
+    \item 当前测量混合进程启动、VM 初始化、解析/字节码生成、解释执行与退出。
+    \item 尚无证据把差异归因于字节码分发（dispatch）、栈顶缓存（TOS caching）、寄存器固定（register pinning）或指令融合（opcode fusion）。
+  \end{enumerate}
+\end{column}
+\end{columns}
+
+\vspace{0.10cm}
+{\color{RuleGray}\rule{\textwidth}{0.5pt}}
+\vspace{0.06cm}
+
+\textbf{下一步（计划）}
+\begin{itemize}\setlength{\itemsep}{0.05em}\setlength{\parskip}{0pt}
+  \item 将启动/解析开销与解释执行尽量分离；
+  \item 对差异明显的 case 设计微基准（microbenchmark）；
+  \item 再做操作码统计（opcode profiling）与 handler 汇编分析。
+\end{itemize}
+
+\vfill
+\sourcenote{证据边界：当前结果只对应固定 binary、固定 flags、当前 Windows x64 主机和 SunSpider 1.0.2；未比较默认 V8 JIT，也未完成 profiling 或解释器优化实验。}
+\end{frame}
+
+\end{document}
