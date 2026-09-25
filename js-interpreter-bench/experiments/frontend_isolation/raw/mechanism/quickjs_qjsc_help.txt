@@ -1,0 +1,21 @@
+COMMAND: C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\quickjs-upstream\qjsc.exe --help
+EXIT_CODE: 1
+STDOUT:
+QuickJS Compiler version 2026-06-04
+usage: qjsc [options] [files]
+
+options are:
+-c          only output bytecode to a C file
+-e          output main() and bytecode to a C file (default = executable output)
+-o output   set the output filename
+-N cname    set the C name of the generated data
+-m          compile as Javascript module (default=autodetect)
+-D module_name         compile a dynamically loaded module or worker
+-M module_name[,cname] add initialization code for an external C module
+-x          byte swapped output
+-p prefix   set the prefix of the generated C names
+-S n        set the maximum stack size to 'n' bytes (default=1048576)
+-s            strip all the debug info
+--keep-source keep the source code
+STDERR:
+

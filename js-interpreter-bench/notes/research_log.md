@@ -448,3 +448,45 @@ python .\scripts\run_sunspider.py benchmark --iterations 30
 **下一步**
 
 本阶段已经完成并停止。不在本阶段解释性能差异原因；后续分析必须引用固定原始数据和当前运行配置，不得混入 JIT-enabled、其他主机或更新后的引擎结果。
+
+---
+
+## 2026-09-24 至 2026-09-25 — frontend 开销摊薄实验
+
+**做了什么**
+
+审查固定 QuickJS `qjs/qjsc` 的 help、本地 `qjsc.c`、`quickjs-libc.c`、官方自带 `quickjs.texi`，以及固定 d8 的 help 和实际 `--cache=code` smoke；确认 `qjsc` 嵌入字节码可执行路径和 d8 Code Cache 路径不构成对称的预编译文件启动实验。用现有 QuickJS `.obj` 仅链接一个独立 qjsc checksum probe，可执行文件未替换原 qjs。另以原 26 个 standalone SunSpider case 生成同一份双引擎函数包装，建立 same-process repeated execution 模式，并增加 N=1 的函数包装控制组。所有实验仍在固定 `--max-opt=0` 的 d8 下运行；第一轮 raw 数据未覆盖。
+
+**命令**
+
+```powershell
+python experiments/frontend_isolation/probe_mechanisms.py
+python experiments/frontend_isolation/run_source_mode.py
+python experiments/frontend_isolation/run_repeated_mode.py correctness
+python experiments/frontend_isolation/run_repeated_mode.py calibrate
+python experiments/frontend_isolation/run_repeated_mode.py measure
+python experiments/frontend_isolation/run_repeated_mode.py summarize
+python experiments/frontend_isolation/run_wrapped_once_control.py measure
+python experiments/frontend_isolation/run_wrapped_once_control.py summarize
+python experiments/frontend_isolation/compare_modes.py
+```
+
+`qjsc` smoke 的具体生成/链接命令和 SHA-256 记录在 `experiments/frontend_isolation/README.md`。
+
+**结果**
+
+- `qjsc` 嵌入字节码 smoke 与源文件路径均输出 `QJSC_CHECKSUM=333833500`；固定 d8 `--cache=code` 在同一次启动中输出一次 Produce 和一次 Consume 标签，并各执行一次同一 probe。
+- repeated mode correctness：26×2×2 = 104/104 PASS；正式测量：26×2×30 = 1560/1560 有效；N=1 包装对照：1560/1560 有效。生成 JS 的 SHA-256 与原始 CSV 所记值逐 case 一致。
+- 第一轮 source-to-finish 为 QuickJS median 较低 24/26、V8/Q 几何均值 1.693695375；N=1 包装对照为 24/26、1.679296864；same-process repeated 为 10/26、0.608303510。26/26 个 ratio 相对第一轮下降。
+- 全部原始数据、校准 N、完整统计、逐 case 描述性比较保存在 `experiments/frontend_isolation/`；最终解读见 `summary/results.md`。原 `results/raw/sunspider.csv` SHA-256 仍为 `1e27d75a7d38ab48d5fd3a8b30b8d29b4c47b9ba648a9f080fd10ee3b968df82`。
+
+**问题**
+
+- `qjsc` 与 d8 的预编译/Code Cache 路径计时边界不对称；d8 的缓存实际命中及可否独立跨进程保存/消费当前为 UNKNOWN，不生成伪 Mode 2 ratio。
+- 首次 crypto-aes checksum 使用随 nonce/编码变化的密文长度导致 N=2 失败，失败 CSV 已保留；改用解密明文长度并保留原明文相等断言后全部 PASS。
+- pilot 双引擎均 ≥200 ms，但后续 1560 个样本中 51 个短于 200 ms，最低 187.868 ms；全部保留。
+- 函数包装、进程内状态/缓存、`eval`、RegExp 与 builtins 仍可能影响 Mode 3。不能仅凭两模式 ratio 量化 startup、VM init、parser、bytecode compiler 或 interpreter loop 的独立贡献。
+
+**下一步**
+
+本阶段在“frontend-amortized 观察”层面完成，在“真正隔离 frontend 并量化分项贡献”层面未完成。若继续，应先设计可验证且尽量对称的计时边界或逐阶段仪器化，不应把当前 Mode 3 改称纯解释器时间；本阶段停止，不开展 QuickJS 优化。
