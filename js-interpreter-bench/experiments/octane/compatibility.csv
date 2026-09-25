@@ -1,0 +1,16 @@
+case,quickjs_status,v8_status,included,reason
+Richards,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+DeltaBlue,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+Crypto,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+RayTrace,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+EarleyBoyer,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+RegExp,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+Splay,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+NavierStokes,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+PdfJS,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+Mandreel,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+Gameboy,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+CodeLoad,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
+Box2D,PASS,PASS,false,"both run, but upstream runBox2D has no output checksum/assertion; excluded from correctness-gated timing"
+zlib,UNSUPPORTED,PASS,false,QuickJS lacks d8-style read() required by upstream zlib-data.js; no shim applied
+Typescript,PASS,PASS,true,both shells pass upstream suite with built-in correctness check
