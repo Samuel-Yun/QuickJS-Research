@@ -1,0 +1,20 @@
+{
+  "case_count": 26,
+  "repetitions_per_engine": 30,
+  "metric": "internal Date.now elapsed_ms / N; not pure loop time",
+  "source_to_finish_ratio": {
+    "geomean": 1.69369537452666,
+    "quickjs_lower_count": 24,
+    "v8_lower_count": 2
+  },
+  "external_amortized_ratio": {
+    "geomean": 0.6083035098212811,
+    "quickjs_lower_count": 10,
+    "v8_lower_count": 16
+  },
+  "internal_execution_ratio": {
+    "geomean": 0.5442837922522202,
+    "quickjs_lower_count": 5,
+    "v8_lower_count": 21
+  }
+}

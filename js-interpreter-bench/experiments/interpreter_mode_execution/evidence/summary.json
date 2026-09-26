@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "v8_version": "V8 version 15.6.21",
+  "d8_sha256": "1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87",
+  "snapshot_sha256": "900160d7d689b8e7b0c71c5f164a045b608bf5504329ad6dcba8e526ed6df975",
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "lazy_eval_still_enabled": true,
+  "lazy_ordering": {
+    "default_workload": "inside_timer",
+    "no_lazy_workload": "before_timer",
+    "default_nestedProbe": "inside_timer",
+    "no_lazy_nestedProbe": "before_timer"
+  },
+  "tier_events": {
+    "sparkplug_compile": 0,
+    "maglev_compile": 0,
+    "turbofan_compile": 0,
+    "osr_entry": 0,
+    "baseline_status": 0,
+    "maglev_status": 0,
+    "turbofan_status": 0,
+    "interpreted_status": 333
+  },
+  "lazy_probe_sha256": "e7861ea80d36231e4ef9d23564d45233d994bb2f14eb89cbea376e77fe244b28",
+  "tier_probe_sha256": "3386e2adae823245e7e882d4e1b43643dfdb3b66720844ef8db55e480697ff4e"
+}
