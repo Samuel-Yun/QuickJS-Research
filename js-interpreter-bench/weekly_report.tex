@@ -1,0 +1,349 @@
+% Compile with XeLaTeX on Overleaf. All figures are drawn here; no external assets.
+% Data checked from project files on 2026-09-27; no experiments were rerun.
+%
+% Evidence map (paths relative to the project root; not LaTeX dependencies):
+%   results/processed/sunspider_summary.csv
+%   experiments/frontend_isolation/summary/repeated_summary.csv
+%   experiments/interpreter_mode_execution/summary/internal_summary.csv
+%   experiments/interpreter_mode_execution/summary/three_mode_comparison.csv
+%   experiments/interpreter_mode_execution/summary/audit.json
+%   experiments/interpreter_mode_execution/evidence/summary.json
+%   experiments/interpreter_mode_execution/evidence/workload_bytecode/summary.csv
+%   experiments/interpreter_mode_execution/raw/correctness.csv
+%   experiments/interpreter_mode_execution/raw/full_n_correctness.csv
+%   experiments/interpreter_mode_execution/raw/measurements.csv
+%   experiments/interpreter_mode_execution/summary/selected_n.csv
+%   experiments/interpreter_mode_execution/results.md
+%   experiments/octane/README.md, notes.md, compatibility.csv, summary.csv
+%   experiments/octane/raw/measurements.csv
+%
+% Independently recomputed from medians in the CSV files:
+% SunSpider: GM 1.6936953745 / 0.6083035098 / 0.5442837923;
+%            QuickJS lower 24 / 10 / 5; V8 lower 2 / 16 / 21 (26 cases).
+% Octane: fixed_source_to_finish GM 0.5104200119;
+%         native_frontend_amortized GM 0.4941426752;
+%         both modes: QuickJS lower 1, V8 lower 12 (13 suites).
+% All three SunSpider medians were checked against each mode's 1560 raw samples.
+% Octane medians were also checked against the 520 raw metric_time_ns samples.
+% SunSpider internal: 104/104 and 52/52 correctness PASS; 1560/1560 valid;
+%                    26/26 bytecode-order PASS; selected N = 32..1024.
+% Hot probe with --max-opt=0 --no-lazy: all JIT/OSR counts zero.
+% Frozen input hashes (for provenance, not loaded by this document):
+% qjs.exe: 6ef16219978ed1cf7d6590b9c9603c65874ad30ac465c67e5fb819da8786b573
+% d8.exe:  1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87
+% internal raw: 34988e002d9285678c91435561a88ff1ee381781c39f95e201814b18fe62d99c
+% Octane raw:   28e98f7f9574d396560de8fcdbf67bca5eb87a0b18834730621f358727c95c4a
+
+\PassOptionsToClass{fontset=fandol}{ctexbeamer}
+\documentclass[aspectratio=169,UTF8]{ctexbeamer}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+% Use CTEX's TeX-distributed Fandol fonts and the default Latin Modern families.
+% No operating-system font lookup, local font file, or uploaded font is needed.
+\definecolor{MutedBlue}{HTML}{48667F}
+\definecolor{RuleGray}{HTML}{CCD2D7}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=MutedBlue}
+\setbeamercolor{frametitle}{fg=black,bg=white}
+\setbeamercolor{footline}{fg=black,bg=white}
+\setbeamerfont{frametitle}{size=\fontsize{16}{19}\selectfont,series=\bfseries}
+\setbeamerfont{footline}{size=\fontsize{6.5}{8}\selectfont}
+\setbeamersize{text margin left=7mm,text margin right=7mm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{MutedBlue}\scriptsize$\bullet$}
+\setbeamertemplate{frametitle}{%
+  \vspace{1mm}\insertframetitle\par\vspace{1.2mm}%
+  {\color{RuleGray}\rule{\textwidth}{0.4pt}}\vspace{0.5mm}%
+}
+\setbeamertemplate{footline}{%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.88\paperwidth,ht=2.5ex,dp=1.1ex,leftskip=7mm]{footline}%
+     2026-09-28
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.12\paperwidth,ht=2.5ex,dp=1.1ex,rightskip=7mm]{footline}%
+      \hfill\insertframenumber/\inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+\newcommand{\bodyfont}{\fontsize{9}{11.5}\selectfont}
+\newcommand{\smallfont}{\fontsize{7.8}{10}\selectfont}
+\newcommand{\heading}[1]{{\fontsize{10.5}{13}\selectfont\bfseries #1}\par\vspace{1mm}}
+\newcommand{\blue}[1]{\textcolor{MutedBlue}{\textbf{#1}}}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+% Slide provenance is also documented in the evidence map above. Keep these
+% per-slide annotations in the source only, leaving the projected slides uncluttered.
+\newcommand{\source}[1]{}
+\newcommand{\compactitems}{\setlength{\itemsep}{1.1mm}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}}
+
+\begin{document}
+
+% Page 1 -- about 65 seconds.
+% Explain the advisor's concern as a hypothesis, not a measured contribution.
+\begin{frame}[t]{QuickJS vs V8：收窄解释器性能测量边界}
+\bodyfont
+{\fontsize{10}{12}\selectfont 本周实验修正与补充 Benchmark}\par\vspace{2mm}
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{.47\textwidth}
+    \heading{上周：source-to-finish}
+    {\centering
+    \begin{tikzpicture}[
+      stage/.style={draw=RuleGray,text width=3.7cm,minimum height=4.5mm,
+                    inner sep=1.2mm,align=center,font=\smallfont},
+      flow/.style={-{Latex[length=1.5mm]},draw=MutedBlue}]
+      \node[stage] (a) at (0,0) {process startup};
+      \node[stage] (b) at (0,-.59) {VM initialization};
+      \node[stage] (c) at (0,-1.18) {source parsing};
+      \node[stage] (d) at (0,-1.77) {bytecode generation};
+      \node[stage] (e) at (0,-2.36) {interpreter execution};
+      \node[stage] (f) at (0,-2.95) {process exit};
+      \draw[flow] (a) -- (b); \draw[flow] (b) -- (c);
+      \draw[flow] (c) -- (d); \draw[flow] (d) -- (e); \draw[flow] (e) -- (f);
+      \draw[MutedBlue,line width=.7pt] (2.15,.24) -- (2.33,.24) -- (2.33,-3.19) -- (2.15,-3.19);
+      \node[font=\smallfont,align=center] at (2.82,-1.47) {全部\\计时};
+    \end{tikzpicture}
+    \par}
+  \end{column}
+  \begin{column}{.49\textwidth}
+    \heading{本周：内部 execution 计时}
+    {\centering
+    \begin{tikzpicture}[
+      stage/.style={draw=RuleGray,text width=5.5cm,inner sep=2mm,
+                    align=center,font=\smallfont},
+      flow/.style={-{Latex[length=1.5mm]},draw=MutedBlue}]
+      \node[stage] (pre) at (0,0) {startup / VM initialization\\
+        source parsing / static bytecode generation\\\blue{不计时}};
+      \node[font=\smallfont,inner sep=0pt] (start) at (0,-1.19) {timer\_start};
+      \node[stage,draw=MutedBlue] (work) at (0,-1.86) {\blue{$\mathrm{workload}()\times N$}\\首次调用也在计时区间内};
+      \node[font=\smallfont,inner sep=0pt] (stop) at (0,-2.53) {timer\_stop};
+      \draw[flow] (pre) -- (start); \draw[flow] (start) -- (work);
+      \draw[flow] (work) -- (stop);
+      \node[font=\smallfont,align=center] at (0,-3.12) {输出内部 elapsed / $N$；checksum 在 timer 后检查};
+    \end{tikzpicture}
+    \par}
+  \end{column}
+\end{columns}
+\vspace{1.5mm}
+\blue{目标：移出一次性启动与主要静态 frontend，观察解释器模式下的 workload execution。}\par
+\vspace{1.5mm}
+\smallfont
+问题：SunSpider 短，startup/frontend 的影响可能较大；当前尚未量化其占比。\par
+Windows 11 x64；冻结 upstream QuickJS 2026-06-04 与 V8 15.6.21（d8）。
+\source{SunSpider 首轮结果；frontend isolation 与内部计时实验 README/results。}
+\end{frame}
+
+% Page 2 -- about 105 seconds.
+% Static frontend is moved out. Runtime eval compilation is not claimed absent.
+\begin{frame}[t]{Interpreter-mode execution：设计与门禁}
+\bodyfont
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{.48\textwidth}
+    \heading{执行模式与静态 frontend}
+    V8 15.6.21；shell = \code{d8.exe}，非 Node.js。\par
+    \vspace{1mm}
+    \blue{\code{--max-opt=0 --no-lazy}}\par
+    \vspace{2mm}
+    默认 lazy：首次调用可能生成 bytecode。\par
+    \code{--no-lazy}：静态函数预编译至 timer 前。\par
+    \vspace{2mm}
+    新增 flags 后重跑 50 万次 hot probe：\par
+    \vspace{1mm}
+    {\smallfont\setlength{\tabcolsep}{3.8pt}
+    \begin{tabular}{@{}cccc@{}}
+      \toprule
+      Sparkplug & Maglev & TurboFan & OSR entry\\
+      \midrule
+      0 & 0 & 0 & 0\\
+      \bottomrule
+    \end{tabular}}\par
+    \vspace{2mm}
+    \blue{26/26}：静态 workload bytecode 先于 timer。\par
+    \vspace{1.5mm}
+    QuickJS：静态函数编译先于 timer（源码确认）。
+  \end{column}
+  \begin{column}{.48\textwidth}
+    \heading{校准、采样与 correctness}
+    $N=1,2,4,8,\ldots$，选择第一个满足下式的 $N$：\par
+    \vspace{1mm}
+    $T_{\mathrm{QJS}}(N)\geq1\,\mathrm{s}$ 且 $T_{\mathrm{V8}}(N)\geq1\,\mathrm{s}$。\par
+    \vspace{1mm}
+    实际 \blue{$N=32$--$1024$}；同 case 两引擎同 $N$。\par
+    \vspace{1mm}
+    每个样本新进程；\blue{不提前调用 workload 预热}。\par
+    \vspace{1mm}
+    {\setlength{\tabcolsep}{4pt}
+    \begin{tabular}{@{}lr@{}}
+      \toprule
+      正确性门禁 & 结果\\
+      \midrule
+      $N=1/2$ checksum & 104/104 PASS\\
+      选定 $N$ 的逐次调用复核 & 52/52 PASS\\
+      \bottomrule
+    \end{tabular}}\par
+    \vspace{1mm}
+    $26\times2\times30=\blue{1,560}$ 个有效正式样本。\par
+    顺序交错/随机化；全部 raw 保留，不删 outlier。\par
+    \vspace{1mm}
+    \smallfont JS 内部 \code{Date.now()}，毫秒分辨率。\par
+    1 s 是校准门槛；正式最短 922 ms，照实保留。
+  \end{column}
+\end{columns}
+\vspace{.5mm}
+\blue{Interpreter-mode execution time $\neq$ pure interpreter-loop self time}\par
+\vspace{0mm}
+\smallfont GC、runtime helper、builtin、regexp、property lookup 仍计入；动态 \code{eval} 未保证移出。
+\source{内部计时 audit.json、evidence/summary.json、bytecode 日志与 correctness CSV。}
+\end{frame}
+
+% Page 3 -- about 115 seconds. This is the main result.
+% Differences are not a decomposition of startup/parser/bytecode costs.
+\begin{frame}[t]{计时边界收窄后，结果发生反转}
+\bodyfont
+$r_i=\operatorname{median}(t_{\mathrm{V8},i})/\operatorname{median}(t_{\mathrm{QJS},i})$；
+$\mathrm{GM}=\exp\!\left(26^{-1}\sum_{i=1}^{26}\ln r_i\right)$。
+\hfill $r>1$：QJS 较低；$r<1$：V8 较低。\par
+\vspace{.7mm}
+{\centering
+\setlength{\tabcolsep}{9pt}\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{@{}lrrr@{}}
+  \toprule
+  Measurement boundary & QuickJS 较低 & V8 较低 & V8/QJS GM\\
+  \midrule
+  Source-to-finish & 24/26 & 2/26 & 1.694\\
+  External amortized & 10/26 & 16/26 & 0.608\\
+  Interpreter-mode execution & 5/26 & \blue{21/26} & \blue{0.544}\\
+  \bottomrule
+\end{tabular}
+\par}
+\vspace{.5mm}
+{\centering
+\begin{tikzpicture}[x=4.45cm,y=.53cm,every node/.style={font=\smallfont}]
+  \node at (.51,2.7) {$<1$：V8 较低};
+  \node at (1.52,2.7) {$>1$：QuickJS 较低};
+  \draw[RuleGray] (0,2) -- (2,2);
+  \draw[RuleGray] (0,1) -- (2,1);
+  \draw[RuleGray] (0,0) -- (2,0);
+  \draw[black,dashed] (1,-.3) -- (1,2.4);
+  \node[anchor=east] at (-.035,2) {Source-to-finish};
+  \node[anchor=east] at (-.035,1) {External amortized};
+  \node[anchor=east] at (-.035,0) {Interpreter-mode};
+  \foreach \xx/\yy/\val in {1.694/2/1.694,.608/1/0.608,.544/0/0.544}{%
+    \fill[MutedBlue] (\xx,\yy) circle[radius=2pt];
+    \node[anchor=west] at (\xx+.035,\yy) {\val};
+  }
+  \draw[black] (0,-.5) -- (2,-.5);
+  \foreach \tick in {0,0.5,1,1.5,2}{%
+    \draw[black] (\tick,-.5) -- (\tick,-.62);
+    \node[anchor=north] at (\tick,-.65) {\tick};
+  }
+  \node at (1,-1.65) {V8 / QuickJS median ratio 的几何均值};
+\end{tikzpicture}
+\par}
+\blue{短程序 source-to-finish 下的优势，不能直接代表 frontend 完成后的 execution 关系。}\par
+\vspace{1mm}
+\smallfont 新模式另加 \code{--no-lazy}，包装、$N$ 和计时器也不同；不能从 GM 差值倒推分项成本。
+\source{三份 SunSpider summary CSV；内部计时 three\_mode\_comparison.csv 与独立 audit.json。}
+\end{frame}
+
+% Page 4 -- about 80 seconds.
+% Octane's native timing is distinct from the new SunSpider internal timing.
+\begin{frame}[t]{Octane 2.0：更长 workload 的补充结果}
+\bodyfont
+官方 \code{chromium/octane}；固定 commit：\par
+{\smallfont\code{570ad1ccfe86e3eecba0636c8f932ac08edec517}}\par
+\vspace{1mm}
+\blue{15 suites $\longrightarrow$ compatibility / correctness $\longrightarrow$ 13 suites}\par
+\vspace{1mm}
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{.43\textwidth}
+    \textbf{排除 zlib}\par
+    QuickJS 缺少上游使用的 \code{read()}。
+  \end{column}
+  \begin{column}{.53\textwidth}
+    \textbf{排除 Box2D}\par
+    双方能运行，但上游缺少可靠输出校验/断言。
+  \end{column}
+\end{columns}
+\vspace{1.5mm}
+{\centering
+\setlength{\tabcolsep}{8pt}\renewcommand{\arraystretch}{1.17}
+\begin{tabular}{@{}lrrr@{}}
+  \toprule
+  Octane measurement & QuickJS 较低 & V8 较低 & V8/QJS GM\\
+  \midrule
+  Fixed-work source-to-finish & 1/13 & 12/13 & 0.510\\
+  Native internal per-call & 1/13 & 12/13 & 0.494\\
+  \bottomrule
+\end{tabular}
+\par}
+\vspace{1mm}
+$13\times2\times2\times10=\blue{520/520}$ valid samples；唯一 QuickJS 较低：\blue{NavierStokes}。\par
+\vspace{1.5mm}
+\smallfont
+Octane 用 \code{--max-opt=0}，未加 \code{--no-lazy}；原生 warmup/时间预算保留。\par
+内部按每次调用计时，多子 benchmark 取 GM；仍含 lazy/动态 frontend，非纯 loop time 或官方总分。\par
+\vspace{1.5mm}
+\bodyfont\blue{更长 workload 中也观察到 V8 在多数 suite 用时较低的方向。}\par
+\vspace{1mm}\smallfont
+SunSpider 与 Octane 的 workload 不同；不能用两套 GM 的差值计算 frontend 占比。
+\source{Octane README、compatibility.csv、summary.csv 与 520 条 raw measurements。}
+\end{frame}
+
+% Page 5 -- about 95 seconds. Total planned speaking time: about 7.7 minutes.
+% Future survey topics include register pinning, TOS caching, quickening,
+% adaptive specialization, IC/PIC, superinstructions/opcode fusion, generated
+% handlers/template interpreters, slow-path extraction and profile-guided
+% specialization. These are candidate topics, not established QuickJS gaps.
+\begin{frame}[t]{当前结论与下一步}
+\bodyfont
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{.50\textwidth}
+    \heading{可以确认：当前实验观察}
+    \begin{itemize}\compactitems\setlength{\itemsep}{.5mm}
+      \item 测量边界改变时，结果关系明显变化。
+      \item SunSpider 内部计时：V8 \blue{21/26} median 较低。
+      \item Octane 两模式：V8 \blue{12/13} median 较低。
+    \end{itemize}
+    \vspace{1mm}
+    \heading{不能确认：机制与分项贡献}
+    \begin{itemize}\compactitems\setlength{\itemsep}{.5mm}
+      \item 不是 pure interpreter-loop self time；GC、builtin、regexp/helper 等仍计入。
+      \item 不能归因于 dispatch、TOS caching、pinning、IC 或 opcode fusion。
+      \item frontend 各部分贡献：\blue{UNKNOWN}。
+    \end{itemize}
+    \vspace{1mm}
+    {\smallfont\textbf{可能解释（待证）：}一次性成本/状态差异。}
+  \end{column}
+  \begin{column}{.46\textwidth}
+    \heading{后续工作：寻找 candidate directions}
+    {\centering
+    \begin{tikzpicture}[
+      stage/.style={draw=RuleGray,text width=5.75cm,align=center,
+                    inner sep=1.5mm,font=\smallfont},
+      flow/.style={-{Latex[length=1.5mm]},draw=MutedBlue}]
+      \node[stage] (survey) at (0,0) {Modern interpreter survey\\JVM / JavaScript VM / WebAssembly\\
+        pinning / TOS / quickening / IC / fusion};
+      \node[font=\bodyfont] at (0,-.81) {$+$};
+      \node[stage] (profile) at (0,-1.66) {QuickJS characterization（计划）\\
+        opcode / opcode-pair frequency；hot handlers\\
+        x86-64 assembly；spills/reloads；helper calls};
+      \node[stage] (gap) at (0,-2.87) {Gap analysis};
+      \node[stage,draw=MutedBlue] (direction) at (0,-3.9) {\blue{1--2 个 candidate research directions}\\
+        由文献与 profiling 证据共同支持};
+      \draw[flow] (profile) -- (gap);
+      \draw[flow] (gap) -- (direction);
+    \end{tikzpicture}
+    \par}
+  \end{column}
+\end{columns}
+\vspace{1.5mm}
+\blue{下一阶段从“谁更快”转向“为什么，以及 QuickJS 缺少什么”。}\par
+\vspace{1mm}\smallfont
+当前结果提供研究动机；尚未完成上述 profiling，尚未确定创新点或实施新的 VM 优化。
+\source{SunSpider 内部计时 results.md；Octane notes.md 的 confirmed / possible / unknown 分类。}
+\end{frame}
+
+\end{document}
