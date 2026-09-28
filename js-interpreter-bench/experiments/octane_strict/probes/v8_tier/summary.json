@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "counts": {
+    "sparkplug_compile": 0,
+    "maglev_compile": 0,
+    "turbofan_compile": 0,
+    "osr_entry": 0,
+    "baseline_status": 0,
+    "maglev_status": 0,
+    "turbofan_status": 0,
+    "interpreted_status": 333
+  },
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "calls": 500000,
+  "required_effective_values": [
+    "--max-opt=0",
+    "--no-lazy",
+    "--no-sparkplug",
+    "--no-maglev",
+    "--no-turbofan"
+  ],
+  "probe_sha256": "3386e2adae823245e7e882d4e1b43643dfdb3b66720844ef8db55e480697ff4e",
+  "d8_sha256": "1808fe93e1838ba0a0489363fddb1a0399da99c533f537c39b621e4a55cf7d87",
+  "snapshot_sha256": "900160d7d689b8e7b0c71c5f164a045b608bf5504329ad6dcba8e526ed6df975",
+  "lazy_eval_enabled": true
+}

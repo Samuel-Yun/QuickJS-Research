@@ -1,0 +1,103 @@
+36068:     if (fd->is_eval) {
+36069:         if (add_global_variables(ctx, fd))
+36070:             goto fail;
+36071:     } 
+36072: 
+36073:     /* first create all the child functions */
+36074:     list_for_each_safe(el, el1, &fd->child_list) {
+36075:         JSFunctionDef *fd1;
+36076:         int cpool_idx;
+36077: 
+36078:         fd1 = list_entry(el, JSFunctionDef, link);
+36079:         cpool_idx = fd1->parent_cpool_idx;
+36080:         func_obj = js_create_function(ctx, fd1);
+36081:         if (JS_IsException(func_obj))
+36082:             goto fail;
+36083:         /* save it in the constant pool */
+36084:         assert(cpool_idx >= 0);
+36085:         fd->cpool[cpool_idx] = func_obj;
+36086:     }
+36087: 
+36088: #if defined(DUMP_BYTECODE) && (DUMP_BYTECODE & 4)
+36089:     if (!fd->strip_debug) {
+36090:         printf("pass 1\n");
+36091:         dump_byte_code(ctx, 1, fd->byte_code.buf, fd->byte_code.size,
+36092:                        NULL, fd->args, fd->arg_count, fd->vars, fd->var_count,
+36093:                        fd->closure_var, fd->closure_var_count,
+36094:                        fd->cpool, fd->cpool_count, fd->source,
+36095:                        fd->label_slots, NULL);
+36096:         printf("\n");
+36097:     }
+36098: #endif
+36099: 
+36100:     if (resolve_variables(ctx, fd))
+37265:     push_scope(s); /* body scope */
+37266:     fd->body_scope = fd->scope_level;
+37267: 
+37268:     err = js_parse_program(s);
+37269:     if (err) {
+37270:     fail:
+37271:         free_token(s, &s->token);
+37272:         js_free_function_def(ctx, fd);
+37273:         goto fail1;
+37274:     }
+37275: 
+37276:     if (m != NULL)
+37277:         m->has_tla = fd->has_await;
+37278: 
+37279:     /* create the function object and all the enclosed functions */
+37280:     fun_obj = js_create_function(ctx, fd);
+37281:     if (JS_IsException(fun_obj))
+37282:         goto fail1;
+37283:     /* Could add a flag to avoid resolution if necessary */
+37284:     if (m) {
+37285:         m->func_obj = fun_obj;
+37286:         if (js_resolve_module(ctx, m) < 0)
+37287:             goto fail1;
+37288:         fun_obj = JS_NewModuleValue(ctx, m);
+37289:     }
+37290:     if (flags & JS_EVAL_FLAG_COMPILE_ONLY) {
+37291:         ret_val = fun_obj;
+37292:     } else {
+37293:         ret_val = JS_EvalFunctionInternal(ctx, fun_obj, this_obj, var_refs, sf);
+37294:     }
+37295:     return ret_val;
+37296:  fail1:
+37297:     /* XXX: should free all the unresolved dependencies */
+37298:     if (m)
+37299:         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_MODULE, m));
+37300:     return JS_EXCEPTION;
+37301: }
+37302: 
+37303: /* the indirection is needed to make 'eval' optional */
+37304: static JSValue JS_EvalInternal(JSContext *ctx, JSValueConst this_obj,
+37305:                                const char *input, size_t input_len,
+37306:                                const char *filename, int flags, int scope_idx)
+37307: {
+37308:     BOOL backtrace_barrier = ((flags & JS_EVAL_FLAG_BACKTRACE_BARRIER) != 0);
+37309:     int saved_js_mode = 0;
+37310:     JSValue ret;
+qjs.c:46: extern const uint8_t qjsc_repl[];
+qjs.c:47: extern const uint32_t qjsc_repl_size;
+qjs.c:48: 
+qjs.c:49: static int eval_buf(JSContext *ctx, const void *buf, int buf_len,
+qjs.c:50:                     const char *filename, int eval_flags)
+qjs.c:51: {
+qjs.c:52:     JSValue val;
+qjs.c:53:     int ret;
+qjs.c:54: 
+qjs.c:55:     if ((eval_flags & JS_EVAL_TYPE_MASK) == JS_EVAL_TYPE_MODULE) {
+qjs.c:56:         /* for the modules, we compile then run to be able to set
+qjs.c:57:            import.meta */
+qjs.c:58:         val = JS_Eval(ctx, buf, buf_len, filename,
+qjs.c:59:                       eval_flags | JS_EVAL_FLAG_COMPILE_ONLY);
+qjs.c:60:         if (!JS_IsException(val)) {
+qjs.c:61:             js_module_set_import_meta(ctx, val, TRUE, TRUE);
+qjs.c:62:             val = JS_EvalFunction(ctx, val);
+qjs.c:63:         }
+qjs.c:64:         val = js_std_await(ctx, val);
+qjs.c:65:     } else {
+qjs.c:66:         val = JS_Eval(ctx, buf, buf_len, filename, eval_flags);
+qjs.c:67:     }
+qjs.c:68:     if (JS_IsException(val)) {
+qjs.c:69:         js_std_dump_error(ctx);

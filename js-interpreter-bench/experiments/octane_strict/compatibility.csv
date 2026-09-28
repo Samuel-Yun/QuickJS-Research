@@ -1,0 +1,16 @@
+suite,subbenchmarks,quickjs_status,v8_status,strict_status,included,reason
+Richards,Richards,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+DeltaBlue,DeltaBlue,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+Crypto,Encrypt|Decrypt,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+RayTrace,RayTrace,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+EarleyBoyer,Earley|Boyer,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+RegExp,RegExp,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+Splay,Splay,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+NavierStokes,NavierStokes,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+PdfJS,PdfJS,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+Mandreel,Mandreel,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+Gameboy,Gameboy,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+CodeLoad,CodeLoadClosure|CodeLoadJQuery,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark
+Box2D,,PASS,PASS,EXCLUDED_ORIGINAL,false,"both run, but upstream runBox2D has no output checksum/assertion; excluded from correctness-gated timing"
+zlib,,UNSUPPORTED,PASS,EXCLUDED_ORIGINAL,false,QuickJS lacks d8-style read() required by upstream zlib-data.js; no shim applied
+Typescript,Typescript,PASS,PASS,PASS,true,new frontend/tier/correctness/calibration/pilot gates; 30 valid samples per engine/subbenchmark

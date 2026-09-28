@@ -1,0 +1,14 @@
+{
+  "suite": "CodeLoad",
+  "benchmark": "CodeLoadClosure",
+  "status": "PASS",
+  "bytecode_before_timer": true,
+  "script_sha256": "9c3f2890631a64f3776ae7d0cbc83510f2cadc62313f8e27b4ab278dd94390e8",
+  "evidence": "probes\\frontend_order\\CodeLoad.CodeLoadClosure.final",
+  "diagnostic_flags": [
+    "--print-bytecode",
+    "--print-bytecode-filter=runCodeLoadClosure"
+  ],
+  "matching_bytecode_blocks": 1,
+  "actual_run_name": "runCodeLoadClosure"
+}

@@ -1,0 +1,253 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-09-27T17:53:58.760788+00:00",
+  "strict_compatible_suites": 13,
+  "strict_subbenchmarks": 16,
+  "formal_valid_samples": 960,
+  "expected_samples": 960,
+  "original_candidate_expected_samples": 960,
+  "raw_attempt_rows": 960,
+  "invalid_rows": 0,
+  "duplicate_valid_keys": [],
+  "missing_positions": [],
+  "validation_errors": [],
+  "all_groups_30": true,
+  "engine_first_15_each": true,
+  "formal_below_1000ms_retained": 0,
+  "correctness_rows": 92,
+  "correctness_pass_rows": 92,
+  "calibration": [
+    {
+      "suite": "Richards",
+      "benchmark": "Richards",
+      "N": 512,
+      "passed": true
+    },
+    {
+      "suite": "DeltaBlue",
+      "benchmark": "DeltaBlue",
+      "N": 512,
+      "passed": true
+    },
+    {
+      "suite": "Crypto",
+      "benchmark": "Encrypt",
+      "N": 256,
+      "passed": true
+    },
+    {
+      "suite": "Crypto",
+      "benchmark": "Decrypt",
+      "N": 16,
+      "passed": true
+    },
+    {
+      "suite": "RayTrace",
+      "benchmark": "RayTrace",
+      "N": 64,
+      "passed": true
+    },
+    {
+      "suite": "EarleyBoyer",
+      "benchmark": "Earley",
+      "N": 512,
+      "passed": true
+    },
+    {
+      "suite": "EarleyBoyer",
+      "benchmark": "Boyer",
+      "N": 32,
+      "passed": true
+    },
+    {
+      "suite": "RegExp",
+      "benchmark": "RegExp",
+      "N": 64,
+      "passed": true
+    },
+    {
+      "suite": "Splay",
+      "benchmark": "Splay",
+      "N": 2048,
+      "passed": true
+    },
+    {
+      "suite": "NavierStokes",
+      "benchmark": "NavierStokes",
+      "N": 32,
+      "passed": true
+    },
+    {
+      "suite": "PdfJS",
+      "benchmark": "PdfJS",
+      "N": 16,
+      "passed": true
+    },
+    {
+      "suite": "Mandreel",
+      "benchmark": "Mandreel",
+      "N": 1,
+      "passed": true
+    },
+    {
+      "suite": "Gameboy",
+      "benchmark": "Gameboy",
+      "N": 4,
+      "passed": true
+    },
+    {
+      "suite": "CodeLoad",
+      "benchmark": "CodeLoadClosure",
+      "N": 4096,
+      "passed": true
+    },
+    {
+      "suite": "CodeLoad",
+      "benchmark": "CodeLoadJQuery",
+      "N": 256,
+      "passed": true
+    },
+    {
+      "suite": "Typescript",
+      "benchmark": "Typescript",
+      "N": 1,
+      "passed": true
+    }
+  ],
+  "mode_summary": {
+    "fixed_original13": {
+      "suites": 13,
+      "quickjs_lower": 1,
+      "v8_lower": 12,
+      "tie": 0,
+      "ratio_geomean": 0.51042001194712
+    },
+    "native_original13": {
+      "suites": 13,
+      "quickjs_lower": 1,
+      "v8_lower": 12,
+      "tie": 0,
+      "ratio_geomean": 0.4941426751857999
+    },
+    "strict": {
+      "suites": 13,
+      "quickjs_lower": 1,
+      "v8_lower": 12,
+      "tie": 0,
+      "ratio_geomean": 0.4980926239908874
+    },
+    "fixed_matched": {
+      "suites": 13,
+      "quickjs_lower": 1,
+      "v8_lower": 12,
+      "tie": 0,
+      "ratio_geomean": 0.51042001194712
+    },
+    "native_matched": {
+      "suites": 13,
+      "quickjs_lower": 1,
+      "v8_lower": 12,
+      "tie": 0,
+      "ratio_geomean": 0.4941426751857999
+    }
+  },
+  "sensitivity": {
+    "narrow": {
+      "excluded_by_mechanism": [
+        "RegExp",
+        "CodeLoad"
+      ],
+      "included_suites": [
+        "Richards",
+        "DeltaBlue",
+        "Crypto",
+        "RayTrace",
+        "EarleyBoyer",
+        "Splay",
+        "NavierStokes",
+        "PdfJS",
+        "Mandreel",
+        "Gameboy",
+        "Typescript"
+      ],
+      "suites": 11,
+      "quickjs_lower": 1,
+      "v8_lower": 10,
+      "tie": 0,
+      "ratio_geomean": 0.5929575942170683
+    },
+    "broad": {
+      "excluded_by_mechanism": [
+        "RegExp",
+        "CodeLoad",
+        "Mandreel",
+        "Typescript"
+      ],
+      "included_suites": [
+        "Richards",
+        "DeltaBlue",
+        "Crypto",
+        "RayTrace",
+        "EarleyBoyer",
+        "Splay",
+        "NavierStokes",
+        "PdfJS",
+        "Gameboy"
+      ],
+      "suites": 9,
+      "quickjs_lower": 1,
+      "v8_lower": 8,
+      "tie": 0,
+      "ratio_geomean": 0.573524736547217
+    }
+  },
+  "protected_old_artifacts": {
+    "experiments/octane/summary.csv": {
+      "expected_sha256": "217eb77131c88960ac15b4accc3ed370536eeb2d45e316a0c75a85ef0e629596",
+      "actual_sha256": "217eb77131c88960ac15b4accc3ed370536eeb2d45e316a0c75a85ef0e629596",
+      "unchanged": true
+    },
+    "experiments/octane/compatibility.csv": {
+      "expected_sha256": "3442ef1351cf5da8f47bd322c373b2cbf8c03aa8ec78696c8fccc2e9f4c28ac4",
+      "actual_sha256": "3442ef1351cf5da8f47bd322c373b2cbf8c03aa8ec78696c8fccc2e9f4c28ac4",
+      "unchanged": true
+    },
+    "experiments/octane/upstream_sha256.txt": {
+      "expected_sha256": "226ae24b505ce3190584173b7ecd25bb473d7899294fb7f87bddccbb37b969f6",
+      "actual_sha256": "226ae24b505ce3190584173b7ecd25bb473d7899294fb7f87bddccbb37b969f6",
+      "unchanged": true
+    },
+    "experiments/octane/prepare.py": {
+      "expected_sha256": "f0d831b054a0737942a4d83ea02f75264a1ccffb0fbdc6367a966595159a861a",
+      "actual_sha256": "f0d831b054a0737942a4d83ea02f75264a1ccffb0fbdc6367a966595159a861a",
+      "unchanged": true
+    },
+    "experiments/interpreter_mode_execution/summary/audit.json": {
+      "expected_sha256": "045d89fe574811775871b539909dd650427f24c967280cae72e60cc5bb48bec8",
+      "actual_sha256": "045d89fe574811775871b539909dd650427f24c967280cae72e60cc5bb48bec8",
+      "unchanged": true
+    },
+    "experiments/octane/raw/measurements.csv": {
+      "expected_sha256": "28e98f7f9574d396560de8fcdbf67bca5eb87a0b18834730621f358727c95c4a",
+      "actual_sha256": "28e98f7f9574d396560de8fcdbf67bca5eb87a0b18834730621f358727c95c4a",
+      "unchanged": true
+    },
+    "results/raw/sunspider.csv": {
+      "expected_sha256": "1e27d75a7d38ab48d5fd3a8b30b8d29b4c47b9ba648a9f080fd10ee3b968df82",
+      "actual_sha256": "1e27d75a7d38ab48d5fd3a8b30b8d29b4c47b9ba648a9f080fd10ee3b968df82",
+      "unchanged": true
+    }
+  },
+  "failures": 0,
+  "timer": "Date.now",
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "seed": 20260928,
+  "execution_aggregation": "subbenchmark median ratio -> suite GM -> equal-suite overall GM",
+  "old_native_aggregation": "per sample GM(subbenchmark time) -> engine median -> ratio; not commutable",
+  "raw_sha256": "7266972ded6ca02c34b7165b42c6f78cbd669b608fc06c0ee72ebb6167a108cb",
+  "config_sha256": "a097ecc8a2e6da10beff708ecfed5ea3eed3b237952c9898e6da338b2f639359",
+  "strict_summary_sha256": "86ad0f8cda6de999f3a77fb32d49393e0edb615b2833a733011364583ed7d963"
+}
