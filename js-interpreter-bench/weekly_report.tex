@@ -131,7 +131,7 @@
 \vspace{1.5mm}
 \smallfont
 问题：SunSpider 短，startup/frontend 的影响可能较大；当前尚未量化其占比。\par
-Windows 11 x64；冻结 upstream QuickJS 2026-06-04 与 V8 15.6.21（d8）。
+Windows 11 x64；所用版本： QuickJS 2026-06-04 与 V8 15.6.21（d8）。
 \source{SunSpider 首轮结果；frontend isolation 与内部计时实验 README/results。}
 \end{frame}
 
@@ -305,14 +305,14 @@ SunSpider 与 Octane 的 workload 不同；不能用两套 GM 的差值计算 fr
     \begin{itemize}\compactitems\setlength{\itemsep}{.5mm}
       \item 测量边界改变时，结果关系明显变化。
       \item SunSpider 内部计时：V8 \blue{21/26} median 较低。
-      \item Octane 两模式：V8 \blue{12/13} median 较低。
+      \item Octane ：V8 \blue{12/13} median 较低。
     \end{itemize}
     \vspace{1mm}
     \heading{不能确认：机制与分项贡献}
     \begin{itemize}\compactitems\setlength{\itemsep}{.5mm}
       \item 不是 pure interpreter-loop self time；GC、builtin、regexp/helper 等仍计入。
       \item 不能归因于 dispatch、TOS caching、pinning、IC 或 opcode fusion。
-      \item frontend 各部分贡献：\blue{UNKNOWN}。
+      \item frontend 各部分贡献：UNKNOWN。
     \end{itemize}
     \vspace{1mm}
     {\smallfont\textbf{可能解释（待证）：}一次性成本/状态差异。}
@@ -340,9 +340,7 @@ SunSpider 与 Octane 的 workload 不同；不能用两套 GM 的差值计算 fr
   \end{column}
 \end{columns}
 \vspace{1.5mm}
-\blue{下一阶段从“谁更快”转向“为什么，以及 QuickJS 缺少什么”。}\par
 \vspace{1mm}\smallfont
-当前结果提供研究动机；尚未完成上述 profiling，尚未确定创新点或实施新的 VM 优化。
 \source{SunSpider 内部计时 results.md；Octane notes.md 的 confirmed / possible / unknown 分类。}
 \end{frame}
 

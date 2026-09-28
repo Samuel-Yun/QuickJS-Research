@@ -1,0 +1,118 @@
+Compiled #BNzxiI into bytecode 331 instructions in 2.703035 ms.
+<global>#BNzxiI:[0x7f037a1641e0->0x7f0378012688, NoneGlobal, 331]: 53 instructions (0 16-bit instructions, 0 32-bit instructions, 37 instructions with metadata); 435 bytes (104 metadata bytes); 1 parameter(s); 16 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] new_func           dst:loc5, scope:loc4, functionDecl:0
+[   5] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  12] mov                dst:loc7, src:loc6
+[  15] put_to_scope       scope:loc7, var:0, value:loc5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  23] mov                dst:loc5, src:Undefined(const0)
+[  26] resolve_scope      dst:loc8, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  33] get_from_scope     dst:loc5, scope:loc8, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  42] mov                dst:loc7, src:String (atomic),8Bit:(1),length:(19): MARKER_BEFORE_TIMER, StructureID: 16777808(const1)
+[  45] call               dst:loc5, callee:loc5, argc:2, argv:14, valueProfile:2
+[  52] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[  59] resolve_scope      dst:loc8, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  66] get_from_scope     dst:loc8, scope:loc8, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  75] get_by_id          dst:loc7, base:loc8, property:4, valueProfile:4
+[  81] call               dst:loc7, callee:loc7, argc:1, argv:14, valueProfile:5
+[  88] put_to_scope       scope:loc6, var:2, value:loc7, getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  96] resolve_scope      dst:loc8, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[ 103] get_from_scope     dst:loc5, scope:loc8, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:6
+[ 112] mov                dst:loc7, src:String (atomic),8Bit:(1),length:(18): MARKER_TIMER_START, StructureID: 16777808(const2)
+[ 115] call               dst:loc5, callee:loc5, argc:2, argv:14, valueProfile:7
+[ 122] resolve_scope      dst:loc6, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[ 129] resolve_scope      dst:loc10, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[ 136] get_from_scope     dst:loc7, scope:loc10, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:8
+[ 145] mov                dst:loc9, src:Int32: 7(const3)
+[ 148] call               dst:loc7, callee:loc7, argc:2, argv:16, valueProfile:9
+[ 155] put_to_scope       scope:loc6, var:5, value:loc7, getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 163] resolve_scope      dst:loc6, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 170] resolve_scope      dst:loc8, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[ 177] get_from_scope     dst:loc8, scope:loc8, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:10
+[ 186] get_by_id          dst:loc7, base:loc8, property:4, valueProfile:11
+[ 192] call               dst:loc7, callee:loc7, argc:1, argv:14, valueProfile:12
+[ 199] resolve_scope      dst:loc8, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 206] get_from_scope     dst:loc9, scope:loc8, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:13
+[ 215] sub                dst:loc7, lhs:loc7, rhs:loc9, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[ 221] put_to_scope       scope:loc6, var:6, value:loc7, getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 229] resolve_scope      dst:loc8, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[ 236] get_from_scope     dst:loc5, scope:loc8, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:14
+[ 245] mov                dst:loc7, src:String (atomic),8Bit:(1),length:(17): MARKER_TIMER_STOP, StructureID: 16777808(const4)
+[ 248] call               dst:loc5, callee:loc5, argc:2, argv:14, valueProfile:15
+[ 255] mov                dst:loc5, src:Undefined(const0)
+[ 258] resolve_scope      dst:loc8, scope:loc4, var:7, resolveType:GlobalProperty, localScopeDepth:0
+[ 265] get_from_scope     dst:loc5, scope:loc8, var:7, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:16
+[ 274] mov                dst:loc9, src:String (atomic),8Bit:(1),length:(16): FRONTEND_RESULT:, StructureID: 16777808(const5)
+[ 277] resolve_scope      dst:loc10, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[ 284] get_from_scope     dst:loc10, scope:loc10, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:17
+[ 293] to_primitive       dst:loc10, src:loc10
+[ 296] mov                dst:loc11, src:String (atomic),8Bit:(1),length:(1): :, StructureID: 16777808(const6)
+[ 299] resolve_scope      dst:loc12, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 306] get_from_scope     dst:loc12, scope:loc12, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:18
+[ 315] to_primitive       dst:loc12, src:loc12
+[ 318] strcat             dst:loc7, src:loc9, count:4
+[ 322] call               dst:loc5, callee:loc5, argc:2, argv:14, valueProfile:19
+[ 329] ret                value:loc5
+Successors: [ ]
+
+
+Identifiers:
+  id0 = staticWorkload
+  id1 = printErr
+  id2 = started
+  id3 = Date
+  id4 = now
+  id5 = result
+  id6 = elapsed
+  id7 = print
+
+Constants:
+   k0 = Undefined
+   k1 = String (atomic),8Bit:(1),length:(19): MARKER_BEFORE_TIMER, StructureID: 16777808
+   k2 = String (atomic),8Bit:(1),length:(18): MARKER_TIMER_START, StructureID: 16777808
+   k3 = Int32: 7: in source as integer
+   k4 = String (atomic),8Bit:(1),length:(17): MARKER_TIMER_STOP, StructureID: 16777808
+   k5 = String (atomic),8Bit:(1),length:(16): FRONTEND_RESULT:, StructureID: 16777808
+   k6 = String (atomic),8Bit:(1),length:(1): :, StructureID: 16777808
+
+MARKER_BEFORE_TIMER
+MARKER_TIMER_START
+Compiled #EV9BzV into bytecode 46 instructions in 0.083716 ms.
+staticWorkload#EV9BzV:[0x7f037a1642c0->0x7f037a13da80, NoneFunctionCall, 46]: 14 instructions (0 16-bit instructions, 0 32-bit instructions, 0 instructions with metadata); 46 bytes (0 metadata bytes); 2 parameter(s); 10 callee register(s); 7 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] mov                dst:loc5, src:Int32: 0(const0)
+[   4] mov                dst:loc6, src:Int32: 0(const0)
+[   7] jnless             lhs:loc6, rhs:Int32: 100(const1), targetLabel:37(->44)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 #2 ]
+[  11] loop_hint          
+[  12] check_traps        
+[  13] mov                dst:loc7, src:loc5
+[  16] add                dst:loc8, lhs:arg1, rhs:loc6, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[  22] bitxor             dst:loc8, lhs:loc8, rhs:Int32: 7(const2), profileIndex:1, operandTypes:OperandTypes(14, 3)
+[  28] add                dst:loc7, lhs:loc7, rhs:loc8, profileIndex:2, operandTypes:OperandTypes(126, 11)
+[  34] mov                dst:loc5, src:loc7
+[  37] inc                srcDst:loc6, profileIndex:0
+[  40] jless              lhs:loc6, rhs:Int32: 100(const1), targetLabel:-29(->11)
+Successors: [ #2 #3 ]
+
+bb#3
+Predecessors: [ #1 #2 ]
+[  44] ret                value:loc5
+Successors: [ ]
+
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = Int32: 100: in source as integer
+   k2 = Int32: 7: in source as integer
+
+MARKER_TIMER_STOP

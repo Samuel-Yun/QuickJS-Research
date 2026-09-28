@@ -1,0 +1,298 @@
+WARNING: clang and clang++ not found in PATH: building with the default system compiler instead of Clang.
++  cmake -DPORT="JSCOnly" -DCMAKE_BUILD_TYPE=Release -G Ninja -DSHOW_BINDINGS_GENERATION_PROGRESS=1 -DDEVELOPER_MODE=ON  -DENABLE_FTL_JIT=ON  /home/mzyx/jsc_webkit_fd3406f "/home/mzyx/jsc_webkit_fd3406f"
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The CMake build type is: Release
+-- Found Perl: /usr/bin/perl (found suitable version "5.38.2", minimum required is "5.10.0") 
+-- Found PerlModules: TRUE  found components: English FindBin JSON::PP 
+-- Found Python: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Ruby interpreter executable
+-- Ruby interpreter executable - /usr/bin/ruby (version: 3.2.3)
+-- Enabling ccache: Couldn't find ccache program. Not enabling it.
+-- Performing Test C_COMPILER_SUPPORTS_-fno-omit-frame-pointer
+-- Performing Test C_COMPILER_SUPPORTS_-fno-omit-frame-pointer - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-omit-frame-pointer
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-omit-frame-pointer - Success
+-- Performing Test C_COMPILER_SUPPORTS_-fdebug-types-section
+-- Performing Test C_COMPILER_SUPPORTS_-fdebug-types-section - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fdebug-types-section
+-- Performing Test CXX_COMPILER_SUPPORTS_-fdebug-types-section - Success
+-- Performing Test C_COMPILER_SUPPORTS_-gsimple-template-names
+-- Performing Test C_COMPILER_SUPPORTS_-gsimple-template-names - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-gsimple-template-names
+-- Performing Test CXX_COMPILER_SUPPORTS_-gsimple-template-names - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-mllvm -dwarf-linkage-names__Abstract
+-- Performing Test C_COMPILER_SUPPORTS_-mllvm -dwarf-linkage-names__Abstract - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-mllvm -dwarf-linkage-names__Abstract
+-- Performing Test CXX_COMPILER_SUPPORTS_-mllvm -dwarf-linkage-names__Abstract - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-fno-strict-aliasing
+-- Performing Test C_COMPILER_SUPPORTS_-fno-strict-aliasing - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-strict-aliasing
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-strict-aliasing - Success
+-- Performing Test C_COMPILER_SUPPORTS_-fwrapv
+-- Performing Test C_COMPILER_SUPPORTS_-fwrapv - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fwrapv
+-- Performing Test CXX_COMPILER_SUPPORTS_-fwrapv - Success
+-- Performing Test C_COMPILER_SUPPORTS_-fno-exceptions
+-- Performing Test C_COMPILER_SUPPORTS_-fno-exceptions - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-exceptions
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-exceptions - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-rtti
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-rtti - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fcoroutines
+-- Performing Test CXX_COMPILER_SUPPORTS_-fcoroutines - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fasynchronous-unwind-tables
+-- Performing Test CXX_COMPILER_SUPPORTS_-fasynchronous-unwind-tables - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-tautological-compare
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-tautological-compare - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-tautological-compare
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-tautological-compare - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wcast-align
+-- Performing Test C_COMPILER_SUPPORTS_-Wcast-align - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wcast-align
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wcast-align - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wformat-security
+-- Performing Test C_COMPILER_SUPPORTS_-Wformat-security - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wmissing-format-attribute
+-- Performing Test C_COMPILER_SUPPORTS_-Wmissing-format-attribute - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wpointer-arith
+-- Performing Test C_COMPILER_SUPPORTS_-Wpointer-arith - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wundef
+-- Performing Test C_COMPILER_SUPPORTS_-Wundef - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wformat-security
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wformat-security - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wmissing-format-attribute
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wmissing-format-attribute - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wpointer-arith
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wpointer-arith - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wundef
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wundef - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Qunused-arguments
+-- Performing Test C_COMPILER_SUPPORTS_-Qunused-arguments - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-parentheses-equality
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-parentheses-equality - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-misleading-indentation
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-misleading-indentation - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-psabi
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-psabi - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-nullability-completeness
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-nullability-completeness - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-Qunused-arguments
+-- Performing Test CXX_COMPILER_SUPPORTS_-Qunused-arguments - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-parentheses-equality
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-parentheses-equality - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-misleading-indentation
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-misleading-indentation - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-psabi
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-psabi - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-nullability-completeness
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-nullability-completeness - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-maybe-uninitialized
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-maybe-uninitialized - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-maybe-uninitialized
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-maybe-uninitialized - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-subobject-linkage
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-subobject-linkage - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-subobject-linkage
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-subobject-linkage - Success
+-- Performing Test C_COMPILER_SUPPORTS_-fno-unswitch-loops
+-- Performing Test C_COMPILER_SUPPORTS_-fno-unswitch-loops - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-unswitch-loops
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-unswitch-loops - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-noexcept-type
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-noexcept-type - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-expansion-to-defined
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-expansion-to-defined - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-expansion-to-defined
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-expansion-to-defined - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-array-bounds
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-array-bounds - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-nonnull
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-nonnull - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-stringop-overflow
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-stringop-overflow - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-stringop-overflow
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-stringop-overflow - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-stringop-overread
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-stringop-overread - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-odr
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-odr - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-invalid-offsetof
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-invalid-offsetof - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-dangling-pointer
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-dangling-pointer - Success
+-- Performing Test C_COMPILER_SUPPORTS_-fmax-errors__20
+-- Performing Test C_COMPILER_SUPPORTS_-fmax-errors__20 - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fmax-errors__20
+-- Performing Test CXX_COMPILER_SUPPORTS_-fmax-errors__20 - Success
+-- Performing Test C_COMPILER_SUPPORTS_-pipe
+-- Performing Test C_COMPILER_SUPPORTS_-pipe - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-pipe
+-- Performing Test CXX_COMPILER_SUPPORTS_-pipe - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Werror__undefined-inline
+-- Performing Test C_COMPILER_SUPPORTS_-Werror__undefined-inline - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-Werror__undefined-internal
+-- Performing Test C_COMPILER_SUPPORTS_-Werror__undefined-internal - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-Werror__undefined-inline
+-- Performing Test CXX_COMPILER_SUPPORTS_-Werror__undefined-inline - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-Werror__undefined-internal
+-- Performing Test CXX_COMPILER_SUPPORTS_-Werror__undefined-internal - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-character-conversion
+-- Performing Test C_COMPILER_SUPPORTS_-Wno-character-conversion - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-character-conversion
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-character-conversion - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-Wall
+-- Performing Test C_COMPILER_SUPPORTS_-Wall - Success
+-- Performing Test C_COMPILER_SUPPORTS_-Wextra
+-- Performing Test C_COMPILER_SUPPORTS_-Wextra - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wall
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wall - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wextra
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wextra - Success
+-- Performing Test C_COMPILER_SUPPORTS_-fcolor-diagnostics
+-- Performing Test C_COMPILER_SUPPORTS_-fcolor-diagnostics - Failed
+-- Performing Test C_COMPILER_SUPPORTS_-fdiagnostics-color__always
+-- Performing Test C_COMPILER_SUPPORTS_-fdiagnostics-color__always - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fcolor-diagnostics
+-- Performing Test CXX_COMPILER_SUPPORTS_-fcolor-diagnostics - Failed
+-- Performing Test CXX_COMPILER_SUPPORTS_-fdiagnostics-color__always
+-- Performing Test CXX_COMPILER_SUPPORTS_-fdiagnostics-color__always - Success
+-- Performing Test ATOMICS_ARE_BUILTIN
+-- Performing Test ATOMICS_ARE_BUILTIN - Failed
+-- Performing Test ATOMICS_REQUIRE_LIBATOMIC
+-- Performing Test ATOMICS_REQUIRE_LIBATOMIC - Success
+-- Performing Test STD_FILESYSTEM_IS_AVAILABLE
+-- Performing Test STD_FILESYSTEM_IS_AVAILABLE - Success
+-- Performing Test HAVE_FLOAT16
+-- Performing Test HAVE_FLOAT16 - Success
+-- Linker variant in use: BFD 
+--   Linker supports thin archives - TRUE
+--   Linker supports split debug info - TRUE
+--   Linker supports --gdb-index - FALSE
+--   Linker supports --disable-new-dtags - TRUE
+--   Linker supports --gc-sections - TRUE
+-- Archiver variant in use: BFD
+--   Archiver supports thin archives - TRUE
+-- Performing Test C_COMPILER_SUPPORTS_-ffunction-sections
+-- Performing Test C_COMPILER_SUPPORTS_-ffunction-sections - Success
+-- Performing Test C_COMPILER_SUPPORTS_-fdata-sections
+-- Performing Test C_COMPILER_SUPPORTS_-fdata-sections - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-ffunction-sections
+-- Performing Test CXX_COMPILER_SUPPORTS_-ffunction-sections - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fdata-sections
+-- Performing Test CXX_COMPILER_SUPPORTS_-fdata-sections - Success
+-- Performing Test CXX_STDLIB_IS_LIBCPP
+-- Performing Test CXX_STDLIB_IS_LIBCPP - Failed
+-- Performing Test CXX_STDLIB_IS_GLIBCXX
+-- Performing Test CXX_STDLIB_IS_GLIBCXX - Success
+-- C++ standard library in use: GLIBCXX
+--   Assertions enabled, _GLIBCXX_ASSERTIONS=1
+-- Looking for features.h
+-- Looking for features.h - found
+-- Looking for errno.h
+-- Looking for errno.h - found
+-- Looking for langinfo.h
+-- Looking for langinfo.h - found
+-- Looking for sys/mman.h
+-- Looking for sys/mman.h - found
+-- Looking for pthread_np.h
+-- Looking for pthread_np.h - not found
+-- Looking for sys/param.h
+-- Looking for sys/param.h - found
+-- Looking for sys/time.h
+-- Looking for sys/time.h - found
+-- Looking for sys/timeb.h
+-- Looking for sys/timeb.h - found
+-- Looking for linux/memfd.h
+-- Looking for linux/memfd.h - found
+-- Looking for _aligned_malloc
+-- Looking for _aligned_malloc - not found
+-- Looking for localtime_r
+-- Looking for localtime_r - found
+-- Looking for malloc_trim
+-- Looking for malloc_trim - found
+-- Looking for statx
+-- Looking for statx - found
+-- Looking for timegm
+-- Looking for timegm - found
+-- Looking for timerfd_create
+-- Looking for timerfd_create - found
+-- Looking for vasprintf
+-- Looking for vasprintf - found
+-- Looking for regexec
+-- Looking for regexec - found
+-- Looking for pthread_main_np
+-- Looking for pthread_main_np - not found
+-- Looking for MAP_ALIGNED
+-- Looking for MAP_ALIGNED - not found
+-- Looking for SHM_ANON
+-- Looking for SHM_ANON - not found
+-- Looking for timingsafe_bcmp
+-- Looking for timingsafe_bcmp - not found
+-- Looking for SIGTRAP
+-- Looking for SIGTRAP - found
+-- Performing Test HAVE_STAT_BIRTHTIME_value
+-- Performing Test HAVE_STAT_BIRTHTIME_value - Failed
+-- Performing Test HAVE_TM_GMTOFF_value
+-- Performing Test HAVE_TM_GMTOFF_value - Success
+-- Performing Test HAVE_TM_ZONE_value
+-- Performing Test HAVE_TM_ZONE_value - Success
+-- Performing Test INT128_IS_USABLE
+-- Performing Test INT128_IS_USABLE - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Disabling USE_SKIA_ENCODERS since USE_SKIA is disabled.
+-- Found the following ICU libraries:
+--   data (required): /usr/lib/x86_64-linux-gnu/libicudata.so
+--   i18n (required): /usr/lib/x86_64-linux-gnu/libicui18n.so
+--   uc (required): /usr/lib/x86_64-linux-gnu/libicuuc.so
+-- Found ICU: /usr/include (found suitable version "74.2", minimum required is "70.1") 
+-- Not recording the build settings: /home/mzyx/jsc_build_fd3406f/JSCOnly/Release is not in /home/mzyx/jsc_webkit_fd3406f/WebKitBuild
+-- Using platform-specific CMakeLists: /home/mzyx/jsc_webkit_fd3406f/Source/bmalloc/PlatformJSCOnly.cmake
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-missing-field-initializers
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-missing-field-initializers - Success
+-- Using platform-specific CMakeLists: /home/mzyx/jsc_webkit_fd3406f/Source/WTF/wtf/PlatformJSCOnly.cmake
+-- Copying generate-unified-source-bundles.py to: /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/WTF/Scripts
+CMake Error at Source/CMakeLists.txt:18 (add_subdirectory):
+  add_subdirectory given source "ThirdParty/unifdef" which is not an existing
+  directory.
+
+
+-- Using platform-specific CMakeLists: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/PlatformJSCOnly.cmake
+-- Performing Test CXX_COMPILER_SUPPORTS_-ffp-contract__off
+-- Performing Test CXX_COMPILER_SUPPORTS_-ffp-contract__off - Success
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-slp-vectorize
+-- Performing Test CXX_COMPILER_SUPPORTS_-fno-slp-vectorize - Failed
+-- Using source list file: Sources.txt
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-error__stack-exhausted
+-- Performing Test CXX_COMPILER_SUPPORTS_-Wno-error__stack-exhausted - Failed
+-- Platform-specific CMakeLists not found: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/shell/PlatformJSCOnly.cmake
+CMake Error at Source/CMakeLists.txt:31 (add_subdirectory):
+  add_subdirectory given source "ThirdParty/gtest" which is not an existing
+  directory.
+
+
+-- Platform-specific CMakeLists not found: /home/mzyx/jsc_webkit_fd3406f/Source/PlatformJSCOnly.cmake
+-- Platform-specific CMakeLists not found: /home/mzyx/jsc_webkit_fd3406f/Tools/PlatformJSCOnly.cmake
+CMake Error at Tools/CMakeLists.txt:25 (add_subdirectory):
+  add_subdirectory given source "TestWebKitAPI" which is not an existing
+  directory.
+
+
+-- Enabled features:
+--  ENABLE_FUZZILLI ........................................ OFF
+--  ENABLE_JSC_GLIB_API                                      OFF
+--  ENABLE_STATIC_JSC ...................................... OFF
+--  USE_LIBBACKTRACE                                         OFF
+-- Configuring incomplete, errors occurred!

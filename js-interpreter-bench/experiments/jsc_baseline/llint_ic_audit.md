@@ -1,0 +1,5 @@
+# LLInt inline-cache audit
+
+The current source defines `useLLIntICs` with default `true` in `engines/webkit-fd3406f/Source/JavaScriptCore/runtime/OptionsList.h:654` (“Use property and call ICs in LLInt code”). Both actual option dumps (`probes/tier/options_default.txt:499`, `options_llint_candidate.txt:499`) report `useLLIntICs=true`. Thus `--useJIT=false` does **not** disable this option.
+
+Property-access IC paths are gated by this option in `Source/JavaScriptCore/llint/LLIntSlowPaths.cpp:750,864,915,1089,1271,1401,1489,1532`; call IC paths are gated in `Source/JavaScriptCore/bytecode/CallLinkInfo.cpp:245,274`. The pinned binary accepted `--useLLIntICs=false`; its effective dump reported `useLLIntICs=false (default: true)` (`probes/tier/options_llint_ic_off_excerpt.txt`). This was only an option-acceptance check: we have **not** run an IC-on/off benchmark or established how each workload's cache-hit behavior changes. Keep the main LLInt-only baseline at its default `true` unless a separately documented mechanism experiment is authorized.

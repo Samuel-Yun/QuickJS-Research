@@ -1,0 +1,20 @@
+Frozen WebKit source commit: fd3406f133a4e56d7aaf399ba5611ae44b8da7e9
+Source identity mechanism: exact official Git commit, shallow/partial sparse checkout; no source archive hash (NOT_APPLICABLE)
+
+Executable: /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc
+Format: ELF 64-bit x86-64 PIE, dynamically linked
+Size: 633408 bytes
+SHA256: 65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f
+Version output: NOT_AVAILABLE; this jsc rejects --version. Use Git commit and binary hash.
+
+Direct JSC shared-library dependency: /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/lib/libJavaScriptCore.so.1.0.0
+Size: 44406776 bytes
+SHA256: 2ba4fe56f79c97cafafe065454bd5b5c6c168e536ab00d33d5cc48f65b375f79
+SONAME symlink: libJavaScriptCore.so.1
+Other ldd dependencies: libstdc++.so.6, libm.so.6, libc.so.6, libatomic.so.1, libicui18n.so.74, libicuuc.so.74, libicudata.so.74, libgcc_s.so.1, ld-linux-x86-64.so.2, linux-vdso.so.1
+System-library hashes: UNKNOWN; do not treat the two hashes above as a fully self-contained runtime artifact.
+
+Verification commands:
+  sha256sum /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/lib/libJavaScriptCore.so.1.0.0
+  stat -c '%n %s bytes' /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/lib/libJavaScriptCore.so.1.0.0
+  ldd /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc

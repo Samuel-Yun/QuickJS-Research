@@ -1,0 +1,24 @@
+JSC PHASE 1 ENVIRONMENT — mechanism validation only
+Source repository: https://github.com/WebKit/WebKit
+Frozen commit: fd3406f133a4e56d7aaf399ba5611ae44b8da7e9
+Commit date: 2026-09-19T23:07:14-07:00 (2026-09-20T06:07:14Z)
+Source branch: detached commit; fetched from official origin, not tracking main
+Windows sparse source checkout: C:\Users\mzyx\Desktop\0921\js-interpreter-bench\engines\webkit-fd3406f
+Windows checkout verification: git rev-parse HEAD = fixed commit; git status --short = empty
+WSL source copy: /home/mzyx/jsc_webkit_fd3406f
+WSL build directory: /home/mzyx/jsc_build_fd3406f/JSCOnly/Release
+
+Host: Windows 11 Home x64, build 26200; AMD Ryzen 7 5800H, 8 physical / 16 logical cores, 17,024,741,376 bytes installed RAM (platform_windows.md)
+Guest: Ubuntu 24.04.2 LTS on WSL2, Linux 5.15.167.4-microsoft-standard-WSL2, x86_64, 7.7 GiB guest-visible RAM
+Compiler: GCC/G++ 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1)
+CMake: 3.28.3
+Ninja: 1.11.1
+Ruby: 3.2.3
+gperf: 3.1
+ICU: Ubuntu libicu-dev 74.2; actual binary links libicui18n.so.74 / libicuuc.so.74 / libicudata.so.74
+Build type: Release (CMakeCache.txt)
+Architecture: ELF x86-64 on WSL; NOT Windows PE/x64
+Windows-native JSC candidate: not acquired; official Windows buildbot API denied access, available local toolchain did not satisfy current source's clang-cl/Ruby/gperf requirements
+
+OS mismatch prevents direct timing comparison with existing Windows QuickJS/V8 results.
+PERFORMANCE_COMPARABILITY = NO
