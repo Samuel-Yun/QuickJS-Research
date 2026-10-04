@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "metric": "first-call-inclusive interpreter-mode execution time",
+  "clock": "Date.now",
+  "source_version": "SunSpider 1.0.2",
+  "source_commit": "fd3406f133a4e56d7aaf399ba5611ae44b8da7e9",
+  "cases": [
+    "3d-cube",
+    "3d-morph",
+    "3d-raytrace",
+    "access-binary-trees",
+    "access-fannkuch",
+    "access-nbody",
+    "access-nsieve",
+    "bitops-3bit-bits-in-byte",
+    "bitops-bits-in-byte",
+    "bitops-bitwise-and",
+    "bitops-nsieve-bits",
+    "controlflow-recursive",
+    "crypto-aes",
+    "crypto-md5",
+    "crypto-sha1",
+    "date-format-tofte",
+    "date-format-xparb",
+    "math-cordic",
+    "math-partial-sums",
+    "math-spectral-norm",
+    "regexp-dna",
+    "string-base64",
+    "string-fasta",
+    "string-tagcloud",
+    "string-unpack-code",
+    "string-validate-input"
+  ],
+  "engines": [
+    "quickjs",
+    "v8",
+    "jsc"
+  ],
+  "main_mode": "MAIN",
+  "mode_policies": {
+    "MAIN": {
+      "warmup_calls": 0
+    },
+    "DIAGNOSTIC_ONE_EXPLICIT_WARMUP": {
+      "warmup_calls": 1,
+      "cases": [
+        "access-binary-trees",
+        "date-format-xparb",
+        "regexp-dna",
+        "string-unpack-code"
+      ]
+    }
+  },
+  "diagnostic_selection_predeclared": true,
+  "repetitions": 30,
+  "schedule_seed": 20261005,
+  "order_policy": "all six engine permutations exactly five times per case; case and permutation assignment shuffled by seed",
+  "calibration": {
+    "target_ms_each_engine": 1000,
+    "N_sequence": "1,2,4,...",
+    "max_N": 65536,
+    "timeout_seconds_per_process": 300,
+    "first_common_crossing": true
+  },
+  "statistic": "internal elapsed_ms / N",
+  "stddev": "sample, denominator n-1",
+  "IQR": "Tukey median-of-halves; odd-length central value omitted",
+  "GM": "exp(mean(log(pairwise ratios of medians))); same complete three-engine case intersection",
+  "outlier_policy": "keep all valid samples, including below calibration threshold",
+  "correctness": "old exact checksum set plus unchanged upstream assertions/tolerances; every call checked in independent correctness processes",
+  "allowed_checksums": {
+    "3d-cube": [
+      "320"
+    ],
+    "3d-morph": [
+      "0"
+    ],
+    "3d-raytrace": [
+      "20969",
+      "20970"
+    ],
+    "access-binary-trees": [
+      "-4"
+    ],
+    "access-fannkuch": [
+      "22"
+    ],
+    "access-nbody": [
+      "-1.3524862408537381"
+    ],
+    "access-nsieve": [
+      "14302"
+    ],
+    "bitops-3bit-bits-in-byte": [
+      "512000"
+    ],
+    "bitops-bits-in-byte": [
+      "358400"
+    ],
+    "bitops-bitwise-and": [
+      "0"
+    ],
+    "bitops-nsieve-bits": [
+      "-1286749544853"
+    ],
+    "controlflow-recursive": [
+      "57775"
+    ],
+    "crypto-aes": [
+      "1343"
+    ],
+    "crypto-md5": [
+      "a831e91e0f70eddcb70dc61c6f82f6cd"
+    ],
+    "crypto-sha1": [
+      "2524d264def74cce2498bf112bedf00e6c0b796d"
+    ],
+    "date-format-tofte": [
+      "2008-05-01|Thursday, May 01, 2008 5:31:22 PM|1209718549000"
+    ],
+    "date-format-xparb": [
+      "2017-09-05|Tuesday, September 05, 2017 7:43:48 AM|1504652895000"
+    ],
+    "math-cordic": [
+      "10362.570468755888"
+    ],
+    "math-partial-sums": [
+      "60.08994194659945"
+    ],
+    "math-spectral-norm": [
+      "5.086694231303284"
+    ],
+    "regexp-dna": [
+      "249:300056"
+    ],
+    "string-base64": [
+      "32768"
+    ],
+    "string-fasta": [
+      "1456000"
+    ],
+    "string-tagcloud": [
+      "315241"
+    ],
+    "string-unpack-code": [
+      "511508"
+    ],
+    "string-validate-input": [
+      "462000"
+    ]
+  },
+  "checksum_expressions": {
+    "3d-cube": "i",
+    "3d-morph": "Math.round(testOutput * 1e12)",
+    "3d-raytrace": "testOutput.length",
+    "access-binary-trees": "ret",
+    "access-fannkuch": "ret",
+    "access-nbody": "ret",
+    "access-nsieve": "result",
+    "bitops-3bit-bits-in-byte": "sum",
+    "bitops-bits-in-byte": "result",
+    "bitops-bitwise-and": "result",
+    "bitops-nsieve-bits": "sum",
+    "controlflow-recursive": "result",
+    "crypto-aes": "decryptedText.length",
+    "crypto-md5": "md5Output",
+    "crypto-sha1": "sha1Output",
+    "date-format-tofte": "shortFormat + '|' + longFormat + '|' + date.getTime()",
+    "date-format-xparb": "shortFormat + '|' + longFormat + '|' + date.getTime()",
+    "math-cordic": "total",
+    "math-partial-sums": "total",
+    "math-spectral-norm": "total",
+    "regexp-dna": "dnaOutputString.length + ':' + dnaInput.length",
+    "string-base64": "str.length",
+    "string-fasta": "ret",
+    "string-tagcloud": "tagcloud.length",
+    "string-unpack-code": "result",
+    "string-validate-input": "endResult.length"
+  },
+  "case_tags": {
+    "3d-cube": [],
+    "3d-morph": [
+      "runtime-specialized"
+    ],
+    "3d-raytrace": [
+      "runtime-specialized"
+    ],
+    "access-binary-trees": [],
+    "access-fannkuch": [],
+    "access-nbody": [
+      "runtime-specialized"
+    ],
+    "access-nsieve": [],
+    "bitops-3bit-bits-in-byte": [],
+    "bitops-bits-in-byte": [],
+    "bitops-bitwise-and": [],
+    "bitops-nsieve-bits": [],
+    "controlflow-recursive": [],
+    "crypto-aes": [
+      "RegExp",
+      "runtime-specialized"
+    ],
+    "crypto-md5": [],
+    "crypto-sha1": [],
+    "date-format-tofte": [
+      "dynamic-code",
+      "runtime-specialized"
+    ],
+    "date-format-xparb": [
+      "dynamic-code",
+      "RegExp",
+      "runtime-specialized"
+    ],
+    "math-cordic": [
+      "runtime-specialized"
+    ],
+    "math-partial-sums": [
+      "runtime-specialized"
+    ],
+    "math-spectral-norm": [
+      "runtime-specialized"
+    ],
+    "regexp-dna": [
+      "RegExp",
+      "runtime-specialized"
+    ],
+    "string-base64": [
+      "runtime-specialized"
+    ],
+    "string-fasta": [],
+    "string-tagcloud": [
+      "RegExp",
+      "runtime-specialized"
+    ],
+    "string-unpack-code": [
+      "RegExp",
+      "runtime-specialized"
+    ],
+    "string-validate-input": [
+      "RegExp",
+      "runtime-specialized"
+    ]
+  },
+  "old_windows_data_used_for_ratios": false,
+  "runtime_manifest_sha256": "40c566a7213e0fd6c3421e849328cad074eec0736f12d42c9c29ada45c3d92dd",
+  "execution_contract_sha256": "b8510952b0e9030761fefda56c673853deed09af549b2075bad3572963ed8da2",
+  "standard_driver_sha256": "e839672ca4f9a83df45566f0b77b30cf2dea2df15ce48096a3a27b1b7f175d5c",
+  "static_frontend_exclusion": "UNKNOWN",
+  "formal_authorization": "Current user prompt explicitly authorizes correctness, calibration, sampling and independent audit; old preparation-stage authorization fields remain unchanged"
+}

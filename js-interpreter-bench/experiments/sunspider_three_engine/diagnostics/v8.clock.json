@@ -1,0 +1,17 @@
+{
+  "engine": "v8",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/diagnostics/clock_probe.js"
+  ],
+  "exit_code": 0,
+  "stdout": "CLOCK_DIAGNOSTIC:{\"timer_used_for_control\":\"performance.now\",\"Date_elapsed_ms\":5000,\"performance_elapsed_ms\":5000,\"samples\":30407562,\"backwards\":[],\"inconsistent_steps\":[]}\n",
+  "stderr": "",
+  "timestamp_utc": "2026-10-04T15:31:37.721412+00:00",
+  "script_sha256": "ea1ba1bff159c431344e818db8d7838f24945f3ed4db47e28e5481dd6cb57b4f",
+  "formal_sample": false
+}

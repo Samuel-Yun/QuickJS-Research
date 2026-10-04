@@ -1,0 +1,101 @@
+{
+  "status": "BLOCKED_TIMER",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "metric": "first-call-inclusive interpreter-mode execution time",
+  "timestamp_utc": "2026-10-04T15:40:57.933513+00:00",
+  "runtime_ready": true,
+  "runtime_dependencies_benchmark_harness_hashes_before_after": true,
+  "old_data_preserved": true,
+  "correctness_evidence_audit": "PASS",
+  "correctness_valid": 156,
+  "correctness_expected": 156,
+  "compatibility_intersection": [
+    "3d-cube",
+    "3d-morph",
+    "3d-raytrace",
+    "access-binary-trees",
+    "access-fannkuch",
+    "access-nbody",
+    "access-nsieve",
+    "bitops-3bit-bits-in-byte",
+    "bitops-bits-in-byte",
+    "bitops-bitwise-and",
+    "bitops-nsieve-bits",
+    "controlflow-recursive",
+    "crypto-aes",
+    "crypto-md5",
+    "crypto-sha1",
+    "date-format-tofte",
+    "date-format-xparb",
+    "math-cordic",
+    "math-partial-sums",
+    "math-spectral-norm",
+    "regexp-dna",
+    "string-base64",
+    "string-fasta",
+    "string-tagcloud",
+    "string-unpack-code",
+    "string-validate-input"
+  ],
+  "calibration_attempts": 163,
+  "pilot_payload_pass": 161,
+  "pilot_payload_fail": 2,
+  "provisional_selected_cases": [
+    "3d-cube",
+    "3d-morph",
+    "3d-raytrace",
+    "access-binary-trees",
+    "access-fannkuch",
+    "access-nbody"
+  ],
+  "selected_N_correctness": "NOT_RUN",
+  "clock_gate": "FAIL",
+  "clock_stabilization_observations": 36,
+  "clock_divergence_steps_ms": [
+    -34.690946,
+    85.490721,
+    -89.74646,
+    -1672.373059,
+    -2112.489859,
+    -1757.618375,
+    -2024.758686
+  ],
+  "internal_greater_than_external_clock_records": [
+    {
+      "case": "3d-raytrace",
+      "engine": "jsc",
+      "N": 64,
+      "elapsed_ms": 2482,
+      "outer_wall_ms": 875.465375
+    },
+    {
+      "case": "access-binary-trees",
+      "engine": "v8",
+      "N": 256,
+      "elapsed_ms": 3196,
+      "outer_wall_ms": 1489.970802
+    }
+  ],
+  "formal_valid": 0,
+  "formal_expected_if_all_compatible": 2340,
+  "formal_missing_positions": 2340,
+  "formal_duplicate_positions": 0,
+  "formal_permutation_audit": "NOT_RUN",
+  "formal_command_hash_audit": "NOT_RUN",
+  "performance_intersection": [],
+  "GM": {
+    "V8/QJS": null,
+    "JSC/QJS": null,
+    "JSC/V8": null
+  },
+  "diagnostic_warmup_performance": "NOT_RUN",
+  "clock_cause": "UNKNOWN: NTP / WSL / Windows host not isolated",
+  "runtime_mode_frontend_unknown_is_blocker": false,
+  "system_clock_or_services_modified": false,
+  "core_workload_or_flags_modified": false,
+  "errors": [],
+  "recovery": [
+    "Fix and verify Date.now clock quality, then start a fresh calibration attempt; do not reuse contaminated pilots",
+    "Alternatively authorize one uniform monotonic clock mode for all three engines; validate semantics/resolution and use independent mode/calibration/raw/statistics"
+  ]
+}

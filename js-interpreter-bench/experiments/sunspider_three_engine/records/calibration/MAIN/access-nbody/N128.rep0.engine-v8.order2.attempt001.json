@@ -1,0 +1,43 @@
+{
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "mode": "MAIN",
+  "stage": "calibration",
+  "case": "access-nbody",
+  "engine": "v8",
+  "N": 128,
+  "rep": 0,
+  "order": 2,
+  "round_case_position": 0,
+  "permutation": [],
+  "schedule_index": 0,
+  "attempt": 1,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-nbody.N128.main.js"
+  ],
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-nbody.N128.main.js",
+  "script_sha256": "80311d1d7a879a46d44f459242c14f74af72717fcfa8a86245b43b75ba64f9c2",
+  "timestamp_utc": "2026-10-04T15:29:13.802396+00:00",
+  "elapsed_ms": 2735,
+  "elapsed_per_call": 21.3671875,
+  "checksum": "-1.3524862408537381",
+  "warmup_calls": 0,
+  "checks_each_call": false,
+  "timeout_seconds": 300,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-nbody\",\"mode\":\"main\",\"N\":128,\"checksum\":\"-1.3524862408537381\",\"correctness\":\"PASS\",\"timer\":\"Date.now\",\"elapsed_ms\":2735,\"elapsed_per_call_ms\":21.3671875,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "outer_wall_ns": 2765205014,
+  "valid": true,
+  "status": "PASS",
+  "error": ""
+}

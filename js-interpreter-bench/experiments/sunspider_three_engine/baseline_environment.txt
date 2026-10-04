@@ -1,0 +1,160 @@
+Cohort: wsl2-ubuntu2404-x64-20261004
+WSL2 Ubuntu x86_64 on the same Windows host
+This cohort may only compare its three Linux runtimes with each other, never old Windows timings.
+uname:
+Linux LAPTOP-QPKCPDCB 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+
+os:
+PRETTY_NAME="Ubuntu 24.04.2 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.2 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+cpu:
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        48 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               16
+On-line CPU(s) list:                  0-15
+Vendor ID:                            AuthenticAMD
+Model name:                           AMD Ryzen 7 5800H with Radeon Graphics
+CPU family:                           25
+Model:                                80
+Thread(s) per core:                   2
+Core(s) per socket:                   8
+Socket(s):                            1
+Stepping:                             0
+BogoMIPS:                             6387.84
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
+Virtualization:                       AMD-V
+Hypervisor vendor:                    Microsoft
+Virtualization type:                  full
+L1d cache:                            256 KiB (8 instances)
+L1i cache:                            256 KiB (8 instances)
+L2 cache:                             4 MiB (8 instances)
+L3 cache:                             16 MiB (1 instance)
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Mitigation; safe RET
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+memory:
+               total        used        free      shared  buff/cache   available
+Mem:      8252641280   731598848  7100469248     3350528   663486464  7521042432
+Swap:     2147483648           0  2147483648
+
+disk:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc       1007G   18G  939G   2% /
+
+gcc:
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+make:
+GNU Make 4.3
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+python:
+Python 3.12.3
+
+cmake:
+cmake version 3.28.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+
+ninja:
+1.11.1
+
+load:
+0.15 0.03 0.01 1/333 658
+
+processes:
+COMMAND         %CPU %MEM
+python3         19.0  0.2
+dockerd          4.9  1.1
+systemd          3.5  0.1
+snapd            1.5  0.5
+containerd       1.4  0.6
+systemd-journal  1.1  0.1
+systemd-udevd    0.9  0.0
+systemd          0.8  0.1
+unattended-upgr  0.7  0.2
+systemd-resolve  0.7  0.1
+systemd-logind   0.6  0.1
+systemd-timedat  0.5  0.0
+rsyslogd         0.5  0.0
+systemd-timesyn  0.5  0.0
+(udev-worker)    0.3  0.0
+(udev-worker)    0.3  0.0
+dbus-daemon      0.2  0.0
+(udev-worker)    0.2  0.0
+(udev-worker)    0.2  0.0
+bash             0.1  0.0
+(udev-worker)    0.1  0.0
+(udev-worker)    0.1  0.0
+(udev-worker)    0.1  0.0
+init-systemd(Ub  0.0  0.0
+init             0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+(udev-worker)    0.0  0.0
+cron             0.0  0.0
+agetty           0.0  0.0
+agetty           0.0  0.0
+SessionLeader    0.0  0.0
+Relay(514)       0.0  0.0
+login            0.0  0.0
+(sd-pam)         0.0  0.0
+ps               0.0  0.0
+your 131072x1 screen size is bogus. expect trouble
+
+frequency_interfaces:
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor UNKNOWN
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq UNKNOWN
+
+CPU temperature, per-sample physical frequency, power limits, scheduler isolation: UNKNOWN.
+Background processes/load are a preparation-time snapshot, not a guarantee for future measurements.
+
+Windows host snapshot: runtime/windows_host_snapshot.json (2026-10-04 Asia/Shanghai).
+Host OS: Windows 11 Home China 10.0.26200; CPU AMD Ryzen 7 5800H, 8 physical / 16 logical processors; RAM 17024741376 bytes.
+Active power plan: 85d583c5-cf2e-4197-80fd-3789a227a72c, 均衡模式.
+CIM CurrentClockSpeed/MaxClockSpeed: 3201 MHz metadata, NOT actual per-sample frequency.
+BatteryStatus raw=2; EstimatedChargeRemaining=100. CPU temperature/power limits: UNKNOWN.
+Runtime builds: QuickJS GCC 13.3.0 upstream -O2; JSC existing JSCOnly Release -O3 -DNDEBUG; d8 official rel compiler revision/full flags UNKNOWN.
+Runtime system-library SHA256 and exact dependency paths: manifest.json.

@@ -1,0 +1,77 @@
+{
+  "timestamp_utc": "2026-10-04T15:40:57.879791+00:00",
+  "host": "LAPTOP-QPKCPDCB",
+  "system": "Linux",
+  "release": "5.15.167.4-microsoft-standard-WSL2",
+  "machine": "x86_64",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "WSL_DISTRO_NAME": "Ubuntu",
+  "TZ_environment": null,
+  "wall_localtime": "2026-10-04 23:40:57 CST",
+  "cpu_count": 16,
+  "load_average": [
+    0.2216796875,
+    0.04931640625,
+    0.01611328125
+  ],
+  "temperature": null,
+  "actual_physical_frequency": null,
+  "background_isolation": "UNKNOWN",
+  "power_limits": null,
+  "uname": {
+    "command": [
+      "uname",
+      "-a"
+    ],
+    "exit_code": 0,
+    "stdout": "Linux LAPTOP-QPKCPDCB 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux\n",
+    "stderr": ""
+  },
+  "os": {
+    "command": [
+      "cat",
+      "/etc/os-release"
+    ],
+    "exit_code": 0,
+    "stdout": "PRETTY_NAME=\"Ubuntu 24.04.2 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.2 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+    "stderr": ""
+  },
+  "cpu": {
+    "command": [
+      "lscpu"
+    ],
+    "exit_code": 0,
+    "stdout": "Architecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        48 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               16\nOn-line CPU(s) list:                  0-15\nVendor ID:                            AuthenticAMD\nModel name:                           AMD Ryzen 7 5800H with Radeon Graphics\nCPU family:                           25\nModel:                                80\nThread(s) per core:                   2\nCore(s) per socket:                   8\nSocket(s):                            1\nStepping:                             0\nBogoMIPS:                             6387.84\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm\nVirtualization:                       AMD-V\nHypervisor vendor:                    Microsoft\nVirtualization type:                  full\nL1d cache:                            256 KiB (8 instances)\nL1i cache:                            256 KiB (8 instances)\nL2 cache:                             4 MiB (8 instances)\nL3 cache:                             16 MiB (1 instance)\nVulnerability Gather data sampling:   Not affected\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Not affected\nVulnerability Mds:                    Not affected\nVulnerability Meltdown:               Not affected\nVulnerability Mmio stale data:        Not affected\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Not affected\nVulnerability Spec rstack overflow:   Mitigation; safe RET\nVulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl and seccomp\nVulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:             Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Not affected\n",
+    "stderr": ""
+  },
+  "memory": {
+    "command": [
+      "free",
+      "-b"
+    ],
+    "exit_code": 0,
+    "stdout": "               total        used        free      shared  buff/cache   available\nMem:      8252641280   712007680  7121432576     3350528   661417984  7540633600\nSwap:     2147483648           0  2147483648\n",
+    "stderr": ""
+  },
+  "disk": {
+    "command": [
+      "df",
+      "-h",
+      "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine"
+    ],
+    "exit_code": 0,
+    "stdout": "Filesystem      Size  Used Avail Use% Mounted on\nC:\\             200G  181G   20G  91% /mnt/c\n",
+    "stderr": ""
+  },
+  "load": {
+    "command": [
+      "ps",
+      "-eo",
+      "pid,comm,pcpu,pmem",
+      "--sort=-pcpu"
+    ],
+    "exit_code": 0,
+    "stdout": "    PID COMMAND         %CPU %MEM\n    639 wsl-pro-service  100  0.1\n    496 python3         11.6  0.2\n      1 systemd          2.2  0.1\n    258 dockerd          2.1  1.1\n    185 containerd       0.9  0.6\n     55 systemd-journal  0.8  0.2\n     97 systemd-udevd    0.6  0.0\n    192 unattended-upgr  0.5  0.2\n    154 systemd-logind   0.4  0.1\n    133 systemd-resolve  0.4  0.1\n    550 systemd          0.4  0.1\n    178 rsyslogd         0.3  0.0\n    107 (udev-worker)    0.3  0.0\n    257 systemd-timedat  0.2  0.0\n    134 systemd-timesyn  0.2  0.0\n    147 dbus-daemon      0.2  0.0\n    125 (udev-worker)    0.2  0.0\n    108 (udev-worker)    0.1  0.0\n    109 (udev-worker)    0.1  0.0\n    562 bash             0.0  0.0\n    124 (udev-worker)    0.0  0.0\n    112 (udev-worker)    0.0  0.0\n    114 (udev-worker)    0.0  0.0\n    106 (udev-worker)    0.0  0.0\n      2 init-systemd(Ub  0.0  0.0\n      9 init             0.0  0.0\n    105 (udev-worker)    0.0  0.0\n    111 (udev-worker)    0.0  0.0\n    113 (udev-worker)    0.0  0.0\n    115 (udev-worker)    0.0  0.0\n    116 (udev-worker)    0.0  0.0\n    117 (udev-worker)    0.0  0.0\n    122 (udev-worker)    0.0  0.0\n    123 (udev-worker)    0.0  0.0\n    146 cron             0.0  0.0\n    162 agetty           0.0  0.0\n    184 agetty           0.0  0.0\n    490 SessionLeader    0.0  0.0\n    492 Relay(496)       0.0  0.0\n    503 login            0.0  0.0\n    551 (sd-pam)         0.0  0.0\n    650 ps               0.0  0.0\n",
+    "stderr": "your 131072x1 screen size is bogus. expect trouble\n"
+  }
+}

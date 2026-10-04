@@ -1,0 +1,12 @@
+{
+  "command": [
+    "systemctl",
+    "status",
+    "systemd-timesyncd",
+    "chrony",
+    "--no-pager"
+  ],
+  "exit_code": 4,
+  "stdout": "● systemd-timesyncd.service - Network Time Synchronization\n     Loaded: loaded (/usr/lib/systemd/system/systemd-timesyncd.service; enabled; preset: enabled)\n    Drop-In: /usr/lib/systemd/system/systemd-timesyncd.service.d\n             └─wsl.conf\n     Active: active (running) since Sun 2026-10-04 23:31:21 CST; 21s ago\n       Docs: man:systemd-timesyncd.service(8)\n   Main PID: 135 (systemd-timesyn)\n     Status: \"Contacted time server 91.189.91.157:123 (ntp.ubuntu.com).\"\n      Tasks: 2 (limit: 9436)\n     Memory: 1.4M ()\n     CGroup: /system.slice/systemd-timesyncd.service\n             └─135 /usr/lib/systemd/systemd-timesyncd\n\nOct 04 23:31:21 LAPTOP-QPKCPDCB systemd[1]: Starting systemd-timesyncd.service - Network Time Synchronization...\nOct 04 23:31:21 LAPTOP-QPKCPDCB systemd[1]: Started systemd-timesyncd.service - Network Time Synchronization.\nOct 04 23:31:19 LAPTOP-QPKCPDCB systemd-timesyncd[135]: Contacted time server 91.189.91.157:123 (ntp.ubuntu.com).\nOct 04 23:31:19 LAPTOP-QPKCPDCB systemd-timesyncd[135]: Initial clock synchronization to Sun 2026-10-04 23:31:19.966625 CST.\n",
+  "stderr": "Unit chrony.service could not be found.\n"
+}

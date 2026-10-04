@@ -1,0 +1,6 @@
+{
+  "timestamp_utc": "2026-10-04T15:25:37.137116+00:00",
+  "type": "RuntimeError",
+  "message": "calibration failed: 3d-morph MAIN",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/run.py\", line 63, in <module>\n    main()\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/run.py\", line 40, in main\n    selected = x.calibrate(mode, cases)\n               ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/experiment.py\", line 339, in calibrate\n    raise RuntimeError('calibration failed: ' + c + ' ' + mode)\nRuntimeError: calibration failed: 3d-morph MAIN\n"
+}

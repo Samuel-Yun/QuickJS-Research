@@ -1,0 +1,43 @@
+{
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "mode": "MAIN",
+  "stage": "calibration",
+  "case": "access-nsieve",
+  "engine": "v8",
+  "N": 16,
+  "rep": 0,
+  "order": 2,
+  "round_case_position": 0,
+  "permutation": [],
+  "schedule_index": 0,
+  "attempt": 1,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-nsieve.N16.main.js"
+  ],
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-nsieve.N16.main.js",
+  "script_sha256": "125906926efb87fc95f549a7e28cd234499028df9030e5839befa04bb5f140fe",
+  "timestamp_utc": "2026-10-04T15:29:20.298181+00:00",
+  "elapsed_ms": null,
+  "elapsed_per_call": null,
+  "checksum": null,
+  "warmup_calls": 0,
+  "checks_each_call": false,
+  "timeout_seconds": 300,
+  "exit_code": 1,
+  "stdout": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-nsieve.N16.main.js:74: Error: invalid timer interval\n    throw new Error('invalid timer interval');\n    ^\nError: invalid timer interval\n    at /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-nsieve.N16.main.js:74:11\n    at /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-nsieve.N16.main.js:82:3\n\n",
+  "stderr": "",
+  "outer_wall_ns": 213183336,
+  "valid": false,
+  "status": "FAIL",
+  "error": "exit/stderr gate failed"
+}

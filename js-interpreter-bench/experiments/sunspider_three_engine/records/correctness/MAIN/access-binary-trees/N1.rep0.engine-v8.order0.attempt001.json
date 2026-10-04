@@ -1,0 +1,43 @@
+{
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "mode": "MAIN",
+  "stage": "correctness",
+  "case": "access-binary-trees",
+  "engine": "v8",
+  "N": 1,
+  "rep": 0,
+  "order": 0,
+  "round_case_position": 0,
+  "permutation": [],
+  "schedule_index": 0,
+  "attempt": 1,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-binary-trees.N1.correctness.js"
+  ],
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/generated/MAIN/access-binary-trees.N1.correctness.js",
+  "script_sha256": "be07d53b74595f643f32fbaf894b23c1544987bc36215fb29664f14319fde63c",
+  "timestamp_utc": "2026-10-04T15:24:22.113755+00:00",
+  "elapsed_ms": null,
+  "elapsed_per_call": null,
+  "checksum": "-4",
+  "warmup_calls": 0,
+  "checks_each_call": true,
+  "timeout_seconds": 300,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"correctness\",\"N\":1,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"Date.now\",\"elapsed_ms\":null,\"elapsed_per_call_ms\":null,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "outer_wall_ns": 32294271,
+  "valid": true,
+  "status": "PASS",
+  "error": ""
+}
