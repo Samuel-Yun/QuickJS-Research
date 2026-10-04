@@ -1,0 +1,40 @@
+{
+  "repository": "https://github.com/bellard/quickjs.git",
+  "commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "source_archive": {
+    "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/quickjs-04be246-source.tar",
+    "sha256": "0b3eb8f680b0a8f9367af39727b34758265fcbc8090554912e1357094d04d4e5",
+    "size_bytes": 3481600
+  },
+  "source_path": "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "source_identity": "git archive of exact clean existing official checkout; no patch",
+  "compiler": {
+    "command": [
+      "gcc",
+      "--version"
+    ],
+    "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+    "exit_code": 0,
+    "stdout": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "compiler_path": "/usr/bin/gcc",
+  "build_command": [
+    "make",
+    "-j2",
+    "qjs",
+    "qjsc"
+  ],
+  "optimization": "-O2 from upstream Makefile; no LTO/sanitizer/march=native supplied",
+  "assertions": "upstream Makefile defaults; no NDEBUG override",
+  "qjs": {
+    "path": "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs",
+    "sha256": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+    "size_bytes": 5090744
+  },
+  "qjsc": {
+    "path": "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjsc",
+    "sha256": "aa65a473e6ddafcfe1deb1c69477f88b6991c5feee6ca442b39bc08847183d75",
+    "size_bytes": 5083608
+  }
+}

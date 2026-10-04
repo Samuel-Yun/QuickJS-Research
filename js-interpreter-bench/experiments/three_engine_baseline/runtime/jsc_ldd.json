@@ -1,0 +1,10 @@
+{
+  "command": [
+    "ldd",
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "exit_code": 0,
+  "stdout": "\tlinux-vdso.so.1 (0x00007ffe25b1b000)\n\tlibJavaScriptCore.so.1 => /home/mzyx/jsc_build_fd3406f/JSCOnly/Release/lib/libJavaScriptCore.so.1 (0x00007f7f07d38000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f7f07ab3000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f7f079ca000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7f077b7000)\n\tlibatomic.so.1 => /lib/x86_64-linux-gnu/libatomic.so.1 (0x00007f7f077ac000)\n\tlibicui18n.so.74 => /lib/x86_64-linux-gnu/libicui18n.so.74 (0x00007f7f0745c000)\n\tlibicuuc.so.74 => /lib/x86_64-linux-gnu/libicuuc.so.74 (0x00007f7f0724f000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f7f07221000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f7f0a199000)\n\tlibicudata.so.74 => /lib/x86_64-linux-gnu/libicudata.so.74 (0x00007f7f054c1000)\n",
+  "stderr": ""
+}

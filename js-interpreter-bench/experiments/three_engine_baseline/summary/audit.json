@@ -1,0 +1,206 @@
+{
+  "status": "READY_FIRST_CALL_INCLUSIVE",
+  "cohort_id": "wsl2-ubuntu2404-x64-20261004",
+  "platform": "WSL2 Ubuntu 24.04.2 x86_64",
+  "same_host_os_architecture": true,
+  "old_windows_results_comparable": false,
+  "runtime_hashes_verified": true,
+  "runtime_hash_verification_evidence": "Successful WSL diagnose_regexp.py calls cohort.verify before the recorded probe; all runtime/dependency/input/old-data hashes checked",
+  "latest_runtime_verification_timestamp_utc": "2026-10-04T14:40:28.187687+00:00",
+  "runtime_reverification_required_before_future_sampling": true,
+  "audit_method": "Read-only materialized-evidence and input/old-data hash audit; no new runtime execution",
+  "execution_mode_gates": {
+    "v8": {
+      "pass": true,
+      "trace_supported": {
+        "--trace-baseline": true,
+        "--trace-opt": true,
+        "--trace-opt-status": true,
+        "--trace-deopt": true,
+        "--trace-osr": true,
+        "--print-bytecode": true
+      },
+      "effective_flags": {
+        "--max-opt=0": true,
+        "--no-sparkplug": true,
+        "--no-maglev": true,
+        "--no-turbofan": true,
+        "--no-lazy": true
+      },
+      "counts": {
+        "default": {
+          "sparkplug_compilation": 11,
+          "maglev_compilation": 7,
+          "turbofan_compilation": 6,
+          "successful_osr_entry": 2,
+          "baseline_status": 5,
+          "maglev_status": 3,
+          "turbofan_status": 3,
+          "interpreted_status": 6
+        },
+        "candidate": {
+          "sparkplug_compilation": 0,
+          "maglev_compilation": 0,
+          "turbofan_compilation": 0,
+          "successful_osr_entry": 0,
+          "baseline_status": 0,
+          "maglev_status": 0,
+          "turbofan_status": 0,
+          "interpreted_status": 333
+        }
+      },
+      "ignition_bytecode_observed": true,
+      "regexp_interpret_all": false,
+      "bytecode_flushing_enabled": true
+    },
+    "jsc": {
+      "pass": true,
+      "options": {
+        "default": {
+          "useLLInt": true,
+          "useJIT": true,
+          "useBaselineJIT": true,
+          "useDFGJIT": true,
+          "useFTLJIT": true,
+          "useRegExpJIT": true,
+          "useLLIntICs": true,
+          "reportBytecodeCompileTimes": false,
+          "reportBytecodeCacheDecodeTimes": false
+        },
+        "candidate": {
+          "useLLInt": true,
+          "useJIT": false,
+          "useBaselineJIT": false,
+          "useDFGJIT": false,
+          "useFTLJIT": false,
+          "useRegExpJIT": false,
+          "useLLIntICs": true,
+          "reportBytecodeCompileTimes": false,
+          "reportBytecodeCacheDecodeTimes": false
+        }
+      },
+      "counts": {
+        "default": {
+          "baseline_compilation": 2,
+          "dfg_code_events": 2,
+          "ftl_code_events": 1,
+          "successful_osr": 2,
+          "llint_installations": 3,
+          "osr_slowpath_entries": 376
+        },
+        "candidate": {
+          "baseline_compilation": 0,
+          "dfg_code_events": 0,
+          "ftl_code_events": 0,
+          "successful_osr": 0,
+          "llint_installations": 3,
+          "osr_slowpath_entries": 2
+        }
+      },
+      "osr_slowpath_is_successful_osr": false
+    },
+    "quickjs": {
+      "pass": true,
+      "direct_dispatch_macro": true,
+      "dispatch_table_symbols": [
+        "00000000000fed80 d dispatch_table.83"
+      ],
+      "indexed_indirect_jumps": [
+        "   22cd2:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   22f0c:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   232ea:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   23904:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   265d7:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   26676:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   266dd:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   26743:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   26783:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   267e9:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   26829:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+        "   26868:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]"
+      ]
+    },
+    "all_mode_gates_pass": true
+  },
+  "main_metric": "first-call-inclusive interpreter-mode execution time",
+  "no_performance_warmup": true,
+  "static_frontend_exclusion": "UNKNOWN",
+  "frontend_prepared_no_warmup_ready": false,
+  "jsc_static_probe_generation_inside_region": true,
+  "timer": {
+    "quickjs": {
+      "date_available": true,
+      "date": {
+        "minimum_positive_delta_ms": 1,
+        "backwards": 0,
+        "changes": 11
+      },
+      "native_performance_available": true,
+      "performance": {
+        "minimum_positive_delta_ms": 0.00010999999904015567,
+        "backwards": 0,
+        "changes": 200000
+      }
+    },
+    "v8": {
+      "date_available": true,
+      "date": {
+        "minimum_positive_delta_ms": 1,
+        "backwards": 0,
+        "changes": 16
+      },
+      "native_performance_available": true,
+      "performance": {
+        "minimum_positive_delta_ms": 0.000999999999990564,
+        "backwards": 0,
+        "changes": 16713
+      }
+    },
+    "jsc": {
+      "date_available": true,
+      "date": {
+        "minimum_positive_delta_ms": 1,
+        "backwards": 0,
+        "changes": 10
+      },
+      "native_performance_available": true,
+      "performance": {
+        "minimum_positive_delta_ms": 0.019999999999999574,
+        "backwards": 0,
+        "changes": 742
+      }
+    }
+  },
+  "correctness": {
+    "expected": 72,
+    "actual": 72,
+    "pass": 72,
+    "all_pass": true
+  },
+  "regexp_trace_limitation": {
+    "trace_attempt_exit_code": -6,
+    "trace_flag_listed_in_help": true,
+    "trace_effectively_settable": false,
+    "reason": "Contradictory value for readonly flag --trace-regexp-tier-up",
+    "untraced_exit_code": 0,
+    "untraced_checksum_pass": true,
+    "v8_regexp_native_execution_observed": null,
+    "native_execution_permitted_by_effective_policy": true,
+    "main_runtime_flags_changed": false
+  },
+  "old_baseline_and_data_preserved": true,
+  "formal_samples_taken": 0,
+  "full_suite_compatibility": null,
+  "future_full_formal_run_authorized": false,
+  "v8_exact_artifact_source_commit": null,
+  "v8_exact_compiler_revision": null,
+  "binary_sha256": {
+    "quickjs": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+    "v8": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+    "jsc": "65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f"
+  },
+  "manifest_sha256": "40c566a7213e0fd6c3421e849328cad074eec0736f12d42c9c29ada45c3d92dd",
+  "input_manifest_sha256": "cb600ff173d5685da6d1eb614de8139702ecc059ad82486228a8e3068f9e4ea3",
+  "execution_contract_sha256": "b8510952b0e9030761fefda56c673853deed09af549b2075bad3572963ed8da2",
+  "materialized_auditor_sha256": "18de914783f665eb1179934ec8915d00d6912d529cedc65054100138aa5bc1ea"
+}

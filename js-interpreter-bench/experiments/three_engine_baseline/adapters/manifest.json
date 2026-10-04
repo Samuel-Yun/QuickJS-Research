@@ -1,0 +1,8 @@
+{
+  "scope": "Preloaded outside timer; same JS core/driver/config on all engines. JSC console bridge is called after timer except any original workload calls, which would remain included.",
+  "adapters": {
+    "quickjs": {"path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js", "sha256": "f20aa7b460675d08600a58945203034feb50b2a3515aba579219f648b1235c6c", "loading": "qjs -I adapter.js workload.js"},
+    "v8": {"path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js", "sha256": "0ab3ed677381191d7e7839cbbc3f07895104a8b8299679ab9f37b856d76d3a22", "loading": "d8 adapter.js workload.js"},
+    "jsc": {"path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js", "sha256": "f9ddbb9556352e283b9c9feebc8bdd0ef1abac5bcdf1ab7a5d83945fa3c9437b", "loading": "jsc adapter.js workload.js"}
+  }
+}

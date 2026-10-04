@@ -1,0 +1,30 @@
+{
+  "v8_trace_supported": true,
+  "results": {
+    "quickjs": {
+      "exit_code": 0,
+      "checksum_pass": true,
+      "native_compilation_messages": 0,
+      "jsc_regexp_jit_execution_messages": 0
+    },
+    "v8_candidate": {
+      "exit_code": -6,
+      "checksum_pass": false,
+      "native_compilation_messages": 0,
+      "jsc_regexp_jit_execution_messages": 0
+    },
+    "jsc_default": {
+      "exit_code": 0,
+      "checksum_pass": true,
+      "native_compilation_messages": 0,
+      "jsc_regexp_jit_execution_messages": 23000
+    },
+    "jsc_candidate": {
+      "exit_code": 0,
+      "checksum_pass": true,
+      "native_compilation_messages": 0,
+      "jsc_regexp_jit_execution_messages": 0
+    }
+  },
+  "note": "JS interpreter tier policy is separate from regex/native builtin policy; no timing comparison"
+}

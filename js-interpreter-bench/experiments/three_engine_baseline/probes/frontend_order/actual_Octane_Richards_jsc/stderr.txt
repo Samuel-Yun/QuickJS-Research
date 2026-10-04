@@ -1,0 +1,2867 @@
+Compiled #DCFNzb into bytecode 71 instructions in 0.052520 ms.
+<global>#DCFNzb:[0x7fc42d1641e0->0x7fc427012048, NoneGlobal, 71]: 14 instructions (0 16-bit instructions, 0 32-bit instructions, 8 instructions with metadata); 175 bytes (104 metadata bytes); 1 parameter(s); 8 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] mov                dst:loc5, src:Undefined(const0)
+[   4] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  11] get_from_scope     dst:loc6, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  20] new_object         dst:loc5, inlineCapacity:1
+[  24] new_func_exp       dst:loc7, scope:loc4, functionDecl:0
+[  28] put_by_id          base:loc5, property:1, value:loc7, flags:IsDirect
+[  34] put_by_id          base:loc6, property:2, value:loc5, flags:
+[  40] mov                dst:loc5, src:Undefined(const0)
+[  43] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  50] get_from_scope     dst:loc6, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:2
+[  59] new_func_exp       dst:loc5, scope:loc4, functionDecl:1
+[  63] put_by_id          base:loc6, property:3, value:loc5, flags:
+[  69] ret                value:loc5
+Successors: [ ]
+
+
+Identifiers:
+  id0 = globalThis
+  id1 = log
+  id2 = console
+  id3 = __TEB_marker
+
+Constants:
+   k0 = Undefined
+
+Compiled #DE6qli into bytecode 2199 instructions in 0.101823 ms.
+<global>#DE6qli:[0x7fc42d1642c0->0x7fc4270124c8, NoneGlobal, 2199]: 342 instructions (0 16-bit instructions, 0 32-bit instructions, 266 instructions with metadata); 2303 bytes (104 metadata bytes); 1 parameter(s); 30 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] new_func           dst:loc5, scope:loc4, functionDecl:0
+[   5] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  12] mov                dst:loc7, src:loc6
+[  15] put_to_scope       scope:loc7, var:0, value:loc5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  23] new_func           dst:loc8, scope:loc4, functionDecl:1
+[  27] put_to_scope       scope:loc7, var:1, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  35] new_func           dst:loc8, scope:loc4, functionDecl:2
+[  39] put_to_scope       scope:loc7, var:2, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  47] new_func           dst:loc8, scope:loc4, functionDecl:3
+[  51] put_to_scope       scope:loc7, var:3, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  59] new_func           dst:loc8, scope:loc4, functionDecl:4
+[  63] put_to_scope       scope:loc7, var:4, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  71] new_func           dst:loc8, scope:loc4, functionDecl:5
+[  75] put_to_scope       scope:loc7, var:5, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  83] new_func           dst:loc8, scope:loc4, functionDecl:6
+[  87] put_to_scope       scope:loc7, var:6, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  95] new_func           dst:loc8, scope:loc4, functionDecl:7
+[  99] put_to_scope       scope:loc7, var:7, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 107] new_func           dst:loc8, scope:loc4, functionDecl:8
+[ 111] put_to_scope       scope:loc7, var:8, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 119] new_func           dst:loc8, scope:loc4, functionDecl:9
+[ 123] put_to_scope       scope:loc7, var:9, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 131] new_func           dst:loc8, scope:loc4, functionDecl:10
+[ 135] put_to_scope       scope:loc7, var:10, value:loc8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 143] mov                dst:loc5, src:Undefined(const0)
+[ 146] resolve_scope      dst:loc6, scope:loc4, var:11, resolveType:GlobalProperty, localScopeDepth:0
+[ 153] resolve_scope      dst:loc7, scope:loc4, var:11, resolveType:GlobalProperty, localScopeDepth:0
+[ 160] get_from_scope     dst:loc7, scope:loc7, var:11, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[ 169] jtrue              condition:loc7, targetLabel:7(->176)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[ 172] new_object         dst:loc7, inlineCapacity:1
+Successors: [ #3 ]
+
+bb#3
+Predecessors: [ #1 #2 ]
+[ 176] put_to_scope       scope:loc6, var:11, value:loc7, getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 184] resolve_scope      dst:loc6, scope:loc4, var:11, resolveType:GlobalProperty, localScopeDepth:0
+[ 191] get_from_scope     dst:loc6, scope:loc6, var:11, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:2
+[ 200] new_func_exp       dst:loc7, scope:loc4, functionDecl:0
+[ 204] mov                dst:loc8, src:Undefined(const0)
+[ 207] call               dst:loc5, callee:loc7, argc:1, argv:14, valueProfile:3
+[ 214] put_by_id          base:loc6, property:12, value:loc5, flags:
+[ 220] resolve_scope      dst:loc7, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[ 227] get_from_scope     dst:loc8, scope:loc7, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:4
+[ 236] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:5
+[ 242] new_func_exp       dst:loc5, scope:loc4, functionDecl:1
+[ 246] put_by_id          base:loc6, property:14, value:loc5, flags:
+[ 252] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 259] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:6
+[ 268] new_array          dst:loc5, argv:callerFrame, argc:0, recommendedIndexingType:3
+[ 274] put_by_id          base:loc6, property:15, value:loc5, flags:
+[ 280] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 287] get_from_scope     dst:loc7, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:7
+[ 296] mov                dst:loc5, src:String (atomic),8Bit:(1),length:(1): 9, StructureID: 16777808(const1)
+[ 299] put_by_id          base:loc7, property:16, value:loc5, flags:
+[ 305] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 312] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:8
+[ 321] new_object         dst:loc5, inlineCapacity:2
+[ 325] resolve_scope      dst:loc7, scope:loc4, var:17, resolveType:GlobalProperty, localScopeDepth:0
+[ 332] get_from_scope     dst:loc8, scope:loc7, var:17, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:9
+[ 341] put_by_id          base:loc5, property:18, value:loc8, flags:IsDirect
+[ 347] resolve_scope      dst:loc7, scope:loc4, var:17, resolveType:GlobalProperty, localScopeDepth:0
+[ 354] get_from_scope     dst:loc8, scope:loc7, var:17, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:10
+[ 363] put_by_id          base:loc5, property:19, value:loc8, flags:IsDirect
+[ 369] put_by_id          base:loc6, property:20, value:loc5, flags:
+[ 375] resolve_scope      dst:loc6, scope:loc4, var:21, resolveType:GlobalProperty, localScopeDepth:0
+[ 382] new_func_exp       dst:loc5, scope:loc4, functionDecl:2
+[ 386] put_to_scope       scope:loc6, var:21, value:loc5, getPutInfo:1050624<DoNotThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 394] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 401] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:11
+[ 410] new_func_exp       dst:loc5, scope:loc4, functionDecl:3
+[ 414] put_by_id          base:loc6, property:22, value:loc5, flags:
+[ 420] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 427] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:12
+[ 436] new_func_exp       dst:loc5, scope:loc4, functionDecl:4
+[ 440] put_by_id          base:loc6, property:23, value:loc5, flags:
+[ 446] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 453] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:13
+[ 462] new_func_exp       dst:loc5, scope:loc4, functionDecl:5
+[ 466] put_by_id          base:loc6, property:24, value:loc5, flags:
+[ 472] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 479] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:14
+[ 488] new_func_exp       dst:loc5, scope:loc4, functionDecl:6
+[ 492] put_by_id          base:loc6, property:25, value:loc5, flags:
+[ 498] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 505] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:15
+[ 514] new_func_exp       dst:loc5, scope:loc4, functionDecl:7
+[ 518] put_by_id          base:loc6, property:26, value:loc5, flags:
+[ 524] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 531] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:16
+[ 540] new_func_exp       dst:loc5, scope:loc4, functionDecl:8
+[ 544] put_by_id          base:loc6, property:27, value:loc5, flags:
+[ 550] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 557] get_from_scope     dst:loc6, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:17
+[ 566] new_func_exp       dst:loc5, scope:loc4, functionDecl:9
+[ 570] put_by_id          base:loc6, property:28, value:loc5, flags:
+[ 576] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 583] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:18
+[ 592] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:19
+[ 598] new_func_exp       dst:loc5, scope:loc4, functionDecl:10
+[ 602] put_by_id          base:loc6, property:29, value:loc5, flags:
+[ 608] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 615] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:20
+[ 624] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:21
+[ 630] new_func_exp       dst:loc5, scope:loc4, functionDecl:11
+[ 634] put_by_id          base:loc6, property:30, value:loc5, flags:
+[ 640] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 647] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:22
+[ 656] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:23
+[ 662] new_func_exp       dst:loc5, scope:loc4, functionDecl:12
+[ 666] put_by_id          base:loc6, property:31, value:loc5, flags:
+[ 672] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 679] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:24
+[ 688] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:25
+[ 694] new_func_exp       dst:loc5, scope:loc4, functionDecl:13
+[ 698] put_by_id          base:loc6, property:32, value:loc5, flags:
+[ 704] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 711] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:26
+[ 720] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:27
+[ 726] new_func_exp       dst:loc5, scope:loc4, functionDecl:14
+[ 730] put_by_id          base:loc6, property:33, value:loc5, flags:
+[ 736] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 743] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:28
+[ 752] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:29
+[ 758] new_func_exp       dst:loc5, scope:loc4, functionDecl:15
+[ 762] put_by_id          base:loc6, property:34, value:loc5, flags:
+[ 768] resolve_scope      dst:loc6, scope:loc4, var:35, resolveType:GlobalProperty, localScopeDepth:0
+[ 775] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[ 782] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:30
+[ 791] mov                dst:loc13, src:String (atomic),8Bit:(1),length:(8): Richards, StructureID: 16777808(const2)
+[ 794] new_array_buffer   dst:loc12, immutableButterfly:Cell: 0x7fc42d170140 (0x7fc301000e20:[0x1000e20/16780832, Cell Butterfly, (0/0, 0/0){}, CopyOnWriteArrayWithInt32, Unknown, Leaf]), StructureID: 16780832(const3), recommendedIndexingType:21
+[ 799] resolve_scope      dst:loc16, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[ 806] get_from_scope     dst:loc17, scope:loc16, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:31
+[ 815] mov                dst:loc23, src:String (atomic),8Bit:(1),length:(8): Richards, StructureID: 16777808(const2)
+[ 818] mov                dst:loc22, src:True(const4)
+[ 821] mov                dst:loc21, src:False(const5)
+[ 824] mov                dst:loc20, src:Int32: 8200(const6)
+[ 827] resolve_scope      dst:loc19, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[ 834] get_from_scope     dst:loc19, scope:loc19, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:32
+[ 843] mov                dst:loc24, src:loc17
+[ 846] construct          dst:loc15, callee:loc17, argc:6, argv:30, valueProfile:33
+[ 853] new_array          dst:loc11, argv:loc15, argc:1, recommendedIndexingType:3
+[ 859] mov                dst:loc14, src:loc8
+[ 862] construct          dst:loc8, callee:loc8, argc:4, argv:20, valueProfile:34
+[ 869] put_to_scope       scope:loc6, var:35, value:loc8, getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 877] resolve_scope      dst:loc6, scope:loc4, var:36, resolveType:GlobalProperty, localScopeDepth:0
+[ 884] put_to_scope       scope:loc6, var:36, value:Int32: 1000(const7), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 892] resolve_scope      dst:loc6, scope:loc4, var:37, resolveType:GlobalProperty, localScopeDepth:0
+[ 899] put_to_scope       scope:loc6, var:37, value:Int32: 2322(const8), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 907] resolve_scope      dst:loc6, scope:loc4, var:38, resolveType:GlobalProperty, localScopeDepth:0
+[ 914] put_to_scope       scope:loc6, var:38, value:Int32: 928(const9), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 922] resolve_scope      dst:loc6, scope:loc4, var:39, resolveType:GlobalProperty, localScopeDepth:0
+[ 929] put_to_scope       scope:loc6, var:39, value:Int32: 0(const10), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 937] resolve_scope      dst:loc6, scope:loc4, var:40, resolveType:GlobalProperty, localScopeDepth:0
+[ 944] put_to_scope       scope:loc6, var:40, value:Int32: 1(const11), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 952] resolve_scope      dst:loc6, scope:loc4, var:41, resolveType:GlobalProperty, localScopeDepth:0
+[ 959] put_to_scope       scope:loc6, var:41, value:Int32: 2(const12), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 967] resolve_scope      dst:loc6, scope:loc4, var:42, resolveType:GlobalProperty, localScopeDepth:0
+[ 974] put_to_scope       scope:loc6, var:42, value:Int32: 3(const13), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 982] resolve_scope      dst:loc6, scope:loc4, var:43, resolveType:GlobalProperty, localScopeDepth:0
+[ 989] put_to_scope       scope:loc6, var:43, value:Int32: 4(const14), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 997] resolve_scope      dst:loc6, scope:loc4, var:44, resolveType:GlobalProperty, localScopeDepth:0
+[1004] put_to_scope       scope:loc6, var:44, value:Int32: 5(const15), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1012] resolve_scope      dst:loc6, scope:loc4, var:45, resolveType:GlobalProperty, localScopeDepth:0
+[1019] put_to_scope       scope:loc6, var:45, value:Int32: 6(const16), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1027] resolve_scope      dst:loc6, scope:loc4, var:46, resolveType:GlobalProperty, localScopeDepth:0
+[1034] put_to_scope       scope:loc6, var:46, value:Int32: 0(const10), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1042] resolve_scope      dst:loc6, scope:loc4, var:47, resolveType:GlobalProperty, localScopeDepth:0
+[1049] put_to_scope       scope:loc6, var:47, value:Int32: 1(const11), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1057] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1064] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:35
+[1073] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:36
+[1079] new_func_exp       dst:loc5, scope:loc4, functionDecl:16
+[1083] put_by_id          base:loc6, property:48, value:loc5, flags:
+[1089] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1096] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:37
+[1105] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:38
+[1111] new_func_exp       dst:loc5, scope:loc4, functionDecl:17
+[1115] put_by_id          base:loc6, property:49, value:loc5, flags:
+[1121] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1128] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:39
+[1137] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:40
+[1143] new_func_exp       dst:loc5, scope:loc4, functionDecl:18
+[1147] put_by_id          base:loc6, property:50, value:loc5, flags:
+[1153] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1160] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:41
+[1169] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:42
+[1175] new_func_exp       dst:loc5, scope:loc4, functionDecl:19
+[1179] put_by_id          base:loc6, property:51, value:loc5, flags:
+[1185] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1192] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:43
+[1201] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:44
+[1207] new_func_exp       dst:loc5, scope:loc4, functionDecl:20
+[1211] put_by_id          base:loc6, property:52, value:loc5, flags:
+[1217] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1224] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:45
+[1233] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:46
+[1239] new_func_exp       dst:loc5, scope:loc4, functionDecl:21
+[1243] put_by_id          base:loc6, property:53, value:loc5, flags:
+[1249] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1256] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:47
+[1265] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:48
+[1271] new_func_exp       dst:loc5, scope:loc4, functionDecl:22
+[1275] put_by_id          base:loc6, property:54, value:loc5, flags:
+[1281] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1288] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:49
+[1297] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:50
+[1303] new_func_exp       dst:loc5, scope:loc4, functionDecl:23
+[1307] put_by_id          base:loc6, property:55, value:loc5, flags:
+[1313] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1320] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:51
+[1329] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:52
+[1335] new_func_exp       dst:loc5, scope:loc4, functionDecl:24
+[1339] put_by_id          base:loc6, property:56, value:loc5, flags:
+[1345] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1352] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:53
+[1361] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:54
+[1367] new_func_exp       dst:loc5, scope:loc4, functionDecl:25
+[1371] put_by_id          base:loc6, property:57, value:loc5, flags:
+[1377] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[1384] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:55
+[1393] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:56
+[1399] new_func_exp       dst:loc5, scope:loc4, functionDecl:26
+[1403] put_by_id          base:loc6, property:58, value:loc5, flags:
+[1409] resolve_scope      dst:loc6, scope:loc4, var:59, resolveType:GlobalProperty, localScopeDepth:0
+[1416] put_to_scope       scope:loc6, var:59, value:Int32: 0(const10), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1424] resolve_scope      dst:loc6, scope:loc4, var:60, resolveType:GlobalProperty, localScopeDepth:0
+[1431] put_to_scope       scope:loc6, var:60, value:Int32: 1(const11), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1439] resolve_scope      dst:loc6, scope:loc4, var:61, resolveType:GlobalProperty, localScopeDepth:0
+[1446] put_to_scope       scope:loc6, var:61, value:Int32: 2(const12), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1454] resolve_scope      dst:loc6, scope:loc4, var:62, resolveType:GlobalProperty, localScopeDepth:0
+[1461] put_to_scope       scope:loc6, var:62, value:Int32: 4(const14), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1469] resolve_scope      dst:loc6, scope:loc4, var:63, resolveType:GlobalProperty, localScopeDepth:0
+[1476] resolve_scope      dst:loc7, scope:loc4, var:61, resolveType:GlobalProperty, localScopeDepth:0
+[1483] get_from_scope     dst:loc7, scope:loc7, var:61, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:57
+[1492] resolve_scope      dst:loc8, scope:loc4, var:60, resolveType:GlobalProperty, localScopeDepth:0
+[1499] get_from_scope     dst:loc9, scope:loc8, var:60, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:58
+[1508] bitor              dst:loc7, lhs:loc7, rhs:loc9, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[1514] put_to_scope       scope:loc6, var:63, value:loc7, getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1522] resolve_scope      dst:loc6, scope:loc4, var:64, resolveType:GlobalProperty, localScopeDepth:0
+[1529] resolve_scope      dst:loc7, scope:loc4, var:62, resolveType:GlobalProperty, localScopeDepth:0
+[1536] get_from_scope     dst:loc8, scope:loc7, var:62, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:59
+[1545] bitnot             dst:loc9, operand:loc8, profileIndex:0
+[1549] put_to_scope       scope:loc6, var:64, value:loc9, getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[1557] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1564] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:60
+[1573] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:61
+[1579] new_func_exp       dst:loc5, scope:loc4, functionDecl:27
+[1583] put_by_id          base:loc6, property:65, value:loc5, flags:
+[1589] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1596] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:62
+[1605] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:63
+[1611] new_func_exp       dst:loc5, scope:loc4, functionDecl:28
+[1615] put_by_id          base:loc6, property:66, value:loc5, flags:
+[1621] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1628] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:64
+[1637] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:65
+[1643] new_func_exp       dst:loc5, scope:loc4, functionDecl:29
+[1647] put_by_id          base:loc6, property:67, value:loc5, flags:
+[1653] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1660] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:66
+[1669] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:67
+[1675] new_func_exp       dst:loc5, scope:loc4, functionDecl:30
+[1679] put_by_id          base:loc6, property:68, value:loc5, flags:
+[1685] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1692] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:68
+[1701] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:69
+[1707] new_func_exp       dst:loc5, scope:loc4, functionDecl:31
+[1711] put_by_id          base:loc6, property:69, value:loc5, flags:
+[1717] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1724] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:70
+[1733] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:71
+[1739] new_func_exp       dst:loc5, scope:loc4, functionDecl:32
+[1743] put_by_id          base:loc6, property:70, value:loc5, flags:
+[1749] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1756] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:72
+[1765] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:73
+[1771] new_func_exp       dst:loc5, scope:loc4, functionDecl:33
+[1775] put_by_id          base:loc6, property:71, value:loc5, flags:
+[1781] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1788] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:74
+[1797] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:75
+[1803] new_func_exp       dst:loc5, scope:loc4, functionDecl:34
+[1807] put_by_id          base:loc6, property:72, value:loc5, flags:
+[1813] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[1820] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:76
+[1829] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:77
+[1835] new_func_exp       dst:loc5, scope:loc4, functionDecl:35
+[1839] put_by_id          base:loc6, property:73, value:loc5, flags:
+[1845] resolve_scope      dst:loc7, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[1852] get_from_scope     dst:loc8, scope:loc7, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:78
+[1861] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:79
+[1867] new_func_exp       dst:loc5, scope:loc4, functionDecl:36
+[1871] put_by_id          base:loc6, property:71, value:loc5, flags:
+[1877] resolve_scope      dst:loc7, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[1884] get_from_scope     dst:loc8, scope:loc7, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:80
+[1893] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:81
+[1899] new_func_exp       dst:loc5, scope:loc4, functionDecl:37
+[1903] put_by_id          base:loc6, property:73, value:loc5, flags:
+[1909] resolve_scope      dst:loc7, scope:loc4, var:7, resolveType:GlobalProperty, localScopeDepth:0
+[1916] get_from_scope     dst:loc8, scope:loc7, var:7, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:82
+[1925] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:83
+[1931] new_func_exp       dst:loc5, scope:loc4, functionDecl:38
+[1935] put_by_id          base:loc6, property:71, value:loc5, flags:
+[1941] resolve_scope      dst:loc7, scope:loc4, var:7, resolveType:GlobalProperty, localScopeDepth:0
+[1948] get_from_scope     dst:loc8, scope:loc7, var:7, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:84
+[1957] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:85
+[1963] new_func_exp       dst:loc5, scope:loc4, functionDecl:39
+[1967] put_by_id          base:loc6, property:73, value:loc5, flags:
+[1973] resolve_scope      dst:loc7, scope:loc4, var:8, resolveType:GlobalProperty, localScopeDepth:0
+[1980] get_from_scope     dst:loc8, scope:loc7, var:8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:86
+[1989] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:87
+[1995] new_func_exp       dst:loc5, scope:loc4, functionDecl:40
+[1999] put_by_id          base:loc6, property:71, value:loc5, flags:
+[2005] resolve_scope      dst:loc7, scope:loc4, var:8, resolveType:GlobalProperty, localScopeDepth:0
+[2012] get_from_scope     dst:loc8, scope:loc7, var:8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:88
+[2021] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:89
+[2027] new_func_exp       dst:loc5, scope:loc4, functionDecl:41
+[2031] put_by_id          base:loc6, property:73, value:loc5, flags:
+[2037] resolve_scope      dst:loc7, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[2044] get_from_scope     dst:loc8, scope:loc7, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:90
+[2053] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:91
+[2059] new_func_exp       dst:loc5, scope:loc4, functionDecl:42
+[2063] put_by_id          base:loc6, property:71, value:loc5, flags:
+[2069] resolve_scope      dst:loc7, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[2076] get_from_scope     dst:loc8, scope:loc7, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:92
+[2085] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:93
+[2091] new_func_exp       dst:loc5, scope:loc4, functionDecl:43
+[2095] put_by_id          base:loc6, property:73, value:loc5, flags:
+[2101] resolve_scope      dst:loc6, scope:loc4, var:74, resolveType:GlobalProperty, localScopeDepth:0
+[2108] put_to_scope       scope:loc6, var:74, value:Int32: 4(const14), getPutInfo:1048576<DoNotThrowIfNotFound|GlobalProperty|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[2116] resolve_scope      dst:loc7, scope:loc4, var:10, resolveType:GlobalProperty, localScopeDepth:0
+[2123] get_from_scope     dst:loc8, scope:loc7, var:10, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:94
+[2132] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:95
+[2138] new_func_exp       dst:loc5, scope:loc4, functionDecl:44
+[2142] put_by_id          base:loc6, property:75, value:loc5, flags:
+[2148] resolve_scope      dst:loc7, scope:loc4, var:10, resolveType:GlobalProperty, localScopeDepth:0
+[2155] get_from_scope     dst:loc8, scope:loc7, var:10, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:96
+[2164] get_by_id          dst:loc6, base:loc8, property:13, valueProfile:97
+[2170] new_func_exp       dst:loc5, scope:loc4, functionDecl:45
+[2174] put_by_id          base:loc6, property:73, value:loc5, flags:
+[2180] mov                dst:loc5, src:Undefined(const0)
+[2183] new_func_exp       dst:loc6, scope:loc4, functionDecl:46
+[2187] mov                dst:loc8, src:Undefined(const0)
+[2190] call               dst:loc5, callee:loc6, argc:1, argv:14, valueProfile:98
+[2197] ret                value:loc5
+Successors: [ ]
+
+
+Identifiers:
+  id0 = Benchmark
+  id1 = BenchmarkResult
+  id2 = BenchmarkSuite
+  id3 = runRichards
+  id4 = Scheduler
+  id5 = TaskControlBlock
+  id6 = IdleTask
+  id7 = DeviceTask
+  id8 = WorkerTask
+  id9 = HandlerTask
+  id10 = Packet
+  id11 = performance
+  id12 = now
+  id13 = prototype
+  id14 = valueOf
+  id15 = suites
+  id16 = version
+  id17 = undefined
+  id18 = doWarmup
+  id19 = doDeterministic
+  id20 = config
+  id21 = alert
+  id22 = ResetRNG
+  id23 = RunSuites
+  id24 = CountBenchmarks
+  id25 = GeometricMean
+  id26 = GeometricMeanTime
+  id27 = GeometricMeanLatency
+  id28 = FormatScore
+  id29 = NotifyStep
+  id30 = NotifyResult
+  id31 = NotifySkipped
+  id32 = NotifyError
+  id33 = RunSingleBenchmark
+  id34 = RunStep
+  id35 = Richards
+  id36 = COUNT
+  id37 = EXPECTED_QUEUE_COUNT
+  id38 = EXPECTED_HOLD_COUNT
+  id39 = ID_IDLE
+  id40 = ID_WORKER
+  id41 = ID_HANDLER_A
+  id42 = ID_HANDLER_B
+  id43 = ID_DEVICE_A
+  id44 = ID_DEVICE_B
+  id45 = NUMBER_OF_IDS
+  id46 = KIND_DEVICE
+  id47 = KIND_WORK
+  id48 = addIdleTask
+  id49 = addWorkerTask
+  id50 = addHandlerTask
+  id51 = addDeviceTask
+  id52 = addRunningTask
+  id53 = addTask
+  id54 = schedule
+  id55 = release
+  id56 = holdCurrent
+  id57 = suspendCurrent
+  id58 = queue
+  id59 = STATE_RUNNING
+  id60 = STATE_RUNNABLE
+  id61 = STATE_SUSPENDED
+  id62 = STATE_HELD
+  id63 = STATE_SUSPENDED_RUNNABLE
+  id64 = STATE_NOT_HELD
+  id65 = setRunning
+  id66 = markAsNotHeld
+  id67 = markAsHeld
+  id68 = isHeldOrSuspended
+  id69 = markAsSuspended
+  id70 = markAsRunnable
+  id71 = run
+  id72 = checkPriorityAdd
+  id73 = toString
+  id74 = DATA_SIZE
+  id75 = addTo
+
+Constants:
+   k0 = Undefined
+   k1 = String (atomic),8Bit:(1),length:(1): 9, StructureID: 16777808
+   k2 = String (atomic),8Bit:(1),length:(8): Richards, StructureID: 16777808
+   k3 = Cell: 0x7fc42d170140 (0x7fc301000e20:[0x1000e20/16780832, Cell Butterfly, (0/0, 0/0){}, CopyOnWriteArrayWithInt32, Unknown, Leaf]), StructureID: 16780832
+   k4 = True
+   k5 = False
+   k6 = Int32: 8200: in source as integer
+   k7 = Int32: 1000: in source as integer
+   k8 = Int32: 2322: in source as integer
+   k9 = Int32: 928: in source as integer
+   k10 = Int32: 0: in source as integer
+   k11 = Int32: 1: in source as integer
+   k12 = Int32: 2: in source as integer
+   k13 = Int32: 3: in source as integer
+   k14 = Int32: 4: in source as integer
+   k15 = Int32: 5: in source as integer
+   k16 = Int32: 6: in source as integer
+
+Compiled #Bv8L7v into bytecode 150 instructions in 0.017112 ms.
+#Bv8L7v:[0x7fc42d1643a0->0x7fc42d13e100, NoneFunctionCall, 150]: 25 instructions (0 16-bit instructions, 0 32-bit instructions, 18 instructions with metadata); 254 bytes (104 metadata bytes); 1 parameter(s); 8 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[   8] get_from_scope     dst:loc7, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  17] get_by_id          dst:loc5, base:loc7, property:1, valueProfile:2
+[  23] jtrue              condition:loc5, targetLabel:25(->48)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  26] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  33] get_from_scope     dst:loc7, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  42] get_by_id          dst:loc5, base:loc7, property:2, valueProfile:4
+Successors: [ #3 ]
+
+bb#3
+Predecessors: [ #1 #2 ]
+[  48] jtrue              condition:loc5, targetLabel:25(->73)
+Successors: [ #5 #4 ]
+
+bb#4
+Predecessors: [ #3 ]
+[  51] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  58] get_from_scope     dst:loc7, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:5
+[  67] get_by_id          dst:loc5, base:loc7, property:3, valueProfile:6
+Successors: [ #5 ]
+
+bb#5
+Predecessors: [ #3 #4 ]
+[  73] jtrue              condition:loc5, targetLabel:25(->98)
+Successors: [ #7 #6 ]
+
+bb#6
+Predecessors: [ #5 ]
+[  76] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  83] get_from_scope     dst:loc7, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:7
+[  92] get_by_id          dst:loc5, base:loc7, property:4, valueProfile:8
+Successors: [ #7 ]
+
+bb#7
+Predecessors: [ #5 #6 ]
+[  98] jtrue              condition:loc5, targetLabel:25(->123)
+Successors: [ #9 #8 ]
+
+bb#8
+Predecessors: [ #7 ]
+[ 101] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[ 108] get_from_scope     dst:loc7, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:9
+[ 117] get_by_id          dst:loc5, base:loc7, property:5, valueProfile:10
+Successors: [ #9 ]
+
+bb#9
+Predecessors: [ #7 #8 ]
+[ 123] jtrue              condition:loc5, targetLabel:25(->148)
+Successors: [ #11 #10 ]
+
+bb#10
+Predecessors: [ #9 ]
+[ 126] resolve_scope      dst:loc6, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 133] get_from_scope     dst:loc7, scope:loc6, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:11
+[ 142] get_by_id          dst:loc5, base:loc7, property:1, valueProfile:12
+Successors: [ #11 ]
+
+bb#11
+Predecessors: [ #9 #10 ]
+[ 148] ret                value:loc5
+Successors: [ ]
+
+
+Identifiers:
+  id0 = performance
+  id1 = now
+  id2 = mozNow
+  id3 = msNow
+  id4 = oNow
+  id5 = webkitNow
+  id6 = Date
+
+Compiled #EK4HQl into bytecode 120 instructions in 0.037581 ms.
+Benchmark#EK4HQl:[0x7fc42d164480->0x7fc42d13db80, NoneFunctionConstruct, 120]: 32 instructions (0 16-bit instructions, 0 32-bit instructions, 10 instructions with metadata); 224 bytes (104 metadata bytes); 10 parameter(s); 8 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:9
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:arg2, flags:
+[  18] put_by_id          base:this, property:2, value:arg3, flags:
+[  24] put_by_id          base:this, property:3, value:arg4, flags:
+[  30] put_by_id          base:this, property:4, value:arg5, flags:
+[  36] mov                dst:loc5, src:this
+[  39] jfalse             condition:arg6, targetLabel:8(->47)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  42] mov                dst:loc6, src:arg6
+[  45] jmp                targetLabel:6(->51)
+Successors: [ #4 ]
+
+bb#3
+Predecessors: [ #1 ]
+[  47] new_func_exp       dst:loc6, scope:loc4, functionDecl:0
+Successors: [ #4 ]
+
+bb#4
+Predecessors: [ #2 #3 ]
+[  51] put_by_id          base:loc5, property:5, value:loc6, flags:
+[  57] mov                dst:loc5, src:this
+[  60] jfalse             condition:arg7, targetLabel:8(->68)
+Successors: [ #6 #5 ]
+
+bb#5
+Predecessors: [ #4 ]
+[  63] mov                dst:loc6, src:arg7
+[  66] jmp                targetLabel:6(->72)
+Successors: [ #7 ]
+
+bb#6
+Predecessors: [ #4 ]
+[  68] new_func_exp       dst:loc6, scope:loc4, functionDecl:1
+Successors: [ #7 ]
+
+bb#7
+Predecessors: [ #5 #6 ]
+[  72] put_by_id          base:loc5, property:6, value:loc6, flags:
+[  78] mov                dst:loc5, src:this
+[  81] jfalse             condition:arg8, targetLabel:8(->89)
+Successors: [ #9 #8 ]
+
+bb#8
+Predecessors: [ #7 ]
+[  84] mov                dst:loc6, src:arg8
+[  87] jmp                targetLabel:5(->92)
+Successors: [ #10 ]
+
+bb#9
+Predecessors: [ #7 ]
+[  89] mov                dst:loc6, src:Null(const0)
+Successors: [ #10 ]
+
+bb#10
+Predecessors: [ #8 #9 ]
+[  92] put_by_id          base:loc5, property:7, value:loc6, flags:
+[  98] mov                dst:loc5, src:this
+[ 101] jfalse             condition:arg9, targetLabel:8(->109)
+Successors: [ #12 #11 ]
+
+bb#11
+Predecessors: [ #10 ]
+[ 104] mov                dst:loc6, src:arg9
+[ 107] jmp                targetLabel:5(->112)
+Successors: [ #13 ]
+
+bb#12
+Predecessors: [ #10 ]
+[ 109] mov                dst:loc6, src:Int32: 32(const1)
+Successors: [ #13 ]
+
+bb#13
+Predecessors: [ #11 #12 ]
+[ 112] put_by_id          base:loc5, property:8, value:loc6, flags:
+[ 118] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = name
+  id1 = doWarmup
+  id2 = doDeterministic
+  id3 = deterministicIterations
+  id4 = run
+  id5 = Setup
+  id6 = TearDown
+  id7 = rmsResult
+  id8 = minIterations
+
+Constants:
+   k0 = Null
+   k1 = Int32: 32: in source as integer
+
+Compiled #Afwiov into bytecode 62 instructions in 0.016522 ms.
+BenchmarkSuite#Afwiov:[0x7fc42d164560->0x7fc42d13dc80, NoneFunctionConstruct, 62]: 12 instructions (0 16-bit instructions, 0 32-bit instructions, 9 instructions with metadata); 166 bytes (104 metadata bytes); 4 parameter(s); 14 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:3
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:arg2, flags:
+[  18] put_by_id          base:this, property:2, value:arg3, flags:
+[  24] resolve_scope      dst:loc9, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  31] get_from_scope     dst:loc10, scope:loc9, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  40] get_by_id          dst:loc8, base:loc10, property:4, valueProfile:2
+[  46] get_by_id          dst:loc5, base:loc8, property:5, valueProfile:3
+[  52] mov                dst:loc7, src:this
+[  55] call_ignore_result callee:loc5, argc:2, argv:14
+[  60] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = name
+  id1 = reference
+  id2 = benchmarks
+  id3 = BenchmarkSuite
+  id4 = suites
+  id5 = push
+
+Compiled #DoUCKd into bytecode 1050 instructions in 0.084892 ms.
+#DoUCKd:[0x7fc42d164640->0x7fc42d13f800, NoneFunctionCall, 1050]: 201 instructions (0 16-bit instructions, 0 32-bit instructions, 121 instructions with metadata); 1154 bytes (104 metadata bytes); 1 parameter(s); 26 callee register(s); 13 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] new_object         dst:loc13, inlineCapacity:3
+[   5] put_by_id          base:loc13, property:0, value:String (atomic),8Bit:(1),length:(8): Richards, StructureID: 16777808(const0), flags:IsDirect
+[  11] put_by_id          base:loc13, property:1, value:Int32: 1(const1), flags:IsDirect
+[  17] put_by_id          base:loc13, property:2, value:String (atomic),8Bit:(1),length:(8): frontend, StructureID: 16777808(const2), flags:IsDirect
+[  23] mov                dst:loc5, src:loc13
+[  26] resolve_scope      dst:loc14, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  33] get_from_scope     dst:loc15, scope:loc14, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  42] get_by_id          dst:loc13, base:loc15, property:4, valueProfile:2
+[  48] get_by_val         dst:loc6, base:loc13, property:Int32: 0(const3), valueProfile:3
+[  54] resolve_scope      dst:loc15, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  61] get_from_scope     dst:loc16, scope:loc15, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:4
+[  70] get_by_id          dst:loc14, base:loc16, property:4, valueProfile:5
+[  76] get_length         dst:loc13, base:loc14, valueProfile:6
+[  81] jnstricteq         lhs:loc13, rhs:Int32: 1(const1), targetLabel:14(->95)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  85] get_by_id          dst:loc13, base:loc6, property:5, valueProfile:7
+[  91] jstricteq          lhs:loc13, rhs:String (atomic),8Bit:(1),length:(8): Richards, StructureID: 16777808(const0), targetLabel:35(->126)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #1 #2 ]
+[  95] resolve_scope      dst:loc13, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 102] get_from_scope     dst:loc14, scope:loc13, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:8
+[ 111] mov                dst:loc17, src:String (atomic),8Bit:(1),length:(27): suite registration mismatch, StructureID: 16777808(const4)
+[ 114] mov                dst:loc18, src:loc14
+[ 117] construct          dst:loc14, callee:loc14, argc:2, argv:24, valueProfile:9
+[ 124] throw              value:loc14
+Successors: [ ]
+
+bb#4
+Predecessors: [ #2 ]
+[ 126] get_by_id          dst:loc13, base:loc6, property:7, valueProfile:10
+[ 132] get_by_val         dst:loc7, base:loc13, property:Int32: 0(const3), valueProfile:11
+[ 138] get_by_id          dst:loc13, base:loc7, property:5, valueProfile:12
+[ 144] jstricteq          lhs:loc13, rhs:String (atomic),8Bit:(1),length:(8): Richards, StructureID: 16777808(const0), targetLabel:35(->179)
+Successors: [ #6 #5 ]
+
+bb#5
+Predecessors: [ #4 ]
+[ 148] resolve_scope      dst:loc13, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 155] get_from_scope     dst:loc14, scope:loc13, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:13
+[ 164] mov                dst:loc17, src:String (atomic),8Bit:(1),length:(31): benchmark registration mismatch, StructureID: 16777808(const5)
+[ 167] mov                dst:loc18, src:loc14
+[ 170] construct          dst:loc14, callee:loc14, argc:2, argv:24, valueProfile:14
+[ 177] throw              value:loc14
+Successors: [ ]
+
+bb#6
+Predecessors: [ #4 ]
+[ 179] get_by_id          dst:loc8, base:loc5, property:1, valueProfile:15
+[ 185] mov                dst:loc10, src:Null(const6)
+[ 188] resolve_scope      dst:loc14, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[ 195] get_from_scope     dst:loc14, scope:loc14, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:16
+[ 204] get_by_id          dst:loc13, base:loc14, property:8, valueProfile:17
+[ 210] call_ignore_result callee:loc13, argc:1, argv:20
+[ 215] get_by_id          dst:loc13, base:loc6, property:5, valueProfile:18
+[ 221] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(6): RegExp, StructureID: 16777808(const7), targetLabel:47(->268)
+Successors: [ #8 #7 ]
+
+bb#7
+Predecessors: [ #6 ]
+[ 225] resolve_scope      dst:loc13, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[ 232] resolve_scope      dst:loc14, scope:loc4, var:10, resolveType:GlobalProperty, localScopeDepth:0
+[ 239] get_from_scope     dst:loc15, scope:loc14, var:10, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:19
+[ 248] mov                dst:loc16, src:loc15
+[ 251] construct          dst:loc15, callee:loc15, argc:1, argv:22, valueProfile:20
+[ 258] put_to_scope       scope:loc13, var:9, value:loc15, getPutInfo:1050624<DoNotThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[ 266] jmp                targetLabel:16(->282)
+Successors: [ #9 ]
+
+bb#8
+Predecessors: [ #6 ]
+[ 268] mov                dst:loc14, src:loc7
+[ 271] get_by_id          dst:loc13, base:loc14, property:11, valueProfile:21
+[ 277] call_ignore_result callee:loc13, argc:1, argv:20
+Successors: [ #9 ]
+
+bb#9
+Predecessors: [ #7 #8 ]
+[ 282] get_by_id          dst:loc13, base:loc6, property:5, valueProfile:22
+[ 288] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(6): Crypto, StructureID: 16777808(const8), targetLabel:35(->323)
+Successors: [ #12 #10 ]
+
+bb#10
+Predecessors: [ #9 ]
+[ 292] get_by_id          dst:loc13, base:loc7, property:5, valueProfile:23
+[ 298] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(7): Decrypt, StructureID: 16777808(const9), targetLabel:25(->323)
+Successors: [ #12 #11 ]
+
+bb#11
+Predecessors: [ #10 ]
+[ 302] resolve_scope      dst:loc14, scope:loc4, var:12, resolveType:GlobalProperty, localScopeDepth:0
+[ 309] get_from_scope     dst:loc13, scope:loc14, var:12, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:24
+[ 318] call_ignore_result callee:loc13, argc:1, argv:20
+Successors: [ #12 ]
+
+bb#12
+Predecessors: [ #9 #10 #11 ]
+[ 323] get_by_id          dst:loc13, base:loc5, property:2, valueProfile:25
+[ 329] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(11): correctness, StructureID: 16777808(const10), targetLabel:77(->406)
+Successors: [ #19 #13 ]
+
+bb#13
+Predecessors: [ #12 ]
+[ 333] mov                dst:loc9, src:Int32: 0(const3)
+[ 336] jnless             lhs:loc9, rhs:loc8, targetLabel:68(->404)
+Successors: [ #18 #14 ]
+
+bb#14
+Predecessors: [ #13 #17 ]
+[ 340] loop_hint          
+[ 341] check_traps        
+[ 342] mov                dst:loc14, src:loc7
+[ 345] get_by_id          dst:loc13, base:loc14, property:13, valueProfile:26
+[ 351] call_ignore_result callee:loc13, argc:1, argv:20
+[ 356] get_by_id          dst:loc13, base:loc6, property:5, valueProfile:27
+[ 362] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(6): Crypto, StructureID: 16777808(const8), targetLabel:35(->397)
+Successors: [ #17 #15 ]
+
+bb#15
+Predecessors: [ #14 ]
+[ 366] get_by_id          dst:loc13, base:loc7, property:5, valueProfile:28
+[ 372] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(7): Encrypt, StructureID: 16777808(const11), targetLabel:25(->397)
+Successors: [ #17 #16 ]
+
+bb#16
+Predecessors: [ #15 ]
+[ 376] resolve_scope      dst:loc14, scope:loc4, var:14, resolveType:GlobalProperty, localScopeDepth:0
+[ 383] get_from_scope     dst:loc13, scope:loc14, var:14, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:29
+[ 392] call_ignore_result callee:loc13, argc:1, argv:20
+Successors: [ #17 ]
+
+bb#17
+Predecessors: [ #14 #15 #16 ]
+[ 397] inc                srcDst:loc9, profileIndex:0
+[ 400] jless              lhs:loc9, rhs:loc8, targetLabel:-60(->340)
+Successors: [ #14 #18 ]
+
+bb#18
+Predecessors: [ #13 #17 ]
+[ 404] jmp                targetLabel:238(->642)
+Successors: [ #27 ]
+
+bb#19
+Predecessors: [ #12 ]
+[ 406] get_by_id          dst:loc13, base:loc5, property:2, valueProfile:30
+[ 412] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(10): diagnostic, StructureID: 16777808(const12), targetLabel:18(->430)
+Successors: [ #21 #20 ]
+
+bb#20
+Predecessors: [ #19 ]
+[ 416] mov                dst:loc14, src:loc7
+[ 419] get_by_id          dst:loc13, base:loc14, property:13, valueProfile:31
+[ 425] call_ignore_result callee:loc13, argc:1, argv:20
+Successors: [ #21 ]
+
+bb#21
+Predecessors: [ #19 #20 ]
+[ 430] get_by_id          dst:loc13, base:loc5, property:2, valueProfile:32
+[ 436] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(8): frontend, StructureID: 16777808(const2), targetLabel:53(->489)
+Successors: [ #23 #22 ]
+
+bb#22
+Predecessors: [ #21 ]
+[ 440] resolve_scope      dst:loc16, scope:loc4, var:15, resolveType:GlobalProperty, localScopeDepth:0
+[ 447] get_from_scope     dst:loc13, scope:loc16, var:15, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:33
+[ 456] mov                dst:loc17, src:String (atomic),8Bit:(1),length:(16): TEB_TIMER_START:, StructureID: 16777808(const13)
+[ 459] get_by_id          dst:loc18, base:loc6, property:5, valueProfile:34
+[ 465] to_primitive       dst:loc18, src:loc18
+[ 468] mov                dst:loc19, src:String (atomic),8Bit:(1),length:(1): /, StructureID: 16777808(const14)
+[ 471] get_by_id          dst:loc20, base:loc7, property:5, valueProfile:35
+[ 477] to_primitive       dst:loc20, src:loc20
+[ 480] strcat             dst:loc15, src:loc17, count:4
+[ 484] call_ignore_result callee:loc13, argc:2, argv:22
+Successors: [ #23 ]
+
+bb#23
+Predecessors: [ #21 #22 ]
+[ 489] resolve_scope      dst:loc14, scope:loc4, var:16, resolveType:GlobalProperty, localScopeDepth:0
+[ 496] get_from_scope     dst:loc14, scope:loc14, var:16, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:36
+[ 505] get_by_id          dst:loc13, base:loc14, property:17, valueProfile:37
+[ 511] call               dst:loc11, callee:loc13, argc:1, argv:20, valueProfile:38
+[ 518] mov                dst:loc9, src:Int32: 0(const3)
+[ 521] jnless             lhs:loc9, rhs:loc8, targetLabel:27(->548)
+Successors: [ #25 #24 ]
+
+bb#24
+Predecessors: [ #23 #24 ]
+[ 525] loop_hint          
+[ 526] check_traps        
+[ 527] mov                dst:loc14, src:loc7
+[ 530] get_by_id          dst:loc13, base:loc14, property:13, valueProfile:39
+[ 536] call_ignore_result callee:loc13, argc:1, argv:20
+[ 541] inc                srcDst:loc9, profileIndex:1
+[ 544] jless              lhs:loc9, rhs:loc8, targetLabel:-19(->525)
+Successors: [ #24 #25 ]
+
+bb#25
+Predecessors: [ #23 #24 ]
+[ 548] resolve_scope      dst:loc14, scope:loc4, var:16, resolveType:GlobalProperty, localScopeDepth:0
+[ 555] get_from_scope     dst:loc14, scope:loc14, var:16, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:40
+[ 564] get_by_id          dst:loc13, base:loc14, property:17, valueProfile:41
+[ 570] call               dst:loc13, callee:loc13, argc:1, argv:20, valueProfile:42
+[ 577] sub                dst:loc10, lhs:loc13, rhs:loc11, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[ 583] get_by_id          dst:loc13, base:loc5, property:2, valueProfile:43
+[ 589] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(8): frontend, StructureID: 16777808(const2), targetLabel:53(->642)
+Successors: [ #27 #26 ]
+
+bb#26
+Predecessors: [ #25 ]
+[ 593] resolve_scope      dst:loc16, scope:loc4, var:15, resolveType:GlobalProperty, localScopeDepth:0
+[ 600] get_from_scope     dst:loc13, scope:loc16, var:15, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:44
+[ 609] mov                dst:loc17, src:String (atomic),8Bit:(1),length:(15): TEB_TIMER_STOP:, StructureID: 16777808(const15)
+[ 612] get_by_id          dst:loc18, base:loc6, property:5, valueProfile:45
+[ 618] to_primitive       dst:loc18, src:loc18
+[ 621] mov                dst:loc19, src:String (atomic),8Bit:(1),length:(1): /, StructureID: 16777808(const14)
+[ 624] get_by_id          dst:loc20, base:loc7, property:5, valueProfile:46
+[ 630] to_primitive       dst:loc20, src:loc20
+[ 633] strcat             dst:loc15, src:loc17, count:4
+[ 637] call_ignore_result callee:loc13, argc:2, argv:22
+Successors: [ #27 ]
+
+bb#27
+Predecessors: [ #18 #25 #26 ]
+[ 642] mov                dst:loc12, src:Int32: 0(const3)
+[ 645] get_by_id          dst:loc13, base:loc6, property:5, valueProfile:47
+[ 651] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(6): Crypto, StructureID: 16777808(const8), targetLabel:45(->696)
+Successors: [ #31 #28 ]
+
+bb#28
+Predecessors: [ #27 ]
+[ 655] get_by_id          dst:loc13, base:loc7, property:5, valueProfile:48
+[ 661] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(7): Encrypt, StructureID: 16777808(const11), targetLabel:35(->696)
+Successors: [ #31 #29 ]
+
+bb#29
+Predecessors: [ #28 ]
+[ 665] get_by_id          dst:loc13, base:loc5, property:2, valueProfile:49
+[ 671] jstricteq          lhs:loc13, rhs:String (atomic),8Bit:(1),length:(11): correctness, StructureID: 16777808(const10), targetLabel:25(->696)
+Successors: [ #31 #30 ]
+
+bb#30
+Predecessors: [ #29 ]
+[ 675] resolve_scope      dst:loc14, scope:loc4, var:14, resolveType:GlobalProperty, localScopeDepth:0
+[ 682] get_from_scope     dst:loc13, scope:loc14, var:14, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:50
+[ 691] call_ignore_result callee:loc13, argc:1, argv:20
+Successors: [ #31 ]
+
+bb#31
+Predecessors: [ #27 #28 #29 #30 ]
+[ 696] get_by_id          dst:loc13, base:loc6, property:5, valueProfile:51
+[ 702] jnstricteq         lhs:loc13, rhs:String (atomic),8Bit:(1),length:(12): NavierStokes, StructureID: 16777808(const16), targetLabel:63(->765)
+Successors: [ #34 #32 ]
+
+bb#32
+Predecessors: [ #31 ]
+[ 706] resolve_scope      dst:loc13, scope:loc4, var:18, resolveType:GlobalProperty, localScopeDepth:0
+[ 713] get_from_scope     dst:loc14, scope:loc13, var:18, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:52
+[ 722] jnless             lhs:loc14, rhs:Int32: 15(const17), targetLabel:43(->765)
+Successors: [ #34 #33 ]
+
+bb#33
+Predecessors: [ #32 #33 ]
+[ 726] loop_hint          
+[ 727] check_traps        
+[ 728] mov                dst:loc14, src:loc7
+[ 731] get_by_id          dst:loc13, base:loc14, property:13, valueProfile:53
+[ 737] call_ignore_result callee:loc13, argc:1, argv:20
+[ 742] inc                srcDst:loc12, profileIndex:2
+[ 745] resolve_scope      dst:loc13, scope:loc4, var:18, resolveType:GlobalProperty, localScopeDepth:0
+[ 752] get_from_scope     dst:loc14, scope:loc13, var:18, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:54
+[ 761] jless              lhs:loc14, rhs:Int32: 15(const17), targetLabel:-35(->726)
+Successors: [ #33 #34 ]
+
+bb#34
+Predecessors: [ #31 #32 #33 ]
+[ 765] mov                dst:loc14, src:loc7
+[ 768] get_by_id          dst:loc13, base:loc14, property:19, valueProfile:55
+[ 774] call_ignore_result callee:loc13, argc:1, argv:20
+[ 779] jstricteq          lhs:loc10, rhs:Null(const6), targetLabel:74(->853)
+Successors: [ #38 #35 ]
+
+bb#35
+Predecessors: [ #34 ]
+[ 783] resolve_scope      dst:loc16, scope:loc4, var:20, resolveType:GlobalProperty, localScopeDepth:0
+[ 790] get_from_scope     dst:loc16, scope:loc16, var:20, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:56
+[ 799] get_by_id          dst:loc13, base:loc16, property:21, valueProfile:57
+[ 805] mov                dst:loc15, src:loc10
+[ 808] call               dst:loc13, callee:loc13, argc:2, argv:22, valueProfile:58
+[ 815] jfalse             condition:loc13, targetLabel:7(->822)
+Successors: [ #37 #36 ]
+
+bb#36
+Predecessors: [ #35 ]
+[ 818] jnless             lhs:loc10, rhs:Int32: 0(const3), targetLabel:35(->853)
+Successors: [ #38 #37 ]
+
+bb#37
+Predecessors: [ #35 #36 ]
+[ 822] resolve_scope      dst:loc13, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 829] get_from_scope     dst:loc14, scope:loc13, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:59
+[ 838] mov                dst:loc17, src:String (atomic),8Bit:(1),length:(22): invalid timer interval, StructureID: 16777808(const18)
+[ 841] mov                dst:loc18, src:loc14
+[ 844] construct          dst:loc14, callee:loc14, argc:2, argv:24, valueProfile:60
+[ 851] throw              value:loc14
+Successors: [ ]
+
+bb#38
+Predecessors: [ #34 #36 ]
+[ 853] resolve_scope      dst:loc16, scope:loc4, var:22, resolveType:GlobalProperty, localScopeDepth:0
+[ 860] get_from_scope     dst:loc16, scope:loc16, var:22, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:61
+[ 869] get_by_id          dst:loc13, base:loc16, property:23, valueProfile:62
+[ 875] resolve_scope      dst:loc20, scope:loc4, var:24, resolveType:GlobalProperty, localScopeDepth:0
+[ 882] get_from_scope     dst:loc20, scope:loc20, var:24, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:63
+[ 891] get_by_id          dst:loc17, base:loc20, property:25, valueProfile:64
+[ 897] new_object         dst:loc19, inlineCapacity:12
+[ 901] put_by_id          base:loc19, property:26, value:String (atomic),8Bit:(1),length:(6): Octane, StructureID: 16777808(const20), flags:IsDirect
+[ 907] get_by_id          dst:loc21, base:loc5, property:0, valueProfile:65
+[ 913] put_by_id          base:loc19, property:0, value:loc21, flags:IsDirect
+[ 919] get_by_id          dst:loc21, base:loc6, property:5, valueProfile:66
+[ 925] put_by_id          base:loc19, property:27, value:loc21, flags:IsDirect
+[ 931] get_by_id          dst:loc21, base:loc7, property:5, valueProfile:67
+[ 937] put_by_id          base:loc19, property:28, value:loc21, flags:IsDirect
+[ 943] get_by_id          dst:loc21, base:loc5, property:2, valueProfile:68
+[ 949] put_by_id          base:loc19, property:2, value:loc21, flags:IsDirect
+[ 955] put_by_id          base:loc19, property:1, value:loc8, flags:IsDirect
+[ 961] put_by_id          base:loc19, property:29, value:String (atomic),8Bit:(1),length:(4): PASS, StructureID: 16777808(const21), flags:IsDirect
+[ 967] put_by_id          base:loc19, property:30, value:loc12, flags:IsDirect
+[ 973] put_by_id          base:loc19, property:31, value:String (atomic),8Bit:(1),length:(8): Date.now, StructureID: 16777808(const22), flags:IsDirect
+[ 979] put_by_id          base:loc19, property:32, value:loc10, flags:IsDirect
+[ 985] jnstricteq         lhs:loc10, rhs:Null(const6), targetLabel:9(->994)
+Successors: [ #40 #39 ]
+
+bb#39
+Predecessors: [ #38 ]
+[ 989] mov                dst:loc21, src:Null(const6)
+[ 992] jmp                targetLabel:8(->1000)
+Successors: [ #41 ]
+
+bb#40
+Predecessors: [ #38 ]
+[ 994] div                dst:loc21, lhs:loc10, rhs:loc8, profileIndex:1, operandTypes:OperandTypes(126, 126)
+Successors: [ #41 ]
+
+bb#41
+Predecessors: [ #39 #40 ]
+[1000] put_by_id          base:loc19, property:33, value:loc21, flags:IsDirect
+[1006] get_by_id          dst:loc22, base:loc5, property:2, valueProfile:69
+[1012] jnstricteq         lhs:loc22, rhs:String (atomic),8Bit:(1),length:(10): diagnostic, StructureID: 16777808(const12), targetLabel:9(->1021)
+Successors: [ #43 #42 ]
+
+bb#42
+Predecessors: [ #41 ]
+[1016] mov                dst:loc21, src:Int32: 1(const1)
+[1019] jmp                targetLabel:5(->1024)
+Successors: [ #44 ]
+
+bb#43
+Predecessors: [ #41 ]
+[1021] mov                dst:loc21, src:Int32: 0(const3)
+Successors: [ #44 ]
+
+bb#44
+Predecessors: [ #42 #43 ]
+[1024] put_by_id          base:loc19, property:34, value:loc21, flags:IsDirect
+[1030] call               dst:loc17, callee:loc17, argc:2, argv:26, valueProfile:70
+[1037] add                dst:loc15, lhs:String (atomic),8Bit:(1),length:(11): TEB_RESULT:, StructureID: 16777808(const19), rhs:loc17, profileIndex:2, operandTypes:OperandTypes(4, 126)
+[1043] call_ignore_result callee:loc13, argc:2, argv:22
+[1048] ret                value:Undefined(const23)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = case
+  id1 = N
+  id2 = mode
+  id3 = BenchmarkSuite
+  id4 = suites
+  id5 = name
+  id6 = Error
+  id7 = benchmarks
+  id8 = ResetRNG
+  id9 = regExpBenchmark
+  id10 = RegExpBenchmark
+  id11 = Setup
+  id12 = encrypt
+  id13 = run
+  id14 = decrypt
+  id15 = __TEB_marker
+  id16 = Date
+  id17 = now
+  id18 = nsFrameCounter
+  id19 = TearDown
+  id20 = Number
+  id21 = isInteger
+  id22 = console
+  id23 = log
+  id24 = JSON
+  id25 = stringify
+  id26 = benchmark
+  id27 = suite
+  id28 = subbenchmark
+  id29 = correctness
+  id30 = extra_validation_calls
+  id31 = timer
+  id32 = elapsed_ms
+  id33 = elapsed_per_call_ms
+  id34 = warmup_calls
+
+Constants:
+   k0 = String (atomic),8Bit:(1),length:(8): Richards, StructureID: 16777808
+   k1 = Int32: 1: in source as integer
+   k2 = String (atomic),8Bit:(1),length:(8): frontend, StructureID: 16777808
+   k3 = Int32: 0: in source as integer
+   k4 = String (atomic),8Bit:(1),length:(27): suite registration mismatch, StructureID: 16777808
+   k5 = String (atomic),8Bit:(1),length:(31): benchmark registration mismatch, StructureID: 16777808
+   k6 = Null
+   k7 = String (atomic),8Bit:(1),length:(6): RegExp, StructureID: 16777808
+   k8 = String (atomic),8Bit:(1),length:(6): Crypto, StructureID: 16777808
+   k9 = String (atomic),8Bit:(1),length:(7): Decrypt, StructureID: 16777808
+   k10 = String (atomic),8Bit:(1),length:(11): correctness, StructureID: 16777808
+   k11 = String (atomic),8Bit:(1),length:(7): Encrypt, StructureID: 16777808
+   k12 = String (atomic),8Bit:(1),length:(10): diagnostic, StructureID: 16777808
+   k13 = String (atomic),8Bit:(1),length:(16): TEB_TIMER_START:, StructureID: 16777808
+   k14 = String (atomic),8Bit:(1),length:(1): /, StructureID: 16777808
+   k15 = String (atomic),8Bit:(1),length:(15): TEB_TIMER_STOP:, StructureID: 16777808
+   k16 = String (atomic),8Bit:(1),length:(12): NavierStokes, StructureID: 16777808
+   k17 = Int32: 15: in source as integer
+   k18 = String (atomic),8Bit:(1),length:(22): invalid timer interval, StructureID: 16777808
+   k19 = String (atomic),8Bit:(1),length:(11): TEB_RESULT:, StructureID: 16777808
+   k20 = String (atomic),8Bit:(1),length:(6): Octane, StructureID: 16777808
+   k21 = String (atomic),8Bit:(1),length:(4): PASS, StructureID: 16777808
+   k22 = String (atomic),8Bit:(1),length:(8): Date.now, StructureID: 16777808
+   k23 = Undefined
+
+Compiled #AFO0Q3 into bytecode 39 instructions in 0.013866 ms.
+#AFO0Q3:[0x7fc42d164720->0x7fc42d13e280, NoneFunctionCall, 39]: 8 instructions (0 16-bit instructions, 0 32-bit instructions, 4 instructions with metadata); 143 bytes (104 metadata bytes); 1 parameter(s); 14 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] resolve_scope      dst:loc5, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[   8] get_from_scope     dst:loc5, scope:loc5, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  17] new_func_exp       dst:loc6, scope:loc4, functionDecl:0
+[  21] mov                dst:loc8, src:Undefined(const0)
+[  24] call               dst:loc6, callee:loc6, argc:1, argv:14, valueProfile:2
+[  31] put_by_id          base:loc5, property:1, value:loc6, flags:
+[  37] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = Math
+  id1 = random
+
+Constants:
+   k0 = Undefined
+
+Compiled #AZ83D6 into bytecode 23 instructions in 0.009037 ms.
+#AZ83D6:[0x7fc42d164800->0x7fc42d13f980, NoneFunctionCall, 23]: 6 instructions (0 16-bit instructions, 0 32-bit instructions, 1 instructions with metadata); 127 bytes (104 metadata bytes); 1 parameter(s); 8 callee register(s); 6 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_lexical_environment dst:loc5, scope:loc4, symbolTable:Cell: 0x7fc42d18c140 (0x7fc301000db0:[0x1000db0/16780720, SymbolTable, (0/0, 0/0){}, NonArray, Unknown, Leaf]), StructureID: 16780720(const0), initialValue:Undefined(const1)
+[   6] mov                dst:loc4, src:loc5
+[   9] put_to_scope       scope:loc5, var:0, value:Int32: 49734321(const2), getPutInfo:1048580<DoNotThrowIfNotFound|ResolvedClosureVar|Initialization|NotStrictMode>, symbolTableOrScopeDepth:0, offset:0
+[  17] new_func_exp       dst:loc6, scope:loc4, functionDecl:0
+[  21] ret                value:loc6
+Successors: [ ]
+
+
+Identifiers:
+  id0 = seed
+
+Constants:
+   k0 = Cell: 0x7fc42d18c140 (0x7fc301000db0:[0x1000db0/16780720, SymbolTable, (0/0, 0/0){}, NonArray, Unknown, Leaf]), StructureID: 16780720
+   k1 = Undefined
+   k2 = Int32: 49734321: in source as integer
+
+Compiled #AvtfcL into bytecode 3 instructions in 0.003697 ms.
+#AvtfcL:[0x7fc42d1648e0->0x7fc42d13f880, NoneFunctionCall, 3]: 2 instructions (0 16-bit instructions, 0 32-bit instructions, 0 instructions with metadata); 3 bytes (0 metadata bytes); 1 parameter(s); 6 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Constants:
+   k0 = Undefined
+
+Compiled #DmlVBO into bytecode 27 instructions in 0.008767 ms.
+#DmlVBO:[0x7fc42d1649c0->0x7fc42d13db00, NoneFunctionCall, 27]: 6 instructions (0 16-bit instructions, 0 32-bit instructions, 3 instructions with metadata); 131 bytes (104 metadata bytes); 2 parameter(s); 14 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] resolve_scope      dst:loc8, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[   8] get_from_scope     dst:loc5, scope:loc8, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  17] mov                dst:loc7, src:arg1
+[  20] call_ignore_result callee:loc5, argc:2, argv:14
+[  25] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = printErr
+
+Constants:
+   k0 = Undefined
+
+TEB_TIMER_START:Richards/Richards
+Compiled #DId5tY into bytecode 877 instructions in 0.031310 ms.
+runRichards#DId5tY:[0x7fc42d164aa0->0x7fc42d13dd00, NoneFunctionCall, 877]: 147 instructions (0 16-bit instructions, 0 32-bit instructions, 98 instructions with metadata); 981 bytes (104 metadata bytes); 1 parameter(s); 20 callee register(s); 8 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] resolve_scope      dst:loc8, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[   8] get_from_scope     dst:loc9, scope:loc8, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  17] mov                dst:loc10, src:loc9
+[  20] construct          dst:loc5, callee:loc9, argc:1, argv:16, valueProfile:2
+[  27] mov                dst:loc14, src:loc5
+[  30] get_by_id          dst:loc8, base:loc14, property:1, valueProfile:3
+[  36] resolve_scope      dst:loc13, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[  43] get_from_scope     dst:loc13, scope:loc13, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:4
+[  52] mov                dst:loc12, src:Int32: 0(const0)
+[  55] mov                dst:loc11, src:Null(const1)
+[  58] resolve_scope      dst:loc10, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  65] get_from_scope     dst:loc10, scope:loc10, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:5
+[  74] call_ignore_result callee:loc8, argc:5, argv:20
+[  79] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[  86] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:6
+[  95] mov                dst:loc13, src:Null(const1)
+[  98] resolve_scope      dst:loc12, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[ 105] get_from_scope     dst:loc12, scope:loc12, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:7
+[ 114] resolve_scope      dst:loc11, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 121] get_from_scope     dst:loc11, scope:loc11, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:8
+[ 130] mov                dst:loc14, src:loc9
+[ 133] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:9
+[ 140] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[ 147] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:10
+[ 156] mov                dst:loc13, src:loc6
+[ 159] resolve_scope      dst:loc12, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[ 166] get_from_scope     dst:loc12, scope:loc12, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:11
+[ 175] resolve_scope      dst:loc11, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 182] get_from_scope     dst:loc11, scope:loc11, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:12
+[ 191] mov                dst:loc14, src:loc9
+[ 194] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:13
+[ 201] mov                dst:loc14, src:loc5
+[ 204] get_by_id          dst:loc8, base:loc14, property:7, valueProfile:14
+[ 210] resolve_scope      dst:loc13, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[ 217] get_from_scope     dst:loc13, scope:loc13, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:15
+[ 226] mov                dst:loc12, src:Int32: 1000(const2)
+[ 229] mov                dst:loc11, src:loc6
+[ 232] call_ignore_result callee:loc8, argc:4, argv:20
+[ 237] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[ 244] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:16
+[ 253] mov                dst:loc13, src:Null(const1)
+[ 256] resolve_scope      dst:loc12, scope:loc4, var:8, resolveType:GlobalProperty, localScopeDepth:0
+[ 263] get_from_scope     dst:loc12, scope:loc12, var:8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:17
+[ 272] resolve_scope      dst:loc11, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[ 279] get_from_scope     dst:loc11, scope:loc11, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:18
+[ 288] mov                dst:loc14, src:loc9
+[ 291] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:19
+[ 298] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[ 305] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:20
+[ 314] mov                dst:loc13, src:loc6
+[ 317] resolve_scope      dst:loc12, scope:loc4, var:8, resolveType:GlobalProperty, localScopeDepth:0
+[ 324] get_from_scope     dst:loc12, scope:loc12, var:8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:21
+[ 333] resolve_scope      dst:loc11, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[ 340] get_from_scope     dst:loc11, scope:loc11, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:22
+[ 349] mov                dst:loc14, src:loc9
+[ 352] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:23
+[ 359] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[ 366] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:24
+[ 375] mov                dst:loc13, src:loc6
+[ 378] resolve_scope      dst:loc12, scope:loc4, var:8, resolveType:GlobalProperty, localScopeDepth:0
+[ 385] get_from_scope     dst:loc12, scope:loc12, var:8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:25
+[ 394] resolve_scope      dst:loc11, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[ 401] get_from_scope     dst:loc11, scope:loc11, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:26
+[ 410] mov                dst:loc14, src:loc9
+[ 413] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:27
+[ 420] mov                dst:loc14, src:loc5
+[ 423] get_by_id          dst:loc8, base:loc14, property:10, valueProfile:28
+[ 429] resolve_scope      dst:loc13, scope:loc4, var:11, resolveType:GlobalProperty, localScopeDepth:0
+[ 436] get_from_scope     dst:loc13, scope:loc13, var:11, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:29
+[ 445] mov                dst:loc12, src:Int32: 2000(const3)
+[ 448] mov                dst:loc11, src:loc6
+[ 451] call_ignore_result callee:loc8, argc:4, argv:20
+[ 456] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[ 463] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:30
+[ 472] mov                dst:loc13, src:Null(const1)
+[ 475] resolve_scope      dst:loc12, scope:loc4, var:12, resolveType:GlobalProperty, localScopeDepth:0
+[ 482] get_from_scope     dst:loc12, scope:loc12, var:12, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:31
+[ 491] resolve_scope      dst:loc11, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[ 498] get_from_scope     dst:loc11, scope:loc11, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:32
+[ 507] mov                dst:loc14, src:loc9
+[ 510] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:33
+[ 517] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[ 524] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:34
+[ 533] mov                dst:loc13, src:loc6
+[ 536] resolve_scope      dst:loc12, scope:loc4, var:12, resolveType:GlobalProperty, localScopeDepth:0
+[ 543] get_from_scope     dst:loc12, scope:loc12, var:12, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:35
+[ 552] resolve_scope      dst:loc11, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[ 559] get_from_scope     dst:loc11, scope:loc11, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:36
+[ 568] mov                dst:loc14, src:loc9
+[ 571] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:37
+[ 578] resolve_scope      dst:loc8, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[ 585] get_from_scope     dst:loc9, scope:loc8, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:38
+[ 594] mov                dst:loc13, src:loc6
+[ 597] resolve_scope      dst:loc12, scope:loc4, var:12, resolveType:GlobalProperty, localScopeDepth:0
+[ 604] get_from_scope     dst:loc12, scope:loc12, var:12, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:39
+[ 613] resolve_scope      dst:loc11, scope:loc4, var:9, resolveType:GlobalProperty, localScopeDepth:0
+[ 620] get_from_scope     dst:loc11, scope:loc11, var:9, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:40
+[ 629] mov                dst:loc14, src:loc9
+[ 632] construct          dst:loc6, callee:loc9, argc:4, argv:20, valueProfile:41
+[ 639] mov                dst:loc14, src:loc5
+[ 642] get_by_id          dst:loc8, base:loc14, property:10, valueProfile:42
+[ 648] resolve_scope      dst:loc13, scope:loc4, var:13, resolveType:GlobalProperty, localScopeDepth:0
+[ 655] get_from_scope     dst:loc13, scope:loc13, var:13, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:43
+[ 664] mov                dst:loc12, src:Int32: 3000(const4)
+[ 667] mov                dst:loc11, src:loc6
+[ 670] call_ignore_result callee:loc8, argc:4, argv:20
+[ 675] mov                dst:loc14, src:loc5
+[ 678] get_by_id          dst:loc8, base:loc14, property:14, valueProfile:44
+[ 684] resolve_scope      dst:loc13, scope:loc4, var:8, resolveType:GlobalProperty, localScopeDepth:0
+[ 691] get_from_scope     dst:loc13, scope:loc13, var:8, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:45
+[ 700] mov                dst:loc12, src:Int32: 4000(const5)
+[ 703] mov                dst:loc11, src:Null(const1)
+[ 706] call_ignore_result callee:loc8, argc:4, argv:20
+[ 711] mov                dst:loc14, src:loc5
+[ 714] get_by_id          dst:loc8, base:loc14, property:14, valueProfile:46
+[ 720] resolve_scope      dst:loc13, scope:loc4, var:12, resolveType:GlobalProperty, localScopeDepth:0
+[ 727] get_from_scope     dst:loc13, scope:loc13, var:12, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:47
+[ 736] mov                dst:loc12, src:Int32: 5000(const6)
+[ 739] mov                dst:loc11, src:Null(const1)
+[ 742] call_ignore_result callee:loc8, argc:4, argv:20
+[ 747] mov                dst:loc10, src:loc5
+[ 750] get_by_id          dst:loc8, base:loc10, property:15, valueProfile:48
+[ 756] call_ignore_result callee:loc8, argc:1, argv:16
+[ 761] get_by_id          dst:loc8, base:loc5, property:16, valueProfile:49
+[ 767] resolve_scope      dst:loc9, scope:loc4, var:17, resolveType:GlobalProperty, localScopeDepth:0
+[ 774] get_from_scope     dst:loc10, scope:loc9, var:17, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:50
+[ 783] jneq               lhs:loc8, rhs:loc10, targetLabel:30(->813)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[ 787] get_by_id          dst:loc8, base:loc5, property:18, valueProfile:51
+[ 793] resolve_scope      dst:loc9, scope:loc4, var:19, resolveType:GlobalProperty, localScopeDepth:0
+[ 800] get_from_scope     dst:loc10, scope:loc9, var:19, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:52
+[ 809] jeq                lhs:loc8, rhs:loc10, targetLabel:66(->875)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #1 #2 ]
+[ 813] mov                dst:loc8, src:String (atomic),8Bit:(1),length:(37): Error during execution: queueCount = , StructureID: 16777808(const7)
+[ 816] get_by_id          dst:loc9, base:loc5, property:16, valueProfile:53
+[ 822] to_primitive       dst:loc9, src:loc9
+[ 825] mov                dst:loc10, src:String (atomic),8Bit:(1),length:(14): , holdCount = , StructureID: 16777808(const8)
+[ 828] get_by_id          dst:loc11, base:loc5, property:18, valueProfile:54
+[ 834] to_primitive       dst:loc11, src:loc11
+[ 837] mov                dst:loc12, src:String (atomic),8Bit:(1),length:(1): ., StructureID: 16777808(const9)
+[ 840] strcat             dst:loc7, src:loc8, count:5
+[ 844] resolve_scope      dst:loc8, scope:loc4, var:20, resolveType:GlobalProperty, localScopeDepth:0
+[ 851] get_from_scope     dst:loc9, scope:loc8, var:20, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:55
+[ 860] mov                dst:loc11, src:loc7
+[ 863] mov                dst:loc12, src:loc9
+[ 866] construct          dst:loc9, callee:loc9, argc:2, argv:18, valueProfile:56
+[ 873] throw              value:loc9
+Successors: [ ]
+
+bb#4
+Predecessors: [ #2 ]
+[ 875] ret                value:Undefined(const10)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = Scheduler
+  id1 = addIdleTask
+  id2 = ID_IDLE
+  id3 = COUNT
+  id4 = Packet
+  id5 = ID_WORKER
+  id6 = KIND_WORK
+  id7 = addWorkerTask
+  id8 = ID_DEVICE_A
+  id9 = KIND_DEVICE
+  id10 = addHandlerTask
+  id11 = ID_HANDLER_A
+  id12 = ID_DEVICE_B
+  id13 = ID_HANDLER_B
+  id14 = addDeviceTask
+  id15 = schedule
+  id16 = queueCount
+  id17 = EXPECTED_QUEUE_COUNT
+  id18 = holdCount
+  id19 = EXPECTED_HOLD_COUNT
+  id20 = Error
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = Null
+   k2 = Int32: 1000: in source as integer
+   k3 = Int32: 2000: in source as integer
+   k4 = Int32: 3000: in source as integer
+   k5 = Int32: 4000: in source as integer
+   k6 = Int32: 5000: in source as integer
+   k7 = String (atomic),8Bit:(1),length:(37): Error during execution: queueCount = , StructureID: 16777808
+   k8 = String (atomic),8Bit:(1),length:(14): , holdCount = , StructureID: 16777808
+   k9 = String (atomic),8Bit:(1),length:(1): ., StructureID: 16777808
+   k10 = Undefined
+
+Compiled #BOR999 into bytecode 100 instructions in 0.015490 ms.
+Scheduler#BOR999:[0x7fc42d164b80->0x7fc42d13dd80, NoneFunctionConstruct, 100]: 19 instructions (0 16-bit instructions, 0 32-bit instructions, 14 instructions with metadata); 204 bytes (104 metadata bytes); 1 parameter(s); 16 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:6
+[   6] put_by_id          base:this, property:0, value:Int32: 0(const0), flags:
+[  12] put_by_id          base:this, property:1, value:Int32: 0(const0), flags:
+[  18] mov                dst:loc5, src:this
+[  21] resolve_scope      dst:loc6, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[  28] get_from_scope     dst:loc7, scope:loc6, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  37] resolve_scope      dst:loc9, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  44] get_from_scope     dst:loc9, scope:loc9, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:2
+[  53] mov                dst:loc10, src:loc7
+[  56] jneq_ptr           value:loc7, specialPointer:Object: 0x7fc42700fb08 with butterfly 0x7fc42d120388(base=0x7fc42d120340) (Structure 0x7fc3010042c0:[0x10042c0/16794304, Function, (0/0, 8/8){length:64, name:65, prototype:66, Symbol.species:67, of:68, isArray:69, from:70, fromAsync:71}, NonArray, Unknown, Proto:0x7fc42700be28, Leaf (Watched)]), StructureID: 16794304(const1), targetLabel:11(->67)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  61] new_array_with_size dst:loc7, length:loc9
+[  65] jmp                targetLabel:9(->74)
+Successors: [ #4 ]
+
+bb#3
+Predecessors: [ #1 ]
+[  67] construct          dst:loc7, callee:loc7, argc:2, argv:16, valueProfile:3
+Successors: [ #4 ]
+
+bb#4
+Predecessors: [ #2 #3 ]
+[  74] put_by_id          base:loc5, property:4, value:loc7, flags:
+[  80] put_by_id          base:this, property:5, value:Null(const2), flags:
+[  86] put_by_id          base:this, property:6, value:Null(const2), flags:
+[  92] put_by_id          base:this, property:7, value:Null(const2), flags:
+[  98] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = queueCount
+  id1 = holdCount
+  id2 = Array
+  id3 = NUMBER_OF_IDS
+  id4 = blocks
+  id5 = list
+  id6 = currentTcb
+  id7 = currentId
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = Object: 0x7fc42700fb08 with butterfly 0x7fc42d120388(base=0x7fc42d120340) (Structure 0x7fc3010042c0:[0x10042c0/16794304, Function, (0/0, 8/8){length:64, name:65, prototype:66, Symbol.species:67, of:68, isArray:69, from:70, fromAsync:71}, NonArray, Unknown, Proto:0x7fc42700be28, Leaf (Watched)]), StructureID: 16794304: in source as link-time-constant
+   k2 = Null
+
+Compiled #BkRfOX into bytecode 66 instructions in 0.012604 ms.
+#BkRfOX:[0x7fc42d164c60->0x7fc42d13e900, NoneFunctionCall, 66]: 16 instructions (0 16-bit instructions, 0 32-bit instructions, 6 instructions with metadata); 170 bytes (104 metadata bytes); 5 parameter(s); 24 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc10, src:this
+[   9] get_by_id          dst:loc5, base:loc10, property:0, valueProfile:2
+[  15] mov                dst:loc9, src:arg1
+[  18] mov                dst:loc8, src:arg2
+[  21] mov                dst:loc7, src:arg3
+[  24] resolve_scope      dst:loc11, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  31] get_from_scope     dst:loc12, scope:loc11, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  40] mov                dst:loc17, src:this
+[  43] mov                dst:loc16, src:Int32: 1(const0)
+[  46] mov                dst:loc15, src:arg4
+[  49] mov                dst:loc18, src:loc12
+[  52] construct          dst:loc6, callee:loc12, argc:4, argv:24, valueProfile:4
+[  59] call_ignore_result callee:loc5, argc:5, argv:16
+[  64] ret                value:Undefined(const1)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = addRunningTask
+  id1 = IdleTask
+
+Constants:
+   k0 = Int32: 1: in source as integer
+   k1 = Undefined
+
+Compiled #EOX44E into bytecode 26 instructions in 0.006523 ms.
+IdleTask#EOX44E:[0x7fc42d164d40->0x7fc42d13de80, NoneFunctionConstruct, 26]: 6 instructions (0 16-bit instructions, 0 32-bit instructions, 4 instructions with metadata); 130 bytes (104 metadata bytes); 4 parameter(s); 6 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:3
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:arg2, flags:
+[  18] put_by_id          base:this, property:2, value:arg3, flags:
+[  24] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = scheduler
+  id1 = v1
+  id2 = count
+
+Compiled #B2S4Vr into bytecode 51 instructions in 0.008998 ms.
+#B2S4Vr:[0x7fc42d164e20->0x7fc42d13eb00, NoneFunctionCall, 51]: 13 instructions (0 16-bit instructions, 0 32-bit instructions, 6 instructions with metadata); 155 bytes (104 metadata bytes); 5 parameter(s); 16 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc10, src:this
+[   9] get_by_id          dst:loc5, base:loc10, property:0, valueProfile:2
+[  15] mov                dst:loc9, src:arg1
+[  18] mov                dst:loc8, src:arg2
+[  21] mov                dst:loc7, src:arg3
+[  24] mov                dst:loc6, src:arg4
+[  27] call_ignore_result callee:loc5, argc:5, argv:16
+[  32] get_by_id          dst:loc6, base:this, property:1, valueProfile:3
+[  38] get_by_id          dst:loc5, base:loc6, property:2, valueProfile:4
+[  44] call_ignore_result callee:loc5, argc:1, argv:12
+[  49] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = addTask
+  id1 = currentTcb
+  id2 = setRunning
+
+Constants:
+   k0 = Undefined
+
+Compiled #BuqWum into bytecode 97 instructions in 0.011892 ms.
+#BuqWum:[0x7fc42d164f00->0x7fc42d13eb80, NoneFunctionCall, 97]: 21 instructions (0 16-bit instructions, 0 32-bit instructions, 11 instructions with metadata); 201 bytes (104 metadata bytes); 5 parameter(s); 20 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc5, src:this
+[   9] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  16] get_from_scope     dst:loc7, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:2
+[  25] get_by_id          dst:loc13, base:this, property:1, valueProfile:3
+[  31] mov                dst:loc12, src:arg1
+[  34] mov                dst:loc11, src:arg2
+[  37] mov                dst:loc10, src:arg3
+[  40] mov                dst:loc9, src:arg4
+[  43] mov                dst:loc14, src:loc7
+[  46] construct          dst:loc7, callee:loc7, argc:6, argv:20, valueProfile:4
+[  53] put_by_id          base:loc5, property:2, value:loc7, flags:
+[  59] mov                dst:loc5, src:this
+[  62] get_by_id          dst:loc6, base:this, property:2, valueProfile:5
+[  68] put_by_id          base:loc5, property:1, value:loc6, flags:
+[  74] get_by_id          dst:loc5, base:this, property:3, valueProfile:6
+[  80] mov                dst:loc6, src:arg1
+[  83] get_by_id          dst:loc7, base:this, property:2, valueProfile:7
+[  89] put_by_val         base:loc5, property:loc6, value:loc7, ecmaMode:NotStrictMode
+[  95] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = TaskControlBlock
+  id1 = list
+  id2 = currentTcb
+  id3 = blocks
+
+Constants:
+   k0 = Undefined
+
+Compiled #Bh6AnA into bytecode 93 instructions in 0.011682 ms.
+TaskControlBlock#Bh6AnA:[0x7fc42d164fe0->0x7fc42d13de00, NoneFunctionConstruct, 93]: 18 instructions (0 16-bit instructions, 0 32-bit instructions, 12 instructions with metadata); 197 bytes (104 metadata bytes); 6 parameter(s); 8 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:6
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:arg2, flags:
+[  18] put_by_id          base:this, property:2, value:arg3, flags:
+[  24] put_by_id          base:this, property:3, value:arg4, flags:
+[  30] put_by_id          base:this, property:4, value:arg5, flags:
+[  36] jneq_null          value:arg4, targetLabel:30(->66)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  39] mov                dst:loc5, src:this
+[  42] resolve_scope      dst:loc6, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[  49] get_from_scope     dst:loc7, scope:loc6, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  58] put_by_id          base:loc5, property:6, value:loc7, flags:
+[  64] jmp                targetLabel:27(->91)
+Successors: [ #4 ]
+
+bb#3
+Predecessors: [ #1 ]
+[  66] mov                dst:loc5, src:this
+[  69] resolve_scope      dst:loc6, scope:loc4, var:7, resolveType:GlobalProperty, localScopeDepth:0
+[  76] get_from_scope     dst:loc7, scope:loc6, var:7, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:2
+[  85] put_by_id          base:loc5, property:6, value:loc7, flags:
+Successors: [ #4 ]
+
+bb#4
+Predecessors: [ #2 #3 ]
+[  91] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = link
+  id1 = id
+  id2 = priority
+  id3 = queue
+  id4 = task
+  id5 = STATE_SUSPENDED
+  id6 = state
+  id7 = STATE_SUSPENDED_RUNNABLE
+
+Compiled #A6SN6D into bytecode 33 instructions in 0.006893 ms.
+#A6SN6D:[0x7fc42d1650c0->0x7fc42d13ee80, NoneFunctionCall, 33]: 7 instructions (0 16-bit instructions, 0 32-bit instructions, 4 instructions with metadata); 137 bytes (104 metadata bytes); 1 parameter(s); 8 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc5, src:this
+[   9] resolve_scope      dst:loc6, scope:loc4, var:0, resolveType:GlobalProperty, localScopeDepth:0
+[  16] get_from_scope     dst:loc7, scope:loc6, var:0, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:2
+[  25] put_by_id          base:loc5, property:1, value:loc7, flags:
+[  31] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = STATE_RUNNING
+  id1 = state
+
+Constants:
+   k0 = Undefined
+
+Compiled #B1YNWV into bytecode 94 instructions in 0.010530 ms.
+Packet#B1YNWV:[0x7fc42d1651a0->0x7fc42d13e080, NoneFunctionConstruct, 94]: 18 instructions (0 16-bit instructions, 0 32-bit instructions, 13 instructions with metadata); 198 bytes (104 metadata bytes); 4 parameter(s); 16 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:5
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:arg2, flags:
+[  18] put_by_id          base:this, property:2, value:arg3, flags:
+[  24] put_by_id          base:this, property:3, value:Int32: 0(const0), flags:
+[  30] mov                dst:loc5, src:this
+[  33] resolve_scope      dst:loc6, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[  40] get_from_scope     dst:loc7, scope:loc6, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:1
+[  49] resolve_scope      dst:loc9, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[  56] get_from_scope     dst:loc9, scope:loc9, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:2
+[  65] mov                dst:loc10, src:loc7
+[  68] jneq_ptr           value:loc7, specialPointer:Object: 0x7fc42700fb08 with butterfly 0x7fc42d120388(base=0x7fc42d120340) (Structure 0x7fc3010042c0:[0x10042c0/16794304, Function, (0/0, 8/8){length:64, name:65, prototype:66, Symbol.species:67, of:68, isArray:69, from:70, fromAsync:71}, NonArray, Unknown, Proto:0x7fc42700be28, Leaf (Watched)]), StructureID: 16794304(const1), targetLabel:11(->79)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  73] new_array_with_size dst:loc7, length:loc9
+[  77] jmp                targetLabel:9(->86)
+Successors: [ #4 ]
+
+bb#3
+Predecessors: [ #1 ]
+[  79] construct          dst:loc7, callee:loc7, argc:2, argv:16, valueProfile:3
+Successors: [ #4 ]
+
+bb#4
+Predecessors: [ #2 #3 ]
+[  86] put_by_id          base:loc5, property:6, value:loc7, flags:
+[  92] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = link
+  id1 = id
+  id2 = kind
+  id3 = a1
+  id4 = Array
+  id5 = DATA_SIZE
+  id6 = a2
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = Object: 0x7fc42700fb08 with butterfly 0x7fc42d120388(base=0x7fc42d120340) (Structure 0x7fc3010042c0:[0x10042c0/16794304, Function, (0/0, 8/8){length:64, name:65, prototype:66, Symbol.species:67, of:68, isArray:69, from:70, fromAsync:71}, NonArray, Unknown, Proto:0x7fc42700be28, Leaf (Watched)]), StructureID: 16794304: in source as link-time-constant
+
+Compiled #Cea2af into bytecode 79 instructions in 0.009308 ms.
+#Cea2af:[0x7fc42d165280->0x7fc42d13e980, NoneFunctionCall, 79]: 17 instructions (0 16-bit instructions, 0 32-bit instructions, 8 instructions with metadata); 183 bytes (104 metadata bytes); 4 parameter(s); 24 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc10, src:this
+[   9] get_by_id          dst:loc5, base:loc10, property:0, valueProfile:2
+[  15] mov                dst:loc9, src:arg1
+[  18] mov                dst:loc8, src:arg2
+[  21] mov                dst:loc7, src:arg3
+[  24] resolve_scope      dst:loc11, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  31] get_from_scope     dst:loc12, scope:loc11, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  40] mov                dst:loc17, src:this
+[  43] resolve_scope      dst:loc16, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[  50] get_from_scope     dst:loc16, scope:loc16, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:4
+[  59] mov                dst:loc15, src:Int32: 0(const0)
+[  62] mov                dst:loc18, src:loc12
+[  65] construct          dst:loc6, callee:loc12, argc:4, argv:24, valueProfile:5
+[  72] call_ignore_result callee:loc5, argc:5, argv:16
+[  77] ret                value:Undefined(const1)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = addTask
+  id1 = WorkerTask
+  id2 = ID_HANDLER_A
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = Undefined
+
+Compiled #B6KGFr into bytecode 26 instructions in 0.006633 ms.
+WorkerTask#B6KGFr:[0x7fc42d165360->0x7fc42d13df80, NoneFunctionConstruct, 26]: 6 instructions (0 16-bit instructions, 0 32-bit instructions, 4 instructions with metadata); 130 bytes (104 metadata bytes); 4 parameter(s); 6 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:3
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:arg2, flags:
+[  18] put_by_id          base:this, property:2, value:arg3, flags:
+[  24] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = scheduler
+  id1 = v1
+  id2 = v2
+
+Compiled #DNf36C into bytecode 60 instructions in 0.008957 ms.
+#DNf36C:[0x7fc42d165440->0x7fc42d13ea00, NoneFunctionCall, 60]: 14 instructions (0 16-bit instructions, 0 32-bit instructions, 6 instructions with metadata); 164 bytes (104 metadata bytes); 4 parameter(s); 22 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc10, src:this
+[   9] get_by_id          dst:loc5, base:loc10, property:0, valueProfile:2
+[  15] mov                dst:loc9, src:arg1
+[  18] mov                dst:loc8, src:arg2
+[  21] mov                dst:loc7, src:arg3
+[  24] resolve_scope      dst:loc11, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  31] get_from_scope     dst:loc12, scope:loc11, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  40] mov                dst:loc15, src:this
+[  43] mov                dst:loc16, src:loc12
+[  46] construct          dst:loc6, callee:loc12, argc:2, argv:22, valueProfile:4
+[  53] call_ignore_result callee:loc5, argc:5, argv:16
+[  58] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = addTask
+  id1 = HandlerTask
+
+Constants:
+   k0 = Undefined
+
+Compiled #CCBwcy into bytecode 26 instructions in 0.007404 ms.
+HandlerTask#CCBwcy:[0x7fc42d165520->0x7fc42d13e000, NoneFunctionConstruct, 26]: 6 instructions (0 16-bit instructions, 0 32-bit instructions, 4 instructions with metadata); 130 bytes (104 metadata bytes); 2 parameter(s); 6 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:3
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:Null(const0), flags:
+[  18] put_by_id          base:this, property:2, value:Null(const0), flags:
+[  24] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = scheduler
+  id1 = v1
+  id2 = v2
+
+Constants:
+   k0 = Null
+
+Compiled #AAaL92 into bytecode 60 instructions in 0.008266 ms.
+#AAaL92:[0x7fc42d165600->0x7fc42d13ea80, NoneFunctionCall, 60]: 14 instructions (0 16-bit instructions, 0 32-bit instructions, 6 instructions with metadata); 164 bytes (104 metadata bytes); 4 parameter(s); 22 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc10, src:this
+[   9] get_by_id          dst:loc5, base:loc10, property:0, valueProfile:2
+[  15] mov                dst:loc9, src:arg1
+[  18] mov                dst:loc8, src:arg2
+[  21] mov                dst:loc7, src:arg3
+[  24] resolve_scope      dst:loc11, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  31] get_from_scope     dst:loc12, scope:loc11, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  40] mov                dst:loc15, src:this
+[  43] mov                dst:loc16, src:loc12
+[  46] construct          dst:loc6, callee:loc12, argc:2, argv:22, valueProfile:4
+[  53] call_ignore_result callee:loc5, argc:5, argv:16
+[  58] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = addTask
+  id1 = DeviceTask
+
+Constants:
+   k0 = Undefined
+
+Compiled #DXVLD8 into bytecode 20 instructions in 0.006994 ms.
+DeviceTask#DXVLD8:[0x7fc42d1656e0->0x7fc42d13df00, NoneFunctionConstruct, 20]: 5 instructions (0 16-bit instructions, 0 32-bit instructions, 3 instructions with metadata); 124 bytes (104 metadata bytes); 2 parameter(s); 6 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_this        dst:this, callee:this, inlineCapacity:2
+[   6] put_by_id          base:this, property:0, value:arg1, flags:
+[  12] put_by_id          base:this, property:1, value:Null(const0), flags:
+[  18] ret                value:this
+Successors: [ ]
+
+
+Identifiers:
+  id0 = scheduler
+  id1 = v1
+
+Constants:
+   k0 = Null
+
+Compiled #EaXyiF into bytecode 140 instructions in 0.015760 ms.
+#EaXyiF:[0x7fc42d1657c0->0x7fc42d13ec00, NoneFunctionCall, 140]: 31 instructions (0 16-bit instructions, 0 32-bit instructions, 18 instructions with metadata); 244 bytes (104 metadata bytes); 1 parameter(s); 14 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc5, src:this
+[   9] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  15] put_by_id          base:loc5, property:1, value:loc6, flags:
+[  21] get_by_id          dst:loc5, base:this, property:1, valueProfile:3
+[  27] jeq_null           value:loc5, targetLabel:111(->138)
+Successors: [ #6 #2 ]
+
+bb#2
+Predecessors: [ #1 #5 ]
+[  30] loop_hint          
+[  31] check_traps        
+[  32] get_by_id          dst:loc6, base:this, property:1, valueProfile:4
+[  38] get_by_id          dst:loc5, base:loc6, property:2, valueProfile:5
+[  44] call               dst:loc5, callee:loc5, argc:1, argv:12, valueProfile:6
+[  51] jfalse             condition:loc5, targetLabel:26(->77)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #2 ]
+[  54] mov                dst:loc5, src:this
+[  57] get_by_id          dst:loc7, base:this, property:1, valueProfile:7
+[  63] get_by_id          dst:loc6, base:loc7, property:3, valueProfile:8
+[  69] put_by_id          base:loc5, property:1, value:loc6, flags:
+[  75] jmp                targetLabel:51(->126)
+Successors: [ #5 ]
+
+bb#4
+Predecessors: [ #2 ]
+[  77] mov                dst:loc5, src:this
+[  80] get_by_id          dst:loc7, base:this, property:1, valueProfile:9
+[  86] get_by_id          dst:loc6, base:loc7, property:4, valueProfile:10
+[  92] put_by_id          base:loc5, property:5, value:loc6, flags:
+[  98] mov                dst:loc5, src:this
+[ 101] get_by_id          dst:loc8, base:this, property:1, valueProfile:11
+[ 107] get_by_id          dst:loc6, base:loc8, property:6, valueProfile:12
+[ 113] call               dst:loc6, callee:loc6, argc:1, argv:14, valueProfile:13
+[ 120] put_by_id          base:loc5, property:1, value:loc6, flags:
+Successors: [ #5 ]
+
+bb#5
+Predecessors: [ #3 #4 ]
+[ 126] get_by_id          dst:loc5, base:this, property:1, valueProfile:14
+[ 132] neq_null           dst:loc5, operand:loc5
+[ 135] jtrue              condition:loc5, targetLabel:-105(->30)
+Successors: [ #2 #6 ]
+
+bb#6
+Predecessors: [ #1 #5 ]
+[ 138] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = list
+  id1 = currentTcb
+  id2 = isHeldOrSuspended
+  id3 = link
+  id4 = id
+  id5 = currentId
+  id6 = run
+
+Constants:
+   k0 = Undefined
+
+Compiled #DDXQoZ into bytecode 69 instructions in 0.010219 ms.
+#DDXQoZ:[0x7fc42d1658a0->0x7fc42d13f000, NoneFunctionCall, 69]: 13 instructions (0 16-bit instructions, 0 32-bit instructions, 7 instructions with metadata); 173 bytes (104 metadata bytes); 1 parameter(s); 10 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  12] resolve_scope      dst:loc7, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  19] get_from_scope     dst:loc8, scope:loc7, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  28] bitand             dst:loc6, lhs:loc6, rhs:loc8, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[  34] neq                dst:loc5, lhs:loc6, rhs:Int32: 0(const0)
+[  38] jtrue              condition:loc5, targetLabel:29(->67)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  41] get_by_id          dst:loc6, base:this, property:0, valueProfile:4
+[  47] resolve_scope      dst:loc7, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[  54] get_from_scope     dst:loc8, scope:loc7, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:5
+[  63] eq                 dst:loc5, lhs:loc6, rhs:loc8
+Successors: [ #3 ]
+
+bb#3
+Predecessors: [ #1 #2 ]
+[  67] ret                value:loc5
+Successors: [ ]
+
+
+Identifiers:
+  id0 = state
+  id1 = STATE_HELD
+  id2 = STATE_SUSPENDED
+
+Constants:
+   k0 = Int32: 0: in source as integer
+
+Compiled #Bkagj7 into bytecode 143 instructions in 0.013686 ms.
+#Bkagj7:[0x7fc42d165980->0x7fc42d13f180, NoneFunctionCall, 143]: 28 instructions (0 16-bit instructions, 0 32-bit instructions, 17 instructions with metadata); 247 bytes (104 metadata bytes); 1 parameter(s); 16 callee register(s); 6 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  12] resolve_scope      dst:loc7, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  19] get_from_scope     dst:loc8, scope:loc7, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  28] jneq               lhs:loc6, rhs:loc8, targetLabel:88(->116)
+Successors: [ #6 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  32] get_by_id          dst:loc5, base:this, property:2, valueProfile:4
+[  38] mov                dst:loc6, src:this
+[  41] get_by_id          dst:loc7, base:loc5, property:3, valueProfile:5
+[  47] put_by_id          base:loc6, property:2, value:loc7, flags:
+[  53] get_by_id          dst:loc6, base:this, property:2, valueProfile:6
+[  59] jneq_null          value:loc6, targetLabel:30(->89)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #2 ]
+[  62] mov                dst:loc6, src:this
+[  65] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[  72] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:7
+[  81] put_by_id          base:loc6, property:0, value:loc8, flags:
+[  87] jmp                targetLabel:27(->114)
+Successors: [ #5 ]
+
+bb#4
+Predecessors: [ #2 ]
+[  89] mov                dst:loc6, src:this
+[  92] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[  99] get_from_scope     dst:loc8, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:8
+[ 108] put_by_id          base:loc6, property:0, value:loc8, flags:
+Successors: [ #5 ]
+
+bb#5
+Predecessors: [ #3 #4 ]
+[ 114] jmp                targetLabel:5(->119)
+Successors: [ #7 ]
+
+bb#6
+Predecessors: [ #1 ]
+[ 116] mov                dst:loc5, src:Null(const0)
+Successors: [ #7 ]
+
+bb#7
+Predecessors: [ #5 #6 ]
+[ 119] get_by_id          dst:loc10, base:this, property:6, valueProfile:9
+[ 125] get_by_id          dst:loc6, base:loc10, property:7, valueProfile:10
+[ 131] mov                dst:loc9, src:loc5
+[ 134] call               dst:loc6, callee:loc6, argc:2, argv:16, valueProfile:11
+[ 141] ret                value:loc6
+Successors: [ ]
+
+
+Identifiers:
+  id0 = state
+  id1 = STATE_SUSPENDED_RUNNABLE
+  id2 = queue
+  id3 = link
+  id4 = STATE_RUNNING
+  id5 = STATE_RUNNABLE
+  id6 = task
+  id7 = run
+
+Constants:
+   k0 = Null
+
+Compiled #EgO0iG into bytecode 319 instructions in 0.022694 ms.
+#EgO0iG:[0x7fc42d165a60->0x7fc42d13f600, NoneFunctionCall, 319]: 62 instructions (0 16-bit instructions, 0 32-bit instructions, 41 instructions with metadata); 423 bytes (104 metadata bytes); 2 parameter(s); 18 callee register(s); 7 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] jeq_null           value:arg1, targetLabel:93(->99)
+Successors: [ #5 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[   9] get_by_id          dst:loc7, base:arg1, property:0, valueProfile:2
+[  15] resolve_scope      dst:loc8, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  22] get_from_scope     dst:loc9, scope:loc8, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  31] jneq               lhs:loc7, rhs:loc9, targetLabel:37(->68)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #2 ]
+[  35] mov                dst:loc7, src:this
+[  38] mov                dst:loc12, src:arg1
+[  41] get_by_id          dst:loc8, base:loc12, property:2, valueProfile:4
+[  47] get_by_id          dst:loc11, base:this, property:3, valueProfile:5
+[  53] call               dst:loc8, callee:loc8, argc:2, argv:18, valueProfile:6
+[  60] put_by_id          base:loc7, property:3, value:loc8, flags:
+[  66] jmp                targetLabel:33(->99)
+Successors: [ #5 ]
+
+bb#4
+Predecessors: [ #2 ]
+[  68] mov                dst:loc7, src:this
+[  71] mov                dst:loc12, src:arg1
+[  74] get_by_id          dst:loc8, base:loc12, property:2, valueProfile:7
+[  80] get_by_id          dst:loc11, base:this, property:4, valueProfile:8
+[  86] call               dst:loc8, callee:loc8, argc:2, argv:18, valueProfile:9
+[  93] put_by_id          base:loc7, property:4, value:loc8, flags:
+Successors: [ #5 ]
+
+bb#5
+Predecessors: [ #1 #3 #4 ]
+[  99] get_by_id          dst:loc7, base:this, property:3, valueProfile:10
+[ 105] jeq_null           value:loc7, targetLabel:193(->298)
+Successors: [ #11 #6 ]
+
+bb#6
+Predecessors: [ #5 ]
+[ 108] get_by_id          dst:loc7, base:this, property:3, valueProfile:11
+[ 114] get_by_id          dst:loc5, base:loc7, property:5, valueProfile:12
+[ 120] resolve_scope      dst:loc7, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 127] get_from_scope     dst:loc8, scope:loc7, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:13
+[ 136] jnless             lhs:loc5, rhs:loc8, targetLabel:111(->247)
+Successors: [ #10 #7 ]
+
+bb#7
+Predecessors: [ #6 ]
+[ 140] get_by_id          dst:loc7, base:this, property:4, valueProfile:14
+[ 146] jeq_null           value:loc7, targetLabel:99(->245)
+Successors: [ #9 #8 ]
+
+bb#8
+Predecessors: [ #7 ]
+[ 149] get_by_id          dst:loc6, base:this, property:4, valueProfile:15
+[ 155] mov                dst:loc7, src:this
+[ 158] get_by_id          dst:loc9, base:this, property:4, valueProfile:16
+[ 164] get_by_id          dst:loc8, base:loc9, property:7, valueProfile:17
+[ 170] put_by_id          base:loc7, property:4, value:loc8, flags:
+[ 176] mov                dst:loc7, src:loc6
+[ 179] get_by_id          dst:loc10, base:this, property:3, valueProfile:18
+[ 185] get_by_id          dst:loc9, base:loc10, property:8, valueProfile:19
+[ 191] get_by_val         dst:loc8, base:loc9, property:loc5, valueProfile:20
+[ 197] put_by_id          base:loc7, property:5, value:loc8, flags:
+[ 203] get_by_id          dst:loc7, base:this, property:3, valueProfile:21
+[ 209] add                dst:loc8, lhs:loc5, rhs:Int32: 1(const0), profileIndex:0, operandTypes:OperandTypes(126, 3)
+[ 215] put_by_id          base:loc7, property:5, value:loc8, flags:
+[ 221] get_by_id          dst:loc10, base:this, property:9, valueProfile:22
+[ 227] get_by_id          dst:loc7, base:loc10, property:10, valueProfile:23
+[ 233] mov                dst:loc9, src:loc6
+[ 236] call               dst:loc7, callee:loc7, argc:2, argv:16, valueProfile:24
+[ 243] ret                value:loc7
+Successors: [ ]
+
+bb#9
+Predecessors: [ #7 ]
+[ 245] jmp                targetLabel:53(->298)
+Successors: [ #11 ]
+
+bb#10
+Predecessors: [ #6 ]
+[ 247] get_by_id          dst:loc6, base:this, property:3, valueProfile:25
+[ 253] mov                dst:loc7, src:this
+[ 256] get_by_id          dst:loc9, base:this, property:3, valueProfile:26
+[ 262] get_by_id          dst:loc8, base:loc9, property:7, valueProfile:27
+[ 268] put_by_id          base:loc7, property:3, value:loc8, flags:
+[ 274] get_by_id          dst:loc10, base:this, property:9, valueProfile:28
+[ 280] get_by_id          dst:loc7, base:loc10, property:10, valueProfile:29
+[ 286] mov                dst:loc9, src:loc6
+[ 289] call               dst:loc7, callee:loc7, argc:2, argv:16, valueProfile:30
+[ 296] ret                value:loc7
+Successors: [ ]
+
+bb#11
+Predecessors: [ #5 #9 ]
+[ 298] get_by_id          dst:loc8, base:this, property:9, valueProfile:31
+[ 304] get_by_id          dst:loc7, base:loc8, property:11, valueProfile:32
+[ 310] call               dst:loc7, callee:loc7, argc:1, argv:14, valueProfile:33
+[ 317] ret                value:loc7
+Successors: [ ]
+
+
+Identifiers:
+  id0 = kind
+  id1 = KIND_WORK
+  id2 = addTo
+  id3 = v1
+  id4 = v2
+  id5 = a1
+  id6 = DATA_SIZE
+  id7 = link
+  id8 = a2
+  id9 = scheduler
+  id10 = queue
+  id11 = suspendCurrent
+
+Constants:
+   k0 = Int32: 1: in source as integer
+
+Compiled #BklW7O into bytecode 57 instructions in 0.012012 ms.
+#BklW7O:[0x7fc42d165b40->0x7fc42d13f700, NoneFunctionCall, 57]: 17 instructions (0 16-bit instructions, 0 32-bit instructions, 5 instructions with metadata); 161 bytes (104 metadata bytes); 2 parameter(s); 8 callee register(s); 7 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] put_by_id          base:this, property:0, value:Null(const0), flags:
+[  12] jneq_null          value:arg1, targetLabel:5(->17)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  15] ret                value:this
+Successors: [ ]
+
+bb#3
+Predecessors: [ #1 ]
+[  17] mov                dst:loc6, src:arg1
+[  20] get_by_id          dst:loc5, base:loc6, property:0, valueProfile:2
+[  26] jeq_null           value:loc5, targetLabel:20(->46)
+Successors: [ #5 #4 ]
+
+bb#4
+Predecessors: [ #3 #4 ]
+[  29] loop_hint          
+[  30] check_traps        
+[  31] mov                dst:loc6, src:loc5
+[  34] get_by_id          dst:loc5, base:loc6, property:0, valueProfile:3
+[  40] neq_null           dst:loc7, operand:loc5
+[  43] jtrue              condition:loc7, targetLabel:-14(->29)
+Successors: [ #4 #5 ]
+
+bb#5
+Predecessors: [ #3 #4 ]
+[  46] mov                dst:loc7, src:loc6
+[  49] put_by_id          base:loc7, property:0, value:this, flags:
+[  55] ret                value:arg1
+Successors: [ ]
+
+
+Identifiers:
+  id0 = link
+
+Constants:
+   k0 = Null
+
+Compiled #BcWNsr into bytecode 31 instructions in 0.005491 ms.
+#BcWNsr:[0x7fc42d165c20->0x7fc42d13ed80, NoneFunctionCall, 31]: 7 instructions (0 16-bit instructions, 0 32-bit instructions, 5 instructions with metadata); 135 bytes (104 metadata bytes); 1 parameter(s); 12 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  12] get_by_id          dst:loc5, base:loc6, property:1, valueProfile:3
+[  18] call_ignore_result callee:loc5, argc:1, argv:12
+[  23] get_by_id          dst:loc5, base:this, property:0, valueProfile:4
+[  29] ret                value:loc5
+Successors: [ ]
+
+
+Identifiers:
+  id0 = currentTcb
+  id1 = markAsSuspended
+
+Compiled #ByDZn4 into bytecode 45 instructions in 0.006522 ms.
+#ByDZn4:[0x7fc42d165d00->0x7fc42d13f080, NoneFunctionCall, 45]: 9 instructions (0 16-bit instructions, 0 32-bit instructions, 5 instructions with metadata); 149 bytes (104 metadata bytes); 1 parameter(s); 10 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc5, src:this
+[   9] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  15] resolve_scope      dst:loc7, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  22] get_from_scope     dst:loc8, scope:loc7, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  31] bitor              dst:loc6, lhs:loc6, rhs:loc8, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[  37] put_by_id          base:loc5, property:0, value:loc6, flags:
+[  43] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = state
+  id1 = STATE_SUSPENDED
+
+Constants:
+   k0 = Undefined
+
+Compiled #EZeerI into bytecode 257 instructions in 0.023655 ms.
+#EZeerI:[0x7fc42d165de0->0x7fc42d13f500, NoneFunctionCall, 257]: 51 instructions (0 16-bit instructions, 0 32-bit instructions, 30 instructions with metadata); 361 bytes (104 metadata bytes); 2 parameter(s); 16 callee register(s); 6 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] jneq_null          value:arg1, targetLabel:26(->32)
+Successors: [ #4 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[   9] get_by_id          dst:loc8, base:this, property:0, valueProfile:2
+[  15] get_by_id          dst:loc6, base:loc8, property:1, valueProfile:3
+[  21] call               dst:loc6, callee:loc6, argc:1, argv:14, valueProfile:4
+[  28] ret                value:loc6
+Successors: [ ]
+
+bb#3
+Predecessors: [ ]
+[  30] jmp                targetLabel:225(->255)
+Successors: [ #12 ]
+
+bb#4
+Predecessors: [ #1 ]
+[  32] get_by_id          dst:loc6, base:this, property:2, valueProfile:5
+[  38] resolve_scope      dst:loc7, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  45] get_from_scope     dst:loc8, scope:loc7, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:6
+[  54] jneq               lhs:loc6, rhs:loc8, targetLabel:31(->85)
+Successors: [ #6 #5 ]
+
+bb#5
+Predecessors: [ #4 ]
+[  58] mov                dst:loc6, src:this
+[  61] resolve_scope      dst:loc7, scope:loc4, var:4, resolveType:GlobalProperty, localScopeDepth:0
+[  68] get_from_scope     dst:loc8, scope:loc7, var:4, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:7
+[  77] put_by_id          base:loc6, property:2, value:loc8, flags:
+[  83] jmp                targetLabel:27(->110)
+Successors: [ #7 ]
+
+bb#6
+Predecessors: [ #4 ]
+[  85] mov                dst:loc6, src:this
+[  88] resolve_scope      dst:loc7, scope:loc4, var:3, resolveType:GlobalProperty, localScopeDepth:0
+[  95] get_from_scope     dst:loc8, scope:loc7, var:3, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:8
+[ 104] put_by_id          base:loc6, property:2, value:loc8, flags:
+Successors: [ #7 ]
+
+bb#7
+Predecessors: [ #5 #6 ]
+[ 110] mov                dst:loc6, src:arg1
+[ 113] get_by_id          dst:loc7, base:this, property:2, valueProfile:9
+[ 119] put_by_id          base:loc6, property:5, value:loc7, flags:
+[ 125] put_by_id          base:arg1, property:6, value:Int32: 0(const0), flags:
+[ 131] mov                dst:loc5, src:Int32: 0(const0)
+[ 134] resolve_scope      dst:loc6, scope:loc4, var:7, resolveType:GlobalProperty, localScopeDepth:0
+[ 141] get_from_scope     dst:loc7, scope:loc6, var:7, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:10
+[ 150] jnless             lhs:loc5, rhs:loc7, targetLabel:81(->231)
+Successors: [ #11 #8 ]
+
+bb#8
+Predecessors: [ #7 #10 ]
+[ 154] loop_hint          
+[ 155] check_traps        
+[ 156] get_by_id          dst:loc6, base:this, property:8, valueProfile:11
+[ 162] inc                srcDst:loc6, profileIndex:0
+[ 165] put_by_id          base:this, property:8, value:loc6, flags:
+[ 171] get_by_id          dst:loc6, base:this, property:8, valueProfile:12
+[ 177] jngreater          lhs:loc6, rhs:Int32: 26(const1), targetLabel:10(->187)
+Successors: [ #10 #9 ]
+
+bb#9
+Predecessors: [ #8 ]
+[ 181] put_by_id          base:this, property:8, value:Int32: 1(const2), flags:
+Successors: [ #10 ]
+
+bb#10
+Predecessors: [ #8 #9 ]
+[ 187] get_by_id          dst:loc6, base:arg1, property:9, valueProfile:13
+[ 193] mov                dst:loc7, src:loc5
+[ 196] get_by_id          dst:loc8, base:this, property:8, valueProfile:14
+[ 202] put_by_val         base:loc6, property:loc7, value:loc8, ecmaMode:NotStrictMode
+[ 208] inc                srcDst:loc5, profileIndex:1
+[ 211] resolve_scope      dst:loc6, scope:loc4, var:7, resolveType:GlobalProperty, localScopeDepth:0
+[ 218] get_from_scope     dst:loc7, scope:loc6, var:7, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:15
+[ 227] jless              lhs:loc5, rhs:loc7, targetLabel:-73(->154)
+Successors: [ #8 #11 ]
+
+bb#11
+Predecessors: [ #7 #10 ]
+[ 231] get_by_id          dst:loc10, base:this, property:0, valueProfile:16
+[ 237] get_by_id          dst:loc6, base:loc10, property:10, valueProfile:17
+[ 243] mov                dst:loc9, src:arg1
+[ 246] call               dst:loc6, callee:loc6, argc:2, argv:16, valueProfile:18
+[ 253] ret                value:loc6
+Successors: [ ]
+
+bb#12
+Predecessors: [ #3 ]
+[ 255] ret                value:Undefined(const3)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = scheduler
+  id1 = suspendCurrent
+  id2 = v1
+  id3 = ID_HANDLER_A
+  id4 = ID_HANDLER_B
+  id5 = id
+  id6 = a1
+  id7 = DATA_SIZE
+  id8 = v2
+  id9 = a2
+  id10 = queue
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = Int32: 26: in source as integer
+   k2 = Int32: 1: in source as integer
+   k3 = Undefined
+
+Compiled #CefcG9 into bytecode 92 instructions in 0.011792 ms.
+#CefcG9:[0x7fc42d165ec0->0x7fc42d13ee00, NoneFunctionCall, 92]: 20 instructions (0 16-bit instructions, 0 32-bit instructions, 12 instructions with metadata); 196 bytes (104 metadata bytes); 2 parameter(s); 16 callee register(s); 6 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  12] get_by_id          dst:loc7, base:arg1, property:1, valueProfile:3
+[  18] get_by_val         dst:loc5, base:loc6, property:loc7, valueProfile:4
+[  24] jneq_null          value:loc5, targetLabel:5(->29)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  27] ret                value:loc5
+Successors: [ ]
+
+bb#3
+Predecessors: [ #1 ]
+[  29] get_by_id          dst:loc6, base:this, property:2, valueProfile:5
+[  35] inc                srcDst:loc6, profileIndex:0
+[  38] put_by_id          base:this, property:2, value:loc6, flags:
+[  44] put_by_id          base:arg1, property:3, value:Null(const0), flags:
+[  50] mov                dst:loc6, src:arg1
+[  53] get_by_id          dst:loc7, base:this, property:4, valueProfile:6
+[  59] put_by_id          base:loc6, property:1, value:loc7, flags:
+[  65] mov                dst:loc10, src:loc5
+[  68] get_by_id          dst:loc6, base:loc10, property:5, valueProfile:7
+[  74] get_by_id          dst:loc9, base:this, property:6, valueProfile:8
+[  80] mov                dst:loc8, src:arg1
+[  83] call               dst:loc6, callee:loc6, argc:3, argv:16, valueProfile:9
+[  90] ret                value:loc6
+Successors: [ ]
+
+
+Identifiers:
+  id0 = blocks
+  id1 = id
+  id2 = queueCount
+  id3 = link
+  id4 = currentId
+  id5 = checkPriorityAdd
+  id6 = currentTcb
+
+Constants:
+   k0 = Null
+
+Compiled #C0KKap into bytecode 88 instructions in 0.012083 ms.
+#C0KKap:[0x7fc42d165fa0->0x7fc42d13f200, NoneFunctionCall, 88]: 20 instructions (0 16-bit instructions, 0 32-bit instructions, 11 instructions with metadata); 192 bytes (104 metadata bytes); 3 parameter(s); 16 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc5, base:this, property:0, valueProfile:2
+[  12] jneq_null          value:loc5, targetLabel:43(->55)
+Successors: [ #5 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  15] put_by_id          base:this, property:0, value:arg2, flags:
+[  21] mov                dst:loc6, src:this
+[  24] get_by_id          dst:loc5, base:loc6, property:1, valueProfile:3
+[  30] call_ignore_result callee:loc5, argc:1, argv:12
+[  35] get_by_id          dst:loc5, base:this, property:2, valueProfile:4
+[  41] get_by_id          dst:loc6, base:arg1, property:2, valueProfile:5
+[  47] jngreater          lhs:loc5, rhs:loc6, targetLabel:6(->53)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #2 ]
+[  51] ret                value:this
+Successors: [ ]
+
+bb#4
+Predecessors: [ #2 ]
+[  53] jmp                targetLabel:33(->86)
+Successors: [ #6 ]
+
+bb#5
+Predecessors: [ #1 ]
+[  55] mov                dst:loc5, src:this
+[  58] mov                dst:loc10, src:arg2
+[  61] get_by_id          dst:loc6, base:loc10, property:3, valueProfile:6
+[  67] get_by_id          dst:loc9, base:this, property:0, valueProfile:7
+[  73] call               dst:loc6, callee:loc6, argc:2, argv:16, valueProfile:8
+[  80] put_by_id          base:loc5, property:0, value:loc6, flags:
+Successors: [ #6 ]
+
+bb#6
+Predecessors: [ #4 #5 ]
+[  86] ret                value:arg1
+Successors: [ ]
+
+
+Identifiers:
+  id0 = queue
+  id1 = markAsRunnable
+  id2 = priority
+  id3 = addTo
+
+Compiled #Bqlwnt into bytecode 45 instructions in 0.006893 ms.
+#Bqlwnt:[0x7fc42d166080->0x7fc42d13f100, NoneFunctionCall, 45]: 9 instructions (0 16-bit instructions, 0 32-bit instructions, 5 instructions with metadata); 149 bytes (104 metadata bytes); 1 parameter(s); 10 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc5, src:this
+[   9] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  15] resolve_scope      dst:loc7, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  22] get_from_scope     dst:loc8, scope:loc7, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  31] bitor              dst:loc6, lhs:loc6, rhs:loc8, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[  37] put_by_id          base:loc5, property:0, value:loc6, flags:
+[  43] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = state
+  id1 = STATE_RUNNABLE
+
+Constants:
+   k0 = Undefined
+
+Compiled #DTz9wJ into bytecode 106 instructions in 0.012073 ms.
+#DTz9wJ:[0x7fc42d166160->0x7fc42d13f400, NoneFunctionCall, 106]: 23 instructions (0 16-bit instructions, 0 32-bit instructions, 14 instructions with metadata); 210 bytes (104 metadata bytes); 2 parameter(s); 16 callee register(s); 6 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] jneq_null          value:arg1, targetLabel:71(->77)
+Successors: [ #6 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[   9] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  15] jneq_null          value:loc6, targetLabel:24(->39)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #2 ]
+[  18] get_by_id          dst:loc8, base:this, property:1, valueProfile:3
+[  24] get_by_id          dst:loc6, base:loc8, property:2, valueProfile:4
+[  30] call               dst:loc6, callee:loc6, argc:1, argv:14, valueProfile:5
+[  37] ret                value:loc6
+Successors: [ ]
+
+bb#4
+Predecessors: [ #2 ]
+[  39] get_by_id          dst:loc5, base:this, property:0, valueProfile:6
+[  45] put_by_id          base:this, property:0, value:Null(const0), flags:
+[  51] get_by_id          dst:loc10, base:this, property:1, valueProfile:7
+[  57] get_by_id          dst:loc6, base:loc10, property:3, valueProfile:8
+[  63] mov                dst:loc9, src:loc5
+[  66] call               dst:loc6, callee:loc6, argc:2, argv:16, valueProfile:9
+[  73] ret                value:loc6
+Successors: [ ]
+
+bb#5
+Predecessors: [ ]
+[  75] jmp                targetLabel:29(->104)
+Successors: [ #7 ]
+
+bb#6
+Predecessors: [ #1 ]
+[  77] put_by_id          base:this, property:0, value:arg1, flags:
+[  83] get_by_id          dst:loc8, base:this, property:1, valueProfile:10
+[  89] get_by_id          dst:loc6, base:loc8, property:4, valueProfile:11
+[  95] call               dst:loc6, callee:loc6, argc:1, argv:14, valueProfile:12
+[ 102] ret                value:loc6
+Successors: [ ]
+
+bb#7
+Predecessors: [ #5 ]
+[ 104] ret                value:Undefined(const1)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = v1
+  id1 = scheduler
+  id2 = suspendCurrent
+  id3 = queue
+  id4 = holdCurrent
+
+Constants:
+   k0 = Null
+   k1 = Undefined
+
+Compiled #CgJLve into bytecode 52 instructions in 0.006903 ms.
+#CgJLve:[0x7fc42d166240->0x7fc42d13ed00, NoneFunctionCall, 52]: 11 instructions (0 16-bit instructions, 0 32-bit instructions, 8 instructions with metadata); 156 bytes (104 metadata bytes); 1 parameter(s); 12 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc5, base:this, property:0, valueProfile:2
+[  12] inc                srcDst:loc5, profileIndex:0
+[  15] put_by_id          base:this, property:0, value:loc5, flags:
+[  21] get_by_id          dst:loc6, base:this, property:1, valueProfile:3
+[  27] get_by_id          dst:loc5, base:loc6, property:2, valueProfile:4
+[  33] call_ignore_result callee:loc5, argc:1, argv:12
+[  38] get_by_id          dst:loc6, base:this, property:1, valueProfile:5
+[  44] get_by_id          dst:loc5, base:loc6, property:3, valueProfile:6
+[  50] ret                value:loc5
+Successors: [ ]
+
+
+Identifiers:
+  id0 = holdCount
+  id1 = currentTcb
+  id2 = markAsHeld
+  id3 = link
+
+Compiled #CtRQhI into bytecode 45 instructions in 0.006312 ms.
+#CtRQhI:[0x7fc42d166320->0x7fc42d13ef80, NoneFunctionCall, 45]: 9 instructions (0 16-bit instructions, 0 32-bit instructions, 5 instructions with metadata); 149 bytes (104 metadata bytes); 1 parameter(s); 10 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc5, src:this
+[   9] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  15] resolve_scope      dst:loc7, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  22] get_from_scope     dst:loc8, scope:loc7, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  31] bitor              dst:loc6, lhs:loc6, rhs:loc8, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[  37] put_by_id          base:loc5, property:0, value:loc6, flags:
+[  43] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = state
+  id1 = STATE_HELD
+
+Constants:
+   k0 = Undefined
+
+Compiled #CuwkeZ into bytecode 191 instructions in 0.018766 ms.
+#CuwkeZ:[0x7fc42d166400->0x7fc42d13f300, NoneFunctionCall, 191]: 37 instructions (0 16-bit instructions, 0 32-bit instructions, 22 instructions with metadata); 295 bytes (104 metadata bytes); 2 parameter(s); 14 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc5, base:this, property:0, valueProfile:2
+[  12] dec                srcDst:loc5, profileIndex:0
+[  15] put_by_id          base:this, property:0, value:loc5, flags:
+[  21] get_by_id          dst:loc5, base:this, property:0, valueProfile:3
+[  27] jneq               lhs:loc5, rhs:Int32: 0(const0), targetLabel:25(->52)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  31] get_by_id          dst:loc6, base:this, property:1, valueProfile:4
+[  37] get_by_id          dst:loc5, base:loc6, property:2, valueProfile:5
+[  43] call               dst:loc5, callee:loc5, argc:1, argv:12, valueProfile:6
+[  50] ret                value:loc5
+Successors: [ ]
+
+bb#3
+Predecessors: [ #1 ]
+[  52] get_by_id          dst:loc5, base:this, property:3, valueProfile:7
+[  58] bitand             dst:loc5, lhs:loc5, rhs:Int32: 1(const1), profileIndex:0, operandTypes:OperandTypes(126, 3)
+[  64] jtrue              condition:loc5, targetLabel:62(->126)
+Successors: [ #6 #4 ]
+
+bb#4
+Predecessors: [ #3 ]
+[  67] mov                dst:loc5, src:this
+[  70] get_by_id          dst:loc6, base:this, property:3, valueProfile:8
+[  76] rshift             dst:loc6, lhs:loc6, rhs:Int32: 1(const1), profileIndex:1
+[  81] put_by_id          base:loc5, property:3, value:loc6, flags:
+[  87] get_by_id          dst:loc8, base:this, property:1, valueProfile:9
+[  93] get_by_id          dst:loc5, base:loc8, property:4, valueProfile:10
+[  99] resolve_scope      dst:loc7, scope:loc4, var:5, resolveType:GlobalProperty, localScopeDepth:0
+[ 106] get_from_scope     dst:loc7, scope:loc7, var:5, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:11
+[ 115] call               dst:loc5, callee:loc5, argc:2, argv:14, valueProfile:12
+[ 122] ret                value:loc5
+Successors: [ ]
+
+bb#5
+Predecessors: [ ]
+[ 124] jmp                targetLabel:65(->189)
+Successors: [ #7 ]
+
+bb#6
+Predecessors: [ #3 ]
+[ 126] mov                dst:loc5, src:this
+[ 129] get_by_id          dst:loc6, base:this, property:3, valueProfile:13
+[ 135] rshift             dst:loc6, lhs:loc6, rhs:Int32: 1(const1), profileIndex:2
+[ 140] bitxor             dst:loc6, lhs:loc6, rhs:Int32: 53256(const2), profileIndex:3, operandTypes:OperandTypes(11, 3)
+[ 146] put_by_id          base:loc5, property:3, value:loc6, flags:
+[ 152] get_by_id          dst:loc8, base:this, property:1, valueProfile:14
+[ 158] get_by_id          dst:loc5, base:loc8, property:4, valueProfile:15
+[ 164] resolve_scope      dst:loc7, scope:loc4, var:6, resolveType:GlobalProperty, localScopeDepth:0
+[ 171] get_from_scope     dst:loc7, scope:loc7, var:6, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:16
+[ 180] call               dst:loc5, callee:loc5, argc:2, argv:14, valueProfile:17
+[ 187] ret                value:loc5
+Successors: [ ]
+
+bb#7
+Predecessors: [ #5 ]
+[ 189] ret                value:Undefined(const3)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = count
+  id1 = scheduler
+  id2 = holdCurrent
+  id3 = v1
+  id4 = release
+  id5 = ID_DEVICE_A
+  id6 = ID_DEVICE_B
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = Int32: 1: in source as integer
+   k2 = Int32: 53256: in source as integer
+   k3 = Undefined
+
+Compiled #DXSKe5 into bytecode 73 instructions in 0.011622 ms.
+#DXSKe5:[0x7fc42d1664e0->0x7fc42d13ec80, NoneFunctionCall, 73]: 18 instructions (0 16-bit instructions, 0 32-bit instructions, 9 instructions with metadata); 177 bytes (104 metadata bytes); 2 parameter(s); 14 callee register(s); 6 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  12] get_by_val         dst:loc5, base:loc6, property:arg1, valueProfile:3
+[  18] jneq_null          value:loc5, targetLabel:5(->23)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 ]
+[  21] ret                value:loc5
+Successors: [ ]
+
+bb#3
+Predecessors: [ #1 ]
+[  23] mov                dst:loc8, src:loc5
+[  26] get_by_id          dst:loc6, base:loc8, property:1, valueProfile:4
+[  32] call_ignore_result callee:loc6, argc:1, argv:14
+[  37] get_by_id          dst:loc6, base:loc5, property:2, valueProfile:5
+[  43] get_by_id          dst:loc8, base:this, property:3, valueProfile:6
+[  49] get_by_id          dst:loc7, base:loc8, property:2, valueProfile:7
+[  55] jngreater          lhs:loc6, rhs:loc7, targetLabel:8(->63)
+Successors: [ #6 #4 ]
+
+bb#4
+Predecessors: [ #3 ]
+[  59] ret                value:loc5
+Successors: [ ]
+
+bb#5
+Predecessors: [ ]
+[  61] jmp                targetLabel:10(->71)
+Successors: [ #7 ]
+
+bb#6
+Predecessors: [ #3 ]
+[  63] get_by_id          dst:loc6, base:this, property:3, valueProfile:8
+[  69] ret                value:loc6
+Successors: [ ]
+
+bb#7
+Predecessors: [ #5 ]
+[  71] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = blocks
+  id1 = markAsNotHeld
+  id2 = priority
+  id3 = currentTcb
+
+Constants:
+   k0 = Undefined
+
+Compiled #Db2NJ5 into bytecode 45 instructions in 0.007144 ms.
+#Db2NJ5:[0x7fc42d1665c0->0x7fc42d13ef00, NoneFunctionCall, 45]: 9 instructions (0 16-bit instructions, 0 32-bit instructions, 5 instructions with metadata); 149 bytes (104 metadata bytes); 1 parameter(s); 10 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   6] mov                dst:loc5, src:this
+[   9] get_by_id          dst:loc6, base:this, property:0, valueProfile:2
+[  15] resolve_scope      dst:loc7, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  22] get_from_scope     dst:loc8, scope:loc7, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  31] bitand             dst:loc6, lhs:loc6, rhs:loc8, profileIndex:0, operandTypes:OperandTypes(126, 126)
+[  37] put_by_id          base:loc5, property:0, value:loc6, flags:
+[  43] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = state
+  id1 = STATE_NOT_HELD
+
+Constants:
+   k0 = Undefined
+
+TEB_TIMER_STOP:Richards/Richards
+Compiled #AvtfcL into bytecode 3 instructions in 0.004889 ms.
+#AvtfcL:[0x7fc42d1666a0->0x7fc42d13f900, NoneFunctionCall, 3]: 2 instructions (0 16-bit instructions, 0 32-bit instructions, 0 instructions with metadata); 3 bytes (0 metadata bytes); 1 parameter(s); 6 callee register(s); 5 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] ret                value:Undefined(const0)
+Successors: [ ]
+
+
+Constants:
+   k0 = Undefined
+
+Compiled #A0ejiE into bytecode 123 instructions in 0.018936 ms.
+log#A0ejiE:[0x7fc42d166780->0x7fc42d13da80, NoneFunctionCall, 123]: 27 instructions (0 16-bit instructions, 0 32-bit instructions, 14 instructions with metadata); 227 bytes (104 metadata bytes); 1 parameter(s); 22 callee register(s); 9 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] create_direct_arguments dst:loc5
+[   3] mov                dst:loc6, src:loc5
+[   6] new_array          dst:loc7, argv:callerFrame, argc:0, recommendedIndexingType:3
+[  12] mov                dst:loc8, src:Int32: 0(const0)
+[  15] get_length         dst:loc9, base:loc6, valueProfile:1
+[  20] jnless             lhs:loc8, rhs:loc9, targetLabel:61(->81)
+Successors: [ #3 #2 ]
+
+bb#2
+Predecessors: [ #1 #2 ]
+[  24] loop_hint          
+[  25] check_traps        
+[  26] mov                dst:loc12, src:loc7
+[  29] get_by_id          dst:loc9, base:loc12, property:0, valueProfile:2
+[  35] resolve_scope      dst:loc16, scope:loc4, var:1, resolveType:GlobalProperty, localScopeDepth:0
+[  42] get_from_scope     dst:loc11, scope:loc16, var:1, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:3
+[  51] get_by_val         dst:loc15, base:loc6, property:loc8, valueProfile:4
+[  57] call               dst:loc11, callee:loc11, argc:2, argv:22, valueProfile:5
+[  64] call_ignore_result callee:loc9, argc:2, argv:18
+[  69] inc                srcDst:loc8, profileIndex:0
+[  72] get_length         dst:loc9, base:loc6, valueProfile:6
+[  77] jless              lhs:loc8, rhs:loc9, targetLabel:-53(->24)
+Successors: [ #2 #3 ]
+
+bb#3
+Predecessors: [ #1 #2 ]
+[  81] resolve_scope      dst:loc12, scope:loc4, var:2, resolveType:GlobalProperty, localScopeDepth:0
+[  88] get_from_scope     dst:loc9, scope:loc12, var:2, getPutInfo:2048<ThrowIfNotFound|GlobalProperty|NotInitialization|NotStrictMode>, localScopeDepth:0, offset:0, valueProfile:7
+[  97] mov                dst:loc16, src:loc7
+[ 100] get_by_id          dst:loc11, base:loc16, property:3, valueProfile:8
+[ 106] mov                dst:loc15, src:String (atomic),8Bit:(1),length:(1):  , StructureID: 16777808(const1)
+[ 109] call               dst:loc11, callee:loc11, argc:2, argv:22, valueProfile:9
+[ 116] call_ignore_result callee:loc9, argc:2, argv:18
+[ 121] ret                value:Undefined(const2)
+Successors: [ ]
+
+
+Identifiers:
+  id0 = push
+  id1 = String
+  id2 = print
+  id3 = join
+
+Constants:
+   k0 = Int32: 0: in source as integer
+   k1 = String (atomic),8Bit:(1),length:(1):  , StructureID: 16777808
+   k2 = Undefined
+

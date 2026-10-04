@@ -1,0 +1,17 @@
+{
+  "official_v8_archive": "https://storage.googleapis.com/chromium-v8/official/canary/v8-linux64-rel-15.6.21.zip",
+  "download_command": "curl.exe -fL --retry 1 --connect-timeout 20 --max-time 180 <official URL> -o engines/v8-official-linux64-15.6.21/v8-linux64-rel-15.6.21.zip",
+  "download_exit_code": 0,
+  "initial_sandbox_connection": "connection refused; retried with network approval",
+  "download_retry": "first transfer timed out; curl's allowed retry completed",
+  "zip_crc_validated": true,
+  "source_file_download_attempts": [
+    {"url": "https://raw.githubusercontent.com/v8/v8/15.6.21/src/flags/flag-definitions.h", "result": "TLS untrusted root; verification not bypassed"},
+    {"url": "https://chromium.googlesource.com/v8/v8/+/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/flags/flag-definitions.h?format=TEXT", "result": "connect timeout twice"}
+  ],
+  "v8_version_tag_reference": "https://chromium.googlesource.com/v8/v8/+/refs/tags/15.6.21",
+  "v8_version_tag_commit_rechecked": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+  "tag_reference_proves_archive_source_commit": false,
+  "mode_primary_evidence": "current Linux d8 --help, --print-flag-values and default/candidate runtime traces",
+  "blocking": false
+}

@@ -1,0 +1,49 @@
+[optimization status (budget from INTERPRETED_FUNCTION) __tebHotTarget !feedback]
+[Baseline batch compilation] Enqueued SFI __tebHotTarget with estimated size 294 (current budget: 294/4096)
+[Baseline batch compilation] Enqueued SFI  with estimated size 819 (current budget: 1113/4096)
+[optimization status (budget from INTERPRETED_FUNCTION) __tebHotTarget INTERPRETED_FUNCTION]
+[Baseline batch compilation] Enqueued SFI __tebHotTarget with estimated size 294 (current budget: 1407/4096)
+[marking 0x31810101e351 <JSFunction __tebHotTarget (sfi = 0x31810101e2ad)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[optimization status (^MAGLEV) __tebHotTarget INTERPRETED_FUNCTION]
+[optimization status (^MAGLEV) __tebHotTarget INTERPRETED_FUNCTION]
+[compiling method 0x31810101e351 <JSFunction __tebHotTarget (sfi = 0x31810101e2ad)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[Baseline batch compilation] Enqueued SFI  with estimated size 819 (current budget: 2226/4096)
+[marking 0x31810101e311 <JSFunction (sfi = 0x31810101e245)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[Baseline batch compilation] Enqueued SFI  with estimated size 819 (current budget: 3045/4096)
+[OSR - setting osr urgency. function: , old urgency: 0, new urgency: 1]
+[OSR - compilation started. function: , osr offset: 67, mode: ConcurrencyMode::kConcurrent]
+[optimization status (^MAGLEV (osr 67)) (anonymous 0x31810101e311) INTERPRETED_FUNCTION ^M .]
+[compiling method 0x31810101e311 <JSFunction (sfi = 0x31810101e245)> (target MAGLEV) OSR, mode: ConcurrencyMode::kConcurrent]
+[OSR - unavailable (failed or in progress). function: , osr offset: 67, mode: ConcurrencyMode::kConcurrent]
+[Baseline batch compilation] Enqueued SFI  with estimated size 819 (current budget: 3864/4096)
+[Baseline batch compilation] Enqueued SFI  with estimated size 819 (current budget: 4683/4096)
+[Baseline batch compilation] Compiling current batch of 7 functions
+[Concurrent Sparkplug] compiling 2 functions
+[Concurrent Sparkplug Off Thread] Function 0x31810101e2ad <SharedFunctionInfo __tebHotTarget> installed
+[Concurrent Sparkplug Off Thread] Function 0x31810101e245 <SharedFunctionInfo> installed
+[completed compiling 0x31810101e351 <JSFunction __tebHotTarget (sfi = 0x31810101e2ad)> (target MAGLEV) - took 0.001, 0.366, 0.005 ms]
+[completed compiling 0x31810101e311 <JSFunction (sfi = 0x31810101e245)> (target MAGLEV) OSR - took 0.000, 0.378, 0.004 ms]
+[OSR - entry. function: , osr offset: 67]
+[optimization status (budget from MAGLEV) (anonymous 0x31810101e311) BASELINE ^M 67:m]
+[OSR - setting osr urgency. function: , old urgency: 0, new urgency: 1]
+[OSR - compilation started. function: , osr offset: 67, mode: ConcurrencyMode::kConcurrent]
+[optimization status (^TURBOFAN_JS (osr 67)) (anonymous 0x31810101e311) BASELINE ^M 67:m]
+[compiling method 0x31810101e311 <JSFunction (sfi = 0x31810101e245)> (target TURBOFAN_JS) OSR, mode: ConcurrencyMode::kConcurrent]
+[OSR - unavailable (failed or in progress). function: , osr offset: 67, mode: ConcurrencyMode::kConcurrent]
+[optimization status (budget from MAGLEV) (anonymous 0x31810101e311) BASELINE ^M 67:m]
+[optimization status (budget from MAGLEV) (anonymous 0x31810101e311) BASELINE ^M 67:m]
+[optimization status (budget from MAGLEV) (anonymous 0x31810101e311) BASELINE ^M 67:m]
+[bailout (kind: deopt-eager, reason: not a Smi): begin. deoptimizing 0x31810101e311 <JSFunction (sfi = 0x31810101e245)>, 0x00d60104070d <Code MAGLEV>, opt id 1, bytecode offset 50, deopt exit 5, FP to SP delta 80, caller SP 0x7ffc43bd2ca0, pc 0x56379d0c0934]
+[optimization status (budget from MAGLEV) __tebHotTarget MAGLEV]
+[marking 0x31810101e351 <JSFunction __tebHotTarget (sfi = 0x31810101e2ad)> for optimization to TURBOFAN_JS, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[optimization status (^TURBOFAN_JS) __tebHotTarget MAGLEV]
+[optimization status (^TURBOFAN_JS) __tebHotTarget MAGLEV]
+[compiling method 0x31810101e351 <JSFunction __tebHotTarget (sfi = 0x31810101e2ad)> (target TURBOFAN_JS), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x31810101e351 <JSFunction __tebHotTarget (sfi = 0x31810101e2ad)> (target TURBOFAN_JS) - took 0.004, 0.456, 0.013 ms]
+[completed optimizing 0x31810101e351 <JSFunction __tebHotTarget (sfi = 0x31810101e2ad)> (target TURBOFAN_JS)]
+[completed compiling 0x31810101e311 <JSFunction (sfi = 0x31810101e245)> (target TURBOFAN_JS) OSR - took 0.004, 1.416, 0.006 ms]
+[completed optimizing 0x31810101e311 <JSFunction (sfi = 0x31810101e245)> (target TURBOFAN_JS) OSR]
+[OSR - compilation finished. function: , osr offset: 67]
+[OSR - entry. function: , osr offset: 67]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for compare operation): begin. deoptimizing 0x31810101e311 <JSFunction (sfi = 0x31810101e245)>, 0x00d601000771 <Code TURBOFAN_JS>, opt id 2, bytecode offset 77, deopt exit 4, FP to SP delta 96, caller SP 0x7ffc43bd2ca0, pc 0x56379d0c0e93]
+TEB_HOT_PASS:500000:1301262660
