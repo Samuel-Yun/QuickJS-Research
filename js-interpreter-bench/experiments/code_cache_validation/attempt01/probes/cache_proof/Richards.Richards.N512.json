@@ -1,0 +1,52 @@
+{
+  "case": "Richards.Richards",
+  "N": 512,
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/generated/Richards.Richards.N512.measure.js",
+  "script_sha256": "a2ac0ecfd7b183a38436198adb4228527971f5768a9973be5d73ab0070208e97",
+  "evidence_level": "PROVEN_TARGET_SERIALIZATION_DESERIALIZATION",
+  "basis": "explicit target origin in serialization; ordered three-script byte sizes match actual consumer deserialization; no consumer generated-bytecode event; payloads valid",
+  "cache_rejected_field": null,
+  "per_formal_invocation_acceptance_observation": null,
+  "target_cache_size_bytes": 22040,
+  "serialization_events": [
+    {
+      "origin": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+      "size_bytes": 560,
+      "diagnostic_serialization_ms": 0.471
+    },
+    {
+      "origin": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+      "size_bytes": 952,
+      "diagnostic_serialization_ms": 0.123
+    },
+    {
+      "origin": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/generated/Richards.Richards.N512.measure.js",
+      "size_bytes": 22040,
+      "diagnostic_serialization_ms": 1.92
+    }
+  ],
+  "deserialization_events": [
+    {
+      "size_bytes": 560,
+      "diagnostic_deserialization_ms": 0.02
+    },
+    {
+      "size_bytes": 952,
+      "diagnostic_deserialization_ms": 0.024
+    },
+    {
+      "size_bytes": 22040,
+      "diagnostic_deserialization_ms": 0.1
+    }
+  ],
+  "source_target_deserialization_observed": false,
+  "diagnostic_log_code": "probes/logs/workload.Richards.Richards.N512.code.stdout.txt",
+  "diagnostic_log_source": "probes/logs/workload.Richards.Richards.N512.none.stdout.txt",
+  "diagnostic_flags": [
+    "--trace-serializer",
+    "--profile-deserialization",
+    "--print-bytecode"
+  ],
+  "timing_scope_of_profile_deserialization": "UNKNOWN; diagnostic only, not primary stage metric",
+  "function_coverage": "named static functions and bytecode observed in log; exhaustive dynamic/runtime coverage UNKNOWN"
+}

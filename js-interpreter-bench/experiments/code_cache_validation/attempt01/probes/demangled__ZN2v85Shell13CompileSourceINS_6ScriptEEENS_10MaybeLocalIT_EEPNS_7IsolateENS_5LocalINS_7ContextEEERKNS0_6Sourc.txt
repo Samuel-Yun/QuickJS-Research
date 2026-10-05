@@ -1,0 +1,263 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000005f3e40 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)>:
+  5f3e40:	55                   	push   %rbp
+  5f3e41:	48 89 e5             	mov    %rsp,%rbp
+  5f3e44:	41 57                	push   %r15
+  5f3e46:	41 56                	push   %r14
+  5f3e48:	41 55                	push   %r13
+  5f3e4a:	41 54                	push   %r12
+  5f3e4c:	53                   	push   %rbx
+  5f3e4d:	48 81 ec c8 00 00 00 	sub    $0xc8,%rsp
+  5f3e54:	48 89 cb             	mov    %rcx,%rbx
+  5f3e57:	49 89 d4             	mov    %rdx,%r12
+  5f3e5a:	49 89 f6             	mov    %rsi,%r14
+  5f3e5d:	49 89 ff             	mov    %rdi,%r15
+  5f3e60:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f3e67:	00 00 
+  5f3e69:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  5f3e6d:	80 3d 24 48 b2 01 01 	cmpb   $0x1,0x1b24824(%rip)        # 2118698 <v8::Shell::options+0x1c8>
+  5f3e74:	0f 85 1c 02 00 00    	jne    5f4096 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x256>
+  5f3e7a:	48 89 9d 58 ff ff ff 	mov    %rbx,-0xa8(%rbp)
+  5f3e81:	41 83 3c 24 00       	cmpl   $0x0,(%r12)
+  5f3e86:	74 77                	je     5f3eff <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0xbf>
+  5f3e88:	49 8b 5c 24 10       	mov    0x10(%r12),%rbx
+  5f3e8d:	bf 28 00 00 00       	mov    $0x28,%edi
+  5f3e92:	e8 59 16 81 01       	call   1e054f0 <operator new[](unsigned long)>
+  5f3e97:	49 89 c5             	mov    %rax,%r13
+  5f3e9a:	48 89 c7             	mov    %rax,%rdi
+  5f3e9d:	4c 89 fe             	mov    %r15,%rsi
+  5f3ea0:	48 89 da             	mov    %rbx,%rdx
+  5f3ea3:	e8 d8 de 02 00       	call   621d80 <v8::FileSourceStream::FileSourceStream(v8::Isolate*, char const*)>
+  5f3ea8:	ba 02 00 00 00       	mov    $0x2,%edx
+  5f3ead:	49 83 7d 08 00       	cmpq   $0x0,0x8(%r13)
+  5f3eb2:	0f 85 e3 00 00 00    	jne    5f3f9b <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x15b>
+  5f3eb8:	41 81 bf d0 01 00 00 	cmpl   $0x2fffd,0x1d0(%r15)
+  5f3ebf:	fd ff 02 00 
+  5f3ec3:	74 0d                	je     5f3ed2 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x92>
+  5f3ec5:	4c 89 ff             	mov    %r15,%rdi
+  5f3ec8:	be 01 00 00 00       	mov    $0x1,%esi
+  5f3ecd:	e8 4e 0c 18 00       	call   774b20 <v8::internal::Isolate::ReportPendingMessages(bool)>
+  5f3ed2:	4d 85 ed             	test   %r13,%r13
+  5f3ed5:	0f 84 f0 01 00 00    	je     5f40cb <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x28b>
+  5f3edb:	49 8b 45 00          	mov    0x0(%r13),%rax
+  5f3edf:	4c 89 ef             	mov    %r13,%rdi
+  5f3ee2:	ff 50 08             	call   *0x8(%rax)
+  5f3ee5:	31 db                	xor    %ebx,%ebx
+  5f3ee7:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f3eee:	00 00 
+  5f3ef0:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+  5f3ef4:	0f 84 fc 02 00 00    	je     5f41f6 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x3b6>
+  5f3efa:	e9 e1 01 00 00       	jmp    5f40e0 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x2a0>
+  5f3eff:	49 8b 5c 24 08       	mov    0x8(%r12),%rbx
+  5f3f04:	bf 28 00 00 00       	mov    $0x28,%edi
+  5f3f09:	e8 e2 15 81 01       	call   1e054f0 <operator new[](unsigned long)>
+  5f3f0e:	49 89 c5             	mov    %rax,%r13
+  5f3f11:	48 8d 05 10 2b a8 01 	lea    0x1a82b10(%rip),%rax        # 2076a28 <vtable for v8::DummySourceStream+0x10>
+  5f3f18:	49 89 45 00          	mov    %rax,0x0(%r13)
+  5f3f1c:	48 89 df             	mov    %rbx,%rdi
+  5f3f1f:	48 89 9d 50 ff ff ff 	mov    %rbx,-0xb0(%rbp)
+  5f3f26:	49 89 5d 08          	mov    %rbx,0x8(%r13)
+  5f3f2a:	41 c6 45 20 00       	movb   $0x0,0x20(%r13)
+  5f3f2f:	e8 7c 7f 04 00       	call   63beb0 <v8::String::Length() const>
+  5f3f34:	4c 89 b5 48 ff ff ff 	mov    %r14,-0xb8(%rbp)
+  5f3f3b:	41 89 c6             	mov    %eax,%r14d
+  5f3f3e:	41 89 45 10          	mov    %eax,0x10(%r13)
+  5f3f42:	89 c3                	mov    %eax,%ebx
+  5f3f44:	48 01 db             	add    %rbx,%rbx
+  5f3f47:	48 89 df             	mov    %rbx,%rdi
+  5f3f4a:	e8 a1 15 81 01       	call   1e054f0 <operator new[](unsigned long)>
+  5f3f4f:	4c 89 bd 60 ff ff ff 	mov    %r15,-0xa0(%rbp)
+  5f3f56:	49 89 c7             	mov    %rax,%r15
+  5f3f59:	48 89 c7             	mov    %rax,%rdi
+  5f3f5c:	31 f6                	xor    %esi,%esi
+  5f3f5e:	48 89 da             	mov    %rbx,%rdx
+  5f3f61:	e8 3a 02 a8 01       	call   20741a0 <memset@plt>
+  5f3f66:	4d 89 7d 18          	mov    %r15,0x18(%r13)
+  5f3f6a:	48 8b bd 50 ff ff ff 	mov    -0xb0(%rbp),%rdi
+  5f3f71:	48 8b b5 60 ff ff ff 	mov    -0xa0(%rbp),%rsi
+  5f3f78:	31 d2                	xor    %edx,%edx
+  5f3f7a:	44 89 f1             	mov    %r14d,%ecx
+  5f3f7d:	4c 8b b5 48 ff ff ff 	mov    -0xb8(%rbp),%r14
+  5f3f84:	4d 89 f8             	mov    %r15,%r8
+  5f3f87:	4c 8b bd 60 ff ff ff 	mov    -0xa0(%rbp),%r15
+  5f3f8e:	45 31 c9             	xor    %r9d,%r9d
+  5f3f91:	e8 8a 83 04 00       	call   63c320 <v8::String::Write(v8::Isolate*, unsigned int, unsigned int, unsigned short*, int) const>
+  5f3f96:	ba 01 00 00 00       	mov    $0x1,%edx
+  5f3f9b:	48 8d 9d 18 ff ff ff 	lea    -0xe8(%rbp),%rbx
+  5f3fa2:	48 89 df             	mov    %rbx,%rdi
+  5f3fa5:	4c 89 ee             	mov    %r13,%rsi
+  5f3fa8:	e8 73 ab 03 00       	call   62eb20 <v8::ScriptCompiler::StreamedSource::StreamedSource(std::__Cr::unique_ptr<v8::ScriptCompiler::ExternalSourceStream, std::__Cr::default_delete<v8::ScriptCompiler::ExternalSourceStream> >, v8::ScriptCompiler::StreamedSource::Encoding)>
+  5f3fad:	4c 89 ff             	mov    %r15,%rdi
+  5f3fb0:	48 89 de             	mov    %rbx,%rsi
+  5f3fb3:	31 d2                	xor    %edx,%edx
+  5f3fb5:	31 c9                	xor    %ecx,%ecx
+  5f3fb7:	45 31 c0             	xor    %r8d,%r8d
+  5f3fba:	45 31 c9             	xor    %r9d,%r9d
+  5f3fbd:	e8 4e db 03 00       	call   631b10 <v8::ScriptCompiler::StartStreaming(v8::Isolate*, v8::ScriptCompiler::StreamedSource*, v8::ScriptType, v8::ScriptCompiler::CompileOptions, bool (*)(int, void*), void*)>
+  5f3fc2:	48 85 c0             	test   %rax,%rax
+  5f3fc5:	0f 84 b8 00 00 00    	je     5f4083 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x243>
+  5f3fcb:	49 89 c5             	mov    %rax,%r13
+  5f3fce:	48 8d 05 6e 24 b8 ff 	lea    -0x47db92(%rip),%rax        # 176443 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x6ac33>
+  5f3fd5:	48 89 85 38 ff ff ff 	mov    %rax,-0xc8(%rbp)
+  5f3fdc:	48 c7 85 40 ff ff ff 	movq   $0x3,-0xc0(%rbp)
+  5f3fe3:	03 00 00 00 
+  5f3fe7:	48 8d 9d 68 ff ff ff 	lea    -0x98(%rbp),%rbx
+  5f3fee:	48 8d b5 38 ff ff ff 	lea    -0xc8(%rbp),%rsi
+  5f3ff5:	48 89 df             	mov    %rbx,%rdi
+  5f3ff8:	e8 d3 10 7e 01       	call   1dd50d0 <v8::base::Thread::Thread(v8::base::Thread::Options const&)>
+  5f3ffd:	48 8d 05 84 2a a8 01 	lea    0x1a82a84(%rip),%rax        # 2076a88 <vtable for v8::StreamerThread+0x10>
+  5f4004:	48 89 85 68 ff ff ff 	mov    %rax,-0x98(%rbp)
+  5f400b:	4c 89 6d 98          	mov    %r13,-0x68(%rbp)
+  5f400f:	48 89 df             	mov    %rbx,%rdi
+  5f4012:	e8 89 11 7e 01       	call   1dd51a0 <v8::base::Thread::Start()>
+  5f4017:	84 c0                	test   %al,%al
+  5f4019:	0f 84 06 02 00 00    	je     5f4225 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x3e5>
+  5f401f:	48 89 df             	mov    %rbx,%rdi
+  5f4022:	e8 f9 12 7e 01       	call   1dd5320 <v8::base::Thread::Join()>
+  5f4027:	48 89 df             	mov    %rbx,%rdi
+  5f402a:	e8 31 11 7e 01       	call   1dd5160 <v8::base::Thread::~Thread()>
+  5f402f:	48 8b 85 18 ff ff ff 	mov    -0xe8(%rbp),%rax
+  5f4036:	48 8b 38             	mov    (%rax),%rdi
+  5f4039:	48 8b 07             	mov    (%rdi),%rax
+  5f403c:	4c 89 fe             	mov    %r15,%rsi
+  5f403f:	ff 50 18             	call   *0x18(%rax)
+  5f4042:	48 85 c0             	test   %rax,%rax
+  5f4045:	0f 84 7d 01 00 00    	je     5f41c8 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x388>
+  5f404b:	48 89 c3             	mov    %rax,%rbx
+  5f404e:	48 89 c7             	mov    %rax,%rdi
+  5f4051:	e8 5a 7e 04 00       	call   63beb0 <v8::String::Length() const>
+  5f4056:	85 c0                	test   %eax,%eax
+  5f4058:	7e 08                	jle    5f4062 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x222>
+  5f405a:	b0 01                	mov    $0x1,%al
+  5f405c:	86 05 e7 43 b2 01    	xchg   %al,0x1b243e7(%rip)        # 2118449 <v8::Shell::valid_fuzz_script_>
+  5f4062:	48 8d b5 18 ff ff ff 	lea    -0xe8(%rbp),%rsi
+  5f4069:	4c 89 f7             	mov    %r14,%rdi
+  5f406c:	48 89 da             	mov    %rbx,%rdx
+  5f406f:	48 8b 8d 58 ff ff ff 	mov    -0xa8(%rbp),%rcx
+  5f4076:	e8 c5 db 03 00       	call   631c40 <v8::ScriptCompiler::Compile(v8::Local<v8::Context>, v8::ScriptCompiler::StreamedSource*, v8::Local<v8::String>, v8::ScriptOrigin const&)>
+  5f407b:	48 89 c3             	mov    %rax,%rbx
+  5f407e:	e9 47 01 00 00       	jmp    5f41ca <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x38a>
+  5f4083:	48 8d bd 18 ff ff ff 	lea    -0xe8(%rbp),%rdi
+  5f408a:	e8 01 ab 03 00       	call   62eb90 <v8::ScriptCompiler::StreamedSource::~StreamedSource()>
+  5f408f:	48 8b 9d 58 ff ff ff 	mov    -0xa8(%rbp),%rbx
+  5f4096:	4c 89 e7             	mov    %r12,%rdi
+  5f4099:	4c 89 fe             	mov    %r15,%rsi
+  5f409c:	e8 9f f2 ff ff       	call   5f3340 <v8::Shell::Source::ConvertToString(v8::Isolate*) const>
+  5f40a1:	48 85 c0             	test   %rax,%rax
+  5f40a4:	74 25                	je     5f40cb <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x28b>
+  5f40a6:	49 89 c4             	mov    %rax,%r12
+  5f40a9:	48 89 c7             	mov    %rax,%rdi
+  5f40ac:	e8 ff 7d 04 00       	call   63beb0 <v8::String::Length() const>
+  5f40b1:	85 c0                	test   %eax,%eax
+  5f40b3:	7e 08                	jle    5f40bd <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x27d>
+  5f40b5:	b0 01                	mov    $0x1,%al
+  5f40b7:	86 05 8c 43 b2 01    	xchg   %al,0x1b2438c(%rip)        # 2118449 <v8::Shell::valid_fuzz_script_>
+  5f40bd:	f6 05 b4 45 b2 01 01 	testb  $0x1,0x1b245b4(%rip)        # 2118678 <v8::Shell::options+0x1a8>
+  5f40c4:	75 1f                	jne    5f40e5 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x2a5>
+  5f40c6:	45 31 ff             	xor    %r15d,%r15d
+  5f40c9:	eb 2a                	jmp    5f40f5 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x2b5>
+  5f40cb:	31 db                	xor    %ebx,%ebx
+  5f40cd:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f40d4:	00 00 
+  5f40d6:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+  5f40da:	0f 84 16 01 00 00    	je     5f41f6 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x3b6>
+  5f40e0:	e8 8b 00 a8 01       	call   2074170 <__stack_chk_fail@plt>
+  5f40e5:	4c 89 ff             	mov    %r15,%rdi
+  5f40e8:	4c 89 e6             	mov    %r12,%rsi
+  5f40eb:	31 d2                	xor    %edx,%edx
+  5f40ed:	e8 ee eb ff ff       	call   5f2ce0 <v8::Shell::LookupCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptType)>
+  5f40f2:	49 89 c7             	mov    %rax,%r15
+  5f40f5:	4c 89 a5 68 ff ff ff 	mov    %r12,-0x98(%rbp)
+  5f40fc:	48 8b 03             	mov    (%rbx),%rax
+  5f40ff:	48 89 85 70 ff ff ff 	mov    %rax,-0x90(%rbp)
+  5f4106:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  5f410a:	48 89 85 78 ff ff ff 	mov    %rax,-0x88(%rbp)
+  5f4111:	8b 43 10             	mov    0x10(%rbx),%eax
+  5f4114:	89 45 80             	mov    %eax,-0x80(%rbp)
+  5f4117:	f3 0f 6f 43 18       	movdqu 0x18(%rbx),%xmm0
+  5f411c:	f3 0f 7f 45 88       	movdqu %xmm0,-0x78(%rbp)
+  5f4121:	4c 89 7d 98          	mov    %r15,-0x68(%rbp)
+  5f4125:	66 0f ef c0          	pxor   %xmm0,%xmm0
+  5f4129:	f3 0f 7f 45 a0       	movdqu %xmm0,-0x60(%rbp)
+  5f412e:	f3 0f 7f 45 ac       	movdqu %xmm0,-0x54(%rbp)
+  5f4133:	66 0f 76 c0          	pcmpeqd %xmm0,%xmm0
+  5f4137:	f3 0f 7f 45 c0       	movdqu %xmm0,-0x40(%rbp)
+  5f413c:	31 d2                	xor    %edx,%edx
+  5f413e:	4d 85 ff             	test   %r15,%r15
+  5f4141:	0f 95 c2             	setne  %dl
+  5f4144:	48 8d b5 68 ff ff ff 	lea    -0x98(%rbp),%rsi
+  5f414b:	4c 89 f7             	mov    %r14,%rdi
+  5f414e:	31 c9                	xor    %ecx,%ecx
+  5f4150:	e8 5b d7 03 00       	call   6318b0 <v8::ScriptCompiler::Compile(v8::Local<v8::Context>, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)>
+  5f4155:	48 89 c3             	mov    %rax,%rbx
+  5f4158:	4d 85 ff             	test   %r15,%r15
+  5f415b:	74 0b                	je     5f4168 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x328>
+  5f415d:	41 80 7f 0c 01       	cmpb   $0x1,0xc(%r15)
+  5f4162:	0f 84 a3 00 00 00    	je     5f420b <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x3cb>
+  5f4168:	4c 8b 75 a0          	mov    -0x60(%rbp),%r14
+  5f416c:	48 c7 45 a0 00 00 00 	movq   $0x0,-0x60(%rbp)
+  5f4173:	00 
+  5f4174:	4d 85 f6             	test   %r14,%r14
+  5f4177:	74 15                	je     5f418e <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x34e>
+  5f4179:	4c 89 f7             	mov    %r14,%rdi
+  5f417c:	e8 9f da 03 00       	call   631c20 <v8::ScriptCompiler::ConsumeCodeCacheTask::~ConsumeCodeCacheTask()>
+  5f4181:	be 08 00 00 00       	mov    $0x8,%esi
+  5f4186:	4c 89 f7             	mov    %r14,%rdi
+  5f4189:	e8 c2 13 81 01       	call   1e05550 <operator delete[](void*)>
+  5f418e:	4c 8b 75 98          	mov    -0x68(%rbp),%r14
+  5f4192:	48 c7 45 98 00 00 00 	movq   $0x0,-0x68(%rbp)
+  5f4199:	00 
+  5f419a:	4d 85 f6             	test   %r14,%r14
+  5f419d:	74 44                	je     5f41e3 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x3a3>
+  5f419f:	4c 89 f7             	mov    %r14,%rdi
+  5f41a2:	e8 59 a9 03 00       	call   62eb00 <v8::ScriptCompiler::CachedData::~CachedData()>
+  5f41a7:	be 18 00 00 00       	mov    $0x18,%esi
+  5f41ac:	4c 89 f7             	mov    %r14,%rdi
+  5f41af:	e8 9c 13 81 01       	call   1e05550 <operator delete[](void*)>
+  5f41b4:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f41bb:	00 00 
+  5f41bd:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+  5f41c1:	74 33                	je     5f41f6 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x3b6>
+  5f41c3:	e9 18 ff ff ff       	jmp    5f40e0 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x2a0>
+  5f41c8:	31 db                	xor    %ebx,%ebx
+  5f41ca:	be 08 00 00 00       	mov    $0x8,%esi
+  5f41cf:	4c 89 ef             	mov    %r13,%rdi
+  5f41d2:	e8 79 13 81 01       	call   1e05550 <operator delete[](void*)>
+  5f41d7:	48 8d bd 18 ff ff ff 	lea    -0xe8(%rbp),%rdi
+  5f41de:	e8 ad a9 03 00       	call   62eb90 <v8::ScriptCompiler::StreamedSource::~StreamedSource()>
+  5f41e3:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f41ea:	00 00 
+  5f41ec:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+  5f41f0:	0f 85 ea fe ff ff    	jne    5f40e0 <v8::MaybeLocal<v8::Script> v8::Shell::CompileSource<v8::Script>(v8::Isolate*, v8::Local<v8::Context>, v8::Shell::Source const&, v8::ScriptOrigin const&)+0x2a0>
+  5f41f6:	48 89 d8             	mov    %rbx,%rax
+  5f41f9:	48 81 c4 c8 00 00 00 	add    $0xc8,%rsp
+  5f4200:	5b                   	pop    %rbx
+  5f4201:	41 5c                	pop    %r12
+  5f4203:	41 5d                	pop    %r13
+  5f4205:	41 5e                	pop    %r14
+  5f4207:	41 5f                	pop    %r15
+  5f4209:	5d                   	pop    %rbp
+  5f420a:	c3                   	ret
+  5f420b:	48 8d 3d 64 cf b5 ff 	lea    -0x4a309c(%rip),%rdi        # 151176 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x45966>
+  5f4212:	48 8d 35 7b 7c b8 ff 	lea    -0x478385(%rip),%rsi        # 17be94 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x70684>
+  5f4219:	31 c0                	xor    %eax,%eax
+  5f421b:	e8 c0 60 7d 01       	call   1dca2e0 <V8_Fatal(char const*, ...)>
+  5f4220:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  5f4225:	48 8d 3d 4a cf b5 ff 	lea    -0x4a30b6(%rip),%rdi        # 151176 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x45966>
+  5f422c:	48 8d 35 a6 77 b5 ff 	lea    -0x4a885a(%rip),%rsi        # 14b9d9 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x401c9>
+  5f4233:	31 c0                	xor    %eax,%eax
+  5f4235:	e8 a6 60 7d 01       	call   1dca2e0 <V8_Fatal(char const*, ...)>
+  5f423a:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section malloc_hook:
+
+Disassembly of section .plt:
