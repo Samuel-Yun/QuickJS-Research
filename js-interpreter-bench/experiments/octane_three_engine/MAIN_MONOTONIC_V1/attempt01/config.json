@@ -1,0 +1,48 @@
+{
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "mode": "MAIN_MONOTONIC_V1",
+  "metric": "first-call-inclusive interpreter-mode execution time",
+  "benchmark": "Octane",
+  "attempt": "01",
+  "units": [
+    "Richards.Richards",
+    "DeltaBlue.DeltaBlue",
+    "Crypto.Encrypt",
+    "Crypto.Decrypt",
+    "RayTrace.RayTrace",
+    "EarleyBoyer.Earley",
+    "EarleyBoyer.Boyer",
+    "RegExp.RegExp",
+    "Splay.Splay",
+    "NavierStokes.NavierStokes",
+    "PdfJS.PdfJS",
+    "Mandreel.Mandreel",
+    "Gameboy.Gameboy",
+    "CodeLoad.CodeLoadClosure",
+    "CodeLoad.CodeLoadJQuery",
+    "Typescript.Typescript"
+  ],
+  "seed": 20260928,
+  "warmup_calls": 0,
+  "target_ms": 1000.0,
+  "max_N": 65536,
+  "timeout_seconds": 300,
+  "repetitions": 30,
+  "driver_sha256": "ad5990874e44b4ecf068615cdc1232c126ad821a18198a73871f65d938efb90d",
+  "clock_tolerance_ms": 5.0,
+  "statistics": "sample stddev; Tukey halves IQR; ratios of medians",
+  "octane_aggregation": "subbenchmark ratios -> complete-suite GM -> equal-suite GM",
+  "static_frontend_exclusion": "UNKNOWN; JSC first-call preparation included",
+  "old_pilots_reused": false,
+  "old_windows_data_mixed": false,
+  "sensitivity_narrow": [
+    "RegExp",
+    "CodeLoad"
+  ],
+  "sensitivity_broad": [
+    "RegExp",
+    "CodeLoad",
+    "Mandreel",
+    "Typescript"
+  ]
+}

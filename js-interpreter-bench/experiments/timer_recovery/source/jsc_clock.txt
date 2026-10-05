@@ -1,0 +1,27 @@
+293:     auto& info = machTimebaseInfo();
+294:     return truncateDoubleToUint64((m_value * 1.0e9 * info.denom) / info.numer);
+295: }
+296: #endif
+297: 
+298: MonotonicTime MonotonicTime::now()
+299: {
+300: #if USE(GLIB)
+301:     return fromRawSeconds(static_cast<double>(g_get_monotonic_time() / 1000000.0));
+302: #elif OS(DARWIN)
+303:     return fromMachAbsoluteTime(mach_absolute_time());
+304: #elif OS(FUCHSIA)
+305:     return fromRawSeconds(zx_clock_get_monotonic() / static_cast<double>(ZX_SEC(1)));
+306: #elif OS(LINUX) || OS(FREEBSD) || OS(OPENBSD) || OS(NETBSD)
+307:     struct timespec ts { };
+308:     clock_gettime(CLOCK_MONOTONIC, &ts);
+309:     return fromRawSeconds(static_cast<double>(ts.tv_sec) + ts.tv_nsec / 1.0e9);
+310: #elif OS(HAIKU)
+311:     return fromRawSeconds(static_cast<double>(system_time_nsecs() / 1.0e9));
+312: #else
+313:     static double lastTime = 0;
+314:     double currentTimeNow = currentTime();
+315:     if (currentTimeNow < lastTime)
+316:         return lastTime;
+317:     lastTime = currentTimeNow;
+318:     return fromRawSeconds(currentTimeNow);
+319: #endif

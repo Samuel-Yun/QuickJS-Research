@@ -1,0 +1,542 @@
+{
+  "mode": "MAIN_MONOTONIC_V1",
+  "python_clock_info": {
+    "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 1e-09
+  },
+  "quickjs_shell_rebuilt": false,
+  "old_wall_clock_cause": "UNKNOWN",
+  "internal_clock_semantics": "monotonic elapsed milliseconds; differences only within process",
+  "comparison_tolerance_ms": 5.0,
+  "tolerance_basis": "5ms conservative allowance exceeds observed quantization (<1ms); wrapper/startup/exit only increase external duration; do not require equality",
+  "control_results": [
+    {
+      "engine": "quickjs",
+      "duration_ms": 0,
+      "rep": 1,
+      "outer_ms": 40.047349,
+      "internal_ms": 0.00025100000129896216,
+      "clock_resolution_observed_ms": 0.00011999999696854502,
+      "pass": true
+    },
+    {
+      "engine": "quickjs",
+      "duration_ms": 0,
+      "rep": 2,
+      "outer_ms": 37.487156,
+      "internal_ms": 0.0002409999979136046,
+      "clock_resolution_observed_ms": 0.00011999999696854502,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 0,
+      "rep": 1,
+      "outer_ms": 51.608586,
+      "internal_ms": 0.001999999999995339,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 0,
+      "rep": 2,
+      "outer_ms": 49.719317,
+      "internal_ms": 0.0010000000000047748,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 0,
+      "rep": 1,
+      "outer_ms": 37.881795,
+      "internal_ms": 0,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 0,
+      "rep": 2,
+      "outer_ms": 38.216191,
+      "internal_ms": 0,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    },
+    {
+      "engine": "quickjs",
+      "duration_ms": 25,
+      "rep": 1,
+      "outer_ms": 64.492027,
+      "internal_ms": 25.000184000000445,
+      "clock_resolution_observed_ms": 0.00011999999696854502,
+      "pass": true
+    },
+    {
+      "engine": "quickjs",
+      "duration_ms": 25,
+      "rep": 2,
+      "outer_ms": 63.465948,
+      "internal_ms": 25.000174000000698,
+      "clock_resolution_observed_ms": 0.00012000000060652383,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 25,
+      "rep": 1,
+      "outer_ms": 75.089309,
+      "internal_ms": 25,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 25,
+      "rep": 2,
+      "outer_ms": 77.639915,
+      "internal_ms": 25,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 25,
+      "rep": 1,
+      "outer_ms": 66.061104,
+      "internal_ms": 25.000000000000004,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 25,
+      "rep": 2,
+      "outer_ms": 66.186787,
+      "internal_ms": 25.000000000000004,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    },
+    {
+      "engine": "quickjs",
+      "duration_ms": 100,
+      "rep": 1,
+      "outer_ms": 140.628166,
+      "internal_ms": 100.00014300000112,
+      "clock_resolution_observed_ms": 0.00012999999671592377,
+      "pass": true
+    },
+    {
+      "engine": "quickjs",
+      "duration_ms": 100,
+      "rep": 2,
+      "outer_ms": 137.531702,
+      "internal_ms": 100.00016300000061,
+      "clock_resolution_observed_ms": 0.00011999999696854502,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 100,
+      "rep": 1,
+      "outer_ms": 156.546055,
+      "internal_ms": 100,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 100,
+      "rep": 2,
+      "outer_ms": 150.288331,
+      "internal_ms": 100.00000000000001,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 100,
+      "rep": 1,
+      "outer_ms": 139.799791,
+      "internal_ms": 100,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 100,
+      "rep": 2,
+      "outer_ms": 137.281617,
+      "internal_ms": 100,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    },
+    {
+      "engine": "quickjs",
+      "duration_ms": 1000,
+      "rep": 1,
+      "outer_ms": 1042.567654,
+      "internal_ms": 1000.0001230000016,
+      "clock_resolution_observed_ms": 0.00012999999671592377,
+      "pass": true
+    },
+    {
+      "engine": "quickjs",
+      "duration_ms": 1000,
+      "rep": 2,
+      "outer_ms": 1037.78025,
+      "internal_ms": 1000.0001369999991,
+      "clock_resolution_observed_ms": 0.00011999999696854502,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 1000,
+      "rep": 1,
+      "outer_ms": 1053.58759,
+      "internal_ms": 1000.0000000000001,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "v8",
+      "duration_ms": 1000,
+      "rep": 2,
+      "outer_ms": 1050.821709,
+      "internal_ms": 1000.0009999999999,
+      "clock_resolution_observed_ms": 0.0009999999999976694,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 1000,
+      "rep": 1,
+      "outer_ms": 1038.019518,
+      "internal_ms": 1000,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    },
+    {
+      "engine": "jsc",
+      "duration_ms": 1000,
+      "rep": 2,
+      "outer_ms": 1041.243539,
+      "internal_ms": 1000,
+      "clock_resolution_observed_ms": 0.019999999999999574,
+      "pass": true
+    }
+  ],
+  "binding_evidence": {
+    "quickjs": {
+      "baseline_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "10000_calls_counts": [
+        0,
+        10000,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "CLOCK_MONOTONIC_id": 1,
+      "monotonic_call_difference": 10000,
+      "instrumentation_in_formal_samples": false
+    },
+    "v8": {
+      "baseline_counts": [
+        0,
+        124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "10000_calls_counts": [
+        0,
+        10124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "CLOCK_MONOTONIC_id": 1,
+      "monotonic_call_difference": 10000,
+      "instrumentation_in_formal_samples": false
+    },
+    "jsc": {
+      "baseline_counts": [
+        1,
+        17,
+        0,
+        0,
+        0,
+        0,
+        43,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "10000_calls_counts": [
+        1,
+        10018,
+        0,
+        0,
+        0,
+        0,
+        46,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "CLOCK_MONOTONIC_id": 1,
+      "monotonic_call_difference": 10001,
+      "instrumentation_in_formal_samples": false
+    }
+  },
+  "errors": [],
+  "old_record_audit": {
+    "anomalies": [
+      {
+        "record_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/records/calibration/MAIN/3d-raytrace/N64.rep0.engine-jsc.order3.attempt001.json",
+        "sha256": "b94ae7d5f4f65d7a67a65a05a2e6b16c332f35f2ede2b389bfba05ee2e3fa223",
+        "record_stdout_script_match": true,
+        "internal_ms": 2482,
+        "external_ms": 875.465375,
+        "performance_claim": false
+      },
+      {
+        "record_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/sunspider_three_engine/records/calibration/MAIN/access-binary-trees/N256.rep0.engine-v8.order2.attempt001.json",
+        "sha256": "0889529bd1c59c576433797af4fdc8d410d6d657a4780b1f66d10e55c51d4432",
+        "record_stdout_script_match": true,
+        "internal_ms": 3196,
+        "external_ms": 1489.970802,
+        "performance_claim": false
+      }
+    ],
+    "outer_boundary_source_match": true,
+    "same_internal_function": true,
+    "namespace_separation": "__teb IIFE variables; core source reconstruction checked",
+    "unit_conversion": "outer ns / 1e6, inner ms; no engine mixing",
+    "record_or_boundary_bug_found": false,
+    "causal_wall_clock_attribution": "UNKNOWN"
+  },
+  "observation_windows": [
+    {
+      "window": 1,
+      "engine": "quickjs",
+      "internal_ms": 10000.000133999994,
+      "outer_ms": 10012.528535,
+      "Date_delta_ms": 10003,
+      "pass": true
+    },
+    {
+      "window": 2,
+      "engine": "v8",
+      "internal_ms": 10000,
+      "outer_ms": 10036.042665,
+      "Date_delta_ms": 10018,
+      "pass": true
+    },
+    {
+      "window": 3,
+      "engine": "jsc",
+      "internal_ms": 10000,
+      "outer_ms": 10022.652868,
+      "Date_delta_ms": 9992,
+      "pass": true
+    },
+    {
+      "window": 4,
+      "engine": "quickjs",
+      "internal_ms": 10000.000131,
+      "outer_ms": 10009.804194,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 5,
+      "engine": "v8",
+      "internal_ms": 10000,
+      "outer_ms": 10041.813075,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 6,
+      "engine": "jsc",
+      "internal_ms": 10000,
+      "outer_ms": 10023.898174,
+      "Date_delta_ms": 8249,
+      "pass": true
+    },
+    {
+      "window": 7,
+      "engine": "quickjs",
+      "internal_ms": 10000.000209999998,
+      "outer_ms": 10010.028411,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 8,
+      "engine": "v8",
+      "internal_ms": 10000,
+      "outer_ms": 10038.834159,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 9,
+      "engine": "jsc",
+      "internal_ms": 10000,
+      "outer_ms": 10022.058944,
+      "Date_delta_ms": 7693,
+      "pass": true
+    },
+    {
+      "window": 10,
+      "engine": "quickjs",
+      "internal_ms": 10000.000161000018,
+      "outer_ms": 10009.829257,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 11,
+      "engine": "v8",
+      "internal_ms": 10000,
+      "outer_ms": 10035.786764,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 12,
+      "engine": "jsc",
+      "internal_ms": 10000,
+      "outer_ms": 10023.038334,
+      "Date_delta_ms": 8213,
+      "pass": true
+    },
+    {
+      "window": 13,
+      "engine": "quickjs",
+      "internal_ms": 10000.000136999995,
+      "outer_ms": 10011.129111,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 14,
+      "engine": "v8",
+      "internal_ms": 10000,
+      "outer_ms": 10034.975765,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 15,
+      "engine": "jsc",
+      "internal_ms": 10000,
+      "outer_ms": 10026.232352,
+      "Date_delta_ms": 7840,
+      "pass": true
+    },
+    {
+      "window": 16,
+      "engine": "quickjs",
+      "internal_ms": 10000.000196000008,
+      "outer_ms": 10010.72418,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 17,
+      "engine": "v8",
+      "internal_ms": 10000,
+      "outer_ms": 10034.6925,
+      "Date_delta_ms": 10000,
+      "pass": true
+    },
+    {
+      "window": 18,
+      "engine": "jsc",
+      "internal_ms": 10000,
+      "outer_ms": 10025.763781,
+      "Date_delta_ms": 10000,
+      "pass": true
+    }
+  ],
+  "observation_duration_internal_ms": 180000.00096900002,
+  "runtime_sha256": {
+    "quickjs": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+    "v8": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+    "jsc": "65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f"
+  },
+  "adapters_sha256": {
+    "quickjs": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7",
+    "v8": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f",
+    "jsc": "0c485996a598b7e36f2f292b66397adc0390cbe6b69b55199e47e1c6c1e37010"
+  },
+  "status": "PASS"
+}

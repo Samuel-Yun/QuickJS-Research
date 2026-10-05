@@ -1,0 +1,26 @@
+{
+  "classification": "source-based, non-exhaustive, not a performance explanation",
+  "declared_before_Octane_calibration": true,
+  "tags": {
+    "RegExp": ["RegExp"],
+    "CodeLoad": ["dynamic-code"],
+    "Mandreel": ["dynamic-code-in-runtime-path", "runtime-specialized"],
+    "Typescript": ["runtime-specialized", "VM-dynamic-code-source-present-execution-UNKNOWN"],
+    "Gameboy": ["VM-dynamic-code-source-present-execution-UNKNOWN"]
+  },
+  "source_evidence": {
+    "CodeLoad": "benchmarks/octane/upstream/code-load.js:95-107,1517-1550; original Run evaluates changing source",
+    "Mandreel": "benchmarks/octane/upstream/mandreel.js:59-96,122; runtime/flushTimeouts eval retained",
+    "Typescript": "benchmarks/octane/upstream/typescript-compiler.js:4791 contains eval; this alone does not prove its execution in timed Run; JS language compiler is itself workload",
+    "Gameboy": "benchmarks/octane/upstream/gbemu-part1.js:427 Function constructor; whole timed-path coverage not traced"
+  },
+  "predefined_sensitivity_narrow": ["RegExp", "CodeLoad"],
+  "predefined_sensitivity_broad": ["RegExp", "CodeLoad", "Mandreel", "Typescript"],
+  "sensitivity_selection_changed_by_speed": false,
+  "builtin_free_or_pure_dispatch_claim": false,
+  "regexp_policy": {
+    "quickjs": "C RegExp VM; not JS computed-goto dispatch evidence",
+    "v8": "JS max-opt=0 does not disable native RegExp compilation; actual native execution in these samples UNKNOWN",
+    "jsc": "master useJIT=false disables RegExp JIT according to pinned Phase2 source/evidence"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "cohort_id": "wsl2-ubuntu2404-x64-20261004",
+  "main_mode": "MAIN_MONOTONIC_V1",
+  "main_metric_name": "first-call-inclusive interpreter-mode execution time",
+  "timer": "benchNow",
+  "sample_process_policy": "one fresh process per sample",
+  "performance_warmup_calls": 0,
+  "outside_region": [
+    "process startup",
+    "VM initialization",
+    "source loading",
+    "adapter setup",
+    "top-level script evaluation",
+    "required workload Setup",
+    "post-region validation and TearDown",
+    "output"
+  ],
+  "inside_region": [
+    "first workload Run",
+    "Run repeated N times",
+    "call/loop control",
+    "any first-call preparation still needed",
+    "GC",
+    "runtime helpers",
+    "native builtins",
+    "RegExp",
+    "dynamic eval/Function compilation",
+    "workload original in-Run assertions and timers"
+  ],
+  "static_frontend_exclusion_guaranteed": false,
+  "frontend_prepared_no_warmup_mode_ready": false,
+  "jsc_first_call_frontend_policy": "included and disclosed unless a preparation mechanism is later validated",
+  "same_workload_and_standard_driver_all_engines": true,
+  "adapter_policy": "separate preloaded file outside timer; QuickJS -I versus d8/jsc multiple-file loading",
+  "diagnostic_trace_in_formal_samples": false,
+  "diagnostic_warmup_mode": null,
+  "selected_correctness_N": [
+    1,
+    2,
+    16
+  ],
+  "full_formal_benchmark_authorized_in_this_phase": true,
+  "future_calibration_policy": "powers of two; smallest common N with every engine internal region >=1000 ms; independent pilot processes",
+  "future_statistics_policy": "all raw retained; no outlier deletion; same warmup policy per table; median, mean, sample stddev, Tukey IQR, min/max; ratio denominator explicitly named",
+  "old_windows_results_may_be_mixed": false,
+  "clock_semantics": "monotonic elapsed time, fractional milliseconds, process-local differences",
+  "timer_backend_change_only": true,
+  "floating_payload_check": "finite/nonnegative; formal strictly positive; inner <= outer+5ms",
+  "clock_quality_gate": "timer_recovery/audit.json PASS plus every calibration/formal sample consistency check"
+}

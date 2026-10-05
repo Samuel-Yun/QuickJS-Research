@@ -1,0 +1,224 @@
+{
+  "status": "PASS",
+  "old_Date_mode": "BLOCKED_TIMER; preserved",
+  "old_record_boundary_bug_found": false,
+  "wall_clock_cause": "UNKNOWN",
+  "new_quickjs_shell": false,
+  "metric": "first-call-inclusive interpreter-mode execution time",
+  "reports": {
+    "SunSpider": {
+      "path": "experiments/sunspider_three_engine/MAIN_MONOTONIC_V1/attempt01",
+      "audit_sha256": "f190ac60e6983988cbbd2f8c2223717d66b28c2775d6a328976b78261f4ba9be",
+      "overview_sha256": "c12a0a96e5fec2b3478c2f5f6da34346302446fcad1a64a0b2119c7bcc0c6ed2",
+      "pairwise_sha256": "b998e782e0fe1325322bba4981d368995d6122bbb2bf17119d28c73d72a35e10",
+      "cohort": "wsl2-ubuntu2404-x64-20261004",
+      "mode": "MAIN_MONOTONIC_V1",
+      "formal_valid": 2340,
+      "expected_compatible": 2340,
+      "expected_candidates": 2340,
+      "compatible_units": [
+        "3d-cube",
+        "3d-morph",
+        "3d-raytrace",
+        "access-binary-trees",
+        "access-fannkuch",
+        "access-nbody",
+        "access-nsieve",
+        "bitops-3bit-bits-in-byte",
+        "bitops-bits-in-byte",
+        "bitops-bitwise-and",
+        "bitops-nsieve-bits",
+        "controlflow-recursive",
+        "crypto-aes",
+        "crypto-md5",
+        "crypto-sha1",
+        "date-format-tofte",
+        "date-format-xparb",
+        "math-cordic",
+        "math-partial-sums",
+        "math-spectral-norm",
+        "regexp-dna",
+        "string-base64",
+        "string-fasta",
+        "string-tagcloud",
+        "string-unpack-code",
+        "string-validate-input"
+      ],
+      "complete_intersection": [
+        "3d-cube",
+        "3d-morph",
+        "3d-raytrace",
+        "access-binary-trees",
+        "access-fannkuch",
+        "access-nbody",
+        "access-nsieve",
+        "bitops-3bit-bits-in-byte",
+        "bitops-bits-in-byte",
+        "bitops-bitwise-and",
+        "bitops-nsieve-bits",
+        "controlflow-recursive",
+        "crypto-aes",
+        "crypto-md5",
+        "crypto-sha1",
+        "date-format-tofte",
+        "date-format-xparb",
+        "math-cordic",
+        "math-partial-sums",
+        "math-spectral-norm",
+        "regexp-dna",
+        "string-base64",
+        "string-fasta",
+        "string-tagcloud",
+        "string-unpack-code",
+        "string-validate-input"
+      ],
+      "GM": {
+        "V8/QJS": 0.6214304699630117,
+        "JSC/QJS": 0.733306421563446,
+        "JSC/V8": 1.1800297169321186
+      },
+      "runtime_hashes": {
+        "quickjs": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+        "v8": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+        "jsc": "65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f"
+      },
+      "formal_boot_counts": {
+        "3e035c9e-fd4d-4283-a7ce-c1d3e4721a0a": 1463,
+        "94e240b1-774a-4fdc-8be3-8b5e85457d9d": 877
+      },
+      "pairwise_case_counts": {
+        "V8/QJS": {
+          "numerator_faster": 16,
+          "denominator_faster": 10,
+          "ties": 0
+        },
+        "JSC/QJS": {
+          "numerator_faster": 21,
+          "denominator_faster": 5,
+          "ties": 0
+        },
+        "JSC/V8": {
+          "numerator_faster": 15,
+          "denominator_faster": 11,
+          "ties": 0
+        }
+      },
+      "representative_extremes": {
+        "V8/QJS": {
+          "min_case": "regexp-dna",
+          "min_ratio": 0.028794913446342777,
+          "max_case": "bitops-nsieve-bits",
+          "max_ratio": 1.6453459274636058
+        },
+        "JSC/QJS": {
+          "min_case": "string-unpack-code",
+          "min_ratio": 0.29293443617614673,
+          "max_case": "bitops-nsieve-bits",
+          "max_ratio": 1.5244040510212298
+        },
+        "JSC/V8": {
+          "min_case": "access-nbody",
+          "min_ratio": 0.5376705474784907,
+          "max_case": "regexp-dna",
+          "max_ratio": 50.38009389084604
+        }
+      }
+    },
+    "Octane": {
+      "path": "experiments/octane_three_engine/MAIN_MONOTONIC_V1/attempt01",
+      "audit_sha256": "6d06c00352d0d377beb78ede5c983b0bcc196073d616a0b57f186e6d2c6e32c5",
+      "overview_sha256": "990d7dd96e0e2cfb50888c1f705388787443c52978cf295f21385fb86c5aa787",
+      "pairwise_sha256": "d1776d41df35e5b4b5c3d77ff5b06867cff2acb181be5b39d5d2dd685fc679e7",
+      "cohort": "wsl2-ubuntu2404-x64-20261004",
+      "mode": "MAIN_MONOTONIC_V1",
+      "formal_valid": 1440,
+      "expected_compatible": 1440,
+      "expected_candidates": 1440,
+      "compatible_units": [
+        "Richards.Richards",
+        "DeltaBlue.DeltaBlue",
+        "Crypto.Encrypt",
+        "Crypto.Decrypt",
+        "RayTrace.RayTrace",
+        "EarleyBoyer.Earley",
+        "EarleyBoyer.Boyer",
+        "RegExp.RegExp",
+        "Splay.Splay",
+        "NavierStokes.NavierStokes",
+        "PdfJS.PdfJS",
+        "Mandreel.Mandreel",
+        "Gameboy.Gameboy",
+        "CodeLoad.CodeLoadClosure",
+        "CodeLoad.CodeLoadJQuery",
+        "Typescript.Typescript"
+      ],
+      "complete_intersection": [
+        "Richards",
+        "DeltaBlue",
+        "Crypto",
+        "RayTrace",
+        "EarleyBoyer",
+        "RegExp",
+        "Splay",
+        "NavierStokes",
+        "PdfJS",
+        "Mandreel",
+        "Gameboy",
+        "CodeLoad",
+        "Typescript"
+      ],
+      "GM": {
+        "V8/QJS": 0.5446261570908889,
+        "JSC/QJS": 0.7553903779249815,
+        "JSC/V8": 1.3869887960576222
+      },
+      "runtime_hashes": {
+        "quickjs": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+        "v8": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+        "jsc": "65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f"
+      },
+      "formal_boot_counts": {
+        "94e240b1-774a-4fdc-8be3-8b5e85457d9d": 1440
+      },
+      "pairwise_case_counts": {
+        "V8/QJS": {
+          "numerator_faster": 15,
+          "denominator_faster": 1,
+          "ties": 0
+        },
+        "JSC/QJS": {
+          "numerator_faster": 15,
+          "denominator_faster": 1,
+          "ties": 0
+        },
+        "JSC/V8": {
+          "numerator_faster": 4,
+          "denominator_faster": 12,
+          "ties": 0
+        }
+      },
+      "representative_extremes": {
+        "V8/QJS": {
+          "min_case": "RegExp.RegExp",
+          "min_ratio": 0.1070688709657082,
+          "max_case": "NavierStokes.NavierStokes",
+          "max_ratio": 1.2125620538149542
+        },
+        "JSC/QJS": {
+          "min_case": "EarleyBoyer.Boyer",
+          "min_ratio": 0.5227610979016616,
+          "max_case": "Gameboy.Gameboy",
+          "max_ratio": 1.1127643761520232
+        },
+        "JSC/V8": {
+          "min_case": "Crypto.Decrypt",
+          "min_ratio": 0.7220611945787061,
+          "max_case": "RegExp.RegExp",
+          "max_ratio": 7.727430054366473
+        }
+      }
+    }
+  },
+  "pure_interpreter_loop_self_time_claim": false,
+  "mechanistic_causality": "UNKNOWN"
+}

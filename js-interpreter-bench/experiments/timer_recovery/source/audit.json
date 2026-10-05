@@ -1,0 +1,73 @@
+{
+  "local_sources": {
+    "quickjs": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/quickjs-upstream/quickjs-libc.c",
+      "sha256": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+      "ranges": [
+        [
+          2129,
+          2172
+        ],
+        [
+          4098,
+          4118
+        ]
+      ]
+    },
+    "jsc_shell": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/webkit-fd3406f/Source/JavaScriptCore/jsc.cpp",
+      "sha256": "0d7f97cb2f58fe8c7a4f90b2735978b77f0d262e2289e26ec7f9e90d1cdd64fd",
+      "ranges": [
+        [
+          930,
+          950
+        ],
+        [
+          3551,
+          3563
+        ]
+      ]
+    },
+    "jsc_clock": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/webkit-fd3406f/Source/WTF/wtf/CurrentTime.cpp",
+      "sha256": "f735ade17899d8192fb6a39abb0780bf19cb56a5bc7aea5471468b308827a37c",
+      "ranges": [
+        [
+          293,
+          319
+        ]
+      ]
+    },
+    "src/d8/d8.cc": {
+      "status": "UNKNOWN",
+      "artifact_exact_commit_proven": false
+    },
+    "src/base/platform/time.cc": {
+      "status": "UNKNOWN",
+      "artifact_exact_commit_proven": false
+    }
+  },
+  "download_attempts": [
+    {
+      "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/d8/d8.cc",
+      "status": "FAIL",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1000)>"
+    },
+    {
+      "url": "https://chromium.googlesource.com/v8/v8/+/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/d8/d8.cc?format=TEXT",
+      "status": "FAIL",
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/base/platform/time.cc",
+      "status": "FAIL",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1000)>"
+    },
+    {
+      "url": "https://chromium.googlesource.com/v8/v8/+/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/base/platform/time.cc?format=TEXT",
+      "status": "FAIL",
+      "error": "<urlopen error timed out>"
+    }
+  ],
+  "v8_reference_is_not_artifact_commit_proof": true
+}

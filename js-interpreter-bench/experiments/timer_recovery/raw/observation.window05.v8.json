@@ -1,0 +1,16 @@
+{
+  "exit_code": 0,
+  "stdout": "TIMER_CONTROL:{\"duration_ms\":10000,\"elapsed_ms\":10000,\"date_elapsed_ms\":10000,\"backwards\":0,\"minimum_positive_delta_ms\":null,\"checksum\":112600952}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/generated/control.10000.0.js"
+  ],
+  "outer_wall_ns": 10041813075,
+  "script_sha256": "9f427e32c40ae5c4d3e4814ee37e19afa399975d0f0230f2e662484d195e4971"
+}
