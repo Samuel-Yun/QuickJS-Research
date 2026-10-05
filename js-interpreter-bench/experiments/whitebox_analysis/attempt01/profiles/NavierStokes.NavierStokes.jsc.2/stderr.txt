@@ -1,0 +1,75 @@
+
+
+Sampling rate: 1000.000000 microseconds. Total samples: 1698
+Top functions as <numSamples  'functionName#hash:sourceID'>
+  1213    'lin_solve#CqqW5g:2'
+   181    'advect#BTw3BU:2'
+   141    'project#Dz1vhP:2'
+    54    '(unknown C PC)#<nil>:4294967295'
+    47    'addFields#EYCHtT:2'
+    27    'set_bnd#CW1yfq:2'
+    18    'queryUI#EiwYVd:2'
+    13    'lin_solve2#BZsgO9:2'
+     3    'reset#AlgPGH:2'
+     1    '__pthread_getspecific#<nil>:4294967295'
+
+
+Sampling rate: 1000.000000 microseconds. Total samples: 1698
+
+Tier breakdown:
+-----------------------------------
+LLInt:                  1643  (96.760895%)
+Baseline:                  0  (0.000000%)
+DFG:                       0  (0.000000%)
+FTL:                       0  (0.000000%)
+js builtin:                0  (0.000000%)
+IPInt:                     0  (0.000000%)
+BBQ:                       0  (0.000000%)
+OMG:                       0  (0.000000%)
+Wasm:                      0  (0.000000%)
+Host:                      0  (0.000000%)
+RegExp:                    0  (0.000000%)
+C/C++:                    55  (3.239105%)
+
+
+Hottest bytecodes as <numSamples   'functionName#hash:JITType:bytecodeIndex'>
+   122    'lin_solve#CqqW5g:LLInt:bc#354'
+   110    'lin_solve#CqqW5g:LLInt:bc#372'
+    97    'lin_solve#CqqW5g:LLInt:bc#420'
+    94    'lin_solve#CqqW5g:LLInt:bc#432'
+    84    'lin_solve#CqqW5g:LLInt:bc#390'
+    84    'lin_solve#CqqW5g:LLInt:bc#369'
+    76    'lin_solve#CqqW5g:LLInt:bc#408'
+    71    'lin_solve#CqqW5g:LLInt:bc#396'
+    56    'lin_solve#CqqW5g:LLInt:bc#414'
+    54    '(unknown C PC)#<nil>:None:<nil>'
+    52    'lin_solve#CqqW5g:LLInt:bc#426'
+    49    'lin_solve#CqqW5g:LLInt:bc#405'
+    48    'lin_solve#CqqW5g:LLInt:bc#347'
+    44    'lin_solve#CqqW5g:LLInt:bc#438'
+    37    'lin_solve#CqqW5g:LLInt:bc#378'
+    30    'lin_solve#CqqW5g:LLInt:bc#387'
+    19    'lin_solve#CqqW5g:LLInt:bc#366'
+    17    'lin_solve#CqqW5g:LLInt:bc#457'
+    15    'lin_solve#CqqW5g:LLInt:bc#346'
+    14    'lin_solve#CqqW5g:LLInt:bc#450'
+    14    'lin_solve#CqqW5g:LLInt:bc#348'
+    11    'advect#BTw3BU:LLInt:bc#173'
+    11    'lin_solve#CqqW5g:LLInt:bc#444'
+    11    'advect#BTw3BU:LLInt:bc#399'
+    10    'lin_solve#CqqW5g:LLInt:bc#351'
+    10    'lin_solve#CqqW5g:LLInt:bc#466'
+     8    'advect#BTw3BU:LLInt:bc#170'
+     8    'advect#BTw3BU:LLInt:bc#351'
+     8    'addFields#EYCHtT:LLInt:bc#41'
+     8    'lin_solve#CqqW5g:LLInt:bc#360'
+     8    'lin_solve#CqqW5g:LLInt:bc#447'
+     8    'advect#BTw3BU:LLInt:bc#369'
+     7    'advect#BTw3BU:LLInt:bc#283'
+     7    'project#Dz1vhP:LLInt:bc#253'
+     7    'project#Dz1vhP:LLInt:bc#793'
+     7    'advect#BTw3BU:LLInt:bc#185'
+     7    'advect#BTw3BU:LLInt:bc#423'
+     7    'advect#BTw3BU:LLInt:bc#375'
+     7    'addFields#EYCHtT:LLInt:bc#71'
+     7    'project#Dz1vhP:LLInt:bc#721'

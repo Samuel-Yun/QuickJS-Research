@@ -1,0 +1,25 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/runtime/OptionsList.h
+SHA256: bf3fd1151d70c69e9e9bbf80be6d0618558d085722de18fc9042dda6abf6965b
+457:     \
+458:     v(Bool, useSamplingProfiler, false, Normal, nullptr) \
+459:     v(Unsigned, sampleInterval, 1000, Normal, "Time between stack traces in microseconds."_s) \
+
+459:     v(Unsigned, sampleInterval, 1000, Normal, "Time between stack traces in microseconds."_s) \
+460:     v(Bool, collectExtraSamplingProfilerData, false, Normal, "This corresponds to the JSC shell's --sample option, or if we're wanting to use the sampling profiler via the Debug menu in the browser."_s) \
+461:     v(Unsigned, samplingProfilerTopFunctionsCount, 12, Normal, "Number of top functions to report when using the command line interface."_s) \
+
+460:     v(Bool, collectExtraSamplingProfilerData, false, Normal, "This corresponds to the JSC shell's --sample option, or if we're wanting to use the sampling profiler via the Debug menu in the browser."_s) \
+461:     v(Unsigned, samplingProfilerTopFunctionsCount, 12, Normal, "Number of top functions to report when using the command line interface."_s) \
+462:     v(Unsigned, samplingProfilerTopBytecodesCount, 40, Normal, "Number of top bytecodes to report when using the command line interface."_s) \
+
+461:     v(Unsigned, samplingProfilerTopFunctionsCount, 12, Normal, "Number of top functions to report when using the command line interface."_s) \
+462:     v(Unsigned, samplingProfilerTopBytecodesCount, 40, Normal, "Number of top bytecodes to report when using the command line interface."_s) \
+463:     v(Bool, samplingProfilerIgnoreExternalSourceID, false, Normal, "Ignore external source ID when aggregating results from sampling profiler"_s) \
+
+462:     v(Unsigned, samplingProfilerTopBytecodesCount, 40, Normal, "Number of top bytecodes to report when using the command line interface."_s) \
+463:     v(Bool, samplingProfilerIgnoreExternalSourceID, false, Normal, "Ignore external source ID when aggregating results from sampling profiler"_s) \
+464:     v(OptionString, samplingProfilerPath, nullptr, Normal, "The path to the directory to write sampiling profiler output to. This probably will not work with WK2 unless the path is in the sandbox."_s) \
+
+463:     v(Bool, samplingProfilerIgnoreExternalSourceID, false, Normal, "Ignore external source ID when aggregating results from sampling profiler"_s) \
+464:     v(OptionString, samplingProfilerPath, nullptr, Normal, "The path to the directory to write sampiling profiler output to. This probably will not work with WK2 unless the path is in the sandbox."_s) \
+465:     v(Bool, sampleCCode, false, Normal, "Causes the sampling profiler to record profiling data for C frames."_s) \

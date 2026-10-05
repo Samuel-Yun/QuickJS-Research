@@ -1,0 +1,677 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js:2:27: function: <null>
+  args: message
+  closure vars:
+    0: var console [global_ref0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (message) { console.log(message); }
+
+        get_var 0: console
+        get_field2 log
+        get_arg0 0: message
+        call_method 1
+        return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var console [global]
+    1: var globalThis [global]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+        get_var 1: globalThis
+        fclosure8 0: [bytecode <null>]
+        insert2
+        put_field __TEB_marker
+        set_loc0 0: "<ret>"
+        return
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:5:57: function: <null>
+  closure vars:
+    0: var __clockFunction [loc1]
+    1: var __clockObject [loc0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+;;     return __clockFunction.call(__clockObject);
+
+        get_var_ref0 0: __clockFunction
+        get_field2 call
+        get_var_ref1 1: __clockObject
+        tail_call_method 1
+
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:2:3: function: <null>
+  locals:
+    0: var __clockObject
+    1: var __clockFunction
+  closure vars:
+    0: var performance [global_ref0]
+    1: var Error [global_ref1]
+    2: var Object [global_ref2]
+    3: var globalThis [global_ref3]
+  stack_size: 6
+  var_ref_count: 2
+  opcodes:
+;; function () {
+;;   var __clockObject = performance, __clockFunction = performance.now;
+
+        get_var 0: performance
+        put_loc0 0: __clockObject
+        get_var 0: performance
+        get_field now
+
+;;   if (typeof __clockFunction !== 'function') throw new Error('native clock missing');
+
+        set_loc1 1: __clockFunction
+        typeof_is_function
+        if_true8 29
+        get_var 1: Error
+        dup
+        push_atom_value "native clock missing"
+        call_constructor 1
+        throw
+
+;;   Object.defineProperty(globalThis, 'benchNow', {value: function () {
+
+   29:  get_var 2: Object
+        get_field2 defineProperty
+        get_var 3: globalThis
+        push_atom_value benchNow
+        object
+        fclosure8 0: [bytecode <null>]
+        set_name value
+        define_field value
+        push_false
+        define_field writable
+        push_false
+        define_field configurable
+        call_method 3
+        return_undef
+
+;;     return __clockFunction.call(__clockObject);
+;;   }, writable: false, configurable: false});
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var performance [global]
+    1: var Error [global]
+    2: var Object [global]
+    3: var globalThis [global]
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/bytecode/navier_f64.marked.js:15:3: function: __wbKernel
+  mode: strict
+  args: x x0
+  locals:
+    0: var width
+    1: var height
+    2: var rowSize
+    3: var iterations
+    4: var a
+    5: var invC
+    6: var k
+    7: var j
+    8: var lastRow
+    9: var currentRow
+   10: var nextRow
+   11: var lastX
+   12: var i
+  stack_size: 7
+  var_ref_count: 0
+  opcodes:
+;; function __wbKernel(x,x0) {
+
+        push_i8 64
+
+;;   var width=64,height=64,rowSize=66,iterations=20,a=1,invC=0.25;
+
+        put_loc0 0: width
+        push_i8 64
+        put_loc1 1: height
+        push_i8 66
+        put_loc2 2: rowSize
+        push_i8 20
+        put_loc3 3: iterations
+        push_1 1
+        put_loc8 4: a
+        push_const8 0: 0.25
+        put_loc8 5: invC
+        push_0 0
+
+;;   for(var k=0;k<iterations;k++)for(var j=1;j<=height;j++) {
+
+        put_loc8 6: k
+   22:  get_loc8 6: k
+        get_loc3 3: iterations
+        lt
+        if_false8 132
+        push_1 1
+        put_loc8 7: j
+   31:  get_loc8 7: j
+        get_loc1 1: height
+        lte
+        if_false8 128
+
+;;     var lastRow=(j-1)*rowSize,currentRow=j*rowSize,nextRow=(j+1)*rowSize;
+
+        get_loc8 7: j
+        push_1 1
+        sub
+        get_loc2 2: rowSize
+        mul
+        put_loc8 8: lastRow
+        get_loc8 7: j
+        get_loc2 2: rowSize
+        mul
+        put_loc8 9: currentRow
+        get_loc8 7: j
+        push_1 1
+        add
+        get_loc2 2: rowSize
+        mul
+        put_loc8 10: nextRow
+
+;;     var lastX=x[currentRow];++currentRow;
+
+        get_arg0 0: x
+        get_loc8 9: currentRow
+        get_array_el
+        put_loc8 11: lastX
+        inc_loc 9: currentRow
+        push_1 1
+
+;;     for(var i=1;i<=width;i++)
+
+        put_loc8 12: i
+   70:  get_loc8 12: i
+        get_loc0 0: width
+        lte
+        if_false8 124
+
+;;       lastX=x[currentRow]=(x0[currentRow]+a*(lastX+x[++currentRow]+x[++lastRow]+x[++nextRow]))*invC;
+
+        get_arg0 0: x
+        get_loc8 9: currentRow
+        get_arg1 1: x0
+        get_loc8 9: currentRow
+        get_array_el
+        get_loc8 4: a
+        get_loc8 11: lastX
+        get_arg0 0: x
+        get_loc8 9: currentRow
+        inc
+        set_loc8 9: currentRow
+        get_array_el
+        add
+        get_arg0 0: x
+        get_loc8 8: lastRow
+        inc
+        set_loc8 8: lastRow
+        get_array_el
+        add
+        get_arg0 0: x
+        get_loc8 10: nextRow
+        inc
+        set_loc8 10: nextRow
+        get_array_el
+        add
+        mul
+        add
+        get_loc8 5: invC
+        mul
+        insert3
+        put_array_el
+        put_loc8 11: lastX
+        inc_loc 12: i
+        goto8 70
+  124:  inc_loc 7: j
+        goto8 31
+  128:  inc_loc 6: k
+        goto8 22
+  132:  push_0 0
+
+;;   }
+;;   return 0;
+
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/bytecode/navier_f64.marked.js:1:3: function: <null>
+  mode: strict
+  locals:
+    0: var __wbCfg
+    1: var __wbData
+    2: var __wbSource
+    3: var __wbAcc
+    4: var __wbI
+    5: var __wbJ
+    6: var __wbKernel
+    7: var __wbStart
+    8: var __wbRep
+    9: var __wbStop
+   10: var __wbChecksum
+  closure vars:
+    0: var Array [global_ref0]
+    1: var Float64Array [global_ref1]
+    2: var console [global_ref2]
+    3: var benchNow [global_ref3]
+    4: var Math [global_ref4]
+    5: var Error [global_ref5]
+    6: var JSON [global_ref6]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        fclosure8 0: [bytecode __wbKernel]
+        put_loc8 6: __wbKernel
+
+;;   'use strict';
+
+        object
+        push_atom_value navier_f64
+        define_field variant
+        push_atom_value navier
+        define_field group
+        push_1 1
+        define_field N
+        push_i32 1718553846
+        define_field expected
+
+;;   var __wbCfg = {"variant":"navier_f64","group":"navier","N":1,"expected":1718553846};
+
+        put_loc0 0: __wbCfg
+        push_0 0
+
+;;   var __wbData, __wbSource, __wbAcc = 0;
+
+        put_loc3 3: __wbAcc
+
+;;   if (__wbCfg.group === 'richards') {
+
+        get_loc0 0: __wbCfg
+        get_field group
+        push_atom_value richards
+        strict_eq
+        if_false8 132
+
+;;     __wbData = new Array(1024);
+
+        get_var 0: Array
+        dup
+        push_i16 1024
+        call_constructor 1
+        put_loc1 1: __wbData
+        push_0 0
+
+;;     for (var __wbI=0; __wbI<1024; ++__wbI)
+
+        put_loc8 4: __wbI
+   72:  get_loc8 4: __wbI
+        push_i16 1024
+        lt
+        if_false 236
+
+;;       __wbData[__wbI] = {link:null,id:__wbI,priority:0,queue:null,task:null,state:__wbI&7};
+
+        get_loc1 1: __wbData
+        get_loc8 4: __wbI
+        object
+        null
+        define_field link
+        get_loc8 4: __wbI
+        define_field id
+        push_0 0
+        define_field priority
+        null
+        define_field queue
+        null
+        define_field task
+        get_loc8 4: __wbI
+        push_7 7
+        and
+        define_field state
+        put_array_el
+        inc_loc 4: __wbI
+        goto8 72
+
+;;   } else {
+;;     __wbData = new Float64Array(4356); __wbSource = new Float64Array(4356);
+
+  132:  get_var 1: Float64Array
+        dup
+        push_i16 4356
+        call_constructor 1
+        put_loc1 1: __wbData
+        get_var 1: Float64Array
+        dup
+        push_i16 4356
+        call_constructor 1
+        put_loc2 2: __wbSource
+        push_0 0
+
+;;     for(var __wbI=0;__wbI<4356;__wbI++) {__wbData[__wbI]=0;__wbSource[__wbI]=0;}
+
+        put_loc8 4: __wbI
+  157:  get_loc8 4: __wbI
+        push_i16 4356
+        lt
+        if_false8 179
+        get_loc1 1: __wbData
+        get_loc8 4: __wbI
+        push_0 0
+        put_array_el
+        get_loc2 2: __wbSource
+        get_loc8 4: __wbI
+        push_0 0
+        put_array_el
+        inc_loc 4: __wbI
+        goto8 157
+  179:  push_1 1
+
+;;     for(var __wbJ=1;__wbJ<=64;__wbJ++)for(var __wbI=1;__wbI<=64;__wbI++)
+
+        put_loc8 5: __wbJ
+  182:  get_loc8 5: __wbJ
+        push_i8 64
+        lte
+        if_false8 236
+        push_1 1
+        put_loc8 4: __wbI
+  192:  get_loc8 4: __wbI
+        push_i8 64
+        lte
+        if_false8 232
+
+;;       __wbSource[__wbJ*66+__wbI]=((__wbI*17+__wbJ*31)&255)/256;
+
+        get_loc2 2: __wbSource
+        get_loc8 5: __wbJ
+        push_i8 66
+        mul
+        get_loc8 4: __wbI
+        add
+        get_loc8 4: __wbI
+        push_i8 17
+        mul
+        get_loc8 5: __wbJ
+        push_i8 31
+        mul
+        add
+        push_i16 255
+        and
+        push_i16 256
+        div
+        put_array_el
+        inc_loc 4: __wbI
+        goto8 192
+  232:  inc_loc 5: __wbJ
+        goto8 182
+
+;;   }
+;;   function __wbKernel(x,x0) {
+;;   var width=64,height=64,rowSize=66,iterations=20,a=1,invC=0.25;
+;;   for(var k=0;k<iterations;k++)for(var j=1;j<=height;j++) {
+;;     var lastRow=(j-1)*rowSize,currentRow=j*rowSize,nextRow=(j+1)*rowSize;
+;;     var lastX=x[currentRow];++currentRow;
+;;     for(var i=1;i<=width;i++)
+;;       lastX=x[currentRow]=(x0[currentRow]+a*(lastX+x[++currentRow]+x[++lastRow]+x[++nextRow]))*invC;
+;;   }
+;;   return 0;
+;; }
+;; 
+;;   console.log('WB_TIMER_START');var __wbStart=benchNow();
+
+  236:  get_var 2: console
+        get_field2 log
+        push_atom_value WB_TIMER_START
+        call_method 1
+        drop
+        get_var 3: benchNow
+        call0 0
+        put_loc8 7: __wbStart
+        push_0 0
+
+;;   for(var __wbRep=0;__wbRep<__wbCfg.N;__wbRep++)
+
+        put_loc8 8: __wbRep
+  262:  get_loc8 8: __wbRep
+        get_loc0 0: __wbCfg
+        get_field N
+        lt
+        if_false8 287
+
+;;     __wbAcc=(__wbAcc+__wbKernel(__wbData,__wbSource))>>>0;
+
+        get_loc3 3: __wbAcc
+        get_loc8 6: __wbKernel
+        get_loc1 1: __wbData
+        get_loc2 2: __wbSource
+        call2 2
+        add
+        push_0 0
+        shr
+        put_loc3 3: __wbAcc
+        inc_loc 8: __wbRep
+        goto8 262
+
+;;   var __wbStop=benchNow();
+
+  287:  get_var 3: benchNow
+        call0 0
+        put_loc8 9: __wbStop
+
+;;   var __wbChecksum=__wbAcc;
+
+        get_loc3 3: __wbAcc
+        put_loc8 10: __wbChecksum
+
+;;   if(__wbCfg.group==='navier') {
+
+        get_loc0 0: __wbCfg
+        get_field group
+        push_atom_value navier
+        strict_eq
+        if_false8 359
+
+;;     __wbChecksum=0;
+
+        push_0 0
+        put_loc8 10: __wbChecksum
+        push_0 0
+
+;;     for(var __wbI=0;__wbI<4356;__wbI++)
+
+        put_loc8 4: __wbI
+  316:  get_loc8 4: __wbI
+        push_i16 4356
+        lt
+        if_false8 359
+
+;;       __wbChecksum=(__wbChecksum+Math.floor(__wbData[__wbI]*1048576+0.5))>>>0;
+
+        get_loc8 10: __wbChecksum
+        get_var 4: Math
+        get_field2 floor
+        get_loc1 1: __wbData
+        get_loc8 4: __wbI
+        get_array_el
+        push_i32 1048576
+        mul
+        push_const8 1: 0.5
+        add
+        call_method 1
+        add
+        push_0 0
+        shr
+        put_loc8 10: __wbChecksum
+        inc_loc 4: __wbI
+        goto8 316
+
+;;   }
+;;   if(__wbChecksum!==__wbCfg.expected)throw new Error('checksum '+__wbChecksum+' expected '+__wbCfg.expected);
+
+  359:  get_loc8 10: __wbChecksum
+        get_loc0 0: __wbCfg
+        get_field expected
+        strict_neq
+        if_false8 399
+        get_var 5: Error
+        dup
+        push_atom_value "checksum "
+        get_loc8 10: __wbChecksum
+        add
+        push_atom_value " expected "
+        add
+        get_loc0 0: __wbCfg
+        get_field expected
+        add
+        call_constructor 1
+        throw
+
+;;   console.log('WB_RESULT:'+JSON.stringify({mode:'MAIN_MONOTONIC_V1_DERIVED',variant:__wbCfg.variant,
+
+  399:  get_var 2: console
+        get_field2 log
+        push_atom_value "WB_RESULT:"
+        get_var 6: JSON
+        get_field2 stringify
+        object
+        push_atom_value MAIN_MONOTONIC_V1_DERIVED
+        define_field mode
+        get_loc0 0: __wbCfg
+        get_field variant
+        define_field variant
+
+;;     N:__wbCfg.N,checksum:__wbChecksum,correctness:'PASS',warmup_calls:0,
+
+        get_loc0 0: __wbCfg
+        get_field N
+        define_field N
+        get_loc8 10: __wbChecksum
+        define_field checksum
+        push_atom_value PASS
+        define_field correctness
+        push_0 0
+        define_field warmup_calls
+
+;;     start_ms:__wbStart,stop_ms:__wbStop,elapsed_ms:__wbStop-__wbStart}));
+
+        get_loc8 7: __wbStart
+        define_field start_ms
+        get_loc8 9: __wbStop
+        define_field stop_ms
+        get_loc8 9: __wbStop
+        get_loc8 7: __wbStart
+        sub
+        define_field elapsed_ms
+        call_method 1
+        add
+        call_method 1
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/bytecode/navier_f64.marked.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var Array [global]
+    1: var Float64Array [global]
+    2: var console [global]
+    3: var benchNow [global]
+    4: var Math [global]
+    5: var Error [global]
+    6: var JSON [global]
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+WB_TIMER_START
+WB_RESULT:{"mode":"MAIN_MONOTONIC_V1_DERIVED","variant":"navier_f64","N":1,"checksum":1718553846,"correctness":"PASS","warmup_calls":0,"start_ms":431252.681851,"stop_ms":431263.459208,"elapsed_ms":10.777356999984477}
+
+--- STDERR (separate stream; not chronological) ---
+WB_OPCODE 1 push_i32 4357
+WB_OPCODE 4 push_atom_value 9
+WB_OPCODE 9 push_false 2
+WB_OPCODE 11 object 3
+WB_OPCODE 14 drop 1
+WB_OPCODE 17 dup 2
+WB_OPCODE 21 insert2 1
+WB_OPCODE 22 insert3 81920
+WB_OPCODE 33 call_constructor 2
+WB_OPCODE 36 call_method 4360
+WB_OPCODE 37 tail_call_method 2
+WB_OPCODE 40 return 4
+WB_OPCODE 41 return_undef 2
+WB_OPCODE 56 get_var 4368
+WB_OPCODE 61 get_field 8
+WB_OPCODE 62 get_field2 4362
+WB_OPCODE 63 put_field 1
+WB_OPCODE 67 get_array_el 333316
+WB_OPCODE 70 put_array_el 94728
+WB_OPCODE 73 define_field 16
+WB_OPCODE 74 set_name 1
+WB_OPCODE 141 inc 245760
+WB_OPCODE 145 inc_loc 97373
+WB_OPCODE 152 mul 184324
+WB_OPCODE 153 div 4096
+WB_OPCODE 155 add 345866
+WB_OPCODE 156 sub 1281
+WB_OPCODE 160 shr 4357
+WB_OPCODE 161 lt 8737
+WB_OPCODE 162 lte 88725
+WB_OPCODE 169 strict_eq 2
+WB_OPCODE 170 strict_neq 1
+WB_OPCODE 171 and 4096
+WB_OPCODE 179 push_0 13077
+WB_OPCODE 180 push_1 3927
+WB_OPCODE 187 push_i8 16517
+WB_OPCODE 188 push_i16 16908
+WB_OPCODE 189 push_const8 4357
+WB_OPCODE 190 fclosure8 5
+WB_OPCODE 192 get_loc8 791757
+WB_OPCODE 193 put_loc8 92772
+WB_OPCODE 194 set_loc8 245760
+WB_OPCODE 195 get_loc0 83207
+WB_OPCODE 196 get_loc1 10013
+WB_OPCODE 197 get_loc2 12293
+WB_OPCODE 198 get_loc3 23
+WB_OPCODE 199 put_loc0 3
+WB_OPCODE 200 put_loc1 2
+WB_OPCODE 201 put_loc2 2
+WB_OPCODE 202 put_loc3 3
+WB_OPCODE 203 set_loc0 3
+WB_OPCODE 204 set_loc1 1
+WB_OPCODE 207 get_arg0 328960
+WB_OPCODE 208 get_arg1 81920
+WB_OPCODE 219 get_var_ref0 2
+WB_OPCODE 220 get_var_ref1 2
+WB_OPCODE 232 if_false8 97465
+WB_OPCODE 233 if_true8 1
+WB_OPCODE 234 goto8 96093
+WB_OPCODE 236 call0 4
+WB_OPCODE 238 call2 1
+WB_OPCODE 243 typeof_is_function 1
+WB_ARRAY fast=0 slow=333316
