@@ -1,0 +1,48 @@
+{
+  "mode": "MAIN_MONOTONIC_V1_DERIVED",
+  "timestamp_utc": "2026-10-05T09:00:35.306149+00:00",
+  "variants": {
+    "richards_fields": [
+      "richards",
+      "Array",
+      "richards_fields.js"
+    ],
+    "richards_cached": [
+      "richards",
+      "Array",
+      "richards_cached.js"
+    ],
+    "navier_array": [
+      "navier",
+      "Array",
+      "navier_kernel.js"
+    ],
+    "navier_f64": [
+      "navier",
+      "Float64Array",
+      "navier_kernel.js"
+    ]
+  },
+  "inputs": {
+    "experiments/whitebox_analysis/attempt01/manifest.json": "543e785a77972228fb599de67f7b387a5fd387d9e06aa50863f2b7dc820b6c57",
+    "experiments/whitebox_analysis/attempt01/microbench/driver.js": "e39cd4bf25597c11392b0aed50f139c2340a546f876f5950f8fea918dd53c615",
+    "experiments/whitebox_analysis/attempt01/microbench/navier_kernel.js": "429a9cd3e66eaba6d3a0b97d8cc51756871fa42c17eab3a4919bbb785d296bdf",
+    "experiments/whitebox_analysis/attempt01/microbench/richards_cached.js": "87b087e73ba0839d733c1dd2f9f95543c4105bcd34376478dc0de403208ab8d2",
+    "experiments/whitebox_analysis/attempt01/microbench/richards_fields.js": "f4d9539b4560d04df1f4d9fa663d380d3ffc3bbb42de8fd17ef6140c7509cfd9",
+    "experiments/whitebox_analysis/attempt01/protocol.md": "6f499af840f5a75609916550a36e6b7f4ad362f2bbbd0bbfe5438f58327d4440",
+    "experiments/whitebox_analysis/tooling/common.py": "107378d66d90042ef237020f13216181e88c5fb3e94d6e5599675070edb88b24",
+    "experiments/whitebox_analysis/tooling/oracle.c": "2560f627fe2b568f3236cf36a222b06dabf71b1a5bddfad613ae7fd508e04fa6",
+    "experiments/whitebox_analysis/tooling/run_micro.py": "34754c350acd3b249eceee521e9c4bc8587378f0609e72771e704a1f0ec0db8e"
+  },
+  "seed": 20261005,
+  "target_ms": 1000,
+  "max_N": 1048576,
+  "timeout_seconds": 180,
+  "reps": 30,
+  "metric": "first-call-inclusive interpreter-mode execution, derived workload",
+  "frontend_excluded": null,
+  "warmup_calls": 0,
+  "clock": "benchNow; frozen adapters",
+  "clock_tolerance_ms": 5,
+  "statistics": "median/mean/sample stddev/Tukey halves IQR/min/max; ratios of medians"
+}

@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Richards.Richards\",\"suite\":\"Richards\",\"subbenchmark\":\"Richards\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":512,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":0,\"stop_ms\":1179.66,\"elapsed_ms\":1179.66,\"elapsed_per_call_ms\":2.3040234375,\"warmup_calls\":0}\n",
+  "stderr": "\n\nSampling rate: 1000.000000 microseconds. Total samples: 987\nTop functions as <numSamples  'functionName#hash:sourceID'>\n   204    '#EaXyiF:2'\n   156    '#Bkagj7:2'\n   139    '#DDXQoZ:2'\n    92    '#EgO0iG:2'\n    66    '(unknown C PC)#<nil>:4294967295'\n    64    '#CefcG9:2'\n    46    '#DTz9wJ:2'\n    37    '#CuwkeZ:2'\n    35    '#C0KKap:2'\n    27    '#EZeerI:2'\n    22    '#DXSKe5:2'\n    21    '#BcWNsr:2'\n\n\nSampling rate: 1000.000000 microseconds. Total samples: 987\n\nTier breakdown:\n-----------------------------------\nLLInt:                   921  (93.313070%)\nBaseline:                  0  (0.000000%)\nDFG:                       0  (0.000000%)\nFTL:                       0  (0.000000%)\njs builtin:                0  (0.000000%)\nIPInt:                     0  (0.000000%)\nBBQ:                       0  (0.000000%)\nOMG:                       0  (0.000000%)\nWasm:                      0  (0.000000%)\nHost:                      0  (0.000000%)\nRegExp:                    0  (0.000000%)\nC/C++:                    66  (6.686930%)\n\n\nHottest bytecodes as <numSamples   'functionName#hash:JITType:bytecodeIndex'>\n    66    '(unknown C PC)#<nil>:None:<nil>'\n    23    '#EaXyiF:LLInt:bc#38'\n    20    '#Bkagj7:LLInt:bc#125'\n    19    '#DDXQoZ:LLInt:bc#6'\n    19    '#EaXyiF:LLInt:bc#132'\n    17    '#DDXQoZ:LLInt:bc#34'\n    16    '#EaXyiF:LLInt:bc#107'\n    15    '#EaXyiF:LLInt:bc#51'\n    15    '#EaXyiF:LLInt:bc#120'\n    15    '#DDXQoZ:LLInt:bc#44'\n    15    '#Bkagj7:LLInt:bc#113'\n    14    '#EaXyiF:LLInt:bc#63'\n    14    '#EaXyiF:LLInt:bc#86'\n    13    '#Bkagj7:LLInt:bc#32'\n    12    '#Bkagj7:LLInt:bc#134'\n    12    '#Bkagj7:LLInt:bc#0'\n    12    '#DDXQoZ:LLInt:bc#67'\n    11    '#DDXQoZ:LLInt:bc#19'\n    11    '#EaXyiF:LLInt:bc#32'\n    11    '#EaXyiF:LLInt:bc#69'\n    11    '#DDXQoZ:LLInt:bc#1'\n    10    '#EaXyiF:LLInt:bc#126'\n    10    '#Bkagj7:LLInt:bc#28'\n    10    '#EaXyiF:LLInt:bc#44'\n    10    '#DDXQoZ:LLInt:bc#38'\n    10    '#DTz9wJ:LLInt:<nil>'\n    10    '#Bkagj7:LLInt:bc#19'\n    10    '#DDXQoZ:LLInt:bc#0'\n     9    '#CefcG9:LLInt:bc#83'\n     9    '#DDXQoZ:LLInt:bc#63'\n     8    '#CefcG9:LLInt:bc#18'\n     8    '#Bkagj7:LLInt:bc#6'\n     8    '#EaXyiF:LLInt:bc#113'\n     8    '#Bkagj7:LLInt:bc#119'\n     8    '#DTz9wJ:LLInt:bc#15'\n     7    '#Bkagj7:LLInt:bc#47'\n     7    '#ByDZn4:LLInt:bc#18'\n     7    '#DDXQoZ:LLInt:bc#28'\n     7    '#DDXQoZ:LLInt:bc#41'\n     7    '#EaXyiF:LLInt:bc#101'\n",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "--sample",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.N512.original.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.jsc.2",
+  "timestamp_utc": "2026-10-05T08:40:58.514896+00:00",
+  "outer_start_ns": 47696833966,
+  "outer_stop_ns": 48904565698,
+  "boot_id": "441e3b90-9a71-4533-8969-b267d582448a",
+  "outer_wall_ns": 1207731732
+}

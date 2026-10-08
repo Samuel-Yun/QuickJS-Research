@@ -1,0 +1,61 @@
+{
+  "exit_code": 0,
+  "stdout": "WB_RESULT:{\"mode\":\"MAIN_MONOTONIC_V1_DERIVED\",\"variant\":\"richards_cached\",\"N\":2,\"checksum\":327680,\"correctness\":\"PASS\",\"warmup_calls\":0,\"start_ms\":276149.094147,\"stop_ms\":276164.353458,\"elapsed_ms\":15.259311000001617}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/microbench/generated/richards_cached.N2.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T09:00:37.015615+00:00",
+  "outer_start_ns": 276137343392,
+  "outer_stop_ns": 276165038533,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 27695141,
+  "stage": "correctness",
+  "case": "richards",
+  "variant": "richards_cached",
+  "engine": "quickjs",
+  "N": 2,
+  "rep": 0,
+  "order": 0,
+  "permutation": [],
+  "schedule_index": 0,
+  "mode": "MAIN_MONOTONIC_V1_DERIVED",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "flags": [],
+  "binary_sha256": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+  "script_sha256": "6e2077dfd93c55a9deb62261637a7b105fd00d7aebfa62fea15f17873ef75520",
+  "adapters": [
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+      "sha256": "f20aa7b460675d08600a58945203034feb50b2a3515aba579219f648b1235c6c"
+    },
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+      "sha256": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7"
+    }
+  ],
+  "design_sha256": "7354c1868ce2f8a6cc0d43c8be772c69eece3966b70d20df8f98270cddf07e2b",
+  "checksum": 327680,
+  "expected_checksum": 327680,
+  "payload": {
+    "mode": "MAIN_MONOTONIC_V1_DERIVED",
+    "variant": "richards_cached",
+    "N": 2,
+    "checksum": 327680,
+    "correctness": "PASS",
+    "warmup_calls": 0,
+    "start_ms": 276149.094147,
+    "stop_ms": 276164.353458,
+    "elapsed_ms": 15.259311000001617
+  },
+  "elapsed_ms": 15.259311000001617,
+  "elapsed_per_call_ms": 7.629655500000808,
+  "errors": [],
+  "valid": true
+}

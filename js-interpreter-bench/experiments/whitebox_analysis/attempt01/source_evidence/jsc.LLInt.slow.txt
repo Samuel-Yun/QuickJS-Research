@@ -1,0 +1,277 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/llint/LLIntSlowPaths.cpp
+SHA256: 9674a1a969a6718272290a9e04d7136642d54aeffbe4218d9311f517d5ec62f7
+734:     LLINT_RETURN(result);
+735: }
+736: 
+737: LLINT_SLOW_PATH_DECL(slow_path_get_by_id_direct)
+738: {
+739:     LLINT_BEGIN();
+740:     auto bytecode = pc->as<OpGetByIdDirect>();
+741:     const Identifier& ident = codeBlock->identifier(bytecode.m_property);
+742:     JSValue baseValue = getOperand(callFrame, bytecode.m_base);
+743:     PropertySlot slot(baseValue, PropertySlot::PropertySlot::InternalMethodType::GetOwnProperty);
+744: 
+745:     bool found = baseValue.getOwnPropertySlot(globalObject, ident, slot);
+746:     LLINT_CHECK_EXCEPTION();
+747:     JSValue result = found ? slot.getValue(globalObject, ident) : jsUndefined();
+748:     LLINT_CHECK_EXCEPTION();
+749: 
+750:     if (Options::useLLIntICs() && slot.isCacheable() && !slot.isUnset()) {
+751:         auto& metadata = bytecode.metadata(codeBlock);
+752:         {
+753:             StructureID oldStructureID = metadata.m_structureID;
+754:             if (oldStructureID) {
+755:                 Structure* a = oldStructureID.decode();
+756:                 Structure* b = baseValue.asCell()->structure();
+757: 
+758:                 if (Structure::shouldConvertToPolyProto(a, b)) {
+759:                     ASSERT(a->rareData()->sharedPolyProtoWatchpoint().get() == b->rareData()->sharedPolyProtoWatchpoint().get());
+760:                     a->rareData()->sharedPolyProtoWatchpoint()->invalidate(vm, StringFireDetail("Detected poly proto opportunity."));
+761:                 }
+762:             }
+763:         }
+764: 
+765:         JSCell* baseCell = baseValue.asCell();
+766:         Structure* structure = baseCell->structure();
+767:         if (slot.isValue()) {
+768:             // Start out by clearing out the old cache.
+769:             metadata.m_structureID = StructureID();
+770:             metadata.m_offset = 0;
+771: 
+772:             if (structure->propertyAccessesAreCacheable() && !structure->needImpurePropertyWatchpoint()) {
+773:                 {
+774:                     ConcurrentJSLocker locker(codeBlock->m_lock);
+775:                     metadata.m_structureID = structure->id();
+776:                     metadata.m_offset = slot.cachedOffset();
+777:                 }
+778:                 vm.writeBarrier(codeBlock);
+779:             }
+780:         }
+781:     }
+782: 
+783:     LLINT_RETURN_PROFILED(result);
+784: }
+785: 
+786: LLINT_SLOW_PATH_DECL(slow_path_get_by_id_with_this)
+787: {
+788:     LLINT_BEGIN();
+789:     auto bytecode = pc->as<OpGetByIdWithThis>();
+790:     const Identifier& ident = codeBlock->identifier(bytecode.m_property);
+791:     JSValue baseValue = getOperand(callFrame, bytecode.m_base);
+792:     JSValue thisVal = getOperand(callFrame, bytecode.m_thisValue);
+793:     PropertySlot slot(thisVal, PropertySlot::PropertySlot::InternalMethodType::Get);
+794:     JSValue result = baseValue.get(globalObject, ident, slot);
+795:     LLINT_RETURN_PROFILED(result);
+796: }
+797: 
+798: static void setupGetByIdPrototypeCache(JSGlobalObject* globalObject, VM& vm, CodeBlock* codeBlock, BytecodeIndex bytecodeIndex, GetByIdModeMetadata& metadata, JSCell* baseCell, PropertySlot& slot, const Identifier& ident)
+799: {
+800:     Structure* structure = baseCell->structure();
+801: 
+
+783:     LLINT_RETURN_PROFILED(result);
+784: }
+785: 
+786: LLINT_SLOW_PATH_DECL(slow_path_get_by_id_with_this)
+787: {
+788:     LLINT_BEGIN();
+789:     auto bytecode = pc->as<OpGetByIdWithThis>();
+790:     const Identifier& ident = codeBlock->identifier(bytecode.m_property);
+791:     JSValue baseValue = getOperand(callFrame, bytecode.m_base);
+792:     JSValue thisVal = getOperand(callFrame, bytecode.m_thisValue);
+793:     PropertySlot slot(thisVal, PropertySlot::PropertySlot::InternalMethodType::Get);
+794:     JSValue result = baseValue.get(globalObject, ident, slot);
+795:     LLINT_RETURN_PROFILED(result);
+796: }
+797: 
+798: static void setupGetByIdPrototypeCache(JSGlobalObject* globalObject, VM& vm, CodeBlock* codeBlock, BytecodeIndex bytecodeIndex, GetByIdModeMetadata& metadata, JSCell* baseCell, PropertySlot& slot, const Identifier& ident)
+799: {
+800:     Structure* structure = baseCell->structure();
+801: 
+802:     if (structure->typeInfo().prohibitsPropertyCaching())
+803:         return;
+804:     
+805:     if (structure->needImpurePropertyWatchpoint())
+806:         return;
+807: 
+808:     if (structure->isDictionary()) {
+809:         if (structure->hasBeenFlattenedBefore())
+810:             return;
+811:         structure->flattenDictionaryStructure(vm, uncheckedDowncast<JSObject>(baseCell));
+812:     }
+813: 
+814:     prepareChainForCaching(globalObject, baseCell, ident.impl(), slot);
+815: 
+816:     ObjectPropertyConditionSet conditions;
+817:     if (slot.isUnset())
+818:         conditions = generateConditionsForPropertyMiss(vm, codeBlock, globalObject, structure, ident.impl());
+819:     else
+820:         conditions = generateConditionsForPrototypePropertyHit(vm, codeBlock, globalObject, structure, slot.slotBase(), ident.impl());
+821: 
+822:     if (!conditions.isValid())
+823:         return;
+824: 
+825:     PropertyOffset offset = invalidOffset;
+826:     CodeBlock::StructureWatchpointMap& watchpointMap = codeBlock->llintGetByIdWatchpointMap();
+827:     FixedVector<LLIntPrototypeLoadAdaptiveStructureWatchpoint> watchpoints(conditions.size());
+828:     unsigned index = 0;
+829:     for (ObjectPropertyCondition condition : conditions) {
+830:         auto& watchpoint = watchpoints[index++];
+831:         if (!condition.isWatchable(PropertyCondition::MakeNoChanges))
+832:             return;
+833:         if (condition.condition().kind() == PropertyCondition::Presence)
+834:             offset = condition.condition().offset();
+835:         watchpoint.initialize(codeBlock, condition, bytecodeIndex);
+836:         watchpoint.install(vm);
+837:     }
+838: 
+839:     ASSERT((offset == invalidOffset) == slot.isUnset());
+840:     auto result = watchpointMap.add(std::make_tuple(structure->id(), bytecodeIndex), WTF::move(watchpoints));
+841:     ASSERT_UNUSED(result, result.isNewEntry);
+842: 
+843:     {
+844:         ConcurrentJSLocker locker(codeBlock->m_lock);
+845:         if (slot.isUnset())
+846:             metadata.setUnsetMode(structure);
+847:         else {
+848:             ASSERT(slot.isValue());
+849:             metadata.setProtoLoadMode(structure, offset, slot.slotBase());
+850:         }
+
+918:     return result;
+919: }
+920: 
+921: LLINT_SLOW_PATH_DECL(slow_path_get_by_id)
+922: {
+923:     LLINT_BEGIN();
+924:     auto bytecode = pc->as<OpGetById>();
+925:     auto& metadata = bytecode.metadata(codeBlock);
+926:     const Identifier& ident = codeBlock->identifier(bytecode.m_property);
+927:     JSValue baseValue = getOperand(callFrame, bytecode.m_base);
+928: 
+929:     JSValue result = performLLIntGetByID(codeBlock->bytecodeIndex(pc), codeBlock, globalObject, baseValue, ident, metadata.m_modeMetadata);
+930:     LLINT_RETURN_PROFILED(result);
+931: }
+932: 
+933: LLINT_SLOW_PATH_DECL(slow_path_get_length)
+934: {
+935:     LLINT_BEGIN();
+936:     auto bytecode = pc->as<OpGetLength>();
+937:     auto& metadata = bytecode.metadata(codeBlock);
+938:     const Identifier& ident = vm.propertyNames->length;
+939:     JSValue baseValue = getOperand(callFrame, bytecode.m_base);
+940: 
+941:     if (baseValue.isCell())
+942:         metadata.m_arrayProfile.observeStructure(baseValue.asCell()->structure());
+943:     JSValue result = performLLIntGetByID(codeBlock->bytecodeIndex(pc), codeBlock, globalObject, baseValue, ident, metadata.m_modeMetadata);
+944:     LLINT_RETURN_PROFILED(result);
+945: }
+946: 
+947: LLINT_SLOW_PATH_DECL(slow_path_iterator_open_get_next)
+948: {
+949:     LLINT_BEGIN();
+950: 
+951:     auto bytecode = pc->as<OpIteratorOpen>();
+952:     auto& metadata = bytecode.metadata(codeBlock);
+953:     JSValue iterator = getOperand(callFrame, bytecode.m_iterator);
+954:     Register& nextRegister = callFrame->uncheckedR(bytecode.m_next);
+955: 
+956:     if (!iterator.isObject())
+957:         LLINT_THROW(createTypeError(globalObject, "Iterator result interface is not an object."_s));
+958: 
+959:     JSValue result = performLLIntGetByID(codeBlock->bytecodeIndex(pc).withCheckpoint(OpIteratorOpen::getNext), codeBlock, globalObject, iterator, vm.propertyNames->next, metadata.m_modeMetadata);
+960:     LLINT_CHECK_EXCEPTION();
+961:     nextRegister = result;
+962:     codeBlock->valueProfileForOffset(bytecode.m_nextValueProfile).m_buckets[0] = JSValue::encode(result);
+963:     LLINT_END();
+964: }
+965: 
+966: LLINT_SLOW_PATH_DECL(slow_path_iterator_next_get_done)
+967: {
+968:     LLINT_BEGIN();
+969: 
+970:     auto bytecode = pc->as<OpIteratorNext>();
+971:     auto& metadata = bytecode.metadata(codeBlock);
+972:     // We use m_value to hold the iterator return value since it's either not live past this bytecode or it's going to be filled later.
+973:     JSValue iteratorReturn = getOperand(callFrame, bytecode.m_value);
+974:     Register& doneRegister = callFrame->uncheckedR(bytecode.m_done);
+975: 
+976:     if (!iteratorReturn.isObject())
+977:         LLINT_THROW(createTypeError(globalObject, "Iterator result interface is not an object."_s));
+978: 
+979:     JSValue result = performLLIntGetByID(codeBlock->bytecodeIndex(pc).withCheckpoint(OpIteratorNext::getDone), codeBlock, globalObject, iteratorReturn, vm.propertyNames->done, metadata.m_doneModeMetadata);
+980:     LLINT_CHECK_EXCEPTION();
+981:     doneRegister = result;
+982:     codeBlock->valueProfileForOffset(bytecode.m_doneValueProfile).m_buckets[0] = JSValue::encode(result);
+983:     LLINT_END();
+984: }
+985: 
+
+1240:     return baseValue.get(globalObject, property);
+1241: }
+1242: 
+1243: LLINT_SLOW_PATH_DECL(slow_path_get_by_val)
+1244: {
+1245:     LLINT_BEGIN();
+1246:     auto bytecode = pc->as<OpGetByVal>();
+1247:     JSValue baseValue = getOperand(callFrame, bytecode.m_base);
+1248:     JSValue subscript = getOperand(callFrame, bytecode.m_property);
+1249:     LLINT_RETURN_PROFILED(getByVal(vm, globalObject, codeBlock, baseValue, subscript, bytecode));
+1250: }
+1251: 
+1252: LLINT_SLOW_PATH_DECL(slow_path_get_private_name)
+1253: {
+1254:     LLINT_BEGIN();
+1255: 
+1256:     auto bytecode = pc->as<OpGetPrivateName>();
+1257:     JSValue baseValue = getOperand(callFrame, bytecode.m_base);
+1258:     JSValue subscript = getOperand(callFrame, bytecode.m_property);
+1259:     ASSERT(subscript.isSymbol());
+1260: 
+1261:     JSObject* baseObject = baseValue.toObject(globalObject);
+1262:     LLINT_CHECK_EXCEPTION();
+1263:     auto property = subscript.toPropertyKey(globalObject);
+1264:     LLINT_CHECK_EXCEPTION();
+1265:     ASSERT(property.isPrivateName());
+1266: 
+1267:     PropertySlot slot(baseObject, PropertySlot::InternalMethodType::GetOwnProperty);
+1268:     baseObject->getPrivateField(globalObject, property, slot);
+1269:     LLINT_CHECK_EXCEPTION();
+1270: 
+1271:     if (Options::useLLIntICs() && baseValue.isCell() && slot.isCacheable() && !slot.isUnset()) {
+1272:         auto& metadata = bytecode.metadata(codeBlock);
+1273:         {
+1274:             StructureID oldStructureID = metadata.m_structureID;
+1275:             if (oldStructureID) {
+1276:                 Structure* a = oldStructureID.decode();
+1277:                 Structure* b = baseValue.asCell()->structure();
+1278: 
+1279:                 if (Structure::shouldConvertToPolyProto(a, b)) {
+1280:                     ASSERT(a->rareData()->sharedPolyProtoWatchpoint().get() == b->rareData()->sharedPolyProtoWatchpoint().get());
+1281:                     a->rareData()->sharedPolyProtoWatchpoint()->invalidate(vm, StringFireDetail("Detected poly proto opportunity."));
+1282:                 }
+1283:             }
+1284:         }
+1285: 
+1286:         JSCell* baseCell = baseValue.asCell();
+1287:         Structure* structure = baseCell->structure();
+1288:         if (slot.isValue()) {
+1289:             // Start out by clearing out the old cache.
+1290:             metadata.m_structureID = StructureID();
+1291:             metadata.m_offset = 0;
+1292: 
+1293:             if (!structure->isUncacheableDictionary()) {
+1294:                 {
+1295:                     ConcurrentJSLocker locker(codeBlock->m_lock);
+1296:                     metadata.m_structureID = structure->id();
+1297:                     metadata.m_offset = slot.cachedOffset();
+1298: 
+1299:                     //  Update the cached private symbol
+1300:                     metadata.m_property.set(vm, codeBlock, subscript.asCell());
+1301:                 }
+1302:                 vm.writeBarrier(codeBlock);
+1303:             }
+1304:         }
+1305:     }
+1306: 
+1307:     LLINT_RETURN_PROFILED(slot.getValue(globalObject, property));

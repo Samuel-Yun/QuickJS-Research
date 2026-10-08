@@ -1,0 +1,48 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L17746
+17746: static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,
+17747:                                JSValueConst this_obj, JSValueConst new_target,
+17748:                                int argc, JSValue *argv, int flags)
+17749: {
+17750:     JSRuntime *rt = caller_ctx->rt;
+17751:     JSContext *ctx;
+17752:     JSObject *p;
+17753:     JSFunctionBytecode *b;
+17754:     JSStackFrame sf_s, *sf = &sf_s;
+17755:     const uint8_t *pc;
+17756:     int opcode, arg_allocated_size, i;
+17757:     JSValue *local_buf, *stack_buf, *var_buf, *arg_buf, *sp, ret_val, *pval;
+17758:     JSVarRef **var_refs;
+17759:     size_t alloca_size;
+17760: 
+17761: #if !DIRECT_DISPATCH
+17762: #define SWITCH(pc)      switch (opcode = *pc++)
+17763: #define CASE(op)        case op
+17764: #define DEFAULT         default
+17765: #define BREAK           break
+17766: #else
+17767:     static const void * const dispatch_table[256] = {
+17768: #define DEF(id, size, n_pop, n_push, f) && case_OP_ ## id,
+17769: #if SHORT_OPCODES
+17770: #define def(id, size, n_pop, n_push, f)
+17771: #else
+17772: #define def(id, size, n_pop, n_push, f) && case_default,
+17773: #endif
+17774: #include "quickjs-opcode.h"
+17775:         [ OP_COUNT ... 255 ] = &&case_default
+17776:     };
+17777: #define SWITCH(pc)      goto *dispatch_table[opcode = *pc++];
+17778: #ifdef OPCODE_ASM_LABEL
+17779: #define CASE(op)        case_ ## op: asm volatile("label_" #op ":\n.globl label_" #op); dummy_case_ ## op
+17780: #else
+17781: #define CASE(op)        case_ ## op
+17782: #endif
+17783: #define DEFAULT         case_default
+17784: #define BREAK           SWITCH(pc)
+17785: #endif
+17786: 
+17787:     if (js_poll_interrupts(caller_ctx))
+17788:         return JS_EXCEPTION;
+17789:     if (unlikely(JS_VALUE_GET_TAG(func_obj) != JS_TAG_OBJECT)) {
+17790:         if (flags & JS_CALL_FLAG_GENERATOR) {

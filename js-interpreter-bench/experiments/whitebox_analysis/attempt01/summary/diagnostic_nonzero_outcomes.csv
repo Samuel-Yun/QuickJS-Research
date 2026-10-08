@@ -1,0 +1,34 @@
+record,exit_code,stderr,command
+capability.perf_paths.json,1,,"[""sh"",""-c"",""find /usr/lib/linux-tools /usr/bin /usr/local/bin -maxdepth 3 -name perf -type f 2>/dev/null""]"
+capability.perf_version.json,,[Errno 2] No such file or directory: 'perf',"[""perf"",""--version""]"
+diagnostic.apply.json,1,"error: patch failed: quickjs.c:93
+error: quickjs.c: patch does not apply
+","[""git"",""apply"",""--recount"",""/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/source_evidence/quickjs-diagnostic.patch""]"
+diagnostic.clone.json,128,"fatal: repository '/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c' does not exist
+","[""git"",""clone"",""--no-hardlinks"",""/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c"",""/home/mzyx/whitebox_diag_04be246_attempt01""]"
+help.quickjs.json,1,,"[""/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs"",""--help""]"
+reference.v8.log.cc.json,60,"  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+curl: (60) SSL certificate problem: self-signed certificate in certificate chain
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+","[""curl"",""-fL"",""--connect-timeout"",""10"",""--max-time"",""20"",""https://raw.githubusercontent.com/v8/v8/15.6.21/src/logging/log.cc""]"
+reference.v8.tick-sample.cc.json,60,"  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+curl: (60) SSL certificate problem: self-signed certificate in certificate chain
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+","[""curl"",""-fL"",""--connect-timeout"",""10"",""--max-time"",""20"",""https://raw.githubusercontent.com/v8/v8/15.6.21/src/profiler/tick-sample.cc""]"
+regexp.jsc.profile.json,-6,"ERROR: invalid option: --dumpOptions=true
+","[""/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc"",""--useJIT=false"",""--useLLInt=true"",""--validateOptions=true"",""--sample"",""--dumpOptions=true"",""/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js"",""/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js"",""/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/RegExp.RegExp.N1.original.js""]"
+regexp.v8.trace.json,-6,"Flag processing error: Contradictory value for readonly flag --trace-regexp-tier-up.
+If a test variant caused this, it might be necessary to specify additional contradictory flags in tools/testrunner/local/variants.py.
+","[""/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8"",""--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin"",""--max-opt=0"",""--no-lazy"",""--trace-regexp-tier-up"",""--trace-regexp-exec"",""/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js"",""/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js"",""/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/RegExp.RegExp.N1.original.js""]"

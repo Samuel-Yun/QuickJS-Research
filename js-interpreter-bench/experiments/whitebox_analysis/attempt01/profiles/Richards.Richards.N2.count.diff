@@ -1,0 +1,334 @@
+--- /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.N2.original.js
++++ /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.N2.count.js
+@@ -1,3 +1,4 @@
++var __wbCounts = Object.create(null); function __wbCount(k) { __wbCounts[k] = (__wbCounts[k] || 0) + 1; }
+ // Copyright 2013 the V8 project authors. All rights reserved.
+ // Redistribution and use in source and binary forms, with or without
+ // modification, are permitted provided that the following conditions are
+@@ -73,7 +74,7 @@
+ 
+ // Automatically convert results to numbers. Used by the geometric
+ // mean computation.
+-BenchmarkResult.prototype.valueOf = function() {
++BenchmarkResult.prototype.valueOf = function() { __wbCount("BenchmarkResult.prototype.valueOf");
+   return this.time;
+ }
+ 
+@@ -236,7 +237,7 @@
+ 
+ // Notifies the runner that we're done running a single benchmark in
+ // the benchmark suite. This can be useful to report progress.
+-BenchmarkSuite.prototype.NotifyStep = function(result) {
++BenchmarkSuite.prototype.NotifyStep = function(result) { __wbCount("BenchmarkSuite.prototype.NotifyStep");
+   this.results.push(result);
+   if (this.runner.NotifyStep) this.runner.NotifyStep(result.benchmark.name);
+ }
+@@ -244,7 +245,7 @@
+ 
+ // Notifies the runner that we're done with running a suite and that
+ // we have a result which can be reported to the user if needed.
+-BenchmarkSuite.prototype.NotifyResult = function() {
++BenchmarkSuite.prototype.NotifyResult = function() { __wbCount("BenchmarkSuite.prototype.NotifyResult");
+   var mean = BenchmarkSuite.GeometricMeanTime(this.results);
+   var score = this.reference[0] / mean;
+   BenchmarkSuite.scores.push(score);
+@@ -266,7 +267,7 @@
+ }
+ 
+ 
+-BenchmarkSuite.prototype.NotifySkipped = function(runner) {
++BenchmarkSuite.prototype.NotifySkipped = function(runner) { __wbCount("BenchmarkSuite.prototype.NotifySkipped");
+   BenchmarkSuite.scores.push(1);  // push default reference score.
+   if (runner.NotifyResult) {
+     runner.NotifyResult(this.name, "Skipped");
+@@ -275,7 +276,7 @@
+ 
+ 
+ // Notifies the runner that running a benchmark resulted in an error.
+-BenchmarkSuite.prototype.NotifyError = function(error) {
++BenchmarkSuite.prototype.NotifyError = function(error) { __wbCount("BenchmarkSuite.prototype.NotifyError");
+   if (this.runner.NotifyError) {
+     this.runner.NotifyError(this.name, error);
+   }
+@@ -287,7 +288,7 @@
+ 
+ // Runs a single benchmark for at least a second and computes the
+ // average time it takes to run a single iteration.
+-BenchmarkSuite.prototype.RunSingleBenchmark = function(benchmark, data) {
++BenchmarkSuite.prototype.RunSingleBenchmark = function(benchmark, data) { __wbCount("BenchmarkSuite.prototype.RunSingleBenchmark");
+   var config = BenchmarkSuite.config;
+   var doWarmup = config.doWarmup !== undefined 
+                  ? config.doWarmup 
+@@ -337,7 +338,7 @@
+ // individual benchmark in the suite and returns a continuation
+ // function which can be invoked to run the next benchmark. Once the
+ // last benchmark has been executed, null is returned.
+-BenchmarkSuite.prototype.RunStep = function(runner) {
++BenchmarkSuite.prototype.RunStep = function(runner) { __wbCount("BenchmarkSuite.prototype.RunStep");
+   BenchmarkSuite.ResetRNG();
+   this.results = [];
+   this.runner = runner;
+@@ -436,7 +437,7 @@
+  * The Richards benchmark simulates the task dispatcher of an
+  * operating system.
+  **/
+-function runRichards() {
++function runRichards() { __wbCount('runRichards');
+   var scheduler = new Scheduler();
+   scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);
+ 
+@@ -515,7 +516,7 @@
+  * @param {Packet} queue the queue of work to be processed by the task
+  * @param {int} count the number of times to schedule the task
+  */
+-Scheduler.prototype.addIdleTask = function (id, priority, queue, count) {
++Scheduler.prototype.addIdleTask = function (id, priority, queue, count) { __wbCount("Scheduler.prototype.addIdleTask");
+   this.addRunningTask(id, priority, queue, new IdleTask(this, 1, count));
+ };
+ 
+@@ -525,7 +526,7 @@
+  * @param {int} priority the task's priority
+  * @param {Packet} queue the queue of work to be processed by the task
+  */
+-Scheduler.prototype.addWorkerTask = function (id, priority, queue) {
++Scheduler.prototype.addWorkerTask = function (id, priority, queue) { __wbCount("Scheduler.prototype.addWorkerTask");
+   this.addTask(id, priority, queue, new WorkerTask(this, ID_HANDLER_A, 0));
+ };
+ 
+@@ -535,7 +536,7 @@
+  * @param {int} priority the task's priority
+  * @param {Packet} queue the queue of work to be processed by the task
+  */
+-Scheduler.prototype.addHandlerTask = function (id, priority, queue) {
++Scheduler.prototype.addHandlerTask = function (id, priority, queue) { __wbCount("Scheduler.prototype.addHandlerTask");
+   this.addTask(id, priority, queue, new HandlerTask(this));
+ };
+ 
+@@ -545,7 +546,7 @@
+  * @param {int} priority the task's priority
+  * @param {Packet} queue the queue of work to be processed by the task
+  */
+-Scheduler.prototype.addDeviceTask = function (id, priority, queue) {
++Scheduler.prototype.addDeviceTask = function (id, priority, queue) { __wbCount("Scheduler.prototype.addDeviceTask");
+   this.addTask(id, priority, queue, new DeviceTask(this))
+ };
+ 
+@@ -556,7 +557,7 @@
+  * @param {Packet} queue the queue of work to be processed by the task
+  * @param {Task} task the task to add
+  */
+-Scheduler.prototype.addRunningTask = function (id, priority, queue, task) {
++Scheduler.prototype.addRunningTask = function (id, priority, queue, task) { __wbCount("Scheduler.prototype.addRunningTask");
+   this.addTask(id, priority, queue, task);
+   this.currentTcb.setRunning();
+ };
+@@ -568,7 +569,7 @@
+  * @param {Packet} queue the queue of work to be processed by the task
+  * @param {Task} task the task to add
+  */
+-Scheduler.prototype.addTask = function (id, priority, queue, task) {
++Scheduler.prototype.addTask = function (id, priority, queue, task) { __wbCount("Scheduler.prototype.addTask");
+   this.currentTcb = new TaskControlBlock(this.list, id, priority, queue, task);
+   this.list = this.currentTcb;
+   this.blocks[id] = this.currentTcb;
+@@ -577,7 +578,7 @@
+ /**
+  * Execute the tasks managed by this scheduler.
+  */
+-Scheduler.prototype.schedule = function () {
++Scheduler.prototype.schedule = function () { __wbCount("Scheduler.prototype.schedule");
+   this.currentTcb = this.list;
+   while (this.currentTcb != null) {
+     if (this.currentTcb.isHeldOrSuspended()) {
+@@ -593,7 +594,7 @@
+  * Release a task that is currently blocked and return the next block to run.
+  * @param {int} id the id of the task to suspend
+  */
+-Scheduler.prototype.release = function (id) {
++Scheduler.prototype.release = function (id) { __wbCount("Scheduler.prototype.release");
+   var tcb = this.blocks[id];
+   if (tcb == null) return tcb;
+   tcb.markAsNotHeld();
+@@ -609,7 +610,7 @@
+  * to run.  The blocked task will not be made runnable until it is explicitly
+  * released, even if new work is added to it.
+  */
+-Scheduler.prototype.holdCurrent = function () {
++Scheduler.prototype.holdCurrent = function () { __wbCount("Scheduler.prototype.holdCurrent");
+   this.holdCount++;
+   this.currentTcb.markAsHeld();
+   return this.currentTcb.link;
+@@ -619,7 +620,7 @@
+  * Suspend the currently executing task and return the next task control block
+  * to run.  If new work is added to the suspended task it will be made runnable.
+  */
+-Scheduler.prototype.suspendCurrent = function () {
++Scheduler.prototype.suspendCurrent = function () { __wbCount("Scheduler.prototype.suspendCurrent");
+   this.currentTcb.markAsSuspended();
+   return this.currentTcb;
+ };
+@@ -630,7 +631,7 @@
+  * suspended.
+  * @param {Packet} packet the packet to add
+  */
+-Scheduler.prototype.queue = function (packet) {
++Scheduler.prototype.queue = function (packet) { __wbCount("Scheduler.prototype.queue");
+   var t = this.blocks[packet.id];
+   if (t == null) return t;
+   this.queueCount++;
+@@ -686,34 +687,34 @@
+ var STATE_SUSPENDED_RUNNABLE = STATE_SUSPENDED | STATE_RUNNABLE;
+ var STATE_NOT_HELD = ~STATE_HELD;
+ 
+-TaskControlBlock.prototype.setRunning = function () {
++TaskControlBlock.prototype.setRunning = function () { __wbCount("TaskControlBlock.prototype.setRunning");
+   this.state = STATE_RUNNING;
+ };
+ 
+-TaskControlBlock.prototype.markAsNotHeld = function () {
++TaskControlBlock.prototype.markAsNotHeld = function () { __wbCount("TaskControlBlock.prototype.markAsNotHeld");
+   this.state = this.state & STATE_NOT_HELD;
+ };
+ 
+-TaskControlBlock.prototype.markAsHeld = function () {
++TaskControlBlock.prototype.markAsHeld = function () { __wbCount("TaskControlBlock.prototype.markAsHeld");
+   this.state = this.state | STATE_HELD;
+ };
+ 
+-TaskControlBlock.prototype.isHeldOrSuspended = function () {
++TaskControlBlock.prototype.isHeldOrSuspended = function () { __wbCount("TaskControlBlock.prototype.isHeldOrSuspended");
+   return (this.state & STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);
+ };
+ 
+-TaskControlBlock.prototype.markAsSuspended = function () {
++TaskControlBlock.prototype.markAsSuspended = function () { __wbCount("TaskControlBlock.prototype.markAsSuspended");
+   this.state = this.state | STATE_SUSPENDED;
+ };
+ 
+-TaskControlBlock.prototype.markAsRunnable = function () {
++TaskControlBlock.prototype.markAsRunnable = function () { __wbCount("TaskControlBlock.prototype.markAsRunnable");
+   this.state = this.state | STATE_RUNNABLE;
+ };
+ 
+ /**
+  * Runs this task, if it is ready to be run, and returns the next task to run.
+  */
+-TaskControlBlock.prototype.run = function () {
++TaskControlBlock.prototype.run = function () { __wbCount("TaskControlBlock.prototype.run");
+   var packet;
+   if (this.state == STATE_SUSPENDED_RUNNABLE) {
+     packet = this.queue;
+@@ -734,7 +735,7 @@
+  * necessary, and returns the next runnable object to run (the one
+  * with the highest priority).
+  */
+-TaskControlBlock.prototype.checkPriorityAdd = function (task, packet) {
++TaskControlBlock.prototype.checkPriorityAdd = function (task, packet) { __wbCount("TaskControlBlock.prototype.checkPriorityAdd");
+   if (this.queue == null) {
+     this.queue = packet;
+     this.markAsRunnable();
+@@ -745,7 +746,7 @@
+   return task;
+ };
+ 
+-TaskControlBlock.prototype.toString = function () {
++TaskControlBlock.prototype.toString = function () { __wbCount("TaskControlBlock.prototype.toString");
+   return "tcb { " + this.task + "@" + this.state + " }";
+ };
+ 
+@@ -763,7 +764,7 @@
+   this.count = count;
+ }
+ 
+-IdleTask.prototype.run = function (packet) {
++IdleTask.prototype.run = function (packet) { __wbCount("IdleTask.prototype.run");
+   this.count--;
+   if (this.count == 0) return this.scheduler.holdCurrent();
+   if ((this.v1 & 1) == 0) {
+@@ -775,7 +776,7 @@
+   }
+ };
+ 
+-IdleTask.prototype.toString = function () {
++IdleTask.prototype.toString = function () { __wbCount("IdleTask.prototype.toString");
+   return "IdleTask"
+ };
+ 
+@@ -790,7 +791,7 @@
+   this.v1 = null;
+ }
+ 
+-DeviceTask.prototype.run = function (packet) {
++DeviceTask.prototype.run = function (packet) { __wbCount("DeviceTask.prototype.run");
+   if (packet == null) {
+     if (this.v1 == null) return this.scheduler.suspendCurrent();
+     var v = this.v1;
+@@ -802,7 +803,7 @@
+   }
+ };
+ 
+-DeviceTask.prototype.toString = function () {
++DeviceTask.prototype.toString = function () { __wbCount("DeviceTask.prototype.toString");
+   return "DeviceTask";
+ };
+ 
+@@ -819,7 +820,7 @@
+   this.v2 = v2;
+ }
+ 
+-WorkerTask.prototype.run = function (packet) {
++WorkerTask.prototype.run = function (packet) { __wbCount("WorkerTask.prototype.run");
+   if (packet == null) {
+     return this.scheduler.suspendCurrent();
+   } else {
+@@ -839,7 +840,7 @@
+   }
+ };
+ 
+-WorkerTask.prototype.toString = function () {
++WorkerTask.prototype.toString = function () { __wbCount("WorkerTask.prototype.toString");
+   return "WorkerTask";
+ };
+ 
+@@ -854,7 +855,7 @@
+   this.v2 = null;
+ }
+ 
+-HandlerTask.prototype.run = function (packet) {
++HandlerTask.prototype.run = function (packet) { __wbCount("HandlerTask.prototype.run");
+   if (packet != null) {
+     if (packet.kind == KIND_WORK) {
+       this.v1 = packet.addTo(this.v1);
+@@ -882,7 +883,7 @@
+   return this.scheduler.suspendCurrent();
+ };
+ 
+-HandlerTask.prototype.toString = function () {
++HandlerTask.prototype.toString = function () { __wbCount("HandlerTask.prototype.toString");
+   return "HandlerTask";
+ };
+ 
+@@ -916,7 +917,7 @@
+  * Add this packet to the end of a worklist, and return the worklist.
+  * @param {Packet} queue the worklist to add this packet to
+  */
+-Packet.prototype.addTo = function (queue) {
++Packet.prototype.addTo = function (queue) { __wbCount("Packet.prototype.addTo");
+   this.link = null;
+   if (queue == null) return this;
+   var peek, next = queue;
+@@ -926,7 +927,7 @@
+   return queue;
+ };
+ 
+-Packet.prototype.toString = function () {
++Packet.prototype.toString = function () { __wbCount("Packet.prototype.toString");
+   return "Packet";
+ };
+ 
+@@ -972,3 +973,5 @@
+     elapsed_per_call_ms: __tebElapsed === null ? null : __tebElapsed / __tebN, warmup_calls: 0
+   }));
+ })();
++
++console.log('WB_COUNTS:'+JSON.stringify(__wbCounts));

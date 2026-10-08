@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "stdout": "ML_COUNTERS:{\"scope\":\"explicit_Run_loop\",\"categories\":[{\"kind\":0,\"lookups\":3365376,\"own_hit\":0,\"prototype_hit\":3365376,\"fallback\":0,\"helper_entries\":0,\"get_field\":3365376,\"get_field2\":0,\"hops\":[0,3365376,0,0,0,0,0,0]},{\"kind\":1,\"lookups\":3365376,\"own_hit\":0,\"prototype_hit\":3365376,\"fallback\":0,\"helper_entries\":0,\"get_field\":0,\"get_field2\":3365376,\"hops\":[0,3365376,0,0,0,0,0,0]},{\"kind\":2,\"lookups\":3365376,\"own_hit\":3365376,\"prototype_hit\":0,\"fallback\":0,\"helper_entries\":0,\"get_field\":0,\"get_field2\":3365376,\"hops\":[3365376,0,0,0,0,0,0,0]}],\"selected_entries\":3365376,\"selected_native_call_helper\":3365376,\"selected_direct_call_method\":0,\"selected_builtin_call_method\":3365376}\nML_RESULT:{\"variant\":\"A\",\"N\":512,\"mode\":\"FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1\",\"start_ms\":213703.00805,\"stop_ms\":215745.421566,\"elapsed_ms\":2042.4135160000005,\"elapsed_per_call_ms\":3.989088898437501,\"checksum\":\"512:2322:928\",\"correctness\":\"PASS\",\"warmup_calls\":0,\"original_assertions_per_run\":1}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/richards_method_diag_04be246_attempt01/qjs",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/A.N512.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:12:35.893309+00:00",
+  "outer_start_ns": 213690920622,
+  "outer_stop_ns": 215746210571,
+  "outer_wall_ns": 2055289949,
+  "boot_id": "dde58c03-dce0-4dee-93c7-ed565b52d252",
+  "load_average": [
+    1.01708984375,
+    0.5546875,
+    0.2294921875
+  ],
+  "LD_PRELOAD": null
+}

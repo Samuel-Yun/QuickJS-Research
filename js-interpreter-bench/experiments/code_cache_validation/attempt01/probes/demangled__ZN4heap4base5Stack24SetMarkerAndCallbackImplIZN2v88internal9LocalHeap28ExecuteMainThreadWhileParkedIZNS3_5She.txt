@@ -1,0 +1,189 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000625c30 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)>:
+  625c30:	55                   	push   %rbp
+  625c31:	48 89 e5             	mov    %rsp,%rbp
+  625c34:	41 57                	push   %r15
+  625c36:	41 56                	push   %r14
+  625c38:	41 55                	push   %r13
+  625c3a:	41 54                	push   %r12
+  625c3c:	53                   	push   %rbx
+  625c3d:	48 81 ec c8 01 00 00 	sub    $0x1c8,%rsp
+  625c44:	0f 10 07             	movups (%rdi),%xmm0
+  625c47:	0f 29 45 b0          	movaps %xmm0,-0x50(%rbp)
+  625c4b:	48 89 7d c8          	mov    %rdi,-0x38(%rbp)
+  625c4f:	48 89 57 08          	mov    %rdx,0x8(%rdi)
+  625c53:	4c 8b 36             	mov    (%rsi),%r14
+  625c56:	48 8b 46 08          	mov    0x8(%rsi),%rax
+  625c5a:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  625c5e:	41 ff 46 0c          	incl   0xc(%r14)
+  625c62:	b1 01                	mov    $0x1,%cl
+  625c64:	31 c0                	xor    %eax,%eax
+  625c66:	f0 41 0f b0 4e 09    	lock cmpxchg %cl,0x9(%r14)
+  625c6c:	74 08                	je     625c76 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x46>
+  625c6e:	4c 89 f7             	mov    %r14,%rdi
+  625c71:	e8 5a 33 22 00       	call   848fd0 <v8::internal::LocalHeap::ParkSlowPath()>
+  625c76:	48 8d 3d 14 06 b1 ff 	lea    -0x4ef9ec(%rip),%rdi        # 136291 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x2aa81>
+  625c7d:	e8 de e4 a4 01       	call   2074160 <puts@plt>
+  625c82:	4c 8d bd 10 fe ff ff 	lea    -0x1f0(%rbp),%r15
+  625c89:	4c 89 ff             	mov    %r15,%rdi
+  625c8c:	e8 ff be 01 00       	call   641b90 <v8::Isolate::CreateParams::CreateParams()>
+  625c91:	4c 8d a5 18 fe ff ff 	lea    -0x1e8(%rbp),%r12
+  625c98:	e8 b3 b7 7a 01       	call   1dd1450 <v8::base::SysInfo::AmountOfPhysicalMemory()>
+  625c9d:	49 89 c5             	mov    %rax,%r13
+  625ca0:	e8 eb b7 7a 01       	call   1dd1490 <v8::base::SysInfo::AmountOfVirtualMemory()>
+  625ca5:	4c 89 e7             	mov    %r12,%rdi
+  625ca8:	4c 89 ee             	mov    %r13,%rsi
+  625cab:	48 89 c2             	mov    %rax,%rdx
+  625cae:	e8 8d 5d 00 00       	call   62ba40 <v8::ResourceConstraints::ConfigureDefaults(unsigned long, unsigned long)>
+  625cb3:	48 8b 05 06 28 af 01 	mov    0x1af2806(%rip),%rax        # 21184c0 <v8::Shell::array_buffer_allocator>
+  625cba:	48 89 85 70 fe ff ff 	mov    %rax,-0x190(%rbp)
+  625cc1:	4c 8d 2d 38 a3 ac 01 	lea    0x1aca338(%rip),%r13        # 20f0000 <v8::internal::v8_flags>
+  625cc8:	41 bc 39 05 00 00    	mov    $0x539,%r12d
+  625cce:	49 8b 9d f8 06 00 00 	mov    0x6f8(%r13),%rbx
+  625cd5:	4c 31 e3             	xor    %r12,%rbx
+  625cd8:	e8 53 33 18 00       	call   7a9030 <v8::internal::FlagList::ResetFlagHash()>
+  625cdd:	49 89 9d f8 06 00 00 	mov    %rbx,0x6f8(%r13)
+  625ce4:	4c 89 ff             	mov    %r15,%rdi
+  625ce7:	e8 c4 c2 01 00       	call   641fb0 <v8::Isolate::New(v8::Isolate::CreateParams const&)>
+  625cec:	49 89 c7             	mov    %rax,%r15
+  625cef:	4d 33 a5 f8 06 00 00 	xor    0x6f8(%r13),%r12
+  625cf6:	e8 35 33 18 00       	call   7a9030 <v8::internal::FlagList::ResetFlagHash()>
+  625cfb:	4d 89 a5 f8 06 00 00 	mov    %r12,0x6f8(%r13)
+  625d02:	4c 89 ff             	mov    %r15,%rdi
+  625d05:	e8 36 c3 01 00       	call   642040 <v8::Isolate::Enter()>
+  625d0a:	4c 89 ff             	mov    %r15,%rdi
+  625d0d:	e8 2e bc 01 00       	call   641940 <v8::Isolate::GetCppHeap() const>
+  625d12:	48 89 c7             	mov    %rax,%rdi
+  625d15:	e8 06 b0 1b 00       	call   7e0d20 <v8::CppHeap::GetAllocationHandle()>
+  625d1a:	48 8d 0d 7f 7f ae 01 	lea    0x1ae7f7f(%rip),%rcx        # 210dca0 <cppgc::internal::GCInfoTrait<v8::internal::CppGCManagedWrapper>::gc_info>
+  625d21:	48 8d 15 98 7f ae 01 	lea    0x1ae7f98(%rip),%rdx        # 210dcc0 <cppgc::internal::GCInfoTrait<v8::D8Console>::gc_info>
+  625d28:	29 ca                	sub    %ecx,%edx
+  625d2a:	c1 ea 05             	shr    $0x5,%edx
+  625d2d:	ff c2                	inc    %edx
+  625d2f:	0f b7 d2             	movzwl %dx,%edx
+  625d32:	be 40 00 00 00       	mov    $0x40,%esi
+  625d37:	48 89 c7             	mov    %rax,%rdi
+  625d3a:	e8 a1 cf b0 00       	call   1132ce0 <cppgc::internal::MakeGarbageCollectedTraitInternal::Allocate(cppgc::AllocationHandle&, unsigned long, unsigned short, cppgc::internal::MakeGarbageCollectedTraitInternal::MixinTag)>
+  625d3f:	49 89 c4             	mov    %rax,%r12
+  625d42:	48 89 c7             	mov    %rax,%rdi
+  625d45:	4c 89 fe             	mov    %r15,%rsi
+  625d48:	e8 d3 b2 fb ff       	call   5e1020 <v8::D8Console::D8Console(v8::Isolate*)>
+  625d4d:	66 41 81 4c 24 fc 00 	orw    $0x8000,-0x4(%r12)
+  625d54:	80 
+  625d55:	4c 89 ff             	mov    %r15,%rdi
+  625d58:	4c 89 e6             	mov    %r12,%rsi
+  625d5b:	ba 01 00 00 00       	mov    $0x1,%edx
+  625d60:	e8 8b 46 fe ff       	call   60a3f0 <v8::Shell::Initialize(v8::Isolate*, v8::D8Console*, bool)>
+  625d65:	4c 89 bd b0 fe ff ff 	mov    %r15,-0x150(%rbp)
+  625d6c:	0f 57 c0             	xorps  %xmm0,%xmm0
+  625d6f:	0f 11 85 20 ff ff ff 	movups %xmm0,-0xe0(%rbp)
+  625d76:	0f 11 85 30 ff ff ff 	movups %xmm0,-0xd0(%rbp)
+  625d7d:	0f 11 85 c0 fe ff ff 	movups %xmm0,-0x140(%rbp)
+  625d84:	0f 11 85 d0 fe ff ff 	movups %xmm0,-0x130(%rbp)
+  625d8b:	0f 11 85 e8 fe ff ff 	movups %xmm0,-0x118(%rbp)
+  625d92:	0f 11 85 f8 fe ff ff 	movups %xmm0,-0x108(%rbp)
+  625d99:	0f 11 85 08 ff ff ff 	movups %xmm0,-0xf8(%rbp)
+  625da0:	c7 85 40 ff ff ff 00 	movl   $0x3f800000,-0xc0(%rbp)
+  625da7:	00 80 3f 
+  625daa:	48 8d 85 60 ff ff ff 	lea    -0xa0(%rbp),%rax
+  625db1:	0f 11 85 60 ff ff ff 	movups %xmm0,-0xa0(%rbp)
+  625db8:	0f 11 85 48 ff ff ff 	movups %xmm0,-0xb8(%rbp)
+  625dbf:	48 89 85 58 ff ff ff 	mov    %rax,-0xa8(%rbp)
+  625dc6:	48 8d 85 78 ff ff ff 	lea    -0x88(%rbp),%rax
+  625dcd:	0f 11 85 78 ff ff ff 	movups %xmm0,-0x88(%rbp)
+  625dd4:	48 89 85 70 ff ff ff 	mov    %rax,-0x90(%rbp)
+  625ddb:	0f 11 45 88          	movups %xmm0,-0x78(%rbp)
+  625ddf:	0f 11 45 98          	movups %xmm0,-0x68(%rbp)
+  625de3:	c7 45 a8 00 00 80 3f 	movl   $0x3f800000,-0x58(%rbp)
+  625dea:	48 8d 85 b0 fe ff ff 	lea    -0x150(%rbp),%rax
+  625df1:	49 89 87 b0 02 00 00 	mov    %rax,0x2b0(%r15)
+  625df8:	41 80 bd 63 06 00 00 	cmpb   $0x1,0x663(%r13)
+  625dff:	01 
+  625e00:	75 1f                	jne    625e21 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x1f1>
+  625e02:	bf 80 00 00 00       	mov    $0x80,%edi
+  625e07:	e8 e4 f6 7d 01       	call   1e054f0 <operator new[](unsigned long)>
+  625e0c:	49 89 c4             	mov    %rax,%r12
+  625e0f:	48 89 c7             	mov    %rax,%rdi
+  625e12:	4c 89 fe             	mov    %r15,%rsi
+  625e15:	e8 d6 82 fb ff       	call   5de0f0 <v8::AsyncHooks::AsyncHooks(v8::Isolate*)>
+  625e1a:	4c 89 a5 18 ff ff ff 	mov    %r12,-0xe8(%rbp)
+  625e21:	c6 85 e0 fe ff ff 00 	movb   $0x0,-0x120(%rbp)
+  625e28:	4c 89 ff             	mov    %r15,%rdi
+  625e2b:	31 f6                	xor    %esi,%esi
+  625e2d:	e8 de 11 ff ff       	call   617010 <v8::Shell::RunMain(v8::Isolate*, bool)>
+  625e32:	48 8b 4d d0          	mov    -0x30(%rbp),%rcx
+  625e36:	89 01                	mov    %eax,(%rcx)
+  625e38:	48 8d 3d b1 25 af 01 	lea    0x1af25b1(%rip),%rdi        # 21183f0 <v8::Shell::profiler_end_callback_lock_>
+  625e3f:	e8 6c 9f 7a 01       	call   1dcfdb0 <v8::base::Mutex::Lock()>
+  625e44:	48 8b 35 b5 25 af 01 	mov    0x1af25b5(%rip),%rsi        # 2118400 <v8::Shell::profiler_end_callback_+0x8>
+  625e4b:	48 85 f6             	test   %rsi,%rsi
+  625e4e:	75 18                	jne    625e68 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x238>
+  625e50:	eb 44                	jmp    625e96 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x266>
+  625e52:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+  625e59:	1f 84 00 00 00 00 00 
+  625e60:	48 8b 36             	mov    (%rsi),%rsi
+  625e63:	48 85 f6             	test   %rsi,%rsi
+  625e66:	74 2e                	je     625e96 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x266>
+  625e68:	48 8b 46 20          	mov    0x20(%rsi),%rax
+  625e6c:	49 39 c7             	cmp    %rax,%r15
+  625e6f:	72 ef                	jb     625e60 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x230>
+  625e71:	76 0b                	jbe    625e7e <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x24e>
+  625e73:	48 8b 76 08          	mov    0x8(%rsi),%rsi
+  625e77:	48 85 f6             	test   %rsi,%rsi
+  625e7a:	75 ec                	jne    625e68 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x238>
+  625e7c:	eb 18                	jmp    625e96 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x266>
+  625e7e:	48 8d 05 7b 25 af 01 	lea    0x1af257b(%rip),%rax        # 2118400 <v8::Shell::profiler_end_callback_+0x8>
+  625e85:	48 39 c6             	cmp    %rax,%rsi
+  625e88:	74 0c                	je     625e96 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x266>
+  625e8a:	48 8d 3d 67 25 af 01 	lea    0x1af2567(%rip),%rdi        # 21183f8 <v8::Shell::profiler_end_callback_>
+  625e91:	e8 5a dd ff ff       	call   623bf0 <std::__Cr::__tree<std::__Cr::__value_type<v8::Isolate*, std::__Cr::pair<v8::Global<v8::Function>, v8::Global<v8::Context> > >, std::__Cr::__map_value_compare<v8::Isolate*, std::__Cr::pair<v8::Isolate* const, std::__Cr::pair<v8::Global<v8::Function>, v8::Global<v8::Context> > >, std::__Cr::less<v8::Isolate*> >, std::__Cr::allocator<std::__Cr::pair<v8::Isolate* const, std::__Cr::pair<v8::Global<v8::Function>, v8::Global<v8::Context> > > > >::erase[abi:sqn240000](std::__Cr::__tree_const_iterator<std::__Cr::__value_type<v8::Isolate*, std::__Cr::pair<v8::Global<v8::Function>, v8::Global<v8::Context> > >, std::__Cr::__tree_node<std::__Cr::__value_type<v8::Isolate*, std::__Cr::pair<v8::Global<v8::Function>, v8::Global<v8::Context> > >, void*>*, long>)>
+  625e96:	48 8d 3d 53 25 af 01 	lea    0x1af2553(%rip),%rdi        # 21183f0 <v8::Shell::profiler_end_callback_lock_>
+  625e9d:	e8 3e 9f 7a 01       	call   1dcfde0 <v8::base::Mutex::Unlock()>
+  625ea2:	80 3d b7 27 af 01 00 	cmpb   $0x0,0x1af27b7(%rip)        # 2118660 <v8::Shell::options+0x190>
+  625ea9:	75 11                	jne    625ebc <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x28c>
+  625eab:	49 8b bf b0 1e 01 00 	mov    0x11eb0(%r15),%rdi
+  625eb2:	48 85 ff             	test   %rdi,%rdi
+  625eb5:	74 05                	je     625ebc <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x28c>
+  625eb7:	e8 74 b2 fb ff       	call   5e1130 <v8::D8Console::DisposeProfiler()>
+  625ebc:	48 8d bd b0 fe ff ff 	lea    -0x150(%rbp),%rdi
+  625ec3:	e8 b8 77 fd ff       	call   5fd680 <v8::PerIsolateData::~PerIsolateData()>
+  625ec8:	4c 89 ff             	mov    %r15,%rdi
+  625ecb:	e8 80 c1 01 00       	call   642050 <v8::Isolate::Exit()>
+  625ed0:	48 8b 3d 39 2a af 01 	mov    0x1af2a39(%rip),%rdi        # 2118910 <v8::(anonymous namespace)::g_default_platform>
+  625ed7:	4c 89 fe             	mov    %r15,%rsi
+  625eda:	e8 61 16 7b 01       	call   1dd7540 <v8::platform::NotifyIsolateShutdown(v8::Platform*, v8::Isolate*)>
+  625edf:	4c 89 ff             	mov    %r15,%rdi
+  625ee2:	e8 19 c1 01 00       	call   642000 <v8::Isolate::Dispose()>
+  625ee7:	48 8d bd 10 fe ff ff 	lea    -0x1f0(%rbp),%rdi
+  625eee:	e8 ed bc 01 00       	call   641be0 <v8::Isolate::CreateParams::~CreateParams()>
+  625ef3:	41 ff 4e 0c          	decl   0xc(%r14)
+  625ef7:	31 c9                	xor    %ecx,%ecx
+  625ef9:	b0 01                	mov    $0x1,%al
+  625efb:	f0 41 0f b0 4e 09    	lock cmpxchg %cl,0x9(%r14)
+  625f01:	74 08                	je     625f0b <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteMainThreadWhileParked<v8::Shell::Main(int, char**)::$_0>(v8::Shell::Main(int, char**)::$_0)::{lambda()#1}>(heap::base::Stack*, void*, void const*)+0x2db>
+  625f03:	4c 89 f7             	mov    %r14,%rdi
+  625f06:	e8 05 32 22 00       	call   849110 <v8::internal::LocalHeap::UnparkSlowPath()>
+  625f0b:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  625f0f:	0f 28 45 b0          	movaps -0x50(%rbp),%xmm0
+  625f13:	0f 11 00             	movups %xmm0,(%rax)
+  625f16:	48 81 c4 c8 01 00 00 	add    $0x1c8,%rsp
+  625f1d:	5b                   	pop    %rbx
+  625f1e:	41 5c                	pop    %r12
+  625f20:	41 5d                	pop    %r13
+  625f22:	41 5e                	pop    %r14
+  625f24:	41 5f                	pop    %r15
+  625f26:	5d                   	pop    %rbp
+  625f27:	c3                   	ret
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section malloc_hook:
+
+Disassembly of section .plt:
