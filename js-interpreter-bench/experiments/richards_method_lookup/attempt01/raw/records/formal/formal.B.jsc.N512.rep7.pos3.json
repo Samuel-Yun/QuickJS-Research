@@ -1,0 +1,87 @@
+{
+  "exit_code": 0,
+  "stdout": "ML_RESULT:{\"variant\":\"B\",\"N\":512,\"mode\":\"FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1\",\"start_ms\":0,\"stop_ms\":1067.38,\"elapsed_ms\":1067.38,\"elapsed_per_call_ms\":2.0847265625,\"checksum\":\"512:2322:928\",\"correctness\":\"PASS\",\"warmup_calls\":0,\"original_assertions_per_run\":1}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/microbench/generated/B.N512.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:21:24.227937+00:00",
+  "outer_start_ns": 185671750462,
+  "outer_stop_ns": 186770679307,
+  "outer_wall_ns": 1098928845,
+  "boot_id": "4ef67569-6a6b-4f4d-8c1a-16b8ac8c99ed",
+  "load_average": [
+    1.00341796875,
+    0.5205078125,
+    0.2099609375
+  ],
+  "LD_PRELOAD": null,
+  "stage": "formal",
+  "variant": "B",
+  "engine": "jsc",
+  "N": 512,
+  "rep": 7,
+  "order": 3,
+  "schedule_index": 12,
+  "permutation": [
+    "quickjs",
+    "v8",
+    "jsc"
+  ],
+  "block_variant_order": [
+    "B",
+    "A"
+  ],
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1",
+  "flags": [
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true"
+  ],
+  "binary_sha256": "65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f",
+  "dependency_hashes": {
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/lib/libJavaScriptCore.so.1.0.0": "2ba4fe56f79c97cafafe065454bd5b5c6c168e536ab00d33d5cc48f65b375f79",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+    "/usr/lib/x86_64-linux-gnu/libm.so.6": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+    "/usr/lib/x86_64-linux-gnu/libc.so.6": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+    "/usr/lib/x86_64-linux-gnu/libatomic.so.1.2.0": "9d8a34468e614a71a6427dbabb0ac24eb8cb1e324dc6aa3bf95eb6f59201f000",
+    "/usr/lib/x86_64-linux-gnu/libicui18n.so.74.2": "3550b194eb2cf2e6f798f033eb9ca279d498c21296b4a18790ce158d2023e47b",
+    "/usr/lib/x86_64-linux-gnu/libicuuc.so.74.2": "7560aadde38e5f4237a47a1ddd5891f9b36768a77a60faae30beee003ac01901",
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+    "/usr/lib/x86_64-linux-gnu/libicudata.so.74.2": "ddbb3718b8bd9cbd780e5ab08b4503c30a6c4fa0706ebe5d074ed6b596c1714e"
+  },
+  "adapter_hashes": {
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js": "f9ddbb9556352e283b9c9feebc8bdd0ef1abac5bcdf1ab7a5d83945fa3c9437b",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js": "0c485996a598b7e36f2f292b66397adc0390cbe6b69b55199e47e1c6c1e37010"
+  },
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/microbench/generated/B.N512.js",
+  "script_sha256": "b460b7c0e748901126d04d0b2682b195df6f9c50f0fa8216d5c6aee455c0311f",
+  "design_sha256": "b7c78fecb179c090ff9c614b71471956942482d0c52136c333866b7fed734562",
+  "payload": {
+    "variant": "B",
+    "N": 512,
+    "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1",
+    "start_ms": 0,
+    "stop_ms": 1067.38,
+    "elapsed_ms": 1067.38,
+    "elapsed_per_call_ms": 2.0847265625,
+    "checksum": "512:2322:928",
+    "correctness": "PASS",
+    "warmup_calls": 0,
+    "original_assertions_per_run": 1
+  },
+  "elapsed_ms": 1067.38,
+  "elapsed_per_call_ms": 2.0847265625,
+  "checksum": "512:2322:928",
+  "valid": true,
+  "errors": []
+}

@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "stdout": "ML_SEQUENCE:{\"count\":3365376,\"hash\":4133815237,\"receiver_ids\":[512000,239616,596480,595456,711680,710144]}\nML_RESULT:{\"variant\":\"B\",\"N\":512,\"mode\":\"FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1\",\"start_ms\":0,\"stop_ms\":2597.68,\"elapsed_ms\":2597.68,\"elapsed_per_call_ms\":5.07359375,\"checksum\":\"512:2322:928\",\"correctness\":\"PASS\",\"warmup_calls\":0,\"original_assertions_per_run\":1}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N512.sequence.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:12:28.937875+00:00",
+  "outer_start_ns": 206735486545,
+  "outer_stop_ns": 209358983323,
+  "outer_wall_ns": 2623496778,
+  "boot_id": "dde58c03-dce0-4dee-93c7-ed565b52d252",
+  "load_average": [
+    1.02099609375,
+    0.5390625,
+    0.220703125
+  ],
+  "LD_PRELOAD": null
+}
