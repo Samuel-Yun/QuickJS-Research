@@ -38,7 +38,7 @@
 \newcommand{\Heading}[1]{{\color{MutedBlue}\bfseries #1}\par\vspace{1.5mm}}
 \newcommand{\Takeaway}[1]{\par\vspace{2mm}{\color{MutedBlue}\bfseries #1}\par}
 \newcommand{\Sources}[1]{\par\vspace{1.5mm}{\fontsize{7}{8.5}\selectfont\color{JSCGray}来源：#1}\par}
-% Local compact spacing for pages 4/8/10/15; other frames keep their layout.
+% Compact spacing is applied only to individually adjusted frames.
 \newcommand{\CompactTakeaway}[1]{\par\vspace{1mm}{\color{MutedBlue}\bfseries #1}\par}
 \newcommand{\CompactSources}[1]{\par\vspace{.5mm}{\fontsize{7}{8.5}\selectfont\color{JSCGray}来源：#1}\par}
 \newcommand{\Code}[1]{\texttt{\detokenize{#1}}}
@@ -127,23 +127,26 @@ Octane：13 suites & 0.544626 & 0.755390 & 1.386989\\
 \bottomrule
 \end{tabular}\par\vspace{1mm}
 \begin{tikzpicture}
-\begin{axis}[reportaxis,width=13.5cm,height=3.5cm,xmin=0,xmax=1.4,
+\begin{axis}[reportaxis,width=13.5cm,height=3.1cm,xmin=0,xmax=1.4,
   ymin=.5,ymax=3.6,xtick={0,.25,.5,.75,1,1.25},ytick={1,2,3},
   yticklabels={RegExp,NavierStokes,Richards},xlabel={原 Octane：分子引擎 / QuickJS 的 median 时间比},
   legend columns=2,legend style={at={(.5,1.04)},anchor=south},enlarge y limits=false]
-\addplot[RuleGray,dashed,forget plot] coordinates {(1,.5) (1,3.6)};
 \addplot[only marks,MutedBlue,mark=square*,mark size=2.7pt] coordinates
   {(0.1070688710,.90) (1.2125620538,1.90) (0.6160802199,2.90)};
 \addlegendentry{V8/QJS}
 \addplot[only marks,JSCGray,mark=triangle*,mark size=3pt] coordinates
   {(0.8273672114,1.10) (0.9507252884,2.10) (0.5864404191,3.10)};
 \addlegendentry{JSC/QJS}
+% Explicit dark reference line and in-plot label: visible in projection/print.
+\draw[black,densely dashed,line width=.9pt] (axis cs:1,.5) -- (axis cs:1,3.6);
+\node[anchor=north west,font=\PlotFont,fill=white,inner sep=1pt,xshift=2pt,yshift=-2pt]
+  at (axis cs:1,3.6) {QJS=1};
 \end{axis}
 \end{tikzpicture}\par
 \raggedright\Small
-时间比越低越快；虚线 QJS=1。NavierStokes 是 V8 较慢的反例，RegExp 差距很大。\par
+虚线 QJS=1；比值越低越快。NavierStokes 是反例，RegExp 差距大。\par
 2340 + 1440 有效样本；Octane 16 Run targets，zlib / Box2D 未进入交集。
-\Sources{S1、S2：formal raw 重算 median；Octane 先 suite 内 GM，再 13 suites 等权，不是官方 score。}
+\CompactSources{S1/S2：原 MAIN raw 重算；Octane 按 13 suites 等权，非官方 score。}
 \end{frame}
 
 % 4 / S4. V8-only supplement; source/cache do not enter the three-engine ranking.
@@ -230,23 +233,25 @@ Float64Array 只在这个派生核中更慢，不代表 TypedArray 普遍更慢�
 % 6 / S5. Two different inherited run sites, not two labels for one call.
 \begin{frame}[t]{Richards 中究竟是哪一次 run 查找}
 \Body
+Richards 是模拟任务调度的 JavaScript 基准。\par\vspace{.5mm}
 \centering
 \begin{tikzpicture}
 \node[stage,text width=3.55cm] (schedule) at (0,0) {\Code{Scheduler.schedule}\\调度循环};
 \node[evidence,text width=3.7cm] (tcb) at (4.75,0) {\Code{currentTcb.run()}\\\textbf{本轮选定位置}};
 \node[stage,text width=3.55cm] (task) at (9.5,0) {\Code{task.run()}\\另一处调用，保持不变};
 \draw[flow] (schedule)--(tcb);\draw[flow] (tcb)--(task);
-\node[stage,text width=3.7cm] (proto) at (4.75,-1.45) {\Code{TaskControlBlock.prototype}\\继承的 \Code{run} 方法};
+\node[stage,text width=3.7cm,inner sep=1mm] (proto) at (4.75,-1.45)
+  {\Code{TaskControlBlock}\\\Code{.prototype}\\继承的 \Code{run} 方法};
 \node[stage,text width=3.55cm] (tp) at (9.5,-1.45) {四类 task prototype\\各自的 \Code{run} 方法};
 \draw[flow] (tcb)--(proto);\draw[flow] (task)--(tp);
-\end{tikzpicture}\par\vspace{4mm}
+\end{tikzpicture}\par\vspace{1mm}
 \raggedright
-\Heading{own 属性与 inherited 方法要分开}
+{\color{MutedBlue}\bfseries own 属性与 inherited 方法要分开}\par\vspace{.5mm}
 \Code{currentTcb} 是 scheduler 的 own 字段；\Code{state / task / queue} 是 TCB 的 own 字段。\par
-选定 \Code{run} 位于 TCB prototype，而不是 receiver 的 own 属性。\par\vspace{3mm}
+选定 \Code{run} 位于 TCB prototype，而不是 receiver 的 own 属性。\par\vspace{1mm}
 每 Run 有 \textbf{6573} 次选定 TCB.run 调用。完整 scheduler、出队/state 更新、\par
 task.run、Packet、原输入及 queueCount=2322 / holdCount=928 断言均保留。
-\Sources{S5：sites.csv、original.schedule.js、显式 Run 区间 counter 与原断言。}
+\CompactSources{S5：调用点、原源码、Run 区间计数及原断言。}
 \end{frame}
 
 % 7 / S5. Pseudocode is intentionally simplified: skipped branches unchanged.
@@ -276,17 +281,17 @@ while (/* scheduler loop */) {
 \end{lstlisting}
 \end{column}
 \end{columns}
-\vspace{2mm}\Small\centering
+\vspace{1mm}\Small\centering
 \begin{tabular}{lrr}
 \toprule
 N=512 的诊断计数 & A & B\\\midrule
 选定 TCB.run 方法 lookup & 3,365,376 & 512\\
 TCB.run 调用 & 3,365,376 & 3,365,376\\
 另一处 task.run lookup & 3,365,376 & 3,365,376\\\bottomrule
-\end{tabular}\par\vspace{2mm}\raggedright
+\end{tabular}\par\vspace{1mm}\raggedright
 缓存仍在 timer 内，每 Run 准备一次，共 $N$ 次；无提前 workload warmup。\par
 B 也移出了额外一次 own currentTcb 读取和局部赋值：\textbf{不是只移除原型遍历}。
-\Sources{S5：A/B.schedule.js、driver、counter_summary；两边固定同一 native .call（附录 A3）。}
+\CompactSources{S5：A/B 源码与调用计数；固定 .call 设计见附录 A3。}
 \end{frame}
 
 % 8 / S5. Q1 and Q3 are separately derived from the sorted raw 30 values.
@@ -429,36 +434,37 @@ Octane 三引擎 & 1440\\
 V8 code cache & 240\\
 Richards 方法准备 & 180\\\midrule
 合计（不是共同 ranking） & \textbf{4560}\\\bottomrule
-\end{tabular}\par\vspace{2mm}
+\end{tabular}\par\vspace{1mm}
 另有 120 cache producer，不能计为 target。\par
 旧 Date.now mode 保留为 BLOCKED\_TIMER；\par
 新单调 mode 独立完成，不声称根因已修复。
 \end{column}
 \begin{column}{.51\textwidth}
 \Heading{固定版本与当前限制}
-QuickJS \Code{04be246}，GCC 13.3 / -O2。\par
-V8/d8 15.6.21，max-opt=0 / no-lazy；\par
-artifact 精确 source / compiler / GN：UNKNOWN。\par
-JSC/WebKit \Code{fd3406f}，Release -O3；\par
-useJIT=false / useLLInt=true / validateOptions=true。\par\vspace{2mm}
+QuickJS \Code{04be246}：GCC 13.3 / -O2。\par
+V8/d8 15.6.21：max-opt=0 / no-lazy。\par
+精确 source / compiler / GN：UNKNOWN。\par
+JSC \Code{fd3406f}：Release -O3，LLInt-only。\par
+useJIT=false / useLLInt=true；\par
+validateOptions=true。\par\vspace{1mm}
 WSL2 Ubuntu 24.04.2 / x86\_64；Ryzen 5800H。\par
-完整 revision / hash 在 manifest。\par\vspace{2mm}
+\vspace{1mm}
 JSC 首次 frontend 与宿主负载/温控未知。\par
-SunSpider 跨两次 boot 恢复，位置未重采；\par
-hash/host 核验通过，不是连续隔离运行。
+SunSpider 跨两 boot；核验通过，非连续隔离。
 \end{column}
 \end{columns}
-\vspace{3mm}
-每组 30 新进程；六种顺序各 5 次，位置各 10。计时内含首次调用，无显式 warmup。\par
-正式不开 trace/profile/counter；诊断构建不参与排名；旧 Windows 数据没有混入。
-\Sources{S0--S6：manifest、formal raw、独立审计；数据源 HEAD：0f57ab1（myx）。}
+\vspace{1mm}
+三引擎对照：每组 30 新进程；六种顺序各 5 次，每引擎每位置 10 次。\par
+Code cache：每组 30 次；每 case A 先 / B 先各 15 轮，固定 seed 交错。\par
+首次调用计时、无 warmup；正式不开诊断，旧 Windows 数据不混入。
+\CompactSources{S0--S6：manifest / raw / 审计；数据源 0f57ab1（myx）。}
 \end{frame}
 
 % A2 = page13 / S1 S2.
 \begin{frame}[t]{附录 A2｜子集与聚合规则}
 \Body
 ratio = 分子引擎 median / 分母引擎 median；小于 1 表示分子耗时更低。\par
-$\mathrm{GM}=\exp(\mathrm{mean}(\log(\mathrm{ratio})))$，不是官方 Octane score。\par\vspace{3mm}
+$\mathrm{GM}=\exp(\mathrm{mean}(\log(\mathrm{ratio})))$，不是官方 Octane score。\par\vspace{1.5mm}
 \Small\centering
 \begin{tabular}{lrrrr}
 \toprule
@@ -467,17 +473,13 @@ SunSpider 全量 & 26 cases & .621430 & .733306 & 1.180030\\
 SunSpider 去 RegExp 标签 & 20 cases & .852765 & .757316 & .888071\\
 Octane 全量 & 13 suites & .544626 & .755390 & 1.386989\\
 Octane 去 RegExp / CodeLoad & 11 suites & .641265 & .756225 & 1.179271\\\bottomrule
-\end{tabular}\par\vspace{4mm}\raggedright
-\Body
-\Heading{聚合单位不能混用}
-SunSpider：case 等权。\par
-Octane：先 suite 内子 Run 时间比 GM，再 suite 间等权 GM；\par
-16 Run targets 不能直接等权冒充 13 suites 指标。\par\vspace{3mm}
+\end{tabular}\par\vspace{2mm}\raggedright
 \Small
-每组三个 pairwise GM 用同一完整三引擎交集；排除项与标签固定。\par
-子集只是机制标签敏感性：仍包含 builtin/helper/GC，并非 builtin-free。\par
-换集合之后的 GM 变化，不是该机制对原总时间的因果占比。
-\Sources{S1/S2：summary/pairwise\_summary.csv 中的 intersection；均从 formal raw 重算。}
+{\color{MutedBlue}\bfseries 聚合规则}\par\vspace{.5mm}
+SunSpider 按 case 等权；Octane 先 suite 内 Run 比值 GM，再按 13 suites 等权。\par
+三个 pair 使用同一完整交集；16 Run 不能直接等权。\par
+子集仍含 builtin/helper/GC，并非 builtin-free；\textbf{子集变化不能换算成因果占比。}
+\CompactSources{S1/S2：固定 intersection，原 raw 重算；完整规则见 source\_map.md。}
 \end{frame}
 
 % A3 = page14 / S5. Detail on call layout and VM call specialization.

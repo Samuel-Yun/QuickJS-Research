@@ -43,6 +43,16 @@ def main():
         depth+=1 if m[0]=="{" else -1
         negative|=depth<0
     check("ordinary brace balance",depth==0 and not negative)
+    # Source notes must not accidentally enter math mode on an identifier underscore.
+    source_lines = re.findall(r"\\(?:CompactSources|Sources)\{([^\n]*)\}",tex)
+    check("source notes have escaped underscores",not any(re.search(r"(?<!\\)_",line) for line in source_lines))
+    check("no Unicode replacement characters", "\ufffd" not in tex)
+    check("explicit labeled QJS reference line",r"\draw[black,densely dashed,line width=.9pt] (axis cs:1,.5) -- (axis cs:1,3.6);" in tex and
+          "at (axis cs:1,3.6) {QJS=1};" in tex)
+    check("Richards definition and wrapped prototype", "Richards 是模拟任务调度的 JavaScript 基准。" in tex and
+          r"\Code{TaskControlBlock}\\\Code{.prototype}" in tex)
+    check("three-engine vs cache order scope", "三引擎对照：每组 30 新进程" in tex and "每 case A 先 / B 先各 15 轮" in tex)
+    check("subset causal limitation retained", "子集变化不能换算成因果占比。" in tex)
     coords=[(float(x),float(y)) for x,y in re.findall(r"\(([-+.\d]+),([-+.\d]+)\)",tex)]
     def plotted(value,y,label):
         check("plotted "+label,any(math.isclose(x,value,rel_tol=0,abs_tol=5.1e-11) and math.isclose(yy,y,abs_tol=1e-8)
