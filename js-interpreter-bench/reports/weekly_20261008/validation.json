@@ -1,0 +1,500 @@
+{
+  "static_status": "PASS",
+  "checks": [
+    {
+      "check": "offline data audit",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "15 source frames",
+      "status": "PASS",
+      "detail": {
+        "count": 15,
+        "titles": [
+          "本周进展——从总体差距走向具体机制",
+          "这次比较的时间包含什么",
+          "总体上 V8 较快，但差距随 workload 变化",
+          "Code cache 已验证消费，内部执行时间接近",
+          "第一轮：own 字段没有显示 QuickJS 特有收益",
+          "Richards 中究竟是哪一次 run 查找",
+          "A/B 改变的是方法准备频率",
+          "方法缓存对照：QuickJS 耗时降低点估计约 4.61\\%",
+          "当前证据支持继续检验，仍不足以独立归因",
+          "V8 的总体优势还包含 RegExp 实现差异",
+          "下一步——验证小型继承方法缓存的净收益",
+          "附录 A1｜版本、计时与完成度",
+          "附录 A2｜子集与聚合规则",
+          "附录 A3｜A/B 语义和字节码证据",
+          "附录 A4｜已有工作与复现来源"
+        ]
+      }
+    },
+    {
+      "check": "11 main +4 appendix frames",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "explicit ReportDate",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "ctexbeamer Fandol 16:9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no input/figure/external compilation dependencies",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no overlays/wholeframe shrinking/minted/OS font",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "verbatim frames fragile",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "environment nesting",
+      "status": "PASS",
+      "detail": {
+        "unclosed": [],
+        "mismatched": []
+      }
+    },
+    {
+      "check": "ordinary brace balance",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "plotted RegExp.RegExp V8/QJS",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.1070688709657082,
+        "y": 0.9
+      }
+    },
+    {
+      "check": "plotted RegExp.RegExp JSC/QJS",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.8273672113874994,
+        "y": 1.1
+      }
+    },
+    {
+      "check": "plotted NavierStokes.NavierStokes V8/QJS",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 1.2125620538149542,
+        "y": 1.9
+      }
+    },
+    {
+      "check": "plotted NavierStokes.NavierStokes JSC/QJS",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.9507252883824978,
+        "y": 2.1
+      }
+    },
+    {
+      "check": "plotted Richards.Richards V8/QJS",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.6160802198706826,
+        "y": 2.9
+      }
+    },
+    {
+      "check": "plotted Richards.Richards JSC/QJS",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.586440419095623,
+        "y": 3.1
+      }
+    },
+    {
+      "check": "plotted whitebox richardsquickjs",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.9662372780545744,
+        "y": 3
+      }
+    },
+    {
+      "check": "plotted whitebox richardsv8",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.9661696421756518,
+        "y": 2
+      }
+    },
+    {
+      "check": "plotted whitebox richardsjsc",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 0.9186461273126374,
+        "y": 1
+      }
+    },
+    {
+      "check": "plotted whitebox navierquickjs",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 1.1818885342468324,
+        "y": 3
+      }
+    },
+    {
+      "check": "plotted whitebox navierv8",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 1.0731542126540878,
+        "y": 2
+      }
+    },
+    {
+      "check": "plotted whitebox navierjsc",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 1.3481574733019894,
+        "y": 1
+      }
+    },
+    {
+      "check": "plotted Richards AquickjsQ1",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 3.679088195312488,
+        "y": 6
+      }
+    },
+    {
+      "check": "plotted Richards AquickjsQ3",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 3.7403719570312433,
+        "y": 6
+      }
+    },
+    {
+      "check": "plotted Richards Aquickjsmedian",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 3.701276356445362,
+        "y": 6
+      }
+    },
+    {
+      "check": "plotted Richards Av8Q1",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.142353515625,
+        "y": 4
+      }
+    },
+    {
+      "check": "plotted Richards Av8Q3",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.2029765625000004,
+        "y": 4
+      }
+    },
+    {
+      "check": "plotted Richards Av8median",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.1683740234375,
+        "y": 4
+      }
+    },
+    {
+      "check": "plotted Richards AjscQ1",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.07609375,
+        "y": 2
+      }
+    },
+    {
+      "check": "plotted Richards AjscQ3",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.126796875,
+        "y": 2
+      }
+    },
+    {
+      "check": "plotted Richards Ajscmedian",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.10595703125,
+        "y": 2
+      }
+    },
+    {
+      "check": "plotted Richards BquickjsQ1",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 3.4700745957031245,
+        "y": 5
+      }
+    },
+    {
+      "check": "plotted Richards BquickjsQ3",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 3.5965952890625204,
+        "y": 5
+      }
+    },
+    {
+      "check": "plotted Richards Bquickjsmedian",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 3.530698215820337,
+        "y": 5
+      }
+    },
+    {
+      "check": "plotted Richards Bv8Q1",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.0997734375,
+        "y": 3
+      }
+    },
+    {
+      "check": "plotted Richards Bv8Q3",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.193818359375,
+        "y": 3
+      }
+    },
+    {
+      "check": "plotted Richards Bv8median",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.129046875,
+        "y": 3
+      }
+    },
+    {
+      "check": "plotted Richards BjscQ1",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.0518359375,
+        "y": 1
+      }
+    },
+    {
+      "check": "plotted Richards BjscQ3",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.155546875,
+        "y": 1
+      }
+    },
+    {
+      "check": "plotted Richards Bjscmedian",
+      "status": "PASS",
+      "detail": {
+        "actual_raw": 2.07873046875,
+        "y": 1
+      }
+    },
+    {
+      "check": "SunSpider displayed GM all_completeV8/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "SunSpider displayed GM all_completeJSC/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "SunSpider displayed GM all_completeJSC/V8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "SunSpider displayed GM without:RegExpV8/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "SunSpider displayed GM without:RegExpJSC/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "SunSpider displayed GM without:RegExpJSC/V8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Octane displayed GM all_completeV8/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Octane displayed GM all_completeJSC/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Octane displayed GM all_completeJSC/V8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Octane displayed GM without_RegExp_CodeLoadV8/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Octane displayed GM without_RegExp_CodeLoadJSC/QJS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Octane displayed GM without_RegExp_CodeLoadJSC/V8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "cache displayed ratio controlflow-recursive",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "cache displayed ratio access-binary-trees",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "cache displayed ratio Richards.Richards",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "cache displayed ratio NavierStokes.NavierStokes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "cache GM displayed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards percent displayed quickjs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards table medians quickjs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards ratio quickjs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards percent displayed v8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards table medians v8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards ratio v8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards percent displayed jsc",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards table medians jsc",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards ratio jsc",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards QJS/V8 A",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "Richards QJS/V8 B",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "15 speaker-note questions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all original case medians in source map",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all audit input bytes preserved",
+      "status": "PASS",
+      "detail": {
+        "files": 175,
+        "changed": []
+      }
+    },
+    {
+      "check": "minimal ZIP root/no self/raw/runtime",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "ZIP exact source identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "ZIP CRC",
+      "status": "PASS",
+      "detail": null
+    }
+  ],
+  "local_compile": "NOT_RUN",
+  "PDF_render_visual_review": "NOT_RUN",
+  "TeX_geometry_check": "NOT_RUN; static structure and conservative source layout only, no actual typesetting",
+  "zip_members": [
+    "main.tex",
+    "README_Overleaf.md"
+  ],
+  "zip_SHA256": "a26a09dc8822a89eb92d264c5650d750ae2450a4c16024661ca826223075dae8",
+  "actual_PDF_pages": null,
+  "data_audit_SHA256": "1eb941ccb4fef66032b9f334e60ff8072756b690ba789002b89f0425dd81a81d"
+}

@@ -1,0 +1,543 @@
+% Standalone Overleaf source. Compiler: XeLaTeX; fonts: TeX-distributed Fandol.
+% Data cutoff is NOT an assumed meeting date. No experiment was rerun.
+% Source IDs S0--S6/P1--P4 resolve in source_map.md (not compilation inputs).
+% All chart coordinates were independently checked against local formal raw.
+\documentclass[aspectratio=169,10pt,UTF8,fontset=fandol]{ctexbeamer}
+\usepackage{booktabs,tabularx,array,amsmath}
+\usepackage{tikz,pgfplots,listings}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pgfplotsset{compat=1.18}
+\newcommand{\ReportDate}{2026-10-08}
+\newcommand{\ReportAuthor}{马云霄}
+\definecolor{MutedBlue}{HTML}{48667F}
+\definecolor{RuleGray}{HTML}{CCD2D7}
+\definecolor{JSCGray}{HTML}{6E747A}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=MutedBlue}
+\setbeamercolor{frametitle}{fg=black,bg=white}
+\setbeamercolor{footline}{fg=black,bg=white}
+\setbeamerfont{frametitle}{size=\fontsize{17}{21}\selectfont,series=\bfseries}
+\setbeamerfont{footline}{size=\fontsize{7.5}{9}\selectfont}
+\setbeamersize{text margin left=7mm,text margin right=7mm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{MutedBlue}\small$\bullet$}
+\setbeamertemplate{frametitle}{%
+  \vspace{1mm}\insertframetitle\par\vspace{1.2mm}%
+  {\color{RuleGray}\rule{\textwidth}{0.45pt}}\vspace{0.5mm}}
+\setbeamertemplate{footline}{%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.86\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=7mm]{footline}%
+      \ReportAuthor\quad 数据截至 \ReportDate
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.14\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=7mm]{footline}%
+      \hfill\insertframenumber/\inserttotalframenumber
+    \end{beamercolorbox}}}
+\newcommand{\Body}{\fontsize{10.5}{13}\selectfont}
+\newcommand{\Small}{\fontsize{9.5}{12}\selectfont}
+\newcommand{\PlotFont}{\fontsize{9}{11}\selectfont}
+\newcommand{\Heading}[1]{{\color{MutedBlue}\bfseries #1}\par\vspace{1.5mm}}
+\newcommand{\Takeaway}[1]{\par\vspace{2mm}{\color{MutedBlue}\bfseries #1}\par}
+\newcommand{\Sources}[1]{\par\vspace{1.5mm}{\fontsize{7}{8.5}\selectfont\color{JSCGray}来源：#1}\par}
+% Local compact spacing for pages 4/8/10/15; other frames keep their layout.
+\newcommand{\CompactTakeaway}[1]{\par\vspace{1mm}{\color{MutedBlue}\bfseries #1}\par}
+\newcommand{\CompactSources}[1]{\par\vspace{.5mm}{\fontsize{7}{8.5}\selectfont\color{JSCGray}来源：#1}\par}
+\newcommand{\Code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\Tight}{\setlength{\itemsep}{1.7mm}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}}
+\lstdefinelanguage{JavaScript}{keywords={while,var,function,return,false,true,null},
+  sensitive=true,morecomment=[l]{//},morecomment=[s]{/*}{*/},
+  morestring=[b]',morestring=[b]"}
+\lstset{language=JavaScript,basicstyle=\ttfamily\fontsize{9}{11}\selectfont,
+  columns=fullflexible,keepspaces=true,showstringspaces=false,breaklines=true,
+  keywordstyle=\color{MutedBlue},commentstyle=\color{JSCGray},frame=none,
+  aboveskip=1mm,belowskip=1mm}
+\tikzset{flow/.style={-{Latex[length=1.5mm]},draw=MutedBlue,line width=.65pt},
+  stage/.style={draw=RuleGray,align=center,inner sep=2mm,font=\Small},
+  evidence/.style={draw=MutedBlue,align=center,inner sep=2mm,font=\Small}}
+\pgfplotsset{reportaxis/.style={
+  axis x line=bottom,axis y line=left,xmajorgrids=true,grid style={RuleGray},
+  tick label style={font=\PlotFont},label style={font=\PlotFont},
+  legend style={font=\PlotFont,draw=none,fill=none},
+  title style={font=\Small},axis line style={RuleGray},tick style={RuleGray},
+  clip=false}}
+
+\begin{document}
+
+% 1 / S0 S1 S2 S3 S4 S5 S6. Approx. 65 seconds.
+\begin{frame}[t]{本周进展——从总体差距走向具体机制}
+\Body
+\ReportAuthor\quad |\quad 数据截至 \ReportDate\par\vspace{4mm}
+\Heading{1\quad 补齐三引擎：先统一环境和计时边界}
+QuickJS、V8 Ignition、JSC LLInt 在同一 WSL2 cohort；\par
+比较包含首次调用的内部执行时间，不混入旧 Windows 数据。\par\vspace{3mm}
+\Heading{2\quad 验证 code cache：不只看开关和输出标题}
+观测目标脚本序列化与消费；区分 no-lazy 本次生成和 cache 恢复。\par\vspace{3mm}
+\Heading{3\quad 两轮白盒对照：从 own 字段转向继承方法准备}
+第一轮没有观察到 QuickJS 特有的 own 字段收益；\par
+最新 Richards 方法缓存对照：QuickJS 耗时降低点估计约 4.61\%。
+\Takeaway{当前找到一个值得验证的方向，还没有形成 VM 优化结果。}
+\Sources{S1--S6；各阶段现有正式 raw 与独立审计。}
+\end{frame}
+
+% 2 / S0. Approx. 80 seconds.
+\begin{frame}[t]{这次比较的时间包含什么}
+\Body
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.42\textwidth}
+\Heading{冻结的 Linux runtime}
+\Small
+\textbf{QuickJS}\quad 2026-06-04 / \Code{04be246}\par
+GCC 13.3，\Code{-O2}，computed goto。\par\vspace{3mm}
+\textbf{V8 / d8}\quad 15.6.21 / 官方制品\par
+\Code{--max-opt=0 --no-lazy}\par
+制品精确 source / compiler / GN：UNKNOWN。\par\vspace{3mm}
+\textbf{JSC / LLInt}\quad WebKit \Code{fd3406f}\par
+Release \Code{-O3}\par
+\Code{--useJIT=false --useLLInt=true}\par
+\Code{--validateOptions=true}\par
+\end{column}
+\begin{column}{.55\textwidth}
+\centering
+\begin{tikzpicture}
+\node[stage,text width=6.5cm] (pre) at (0,0) {source / adapter / 必需 Setup\quad 不计时};
+\node[font=\Small] (start) at (0,-.7) {timer start};
+\node[evidence,text width=6.5cm] (run) at (0,-1.65) {\textbf{首次 Run + 后续 Run，共 $N$ 次}\\调用、GC、helper、builtin、原断言\\JSC 首次函数准备仍可能计入};
+\node[font=\Small] (stop) at (0,-2.6) {timer stop};
+\node[stage,text width=6.5cm] (out) at (0,-3.3) {输出 elapsed / $N$\quad 不计时};
+\draw[flow] (pre)--(start);\draw[flow] (start)--(run);
+\draw[flow] (run)--(stop);\draw[flow] (stop)--(out);
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\vspace{2mm}
+\Small 同一 WSL2 Ubuntu 24.04.2 / x86\_64；内部单调时钟；无显式 workload warmup。
+\Takeaway{指标：解释器模式下、包含首次调用的内部执行时间（ms/Run）。}
+\Sources{S0：manifest、native clock 证据、adapter；不是全部 frontend 已排除的时间。}
+\end{frame}
+
+% 3 / S1 S2. Values are original Octane medians, not derived contrasts.
+\begin{frame}[t]{总体上 V8 较快，但差距随 workload 变化}
+\Body
+\centering
+\begin{tabular}{lrrr}
+\toprule
+时间比 GM & V8/QJS & JSC/QJS & JSC/V8\\
+\midrule
+SunSpider：26 cases & 0.621430 & 0.733306 & 1.180030\\
+Octane：13 suites & 0.544626 & 0.755390 & 1.386989\\
+\bottomrule
+\end{tabular}\par\vspace{1mm}
+\begin{tikzpicture}
+\begin{axis}[reportaxis,width=13.5cm,height=3.5cm,xmin=0,xmax=1.4,
+  ymin=.5,ymax=3.6,xtick={0,.25,.5,.75,1,1.25},ytick={1,2,3},
+  yticklabels={RegExp,NavierStokes,Richards},xlabel={原 Octane：分子引擎 / QuickJS 的 median 时间比},
+  legend columns=2,legend style={at={(.5,1.04)},anchor=south},enlarge y limits=false]
+\addplot[RuleGray,dashed,forget plot] coordinates {(1,.5) (1,3.6)};
+\addplot[only marks,MutedBlue,mark=square*,mark size=2.7pt] coordinates
+  {(0.1070688710,.90) (1.2125620538,1.90) (0.6160802199,2.90)};
+\addlegendentry{V8/QJS}
+\addplot[only marks,JSCGray,mark=triangle*,mark size=3pt] coordinates
+  {(0.8273672114,1.10) (0.9507252884,2.10) (0.5864404191,3.10)};
+\addlegendentry{JSC/QJS}
+\end{axis}
+\end{tikzpicture}\par
+\raggedright\Small
+时间比越低越快；虚线 QJS=1。NavierStokes 是 V8 较慢的反例，RegExp 差距很大。\par
+2340 + 1440 有效样本；Octane 16 Run targets，zlib / Box2D 未进入交集。
+\Sources{S1、S2：formal raw 重算 median；Octane 先 suite 内 GM，再 13 suites 等权，不是官方 score。}
+\end{frame}
+
+% 4 / S4. V8-only supplement; source/cache do not enter the three-engine ranking.
+\begin{frame}[t]{Code cache 已验证消费，内部执行时间接近}
+\Body
+\begin{tikzpicture}[stage/.append style={inner sep=1mm},evidence/.append style={inner sep=1mm}]
+\node[font=\Small,anchor=west] at (0,0) {SOURCE};
+\node[stage,text width=4.0cm] (s) at (4.1,0) {\Code{--cache=none --no-lazy}\\本次生成静态表示};
+\node[evidence,text width=4.7cm] (se) at (10.0,0) {首次执行 $\times N$ 的内部区间};
+\draw[flow] (s)--(se);
+\node[font=\Small,anchor=west] at (0,-1.05) {CACHE};
+\node[stage,text width=2.7cm] (p) at (3.35,-1.05) {producer isolate\\生成并序列化};
+\node[stage,text width=2.7cm] (c) at (7.0,-1.05) {consumer isolate\\计时前恢复};
+\node[evidence,text width=2.7cm] (ce) at (10.65,-1.05) {consumer\\内部执行区间};
+\draw[flow] (p)--(c);\draw[flow] (c)--(ce);
+\end{tikzpicture}\par\vspace{1mm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.52\textwidth}
+\Small
+\begin{tabular}{lr}
+\toprule
+案例 & consumer / source\\\midrule
+\Code{controlflow-recursive} & 0.997311\\
+\Code{access-binary-trees} & 0.998749\\
+Richards & 1.005376\\
+NavierStokes & 0.994704\\\midrule
+四案例描述性 GM & 0.999027\\\bottomrule
+\end{tabular}
+\end{column}
+\begin{column}{.45\textwidth}
+\Small
+{\color{MutedBlue}\bfseries 消费证据，不仅是 CLI 标题}\par\vspace{1mm}
+目标路径、序列化尺寸和恢复事件匹配；\par
+代表性静态 bytecode 在 timer 前。\par\vspace{1mm}
+同进程跨 isolate；每 invocation 新进程。\par
+CACHE 使用 \Code{--cache=code}。\par
+240/240 target；120 producer 另列。
+\end{column}
+\end{columns}
+\CompactTakeaway{本协议下执行时间点估计接近；未量化 frontend 或启动收益。}
+\CompactSources{S4：cache proof / formal raw；两边 max-opt=0 / no-lazy；非统计学等效。}
+\end{frame}
+
+% 5 / S3. First derived experiment; not an optimization of whole Richards/Navier.
+\begin{frame}[t]{第一轮：own 字段没有显示 QuickJS 特有收益}
+\Body
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\centering\Heading{own 状态字段：读取 $\to$ 局部缓存}
+\begin{tikzpicture}
+\begin{axis}[reportaxis,width=6.9cm,height=3.5cm,xmin=.86,xmax=1.04,
+  ymin=.5,ymax=3.5,ytick={1,2,3},yticklabels={JSC,V8,QuickJS},
+  xtick={.9,.95,1},xlabel={B/A median 时间比}]
+\addplot[RuleGray,dashed,forget plot] coordinates {(1,.5) (1,3.5)};
+\addplot[only marks,black,mark=*,mark size=2.7pt] coordinates {(.9662372781,3)};
+\addplot[only marks,MutedBlue,mark=square*,mark size=2.7pt] coordinates {(.9661696422,2)};
+\addplot[only marks,JSCGray,mark=triangle*,mark size=3pt] coordinates {(.9186461273,1)};
+\end{axis}
+\end{tikzpicture}\par\Small
+QJS 0.9662；V8 0.9662；JSC 0.9186。
+\end{column}
+\begin{column}{.48\textwidth}
+\centering\Heading{派生数值核：Array $\to$ Float64Array}
+\begin{tikzpicture}
+\begin{axis}[reportaxis,width=6.9cm,height=3.5cm,xmin=.95,xmax=1.42,
+  ymin=.5,ymax=3.5,ytick={1,2,3},yticklabels={JSC,V8,QuickJS},
+  xtick={1,1.1,1.2,1.3,1.4},xlabel={B/A median 时间比}]
+\addplot[RuleGray,dashed,forget plot] coordinates {(1,.5) (1,3.5)};
+\addplot[only marks,black,mark=*,mark size=2.7pt] coordinates {(1.1818885342,3)};
+\addplot[only marks,MutedBlue,mark=square*,mark size=2.7pt] coordinates {(1.0731542127,2)};
+\addplot[only marks,JSCGray,mark=triangle*,mark size=3pt] coordinates {(1.3481574733,1)};
+\end{axis}
+\end{tikzpicture}\par\Small
+QJS 1.1819；V8 1.0732；JSC 1.3482。
+\end{column}
+\end{columns}
+\vspace{3mm}\Small
+低于 1 耗时更低；360/360 正式样本。未观察到 QuickJS 独有的大收益。\par
+Float64Array 只在这个派生核中更慢，不代表 TypedArray 普遍更慢。
+\Takeaway{下一问：是否应看继承方法准备，而非 own state 读取？}
+\Sources{S3：两个派生对照 formal raw / contrasts；不是完整算法优化。}
+\end{frame}
+
+% 6 / S5. Two different inherited run sites, not two labels for one call.
+\begin{frame}[t]{Richards 中究竟是哪一次 run 查找}
+\Body
+\centering
+\begin{tikzpicture}
+\node[stage,text width=3.55cm] (schedule) at (0,0) {\Code{Scheduler.schedule}\\调度循环};
+\node[evidence,text width=3.7cm] (tcb) at (4.75,0) {\Code{currentTcb.run()}\\\textbf{本轮选定位置}};
+\node[stage,text width=3.55cm] (task) at (9.5,0) {\Code{task.run()}\\另一处调用，保持不变};
+\draw[flow] (schedule)--(tcb);\draw[flow] (tcb)--(task);
+\node[stage,text width=3.7cm] (proto) at (4.75,-1.45) {\Code{TaskControlBlock.prototype}\\继承的 \Code{run} 方法};
+\node[stage,text width=3.55cm] (tp) at (9.5,-1.45) {四类 task prototype\\各自的 \Code{run} 方法};
+\draw[flow] (tcb)--(proto);\draw[flow] (task)--(tp);
+\end{tikzpicture}\par\vspace{4mm}
+\raggedright
+\Heading{own 属性与 inherited 方法要分开}
+\Code{currentTcb} 是 scheduler 的 own 字段；\Code{state / task / queue} 是 TCB 的 own 字段。\par
+选定 \Code{run} 位于 TCB prototype，而不是 receiver 的 own 属性。\par\vspace{3mm}
+每 Run 有 \textbf{6573} 次选定 TCB.run 调用。完整 scheduler、出队/state 更新、\par
+task.run、Packet、原输入及 queueCount=2322 / holdCount=928 断言均保留。
+\Sources{S5：sites.csv、original.schedule.js、显式 Run 区间 counter 与原断言。}
+\end{frame}
+
+% 7 / S5. Pseudocode is intentionally simplified: skipped branches unchanged.
+\begin{frame}[t,fragile]{A/B 改变的是方法准备频率}
+\Body
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\Heading{A：循环内取方法}
+\begin{lstlisting}
+while (/* scheduler loop */) {
+  // unchanged branches omitted
+  fn = this.currentTcb.run;
+  this.currentTcb =
+    fn.call(this.currentTcb);
+}
+\end{lstlisting}
+\end{column}
+\begin{column}{.48\textwidth}
+\Heading{B：每次 schedule 开头取一次}
+\begin{lstlisting}
+fn = this.currentTcb.run;
+while (/* scheduler loop */) {
+  // unchanged branches omitted
+  this.currentTcb =
+    fn.call(this.currentTcb);
+}
+\end{lstlisting}
+\end{column}
+\end{columns}
+\vspace{2mm}\Small\centering
+\begin{tabular}{lrr}
+\toprule
+N=512 的诊断计数 & A & B\\\midrule
+选定 TCB.run 方法 lookup & 3,365,376 & 512\\
+TCB.run 调用 & 3,365,376 & 3,365,376\\
+另一处 task.run lookup & 3,365,376 & 3,365,376\\\bottomrule
+\end{tabular}\par\vspace{2mm}\raggedright
+缓存仍在 timer 内，每 Run 准备一次，共 $N$ 次；无提前 workload warmup。\par
+B 也移出了额外一次 own currentTcb 读取和局部赋值：\textbf{不是只移除原型遍历}。
+\Sources{S5：A/B.schedule.js、driver、counter_summary；两边固定同一 native .call（附录 A3）。}
+\end{frame}
+
+% 8 / S5. Q1 and Q3 are separately derived from the sorted raw 30 values.
+% Absolute-time interval plot starts at zero. Ranges are NOT symmetric CI bars.
+\begin{frame}[t]{方法缓存对照：QuickJS 耗时降低点估计约 4.61\%}
+\Body
+\Small $N=512$；30 新进程/组；180/180 有效；无显式 warmup。\par\vspace{.5mm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.54\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[reportaxis,width=7.8cm,height=3.5cm,xmin=0,xmax=4,
+  ymin=.5,ymax=6.5,xtick={0,1,2,3,4},ytick={1,2,3,4,5,6},
+  yticklabels={JSC B,JSC A,V8 B,V8 A,QJS B,QJS A},xlabel={派生对照：ms/Run}]
+\addplot[black,line width=1.2pt,forget plot] coordinates {(3.6790881953,6) (3.7403719570,6)};
+\addplot[black,dashed,line width=1.2pt,forget plot] coordinates {(3.4700745957,5) (3.5965952891,5)};
+\addplot[MutedBlue,line width=1.2pt,forget plot] coordinates {(2.1423535156,4) (2.2029765625,4)};
+\addplot[MutedBlue,dashed,line width=1.2pt,forget plot] coordinates {(2.0997734375,3) (2.1938183594,3)};
+\addplot[JSCGray,line width=1.2pt,forget plot] coordinates {(2.0760937500,2) (2.1267968750,2)};
+\addplot[JSCGray,dashed,line width=1.2pt,forget plot] coordinates {(2.0518359375,1) (2.1555468750,1)};
+\addplot[only marks,black,mark=*,mark size=2.5pt] coordinates {(3.7012763564,6)};
+\addplot[only marks,black,mark=o,mark size=2.5pt] coordinates {(3.5306982158,5)};
+\addplot[only marks,MutedBlue,mark=square*,mark size=2.5pt] coordinates {(2.1683740234,4)};
+\addplot[only marks,MutedBlue,mark=square,mark size=2.5pt] coordinates {(2.1290468750,3)};
+\addplot[only marks,JSCGray,mark=triangle*,mark size=2.7pt] coordinates {(2.1059570313,2)};
+\addplot[only marks,JSCGray,mark=triangle,mark size=2.7pt] coordinates {(2.0787304688,1)};
+\end{axis}
+\end{tikzpicture}\par
+\PlotFont 点：median；线：Q1--Q3 分布，非置信区间。\par
+A：实心/实线；B：空心/虚线。
+\end{column}
+\begin{column}{.43\textwidth}
+\Small
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{lrrr}
+\toprule
+ms/Run & A & B & B/A\\\midrule
+QuickJS & 3.7013 & 3.5307 & 0.9539\\
+V8 & 2.1684 & 2.1290 & 0.9819\\
+JSC & 2.1060 & 2.0787 & 0.9871\\\bottomrule
+\end{tabular}\par\vspace{1.5mm}
+{\color{MutedBlue}\bfseries 耗时降低的点估计}\par\vspace{.5mm}
+QuickJS：\textbf{4.61\%}\par
+V8：1.81\%\par
+JSC：1.29\%\par\vspace{1.5mm}
+同一派生实验 QJS/V8：\par
+\textbf{1.707 $\to$ 1.658}；QuickJS 仍更慢。
+\end{column}
+\end{columns}
+\CompactTakeaway{这是方向性观察，不是原 Richards 的成本占比或显著性结论。}
+\CompactSources{S5：formal raw；六组 median / Tukey Q1,Q3 重算，位置各 10，保留全部样本。}
+\end{frame}
+
+% 9 / S5. Normal hit is in handler, helper only belongs to fallback.
+\begin{frame}[t]{当前证据支持继续检验，仍不足以独立归因}
+\Body
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.40\textwidth}
+\Heading{QuickJS 的选定普通数据命中}
+\centering
+\begin{tikzpicture}
+\node[stage,text width=4.7cm] (own) at (0,0) {receiver own test\quad miss};
+\node[stage,text width=4.7cm] (proto) at (0,-.85) {一次 prototype 跳转，再 own test};
+\node[evidence,text width=4.7cm] (hit) at (0,-1.7) {data hit，保留方法值};
+\node[stage,text width=4.7cm] (call) at (0,-2.55) {局部变量 / 方法调用};
+\draw[flow] (own)--(proto);\draw[flow] (proto)--(hit);\draw[flow] (hit)--(call);
+\end{tikzpicture}\par\vspace{2mm}\Small\raggedright
+共两次 own-property 测试。普通命中\par
+不调用 \Code{JS_GetPropertyInternal}；\par
+该 site 的 fallback helper 计数为零。
+\end{column}
+\begin{column}{.56\textwidth}
+\Heading{可以支持到哪一步}
+\begin{enumerate}\Tight
+\item 计数证明：选定方法准备频率确实降低，调用次数未减少。
+\item 正式点估计支持：QuickJS 对这组准备变化更敏感，值得进一步检验。
+\item 仍有混杂：额外 own 读取/赋值、字节码与函数布局、引用计数、IC/GC 状态，以及三边内部 \Code{.call} 路径。
+\end{enumerate}
+\vspace{2mm}\Small
+同一 JS 写法不等于相同 VM 内部路径：\par
+JSC 有 call identity guard、直接调用分支与 fallback。
+\end{column}
+\end{columns}
+\Takeaway{lookup 精确 self-time、原 workload 成本占比和独立因果份额：UNKNOWN。}
+\Sources{S5：quickjs.c 19107--19170 的冻结摘录、counter / bytecode；没有 VM 优化或 IC 开关实验。}
+\end{frame}
+
+% 10 / S3 native execution evidence is stronger than the earlier allowing flags.
+\begin{frame}[t]{V8 的总体优势还包含 RegExp 实现差异}
+\Body
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+引擎 / 当前策略 & 最短实际证据\\\midrule
+QuickJS：C regex VM & 冻结 libregexp 的编译、执行调用路径。\\[1mm]
+V8：已观测 native RegExp & 124 个采样 PC 同时匹配注册的 RegExp code 区间及该进程可执行映射。\\[1mm]
+JSC：Yarr interpreter & 固定选项和源码：useJIT=false 关闭 RegExp JIT；分类样本不自动代表 JIT。\\
+\bottomrule
+\end{tabularx}\par\vspace{1.5mm}
+\Heading{因此需要单独披露 runtime 策略}
+JS JIT tier 关闭 $\neq$ 所有 native generated code 关闭。\par\vspace{1mm}
+正则策略不对称；全部 pattern 的覆盖与 native 时间占比仍未证明。\par\vspace{1mm}
+\Small
+描述性敏感性：去掉 RegExp 标签后，SunSpider V8/QJS GM 为 0.8528；\par
+Octane 去掉 RegExp / CodeLoad 为 0.6413。换集合不是因果扣除。
+\CompactTakeaway{总体 execution 差距需要按机制拆解，不能全部归给 JS dispatch。}
+\CompactSources{S3：regexp\_boundary / execution\_evidence.json；S1/S2 子集见附录 A2。}
+\end{frame}
+
+% 11 / S5 P1--P4. Future only, no implementation or novelty claim.
+\begin{frame}[t]{下一步——验证小型继承方法缓存的净收益}
+\Body
+\Heading{候选方案（计划，尚未实现）}
+在独立 upstream 原型上研究 inherited-method cache：\par
+以 receiver shape、prototype identity/version 与 own-shadowing 为 guard。
+\vspace{3mm}
+\begin{enumerate}\Tight
+\item \textbf{保持语义}\quad own override、删除/重定义、原型变更；getter / Proxy fallback；this、返回、副作用及 GC 引用保留。
+\item \textbf{量化净成本}\quad hit / miss / guard / 失效；初始化成本和每 site 内存，而不只看缓存命中后的速度。
+\item \textbf{回到未改 workload}\quad 原 Richards + 相关/不相关案例，检查收益与回归；后续在原生 Linux 独立复现。
+\end{enumerate}
+\vspace{2mm}\Small
+PIC、原型缓存和调用特化是已有技术；实现与比较之后才能形成创新判断。\par
+\textbf{待导师确认：}口述“0.7/0.8”所指引擎/分支，以及希望采用的版本口径。
+\Sources{S5：冻结假设与 prior\_art；已有实现边界见附录 A4。正文结束，以下仅供问答。}
+\end{frame}
+
+\appendix
+
+% A1 = page12 / S0--S6.
+\begin{frame}[t]{附录 A1｜版本、计时与完成度}
+\Small
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.46\textwidth}
+\Heading{不同 campaign 的正式 target}
+\begin{tabular}{lr}
+\toprule
+SunSpider 三引擎 & 2340\\
+Octane 三引擎 & 1440\\
+第一轮派生白盒 & 360\\
+V8 code cache & 240\\
+Richards 方法准备 & 180\\\midrule
+合计（不是共同 ranking） & \textbf{4560}\\\bottomrule
+\end{tabular}\par\vspace{2mm}
+另有 120 cache producer，不能计为 target。\par
+旧 Date.now mode 保留为 BLOCKED\_TIMER；\par
+新单调 mode 独立完成，不声称根因已修复。
+\end{column}
+\begin{column}{.51\textwidth}
+\Heading{固定版本与当前限制}
+QuickJS \Code{04be246}，GCC 13.3 / -O2。\par
+V8/d8 15.6.21，max-opt=0 / no-lazy；\par
+artifact 精确 source / compiler / GN：UNKNOWN。\par
+JSC/WebKit \Code{fd3406f}，Release -O3；\par
+useJIT=false / useLLInt=true / validateOptions=true。\par\vspace{2mm}
+WSL2 Ubuntu 24.04.2 / x86\_64；Ryzen 5800H。\par
+完整 revision / hash 在 manifest。\par\vspace{2mm}
+JSC 首次 frontend 与宿主负载/温控未知。\par
+SunSpider 跨两次 boot 恢复，位置未重采；\par
+hash/host 核验通过，不是连续隔离运行。
+\end{column}
+\end{columns}
+\vspace{3mm}
+每组 30 新进程；六种顺序各 5 次，位置各 10。计时内含首次调用，无显式 warmup。\par
+正式不开 trace/profile/counter；诊断构建不参与排名；旧 Windows 数据没有混入。
+\Sources{S0--S6：manifest、formal raw、独立审计；数据源 HEAD：0f57ab1（myx）。}
+\end{frame}
+
+% A2 = page13 / S1 S2.
+\begin{frame}[t]{附录 A2｜子集与聚合规则}
+\Body
+ratio = 分子引擎 median / 分母引擎 median；小于 1 表示分子耗时更低。\par
+$\mathrm{GM}=\exp(\mathrm{mean}(\log(\mathrm{ratio})))$，不是官方 Octane score。\par\vspace{3mm}
+\Small\centering
+\begin{tabular}{lrrrr}
+\toprule
+集合 & 等权单位数 & V8/QJS & JSC/QJS & JSC/V8\\\midrule
+SunSpider 全量 & 26 cases & .621430 & .733306 & 1.180030\\
+SunSpider 去 RegExp 标签 & 20 cases & .852765 & .757316 & .888071\\
+Octane 全量 & 13 suites & .544626 & .755390 & 1.386989\\
+Octane 去 RegExp / CodeLoad & 11 suites & .641265 & .756225 & 1.179271\\\bottomrule
+\end{tabular}\par\vspace{4mm}\raggedright
+\Body
+\Heading{聚合单位不能混用}
+SunSpider：case 等权。\par
+Octane：先 suite 内子 Run 时间比 GM，再 suite 间等权 GM；\par
+16 Run targets 不能直接等权冒充 13 suites 指标。\par\vspace{3mm}
+\Small
+每组三个 pairwise GM 用同一完整三引擎交集；排除项与标签固定。\par
+子集只是机制标签敏感性：仍包含 builtin/helper/GC，并非 builtin-free。\par
+换集合之后的 GM 变化，不是该机制对原总时间的因果占比。
+\Sources{S1/S2：summary/pairwise\_summary.csv 中的 intersection；均从 formal raw 重算。}
+\end{frame}
+
+% A3 = page14 / S5. Detail on call layout and VM call specialization.
+\begin{frame}[t,fragile]{附录 A3｜A/B 语义和字节码证据}
+\Small
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\Heading{两边相同，但并非原始 direct call}
+timer 外捕获 native Function.prototype.call，\par
+固定为目标 TCB.run 函数的 own 属性：
+\begin{lstlisting}
+Object.defineProperty(method, 'call', {
+  value: call,
+  writable: false,
+  configurable: false
+});
+\end{lstlisting}
+新增函数布局属于派生设计；A/B 共用。\par
+缓存只对当前固定输入合法，不推广到任意 JS。\par\vspace{2mm}
+27 个 original/A/B sequence 诊断：\par
+三引擎 $\times$ 三进程，原断言与摘要一致；\par
+摘要 4133815237 不是无碰撞形式化证明。
+\end{column}
+\begin{column}{.49\textwidth}
+\Heading{真实 bytecode / 计数边界}
+QuickJS 方法取值：\Code{get_field run}；\par
+调用：\Code{get_field2 call -> call_method 1}\par
+$\to$ native \Code{js_function_call} $\to$ JS 调用。\par\vspace{2mm}
+V8：A/B 都是 \Code{CallProperty1}；\par
+run load 的循环内/外位置变化。\par\vspace{2mm}
+JSC：\Code{jneq_ptr} identity guard $\to$\par
+直接 call 分支 / \Code{.call} fallback；\par
+不能说每次必经 native .call helper。\par\vspace{2mm}
+TCB.run 与 task.run 按 receiver 原型分类；\par
+一跳原型 = 两次 own test。\par
+计数不是 self-time；诊断有开销，不进正式表。
+\end{column}
+\end{columns}
+\Sources{S5：driver、A/B 三引擎 schedule\_bytecode、counter\_summary、sequence/audit。}
+\end{frame}
+
+% A4 = page15 / S5 P1--P4. No new literature research this turn.
+\begin{frame}[t]{附录 A4｜已有工作与复现来源}
+\Small
+\Heading{已有技术：不是本周的新颖性结论}
+P1\quad Hölzle / Chambers / Ungar，ECOOP 1991：Polymorphic Inline Caches。\par
+P2\quad V8 官方 Fast properties（2017）：shape / IC 属性访问。\par
+P3\quad WebKit 官方 bytecode format（2019）：解释器 metadata / IC。\par\vspace{1mm}
+\textbf{P4\quad QuickJS-NG v0.8.0：历史源码覆盖检查，无 NG 性能数据。}\par
+own-slot PIC 仅在 \Code{proto_depth==0} 填充；不证明 inherited TCB.run 已缓存。\par
+官方 PR884 后来删除历史 IC；不推断所有后续版本都无任何缓存。\par
+tag 全 revision / 完整本地源码 SHA：UNKNOWN；后续全覆盖 UNKNOWN。\par\vspace{1.5mm}
+\Heading{短来源编号：完整路径在 source\_map.md}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+S0 & timer\_recovery：时钟、适配器和 runtime manifest。\\
+S1 / S2 & SunSpider / Octane 三引擎：MAIN\_MONOTONIC\_V1 / attempt01。\\
+S3 / S4 & whitebox\_analysis / code\_cache\_validation：attempt01。\\
+S5 / S6 & richards\_method\_lookup：正式、诊断、prior\_art 与字节归档（attempt01）。\\
+\end{tabularx}\par
+\CompactSources{本地结果；旧稿仅参考版式；输入 SHA、重算与 UNKNOWN 见 data\_audit.json。}
+\end{frame}
+
+\end{document}
