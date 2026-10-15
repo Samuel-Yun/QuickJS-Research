@@ -1,0 +1,43 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/dump/own_property_N1.js:1:1: function: wbOwnProperty
+  args: obj n
+  locals:
+    0: var sum
+    1: var i
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function wbOwnProperty(obj, n) {
+
+        push_0 0
+
+;;     var sum = 0;
+
+        put_loc0 0: sum
+        push_0 0
+
+;;     for (var i = 0; i < n; i++) {
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        get_arg1 1: n
+        lt
+        if_false8 22
+
+;;         sum += obj.value;
+
+        get_loc0 0: sum
+        get_arg0 0: obj
+        get_field value
+        add
+        put_loc0 0: sum
+        inc_loc 1: i
+        goto8 4
+
+;;     }
+;;     return sum;
+
+   22:  get_loc0 0: sum
+        return
+
+;; }
+

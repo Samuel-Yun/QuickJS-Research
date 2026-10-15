@@ -1,0 +1,104 @@
+quickjs.c; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+18822:         CASE(OP_goto):
+18823:             pc += (int32_t)get_u32(pc);
+18824:             if (unlikely(js_poll_interrupts(ctx)))
+18825:                 goto exception;
+18826:             BREAK;
+18827: #if SHORT_OPCODES
+18828:         CASE(OP_goto16):
+18829:             pc += (int16_t)get_u16(pc);
+18830:             if (unlikely(js_poll_interrupts(ctx)))
+18831:                 goto exception;
+18832:             BREAK;
+18833:         CASE(OP_goto8):
+18834:             pc += (int8_t)pc[0];
+18835:             if (unlikely(js_poll_interrupts(ctx)))
+18836:                 goto exception;
+18837:             BREAK;
+18838: #endif
+18839:         CASE(OP_if_true):
+18840:             {
+18841:                 int res;
+18842:                 JSValue op1;
+18843: 
+18844:                 op1 = sp[-1];
+18845:                 pc += 4;
+18846:                 if ((uint32_t)JS_VALUE_GET_TAG(op1) <= JS_TAG_UNDEFINED) {
+18847:                     res = JS_VALUE_GET_INT(op1);
+18848:                 } else {
+18849:                     res = JS_ToBoolFree(ctx, op1);
+18850:                 }
+18851:                 sp--;
+18852:                 if (res) {
+18853:                     pc += (int32_t)get_u32(pc - 4) - 4;
+18854:                 }
+18855:                 if (unlikely(js_poll_interrupts(ctx)))
+18856:                     goto exception;
+18857:             }
+18858:             BREAK;
+18859:         CASE(OP_if_false):
+18860:             {
+18861:                 int res;
+18862:                 JSValue op1;
+18863: 
+18864:                 op1 = sp[-1];
+18865:                 pc += 4;
+18866:                 /* quick and dirty test for JS_TAG_INT, JS_TAG_BOOL, JS_TAG_NULL and JS_TAG_UNDEFINED */
+18867:                 if ((uint32_t)JS_VALUE_GET_TAG(op1) <= JS_TAG_UNDEFINED) {
+18868:                     res = JS_VALUE_GET_INT(op1);
+18869:                 } else {
+18870:                     res = JS_ToBoolFree(ctx, op1);
+18871:                 }
+18872:                 sp--;
+18873:                 if (!res) {
+18874:                     pc += (int32_t)get_u32(pc - 4) - 4;
+18875:                 }
+18876:                 if (unlikely(js_poll_interrupts(ctx)))
+18877:                     goto exception;
+18878:             }
+18879:             BREAK;
+18880: #if SHORT_OPCODES
+18881:         CASE(OP_if_true8):
+18882:             {
+18883:                 int res;
+18884:                 JSValue op1;
+18885: 
+18886:                 op1 = sp[-1];
+18887:                 pc += 1;
+18888:                 if ((uint32_t)JS_VALUE_GET_TAG(op1) <= JS_TAG_UNDEFINED) {
+18889:                     res = JS_VALUE_GET_INT(op1);
+18890:                 } else {
+18891:                     res = JS_ToBoolFree(ctx, op1);
+18892:                 }
+18893:                 sp--;
+18894:                 if (res) {
+18895:                     pc += (int8_t)pc[-1] - 1;
+18896:                 }
+18897:                 if (unlikely(js_poll_interrupts(ctx)))
+18898:                     goto exception;
+18899:             }
+18900:             BREAK;
+18901:         CASE(OP_if_false8):
+18902:             {
+18903:                 int res;
+18904:                 JSValue op1;
+18905: 
+18906:                 op1 = sp[-1];
+18907:                 pc += 1;
+18908:                 if ((uint32_t)JS_VALUE_GET_TAG(op1) <= JS_TAG_UNDEFINED) {
+18909:                     res = JS_VALUE_GET_INT(op1);
+18910:                 } else {
+18911:                     res = JS_ToBoolFree(ctx, op1);
+18912:                 }
+18913:                 sp--;
+18914:                 if (!res) {
+18915:                     pc += (int8_t)pc[-1] - 1;
+18916:                 }
+18917:                 if (unlikely(js_poll_interrupts(ctx)))
+18918:                     goto exception;
+18919:             }
+18920:             BREAK;
+18921: #endif
+18922:         CASE(OP_catch):
+18923:             {
+18924:                 int32_t diff;

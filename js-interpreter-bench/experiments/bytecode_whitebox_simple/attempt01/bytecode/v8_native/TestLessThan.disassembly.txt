@@ -1,0 +1,550 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d72880 <Builtins_TestLessThanHandler>:
+ 1d72880:	48 8b fd             	mov    rdi,rbp
+ 1d72883:	4f 0f be 44 0c 01    	movsx  r8,BYTE PTR [r12+r9*1+0x1]
+ 1d72889:	48 8b 77 f8          	mov    rsi,QWORD PTR [rdi-0x8]
+ 1d7288d:	4e 8b 04 c7          	mov    r8,QWORD PTR [rdi+r8*8]
+ 1d72891:	33 db                	xor    ebx,ebx
+ 1d72893:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d7289a:	00 00 
+ 1d7289c:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d728a3:	00 00 
+ 1d728a5:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d728ac:	00 00 
+ 1d728ae:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d728b5:	00 00 
+ 1d728b7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d728be:	00 00 
+ 1d728c0:	45 33 db             	xor    r11d,r11d
+ 1d728c3:	41 f6 c0 01          	test   r8b,0x1
+ 1d728c7:	75 20                	jne    1d728e9 <Builtins_TestLessThanHandler+0x69>
+ 1d728c9:	a8 01                	test   al,0x1
+ 1d728cb:	74 54                	je     1d72921 <Builtins_TestLessThanHandler+0xa1>
+ 1d728cd:	8b 50 ff             	mov    edx,DWORD PTR [rax-0x1]
+ 1d728d0:	49 0b d6             	or     rdx,r14
+ 1d728d3:	81 fa 15 05 00 00    	cmp    edx,0x515
+ 1d728d9:	74 57                	je     1d72932 <Builtins_TestLessThanHandler+0xb2>
+ 1d728db:	83 f8 11             	cmp    eax,0x11
+ 1d728de:	0f 84 87 00 00 00    	je     1d7296b <Builtins_TestLessThanHandler+0xeb>
+ 1d728e4:	e9 fe 00 00 00       	jmp    1d729e7 <Builtins_TestLessThanHandler+0x167>
+ 1d728e9:	41 8b 50 ff          	mov    edx,DWORD PTR [r8-0x1]
+ 1d728ed:	49 0b d6             	or     rdx,r14
+ 1d728f0:	a8 01                	test   al,0x1
+ 1d728f2:	75 0d                	jne    1d72901 <Builtins_TestLessThanHandler+0x81>
+ 1d728f4:	81 fa 15 05 00 00    	cmp    edx,0x515
+ 1d728fa:	74 53                	je     1d7294f <Builtins_TestLessThanHandler+0xcf>
+ 1d728fc:	e9 4b 01 00 00       	jmp    1d72a4c <Builtins_TestLessThanHandler+0x1cc>
+ 1d72901:	8b 48 ff             	mov    ecx,DWORD PTR [rax-0x1]
+ 1d72904:	49 0b ce             	or     rcx,r14
+ 1d72907:	81 fa 15 05 00 00    	cmp    edx,0x515
+ 1d7290d:	0f 85 a9 01 00 00    	jne    1d72abc <Builtins_TestLessThanHandler+0x23c>
+ 1d72913:	3b d1                	cmp    edx,ecx
+ 1d72915:	74 60                	je     1d72977 <Builtins_TestLessThanHandler+0xf7>
+ 1d72917:	83 f8 11             	cmp    eax,0x11
+ 1d7291a:	74 4f                	je     1d7296b <Builtins_TestLessThanHandler+0xeb>
+ 1d7291c:	e9 4a 03 00 00       	jmp    1d72c6b <Builtins_TestLessThanHandler+0x3eb>
+ 1d72921:	44 8b db             	mov    r11d,ebx
+ 1d72924:	41 83 cb 02          	or     r11d,0x2
+ 1d72928:	49 63 db             	movsxd rbx,r11d
+ 1d7292b:	44 3b c0             	cmp    r8d,eax
+ 1d7292e:	7c 68                	jl     1d72998 <Builtins_TestLessThanHandler+0x118>
+ 1d72930:	eb 60                	jmp    1d72992 <Builtins_TestLessThanHandler+0x112>
+ 1d72932:	44 8b db             	mov    r11d,ebx
+ 1d72935:	41 d1 f8             	sar    r8d,1
+ 1d72938:	41 83 cb 06          	or     r11d,0x6
+ 1d7293c:	f2 0f 10 40 03       	movsd  xmm0,QWORD PTR [rax+0x3]
+ 1d72941:	66 0f 57 c9          	xorpd  xmm1,xmm1
+ 1d72945:	f2 41 0f 2a c8       	cvtsi2sd xmm1,r8d
+ 1d7294a:	49 63 db             	movsxd rbx,r11d
+ 1d7294d:	eb 3d                	jmp    1d7298c <Builtins_TestLessThanHandler+0x10c>
+ 1d7294f:	44 8b db             	mov    r11d,ebx
+ 1d72952:	d1 f8                	sar    eax,1
+ 1d72954:	41 83 cb 06          	or     r11d,0x6
+ 1d72958:	f2 41 0f 10 48 03    	movsd  xmm1,QWORD PTR [r8+0x3]
+ 1d7295e:	66 0f 57 c0          	xorpd  xmm0,xmm0
+ 1d72962:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
+ 1d72966:	49 63 db             	movsxd rbx,r11d
+ 1d72969:	eb 21                	jmp    1d7298c <Builtins_TestLessThanHandler+0x10c>
+ 1d7296b:	44 8b c3             	mov    r8d,ebx
+ 1d7296e:	41 83 c8 1e          	or     r8d,0x1e
+ 1d72972:	49 63 d8             	movsxd rbx,r8d
+ 1d72975:	eb 1b                	jmp    1d72992 <Builtins_TestLessThanHandler+0x112>
+ 1d72977:	44 8b db             	mov    r11d,ebx
+ 1d7297a:	41 83 cb 06          	or     r11d,0x6
+ 1d7297e:	f2 41 0f 10 48 03    	movsd  xmm1,QWORD PTR [r8+0x3]
+ 1d72984:	f2 0f 10 40 03       	movsd  xmm0,QWORD PTR [rax+0x3]
+ 1d72989:	49 63 db             	movsxd rbx,r11d
+ 1d7298c:	66 0f 2e c1          	ucomisd xmm0,xmm1
+ 1d72990:	77 06                	ja     1d72998 <Builtins_TestLessThanHandler+0x118>
+ 1d72992:	49 8d 46 55          	lea    rax,[r14+0x55]
+ 1d72996:	eb 04                	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72998:	49 8d 46 71          	lea    rax,[r14+0x71]
+ 1d7299c:	4c 8b 67 e0          	mov    r12,QWORD PTR [rdi-0x20]
+ 1d729a0:	d1 fb                	sar    ebx,1
+ 1d729a2:	43 0f b6 7c 0c 02    	movzx  edi,BYTE PTR [r12+r9*1+0x2]
+ 1d729a8:	4d 8b 85 c0 30 00 00 	mov    r8,QWORD PTR [r13+0x30c0]
+ 1d729af:	45 0f b6 04 18       	movzx  r8d,BYTE PTR [r8+rbx*1]
+ 1d729b4:	4c 8b df             	mov    r11,rdi
+ 1d729b7:	41 c1 e3 05          	shl    r11d,0x5
+ 1d729bb:	45 0b c3             	or     r8d,r11d
+ 1d729be:	4d 8b 9d b8 30 00 00 	mov    r11,QWORD PTR [r13+0x30b8]
+ 1d729c5:	47 0f b6 04 03       	movzx  r8d,BYTE PTR [r11+r8*1]
+ 1d729ca:	41 3a f8             	cmp    dil,r8b
+ 1d729cd:	74 05                	je     1d729d4 <Builtins_TestLessThanHandler+0x154>
+ 1d729cf:	47 88 44 0c 02       	mov    BYTE PTR [r12+r9*1+0x2],r8b
+ 1d729d4:	49 8d 79 03          	lea    rdi,[r9+0x3]
+ 1d729d8:	47 0f b6 44 0c 03    	movzx  r8d,BYTE PTR [r12+r9*1+0x3]
+ 1d729de:	4b 8b 0c c7          	mov    rcx,QWORD PTR [r15+r8*8]
+ 1d729e2:	4c 8b cf             	mov    r9,rdi
+ 1d729e5:	ff e1                	jmp    rcx
+ 1d729e7:	55                   	push   rbp
+ 1d729e8:	48 8b ec             	mov    rbp,rsp
+ 1d729eb:	6a 10                	push   0x10
+ 1d729ed:	48 83 ec 48          	sub    rsp,0x48
+ 1d729f1:	0f b7 52 07          	movzx  edx,WORD PTR [rdx+0x7]
+ 1d729f5:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d729f9:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d729fd:	48 89 7d e0          	mov    QWORD PTR [rbp-0x20],rdi
+ 1d72a01:	4c 89 45 d0          	mov    QWORD PTR [rbp-0x30],r8
+ 1d72a05:	48 89 75 c8          	mov    QWORD PTR [rbp-0x38],rsi
+ 1d72a09:	4c 89 65 c0          	mov    QWORD PTR [rbp-0x40],r12
+ 1d72a0d:	81 fa 81 00 00 00    	cmp    edx,0x81
+ 1d72a13:	0f 84 e1 02 00 00    	je     1d72cfa <Builtins_TestLessThanHandler+0x47a>
+ 1d72a19:	81 fa 83 00 00 00    	cmp    edx,0x83
+ 1d72a1f:	74 07                	je     1d72a28 <Builtins_TestLessThanHandler+0x1a8>
+ 1d72a21:	ba fe 07 00 00       	mov    edx,0x7fe
+ 1d72a26:	eb 05                	jmp    1d72a2d <Builtins_TestLessThanHandler+0x1ad>
+ 1d72a28:	ba 1e 00 00 00       	mov    edx,0x1e
+ 1d72a2d:	8b d2                	mov    edx,edx
+ 1d72a2f:	8b db                	mov    ebx,ebx
+ 1d72a31:	0b d3                	or     edx,ebx
+ 1d72a33:	48 63 da             	movsxd rbx,edx
+ 1d72a36:	43 8d 14 09          	lea    edx,[r9+r9*1]
+ 1d72a3a:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72a3e:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72a42:	e8 39 f9 f3 ff       	call   1cb2380 <Builtins_NonNumberToNumeric>
+ 1d72a47:	e9 81 02 00 00       	jmp    1d72ccd <Builtins_TestLessThanHandler+0x44d>
+ 1d72a4c:	55                   	push   rbp
+ 1d72a4d:	48 8b ec             	mov    rbp,rsp
+ 1d72a50:	6a 10                	push   0x10
+ 1d72a52:	48 83 ec 48          	sub    rsp,0x48
+ 1d72a56:	0f b7 52 07          	movzx  edx,WORD PTR [rdx+0x7]
+ 1d72a5a:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d72a5e:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d72a62:	48 89 7d e0          	mov    QWORD PTR [rbp-0x20],rdi
+ 1d72a66:	48 89 45 d8          	mov    QWORD PTR [rbp-0x28],rax
+ 1d72a6a:	48 89 75 c8          	mov    QWORD PTR [rbp-0x38],rsi
+ 1d72a6e:	4c 89 65 c0          	mov    QWORD PTR [rbp-0x40],r12
+ 1d72a72:	81 fa 81 00 00 00    	cmp    edx,0x81
+ 1d72a78:	0f 84 cb 02 00 00    	je     1d72d49 <Builtins_TestLessThanHandler+0x4c9>
+ 1d72a7e:	81 fa 83 00 00 00    	cmp    edx,0x83
+ 1d72a84:	74 07                	je     1d72a8d <Builtins_TestLessThanHandler+0x20d>
+ 1d72a86:	ba fe 07 00 00       	mov    edx,0x7fe
+ 1d72a8b:	eb 05                	jmp    1d72a92 <Builtins_TestLessThanHandler+0x212>
+ 1d72a8d:	ba 1e 00 00 00       	mov    edx,0x1e
+ 1d72a92:	8b d2                	mov    edx,edx
+ 1d72a94:	8b db                	mov    ebx,ebx
+ 1d72a96:	0b d3                	or     edx,ebx
+ 1d72a98:	48 63 da             	movsxd rbx,edx
+ 1d72a9b:	43 8d 14 09          	lea    edx,[r9+r9*1]
+ 1d72a9f:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72aa3:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72aa7:	49 8b c0             	mov    rax,r8
+ 1d72aaa:	e8 d1 f8 f3 ff       	call   1cb2380 <Builtins_NonNumberToNumeric>
+ 1d72aaf:	48 89 45 d0          	mov    QWORD PTR [rbp-0x30],rax
+ 1d72ab3:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 1d72ab7:	e9 11 02 00 00       	jmp    1d72ccd <Builtins_TestLessThanHandler+0x44d>
+ 1d72abc:	55                   	push   rbp
+ 1d72abd:	48 8b ec             	mov    rbp,rsp
+ 1d72ac0:	6a 10                	push   0x10
+ 1d72ac2:	48 83 ec 48          	sub    rsp,0x48
+ 1d72ac6:	0f b7 52 07          	movzx  edx,WORD PTR [rdx+0x7]
+ 1d72aca:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d72ace:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d72ad2:	48 89 7d e0          	mov    QWORD PTR [rbp-0x20],rdi
+ 1d72ad6:	48 89 45 d8          	mov    QWORD PTR [rbp-0x28],rax
+ 1d72ada:	4c 89 45 d0          	mov    QWORD PTR [rbp-0x30],r8
+ 1d72ade:	48 89 75 c8          	mov    QWORD PTR [rbp-0x38],rsi
+ 1d72ae2:	4c 89 65 c0          	mov    QWORD PTR [rbp-0x40],r12
+ 1d72ae6:	81 fa 81 00 00 00    	cmp    edx,0x81
+ 1d72aec:	0f 84 37 01 00 00    	je     1d72c29 <Builtins_TestLessThanHandler+0x3a9>
+ 1d72af2:	81 fa 80 00 00 00    	cmp    edx,0x80
+ 1d72af8:	0f 8c aa 00 00 00    	jl     1d72ba8 <Builtins_TestLessThanHandler+0x328>
+ 1d72afe:	81 fa 83 00 00 00    	cmp    edx,0x83
+ 1d72b04:	75 14                	jne    1d72b1a <Builtins_TestLessThanHandler+0x29a>
+ 1d72b06:	81 f9 15 05 00 00    	cmp    ecx,0x515
+ 1d72b0c:	74 30                	je     1d72b3e <Builtins_TestLessThanHandler+0x2be>
+ 1d72b0e:	0f b7 49 07          	movzx  ecx,WORD PTR [rcx+0x7]
+ 1d72b12:	81 f9 83 00 00 00    	cmp    ecx,0x83
+ 1d72b18:	74 07                	je     1d72b21 <Builtins_TestLessThanHandler+0x2a1>
+ 1d72b1a:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72b1f:	eb 2f                	jmp    1d72b50 <Builtins_TestLessThanHandler+0x2d0>
+ 1d72b21:	8b db                	mov    ebx,ebx
+ 1d72b23:	83 cb 18             	or     ebx,0x18
+ 1d72b26:	48 63 db             	movsxd rbx,ebx
+ 1d72b29:	41 83 f8 11          	cmp    r8d,0x11
+ 1d72b2d:	0f 84 6b 02 00 00    	je     1d72d9e <Builtins_TestLessThanHandler+0x51e>
+ 1d72b33:	83 f8 11             	cmp    eax,0x11
+ 1d72b36:	0f 84 59 02 00 00    	je     1d72d95 <Builtins_TestLessThanHandler+0x515>
+ 1d72b3c:	eb 12                	jmp    1d72b50 <Builtins_TestLessThanHandler+0x2d0>
+ 1d72b3e:	8b db                	mov    ebx,ebx
+ 1d72b40:	83 cb 1e             	or     ebx,0x1e
+ 1d72b43:	48 63 db             	movsxd rbx,ebx
+ 1d72b46:	41 83 f8 11          	cmp    r8d,0x11
+ 1d72b4a:	0f 84 5f 02 00 00    	je     1d72daf <Builtins_TestLessThanHandler+0x52f>
+ 1d72b50:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72b54:	81 fa 26 01 00 00    	cmp    edx,0x126
+ 1d72b5a:	7d 35                	jge    1d72b91 <Builtins_TestLessThanHandler+0x311>
+ 1d72b5c:	49 8b d1             	mov    rdx,r9
+ 1d72b5f:	8d 0c 12             	lea    ecx,[rdx+rdx*1]
+ 1d72b62:	48 89 4f d8          	mov    QWORD PTR [rdi-0x28],rcx
+ 1d72b66:	48 89 4d b8          	mov    QWORD PTR [rbp-0x48],rcx
+ 1d72b6a:	e8 51 f9 f3 ff       	call   1cb24c0 <Builtins_ToNumeric>
+ 1d72b6f:	48 89 45 d8          	mov    QWORD PTR [rbp-0x28],rax
+ 1d72b73:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72b77:	44 8b 45 b8          	mov    r8d,DWORD PTR [rbp-0x48]
+ 1d72b7b:	4c 89 47 d8          	mov    QWORD PTR [rdi-0x28],r8
+ 1d72b7f:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+ 1d72b83:	48 8b 75 c8          	mov    rsi,QWORD PTR [rbp-0x38]
+ 1d72b87:	e8 f4 f7 f3 ff       	call   1cb2380 <Builtins_NonNumberToNumeric>
+ 1d72b8c:	e9 1e ff ff ff       	jmp    1d72aaf <Builtins_TestLessThanHandler+0x22f>
+ 1d72b91:	49 8b d1             	mov    rdx,r9
+ 1d72b94:	8d 0c 12             	lea    ecx,[rdx+rdx*1]
+ 1d72b97:	48 89 4f d8          	mov    QWORD PTR [rdi-0x28],rcx
+ 1d72b9b:	49 8b c0             	mov    rax,r8
+ 1d72b9e:	e8 9d 19 f4 ff       	call   1cb4540 <Builtins_NonPrimitiveToPrimitive_Number>
+ 1d72ba3:	e9 07 ff ff ff       	jmp    1d72aaf <Builtins_TestLessThanHandler+0x22f>
+ 1d72ba8:	0f b7 51 07          	movzx  edx,WORD PTR [rcx+0x7]
+ 1d72bac:	81 fa 80 00 00 00    	cmp    edx,0x80
+ 1d72bb2:	0f 8c 4a 02 00 00    	jl     1d72e02 <Builtins_TestLessThanHandler+0x582>
+ 1d72bb8:	81 fa 81 00 00 00    	cmp    edx,0x81
+ 1d72bbe:	0f 84 fe 01 00 00    	je     1d72dc2 <Builtins_TestLessThanHandler+0x542>
+ 1d72bc4:	81 fa 26 01 00 00    	cmp    edx,0x126
+ 1d72bca:	7d 41                	jge    1d72c0d <Builtins_TestLessThanHandler+0x38d>
+ 1d72bcc:	49 8b d9             	mov    rbx,r9
+ 1d72bcf:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72bd2:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72bd6:	48 89 55 b8          	mov    QWORD PTR [rbp-0x48],rdx
+ 1d72bda:	49 8b c0             	mov    rax,r8
+ 1d72bdd:	e8 9e f7 f3 ff       	call   1cb2380 <Builtins_NonNumberToNumeric>
+ 1d72be2:	48 89 45 d0          	mov    QWORD PTR [rbp-0x30],rax
+ 1d72be6:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72bea:	44 8b 45 b8          	mov    r8d,DWORD PTR [rbp-0x48]
+ 1d72bee:	4c 89 47 d8          	mov    QWORD PTR [rdi-0x28],r8
+ 1d72bf2:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 1d72bf6:	48 8b 75 c8          	mov    rsi,QWORD PTR [rbp-0x38]
+ 1d72bfa:	e8 c1 f8 f3 ff       	call   1cb24c0 <Builtins_ToNumeric>
+ 1d72bff:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72c04:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72c08:	e9 c0 00 00 00       	jmp    1d72ccd <Builtins_TestLessThanHandler+0x44d>
+ 1d72c0d:	49 8b d9             	mov    rbx,r9
+ 1d72c10:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72c13:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72c17:	e8 24 19 f4 ff       	call   1cb4540 <Builtins_NonPrimitiveToPrimitive_Number>
+ 1d72c1c:	48 c7 45 b0 fe 07 00 	mov    QWORD PTR [rbp-0x50],0x7fe
+ 1d72c23:	00 
+ 1d72c24:	e9 a4 00 00 00       	jmp    1d72ccd <Builtins_TestLessThanHandler+0x44d>
+ 1d72c29:	81 f9 15 05 00 00    	cmp    ecx,0x515
+ 1d72c2f:	0f 84 35 03 00 00    	je     1d72f6a <Builtins_TestLessThanHandler+0x6ea>
+ 1d72c35:	0f b7 51 07          	movzx  edx,WORD PTR [rcx+0x7]
+ 1d72c39:	81 fa 81 00 00 00    	cmp    edx,0x81
+ 1d72c3f:	0f 84 4d 02 00 00    	je     1d72e92 <Builtins_TestLessThanHandler+0x612>
+ 1d72c45:	81 fa 80 00 00 00    	cmp    edx,0x80
+ 1d72c4b:	0f 8c f5 01 00 00    	jl     1d72e46 <Builtins_TestLessThanHandler+0x5c6>
+ 1d72c51:	49 8b d9             	mov    rbx,r9
+ 1d72c54:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72c57:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72c5b:	e8 20 f7 f3 ff       	call   1cb2380 <Builtins_NonNumberToNumeric>
+ 1d72c60:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72c65:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72c69:	eb 62                	jmp    1d72ccd <Builtins_TestLessThanHandler+0x44d>
+ 1d72c6b:	55                   	push   rbp
+ 1d72c6c:	48 8b ec             	mov    rbp,rsp
+ 1d72c6f:	6a 10                	push   0x10
+ 1d72c71:	48 83 ec 48          	sub    rsp,0x48
+ 1d72c75:	0f b7 51 07          	movzx  edx,WORD PTR [rcx+0x7]
+ 1d72c79:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d72c7d:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d72c81:	48 89 7d e0          	mov    QWORD PTR [rbp-0x20],rdi
+ 1d72c85:	4c 89 45 d0          	mov    QWORD PTR [rbp-0x30],r8
+ 1d72c89:	48 89 75 c8          	mov    QWORD PTR [rbp-0x38],rsi
+ 1d72c8d:	4c 89 65 c0          	mov    QWORD PTR [rbp-0x40],r12
+ 1d72c91:	81 fa 81 00 00 00    	cmp    edx,0x81
+ 1d72c97:	0f 84 16 03 00 00    	je     1d72fb3 <Builtins_TestLessThanHandler+0x733>
+ 1d72c9d:	81 fa 83 00 00 00    	cmp    edx,0x83
+ 1d72ca3:	74 07                	je     1d72cac <Builtins_TestLessThanHandler+0x42c>
+ 1d72ca5:	ba fe 07 00 00       	mov    edx,0x7fe
+ 1d72caa:	eb 05                	jmp    1d72cb1 <Builtins_TestLessThanHandler+0x431>
+ 1d72cac:	ba 1e 00 00 00       	mov    edx,0x1e
+ 1d72cb1:	8b d2                	mov    edx,edx
+ 1d72cb3:	8b db                	mov    ebx,ebx
+ 1d72cb5:	0b d3                	or     edx,ebx
+ 1d72cb7:	48 63 da             	movsxd rbx,edx
+ 1d72cba:	49 8b d1             	mov    rdx,r9
+ 1d72cbd:	8d 0c 12             	lea    ecx,[rdx+rdx*1]
+ 1d72cc0:	48 89 4f d8          	mov    QWORD PTR [rdi-0x28],rcx
+ 1d72cc4:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72cc8:	e8 b3 f6 f3 ff       	call   1cb2380 <Builtins_NonNumberToNumeric>
+ 1d72ccd:	8b 5d b0             	mov    ebx,DWORD PTR [rbp-0x50]
+ 1d72cd0:	4c 8b 65 c0          	mov    r12,QWORD PTR [rbp-0x40]
+ 1d72cd4:	4c 8b 45 d0          	mov    r8,QWORD PTR [rbp-0x30]
+ 1d72cd8:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72cdc:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72ce0:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72ce4:	48 8b 75 c8          	mov    rsi,QWORD PTR [rbp-0x38]
+ 1d72ce8:	48 8b e5             	mov    rsp,rbp
+ 1d72ceb:	5d                   	pop    rbp
+ 1d72cec:	e9 cf fb ff ff       	jmp    1d728c0 <Builtins_TestLessThanHandler+0x40>
+ 1d72cf1:	48 8b 5d b0          	mov    rbx,QWORD PTR [rbp-0x50]
+ 1d72cf5:	e9 e6 02 00 00       	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72cfa:	49 8b d9             	mov    rbx,r9
+ 1d72cfd:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72d00:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72d04:	6a 28                	push   0x28
+ 1d72d06:	50                   	push   rax
+ 1d72d07:	41 50                	push   r8
+ 1d72d09:	49 8b f3             	mov    rsi,r11
+ 1d72d0c:	b8 03 00 00 00       	mov    eax,0x3
+ 1d72d11:	49 8b 9d a8 43 00 00 	mov    rbx,QWORD PTR [r13+0x43a8]
+ 1d72d18:	48 8b d0             	mov    rdx,rax
+ 1d72d1b:	4c 8b c3             	mov    r8,rbx
+ 1d72d1e:	e8 9d e6 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d72d23:	eb 0a                	jmp    1d72d2f <Builtins_TestLessThanHandler+0x4af>
+ 1d72d25:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72d2a:	e9 b1 02 00 00       	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72d2f:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72d34:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72d38:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72d3c:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72d40:	48 8b e5             	mov    rsp,rbp
+ 1d72d43:	5d                   	pop    rbp
+ 1d72d44:	e9 53 fc ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72d49:	49 8b d9             	mov    rbx,r9
+ 1d72d4c:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72d4f:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72d53:	6a 24                	push   0x24
+ 1d72d55:	41 50                	push   r8
+ 1d72d57:	50                   	push   rax
+ 1d72d58:	49 8b f3             	mov    rsi,r11
+ 1d72d5b:	49 8b 9d a8 43 00 00 	mov    rbx,QWORD PTR [r13+0x43a8]
+ 1d72d62:	b8 03 00 00 00       	mov    eax,0x3
+ 1d72d67:	4c 8b c3             	mov    r8,rbx
+ 1d72d6a:	e8 51 e6 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d72d6f:	eb 0a                	jmp    1d72d7b <Builtins_TestLessThanHandler+0x4fb>
+ 1d72d71:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72d76:	e9 65 02 00 00       	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72d7b:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72d80:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72d84:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72d88:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72d8c:	48 8b e5             	mov    rsp,rbp
+ 1d72d8f:	5d                   	pop    rbp
+ 1d72d90:	e9 07 fc ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72d95:	48 8b e5             	mov    rsp,rbp
+ 1d72d98:	5d                   	pop    rbp
+ 1d72d99:	e9 f4 fb ff ff       	jmp    1d72992 <Builtins_TestLessThanHandler+0x112>
+ 1d72d9e:	48 8b e5             	mov    rsp,rbp
+ 1d72da1:	5d                   	pop    rbp
+ 1d72da2:	e9 eb fb ff ff       	jmp    1d72992 <Builtins_TestLessThanHandler+0x112>
+ 1d72da7:	8b 5d b0             	mov    ebx,DWORD PTR [rbp-0x50]
+ 1d72daa:	e9 31 02 00 00       	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72daf:	48 8b e5             	mov    rsp,rbp
+ 1d72db2:	5d                   	pop    rbp
+ 1d72db3:	e9 da fb ff ff       	jmp    1d72992 <Builtins_TestLessThanHandler+0x112>
+ 1d72db8:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72dbd:	e9 1e 02 00 00       	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72dc2:	49 8b d9             	mov    rbx,r9
+ 1d72dc5:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72dc8:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72dcc:	6a 28                	push   0x28
+ 1d72dce:	50                   	push   rax
+ 1d72dcf:	41 50                	push   r8
+ 1d72dd1:	49 8b f3             	mov    rsi,r11
+ 1d72dd4:	49 8b 9d b0 43 00 00 	mov    rbx,QWORD PTR [r13+0x43b0]
+ 1d72ddb:	b8 03 00 00 00       	mov    eax,0x3
+ 1d72de0:	4c 8b c3             	mov    r8,rbx
+ 1d72de3:	e8 d8 e5 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d72de8:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72ded:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72df1:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72df5:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72df9:	48 8b e5             	mov    rsp,rbp
+ 1d72dfc:	5d                   	pop    rbp
+ 1d72dfd:	e9 9a fb ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72e02:	44 8b db             	mov    r11d,ebx
+ 1d72e05:	41 83 cb 60          	or     r11d,0x60
+ 1d72e09:	49 63 db             	movsxd rbx,r11d
+ 1d72e0c:	4d 8b d9             	mov    r11,r9
+ 1d72e0f:	43 8d 14 1b          	lea    edx,[r11+r11*1]
+ 1d72e13:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72e17:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72e1b:	49 8b d0             	mov    rdx,r8
+ 1d72e1e:	e8 5d b7 e1 ff       	call   1b8e580 <Builtins_StringLessThan>
+ 1d72e23:	48 8b 5d b0          	mov    rbx,QWORD PTR [rbp-0x50]
+ 1d72e27:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72e2b:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72e2f:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72e33:	48 8b e5             	mov    rsp,rbp
+ 1d72e36:	5d                   	pop    rbp
+ 1d72e37:	e9 60 fb ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72e3c:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72e41:	e9 9a 01 00 00       	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72e46:	49 8b d9             	mov    rbx,r9
+ 1d72e49:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72e4c:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72e50:	6a 24                	push   0x24
+ 1d72e52:	41 50                	push   r8
+ 1d72e54:	50                   	push   rax
+ 1d72e55:	49 8b f3             	mov    rsi,r11
+ 1d72e58:	49 8b 9d b0 43 00 00 	mov    rbx,QWORD PTR [r13+0x43b0]
+ 1d72e5f:	b8 03 00 00 00       	mov    eax,0x3
+ 1d72e64:	4c 8b c3             	mov    r8,rbx
+ 1d72e67:	e8 54 e5 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d72e6c:	eb 0a                	jmp    1d72e78 <Builtins_TestLessThanHandler+0x5f8>
+ 1d72e6e:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72e73:	e9 68 01 00 00       	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72e78:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72e7d:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72e81:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72e85:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72e89:	48 8b e5             	mov    rsp,rbp
+ 1d72e8c:	5d                   	pop    rbp
+ 1d72e8d:	e9 0a fb ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72e92:	41 8b 50 03          	mov    edx,DWORD PTR [r8+0x3]
+ 1d72e96:	48 8b ca             	mov    rcx,rdx
+ 1d72e99:	c1 e9 08             	shr    ecx,0x8
+ 1d72e9c:	74 15                	je     1d72eb3 <Builtins_TestLessThanHandler+0x633>
+ 1d72e9e:	83 f9 01             	cmp    ecx,0x1
+ 1d72ea1:	75 2e                	jne    1d72ed1 <Builtins_TestLessThanHandler+0x651>
+ 1d72ea3:	48 b9 00 00 00 00 00 	movabs rcx,0x8000000000000000
+ 1d72eaa:	00 00 80 
+ 1d72ead:	49 85 48 07          	test   QWORD PTR [r8+0x7],rcx
+ 1d72eb1:	75 1e                	jne    1d72ed1 <Builtins_TestLessThanHandler+0x651>
+ 1d72eb3:	8b 48 03             	mov    ecx,DWORD PTR [rax+0x3]
+ 1d72eb6:	48 89 4d b8          	mov    QWORD PTR [rbp-0x48],rcx
+ 1d72eba:	c1 e9 08             	shr    ecx,0x8
+ 1d72ebd:	74 52                	je     1d72f11 <Builtins_TestLessThanHandler+0x691>
+ 1d72ebf:	83 f9 01             	cmp    ecx,0x1
+ 1d72ec2:	75 0d                	jne    1d72ed1 <Builtins_TestLessThanHandler+0x651>
+ 1d72ec4:	48 8b 0d da ff ff ff 	mov    rcx,QWORD PTR [rip+0xffffffffffffffda]        # 1d72ea5 <Builtins_TestLessThanHandler+0x625>
+ 1d72ecb:	48 85 48 07          	test   QWORD PTR [rax+0x7],rcx
+ 1d72ecf:	74 40                	je     1d72f11 <Builtins_TestLessThanHandler+0x691>
+ 1d72ed1:	8b db                	mov    ebx,ebx
+ 1d72ed3:	81 cb 00 03 00 00    	or     ebx,0x300
+ 1d72ed9:	48 63 db             	movsxd rbx,ebx
+ 1d72edc:	49 8b d1             	mov    rdx,r9
+ 1d72edf:	8d 0c 12             	lea    ecx,[rdx+rdx*1]
+ 1d72ee2:	48 89 4f d8          	mov    QWORD PTR [rdi-0x28],rcx
+ 1d72ee6:	48 89 5d b0          	mov    QWORD PTR [rbp-0x50],rbx
+ 1d72eea:	48 8b d8             	mov    rbx,rax
+ 1d72eed:	49 8b c0             	mov    rax,r8
+ 1d72ef0:	49 8b f3             	mov    rsi,r11
+ 1d72ef3:	e8 c8 84 f3 ff       	call   1cab3c0 <Builtins_BigIntLessThan>
+ 1d72ef8:	48 8b 5d b0          	mov    rbx,QWORD PTR [rbp-0x50]
+ 1d72efc:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72f00:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72f04:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72f08:	48 8b e5             	mov    rsp,rbp
+ 1d72f0b:	5d                   	pop    rbp
+ 1d72f0c:	e9 8b fa ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72f11:	4c 8b da             	mov    r11,rdx
+ 1d72f14:	41 c1 eb 08          	shr    r11d,0x8
+ 1d72f18:	75 08                	jne    1d72f22 <Builtins_TestLessThanHandler+0x6a2>
+ 1d72f1a:	45 33 c0             	xor    r8d,r8d
+ 1d72f1d:	4d 8b d8             	mov    r11,r8
+ 1d72f20:	eb 0c                	jmp    1d72f2e <Builtins_TestLessThanHandler+0x6ae>
+ 1d72f22:	4d 8b 40 07          	mov    r8,QWORD PTR [r8+0x7]
+ 1d72f26:	f6 c2 01             	test   dl,0x1
+ 1d72f29:	74 03                	je     1d72f2e <Builtins_TestLessThanHandler+0x6ae>
+ 1d72f2b:	49 f7 d8             	neg    r8
+ 1d72f2e:	48 8b 4d b8          	mov    rcx,QWORD PTR [rbp-0x48]
+ 1d72f32:	c1 e9 08             	shr    ecx,0x8
+ 1d72f35:	75 05                	jne    1d72f3c <Builtins_TestLessThanHandler+0x6bc>
+ 1d72f37:	45 33 db             	xor    r11d,r11d
+ 1d72f3a:	eb 0d                	jmp    1d72f49 <Builtins_TestLessThanHandler+0x6c9>
+ 1d72f3c:	4c 8b 58 07          	mov    r11,QWORD PTR [rax+0x7]
+ 1d72f40:	f6 45 b8 01          	test   BYTE PTR [rbp-0x48],0x1
+ 1d72f44:	74 03                	je     1d72f49 <Builtins_TestLessThanHandler+0x6c9>
+ 1d72f46:	49 f7 db             	neg    r11
+ 1d72f49:	8b c3                	mov    eax,ebx
+ 1d72f4b:	0d 00 01 00 00       	or     eax,0x100
+ 1d72f50:	48 63 d8             	movsxd rbx,eax
+ 1d72f53:	4d 3b c3             	cmp    r8,r11
+ 1d72f56:	7c 09                	jl     1d72f61 <Builtins_TestLessThanHandler+0x6e1>
+ 1d72f58:	48 8b e5             	mov    rsp,rbp
+ 1d72f5b:	5d                   	pop    rbp
+ 1d72f5c:	e9 31 fa ff ff       	jmp    1d72992 <Builtins_TestLessThanHandler+0x112>
+ 1d72f61:	48 8b e5             	mov    rsp,rbp
+ 1d72f64:	5d                   	pop    rbp
+ 1d72f65:	e9 2e fa ff ff       	jmp    1d72998 <Builtins_TestLessThanHandler+0x118>
+ 1d72f6a:	49 8b d9             	mov    rbx,r9
+ 1d72f6d:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72f70:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72f74:	6a 24                	push   0x24
+ 1d72f76:	41 50                	push   r8
+ 1d72f78:	50                   	push   rax
+ 1d72f79:	49 8b f3             	mov    rsi,r11
+ 1d72f7c:	49 8b 9d a8 43 00 00 	mov    rbx,QWORD PTR [r13+0x43a8]
+ 1d72f83:	b8 03 00 00 00       	mov    eax,0x3
+ 1d72f88:	4c 8b c3             	mov    r8,rbx
+ 1d72f8b:	e8 30 e4 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d72f90:	eb 07                	jmp    1d72f99 <Builtins_TestLessThanHandler+0x719>
+ 1d72f92:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72f97:	eb 47                	jmp    1d72fe0 <Builtins_TestLessThanHandler+0x760>
+ 1d72f99:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72f9e:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d72fa2:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d72fa6:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d72faa:	48 8b e5             	mov    rsp,rbp
+ 1d72fad:	5d                   	pop    rbp
+ 1d72fae:	e9 e9 f9 ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d72fb3:	49 8b d9             	mov    rbx,r9
+ 1d72fb6:	8d 14 1b             	lea    edx,[rbx+rbx*1]
+ 1d72fb9:	48 89 57 d8          	mov    QWORD PTR [rdi-0x28],rdx
+ 1d72fbd:	6a 28                	push   0x28
+ 1d72fbf:	50                   	push   rax
+ 1d72fc0:	41 50                	push   r8
+ 1d72fc2:	49 8b f3             	mov    rsi,r11
+ 1d72fc5:	49 8b 9d a8 43 00 00 	mov    rbx,QWORD PTR [r13+0x43a8]
+ 1d72fcc:	b8 03 00 00 00       	mov    eax,0x3
+ 1d72fd1:	4c 8b c3             	mov    r8,rbx
+ 1d72fd4:	e8 e7 e3 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d72fd9:	eb 61                	jmp    1d7303c <Builtins_TestLessThanHandler+0x7bc>
+ 1d72fdb:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d72fe0:	d1 fb                	sar    ebx,1
+ 1d72fe2:	48 8b 7d e8          	mov    rdi,QWORD PTR [rbp-0x18]
+ 1d72fe6:	4c 8b 65 c0          	mov    r12,QWORD PTR [rbp-0x40]
+ 1d72fea:	45 0f b6 44 3c 02    	movzx  r8d,BYTE PTR [r12+rdi*1+0x2]
+ 1d72ff0:	4d 8b d8             	mov    r11,r8
+ 1d72ff3:	41 c1 e3 05          	shl    r11d,0x5
+ 1d72ff7:	49 8b 95 c0 30 00 00 	mov    rdx,QWORD PTR [r13+0x30c0]
+ 1d72ffe:	0f b6 1c 1a          	movzx  ebx,BYTE PTR [rdx+rbx*1]
+ 1d73002:	41 0b db             	or     ebx,r11d
+ 1d73005:	4d 8b 9d b8 30 00 00 	mov    r11,QWORD PTR [r13+0x30b8]
+ 1d7300c:	45 0f b6 1c 1b       	movzx  r11d,BYTE PTR [r11+rbx*1]
+ 1d73011:	45 3a c3             	cmp    r8b,r11b
+ 1d73014:	74 05                	je     1d7301b <Builtins_TestLessThanHandler+0x79b>
+ 1d73016:	45 88 5c 3c 02       	mov    BYTE PTR [r12+rdi*1+0x2],r11b
+ 1d7301b:	d1 e7                	shl    edi,1
+ 1d7301d:	4c 8b 5d e0          	mov    r11,QWORD PTR [rbp-0x20]
+ 1d73021:	49 89 7b d8          	mov    QWORD PTR [r11-0x28],rdi
+ 1d73025:	50                   	push   rax
+ 1d73026:	49 8b 9d 88 48 00 00 	mov    rbx,QWORD PTR [r13+0x4888]
+ 1d7302d:	b8 01 00 00 00       	mov    eax,0x1
+ 1d73032:	48 8b 75 c8          	mov    rsi,QWORD PTR [rbp-0x38]
+ 1d73036:	e8 85 e3 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d7303b:	cc                   	int3
+ 1d7303c:	bb fe 07 00 00       	mov    ebx,0x7fe
+ 1d73041:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d73045:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d73049:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d7304d:	48 8b e5             	mov    rsp,rbp
+ 1d73050:	5d                   	pop    rbp
+ 1d73051:	e9 46 f9 ff ff       	jmp    1d7299c <Builtins_TestLessThanHandler+0x11c>
+ 1d73056:	90                   	nop
+ 1d73057:	90                   	nop

@@ -1,0 +1,73 @@
+quickjs.c; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+20227:             BREAK;
+20228: 
+20229: 
+20230: #define OP_CMP(opcode, binary_op, slow_call)                            \
+20231:             CASE(opcode):                                               \
+20232:                 {                                                       \
+20233:                 JSValue op1, op2;                                       \
+20234:                 op1 = sp[-2];                                           \
+20235:                 op2 = sp[-1];                                           \
+20236:                 if (likely(JS_VALUE_IS_BOTH_INT(op1, op2))) {           \
+20237:                     sp[-2] = JS_NewBool(ctx, JS_VALUE_GET_INT(op1) binary_op JS_VALUE_GET_INT(op2)); \
+20238:                     sp--;                                               \
+20239:                 } else if (JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op1)) ||  \
+20240:                            JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op2))) {  \
+20241:                     double d1, d2;                                      \
+20242:                     if (JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op1))) {     \
+20243:                         d1 = JS_VALUE_GET_FLOAT64(op1);                 \
+20244:                     } else if (JS_VALUE_GET_TAG(op1) == JS_TAG_INT) {   \
+20245:                         d1 = JS_VALUE_GET_INT(op1);                     \
+20246:                     } else {                                            \
+20247:                         goto opcode ## _slow_case;                      \
+20248:                     }                                                   \
+20249:                     if (JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op2))) {     \
+20250:                         d2 = JS_VALUE_GET_FLOAT64(op2);                 \
+20251:                     } else if (JS_VALUE_GET_TAG(op2) == JS_TAG_INT) {   \
+20252:                         d2 = JS_VALUE_GET_INT(op2);                     \
+20253:                     } else {                                            \
+20254:                         goto opcode ## _slow_case;                      \
+20255:                     }                                                   \
+20256:                     sp[-2] = JS_NewBool(ctx, d1 binary_op d2);          \
+20257:                     sp--;                                               \
+20258:                 } else {                                                \
+20259:                 opcode ## _slow_case:                                   \
+20260:                     sf->cur_pc = pc;                                    \
+20261:                     if (slow_call)                                      \
+20262:                         goto exception;                                 \
+20263:                     sp--;                                               \
+20264:                 }                                                       \
+20265:                 }                                                       \
+20266:             BREAK
+20267: 
+20268:             OP_CMP(OP_lt, <, js_relational_slow(ctx, sp, opcode));
+20269:             OP_CMP(OP_lte, <=, js_relational_slow(ctx, sp, opcode));
+20270:             OP_CMP(OP_gt, >, js_relational_slow(ctx, sp, opcode));
+20271:             OP_CMP(OP_gte, >=, js_relational_slow(ctx, sp, opcode));
+20272: 
+20273: #define OP_CMP_EQ(opcode, inv)                                          \
+20274:             CASE(opcode):                                               \
+20275:                 {                                                       \
+20276:                 JSValue op1, op2;                                       \
+20277:                 int res;                                                \
+20278:                 uint32_t tag1, tag2;                                    \
+20279:                 op1 = sp[-2];                                           \
+20280:                 op2 = sp[-1];                                           \
+20281:                 tag1 = JS_VALUE_GET_TAG(op1);                           \
+20282:                 tag2 = JS_VALUE_GET_TAG(op2);                           \
+20283:                 if (likely(tag1 == JS_TAG_INT)) {                       \
+20284:                     if (tag2 == JS_TAG_INT) {                           \
+20285:                         res = JS_VALUE_GET_INT(op1) == JS_VALUE_GET_INT(op2); \
+20286:                     } else if (JS_TAG_IS_FLOAT64(tag2)) {               \
+20287:                         res = (JS_VALUE_GET_INT(op1) == JS_VALUE_GET_FLOAT64(op2)); \
+20288:                     } else {                                            \
+20289:                         goto slow_eq ## inv;                            \
+20290:                     }                                                   \
+20291:                 } else if (JS_TAG_IS_FLOAT64(tag1)) {                   \
+20292:                     if (tag2 == JS_TAG_INT) {                           \
+20293:                         res = JS_VALUE_GET_FLOAT64(op1) == JS_VALUE_GET_INT(op2); \
+20294:                     } else if (JS_TAG_IS_FLOAT64(tag2)) {               \
+20295:                         res = (JS_VALUE_GET_FLOAT64(op1) == JS_VALUE_GET_FLOAT64(op2)); \
+20296:                     } else {                                            \
+20297:                         goto slow_eq ## inv;                            \
+20298:                     }                                                   \
