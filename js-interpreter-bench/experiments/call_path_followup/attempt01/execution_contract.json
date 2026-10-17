@@ -1,0 +1,40 @@
+{
+  "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_MONOTONIC_SIMPLE_V1",
+  "clock": "existing benchNow wrapper over native performance.now; monotonic",
+  "before_timer": [
+    "process and VM startup",
+    "adapters",
+    "source loading and static function compilation",
+    "objects/input setup"
+  ],
+  "timed": [
+    "first target invocation and remaining N-1 calls",
+    "repeat driver and int32 checksum",
+    "loop support operations",
+    "runtime/helper/GC/builtin costs as encountered"
+  ],
+  "after_timer": [
+    "result validation",
+    "JSON output",
+    "process shutdown"
+  ],
+  "warmup": false,
+  "v8_flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "same_script": true,
+  "timing_not": "pure interpreter-loop self time; no operation-level self time or frontend-percentage claim",
+  "experiment": "call_path_followup/attempt01",
+  "formal_samples": 240,
+  "inner_iterations": 4096,
+  "expected_per_call": 8398848,
+  "calibration": {
+    "pilot_min_ms": 1500,
+    "confirmations_per_engine": 3,
+    "confirmation_min_ms": 1200,
+    "selection": "first power of two with pilot pair >=1500ms and all 6 independent confirmations >=1200ms",
+    "no_workload_warmup": true
+  },
+  "state": "first call included; subsequent feedback/state evolve; not all-cold"
+}

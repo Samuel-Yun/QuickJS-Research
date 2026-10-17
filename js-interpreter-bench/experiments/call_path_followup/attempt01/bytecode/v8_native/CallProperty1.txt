@@ -1,0 +1,247 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d6edc0 <Builtins_CallProperty1Handler>:
+ 1d6edc0:	43 8d 1c 09          	lea    ebx,[r9+r9*1]
+ 1d6edc4:	48 8b d5             	mov    rdx,rbp
+ 1d6edc7:	48 89 5a d8          	mov    QWORD PTR [rdx-0x28],rbx
+ 1d6edcb:	4b 0f be 5c 0c 01    	movsx  rbx,BYTE PTR [r12+r9*1+0x1]
+ 1d6edd1:	48 8b 4a d0          	mov    rcx,QWORD PTR [rdx-0x30]
+ 1d6edd5:	48 8b 72 f8          	mov    rsi,QWORD PTR [rdx-0x8]
+ 1d6edd9:	47 0f b6 44 0c 04    	movzx  r8d,BYTE PTR [r12+r9*1+0x4]
+ 1d6eddf:	48 8b 3c da          	mov    rdi,QWORD PTR [rdx+rbx*8]
+ 1d6ede3:	8b 59 ff             	mov    ebx,DWORD PTR [rcx-0x1]
+ 1d6ede6:	81 fb 95 08 00 00    	cmp    ebx,0x895
+ 1d6edec:	0f 85 b7 02 00 00    	jne    1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6edf2:	42 8b 5c 81 1f       	mov    ebx,DWORD PTR [rcx+r8*4+0x1f]
+ 1d6edf7:	83 c3 10             	add    ebx,0x10
+ 1d6edfa:	48 63 db             	movsxd rbx,ebx
+ 1d6edfd:	42 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],ebx
+ 1d6ee02:	42 8b 5c 81 1b       	mov    ebx,DWORD PTR [rcx+r8*4+0x1b]
+ 1d6ee07:	49 0b de             	or     rbx,r14
+ 1d6ee0a:	44 8b db             	mov    r11d,ebx
+ 1d6ee0d:	41 83 e3 fd          	and    r11d,0xfffffffd
+ 1d6ee11:	41 3b fb             	cmp    edi,r11d
+ 1d6ee14:	0f 84 8f 02 00 00    	je     1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6ee1a:	81 fb c5 0e 00 00    	cmp    ebx,0xec5
+ 1d6ee20:	0f 84 83 02 00 00    	je     1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6ee26:	81 fb b5 0e 00 00    	cmp    ebx,0xeb5
+ 1d6ee2c:	0f 84 a5 01 00 00    	je     1d6efd7 <Builtins_CallProperty1Handler+0x217>
+ 1d6ee32:	83 fb 03             	cmp    ebx,0x3
+ 1d6ee35:	0f 84 75 01 00 00    	je     1d6efb0 <Builtins_CallProperty1Handler+0x1f0>
+ 1d6ee3b:	4c 8b db             	mov    r11,rbx
+ 1d6ee3e:	49 83 e3 fd          	and    r11,0xfffffffffffffffd
+ 1d6ee42:	46 8b 7c 81 1f       	mov    r15d,DWORD PTR [rcx+r8*4+0x1f]
+ 1d6ee47:	41 8b c7             	mov    eax,r15d
+ 1d6ee4a:	83 e0 03             	and    eax,0x3
+ 1d6ee4d:	3c 03                	cmp    al,0x3
+ 1d6ee4f:	0f 84 db 00 00 00    	je     1d6ef30 <Builtins_CallProperty1Handler+0x170>
+ 1d6ee55:	41 f6 c7 01          	test   r15b,0x1
+ 1d6ee59:	0f 85 d1 00 00 00    	jne    1d6ef30 <Builtins_CallProperty1Handler+0x170>
+ 1d6ee5f:	41 d1 ff             	sar    r15d,1
+ 1d6ee62:	4d 63 ff             	movsxd r15,r15d
+ 1d6ee65:	41 f6 c7 04          	test   r15b,0x4
+ 1d6ee69:	0f 84 c1 00 00 00    	je     1d6ef30 <Builtins_CallProperty1Handler+0x170>
+ 1d6ee6f:	8b 46 ff             	mov    eax,DWORD PTR [rsi-0x1]
+ 1d6ee72:	41 8b 44 06 13       	mov    eax,DWORD PTR [r14+rax*1+0x13]
+ 1d6ee77:	49 0b c6             	or     rax,r14
+ 1d6ee7a:	83 78 03 1a          	cmp    DWORD PTR [rax+0x3],0x1a
+ 1d6ee7e:	77 01                	ja     1d6ee81 <Builtins_CallProperty1Handler+0xc1>
+ 1d6ee80:	cc                   	int3
+ 1d6ee81:	39 78 3b             	cmp    DWORD PTR [rax+0x3b],edi
+ 1d6ee84:	0f 85 a6 00 00 00    	jne    1d6ef30 <Builtins_CallProperty1Handler+0x170>
+ 1d6ee8a:	4f 0f be 5c 0c 02    	movsx  r11,BYTE PTR [r12+r9*1+0x2]
+ 1d6ee90:	8b db                	mov    ebx,ebx
+ 1d6ee92:	4e 8b 1c da          	mov    r11,QWORD PTR [rdx+r11*8]
+ 1d6ee96:	83 e3 fd             	and    ebx,0xfffffffd
+ 1d6ee99:	44 3b db             	cmp    r11d,ebx
+ 1d6ee9c:	0f 84 07 02 00 00    	je     1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6eea2:	49 83 e7 fb          	and    r15,0xfffffffffffffffb
+ 1d6eea6:	43 8d 1c 3f          	lea    ebx,[r15+r15*1]
+ 1d6eeaa:	42 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],ebx
+ 1d6eeaf:	40 f6 c7 01          	test   dil,0x1
+ 1d6eeb3:	0f 84 e7 01 00 00    	je     1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6eeb9:	48 8b df             	mov    rbx,rdi
+ 1d6eebc:	eb 08                	jmp    1d6eec6 <Builtins_CallProperty1Handler+0x106>
+ 1d6eebe:	66 90                	xchg   ax,ax
+ 1d6eec0:	8b 5b 0b             	mov    ebx,DWORD PTR [rbx+0xb]
+ 1d6eec3:	49 0b de             	or     rbx,r14
+ 1d6eec6:	44 8b 5b ff          	mov    r11d,DWORD PTR [rbx-0x1]
+ 1d6eeca:	47 0f b7 5c 1e 07    	movzx  r11d,WORD PTR [r14+r11*1+0x7]
+ 1d6eed0:	41 81 fb 22 08 00 00 	cmp    r11d,0x822
+ 1d6eed7:	74 e7                	je     1d6eec0 <Builtins_CallProperty1Handler+0x100>
+ 1d6eed9:	41 81 eb 10 08 00 00 	sub    r11d,0x810
+ 1d6eee0:	41 83 fb 11          	cmp    r11d,0x11
+ 1d6eee4:	0f 87 b6 01 00 00    	ja     1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6eeea:	8b 5b 13             	mov    ebx,DWORD PTR [rbx+0x13]
+ 1d6eeed:	44 8b 5e ff          	mov    r11d,DWORD PTR [rsi-0x1]
+ 1d6eef1:	41 8b 5c 1e ff       	mov    ebx,DWORD PTR [r14+rbx*1-0x1]
+ 1d6eef6:	47 8b 5c 1e 13       	mov    r11d,DWORD PTR [r14+r11*1+0x13]
+ 1d6eefb:	45 39 5c 1e 13       	cmp    DWORD PTR [r14+rbx*1+0x13],r11d
+ 1d6ef00:	0f 85 9a 01 00 00    	jne    1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6ef06:	48 8b df             	mov    rbx,rdi
+ 1d6ef09:	48 83 cb 03          	or     rbx,0x3
+ 1d6ef0d:	42 89 5c 81 1b       	mov    DWORD PTR [rcx+r8*4+0x1b],ebx
+ 1d6ef12:	f6 c3 01             	test   bl,0x1
+ 1d6ef15:	74 14                	je     1d6ef2b <Builtins_CallProperty1Handler+0x16b>
+ 1d6ef17:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d6ef1e:	4c 23 d9             	and    r11,rcx
+ 1d6ef21:	41 f6 03 04          	test   BYTE PTR [r11],0x4
+ 1d6ef25:	0f 85 03 02 00 00    	jne    1d6f12e <Builtins_CallProperty1Handler+0x36e>
+ 1d6ef2b:	e9 79 01 00 00       	jmp    1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6ef30:	40 f6 c7 01          	test   dil,0x1
+ 1d6ef34:	0f 84 66 01 00 00    	je     1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6ef3a:	8b 5f ff             	mov    ebx,DWORD PTR [rdi-0x1]
+ 1d6ef3d:	41 0f b7 5c 1e 07    	movzx  ebx,WORD PTR [r14+rbx*1+0x7]
+ 1d6ef43:	81 eb 10 08 00 00    	sub    ebx,0x810
+ 1d6ef49:	83 fb 11             	cmp    ebx,0x11
+ 1d6ef4c:	0f 87 4e 01 00 00    	ja     1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6ef52:	8b 5f 17             	mov    ebx,DWORD PTR [rdi+0x17]
+ 1d6ef55:	44 3b db             	cmp    r11d,ebx
+ 1d6ef58:	0f 84 4b 01 00 00    	je     1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6ef5e:	45 8b 7b ff          	mov    r15d,DWORD PTR [r11-0x1]
+ 1d6ef62:	47 0f b7 7c 3e 07    	movzx  r15d,WORD PTR [r14+r15*1+0x7]
+ 1d6ef68:	41 81 ef 10 08 00 00 	sub    r15d,0x810
+ 1d6ef6f:	41 83 ff 11          	cmp    r15d,0x11
+ 1d6ef73:	0f 87 27 01 00 00    	ja     1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6ef79:	45 8b 5b 17          	mov    r11d,DWORD PTR [r11+0x17]
+ 1d6ef7d:	4d 0b de             	or     r11,r14
+ 1d6ef80:	41 3b db             	cmp    ebx,r11d
+ 1d6ef83:	0f 85 17 01 00 00    	jne    1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6ef89:	49 83 cb 03          	or     r11,0x3
+ 1d6ef8d:	46 89 5c 81 1b       	mov    DWORD PTR [rcx+r8*4+0x1b],r11d
+ 1d6ef92:	41 f6 c3 01          	test   r11b,0x1
+ 1d6ef96:	74 13                	je     1d6efab <Builtins_CallProperty1Handler+0x1eb>
+ 1d6ef98:	48 c7 c3 00 00 fc ff 	mov    rbx,0xfffffffffffc0000
+ 1d6ef9f:	48 23 d9             	and    rbx,rcx
+ 1d6efa2:	f6 03 04             	test   BYTE PTR [rbx],0x4
+ 1d6efa5:	0f 85 51 01 00 00    	jne    1d6f0fc <Builtins_CallProperty1Handler+0x33c>
+ 1d6efab:	e9 f9 00 00 00       	jmp    1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6efb0:	42 8b 5c 81 1f       	mov    ebx,DWORD PTR [rcx+r8*4+0x1f]
+ 1d6efb5:	44 8b db             	mov    r11d,ebx
+ 1d6efb8:	41 83 e3 03          	and    r11d,0x3
+ 1d6efbc:	41 80 fb 03          	cmp    r11b,0x3
+ 1d6efc0:	74 15                	je     1d6efd7 <Builtins_CallProperty1Handler+0x217>
+ 1d6efc2:	f6 c3 01             	test   bl,0x1
+ 1d6efc5:	75 10                	jne    1d6efd7 <Builtins_CallProperty1Handler+0x217>
+ 1d6efc7:	d1 fb                	sar    ebx,1
+ 1d6efc9:	48 63 db             	movsxd rbx,ebx
+ 1d6efcc:	48 83 e3 fb          	and    rbx,0xfffffffffffffffb
+ 1d6efd0:	d1 e3                	shl    ebx,1
+ 1d6efd2:	42 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],ebx
+ 1d6efd7:	8b 5e ff             	mov    ebx,DWORD PTR [rsi-0x1]
+ 1d6efda:	41 8b 5c 1e 13       	mov    ebx,DWORD PTR [r14+rbx*1+0x13]
+ 1d6efdf:	49 0b de             	or     rbx,r14
+ 1d6efe2:	83 7b 03 1a          	cmp    DWORD PTR [rbx+0x3],0x1a
+ 1d6efe6:	77 01                	ja     1d6efe9 <Builtins_CallProperty1Handler+0x229>
+ 1d6efe8:	cc                   	int3
+ 1d6efe9:	39 7b 3b             	cmp    DWORD PTR [rbx+0x3b],edi
+ 1d6efec:	74 05                	je     1d6eff3 <Builtins_CallProperty1Handler+0x233>
+ 1d6efee:	48 8b df             	mov    rbx,rdi
+ 1d6eff1:	eb 34                	jmp    1d6f027 <Builtins_CallProperty1Handler+0x267>
+ 1d6eff3:	4b 0f be 5c 0c 02    	movsx  rbx,BYTE PTR [r12+r9*1+0x2]
+ 1d6eff9:	46 8b 5c 81 1f       	mov    r11d,DWORD PTR [rcx+r8*4+0x1f]
+ 1d6effe:	48 8b 1c da          	mov    rbx,QWORD PTR [rdx+rbx*8]
+ 1d6f002:	45 8b fb             	mov    r15d,r11d
+ 1d6f005:	41 83 e7 03          	and    r15d,0x3
+ 1d6f009:	41 80 ff 03          	cmp    r15b,0x3
+ 1d6f00d:	74 18                	je     1d6f027 <Builtins_CallProperty1Handler+0x267>
+ 1d6f00f:	41 f6 c3 01          	test   r11b,0x1
+ 1d6f013:	75 12                	jne    1d6f027 <Builtins_CallProperty1Handler+0x267>
+ 1d6f015:	41 d1 fb             	sar    r11d,1
+ 1d6f018:	4d 63 db             	movsxd r11,r11d
+ 1d6f01b:	49 83 cb 04          	or     r11,0x4
+ 1d6f01f:	41 d1 e3             	shl    r11d,1
+ 1d6f022:	46 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],r11d
+ 1d6f027:	f6 c3 01             	test   bl,0x1
+ 1d6f02a:	0f 84 70 00 00 00    	je     1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6f030:	4c 8b db             	mov    r11,rbx
+ 1d6f033:	eb 12                	jmp    1d6f047 <Builtins_CallProperty1Handler+0x287>
+ 1d6f035:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d6f03c:	00 00 
+ 1d6f03e:	66 90                	xchg   ax,ax
+ 1d6f040:	45 8b 5b 0b          	mov    r11d,DWORD PTR [r11+0xb]
+ 1d6f044:	4d 0b de             	or     r11,r14
+ 1d6f047:	45 8b 7b ff          	mov    r15d,DWORD PTR [r11-0x1]
+ 1d6f04b:	47 0f b7 7c 3e 07    	movzx  r15d,WORD PTR [r14+r15*1+0x7]
+ 1d6f051:	41 81 ff 22 08 00 00 	cmp    r15d,0x822
+ 1d6f058:	74 e6                	je     1d6f040 <Builtins_CallProperty1Handler+0x280>
+ 1d6f05a:	41 81 ef 10 08 00 00 	sub    r15d,0x810
+ 1d6f061:	41 83 ff 11          	cmp    r15d,0x11
+ 1d6f065:	77 39                	ja     1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6f067:	45 8b 5b 13          	mov    r11d,DWORD PTR [r11+0x13]
+ 1d6f06b:	44 8b 7e ff          	mov    r15d,DWORD PTR [rsi-0x1]
+ 1d6f06f:	47 8b 5c 1e ff       	mov    r11d,DWORD PTR [r14+r11*1-0x1]
+ 1d6f074:	47 8b 7c 3e 13       	mov    r15d,DWORD PTR [r14+r15*1+0x13]
+ 1d6f079:	47 39 7c 1e 13       	cmp    DWORD PTR [r14+r11*1+0x13],r15d
+ 1d6f07e:	75 20                	jne    1d6f0a0 <Builtins_CallProperty1Handler+0x2e0>
+ 1d6f080:	48 83 cb 03          	or     rbx,0x3
+ 1d6f084:	42 89 5c 81 1b       	mov    DWORD PTR [rcx+r8*4+0x1b],ebx
+ 1d6f089:	f6 c3 01             	test   bl,0x1
+ 1d6f08c:	74 10                	je     1d6f09e <Builtins_CallProperty1Handler+0x2de>
+ 1d6f08e:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d6f095:	4c 23 d9             	and    r11,rcx
+ 1d6f098:	41 f6 03 04          	test   BYTE PTR [r11],0x4
+ 1d6f09c:	75 33                	jne    1d6f0d1 <Builtins_CallProperty1Handler+0x311>
+ 1d6f09e:	eb 09                	jmp    1d6f0a9 <Builtins_CallProperty1Handler+0x2e9>
+ 1d6f0a0:	42 c7 44 81 1b c5 0e 	mov    DWORD PTR [rcx+r8*4+0x1b],0xec5
+ 1d6f0a7:	00 00 
+ 1d6f0a9:	4b 0f be 5c 0c 02    	movsx  rbx,BYTE PTR [r12+r9*1+0x2]
+ 1d6f0af:	4b 0f be 4c 0c 03    	movsx  rcx,BYTE PTR [r12+r9*1+0x3]
+ 1d6f0b5:	48 8b 1c da          	mov    rbx,QWORD PTR [rdx+rbx*8]
+ 1d6f0b9:	48 8b 14 ca          	mov    rdx,QWORD PTR [rdx+rcx*8]
+ 1d6f0bd:	53                   	push   rbx
+ 1d6f0be:	ff 74 24 08          	push   QWORD PTR [rsp+0x8]
+ 1d6f0c2:	b8 02 00 00 00       	mov    eax,0x2
+ 1d6f0c7:	48 89 54 24 10       	mov    QWORD PTR [rsp+0x10],rdx
+ 1d6f0cc:	e9 6f 4a e1 ff       	jmp    1b83b40 <Builtins_Call_ReceiverIsNotNullOrUndefined>
+ 1d6f0d1:	8b db                	mov    ebx,ebx
+ 1d6f0d3:	49 0b de             	or     rbx,r14
+ 1d6f0d6:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d6f0dd:	4c 23 db             	and    r11,rbx
+ 1d6f0e0:	41 f6 03 02          	test   BYTE PTR [r11],0x2
+ 1d6f0e4:	74 b8                	je     1d6f09e <Builtins_CallProperty1Handler+0x2de>
+ 1d6f0e6:	4e 8d 7c 81 1b       	lea    r15,[rcx+r8*4+0x1b]
+ 1d6f0eb:	53                   	push   rbx
+ 1d6f0ec:	57                   	push   rdi
+ 1d6f0ed:	48 8b f9             	mov    rdi,rcx
+ 1d6f0f0:	49 8b df             	mov    rbx,r15
+ 1d6f0f3:	e8 48 34 e1 ff       	call   1b82540 <Builtins_RecordWriteIgnoreFP>
+ 1d6f0f8:	5f                   	pop    rdi
+ 1d6f0f9:	5b                   	pop    rbx
+ 1d6f0fa:	eb a2                	jmp    1d6f09e <Builtins_CallProperty1Handler+0x2de>
+ 1d6f0fc:	45 8b db             	mov    r11d,r11d
+ 1d6f0ff:	4d 0b de             	or     r11,r14
+ 1d6f102:	48 c7 c3 00 00 fc ff 	mov    rbx,0xfffffffffffc0000
+ 1d6f109:	49 23 db             	and    rbx,r11
+ 1d6f10c:	f6 03 02             	test   BYTE PTR [rbx],0x2
+ 1d6f10f:	0f 84 96 fe ff ff    	je     1d6efab <Builtins_CallProperty1Handler+0x1eb>
+ 1d6f115:	4e 8d 7c 81 1b       	lea    r15,[rcx+r8*4+0x1b]
+ 1d6f11a:	53                   	push   rbx
+ 1d6f11b:	57                   	push   rdi
+ 1d6f11c:	48 8b f9             	mov    rdi,rcx
+ 1d6f11f:	49 8b df             	mov    rbx,r15
+ 1d6f122:	e8 19 34 e1 ff       	call   1b82540 <Builtins_RecordWriteIgnoreFP>
+ 1d6f127:	5f                   	pop    rdi
+ 1d6f128:	5b                   	pop    rbx
+ 1d6f129:	e9 7d fe ff ff       	jmp    1d6efab <Builtins_CallProperty1Handler+0x1eb>
+ 1d6f12e:	8b db                	mov    ebx,ebx
+ 1d6f130:	49 0b de             	or     rbx,r14
+ 1d6f133:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d6f13a:	4c 23 db             	and    r11,rbx
+ 1d6f13d:	41 f6 03 02          	test   BYTE PTR [r11],0x2
+ 1d6f141:	0f 84 e4 fd ff ff    	je     1d6ef2b <Builtins_CallProperty1Handler+0x16b>
+ 1d6f147:	4e 8d 7c 81 1b       	lea    r15,[rcx+r8*4+0x1b]
+ 1d6f14c:	53                   	push   rbx
+ 1d6f14d:	57                   	push   rdi
+ 1d6f14e:	48 8b f9             	mov    rdi,rcx
+ 1d6f151:	49 8b df             	mov    rbx,r15
+ 1d6f154:	e8 e7 33 e1 ff       	call   1b82540 <Builtins_RecordWriteIgnoreFP>
+ 1d6f159:	5f                   	pop    rdi
+ 1d6f15a:	5b                   	pop    rbx
+ 1d6f15b:	e9 cb fd ff ff       	jmp    1d6ef2b <Builtins_CallProperty1Handler+0x16b>
+ 1d6f160:	90                   	nop
+ 1d6f161:	0f 1f 00             	nop    DWORD PTR [rax]

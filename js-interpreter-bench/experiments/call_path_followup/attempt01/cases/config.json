@@ -1,0 +1,6 @@
+{
+  "inline": {"call":"cfInline(cfObject,4096)","expected":8398848,"functions":["cfInline"],"timed":true},
+  "direct_call": {"call":"cfDirectLoop(cfObject,4096)","expected":8398848,"functions":["cfDirectLoop","stepPlain"],"timed":true},
+  "own_method": {"call":"cfMethodLoop(cfObject,4096)","expected":8398848,"functions":["cfMethodLoop","stepMethod"],"timed":true},
+  "prototype_method": {"call":"cfMethodLoop(cfObject,4096)","expected":8398848,"functions":["cfMethodLoop","stepMethod"],"timed":true}
+}
