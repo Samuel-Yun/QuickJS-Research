@@ -1,0 +1,47 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:571:31: function: <null>
+  args: id priority queue task
+  locals:
+    0: var this
+  closure vars:
+    0: var TaskControlBlock [global_ref19]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue, task) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.currentTcb = new TaskControlBlock(this.list, id, priority, queue, task);
+
+        get_loc0 0: this
+        get_var 0: TaskControlBlock
+        dup
+        get_loc0 0: this
+        get_field list
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_arg3 3: task
+        call_constructor 5
+        put_field currentTcb
+
+;;   this.list = this.currentTcb;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field currentTcb
+        put_field list
+
+;;   this.blocks[id] = this.currentTcb;
+
+        get_loc0 0: this
+        get_field blocks
+        get_arg0 0: id
+        get_loc0 0: this
+        get_field currentTcb
+        put_array_el
+        return_undef
+
+;; }
+

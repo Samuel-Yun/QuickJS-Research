@@ -1,0 +1,25 @@
+{
+  "source": "untouched base.js + richards.js bytes + same original driver",
+  "before_timer": [
+    "startup",
+    "VM initialization",
+    "static frontend",
+    "adapters",
+    "ResetRNG",
+    "Setup"
+  ],
+  "timed": [
+    "first and subsequent Run",
+    "original assertions 2322/928",
+    "GC/helper/builtin as encountered"
+  ],
+  "warmup_calls": 0,
+  "clock": "existing native monotonic benchNow",
+  "counts_gate": "C entry/exit of runRichards",
+  "samples_gate": "offline native monotonic timestamp within JS start/stop",
+  "diagnostic_times_not_formal": true,
+  "v8_flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ]
+}

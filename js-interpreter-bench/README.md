@@ -46,6 +46,7 @@
 - [`experiments/octane_three_engine/MAIN_MONOTONIC_V1/attempt01/`](experiments/octane_three_engine/MAIN_MONOTONIC_V1/attempt01/)：同平台三引擎 Octane。
 - [`experiments/bytecode_whitebox_simple/attempt01/results.md`](experiments/bytecode_whitebox_simple/attempt01/results.md)：六类小程序字节码；其中三类完成正式计时，不代表总体引擎排名。
 - [`experiments/call_path_followup/attempt01/results.md`](experiments/call_path_followup/attempt01/results.md)：2026-10-17 四组相同计算的调用路径对照完成，240/240 正式样本、独立审计 PASS；另有未修改 Richards 的实际采样/路径/dump，位置级耗时归因仍有限。复现见同目录 README，未实现 VM 优化。
+- [`experiments/richards_site_attribution/attempt01/results.md`](experiments/richards_site_attribution/attempt01/results.md)：原始 Richards 属性位置归因完成；189 个活跃 opcode site、三次独立采样的 1229 个查找区域样本已映射，深入 own state 读取并取得 V8 同位置 IC 转换证据。只有诊断，无新增正式性能样本；采样扰动和 V8 实际命中路径仍有限制。
 
 ## 目录结构
 

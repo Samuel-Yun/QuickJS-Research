@@ -1,0 +1,57 @@
+{
+  "status": "PASS_WITH_SAMPLING_AND_V8_PATH_LIMITS",
+  "frozen_binaries_dependencies_and_old_attempt_unchanged": true,
+  "diagnostic_binary_sha256": "913d996ef452ae9006c97824dddf4c4a2d9ed18cc3e1cc9ed77fb07670fb0ce6",
+  "original_Richards_successful_runs": 27,
+  "formal_new_samples": 0,
+  "native_count_active_sites": 189,
+  "final_dump_offsets_and_atoms_checked": 189,
+  "N1_N2_exact_scaling": true,
+  "lookup_context_counts": {
+    "total": 293356,
+    "mapped": 293317,
+    "unknown": 39
+  },
+  "perprocess": [
+    {
+      "rep": 1,
+      "invalid": 118,
+      "active_other": 423,
+      "no_context": 946,
+      "lookup": 336,
+      "all_internal": 1823
+    },
+    {
+      "rep": 2,
+      "no_context": 940,
+      "active_other": 336,
+      "invalid": 92,
+      "lookup": 414,
+      "all_internal": 1782
+    },
+    {
+      "rep": 3,
+      "lookup": 479,
+      "no_context": 891,
+      "active_other": 312,
+      "invalid": 106,
+      "all_internal": 1788
+    }
+  ],
+  "lookup_samples_mapped": 1229,
+  "lookup_samples_unmapped": 0,
+  "other_active_context_samples": 1071,
+  "invalid_transition_samples": 316,
+  "no_property_context_samples": 2777,
+  "signal_drops": 0,
+  "v8_selected_same_process_IC_offset_join": "PASS",
+  "v8_selected_IC_hit_rate": null,
+  "v8_selected_executed_branch": null,
+  "limitations": [
+    "WSL actual 10ms / one alternative 20ms",
+    "periodic aliasing and optimization DWARF boundaries",
+    "diagnostic build perturbs timings/distribution",
+    "39 native lookup probes have no JS site",
+    "V8 source/build attestation absent; IC state transitions do not count hits"
+  ]
+}
