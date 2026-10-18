@@ -46,12 +46,11 @@
 
 % -------------------- Main 1/6 --------------------
 \PageMeta{S1：numeric\_loop 源码、真实 dump、summary.csv。}{\PerfNote}
-\begin{frame}[fragile,t]{QuickJS与V8：字节码和属性访问分析}
+\begin{frame}[fragile,t]{字节码和属性访问分析}
 \smallskip
-\textbf{数值求和：同一轮循环怎样执行？}
+\textbf{数值求和：相同 JavaScript}
 \begin{columns}[T,onlytextwidth]
   \begin{column}{0.42\textwidth}
-    \textbf{相同 JavaScript}
 \begin{lstlisting}
 function wbNumericLoop(n) {
     var sum = 0;
@@ -101,7 +100,7 @@ QJS 43.782；V8 54.839；V8/QJS 1.253。
 
 % -------------------- Main 2/6 --------------------
 \PageMeta{S2：cases/summary.csv；本页inline含obj.bias，与第1页求和不同。}{\PerfNote}
-\begin{frame}[fragile,t]{四组调用方式：一层原型够不够解释差距？}
+\begin{frame}[fragile,t]{四组调用方式}
 \small 共同计算：\code{i=0..4095}、\code{bias=3}，累加\code{i+bias}，结果8398848。
 \smallskip
 \centering
@@ -148,7 +147,7 @@ function stepMethod(x) {
 
 % -------------------- Main 3/6 --------------------
 \PageMeta{S3：原 richards.js；site\_samples.csv、sampling\_summary.json。}{\DiagNote}
-\begin{frame}[fragile,t]{原始 Richards：查找区域样本落在哪里？}
+\begin{frame}[fragile,t]{原始 Richards}
 \small Richards是模拟任务调度的JavaScript基准；原算法、方法读取和断言均未改。
 \medskip
 \begin{columns}[T,onlytextwidth]
@@ -198,7 +197,7 @@ return this.task.run(packet);
 
 % -------------------- Main 4/6 --------------------
 \PageMeta{S3：原函数最终dump；栈语义见 quickjs.c:18023--18040、18881--18901。}{\DiagNote}
-\begin{frame}[fragile,t]{选定 this.state：零比较与短路怎样执行？}
+\begin{frame}[fragile,t]{选定 this.state：零比较与短路怎样执行}
 \begin{lstlisting}
 return (this.state & STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);
 \end{lstlisting}
@@ -243,7 +242,7 @@ b为左侧布尔值。分支弹一份b：真跳28返回；假经\code{drop}丢�
 
 % -------------------- Main 5/6 --------------------
 \PageMeta{QJS 04be246，quickjs.c:19126--19133；S3计数与同进程IC日志。}{\DiagNote}
-\begin{frame}[fragile,t]{这一处实际知道了什么？}
+\begin{frame}[fragile,t]{这一处获取信息}
 \small
 \begin{columns}[T,onlytextwidth]
   \begin{column}{0.61\textwidth}
@@ -293,9 +292,9 @@ if (prs) { \
 
 % -------------------- Main 6/6 --------------------
 \PageMeta{S1/S2正式汇总；S3 perturbation.json、site\_samples.csv、N1计数。}{\DiagNote}
-\begin{frame}[t]{本周能说什么，还有什么不懂？}
+\begin{frame}[t]{}
 \small
-\textbf{目前能说}
+\textbf{结论}
 \begin{itemize}
   \setlength{\itemsep}{2pt}
   \item 操作不同，快慢方向可能不同；不把小程序拼成总体引擎排名。
@@ -312,7 +311,7 @@ if (prs) { \
         请求1ms、实际约10ms；采样与插桩影响分布，不能当精确耗时排名。
 \end{itemize}
 \smallskip
-\textbf{想与老师讨论}\par
+\textbf{问题}\par
 先确认V8该位置实际快路径，还是先降低采样扰动、复核位置分布？
 \end{frame}
 
