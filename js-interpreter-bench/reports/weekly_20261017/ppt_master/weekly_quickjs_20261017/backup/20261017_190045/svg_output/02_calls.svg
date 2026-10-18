@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Microsoft YaHei, sans-serif" font-size="24" data-pptx-page-role="content">
+ <rect id="background" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF" />
+ <g id="title" data-pptx-bounds="48 28 1184 54" fill="#111111"><text x="48" y="65" font-size="36" font-weight="bold">四组调用方式：一层原型够不够解释差距？</text></g>
+ <g id="input" data-pptx-bounds="48 96 1184 41" fill="#111111"><text x="48" y="124">共同计算：i=0..4095，bias=3，累加 i+bias，结果8398848。</text></g>
+ <g id="call-timings" data-pptx-replace-with="table" data-pptx-bounds="48 155 1184 250" fill="#111111" font-family="Consolas, Microsoft YaHei, monospace" font-size="22" data-pptx-fallback-sha256="eeacc7ebb90bfdef5b4f8fc72039b2dabcac703f72c24304746bf3b213ce78a3">
+  <metadata type="application/json">{"schema":"ppt-master.semantic-table.v2","name":"call-timings","x":48,"y":155,"width":1184,"height":250,"column_widths":[210,495,170,170,139],"row_heights":[50,50,50,50,50],"style":{"font_family":"Consolas, Microsoft YaHei, monospace","font_size":22,"header_font_size":22,"header_fill":"#F4F5F6","header_text":"#111111","body_text":"#111111","body_fill":"#FFFFFF","band_row":false,"padding":12,"valign":"middle"},"defaults":{"cell":{"align":"l","borders":{"left":{"style":"none"},"right":{"style":"none"},"top":{"style":"none"},"bottom":{"style":"none"}}}},"columns":[{"text":"组别","bold":true,"align":"l"},{"text":"循环中的主要表达式","bold":true,"align":"l"},{"text":"QJS / µs","bold":true,"align":"r"},{"text":"V8 / µs","bold":true,"align":"r"},{"text":"V8/QJS","bold":true,"align":"r"}],"rows":[["直接计算","sum += i + obj.bias",{"text":"67.132","align":"r"},{"text":"60.388","align":"r"},{"text":"0.900","align":"r"}],["普通调用","sum += stepPlain(obj,i)",{"text":"159.969","align":"r"},{"text":"116.395","align":"r"},{"text":"0.728","align":"r"}],["own 方法","sum += obj.step(i)",{"text":"217.156","align":"r"},{"text":"120.905","align":"r"},{"text":"0.557","align":"r","bold":true}],["prototype 方法","sum += obj.step(i)",{"text":"225.086","align":"r"},{"text":"125.348","align":"r"},{"text":"0.557","align":"r","bold":true}]]}</metadata>
+  <rect x="48" y="155" width="1184" height="50" fill="#F4F5F6" />
+  <g font-weight="bold"><text x="60" y="188">组别</text><text x="270" y="188">循环中的主要表达式</text><text x="911" y="188" text-anchor="end">QJS / µs</text><text x="1081" y="188" text-anchor="end">V8 / µs</text><text x="1220" y="188" text-anchor="end">V8/QJS</text></g>
+  <text x="60" y="238">直接计算</text><text x="270" y="238">sum += i + obj.bias</text><text x="911" y="238" text-anchor="end">67.132</text><text x="1081" y="238" text-anchor="end">60.388</text><text x="1220" y="238" text-anchor="end">0.900</text>
+  <text x="60" y="288">普通调用</text><text x="270" y="288">sum += stepPlain(obj,i)</text><text x="911" y="288" text-anchor="end">159.969</text><text x="1081" y="288" text-anchor="end">116.395</text><text x="1220" y="288" text-anchor="end">0.728</text>
+  <text x="60" y="338">own 方法</text><text x="270" y="338">sum += obj.step(i)</text><text x="911" y="338" text-anchor="end">217.156</text><text x="1081" y="338" text-anchor="end">120.905</text><text x="1220" y="338" text-anchor="end" font-weight="bold">0.557</text>
+  <text x="60" y="388">prototype 方法</text><text x="270" y="388">sum += obj.step(i)</text><text x="911" y="388" text-anchor="end">225.086</text><text x="1081" y="388" text-anchor="end">125.348</text><text x="1220" y="388" text-anchor="end" font-weight="bold">0.557</text>
+ </g>
+ <g id="units" data-pptx-bounds="48 418 1184 29" fill="#555555" font-size="20"><text x="48" y="439">中位时间：µs/完整目标调用，含4096轮及摊薄driver；每组每引擎30个新进程，共240样本。</text></g>
+ <g id="callee" data-pptx-bounds="48 470 562 153" fill="#111111">
+  <text x="48" y="491" font-size="20" font-family="Consolas, Microsoft YaHei, monospace" xml:space="preserve">function stepPlain(obj, x) {<tspan x="48" dy="25">  return x + obj.bias;</tspan><tspan x="48" dy="25">}</tspan><tspan x="48" dy="25">function stepMethod(x) {</tspan><tspan x="48" dy="25">  return x + this.bias;</tspan><tspan x="48" dy="25">}</tspan></text>
+ </g>
+ <g id="interpretation" data-pptx-bounds="640 470 592 153" fill="#111111">
+  <text x="640" y="495" font-weight="bold">own/prototype比值都约0.557。</text>
+  <text x="640" y="529" font-size="20">同一循环和方法，只在计时外改变对象建立方式。<tspan x="640" dy="28">一层原型不足以解释差距；参数、receiver、</tspan><tspan x="640" dy="28">shape/反馈也会变，不能相减当纯调用成本。</tspan><tspan x="640" dy="28">本页含obj.bias和两次加法，不是第1页求和。</tspan></text>
+ </g>
+ <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 641 1184 64" fill="#555555" font-size="14">
+  <line x1="48" y1="641" x2="1232" y2="641" stroke="#B9BDC3" stroke-width="1" />
+  <text x="48" y="660">来源：S2 四组cases、summary.csv、raw/timing.csv。对象建立在计时外，方法读取保留在循环内。</text>
+  <text x="48" y="679">WSL2 Ubuntu24.04.2/x86_64；QuickJS 2026-06-04；V8 15.6.21（d8）；--max-opt=0 --no-lazy。</text>
+  <text x="48" y="698">内部单调计时包含首次调用；无计时前workload预跑。点估计，不是单次操作成本。</text><text x="1232" y="660" text-anchor="end">2 / 8</text>
+ </g>
+</svg>

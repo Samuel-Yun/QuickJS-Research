@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Microsoft YaHei, sans-serif" font-size="24" data-pptx-page-role="content">
+ <rect id="background" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
+ <g id="title" data-pptx-bounds="48 28 1184 54" fill="#111111"><text x="48" y="65" font-size="36" font-weight="bold">附录B：Ignition 完整最终指令序列</text></g>
+ <g id="identity" data-pptx-bounds="48 97 1184 62" fill="#111111" font-size="20"><text x="48" y="119">原 TaskControlBlock.prototype.isHeldOrSuspended；14条/31B，虚拟寄存器1，frame 8B。<tspan x="48" dy="30">去掉左侧地址/编码/调试列；以下指令与操作数完整，保留实际jump目标地址。</tspan></text></g>
+ <g id="complete-bytecode" data-pptx-bounds="68 188 1164 381" fill="#111111" font-size="20" font-family="Consolas, Microsoft YaHei, monospace">
+  <text x="68" y="212" xml:space="preserve"> 0 GetNamedProperty &lt;this&gt;, [0:&quot;state&quot;], FBV[0]<tspan x="68" dy="25"> 4 Star0</tspan><tspan x="68" dy="25"> 5 LdaGlobal [1:&quot;STATE_HELD&quot;], FBV[2]</tspan><tspan x="68" dy="25"> 8 BitwiseAnd r0, EmbeddedFeedback[None]</tspan><tspan x="68" dy="25">11 Star0</tspan><tspan x="68" dy="25">12 LdaZero</tspan><tspan x="68" dy="25">13 TestEqual r0, EmbeddedFeedback[None]</tspan><tspan x="68" dy="25">16 LogicalNot</tspan><tspan x="68" dy="25">17 JumpIfTrue [13] (0x1eef0100166e @ 30)</tspan><tspan x="68" dy="25">19 GetNamedProperty &lt;this&gt;, [0:&quot;state&quot;], FBV[4]</tspan><tspan x="68" dy="25">23 Star0</tspan><tspan x="68" dy="25">24 LdaGlobal [2:&quot;STATE_SUSPENDED&quot;], FBV[6]</tspan><tspan x="68" dy="25">27 TestEqual r0, EmbeddedFeedback[None]</tspan><tspan x="68" dy="25">30 Return</tspan></text>
+ </g>
+ <g id="boundary" data-pptx-bounds="48 582 1184 41" fill="#111111" font-size="20"><text x="48" y="611">QJS 16条/29B，V8 14条/31B：条数、编码长度与native分发次数不是同一指标，也不等于执行成本。</text></g>
+ <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 641 1184 64" fill="#555555" font-size="14">
+  <line x1="48" y1="641" x2="1232" y2="641" stroke="#B9BDC3" stroke-width="1"/>
+  <text x="48" y="660">来源：S3 bytecode/v8/TaskControlBlock.isHeldOrSuspended.txt 与 decoded.json；IC见同进程日志。</text>
+  <text x="48" y="679">WSL2 Ubuntu24.04.2/x86_64；QuickJS 2026-06-04；V8 15.6.21（d8）；--max-opt=0 --no-lazy。</text>
+  <text x="48" y="698">诊断数据，不作正式性能结果；r0是虚拟槽，不是CPU物理寄存器。</text><text x="1232" y="660" text-anchor="end">8 / 8</text>
+ </g>
+</svg>

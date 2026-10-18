@@ -1,0 +1,1 @@
+Richards模拟任务调度，Scheduler的currentTcb指向TCB，TCB的task指向具体任务；schedule中this是Scheduler，进入TCB.run后this变成TCB，取得对象、读run和执行run是不同步骤。三次插桩诊断共有5393个内部样本，其中1229个查找区域样本已映射，按属性聚合的currentTcb、state和两处run分别是280、204和79，占这个分母的22.8%、16.6%和6.4%，包含多个读写位置。分母不是全程序耗时，普通状态字段值得继续看，但尚未找到总体瓶颈。189个活跃opcode位置、N1/N2倍增核对、计数与采样分开只是方法说明，另有39次helper探查没有具体site；来源为S3和原始richards.js。

@@ -1,0 +1,1 @@
+这是同一原函数在当前d8的完整Ignition最终指令，共14条、31字节，只有一个虚拟寄存器，frame为8字节；去掉了左侧地址、编码与调试列，指令和操作数保留完整。两个GetNamedProperty使用不同反馈槽，实际跳转地址只与同一进程日志对应，不拿它和另一个进程的ASLR地址比较。QJS16条29字节、V8十四条31字节，条数、长度和native分发次数不是同一指标，更不等于成本。S1是experiments/bytecode_whitebox_simple/attempt01，S2是experiments/call_path_followup/attempt01，S3是experiments/richards_site_attribution/attempt01，完整来源索引还保留在报告根目录notes.md。
