@@ -1,11 +1,12 @@
 # 马云霄周报讲稿
 
-资料截至2026-10-17；核对时为 myx / 5d349e82dadd72c876f576415893dd1d46d372be，初始工作区干净。
+资料仍截至2026-10-17，证据参考myx / 5d349e82；本次修订在2026-10-18核对当前myx / 5db371f7b2dd9d18361d7e68a48e80e8972afc51，开始时工作区干净。
+原main.tex与原Overleaf ZIP不变，原讲稿另存notes_original.md；本讲稿对应main_fixed.tex。
 组会日期未提供，不将数据截止日当作组会日期。正文6页，另有2页完整指令附录。
 
 ## 第1页：先讲明白一轮求和
 
-同一函数计算0到4095的和，QuickJS的 add_loc 直接更新局部sum，inc_loc更新i；Ignition经过累加器运算和虚拟槽写回，Mov复制的是旧sum，Star0才写新sum。
+同一函数计算0到4095的和，QuickJS的add_loc更新局部sum并弹出栈顶，inc_loc更新i；Ignition经过累加器运算和虚拟槽写回，Mov复制的是旧sum，Star0才写新sum。
 每完整调用的中位耗时是43.782/54.839微秒，V8/QJS=1.253，表示本例V8用时更长；不是一条加法的成本。
 计时在进程内部，首次调用在内、没有workload预跑，启动/静态前端在外，driver和实际GC/helper等仍在内。
 这些指令组提供可检查的执行差异，但不能据此证明栈式更优或较短字节码造成时间优势。
@@ -13,8 +14,8 @@
 ## 第2页：方法成为own属性后，差距仍存在
 
 这里四组累加i+3，不是上一页的单纯sum+=i；每个时间都含4096轮内循环，每组每引擎30个新进程。
-own与prototype两组caller/callee逐字相同，只改变计时外的对象建立方式，V8/QJS点估计均约0.557，因此“一层原型解释全部差距”不成立为充分解释。
-普通调用显式传obj和x，方法调用传receiver和x，对象shape、反馈、调用准备也会变化，不能把组间时间相减叫纯查找或纯调用成本。
+own与prototype两组复用相同caller/callee、参数传递与this绑定形式；区别主要是计时外对象建立方式、step所在位置及相关shape/反馈，V8/QJS点估计均约0.557，因此多一层原型不足以解释这组差距。
+普通函数与方法调用之间才另外涉及显式obj参数与receiver传递差异；不把这些因素笼统说成每两组都变，也不把组间时间相减叫纯查找或纯调用成本。
 
 ## 第3页：不要把run调用频繁当作查找耗时主因
 
@@ -25,14 +26,17 @@ Richards模拟任务调度：Scheduler持有currentTcb，TCB持有task；取得�
 ## 第4页：顺着state的读取、比较和短路看
 
 schedule内this是Scheduler，进入isHeldOrSuspended后this是当前TCB；两边都先读state，与STATE_HELD做按位与并比较，左侧为真时不再读第二次state。
-正文明确为非连续的真实指令摘录：例如QJS的12 push_0、14 dup、17 drop未显示，不能把正文当成可直接执行的连续序列；完整内容在附录。
-Ignition的TestEqual配合LogicalNot实现不等判断，r0是虚拟frame槽而非CPU物理寄存器；字节码offset也不是native PC。
+修订页恢复了push_0、dup、drop：记t=state & STATE_HELD，b=(t!=0)，栈底到顶在push_0后为[t,0]，neq后[b]，dup后[b,b]；if_true8弹出顶上一份，真则跳28把余下b返回，假则经drop清掉左值，再计算右侧。
+QJS展示offset2至19、V8展示offset0至19，各自区间内无缺指令；QJS0–1/24–28与V8 23–30明确省略、完整见附录，V8补齐了保存t的Star0和LdaZero，TestEqual加LogicalNot得到b，r0是虚拟槽而非CPU寄存器（offset也不是native PC）。
+
+QJS的dup/drop实现见quickjs.c:18023–18040，if_true8见18881–18901；这里只解释该真实字节码的栈效果，没有新增执行次数或耗时实验。
 
 ## 第5页：把实际观测和解释分开
 
-QuickJS原程序的首次state读取每Run10671次，全为own数据属性命中、整数结果、无fallback；自身命中仍经过shape/hash、描述符检查和值/receiver处理，整数值本身不做对象引用计数。
-V8实际字节码的两个读取点使用FBV[0]/FBV[4]，同进程日志对应offset0/19、状态码0到1和同一receiver map。
-日志不是逐次命中计数，handler具备某分支不证明该site每次命中；“QJS重复自身查找、V8可能复用字段反馈”是待验证解释，尚不是性能原因。
+QuickJS首次state读取每Run10671次，全为own普通数据属性命中、整数结果、无fallback；正文8行是upstream2026-06-04、commit04be246001599f5995fa2f2d8c91a0f198d3f34c的quickjs.c:19126–19133，仅规范缩进/宏续行符前对齐空白，真实token与宏续行符均保留，并明确没有展示对象检查、未命中/原型/慢路径与最终写回。
+find_own_property在quickjs.c:6135起用shape/hash/atom探查；命中后先查JS_PROP_TMASK再JS_DupValue取值，get_field使用keep=0，后续19157–19158执行JS_FreeValue(ctx, sp[-1])及sp[-1]=val，处理的是旧receiver，整数state本身不做对象引用计数（quickjs.h:687、707附近）。
+V8两个读取点使用FBV[0]/FBV[4]，同进程offset0/19、原PC 0x1eef01001650/0x1eef01001663均有状态码0→1、同一receiver map 0x189b01023ef1；完整地址只在讲稿/原日志，不是逐次命中记录，实际IC命中率UNKNOWN。
+“QJS重复自身查找、V8可能复用字段反馈”仍是待验证解释，handler具备分支不证明该site每次命中，精确V8源码/构建与制品对应仍有缺口，尚未把任何步骤量为性能主因。
 
 ## 第6页：带着限制讨论下一步
 
@@ -52,7 +56,10 @@ V8实际字节码的两个读取点使用FBV[0]/FBV[4]，同进程日志对应of
 跳转括号中的地址来自实际同进程dump，不能拿它与另一进程ASLR地址比较；原始LoadIC地址...1650/...1663分别对上offset0/19。
 这里条数更少、字节更多，恰好提醒不要把两种静态指标或native分发次数混成执行成本。
 
-## 页脚来源索引（路径均相对 js-interpreter-bench）
+## 资料索引（仅供讲稿查阅，不在幻灯片页脚显示）
+
+路径均相对js-interpreter-bench；按最新要求，幻灯片底部页脚全部取消，来源、环境、运行参数、计时说明和页码均不显示。
+首页正文补一行环境，讲稿保留完整记录：WSL2 Ubuntu24.04.2/x86_64，QuickJS2026-06-04，V8 15.6.21（d8，Ignition），V8参数--max-opt=0 --no-lazy；正式计时含首次调用、无计时前workload预跑，S3独立诊断不作正式性能结果。
 
 - S1 = experiments/bytecode_whitebox_simple/attempt01/。
 - S2 = experiments/call_path_followup/attempt01/。
@@ -64,7 +71,7 @@ V8实际字节码的两个读取点使用FBV[0]/FBV[4]，同进程日志对应of
 | 2 | S2/cases/{inline,direct_call,own_method,prototype_method}.js；S2/summary.csv；S2/raw/timing.csv及原始JSON；S2/source_evidence/shared_method_core.json、method_bytecode_equal.json |
 | 3 | benchmarks/octane/upstream/richards.js:195、337；S3/summary/site_samples.csv、sampling_summary.json、count_audit.json；S3/mapping/find_own_origins.csv |
 | 4 | 原richards.js:309–311；S3/bytecode/quickjs/TaskControlBlock.prototype.isHeldOrSuspended.{txt,decoded.json}；S3/bytecode/v8/TaskControlBlock.isHeldOrSuspended.{txt,decoded.json} |
-| 5 | S3/raw/counts_N1.sites.csv及functions.csv；S3/mapping/v8_selected_IC_transitions.csv；S3/raw/v8_selected_site_full.log；S3/source_evidence/v8_GetNamedProperty.actual.disassembly.txt；S3/site_notes.md |
+| 5 | engines/quickjs-upstream/quickjs.c:19126–19133、19157–19158；S1/source_evidence/quickjs_source_identity.json；S3/raw/counts_N1.sites.csv；S3/mapping/v8_selected_IC_transitions.csv；S3/raw/v8_selected_site_full.log |
 | 6 | S3/raw/control_frozen_nosignal_rep{1,2,3}.json；S3/raw/control_nosignal_ctx1_rep{1,2,3}.json；S3/summary/perturbation.json；S3/summary/site_samples.csv；S3/raw/counts_N1.sites.csv |
 | 附录 | 第4页的完整目标函数dump及S3/summary/selected_bytecode_checks.json |
 
@@ -72,4 +79,5 @@ V8实际字节码的两个读取点使用FBV[0]/FBV[4]，同进程日志对应of
 
 性能表只来自各自正式样本，诊断时长/样本比例不混入，不与旧Windows数据相除。
 不新增总体GM、显著性、纯解释器self-time或Richards总体性能原因结论；不引用暂停的方法外提A/B作为本周成果。
-本机与现有WSL未找到XeLaTeX/latexmk：未在本地编译，PDF页数、缺字和实际溢出尚未经编译/渲染验证；源码结构与数字核对见同目录validation.json。
+2026-10-18复核Windows PATH、常见TeX目录及现有Ubuntu WSL，均未找到XeLaTeX/latexmk/tectonic/kpsewhich；未在本地编译，未生成修订版PDF，页数、缺字、实际换行及Overfull日志均未验证，离线源码检查不等同编译通过。
+原稿中i<n、<this>、正文的单反斜杠转义百分号及双反斜杠表格行末本来正确，未发现Markdown星号、NBSP或代码隔行空白；本轮未做全局反斜杠清理。code宏基于detokenize，参数内直接写下划线；正文下划线继续按TeX规则转义，listing保留原代码。
