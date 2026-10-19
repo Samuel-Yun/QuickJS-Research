@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "stdout": "RICHARDS {\"N\":2048,\"start_ms\":33.627,\"stop_ms\":4288.398,\"elapsed_ms\":4254.771,\"correctness\":\"PASS\",\"assertions_per_Run\":1,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_function_timing/attempt01/generated/richards_run.N2048.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-18T16:05:14.670770+00:00",
+  "outer_wall_ns": 4297176451,
+  "load_average": [
+    0.2275390625,
+    0.04931640625,
+    0.01611328125
+  ],
+  "boot_id": "591775e0-10c9-44b8-8617-bc2dae779282",
+  "LD_PRELOAD": null
+}

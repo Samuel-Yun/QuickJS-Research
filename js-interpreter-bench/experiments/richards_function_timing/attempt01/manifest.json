@@ -1,0 +1,342 @@
+{
+  "experiment": "richards_function_timing/attempt01",
+  "collection_date": "2026-10-18",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "host": "LAPTOP-QPKCPDCB",
+  "kernel": "5.15.167.4-microsoft-standard-WSL2",
+  "architecture": "x86_64",
+  "engines": {
+    "quickjs": {
+      "engine": "upstream QuickJS",
+      "shell": "qjs",
+      "version": "2026-06-04",
+      "source_repository": "https://github.com/bellard/quickjs.git",
+      "source_commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+      "binary": {
+        "path": "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs",
+        "sha256": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+        "size_bytes": 5090744
+      },
+      "dependencies": [],
+      "runtime_flags": [],
+      "command_prefix": [
+        "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs"
+      ],
+      "compiler": {
+        "command": [
+          "gcc",
+          "--version"
+        ],
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "exit_code": 0,
+        "stdout": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "stderr": ""
+      },
+      "build_mode": "upstream optimized -O2; debug symbols retained",
+      "build_flags_evidence": "runtime/quickjs_build.log",
+      "dynamic_libraries": [
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+          "size_bytes": 952616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+          "size_bytes": 2129424
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "size_bytes": 236616
+        }
+      ],
+      "timer_adapter": {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+        "sha256": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7"
+      }
+    },
+    "v8": {
+      "engine": "V8",
+      "shell": "d8",
+      "version": "15.6.21",
+      "binary": {
+        "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+        "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+        "size_bytes": 53498016
+      },
+      "dependencies": [
+        {
+          "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+          "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+          "size_bytes": 374368
+        },
+        {
+          "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat",
+          "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+          "size_bytes": 10819840
+        }
+      ],
+      "archive": {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/v8-official-linux64-15.6.21/v8-linux64-rel-15.6.21.zip",
+        "sha256": "5791134b7e2bca44468e37c536511809d47fb0302ab86d37b875073887be81c1",
+        "size_bytes": 21045495
+      },
+      "download_url": "https://storage.googleapis.com/chromium-v8/official/canary/v8-linux64-rel-15.6.21.zip",
+      "binary_source": "official chromium-v8 canary rel storage; no jsvu wrapper",
+      "archive_members": [
+        "d8",
+        "icudtl.dat",
+        "snapshot_blob.bin",
+        "v8_build_config.json"
+      ],
+      "source_commit": null,
+      "version_tag_commit_reference": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+      "version_tag_is_artifact_commit_proof": false,
+      "compiler": null,
+      "full_gn_args": null,
+      "build_mode": "official rel artifact; metadata file retained if present",
+      "runtime_flags": [
+        "--max-opt=0",
+        "--no-lazy"
+      ],
+      "command_prefix": [
+        "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+        "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+        "--max-opt=0",
+        "--no-lazy"
+      ],
+      "dynamic_libraries": [
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+          "sha256": "90491a21ce44efcf3bd4b65ec82501c091d7ebe7f8d9b341dd01d721001d9ecd",
+          "size_bytes": 14408
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+          "size_bytes": 952616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+          "size_bytes": 183024
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+          "size_bytes": 2129424
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "size_bytes": 236616
+        }
+      ],
+      "build_metadata": {
+        "arch": "x64",
+        "asan": false,
+        "atomic_object_field_writes": true,
+        "cet_shadow_stack": false,
+        "cfi": false,
+        "clang": true,
+        "clang_coverage": false,
+        "code_comments": false,
+        "component_build": false,
+        "concurrent_marking": true,
+        "current_cpu": "x64",
+        "dcheck_always_on": false,
+        "debug_code": false,
+        "DEBUG_defined": false,
+        "debugging_features": false,
+        "dict_property_const_tracking": false,
+        "direct_handle": false,
+        "disassembler": false,
+        "dumpling": false,
+        "full_debug": false,
+        "gdbjit": false,
+        "has_jitless": false,
+        "sparkplug_plus": true,
+        "has_maglev": true,
+        "has_turbofan": true,
+        "has_webassembly": true,
+        "has_wasm_interpreter": false,
+        "i18n": true,
+        "temporal": true,
+        "is_android": false,
+        "is_ios": false,
+        "is_linux": true,
+        "js_shared_memory": true,
+        "lite_mode": false,
+        "local_off_stack_check": false,
+        "mips_arch_variant": "",
+        "mips_use_msa": false,
+        "msan": false,
+        "official_build": false,
+        "pointer_compression": true,
+        "pointer_compression_shared_cage": true,
+        "runtime_call_stats": false,
+        "sandbox": true,
+        "sandbox_hardware_support": false,
+        "simd_mips": false,
+        "simulator_run": false,
+        "single_generation": false,
+        "slow_dchecks": false,
+        "target_cpu": "x64",
+        "tsan": false,
+        "ubsan": false,
+        "use_sanitizer": false,
+        "v8_cfi": false,
+        "v8_current_cpu": "x64",
+        "v8_target_cpu": "x64",
+        "verification_features": false,
+        "verify_csa": false,
+        "verify_heap": false,
+        "verify_predictable": false,
+        "wasm_random_fuzzers": true,
+        "memory_corruption_api": false,
+        "lower_limits_mode": false,
+        "test_only_sync_points": false
+      },
+      "build_metadata_artifact": {
+        "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/v8_build_config.json",
+        "sha256": "31f543da4178f02deca3aa3ca13d8873607edc1d57dbd57bd29b7ca2bff84cb6",
+        "size_bytes": 1502
+      },
+      "timer_adapter": {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+        "sha256": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+      }
+    }
+  },
+  "adapters": {
+    "quickjs": [
+      {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+        "sha256": "f20aa7b460675d08600a58945203034feb50b2a3515aba579219f648b1235c6c"
+      },
+      {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+        "sha256": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7"
+      }
+    ],
+    "v8": [
+      {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+        "sha256": "0ab3ed677381191d7e7839cbbc3f07895104a8b8299679ab9f37b856d76d3a22"
+      },
+      {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+        "sha256": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+      }
+    ]
+  },
+  "inputs": {
+    "benchmarks/octane/upstream/base.js": "a4710cf27b9be9a68d44226ea84b5e4bf03feb0a0533f1a7eba3238ca70a2d54",
+    "benchmarks/octane/upstream/richards.js": "39cd766ec9db421d267358e397acf534d34e3c46c6198da959133c4f050d5e4a",
+    "experiments/call_path_followup/attempt01/richards/original.N1.js": "a1a0d7f0714ff818f8e8bca013e16fb0cc5ec29e9ae36fb9c279c1d8fc70afaf",
+    "experiments/richards_site_attribution/attempt01/manifest.json": "06e5c60dc90c73c59df2b6da7b5e047a323b0ea6a426f9d3b4b5bd6aad297ea9",
+    "experiments/richards_site_attribution/attempt01/summary/site_samples.csv": "e755fe7d7ab60cf3a2f0c6d426ceba86e6e1a5163a9c7e2ce44f1ae36c74df4e",
+    "experiments/richards_site_attribution/attempt01/summary/perturbation.json": "1241f4942e16ad10cfe5e3b091033c8c5634a434f5cf838eeeacd41cb34a5369",
+    "experiments/three_engine_baseline/probes/tier/summary.json": "793b3a5c3964f482743d9f41302fc35645bf7a5c3feb81e7699c19f8385619bc",
+    "experiments/bytecode_whitebox_simple/attempt01/source_evidence/qjs_monotonic_clock.txt": "ad6d706002d416e21b661ab103adb91a96ccbbb681e64ac69cfed73246274ef7",
+    "experiments/richards_site_attribution/attempt01/bytecode/quickjs/TaskControlBlock.prototype.isHeldOrSuspended.decoded.json": "94f996e358d9ee7dab027ecc7e5b34d7059c39114852f8c1c3d0085c5dff64ea",
+    "experiments/richards_site_attribution/attempt01/bytecode/quickjs/TaskControlBlock.prototype.isHeldOrSuspended.txt": "7fb818e0812f5677908cd1a89e91c3393116e9565b265c4521ad43c8268aab26",
+    "experiments/richards_site_attribution/attempt01/bytecode/v8/TaskControlBlock.isHeldOrSuspended.decoded.json": "b0d5263016b055980bca0924aea1d3f5b81ade660bea782bd0bc2b9c0f265dac",
+    "experiments/richards_site_attribution/attempt01/bytecode/v8/TaskControlBlock.isHeldOrSuspended.txt": "86ed52646ac95692dc20546a3b37afeed97fbe9412ac69b9df509872e75f3653",
+    "experiments/three_engine_baseline/adapters/quickjs.js": "f20aa7b460675d08600a58945203034feb50b2a3515aba579219f648b1235c6c",
+    "experiments/timer_recovery/adapters/quickjs.js": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7",
+    "experiments/three_engine_baseline/adapters/v8.js": "0ab3ed677381191d7e7839cbbc3f07895104a8b8299679ab9f37b856d76d3a22",
+    "experiments/timer_recovery/adapters/v8.js": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+  },
+  "constants": {
+    "STATE_HELD": 4,
+    "STATE_SUSPENDED": 2,
+    "STATE_RUNNING": 0,
+    "COUNT": 1000,
+    "EXPECTED_QUEUE_COUNT": 2322,
+    "EXPECTED_HOLD_COUNT": 928
+  },
+  "cases": {
+    "left_true": {
+      "state_constant": "STATE_HELD",
+      "state": 4,
+      "expected": true,
+      "left": true,
+      "right": false,
+      "expected_state_reads": 1
+    },
+    "left_false_right_true": {
+      "state_constant": "STATE_SUSPENDED",
+      "state": 2,
+      "expected": true,
+      "left": false,
+      "right": true,
+      "expected_state_reads": 2
+    },
+    "left_false_right_false": {
+      "state_constant": "STATE_RUNNING",
+      "state": 0,
+      "expected": false,
+      "left": false,
+      "right": false,
+      "expected_state_reads": 2
+    }
+  },
+  "original_function_sha256": "d75a4572f184bf1403229f373888ea8fc0d6ad2c48e9de35793cc5ab3eceb485",
+  "diagnostic_quickjs": {
+    "binary": "/home/mzyx/richards_site_attribution_attempt01_diag/qjs",
+    "sha256": "913d996ef452ae9006c97824dddf4c4a2d9ed18cc3e1cc9ed77fb07670fb0ce6",
+    "qjsc_sha256": "652302ec66bd4ab6f467d952f0c7e73f76b06bba078c61fbd6dbad9154d504be",
+    "source_revision": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+    "original_quickjs_c_sha256": "b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17",
+    "patched_quickjs_c_sha256": "c68a6680e6b27ddbb9556c58ffcfda5e0436956377759ce70278d242cb4d43a5",
+    "patch_sha256": "15cdd73b40159066f061bb90448fde192ff47de57324ca8251faf3e15fef8e43",
+    "flags": "upstream make optimized -O2 -g; DUMP_BYTECODE=1; conditional native diagnostics, see raw/build.json",
+    "production_binary_replaced": false
+  },
+  "seed": 20261018,
+  "repetitions": 30,
+  "expected_formal": 240,
+  "mode": "FIRST_CALL_INCLUSIVE_INTERNAL_MONOTONIC_BATCH_NO_WARMUP",
+  "pilot": {
+    "start": 1,
+    "growth": 2,
+    "min_pair_ms": 300,
+    "confirmation_processes_per_engine": 2,
+    "confirmation_min_ms": 200,
+    "timeout_s": 30,
+    "A_max_N": 65536,
+    "B_max_M": 268435456
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20262018,
+    "confidence": 0.95,
+    "unit": "independent process batch average; engines resampled independently",
+    "estimator": "ratio of process medians, V8/QuickJS",
+    "interval": "percentile, linear (n-1)*p"
+  },
+  "timer": {
+    "adapter": "unchanged native performance.now captured as benchNow",
+    "reads_per_batch": 2,
+    "outside": "process/VM startup, static loading/compilation, ResetRNG, Setup and B object/state creation",
+    "inside_A": "N complete original suite.benchmarks[0].run() incl initialization, scheduling and original assertions",
+    "inside_B": "M receiver.isHeldOrSuspended() calls, loop, method read/call, branch result accumulation; GC/helper as encountered",
+    "first_call_included": true,
+    "workload_warmup_calls": 0
+  },
+  "frozen_workloads": {
+    "richards_run": {"N": 256},
+    "left_true": {"M": 8388608},
+    "left_false_right_true": {"M": 8388608},
+    "left_false_right_false": {"M": 8388608}
+  },
+  "workload_selection_evidence": "selected_n.json and pilot/; pre-pilot manifest preserved at diagnostics/manifest_pre_pilot.json",
+  "formal_runner_snapshot": "diagnostics/runner_used_for_A_B.py",
+  "known_limits": {
+    "power_frequency_background_control": "UNKNOWN; WSL2 host uncontrolled",
+    "v8_exact_source_attestation": null,
+    "static_frontend": "QJS eager; d8 frozen --no-lazy; no new frontend claim"
+  }
+}
