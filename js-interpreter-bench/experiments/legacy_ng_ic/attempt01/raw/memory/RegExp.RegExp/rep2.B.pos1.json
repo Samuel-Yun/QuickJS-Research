@@ -1,0 +1,29 @@
+{
+  "case": "RegExp.RegExp",
+  "variant": "B",
+  "rep": 2,
+  "order": 1,
+  "N": 8,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/raw/memory/RegExp.RegExp/rep2.B.pos1.time.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/RegExp.RegExp.N8.measure.js"
+  ],
+  "binary_sha256": "aedb704e6d38aa48414357911446e47b0b05ef9f35b9c244589b7d36e5318802",
+  "script_sha256": "19850aab248c84b4f69ee809513509f6480b1fbfd8279b11c494ad893db6e5c9",
+  "valid": true,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"RegExp.RegExp\",\"suite\":\"RegExp\",\"subbenchmark\":\"RegExp\",\"mode\":\"LEGACY_NG_IC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":8,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":95091.748993,\"stop_ms\":96528.765973,\"elapsed_ms\":1437.0169800000003,\"elapsed_per_call_ms\":179.62712250000004,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "peak_rss_kib": 6816,
+  "outer_wall_ns": 1469870162,
+  "timestamp": "2026-10-22T17:11:22.963386+00:00",
+  "method": "GNU time 1 fresh small launcher -> qjs; KiB",
+  "performance_sample": false,
+  "instrumented_binary": false
+}

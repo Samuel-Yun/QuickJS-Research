@@ -1,0 +1,34 @@
+mkdir -p .obj .obj/examples .obj/tests
+gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c
+gcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -DCONFIG_CC=\"gcc\" -DCONFIG_PREFIX=\"/usr/local\" -O2 -c -o .obj/qjsc.o qjsc.c
+gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c
+gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c
+gcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libregexp.o libregexp.c
+gcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libunicode.o libunicode.c
+gcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/cutils.o cutils.c
+gcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c
+quickjs.c: In function ‘find_own_property_ic’:
+quickjs.c:6241:9: warning: implicit declaration of function ‘prop_hash_end’ [-Wimplicit-function-declaration]
+ 6241 |     h = prop_hash_end(sh)[-h - 1];
+      |         ^~~~~~~~~~~~~
+quickjs.c:6241:26: error: subscripted value is neither array nor pointer nor vector
+ 6241 |     h = prop_hash_end(sh)[-h - 1];
+      |                          ^
+quickjs.c: At top level:
+quickjs.c:8485:45: error: unknown type name ‘bool’
+ 8485 |                                             bool throw_ref_error)
+      |                                             ^~~~
+quickjs.c:1214:1: note: ‘bool’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+ 1213 | #include "quickjs-opcode.h"
+  +++ |+#include <stdbool.h>
+ 1214 | #undef def
+quickjs.c: In function ‘JS_CallInternal’:
+quickjs.c:19409:23: warning: implicit declaration of function ‘JS_GetPropertyInternalWithIC’; did you mean ‘JS_SetPropertyInternalWithIC’? [-Wimplicit-function-declaration]
+19409 |                 val = JS_GetPropertyInternalWithIC(ctx, sp[-1], atom, sp[-1], &icu, FALSE);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       JS_SetPropertyInternalWithIC
+quickjs.c:19409:23: error: incompatible types when assigning to type ‘JSValue’ from type ‘int’
+quickjs.c:19425:23: error: incompatible types when assigning to type ‘JSValue’ from type ‘int’
+19425 |                 val = JS_GetPropertyInternalWithIC(ctx, sp[-1], atom, sp[-1], &icu, FALSE);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Makefile:339: .obj/quickjs.o] Error 1
