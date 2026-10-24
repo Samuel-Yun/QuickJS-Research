@@ -1,0 +1,32 @@
+{
+  "command": [
+    "gcc",
+    "-O2",
+    "-g",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-I/home/mzyx/read_ic_dequickening_attempt01/R_sanitizer",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/correctness/private_state.c",
+    "-fsanitize=address",
+    "-fsanitize=undefined",
+    "-fno-omit-frame-pointer",
+    "/home/mzyx/read_ic_dequickening_attempt01/R_sanitizer/.obj/asan/ubsan/dtoa.o",
+    "/home/mzyx/read_ic_dequickening_attempt01/R_sanitizer/.obj/asan/ubsan/libregexp.o",
+    "/home/mzyx/read_ic_dequickening_attempt01/R_sanitizer/.obj/asan/ubsan/libunicode.o",
+    "/home/mzyx/read_ic_dequickening_attempt01/R_sanitizer/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/read_ic_dequickening_attempt01/R_sanitizer/private_state_check"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T11:51:48.579584+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "wall_ns": 70218711166,
+  "mode_variable_present": false,
+  "relevant_env": {}
+}
