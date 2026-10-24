@@ -1,0 +1,102 @@
+{
+  "scope": "whole diagnostic process, NOT formal timed region",
+  "cases": {
+    "Richards.Richards": {
+      "formal_N": 512,
+      "diagnostic_N": 512
+    },
+    "DeltaBlue.DeltaBlue": {
+      "formal_N": 256,
+      "diagnostic_N": 256
+    },
+    "Crypto.Encrypt": {
+      "formal_N": 256,
+      "diagnostic_N": 256
+    },
+    "Crypto.Decrypt": {
+      "formal_N": 16,
+      "diagnostic_N": 16
+    },
+    "RayTrace.RayTrace": {
+      "formal_N": 32,
+      "diagnostic_N": 32
+    },
+    "EarleyBoyer.Earley": {
+      "formal_N": 256,
+      "diagnostic_N": 256
+    },
+    "EarleyBoyer.Boyer": {
+      "formal_N": 16,
+      "diagnostic_N": 16
+    },
+    "RegExp.RegExp": {
+      "formal_N": 8,
+      "diagnostic_N": 8
+    },
+    "Splay.Splay": {
+      "formal_N": 1024,
+      "diagnostic_N": 1024
+    },
+    "NavierStokes.NavierStokes": {
+      "formal_N": 32,
+      "diagnostic_N": 32
+    },
+    "PdfJS.PdfJS": {
+      "formal_N": 8,
+      "diagnostic_N": 8
+    },
+    "Mandreel.Mandreel": {
+      "formal_N": 1,
+      "diagnostic_N": 1
+    },
+    "Gameboy.Gameboy": {
+      "formal_N": 4,
+      "diagnostic_N": 4
+    },
+    "CodeLoad.CodeLoadClosure": {
+      "formal_N": 2048,
+      "diagnostic_N": 8
+    },
+    "CodeLoad.CodeLoadJQuery": {
+      "formal_N": 128,
+      "diagnostic_N": 8
+    },
+    "Typescript.Typescript": {
+      "formal_N": 1,
+      "diagnostic_N": 1
+    },
+    "M1.own_integer": {
+      "formal_N": 32768,
+      "diagnostic_N": 32768
+    },
+    "M2.own_reference": {
+      "formal_N": 16384,
+      "diagnostic_N": 16384
+    },
+    "M3.own_method": {
+      "formal_N": 8192,
+      "diagnostic_N": 8192
+    },
+    "M4.numeric_control": {
+      "formal_N": 32768,
+      "diagnostic_N": 32768
+    },
+    "M5.write_control": {
+      "formal_N": 32768,
+      "diagnostic_N": 32768
+    },
+    "M6.poly2": {
+      "formal_N": 8192,
+      "diagnostic_N": 8192
+    },
+    "M7.poly4": {
+      "formal_N": 8192,
+      "diagnostic_N": 8192
+    },
+    "M8.poly8": {
+      "formal_N": 8192,
+      "diagnostic_N": 8192
+    }
+  },
+  "CodeLoad_rule": "both versions cap N at 8, fixed before diagnosis; per-function bytecode/source/atom retention otherwise grows very large; no extrapolated full-N counts"
+}

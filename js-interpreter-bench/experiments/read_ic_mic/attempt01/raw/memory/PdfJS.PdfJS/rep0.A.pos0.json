@@ -1,0 +1,30 @@
+{
+  "campaign": "read_ic_mic/attempt01",
+  "case": "PdfJS.PdfJS",
+  "variant": "A",
+  "rep": 0,
+  "order": 0,
+  "N": 8,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/raw/memory/PdfJS.PdfJS/rep0.A.pos0.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_mic_attempt01/A/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/generated/PdfJS.PdfJS.N8.measure.js"
+  ],
+  "binary_sha256": "0fe524aae16ad6e96373b08763babf6b362c6fbfbafa47003d773353865f3520",
+  "script_sha256": "02db4501ff0a30fa7e6c941262110e6162e4bdfba1e575525b55926bc3a62574",
+  "peak_rss_KiB": 25600,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"PdfJS.PdfJS\",\"suite\":\"PdfJS\",\"subbenchmark\":\"PdfJS\",\"mode\":\"READ_IC_MIC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":8,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5465919.393112,\"stop_ms\":5467539.925479,\"elapsed_ms\":1620.5323670003563,\"elapsed_per_call_ms\":202.56654587504454,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-24T08:53:58.322596+00:00",
+  "outer_wall_ns": 1840386066,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}
