@@ -1,0 +1,36 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M4.numeric_control.N2.check.js:11:1: function: m4Loop
+  args: limit
+  locals:
+    0: var sum
+    1: var i
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function m4Loop(limit) {
+
+        push_0 0
+
+;;   var sum=0;
+
+        put_loc0 0: sum
+        push_0 0
+
+;;   for(var i=0;i<limit;i++)sum+=i;
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        get_arg0 0: limit
+        lt
+        if_false8 16
+        get_loc1 1: i
+        add_loc 0: sum
+        inc_loc 1: i
+        goto8 4
+
+;;   return sum;
+
+   16:  get_loc0 0: sum
+        return
+
+;; }
+
