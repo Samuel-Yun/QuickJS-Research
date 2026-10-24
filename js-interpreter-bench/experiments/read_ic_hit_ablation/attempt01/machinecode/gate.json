@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "same_ON_LOOKUP_path": "/home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs",
+  "same_ELF_sha256": "53680f048a6f53c1f94cc1dc3c52e1263311fb0a36ea6b93b697547069d65267",
+  "same_static_relative_text": true,
+  "native_mode_values_observed": [
+    {
+      "condition": "ON",
+      "binary_sha256": "53680f048a6f53c1f94cc1dc3c52e1263311fb0a36ea6b93b697547069d65267",
+      "mode": 1,
+      "debugger_disable_randomization": false,
+      "log": "raw/build/ON_runtime_mode.1.json"
+    },
+    {
+      "condition": "LOOKUP",
+      "binary_sha256": "53680f048a6f53c1f94cc1dc3c52e1263311fb0a36ea6b93b697547069d65267",
+      "mode": 0,
+      "debugger_disable_randomization": false,
+      "log": "raw/build/LOOKUP_runtime_mode.1.json"
+    }
+  ],
+  "site_bytes": 16,
+  "runtime_size_delta": 8,
+  "mode_field_offset": 1440,
+  "ASLR_kernel_setting": "2",
+  "ELF_type": "Type:                              DYN (Position-Independent Executable file)",
+  "formal_diagnostic_symbols": false,
+  "per_read_getenv": false,
+  "direct_guard_and_original_hash_code": true,
+  "absolute_load_addresses_may_differ": true
+}

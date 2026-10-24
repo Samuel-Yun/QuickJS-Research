@@ -1,0 +1,17 @@
+{
+  "command": [
+    "objdump",
+    "-d",
+    "-M",
+    "intel",
+    "--disassemble=rdi_mode_init",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T10:10:00.546329+00:00",
+  "exit_code": 0,
+  "stdout": "\n/home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs:     file format elf64-x86-64\n\n\nDisassembly of section .init:\n\nDisassembly of section .plt:\n\nDisassembly of section .plt.got:\n\nDisassembly of section .plt.sec:\n\nDisassembly of section .text:\n\n0000000000016870 <rdi_mode_init>:\n   16870:\tf3 0f 1e fa          \tendbr64\n   16874:\t48 83 ec 08          \tsub    rsp,0x8\n   16878:\t48 8d 3d 9c 69 0b 00 \tlea    rdi,[rip+0xb699c]        # cd21b <_IO_stdin_used+0x21b>\n   1687f:\te8 6c af ff ff       \tcall   117f0 <getenv@plt>\n   16884:\t48 85 c0             \ttest   rax,rax\n   16887:\t74 0b                \tje     16894 <rdi_mode_init+0x24>\n   16889:\t0f be 10             \tmovsx  edx,BYTE PTR [rax]\n   1688c:\t8d 4a d0             \tlea    ecx,[rdx-0x30]\n   1688f:\t80 f9 01             \tcmp    cl,0x1\n   16892:\t76 24                \tjbe    168b8 <rdi_mode_init+0x48>\n   16894:\t48 8b 0d 45 08 0f 00 \tmov    rcx,QWORD PTR [rip+0xf0845]        # 1070e0 <stderr@GLIBC_2.2.5>\n   1689b:\tba 28 00 00 00       \tmov    edx,0x28\n   168a0:\tbe 01 00 00 00       \tmov    esi,0x1\n   168a5:\t48 8d 3d dc 9f 0b 00 \tlea    rdi,[rip+0xb9fdc]        # d0888 <_IO_stdin_used+0x3888>\n   168ac:\t48 83 c4 08          \tadd    rsp,0x8\n   168b0:\te9 4b b6 ff ff       \tjmp    11f00 <fwrite@plt>\n   168b5:\t0f 1f 00             \tnop    DWORD PTR [rax]\n   168b8:\t80 78 01 00          \tcmp    BYTE PTR [rax+0x1],0x0\n   168bc:\t75 d6                \tjne    16894 <rdi_mode_init+0x24>\n   168be:\t83 ea 30             \tsub    edx,0x30\n   168c1:\t89 15 49 07 0f 00    \tmov    DWORD PTR [rip+0xf0749],edx        # 107010 <rdi_process_mode>\n   168c7:\t48 83 c4 08          \tadd    rsp,0x8\n   168cb:\tc3                   \tret\n\nDisassembly of section .fini:\n",
+  "stderr": "",
+  "wall_ns": 3399711,
+  "relevant_env": {}
+}
