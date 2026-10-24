@@ -1,0 +1,12 @@
+Upstream revision04be246001599f5995fa2f2d8c91a0f198d3f34c
+/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256=b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+41240: static JSValue js_function_call(JSContext *ctx, JSValueConst this_val,
+41241:                                 int argc, JSValueConst *argv)
+41242: {
+41243:     if (argc <= 0) {
+41244:         return JS_Call(ctx, this_val, JS_UNDEFINED, 0, NULL);
+41245:     } else {
+41246:         return JS_Call(ctx, this_val, argv[0], argc - 1, argv + 1);
+41247:     }
+41248: }

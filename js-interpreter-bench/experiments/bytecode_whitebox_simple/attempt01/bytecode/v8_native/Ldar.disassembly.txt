@@ -1,0 +1,17 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d5c040 <Builtins_LdarHandler>:
+ 1d5c040:	4b 0f be 5c 0c 01    	movsx  rbx,BYTE PTR [r12+r9*1+0x1]
+ 1d5c046:	48 8b d5             	mov    rdx,rbp
+ 1d5c049:	48 8b 04 da          	mov    rax,QWORD PTR [rdx+rbx*8]
+ 1d5c04d:	49 8d 59 02          	lea    rbx,[r9+0x2]
+ 1d5c051:	43 0f b6 54 0c 02    	movzx  edx,BYTE PTR [r12+r9*1+0x2]
+ 1d5c057:	49 8b 0c d7          	mov    rcx,QWORD PTR [r15+rdx*8]
+ 1d5c05b:	4c 8b cb             	mov    r9,rbx
+ 1d5c05e:	ff e1                	jmp    rcx
+ 1d5c060:	90                   	nop
+ 1d5c061:	0f 1f 00             	nop    DWORD PTR [rax]

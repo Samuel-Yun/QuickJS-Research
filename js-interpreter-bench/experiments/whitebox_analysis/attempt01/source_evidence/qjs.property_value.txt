@@ -1,0 +1,74 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L9029
+9029: static JSValue JS_GetPropertyValue(JSContext *ctx, JSValueConst this_obj,
+9030:                                    JSValue prop)
+9031: {
+9032:     JSAtom atom;
+9033:     JSValue ret;
+9034: 
+9035:     if (likely(JS_VALUE_GET_TAG(this_obj) == JS_TAG_OBJECT &&
+9036:                JS_VALUE_GET_TAG(prop) == JS_TAG_INT)) {
+9037:         JSObject *p;
+9038:         uint32_t idx;
+9039:         /* fast path for array access */
+9040:         p = JS_VALUE_GET_OBJ(this_obj);
+9041:         idx = JS_VALUE_GET_INT(prop);
+9042:         switch(p->class_id) {
+9043:         case JS_CLASS_ARRAY:
+9044:         case JS_CLASS_ARGUMENTS:
+9045:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9046:             return JS_DupValue(ctx, p->u.array.u.values[idx]);
+9047:         case JS_CLASS_MAPPED_ARGUMENTS:
+9048:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9049:             return JS_DupValue(ctx, *p->u.array.u.var_refs[idx]->pvalue);
+9050:         case JS_CLASS_INT8_ARRAY:
+9051:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9052:             return JS_NewInt32(ctx, p->u.array.u.int8_ptr[idx]);
+9053:         case JS_CLASS_UINT8C_ARRAY:
+9054:         case JS_CLASS_UINT8_ARRAY:
+9055:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9056:             return JS_NewInt32(ctx, p->u.array.u.uint8_ptr[idx]);
+9057:         case JS_CLASS_INT16_ARRAY:
+9058:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9059:             return JS_NewInt32(ctx, p->u.array.u.int16_ptr[idx]);
+9060:         case JS_CLASS_UINT16_ARRAY:
+9061:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9062:             return JS_NewInt32(ctx, p->u.array.u.uint16_ptr[idx]);
+9063:         case JS_CLASS_INT32_ARRAY:
+9064:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9065:             return JS_NewInt32(ctx, p->u.array.u.int32_ptr[idx]);
+9066:         case JS_CLASS_UINT32_ARRAY:
+9067:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9068:             return JS_NewUint32(ctx, p->u.array.u.uint32_ptr[idx]);
+9069:         case JS_CLASS_BIG_INT64_ARRAY:
+9070:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9071:             return JS_NewBigInt64(ctx, p->u.array.u.int64_ptr[idx]);
+9072:         case JS_CLASS_BIG_UINT64_ARRAY:
+9073:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9074:             return JS_NewBigUint64(ctx, p->u.array.u.uint64_ptr[idx]);
+9075:         case JS_CLASS_FLOAT16_ARRAY:
+9076:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9077:             return __JS_NewFloat64(ctx, fromfp16(p->u.array.u.fp16_ptr[idx]));
+9078:         case JS_CLASS_FLOAT32_ARRAY:
+9079:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9080:             return __JS_NewFloat64(ctx, p->u.array.u.float_ptr[idx]);
+9081:         case JS_CLASS_FLOAT64_ARRAY:
+9082:             if (unlikely(idx >= p->u.array.count)) goto slow_path;
+9083:             return __JS_NewFloat64(ctx, p->u.array.u.double_ptr[idx]);
+9084:         default:
+9085:             goto slow_path;
+9086:         }
+9087:     } else {
+9088:     slow_path:
+9089:         /* ToObject() must be done before ToPropertyKey() */
+9090:         if (JS_IsNull(this_obj) || JS_IsUndefined(this_obj)) {
+9091:             JS_FreeValue(ctx, prop);
+9092:             return JS_ThrowTypeError(ctx, "cannot read property of %s", JS_IsNull(this_obj) ? "null" : "undefined");
+9093:         }
+9094:         atom = JS_ValueToAtom(ctx, prop);
+9095:         JS_FreeValue(ctx, prop);
+9096:         if (unlikely(atom == JS_ATOM_NULL))
+9097:             return JS_EXCEPTION;
+9098:         ret = JS_GetProperty(ctx, this_obj, atom);
+9099:         JS_FreeAtom(ctx, atom);

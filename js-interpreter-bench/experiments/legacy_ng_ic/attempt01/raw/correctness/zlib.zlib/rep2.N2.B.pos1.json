@@ -1,0 +1,31 @@
+{
+  "stage": "correctness",
+  "case": "zlib.zlib",
+  "variant": "B",
+  "rep": 2,
+  "order": 1,
+  "N": 2,
+  "command": [
+    "/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/zlib.zlib.N2.correctness.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "mode": "LEGACY_NG_IC_MONOTONIC_V1",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "binary_sha256": "aedb704e6d38aa48414357911446e47b0b05ef9f35b9c244589b7d36e5318802",
+  "script_sha256": "4aad5bb3bbf14861e616593f33909f2fb5f7eeef1631f7ffa7009250f0d5fc78",
+  "timestamp": "2026-10-22T16:09:44.451194+00:00",
+  "boot_id": "b8570682-f40b-48aa-b196-4d91cb67d82b",
+  "valid": false,
+  "elapsed_ms": null,
+  "elapsed_per_call_ms": null,
+  "peak_rss_kib": 39912,
+  "exit_code": 1,
+  "timeout": false,
+  "outer_wall_ns": 29605765,
+  "user_cpu_s": 0.024803,
+  "system_cpu_s": 0.0,
+  "stdout": "",
+  "stderr": "ReferenceError: 'read' is not defined\n    at <eval> (<input>:1:930)\n    at eval (native)\n    at InitializeZlibBenchmark (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/zlib.zlib.N2.correctness.js:645:45)\n    at runZlib (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/zlib.zlib.N2.correctness.js:439:28)\n    at <anonymous> (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/zlib.zlib.N2.correctness.js:3008:20)\n    at <eval> (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/zlib.zlib.N2.correctness.js:3032:3)\n",
+  "error": "EXIT_STDERR_PAYLOAD_OR_CLOCK"
+}

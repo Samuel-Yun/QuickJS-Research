@@ -1,0 +1,40 @@
+{
+  "status": "COMPLETE_WITH_DISCLOSED_LIMITATIONS",
+  "formal_expected": 1440,
+  "formal_actual": 1440,
+  "formal_valid": 1440,
+  "correctness_N1_N2": 96,
+  "correctness_selected_N": 48,
+  "pilot_selected_N": 144,
+  "new_assertions_each": 28151,
+  "new_scenario_groups": 9,
+  "legacy_assertions_each": 952,
+  "release_micro_processes": 21,
+  "diagnostic_target_unit_checks": 14,
+  "Octane_diagnostics": 32,
+  "memory_processes": 144,
+  "BC_directions": {
+    "unclear": 10,
+    "right_faster": 4,
+    "right_slower": 2
+  },
+  "AC_directions": {
+    "right_slower": 12,
+    "unclear": 3,
+    "right_faster": 1
+  },
+  "source_audit": true,
+  "first_formal_timestamp": "2026-10-23T10:15:27.401971+00:00",
+  "last_formal_timestamp": "2026-10-23T11:02:44.326717+00:00",
+  "old_statistics_replay": "PASS",
+  "old_diagnostic_replay": "PASS",
+  "limitations": [
+    "Crypto padding not pairwise frozen; preexcluded MAIN GM",
+    "single WSL2 host; power/frequency/background uncontrolled",
+    "memory n=3 per version/case; indirect shape graph bytes UNKNOWN",
+    "diagnostic whole process, rewritten IC queries only, same function+atom sharing",
+    "lifetime max occupancy not time-weighted occupancy; full shape diversity UNKNOWN",
+    "code layout/compiler decisions not isolated; not a per-miss time decomposition",
+    "not complete test262/official Octane score"
+  ]
+}

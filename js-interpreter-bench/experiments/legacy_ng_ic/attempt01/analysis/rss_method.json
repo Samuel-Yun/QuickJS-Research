@@ -1,0 +1,16 @@
+{
+  "status": "CHECKED",
+  "formal_method": "os.wait4 qjs child from Python parent; raw retained",
+  "formal_min_KiB": 29416,
+  "separate_check": {
+    "case": "shell_control",
+    "A_n": 3,
+    "B_n": 3,
+    "A_median_KiB": 2944,
+    "B_median_KiB": 2976,
+    "A_over_B": 0.989247311827957
+  },
+  "interpretation": "compare GNU time controls before interpreting a fixed wait4 floor as engine memory; independent checks have 3 processes per variant/case, not 30",
+  "gnutime_sha256": "3b11dec50514a8473e9f6efa7a34d584d0657538c09988f61b72d38ad4991a10",
+  "counts": 102
+}

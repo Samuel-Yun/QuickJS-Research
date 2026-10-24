@@ -1,0 +1,65 @@
+{
+  "exit_code": 0,
+  "stdout": "WB_RESULT:{\"mode\":\"MAIN_MONOTONIC_V1_DERIVED\",\"variant\":\"navier_array\",\"N\":256,\"checksum\":925519576,\"correctness\":\"PASS\",\"warmup_calls\":0,\"start_ms\":740539.735263,\"stop_ms\":741873.486778,\"elapsed_ms\":1333.7515150000108}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/microbench/generated/navier_array.N256.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T09:17:10.674124+00:00",
+  "outer_start_ns": 740526368648,
+  "outer_stop_ns": 741874616675,
+  "boot_id": "b3ee321e-69da-462d-8718-4589949b17d0",
+  "outer_wall_ns": 1348248027,
+  "stage": "formal",
+  "case": "navier",
+  "variant": "navier_array",
+  "engine": "quickjs",
+  "N": 256,
+  "rep": 14,
+  "order": 2,
+  "permutation": [
+    "v8",
+    "quickjs",
+    "jsc"
+  ],
+  "schedule_index": 115,
+  "mode": "MAIN_MONOTONIC_V1_DERIVED",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "flags": [],
+  "binary_sha256": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+  "script_sha256": "220c29be96768ad6b45909316a0b62927e388b12cdcd01a996e5a1a141b324a3",
+  "adapters": [
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+      "sha256": "f20aa7b460675d08600a58945203034feb50b2a3515aba579219f648b1235c6c"
+    },
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+      "sha256": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7"
+    }
+  ],
+  "design_sha256": "7354c1868ce2f8a6cc0d43c8be772c69eece3966b70d20df8f98270cddf07e2b",
+  "checksum": 925519576,
+  "expected_checksum": 925519576,
+  "payload": {
+    "mode": "MAIN_MONOTONIC_V1_DERIVED",
+    "variant": "navier_array",
+    "N": 256,
+    "checksum": 925519576,
+    "correctness": "PASS",
+    "warmup_calls": 0,
+    "start_ms": 740539.735263,
+    "stop_ms": 741873.486778,
+    "elapsed_ms": 1333.7515150000108
+  },
+  "elapsed_ms": 1333.7515150000108,
+  "elapsed_per_call_ms": 5.209966855468792,
+  "errors": [],
+  "valid": true
+}

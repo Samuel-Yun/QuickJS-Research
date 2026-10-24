@@ -1,0 +1,16 @@
+{
+  "exit_code": 0,
+  "stdout": "perf_event_paranoid=2\nkptr_restrict=1\n",
+  "stderr": "",
+  "command": [
+    "sh",
+    "-c",
+    "printf \"perf_event_paranoid=\"; cat /proc/sys/kernel/perf_event_paranoid; printf \"kptr_restrict=\"; cat /proc/sys/kernel/kptr_restrict"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:31:37.414379+00:00",
+  "outer_start_ns": 114388527657,
+  "outer_stop_ns": 114392687385,
+  "boot_id": "60add16c-66cc-4766-b5d5-ed3e721f192d",
+  "outer_wall_ns": 4159728
+}

@@ -1,0 +1,1 @@
+这是原isHeldOrSuspended的完整QuickJS最终指令，共16条、29字节，局部0是this，栈深为2；省去的是源码注释和debug表，不是执行指令。可以在这里核对正文省略的push_0、dup、drop、第二次比较和return。它来自独立打印诊断构建，不能把这个诊断native代码或耗时当作冻结Release版的性能，静态条数和编码长度也不是执行时间。证据路径相对js-interpreter-bench为experiments/richards_site_attribution/attempt01/bytecode/quickjs/TaskControlBlock.prototype.isHeldOrSuspended.txt及decoded.json。

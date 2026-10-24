@@ -1,0 +1,262 @@
+
+/home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+000000000001fc10 <JS_NewRuntime2>:
+   1fc10:	f3 0f 1e fa          	endbr64
+   1fc14:	55                   	push   rbp
+   1fc15:	48 89 e5             	mov    rbp,rsp
+   1fc18:	41 57                	push   r15
+   1fc1a:	41 56                	push   r14
+   1fc1c:	41 55                	push   r13
+   1fc1e:	41 54                	push   r12
+   1fc20:	49 89 f4             	mov    r12,rsi
+   1fc23:	48 8d 35 46 6c ff ff 	lea    rsi,[rip+0xffffffffffff6c46]        # 16870 <rdi_mode_init>
+   1fc2a:	53                   	push   rbx
+   1fc2b:	48 89 fb             	mov    rbx,rdi
+   1fc2e:	48 8d 3d 33 75 0e 00 	lea    rdi,[rip+0xe7533]        # 107168 <rdi_mode_once>
+   1fc35:	48 83 ec 58          	sub    rsp,0x58
+   1fc39:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+   1fc40:	00 00 
+   1fc42:	48 89 45 c8          	mov    QWORD PTR [rbp-0x38],rax
+   1fc46:	31 c0                	xor    eax,eax
+   1fc48:	e8 23 23 ff ff       	call   11f70 <pthread_once@plt>
+   1fc4d:	8b 15 bd 73 0e 00    	mov    edx,DWORD PTR [rip+0xe73bd]        # 107010 <rdi_process_mode>
+   1fc53:	85 d2                	test   edx,edx
+   1fc55:	0f 88 2c 02 00 00    	js     1fe87 <JS_NewRuntime2+0x277>
+   1fc5b:	66 0f ef c0          	pxor   xmm0,xmm0
+   1fc5f:	4c 89 65 98          	mov    QWORD PTR [rbp-0x68],r12
+   1fc63:	48 8d 7d 80          	lea    rdi,[rbp-0x80]
+   1fc67:	be a8 05 00 00       	mov    esi,0x5a8
+   1fc6c:	48 c7 45 90 ff ff ff 	mov    QWORD PTR [rbp-0x70],0xffffffffffffffff
+   1fc73:	ff 
+   1fc74:	0f 29 45 80          	movaps XMMWORD PTR [rbp-0x80],xmm0
+   1fc78:	ff 13                	call   QWORD PTR [rbx]
+   1fc7a:	49 89 c4             	mov    r12,rax
+   1fc7d:	48 85 c0             	test   rax,rax
+   1fc80:	0f 84 01 02 00 00    	je     1fe87 <JS_NewRuntime2+0x277>
+   1fc86:	49 8d 7c 24 08       	lea    rdi,[r12+0x8]
+   1fc8b:	4c 89 e2             	mov    rdx,r12
+   1fc8e:	31 c0                	xor    eax,eax
+   1fc90:	49 c7 04 24 00 00 00 	mov    QWORD PTR [r12],0x0
+   1fc97:	00 
+   1fc98:	49 c7 84 24 a0 05 00 	mov    QWORD PTR [r12+0x5a0],0x0
+   1fc9f:	00 00 00 00 00 
+   1fca4:	48 83 e7 f8          	and    rdi,0xfffffffffffffff8
+   1fca8:	48 29 fa             	sub    rdx,rdi
+   1fcab:	8d 8a a8 05 00 00    	lea    ecx,[rdx+0x5a8]
+   1fcb1:	c1 e9 03             	shr    ecx,0x3
+   1fcb4:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+   1fcb7:	49 8d 7c 24 08       	lea    rdi,[r12+0x8]
+   1fcbc:	48 83 e7 f8          	and    rdi,0xfffffffffffffff8
+   1fcc0:	8b 0d 4a 73 0e 00    	mov    ecx,DWORD PTR [rip+0xe734a]        # 107010 <rdi_process_mode>
+   1fcc6:	49 c7 04 24 00 00 00 	mov    QWORD PTR [r12],0x0
+   1fccd:	00 
+   1fcce:	49 c7 84 24 20 04 00 	mov    QWORD PTR [r12+0x420],0x0
+   1fcd5:	00 00 00 00 00 
+   1fcda:	41 88 8c 24 a0 05 00 	mov    BYTE PTR [r12+0x5a0],cl
+   1fce1:	00 
+   1fce2:	8d 8a 28 04 00 00    	lea    ecx,[rdx+0x428]
+   1fce8:	49 8d 94 24 f0 01 00 	lea    rdx,[r12+0x1f0]
+   1fcef:	00 
+   1fcf0:	c1 e9 03             	shr    ecx,0x3
+   1fcf3:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+   1fcf6:	b8 ff ff ff ff       	mov    eax,0xffffffff
+   1fcfb:	66 41 89 84 24 e0 03 	mov    WORD PTR [r12+0x3e0],ax
+   1fd02:	00 00 
+   1fd04:	4c 89 e0             	mov    rax,r12
+   1fd07:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+   1fd0e:	00 00 
+   1fd10:	66 48 0f 6e c0       	movq   xmm0,rax
+   1fd15:	48 8d b0 f0 01 00 00 	lea    rsi,[rax+0x1f0]
+   1fd1c:	48 83 c0 10          	add    rax,0x10
+   1fd20:	66 0f 6c c0          	punpcklqdq xmm0,xmm0
+   1fd24:	0f 11 40 f0          	movups XMMWORD PTR [rax-0x10],xmm0
+   1fd28:	66 48 0f 6e c6       	movq   xmm0,rsi
+   1fd2d:	66 0f 6c c0          	punpcklqdq xmm0,xmm0
+   1fd31:	0f 11 80 e0 01 00 00 	movups XMMWORD PTR [rax+0x1e0],xmm0
+   1fd38:	48 39 c2             	cmp    rdx,rax
+   1fd3b:	75 d3                	jne    1fd10 <JS_NewRuntime2+0x100>
+   1fd3d:	49 8d 84 24 60 04 00 	lea    rax,[r12+0x460]
+   1fd44:	00 
+   1fd45:	f3 0f 6f 23          	movdqu xmm4,XMMWORD PTR [rbx]
+   1fd49:	66 0f 6f 75 80       	movdqa xmm6,XMMWORD PTR [rbp-0x80]
+   1fd4e:	4c 89 e7             	mov    rdi,r12
+   1fd51:	66 48 0f 6e d0       	movq   xmm2,rax
+   1fd56:	66 0f 6f 7d 90       	movdqa xmm7,XMMWORD PTR [rbp-0x70]
+   1fd5b:	be 00 02 00 00       	mov    esi,0x200
+   1fd60:	49 8d 84 24 70 04 00 	lea    rax,[r12+0x470]
+   1fd67:	00 
+   1fd68:	66 48 0f 6e c8       	movq   xmm1,rax
+   1fd6d:	49 8d 84 24 80 04 00 	lea    rax,[r12+0x480]
+   1fd74:	00 
+   1fd75:	66 0f 6c d2          	punpcklqdq xmm2,xmm2
+   1fd79:	41 0f 11 a4 24 e8 03 	movups XMMWORD PTR [r12+0x3e8],xmm4
+   1fd80:	00 00 
+   1fd82:	66 48 0f 6e c0       	movq   xmm0,rax
+   1fd87:	f3 0f 6f 6b 10       	movdqu xmm5,XMMWORD PTR [rbx+0x10]
+   1fd8c:	66 0f 6c c9          	punpcklqdq xmm1,xmm1
+   1fd90:	49 8d 84 24 b0 04 00 	lea    rax,[r12+0x4b0]
+   1fd97:	00 
+   1fd98:	49 c7 84 24 a8 04 00 	mov    QWORD PTR [r12+0x4a8],0x40000
+   1fd9f:	00 00 00 04 00 
+   1fda4:	66 0f 6c c0          	punpcklqdq xmm0,xmm0
+   1fda8:	41 0f 11 84 24 80 04 	movups XMMWORD PTR [r12+0x480],xmm0
+   1fdaf:	00 00 
+   1fdb1:	66 48 0f 6e c0       	movq   xmm0,rax
+   1fdb6:	49 8d 84 24 18 05 00 	lea    rax,[r12+0x518]
+   1fdbd:	00 
+   1fdbe:	41 0f 11 ac 24 f8 03 	movups XMMWORD PTR [r12+0x3f8],xmm5
+   1fdc5:	00 00 
+   1fdc7:	66 0f 6c c0          	punpcklqdq xmm0,xmm0
+   1fdcb:	41 0f 11 84 24 b0 04 	movups XMMWORD PTR [r12+0x4b0],xmm0
+   1fdd2:	00 00 
+   1fdd4:	66 48 0f 6e c0       	movq   xmm0,rax
+   1fdd9:	41 0f 11 b4 24 08 04 	movups XMMWORD PTR [r12+0x408],xmm6
+   1fde0:	00 00 
+   1fde2:	66 0f 6c c0          	punpcklqdq xmm0,xmm0
+   1fde6:	41 0f 11 bc 24 18 04 	movups XMMWORD PTR [r12+0x418],xmm7
+   1fded:	00 00 
+   1fdef:	41 0f 11 94 24 60 04 	movups XMMWORD PTR [r12+0x460],xmm2
+   1fdf6:	00 00 
+   1fdf8:	41 0f 11 8c 24 70 04 	movups XMMWORD PTR [r12+0x470],xmm1
+   1fdff:	00 00 
+   1fe01:	41 0f 11 84 24 18 05 	movups XMMWORD PTR [r12+0x518],xmm0
+   1fe08:	00 00 
+   1fe0a:	e8 d1 9b ff ff       	call   199e0 <JS_ResizeAtomHash>
+   1fe0f:	41 89 c6             	mov    r14d,eax
+   1fe12:	85 c0                	test   eax,eax
+   1fe14:	75 69                	jne    1fe7f <JS_NewRuntime2+0x26f>
+   1fe16:	bb 04 00 00 00       	mov    ebx,0x4
+   1fe1b:	4c 8d 2d 3e a3 0b 00 	lea    r13,[rip+0xba33e]        # da160 <js_atom_init>
+   1fe22:	41 bf 01 00 00 00    	mov    r15d,0x1
+   1fe28:	eb 26                	jmp    1fe50 <JS_NewRuntime2+0x240>
+   1fe2a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   1fe30:	48 63 db             	movsxd rbx,ebx
+   1fe33:	41 83 c7 01          	add    r15d,0x1
+   1fe37:	4d 8d 6c 1d 01       	lea    r13,[r13+rbx*1+0x1]
+   1fe3c:	41 81 ff f3 00 00 00 	cmp    r15d,0xf3
+   1fe43:	74 6a                	je     1feaf <JS_NewRuntime2+0x29f>
+   1fe45:	4c 89 ef             	mov    rdi,r13
+   1fe48:	e8 73 1b ff ff       	call   119c0 <strlen@plt>
+   1fe4d:	48 89 c3             	mov    rbx,rax
+   1fe50:	b9 04 00 00 00       	mov    ecx,0x4
+   1fe55:	41 81 ff e5 00 00 00 	cmp    r15d,0xe5
+   1fe5c:	74 10                	je     1fe6e <JS_NewRuntime2+0x25e>
+   1fe5e:	31 c9                	xor    ecx,ecx
+   1fe60:	41 81 ff e6 00 00 00 	cmp    r15d,0xe6
+   1fe67:	0f 9d c1             	setge  cl
+   1fe6a:	8d 4c 09 01          	lea    ecx,[rcx+rcx*1+0x1]
+   1fe6e:	89 da                	mov    edx,ebx
+   1fe70:	4c 89 ee             	mov    rsi,r13
+   1fe73:	4c 89 e7             	mov    rdi,r12
+   1fe76:	e8 b5 b3 ff ff       	call   1b230 <__JS_NewAtomInit>
+   1fe7b:	85 c0                	test   eax,eax
+   1fe7d:	75 b1                	jne    1fe30 <JS_NewRuntime2+0x220>
+   1fe7f:	4c 89 e7             	mov    rdi,r12
+   1fe82:	e8 a9 fa ff ff       	call   1f930 <JS_FreeRuntime>
+   1fe87:	45 31 e4             	xor    r12d,r12d
+   1fe8a:	48 8b 45 c8          	mov    rax,QWORD PTR [rbp-0x38]
+   1fe8e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+   1fe95:	00 00 
+   1fe97:	0f 85 86 01 00 00    	jne    20023 <JS_NewRuntime2+0x413>
+   1fe9d:	48 83 c4 58          	add    rsp,0x58
+   1fea1:	4c 89 e0             	mov    rax,r12
+   1fea4:	5b                   	pop    rbx
+   1fea5:	41 5c                	pop    r12
+   1fea7:	41 5d                	pop    r13
+   1fea9:	41 5e                	pop    r14
+   1feab:	41 5f                	pop    r15
+   1fead:	5d                   	pop    rbp
+   1feae:	c3                   	ret
+   1feaf:	4c 8d 2d 6a 4d 0e 00 	lea    r13,[rip+0xe4d6a]        # 104c20 <js_std_class_def>
+   1feb6:	48 8d 5d a0          	lea    rbx,[rbp-0x60]
+   1feba:	66 0f ef c0          	pxor   xmm0,xmm0
+   1febe:	66 90                	xchg   ax,ax
+   1fec0:	f3 41 0f 6f 5d 08    	movdqu xmm3,XMMWORD PTR [r13+0x8]
+   1fec6:	41 8b 4d 00          	mov    ecx,DWORD PTR [r13+0x0]
+   1feca:	48 89 da             	mov    rdx,rbx
+   1fecd:	4c 89 e7             	mov    rdi,r12
+   1fed0:	41 83 c6 01          	add    r14d,0x1
+   1fed4:	0f 29 03             	movaps XMMWORD PTR [rbx],xmm0
+   1fed7:	49 83 c5 18          	add    r13,0x18
+   1fedb:	44 89 f6             	mov    esi,r14d
+   1fede:	0f 29 43 10          	movaps XMMWORD PTR [rbx+0x10],xmm0
+   1fee2:	48 c7 43 20 00 00 00 	mov    QWORD PTR [rbx+0x20],0x0
+   1fee9:	00 
+   1feea:	0f 11 5d a8          	movups XMMWORD PTR [rbp-0x58],xmm3
+   1feee:	e8 ad 50 ff ff       	call   14fa0 <JS_NewClass1>
+   1fef3:	85 c0                	test   eax,eax
+   1fef5:	78 88                	js     1fe7f <JS_NewRuntime2+0x26f>
+   1fef7:	41 83 fe 32          	cmp    r14d,0x32
+   1fefb:	66 0f ef c0          	pxor   xmm0,xmm0
+   1feff:	75 bf                	jne    1fec0 <JS_NewRuntime2+0x2b0>
+   1ff01:	49 8b 84 24 58 04 00 	mov    rax,QWORD PTR [r12+0x458]
+   1ff08:	00 
+   1ff09:	48 8d 3d 90 52 0e 00 	lea    rdi,[rip+0xe5290]        # 1051a0 <js_string_exotic_methods>
+   1ff10:	be 80 00 00 00       	mov    esi,0x80
+   1ff15:	48 8d 15 e4 52 0e 00 	lea    rdx,[rip+0xe52e4]        # 105200 <js_arguments_exotic_methods>
+   1ff1c:	48 89 b8 e8 00 00 00 	mov    QWORD PTR [rax+0xe8],rdi
+   1ff23:	48 8d 3d b6 51 0e 00 	lea    rdi,[rip+0xe51b6]        # 1050e0 <js_module_ns_exotic_methods>
+   1ff2a:	48 89 b8 d8 01 00 00 	mov    QWORD PTR [rax+0x1d8],rdi
+   1ff31:	48 8d 3d 28 23 03 00 	lea    rdi,[rip+0x32328]        # 52260 <js_call_c_function>
+   1ff38:	48 89 b8 f8 01 00 00 	mov    QWORD PTR [rax+0x1f8],rdi
+   1ff3f:	48 8d 3d 4a 57 ff ff 	lea    rdi,[rip+0xffffffffffff574a]        # 15690 <js_c_function_data_call>
+   1ff46:	48 89 b8 70 02 00 00 	mov    QWORD PTR [rax+0x270],rdi
+   1ff4d:	48 8d 3d 8c c5 07 00 	lea    rdi,[rip+0x7c58c]        # 9c4e0 <js_call_bound_function>
+   1ff54:	48 89 b8 48 02 00 00 	mov    QWORD PTR [rax+0x248],rdi
+   1ff5b:	48 8d 3d 3e 0e 07 00 	lea    rdi,[rip+0x70e3e]        # 90da0 <js_generator_function_call>
+   1ff62:	48 89 90 60 01 00 00 	mov    QWORD PTR [rax+0x160],rdx
+   1ff69:	48 89 90 88 01 00 00 	mov    QWORD PTR [rax+0x188],rdx
+   1ff70:	48 89 b8 98 02 00 00 	mov    QWORD PTR [rax+0x298],rdi
+   1ff77:	48 8b 05 7a 34 0b 00 	mov    rax,QWORD PTR [rip+0xb347a]        # d33f8 <__PRETTY_FUNCTION__.0+0xa8>
+   1ff7e:	4c 89 e7             	mov    rdi,r12
+   1ff81:	41 c7 84 24 8c 05 00 	mov    DWORD PTR [r12+0x58c],0x0
+   1ff88:	00 00 00 00 00 
+   1ff8d:	49 89 84 24 84 05 00 	mov    QWORD PTR [r12+0x584],rax
+   1ff94:	00 
+   1ff95:	e8 d6 49 ff ff       	call   14970 <__js_malloc>
+   1ff9a:	48 89 c2             	mov    rdx,rax
+   1ff9d:	48 85 c0             	test   rax,rax
+   1ffa0:	74 70                	je     20012 <JS_NewRuntime2+0x402>
+   1ffa2:	48 8d 7a 08          	lea    rdi,[rdx+0x8]
+   1ffa6:	48 89 d1             	mov    rcx,rdx
+   1ffa9:	31 c0                	xor    eax,eax
+   1ffab:	48 c7 02 00 00 00 00 	mov    QWORD PTR [rdx],0x0
+   1ffb2:	48 83 e7 f8          	and    rdi,0xfffffffffffffff8
+   1ffb6:	48 c7 42 78 00 00 00 	mov    QWORD PTR [rdx+0x78],0x0
+   1ffbd:	00 
+   1ffbe:	48 29 f9             	sub    rcx,rdi
+   1ffc1:	83 e9 80             	sub    ecx,0xffffff80
+   1ffc4:	c1 e9 03             	shr    ecx,0x3
+   1ffc7:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+   1ffca:	48 8d 85 00 00 f0 ff 	lea    rax,[rbp-0x100000]
+   1ffd1:	49 89 94 24 90 05 00 	mov    QWORD PTR [r12+0x590],rdx
+   1ffd8:	00 
+   1ffd9:	49 c7 84 24 c0 04 00 	mov    QWORD PTR [r12+0x4c0],0x100000
+   1ffe0:	00 00 00 10 00 
+   1ffe5:	49 89 ac 24 c8 04 00 	mov    QWORD PTR [r12+0x4c8],rbp
+   1ffec:	00 
+   1ffed:	49 89 84 24 d0 04 00 	mov    QWORD PTR [r12+0x4d0],rax
+   1fff4:	00 
+   1fff5:	49 c7 84 24 d8 04 00 	mov    QWORD PTR [r12+0x4d8],0x0
+   1fffc:	00 00 00 00 00 
+   20001:	49 c7 84 24 e0 04 00 	mov    QWORD PTR [r12+0x4e0],0x4
+   20008:	00 04 00 00 00 
+   2000d:	e9 78 fe ff ff       	jmp    1fe8a <JS_NewRuntime2+0x27a>
+   20012:	49 c7 84 24 90 05 00 	mov    QWORD PTR [r12+0x590],0x0
+   20019:	00 00 00 00 00 
+   2001e:	e9 5c fe ff ff       	jmp    1fe7f <JS_NewRuntime2+0x26f>
+   20023:	e8 b8 19 ff ff       	call   119e0 <__stack_chk_fail@plt>
+
+Disassembly of section .fini:

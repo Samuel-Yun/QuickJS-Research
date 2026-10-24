@@ -1,0 +1,188 @@
+[
+  {
+    "offset": 0,
+    "opcode": "push_this",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 1,
+    "opcode": "put_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 2,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 3,
+    "opcode": "get_field",
+    "operands": "queue",
+    "size": 5
+  },
+  {
+    "offset": 8,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 9,
+    "opcode": "eq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 10,
+    "opcode": "if_false8",
+    "operands": "46",
+    "size": 2
+  },
+  {
+    "offset": 12,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 13,
+    "opcode": "get_arg1",
+    "operands": "1: packet",
+    "size": 1
+  },
+  {
+    "offset": 14,
+    "opcode": "put_field",
+    "operands": "queue",
+    "size": 5
+  },
+  {
+    "offset": 19,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 20,
+    "opcode": "get_field2",
+    "operands": "markAsRunnable",
+    "size": 5
+  },
+  {
+    "offset": 25,
+    "opcode": "call_method",
+    "operands": "0",
+    "size": 3
+  },
+  {
+    "offset": 28,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 29,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 30,
+    "opcode": "get_field",
+    "operands": "priority",
+    "size": 5
+  },
+  {
+    "offset": 35,
+    "opcode": "get_arg0",
+    "operands": "0: task",
+    "size": 1
+  },
+  {
+    "offset": 36,
+    "opcode": "get_field",
+    "operands": "priority",
+    "size": 5
+  },
+  {
+    "offset": 41,
+    "opcode": "gt",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 42,
+    "opcode": "if_false8",
+    "operands": "67",
+    "size": 2
+  },
+  {
+    "offset": 44,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 45,
+    "opcode": "return",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 46,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 47,
+    "opcode": "get_arg1",
+    "operands": "1: packet",
+    "size": 1
+  },
+  {
+    "offset": 48,
+    "opcode": "get_field2",
+    "operands": "addTo",
+    "size": 5
+  },
+  {
+    "offset": 53,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 54,
+    "opcode": "get_field",
+    "operands": "queue",
+    "size": 5
+  },
+  {
+    "offset": 59,
+    "opcode": "call_method",
+    "operands": "1",
+    "size": 3
+  },
+  {
+    "offset": 62,
+    "opcode": "put_field",
+    "operands": "queue",
+    "size": 5
+  },
+  {
+    "offset": 67,
+    "opcode": "get_arg0",
+    "operands": "0: task",
+    "size": 1
+  },
+  {
+    "offset": 68,
+    "opcode": "return",
+    "operands": "",
+    "size": 1
+  }
+]

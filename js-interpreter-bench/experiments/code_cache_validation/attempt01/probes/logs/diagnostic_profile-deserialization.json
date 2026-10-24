@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--cache=code",
+    "--profile-deserialization",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/probes/preparation.js"
+  ],
+  "timestamp_utc": "2026-10-05T10:25:46.879703+00:00",
+  "boot_id": "8422e0d9-a31b-488b-ba95-98e89d3e8407",
+  "exit_code": 0,
+  "stdout": "[Deserializing read-only space (292552 bytes) took 0.474 ms]\n[Deserializing isolate (23224 bytes) took 0.153 ms]\n============ Run: Produce code cache ============\n[Deserializing isolate (23224 bytes) took 0.121 ms]\n[Deserializing context #0 (51472 bytes) took 0.243 ms]\n[Serializing to 560 bytes took 0.379 ms]\n[Serializing to 952 bytes took 0.031 ms]\n[Serializing to 1752 bytes took 0.032 ms]\nCC_TOP:{\"prior\":\"undefined\",\"objectPrior\":\"undefined\"}\nCC_TIMER_START\nCC_FIRST_CALL\nCC_TIMER_STOP\nCC_RESULT:{\"checksum\":1499500,\"calls\":1,\"elapsed_ms\":0.045999999999999375}\n============ Run: Consume code cache ============\n[Deserializing context #0 (51472 bytes) took 0.265 ms]\n[Deserializing from 560 bytes took 0.015 ms]\n[Deserializing from 952 bytes took 0.020 ms]\n[Deserializing from 1752 bytes took 0.015 ms]\nCC_TOP:{\"prior\":\"undefined\",\"objectPrior\":\"undefined\"}\nCC_TIMER_START\nCC_FIRST_CALL\nCC_TIMER_STOP\nCC_RESULT:{\"checksum\":1499500,\"calls\":1,\"elapsed_ms\":0.04200000000000159}\n",
+  "stderr": "V8 is running with developer-only features enabled. Stability and security will suffer.\n",
+  "external_wall_ns": 68905307
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Microsoft YaHei, sans-serif" font-size="24" data-pptx-page-role="content">
+ <rect id="background" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF" />
+ <g id="title" data-pptx-bounds="48 28 1184 54" fill="#111111"><text x="48" y="65" font-size="36" font-weight="bold">附录A：QuickJS 完整最终指令序列</text></g>
+ <g id="identity" data-pptx-bounds="48 97 1184 62" fill="#111111" font-size="20"><text x="48" y="119">原 TaskControlBlock.prototype.isHeldOrSuspended；16条/29B，局部0=this，栈深2。</text><text x="48" y="149">补齐offset，保留全部指令和操作数；去掉源码注释与debug表。</text></g>
+ <g id="complete-bytecode" data-pptx-bounds="68 187 638 424" fill="#111111" font-size="20" font-family="Consolas, Microsoft YaHei, monospace">
+  <text xml:space="preserve" x="68" y="210"> 0 push_this</text><text xml:space="preserve" x="68" y="235"> 1 put_loc0 0: this</text><text xml:space="preserve" x="68" y="260"> 2 get_loc0 0: this</text><text xml:space="preserve" x="68" y="285"> 3 get_field state</text><text xml:space="preserve" x="68" y="310"> 8 get_var 0: STATE_HELD</text><text xml:space="preserve" x="68" y="335">11 and</text><text xml:space="preserve" x="68" y="360">12 push_0 0</text><text xml:space="preserve" x="68" y="385">13 neq</text><text xml:space="preserve" x="68" y="410">14 dup</text><text xml:space="preserve" x="68" y="435">15 if_true8 28</text><text xml:space="preserve" x="68" y="460">17 drop</text><text xml:space="preserve" x="68" y="485">18 get_loc0 0: this</text><text xml:space="preserve" x="68" y="510">19 get_field state</text><text xml:space="preserve" x="68" y="535">24 get_var 1: STATE_SUSPENDED</text><text xml:space="preserve" x="68" y="560">27 eq</text><text xml:space="preserve" x="68" y="585">28 return</text></g>
+ <g id="reading-note" data-pptx-bounds="760 212 472 353" fill="#111111">
+  <text x="760" y="242" font-size="26" font-weight="bold">与正文第4页核对</text>
+  <text x="760" y="299">push_0、dup、drop在正文省略；</text><text x="760" y="337">完整序列在此保留。</text><text x="760" y="416">来自独立打印诊断构建。</text><text x="760" y="454">不能把其native代码或耗时</text><text x="760" y="492">视为冻结Release版的性能。</text><text x="760" y="550" font-size="20" fill="#555555">静态条数和编码长度不是执行时间。</text>
+ </g>
+ <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 641 1184 64" fill="#555555" font-size="14">
+  <line x1="48" y1="641" x2="1232" y2="641" stroke="#B9BDC3" stroke-width="1" />
+  <text x="48" y="660">来源：S3 bytecode/quickjs/TaskControlBlock.prototype.isHeldOrSuspended.txt 与 decoded.json。</text>
+  <text x="48" y="679">WSL2 Ubuntu24.04.2/x86_64；QuickJS 2026-06-04；V8 15.6.21（d8）；--max-opt=0 --no-lazy。</text>
+  <text x="48" y="698">诊断数据，不作正式性能结果；最终执行字节码，不是中间表示。</text><text x="1232" y="660" text-anchor="end">7 / 8</text>
+ </g>
+</svg>

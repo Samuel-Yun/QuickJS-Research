@@ -1,0 +1,17 @@
+{
+  "exit_code": 0,
+  "stdout": "diff --git a/quickjs.c b/quickjs.c\nindex e3716a4..6a0b378 100644\n--- a/quickjs.c\n+++ b/quickjs.c\n@@ -90,7 +90,7 @@\n   32: dump line number table\n   64: dump compute_stack_size\n  */\n-//#define DUMP_BYTECODE  (1)\n+#define DUMP_BYTECODE  (1)\n /* dump the occurence of the automatic GC */\n //#define DUMP_GC\n /* dump objects freed by the garbage collector */\n@@ -17743,6 +17743,8 @@ typedef enum {\n #endif\n \n /* argv[] is modified if (flags & JS_CALL_FLAG_COPY_ARGV) = 0. */\n+#include \"whitebox-counters.h\"\n+\n static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,\n                                JSValueConst this_obj, JSValueConst new_target,\n                                int argc, JSValue *argv, int flags)\n@@ -17759,7 +17761,7 @@ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,\n     size_t alloca_size;\n \n #if !DIRECT_DISPATCH\n-#define SWITCH(pc)      switch (opcode = *pc++)\n+#define SWITCH(pc)      switch (opcode = wb_count(*pc++))\n #define CASE(op)        case op\n #define DEFAULT         default\n #define BREAK           break\n@@ -17774,7 +17776,7 @@ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,\n #include \"quickjs-opcode.h\"\n         [ OP_COUNT ... 255 ] = &&case_default\n     };\n-#define SWITCH(pc)      goto *dispatch_table[opcode = *pc++];\n+#define SWITCH(pc)      goto *dispatch_table[opcode = wb_count(*pc++)];\n #ifdef OPCODE_ASM_LABEL\n #define CASE(op)        case_ ## op: asm volatile(\"label_\" #op \":\\n.globl label_\" #op); dummy_case_ ## op\n #else\n@@ -19409,9 +19411,11 @@ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,\n                         goto name ## _slow_path;                        \\\n                     if (unlikely(idx >= p->u.array.count))              \\\n                         goto name ## _slow_path;                        \\\n+                    if (wb_enabled) wb_array_fast++;                    \\\n                     val = JS_DupValue(ctx, p->u.array.u.values[idx]);   \\\n                 } else {                                                \\\n                     name ## _slow_path:                                 \\\n+                    if (wb_enabled) wb_array_slow++;                    \\\n                     sf->cur_pc = pc;                                    \\\n                     val = JS_GetPropertyValue(ctx, obj, prop);          \\\n                     if (unlikely(JS_IsException(val))) {                \\\n@@ -36263,7 +36267,7 @@ static JSValue js_create_function(JSContext *ctx, JSFunctionDef *fd)\n     add_gc_object(ctx->rt, &b->header, JS_GC_OBJ_TYPE_FUNCTION_BYTECODE);\n \n #if defined(DUMP_BYTECODE) && (DUMP_BYTECODE & 1)\n-    if (!fd->strip_debug) {\n+    if (!fd->strip_debug && getenv(\"WB_DUMP\")) {\n         js_dump_function_bytecode(ctx, b);\n     }\n #endif\n",
+  "stderr": "",
+  "command": [
+    "git",
+    "diff",
+    "--",
+    "quickjs.c"
+  ],
+  "cwd": "/home/mzyx/whitebox_diag_04be246_attempt01",
+  "timestamp_utc": "2026-10-05T09:03:02.720303+00:00",
+  "outer_start_ns": 431856324636,
+  "outer_stop_ns": 431892292108,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 35967472
+}

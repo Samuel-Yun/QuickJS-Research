@@ -1,0 +1,76 @@
+function: mlSchedule
+  locals:
+    0: var __mlMethod
+    1: var this
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function mlSchedule() {
+
+        push_this
+        put_loc1 1: this
+
+;;   this.currentTcb = this.list;
+
+        get_loc1 1: this
+        get_loc1 1: this
+        get_field list
+        put_field currentTcb
+   14:  get_loc1 1: this
+
+;;   var __mlMethod;
+;;   while (this.currentTcb != null) {
+
+        get_field currentTcb
+        null
+        neq
+        if_false8 111
+        get_loc1 1: this
+
+;;     if (this.currentTcb.isHeldOrSuspended()) {
+
+        get_field currentTcb
+        get_field2 isHeldOrSuspended
+        call_method 0
+        if_false8 59
+
+;;       this.currentTcb = this.currentTcb.link;
+
+        get_loc1 1: this
+        get_loc1 1: this
+        get_field currentTcb
+        get_field link
+        put_field currentTcb
+        goto8 14
+
+;;     } else {
+;;       this.currentId = this.currentTcb.id;
+
+   59:  get_loc1 1: this
+        get_loc1 1: this
+        get_field currentTcb
+        get_field id
+        put_field currentId
+
+;;        __mlMethod = this.currentTcb.run;
+
+        get_loc1 1: this
+        get_field currentTcb
+        get_field run
+        put_loc0 0: __mlMethod
+
+;;       this.currentTcb = __mlMethod.call(this.currentTcb);
+
+        get_loc1 1: this
+        get_loc0 0: __mlMethod
+        get_field2 call
+        get_loc1 1: this
+        get_field currentTcb
+        call_method 1
+        put_field currentTcb
+        goto8 14
+  111:  return_undef
+
+;;     }
+;;   }
+;; }

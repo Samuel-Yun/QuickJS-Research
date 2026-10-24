@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Microsoft YaHei, sans-serif" font-size="24" data-pptx-page-role="content">
+ <rect id="background" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF" />
+ <g id="title" data-pptx-bounds="48 28 1184 54" fill="#111111">
+  <text x="48" y="65" font-size="36" font-weight="bold">QuickJS与V8：字节码和属性访问分析</text>
+ </g>
+ <g id="intro" data-pptx-bounds="48 96 1184 62" fill="#555555" font-size="20">
+  <text x="48" y="117">马云霄｜截至2026-10-17：本周做小程序对照与原 Richards 属性分析。</text>
+  <text x="48" y="147" fill="#111111" font-weight="bold" font-size="26">先看同一轮求和怎样执行</text>
+ </g>
+ <g id="source" data-pptx-bounds="48 180 330 326" fill="#111111">
+  <text x="48" y="204" font-weight="bold" font-size="26">相同 JavaScript</text>
+  <text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="48" y="245">function wbNumericLoop(n) {</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="48" y="272">  var sum = 0;</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="48" y="299">  for (var i=0; i&lt;n; i++) {</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="48" y="326">    sum += i;</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="48" y="353">  }</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="48" y="380">  return sum;</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="48" y="407">}</text><text x="48" y="456" font-size="20">n=4096；返回8386560。</text>
+  <text x="48" y="489" font-size="20" fill="#555555">整数结果，未溢出 int32。</text>
+ </g>
+ <g id="qjs" data-pptx-bounds="384 180 277 326" fill="#111111">
+  <text x="384" y="204" font-weight="bold" font-size="26">QuickJS 摘录</text>
+  <text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="384" y="245">get_loc1 1: i</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="384" y="272">add_loc 0: sum</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="384" y="299">inc_loc 1: i</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="384" y="326">goto8 4</text><text font-size="20" x="384" y="394">add_loc 更新局部sum，</text><text font-size="20" x="384" y="424">并弹栈；inc_loc 更新i。</text></g>
+ <g id="v8" data-pptx-bounds="690 180 542 326" fill="#111111">
+  <text x="690" y="204" font-weight="bold" font-size="26">V8 Ignition 摘录</text>
+  <text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="245">Ldar r1</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="272">Add r0, EmbeddedFeedback[None]</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="299">Mov r0, r2</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="326">Star0</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="353">Ldar r1</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="380">Inc EmbeddedFeedback[None]</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="407">Star1</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" xml:space="preserve" x="690" y="434">JumpLoop [21], [0], FBV[0]</text><text x="690" y="489" font-size="20">r0=sum，r1=i；Mov复制旧sum，Star0写新sum。</text>
+ </g>
+ <g id="measurement" data-pptx-bounds="48 526 1184 105" fill="#111111">
+  <line x1="48" y1="528" x2="1232" y2="528" stroke="#B9BDC3" stroke-width="1" />
+  <text x="48" y="561" font-size="26">Median（µs/完整调用）：QJS <tspan font-weight="bold">43.782</tspan>；V8 54.839；V8/QJS 1.253。</text>
+  <text x="48" y="592" font-size="20">每调用含4096轮；每引擎30个新进程。虚拟槽不是CPU寄存器。</text>
+  <text x="48" y="620" font-size="20">本例QJS更快；指令条数/字节数不等于成本，也不能据此断言栈式更优。</text>
+ </g>
+ <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 641 1184 64" fill="#555555" font-size="14">
+  <line x1="48" y1="641" x2="1232" y2="641" stroke="#B9BDC3" stroke-width="1" />
+  <text x="48" y="660">来源：S1 numeric_loop.js、真实dump、summary.csv。S1/S2/S3完整路径见讲稿。</text>
+  <text x="48" y="679">WSL2 Ubuntu24.04.2/x86_64；QuickJS 2026-06-04；V8 15.6.21（d8）；--max-opt=0 --no-lazy。</text>
+  <text x="48" y="698">内部单调计时包含首次调用；无计时前workload预跑。点估计，不是单条指令成本。</text>
+  <text x="1232" y="660" text-anchor="end">1 / 8</text>
+ </g>
+</svg>

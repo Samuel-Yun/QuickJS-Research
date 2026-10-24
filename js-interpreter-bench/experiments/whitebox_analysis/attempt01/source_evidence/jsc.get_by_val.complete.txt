@@ -1,0 +1,91 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/llint/LowLevelInterpreter64.asm
+SHA256: 5a7978c7d7ae6efc9275f54bfbecb48625ca5332e022951826f91d770aa600ca
+URL: None
+1830: llintOpWithMetadata(op_get_by_val, OpGetByVal, macro (size, get, dispatch, metadata, return)
+1831:     macro finishGetByVal(result, scratch)
+1832:         get(m_dst, scratch)
+1833:         storeq result, [cfr, scratch, 8]
+1834:         valueProfile(size, OpGetByVal, m_valueProfile, result, scratch)
+1835:         dispatch()
+1836:     end
+1837: 
+1838:     macro finishIntGetByVal(result, scratch)
+1839:         orq numberTag, result
+1840:         finishGetByVal(result, scratch)
+1841:     end
+1842: 
+1843:     macro finishDoubleGetByVal(result, scratch1, scratch2, unused)
+1844:         fd2q result, scratch1
+1845:         subq numberTag, scratch1
+1846:         finishGetByVal(scratch1, scratch2)
+1847:     end
+1848: 
+1849:     macro setLargeTypedArray(scratch)
+1850:         loadi OpGetByVal::Metadata::m_arrayProfile.m_arrayProfileFlags[t5], scratch
+1851:         ori constexpr ArrayProfileFlag::MayBeLargeTypedArray, scratch
+1852:         storei scratch, OpGetByVal::Metadata::m_arrayProfile.m_arrayProfileFlags[t5]
+1853:     end
+1854: 
+1855:     metadata(t5, t2)
+1856: 
+1857:     get(m_base, t2)
+1858:     loadConstantOrVariableCell(size, t2, t0, .opGetByValSlow)
+1859: 
+1860:     move t0, t2
+1861:     arrayProfile(OpGetByVal::Metadata::m_arrayProfile, t2, t5, t1)
+1862:     loadb JSCell::m_indexingTypeAndMisc[t2], t2
+1863: 
+1864:     get(m_property, t3)
+1865:     loadConstantOrVariableInt32(size, t3, t1, .opGetByValSlow)
+1866:     # This sign-extension makes the bounds-checking in getByValTypedArray work even on 4GB TypedArray.
+1867:     sxi2q t1, t1
+1868: 
+1869:     loadCagedJSValue(JSObjectWithButterfly::m_butterfly[t0], t3, numberTag)
+1870:     move TagNumber, numberTag
+1871: 
+1872:     andi IndexingShapeMask, t2
+1873:     bieq t2, Int32Shape, .opGetByValIsContiguous
+1874:     bineq t2, ContiguousShape, .opGetByValNotContiguous
+1875: 
+1876: .opGetByValIsContiguous:
+1877:     biaeq t1, -sizeof IndexingHeader + IndexingHeader::u.lengths.publicLength[t3], .opGetByValSlow
+1878:     get(m_dst, t0)
+1879:     loadq [t3, t1, 8], t2
+1880:     btqz t2, .opGetByValSlow
+1881:     jmp .opGetByValDone
+1882: 
+1883: .opGetByValNotContiguous:
+1884:     bineq t2, DoubleShape, .opGetByValNotDouble
+1885:     biaeq t1, -sizeof IndexingHeader + IndexingHeader::u.lengths.publicLength[t3], .opGetByValSlow
+1886:     get(m_dst, t0)
+1887:     loadd [t3, t1, 8], ft0
+1888:     bdnequn ft0, ft0, .opGetByValSlow
+1889:     fd2q ft0, t2
+1890:     subq numberTag, t2
+1891:     jmp .opGetByValDone
+1892:     
+1893: .opGetByValNotDouble:
+1894:     subi ArrayStorageShape, t2
+1895:     bia t2, SlowPutArrayStorageShape - ArrayStorageShape, .opGetByValNotIndexedStorage
+1896:     biaeq t1, -sizeof IndexingHeader + IndexingHeader::u.lengths.vectorLength[t3], .opGetByValSlow
+1897:     get(m_dst, t0)
+1898:     loadq ArrayStorage::m_vector[t3, t1, 8], t2
+1899:     btqz t2, .opGetByValSlow
+1900: 
+1901: .opGetByValDone:
+1902:     storeq t2, [cfr, t0, 8]
+1903:     valueProfile(size, OpGetByVal, m_valueProfile, t2, t5)
+1904:     dispatch()
+1905: 
+1906: .opGetByValNotIndexedStorage:
+1907:     getByValTypedArray(t0, t1, finishIntGetByVal, finishDoubleGetByVal, setLargeTypedArray, .opGetByValSlow)
+1908: 
+1909: .opGetByValSlow:
+1910:     callSlowPath(_llint_slow_path_get_by_val)
+1911:     dispatch()
+1912: 
+1913: .osrReturnPoint:
+1914:     getterSetterOSRExitReturnPoint(op_get_by_val, size)
+1915:     valueProfile(size, OpGetByVal, m_valueProfile, r0, t5)
+1916:     return(r0)
+1917: end)

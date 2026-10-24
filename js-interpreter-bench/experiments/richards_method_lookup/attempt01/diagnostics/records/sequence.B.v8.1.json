@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "stdout": "ML_SEQUENCE:{\"count\":3365376,\"hash\":4133815237,\"receiver_ids\":[512000,239616,596480,595456,711680,710144]}\nML_RESULT:{\"variant\":\"B\",\"N\":512,\"mode\":\"FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1\",\"start_ms\":38.573,\"stop_ms\":2510.309,\"elapsed_ms\":2471.7360000000003,\"elapsed_per_call_ms\":4.827609375000001,\"checksum\":\"512:2322:928\",\"correctness\":\"PASS\",\"warmup_calls\":0,\"original_assertions_per_run\":1}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N512.sequence.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:12:16.096226+00:00",
+  "outer_start_ns": 193893836866,
+  "outer_stop_ns": 196414626360,
+  "outer_wall_ns": 2520789494,
+  "boot_id": "dde58c03-dce0-4dee-93c7-ed565b52d252",
+  "load_average": [
+    1.025390625,
+    0.52294921875,
+    0.2119140625
+  ],
+  "LD_PRELOAD": null
+}

@@ -1,0 +1,4607 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js:2:27: function: <null>
+  args: message
+  closure vars:
+    0: var console [global_ref0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (message) { console.log(message); }
+
+        get_var 0: console
+        get_field2 log
+        get_arg0 0: message
+        call_method 1
+        return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var console [global]
+    1: var globalThis [global]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+        get_var 1: globalThis
+        fclosure8 0: [bytecode <null>]
+        insert2
+        put_field __TEB_marker
+        set_loc0 0: "<ret>"
+        return
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:5:57: function: <null>
+  closure vars:
+    0: var __clockFunction [loc1]
+    1: var __clockObject [loc0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+;;     return __clockFunction.call(__clockObject);
+
+        get_var_ref0 0: __clockFunction
+        get_field2 call
+        get_var_ref1 1: __clockObject
+        tail_call_method 1
+
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:2:3: function: <null>
+  locals:
+    0: var __clockObject
+    1: var __clockFunction
+  closure vars:
+    0: var performance [global_ref0]
+    1: var Error [global_ref1]
+    2: var Object [global_ref2]
+    3: var globalThis [global_ref3]
+  stack_size: 6
+  var_ref_count: 2
+  opcodes:
+;; function () {
+;;   var __clockObject = performance, __clockFunction = performance.now;
+
+        get_var 0: performance
+        put_loc0 0: __clockObject
+        get_var 0: performance
+        get_field now
+
+;;   if (typeof __clockFunction !== 'function') throw new Error('native clock missing');
+
+        set_loc1 1: __clockFunction
+        typeof_is_function
+        if_true8 29
+        get_var 1: Error
+        dup
+        push_atom_value "native clock missing"
+        call_constructor 1
+        throw
+
+;;   Object.defineProperty(globalThis, 'benchNow', {value: function () {
+
+   29:  get_var 2: Object
+        get_field2 defineProperty
+        get_var 3: globalThis
+        push_atom_value benchNow
+        object
+        fclosure8 0: [bytecode <null>]
+        set_name value
+        define_field value
+        push_false
+        define_field writable
+        push_false
+        define_field configurable
+        call_method 3
+        return_undef
+
+;;     return __clockFunction.call(__clockObject);
+;;   }, writable: false, configurable: false});
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var performance [global]
+    1: var Error [global]
+    2: var Object [global]
+    3: var globalThis [global]
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:31:20: function: <null>
+  closure vars:
+    0: var performance [global_ref0]
+    1: var Date [global_ref32]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function() {
+;;   return performance.now       ||
+
+        get_var 0: performance
+        get_field now
+        dup
+        if_true8 68
+        drop
+
+;;          performance.mozNow    ||
+
+        get_var 0: performance
+        get_field mozNow
+        dup
+        if_true8 68
+        drop
+
+;;          performance.msNow     ||
+
+        get_var 0: performance
+        get_field msNow
+        dup
+        if_true8 68
+        drop
+
+;;          performance.oNow      ||
+
+        get_var 0: performance
+        get_field oNow
+        dup
+        if_true8 68
+        drop
+
+;;          performance.webkitNow ||
+
+        get_var 0: performance
+        get_field webkitNow
+        dup
+        if_true8 68
+        drop
+
+;;          Date.now;
+
+        get_var 1: Date
+        get_field now
+   68:  return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:56:32: function: <null>
+  stack_size: 0
+  var_ref_count: 0
+  opcodes:
+;; function() { }
+
+        return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:57:41: function: <null>
+  stack_size: 0
+  var_ref_count: 0
+  opcodes:
+;; function() { }
+
+        return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:49:1: function: Benchmark
+  args: name doWarmup doDeterministic deterministicIterations run setup tearDown rmsResult minIterations
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function Benchmark(name, doWarmup, doDeterministic, deterministicIterations, 
+
+        push_this
+        put_loc0 0: this
+
+;;                    run, setup, tearDown, rmsResult, minIterations) {
+;;   this.name = name;
+
+        get_loc0 0: this
+        get_arg0 0: name
+        put_field name
+
+;;   this.doWarmup = doWarmup;
+
+        get_loc0 0: this
+        get_arg1 1: doWarmup
+        put_field doWarmup
+
+;;   this.doDeterministic = doDeterministic;
+
+        get_loc0 0: this
+        get_arg2 2: doDeterministic
+        put_field doDeterministic
+
+;;   this.deterministicIterations = deterministicIterations;
+
+        get_loc0 0: this
+        get_arg3 3: deterministicIterations
+        put_field deterministicIterations
+
+;;   this.run = run;
+
+        get_loc0 0: this
+        get_arg 4: run
+        put_field run
+
+;;   this.Setup = setup ? setup : function() { };
+
+        get_loc0 0: this
+        get_arg 5: setup
+        if_false8 50
+        get_arg 5: setup
+        goto8 52
+   50:  fclosure8 0: [bytecode <null>]
+   52:  put_field Setup
+
+;;   this.TearDown = tearDown ? tearDown : function() { };
+
+        get_loc0 0: this
+        get_arg 6: tearDown
+        if_false8 68
+        get_arg 6: tearDown
+        goto8 70
+   68:  fclosure8 1: [bytecode <null>]
+   70:  put_field TearDown
+
+;;   this.rmsResult = rmsResult ? rmsResult : null; 
+
+        get_loc0 0: this
+        get_arg 7: rmsResult
+        if_false8 86
+        get_arg 7: rmsResult
+        goto8 87
+   86:  null
+   87:  put_field rmsResult
+
+;;   this.minIterations = minIterations ? minIterations : 32;
+
+        get_loc0 0: this
+        get_arg 8: minIterations
+        if_false8 103
+        get_arg 8: minIterations
+        goto8 105
+  103:  push_i8 32
+  105:  put_field minIterations
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:67:1: function: BenchmarkResult
+  args: benchmark time latency
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function BenchmarkResult(benchmark, time, latency) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.benchmark = benchmark;
+
+        get_loc0 0: this
+        get_arg0 0: benchmark
+        put_field benchmark
+
+;;   this.time = time;
+
+        get_loc0 0: this
+        get_arg1 1: time
+        put_field time
+
+;;   this.latency = latency;
+
+        get_loc0 0: this
+        get_arg2 2: latency
+        put_field latency
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:76:37: function: <null>
+  locals:
+    0: var this
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+;; function() {
+
+        push_this
+        put_loc0 0: this
+        get_loc0 0: this
+
+;;   return this.time;
+
+        get_field time
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:85:1: function: BenchmarkSuite
+  args: name reference benchmarks
+  locals:
+    0: var this
+  closure vars:
+    0: var BenchmarkSuite [global_ref3]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function BenchmarkSuite(name, reference, benchmarks) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.name = name;
+
+        get_loc0 0: this
+        get_arg0 0: name
+        put_field name
+
+;;   this.reference = reference;
+
+        get_loc0 0: this
+        get_arg1 1: reference
+        put_field reference
+
+;;   this.benchmarks = benchmarks;
+
+        get_loc0 0: this
+        get_arg2 2: benchmarks
+        put_field benchmarks
+
+;;   BenchmarkSuite.suites.push(this);
+
+        get_var 0: BenchmarkSuite
+        get_field suites
+        get_field2 push
+        get_loc0 0: this
+        call_method 1
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:112:9: function: <null>
+  args: s
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function(s) {
+
+        push_atom_value "Alert called with argument: "
+
+;;   throw "Alert called with argument: " + s;
+
+        get_arg0 0: s
+        add
+        throw
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:122:12: function: <null>
+  closure vars:
+    0: var seed [loc0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function() {
+;;       // Robert Jenkins' 32 bit integer hash function.
+;;       seed = ((seed + 0x7ed55d16) + (seed << 12))  & 0xffffffff;
+
+        get_var_ref0 0: seed
+        push_i32 2127912214
+        add
+        get_var_ref0 0: seed
+        push_i8 12
+        shl
+        add
+        push_const8 0: 4294967295
+        and
+        set_var_ref0 0: seed
+
+;;       seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
+
+        push_const8 1: 3345072700
+        xor
+        get_var_ref0 0: seed
+        push_i8 19
+        shr
+        xor
+        push_const8 2: 4294967295
+        and
+        set_var_ref0 0: seed
+
+;;       seed = ((seed + 0x165667b1) + (seed << 5))   & 0xffffffff;
+
+        push_i32 374761393
+        add
+        get_var_ref0 0: seed
+        push_5 5
+        shl
+        add
+        push_const8 3: 4294967295
+        and
+        set_var_ref0 0: seed
+
+;;       seed = ((seed + 0xd3a2646c) ^ (seed << 9))   & 0xffffffff;
+
+        push_const8 4: 3550635116
+        add
+        get_var_ref0 0: seed
+        push_i8 9
+        shl
+        xor
+        push_const8 5: 4294967295
+        and
+        set_var_ref0 0: seed
+
+;;       seed = ((seed + 0xfd7046c5) + (seed << 3))   & 0xffffffff;
+
+        push_const8 6: 4251993797
+        add
+        get_var_ref0 0: seed
+        push_3 3
+        shl
+        add
+        push_const8 7: 4294967295
+        and
+        set_var_ref0 0: seed
+
+;;       seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
+
+        push_const8 8: 3042594569
+        xor
+        get_var_ref0 0: seed
+        push_i8 16
+        shr
+        xor
+        push_const8 9: 4294967295
+        and
+        set_var_ref0 0: seed
+
+;;       return (seed & 0xfffffff) / 0x10000000;
+
+        push_i32 268435455
+        and
+        push_i32 268435456
+        div
+        return
+
+;;     }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:120:18: function: <null>
+  locals:
+    0: var seed
+  stack_size: 1
+  var_ref_count: 1
+  opcodes:
+;; function() {
+
+        push_i32 49734321
+
+;;     var seed = 49734321;
+
+        put_loc0 0: seed
+        fclosure8 0: [bytecode <null>]
+
+;;     return function() {
+
+        return
+
+;;       // Robert Jenkins' 32 bit integer hash function.
+;;       seed = ((seed + 0x7ed55d16) + (seed << 12))  & 0xffffffff;
+;;       seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
+;;       seed = ((seed + 0x165667b1) + (seed << 5))   & 0xffffffff;
+;;       seed = ((seed + 0xd3a2646c) ^ (seed << 9))   & 0xffffffff;
+;;       seed = ((seed + 0xfd7046c5) + (seed << 3))   & 0xffffffff;
+;;       seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
+;;       return (seed & 0xfffffff) / 0x10000000;
+;;     };
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:119:27: function: <null>
+  closure vars:
+    0: var Math [global_ref33]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function() {
+;;   Math.random = (function() {
+
+        get_var 0: Math
+        fclosure8 0: [bytecode <null>]
+
+;;     var seed = 49734321;
+;;     return function() {
+;;       // Robert Jenkins' 32 bit integer hash function.
+;;       seed = ((seed + 0x7ed55d16) + (seed << 12))  & 0xffffffff;
+;;       seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
+;;       seed = ((seed + 0x165667b1) + (seed << 5))   & 0xffffffff;
+;;       seed = ((seed + 0xd3a2646c) ^ (seed << 9))   & 0xffffffff;
+;;       seed = ((seed + 0xfd7046c5) + (seed << 3))   & 0xffffffff;
+;;       seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
+;;       return (seed & 0xfffffff) / 0x10000000;
+;;     };
+;;   })();
+
+        call0 0
+        put_field random
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:147:3: function: RunStep
+  locals:
+    0: var suite
+    1: var score
+    2: var formatted
+  closure vars:
+    0: var continuation [loc0]
+    1: var index [loc3]
+    2: var length [loc2]
+    3: var suites [loc1]
+    4: var runner [arg0]
+    5: var skipBenchmarks [arg1]
+    6: var window [global_ref0]
+    7: var RunStep [loc4]
+    8: var BenchmarkSuite [global_ref1]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function RunStep() {
+;;     while (continuation || index < length) {
+
+    0:  get_var_ref0 0: continuation
+        dup
+        if_true8 8
+        drop
+        get_var_ref1 1: index
+        get_var_ref2 2: length
+        lt
+    8:  if_false 143
+
+;;       if (continuation) {
+
+        get_var_ref0 0: continuation
+        if_false8 21
+
+;;         continuation = continuation();
+
+        get_var_ref0 0: continuation
+        call0 0
+        put_var_ref0 0: continuation
+        goto8 104
+
+;;       } else {
+;;         var suite = suites[index++];
+
+   21:  get_var_ref3 3: suites
+        get_var_ref1 1: index
+        post_inc
+        put_var_ref1 1: index
+        get_array_el
+        put_loc0 0: suite
+
+;;         if (runner.NotifyStart) runner.NotifyStart(suite.name);
+
+        get_var_ref 4: runner
+        get_field NotifyStart
+        if_false8 55
+        get_var_ref 4: runner
+        get_field2 NotifyStart
+        get_loc0 0: suite
+        get_field name
+        call_method 1
+        drop
+
+;;         if (skipBenchmarks.indexOf(suite.name) > -1) {
+
+   55:  get_var_ref 5: skipBenchmarks
+        get_field2 indexOf
+        get_loc0 0: suite
+        get_field name
+        call_method 1
+        push_minus1 -1
+        gt
+        if_false8 91
+
+;;           suite.NotifySkipped(runner);
+
+        get_loc0 0: suite
+        get_field2 NotifySkipped
+        get_var_ref 4: runner
+        call_method 1
+        drop
+        goto8 104
+
+;;         } else {
+;;           continuation = suite.RunStep(runner);
+
+   91:  get_loc0 0: suite
+        get_field2 RunStep
+        get_var_ref 4: runner
+        call_method 1
+        put_var_ref0 0: continuation
+
+;;         }
+;;       }
+;;       if (continuation && typeof window != 'undefined' && window.setTimeout) {
+
+  104:  get_var_ref0 0: continuation
+        if_false8 0
+        get_var_undef 6: window
+        typeof_is_undefined
+        if_true8 140
+        get_var 6: window
+        get_field setTimeout
+        if_false8 0
+
+;;         window.setTimeout(RunStep, 25);
+
+        get_var 6: window
+        get_field2 setTimeout
+        get_var_ref 7: RunStep
+        push_i8 25
+        call_method 2
+
+;;         return;
+
+        return_undef
+  140:  goto16 0
+
+;;       }
+;;     }
+;; 
+;;     // show final result
+;;     if (runner.NotifyScore) {
+
+  143:  get_var_ref 4: runner
+        get_field NotifyScore
+        if_false8 202
+
+;;       var score = BenchmarkSuite.GeometricMean(BenchmarkSuite.scores);
+
+        get_var 8: BenchmarkSuite
+        get_field2 GeometricMean
+        get_var 8: BenchmarkSuite
+        get_field scores
+        call_method 1
+        put_loc1 1: score
+
+;;       var formatted = BenchmarkSuite.FormatScore(100 * score);
+
+        get_var 8: BenchmarkSuite
+        get_field2 FormatScore
+        push_i8 100
+        get_loc1 1: score
+        mul
+        call_method 1
+        put_loc2 2: formatted
+
+;;       runner.NotifyScore(formatted);
+
+        get_var_ref 4: runner
+        get_field2 NotifyScore
+        get_loc2 2: formatted
+        call_method 1
+        drop
+  202:  return_undef
+
+;;     }
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:140:28: function: <null>
+  args: runner skipBenchmarks
+  locals:
+    0: var continuation
+    1: var suites
+    2: var length
+    3: var index
+    4: var RunStep
+  closure vars:
+    0: var window [global_ref34]
+    1: var BenchmarkSuite [global_ref3]
+  stack_size: 2
+  var_ref_count: 7
+  opcodes:
+;; function(runner, skipBenchmarks) {
+
+        fclosure8 0: [bytecode RunStep]
+        put_loc8 4: RunStep
+
+;;   skipBenchmarks = typeof skipBenchmarks === 'undefined' ? [] : skipBenchmarks;
+
+        get_arg1 1: skipBenchmarks
+        typeof_is_undefined
+        if_false8 13
+        array_from 0
+        goto8 14
+   13:  get_arg1 1: skipBenchmarks
+   14:  put_arg1 1: skipBenchmarks
+        null
+
+;;   var continuation = null;
+
+        put_loc0 0: continuation
+
+;;   var suites = BenchmarkSuite.suites;
+
+        get_var 1: BenchmarkSuite
+        get_field suites
+
+;;   var length = suites.length;
+
+        set_loc1 1: suites
+        get_length
+        put_loc2 2: length
+
+;;   BenchmarkSuite.scores = [];
+
+        get_var 1: BenchmarkSuite
+        array_from 0
+        put_field scores
+        push_0 0
+
+;;   var index = 0;
+
+        put_loc3 3: index
+
+;;   function RunStep() {
+;;     while (continuation || index < length) {
+;;       if (continuation) {
+;;         continuation = continuation();
+;;       } else {
+;;         var suite = suites[index++];
+;;         if (runner.NotifyStart) runner.NotifyStart(suite.name);
+;;         if (skipBenchmarks.indexOf(suite.name) > -1) {
+;;           suite.NotifySkipped(runner);
+;;         } else {
+;;           continuation = suite.RunStep(runner);
+;;         }
+;;       }
+;;       if (continuation && typeof window != 'undefined' && window.setTimeout) {
+;;         window.setTimeout(RunStep, 25);
+;;         return;
+;;       }
+;;     }
+;; 
+;;     // show final result
+;;     if (runner.NotifyScore) {
+;;       var score = BenchmarkSuite.GeometricMean(BenchmarkSuite.scores);
+;;       var formatted = BenchmarkSuite.FormatScore(100 * score);
+;;       runner.NotifyScore(formatted);
+;;     }
+;;   }
+;;   RunStep();
+
+        get_loc8 4: RunStep
+        call0 0
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:179:34: function: <null>
+  locals:
+    0: var result
+    1: var suites
+    2: var i
+  closure vars:
+    0: var BenchmarkSuite [global_ref3]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function() {
+
+        push_0 0
+
+;;   var result = 0;
+
+        put_loc0 0: result
+
+;;   var suites = BenchmarkSuite.suites;
+
+        get_var 0: BenchmarkSuite
+        get_field suites
+        put_loc1 1: suites
+        push_0 0
+
+;;   for (var i = 0; i < suites.length; i++) {
+
+        put_loc2 2: i
+   13:  get_loc2 2: i
+        get_loc1 1: suites
+        get_length
+        lt
+        if_false8 35
+
+;;     result += suites[i].benchmarks.length;
+
+        get_loc0 0: result
+        get_loc1 1: suites
+        get_loc2 2: i
+        get_array_el
+        get_field benchmarks
+        get_length
+        add
+        put_loc0 0: result
+        inc_loc 2: i
+        goto8 13
+
+;;   }
+;;   return result;
+
+   35:  get_loc0 0: result
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:190:32: function: <null>
+  args: numbers
+  locals:
+    0: var log
+    1: var i
+  closure vars:
+    0: var Math [global_ref33]
+  stack_size: 5
+  var_ref_count: 0
+  opcodes:
+;; function(numbers) {
+
+        push_0 0
+
+;;   var log = 0;
+
+        put_loc0 0: log
+        push_0 0
+
+;;   for (var i = 0; i < numbers.length; i++) {
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        get_arg0 0: numbers
+        get_length
+        lt
+        if_false8 31
+
+;;     log += Math.log(numbers[i]);
+
+        get_loc0 0: log
+        get_var 0: Math
+        get_field2 log
+        get_arg0 0: numbers
+        get_loc1 1: i
+        get_array_el
+        call_method 1
+        add
+        put_loc0 0: log
+        inc_loc 1: i
+        goto8 4
+
+;;   }
+;;   return Math.pow(Math.E, log / numbers.length);
+
+   31:  get_var 0: Math
+        get_field2 pow
+        get_var 0: Math
+        get_field E
+        get_loc0 0: log
+        get_arg0 0: numbers
+        get_length
+        div
+        tail_call_method 2
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:200:36: function: <null>
+  args: measurements
+  locals:
+    0: var log
+    1: var i
+  closure vars:
+    0: var Math [global_ref33]
+  stack_size: 5
+  var_ref_count: 0
+  opcodes:
+;; function(measurements) {
+
+        push_0 0
+
+;;   var log = 0;
+
+        put_loc0 0: log
+        push_0 0
+
+;;   for (var i = 0; i < measurements.length; i++) {
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        get_arg0 0: measurements
+        get_length
+        lt
+        if_false8 36
+
+;;     log += Math.log(measurements[i].time);
+
+        get_loc0 0: log
+        get_var 0: Math
+        get_field2 log
+        get_arg0 0: measurements
+        get_loc1 1: i
+        get_array_el
+        get_field time
+        call_method 1
+        add
+        put_loc0 0: log
+        inc_loc 1: i
+        goto8 4
+
+;;   }
+;;   return Math.pow(Math.E, log / measurements.length);
+
+   36:  get_var 0: Math
+        get_field2 pow
+        get_var 0: Math
+        get_field E
+        get_loc0 0: log
+        get_arg0 0: measurements
+        get_length
+        div
+        tail_call_method 2
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:210:39: function: <null>
+  args: measurements
+  locals:
+    0: var log
+    1: var hasLatencyResult
+    2: var i
+  closure vars:
+    0: var Math [global_ref33]
+  stack_size: 5
+  var_ref_count: 0
+  opcodes:
+;; function(measurements) {
+
+        push_0 0
+
+;;   var log = 0;
+
+        put_loc0 0: log
+        push_false
+
+;;   var hasLatencyResult = false;
+
+        put_loc1 1: hasLatencyResult
+        push_0 0
+
+;;   for (var i = 0; i < measurements.length; i++) {
+
+        put_loc2 2: i
+    6:  get_loc2 2: i
+        get_arg0 0: measurements
+        get_length
+        lt
+        if_false8 52
+
+;;     if (measurements[i].latency != 0) {
+
+        get_arg0 0: measurements
+        get_loc2 2: i
+        get_array_el
+        get_field latency
+        push_0 0
+        neq
+        if_false8 48
+
+;;       log += Math.log(measurements[i].latency);
+
+        get_loc0 0: log
+        get_var 0: Math
+        get_field2 log
+        get_arg0 0: measurements
+        get_loc2 2: i
+        get_array_el
+        get_field latency
+        call_method 1
+        add
+        put_loc0 0: log
+
+;;       hasLatencyResult = true;
+
+        push_true
+        put_loc1 1: hasLatencyResult
+   48:  inc_loc 2: i
+        goto8 6
+
+;;     }
+;;   }
+;;   if (hasLatencyResult) {
+
+   52:  get_loc1 1: hasLatencyResult
+        if_false8 78
+
+;;     return Math.pow(Math.E, log / measurements.length);
+
+        get_var 0: Math
+        get_field2 pow
+        get_var 0: Math
+        get_field E
+        get_loc0 0: log
+        get_arg0 0: measurements
+        get_length
+        div
+        tail_call_method 2
+   78:  push_0 0
+
+;;   } else {
+;;     return 0;
+
+        return
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:229:30: function: <null>
+  args: value
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function(value) {
+;;   if (value > 100) {
+
+        get_arg0 0: value
+        push_i8 100
+        gt
+        if_false8 16
+
+;;     return value.toFixed(0);
+
+        get_arg0 0: value
+        get_field2 toFixed
+        push_0 0
+        tail_call_method 1
+
+;;   } else {
+;;     return value.toPrecision(3);
+
+   16:  get_arg0 0: value
+        get_field2 toPrecision
+        push_3 3
+        tail_call_method 1
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:239:39: function: <null>
+  args: result
+  locals:
+    0: var this
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function(result) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.results.push(result);
+
+        get_loc0 0: this
+        get_field results
+        get_field2 push
+        get_arg0 0: result
+        call_method 1
+        drop
+        get_loc0 0: this
+
+;;   if (this.runner.NotifyStep) this.runner.NotifyStep(result.benchmark.name);
+
+        get_field runner
+        get_field NotifyStep
+        if_false8 57
+        get_loc0 0: this
+        get_field runner
+        get_field2 NotifyStep
+        get_arg0 0: result
+        get_field benchmark
+        get_field name
+        call_method 1
+        drop
+   57:  return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:247:41: function: <null>
+  locals:
+    0: var mean
+    1: var score
+    2: var formatted
+    3: var meanLatency
+    4: var scoreLatency
+    5: var formattedLatency
+    6: var this
+  closure vars:
+    0: var BenchmarkSuite [global_ref3]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function() {
+
+        push_this
+        put_loc8 6: this
+
+;;   var mean = BenchmarkSuite.GeometricMeanTime(this.results);
+
+        get_var 0: BenchmarkSuite
+        get_field2 GeometricMeanTime
+        get_loc8 6: this
+        get_field results
+        call_method 1
+        put_loc0 0: mean
+        get_loc8 6: this
+
+;;   var score = this.reference[0] / mean;
+
+        get_field reference
+        push_0 0
+        get_array_el
+        get_loc0 0: mean
+        div
+        put_loc1 1: score
+
+;;   BenchmarkSuite.scores.push(score);
+
+        get_var 0: BenchmarkSuite
+        get_field scores
+        get_field2 push
+        get_loc1 1: score
+        call_method 1
+        drop
+        get_loc8 6: this
+
+;;   if (this.runner.NotifyResult) {
+
+        get_field runner
+        get_field NotifyResult
+        if_false8 106
+
+;;     var formatted = BenchmarkSuite.FormatScore(100 * score);
+
+        get_var 0: BenchmarkSuite
+        get_field2 FormatScore
+        push_i8 100
+        get_loc1 1: score
+        mul
+        call_method 1
+        put_loc2 2: formatted
+
+;;     this.runner.NotifyResult(this.name, formatted);
+
+        get_loc8 6: this
+        get_field runner
+        get_field2 NotifyResult
+        get_loc8 6: this
+        get_field name
+        get_loc2 2: formatted
+        call_method 2
+        drop
+  106:  get_loc8 6: this
+
+;;   }
+;;   if (this.reference.length == 2) {
+
+        get_field reference
+        get_length
+        push_2 2
+        eq
+        if_false8 236
+
+;;     var meanLatency = BenchmarkSuite.GeometricMeanLatency(this.results);
+
+        get_var 0: BenchmarkSuite
+        get_field2 GeometricMeanLatency
+        get_loc8 6: this
+        get_field results
+        call_method 1
+
+;;     if (meanLatency != 0) {
+
+        set_loc3 3: meanLatency
+        push_0 0
+        neq
+        if_false8 236
+        get_loc8 6: this
+
+;;       var scoreLatency = this.reference[1] / meanLatency;
+
+        get_field reference
+        push_1 1
+        get_array_el
+        get_loc3 3: meanLatency
+        div
+        put_loc8 4: scoreLatency
+
+;;       BenchmarkSuite.scores.push(scoreLatency);
+
+        get_var 0: BenchmarkSuite
+        get_field scores
+        get_field2 push
+        get_loc8 4: scoreLatency
+        call_method 1
+        drop
+        get_loc8 6: this
+
+;;       if (this.runner.NotifyResult) {
+
+        get_field runner
+        get_field NotifyResult
+        if_false8 236
+
+;;         var formattedLatency = BenchmarkSuite.FormatScore(100 * scoreLatency)
+
+        get_var 0: BenchmarkSuite
+        get_field2 FormatScore
+        push_i8 100
+        get_loc8 4: scoreLatency
+        mul
+        call_method 1
+        put_loc8 5: formattedLatency
+
+;;         this.runner.NotifyResult(this.name + "Latency", formattedLatency);
+
+        get_loc8 6: this
+        get_field runner
+        get_field2 NotifyResult
+        get_loc8 6: this
+        get_field name
+        push_atom_value Latency
+        add
+        get_loc8 5: formattedLatency
+        call_method 2
+        drop
+  236:  return_undef
+
+;;       }
+;;     }
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:269:42: function: <null>
+  args: runner
+  locals:
+    0: var this
+  closure vars:
+    0: var BenchmarkSuite [global_ref3]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function(runner) {
+
+        push_this
+        put_loc0 0: this
+
+;;   BenchmarkSuite.scores.push(1);  // push default reference score.
+
+        get_var 0: BenchmarkSuite
+        get_field scores
+        get_field2 push
+        push_1 1
+        call_method 1
+        drop
+
+;;   if (runner.NotifyResult) {
+
+        get_arg0 0: runner
+        get_field NotifyResult
+        if_false8 49
+
+;;     runner.NotifyResult(this.name, "Skipped");
+
+        get_arg0 0: runner
+        get_field2 NotifyResult
+        get_loc0 0: this
+        get_field name
+        push_atom_value Skipped
+        call_method 2
+        drop
+   49:  return_undef
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:278:40: function: <null>
+  args: error
+  locals:
+    0: var this
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function(error) {
+
+        push_this
+        put_loc0 0: this
+        get_loc0 0: this
+
+;;   if (this.runner.NotifyError) {
+
+        get_field runner
+        get_field NotifyError
+        if_false8 37
+
+;;     this.runner.NotifyError(this.name, error);
+
+        get_loc0 0: this
+        get_field runner
+        get_field2 NotifyError
+        get_loc0 0: this
+        get_field name
+        get_arg0 0: error
+        call_method 2
+        drop
+   37:  get_loc0 0: this
+
+;;   }
+;;   if (this.runner.NotifyStep) {
+
+        get_field runner
+        get_field NotifyStep
+        if_false8 71
+
+;;     this.runner.NotifyStep(this.name);
+
+        get_loc0 0: this
+        get_field runner
+        get_field2 NotifyStep
+        get_loc0 0: this
+        get_field name
+        call_method 1
+        drop
+   71:  return_undef
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:299:3: function: Measure
+  args: data
+  locals:
+    0: var elapsed
+    1: var start
+    2: var i
+  closure vars:
+    0: var Date [global_ref0]
+    1: var doDeterministic [loc2]
+    2: var benchmark [arg0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function Measure(data) {
+
+        push_0 0
+
+;;     var elapsed = 0;
+
+        put_loc0 0: elapsed
+
+;;     var start = new Date();
+
+        get_var 0: Date
+        dup
+        call_constructor 0
+        put_loc1 1: start
+        push_0 0
+
+;;   
+;;   // Run either for 1 second or for the number of iterations specified
+;;   // by minIterations, depending on the config flag doDeterministic.
+;;     for (var i = 0; (doDeterministic ? 
+
+        put_loc2 2: i
+   12:  get_var_ref1 1: doDeterministic
+        if_false8 25
+
+;;       i<benchmark.deterministicIterations : elapsed < 1000); i++) {
+
+        get_loc2 2: i
+        get_var_ref2 2: benchmark
+        get_field deterministicIterations
+        lt
+        goto8 30
+   25:  get_loc0 0: elapsed
+        push_i16 1000
+        lt
+   30:  if_false8 56
+
+;;       benchmark.run();
+
+        get_var_ref2 2: benchmark
+        get_field2 run
+        call_method 0
+        drop
+
+;;       elapsed = new Date() - start;
+
+        get_var 0: Date
+        dup
+        call_constructor 0
+        get_loc1 1: start
+        sub
+        put_loc0 0: elapsed
+        inc_loc 2: i
+        goto8 12
+
+;;     }
+;;     if (data != null) {
+
+   56:  get_arg0 0: data
+        null
+        neq
+        if_false8 87
+
+;;       data.runs += i;
+
+        get_arg0 0: data
+        get_field2 runs
+        get_loc2 2: i
+        add
+        put_field runs
+
+;;       data.elapsed += elapsed;
+
+        get_arg0 0: data
+        get_field2 elapsed
+        get_loc0 0: elapsed
+        add
+        put_field elapsed
+   87:  return_undef
+
+;;     }
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:290:47: function: <null>
+  args: benchmark data
+  locals:
+    0: var config
+    1: var doWarmup
+    2: var doDeterministic
+    3: var Measure
+    4: var usec
+    5: var rms
+    6: var this
+  closure vars:
+    0: var Date [global_ref32]
+    1: var BenchmarkSuite [global_ref3]
+    2: var undefined [global_ref35]
+    3: var BenchmarkResult [global_ref2]
+  stack_size: 7
+  var_ref_count: 2
+  opcodes:
+;; function(benchmark, data) {
+
+        push_this
+        put_loc8 6: this
+        fclosure8 0: [bytecode Measure]
+        put_loc3 3: Measure
+
+;;   var config = BenchmarkSuite.config;
+
+        get_var 1: BenchmarkSuite
+        get_field config
+
+;;   var doWarmup = config.doWarmup !== undefined 
+
+        set_loc0 0: config
+        get_field doWarmup
+        get_var 2: undefined
+        strict_neq
+        if_false8 34
+
+;;                  ? config.doWarmup 
+
+        get_loc0 0: config
+        get_field doWarmup
+        goto8 40
+
+;;                  : benchmark.doWarmup;
+
+   34:  get_arg0 0: benchmark
+        get_field doWarmup
+   40:  put_loc1 1: doWarmup
+
+;;   var doDeterministic = config.doDeterministic !== undefined 
+
+        get_loc0 0: config
+        get_field doDeterministic
+        get_var 2: undefined
+        strict_neq
+        if_false8 61
+
+;;                         ? config.doDeterministic 
+
+        get_loc0 0: config
+        get_field doDeterministic
+        goto8 67
+
+;;                         : benchmark.doDeterministic;
+
+   61:  get_arg0 0: benchmark
+        get_field doDeterministic
+   67:  put_loc2 2: doDeterministic
+
+;; 
+;;   function Measure(data) {
+;;     var elapsed = 0;
+;;     var start = new Date();
+;;   
+;;   // Run either for 1 second or for the number of iterations specified
+;;   // by minIterations, depending on the config flag doDeterministic.
+;;     for (var i = 0; (doDeterministic ? 
+;;       i<benchmark.deterministicIterations : elapsed < 1000); i++) {
+;;       benchmark.run();
+;;       elapsed = new Date() - start;
+;;     }
+;;     if (data != null) {
+;;       data.runs += i;
+;;       data.elapsed += elapsed;
+;;     }
+;;   }
+;; 
+;;   // Sets up data in order to skip or not the warmup phase.
+;;   if (!doWarmup && data == null) {
+
+        get_loc1 1: doWarmup
+        lnot
+        if_false8 91
+        get_arg1 1: data
+        null
+        eq
+        if_false8 91
+
+;;     data = { runs: 0, elapsed: 0 };
+
+        object
+        push_0 0
+        define_field runs
+        push_0 0
+        define_field elapsed
+        put_arg1 1: data
+
+;;   }
+;; 
+;;   if (data == null) {
+
+   91:  get_arg1 1: data
+        null
+        eq
+        if_false8 114
+
+;;     Measure(null);
+
+        get_loc3 3: Measure
+        null
+        call1 1
+        drop
+        object
+        push_0 0
+        define_field runs
+        push_0 0
+        define_field elapsed
+
+;;     return { runs: 0, elapsed: 0 };
+
+        return
+
+;;   } else {
+;;     Measure(data);
+
+  114:  get_loc3 3: Measure
+        get_arg1 1: data
+        call1 1
+        drop
+
+;;     // If we've run too few iterations, we continue for another second.
+;;     if (data.runs < benchmark.minIterations) return data;
+
+        get_arg1 1: data
+        get_field runs
+        get_arg0 0: benchmark
+        get_field minIterations
+        lt
+        if_false8 135
+        get_arg1 1: data
+        return
+
+;;     var usec = (data.elapsed * 1000) / data.runs;
+
+  135:  get_arg1 1: data
+        get_field elapsed
+        push_i16 1000
+        mul
+        get_arg1 1: data
+        get_field runs
+        div
+        put_loc8 4: usec
+
+;;     var rms = (benchmark.rmsResult != null) ? benchmark.rmsResult() : 0;
+
+        get_arg0 0: benchmark
+        get_field rmsResult
+        null
+        neq
+        if_false8 175
+        get_arg0 0: benchmark
+        get_field2 rmsResult
+        call_method 0
+        goto8 176
+  175:  push_0 0
+  176:  put_loc8 5: rms
+
+;;     this.NotifyStep(new BenchmarkResult(benchmark, usec, rms));
+
+        get_loc8 6: this
+        get_field2 NotifyStep
+        get_var 3: BenchmarkResult
+        dup
+        get_arg0 0: benchmark
+        get_loc8 4: usec
+        get_loc8 5: rms
+        call_constructor 3
+        call_method 1
+        drop
+        null
+
+;;     return null;
+
+        return
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:353:3: function: RunNextSetup
+  locals:
+    0: catch e [next:-1]
+  closure vars:
+    0: var index [loc1]
+    1: var length [loc0]
+    2: var suite [loc2]
+    3: var RunNextBenchmark [loc5]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function RunNextSetup() {
+;;     if (index < length) {
+
+        get_var_ref0 0: index
+        get_var_ref1 1: length
+        lt
+        if_false8 53
+        catch 30
+
+;;       try {
+;;         suite.benchmarks[index].Setup();
+
+        get_var_ref2 2: suite
+        get_field benchmarks
+        get_var_ref0 0: index
+        get_array_el
+        get_field2 Setup
+        call_method 0
+        drop
+        drop
+        goto8 51
+   30:  put_loc0 0: e
+        catch 50
+
+;;       } catch (e) {
+;;         suite.NotifyError(e);
+
+        get_var_ref2 2: suite
+        get_field2 NotifyError
+        get_loc0 0: e
+        call_method 1
+        drop
+        null
+
+;;         return null;
+
+        nip_catch
+        return
+   50:  throw
+
+;;       }
+;;       return RunNextBenchmark;
+
+   51:  get_var_ref3 3: RunNextBenchmark
+        return
+
+;;     }
+;;     suite.NotifyResult();
+
+   53:  get_var_ref2 2: suite
+        get_field2 NotifyResult
+        call_method 0
+        drop
+        null
+
+;;     return null;
+
+        return
+
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:367:3: function: RunNextBenchmark
+  locals:
+    0: catch e [next:-1]
+  closure vars:
+    0: var suite [loc2]
+    1: var index [loc1]
+    2: var data [loc3]
+    3: var RunNextTearDown [loc6]
+    4: var RunNextBenchmark [loc5]
+  stack_size: 5
+  var_ref_count: 0
+  opcodes:
+;; function RunNextBenchmark() {
+
+        catch 27
+
+;;     try {
+;;       data = suite.RunSingleBenchmark(suite.benchmarks[index], data);
+
+        get_var_ref0 0: suite
+        get_field2 RunSingleBenchmark
+        get_var_ref0 0: suite
+        get_field benchmarks
+        get_var_ref1 1: index
+        get_array_el
+        get_var_ref2 2: data
+        call_method 2
+        put_var_ref2 2: data
+        drop
+        goto8 48
+   27:  put_loc0 0: e
+        catch 47
+
+;;     } catch (e) {
+;;       suite.NotifyError(e);
+
+        get_var_ref0 0: suite
+        get_field2 NotifyError
+        get_loc0 0: e
+        call_method 1
+        drop
+        null
+
+;;       return null;
+
+        nip_catch
+        return
+   47:  throw
+
+;;     }
+;;     // If data is null, we're done with this benchmark.
+;;     return (data == null) ? RunNextTearDown : RunNextBenchmark();
+
+   48:  get_var_ref2 2: data
+        null
+        eq
+        if_false8 55
+        get_var_ref3 3: RunNextTearDown
+        return
+   55:  get_var_ref 4: RunNextBenchmark
+        call0 0
+        return
+
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:378:3: function: RunNextTearDown
+  locals:
+    0: catch e [next:-1]
+  closure vars:
+    0: var suite [loc2]
+    1: var index [loc1]
+    2: var RunNextSetup [loc4]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function RunNextTearDown() {
+
+        catch 27
+
+;;     try {
+;;       suite.benchmarks[index++].TearDown();
+
+        get_var_ref0 0: suite
+        get_field benchmarks
+        get_var_ref1 1: index
+        post_inc
+        put_var_ref1 1: index
+        get_array_el
+        get_field2 TearDown
+        call_method 0
+        drop
+        drop
+        goto8 48
+   27:  put_loc0 0: e
+        catch 47
+
+;;     } catch (e) {
+;;       suite.NotifyError(e);
+
+        get_var_ref0 0: suite
+        get_field2 NotifyError
+        get_loc0 0: e
+        call_method 1
+        drop
+        null
+
+;;       return null;
+
+        nip_catch
+        return
+   47:  throw
+
+;;     }
+;;     return RunNextSetup;
+
+   48:  get_var_ref2 2: RunNextSetup
+        return
+
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:340:36: function: <null>
+  args: runner
+  locals:
+    0: var length
+    1: var index
+    2: var suite
+    3: var data
+    4: var RunNextSetup
+    5: var RunNextBenchmark
+    6: var RunNextTearDown
+    7: var this
+  closure vars:
+    0: var BenchmarkSuite [global_ref3]
+  stack_size: 2
+  var_ref_count: 7
+  opcodes:
+;; function(runner) {
+
+        push_this
+        put_loc8 7: this
+        fclosure8 0: [bytecode RunNextSetup]
+        put_loc8 4: RunNextSetup
+        fclosure8 1: [bytecode RunNextBenchmark]
+        put_loc8 5: RunNextBenchmark
+        fclosure8 2: [bytecode RunNextTearDown]
+        put_loc8 6: RunNextTearDown
+
+;;   BenchmarkSuite.ResetRNG();
+
+        get_var 0: BenchmarkSuite
+        get_field2 ResetRNG
+        call_method 0
+        drop
+
+;;   this.results = [];
+
+        get_loc8 7: this
+        array_from 0
+        put_field results
+
+;;   this.runner = runner;
+
+        get_loc8 7: this
+        get_arg0 0: runner
+        put_field runner
+        get_loc8 7: this
+
+;;   var length = this.benchmarks.length;
+
+        get_field benchmarks
+        get_length
+        put_loc0 0: length
+        push_0 0
+
+;;   var index = 0;
+
+        put_loc1 1: index
+        get_loc8 7: this
+
+;;   var suite = this;
+
+        put_loc2 2: suite
+
+;;   var data;
+;; 
+;;   // Run the setup, the actual benchmark, and the tear down in three
+;;   // separate steps to allow the framework to yield between any of the
+;;   // steps.
+;; 
+;;   function RunNextSetup() {
+;;     if (index < length) {
+;;       try {
+;;         suite.benchmarks[index].Setup();
+;;       } catch (e) {
+;;         suite.NotifyError(e);
+;;         return null;
+;;       }
+;;       return RunNextBenchmark;
+;;     }
+;;     suite.NotifyResult();
+;;     return null;
+;;   }
+;; 
+;;   function RunNextBenchmark() {
+;;     try {
+;;       data = suite.RunSingleBenchmark(suite.benchmarks[index], data);
+;;     } catch (e) {
+;;       suite.NotifyError(e);
+;;       return null;
+;;     }
+;;     // If data is null, we're done with this benchmark.
+;;     return (data == null) ? RunNextTearDown : RunNextBenchmark();
+;;   }
+;; 
+;;   function RunNextTearDown() {
+;;     try {
+;;       suite.benchmarks[index++].TearDown();
+;;     } catch (e) {
+;;       suite.NotifyError(e);
+;;       return null;
+;;     }
+;;     return RunNextSetup;
+;;   }
+;; 
+;;   // Start out running the setup.
+;;   return RunNextSetup();
+
+        get_loc8 4: RunNextSetup
+        tail_call 0
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:439:1: function: runRichards
+  locals:
+    0: var scheduler
+    1: var queue
+    2: var msg
+  closure vars:
+    0: var Scheduler [global_ref9]
+    1: var ID_IDLE [global_ref10]
+    2: var COUNT [global_ref6]
+    3: var Packet [global_ref31]
+    4: var ID_WORKER [global_ref11]
+    5: var KIND_WORK [global_ref18]
+    6: var ID_DEVICE_A [global_ref14]
+    7: var KIND_DEVICE [global_ref17]
+    8: var ID_HANDLER_A [global_ref12]
+    9: var ID_DEVICE_B [global_ref15]
+   10: var ID_HANDLER_B [global_ref13]
+   11: var EXPECTED_QUEUE_COUNT [global_ref7]
+   12: var EXPECTED_HOLD_COUNT [global_ref8]
+   13: var Error [global_ref36]
+  stack_size: 6
+  var_ref_count: 0
+  opcodes:
+;; function runRichards() {
+;;   var scheduler = new Scheduler();
+
+        get_var 0: Scheduler
+        dup
+        call_constructor 0
+
+;;   scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);
+
+        set_loc0 0: scheduler
+        get_field2 addIdleTask
+        get_var 1: ID_IDLE
+        push_0 0
+        null
+        get_var 2: COUNT
+        call_method 4
+        drop
+
+;; 
+;;   var queue = new Packet(null, ID_WORKER, KIND_WORK);
+
+        get_var 3: Packet
+        dup
+        null
+        get_var 4: ID_WORKER
+        get_var 5: KIND_WORK
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   queue = new Packet(queue,  ID_WORKER, KIND_WORK);
+
+        get_var 3: Packet
+        dup
+        get_loc1 1: queue
+        get_var 4: ID_WORKER
+        get_var 5: KIND_WORK
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   scheduler.addWorkerTask(ID_WORKER, 1000, queue);
+
+        get_loc0 0: scheduler
+        get_field2 addWorkerTask
+        get_var 4: ID_WORKER
+        push_i16 1000
+        get_loc1 1: queue
+        call_method 3
+        drop
+
+;; 
+;;   queue = new Packet(null, ID_DEVICE_A, KIND_DEVICE);
+
+        get_var 3: Packet
+        dup
+        null
+        get_var 6: ID_DEVICE_A
+        get_var 7: KIND_DEVICE
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);
+
+        get_var 3: Packet
+        dup
+        get_loc1 1: queue
+        get_var 6: ID_DEVICE_A
+        get_var 7: KIND_DEVICE
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);
+
+        get_var 3: Packet
+        dup
+        get_loc1 1: queue
+        get_var 6: ID_DEVICE_A
+        get_var 7: KIND_DEVICE
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   scheduler.addHandlerTask(ID_HANDLER_A, 2000, queue);
+
+        get_loc0 0: scheduler
+        get_field2 addHandlerTask
+        get_var 8: ID_HANDLER_A
+        push_i16 2000
+        get_loc1 1: queue
+        call_method 3
+        drop
+
+;; 
+;;   queue = new Packet(null, ID_DEVICE_B, KIND_DEVICE);
+
+        get_var 3: Packet
+        dup
+        null
+        get_var 9: ID_DEVICE_B
+        get_var 7: KIND_DEVICE
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);
+
+        get_var 3: Packet
+        dup
+        get_loc1 1: queue
+        get_var 9: ID_DEVICE_B
+        get_var 7: KIND_DEVICE
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);
+
+        get_var 3: Packet
+        dup
+        get_loc1 1: queue
+        get_var 9: ID_DEVICE_B
+        get_var 7: KIND_DEVICE
+        call_constructor 3
+        put_loc1 1: queue
+
+;;   scheduler.addHandlerTask(ID_HANDLER_B, 3000, queue);
+
+        get_loc0 0: scheduler
+        get_field2 addHandlerTask
+        get_var 10: ID_HANDLER_B
+        push_i16 3000
+        get_loc1 1: queue
+        call_method 3
+        drop
+
+;; 
+;;   scheduler.addDeviceTask(ID_DEVICE_A, 4000, null);
+
+        get_loc0 0: scheduler
+        get_field2 addDeviceTask
+        get_var 6: ID_DEVICE_A
+        push_i16 4000
+        null
+        call_method 3
+        drop
+
+;; 
+;;   scheduler.addDeviceTask(ID_DEVICE_B, 5000, null);
+
+        get_loc0 0: scheduler
+        get_field2 addDeviceTask
+        get_var 9: ID_DEVICE_B
+        push_i16 5000
+        null
+        call_method 3
+        drop
+
+;; 
+;;   scheduler.schedule();
+
+        get_loc0 0: scheduler
+        get_field2 schedule
+        call_method 0
+        drop
+
+;; 
+;;   if (scheduler.queueCount != EXPECTED_QUEUE_COUNT ||
+
+        get_loc0 0: scheduler
+        get_field queueCount
+        get_var 11: EXPECTED_QUEUE_COUNT
+        neq
+        dup
+        if_true8 264
+        drop
+
+;;       scheduler.holdCount != EXPECTED_HOLD_COUNT) {
+
+        get_loc0 0: scheduler
+        get_field holdCount
+        get_var 12: EXPECTED_HOLD_COUNT
+        neq
+  264:  if_false8 307
+        push_atom_value "Error during execution: queueCount = "
+
+;;     var msg =
+;;         "Error during execution: queueCount = " + scheduler.queueCount +
+
+        get_loc0 0: scheduler
+        get_field queueCount
+        add
+        push_atom_value ", holdCount = "
+        add
+
+;;         ", holdCount = " + scheduler.holdCount + ".";
+
+        get_loc0 0: scheduler
+        get_field holdCount
+        add
+        push_atom_value "."
+        add
+        put_loc2 2: msg
+
+;;     throw new Error(msg);
+
+        get_var 13: Error
+        dup
+        get_loc2 2: msg
+        call_constructor 1
+        throw
+  307:  return_undef
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:491:1: function: Scheduler
+  locals:
+    0: var this
+  closure vars:
+    0: var Array [global_ref37]
+    1: var NUMBER_OF_IDS [global_ref16]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function Scheduler() {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.queueCount = 0;
+
+        get_loc0 0: this
+        push_0 0
+        put_field queueCount
+
+;;   this.holdCount = 0;
+
+        get_loc0 0: this
+        push_0 0
+        put_field holdCount
+
+;;   this.blocks = new Array(NUMBER_OF_IDS);
+
+        get_loc0 0: this
+        get_var 0: Array
+        dup
+        get_var 1: NUMBER_OF_IDS
+        call_constructor 1
+        put_field blocks
+
+;;   this.list = null;
+
+        get_loc0 0: this
+        null
+        put_field list
+
+;;   this.currentTcb = null;
+
+        get_loc0 0: this
+        null
+        put_field currentTcb
+
+;;   this.currentId = null;
+
+        get_loc0 0: this
+        null
+        put_field currentId
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:518:35: function: <null>
+  args: id priority queue count
+  locals:
+    0: var this
+  closure vars:
+    0: var IdleTask [global_ref26]
+  stack_size: 10
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue, count) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.addRunningTask(id, priority, queue, new IdleTask(this, 1, count));
+
+        get_loc0 0: this
+        get_field2 addRunningTask
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_var 0: IdleTask
+        dup
+        get_loc0 0: this
+        push_1 1
+        get_arg3 3: count
+        call_constructor 3
+        call_method 4
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:528:37: function: <null>
+  args: id priority queue
+  locals:
+    0: var this
+  closure vars:
+    0: var WorkerTask [global_ref28]
+    1: var ID_HANDLER_A [global_ref12]
+  stack_size: 10
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.addTask(id, priority, queue, new WorkerTask(this, ID_HANDLER_A, 0));
+
+        get_loc0 0: this
+        get_field2 addTask
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_var 0: WorkerTask
+        dup
+        get_loc0 0: this
+        get_var 1: ID_HANDLER_A
+        push_0 0
+        call_constructor 3
+        call_method 4
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:538:38: function: <null>
+  args: id priority queue
+  locals:
+    0: var this
+  closure vars:
+    0: var HandlerTask [global_ref29]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.addTask(id, priority, queue, new HandlerTask(this));
+
+        get_loc0 0: this
+        get_field2 addTask
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_var 0: HandlerTask
+        dup
+        get_loc0 0: this
+        call_constructor 1
+        call_method 4
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:548:37: function: <null>
+  args: id priority queue
+  locals:
+    0: var this
+  closure vars:
+    0: var DeviceTask [global_ref27]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.addTask(id, priority, queue, new DeviceTask(this))
+
+        get_loc0 0: this
+        get_field2 addTask
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_var 0: DeviceTask
+        dup
+        get_loc0 0: this
+        call_constructor 1
+        call_method 4
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:559:38: function: <null>
+  args: id priority queue task
+  locals:
+    0: var this
+  stack_size: 6
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue, task) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.addTask(id, priority, queue, task);
+
+        get_loc0 0: this
+        get_field2 addTask
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_arg3 3: task
+        call_method 4
+        drop
+
+;;   this.currentTcb.setRunning();
+
+        get_loc0 0: this
+        get_field currentTcb
+        get_field2 setRunning
+        call_method 0
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:571:31: function: <null>
+  args: id priority queue task
+  locals:
+    0: var this
+  closure vars:
+    0: var TaskControlBlock [global_ref19]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue, task) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.currentTcb = new TaskControlBlock(this.list, id, priority, queue, task);
+
+        get_loc0 0: this
+        get_var 0: TaskControlBlock
+        dup
+        get_loc0 0: this
+        get_field list
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_arg3 3: task
+        call_constructor 5
+        put_field currentTcb
+
+;;   this.list = this.currentTcb;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field currentTcb
+        put_field list
+
+;;   this.blocks[id] = this.currentTcb;
+
+        get_loc0 0: this
+        get_field blocks
+        get_arg0 0: id
+        get_loc0 0: this
+        get_field currentTcb
+        put_array_el
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:580:32: function: mlSchedule
+  locals:
+    0: var __mlMethod
+    1: var this
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function mlSchedule() {
+
+        push_this
+        put_loc1 1: this
+
+;;   this.currentTcb = this.list;
+
+        get_loc1 1: this
+        get_loc1 1: this
+        get_field list
+        put_field currentTcb
+
+;;   var __mlMethod;
+;;   __mlMethod = this.currentTcb.run;
+
+        get_loc1 1: this
+        get_field currentTcb
+        get_field run
+        put_loc0 0: __mlMethod
+   26:  get_loc1 1: this
+
+;;   while (this.currentTcb != null) {
+
+        get_field currentTcb
+        null
+        neq
+        if_false8 111
+        get_loc1 1: this
+
+;;     if (this.currentTcb.isHeldOrSuspended()) {
+
+        get_field currentTcb
+        get_field2 isHeldOrSuspended
+        call_method 0
+        if_false8 71
+
+;;       this.currentTcb = this.currentTcb.link;
+
+        get_loc1 1: this
+        get_loc1 1: this
+        get_field currentTcb
+        get_field link
+        put_field currentTcb
+        goto8 26
+
+;;     } else {
+;;       this.currentId = this.currentTcb.id;
+
+   71:  get_loc1 1: this
+        get_loc1 1: this
+        get_field currentTcb
+        get_field id
+        put_field currentId
+
+;;       this.currentTcb = __mlMethod.call(this.currentTcb);
+
+        get_loc1 1: this
+        get_loc0 0: __mlMethod
+        get_field2 call
+        get_loc1 1: this
+        get_field currentTcb
+        call_method 1
+        put_field currentTcb
+        goto8 26
+  111:  return_undef
+
+;;     }
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:598:31: function: <null>
+  args: id
+  locals:
+    0: var tcb
+    1: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function (id) {
+
+        push_this
+        put_loc1 1: this
+        get_loc1 1: this
+
+;;   var tcb = this.blocks[id];
+
+        get_field blocks
+        get_arg0 0: id
+        get_array_el
+
+;;   if (tcb == null) return tcb;
+
+        set_loc0 0: tcb
+        null
+        eq
+        if_false8 17
+        get_loc0 0: tcb
+        return
+
+;;   tcb.markAsNotHeld();
+
+   17:  get_loc0 0: tcb
+        get_field2 markAsNotHeld
+        call_method 0
+        drop
+
+;;   if (tcb.priority > this.currentTcb.priority) {
+
+        get_loc0 0: tcb
+        get_field priority
+        get_loc1 1: this
+        get_field currentTcb
+        get_field priority
+        gt
+        if_false8 49
+
+;;     return tcb;
+
+        get_loc0 0: tcb
+        return
+   49:  get_loc1 1: this
+
+;;   } else {
+;;     return this.currentTcb;
+
+        get_field currentTcb
+        return
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:614:35: function: <null>
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.holdCount++;
+
+        get_loc0 0: this
+        get_field2 holdCount
+        inc
+        put_field holdCount
+
+;;   this.currentTcb.markAsHeld();
+
+        get_loc0 0: this
+        get_field currentTcb
+        get_field2 markAsHeld
+        call_method 0
+        drop
+        get_loc0 0: this
+
+;;   return this.currentTcb.link;
+
+        get_field currentTcb
+        get_field link
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:624:38: function: <null>
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.currentTcb.markAsSuspended();
+
+        get_loc0 0: this
+        get_field currentTcb
+        get_field2 markAsSuspended
+        call_method 0
+        drop
+        get_loc0 0: this
+
+;;   return this.currentTcb;
+
+        get_field currentTcb
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:635:29: function: <null>
+  args: packet
+  locals:
+    0: var t
+    1: var this
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc1 1: this
+        get_loc1 1: this
+
+;;   var t = this.blocks[packet.id];
+
+        get_field blocks
+        get_arg0 0: packet
+        get_field id
+        get_array_el
+
+;;   if (t == null) return t;
+
+        set_loc0 0: t
+        null
+        eq
+        if_false8 22
+        get_loc0 0: t
+        return
+
+;;   this.queueCount++;
+
+   22:  get_loc1 1: this
+        get_field2 queueCount
+        inc
+        put_field queueCount
+
+;;   packet.link = null;
+
+        get_arg0 0: packet
+        null
+        put_field link
+
+;;   packet.id = this.currentId;
+
+        get_arg0 0: packet
+        get_loc1 1: this
+        get_field currentId
+        put_field id
+
+;;   return t.checkPriorityAdd(this.currentTcb, packet);
+
+        get_loc0 0: t
+        get_field2 checkPriorityAdd
+        get_loc1 1: this
+        get_field currentTcb
+        get_arg0 0: packet
+        tail_call_method 2
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:654:1: function: TaskControlBlock
+  args: link id priority queue task
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_SUSPENDED [global_ref22]
+    1: var STATE_SUSPENDED_RUNNABLE [global_ref24]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function TaskControlBlock(link, id, priority, queue, task) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.link = link;
+
+        get_loc0 0: this
+        get_arg0 0: link
+        put_field link
+
+;;   this.id = id;
+
+        get_loc0 0: this
+        get_arg1 1: id
+        put_field id
+
+;;   this.priority = priority;
+
+        get_loc0 0: this
+        get_arg2 2: priority
+        put_field priority
+
+;;   this.queue = queue;
+
+        get_loc0 0: this
+        get_arg3 3: queue
+        put_field queue
+
+;;   this.task = task;
+
+        get_loc0 0: this
+        get_arg 4: task
+        put_field task
+
+;;   if (queue == null) {
+
+        get_arg3 3: queue
+        null
+        eq
+        if_false8 54
+
+;;     this.state = STATE_SUSPENDED;
+
+        get_loc0 0: this
+        get_var 0: STATE_SUSPENDED
+        put_field state
+        return_undef
+
+;;   } else {
+;;     this.state = STATE_SUSPENDED_RUNNABLE;
+
+   54:  get_loc0 0: this
+        get_var 1: STATE_SUSPENDED_RUNNABLE
+        put_field state
+        return_undef
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:691:41: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_RUNNING [global_ref20]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.state = STATE_RUNNING;
+
+        get_loc0 0: this
+        get_var 0: STATE_RUNNING
+        put_field state
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:695:44: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_NOT_HELD [global_ref25]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.state = this.state & STATE_NOT_HELD;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field state
+        get_var 0: STATE_NOT_HELD
+        and
+        put_field state
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:699:41: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_HELD [global_ref23]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.state = this.state | STATE_HELD;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field state
+        get_var 0: STATE_HELD
+        or
+        put_field state
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:703:48: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_HELD [global_ref23]
+    1: var STATE_SUSPENDED [global_ref22]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+        get_loc0 0: this
+
+;;   return (this.state & STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);
+
+        get_field state
+        get_var 0: STATE_HELD
+        and
+        push_0 0
+        neq
+        dup
+        if_true8 28
+        drop
+        get_loc0 0: this
+        get_field state
+        get_var 1: STATE_SUSPENDED
+        eq
+   28:  return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:707:46: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_SUSPENDED [global_ref22]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.state = this.state | STATE_SUSPENDED;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field state
+        get_var 0: STATE_SUSPENDED
+        or
+        put_field state
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:711:45: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_RUNNABLE [global_ref21]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.state = this.state | STATE_RUNNABLE;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field state
+        get_var 0: STATE_RUNNABLE
+        or
+        put_field state
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:718:34: function: <null>
+  locals:
+    0: var packet
+    1: var this
+  closure vars:
+    0: var STATE_SUSPENDED_RUNNABLE [global_ref24]
+    1: var STATE_RUNNING [global_ref20]
+    2: var STATE_RUNNABLE [global_ref21]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc1 1: this
+        get_loc1 1: this
+
+;;   var packet;
+;;   if (this.state == STATE_SUSPENDED_RUNNABLE) {
+
+        get_field state
+        get_var 0: STATE_SUSPENDED_RUNNABLE
+        eq
+        if_false8 65
+
+;;     packet = this.queue;
+
+        get_loc1 1: this
+        get_field queue
+        put_loc0 0: packet
+
+;;     this.queue = packet.link;
+
+        get_loc1 1: this
+        get_loc0 0: packet
+        get_field link
+        put_field queue
+        get_loc1 1: this
+
+;;     if (this.queue == null) {
+
+        get_field queue
+        null
+        eq
+        if_false8 54
+
+;;       this.state = STATE_RUNNING;
+
+        get_loc1 1: this
+        get_var 1: STATE_RUNNING
+        put_field state
+        goto8 67
+
+;;     } else {
+;;       this.state = STATE_RUNNABLE;
+
+   54:  get_loc1 1: this
+        get_var 2: STATE_RUNNABLE
+        put_field state
+        goto8 67
+
+;;     }
+;;   } else {
+;;     packet = null;
+
+   65:  null
+        put_loc0 0: packet
+   67:  get_loc1 1: this
+
+;;   }
+;;   return this.task.run(packet);
+
+        get_field task
+        get_field2 run
+        get_loc0 0: packet
+        tail_call_method 1
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:739:47: function: <null>
+  args: task packet
+  locals:
+    0: var this
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function (task, packet) {
+
+        push_this
+        put_loc0 0: this
+        get_loc0 0: this
+
+;;   if (this.queue == null) {
+
+        get_field queue
+        null
+        eq
+        if_false8 46
+
+;;     this.queue = packet;
+
+        get_loc0 0: this
+        get_arg1 1: packet
+        put_field queue
+
+;;     this.markAsRunnable();
+
+        get_loc0 0: this
+        get_field2 markAsRunnable
+        call_method 0
+        drop
+        get_loc0 0: this
+
+;;     if (this.priority > task.priority) return this;
+
+        get_field priority
+        get_arg0 0: task
+        get_field priority
+        gt
+        if_false8 67
+        get_loc0 0: this
+        return
+
+;;   } else {
+;;     this.queue = packet.addTo(this.queue);
+
+   46:  get_loc0 0: this
+        get_arg1 1: packet
+        get_field2 addTo
+        get_loc0 0: this
+        get_field queue
+        call_method 1
+        put_field queue
+
+;;   }
+;;   return task;
+
+   67:  get_arg0 0: task
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:750:39: function: <null>
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+        push_atom_value "tcb { "
+        get_loc0 0: this
+
+;;   return "tcb { " + this.task + "@" + this.state + " }";
+
+        get_field task
+        add
+        push_atom_value "@"
+        add
+        get_loc0 0: this
+        get_field state
+        add
+        push_atom_value " }"
+        add
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:762:1: function: IdleTask
+  args: scheduler v1 count
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function IdleTask(scheduler, v1, count) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.scheduler = scheduler;
+
+        get_loc0 0: this
+        get_arg0 0: scheduler
+        put_field scheduler
+
+;;   this.v1 = v1;
+
+        get_loc0 0: this
+        get_arg1 1: v1
+        put_field v1
+
+;;   this.count = count;
+
+        get_loc0 0: this
+        get_arg2 2: count
+        put_field count
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:768:26: function: <null>
+  args: packet
+  locals:
+    0: var this
+  closure vars:
+    0: var ID_DEVICE_A [global_ref14]
+    1: var ID_DEVICE_B [global_ref15]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.count--;
+
+        get_loc0 0: this
+        get_field2 count
+        dec
+        put_field count
+        get_loc0 0: this
+
+;;   if (this.count == 0) return this.scheduler.holdCurrent();
+
+        get_field count
+        push_0 0
+        eq
+        if_false8 38
+        get_loc0 0: this
+        get_field scheduler
+        get_field2 holdCurrent
+        tail_call_method 0
+   38:  get_loc0 0: this
+
+;;   if ((this.v1 & 1) == 0) {
+
+        get_field v1
+        push_1 1
+        and
+        push_0 0
+        eq
+        if_false8 81
+
+;;     this.v1 = this.v1 >> 1;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field v1
+        push_1 1
+        sar
+        put_field v1
+        get_loc0 0: this
+
+;;     return this.scheduler.release(ID_DEVICE_A);
+
+        get_field scheduler
+        get_field2 release
+        get_var 0: ID_DEVICE_A
+        tail_call_method 1
+
+;;   } else {
+;;     this.v1 = (this.v1 >> 1) ^ 0xD008;
+
+   81:  get_loc0 0: this
+        get_loc0 0: this
+        get_field v1
+        push_1 1
+        sar
+        push_i32 53256
+        xor
+        put_field v1
+        get_loc0 0: this
+
+;;     return this.scheduler.release(ID_DEVICE_B);
+
+        get_field scheduler
+        get_field2 release
+        get_var 1: ID_DEVICE_B
+        tail_call_method 1
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:780:31: function: <null>
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_atom_value IdleTask
+
+;;   return "IdleTask"
+
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:790:1: function: DeviceTask
+  args: scheduler
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function DeviceTask(scheduler) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.scheduler = scheduler;
+
+        get_loc0 0: this
+        get_arg0 0: scheduler
+        put_field scheduler
+
+;;   this.v1 = null;
+
+        get_loc0 0: this
+        null
+        put_field v1
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:795:28: function: <null>
+  args: packet
+  locals:
+    0: var v
+    1: var this
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc1 1: this
+
+;;   if (packet == null) {
+
+        get_arg0 0: packet
+        null
+        eq
+        if_false8 60
+        get_loc1 1: this
+
+;;     if (this.v1 == null) return this.scheduler.suspendCurrent();
+
+        get_field v1
+        null
+        eq
+        if_false8 31
+        get_loc1 1: this
+        get_field scheduler
+        get_field2 suspendCurrent
+        tail_call_method 0
+   31:  get_loc1 1: this
+
+;;     var v = this.v1;
+
+        get_field v1
+        put_loc0 0: v
+
+;;     this.v1 = null;
+
+        get_loc1 1: this
+        null
+        put_field v1
+        get_loc1 1: this
+
+;;     return this.scheduler.queue(v);
+
+        get_field scheduler
+        get_field2 queue
+        get_loc0 0: v
+        tail_call_method 1
+
+;;   } else {
+;;     this.v1 = packet;
+
+   60:  get_loc1 1: this
+        get_arg0 0: packet
+        put_field v1
+        get_loc1 1: this
+
+;;     return this.scheduler.holdCurrent();
+
+        get_field scheduler
+        get_field2 holdCurrent
+        tail_call_method 0
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:807:33: function: <null>
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_atom_value DeviceTask
+
+;;   return "DeviceTask";
+
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:818:1: function: WorkerTask
+  args: scheduler v1 v2
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function WorkerTask(scheduler, v1, v2) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.scheduler = scheduler;
+
+        get_loc0 0: this
+        get_arg0 0: scheduler
+        put_field scheduler
+
+;;   this.v1 = v1;
+
+        get_loc0 0: this
+        get_arg1 1: v1
+        put_field v1
+
+;;   this.v2 = v2;
+
+        get_loc0 0: this
+        get_arg2 2: v2
+        put_field v2
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:824:28: function: <null>
+  args: packet
+  locals:
+    0: var i
+    1: var this
+  closure vars:
+    0: var ID_HANDLER_A [global_ref12]
+    1: var ID_HANDLER_B [global_ref13]
+    2: var DATA_SIZE [global_ref30]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc1 1: this
+
+;;   if (packet == null) {
+
+        get_arg0 0: packet
+        null
+        eq
+        if_false8 21
+        get_loc1 1: this
+
+;;     return this.scheduler.suspendCurrent();
+
+        get_field scheduler
+        get_field2 suspendCurrent
+        tail_call_method 0
+   21:  get_loc1 1: this
+
+;;   } else {
+;;     if (this.v1 == ID_HANDLER_A) {
+
+        get_field v1
+        get_var 0: ID_HANDLER_A
+        eq
+        if_false8 44
+
+;;       this.v1 = ID_HANDLER_B;
+
+        get_loc1 1: this
+        get_var 1: ID_HANDLER_B
+        put_field v1
+        goto8 53
+
+;;     } else {
+;;       this.v1 = ID_HANDLER_A;
+
+   44:  get_loc1 1: this
+        get_var 0: ID_HANDLER_A
+        put_field v1
+
+;;     }
+;;     packet.id = this.v1;
+
+   53:  get_arg0 0: packet
+        get_loc1 1: this
+        get_field v1
+        put_field id
+
+;;     packet.a1 = 0;
+
+        get_arg0 0: packet
+        push_0 0
+        put_field a1
+        push_0 0
+
+;;     for (var i = 0; i < DATA_SIZE; i++) {
+
+        put_loc0 0: i
+   74:  get_loc0 0: i
+        get_var 2: DATA_SIZE
+        lt
+        if_false8 129
+
+;;       this.v2++;
+
+        get_loc1 1: this
+        get_field2 v2
+        inc
+        put_field v2
+        get_loc1 1: this
+
+;;       if (this.v2 > 26) this.v2 = 1;
+
+        get_field v2
+        push_i8 26
+        gt
+        if_false8 111
+        get_loc1 1: this
+        push_1 1
+        put_field v2
+
+;;       packet.a2[i] = this.v2;
+
+  111:  get_arg0 0: packet
+        get_field a2
+        get_loc0 0: i
+        get_loc1 1: this
+        get_field v2
+        put_array_el
+        inc_loc 0: i
+        goto8 74
+  129:  get_loc1 1: this
+
+;;     }
+;;     return this.scheduler.queue(packet);
+
+        get_field scheduler
+        get_field2 queue
+        get_arg0 0: packet
+        tail_call_method 1
+
+;;   }
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:844:33: function: <null>
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_atom_value WorkerTask
+
+;;   return "WorkerTask";
+
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:853:1: function: HandlerTask
+  args: scheduler
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function HandlerTask(scheduler) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.scheduler = scheduler;
+
+        get_loc0 0: this
+        get_arg0 0: scheduler
+        put_field scheduler
+
+;;   this.v1 = null;
+
+        get_loc0 0: this
+        null
+        put_field v1
+
+;;   this.v2 = null;
+
+        get_loc0 0: this
+        null
+        put_field v2
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:859:29: function: <null>
+  args: packet
+  locals:
+    0: var count
+    1: var v
+    2: var this
+  closure vars:
+    0: var KIND_WORK [global_ref18]
+    1: var DATA_SIZE [global_ref30]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc2 2: this
+
+;;   if (packet != null) {
+
+        get_arg0 0: packet
+        null
+        neq
+        if_false8 63
+
+;;     if (packet.kind == KIND_WORK) {
+
+        get_arg0 0: packet
+        get_field kind
+        get_var 0: KIND_WORK
+        eq
+        if_false8 42
+
+;;       this.v1 = packet.addTo(this.v1);
+
+        get_loc2 2: this
+        get_arg0 0: packet
+        get_field2 addTo
+        get_loc2 2: this
+        get_field v1
+        call_method 1
+        put_field v1
+        goto8 63
+
+;;     } else {
+;;       this.v2 = packet.addTo(this.v2);
+
+   42:  get_loc2 2: this
+        get_arg0 0: packet
+        get_field2 addTo
+        get_loc2 2: this
+        get_field v2
+        call_method 1
+        put_field v2
+   63:  get_loc2 2: this
+
+;;     }
+;;   }
+;;   if (this.v1 != null) {
+
+        get_field v1
+        null
+        neq
+        if_false 215
+        get_loc2 2: this
+
+;;     var count = this.v1.a1;
+
+        get_field v1
+        get_field a1
+
+;;     var v;
+;;     if (count < DATA_SIZE) {
+
+        set_loc0 0: count
+        get_var 1: DATA_SIZE
+        lt
+        if_false8 176
+        get_loc2 2: this
+
+;;       if (this.v2 != null) {
+
+        get_field v2
+        null
+        neq
+        if_false8 215
+
+;;         v = this.v2;
+
+        get_loc2 2: this
+        get_field v2
+        put_loc1 1: v
+
+;;         this.v2 = this.v2.link;
+
+        get_loc2 2: this
+        get_loc2 2: this
+        get_field v2
+        get_field link
+        put_field v2
+
+;;         v.a1 = this.v1.a2[count];
+
+        get_loc1 1: v
+        get_loc2 2: this
+        get_field v1
+        get_field a2
+        get_loc0 0: count
+        get_array_el
+        put_field a1
+
+;;         this.v1.a1 = count + 1;
+
+        get_loc2 2: this
+        get_field v1
+        get_loc0 0: count
+        push_1 1
+        add
+        put_field a1
+        get_loc2 2: this
+
+;;         return this.scheduler.queue(v);
+
+        get_field scheduler
+        get_field2 queue
+        get_loc1 1: v
+        tail_call_method 1
+
+;;       }
+;;     } else {
+;;       v = this.v1;
+
+  176:  get_loc2 2: this
+        get_field v1
+        put_loc1 1: v
+
+;;       this.v1 = this.v1.link;
+
+        get_loc2 2: this
+        get_loc2 2: this
+        get_field v1
+        get_field link
+        put_field v1
+        get_loc2 2: this
+
+;;       return this.scheduler.queue(v);
+
+        get_field scheduler
+        get_field2 queue
+        get_loc1 1: v
+        tail_call_method 1
+  215:  get_loc2 2: this
+
+;;     }
+;;   }
+;;   return this.scheduler.suspendCurrent();
+
+        get_field scheduler
+        get_field2 suspendCurrent
+        tail_call_method 0
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:887:34: function: <null>
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_atom_value HandlerTask
+
+;;   return "HandlerTask";
+
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:909:1: function: Packet
+  args: link id kind
+  locals:
+    0: var this
+  closure vars:
+    0: var Array [global_ref37]
+    1: var DATA_SIZE [global_ref30]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function Packet(link, id, kind) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.link = link;
+
+        get_loc0 0: this
+        get_arg0 0: link
+        put_field link
+
+;;   this.id = id;
+
+        get_loc0 0: this
+        get_arg1 1: id
+        put_field id
+
+;;   this.kind = kind;
+
+        get_loc0 0: this
+        get_arg2 2: kind
+        put_field kind
+
+;;   this.a1 = 0;
+
+        get_loc0 0: this
+        push_0 0
+        put_field a1
+
+;;   this.a2 = new Array(DATA_SIZE);
+
+        get_loc0 0: this
+        get_var 0: Array
+        dup
+        get_var 1: DATA_SIZE
+        call_constructor 1
+        put_field a2
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:921:26: function: <null>
+  args: queue
+  locals:
+    0: var peek
+    1: var next
+    2: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function (queue) {
+
+        push_this
+        put_loc2 2: this
+
+;;   this.link = null;
+
+        get_loc2 2: this
+        null
+        put_field link
+
+;;   if (queue == null) return this;
+
+        get_arg0 0: queue
+        null
+        eq
+        if_false8 16
+        get_loc2 2: this
+        return
+
+;;   var peek, next = queue;
+
+   16:  get_arg0 0: queue
+        put_loc1 1: next
+
+;;   while ((peek = next.link) != null)
+
+   18:  get_loc1 1: next
+        get_field link
+        set_loc0 0: peek
+        null
+        neq
+        if_false8 33
+
+;;     next = peek;
+
+        get_loc0 0: peek
+        put_loc1 1: next
+        goto8 18
+
+;;   next.link = this;
+
+   33:  get_loc1 1: next
+        get_loc2 2: this
+        put_field link
+
+;;   return queue;
+
+        get_arg0 0: queue
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:931:29: function: <null>
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_atom_value Packet
+
+;;   return "Packet";
+
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:936:3: function: <null>
+  locals:
+    0: var config
+    1: var suite
+    2: var test
+    3: var method
+    4: var call
+    5: var desc
+    6: var start
+    7: var i
+    8: var stop
+  closure vars:
+    0: var BenchmarkSuite [global_ref3]
+    1: var Error [global_ref36]
+    2: var TaskControlBlock [global_ref19]
+    3: var Function [global_ref38]
+    4: var Object [global_ref39]
+    5: var __mlDiagBegin [global_ref40]
+    6: var IdleTask [global_ref26]
+    7: var WorkerTask [global_ref28]
+    8: var HandlerTask [global_ref29]
+    9: var DeviceTask [global_ref27]
+   10: var benchNow [global_ref41]
+   11: var __mlDiagEnd [global_ref42]
+   12: var console [global_ref43]
+   13: var Number [global_ref44]
+   14: var JSON [global_ref45]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        object
+        push_atom_value B
+        define_field variant
+        push_1 1
+        define_field N
+
+;;   var config = {"variant": "B", "N": 1}, suite = BenchmarkSuite.suites[0], test = suite.benchmarks[0];
+
+        put_loc0 0: config
+        get_var 0: BenchmarkSuite
+        get_field suites
+        push_0 0
+        get_array_el
+        set_loc1 1: suite
+        get_field benchmarks
+        push_0 0
+        get_array_el
+        put_loc2 2: test
+
+;;   if (suite.name !== 'Richards' || test.name !== 'Richards') throw Error('wrong input');
+
+        get_loc1 1: suite
+        get_field name
+        push_atom_value Richards
+        strict_neq
+        dup
+        if_true8 65
+        drop
+        get_loc2 2: test
+        get_field name
+        push_atom_value Richards
+        strict_neq
+   65:  if_false8 77
+        get_var 1: Error
+        push_atom_value "wrong input"
+        call1 1
+        throw
+
+;;   // Fixed intrinsic and prototype descriptors; NO workload call before the timer.
+;;   var method = TaskControlBlock.prototype.run, call = Function.prototype.call;
+
+   77:  get_var 2: TaskControlBlock
+        get_field prototype
+        get_field run
+        put_loc3 3: method
+        get_var 3: Function
+        get_field prototype
+        get_field call
+        put_loc8 4: call
+
+;;   var desc = Object.getOwnPropertyDescriptor(TaskControlBlock.prototype, 'run');
+
+        get_var 4: Object
+        get_field2 getOwnPropertyDescriptor
+        get_var 2: TaskControlBlock
+        get_field prototype
+        push_atom_value run
+        call_method 2
+
+;;   if (!desc || desc.value !== method || desc.get || method.call !== call) throw Error('method constraints');
+
+        set_loc8 5: desc
+        lnot
+        dup
+        if_true8 170
+        drop
+        get_loc8 5: desc
+        get_field value
+        get_loc3 3: method
+        strict_neq
+        dup
+        if_true8 170
+        drop
+        get_loc8 5: desc
+        get_field get
+        dup
+        if_true8 170
+        drop
+        get_loc3 3: method
+        get_field call
+        get_loc8 4: call
+        strict_neq
+  170:  if_false8 182
+        get_var 1: Error
+        push_atom_value "method constraints"
+        call1 1
+        throw
+
+;;   Object.defineProperty(method, 'call', {value: call, writable: false, configurable: false});
+
+  182:  get_var 4: Object
+        get_field2 defineProperty
+        get_loc3 3: method
+        push_atom_value call
+        object
+        get_loc8 4: call
+        define_field value
+        push_false
+        define_field writable
+        push_false
+        define_field configurable
+        call_method 3
+        drop
+
+;;   BenchmarkSuite.ResetRNG();
+
+        get_var 0: BenchmarkSuite
+        get_field2 ResetRNG
+        call_method 0
+        drop
+
+;;   test.Setup();
+
+        get_loc2 2: test
+        get_field2 Setup
+        call_method 0
+        drop
+
+;;   if (typeof __mlDiagBegin === 'function') __mlDiagBegin(TaskControlBlock.prototype, method, IdleTask.prototype, WorkerTask.prototype, HandlerTask.prototype, DeviceTask.prototype, call);
+
+        get_var_undef 5: __mlDiagBegin
+        typeof_is_function
+        if_false8 298
+        get_var 5: __mlDiagBegin
+        get_var 2: TaskControlBlock
+        get_field prototype
+        get_loc3 3: method
+        get_var 6: IdleTask
+        get_field prototype
+        get_var 7: WorkerTask
+        get_field prototype
+        get_var 8: HandlerTask
+        get_field prototype
+        get_var 9: DeviceTask
+        get_field prototype
+        get_loc8 4: call
+        call 7
+        drop
+
+;;   var start = benchNow();
+
+  298:  get_var 10: benchNow
+        call0 0
+        put_loc8 6: start
+        push_0 0
+
+;;   for (var i = 0; i < config.N; ++i) test.run();
+
+        put_loc8 7: i
+  307:  get_loc8 7: i
+        get_loc0 0: config
+        get_field N
+        lt
+        if_false8 332
+        get_loc2 2: test
+        get_field2 run
+        call_method 0
+        drop
+        inc_loc 7: i
+        goto8 307
+
+;;   var stop = benchNow();
+
+  332:  get_var 10: benchNow
+        call0 0
+        put_loc8 8: stop
+
+;;   if (typeof __mlDiagEnd === 'function') console.log('ML_COUNTERS:' + __mlDiagEnd());
+
+        get_var_undef 11: __mlDiagEnd
+        typeof_is_function
+        if_false8 366
+        get_var 12: console
+        get_field2 log
+        push_atom_value "ML_COUNTERS:"
+        get_var 11: __mlDiagEnd
+        call0 0
+        add
+        call_method 1
+        drop
+
+;;   test.TearDown();
+
+  366:  get_loc2 2: test
+        get_field2 TearDown
+        call_method 0
+        drop
+
+;;   if (TaskControlBlock.prototype.run !== method || method.call !== call || !Number.isFinite(stop - start) || stop <= start) throw Error('postcondition/timer');
+
+        get_var 2: TaskControlBlock
+        get_field prototype
+        get_field run
+        get_loc3 3: method
+        strict_neq
+        dup
+        if_true8 434
+        drop
+        get_loc3 3: method
+        get_field call
+        get_loc8 4: call
+        strict_neq
+        dup
+        if_true8 434
+        drop
+        get_var 13: Number
+        get_field2 isFinite
+        get_loc8 8: stop
+        get_loc8 6: start
+        sub
+        call_method 1
+        lnot
+        dup
+        if_true8 434
+        drop
+        get_loc8 8: stop
+        get_loc8 6: start
+        lte
+  434:  if_false8 446
+        get_var 1: Error
+        push_atom_value "postcondition/timer"
+        call1 1
+        throw
+
+;;   // Every unmodified Run asserts these ACTUAL scheduler counters before returning.
+;;   // This is an assertion certificate, not an independently invented numeric oracle.
+;;   console.log('ML_RESULT:' + JSON.stringify({variant: config.variant, N: config.N, mode: 'FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1', start_ms: start, stop_ms: stop, elapsed_ms: stop-start, elapsed_per_call_ms: (stop-start)/config.N, checksum: config.N + ':2322:928', correctness: 'PASS', warmup_calls: 0, original_assertions_per_run: 1}));
+
+  446:  get_var 12: console
+        get_field2 log
+        push_atom_value "ML_RESULT:"
+        get_var 14: JSON
+        get_field2 stringify
+        object
+        get_loc0 0: config
+        get_field variant
+        define_field variant
+        get_loc0 0: config
+        get_field N
+        define_field N
+        push_atom_value FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1
+        define_field mode
+        get_loc8 6: start
+        define_field start_ms
+        get_loc8 8: stop
+        define_field stop_ms
+        get_loc8 8: stop
+        get_loc8 6: start
+        sub
+        define_field elapsed_ms
+        get_loc8 8: stop
+        get_loc8 6: start
+        sub
+        get_loc0 0: config
+        get_field N
+        div
+        define_field elapsed_per_call_ms
+        get_loc0 0: config
+        get_field N
+        push_atom_value ":2322:928"
+        add
+        define_field checksum
+        push_atom_value PASS
+        define_field correctness
+        push_0 0
+        define_field warmup_calls
+        push_1 1
+        define_field original_assertions_per_run
+        call_method 1
+        add
+        call_method 1
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/diagnostics/scripts/B.N1.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var performance [global_decl]
+    1: var Benchmark [global_decl]
+    2: var BenchmarkResult [global_decl]
+    3: var BenchmarkSuite [global_decl]
+    4: var Richards [global_decl]
+    5: var runRichards [global_decl]
+    6: var COUNT [global_decl]
+    7: var EXPECTED_QUEUE_COUNT [global_decl]
+    8: var EXPECTED_HOLD_COUNT [global_decl]
+    9: var Scheduler [global_decl]
+   10: var ID_IDLE [global_decl]
+   11: var ID_WORKER [global_decl]
+   12: var ID_HANDLER_A [global_decl]
+   13: var ID_HANDLER_B [global_decl]
+   14: var ID_DEVICE_A [global_decl]
+   15: var ID_DEVICE_B [global_decl]
+   16: var NUMBER_OF_IDS [global_decl]
+   17: var KIND_DEVICE [global_decl]
+   18: var KIND_WORK [global_decl]
+   19: var TaskControlBlock [global_decl]
+   20: var STATE_RUNNING [global_decl]
+   21: var STATE_RUNNABLE [global_decl]
+   22: var STATE_SUSPENDED [global_decl]
+   23: var STATE_HELD [global_decl]
+   24: var STATE_SUSPENDED_RUNNABLE [global_decl]
+   25: var STATE_NOT_HELD [global_decl]
+   26: var IdleTask [global_decl]
+   27: var DeviceTask [global_decl]
+   28: var WorkerTask [global_decl]
+   29: var HandlerTask [global_decl]
+   30: var DATA_SIZE [global_decl]
+   31: var Packet [global_decl]
+   32: var Date [global]
+   33: var Math [global]
+   34: var window [global]
+   35: var undefined [global]
+   36: var Error [global]
+   37: var Array [global]
+   38: var Function [global]
+   39: var Object [global]
+   40: var __mlDiagBegin [global]
+   41: var benchNow [global]
+   42: var __mlDiagEnd [global]
+   43: var console [global]
+   44: var Number [global]
+   45: var JSON [global]
+   46: var alert [global]
+  stack_size: 11
+  var_ref_count: 0
+  opcodes:
+        fclosure8 1: [bytecode Benchmark]
+        put_var_ref1 1: Benchmark
+        fclosure8 2: [bytecode BenchmarkResult]
+        put_var_ref2 2: BenchmarkResult
+        fclosure8 4: [bytecode BenchmarkSuite]
+        put_var_ref3 3: BenchmarkSuite
+        fclosure8 20: [bytecode runRichards]
+        put_var_ref 5: runRichards
+        fclosure8 21: [bytecode Scheduler]
+        put_var_ref 9: Scheduler
+        fclosure8 33: [bytecode TaskControlBlock]
+        put_var_ref 19: TaskControlBlock
+        fclosure8 43: [bytecode IdleTask]
+        put_var_ref 26: IdleTask
+        fclosure8 46: [bytecode DeviceTask]
+        put_var_ref 27: DeviceTask
+        fclosure8 49: [bytecode WorkerTask]
+        put_var_ref 28: WorkerTask
+        fclosure8 52: [bytecode HandlerTask]
+        put_var_ref 29: HandlerTask
+        fclosure8 55: [bytecode Packet]
+        put_var_ref 31: Packet
+        get_var 0: performance
+        dup
+        if_true8 57
+        drop
+        object
+   57:  put_var 0: performance
+        get_var 0: performance
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        insert2
+        put_field now
+        put_loc0 0: "<ret>"
+        get_var 2: BenchmarkResult
+        get_field prototype
+        fclosure8 3: [bytecode <null>]
+        insert2
+        put_field valueOf
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        array_from 0
+        insert2
+        put_field suites
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        push_const8 5: "9"
+        insert2
+        put_field version
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        object
+        get_var 35: undefined
+        define_field doWarmup
+        get_var 35: undefined
+        define_field doDeterministic
+        insert2
+        put_field config
+        put_loc0 0: "<ret>"
+        fclosure8 6: [bytecode <null>]
+        set_name alert
+        dup
+        put_var 46: alert
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        fclosure8 7: [bytecode <null>]
+        insert2
+        put_field ResetRNG
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        fclosure8 8: [bytecode <null>]
+        insert2
+        put_field RunSuites
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        fclosure8 9: [bytecode <null>]
+        insert2
+        put_field CountBenchmarks
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        fclosure8 10: [bytecode <null>]
+        insert2
+        put_field GeometricMean
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        fclosure8 11: [bytecode <null>]
+        insert2
+        put_field GeometricMeanTime
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        fclosure8 12: [bytecode <null>]
+        insert2
+        put_field GeometricMeanLatency
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        fclosure8 13: [bytecode <null>]
+        insert2
+        put_field FormatScore
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        get_field prototype
+        fclosure8 14: [bytecode <null>]
+        insert2
+        put_field NotifyStep
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        get_field prototype
+        fclosure8 15: [bytecode <null>]
+        insert2
+        put_field NotifyResult
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        get_field prototype
+        fclosure8 16: [bytecode <null>]
+        insert2
+        put_field NotifySkipped
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        get_field prototype
+        fclosure8 17: [bytecode <null>]
+        insert2
+        put_field NotifyError
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        get_field prototype
+        fclosure8 18: [bytecode <null>]
+        insert2
+        put_field RunSingleBenchmark
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        get_field prototype
+        fclosure8 19: [bytecode <null>]
+        insert2
+        put_field RunStep
+        put_loc0 0: "<ret>"
+        get_var 3: BenchmarkSuite
+        dup
+        push_atom_value Richards
+        push_i32 35302
+        array_from 1
+        get_var 1: Benchmark
+        dup
+        push_atom_value Richards
+        push_true
+        push_false
+        push_i16 8200
+        get_var 5: runRichards
+        call_constructor 5
+        array_from 1
+        call_constructor 3
+        put_var 4: Richards
+        push_i16 1000
+        put_var 6: COUNT
+        push_i16 2322
+        put_var 7: EXPECTED_QUEUE_COUNT
+        push_i16 928
+        put_var 8: EXPECTED_HOLD_COUNT
+        push_0 0
+        put_var 10: ID_IDLE
+        push_1 1
+        put_var 11: ID_WORKER
+        push_2 2
+        put_var 12: ID_HANDLER_A
+        push_3 3
+        put_var 13: ID_HANDLER_B
+        push_4 4
+        put_var 14: ID_DEVICE_A
+        push_5 5
+        put_var 15: ID_DEVICE_B
+        push_6 6
+        put_var 16: NUMBER_OF_IDS
+        push_0 0
+        put_var 17: KIND_DEVICE
+        push_1 1
+        put_var 18: KIND_WORK
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 22: [bytecode <null>]
+        insert2
+        put_field addIdleTask
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 23: [bytecode <null>]
+        insert2
+        put_field addWorkerTask
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 24: [bytecode <null>]
+        insert2
+        put_field addHandlerTask
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 25: [bytecode <null>]
+        insert2
+        put_field addDeviceTask
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 26: [bytecode <null>]
+        insert2
+        put_field addRunningTask
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 27: [bytecode <null>]
+        insert2
+        put_field addTask
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 28: [bytecode mlSchedule]
+        insert2
+        put_field schedule
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 29: [bytecode <null>]
+        insert2
+        put_field release
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 30: [bytecode <null>]
+        insert2
+        put_field holdCurrent
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 31: [bytecode <null>]
+        insert2
+        put_field suspendCurrent
+        put_loc0 0: "<ret>"
+        get_var 9: Scheduler
+        get_field prototype
+        fclosure8 32: [bytecode <null>]
+        insert2
+        put_field queue
+        put_loc0 0: "<ret>"
+        push_0 0
+        put_var 20: STATE_RUNNING
+        push_1 1
+        put_var 21: STATE_RUNNABLE
+        push_2 2
+        put_var 22: STATE_SUSPENDED
+        push_4 4
+        put_var 23: STATE_HELD
+        get_var 22: STATE_SUSPENDED
+        get_var 21: STATE_RUNNABLE
+        or
+        put_var 24: STATE_SUSPENDED_RUNNABLE
+        get_var 23: STATE_HELD
+        not
+        put_var 25: STATE_NOT_HELD
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 34: [bytecode <null>]
+        insert2
+        put_field setRunning
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 35: [bytecode <null>]
+        insert2
+        put_field markAsNotHeld
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 36: [bytecode <null>]
+        insert2
+        put_field markAsHeld
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 37: [bytecode <null>]
+        insert2
+        put_field isHeldOrSuspended
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 38: [bytecode <null>]
+        insert2
+        put_field markAsSuspended
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 39: [bytecode <null>]
+        insert2
+        put_field markAsRunnable
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 40: [bytecode <null>]
+        insert2
+        put_field run
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 41: [bytecode <null>]
+        insert2
+        put_field checkPriorityAdd
+        put_loc0 0: "<ret>"
+        get_var 19: TaskControlBlock
+        get_field prototype
+        fclosure8 42: [bytecode <null>]
+        insert2
+        put_field toString
+        put_loc0 0: "<ret>"
+        get_var 26: IdleTask
+        get_field prototype
+        fclosure8 44: [bytecode <null>]
+        insert2
+        put_field run
+        put_loc0 0: "<ret>"
+        get_var 26: IdleTask
+        get_field prototype
+        fclosure8 45: [bytecode <null>]
+        insert2
+        put_field toString
+        put_loc0 0: "<ret>"
+        get_var 27: DeviceTask
+        get_field prototype
+        fclosure8 47: [bytecode <null>]
+        insert2
+        put_field run
+        put_loc0 0: "<ret>"
+        get_var 27: DeviceTask
+        get_field prototype
+        fclosure8 48: [bytecode <null>]
+        insert2
+        put_field toString
+        put_loc0 0: "<ret>"
+        get_var 28: WorkerTask
+        get_field prototype
+        fclosure8 50: [bytecode <null>]
+        insert2
+        put_field run
+        put_loc0 0: "<ret>"
+        get_var 28: WorkerTask
+        get_field prototype
+        fclosure8 51: [bytecode <null>]
+        insert2
+        put_field toString
+        put_loc0 0: "<ret>"
+        get_var 29: HandlerTask
+        get_field prototype
+        fclosure8 53: [bytecode <null>]
+        insert2
+        put_field run
+        put_loc0 0: "<ret>"
+        get_var 29: HandlerTask
+        get_field prototype
+        fclosure8 54: [bytecode <null>]
+        insert2
+        put_field toString
+        put_loc0 0: "<ret>"
+        push_4 4
+        put_var 30: DATA_SIZE
+        get_var 31: Packet
+        get_field prototype
+        fclosure8 56: [bytecode <null>]
+        insert2
+        put_field addTo
+        put_loc0 0: "<ret>"
+        get_var 31: Packet
+        get_field prototype
+        fclosure8 57: [bytecode <null>]
+        insert2
+        put_field toString
+        put_loc0 0: "<ret>"
+        fclosure8 58: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+ML_COUNTERS:{"scope":"explicit_Run_loop","categories":[{"kind":0,"lookups":1,"own_hit":0,"prototype_hit":1,"fallback":0,"helper_entries":0,"get_field":1,"get_field2":0,"hops":[0,1,0,0,0,0,0,0]},{"kind":1,"lookups":6573,"own_hit":0,"prototype_hit":6573,"fallback":0,"helper_entries":0,"get_field":0,"get_field2":6573,"hops":[0,6573,0,0,0,0,0,0]},{"kind":2,"lookups":6573,"own_hit":6573,"prototype_hit":0,"fallback":0,"helper_entries":0,"get_field":0,"get_field2":6573,"hops":[6573,0,0,0,0,0,0,0]}],"selected_entries":6573,"selected_native_call_helper":6573,"selected_direct_call_method":0,"selected_builtin_call_method":6573}
+ML_RESULT:{"variant":"B","N":1,"mode":"FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1","start_ms":222142.139355,"stop_ms":222145.946151,"elapsed_ms":3.8067960000189487,"elapsed_per_call_ms":3.8067960000189487,"checksum":"1:2322:928","correctness":"PASS","warmup_calls":0,"original_assertions_per_run":1}
+
+STDERR:

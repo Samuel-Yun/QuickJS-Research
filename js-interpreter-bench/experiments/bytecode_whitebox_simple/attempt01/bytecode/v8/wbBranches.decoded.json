@@ -1,0 +1,294 @@
+[
+  {
+    "offset": 0,
+    "size": 1,
+    "hex": [
+      "0c"
+    ],
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 1,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 2,
+    "size": 1,
+    "hex": [
+      "0c"
+    ],
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 3,
+    "size": 1,
+    "hex": [
+      "d4"
+    ],
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 4,
+    "size": 4,
+    "hex": [
+      "33",
+      "03",
+      "00",
+      "00"
+    ],
+    "opcode": "GetNamedProperty",
+    "operands": "a0, [0:\"length\"], FBV[0]"
+  },
+  {
+    "offset": 8,
+    "size": 3,
+    "hex": [
+      "79",
+      "f8",
+      "00"
+    ],
+    "opcode": "TestLessThan",
+    "operands": "r1, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 11,
+    "size": 2,
+    "hex": [
+      "a8",
+      "2e"
+    ],
+    "opcode": "JumpIfFalse",
+    "operands": "[46] (0x3a9501000411 @ 57)"
+  },
+  {
+    "offset": 13,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f8"
+    ],
+    "opcode": "Ldar",
+    "operands": "r1"
+  },
+  {
+    "offset": 15,
+    "size": 3,
+    "hex": [
+      "35",
+      "03",
+      "02"
+    ],
+    "opcode": "GetKeyedProperty",
+    "operands": "a0, FBV[2]"
+  },
+  {
+    "offset": 18,
+    "size": 1,
+    "hex": [
+      "d3"
+    ],
+    "opcode": "Star2",
+    "operands": ""
+  },
+  {
+    "offset": 19,
+    "size": 1,
+    "hex": [
+      "0c"
+    ],
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 20,
+    "size": 3,
+    "hex": [
+      "7c",
+      "f7",
+      "00"
+    ],
+    "opcode": "TestGreaterThanOrEqual",
+    "operands": "r2, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 23,
+    "size": 2,
+    "hex": [
+      "a8",
+      "10"
+    ],
+    "opcode": "JumpIfFalse",
+    "operands": "[16] (0x3a95010003ff @ 39)"
+  },
+  {
+    "offset": 25,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f7"
+    ],
+    "opcode": "Ldar",
+    "operands": "r2"
+  },
+  {
+    "offset": 27,
+    "size": 3,
+    "hex": [
+      "51",
+      "02",
+      "00"
+    ],
+    "opcode": "MulSmi",
+    "operands": "[2], EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 30,
+    "size": 3,
+    "hex": [
+      "42",
+      "f9",
+      "00"
+    ],
+    "opcode": "Add",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 33,
+    "size": 3,
+    "hex": [
+      "1b",
+      "f9",
+      "f6"
+    ],
+    "opcode": "Mov",
+    "operands": "r0, r3"
+  },
+  {
+    "offset": 36,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 37,
+    "size": 2,
+    "hex": [
+      "98",
+      "0b"
+    ],
+    "opcode": "Jump",
+    "operands": "[11] (0x3a9501000408 @ 48)"
+  },
+  {
+    "offset": 39,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f7"
+    ],
+    "opcode": "Ldar",
+    "operands": "r2"
+  },
+  {
+    "offset": 41,
+    "size": 3,
+    "hex": [
+      "43",
+      "f9",
+      "00"
+    ],
+    "opcode": "Sub",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 44,
+    "size": 3,
+    "hex": [
+      "1b",
+      "f9",
+      "f6"
+    ],
+    "opcode": "Mov",
+    "operands": "r0, r3"
+  },
+  {
+    "offset": 47,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 48,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f8"
+    ],
+    "opcode": "Ldar",
+    "operands": "r1"
+  },
+  {
+    "offset": 50,
+    "size": 2,
+    "hex": [
+      "5b",
+      "00"
+    ],
+    "opcode": "Inc",
+    "operands": "EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 52,
+    "size": 1,
+    "hex": [
+      "d4"
+    ],
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 53,
+    "size": 4,
+    "hex": [
+      "97",
+      "31",
+      "00",
+      "04"
+    ],
+    "opcode": "JumpLoop",
+    "operands": "[49], [0], FBV[4] (0x3a95010003dc @ 4)"
+  },
+  {
+    "offset": 57,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f9"
+    ],
+    "opcode": "Ldar",
+    "operands": "r0"
+  },
+  {
+    "offset": 59,
+    "size": 1,
+    "hex": [
+      "b9"
+    ],
+    "opcode": "Return",
+    "operands": ""
+  }
+]

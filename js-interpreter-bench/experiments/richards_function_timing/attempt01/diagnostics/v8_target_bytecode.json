@@ -1,0 +1,86 @@
+[
+  {
+    "offset": 0,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [0:\"state\"], FBV[0]"
+  },
+  {
+    "offset": 4,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 5,
+    "size": 3,
+    "opcode": "LdaGlobal",
+    "operands": "[1:\"STATE_HELD\"], FBV[2]"
+  },
+  {
+    "offset": 8,
+    "size": 3,
+    "opcode": "BitwiseAnd",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 11,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 12,
+    "size": 1,
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 13,
+    "size": 3,
+    "opcode": "TestEqual",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 16,
+    "size": 1,
+    "opcode": "LogicalNot",
+    "operands": ""
+  },
+  {
+    "offset": 17,
+    "size": 2,
+    "opcode": "JumpIfTrue",
+    "operands": "[13] (0x1269010010fe @ 30)"
+  },
+  {
+    "offset": 19,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [0:\"state\"], FBV[4]"
+  },
+  {
+    "offset": 23,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 24,
+    "size": 3,
+    "opcode": "LdaGlobal",
+    "operands": "[2:\"STATE_SUSPENDED\"], FBV[6]"
+  },
+  {
+    "offset": 27,
+    "size": 3,
+    "opcode": "TestEqual",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 30,
+    "size": 1,
+    "opcode": "Return",
+    "operands": ""
+  }
+]

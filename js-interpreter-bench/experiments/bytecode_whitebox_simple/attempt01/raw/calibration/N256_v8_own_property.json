@@ -1,0 +1,23 @@
+{
+  "exit_code": 0,
+  "stdout": "WB_RESULT {\"N\":256,\"last\":12288,\"checksum\":3145728,\"elapsed_ms\":24.843000000000004}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/calibration/own_property_N256.js"
+  ],
+  "timestamp_utc": "2026-10-15T03:32:32.828162+00:00",
+  "outer_wall_ns": 68397410,
+  "load_average": [
+    0.52734375,
+    0.150390625,
+    0.0498046875
+  ],
+  "boot_id": "804ae1da-00f6-43aa-b7c7-232861212b9f",
+  "LD_PRELOAD": null
+}

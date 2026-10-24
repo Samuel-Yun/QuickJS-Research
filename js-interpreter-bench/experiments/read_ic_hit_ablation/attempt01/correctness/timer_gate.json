@@ -1,0 +1,129 @@
+{
+  "status": "PASS",
+  "parent_implementation": "clock_gettime(CLOCK_MONOTONIC)",
+  "parent_nominal_resolution_seconds": 1e-09,
+  "child": "captured native performance.now CLOCK_MONOTONIC ms",
+  "min_positive_delta_includes_call_overhead": true,
+  "rows": [
+    {
+      "variant": "A",
+      "rep": 0,
+      "outer_start_ns": 64371155250,
+      "outer_stop_ns": 64406943343,
+      "start_ms": 64389.285149,
+      "stop_ms": 64406.518519,
+      "min_positive_ms": 0.00015100000018719584,
+      "backwards": 0
+    },
+    {
+      "variant": "A",
+      "rep": 1,
+      "outer_start_ns": 64406979954,
+      "outer_stop_ns": 64429829282,
+      "start_ms": 64412.358472,
+      "stop_ms": 64429.30166,
+      "min_positive_ms": 0.00015100000018719584,
+      "backwards": 0
+    },
+    {
+      "variant": "A",
+      "rep": 2,
+      "outer_start_ns": 64429878049,
+      "outer_stop_ns": 64452963226,
+      "start_ms": 64435.414808,
+      "stop_ms": 64452.551121,
+      "min_positive_ms": 0.00015099999291123822,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 0,
+      "outer_start_ns": 64452993204,
+      "outer_stop_ns": 64477526594,
+      "start_ms": 64458.504689,
+      "stop_ms": 64477.03371,
+      "min_positive_ms": 0.00016199999663513154,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 1,
+      "outer_start_ns": 64477580050,
+      "outer_stop_ns": 64501131751,
+      "start_ms": 64483.276666,
+      "stop_ms": 64500.665562,
+      "min_positive_ms": 0.00015100000018719584,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 2,
+      "outer_start_ns": 64501163065,
+      "outer_stop_ns": 64524176159,
+      "start_ms": 64506.668858,
+      "stop_ms": 64523.766411,
+      "min_positive_ms": 0.00016199999663513154,
+      "backwards": 0
+    },
+    {
+      "variant": "ON",
+      "rep": 0,
+      "outer_start_ns": 64524208331,
+      "outer_stop_ns": 64547318037,
+      "start_ms": 64529.629848,
+      "stop_ms": 64546.896593,
+      "min_positive_ms": 0.00015099999291123822,
+      "backwards": 0
+    },
+    {
+      "variant": "ON",
+      "rep": 1,
+      "outer_start_ns": 64547346181,
+      "outer_stop_ns": 64570929435,
+      "start_ms": 64553.115612,
+      "stop_ms": 64570.450151,
+      "min_positive_ms": 0.0001520000005257316,
+      "backwards": 0
+    },
+    {
+      "variant": "ON",
+      "rep": 2,
+      "outer_start_ns": 64570957568,
+      "outer_stop_ns": 64593869515,
+      "start_ms": 64576.567326,
+      "stop_ms": 64593.545866,
+      "min_positive_ms": 0.00015100000018719584,
+      "backwards": 0
+    },
+    {
+      "variant": "LOOKUP",
+      "rep": 0,
+      "outer_start_ns": 64593896856,
+      "outer_stop_ns": 64617038277,
+      "start_ms": 64599.220069,
+      "stop_ms": 64616.633039,
+      "min_positive_ms": 0.00016199999663513154,
+      "backwards": 0
+    },
+    {
+      "variant": "LOOKUP",
+      "rep": 1,
+      "outer_start_ns": 64617068039,
+      "outer_stop_ns": 64639952542,
+      "start_ms": 64622.119483,
+      "stop_ms": 64639.495768,
+      "min_positive_ms": 0.00015199999324977398,
+      "backwards": 0
+    },
+    {
+      "variant": "LOOKUP",
+      "rep": 2,
+      "outer_start_ns": 64639980502,
+      "outer_stop_ns": 64664734796,
+      "start_ms": 64645.638965,
+      "stop_ms": 64664.407555,
+      "min_positive_ms": 0.00017299999308306724,
+      "backwards": 0
+    }
+  ]
+}

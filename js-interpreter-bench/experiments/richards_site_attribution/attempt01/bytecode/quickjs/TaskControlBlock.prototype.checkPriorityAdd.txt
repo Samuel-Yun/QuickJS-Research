@@ -1,0 +1,63 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:737:47: function: <null>
+  args: task packet
+  locals:
+    0: var this
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function (task, packet) {
+
+        push_this
+        put_loc0 0: this
+        get_loc0 0: this
+
+;;   if (this.queue == null) {
+
+        get_field queue
+        null
+        eq
+        if_false8 46
+
+;;     this.queue = packet;
+
+        get_loc0 0: this
+        get_arg1 1: packet
+        put_field queue
+
+;;     this.markAsRunnable();
+
+        get_loc0 0: this
+        get_field2 markAsRunnable
+        call_method 0
+        drop
+        get_loc0 0: this
+
+;;     if (this.priority > task.priority) return this;
+
+        get_field priority
+        get_arg0 0: task
+        get_field priority
+        gt
+        if_false8 67
+        get_loc0 0: this
+        return
+
+;;   } else {
+;;     this.queue = packet.addTo(this.queue);
+
+   46:  get_loc0 0: this
+        get_arg1 1: packet
+        get_field2 addTo
+        get_loc0 0: this
+        get_field queue
+        call_method 1
+        put_field queue
+
+;;   }
+;;   return task;
+
+   67:  get_arg0 0: task
+        return
+
+;; }
+

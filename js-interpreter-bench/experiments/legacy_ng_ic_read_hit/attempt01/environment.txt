@@ -1,0 +1,25 @@
+Campaign: legacy_ng_ic_read_hit/attempt01
+Platform: WSL2, NOT native Linux or Windows-native benchmark
+Host: LAPTOP-QPKCPDCB
+OS: Ubuntu 24.04.2 LTS
+Kernel: 5.15.167.4-microsoft-standard-WSL2
+Architecture: x86_64
+CPU: AMD Ryzen 7 5800H with Radeon Graphics; lscpu reports 16 logical CPUs
+Guest MemTotal observed at build: 8252641280 bytes (not host physical RAM claim)
+Compiler: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Build: make -j2 qjs qjsc; official -O2 -g -fwrapv, no NDEBUG/LTO/PGO
+Full flags/link dependencies: raw/build/{A,C,D}_release.1.log and *_ldd.1.log
+Runtime flags: [] for A, C and D; no GC flag changes
+Timer: native QuickJS performance.now -> get_time_ns -> CLOCK_MONOTONIC
+Adapter/driver: frozen previous versions; SHA256 in manifest.json
+Power/frequency control, governor, AC state: UNKNOWN; not fixed
+Background: uncontrolled; build/pre/post snapshots retained in raw/environment/
+CPU affinity: not changed, not pinned
+PMU: cpu device advertised, perf executable absent; counts/multiplex ratio UNKNOWN
+UTC calendar vs monotonic duration: known metadata discrepancy, see independent_audit.json
+No cross-platform or old-campaign time pooling
+All binary absolute paths/SHA256 and actual compiler: manifest.json
+
+Chronology (UTC): build manifest 2026-10-23T14:35:09.641194+00:00;
+measurements/diagnostics/RSS completed 2026-10-23T16:06:03.166561+00:00.
+Asia/Shanghai completion date is 2026-10-24. Individual raw timestamps are authoritative.

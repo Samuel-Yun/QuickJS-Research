@@ -1,0 +1,78 @@
+
+
+Sampling rate: 1000.000000 microseconds. Total samples: 8944
+Top functions as <numSamples  'functionName#hash:sourceID'>
+  4024    '/(^|[^\\])\"\\\/Qngr\((-?[0-9]+)\)\\\/\"/g#<nil>:4294967295'
+  1029    '(unknown C PC)#<nil>:4294967295'
+   378    'Exec#DeG3P0:2'
+   324    '/\s?;\s?/#<nil>:4294967295'
+   296    '/TNQP=([^;]*)/i#<nil>:4294967295'
+   250    'JSC::RegExpObject::exec(JSC::JSGlobalObject*, JSC::JSString*)#<nil>:4294967295'
+   245    '/(((\w+):\/\/)([^\/:]*)(:(\d+))?)?([^#?]*)(\?([^#]*))?(#(.*))?/#<nil>:4294967295'
+   144    '/%\w?$/#<nil>:4294967295'
+   140    'runBlock0#BTf8wo:2'
+   131    '/(?:ZFVR.(\d+\.\d+))|(?:(?:Sversbk|TenaCnenqvfb|Vprjrnfry).(\d+\.\d+))|(?:Bcren.(\d+\.\d+))|(?:NccyrJroXvg.(\d+(?:\.\d+)?))/#<nil>:4294967295'
+   109    '/^\s*|\s*$/g#<nil>:4294967295'
+    74    '/\b\w+\b/g#<nil>:4294967295'
+
+
+Sampling rate: 1000.000000 microseconds. Total samples: 8944
+
+Tier breakdown:
+-----------------------------------
+LLInt:                   664  (7.423971%)
+Baseline:                  0  (0.000000%)
+DFG:                       0  (0.000000%)
+FTL:                       0  (0.000000%)
+js builtin:                0  (0.000000%)
+IPInt:                     0  (0.000000%)
+BBQ:                       0  (0.000000%)
+OMG:                       0  (0.000000%)
+Wasm:                      0  (0.000000%)
+Host:                      0  (0.000000%)
+RegExp:                 6793  (75.950358%)
+C/C++:                  1438  (16.077818%)
+Unknown Executable:       49  (0.547853%)
+
+
+Hottest bytecodes as <numSamples   'functionName#hash:JITType:bytecodeIndex'>
+  4024    '/(^|[^\\])\"\\\/Qngr\((-?[0-9]+)\)\\\/\"/g#<nil>:RegExp:<nil>'
+  1029    '(unknown C PC)#<nil>:None:<nil>'
+   324    '/\s?;\s?/#<nil>:RegExp:<nil>'
+   296    '/TNQP=([^;]*)/i#<nil>:RegExp:<nil>'
+   250    'JSC::RegExpObject::exec(JSC::JSGlobalObject*, JSC::JSString*)#<nil>:None:<nil>'
+   245    '/(((\w+):\/\/)([^\/:]*)(:(\d+))?)?([^#?]*)(\?([^#]*))?(#(.*))?/#<nil>:RegExp:<nil>'
+   144    '/%\w?$/#<nil>:RegExp:<nil>'
+   131    '/(?:ZFVR.(\d+\.\d+))|(?:(?:Sversbk|TenaCnenqvfb|Vprjrnfry).(\d+\.\d+))|(?:Bcren.(\d+\.\d+))|(?:NccyrJroXvg.(\d+(?:\.\d+)?))/#<nil>:RegExp:<nil>'
+   109    '/^\s*|\s*$/g#<nil>:RegExp:<nil>'
+    74    '/\b\w+\b/g#<nil>:RegExp:<nil>'
+    72    '/^ba/#<nil>:RegExp:<nil>'
+    64    '__madvise#<nil>:None:<nil>'
+    51    '/\s+/g#<nil>:RegExp:<nil>'
+    42    'Exec#DeG3P0:LLInt:bc#46'
+    39    '/\?[\w\W]*(sevraqvq|punaaryvq|tebhcvq)=([^\&\?#]*)/i#<nil>:RegExp:<nil>'
+    38    'Exec#DeG3P0:LLInt:bc#75'
+    37    'exec#<nil>:None:<nil>'
+    36    '/(?:^|;)\s*sevraqfgre_ynat=([^;]*)/#<nil>:RegExp:<nil>'
+    36    '/^\s*(\S*(\s+\S+)*)\s*$/#<nil>:RegExp:<nil>'
+    33    '/Fnsnev\/(\d+\.\d+)/#<nil>:RegExp:<nil>'
+    32    'Exec#DeG3P0:LLInt:bc#52'
+    32    '/\bQBZPbageby_cynprubyqre\b/#<nil>:RegExp:<nil>'
+    31    '/Trpxb\/([0-9]+)/#<nil>:RegExp:<nil>'
+    31    '/##o##/gi#<nil>:RegExp:<nil>'
+    31    '/##yv23##/gi#<nil>:RegExp:<nil>'
+    31    '/##yv16##/gi#<nil>:RegExp:<nil>'
+    30    '/##yv21##/gi#<nil>:RegExp:<nil>'
+    30    '/^\s+|\s+$/g#<nil>:RegExp:<nil>'
+    30    '/^([#.]?)((?:[\w\u0128-\uffff*_-]|\\.)*)/#<nil>:RegExp:<nil>'
+    30    'JSC::RegExp::match(JSC::JSGlobalObject*, WTF::StringView, unsigned int)#<nil>:None:<nil>'
+    28    'Exec#DeG3P0:LLInt:bc#13'
+    27    'Exec#DeG3P0:LLInt:bc#72'
+    27    '/##yv20##/gi#<nil>:RegExp:<nil>'
+    25    'Exec#DeG3P0:LLInt:bc#22'
+    25    '/##yv22##/gi#<nil>:RegExp:<nil>'
+    24    '/##h##/gi#<nil>:RegExp:<nil>'
+    24    '/##yv19##/gi#<nil>:RegExp:<nil>'
+    24    'Exec#DeG3P0:LLInt:bc#0'
+    23    'pthread_cond_signal#<nil>:None:<nil>'
+    23    '/##\/n##/gi#<nil>:RegExp:<nil>'

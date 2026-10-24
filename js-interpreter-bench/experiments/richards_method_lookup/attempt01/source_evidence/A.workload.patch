@@ -1,0 +1,21 @@
+--- original/richards.js
++++ A/richards.js
+@@ -185,14 +185,16 @@
+ /**
+  * Execute the tasks managed by this scheduler.
+  */
+-Scheduler.prototype.schedule = function () {
++Scheduler.prototype.schedule = function mlSchedule() {
+   this.currentTcb = this.list;
++  var __mlMethod;
+   while (this.currentTcb != null) {
+     if (this.currentTcb.isHeldOrSuspended()) {
+       this.currentTcb = this.currentTcb.link;
+     } else {
+       this.currentId = this.currentTcb.id;
+-      this.currentTcb = this.currentTcb.run();
++       __mlMethod = this.currentTcb.run;
++      this.currentTcb = __mlMethod.call(this.currentTcb);
+     }
+   }
+ };

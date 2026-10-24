@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Microsoft YaHei, sans-serif" font-size="24" data-pptx-page-role="content">
+ <rect id="background" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF" />
+ <g id="title" data-pptx-bounds="48 28 1184 54" fill="#111111"><text x="48" y="65" font-size="36" font-weight="bold">这一处实际知道了什么？</text></g>
+ <g id="qjs-evidence" data-pptx-bounds="48 116 561 399" fill="#111111">
+  <text x="48" y="144" font-size="26" font-weight="bold">QJS：第一次state读取，offset 3</text>
+  <text x="48" y="194">每 Run <tspan font-weight="bold">10671次</tspan>，全部own数据属性命中。</text><text x="48" y="230">每次一次自身探查；结果为整数。</text><text x="48" y="289">原型命中0；通用fallback 0。</text><text x="48" y="325" font-weight="bold">不等于这次读取没有成本。</text><text x="48" y="384">仍有shape/hash查找、描述符检查、</text><text x="48" y="420">取值及必要的receiver引用处理。</text><text font-size="20" fill="#555555" x="48" y="479">整数state本身不做对象引用计数；</text><text font-size="20" fill="#555555" x="48" y="508">不要把receiver与字段值混为一谈。</text></g>
+ <g id="v8-evidence" data-pptx-bounds="651 116 581 399" fill="#111111">
+  <text x="651" y="144" font-size="26" font-weight="bold">V8：同进程字节码与IC转换日志</text>
+  <text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" x="651" y="194">offset 0: FBV[0]    0 → 1</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" x="651" y="226">offset 19: FBV[4]   0 → 1</text><text font-family="Consolas, Microsoft YaHei, monospace" font-size="20" x="651" y="258">receiver map: 0x189b01023ef1</text><text x="651" y="316">两处有独立反馈槽，观察到相同map。</text><text x="651" y="352">转换日志不是逐次命中记录；</text><text x="651" y="388">IC命中率仍 UNKNOWN。</text><text font-size="20" x="651" y="451">机器码有map检查/字段读取路径，</text><text font-size="20" x="651" y="480">不证明该site每次走此路径。</text><text font-size="20" x="651" y="509" fill="#555555">精确源码/构建与制品对应仍有缺口。</text></g>
+ <g id="hypothesis" data-pptx-bounds="48 548 1184 76" fill="#111111">
+  <line x1="48" y1="548" x2="1232" y2="548" stroke="#B9BDC3" stroke-width="1" />
+  <text x="48" y="578"><tspan font-weight="bold">待验证解释：</tspan>QJS重复自身查找；V8可能复用稳定字段反馈。</text>
+  <text x="48" y="612" font-size="20">目前不是已证明的性能原因；尚未测得各步骤的时间，也未证明该site的逐次快路径。</text>
+ </g>
+ <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 641 1184 64" fill="#555555" font-size="14">
+  <line x1="48" y1="641" x2="1232" y2="641" stroke="#B9BDC3" stroke-width="1" />
+  <text x="48" y="660">来源：S3 counts_N1.sites.csv、v8_selected_IC_transitions.csv、实际GetNamedProperty反汇编。</text>
+  <text x="48" y="679">WSL2 Ubuntu24.04.2/x86_64；QuickJS 2026-06-04；V8 15.6.21（d8）；--max-opt=0 --no-lazy。</text>
+  <text x="48" y="698">诊断数据，不作正式性能结果；状态转换与handler分支存在不等于逐次命中证据。</text><text x="1232" y="660" text-anchor="end">5 / 8</text>
+ </g>
+</svg>

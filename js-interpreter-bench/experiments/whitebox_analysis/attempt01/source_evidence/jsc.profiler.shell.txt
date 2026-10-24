@@ -1,0 +1,61 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/jsc.cpp
+SHA256: 0d7f97cb2f58fe8c7a4f90b2735978b77f0d262e2289e26ec7f9e90d1cdd64fd
+595:     bool m_dumpMemoryFootprint { false };
+596:     bool m_dumpLinkBufferStats { false };
+597:     bool m_dumpSamplingProfilerData { false };
+598:     bool m_inspectable { false };
+599:     bool m_canBlockIsFalse { false };
+600:     bool m_reprl { false }; // Set to true to use Fuzzilli.
+601: 
+602:     void parseArguments(int, char**, int start = 1);
+603: };
+604: static LazyNeverDestroyed<CommandLine> mainCommandLine;
+605: 
+606: static const char interactivePrompt[] = ">>> ";
+607: 
+608: class StopWatch {
+
+4389:             continue;
+4390:         }
+4391:         if (!strcmp(arg, "--sample")) {
+4392:             JSC::Options::useSamplingProfiler() = true;
+4393:             JSC::Options::collectExtraSamplingProfilerData() = true;
+4394:             m_dumpSamplingProfilerData = true;
+4395:             continue;
+4396:         }
+4397: #if USE(LIBPAS)
+4398:         if (!strcmp(arg, "--crash-vm=PGMOOBLowerGuardPage"))
+4399:             crashPGMLowerGuardPage();
+4400:         if (!strcmp(arg, "--crash-vm=PGMOOBUpperGuardPage"))
+4401:             crashPGMUpperGuardPage();
+4402:         if (!strcmp(arg, "--crash-vm=PGMUAF"))
+
+4392:             JSC::Options::useSamplingProfiler() = true;
+4393:             JSC::Options::collectExtraSamplingProfilerData() = true;
+4394:             m_dumpSamplingProfilerData = true;
+4395:             continue;
+4396:         }
+4397: #if USE(LIBPAS)
+4398:         if (!strcmp(arg, "--crash-vm=PGMOOBLowerGuardPage"))
+4399:             crashPGMLowerGuardPage();
+4400:         if (!strcmp(arg, "--crash-vm=PGMOOBUpperGuardPage"))
+4401:             crashPGMUpperGuardPage();
+4402:         if (!strcmp(arg, "--crash-vm=PGMUAF"))
+4403:             crashPGMUAF();
+4404: #endif
+4405:         if (!strcmp(arg, "--destroy-vm")) {
+
+4688:         }
+4689: 
+4690:         if (options.m_dumpSamplingProfilerData) {
+4691: #if ENABLE(SAMPLING_PROFILER)
+4692:             JSLockHolder locker(&vm);
+4693:             vm.samplingProfiler()->reportTopFunctions();
+4694:             vm.samplingProfiler()->reportTopBytecodes();
+4695: #else
+4696:             dataLog("Sampling profiler is not enabled on this platform\n");
+4697: #endif
+4698:         }
+4699: 
+4700: #if ENABLE(JIT)
+4701:         if (vm.jitSizeStatistics)

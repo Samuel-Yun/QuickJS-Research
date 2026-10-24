@@ -1,0 +1,663 @@
+id,filename,name,line,col,byte_length,bytecode_hex,source
+1,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js","",2,27,13,"3800003e63020000cf24010029","function (message) { console.log(message); }"
+2,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js","<eval>",1,1,13,"380100be00153f6a020000cb28",""
+3,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js","",5,57,10,"db3e2b010000dc250100","function () {
+    return __clockFunction.call(__clockObject);
+  }"
+4,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js","",2,3,74,"380000c73800003dab010000ccf3e90e38010011046e020000210100303802003e69000000380300046f0200000bbe004a44000000494400000009494200000009494100000024030029","function () {
+  var __clockObject = performance, __clockFunction = performance.now;
+  if (typeof __clockFunction !== 'function') throw new Error('native clock missing');
+  Object.defineProperty(globalThis, 'benchNow', {value: function () {
+    return __clockFunction.call(__clockObject);
+  }, writable: false, configurable: false});
+}"
+5,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js","<eval>",1,1,5,"be00eccb28",""
+6,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",31,20,69,"3800003dab01000011e93a0e3800003d7002000011e92e0e3800003d7102000011e9220e3800003d7202000011e9160e3800003d7302000011e90a0e3801003dab01000028","function() {
+  return performance.now       ||
+         performance.mozNow    ||
+         performance.msNow     ||
+         performance.oNow      ||
+         performance.webkitNow ||
+         Date.now;
+}"
+7,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",56,32,1,"29","function() { }"
+8,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",57,41,1,"29","function() { }"
+9,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","Benchmark",49,1,111,"08c7c3cf3f3a000000c3d03f75020000c3d13f76020000c3d23f77020000c35804003f78020000c3580500e806580500ea03be003f7d020000c3580600e806580600ea03be013f7e020000c3580700e806580700ea02073f7b020000c3580800e806580800ea03bb203f7c02000029","function Benchmark(name, doWarmup, doDeterministic, deterministicIterations, 
+                   run, setup, tearDown, rmsResult, minIterations) {
+  this.name = name;
+  this.doWarmup = doWarmup;
+  this.doDeterministic = doDeterministic;
+  this.deterministicIterations = deterministicIterations;
+  this.run = run;
+  this.Setup = setup ? setup : function() { };
+  this.TearDown = tearDown ? tearDown : function() { };
+  this.rmsResult = rmsResult ? rmsResult : null; 
+  this.minIterations = minIterations ? minIterations : 32;
+}"
+10,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","BenchmarkResult",67,1,24,"08c7c3cf3f80020000c3d03f81020000c3d13f8202000029","function BenchmarkResult(benchmark, time, latency) {
+  this.benchmark = benchmark;
+  this.time = time;
+  this.latency = latency;
+}"
+11,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",76,37,9,"08c7c33d8102000028","function() {
+  return this.time;
+}"
+12,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","BenchmarkSuite",85,1,41,"08c7c3cf3f3a000000c3d03f84020000c3d13f850200003800003d860200003e05010000c324010029","function BenchmarkSuite(name, reference, benchmarks) {
+  this.name = name;
+  this.reference = reference;
+  this.benchmarks = benchmarks;
+  BenchmarkSuite.suites.push(this);
+}"
+13,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",112,9,8,"048b020000cf9b30","function(s) {
+  throw ""Alert called with argument: "" + s;
+}"
+14,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",122,12,90,"db01165dd57e9bdbbb0c9e9bbd00abe3bd01acdbbb13a0acbd02abe301b16756169bdbb89e9bbd03abe3bd049bdbbb099eacbd05abe3bd069bdbb69e9bbd07abe3bd08acdbbb10a0acbd09abe301ffffff0fab01000000109928","function() {
+      // Robert Jenkins' 32 bit integer hash function.
+      seed = ((seed + 0x7ed55d16) + (seed << 12))  & 0xffffffff;
+      seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
+      seed = ((seed + 0x165667b1) + (seed << 5))   & 0xffffffff;
+      seed = ((seed + 0xd3a2646c) ^ (seed << 9))   & 0xffffffff;
+      seed = ((seed + 0xfd7046c5) + (seed << 3))   & 0xffffffff;
+      seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
+      return (seed & 0xfffffff) / 0x10000000;
+    }"
+15,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",120,18,9,"01b1e2f602c7be0028","function() {
+    var seed = 49734321;
+    return function() {
+      // Robert Jenkins' 32 bit integer hash function.
+      seed = ((seed + 0x7ed55d16) + (seed << 12))  & 0xffffffff;
+      seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
+      seed = ((seed + 0x165667b1) + (seed << 5))   & 0xffffffff;
+      seed = ((seed + 0xd3a2646c) ^ (seed << 9))   & 0xffffffff;
+      seed = ((seed + 0xfd7046c5) + (seed << 3))   & 0xffffffff;
+      seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
+      return (seed & 0xfffffff) / 0x10000000;
+    };
+  }"
+16,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",119,27,12,"380000be00ec3f8d02000029","function() {
+  Math.random = (function() {
+    var seed = 49734321;
+    return function() {
+      // Robert Jenkins' 32 bit integer hash function.
+      seed = ((seed + 0x7ed55d16) + (seed << 12))  & 0xffffffff;
+      seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
+      seed = ((seed + 0x165667b1) + (seed << 5))   & 0xffffffff;
+      seed = ((seed + 0xd3a2646c) ^ (seed << 9))   & 0xffffffff;
+      seed = ((seed + 0xfd7046c5) + (seed << 3))   & 0xffffffff;
+      seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
+      return (seed & 0xfffffff) / 0x10000000;
+    };
+  })();
+}"
+17,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","RunStep",147,3,203,"db11e9050edcdda16886000000dbe806dbecdfea54dedc8fe043c75b04003d96020000e8135b04003e96020000c33d3a0000002401000e5b05003e01010000c33d3a000000240100b2a3e810c33e970200005b04002401000eea0ec33e940200005b0400240100dfdbe896370600f2e91c3806003d42020000e8863806003e420200005b0700bb1924020029eb73ff5b04003d99020000e8323808003e9b0200003808003d93020000240100c83808003e9d020000bb64c498240100c95b04003e99020000c52401000e29","function RunStep() {
+    while (continuation || index < length) {
+      if (continuation) {
+        continuation = continuation();
+      } else {
+        var suite = suites[index++];
+        if (runner.NotifyStart) runner.NotifyStart(suite.name);
+        if (skipBenchmarks.indexOf(suite.name) > -1) {
+          suite.NotifySkipped(runner);
+        } else {
+          continuation = suite.RunStep(runner);
+        }
+      }
+      if (continuation && typeof window != 'undefined' && window.setTimeout) {
+        window.setTimeout(RunStep, 25);
+        return;
+      }
+    }
+
+    // show final result
+    if (runner.NotifyScore) {
+      var score = BenchmarkSuite.GeometricMean(BenchmarkSuite.scores);
+      var formatted = BenchmarkSuite.FormatScore(100 * score);
+      runner.NotifyScore(formatted);
+    }
+  }"
+18,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",140,28,45,"be00c104d0f2e806260000ea02d0d407c73801003d86020000cce7c93801002600003f93020000b3cac004ec29","function(runner, skipBenchmarks) {
+  skipBenchmarks = typeof skipBenchmarks === 'undefined' ? [] : skipBenchmarks;
+  var continuation = null;
+  var suites = BenchmarkSuite.suites;
+  var length = suites.length;
+  BenchmarkSuite.scores = [];
+  var index = 0;
+  function RunStep() {
+    while (continuation || index < length) {
+      if (continuation) {
+        continuation = continuation();
+      } else {
+        var suite = suites[index++];
+        if (runner.NotifyStart) runner.NotifyStart(suite.name);
+        if (skipBenchmarks.indexOf(suite.name) > -1) {
+          suite.NotifySkipped(runner);
+        } else {
+          continuation = suite.RunStep(runner);
+        }
+      }
+      if (continuation && typeof window != 'undefined' && window.setTimeout) {
+        window.setTimeout(RunStep, 25);
+        return;
+      }
+    }
+
+    // show final result
+    if (runner.NotifyScore) {
+      var score = BenchmarkSuite.GeometricMean(BenchmarkSuite.scores);
+      var formatted = BenchmarkSuite.FormatScore(100 * score);
+      runner.NotifyScore(formatted);
+    }
+  }
+  RunStep();
+}"
+19,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",179,34,37,"b3c73800003d86020000c8b3c9c5c4e7a1e811c3c4c5433d85020000e79bc79102eaebc328","function() {
+  var result = 0;
+  var suites = BenchmarkSuite.suites;
+  for (var i = 0; i < suites.length; i++) {
+    result += suites[i].benchmarks.length;
+  }
+  return result;
+}"
+20,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",190,32,54,"b3c7b3c8c4cfe7a1e816c33800003e63020000cfc4432401009bc79101eae63800003ea20200003800003da3020000c3cfe799250200","function(numbers) {
+  var log = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    log += Math.log(numbers[i]);
+  }
+  return Math.pow(Math.E, log / numbers.length);
+}"
+21,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",200,36,59,"b3c7b3c8c4cfe7a1e81bc33800003e63020000cfc4433d810200002401009bc79101eae13800003ea20200003800003da3020000c3cfe799250200","function(measurements) {
+  var log = 0;
+  for (var i = 0; i < measurements.length; i++) {
+    log += Math.log(measurements[i].time);
+  }
+  return Math.pow(Math.E, log / measurements.length);
+}"
+22,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",210,39,80,"b3c709c8b3c9c5cfe7a1e829cfc5433d82020000b3a8e819c33800003e63020000cfc5433d820200002401009bc70ac89102ead3c4e8183800003ea20200003800003da3020000c3cfe799250200b328","function(measurements) {
+  var log = 0;
+  var hasLatencyResult = false;
+  for (var i = 0; i < measurements.length; i++) {
+    if (measurements[i].latency != 0) {
+      log += Math.log(measurements[i].latency);
+      hasLatencyResult = true;
+    }
+  }
+  if (hasLatencyResult) {
+    return Math.pow(Math.E, log / measurements.length);
+  } else {
+    return 0;
+  }
+}"
+23,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",229,30,26,"cfbb64a3e80bcf3e40010000b3250100cf3e41010000b6250100","function(value) {
+  if (value > 100) {
+    return value.toFixed(0);
+  } else {
+    return value.toPrecision(3);
+  }
+}"
+24,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",239,39,58,"08c7c33da90200003e05010000cf2401000ec33d900200003da8020000e81bc33d900200003ea8020000cf3d800200003d3a0000002401000e29","function(result) {
+  this.results.push(result);
+  if (this.runner.NotifyStep) this.runner.NotifyStep(result.benchmark.name);
+}"
+25,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",247,41,237,"08c1063800003ea4020000c0063da9020000240100c7c0063d84020000b343c399c83800003d930200003e05010000c42401000ec0063d900200003daa020000e8293800003e9d020000bb64c498240100c9c0063d900200003eaa020000c0063d3a000000c52402000ec0063d84020000e7b5a7e8773800003ea6020000c0063da9020000240100ceb3a8e860c0063d84020000b443c699c1043800003d930200003e05010000c0042401000ec0063d900200003daa020000e8323800003e9d020000bb64c00498240100c105c0063d900200003eaa020000c0063d3a00000004af0200009bc0052402000e29","function() {
+  var mean = BenchmarkSuite.GeometricMeanTime(this.results);
+  var score = this.reference[0] / mean;
+  BenchmarkSuite.scores.push(score);
+  if (this.runner.NotifyResult) {
+    var formatted = BenchmarkSuite.FormatScore(100 * score);
+    this.runner.NotifyResult(this.name, formatted);
+  }
+  if (this.reference.length == 2) {
+    var meanLatency = BenchmarkSuite.GeometricMeanLatency(this.results);
+    if (meanLatency != 0) {
+      var scoreLatency = this.reference[1] / meanLatency;
+      BenchmarkSuite.scores.push(scoreLatency);
+      if (this.runner.NotifyResult) {
+        var formattedLatency = BenchmarkSuite.FormatScore(100 * scoreLatency)
+        this.runner.NotifyResult(this.name + ""Latency"", formattedLatency);
+      }
+    }
+  }
+}"
+26,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",269,42,50,"08c73800003d930200003e05010000b42401000ecf3daa020000e816cf3eaa020000c33d3a00000004b00200002402000e29","function(runner) {
+  BenchmarkSuite.scores.push(1);  // push default reference score.
+  if (runner.NotifyResult) {
+    runner.NotifyResult(this.name, ""Skipped"");
+  }
+}"
+27,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",278,40,72,"08c7c33d900200003db1020000e817c33d900200003eb1020000c33d3a000000cf2402000ec33d900200003da8020000e816c33d900200003ea8020000c33d3a0000002401000e29","function(error) {
+  if (this.runner.NotifyError) {
+    this.runner.NotifyError(this.name, error);
+  }
+  if (this.runner.NotifyStep) {
+    this.runner.NotifyStep(this.name);
+  }
+}"
+28,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","Measure",299,3,88,"b3c738000011210000c8b3c9dce80bc5dd3d77020000a1ea06c3bce803a1e819dd3e780200002400000e38000011210000c49cc79102ead5cf07a8e81bcf3eb8020000c59b3fb8020000cf3eb6020000c39b3fb602000029","function Measure(data) {
+    var elapsed = 0;
+    var start = new Date();
+  
+  // Run either for 1 second or for the number of iterations specified
+  // by minIterations, depending on the config flag doDeterministic.
+    for (var i = 0; (doDeterministic ? 
+      i<benchmark.deterministicIterations : elapsed < 1000); i++) {
+      benchmark.run();
+      elapsed = new Date() - start;
+    }
+    if (data != null) {
+      data.runs += i;
+      data.elapsed += elapsed;
+    }
+  }"
+29,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",290,47,203,"08c106be00ca3801003d88020000cb3d75020000380200aae809c33d75020000ea07cf3d75020000c8c33d76020000380200aae809c33d76020000ea07cf3d76020000c9c494e814d007a7e80f0bb349b8020000b349b6020000d4d007a7e813c607ed0e0bb349b8020000b349b602000028c6d0ed0ed03db8020000cf3d7c020000a1e803d028d03db6020000bce80398d03db802000099c104cf3d7b02000007a8e80ccf3e7b020000240000ea02b3c105c0063ea802000038030011cfc004c0052103002401000e0728","function(benchmark, data) {
+  var config = BenchmarkSuite.config;
+  var doWarmup = config.doWarmup !== undefined 
+                 ? config.doWarmup 
+                 : benchmark.doWarmup;
+  var doDeterministic = config.doDeterministic !== undefined 
+                        ? config.doDeterministic 
+                        : benchmark.doDeterministic;
+
+  function Measure(data) {
+    var elapsed = 0;
+    var start = new Date();
+  
+  // Run either for 1 second or for the number of iterations specified
+  // by minIterations, depending on the config flag doDeterministic.
+    for (var i = 0; (doDeterministic ? 
+      i<benchmark.deterministicIterations : elapsed < 1000); i++) {
+      benchmark.run();
+      elapsed = new Date() - start;
+    }
+    if (data != null) {
+      data.runs += i;
+      data.elapsed += elapsed;
+    }
+  }
+
+  // Sets up data in order to skip or not the warmup phase.
+  if (!doWarmup && data == null) {
+    data = { runs: 0, elapsed: 0 };
+  }
+
+  if (data == null) {
+    Measure(null);
+    return { runs: 0, elapsed: 0 };
+  } else {
+    Measure(data);
+    // If we've run too few iterations, we continue for another second.
+    if (data.runs < benchmark.minIterations) return data;
+    var usec = (data.elapsed * 1000) / data.runs;
+    var rms = (benchmark.rmsResult != null) ? benchmark.rmsResult() : 0;
+    this.NotifyStep(new BenchmarkResult(benchmark, usec, rms));
+    return null;
+  }
+}"
+30,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","RunNextSetup",353,3,65,"dbdca1e8316b18000000dd3d85020000db433e7d0200002400000e0eea16c76b12000000dd3eb1020000c32401000e076e2830de28dd3eaa0200002400000e0728","function RunNextSetup() {
+    if (index < length) {
+      try {
+        suite.benchmarks[index].Setup();
+      } catch (e) {
+        suite.NotifyError(e);
+        return null;
+      }
+      return RunNextBenchmark;
+    }
+    suite.NotifyResult();
+    return null;
+  }"
+31,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","RunNextBenchmark",367,3,60,"6b1a000000db3eb3020000db3d85020000dc43dd240200e10eea16c76b12000000db3eb1020000c32401000e076e2830dd07a7e803de285b0400ec28","function RunNextBenchmark() {
+    try {
+      data = suite.RunSingleBenchmark(suite.benchmarks[index], data);
+    } catch (e) {
+      suite.NotifyError(e);
+      return null;
+    }
+    // If data is null, we're done with this benchmark.
+    return (data == null) ? RunNextTearDown : RunNextBenchmark();
+  }"
+32,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","RunNextTearDown",378,3,50,"6b1a000000db3d85020000dc8fe0433e7e0200002400000e0eea16c76b12000000db3eb1020000c32401000e076e2830dd28","function RunNextTearDown() {
+    try {
+      suite.benchmarks[index++].TearDown();
+    } catch (e) {
+      suite.NotifyError(e);
+      return null;
+    }
+    return RunNextSetup;
+  }"
+33,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",340,36,64,"08c107be00c104be01c105be02c1063800003e8c0200002400000ec0072600003fa9020000c007cf3f90020000c0073d85020000e7c7b3c8c007c9c004230000","function(runner) {
+  BenchmarkSuite.ResetRNG();
+  this.results = [];
+  this.runner = runner;
+  var length = this.benchmarks.length;
+  var index = 0;
+  var suite = this;
+  var data;
+
+  // Run the setup, the actual benchmark, and the tear down in three
+  // separate steps to allow the framework to yield between any of the
+  // steps.
+
+  function RunNextSetup() {
+    if (index < length) {
+      try {
+        suite.benchmarks[index].Setup();
+      } catch (e) {
+        suite.NotifyError(e);
+        return null;
+      }
+      return RunNextBenchmark;
+    }
+    suite.NotifyResult();
+    return null;
+  }
+
+  function RunNextBenchmark() {
+    try {
+      data = suite.RunSingleBenchmark(suite.benchmarks[index], data);
+    } catch (e) {
+      suite.NotifyError(e);
+      return null;
+    }
+    // If data is null, we're done with this benchmark.
+    return (data == null) ? RunNextTearDown : RunNextBenchmark();
+  }
+
+  function RunNextTearDown() {
+    try {
+      suite.benchmarks[index++].TearDown();
+    } catch (e) {
+      suite.NotifyError(e);
+      return null;
+    }
+    return RunNextSetup;
+  }
+
+  // Start out running the setup.
+  return RunNextSetup();
+}"
+34,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","runRichards",439,1,308,"38000011210000cb3ec3020000380100b3073802002404000e3803001107380400380500210300c838030011c4380400380500210300c8c33eca020000380400bce803c42403000e3803001107380600380700210300c838030011c4380600380700210300c838030011c4380600380700210300c8c33ecd020000380800bcd007c42403000e3803001107380900380700210300c838030011c4380900380700210300c838030011c4380900380700210300c8c33ecd020000380a00bcb80bc42403000ec33ed1020000380600bca00f072403000ec33ed1020000380900bc8813072403000ec33ed20200002400000ec33dd3020000380b00a811e90c0ec33dd5020000380c00a8e82a04d8020000c33dd30200009b04d90200009bc33dd50200009b04da0200009bc9380d0011c52101003029","function runRichards() {
+  var scheduler = new Scheduler();
+  scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);
+
+  var queue = new Packet(null, ID_WORKER, KIND_WORK);
+  queue = new Packet(queue,  ID_WORKER, KIND_WORK);
+  scheduler.addWorkerTask(ID_WORKER, 1000, queue);
+
+  queue = new Packet(null, ID_DEVICE_A, KIND_DEVICE);
+  queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);
+  queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);
+  scheduler.addHandlerTask(ID_HANDLER_A, 2000, queue);
+
+  queue = new Packet(null, ID_DEVICE_B, KIND_DEVICE);
+  queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);
+  queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);
+  scheduler.addHandlerTask(ID_HANDLER_B, 3000, queue);
+
+  scheduler.addDeviceTask(ID_DEVICE_A, 4000, null);
+
+  scheduler.addDeviceTask(ID_DEVICE_B, 5000, null);
+
+  scheduler.schedule();
+
+  if (scheduler.queueCount != EXPECTED_QUEUE_COUNT ||
+      scheduler.holdCount != EXPECTED_HOLD_COUNT) {
+    var msg =
+        ""Error during execution: queueCount = "" + scheduler.queueCount +
+        "", holdCount = "" + scheduler.holdCount + ""."";
+    throw new Error(msg);
+  }
+}"
+35,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","Scheduler",491,1,54,"08c7c3b33fd3020000c3b33fd5020000c3380000113801002101003fdb020000c3073fdd020000c3073fde020000c3073fdf02000029","function Scheduler() {
+  this.queueCount = 0;
+  this.holdCount = 0;
+  this.blocks = new Array(NUMBER_OF_IDS);
+  this.list = null;
+  this.currentTcb = null;
+  this.currentId = null;
+}"
+36,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",518,35,25,"08c7c33ee3020000cfd0d138000011c3b4d221030024040029","function (id, priority, queue, count) {
+  this.addRunningTask(id, priority, queue, new IdleTask(this, 1, count));
+}"
+37,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",528,37,27,"08c7c33ee5020000cfd0d138000011c3380100b321030024040029","function (id, priority, queue) {
+  this.addTask(id, priority, queue, new WorkerTask(this, ID_HANDLER_A, 0));
+}"
+38,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",538,38,23,"08c7c33ee5020000cfd0d138000011c321010024040029","function (id, priority, queue) {
+  this.addTask(id, priority, queue, new HandlerTask(this));
+}"
+39,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",548,37,23,"08c7c33ee5020000cfd0d138000011c321010024040029","function (id, priority, queue) {
+  this.addTask(id, priority, queue, new DeviceTask(this))
+}"
+40,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",559,38,31,"08c7c33ee5020000cfd0d1d22404000ec33dde0200003eea02000024000029","function (id, priority, queue, task) {
+  this.addTask(id, priority, queue, task);
+  this.currentTcb.setRunning();
+}"
+41,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",571,31,52,"08c7c338000011c33ddd020000cfd0d1d22105003fde020000c3c33dde0200003fdd020000c33ddb020000cfc33dde0200004629","function (id, priority, queue, task) {
+  this.currentTcb = new TaskControlBlock(this.list, id, priority, queue, task);
+  this.list = this.currentTcb;
+  this.blocks[id] = this.currentTcb;
+}"
+42,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",580,32,99,"08c7c3c33ddd0200003fde020000c33dde02000007a8e84bc33dde0200003eec020000240000e814c3c33dde0200003d6d0100003fde020000ead4c3c33dde0200003de00200003fdf020000c3c33dde0200003e780200002400003fde020000eaad29","function () {
+  this.currentTcb = this.list;
+  while (this.currentTcb != null) {
+    if (this.currentTcb.isHeldOrSuspended()) {
+      this.currentTcb = this.currentTcb.link;
+    } else {
+      this.currentId = this.currentTcb.id;
+      this.currentTcb = this.currentTcb.run();
+    }
+  }
+}"
+43,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",596,31,56,"08c8c43ddb020000cf43cb07a7e803c328c33eef0200002400000ec33de1020000c43dde0200003de1020000a3e803c328c43dde02000028","function (id) {
+  var tcb = this.blocks[id];
+  if (tcb == null) return tcb;
+  tcb.markAsNotHeld();
+  if (tcb.priority > this.currentTcb.priority) {
+    return tcb;
+  } else {
+    return this.currentTcb;
+  }
+}"
+44,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",612,35,41,"08c7c33ed50200008d3fd5020000c33dde0200003ef10200002400000ec33dde0200003d6d01000028","function () {
+  this.holdCount++;
+  this.currentTcb.markAsHeld();
+  return this.currentTcb.link;
+}"
+45,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",622,38,24,"08c7c33dde0200003ef30200002400000ec33dde02000028","function () {
+  this.currentTcb.markAsSuspended();
+  return this.currentTcb;
+}"
+46,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",633,29,69,"08c8c43ddb020000cf3de002000043cb07a7e803c328c43ed30200008d3fd3020000cf073f6d010000cfc43ddf0200003fe0020000c33ef6020000c43dde020000cf250200","function (packet) {
+  var t = this.blocks[packet.id];
+  if (t == null) return t;
+  this.queueCount++;
+  packet.link = null;
+  packet.id = this.currentId;
+  return t.checkPriorityAdd(this.currentTcb, packet);
+}"
+47,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","TaskControlBlock",652,1,64,"08c7c3cf3f6d010000c3d03fe0020000c3d13fe1020000c3d23fc6020000c35804003fe9020000d207a7e80bc33800003ff702000029c33801003ff702000029","function TaskControlBlock(link, id, priority, queue, task) {
+  this.link = link;
+  this.id = id;
+  this.priority = priority;
+  this.queue = queue;
+  this.task = task;
+  if (queue == null) {
+    this.state = STATE_SUSPENDED;
+  } else {
+    this.state = STATE_SUSPENDED_RUNNABLE;
+  }
+}"
+48,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",689,41,12,"08c7c33800003ff702000029","function () {
+  this.state = STATE_RUNNING;
+}"
+49,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",693,44,19,"08c7c3c33df7020000380000ab3ff702000029","function () {
+  this.state = this.state & STATE_NOT_HELD;
+}"
+50,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",697,41,19,"08c7c3c33df7020000380000ad3ff702000029","function () {
+  this.state = this.state | STATE_HELD;
+}"
+51,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",701,48,29,"08c7c33df7020000380000abb3a811e90c0ec33df7020000380100a728","function () {
+  return (this.state & STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);
+}"
+52,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",705,46,19,"08c7c3c33df7020000380000ad3ff702000029","function () {
+  this.state = this.state | STATE_SUSPENDED;
+}"
+53,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",709,45,19,"08c7c3c33df7020000380000ad3ff702000029","function () {
+  this.state = this.state | STATE_RUNNABLE;
+}"
+54,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",716,34,82,"08c8c43df7020000380000a7e834c43dc6020000c7c4c33d6d0100003fc6020000c43dc602000007a7e80cc43801003ff7020000ea0ec43802003ff7020000ea0307c7c43de90200003e78020000c3250100","function () {
+  var packet;
+  if (this.state == STATE_SUSPENDED_RUNNABLE) {
+    packet = this.queue;
+    this.queue = packet.link;
+    if (this.queue == null) {
+      this.state = STATE_RUNNING;
+    } else {
+      this.state = STATE_RUNNABLE;
+    }
+  } else {
+    packet = null;
+  }
+  return this.task.run(packet);
+}"
+55,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",737,47,69,"08c7c33dc602000007a7e823c3d03fc6020000c33efe0200002400000ec33de1020000cf3de1020000a3e818c328c3d03eff020000c33dc60200002401003fc6020000cf28","function (task, packet) {
+  if (this.queue == null) {
+    this.queue = packet;
+    this.markAsRunnable();
+    if (this.priority > task.priority) return this;
+  } else {
+    this.queue = packet.addTo(this.queue);
+  }
+  return task;
+}"
+56,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",748,39,34,"08c70400030000c33de90200009b04010300009bc33df70200009b04020300009b28","function () {
+  return ""tcb { "" + this.task + ""@"" + this.state + "" }"";
+}"
+57,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","IdleTask",760,1,24,"08c7c3cf3fc1020000c3d03f03030000c3d13fe202000029","function IdleTask(scheduler, v1, count) {
+  this.scheduler = scheduler;
+  this.v1 = v1;
+  this.count = count;
+}"
+58,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",766,26,118,"08c7c33ee20200008c3fe2020000c33de2020000b3a7e80fc33dc10200003ef0020000250000c33d03030000b4abb3a7e820c3c33d03030000b49f3f03030000c33dc10200003eed020000380000250100c3c33d03030000b49f0108d00000ac3f03030000c33dc10200003eed020000380100250100","function (packet) {
+  this.count--;
+  if (this.count == 0) return this.scheduler.holdCurrent();
+  if ((this.v1 & 1) == 0) {
+    this.v1 = this.v1 >> 1;
+    return this.scheduler.release(ID_DEVICE_A);
+  } else {
+    this.v1 = (this.v1 >> 1) ^ 0xD008;
+    return this.scheduler.release(ID_DEVICE_B);
+  }
+}"
+59,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",778,31,6,"04e402000028","function () {
+  return ""IdleTask""
+}"
+60,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","DeviceTask",788,1,17,"08c7c3cf3fc1020000c3073f0303000029","function DeviceTask(scheduler) {
+  this.scheduler = scheduler;
+  this.v1 = null;
+}"
+61,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",793,28,81,"08c8cf07a7e836c43d0303000007a7e80fc43dc10200003ef2020000250000c43d03030000c7c4073f03030000c43dc10200003ec6020000c3250100c4cf3f03030000c43dc10200003ef0020000250000","function (packet) {
+  if (packet == null) {
+    if (this.v1 == null) return this.scheduler.suspendCurrent();
+    var v = this.v1;
+    this.v1 = null;
+    return this.scheduler.queue(v);
+  } else {
+    this.v1 = packet;
+    return this.scheduler.holdCurrent();
+  }
+}"
+62,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",805,33,6,"04e802000028","function () {
+  return ""DeviceTask"";
+}"
+63,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","WorkerTask",816,1,24,"08c7c3cf3fc1020000c3d03f03030000c3d13f0503000029","function WorkerTask(scheduler, v1, v2) {
+  this.scheduler = scheduler;
+  this.v1 = v1;
+  this.v2 = v2;
+}"
+64,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",822,28,144,"08c8cf07a7e80fc43dc10200003ef2020000250000c43d03030000380000a7e80cc43801003f03030000ea0ac43800003f03030000cfc43d030300003fe0020000cfb33f06030000b3c7c3380200a1e831c43e050300008d3f05030000c43d05030000bb1aa3e808c4b43f05030000cf3d08030000c3c43d05030000469100eacac43dc10200003ec6020000cf250100","function (packet) {
+  if (packet == null) {
+    return this.scheduler.suspendCurrent();
+  } else {
+    if (this.v1 == ID_HANDLER_A) {
+      this.v1 = ID_HANDLER_B;
+    } else {
+      this.v1 = ID_HANDLER_A;
+    }
+    packet.id = this.v1;
+    packet.a1 = 0;
+    for (var i = 0; i < DATA_SIZE; i++) {
+      this.v2++;
+      if (this.v2 > 26) this.v2 = 1;
+      packet.a2[i] = this.v2;
+    }
+    return this.scheduler.queue(packet);
+  }
+}"
+65,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",842,33,6,"04e602000028","function () {
+  return ""WorkerTask"";
+}"
+66,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","HandlerTask",851,1,24,"08c7c3cf3fc1020000c3073f03030000c3073f0503000029","function HandlerTask(scheduler) {
+  this.scheduler = scheduler;
+  this.v1 = null;
+  this.v2 = null;
+}"
+67,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",857,29,229,"08c9cf07a8e839cf3d09030000380000a7e818c5cf3eff020000c53d030300002401003f03030000ea16c5cf3eff020000c53d050300002401003f05030000c53d0303000007a8688f000000c53d030300003d06030000cb380100a1e853c53d0503000007a8e870c53d05030000c8c5c53d050300003d6d0100003f05030000c4c53d030300003d08030000c3433f06030000c53d03030000c3b49b3f06030000c53dc10200003ec6020000c4250100c53d03030000c8c5c53d030300003d6d0100003f03030000c53dc10200003ec6020000c4250100c53dc10200003ef2020000250000","function (packet) {
+  if (packet != null) {
+    if (packet.kind == KIND_WORK) {
+      this.v1 = packet.addTo(this.v1);
+    } else {
+      this.v2 = packet.addTo(this.v2);
+    }
+  }
+  if (this.v1 != null) {
+    var count = this.v1.a1;
+    var v;
+    if (count < DATA_SIZE) {
+      if (this.v2 != null) {
+        v = this.v2;
+        this.v2 = this.v2.link;
+        v.a1 = this.v1.a2[count];
+        this.v1.a1 = count + 1;
+        return this.scheduler.queue(v);
+      }
+    } else {
+      v = this.v1;
+      this.v1 = this.v1.link;
+      return this.scheduler.queue(v);
+    }
+  }
+  return this.scheduler.suspendCurrent();
+}"
+68,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",885,34,6,"04e702000028","function () {
+  return ""HandlerTask"";
+}"
+69,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","Packet",907,1,47,"08c7c3cf3f6d010000c3d03fe0020000c3d13f09030000c3b33f06030000c3380000113801002101003f0803000029","function Packet(link, id, kind) {
+  this.link = link;
+  this.id = id;
+  this.kind = kind;
+  this.a1 = 0;
+  this.a2 = new Array(DATA_SIZE);
+}"
+70,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",919,26,42,"08c9c5073f6d010000cf07a7e803c528cfc8c43d6d010000cb07a8e805c3c8eaf2c4c53f6d010000cf28","function (queue) {
+  this.link = null;
+  if (queue == null) return this;
+  var peek, next = queue;
+  while ((peek = next.link) != null)
+    next = peek;
+  next.link = this;
+  return queue;
+}"
+71,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",929,29,6,"04c702000028","function () {
+  return ""Packet"";
+}"
+72,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","",935,3,203,"3800003d86020000b343cb3d85020000b343c8c33d3a00000004bf020000aa11e90e0ec43d3a00000004bf020000aae80b380100040d030000ed303800003e8c0200002400000ec43e7d0200002400000e380200ecc9b3cac6b4a1e80fc43e780200002400000e9103eaee380200ecc104c43e7e0200002400000e3803003e6302000004110300003804003e120300000bb44913030000c54914030000c0044915030000c004c59c491603000004180300004917030000b44919030000b3491a0300002401009b24010029","function(){
+ var __cfSuite=BenchmarkSuite.suites[0], __cfTest=__cfSuite.benchmarks[0];
+ if(__cfSuite.name!=='Richards' || __cfTest.name!=='Richards') throw Error('registration');
+ BenchmarkSuite.ResetRNG(); __cfTest.Setup();
+ var __cfStart=benchNow();
+ for(var __cfRep=0;__cfRep<1;__cfRep++) __cfTest.run();
+ var __cfStop=benchNow(); __cfTest.TearDown();
+ console.log('RICHARDS '+JSON.stringify({N:1,start_ms:__cfStart,stop_ms:__cfStop,
+ elapsed_ms:__cfStop-__cfStart,correctness:'PASS',assertions_per_Run:1,warmup_calls:0}));
+}"
+73,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js","<eval>",1,1,992,"be01e0be02e1be04e2be145c0500be155c0900be215c1300be2b5c1a00be2e5c1b00be315c1c00be345c1d00be375c1f0038000011e9030e0b390000380000be00ec153fab010000c73802003d3f000000be03153f3d000000c7380300260000153f86020000c7380300bd05153f87020000c73803000b38230049750200003823004976020000153f88020000c7be064a8902000011392900c7380300be07153f8c020000c7380300be08153f8f020000c7380300be09153f9e020000c7380300be0a153f9b020000c7380300be0b153fa4020000c7380300be0c153fa6020000c7380300be0d153f9d020000c73803003d3f000000be0e153fa8020000c73803003d3f000000be0f153faa020000c73803003d3f000000be10153f97020000c73803003d3f000000be11153fb1020000c73803003d3f000000be12153fb3020000c73803003d3f000000be13153f94020000c73803001104bf02000001e68900002601003801001104bf0200000a09bc0820380500210500260100210300390400bce803390600bc1209390700bca003390800b3390a00b4390b00b5390c00b6390d00b7390e00b8390f00b9391000b3391100b43912003809003d3f000000be16153fc3020000c73809003d3f000000be17153fca020000c73809003d3f000000be18153fcd020000c73809003d3f000000be19153fd1020000c73809003d3f000000be1a153fe3020000c73809003d3f000000be1b153fe5020000c73809003d3f000000be1c153fd2020000c73809003d3f000000be1d153fed020000c73809003d3f000000be1e153ff0020000c73809003d3f000000be1f153ff2020000c73809003d3f000000be20153fc6020000c7b3391400b4391500b5391600b7391700381600381500ad391800381700933919003813003d3f000000be22153fea020000c73813003d3f000000be23153fef020000c73813003d3f000000be24153ff1020000c73813003d3f000000be25153fec020000c73813003d3f000000be26153ff3020000c73813003d3f000000be27153ffe020000c73813003d3f000000be28153f78020000c73813003d3f000000be29153ff6020000c73813003d3f000000be2a153f3b000000c7381a003d3f000000be2c153f78020000c7381a003d3f000000be2d153f3b000000c7381b003d3f000000be2f153f78020000c7381b003d3f000000be30153f3b000000c7381c003d3f000000be32153f78020000c7381c003d3f000000be33153f3b000000c7381d003d3f000000be35153f78020000c7381d003d3f000000be36153f3b000000c7b7391e00381f003d3f000000be38153fff020000c7381f003d3f000000be39153f3b000000c7be3aeccb28",""

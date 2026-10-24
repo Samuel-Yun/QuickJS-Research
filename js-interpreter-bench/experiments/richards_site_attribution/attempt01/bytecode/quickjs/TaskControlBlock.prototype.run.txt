@@ -1,0 +1,79 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:716:34: function: <null>
+  locals:
+    0: var packet
+    1: var this
+  closure vars:
+    0: var STATE_SUSPENDED_RUNNABLE [global_ref24]
+    1: var STATE_RUNNING [global_ref20]
+    2: var STATE_RUNNABLE [global_ref21]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc1 1: this
+        get_loc1 1: this
+
+;;   var packet;
+;;   if (this.state == STATE_SUSPENDED_RUNNABLE) {
+
+        get_field state
+        get_var 0: STATE_SUSPENDED_RUNNABLE
+        eq
+        if_false8 65
+
+;;     packet = this.queue;
+
+        get_loc1 1: this
+        get_field queue
+        put_loc0 0: packet
+
+;;     this.queue = packet.link;
+
+        get_loc1 1: this
+        get_loc0 0: packet
+        get_field link
+        put_field queue
+        get_loc1 1: this
+
+;;     if (this.queue == null) {
+
+        get_field queue
+        null
+        eq
+        if_false8 54
+
+;;       this.state = STATE_RUNNING;
+
+        get_loc1 1: this
+        get_var 1: STATE_RUNNING
+        put_field state
+        goto8 67
+
+;;     } else {
+;;       this.state = STATE_RUNNABLE;
+
+   54:  get_loc1 1: this
+        get_var 2: STATE_RUNNABLE
+        put_field state
+        goto8 67
+
+;;     }
+;;   } else {
+;;     packet = null;
+
+   65:  null
+        put_loc0 0: packet
+   67:  get_loc1 1: this
+
+;;   }
+;;   return this.task.run(packet);
+
+        get_field task
+        get_field2 run
+        get_loc0 0: packet
+        tail_call_method 1
+
+;; }
+

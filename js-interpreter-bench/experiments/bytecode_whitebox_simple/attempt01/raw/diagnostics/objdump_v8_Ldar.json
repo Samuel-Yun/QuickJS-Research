@@ -1,0 +1,23 @@
+{
+  "exit_code": 0,
+  "stdout": "\n/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64\n\n\nDisassembly of section .text:\n\n0000000001d5c040 <Builtins_LdarHandler>:\n 1d5c040:\t4b 0f be 5c 0c 01    \tmovsx  rbx,BYTE PTR [r12+r9*1+0x1]\n 1d5c046:\t48 8b d5             \tmov    rdx,rbp\n 1d5c049:\t48 8b 04 da          \tmov    rax,QWORD PTR [rdx+rbx*8]\n 1d5c04d:\t49 8d 59 02          \tlea    rbx,[r9+0x2]\n 1d5c051:\t43 0f b6 54 0c 02    \tmovzx  edx,BYTE PTR [r12+r9*1+0x2]\n 1d5c057:\t49 8b 0c d7          \tmov    rcx,QWORD PTR [r15+rdx*8]\n 1d5c05b:\t4c 8b cb             \tmov    r9,rbx\n 1d5c05e:\tff e1                \tjmp    rcx\n 1d5c060:\t90                   \tnop\n 1d5c061:\t0f 1f 00             \tnop    DWORD PTR [rax]\n",
+  "stderr": "",
+  "command": [
+    "objdump",
+    "-d",
+    "-M",
+    "intel",
+    "--start-address=30785600",
+    "--stop-address=30785636",
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8"
+  ],
+  "timestamp_utc": "2026-10-15T03:53:10.572251+00:00",
+  "outer_wall_ns": 190633928,
+  "load_average": [
+    0.64111328125,
+    0.15673828125,
+    0.05029296875
+  ],
+  "boot_id": "b6d14a6a-617f-4dc4-9abc-055cce9de2c4",
+  "LD_PRELOAD": null
+}

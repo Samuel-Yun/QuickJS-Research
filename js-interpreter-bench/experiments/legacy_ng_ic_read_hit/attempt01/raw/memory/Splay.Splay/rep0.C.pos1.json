@@ -1,0 +1,30 @@
+{
+  "campaign": "legacy_ng_ic_read_hit/attempt01",
+  "case": "Splay.Splay",
+  "variant": "C",
+  "rep": 0,
+  "order": 1,
+  "N": 1024,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/raw/memory/Splay.Splay/rep0.C.pos1.rss.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_read_hit_attempt01/C/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/Splay.Splay.N1024.measure.js"
+  ],
+  "binary_sha256": "9ca2cbd471914e6810b6ca3e2f00cf937e263f2a8f8b83d635a80c99554d8b67",
+  "script_sha256": "969c820758b1c7b9ed9f0ab251b8f75a0563231a47aef7469b7b101e5af8b841",
+  "peak_rss_KiB": 147412,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Splay.Splay\",\"suite\":\"Splay\",\"subbenchmark\":\"Splay\",\"mode\":\"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1\",\"phase\":\"measure\",\"N\":1024,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":4872623.87919,\"stop_ms\":4875131.482445,\"elapsed_ms\":2507.6032549999654,\"elapsed_per_call_ms\":2.4488313037109037,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-23T16:03:34.053938+00:00",
+  "outer_wall_ns": 3117184503,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

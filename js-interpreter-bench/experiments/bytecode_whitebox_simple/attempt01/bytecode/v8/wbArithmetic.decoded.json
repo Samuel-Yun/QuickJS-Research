@@ -1,0 +1,164 @@
+[
+  {
+    "offset": 0,
+    "size": 2,
+    "hex": [
+      "0b",
+      "05"
+    ],
+    "opcode": "Ldar",
+    "operands": "a2"
+  },
+  {
+    "offset": 2,
+    "size": 3,
+    "hex": [
+      "44",
+      "04",
+      "00"
+    ],
+    "opcode": "Mul",
+    "operands": "a1, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 5,
+    "size": 3,
+    "hex": [
+      "42",
+      "03",
+      "00"
+    ],
+    "opcode": "Add",
+    "operands": "a0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 8,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 9,
+    "size": 2,
+    "hex": [
+      "0b",
+      "04"
+    ],
+    "opcode": "Ldar",
+    "operands": "a1"
+  },
+  {
+    "offset": 11,
+    "size": 3,
+    "hex": [
+      "43",
+      "03",
+      "00"
+    ],
+    "opcode": "Sub",
+    "operands": "a0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 14,
+    "size": 1,
+    "hex": [
+      "d4"
+    ],
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 15,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f8"
+    ],
+    "opcode": "Ldar",
+    "operands": "r1"
+  },
+  {
+    "offset": 17,
+    "size": 3,
+    "hex": [
+      "7a",
+      "f9",
+      "00"
+    ],
+    "opcode": "TestGreaterThan",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 20,
+    "size": 2,
+    "hex": [
+      "a8",
+      "08"
+    ],
+    "opcode": "JumpIfFalse",
+    "operands": "[8] (0xb0010003dc @ 28)"
+  },
+  {
+    "offset": 22,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f8"
+    ],
+    "opcode": "Ldar",
+    "operands": "r1"
+  },
+  {
+    "offset": 24,
+    "size": 3,
+    "hex": [
+      "43",
+      "f9",
+      "00"
+    ],
+    "opcode": "Sub",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 27,
+    "size": 1,
+    "hex": [
+      "b9"
+    ],
+    "opcode": "Return",
+    "operands": ""
+  },
+  {
+    "offset": 28,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f8"
+    ],
+    "opcode": "Ldar",
+    "operands": "r1"
+  },
+  {
+    "offset": 30,
+    "size": 3,
+    "hex": [
+      "42",
+      "f9",
+      "00"
+    ],
+    "opcode": "Add",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 33,
+    "size": 1,
+    "hex": [
+      "b9"
+    ],
+    "opcode": "Return",
+    "operands": ""
+  }
+]
