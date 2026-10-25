@@ -1,0 +1,42 @@
+{
+  "status": "DELIVERED_BLOCKED_IC_INTERVENTION",
+  "timestamp": "2026-10-25T13:00:59.667813+00:00",
+  "HEAD": "20ebb34abc6f7b311b12f97a4d46553ec2074c18",
+  "branch": "myx",
+  "worktree_status": "?? js-interpreter-bench/experiments/v8_ic_on_off/",
+  "tracked_modifications": [],
+  "new_experiment_only": true,
+  "python_AST_files_checked": 11,
+  "original_runtime_identity_after_check": "PASS; recorded in identity_after.json, not rerun by this checker",
+  "correctness_valid": 18,
+  "common_script_per_case_N": true,
+  "evidence_only_replays": [
+    {
+      "directory": "replays/evidence_28rw5lco",
+      "outputs_checked": 7,
+      "scope": "capability and correctness evidence ONLY; no performance statistics exist"
+    },
+    {
+      "directory": "replays/evidence_5xt199id",
+      "outputs_checked": 7,
+      "scope": "capability and correctness evidence ONLY; no performance statistics exist"
+    }
+  ],
+  "formal_target": 270,
+  "formal_actual": 0,
+  "pilot_actual": 0,
+  "performance_statistics_replayed": false,
+  "performance_analysis_refusal": {
+    "exit_code": 1,
+    "stderr": "BLOCKED_IC_INTERVENTION: 0/270 formal samples; performance statistics unavailable. Use review.py for raw capability evidence, not a timing table."
+  },
+  "no_ELF_or_build_tree_added": true,
+  "max_artifact_bytes": 208748,
+  "IC_intervention_verified": null,
+  "mode_source_verified": null,
+  "unresolved": [
+    "OFF selected-site positive no-cache/install-block evidence",
+    "corresponding-version source unavailable through verified TLS"
+  ],
+  "no_commit_push_or_branch_change": true
+}
