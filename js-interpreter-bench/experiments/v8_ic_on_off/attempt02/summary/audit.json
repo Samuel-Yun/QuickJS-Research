@@ -1,0 +1,93 @@
+{
+  "status": "COMPLETE",
+  "evidence_status": "PASS_WITH_OBSERVABILITY_LIMITATION",
+  "formal_expected": 270,
+  "formal_actual": 270,
+  "formal_valid": 270,
+  "formal_failed": 0,
+  "missing_positions": 0,
+  "duplicate_positions": 0,
+  "group_counts": [
+    {
+      "case": "Richards",
+      "condition": "QJS_ORIGINAL",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "Richards",
+      "condition": "V8_IC_ON",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "Richards",
+      "condition": "V8_IC_OFF",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "own_integer",
+      "condition": "QJS_ORIGINAL",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "own_integer",
+      "condition": "V8_IC_ON",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "own_integer",
+      "condition": "V8_IC_OFF",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "numeric_control",
+      "condition": "QJS_ORIGINAL",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "numeric_control",
+      "condition": "V8_IC_ON",
+      "actual": 30,
+      "valid": 30
+    },
+    {
+      "case": "numeric_control",
+      "condition": "V8_IC_OFF",
+      "actual": 30,
+      "valid": 30
+    }
+  ],
+  "complete_triples": 90,
+  "six_orders_each_five": true,
+  "each_condition_position_ten": true,
+  "formal_serial_same_boot": true,
+  "correctness_valid": 18,
+  "selected_N_correctness_valid": 9,
+  "pilot_actual": 27,
+  "pilot_valid": 27,
+  "formal_below_calibration_threshold": 0,
+  "all_outliers_retained": true,
+  "formal_diagnostics_off": true,
+  "runtime_hash_records_consistent": true,
+  "identity_after": "PASS",
+  "OFF_direct_snapshot_verified": null,
+  "artifact_source_commit": null,
+  "reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+  "all_V8_caches_removed": false,
+  "GM_computed": false,
+  "bootstrap": {
+    "unit": "complete within-case condition triple",
+    "replicates": 10000,
+    "seed": 20261025,
+    "CI": "linear-interpolated percentile 2.5/97.5%; exploratory, not multiplicity-adjusted"
+  },
+  "quartiles": "Tukey halves; exclude median for odd n",
+  "portable_data_only": true,
+  "requires_old_ELF": false
+}
