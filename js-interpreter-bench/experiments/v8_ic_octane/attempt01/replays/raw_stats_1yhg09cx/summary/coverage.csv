@@ -1,0 +1,21 @@
+case,status,included,N,actual_records,valid_records,expected_records,input_mode,reason
+Richards.Richards,COMPLETE,True,512,90,90,90,FROZEN_ORIGINAL_STRICT,
+DeltaBlue.DeltaBlue,COMPLETE,True,256,90,90,90,FROZEN_ORIGINAL_STRICT,
+Crypto.Encrypt,COMPLETE,True,256,90,90,90,BENCH_ONLY_XORSHIFT32_PRELOAD_V1 seed305419896,
+Crypto.Decrypt,COMPLETE,True,16,90,90,90,BENCH_ONLY_XORSHIFT32_PRELOAD_V1 seed305419896,
+RayTrace.RayTrace,COMPLETE,True,64,90,90,90,FROZEN_ORIGINAL_STRICT,
+EarleyBoyer.Earley,COMPLETE,True,512,90,90,90,FROZEN_ORIGINAL_STRICT,
+EarleyBoyer.Boyer,COMPLETE,True,32,90,90,90,FROZEN_ORIGINAL_STRICT,
+RegExp.RegExp,COMPLETE,True,64,90,90,90,FROZEN_ORIGINAL_STRICT,
+Splay.Splay,COMPLETE,True,1024,90,90,90,FROZEN_ORIGINAL_STRICT,
+NavierStokes.NavierStokes,COMPLETE,True,32,90,90,90,FROZEN_ORIGINAL_STRICT,
+PdfJS.PdfJS,COMPLETE,True,16,90,90,90,FROZEN_ORIGINAL_STRICT,
+Mandreel.Mandreel,COMPLETE,True,1,90,90,90,FROZEN_ORIGINAL_STRICT,
+Gameboy.Gameboy,COMPLETE,True,4,90,90,90,FROZEN_ORIGINAL_STRICT,
+CodeLoad.CodeLoadClosure,COMPLETE,True,4096,90,90,90,FROZEN_ORIGINAL_STRICT,
+CodeLoad.CodeLoadJQuery,COMPLETE,True,256,90,90,90,FROZEN_ORIGINAL_STRICT,
+Typescript.Typescript,COMPLETE,True,1,90,90,90,FROZEN_ORIGINAL_STRICT,
+Box2D.Box2D,NOT_INCLUDED_EXISTING_BOUNDARY,False,,0,0,0,not measured,no trusted existing correctness gate; no new compatibility development
+zlib.zlib,NOT_INCLUDED_EXISTING_BOUNDARY,False,,0,0,0,not measured,QuickJS read() absent in existing coverage; no new shim
+Splay.latency,NOT_INCLUDED_EXISTING_BOUNDARY,False,,0,0,0,not measured,official latency/adaptive metric outside this Run timing mode
+Mandreel.latency,NOT_INCLUDED_EXISTING_BOUNDARY,False,,0,0,0,not measured,official latency/adaptive metric outside this Run timing mode
