@@ -1,0 +1,95 @@
+[
+  {
+    "case": "own_method_control",
+    "bytecode": {
+      "address": "0x131c01000565",
+      "pc": 13,
+      "bytes": [
+        "33",
+        "03",
+        "00",
+        "00"
+      ],
+      "instruction": "GetNamedProperty a0, [0:\"step\"], FBV[0]"
+    },
+    "transitions": [
+      [
+        "LoadIC",
+        "0x131c01000565",
+        "56562",
+        "19",
+        "20",
+        "0",
+        "1",
+        "0x20780101eaa9",
+        "step",
+        "",
+        ""
+      ]
+    ],
+    "receiver_maps": [
+      "0x20780101eaa9"
+    ],
+    "map_details": [
+      "map-details,56446,0x20780101eaa9,Map=0x20780101eaa9\\n - type: JS_OBJECT_TYPE\\n - instance size: 16\\n - inobject properties: 1\\n - unused property fields: 1\\n - elements kind: HOLEY_ELEMENTS\\n - enum length: invalid\\n - stable_map\\n - back pointer: 0x20780101ea81 <Map[16](HOLEY_ELEMENTS)>\\n - prototype_validity_cell: 0x207800000b15 <Cell value= [cleared]>\\n - instance descriptors (own) #1: 0x207801049e01 <DescriptorArray[1]>\\n - prototype: 0x207801005d25 <Object map = 0x2078010050bd>\\n - constructor: 0x2078010055c5 <JSFunction Object (sfi = 0x2078001d84d1)>\\n - dependent code: 0x2078000007f5 <Other heap object (WEAK_ARRAY_LIST_TYPE)>\\n - construction counter: 0\\n\\n  [0]: 0x20780101e061 <String[4]: #step> (const data field 3:v\\x2C in-obj\\x2C p: 0\\x2C attrs: [WEC]) @ None\\n"
+    ],
+    "map_create": [
+      "map-create,56442,0x20780101eaa9"
+    ],
+    "post_run_object_briefs": [
+      "0x207801049e2d <Object map = 0x20780101eaa9>",
+      "0x207801049e1d <Object map = 0x20780101eaa9>"
+    ],
+    "step_holder_map_details": [
+      "map-details,56446,0x20780101eaa9,Map=0x20780101eaa9\\n - type: JS_OBJECT_TYPE\\n - instance size: 16\\n - inobject properties: 1\\n - unused property fields: 1\\n - elements kind: HOLEY_ELEMENTS\\n - enum length: invalid\\n - stable_map\\n - back pointer: 0x20780101ea81 <Map[16](HOLEY_ELEMENTS)>\\n - prototype_validity_cell: 0x207800000b15 <Cell value= [cleared]>\\n - instance descriptors (own) #1: 0x207801049e01 <DescriptorArray[1]>\\n - prototype: 0x207801005d25 <Object map = 0x2078010050bd>\\n - constructor: 0x2078010055c5 <JSFunction Object (sfi = 0x2078001d84d1)>\\n - dependent code: 0x2078000007f5 <Other heap object (WEAK_ARRAY_LIST_TYPE)>\\n - construction counter: 0\\n\\n  [0]: 0x20780101e061 <String[4]: #step> (const data field 3:v\\x2C in-obj\\x2C p: 0\\x2C attrs: [WEC]) @ None\\n"
+    ],
+    "handler": null,
+    "per_access_hit_rate": null
+  },
+  {
+    "case": "inherited_method",
+    "bytecode": {
+      "address": "0x308c01000569",
+      "pc": 13,
+      "bytes": [
+        "33",
+        "03",
+        "00",
+        "00"
+      ],
+      "instruction": "GetNamedProperty a0, [0:\"step\"], FBV[0]"
+    },
+    "transitions": [
+      [
+        "LoadIC",
+        "0x308c01000569",
+        "51548",
+        "19",
+        "20",
+        "0",
+        "1",
+        "0x0e410101eb35",
+        "step",
+        "",
+        ""
+      ]
+    ],
+    "receiver_maps": [
+      "0x0e410101eb35"
+    ],
+    "map_details": null,
+    "map_create": [
+      "map-create,51483,0x0e410101eb35"
+    ],
+    "post_run_object_briefs": [
+      "0x0e4101049e8d <Object map = 0xe410101eb35>",
+      "0x0e4101049e1d <Object map = 0xe410101ebad>"
+    ],
+    "step_holder_map_details": [
+      "map-details,51397,0x0e410101eabd,Map=0xe410101eabd\\n - type: JS_OBJECT_TYPE\\n - instance size: 16\\n - inobject properties: 1\\n - unused property fields: 1\\n - elements kind: HOLEY_ELEMENTS\\n - enum length: invalid\\n - stable_map\\n - back pointer: 0x0e410101ea95 <Map[16](HOLEY_ELEMENTS)>\\n - prototype_validity_cell: 0x0e4100000b15 <Cell value= [cleared]>\\n - instance descriptors (own) #1: 0x0e4101049e01 <DescriptorArray[1]>\\n - prototype: 0x0e4101005d25 <Object map = 0xe41010050bd>\\n - constructor: 0x0e41010055c5 <JSFunction Object (sfi = 0xe41001d84d1)>\\n - dependent code: 0x0e41000007f5 <Other heap object (WEAK_ARRAY_LIST_TYPE)>\\n - construction counter: 0\\n\\n  [0]: 0x0e410101e069 <String[4]: #step> (const data field 3:v\\x2C in-obj\\x2C p: 0\\x2C attrs: [WEC]) @ None\\n",
+      "map-details,51517,0x0e410101ebad,Map=0xe410101ebad\\n - type: JS_OBJECT_TYPE\\n - instance size: 16\\n - inobject properties: 1\\n - unused property fields: 0\\n - elements kind: HOLEY_ELEMENTS\\n - enum length: invalid\\n - stable_map\\n - prototype_map\\n - prototype info: 0x0e410101eb0d <PrototypeInfo>\\n - prototype_validity_cell: 0x0e4100000b15 <Cell value= [cleared]>\\n - instance descriptors (own) #1: 0x0e4101049ed5 <DescriptorArray[1]>\\n - prototype: 0x0e4101005d25 <Object map = 0xe41010050bd>\\n - constructor: 0x0e41010055c5 <JSFunction Object (sfi = 0xe41001d84d1)>\\n - dependent code: 0x0e41000007f5 <Other heap object (WEAK_ARRAY_LIST_TYPE)>\\n - construction counter: 0\\n\\n  [0]: 0x0e410101e069 <String[4]: #step> (const data field 3:t\\x2C in-obj\\x2C p: 0\\x2C attrs: [WEC]) @ Any\\n"
+    ],
+    "handler": null,
+    "per_access_hit_rate": null
+  }
+]
