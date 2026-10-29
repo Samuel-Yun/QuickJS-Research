@@ -1,0 +1,46 @@
+{
+  "status": "BLOCKED_PERTURBATION",
+  "execution_and_failure_report_closed": true,
+  "cost_attribution_complete": false,
+  "timestamp": "2026-10-29T08:41:41.980304+00:00",
+  "first_validation": {
+    "target": 108,
+    "actual_valid": 107,
+    "complete_rounds": 11,
+    "missing_unstarted": 1,
+    "missing_not_retried": true
+  },
+  "fallback_validation": {
+    "target": 108,
+    "actual_valid": 108,
+    "complete_rounds": 12
+  },
+  "total_validation_records": 215,
+  "correctness_N1_N2": 18,
+  "selected_correctness_total": 18,
+  "compressed_archives_verified": 572,
+  "validation_ON_window_PC_samples": 29241,
+  "long_windows_planned": 9,
+  "long_windows_actual": 0,
+  "unchanged_engineering_thresholds": true,
+  "fallback_count": 1,
+  "decision_rule": 4,
+  "sampler_setup_seconds": 650.907822,
+  "resume_phase_elapsed_seconds": 3239.281689,
+  "original_wall_clock_exceeded_due_interruption_disclosed": true,
+  "BASE_and_VM_objects_unchanged": true,
+  "independent_raw_only_audit": "PASS",
+  "new_VM_optimization": false,
+  "old_tracked_files_untouched": true,
+  "not_run": [
+    "long_window_profiles",
+    "full_native_cost_partition",
+    "new_SHIM_full_bytecode_direct_dump"
+  ],
+  "UNKNOWN": [
+    "relative call boundary cost in original A",
+    "Richards call boundary importance",
+    "cause of host timing variability",
+    "exact source of UTC discontinuity"
+  ]
+}

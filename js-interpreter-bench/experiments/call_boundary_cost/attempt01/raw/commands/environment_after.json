@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "stdout": "Linux LAPTOP-QPKCPDCB 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux\n 16:20:31 up 0 min,  1 user,  load average: 0.16, 0.03, 0.01\n    PID STAT COMMAND         %CPU COMMAND\n      1 Ss   systemd         13.2 /sbin/init\n      2 Sl   init-systemd(Ub  0.1 /init\n      9 Sl   init             0.2 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     58 S<s  systemd-journal  7.2 /usr/lib/systemd/systemd-journald\n    100 Ss   systemd-udevd    6.0 /usr/lib/systemd/systemd-udevd\n    111 S    (udev-worker)    1.0 (udev-worker)\n    112 S    (udev-worker)    2.4 (udev-worker)\n    113 S    (udev-worker)    0.5 (udev-worker)\n    114 S    (udev-worker)    1.8 (udev-worker)\n    116 S    (udev-worker)    1.0 (udev-worker)\n    117 S    (udev-worker)    0.5 (udev-worker)\n    118 S    (udev-worker)    1.6 (udev-worker)\n    119 S    (udev-worker)    0.5 (udev-worker)\n    120 S    (udev-worker)    1.6 (udev-worker)\n    121 S    (udev-worker)    1.0 (udev-worker)\n    122 S    (udev-worker)    0.2 (udev-worker)\n    123 S    (udev-worker)    0.5 (udev-worker)\n    124 S    (udev-worker)    0.0 (udev-worker)\n    129 S    (udev-worker)    0.5 (udev-worker)\n    130 S    (udev-worker)    0.5 (udev-worker)\n    131 S    (udev-worker)    0.2 (udev-worker)\n    132 S    (udev-worker)    0.0 (udev-worker)\n    133 S    (udev-worker)    0.0 (udev-worker)\n    134 S    (udev-worker)    0.2 (udev-worker)\n    142 Ss   systemd-resolve  4.2 /usr/lib/systemd/systemd-resolved\n    143 Ssl  systemd-timesyn  2.5 /usr/lib/systemd/systemd-timesyncd\n    155 Ss   cron             0.0 /usr/sbin/cron -f -P\n    156 Ss   dbus-daemon      1.7 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    162 Ssl  snapd            8.7 /usr/lib/snapd/snapd\n    163 Ss   systemd-logind   5.4 /usr/lib/systemd/systemd-logind\n    171 Ss+  agetty           0.3 /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    189 Ss+  agetty           0.3 /sbin/agetty -o -p -- \\u --noclear - linux\n    193 Ssl  rsyslogd         4.0 /usr/sbin/rsyslogd -n -iNONE\n    194 Ssl  containerd       8.7 /usr/bin/containerd\n    209 Ssl  unattended-upgr  5.4 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    265 Ss   systemd-timedat  3.1 /usr/lib/systemd/systemd-timedated\n    269 Ssl  dockerd         17.6 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    520 Ss   SessionLeader    0.0 /init\n    521 S    Relay(522)       0.0 /init\n    522 Ss+  python3         22.8 python3 /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/close_blocked.py\n    523 Ss   login            0.8 /bin/login -f\n    563 Ss   systemd         32.0 /usr/lib/systemd/systemd --user\n    564 S    (sd-pam)         0.0 (sd-pam)\n    578 S+   bash            10.7 -bash\n    596 S+   sh               0.0 sh -c uname -a; uptime; ps -eo pid,stat,comm,pcpu,args; true\n    599 R+   ps               0.0 ps -eo pid,stat,comm,pcpu,args\n",
+  "stderr": "your 131072x1 screen size is bogus. expect trouble\n",
+  "timeout": false,
+  "command": [
+    "sh",
+    "-c",
+    "uname -a; uptime; ps -eo pid,stat,comm,pcpu,args; true"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-29T08:20:31.591872+00:00",
+  "completed_at": "2026-10-29T08:20:31.606693+00:00",
+  "outer_start_ns": 7301843697,
+  "outer_stop_ns": 7316636231,
+  "outer_wall_ns": 14792534,
+  "boot_id": "c575fad3-878b-4531-bb95-f76032b0280b"
+}

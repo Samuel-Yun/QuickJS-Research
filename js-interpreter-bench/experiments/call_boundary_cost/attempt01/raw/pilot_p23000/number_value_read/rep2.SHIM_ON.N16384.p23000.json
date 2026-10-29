@@ -1,0 +1,102 @@
+{
+  "stage": "pilot_p23000",
+  "case": "number_value_read",
+  "condition": "SHIM_ON",
+  "N": 16384,
+  "rep": 2,
+  "order": 0,
+  "period_us": 23000,
+  "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+  "cohort": "WSL2-call-boundary-20261029-attempt01",
+  "command": [
+    "/home/mzyx/call_boundary_cost_attempt01/shim/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/scripts/number_value_read/N16384.measure.shim.js"
+  ],
+  "script_relative": "scripts/number_value_read/N16384.measure.shim.js",
+  "script_sha256": "5f8af04f30a0a3d11038ee902d054cfc16a294f7cea25887b0b61222339a8567",
+  "binary_sha256": "dfc547ff0db4a4318c812a65f4d2d485a9a2bb169aee405152bf4a596268c437",
+  "input_sha256": "a8a637d5233364a3e2baa25699217c5e2b4c91260d1092901bf5d57d34e0508e",
+  "sample_prefix": "/home/mzyx/call_boundary_cost_attempt01/reports/pilot_p23000/number_value_read/rep2.SHIM_ON.N16384.p23000",
+  "boot_id": "b59caadd-3aab-4531-8e09-a77d8d4df1a3",
+  "valid": true,
+  "timestamp": "2026-10-29T07:52:57.894418+00:00",
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"case\":\"number_value_read\",\"N\":16384,\"mode\":\"CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"correctness\":\"PASS\",\"checksum\":137472507904,\"last\":8390656,\"start_ms\":117268.205244,\"stop_ms\":120369.829953,\"elapsed_ms\":3101.624708999996,\"warmup_calls\":0,\"inner_iterations\":4096,\"first_Run_included\":true}\n",
+  "stderr": "",
+  "timeout": false,
+  "completed_at": "2026-10-29T07:53:01.086927+00:00",
+  "outer_start_ns": 117179015258,
+  "outer_stop_ns": 120371462453,
+  "outer_wall_ns": 3192447195,
+  "child_user_seconds": 3.132973000000007,
+  "child_system_seconds": 0.021476999999999996,
+  "child_voluntary_switches": 28,
+  "child_involuntary_switches": 2,
+  "payload": {
+    "case": "number_value_read",
+    "N": 16384,
+    "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+    "phase": "measure",
+    "correctness": "PASS",
+    "checksum": 137472507904,
+    "last": 8390656,
+    "start_ms": 117268.205244,
+    "stop_ms": 120369.829953,
+    "elapsed_ms": 3101.624708999996,
+    "warmup_calls": 0,
+    "inner_iterations": 4096,
+    "first_Run_included": true
+  },
+  "elapsed_ms": 3101.624708999996,
+  "elapsed_per_Run_ms": 0.18930814874267554,
+  "sampler": {
+    "schema": "little-endian uint64 rip,uint64 CLOCK_MONOTONIC_ns",
+    "sample_bytes": 16,
+    "pid": 632,
+    "enabled": true,
+    "period_us": 23000,
+    "capacity": 131072,
+    "delivered": 134,
+    "retained": 134,
+    "overflow": 0,
+    "clock_errors": 0,
+    "drained_pending": 0,
+    "threads_before": 1,
+    "threads_after": 1,
+    "atomics_lock_free": true,
+    "old_handler_default": true,
+    "old_timer_zero": true,
+    "window_start_ns": 117268171220,
+    "window_stop_ns": 120369830782,
+    "window_cpu_start_ns": 42949100,
+    "window_cpu_stop_ns": 3143381000,
+    "voluntary_switches": 0,
+    "involuntary_switches": 2
+  },
+  "sampler_archives": {
+    "meta.json": {
+      "path": "raw/samples/pilot_p23000/number_value_read/rep2.SHIM_ON.N16384.p23000.meta.json.gz",
+      "sha256": "e794ee14e94199c91cfa5d64030acc92202e458542776ae2fccfc0d72f3ad92e",
+      "uncompressed_sha256": "6adf526a59fcce25e4af35dc3f96ca80eb3c4bc1ed0adb875574be53da80fe56",
+      "bytes": 507
+    },
+    "samples.bin": {
+      "path": "raw/samples/pilot_p23000/number_value_read/rep2.SHIM_ON.N16384.p23000.samples.bin.gz",
+      "sha256": "ec5b3a4cbb634ee908303c905e36ce8b06ff1fb08e67b1bd6e6284e037ae319a",
+      "uncompressed_sha256": "87b85a71ca97419083f42fe4e9db8b35c288e056452a3255491b1dfbd9a4606b",
+      "bytes": 2144
+    },
+    "begin.maps": {
+      "path": "raw/samples/pilot_p23000/number_value_read/rep2.SHIM_ON.N16384.p23000.begin.maps.gz",
+      "sha256": "9a2247c0cb22a328f9c56bf7ce56795c8f02c773f998dd05b7b5a29bd0834484",
+      "uncompressed_sha256": "7ee7fb64b47f20c1e03f644c36b50f4b465c2a6f1438326c9ec254ef3d5b0036",
+      "bytes": 2768
+    },
+    "end.maps": {
+      "path": "raw/samples/pilot_p23000/number_value_read/rep2.SHIM_ON.N16384.p23000.end.maps.gz",
+      "sha256": "9a2247c0cb22a328f9c56bf7ce56795c8f02c773f998dd05b7b5a29bd0834484",
+      "uncompressed_sha256": "7ee7fb64b47f20c1e03f644c36b50f4b465c2a6f1438326c9ec254ef3d5b0036",
+      "bytes": 2768
+    }
+  }
+}

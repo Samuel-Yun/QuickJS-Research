@@ -1,0 +1,102 @@
+{
+  "stage": "pilot_p7000",
+  "case": "number_value_read",
+  "condition": "SHIM_ON",
+  "N": 16384,
+  "rep": 1,
+  "order": 1,
+  "period_us": 7000,
+  "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+  "cohort": "WSL2-call-boundary-20261029-attempt01",
+  "command": [
+    "/home/mzyx/call_boundary_cost_attempt01/shim/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/scripts/number_value_read/N16384.measure.shim.js"
+  ],
+  "script_relative": "scripts/number_value_read/N16384.measure.shim.js",
+  "script_sha256": "5f8af04f30a0a3d11038ee902d054cfc16a294f7cea25887b0b61222339a8567",
+  "binary_sha256": "dfc547ff0db4a4318c812a65f4d2d485a9a2bb169aee405152bf4a596268c437",
+  "input_sha256": "a8a637d5233364a3e2baa25699217c5e2b4c91260d1092901bf5d57d34e0508e",
+  "sample_prefix": "/home/mzyx/call_boundary_cost_attempt01/reports/pilot_p7000/number_value_read/rep1.SHIM_ON.N16384.p7000",
+  "boot_id": "46544d7b-a2ba-4f7f-a97f-f0692a95b1e4",
+  "valid": true,
+  "timestamp": "2026-10-29T03:12:15.484387+00:00",
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"case\":\"number_value_read\",\"N\":16384,\"mode\":\"CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"correctness\":\"PASS\",\"checksum\":137472507904,\"last\":8390656,\"start_ms\":106478.313441,\"stop_ms\":108069.166628,\"elapsed_ms\":1590.8531870000006,\"warmup_calls\":0,\"inner_iterations\":4096,\"first_Run_included\":true}\n",
+  "stderr": "",
+  "timeout": false,
+  "completed_at": "2026-10-29T03:12:17.084876+00:00",
+  "outer_start_ns": 106469848181,
+  "outer_stop_ns": 108070302659,
+  "outer_wall_ns": 1600454478,
+  "child_user_seconds": 1.5940420000000017,
+  "child_system_seconds": 0.0,
+  "child_voluntary_switches": 28,
+  "child_involuntary_switches": 1,
+  "payload": {
+    "case": "number_value_read",
+    "N": 16384,
+    "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+    "phase": "measure",
+    "correctness": "PASS",
+    "checksum": 137472507904,
+    "last": 8390656,
+    "start_ms": 106478.313441,
+    "stop_ms": 108069.166628,
+    "elapsed_ms": 1590.8531870000006,
+    "warmup_calls": 0,
+    "inner_iterations": 4096,
+    "first_Run_included": true
+  },
+  "elapsed_ms": 1590.8531870000006,
+  "elapsed_per_Run_ms": 0.0970979728393555,
+  "sampler": {
+    "schema": "little-endian uint64 rip,uint64 CLOCK_MONOTONIC_ns",
+    "sample_bytes": 16,
+    "pid": 640,
+    "enabled": true,
+    "period_us": 7000,
+    "capacity": 131072,
+    "delivered": 158,
+    "retained": 158,
+    "overflow": 0,
+    "clock_errors": 0,
+    "drained_pending": 0,
+    "threads_before": 1,
+    "threads_after": 1,
+    "atomics_lock_free": true,
+    "old_handler_default": true,
+    "old_timer_zero": true,
+    "window_start_ns": 106478297318,
+    "window_stop_ns": 108069167149,
+    "window_cpu_start_ns": 2624200,
+    "window_cpu_stop_ns": 1584113100,
+    "voluntary_switches": 0,
+    "involuntary_switches": 1
+  },
+  "sampler_archives": {
+    "meta.json": {
+      "path": "raw/samples/pilot_p7000/number_value_read/rep1.SHIM_ON.N16384.p7000.meta.json.gz",
+      "sha256": "74a537360c2bb677b974a015b67da610e8216f9e74c60d50a5c2384e43f8533b",
+      "uncompressed_sha256": "cd972e4fdd928d03dd74b3b1904851f6cae5355cc1124fc198a06f85ea17dcec",
+      "bytes": 505
+    },
+    "samples.bin": {
+      "path": "raw/samples/pilot_p7000/number_value_read/rep1.SHIM_ON.N16384.p7000.samples.bin.gz",
+      "sha256": "b33a35662a338e1a0e29259ab381ece957840e8395694e2052a85866eda14c32",
+      "uncompressed_sha256": "2ed474db5f28dcb63290ef598e13bc552add7fa2e5bbf54700a8ff953d027003",
+      "bytes": 2528
+    },
+    "begin.maps": {
+      "path": "raw/samples/pilot_p7000/number_value_read/rep1.SHIM_ON.N16384.p7000.begin.maps.gz",
+      "sha256": "3778108373510104c80bb7774e7039e30a31b4a1cdd2cd5cacfa2c2d29b0bf6a",
+      "uncompressed_sha256": "13aa02fd8481d0639d0d84f918427d7129c280e0c920ce239bee38052e933d52",
+      "bytes": 2768
+    },
+    "end.maps": {
+      "path": "raw/samples/pilot_p7000/number_value_read/rep1.SHIM_ON.N16384.p7000.end.maps.gz",
+      "sha256": "3778108373510104c80bb7774e7039e30a31b4a1cdd2cd5cacfa2c2d29b0bf6a",
+      "uncompressed_sha256": "13aa02fd8481d0639d0d84f918427d7129c280e0c920ce239bee38052e933d52",
+      "bytes": 2768
+    }
+  }
+}
