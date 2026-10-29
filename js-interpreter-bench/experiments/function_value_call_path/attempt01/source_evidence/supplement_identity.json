@@ -1,0 +1,37 @@
+{
+  "correction": "initial JS_CallInternal selector falsely rejected body semicolon; initial return_cleanup selected unrelated done label. Use these bounded definition excerpts only, not old return_cleanup.txt.",
+  "files": [
+    {
+      "variant": "A",
+      "file": "quickjs.c",
+      "sha256": "b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17",
+      "line_start": 17746,
+      "line_end": 17900,
+      "excerpt": "source_evidence/A/entry_and_frame.txt"
+    },
+    {
+      "variant": "A",
+      "file": "quickjs.c",
+      "sha256": "b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17",
+      "line_start": 20699,
+      "line_end": 20711,
+      "excerpt": "source_evidence/A/actual_return_cleanup.txt"
+    },
+    {
+      "variant": "M",
+      "file": "quickjs.c",
+      "sha256": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd",
+      "line_start": 17767,
+      "line_end": 17921,
+      "excerpt": "source_evidence/M/entry_and_frame.txt"
+    },
+    {
+      "variant": "M",
+      "file": "quickjs.c",
+      "sha256": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd",
+      "line_start": 20722,
+      "line_end": 20734,
+      "excerpt": "source_evidence/M/actual_return_cleanup.txt"
+    }
+  ]
+}

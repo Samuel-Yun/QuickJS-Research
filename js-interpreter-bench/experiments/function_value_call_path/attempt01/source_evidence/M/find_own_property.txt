@@ -1,0 +1,50 @@
+6144: static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+6145:                                                        JSObject *p,
+6146:                                                        JSAtom atom)
+6147: {
+6148:     JSShape *sh;
+6149:     JSShapeProperty *pr, *prop;
+6150:     intptr_t h;
+6151:     sh = p->shape;
+6152:     h = (uintptr_t)atom & sh->prop_hash_mask;
+6153:     h = sh->hash_table[h];
+6154:     prop = get_shape_prop(sh);
+6155:     while (h) {
+6156:         pr = &prop[h - 1];
+6157:         if (likely(pr->atom == atom)) {
+6158:             *ppr = &p->prop[h - 1];
+6159:             /* the compiler should be able to assume that pr != NULL here */
+6160:             return pr;
+6161:         }
+6162:         h = pr->hash_next;
+6163:     }
+6164:     *ppr = NULL;
+6165:     return NULL;
+6166: }
+6167: 
+6168: #include "read_ic_runtime.inc"
+6169: 
+6170: /* indicate that the object may be part of a function prototype cycle */
+6171: static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+6172: {
+6173: }
+6174: 
+6175: static void free_var_ref(JSRuntime *rt, JSVarRef *var_ref)
+6176: {
+6177:     if (var_ref) {
+6178:         assert(js_rc(var_ref)->ref_count > 0);
+6179:         if (--js_rc(var_ref)->ref_count == 0) {
+6180:             if (var_ref->is_detached) {
+6181:                 JS_FreeValueRT(rt, var_ref->value);
+6182:             } else {
+6183:                 JSStackFrame *sf = var_ref->stack_frame;
+6184:                 assert(sf->var_refs[var_ref->var_ref_idx] == var_ref);
+6185:                 sf->var_refs[var_ref->var_ref_idx] = NULL;
+6186:                 if (sf->js_mode & JS_MODE_ASYNC) {
+6187:                     JSAsyncFunctionState *async_func = container_of(sf, JSAsyncFunctionState, frame);
+6188:                     async_func_free(rt, async_func);
+6189:                 }
+6190:             }
+6191:             remove_gc_object(&var_ref->header);
+6192:             js_free_rt(rt, var_ref);
+6193:         }

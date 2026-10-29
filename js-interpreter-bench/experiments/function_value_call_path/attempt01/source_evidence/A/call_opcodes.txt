@@ -1,0 +1,105 @@
+18175:         CASE(OP_call0):
+18176:         CASE(OP_call1):
+18177:         CASE(OP_call2):
+18178:         CASE(OP_call3):
+18179:             call_argc = opcode - OP_call0;
+18180:             goto has_call_argc;
+18181: #endif
+18182:         CASE(OP_call):
+18183:         CASE(OP_tail_call):
+18184:             {
+18185:                 call_argc = get_u16(pc);
+18186:                 pc += 2;
+18187:                 goto has_call_argc;
+18188:             has_call_argc:
+18189:                 call_argv = sp - call_argc;
+18190:                 sf->cur_pc = pc;
+18191:                 ret_val = JS_CallInternal(ctx, call_argv[-1], JS_UNDEFINED,
+18192:                                           JS_UNDEFINED, call_argc, call_argv, 0);
+18193:                 if (unlikely(JS_IsException(ret_val)))
+18194:                     goto exception;
+18195:                 if (opcode == OP_tail_call)
+18196:                     goto done;
+18197:                 for(i = -1; i < call_argc; i++)
+18198:                     JS_FreeValue(ctx, call_argv[i]);
+18199:                 sp -= call_argc + 1;
+18200:                 *sp++ = ret_val;
+18201:             }
+18202:             BREAK;
+18203:         CASE(OP_call_constructor):
+18204:             {
+18205:                 call_argc = get_u16(pc);
+18206:                 pc += 2;
+18207:                 call_argv = sp - call_argc;
+18208:                 sf->cur_pc = pc;
+18209:                 ret_val = JS_CallConstructorInternal(ctx, call_argv[-2],
+18210:                                                      call_argv[-1],
+18211:                                                      call_argc, call_argv, 0);
+18212:                 if (unlikely(JS_IsException(ret_val)))
+18213:                     goto exception;
+18214:                 for(i = -2; i < call_argc; i++)
+18215:                     JS_FreeValue(ctx, call_argv[i]);
+18216:                 sp -= call_argc + 2;
+18217:                 *sp++ = ret_val;
+18218:             }
+18219:             BREAK;
+18220:         CASE(OP_call_method):
+18221:         CASE(OP_tail_call_method):
+18222:             {
+18223:                 call_argc = get_u16(pc);
+18224:                 pc += 2;
+18225:                 call_argv = sp - call_argc;
+18226:                 sf->cur_pc = pc;
+18227:                 ret_val = JS_CallInternal(ctx, call_argv[-1], call_argv[-2],
+18228:                                           JS_UNDEFINED, call_argc, call_argv, 0);
+18229:                 if (unlikely(JS_IsException(ret_val)))
+18230:                     goto exception;
+18231:                 if (opcode == OP_tail_call_method)
+18232:                     goto done;
+18233:                 for(i = -2; i < call_argc; i++)
+18234:                     JS_FreeValue(ctx, call_argv[i]);
+18235:                 sp -= call_argc + 2;
+18236:                 *sp++ = ret_val;
+18237:             }
+18238:             BREAK;
+18239:         CASE(OP_array_from):
+18240:             call_argc = get_u16(pc);
+18241:             pc += 2;
+18242:             ret_val = js_create_array_free(ctx, call_argc, sp - call_argc);
+18243:             sp -= call_argc;
+18244:             if (unlikely(JS_IsException(ret_val)))
+18245:                 goto exception;
+18246:             *sp++ = ret_val;
+18247:             BREAK;
+18248: 
+18249:         CASE(OP_apply):
+18250:             {
+18251:                 int magic;
+18252:                 magic = get_u16(pc);
+18253:                 pc += 2;
+18254:                 sf->cur_pc = pc;
+18255: 
+18256:                 ret_val = js_function_apply(ctx, sp[-3], 2, (JSValueConst *)&sp[-2], magic);
+18257:                 if (unlikely(JS_IsException(ret_val)))
+18258:                     goto exception;
+18259:                 JS_FreeValue(ctx, sp[-3]);
+18260:                 JS_FreeValue(ctx, sp[-2]);
+18261:                 JS_FreeValue(ctx, sp[-1]);
+18262:                 sp -= 3;
+18263:                 *sp++ = ret_val;
+18264:             }
+18265:             BREAK;
+18266:         CASE(OP_return):
+18267:             ret_val = *--sp;
+18268:             goto done;
+18269:         CASE(OP_return_undef):
+18270:             ret_val = JS_UNDEFINED;
+18271:             goto done;
+18272: 
+18273:         CASE(OP_check_ctor_return):
+18274:             /* return TRUE if 'this' should be returned */
+18275:             if (!JS_IsObject(sp[-1])) {
+18276:                 if (!JS_IsUndefined(sp[-1])) {
+18277:                     JS_ThrowTypeError(caller_ctx, "derived class constructor must return an object or undefined");
+18278:                     goto exception;
+18279:                 }

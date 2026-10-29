@@ -1,0 +1,45 @@
+17933:         CASE(OP_push_this):
+17934:             /* OP_push_this is only called at the start of a function */
+17935:             {
+17936:                 JSValue val;
+17937:                 if (!(b->js_mode & JS_MODE_STRICT)) {
+17938:                     uint32_t tag = JS_VALUE_GET_TAG(this_obj);
+17939:                     if (likely(tag == JS_TAG_OBJECT))
+17940:                         goto normal_this;
+17941:                     if (tag == JS_TAG_NULL || tag == JS_TAG_UNDEFINED) {
+17942:                         val = JS_DupValue(ctx, ctx->global_obj);
+17943:                     } else {
+17944:                         val = JS_ToObject(ctx, this_obj);
+17945:                         if (JS_IsException(val))
+17946:                             goto exception;
+17947:                     }
+17948:                 } else {
+17949:                 normal_this:
+17950:                     val = JS_DupValue(ctx, this_obj);
+17951:                 }
+17952:                 *sp++ = val;
+17953:             }
+17954:             BREAK;
+17955:         CASE(OP_push_false):
+17956:             *sp++ = JS_FALSE;
+17957:             BREAK;
+17958:         CASE(OP_push_true):
+17959:             *sp++ = JS_TRUE;
+17960:             BREAK;
+17961:         CASE(OP_object):
+17962:             *sp++ = JS_NewObject(ctx);
+17963:             if (unlikely(JS_IsException(sp[-1])))
+17964:                 goto exception;
+17965:             BREAK;
+17966:         CASE(OP_special_object):
+17967:             {
+17968:                 int arg = *pc++;
+17969:                 switch(arg) {
+17970:                 case OP_SPECIAL_OBJECT_ARGUMENTS:
+17971:                     *sp++ = js_build_arguments(ctx, argc, (JSValueConst *)argv);
+17972:                     if (unlikely(JS_IsException(sp[-1])))
+17973:                         goto exception;
+17974:                     break;
+17975:                 case OP_SPECIAL_OBJECT_MAPPED_ARGUMENTS:
+17976:                     *sp++ = js_build_mapped_arguments(ctx, argc, (JSValueConst *)argv,
+17977:                                                       sf, min_int(argc, b->arg_count));

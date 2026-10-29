@@ -1,0 +1,102 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -17756,6 +17756,9 @@
+                                int argc, JSValue *argv, int flags)
+ {
+     AuditScope audit_frame __attribute__((cleanup(audit_end)))=audit_pause();
++    AuditSite *audit_entry_call=audit_pending_call;
++    audit_pending_call=NULL;
++    const uint8_t *audit_call_pc=NULL;
+     JSRuntime *rt = caller_ctx->rt;
+     JSContext *ctx;
+     JSObject *p;
+@@ -17823,6 +17826,7 @@
+     }
+     p = JS_VALUE_GET_OBJ(func_obj);
+     if (unlikely(p->class_id != JS_CLASS_BYTECODE_FUNCTION)) {
++        if(audit_entry_call)audit_entry_call->calls_general++;
+         JSClassCall *call_func;
+         call_func = rt->class_array[p->class_id].call;
+         if (!call_func) {
+@@ -17832,6 +17836,7 @@
+         return call_func(caller_ctx, func_obj, this_obj, argc,
+                          (JSValueConst *)argv, flags);
+     }
++    if(audit_entry_call)audit_entry_call->calls_bytecode++;
+     b = p->u.func.function_bytecode;
+ 
+     if (unlikely(argc < b->arg_count || (flags & JS_CALL_FLAG_COPY_ARGV))) {
+@@ -18185,18 +18190,21 @@
+         CASE(OP_call1):
+         CASE(OP_call2):
+         CASE(OP_call3):
++            audit_call_pc=pc-1;
+             call_argc = opcode - OP_call0;
+             goto has_call_argc;
+ #endif
+         CASE(OP_call):
+         CASE(OP_tail_call):
+             {
++                audit_call_pc=pc-1;
+                 call_argc = get_u16(pc);
+                 pc += 2;
+                 goto has_call_argc;
+             has_call_argc:
+                 call_argv = sp - call_argc;
+                 sf->cur_pc = pc;
++                audit_callsite(b,audit_call_pc);
+                 ret_val = JS_CallInternal(ctx, call_argv[-1], JS_UNDEFINED,
+                                           JS_UNDEFINED, call_argc, call_argv, 0);
+                 if (unlikely(JS_IsException(ret_val)))
+@@ -18229,10 +18237,12 @@
+         CASE(OP_call_method):
+         CASE(OP_tail_call_method):
+             {
++                audit_call_pc=pc-1;
+                 call_argc = get_u16(pc);
+                 pc += 2;
+                 call_argv = sp - call_argc;
+                 sf->cur_pc = pc;
++                audit_callsite(b,audit_call_pc);
+                 ret_val = JS_CallInternal(ctx, call_argv[-1], call_argv[-2],
+                                           JS_UNDEFINED, call_argc, call_argv, 0);
+                 if (unlikely(JS_IsException(ret_val)))
+--- a/audit_hooks.h
++++ b/audit_hooks.h
+@@ -1,5 +1,6 @@
+ /* Independent aggregate diagnostic; never included in a formal runtime. */
+ typedef struct AuditSite {
++    unsigned long long calls_opcode,calls_bytecode,calls_general;
+     unsigned long long operations,ic_queries,hits,misses,cache_probes;
+     unsigned long long updates,insertions,replacements,same_shape_updates;
+     unsigned long long find_normal,find_with_offset,buckets,chain_probes,generic_get;
+@@ -46,3 +47,6 @@
+     else audit_active->value_other++;
+ }
+ #define AUDIT_SCOPE(b,pc) AuditScope audit_local __attribute__((cleanup(audit_end)))=audit_begin((b),(pc))
++
++static _Thread_local AuditSite *audit_pending_call;
++static void audit_callsite(JSFunctionBytecode *b,const uint8_t *pc);
+--- a/audit_tail.inc
++++ b/audit_tail.inc
+@@ -76,7 +76,20 @@
+                 s->operations,s->ic_queries,s->hits,s->misses,s->cache_probes,s->updates,s->insertions,s->replacements,s->same_shape_updates,s->find_normal,s->find_with_offset,s->buckets,s->chain_probes,s->generic_get,s->value_int,s->value_object,s->value_other);
+             pc+=size;
+         }
++        fprintf(out,"],\"calls\":[");
++        unsigned cfirst=1;
++        for(unsigned cpc=0;cpc<f->length;cpc++){
++            AuditSite *cs=&f->sites[cpc];if(!cs->calls_opcode)continue;
++            fprintf(out,"%s{\"pc\":%u,\"opcode\":\"%s\",\"visits\":%llu,\"bytecode_entry\":%llu,\"general_entry\":%llu}",cfirst?"":",",cpc,short_opcode_info(f->before[cpc]).name,cs->calls_opcode,cs->calls_bytecode,cs->calls_general);cfirst=0;
++        }
+         fprintf(out,"]}%s",f->next?",":"");
+     }
+     fprintf(out,"]}\n");fclose(out);
+ }
++
++static void audit_callsite(JSFunctionBytecode *b,const uint8_t *pc) {
++    AuditFunction *f=audit_function(b);audit_pending_call=NULL;
++    if(!f || pc<b->byte_code_buf || pc>=b->byte_code_buf+f->length)return;
++    audit_pending_call=&f->sites[pc-b->byte_code_buf];
++    audit_pending_call->calls_opcode++;
++}

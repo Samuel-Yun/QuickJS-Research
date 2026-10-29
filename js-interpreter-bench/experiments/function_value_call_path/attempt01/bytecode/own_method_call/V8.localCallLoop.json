@@ -1,0 +1,176 @@
+[
+  {
+    "address": "0x27be01000458",
+    "pc": 0,
+    "bytes": [
+      "33",
+      "03",
+      "00",
+      "00"
+    ],
+    "instruction": "GetNamedProperty a0, [0:\"slot\"], FBV[0]"
+  },
+  {
+    "address": "0x27be0100045c",
+    "pc": 4,
+    "bytes": [
+      "d5"
+    ],
+    "instruction": "Star0"
+  },
+  {
+    "address": "0x27be0100045d",
+    "pc": 5,
+    "bytes": [
+      "0c"
+    ],
+    "instruction": "LdaZero"
+  },
+  {
+    "address": "0x27be0100045e",
+    "pc": 6,
+    "bytes": [
+      "d4"
+    ],
+    "instruction": "Star1"
+  },
+  {
+    "address": "0x27be0100045f",
+    "pc": 7,
+    "bytes": [
+      "0c"
+    ],
+    "instruction": "LdaZero"
+  },
+  {
+    "address": "0x27be01000460",
+    "pc": 8,
+    "bytes": [
+      "d3"
+    ],
+    "instruction": "Star2"
+  },
+  {
+    "address": "0x27be01000461",
+    "pc": 9,
+    "bytes": [
+      "00",
+      "0d",
+      "00",
+      "10"
+    ],
+    "instruction": "LdaSmi.Wide [4096]"
+  },
+  {
+    "address": "0x27be01000465",
+    "pc": 13,
+    "bytes": [
+      "79",
+      "f7",
+      "00"
+    ],
+    "instruction": "TestLessThan r2, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be01000468",
+    "pc": 16,
+    "bytes": [
+      "a8",
+      "16"
+    ],
+    "instruction": "JumpIfFalse [22] (ADDR @ 38)"
+  },
+  {
+    "address": "0x27be0100046a",
+    "pc": 18,
+    "bytes": [
+      "6d",
+      "f9",
+      "f7",
+      "02"
+    ],
+    "instruction": "CallUndefinedReceiver1 r0, r2, FBV[2]"
+  },
+  {
+    "address": "0x27be0100046e",
+    "pc": 22,
+    "bytes": [
+      "42",
+      "f8",
+      "00"
+    ],
+    "instruction": "Add r1, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be01000471",
+    "pc": 25,
+    "bytes": [
+      "1b",
+      "f8",
+      "f6"
+    ],
+    "instruction": "Mov r1, r3"
+  },
+  {
+    "address": "0x27be01000474",
+    "pc": 28,
+    "bytes": [
+      "d4"
+    ],
+    "instruction": "Star1"
+  },
+  {
+    "address": "0x27be01000475",
+    "pc": 29,
+    "bytes": [
+      "0b",
+      "f7"
+    ],
+    "instruction": "Ldar r2"
+  },
+  {
+    "address": "0x27be01000477",
+    "pc": 31,
+    "bytes": [
+      "5b",
+      "00"
+    ],
+    "instruction": "Inc EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be01000479",
+    "pc": 33,
+    "bytes": [
+      "d3"
+    ],
+    "instruction": "Star2"
+  },
+  {
+    "address": "0x27be0100047a",
+    "pc": 34,
+    "bytes": [
+      "97",
+      "19",
+      "00",
+      "04"
+    ],
+    "instruction": "JumpLoop [25], [0], FBV[4] (ADDR @ 9)"
+  },
+  {
+    "address": "0x27be0100047e",
+    "pc": 38,
+    "bytes": [
+      "0b",
+      "f8"
+    ],
+    "instruction": "Ldar r1"
+  },
+  {
+    "address": "0x27be01000480",
+    "pc": 40,
+    "bytes": [
+      "b9"
+    ],
+    "instruction": "Return"
+  }
+]

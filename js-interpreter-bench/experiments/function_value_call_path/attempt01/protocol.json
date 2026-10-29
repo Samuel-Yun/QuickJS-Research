@@ -1,0 +1,32 @@
+{
+  "cases": [
+    "number_value_read",
+    "function_value_read",
+    "own_method_call",
+    "local_function_call"
+  ],
+  "conditions": [
+    "QJS_A",
+    "QJS_M",
+    "V8_ON"
+  ],
+  "mode": "FUNCTION_VALUE_FIRST_CALL_INCLUSIVE_V1",
+  "seed": 20261028,
+  "expected_result": 8390656,
+  "max_checksum": 1099780063232,
+  "N_start": 8192,
+  "N_max": 131072,
+  "timeout_seconds": 180,
+  "reps": 30,
+  "formal_target": 360,
+  "pilot": "common N doubled until three independent pilots per condition all>=1000ms",
+  "warmup_calls": 0,
+  "first_Run_included": true,
+  "outside": "object/function creation, static frontend, adapter, output and driver final validation",
+  "inside": "N microRun including first; identity check in valueReadLoop; loop/calls/local assignment/driver checksum, GC and helpers",
+  "schedule": "30 complete12-process rounds; condition six permutations5 each, each position10; case positions7/8",
+  "statistics": "all valid descriptive; bootstrap10000 whole complete12-process round blocks; percentile linear95%; seed20261028; noGM",
+  "failures": "no automatic retry, retain invalid/short/outliers; semantic failure stops case; timer/identity contradiction stops campaign",
+  "clock": "native performance.now durations only, parent perf_counter_ns encloses; UTC metadata after reservation; different origins never joined",
+  "budget_seconds": 14400
+}
