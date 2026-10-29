@@ -1,0 +1,9 @@
+36302:     if (rdi_prepare(ctx, b) < 0) {
+36303:         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
+36304:         return JS_EXCEPTION;
+36305:     }
+36306:     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+36307:  fail:
+36308:     js_free_function_def(ctx, fd);
+36309:     return JS_EXCEPTION;
+36310: }

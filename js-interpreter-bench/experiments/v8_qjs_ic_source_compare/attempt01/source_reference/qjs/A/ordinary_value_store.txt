@@ -1,0 +1,64 @@
+9670:     JSPropertyDescriptor desc;
+9671:     int ret;
+9672: #if 0
+9673:     printf("JS_SetPropertyInternal: "); print_atom(ctx, prop); printf("\n");
+9674: #endif
+9675:     tag = JS_VALUE_GET_TAG(this_obj);
+9676:     if (unlikely(tag != JS_TAG_OBJECT)) {
+9677:         if (JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT) {
+9678:             p = NULL;
+9679:             p1 = JS_VALUE_GET_OBJ(obj);
+9680:             goto prototype_lookup;
+9681:         } else {
+9682:             switch(tag) {
+9683:             case JS_TAG_NULL:
+9684:                 JS_FreeValue(ctx, val);
+9685:                 JS_ThrowTypeErrorAtom(ctx, "cannot set property '%s' of null", prop);
+9686:                 return -1;
+9687:             case JS_TAG_UNDEFINED:
+9688:                 JS_FreeValue(ctx, val);
+9689:                 JS_ThrowTypeErrorAtom(ctx, "cannot set property '%s' of undefined", prop);
+9690:                 return -1;
+9691:             default:
+9692:                 /* even on a primitive type we can have setters on the prototype */
+9693:                 p = NULL;
+9694:                 p1 = JS_VALUE_GET_OBJ(JS_GetPrototypePrimitive(ctx, obj));
+9695:                 goto prototype_lookup;
+9696:             }
+9697:         }
+9698:     } else {
+9699:         p = JS_VALUE_GET_OBJ(this_obj);
+9700:         p1 = JS_VALUE_GET_OBJ(obj);
+9701:         if (unlikely(p != p1))
+9702:             goto retry2;
+9703:     }
+9704: 
+9705:     /* fast path if obj == this_obj */
+9706:  retry:
+9707:     prs = find_own_property(&pr, p1, prop);
+9708:     if (prs) {
+9709:         if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+9710:                                   JS_PROP_LENGTH)) == JS_PROP_WRITABLE)) {
+9711:             /* fast case */
+9712:             set_value(ctx, &pr->u.value, val);
+9713:             return TRUE;
+9714:         } else if (prs->flags & JS_PROP_LENGTH) {
+9715:             assert(p->class_id == JS_CLASS_ARRAY);
+9716:             assert(prop == JS_ATOM_length);
+9717:             return set_array_length(ctx, p, val, flags);
+9718:         } else if ((prs->flags & JS_PROP_TMASK) == JS_PROP_GETSET) {
+9719:             return call_setter(ctx, pr->u.getset.setter, this_obj, val, flags);
+9720:         } else if ((prs->flags & JS_PROP_TMASK) == JS_PROP_VARREF) {
+9721:             /* XXX: already use var_ref->is_const. Cannot simplify use the
+9722:                writable flag for JS_CLASS_MODULE_NS. */
+9723:             if (p->class_id == JS_CLASS_MODULE_NS || pr->u.var_ref->is_const)
+9724:                 goto read_only_prop;
+9725:             set_value(ctx, pr->u.var_ref->pvalue, val);
+9726:             return TRUE;
+9727:         } else if ((prs->flags & JS_PROP_TMASK) == JS_PROP_AUTOINIT) {
+9728:             /* Instantiate property and retry (potentially useless) */
+9729:             if (JS_AutoInitProperty(ctx, p, prop, pr, prs)) {
+9730:                 JS_FreeValue(ctx, val);
+9731:                 return -1;
+9732:             }
+9733:             goto retry;

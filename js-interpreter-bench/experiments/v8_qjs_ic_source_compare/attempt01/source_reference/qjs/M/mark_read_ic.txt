@@ -1,0 +1,19 @@
+6632:             for (uint32_t ri = 0; ri < b->read_ic_count; ri++) {
+6633: #if RDI_CAPACITY == 1
+6634:                 if (b->read_ic_sites[ri].shape)
+6635:                     mark_func(rt, &b->read_ic_sites[ri].shape->header);
+6636: #else
+6637:                 for (unsigned rj = 0; rj < 4; rj++)
+6638:                     if (b->read_ic_sites[ri].shape[rj])
+6639:                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+6640: #endif
+6641:             }
+6642:             if (b->realm)
+6643:                 mark_func(rt, &b->realm->header);
+6644:         }
+6645:         break;
+6646:     case JS_GC_OBJ_TYPE_VAR_REF:
+6647:         {
+6648:             JSVarRef *var_ref = (JSVarRef *)gp;
+6649:             if (var_ref->is_detached) {
+6650:                 JS_MarkValue(rt, *var_ref->pvalue, mark_func);

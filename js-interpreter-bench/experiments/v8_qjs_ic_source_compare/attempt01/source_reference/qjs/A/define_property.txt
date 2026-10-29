@@ -1,0 +1,216 @@
+10350: int JS_DefineProperty(JSContext *ctx, JSValueConst this_obj,
+10351:                       JSAtom prop, JSValueConst val,
+10352:                       JSValueConst getter, JSValueConst setter, int flags)
+10353: {
+10354:     JSObject *p;
+10355:     JSShapeProperty *prs;
+10356:     JSProperty *pr;
+10357:     int mask, res;
+10358: 
+10359:     if (JS_VALUE_GET_TAG(this_obj) != JS_TAG_OBJECT) {
+10360:         JS_ThrowTypeErrorNotAnObject(ctx);
+10361:         return -1;
+10362:     }
+10363:     p = JS_VALUE_GET_OBJ(this_obj);
+10364: 
+10365:  redo_prop_update:
+10366:     prs = find_own_property(&pr, p, prop);
+10367:     if (prs) {
+10368:         /* the range of the Array length property is always tested before */
+10369:         if ((prs->flags & JS_PROP_LENGTH) && (flags & JS_PROP_HAS_VALUE)) {
+10370:             uint32_t array_length;
+10371:             if (JS_ToArrayLengthFree(ctx, &array_length,
+10372:                                      JS_DupValue(ctx, val), FALSE)) {
+10373:                 return -1;
+10374:             }
+10375:             /* this code relies on the fact that Uint32 are never allocated */
+10376:             val = (JSValueConst)JS_NewUint32(ctx, array_length);
+10377:             /* prs may have been modified */
+10378:             prs = find_own_property(&pr, p, prop);
+10379:             assert(prs != NULL);
+10380:         }
+10381:         /* property already exists */
+10382:         if (!check_define_prop_flags(prs->flags, flags)) {
+10383:         not_configurable:
+10384:             return JS_ThrowTypeErrorOrFalse(ctx, flags, "property is not configurable");
+10385:         }
+10386: 
+10387:         if ((prs->flags & JS_PROP_TMASK) == JS_PROP_AUTOINIT) {
+10388:             /* Instantiate property and retry */
+10389:             if (JS_AutoInitProperty(ctx, p, prop, pr, prs))
+10390:                 return -1;
+10391:             goto redo_prop_update;
+10392:         }
+10393: 
+10394:         if (flags & (JS_PROP_HAS_VALUE | JS_PROP_HAS_WRITABLE |
+10395:                      JS_PROP_HAS_GET | JS_PROP_HAS_SET)) {
+10396:             if (flags & (JS_PROP_HAS_GET | JS_PROP_HAS_SET)) {
+10397:                 JSObject *new_getter, *new_setter;
+10398: 
+10399:                 if (JS_IsFunction(ctx, getter)) {
+10400:                     new_getter = JS_VALUE_GET_OBJ(getter);
+10401:                 } else {
+10402:                     new_getter = NULL;
+10403:                 }
+10404:                 if (JS_IsFunction(ctx, setter)) {
+10405:                     new_setter = JS_VALUE_GET_OBJ(setter);
+10406:                 } else {
+10407:                     new_setter = NULL;
+10408:                 }
+10409: 
+10410:                 if ((prs->flags & JS_PROP_TMASK) != JS_PROP_GETSET) {
+10411:                     if (js_shape_prepare_update(ctx, p, &prs))
+10412:                         return -1;
+10413:                     /* convert to getset */
+10414:                     if ((prs->flags & JS_PROP_TMASK) == JS_PROP_VARREF) {
+10415:                         if (unlikely(p->class_id == JS_CLASS_GLOBAL_OBJECT)) {
+10416:                             if (remove_global_object_property(ctx, p, prs, pr))
+10417:                                 return -1;
+10418:                         }
+10419:                         free_var_ref(ctx->rt, pr->u.var_ref);
+10420:                     } else {
+10421:                         JS_FreeValue(ctx, pr->u.value);
+10422:                     }
+10423:                     prs->flags = (prs->flags &
+10424:                                   (JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE)) |
+10425:                         JS_PROP_GETSET;
+10426:                     pr->u.getset.getter = NULL;
+10427:                     pr->u.getset.setter = NULL;
+10428:                 } else {
+10429:                     if (!(prs->flags & JS_PROP_CONFIGURABLE)) {
+10430:                         if ((flags & JS_PROP_HAS_GET) &&
+10431:                             new_getter != pr->u.getset.getter) {
+10432:                             goto not_configurable;
+10433:                         }
+10434:                         if ((flags & JS_PROP_HAS_SET) &&
+10435:                             new_setter != pr->u.getset.setter) {
+10436:                             goto not_configurable;
+10437:                         }
+10438:                     }
+10439:                 }
+10440:                 if (flags & JS_PROP_HAS_GET) {
+10441:                     if (pr->u.getset.getter)
+10442:                         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_OBJECT, pr->u.getset.getter));
+10443:                     if (new_getter)
+10444:                         JS_DupValue(ctx, getter);
+10445:                     pr->u.getset.getter = new_getter;
+10446:                 }
+10447:                 if (flags & JS_PROP_HAS_SET) {
+10448:                     if (pr->u.getset.setter)
+10449:                         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_OBJECT, pr->u.getset.setter));
+10450:                     if (new_setter)
+10451:                         JS_DupValue(ctx, setter);
+10452:                     pr->u.getset.setter = new_setter;
+10453:                 }
+10454:             } else {
+10455:                 if ((prs->flags & JS_PROP_TMASK) == JS_PROP_GETSET) {
+10456:                     /* convert to data descriptor */
+10457:                     JSVarRef *var_ref;
+10458:                     if (unlikely(p->class_id == JS_CLASS_GLOBAL_OBJECT)) {
+10459:                         var_ref = js_global_object_find_uninitialized_var(ctx, p, prop, FALSE);
+10460:                         if (!var_ref)
+10461:                             return -1;
+10462:                     } else {
+10463:                         var_ref = NULL;
+10464:                     }
+10465:                     if (js_shape_prepare_update(ctx, p, &prs)) {
+10466:                         if (var_ref)
+10467:                             free_var_ref(ctx->rt, var_ref);
+10468:                         return -1;
+10469:                     }
+10470:                     if (pr->u.getset.getter)
+10471:                         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_OBJECT, pr->u.getset.getter));
+10472:                     if (pr->u.getset.setter)
+10473:                         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_OBJECT, pr->u.getset.setter));
+10474:                     if (var_ref) {
+10475:                         prs->flags = (prs->flags & ~JS_PROP_TMASK) |
+10476:                             JS_PROP_VARREF | JS_PROP_WRITABLE;
+10477:                         pr->u.var_ref = var_ref;
+10478:                     } else {
+10479:                         prs->flags &= ~(JS_PROP_TMASK | JS_PROP_WRITABLE);
+10480:                         pr->u.value = JS_UNDEFINED;
+10481:                     }
+10482:                 } else if ((prs->flags & JS_PROP_TMASK) == JS_PROP_VARREF) {
+10483:                     /* Note: JS_PROP_VARREF is always writable */
+10484:                 } else {
+10485:                     if ((prs->flags & (JS_PROP_CONFIGURABLE | JS_PROP_WRITABLE)) == 0 &&
+10486:                         (flags & JS_PROP_HAS_VALUE)) {
+10487:                         if (!js_same_value(ctx, val, pr->u.value)) {
+10488:                             goto not_configurable;
+10489:                         } else {
+10490:                             return TRUE;
+10491:                         }
+10492:                     }
+10493:                 }
+10494:                 if ((prs->flags & JS_PROP_TMASK) == JS_PROP_VARREF) {
+10495:                     if (flags & JS_PROP_HAS_VALUE) {
+10496:                         if (p->class_id == JS_CLASS_MODULE_NS) {
+10497:                             /* JS_PROP_WRITABLE is always true for variable
+10498:                                references, but they are write protected in module name
+10499:                                spaces. */
+10500:                             if (!js_same_value(ctx, val, *pr->u.var_ref->pvalue))
+10501:                                 goto not_configurable;
+10502:                         } else {
+10503:                             /* update the reference */
+10504:                             set_value(ctx, pr->u.var_ref->pvalue,
+10505:                                       JS_DupValue(ctx, val));
+10506:                         }
+10507:                     }
+10508:                     if ((flags & (JS_PROP_HAS_WRITABLE | JS_PROP_WRITABLE)) == JS_PROP_HAS_WRITABLE) {
+10509:                         JSValue val1;
+10510:                         if (p->class_id == JS_CLASS_MODULE_NS) {
+10511:                             return JS_ThrowTypeErrorOrFalse(ctx, flags, "module namespace properties have writable = false");
+10512:                         }
+10513:                         if (js_shape_prepare_update(ctx, p, &prs))
+10514:                             return -1;
+10515:                         if (p->class_id == JS_CLASS_GLOBAL_OBJECT) {
+10516:                             pr->u.var_ref->is_const = TRUE; /* mark as read-only */
+10517:                             prs->flags &= ~JS_PROP_WRITABLE;
+10518:                         } else {
+10519:                             /* if writable is set to false, no longer a
+10520:                                reference (for mapped arguments) */
+10521:                             val1 = JS_DupValue(ctx, *pr->u.var_ref->pvalue);
+10522:                             free_var_ref(ctx->rt, pr->u.var_ref);
+10523:                             pr->u.value = val1;
+10524:                             prs->flags &= ~(JS_PROP_TMASK | JS_PROP_WRITABLE);
+10525:                         }
+10526:                     }
+10527:                 } else if (prs->flags & JS_PROP_LENGTH) {
+10528:                     if (flags & JS_PROP_HAS_VALUE) {
+10529:                         /* Note: no JS code is executable because
+10530:                            'val' is guaranted to be a Uint32 */
+10531:                         res = set_array_length(ctx, p, JS_DupValue(ctx, val),
+10532:                                                flags);
+10533:                     } else {
+10534:                         res = TRUE;
+10535:                     }
+10536:                     /* still need to reset the writable flag if
+10537:                        needed.  The JS_PROP_LENGTH is kept because the
+10538:                        Uint32 test is still done if the length
+10539:                        property is read-only. */
+10540:                     if ((flags & (JS_PROP_HAS_WRITABLE | JS_PROP_WRITABLE)) ==
+10541:                         JS_PROP_HAS_WRITABLE) {
+10542:                         prs = get_shape_prop(p->shape);
+10543:                         if (js_update_property_flags(ctx, p, &prs,
+10544:                                                      prs->flags & ~JS_PROP_WRITABLE))
+10545:                             return -1;
+10546:                     }
+10547:                     return res;
+10548:                 } else {
+10549:                     if (flags & JS_PROP_HAS_VALUE) {
+10550:                         JS_FreeValue(ctx, pr->u.value);
+10551:                         pr->u.value = JS_DupValue(ctx, val);
+10552:                     }
+10553:                     if (flags & JS_PROP_HAS_WRITABLE) {
+10554:                         if (js_update_property_flags(ctx, p, &prs,
+10555:                                                      (prs->flags & ~JS_PROP_WRITABLE) |
+10556:                                                      (flags & JS_PROP_WRITABLE)))
+10557:                             return -1;
+10558:                     }
+10559:                 }
+10560:             }
+10561:         }
+10562:         mask = 0;
+10563:         if (flags & JS_PROP_HAS_CONFIGURABLE)
+10564:             mask |= JS_PROP_CONFIGURABLE;
+10565:         if (flags & JS_PROP_HAS_ENUMERABLE)

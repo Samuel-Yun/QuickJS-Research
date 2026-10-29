@@ -1,0 +1,1 @@
+#define RDI_CAPACITY 1
