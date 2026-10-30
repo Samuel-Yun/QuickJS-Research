@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-10-29T15:35:39.841128+00:00",
+  "read_only": true,
+  "power_control_not_changed": true,
+  "foreground_or_thermal_control": "UNKNOWN",
+  "records": [
+    {
+      "name": "HEAD",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "92b2350708494f8037b19bba3a3323cf5e6b3f47\n",
+      "stderr": ""
+    },
+    {
+      "name": "branch",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "myx\n",
+      "stderr": ""
+    },
+    {
+      "name": "status",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "status",
+        "--short"
+      ],
+      "exit_code": 0,
+      "stdout": "?? js-interpreter-bench/experiments/prototype_ic_ablation/\n",
+      "stderr": ""
+    },
+    {
+      "name": "power_scheme",
+      "command": [
+        "powercfg",
+        "/getactivescheme"
+      ],
+      "exit_code": 0,
+      "stdout": "电源方案 GUID: 85d583c5-cf2e-4197-80fd-3789a227a72c  (均衡模式)",
+      "stderr": ""
+    },
+    {
+      "name": "battery",
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance Win32_Battery | Select-Object BatteryStatus,EstimatedChargeRemaining | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Get-CimInstance : 拒绝访问 \r\nAt line:1 char:1\r\n+ Get-CimInstance Win32_Battery | Select-Object BatteryStatus,Estimated ...\r\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : PermissionDenied: (root\\cimv2:Win32_Battery:String) [Get-CimInstance], CimException\r\n    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand\r\n \r\n"
+    },
+    {
+      "name": "processes",
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-Process | Sort-Object CPU -Descending | Select-Object -First 8 ProcessName,CPU | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"ProcessName\":\"explorer\",\"CPU\":8397.390625},{\"ProcessName\":\"Weixin\",\"CPU\":4635.546875},{\"ProcessName\":\"MSPCManagerService\",\"CPU\":2241.421875},{\"ProcessName\":\"ECAgent\",\"CPU\":1761.78125},{\"ProcessName\":\"chrome\",\"CPU\":1639.0625},{\"ProcessName\":\"msedge\",\"CPU\":1185.453125},{\"ProcessName\":\"WeChatAppEx\",\"CPU\":673.03125},{\"ProcessName\":\"ctfmon\",\"CPU\":620.578125}]\r\n",
+      "stderr": ""
+    }
+  ],
+  "referenced_old_files": {
+    "README.md": "a5f4c52e7858ac08951b4b7cca29d6c05732f541c407357cc7591d4ec3366ca9",
+    "H_manifest.json": "2048560f6fa9e30f54e3ed658d1381c6ce525477b5f2f481590d9a1313730246",
+    "patches/M_to_H.patch": "056f122440eb45421611647064804b30412fac36cd1c49c32f06d72b00a25dfe",
+    "mechanism_sites.csv": "de7ee25998ade85d8966fc29d6f73e44ddba34a9aa3ddf8702e7820d346b55f5",
+    "correctness/semantic_gate.json": "addc0ed06ac637d6094564c79fb9e6118ce390a91e09d156153c93b1f8954f45",
+    "analysis_performance/summary.csv": "d554764366acf214cd67749e5b372cdcb1b6376251107523b28cce8cd858abf8",
+    "analysis_performance/ratios.csv": "46d953fdbacc86306f70c406dc96ba86795fc448b596b32e561c9106cd49f2c0"
+  }
+}
