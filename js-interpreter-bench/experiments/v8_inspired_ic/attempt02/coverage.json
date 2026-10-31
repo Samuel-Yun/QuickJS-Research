@@ -1,0 +1,99 @@
+[
+  {
+    "case": "Richards.Richards",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "DeltaBlue.DeltaBlue",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "Crypto.Encrypt",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "Crypto.Decrypt",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "RayTrace.RayTrace",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "EarleyBoyer.Earley",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "EarleyBoyer.Boyer",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "RegExp.RegExp",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "Splay.Splay",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "NavierStokes.NavierStokes",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "PdfJS.PdfJS",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "Mandreel.Mandreel",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "Gameboy.Gameboy",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "CodeLoad.CodeLoadClosure",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "CodeLoad.CodeLoadJQuery",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "Typescript.Typescript",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "zlib.zlib",
+    "status": "PENDING_CORRECTNESS",
+    "included": true
+  },
+  {
+    "case": "Box2D.Box2D",
+    "status": "RUNS_NO_TRUSTED_OUTPUT_GATE",
+    "included": false,
+    "reason": "original runBox2D keeps world local, steps20, exposes no final result; only internal assertions available; no independent final-output oracle established",
+    "processes": 3
+  },
+  {
+    "case": "Splay.latency/Mandreel.latency",
+    "status": "NOT_THIS_METRIC",
+    "included": false
+  }
+]

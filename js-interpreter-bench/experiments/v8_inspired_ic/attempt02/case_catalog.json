@@ -1,0 +1,240 @@
+[
+  {
+    "case": "Richards.Richards",
+    "suite": "Richards",
+    "benchmark": "Richards",
+    "index": 0,
+    "files": [
+      "base.js",
+      "richards.js"
+    ],
+    "old_N_reference": 512,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "DeltaBlue.DeltaBlue",
+    "suite": "DeltaBlue",
+    "benchmark": "DeltaBlue",
+    "index": 0,
+    "files": [
+      "base.js",
+      "deltablue.js"
+    ],
+    "old_N_reference": 256,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "Crypto.Encrypt",
+    "suite": "Crypto",
+    "benchmark": "Encrypt",
+    "index": 0,
+    "files": [
+      "base.js",
+      "crypto.js"
+    ],
+    "old_N_reference": 256,
+    "input_mode": "BENCH_ONLY_XORSHIFT32_PRELOAD_V1",
+    "seed": 305419896
+  },
+  {
+    "case": "Crypto.Decrypt",
+    "suite": "Crypto",
+    "benchmark": "Decrypt",
+    "index": 1,
+    "files": [
+      "base.js",
+      "crypto.js"
+    ],
+    "old_N_reference": 16,
+    "input_mode": "BENCH_ONLY_XORSHIFT32_PRELOAD_V1",
+    "seed": 305419896
+  },
+  {
+    "case": "RayTrace.RayTrace",
+    "suite": "RayTrace",
+    "benchmark": "RayTrace",
+    "index": 0,
+    "files": [
+      "base.js",
+      "raytrace.js"
+    ],
+    "old_N_reference": 32,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "EarleyBoyer.Earley",
+    "suite": "EarleyBoyer",
+    "benchmark": "Earley",
+    "index": 0,
+    "files": [
+      "base.js",
+      "earley-boyer.js"
+    ],
+    "old_N_reference": 256,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "EarleyBoyer.Boyer",
+    "suite": "EarleyBoyer",
+    "benchmark": "Boyer",
+    "index": 1,
+    "files": [
+      "base.js",
+      "earley-boyer.js"
+    ],
+    "old_N_reference": 16,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "RegExp.RegExp",
+    "suite": "RegExp",
+    "benchmark": "RegExp",
+    "index": 0,
+    "files": [
+      "base.js",
+      "regexp.js"
+    ],
+    "old_N_reference": 8,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "Splay.Splay",
+    "suite": "Splay",
+    "benchmark": "Splay",
+    "index": 0,
+    "files": [
+      "base.js",
+      "splay.js"
+    ],
+    "old_N_reference": 1024,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "NavierStokes.NavierStokes",
+    "suite": "NavierStokes",
+    "benchmark": "NavierStokes",
+    "index": 0,
+    "files": [
+      "base.js",
+      "navier-stokes.js"
+    ],
+    "old_N_reference": 32,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "PdfJS.PdfJS",
+    "suite": "PdfJS",
+    "benchmark": "PdfJS",
+    "index": 0,
+    "files": [
+      "base.js",
+      "pdfjs.js"
+    ],
+    "old_N_reference": 8,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "Mandreel.Mandreel",
+    "suite": "Mandreel",
+    "benchmark": "Mandreel",
+    "index": 0,
+    "files": [
+      "base.js",
+      "mandreel.js"
+    ],
+    "old_N_reference": 1,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "Gameboy.Gameboy",
+    "suite": "Gameboy",
+    "benchmark": "Gameboy",
+    "index": 0,
+    "files": [
+      "base.js",
+      "gbemu-part1.js",
+      "gbemu-part2.js"
+    ],
+    "old_N_reference": 4,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "CodeLoad.CodeLoadClosure",
+    "suite": "CodeLoad",
+    "benchmark": "CodeLoadClosure",
+    "index": 0,
+    "files": [
+      "base.js",
+      "code-load.js"
+    ],
+    "old_N_reference": 2048,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "CodeLoad.CodeLoadJQuery",
+    "suite": "CodeLoad",
+    "benchmark": "CodeLoadJQuery",
+    "index": 1,
+    "files": [
+      "base.js",
+      "code-load.js"
+    ],
+    "old_N_reference": 128,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "Typescript.Typescript",
+    "suite": "Typescript",
+    "benchmark": "Typescript",
+    "index": 0,
+    "files": [
+      "base.js",
+      "typescript.js",
+      "typescript-input.js",
+      "typescript-compiler.js"
+    ],
+    "old_N_reference": 1,
+    "input_mode": "FROZEN_ORIGINAL_STRICT",
+    "seed": null
+  },
+  {
+    "case": "Box2D.Box2D",
+    "suite": "Box2D",
+    "benchmark": "Box2D",
+    "index": 0,
+    "files": [
+      "base.js",
+      "box2d.js"
+    ],
+    "old_N_reference": 1,
+    "input_mode": "FROZEN_ORIGINAL_COMPATIBILITY",
+    "seed": null
+  },
+  {
+    "case": "zlib.zlib",
+    "suite": "zlib",
+    "benchmark": "zlib",
+    "index": 0,
+    "files": [
+      "base.js",
+      "zlib.js",
+      "zlib-data.js"
+    ],
+    "old_N_reference": 1,
+    "input_mode": "FROZEN_ORIGINAL_WITH_SHARED_READ_HOST_ADAPTER",
+    "seed": null
+  }
+]
