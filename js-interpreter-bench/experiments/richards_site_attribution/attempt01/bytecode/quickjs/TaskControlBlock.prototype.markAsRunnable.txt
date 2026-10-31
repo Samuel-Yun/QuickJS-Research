@@ -1,0 +1,25 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:709:45: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_RUNNABLE [global_ref21]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.state = this.state | STATE_RUNNABLE;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field state
+        get_var 0: STATE_RUNNABLE
+        or
+        put_field state
+        return_undef
+
+;; }
+

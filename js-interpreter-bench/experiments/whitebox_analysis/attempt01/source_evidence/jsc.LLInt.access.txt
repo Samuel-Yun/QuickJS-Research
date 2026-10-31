@@ -1,0 +1,427 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/llint/LowLevelInterpreter64.asm
+SHA256: 5a7978c7d7ae6efc9275f54bfbecb48625ca5332e022951826f91d770aa600ca
+1624: .ready:
+1625:     storeq value, (firstOutOfLineOffset - 2) * 8[objectAndStorage, propertyOffsetAsInt, 8]
+1626: end
+1627: 
+1628: 
+1629: llintOpWithMetadata(op_get_by_id_direct, OpGetByIdDirect, macro (size, get, dispatch, metadata, return)
+1630:     metadata(t2, t0)
+1631:     get(m_base, t0)
+1632:     loadConstantOrVariableCell(size, t0, t3, .opGetByIdDirectSlow)
+1633:     loadi JSCell::m_structureID[t3], t1
+1634:     loadi OpGetByIdDirect::Metadata::m_structureID[t2], t0
+1635:     bineq t0, t1, .opGetByIdDirectSlow
+1636:     loadi OpGetByIdDirect::Metadata::m_offset[t2], t1
+1637:     loadPropertyAtVariableOffset(t1, t3, t0)
+1638:     valueProfile(size, OpGetByIdDirect, m_valueProfile, t0, t2)
+1639:     return(t0)
+1640: 
+1641: .opGetByIdDirectSlow:
+1642:     callSlowPath(_llint_slow_path_get_by_id_direct)
+1643:     dispatch()
+1644: 
+1645: .osrReturnPoint:
+1646:     getterSetterOSRExitReturnPoint(op_get_by_id_direct, size)
+1647:     valueProfile(size, OpGetByIdDirect, m_valueProfile, r0, t2)
+1648:     return(r0)
+1649: end)
+1650: 
+1651: # The base object is expected in t3
+1652: # metadata needs to be loaded in t2
+1653: macro performGetByIDHelper(opcodeStruct, modeMetadataName, valueProfileName, slowLabel, size, return)
+1654:     loadb %opcodeStruct%::Metadata::%modeMetadataName%.mode[t2], t1
+1655: 
+1656: .opGetByIdDefault:
+1657:     bbneq t1, constexpr GetByIdMode::Default, .opGetByIdProtoLoad
+1658:     loadi JSCell::m_structureID[t3], t1
+1659:     loadi %opcodeStruct%::Metadata::%modeMetadataName%.defaultMode.structureID[t2], t0
+1660:     bineq t0, t1, slowLabel
+1661:     loadis %opcodeStruct%::Metadata::%modeMetadataName%.defaultMode.cachedOffset[t2], t1
+1662:     loadPropertyAtVariableOffset(t1, t3, t0)
+1663:     valueProfile(size, opcodeStruct, valueProfileName, t0, t2)
+1664:     return(t0)
+1665: 
+1666: .opGetByIdProtoLoad:
+1667:     bbneq t1, constexpr GetByIdMode::ProtoLoad, .opGetByIdArrayLength
+1668:     loadi JSCell::m_structureID[t3], t1
+1669:     loadi %opcodeStruct%::Metadata::%modeMetadataName%.protoLoadMode.structureID[t2], t3
+1670:     bineq t3, t1, slowLabel
+1671:     loadis %opcodeStruct%::Metadata::%modeMetadataName%.protoLoadMode.cachedOffset[t2], t1
+1672:     loadp %opcodeStruct%::Metadata::%modeMetadataName%.protoLoadMode.cachedSlot[t2], t3
+1673:     loadPropertyAtVariableOffset(t1, t3, t0)
+1674:     valueProfile(size, opcodeStruct, valueProfileName, t0, t2)
+1675:     return(t0)
+1676: 
+1677: .opGetByIdArrayLength:
+1678:     bbneq t1, constexpr GetByIdMode::ArrayLength, .opGetByIdUnset
+1679:     loadb JSCell::m_indexingTypeAndMisc[t3], t0
+1680:     btiz t0, IsArray, slowLabel
+1681:     btiz t0, IndexingShapeMask, slowLabel
+1682:     loadCagedJSValue(JSObjectWithButterfly::m_butterfly[t3], t0, t1)
+1683:     loadi -sizeof IndexingHeader + IndexingHeader::u.lengths.publicLength[t0], t0
+1684:     bilt t0, 0, slowLabel
+1685:     orq numberTag, t0
+1686:     valueProfile(size, opcodeStruct, valueProfileName, t0, t2)
+1687:     return(t0)
+1688: 
+1689: .opGetByIdUnset:
+1690:     loadi JSCell::m_structureID[t3], t1
+1691:     loadi %opcodeStruct%::Metadata::%modeMetadataName%.unsetMode.structureID[t2], t0
+1692:     bineq t0, t1, slowLabel
+1693:     valueProfile(size, opcodeStruct, valueProfileName, ValueUndefined, t2)
+
+1641: .opGetByIdDirectSlow:
+1642:     callSlowPath(_llint_slow_path_get_by_id_direct)
+1643:     dispatch()
+1644: 
+1645: .osrReturnPoint:
+1646:     getterSetterOSRExitReturnPoint(op_get_by_id_direct, size)
+1647:     valueProfile(size, OpGetByIdDirect, m_valueProfile, r0, t2)
+1648:     return(r0)
+1649: end)
+1650: 
+1651: # The base object is expected in t3
+1652: # metadata needs to be loaded in t2
+1653: macro performGetByIDHelper(opcodeStruct, modeMetadataName, valueProfileName, slowLabel, size, return)
+1654:     loadb %opcodeStruct%::Metadata::%modeMetadataName%.mode[t2], t1
+1655: 
+1656: .opGetByIdDefault:
+1657:     bbneq t1, constexpr GetByIdMode::Default, .opGetByIdProtoLoad
+1658:     loadi JSCell::m_structureID[t3], t1
+1659:     loadi %opcodeStruct%::Metadata::%modeMetadataName%.defaultMode.structureID[t2], t0
+1660:     bineq t0, t1, slowLabel
+1661:     loadis %opcodeStruct%::Metadata::%modeMetadataName%.defaultMode.cachedOffset[t2], t1
+1662:     loadPropertyAtVariableOffset(t1, t3, t0)
+1663:     valueProfile(size, opcodeStruct, valueProfileName, t0, t2)
+1664:     return(t0)
+1665: 
+1666: .opGetByIdProtoLoad:
+1667:     bbneq t1, constexpr GetByIdMode::ProtoLoad, .opGetByIdArrayLength
+1668:     loadi JSCell::m_structureID[t3], t1
+1669:     loadi %opcodeStruct%::Metadata::%modeMetadataName%.protoLoadMode.structureID[t2], t3
+1670:     bineq t3, t1, slowLabel
+1671:     loadis %opcodeStruct%::Metadata::%modeMetadataName%.protoLoadMode.cachedOffset[t2], t1
+1672:     loadp %opcodeStruct%::Metadata::%modeMetadataName%.protoLoadMode.cachedSlot[t2], t3
+1673:     loadPropertyAtVariableOffset(t1, t3, t0)
+1674:     valueProfile(size, opcodeStruct, valueProfileName, t0, t2)
+1675:     return(t0)
+1676: 
+1677: .opGetByIdArrayLength:
+1678:     bbneq t1, constexpr GetByIdMode::ArrayLength, .opGetByIdUnset
+1679:     loadb JSCell::m_indexingTypeAndMisc[t3], t0
+1680:     btiz t0, IsArray, slowLabel
+1681:     btiz t0, IndexingShapeMask, slowLabel
+1682:     loadCagedJSValue(JSObjectWithButterfly::m_butterfly[t3], t0, t1)
+1683:     loadi -sizeof IndexingHeader + IndexingHeader::u.lengths.publicLength[t0], t0
+1684:     bilt t0, 0, slowLabel
+1685:     orq numberTag, t0
+1686:     valueProfile(size, opcodeStruct, valueProfileName, t0, t2)
+1687:     return(t0)
+1688: 
+1689: .opGetByIdUnset:
+1690:     loadi JSCell::m_structureID[t3], t1
+1691:     loadi %opcodeStruct%::Metadata::%modeMetadataName%.unsetMode.structureID[t2], t0
+1692:     bineq t0, t1, slowLabel
+1693:     valueProfile(size, opcodeStruct, valueProfileName, ValueUndefined, t2)
+1694:     return(ValueUndefined)
+1695: 
+1696: end
+1697: 
+1698: llintOpWithMetadata(op_get_by_id, OpGetById, macro (size, get, dispatch, metadata, return)
+1699:     get(m_base, t0)
+1700:     loadConstantOrVariableCell(size, t0, t3, .opGetByIdSlow)
+1701:     metadata(t2, t1)
+1702:     performGetByIDHelper(OpGetById, m_modeMetadata, m_valueProfile, .opGetByIdSlow, size, return)
+1703: 
+1704: .opGetByIdSlow:
+1705:     callSlowPath(_llint_slow_path_get_by_id)
+1706:     dispatch()
+1707: 
+1708: .osrReturnPoint:
+1709:     getterSetterOSRExitReturnPoint(op_get_by_id, size)
+1710:     valueProfile(size, OpGetById, m_valueProfile, r0, t2)
+
+1693:     valueProfile(size, opcodeStruct, valueProfileName, ValueUndefined, t2)
+1694:     return(ValueUndefined)
+1695: 
+1696: end
+1697: 
+1698: llintOpWithMetadata(op_get_by_id, OpGetById, macro (size, get, dispatch, metadata, return)
+1699:     get(m_base, t0)
+1700:     loadConstantOrVariableCell(size, t0, t3, .opGetByIdSlow)
+1701:     metadata(t2, t1)
+1702:     performGetByIDHelper(OpGetById, m_modeMetadata, m_valueProfile, .opGetByIdSlow, size, return)
+1703: 
+1704: .opGetByIdSlow:
+1705:     callSlowPath(_llint_slow_path_get_by_id)
+1706:     dispatch()
+1707: 
+1708: .osrReturnPoint:
+1709:     getterSetterOSRExitReturnPoint(op_get_by_id, size)
+1710:     valueProfile(size, OpGetById, m_valueProfile, r0, t2)
+1711:     return(r0)
+1712: end)
+1713: 
+1714: 
+1715: llintOpWithMetadata(op_get_length, OpGetLength, macro (size, get, dispatch, metadata, return)
+1716:     get(m_base, t0)
+1717:     loadConstantOrVariableCell(size, t0, t3, .opGetLengthSlow)
+1718:     metadata(t2, t1)
+1719:     arrayProfile(OpGetLength::Metadata::m_arrayProfile, t3, t2, t5)
+1720:     performGetByIDHelper(OpGetLength, m_modeMetadata, m_valueProfile, .opGetLengthSlow, size, return)
+1721: 
+1722: .opGetLengthSlow:
+1723:     callSlowPath(_llint_slow_path_get_length)
+1724:     dispatch()
+1725: 
+1726: .osrReturnPoint:
+1727:     getterSetterOSRExitReturnPoint(op_get_length, size)
+1728:     valueProfile(size, OpGetLength, m_valueProfile, r0, t2)
+1729:     return(r0)
+1730: end)
+1731: 
+1732: 
+1733: llintOpWithProfile(op_get_prototype_of, OpGetPrototypeOf, macro (size, get, dispatch, return)
+1734:     get(m_value, t1)
+1735:     loadConstantOrVariable(size, t1, t0)
+1736: 
+1737:     btqnz t0, notCellMask, .opGetPrototypeOfSlow
+1738:     bbb JSCell::m_type[t0], ObjectType, .opGetPrototypeOfSlow
+1739:     btbnz JSCell::m_flags[t0], OverridesGetPrototype, .opGetPrototypeOfSlow
+1740: 
+1741:     loadStructureWithScratch(t0, t2, t1)
+1742:     loadq Structure::m_prototype[t2], t2
+1743:     btqz t2, .opGetPrototypeOfPolyProto
+1744:     return(t2)
+1745: 
+1746: .opGetPrototypeOfSlow:
+1747:     callSlowPath(_slow_path_get_prototype_of)
+1748:     dispatch()
+1749: 
+1750: .opGetPrototypeOfPolyProto:
+1751:     move knownPolyProtoOffset, t1
+1752:     loadInlineOffset(t1, t0, t3)
+1753:     return(t3)
+1754: end)
+1755: 
+1756: 
+1757: llintOpWithMetadata(op_put_by_id, OpPutById, macro (size, get, dispatch, metadata, return)
+1758:     get(m_base, t3)
+1759:     loadConstantOrVariableCell(size, t3, t0, .opPutByIdSlow)
+1760:     metadata(t5, t2)
+1761:     loadi OpPutById::Metadata::m_oldStructureID[t5], t2
+1762:     bineq t2, JSCell::m_structureID[t0], .opPutByIdSlow
+
+1704: .opGetByIdSlow:
+1705:     callSlowPath(_llint_slow_path_get_by_id)
+1706:     dispatch()
+1707: 
+1708: .osrReturnPoint:
+1709:     getterSetterOSRExitReturnPoint(op_get_by_id, size)
+1710:     valueProfile(size, OpGetById, m_valueProfile, r0, t2)
+1711:     return(r0)
+1712: end)
+1713: 
+1714: 
+1715: llintOpWithMetadata(op_get_length, OpGetLength, macro (size, get, dispatch, metadata, return)
+1716:     get(m_base, t0)
+1717:     loadConstantOrVariableCell(size, t0, t3, .opGetLengthSlow)
+1718:     metadata(t2, t1)
+1719:     arrayProfile(OpGetLength::Metadata::m_arrayProfile, t3, t2, t5)
+1720:     performGetByIDHelper(OpGetLength, m_modeMetadata, m_valueProfile, .opGetLengthSlow, size, return)
+1721: 
+1722: .opGetLengthSlow:
+1723:     callSlowPath(_llint_slow_path_get_length)
+1724:     dispatch()
+1725: 
+1726: .osrReturnPoint:
+1727:     getterSetterOSRExitReturnPoint(op_get_length, size)
+1728:     valueProfile(size, OpGetLength, m_valueProfile, r0, t2)
+1729:     return(r0)
+1730: end)
+1731: 
+1732: 
+1733: llintOpWithProfile(op_get_prototype_of, OpGetPrototypeOf, macro (size, get, dispatch, return)
+1734:     get(m_value, t1)
+1735:     loadConstantOrVariable(size, t1, t0)
+1736: 
+1737:     btqnz t0, notCellMask, .opGetPrototypeOfSlow
+1738:     bbb JSCell::m_type[t0], ObjectType, .opGetPrototypeOfSlow
+1739:     btbnz JSCell::m_flags[t0], OverridesGetPrototype, .opGetPrototypeOfSlow
+1740: 
+1741:     loadStructureWithScratch(t0, t2, t1)
+1742:     loadq Structure::m_prototype[t2], t2
+1743:     btqz t2, .opGetPrototypeOfPolyProto
+1744:     return(t2)
+1745: 
+1746: .opGetPrototypeOfSlow:
+1747:     callSlowPath(_slow_path_get_prototype_of)
+1748:     dispatch()
+1749: 
+1750: .opGetPrototypeOfPolyProto:
+1751:     move knownPolyProtoOffset, t1
+1752:     loadInlineOffset(t1, t0, t3)
+1753:     return(t3)
+1754: end)
+1755: 
+1756: 
+1757: llintOpWithMetadata(op_put_by_id, OpPutById, macro (size, get, dispatch, metadata, return)
+1758:     get(m_base, t3)
+1759:     loadConstantOrVariableCell(size, t3, t0, .opPutByIdSlow)
+1760:     metadata(t5, t2)
+1761:     loadi OpPutById::Metadata::m_oldStructureID[t5], t2
+1762:     bineq t2, JSCell::m_structureID[t0], .opPutByIdSlow
+1763: 
+1764:     # At this point, we have:
+1765:     # t0 -> object base
+1766:     # t2 -> current structure ID
+1767:     # t5 -> metadata
+1768: 
+1769:     loadi OpPutById::Metadata::m_newStructureID[t5], t1
+1770:     btiz t1, .opPutByIdNotTransition
+1771: 
+1772:     # This is the transition case. t1 holds the new structureID. t2 holds the old structure ID.
+1773:     # If we have a chain, we need to check it. t0 is the base. We may clobber t1 to use it as
+
+1825:     dispatch()
+1826: 
+1827: end)
+1828: 
+1829: 
+1830: llintOpWithMetadata(op_get_by_val, OpGetByVal, macro (size, get, dispatch, metadata, return)
+1831:     macro finishGetByVal(result, scratch)
+1832:         get(m_dst, scratch)
+1833:         storeq result, [cfr, scratch, 8]
+1834:         valueProfile(size, OpGetByVal, m_valueProfile, result, scratch)
+1835:         dispatch()
+1836:     end
+1837: 
+1838:     macro finishIntGetByVal(result, scratch)
+1839:         orq numberTag, result
+1840:         finishGetByVal(result, scratch)
+1841:     end
+1842: 
+1843:     macro finishDoubleGetByVal(result, scratch1, scratch2, unused)
+1844:         fd2q result, scratch1
+1845:         subq numberTag, scratch1
+1846:         finishGetByVal(scratch1, scratch2)
+1847:     end
+1848: 
+1849:     macro setLargeTypedArray(scratch)
+1850:         loadi OpGetByVal::Metadata::m_arrayProfile.m_arrayProfileFlags[t5], scratch
+1851:         ori constexpr ArrayProfileFlag::MayBeLargeTypedArray, scratch
+1852:         storei scratch, OpGetByVal::Metadata::m_arrayProfile.m_arrayProfileFlags[t5]
+1853:     end
+1854: 
+1855:     metadata(t5, t2)
+1856: 
+1857:     get(m_base, t2)
+1858:     loadConstantOrVariableCell(size, t2, t0, .opGetByValSlow)
+1859: 
+1860:     move t0, t2
+1861:     arrayProfile(OpGetByVal::Metadata::m_arrayProfile, t2, t5, t1)
+1862:     loadb JSCell::m_indexingTypeAndMisc[t2], t2
+1863: 
+1864:     get(m_property, t3)
+1865:     loadConstantOrVariableInt32(size, t3, t1, .opGetByValSlow)
+1866:     # This sign-extension makes the bounds-checking in getByValTypedArray work even on 4GB TypedArray.
+1867:     sxi2q t1, t1
+1868: 
+1869:     loadCagedJSValue(JSObjectWithButterfly::m_butterfly[t0], t3, numberTag)
+1870:     move TagNumber, numberTag
+1871: 
+1872:     andi IndexingShapeMask, t2
+1873:     bieq t2, Int32Shape, .opGetByValIsContiguous
+1874:     bineq t2, ContiguousShape, .opGetByValNotContiguous
+1875: 
+1876: .opGetByValIsContiguous:
+1877:     biaeq t1, -sizeof IndexingHeader + IndexingHeader::u.lengths.publicLength[t3], .opGetByValSlow
+1878:     get(m_dst, t0)
+1879:     loadq [t3, t1, 8], t2
+1880:     btqz t2, .opGetByValSlow
+1881:     jmp .opGetByValDone
+1882: 
+1883: .opGetByValNotContiguous:
+1884:     bineq t2, DoubleShape, .opGetByValNotDouble
+1885:     biaeq t1, -sizeof IndexingHeader + IndexingHeader::u.lengths.publicLength[t3], .opGetByValSlow
+1886:     get(m_dst, t0)
+1887:     loadd [t3, t1, 8], ft0
+1888:     bdnequn ft0, ft0, .opGetByValSlow
+1889:     fd2q ft0, t2
+1890:     subq numberTag, t2
+1891:     jmp .opGetByValDone
+1892:     
+1893: .opGetByValNotDouble:
+1894:     subi ArrayStorageShape, t2
+
+1909: .opGetByValSlow:
+1910:     callSlowPath(_llint_slow_path_get_by_val)
+1911:     dispatch()
+1912: 
+1913: .osrReturnPoint:
+1914:     getterSetterOSRExitReturnPoint(op_get_by_val, size)
+1915:     valueProfile(size, OpGetByVal, m_valueProfile, r0, t5)
+1916:     return(r0)
+1917: end)
+1918: 
+1919: llintOpWithMetadata(op_get_private_name, OpGetPrivateName, macro (size, get, dispatch, metadata, return)
+1920:     metadata(t2, t0)
+1921: 
+1922:     # Slow path if the private field is stale
+1923:     get(m_property, t1)
+1924:     loadConstantOrVariable(size, t1, t0)
+1925:     loadp OpGetPrivateName::Metadata::m_property[t2], t1
+1926:     bpneq t1, t0, .opGetPrivateNameSlow
+1927: 
+1928:     get(m_base, t0)
+1929:     loadConstantOrVariableCell(size, t0, t3, .opGetPrivateNameSlow)
+1930:     loadi JSCell::m_structureID[t3], t1
+1931:     loadi OpGetPrivateName::Metadata::m_structureID[t2], t0
+1932:     bineq t0, t1, .opGetPrivateNameSlow
+1933: 
+1934:     loadi OpGetPrivateName::Metadata::m_offset[t2], t1
+1935:     loadPropertyAtVariableOffset(t1, t3, t0)
+1936:     valueProfile(size, OpGetPrivateName, m_valueProfile, t0, t2)
+1937:     return(t0)
+1938: 
+1939: .opGetPrivateNameSlow:
+1940:     callSlowPath(_llint_slow_path_get_private_name)
+1941:     dispatch()
+1942: end)
+1943: 
+1944: llintOpWithMetadata(op_put_private_name, OpPutPrivateName, macro (size, get, dispatch, metadata, return)
+1945:     get(m_base, t3)
+1946:     loadConstantOrVariableCell(size, t3, t0, .opPutPrivateNameSlow)
+1947:     get(m_property, t3)
+1948:     loadConstantOrVariableCell(size, t3, t1, .opPutPrivateNameSlow)
+1949:     metadata(t5, t2)
+1950:     loadi OpPutPrivateName::Metadata::m_oldStructureID[t5], t2
+1951:     bineq t2, JSCell::m_structureID[t0], .opPutPrivateNameSlow
+1952: 
+1953:     loadp OpPutPrivateName::Metadata::m_property[t5], t3
+1954:     bpneq t3, t1, .opPutPrivateNameSlow
+1955: 
+1956:     # At this point, we have:
+1957:     # t0 -> object base
+1958:     # t2 -> current structure ID
+1959:     # t5 -> metadata
+1960: 
+1961:     loadi OpPutPrivateName::Metadata::m_newStructureID[t5], t1
+1962:     btiz t1, .opPutNotTransition
+1963: 
+1964:     storei t1, JSCell::m_structureID[t0]
+1965:     writeBarrierOnOperandWithReload(size, get, m_base, macro ()
+1966:         # Reload metadata into t5
+1967:         metadata(t5, t1)
+1968:         # Reload base into t0
+1969:         get(m_base, t1)
+1970:         loadConstantOrVariable(size, t1, t0)
+1971:     end)
+1972: 
+1973: .opPutNotTransition:
+1974:     # The only thing live right now is t0, which holds the base.
+1975:     get(m_value, t1)
+1976:     loadConstantOrVariable(size, t1, t2)
+1977:     loadi OpPutPrivateName::Metadata::m_offset[t5], t1
+1978:     storePropertyAtVariableOffset(t1, t0, t2)

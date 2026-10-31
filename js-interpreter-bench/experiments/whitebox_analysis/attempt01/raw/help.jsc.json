@@ -1,0 +1,15 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Usage: jsc [options] [files] [-- arguments]\n  -d         Dumps bytecode and disassembly\n  -s         Synchronous compilation (equivalent to `--useConcurrentJIT=0`)\n  -e         Evaluate argument as script code\n  -f         Specifies a source file (deprecated)\n  -h|--help  Prints this help message\n  -i         Enables interactive mode (default if no files are specified)\n  -m         Execute as a module\n  -p <file>  Outputs profiling data to a file\n  -x         Output exit code before terminating\n\n  --signal-expected          Installs signal handlers that exit on a crash (Unix platforms only, lldb will not work with this option) \n  --sample                   Collects and outputs sampling profiler data\n  --test262-async            Check that some script calls the print function with the string 'Test262:AsyncTestComplete'\n  --strict-file=<file>       Parse the given file as if it were in strict mode (this option may be passed more than once)\n  --module-file=<file>       Parse and evaluate the given file as module (this option may be passed more than once)\n  --exception=<name>         Check the last script exits with an uncaught exception with the specified name\n  --ignoreUncaughtExceptions Do not error out if an uncaught exception is observed\n  --watchdog-exception-ok    Uncaught watchdog exceptions exit with success\n  --dumpException            Dump uncaught exception text\n  --footprint                Dump memory footprint after done executing\n  --options                  Dumps all JSC VM options and exits\n  --dumpOptions              Dumps all non-default JSC VM options before continuing\n  --enable-all-experimental-features  Enables all JSC feature-flag options (off-by-default in-development features)\n  --<jsc VM option>=<value>  Sets the specified JSC VM option\n  --crash-vm=<value>         Crash VM on startup due to PGM failure. Options PGMOOBLowerGuardPage, PGMOOBUpperGuardPage, or PGMUAF (For Testing Purposes).\n  --destroy-vm               Destroy VM before exiting\n  --can-block-is-false       Make main thread's Atomics.wait throw\n  --singleStringSubArgList=<args>   Parse args as a space separated list of arguments. (For VSCode debuggers to pass arguments).\n  --wasm-debugger[=port]        Enable WebAssembly debugging server (default port 1234)\n\nFiles with a .mjs extension will always be evaluated as modules.\n\n",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--help"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:31:37.614115+00:00",
+  "outer_start_ns": 114584630481,
+  "outer_stop_ns": 114592422447,
+  "boot_id": "60add16c-66cc-4766-b5d5-ed3e721f192d",
+  "outer_wall_ns": 7791966
+}

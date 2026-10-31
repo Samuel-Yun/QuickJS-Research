@@ -1,0 +1,107 @@
+quickjs.c; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+19696:         CASE(OP_add):
+19697:             {
+19698:                 JSValue op1, op2;
+19699:                 op1 = sp[-2];
+19700:                 op2 = sp[-1];
+19701:                 if (likely(JS_VALUE_IS_BOTH_INT(op1, op2))) {
+19702:                     int64_t r;
+19703:                     r = (int64_t)JS_VALUE_GET_INT(op1) + JS_VALUE_GET_INT(op2);
+19704:                     if (unlikely((int)r != r)) {
+19705:                         sp[-2] = __JS_NewFloat64(ctx, (double)r);
+19706:                     } else {
+19707:                         sp[-2] = JS_NewInt32(ctx, r);
+19708:                     }
+19709:                     sp--;
+19710:                 } else if (JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op1)) ||
+19711:                            JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op2))) {
+19712:                     double d1, d2;
+19713:                     if (JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op1))) {
+19714:                         d1 = JS_VALUE_GET_FLOAT64(op1);
+19715:                     } else if (JS_VALUE_GET_TAG(op1) == JS_TAG_INT) {
+19716:                         d1 = JS_VALUE_GET_INT(op1);
+19717:                     } else {
+19718:                         goto add_slow_case;
+19719:                     }
+19720:                     if (JS_TAG_IS_FLOAT64(JS_VALUE_GET_TAG(op2))) {
+19721:                         d2 = JS_VALUE_GET_FLOAT64(op2);
+19722:                     } else if (JS_VALUE_GET_TAG(op2) == JS_TAG_INT) {
+19723:                         d2 = JS_VALUE_GET_INT(op2);
+19724:                     } else {
+19725:                         goto add_slow_case;
+19726:                     }
+19727:                     sp[-2] = __JS_NewFloat64(ctx, d1 + d2);
+19728:                     sp--;
+19729:                 } else if (JS_IsString(op1) && JS_IsString(op2)) {
+19730:                     sp[-2] = JS_ConcatString(ctx, op1, op2);
+19731:                     sp--;
+19732:                     if (JS_IsException(sp[-1]))
+19733:                         goto exception;
+19734:                 } else {
+19735:                 add_slow_case:
+19736:                     sf->cur_pc = pc;
+19737:                     if (js_add_slow(ctx, sp))
+19738:                         goto exception;
+19739:                     sp--;
+19740:                 }
+19741:             }
+19742:             BREAK;
+19743:         CASE(OP_add_loc):
+19744:             {
+19745:                 JSValue op2;
+19746:                 JSValue *pv;
+19747:                 int idx;
+19748:                 idx = *pc;
+19749:                 pc += 1;
+19750: 
+19751:                 op2 = sp[-1];
+19752:                 pv = &var_buf[idx];
+19753:                 if (likely(JS_VALUE_IS_BOTH_INT(*pv, op2))) {
+19754:                     int64_t r;
+19755:                     r = (int64_t)JS_VALUE_GET_INT(*pv) + JS_VALUE_GET_INT(op2);
+19756:                     if (unlikely((int)r != r)) {
+19757:                         *pv = __JS_NewFloat64(ctx, (double)r);
+19758:                     } else {
+19759:                         *pv = JS_NewInt32(ctx, r);
+19760:                     }
+19761:                     sp--;
+19762:                 } else if (JS_VALUE_IS_BOTH_FLOAT(*pv, op2)) {
+19763:                     *pv = __JS_NewFloat64(ctx, JS_VALUE_GET_FLOAT64(*pv) +
+19764:                                                JS_VALUE_GET_FLOAT64(op2));
+19765:                     sp--;
+19766:                 } else if (JS_VALUE_GET_TAG(*pv) == JS_TAG_STRING &&
+19767:                            JS_VALUE_GET_TAG(op2) == JS_TAG_STRING) {
+19768:                     sp--;
+19769:                     sf->cur_pc = pc;
+19770:                     if (JS_ConcatStringInPlace(ctx, JS_VALUE_GET_STRING(*pv), op2)) {
+19771:                         JS_FreeValue(ctx, op2);
+19772:                     } else {
+19773:                         op2 = JS_ConcatString(ctx, JS_DupValue(ctx, *pv), op2);
+19774:                         if (JS_IsException(op2))
+19775:                             goto exception;
+19776:                         set_value(ctx, pv, op2);
+19777:                     }
+19778:                 } else {
+19779:                     JSValue ops[2];
+19780:                     /* In case of exception, js_add_slow frees ops[0]
+19781:                        and ops[1], so we must duplicate *pv */
+19782:                     sf->cur_pc = pc;
+19783:                     ops[0] = JS_DupValue(ctx, *pv);
+19784:                     ops[1] = op2;
+19785:                     sp--;
+19786:                     if (js_add_slow(ctx, ops + 2))
+19787:                         goto exception;
+19788:                     set_value(ctx, pv, ops[0]);
+19789:                 }
+19790:             }
+19791:             BREAK;
+19792:         CASE(OP_sub):
+19793:             {
+19794:                 JSValue op1, op2;
+19795:                 op1 = sp[-2];
+19796:                 op2 = sp[-1];
+19797:                 if (likely(JS_VALUE_IS_BOTH_INT(op1, op2))) {
+19798:                     int64_t r;
+19799:                     r = (int64_t)JS_VALUE_GET_INT(op1) - JS_VALUE_GET_INT(op2);
+19800:                     if (unlikely((int)r != r)) {
+19801:                         sp[-2] = __JS_NewFloat64(ctx, (double)r);

@@ -1,0 +1,41 @@
+{
+  "artifacts": {
+    "M": {
+      "path": "/home/mzyx/mr_native_layout_attempt01/M_diagnostic2/qjs",
+      "source": "/home/mzyx/mr_native_layout_attempt01/M_diagnostic2",
+      "sha256": "6d11773088e196093bb47d02423a2a9917127e8c2cf9cc914c242072f4141ce7",
+      "source_hashes": {
+        "qjs.c": "60e542bb4754facf732b2370b73ea7dcb381606ca511eceb3080aded41eee6cd",
+        "read_ic_runtime.inc": "2008ddfc1ebb29ec265a3159403e3b83afe29d130d4b7ca14dd146d4eeac12f6",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_types.h": "f7cbb27c6d5882d2553222dd5709280b85ff21623a88b531709933c86cc0046c",
+        "read_ic_diag.h": "a54047e70a982ded52c20cb3da1da8f374cf026dff3b9230c85148603c01a4ee",
+        "read_ic_diag_prepare.inc": "4f0c6a8916a57819aaa164045763c3b06c6c053e4b57029fa630d1940ff0f3f2",
+        "read_ic_prepare.inc": "7af26f84debff8af643f73853f154b5c361cd40752e3b9ebcc1b3908eb1b39ce",
+        "quickjs.c": "e446808aa4af7c36e527048fbd23c26b42c507ff31f14a4621b9185da1c89210",
+        "read_ic_opcodes.inc": "1099916abb6e761e7870a8fd95e4c675e52071065144e4c8d4969dbfd3d73a12"
+      }
+    },
+    "R": {
+      "path": "/home/mzyx/mr_native_layout_attempt01/R_diagnostic/qjs",
+      "source": "/home/mzyx/mr_native_layout_attempt01/R_diagnostic",
+      "sha256": "4b10ddea737dbb787e4d36f5e4136dd13b61dba0b1e4ba8c7ae2ee06ffd3e2aa",
+      "source_hashes": {
+        "qjs.c": "60e542bb4754facf732b2370b73ea7dcb381606ca511eceb3080aded41eee6cd",
+        "read_ic_runtime.inc": "ef9975a7547491bc75882f6d8b4488a714c636611dd5fcfb6dc2c8a4c8afedc0",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_types.h": "f46d2714146c7a3304021642c4d3ea22db02e33bf86c0ef157eeb170a8de6991",
+        "read_ic_diag.h": "a54047e70a982ded52c20cb3da1da8f374cf026dff3b9230c85148603c01a4ee",
+        "read_ic_exit.inc": "c5bd2a3fee9cc4bfec9b829f25b05865eade73b0433485e9b4f7f53d5f7d9ccf",
+        "read_ic_diag_prepare.inc": "4f0c6a8916a57819aaa164045763c3b06c6c053e4b57029fa630d1940ff0f3f2",
+        "read_ic_prepare.inc": "7af26f84debff8af643f73853f154b5c361cd40752e3b9ebcc1b3908eb1b39ce",
+        "quickjs.c": "c8a2b12f201016b050330e5e86cb49e5d2a0d236758145e504bc4aa8e4f5e2e9",
+        "read_ic_opcodes.inc": "e5619f497e766aa1d840e30f7c9c6d3a5f2f1bbfc8d6b2f3d594ee28a0020068"
+      }
+    }
+  },
+  "scope": "whole process; final static site identity retained; cold reads included",
+  "ordinary_post_mapping": "diagnostic only, linear final-PC lookup; absent in formal handler",
+  "hash_scope": "actual original find_own_property, global and IC/post-exit context; other helpers not universally covered",
+  "indirect_retained_bytes": null
+}

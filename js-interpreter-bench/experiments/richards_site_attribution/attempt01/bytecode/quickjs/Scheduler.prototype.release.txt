@@ -1,0 +1,61 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:596:31: function: <null>
+  args: id
+  locals:
+    0: var tcb
+    1: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function (id) {
+
+        push_this
+        put_loc1 1: this
+        get_loc1 1: this
+
+;;   var tcb = this.blocks[id];
+
+        get_field blocks
+        get_arg0 0: id
+        get_array_el
+
+;;   if (tcb == null) return tcb;
+
+        set_loc0 0: tcb
+        null
+        eq
+        if_false8 17
+        get_loc0 0: tcb
+        return
+
+;;   tcb.markAsNotHeld();
+
+   17:  get_loc0 0: tcb
+        get_field2 markAsNotHeld
+        call_method 0
+        drop
+
+;;   if (tcb.priority > this.currentTcb.priority) {
+
+        get_loc0 0: tcb
+        get_field priority
+        get_loc1 1: this
+        get_field currentTcb
+        get_field priority
+        gt
+        if_false8 49
+
+;;     return tcb;
+
+        get_loc0 0: tcb
+        return
+   49:  get_loc1 1: this
+
+;;   } else {
+;;     return this.currentTcb;
+
+        get_field currentTcb
+        return
+
+;;   }
+;; }
+

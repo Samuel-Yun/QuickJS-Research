@@ -1,0 +1,17 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d7ac00 <Builtins_ShortStarHandler>:
+ 1d7ac00:	43 0f b6 1c 0c       	movzx  ebx,BYTE PTR [r12+r9*1]
+ 1d7ac05:	48 8b d5             	mov    rdx,rbp
+ 1d7ac08:	48 89 84 da 20 f9 ff 	mov    QWORD PTR [rdx+rbx*8-0x6e0],rax
+ 1d7ac0f:	ff 
+ 1d7ac10:	49 8d 59 01          	lea    rbx,[r9+0x1]
+ 1d7ac14:	43 0f b6 54 0c 01    	movzx  edx,BYTE PTR [r12+r9*1+0x1]
+ 1d7ac1a:	49 8b 0c d7          	mov    rcx,QWORD PTR [r15+rdx*8]
+ 1d7ac1e:	4c 8b cb             	mov    r9,rbx
+ 1d7ac21:	ff e1                	jmp    rcx
+ 1d7ac23:	90                   	nop

@@ -1,0 +1,69 @@
+{
+  "reference_commit": "6e4e3b2925cbd9925b7bed8e3e725785ba9238e4",
+  "task_budget_seconds": 7200,
+  "conditions": [
+    "M",
+    "H",
+    "OFF",
+    "ON"
+  ],
+  "OFF_ON_same_ELF": true,
+  "switch": "QJS_EXPERIMENT_PROTO_IC=0/1; once before qjs CLI runtime creation; immutable; only guards inherited fill",
+  "preserve": "H 24B/site, eager allocation, own IC, holder guards, normal fallback and serialization",
+  "cases": [
+    "prototype_method",
+    "own_integer",
+    "numeric_control",
+    "Richards.Richards"
+  ],
+  "first_Run_included": true,
+  "workload_warmup_calls": 0,
+  "clock": "frozen native performance.now / CLOCK_MONOTONIC; external perf_counter_ns diagnostic separate",
+  "common_N_start": {
+    "prototype_method": 8192,
+    "own_integer": 16384,
+    "numeric_control": 32768,
+    "Richards.Richards": 512
+  },
+  "pilot_per_condition": 2,
+  "pilot_min_internal_ms": 1000,
+  "pilot_max_common_doublings": 2,
+  "timeout_seconds": 180,
+  "affinity": "same fixed allowed CPU for all conditions; recorded, does not control host frequency/scheduling",
+  "stability": {
+    "binary": "original H",
+    "case": "numeric_control",
+    "processes": 12,
+    "IQR_over_median_max": 0.1,
+    "max_over_min_max": 1.25,
+    "rearrangements_allowed": 1,
+    "second_failure": "PERFORMANCE_ENV_UNSTABLE; zero formal samples; no further variants"
+  },
+  "formal_target": 384,
+  "formal_blocks": 24,
+  "formal_block_size": 16,
+  "per_case_permutations": "all 24 permutations once",
+  "case_position_count": 6,
+  "seed": 20261029,
+  "ratios": [
+    "ON/OFF",
+    "ON/H",
+    "OFF/M",
+    "H/M"
+  ],
+  "ratio_definition": "ratio of internal ms/Run medians; <1 numerator faster; percent=100*(ratio-1)",
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261029,
+    "unit": "complete 16-process block shared by all cases",
+    "CI": "exploratory 95% linear percentile, not multiplicity-corrected"
+  },
+  "quartiles": "Tukey median of sorted halves, excluding middle when odd",
+  "failures": "retain; no automatic retry of executed positions or outlier deletion",
+  "no_V8_A_JSC_or_new_IC": true,
+  "copied_inputs": "preserve original byte SHA; record LF normalized SHA separately; Git -text for exact scripts/inputs",
+  "preparation_budget_seconds": 1200,
+  "collection_order": "runtime identity -> one system CPU observation -> max3 precalibration -> 12 stability, at most one affinity rearrangement +12 -> pilots ->16 correctness ->384 formal",
+  "cpu_selection_rule": "one /proc/stat 1s delta over allowed CPUs, minimum busy fraction/tie minimum index; alternate preselected on different reported sibling set if possible; at most one fail-triggered move, no benchmark CPU sweep",
+  "child_cpu_measurement": "sequential direct subprocess; RUSAGE_CHILDREN utime/stime delta; whole process not internal region"
+}

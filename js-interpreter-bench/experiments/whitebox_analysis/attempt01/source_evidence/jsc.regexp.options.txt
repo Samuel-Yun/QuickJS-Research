@@ -1,0 +1,55 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/runtime/Options.cpp
+SHA256: 415852d28e3a279281ef1952150c35906326e2d18365d2ef04700c3d042b8fbe
+741:     Options::useLOLJIT() = false;
+742:     Options::useDFGJIT() = false;
+743:     Options::useFTLJIT() = false;
+744:     Options::useDOMJIT() = false;
+745:     Options::useRegExpJIT() = false;
+746:     Options::useJITCage() = false;
+747:     Options::useConcurrentJIT() = false;
+748: 
+749:     Options::usePollingTraps() = true;
+750: 
+751:     Options::dumpDisassembly() = false;
+752:     Options::dumpBaselineDisassembly() = false;
+753:     Options::dumpDFGDisassembly() = false;
+754:     Options::dumpFTLDisassembly() = false;
+755:     Options::dumpRegExpDisassembly() = false;
+756:     Options::needDisassemblySupport() = false;
+757: }
+758: 
+759: #if OS(DARWIN)
+760: static void NODELETE disableAllSignalHandlerBasedOptions()
+761: {
+762:     Options::usePollingTraps() = true;
+763:     Options::useSharedArrayBuffer() = false;
+764:     Options::useWasmFastMemory() = false;
+765:     Options::useWasmFaultSignalHandler() = false;
+766: }
+
+817: #if !ENABLE(CONCURRENT_JS)
+818:     Options::useConcurrentJIT() = false;
+819: #endif
+820: #if !ENABLE(YARR_JIT)
+821:     Options::useRegExpJIT() = false;
+822: #endif
+823: #if !ENABLE(DFG_JIT)
+824:     Options::useDFGJIT() = false;
+825:     Options::useFTLJIT() = false;
+826: #endif
+827: #if !ENABLE(FTL_JIT)
+828:     Options::useFTLJIT() = false;
+829: #endif
+830: 
+831: #if CPU(RISCV64)
+832:     // On RISCV64, JIT levels are enabled at build-time to simplify building JSC, avoiding
+833:     // otherwise rare combinations of build-time configuration. FTL on RISCV64 is disabled
+834:     // at runtime for now, until it gets int a proper working state.
+835:     // https://webkit.org/b/239707
+836:     Options::useFTLJIT() = false;
+837: #endif
+838: 
+839: #if !CPU(X86_64) && !CPU(ARM64)
+840:     Options::useConcurrentGC() = false;
+841:     Options::forceUnlinkedDFG() = false;
+842:     Options::useWasmSIMD() = false;

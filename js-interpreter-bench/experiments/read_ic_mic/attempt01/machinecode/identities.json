@@ -1,0 +1,84 @@
+{
+  "A": {
+    "binary_sha256": "0fe524aae16ad6e96373b08763babf6b362c6fbfbafa47003d773353865f3520",
+    "symbols": [
+      {
+        "address": "0000000000022a00",
+        "bytes": 40389,
+        "symbol": "JS_CallInternal"
+      },
+      {
+        "address": "0000000000011fc4",
+        "bytes": 5,
+        "symbol": "JS_CallInternal.cold"
+      }
+    ],
+    "asm_command": [
+      "objdump",
+      "-d",
+      "-l",
+      "-M",
+      "intel",
+      "--disassemble=JS_CallInternal",
+      "/home/mzyx/read_ic_mic_attempt01/A/qjs"
+    ]
+  },
+  "P": {
+    "binary_sha256": "eabe80a181eacccb9a00c95f7e741c3a0d0b74ed720f931d327a512643902dd6",
+    "symbols": [
+      {
+        "address": "0000000000022aa0",
+        "bytes": 41926,
+        "symbol": "JS_CallInternal"
+      },
+      {
+        "address": "0000000000011fc4",
+        "bytes": 5,
+        "symbol": "JS_CallInternal.cold"
+      },
+      {
+        "address": "00000000000354d0",
+        "bytes": 377,
+        "symbol": "rdi_prepare"
+      }
+    ],
+    "asm_command": [
+      "objdump",
+      "-d",
+      "-l",
+      "-M",
+      "intel",
+      "--disassemble=JS_CallInternal",
+      "/home/mzyx/read_ic_mic_attempt01/P/qjs"
+    ]
+  },
+  "M": {
+    "binary_sha256": "27d7cb724b4d89fdd4466e65cd6b9d2ceba6e95919b83e6bcc934a24f76797dd",
+    "symbols": [
+      {
+        "address": "0000000000022ac0",
+        "bytes": 41599,
+        "symbol": "JS_CallInternal"
+      },
+      {
+        "address": "0000000000011fc4",
+        "bytes": 5,
+        "symbol": "JS_CallInternal.cold"
+      },
+      {
+        "address": "00000000000353a0",
+        "bytes": 351,
+        "symbol": "rdi_prepare"
+      }
+    ],
+    "asm_command": [
+      "objdump",
+      "-d",
+      "-l",
+      "-M",
+      "intel",
+      "--disassemble=JS_CallInternal",
+      "/home/mzyx/read_ic_mic_attempt01/M/qjs"
+    ]
+  }
+}

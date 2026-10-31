@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "native_finalizer_no_JS": true,
+  "conditions": [
+    {
+      "condition": "A",
+      "stdout": "FINALIZER_STORE expected=99 observed=99 before=4 after=4 mutations=0 mutation_errors=0 call_error=0\nFINALIZER_STORE_PASS\n",
+      "source_sha256": "4f15a61841c036ad64c88fe8949c64d7eea254d563815a44da669880464eb208"
+    },
+    {
+      "condition": "E",
+      "stdout": "FINALIZER_STORE expected=99 observed=99 before=0 after=4 mutations=512 mutation_errors=0 call_error=0\nFINALIZER_STORE_PASS\n",
+      "source_sha256": "4f15a61841c036ad64c88fe8949c64d7eea254d563815a44da669880464eb208"
+    },
+    {
+      "condition": "E_san",
+      "stdout": "FINALIZER_STORE expected=99 observed=99 before=0 after=4 mutations=512 mutation_errors=0 call_error=0\nFINALIZER_STORE_PASS\n",
+      "source_sha256": "4f15a61841c036ad64c88fe8949c64d7eea254d563815a44da669880464eb208"
+    }
+  ],
+  "old_failure_retained": "../attempt01/raw/validation/finalizer_store_v2"
+}

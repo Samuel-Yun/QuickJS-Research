@@ -1,0 +1,40 @@
+{
+  "mode": "IC_MECHANISM_AUDIT_FIRST_CALL_INCLUSIVE_V1",
+  "cases": [
+    "M1.own_integer",
+    "M4.numeric_control",
+    "Richards.Richards"
+  ],
+  "conditions": [
+    "QJS_A",
+    "QJS_M",
+    "V8_ON",
+    "V8_OFF"
+  ],
+  "formal_target": 360,
+  "repetitions": 30,
+  "seed": 20261028,
+  "timeout": 180,
+  "max_N": 131072,
+  "task_budget_seconds": 21600,
+  "first_Run_included": true,
+  "warmup_calls": 0,
+  "micro_inner_iterations": 4096,
+  "clock": "captured native performance.now; duration enclosure only; parent origins not joined",
+  "driver": "reuse read_ic_mic micro driver and its original Richards driver; no workload method hoisting",
+  "outside": "Setup/static loading-compilation/adapter/output/post validation",
+  "inside": "N original Runs incl first; in-Run GC/helpers/builtins/regexp/dynamic compile/assertions",
+  "calibration": "prior N start, common doubling; 3 rotated four-condition independent pilots all >=1000ms",
+  "balance": "24 permutations once plus 6 cyclic permutations; every condition each position 7 or8 per case; fixed seed shuffle",
+  "failures": "append-only; no retry of started/failed positions; case-specific semantic failure stops that case; timer/identity/boot contradiction stops performance stage",
+  "statistics": "median/mean/n-1 sd/Tukey-halves Q1,Q3,IQR/min/max; 10000 paired complete within-case quadruple bootstrap, seed20261028, linear percentile95 exploration, no multiplicity correction",
+  "ratios": [
+    "A/M",
+    "V8_OFF/V8_ON",
+    "A/V8_ON",
+    "M/V8_ON"
+  ],
+  "GM": false,
+  "no_outlier_removal": true,
+  "no_old_timing_import": true
+}

@@ -1,0 +1,40 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:11:1: function: m2Read
+  args: obj anchor
+  locals:
+    0: var count
+    1: var i
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function m2Read(obj,anchor) {
+
+        push_0 0
+
+;;   var count=0;
+
+        put_loc0 0: count
+        push_0 0
+
+;;   for(var i=0;i<4096;i++) if(obj.x===anchor)count++;
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        push_i16 4096
+        lt
+        if_false8 27
+        get_arg0 0: obj
+        get_field x
+        get_arg1 1: anchor
+        strict_eq
+        if_false8 23
+        inc_loc 0: count
+   23:  inc_loc 1: i
+        goto8 4
+
+;;   return count;
+
+   27:  get_loc0 0: count
+        return
+
+;; }
+

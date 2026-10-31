@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "stdout": "ML_RESULT:{\"variant\":\"B\",\"N\":512,\"mode\":\"FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1\",\"start_ms\":0,\"stop_ms\":1050.54,\"elapsed_ms\":1050.54,\"elapsed_per_call_ms\":2.0518359375,\"checksum\":\"512:2322:928\",\"correctness\":\"PASS\",\"warmup_calls\":0,\"original_assertions_per_run\":1}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/microbench/generated/B.N512.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:23:34.277434+00:00",
+  "outer_start_ns": 317297263960,
+  "outer_stop_ns": 318375787520,
+  "outer_wall_ns": 1078523560,
+  "boot_id": "4ef67569-6a6b-4f4d-8c1a-16b8ac8c99ed",
+  "load_average": [
+    1.09619140625,
+    0.73583984375,
+    0.33349609375
+  ],
+  "LD_PRELOAD": null
+}

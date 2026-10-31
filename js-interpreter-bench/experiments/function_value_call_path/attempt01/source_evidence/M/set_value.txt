@@ -1,0 +1,18 @@
+2673: static inline void set_value(JSContext *ctx, JSValue *pval, JSValue new_val)
+2674: {
+2675:     JSValue old_val;
+2676:     old_val = *pval;
+2677:     *pval = new_val;
+2678:     JS_FreeValue(ctx, old_val);
+2679: }
+2680: 
+2681: void JS_SetClassProto(JSContext *ctx, JSClassID class_id, JSValue obj)
+2682: {
+2683:     JSRuntime *rt = ctx->rt;
+2684:     assert(class_id < rt->class_count);
+2685:     set_value(ctx, &ctx->class_proto[class_id], obj);
+2686: }
+2687: 
+2688: JSValue JS_GetClassProto(JSContext *ctx, JSClassID class_id)
+2689: {
+2690:     JSRuntime *rt = ctx->rt;

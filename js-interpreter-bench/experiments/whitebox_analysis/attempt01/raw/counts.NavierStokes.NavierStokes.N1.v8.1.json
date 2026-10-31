@@ -1,0 +1,20 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"NavierStokes.NavierStokes\",\"suite\":\"NavierStokes\",\"subbenchmark\":\"NavierStokes\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":1,\"correctness\":\"PASS\",\"extra_validation_calls\":14,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":34.993,\"stop_ms\":113.633,\"elapsed_ms\":78.63999999999999,\"elapsed_per_call_ms\":78.63999999999999,\"warmup_calls\":0}\nWB_COUNTS:{\"vel_step\":15,\"diffuse2\":15,\"lin_solve2\":15,\"set_bnd\":810,\"project\":30,\"lin_solve\":45,\"advect\":45,\"dens_step\":15,\"diffuse\":15}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/NavierStokes.NavierStokes.N1.count.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:41:45.381869+00:00",
+  "outer_start_ns": 96337906578,
+  "outer_stop_ns": 97524285751,
+  "boot_id": "441e3b90-9a71-4533-8969-b267d582448a",
+  "outer_wall_ns": 1186379173
+}

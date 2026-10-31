@@ -1,0 +1,449 @@
+{
+  "objects": {
+    "M": {
+      ".obj/qjs.o": "712bfe4cb13679a836ab84ce3b7b4f217ed1aa4aa2c6bbc9a4fbf50410172126",
+      ".obj/repl.o": "e4992fe67db87b01affd1dac1d6effa025af70a34b5c4e722524b7a929dbc2e4",
+      ".obj/quickjs.o": "0f74691bd587b73e507f580fc5cfe511e92451c4a464345dcbca6ec899ad99b1",
+      ".obj/dtoa.o": "ab3500285d6ae43042ef76c1eeb95ae144142e41634b75c6caf3d45b317f2bb9",
+      ".obj/libregexp.o": "173a36a15133d7e64c3762b5ee2702bc61db8148b570e091f0a6d324a816663f",
+      ".obj/libunicode.o": "cb8fa0628d36fb3e5c6707759596046186f0461b098705ddf3f26537c855d4fd",
+      ".obj/cutils.o": "4693a662e2d18c38a996ec1c0b8281027d77cf7a9ee0be2b48367bf10a609957",
+      ".obj/quickjs-libc.o": "b06c5843dd51e9cd8e5c1157677580fe1624391461fea5d6478f0444ab03fd5d"
+    },
+    "R": {
+      ".obj/qjs.o": "9df0fd8252469f8458b74d09cc0505af099bbf4efcf10f23a8211ab871cb5984",
+      ".obj/repl.o": "ad90920ad20620e4107da9e25fcbd584d86ce350a8a14e9ae7e077dce509ff36",
+      ".obj/quickjs.o": "9a8b16564f3705c4c7da193d6c781d1e5c1570198dca7e0d5090dd4decc51905",
+      ".obj/dtoa.o": "309c1f5aa3db931484340499da4609867352a56eba5060c00433b5af2c1ea68f",
+      ".obj/libregexp.o": "98557424b06f34def8848059ba6ff411b94bbcfc8a9a3516d586652fec7d9422",
+      ".obj/libunicode.o": "2d37eeec74f88ee5128ba57f0435ed978fb507880b620d8cfa26614f7b43fd3c",
+      ".obj/cutils.o": "00f5aca2bee49bc4ab6adabed03ed769ee35a2d014c6daa4a75f9447ff62d715",
+      ".obj/quickjs-libc.o": "61921ec5cfe6997131d8c15e757a434c012edd1008288a88af73377dce6cbd86"
+    }
+  },
+  "links": {
+    "M": {
+      "original_command": [
+        "gcc",
+        "-g",
+        "-rdynamic",
+        "-o",
+        "qjs",
+        ".obj/qjs.o",
+        ".obj/repl.o",
+        ".obj/quickjs.o",
+        ".obj/dtoa.o",
+        ".obj/libregexp.o",
+        ".obj/libunicode.o",
+        ".obj/cutils.o",
+        ".obj/quickjs-libc.o",
+        "-lm",
+        "-lpthread",
+        "-ldl"
+      ],
+      "map_command": [
+        "gcc",
+        "-g",
+        "-rdynamic",
+        "-o",
+        "qjs",
+        ".obj/qjs.o",
+        ".obj/repl.o",
+        ".obj/quickjs.o",
+        ".obj/dtoa.o",
+        ".obj/libregexp.o",
+        ".obj/libunicode.o",
+        ".obj/cutils.o",
+        ".obj/quickjs-libc.o",
+        "-lm",
+        "-lpthread",
+        "-ldl",
+        "-Wl,-Map=/home/mzyx/mr_native_layout_attempt01/M_base.map",
+        "-Wl,-t"
+      ],
+      "ordered_link_inputs": [
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o",
+          "sha256": "9438d15c4bac893a0e3aad2c2c86ccbceb59d5872bd07101949f237ee1c92a8b",
+          "bytes": 1656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o",
+          "sha256": "077ccb6c68db1794da3ee262c4a16a3c6f8e902845dd0829110ad4b7065e5aa3",
+          "bytes": 1192
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o",
+          "sha256": "667ff5f1edc931d44d1f2bb44d313907aa274bcc207c0beff71a398335f0d29f",
+          "bytes": 2752
+        },
+        {
+          "path": ".obj/qjs.o",
+          "sha256": "712bfe4cb13679a836ab84ce3b7b4f217ed1aa4aa2c6bbc9a4fbf50410172126",
+          "bytes": 65624
+        },
+        {
+          "path": ".obj/repl.o",
+          "sha256": "e4992fe67db87b01affd1dac1d6effa025af70a34b5c4e722524b7a929dbc2e4",
+          "bytes": 17800
+        },
+        {
+          "path": ".obj/quickjs.o",
+          "sha256": "0f74691bd587b73e507f580fc5cfe511e92451c4a464345dcbca6ec899ad99b1",
+          "bytes": 8292544
+        },
+        {
+          "path": ".obj/dtoa.o",
+          "sha256": "ab3500285d6ae43042ef76c1eeb95ae144142e41634b75c6caf3d45b317f2bb9",
+          "bytes": 116712
+        },
+        {
+          "path": ".obj/libregexp.o",
+          "sha256": "173a36a15133d7e64c3762b5ee2702bc61db8148b570e091f0a6d324a816663f",
+          "bytes": 300952
+        },
+        {
+          "path": ".obj/libunicode.o",
+          "sha256": "cb8fa0628d36fb3e5c6707759596046186f0461b098705ddf3f26537c855d4fd",
+          "bytes": 246808
+        },
+        {
+          "path": ".obj/cutils.o",
+          "sha256": "4693a662e2d18c38a996ec1c0b8281027d77cf7a9ee0be2b48367bf10a609957",
+          "bytes": 54136
+        },
+        {
+          "path": ".obj/quickjs-libc.o",
+          "sha256": "b06c5843dd51e9cd8e5c1157677580fe1624391461fea5d6478f0444ab03fd5d",
+          "bytes": 466456
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libm.so",
+          "sha256": "55de4a3e12e17c3e2b18eb95ee21b3f46a8893ea6cab68c0a1c3a5caaf32e6cf",
+          "bytes": 140
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+          "bytes": 952616
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libmvec.so.1",
+          "sha256": "57329ee0018b8fd8f8e51af5f87c723b6ecdf04679f4493134beab0f45d58ec5",
+          "bytes": 1018144
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libmvec.so.1",
+          "sha256": "57329ee0018b8fd8f8e51af5f87c723b6ecdf04679f4493134beab0f45d58ec5",
+          "bytes": 1018144
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libpthread.a",
+          "sha256": "f0a17a43c74d2fe5474fa2fd29c8f14799e777d7d75a2cc4d11c20a6e7b161c5",
+          "bytes": 8
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libdl.a",
+          "sha256": "f0a17a43c74d2fe5474fa2fd29c8f14799e777d7d75a2cc4d11c20a6e7b161c5",
+          "bytes": 8
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so",
+          "sha256": "69a56a9993b7729b29b274e65016031c81f2397f176ed5ad44d59bd50425e0bd",
+          "bytes": 132
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+          "bytes": 183024
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.so",
+          "sha256": "fe2a4ce2930fc6b3966aa987fae808375446c8d3823b8c21792e991aad9c75df",
+          "bytes": 283
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+          "bytes": 2129424
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc_nonshared.a",
+          "sha256": "3341391290ddd596521a61152b4e2612f4625cc85f737d875b918f6cfb2b2786",
+          "bytes": 5594
+        },
+        {
+          "path": "/lib64/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "bytes": 236616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc_nonshared.a",
+          "sha256": "3341391290ddd596521a61152b4e2612f4625cc85f737d875b918f6cfb2b2786",
+          "bytes": 5594
+        },
+        {
+          "path": "/lib64/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "bytes": 236616
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so",
+          "sha256": "69a56a9993b7729b29b274e65016031c81f2397f176ed5ad44d59bd50425e0bd",
+          "bytes": 132
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+          "bytes": 183024
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o",
+          "sha256": "9c8b2caad195193301ef072895dc89bea1d23371d4c19accd821debe27773063",
+          "bytes": 1168
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o",
+          "sha256": "a2266079f95b84ccc2162ebbf279bcd78858a748aa1882e0bdb912316c76a58f",
+          "bytes": 760
+        }
+      ]
+    },
+    "R": {
+      "original_command": [
+        "gcc",
+        "-g",
+        "-rdynamic",
+        "-o",
+        "qjs",
+        ".obj/qjs.o",
+        ".obj/repl.o",
+        ".obj/quickjs.o",
+        ".obj/dtoa.o",
+        ".obj/libregexp.o",
+        ".obj/libunicode.o",
+        ".obj/cutils.o",
+        ".obj/quickjs-libc.o",
+        "-lm",
+        "-lpthread",
+        "-ldl"
+      ],
+      "map_command": [
+        "gcc",
+        "-g",
+        "-rdynamic",
+        "-o",
+        "qjs",
+        ".obj/qjs.o",
+        ".obj/repl.o",
+        ".obj/quickjs.o",
+        ".obj/dtoa.o",
+        ".obj/libregexp.o",
+        ".obj/libunicode.o",
+        ".obj/cutils.o",
+        ".obj/quickjs-libc.o",
+        "-lm",
+        "-lpthread",
+        "-ldl",
+        "-Wl,-Map=/home/mzyx/mr_native_layout_attempt01/R_base.map",
+        "-Wl,-t"
+      ],
+      "ordered_link_inputs": [
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o",
+          "sha256": "9438d15c4bac893a0e3aad2c2c86ccbceb59d5872bd07101949f237ee1c92a8b",
+          "bytes": 1656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o",
+          "sha256": "077ccb6c68db1794da3ee262c4a16a3c6f8e902845dd0829110ad4b7065e5aa3",
+          "bytes": 1192
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o",
+          "sha256": "667ff5f1edc931d44d1f2bb44d313907aa274bcc207c0beff71a398335f0d29f",
+          "bytes": 2752
+        },
+        {
+          "path": ".obj/qjs.o",
+          "sha256": "9df0fd8252469f8458b74d09cc0505af099bbf4efcf10f23a8211ab871cb5984",
+          "bytes": 65624
+        },
+        {
+          "path": ".obj/repl.o",
+          "sha256": "ad90920ad20620e4107da9e25fcbd584d86ce350a8a14e9ae7e077dce509ff36",
+          "bytes": 17800
+        },
+        {
+          "path": ".obj/quickjs.o",
+          "sha256": "9a8b16564f3705c4c7da193d6c781d1e5c1570198dca7e0d5090dd4decc51905",
+          "bytes": 8298808
+        },
+        {
+          "path": ".obj/dtoa.o",
+          "sha256": "309c1f5aa3db931484340499da4609867352a56eba5060c00433b5af2c1ea68f",
+          "bytes": 116712
+        },
+        {
+          "path": ".obj/libregexp.o",
+          "sha256": "98557424b06f34def8848059ba6ff411b94bbcfc8a9a3516d586652fec7d9422",
+          "bytes": 300952
+        },
+        {
+          "path": ".obj/libunicode.o",
+          "sha256": "2d37eeec74f88ee5128ba57f0435ed978fb507880b620d8cfa26614f7b43fd3c",
+          "bytes": 246808
+        },
+        {
+          "path": ".obj/cutils.o",
+          "sha256": "00f5aca2bee49bc4ab6adabed03ed769ee35a2d014c6daa4a75f9447ff62d715",
+          "bytes": 54136
+        },
+        {
+          "path": ".obj/quickjs-libc.o",
+          "sha256": "61921ec5cfe6997131d8c15e757a434c012edd1008288a88af73377dce6cbd86",
+          "bytes": 466456
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libm.so",
+          "sha256": "55de4a3e12e17c3e2b18eb95ee21b3f46a8893ea6cab68c0a1c3a5caaf32e6cf",
+          "bytes": 140
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+          "bytes": 952616
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libmvec.so.1",
+          "sha256": "57329ee0018b8fd8f8e51af5f87c723b6ecdf04679f4493134beab0f45d58ec5",
+          "bytes": 1018144
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libmvec.so.1",
+          "sha256": "57329ee0018b8fd8f8e51af5f87c723b6ecdf04679f4493134beab0f45d58ec5",
+          "bytes": 1018144
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libpthread.a",
+          "sha256": "f0a17a43c74d2fe5474fa2fd29c8f14799e777d7d75a2cc4d11c20a6e7b161c5",
+          "bytes": 8
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libdl.a",
+          "sha256": "f0a17a43c74d2fe5474fa2fd29c8f14799e777d7d75a2cc4d11c20a6e7b161c5",
+          "bytes": 8
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so",
+          "sha256": "69a56a9993b7729b29b274e65016031c81f2397f176ed5ad44d59bd50425e0bd",
+          "bytes": 132
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+          "bytes": 183024
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.so",
+          "sha256": "fe2a4ce2930fc6b3966aa987fae808375446c8d3823b8c21792e991aad9c75df",
+          "bytes": 283
+        },
+        {
+          "path": "/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+          "bytes": 2129424
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc_nonshared.a",
+          "sha256": "3341391290ddd596521a61152b4e2612f4625cc85f737d875b918f6cfb2b2786",
+          "bytes": 5594
+        },
+        {
+          "path": "/lib64/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "bytes": 236616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc_nonshared.a",
+          "sha256": "3341391290ddd596521a61152b4e2612f4625cc85f737d875b918f6cfb2b2786",
+          "bytes": 5594
+        },
+        {
+          "path": "/lib64/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "bytes": 236616
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so",
+          "sha256": "69a56a9993b7729b29b274e65016031c81f2397f176ed5ad44d59bd50425e0bd",
+          "bytes": 132
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+          "bytes": 183024
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a",
+          "sha256": "d9376c55f97863a4e5fbb6c6beca2591b319bf786f3a7ca56da8964c5662171f",
+          "bytes": 3093656
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o",
+          "sha256": "9c8b2caad195193301ef072895dc89bea1d23371d4c19accd821debe27773063",
+          "bytes": 1168
+        },
+        {
+          "path": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o",
+          "sha256": "a2266079f95b84ccc2162ebbf279bcd78858a748aa1882e0bdb912316c76a58f",
+          "bytes": 760
+        }
+      ]
+    }
+  },
+  "tools": {
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "as": "GNU assembler (GNU Binutils for Ubuntu) 2.42",
+    "ld": "GNU ld (GNU Binutils for Ubuntu) 2.42",
+    "ar": "GNU ar (GNU Binutils for Ubuntu) 2.42",
+    "make": "GNU Make 4.3",
+    "objdump": "GNU objdump (GNU Binutils for Ubuntu) 2.42",
+    "gdb": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1"
+  }
+}

@@ -1,0 +1,1 @@
+function microExisting(o,k){if(k===0)return o.x;return o.x;}var a=[];for(var j=0;j<3;j++){var o={};o['extra'+j]=j;o.x=j+1;a.push(o);}for(var i=0;i<30;i++)if(microExisting(a[i%3],0)!==i%3+1)throw Error('prime');if(microExisting(a[0],1)!==1)throw Error('existing');console.log('MICRO_PASS');

@@ -1,0 +1,364 @@
+{
+  "status": "PASS",
+  "expected": 1024,
+  "actual": 1024,
+  "valid": 1024,
+  "groups": 32,
+  "samples_per_group": 32,
+  "no_duplicates_or_missing": true,
+  "order_balance": {
+    "M1.own_integer": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "ON/LOOKUP": 8,
+        "LOOKUP/M": 8,
+        "M/A": 8,
+        "A/ON": 8,
+        "ON/M": 8,
+        "A/LOOKUP": 8,
+        "LOOKUP/ON": 8,
+        "A/M": 8,
+        "M/LOOKUP": 8,
+        "M/ON": 8,
+        "ON/A": 8,
+        "LOOKUP/A": 8
+      }
+    },
+    "M2.own_reference": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "ON/M": 8,
+        "M/LOOKUP": 8,
+        "LOOKUP/A": 8,
+        "A/M": 8,
+        "LOOKUP/ON": 8,
+        "LOOKUP/M": 8,
+        "M/A": 8,
+        "A/ON": 8,
+        "ON/A": 8,
+        "M/ON": 8,
+        "A/LOOKUP": 8,
+        "ON/LOOKUP": 8
+      }
+    },
+    "M4.numeric_control": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "A/ON": 8,
+        "ON/LOOKUP": 8,
+        "LOOKUP/M": 8,
+        "A/M": 8,
+        "M/LOOKUP": 8,
+        "LOOKUP/ON": 8,
+        "LOOKUP/A": 8,
+        "ON/A": 8,
+        "M/ON": 8,
+        "ON/M": 8,
+        "M/A": 8,
+        "A/LOOKUP": 8
+      }
+    },
+    "M6.poly2": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "A/M": 8,
+        "M/ON": 8,
+        "ON/LOOKUP": 8,
+        "M/A": 8,
+        "A/LOOKUP": 8,
+        "LOOKUP/ON": 8,
+        "LOOKUP/A": 8,
+        "ON/M": 8,
+        "M/LOOKUP": 8,
+        "ON/A": 8,
+        "A/ON": 8,
+        "LOOKUP/M": 8
+      }
+    },
+    "Richards.Richards": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "A/ON": 8,
+        "ON/M": 8,
+        "M/LOOKUP": 8,
+        "ON/LOOKUP": 8,
+        "LOOKUP/M": 8,
+        "M/A": 8,
+        "A/LOOKUP": 8,
+        "LOOKUP/ON": 8,
+        "LOOKUP/A": 8,
+        "M/ON": 8,
+        "ON/A": 8,
+        "A/M": 8
+      }
+    },
+    "RegExp.RegExp": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "A/M": 8,
+        "M/LOOKUP": 8,
+        "LOOKUP/ON": 8,
+        "ON/LOOKUP": 8,
+        "LOOKUP/M": 8,
+        "M/A": 8,
+        "ON/M": 8,
+        "LOOKUP/A": 8,
+        "A/ON": 8,
+        "M/ON": 8,
+        "ON/A": 8,
+        "A/LOOKUP": 8
+      }
+    },
+    "RayTrace.RayTrace": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "ON/LOOKUP": 8,
+        "LOOKUP/A": 8,
+        "A/M": 8,
+        "LOOKUP/M": 8,
+        "M/A": 8,
+        "A/ON": 8,
+        "ON/M": 8,
+        "M/LOOKUP": 8,
+        "M/ON": 8,
+        "ON/A": 8,
+        "LOOKUP/ON": 8,
+        "A/LOOKUP": 8
+      }
+    },
+    "CodeLoad.CodeLoadClosure": {
+      "positions": {
+        "A": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "M": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "ON": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "LOOKUP": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "adjacent_pairs": {
+        "A/M": 8,
+        "M/LOOKUP": 8,
+        "LOOKUP/ON": 8,
+        "ON/M": 8,
+        "LOOKUP/A": 8,
+        "A/ON": 8,
+        "ON/LOOKUP": 8,
+        "LOOKUP/M": 8,
+        "M/A": 8,
+        "M/ON": 8,
+        "A/LOOKUP": 8,
+        "ON/A": 8
+      }
+    }
+  },
+  "same_ON_LOOKUP_ELF_argv": true,
+  "only_mode_env_value_differs": true,
+  "monotonic_brackets_and_seriality": true,
+  "boot_ids": [
+    "0bb5def8-7b8b-4021-be8d-7b3ecc9e5746"
+  ],
+  "below_1000ms": 0,
+  "short_records": [],
+  "selected_diagnostics": 16,
+  "gate_diagnostics": 12,
+  "RSS_processes": 36,
+  "crypto_identity_processes": 48,
+  "removed_outliers": 0,
+  "retries": 0,
+  "no_GM": true,
+  "public_data_only": true,
+  "indirect_retained_bytes": null
+}

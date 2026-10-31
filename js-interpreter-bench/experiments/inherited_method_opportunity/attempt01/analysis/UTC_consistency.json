@@ -1,0 +1,23 @@
+{
+  "unit": "ms",
+  "per_process_UTC_minus_monotonic": {
+    "n": 240,
+    "median": 16.836766000000125,
+    "mean": 17.51062701250002,
+    "sample_stddev": 2.556471688551982,
+    "Q1": 16.205717999999933,
+    "Q3": 17.896418000000153,
+    "IQR": 1.69070000000022,
+    "min": 12.751620000000003,
+    "max": 31.39454799999976
+  },
+  "negative_UTC_elapsed_count": 0,
+  "records": 240,
+  "purpose": "date metadata consistency only; not performance calculation",
+  "clock_origin_join": false,
+  "endpoint_note": "UTC start recorded before started-marker filesystem write; monotonic start after that write. UTC end after monotonic stop. Differences can include bookkeeping I/O and clock behavior; not isolated clock drift.",
+  "cause_of_discrepancy": "UNKNOWN; endpoints are not simultaneous",
+  "campaign_UTC_span_ms": 865012.993,
+  "campaign_monotonic_span_ms": 864993.078476,
+  "campaign_UTC_minus_monotonic_ms": 19.91452400002163
+}

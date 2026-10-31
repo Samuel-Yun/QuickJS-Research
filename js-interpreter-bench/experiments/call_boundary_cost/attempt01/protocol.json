@@ -1,0 +1,53 @@
+{
+  "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+  "cases": [
+    "local_function_call",
+    "number_value_read",
+    "Richards.Richards"
+  ],
+  "conditions": [
+    "BASE",
+    "SHIM_OFF",
+    "SHIM_ON"
+  ],
+  "seed": 20261029,
+  "warmup_calls": 0,
+  "first_Run_included": true,
+  "period_initial_us": 7000,
+  "period_fallback_us": 23000,
+  "reps": 12,
+  "target_validation": 108,
+  "pilot_reps_per_condition": 3,
+  "pilot_threshold_ms": 3000,
+  "N_micro_start": 16384,
+  "N_richards_start": 512,
+  "N_micro_max": 131072,
+  "N_richards_max": 4096,
+  "timeout_seconds": 180,
+  "relink_gate": {
+    "point_max": 1.05,
+    "CI95_high_max": 1.1
+  },
+  "sampling_gate": {
+    "point_max": 1.03,
+    "CI95_high_max": 1.05
+  },
+  "bootstrap": 10000,
+  "bootstrap_unit": "complete nine-process round",
+  "long_periods_if_initial_pass": [
+    7,
+    13,
+    23
+  ],
+  "long_periods_if_fallback_pass": [
+    23,
+    31,
+    43
+  ],
+  "long_target_seconds": 30,
+  "long_micro_N_max": 1048576,
+  "long_richards_N_max": 16384,
+  "no_auto_retries": true,
+  "diagnostic_hooks": "only before complete timed region and after; no per-call/opcode instrumentation",
+  "clock": "existing native performance.now duration and enclosing perf_counter_ns; UTC metadata only"
+}

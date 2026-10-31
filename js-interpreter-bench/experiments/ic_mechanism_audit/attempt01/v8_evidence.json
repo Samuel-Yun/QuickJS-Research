@@ -1,0 +1,101 @@
+{
+  "status": "PASS_WITH_OBSERVABILITY_LIMITATION",
+  "only_effective_difference": [
+    "use-ic"
+  ],
+  "OFF_direct_snapshot": null,
+  "artifact_exact_source_commit": null,
+  "reused": {
+    "status": "PASS_REUSED",
+    "prior_gate_sha256": "e4137ff6cc9c16f66743f6dc287e0900f1b493834d4bbc63d19a815a4737b7f4",
+    "source_reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+    "source_manifest_sha256": "d69b0e0c396c9ac2b10fbbce0d1975bb2ac0ac402c7d1e26aac0b55117b952e8",
+    "source_files": [
+      {
+        "bundle_path": "source/src/flags/flag-definitions.h",
+        "upstream_path": "src/flags/flag-definitions.h",
+        "reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+        "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/flags/flag-definitions.h",
+        "size_bytes": 217736,
+        "sha256": "48c2d316b84422e1f249661eac046c0222c8be7a0f17df47b3669e1a71fa7265",
+        "git_blob_sha1": "547b857689a1cfc8fc7d554266525d10fa76a9a5"
+      },
+      {
+        "bundle_path": "source/src/ic/ic.cc",
+        "upstream_path": "src/ic/ic.cc",
+        "reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+        "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/ic/ic.cc",
+        "size_bytes": 192290,
+        "sha256": "ef5f7ef83ba5c788ee7aedc47d2a6642706248b3c3cc8344b94d78194a6d033c",
+        "git_blob_sha1": "714760d40668532f99738f9c7739cbab1a74dd7c"
+      },
+      {
+        "bundle_path": "source/src/runtime/runtime-test.cc",
+        "upstream_path": "src/runtime/runtime-test.cc",
+        "reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+        "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/runtime/runtime-test.cc",
+        "size_bytes": 108394,
+        "sha256": "18db99616c20c49b160d7a3b837d81b6a7793f9055db35ad9cf9d01928d6faf5",
+        "git_blob_sha1": "7629a793e0cef5e5a8df0db10834eb7105b68d69"
+      },
+      {
+        "bundle_path": "source/src/ic/accessor-assembler.cc",
+        "upstream_path": "src/ic/accessor-assembler.cc",
+        "reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+        "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/ic/accessor-assembler.cc",
+        "size_bytes": 242722,
+        "sha256": "7f56384e301aba511e19f16e63f522c189fa798e6c662aba630d2e2c8aad14e6",
+        "git_blob_sha1": "cdb0c1534a980a40d2dd7ff2616b037e9485bbfc"
+      },
+      {
+        "bundle_path": "source/src/interpreter/interpreter-generator.cc",
+        "upstream_path": "src/interpreter/interpreter-generator.cc",
+        "reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+        "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/src/interpreter/interpreter-generator.cc",
+        "size_bytes": 132010,
+        "sha256": "c96f63ad1737a472bb0adcf701d438cf40fca9cf5b5d922a3efad9ba6abe860e",
+        "git_blob_sha1": "40e7050d023c7ed2b6abb3914e27c95f0f102348"
+      },
+      {
+        "bundle_path": "source/LICENSE",
+        "upstream_path": "LICENSE",
+        "reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+        "url": "https://raw.githubusercontent.com/v8/v8/37fb84941c9be9f9914ee50b1ad366f06a1bd764/LICENSE",
+        "size_bytes": 3093,
+        "sha256": "6ab33af8774a0f396ee3aeeb761e3229057682d6f9fa7f572e390c2cb3a6e509",
+        "git_blob_sha1": "9898b2d4833bfe87c05ba9106f082ed600bb2aab"
+      }
+    ],
+    "source_root_relative": "experiments/v8_ic_on_off/attempt02/materials/V8_IC_Resume_Materials_20261025",
+    "source_notes_relative": "experiments/v8_ic_on_off/attempt02/source_notes.md",
+    "source_notes_sha256": "15fba4d34d901f8204436695f67bc8019844c67788c7409a6e457770a33de02e",
+    "ON_evidence": {
+      "source_attempt": "attempt01",
+      "same_binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "bytecode_PC": 0,
+      "feedback_slot": 0,
+      "property": "x",
+      "transition": [
+        "LoadIC",
+        "0x2a34010001cc",
+        "435606",
+        "1",
+        "38",
+        "0",
+        "1",
+        "0x33e40101e1a5",
+        "x",
+        "",
+        ""
+      ],
+      "files": {
+        "summary/selected_site_transitions.csv": "b2c8cf1efad5e0935482868cd7b27796e2270c2cc28bd42b1a1220280f877cf3",
+        "raw/capability/V8_IC_ON_debug.1.json": "80cf74ff259ebd91e4bdca4f3c9dc3531d83c8d77e500885cf715ea8a8d223f5",
+        "raw/ic/V8_IC_ON.debug.log": "68ba461d8a9a2958fa0cfe7cb5018ba0128fa60717f42ce3277632c856c43fdf"
+      },
+      "hit_rate": null
+    },
+    "OFF_direct_snapshot_verified": null,
+    "artifact_source_commit": null
+  }
+}

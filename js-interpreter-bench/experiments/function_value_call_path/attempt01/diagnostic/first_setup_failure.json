@@ -1,0 +1,7 @@
+{
+  "stage": "optional call diagnostic preparation, before any compiler invocation",
+  "failure": "Unique whole-file replacement found two matching JS_CallInternal call expressions; refused to edit.",
+  "partial_source_preserved": "/home/mzyx/function_value_call_path_attempt01/A_call_diagnostic",
+  "formal_artifacts_changed": false,
+  "resolution": "Narrow replacement to actual OP_call0 through OP_call_method block; create fresh diagnostic directory rather than overwrite partial one."
+}

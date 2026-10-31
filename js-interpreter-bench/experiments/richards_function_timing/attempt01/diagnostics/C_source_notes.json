@@ -1,0 +1,12 @@
+{
+  "qjs_signal_record": "SASample={uintptr_t pc; uint64_t ns; int site;}; property-site context only, no full current JS function identity",
+  "qjs_existing_source": "experiments/richards_site_attribution/attempt01/probes/site_hooks.h",
+  "qjs_existing_source_sha256": "514a024580e0738b48bca9b786266e3c779384edb75a2e3e78e0b2f6f097bccf",
+  "source_scope": "no claim that native-PC/lookup-region samples equal whole JS function time",
+  "official_references": [
+    "https://v8.dev/docs/profile",
+    "https://v8.dev/docs/benchmarks",
+    "https://man7.org/linux/man-pages/man1/perf-record.1.html"
+  ],
+  "no_sysctl_power_root_or_engine_rebuild": true
+}

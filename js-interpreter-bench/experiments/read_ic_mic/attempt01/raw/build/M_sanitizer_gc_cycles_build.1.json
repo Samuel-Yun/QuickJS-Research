@@ -1,0 +1,28 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-I/home/mzyx/read_ic_mic_attempt01/M_sanitizer",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/correctness/gc_cycles.c",
+    "-fsanitize=address",
+    "-fsanitize=undefined",
+    "-fno-omit-frame-pointer",
+    "/home/mzyx/read_ic_mic_attempt01/M_sanitizer/.obj/asan/ubsan/quickjs.o",
+    "/home/mzyx/read_ic_mic_attempt01/M_sanitizer/.obj/asan/ubsan/dtoa.o",
+    "/home/mzyx/read_ic_mic_attempt01/M_sanitizer/.obj/asan/ubsan/libregexp.o",
+    "/home/mzyx/read_ic_mic_attempt01/M_sanitizer/.obj/asan/ubsan/libunicode.o",
+    "/home/mzyx/read_ic_mic_attempt01/M_sanitizer/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/read_ic_mic_attempt01/M_sanitizer/gc_cycles_check"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T07:20:21.813783+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "wall_ns": 409551159
+}

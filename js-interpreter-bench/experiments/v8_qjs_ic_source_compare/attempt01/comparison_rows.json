@@ -1,0 +1,101 @@
+[
+  {
+    "比较项": "缓存定位与所属实例",
+    "V8固定源码怎么做": "GetNamedProperty 带 name constant-pool index 与 feedback slot；FeedbackVector 经 function/raw_feedback_cell 挂接，SFI 提供 metadata。",
+    "当前M/P怎么做": "最终 prepare 把 get_field/get_field2 的 atom32 改为等宽 site_index32；属性名保存在外部数组。数组属于 JSFunctionBytecode 编译实例，并非函数+atom共享。",
+    "对应源码函数": "interpreter-generator.cc:598-630；js-function.cc:670-750；read_ic_prepare.inc:1-40；A_to_common_M.patch",
+    "已有或本轮动态证据": "旧 M prepare 前后真实快照：state PC3/19 分别 index0/1；M1 PC13 转为 get_field_rdi 0。原记录路径见 ic_mechanism_audit/attempt01/mechanism_evidence.md。",
+    "确定差异/性能假设/未知": "共同思路：字节码定位外部记录。M 并非没有向量；V8 FBV[4] 不是容量4。闭包共享边界不能仅凭函数名判断。",
+    "对QuickJS是否值得借鉴": "已有核心思路，不作为新候选。"
+  },
+  {
+    "比较项": "稳定own命中的守卫",
+    "V8固定源码怎么做": "有vector时匹配弱 receiver Map 并取得 handler；按 Smi/heap handler、kind、字段表示等分派。",
+    "当前M/P怎么做": "object tag、JS_CLASS_OBJECT、non-exotic、site shape 比较；M一次比较，P先recent再余槽；rdi_probe为force_inline。",
+    "对应源码函数": "accessor-assembler.cc:71-102,488-519,600-630,3392-3463；read_ic_opcodes.inc:2-24；read_ic_runtime.inc:5-25",
+    "已有或本轮动态证据": "M1 N2：M8192查询、8191命中、1回退，A8192普通find；压缩原始报告已复核。V8有同site 0→1/map正证据，无逐次handler记录。",
+    "确定差异/性能假设/未知": "命中步骤不同是源码事实；各检查、布局、分派的时间贡献UNKNOWN，不能把force_inline算作必有一次native call。",
+    "对QuickJS是否值得借鉴": "未发现可安全直接删掉的own检查；本轮不选此项优化。"
+  },
+  {
+    "比较项": "字段布局与offset单位",
+    "V8固定源码怎么做": "字段handler存tagged-word偏移、in-object/double等信息；从holder本体或外部fast properties读取当前值。",
+    "当前M/P怎么做": "shape保存元数据，JSObject.prop指向JSProperty数组；offset=pr-p->prop，是元素索引；命中重取当前prop指针。",
+    "对应源码函数": "accessor-assembler.cc:600-630；handler-configuration.h:100-118；A quickjs.c:947-1014；read_ic_opcodes.inc:20,49",
+    "已有或本轮动态证据": "旧V8 M1 map-details明确x为in-object；QJS真实返回值类型和字段计数已核。不能外推所有V8字段都in-object。",
+    "确定差异/性能假设/未知": "布局不同确定；少一层间接读取可能影响成本，但无独立耗时或cacheline证据。",
+    "对QuickJS是否值得借鉴": "只作成本假设，不在本轮改变对象布局。"
+  },
+  {
+    "比较项": "返回值与receiver所有权",
+    "V8固定源码怎么做": "tagged字段load，结果放accumulator；反馈写入有GC写屏障，Map/部分handler数据可为弱引用；不是QJS的逐值引用计数。",
+    "当前M/P怎么做": "JS_DupValue取得owned result；整数不改对象引用头，函数对象会；get_field释放临时receiver，get_field2保留receiver供method call。",
+    "对应源码函数": "interpreter-generator.cc:626-629；feedback-vector.cc:1163-1211；quickjs.h:689-714；read_ic_opcodes.inc:68-70",
+    "已有或本轮动态证据": "最新number/function读N2均8191命中，结果分别INT8192/OBJECT8192；call案例保留实际receiver。48项语义检查含this与异常。",
+    "确定差异/性能假设/未知": "所有权模型不同确定；没有分项native引用/GC周期，也未证明引用处理解释主要距离。",
+    "对QuickJS是否值得借鉴": "不能直接照搬GC/弱引用；候选保持原owned-result规则。"
+  },
+  {
+    "比较项": "miss、填充和异常",
+    "V8固定源码怎么做": "runtime LoadIC::Load进行lookup；满足use_ic等条件时ComputeHandler→SetCache；语义取值及异常仍发生。",
+    "当前M/P怎么做": "保留普通own/prototype查找；只向普通non-exotic且hashed的own data填充，descriptor/特殊情况走原helper/异常路径。",
+    "对应源码函数": "ic.cc:416-486,1061-1113；read_ic_opcodes.inc:27-66；read_ic_runtime.inc:27-67",
+    "已有或本轮动态证据": "Richards三个继承点N1/N2全回退且inherited理由对应；本轮48/48语义PASS不等于新增缓存被验证。",
+    "确定差异/性能假设/未知": "覆盖域不同确定；M回退不是语义错误。miss各步骤独立成本UNKNOWN。",
+    "对QuickJS是否值得借鉴": "只在原普通查找成功且守卫可成立时扩小范围覆盖。"
+  },
+  {
+    "比较项": "继承data字段与方法读取",
+    "V8固定源码怎么做": "字段handler可由LoadFromPrototype包装，存保护cell及弱holder；内部const且条件合格时可用ConstantFromPrototype保存结果。",
+    "当前M/P怎么做": "不保存holder/原型结果；每次先试own IC再沿原型查找；get_field2仍保留最初receiver，this不是holder。",
+    "对应源码函数": "ic.cc:1391-1433；handler-configuration.cc:119-150；accessor-assembler.cc:1275-1447；read_ic_opcodes.inc:30-59",
+    "已有或本轮动态证据": "schedule PC30/83、TCB.run PC73每Run10671/6573/6573全回退；V8前两处单态、第三处四类task多态，12条map/holder关系已复核。",
+    "确定差异/性能假设/未知": "实际未覆盖访问确定；具体V8字段/常量handler及该site时间UNKNOWN，不能一概画成holder+offset或缓存函数。",
+    "对QuickJS是否值得借鉴": "唯一候选：受限直接一层普通data，读取当前值。"
+  },
+  {
+    "比较项": "原型修改与失效",
+    "V8固定源码怎么做": "原型用户登记/validity cell，配合Map、弱引用与必要own/access检查；修改端NotifyMapChange或显式InvalidatePrototypeChains，读端invalid则miss重算。",
+    "当前M/P怎么做": "当前own缓存依靠hashed shape强持有及相关COW；receiver shape没有记录holder shape/值版本。未hashed shape不能无条件用引用数保证COW。",
+    "对应源码函数": "map.cc:2603-2658；js-objects.cc:3184-3195,5298-5387；lookup.cc:859-976；A quickjs.c:7978-7983,10302-10335,10410-10427",
+    "已有或本轮动态证据": "八case验证原型换值/方法、遮蔽/删除、换链、getter与异常均正确；没有本轮逐次失效事件。",
+    "确定差异/性能假设/未知": "一条data→getter失效链在固定源码完整；实际d8所走支路UNKNOWN。仅receiver shape不足保护继承缓存。",
+    "对QuickJS是否值得借鉴": "借用已有hashed shape条件，不能照搬一个无条件validity bit。"
+  },
+  {
+    "比较项": "多态与替换",
+    "V8固定源码怎么做": "反馈可为弱Map+handler、WeakFixedArray pairs；UpdatePolymorphicIC按有效/废弃Map、已有handler、配置上限等更新；固定源码及旧实际flags的有效Map上限为10，非永远四槽。",
+    "当前M/P怎么做": "M单槽不同shape替换；P四槽，先匹配已有shape、首个空槽优先、满时victim轮换，query先recent；两者均只有own覆盖。",
+    "对应源码函数": "feedback-vector.cc:1163-1211；ic.cc:731-838,1000-1055；flag-definitions.h:3286-3288；read_ic_runtime.inc:5-67",
+    "已有或本轮动态证据": "Richards task.run有四类receiver的既有P状态码；旧effective_flags.json中max-valid-polymorphic-map-count=10。本轮four_receivers正确绑定receiver，但未观测其内部缓存状态。",
+    "确定差异/性能假设/未知": "策略差异由源码确定；不能把V8 FBV slot编号当容量，也不把本轮正确性当四槽占用观测。",
+    "对QuickJS是否值得借鉴": "本轮不改容量/替换；新候选仍为M单槽。"
+  },
+  {
+    "比较项": "megamorphic共享缓存",
+    "V8固定源码怎么做": "StubCache按Map/name等选择handler，主/次表；原型保护留给handler；SetCache可把已有记录复制并更新共享缓存。",
+    "当前M/P怎么做": "无共享megamorphic表；M继续单槽替换，P继续四槽规则；本轮不引入R退出。",
+    "对应源码函数": "stub-cache.h:15-47,104-112；ic.cc:924-929,1041-1049,1116-1142",
+    "已有或本轮动态证据": "选定Richards三处只证实mono/poly反馈，未证明本轮负载有该共享缓存的目标使用。",
+    "确定差异/性能假设/未知": "能力差异确定；与本轮具体位点的性能关系UNKNOWN。",
+    "对QuickJS是否值得借鉴": "仅背景，不作为本轮候选或收益解释。"
+  },
+  {
+    "比较项": "创建、大小与生命周期",
+    "V8固定源码怎么做": "metadata决定向量slots；JSFunction初始化按lazy/log/coverage/tiering条件创建或只准备cells；GC管理向量/handler，弱反馈可清除。StubCache另有自己的清理机制。",
+    "当前M/P怎么做": "最终prepare eager分配；按x86_64字段布局推导M16B/site、P56B/site（非本轮sizeof测量），另有bytecode头与保活。update dup/free shape；free_bytecode释放atom/shape/数组，mark遍历shape。",
+    "对应源码函数": "js-function.cc:659-750；feedback-vector.cc:256-337,432-446,583-685；read_ic_types.h；read_ic_prepare.inc；read_ic_runtime.inc:68-88；M quickjs.c:6632-6641",
+    "已有或本轮动态证据": "冻结实现与旧分配/释放诊断；本轮前后runtime/source SHA一致；V8旧实际flags lazy=true/invocation-count=8不证明固定分配时刻。",
+    "确定差异/性能假设/未知": "强shape保活与V8弱反馈不同；lazy创建何时发生、GC保留量及各自成本UNKNOWN。",
+    "对QuickJS是否值得借鉴": "候选必须披露额外shape/mark/free和COW成本，不把懒分配当默认优势。"
+  },
+  {
+    "比较项": "handler实现与frame",
+    "V8固定源码怎么做": "CSA生成、预编译的builtin在jitless仍可执行；参考LoadIC常见路径试图省额外native frame，原文注明易受代码变化影响。",
+    "当前M/P怎么做": "C解释器macro命中，rdi_probe强制内联；方法读取后的JS调用仍走原调用/返回路径。",
+    "对应源码函数": "accessor-assembler.cc:3392-3402；interpreter-generator.cc:621-629；read_ic_runtime.inc:5；read_ic_opcodes.inc",
+    "已有或本轮动态证据": "既有同d8 handler反汇编；没有具体site逐次native分支/周期。call_boundary_cost门禁未过，成本归因未完成。",
+    "确定差异/性能假设/未知": "IC额外native frame与JS callee frame不同；源码意图不等于实际制品每次省frame的证明。",
+    "对QuickJS是否值得借鉴": "不据此另开调用优化；保留为未知成本。"
+  }
+]

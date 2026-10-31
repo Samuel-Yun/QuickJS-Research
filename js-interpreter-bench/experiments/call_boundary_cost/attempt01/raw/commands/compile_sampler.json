@@ -1,0 +1,27 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "sampler.c:1: warning: \"_GNU_SOURCE\" redefined\n    1 | #define _GNU_SOURCE\n      | \n<command-line>: note: this is the location of the previous definition\nIn file included from sampler.c:15:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘__JS_NewFloat64’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:254:50: warning: unused parameter ‘ctx’ [-Wunused-parameter]\n  254 | static inline JSValue __JS_NewFloat64(JSContext *ctx, double d)\n      |                                       ~~~~~~~~~~~^~~\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘__JS_NewShortBigInt’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:274:54: warning: unused parameter ‘ctx’ [-Wunused-parameter]\n  274 | static inline JSValue __JS_NewShortBigInt(JSContext *ctx, int64_t d)\n      |                                           ~~~~~~~~~~~^~~\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘JS_NewBool’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:555:54: warning: unused parameter ‘ctx’ [-Wunused-parameter]\n  555 | static js_force_inline JSValue JS_NewBool(JSContext *ctx, JS_BOOL val)\n      |                                           ~~~~~~~~~~~^~~\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘JS_NewInt32’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:560:55: warning: unused parameter ‘ctx’ [-Wunused-parameter]\n  560 | static js_force_inline JSValue JS_NewInt32(JSContext *ctx, int32_t val)\n      |                                            ~~~~~~~~~~~^~~\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘JS_NewCatchOffset’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:565:61: warning: unused parameter ‘ctx’ [-Wunused-parameter]\n  565 | static js_force_inline JSValue JS_NewCatchOffset(JSContext *ctx, int32_t val)\n      |                                                  ~~~~~~~~~~~^~~\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘JS_IsBigInt’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:620:46: warning: unused parameter ‘ctx’ [-Wunused-parameter]\n  620 | static inline JS_BOOL JS_IsBigInt(JSContext *ctx, JSValueConst v)\n      |                                   ~~~~~~~~~~~^~~\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘JS_DupValue’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:707:46: warning: unused parameter ‘ctx’ [-Wunused-parameter]\n  707 | static inline JSValue JS_DupValue(JSContext *ctx, JSValueConst v)\n      |                                   ~~~~~~~~~~~^~~\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h: In function ‘JS_DupValueRT’:\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h:716:48: warning: unused parameter ‘rt’ [-Wunused-parameter]\n  716 | static inline JSValue JS_DupValueRT(JSRuntime *rt, JSValueConst v)\n      |                                     ~~~~~~~~~~~^~\nsampler.c: In function ‘begin’:\nsampler.c:88:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   88 |     if(sigprocmask(SIG_SETMASK,&old_mask,NULL))abort();return JS_UNDEFINED;\n      |     ^~\nsampler.c:88:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   88 |     if(sigprocmask(SIG_SETMASK,&old_mask,NULL))abort();return JS_UNDEFINED;\n      |                                                        ^~~~~~\nsampler.c: In function ‘end’:\nsampler.c:94:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   94 |     if(sigprocmask(SIG_BLOCK,&prof_mask,NULL))abort();active=0;\n      |     ^~\nsampler.c:94:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   94 |     if(sigprocmask(SIG_BLOCK,&prof_mask,NULL))abort();active=0;\n      |                                                       ^~~~~~\nsampler.c:108:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n  108 |     if(fclose(f))abort();free(buffer);buffer=NULL;return JS_UNDEFINED;\n      |     ^~\nsampler.c:108:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n  108 |     if(fclose(f))abort();free(buffer);buffer=NULL;return JS_UNDEFINED;\n      |                          ^~~~\n",
+  "timeout": false,
+  "command": [
+    "gcc",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-O2",
+    "-I/home/mzyx/read_ic_dequickening_attempt01/A",
+    "-c",
+    "-o",
+    ".obj/sampler.o",
+    "sampler.c"
+  ],
+  "cwd": "/home/mzyx/call_boundary_cost_attempt01/shim",
+  "timestamp": "2026-10-29T03:04:51.339128+00:00",
+  "completed_at": "2026-10-29T03:04:51.572891+00:00",
+  "outer_start_ns": 6991480232,
+  "outer_stop_ns": 7225210595,
+  "outer_wall_ns": 233730363,
+  "boot_id": "a20e75c8-6e76-4978-8e64-7c21021c2d32"
+}

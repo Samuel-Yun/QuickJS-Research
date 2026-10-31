@@ -1,0 +1,21 @@
+Campaign: read_ic_mic/attempt01
+Cohort: wsl2-LAPTOP-QPKCPDCB-x86_64 (NOT old Windows-native data)
+Guest: Ubuntu 24.04.2 LTS; kernel 5.15.167.4-microsoft-standard-WSL2
+Architecture: x86_64
+CPU: AMD Ryzen 7 5800H with Radeon Graphics; 8 physical / 16 logical (guest lscpu)
+Guest RAM: 8252641280 bytes at build snapshot; swap2147483648
+Compiler: gcc Ubuntu 13.3.0-6ubuntu2~24.04.1, GCC13.3.0
+Build: official make -j2 qjs qjsc; -O2 -g -fwrapv; assertions retained; no LTO/PGO
+Runtime flags: [] (all three QuickJS interpreter, no JIT)
+Dependencies: actual ldd output in raw/build/{A,P,M}_ldd.1.json
+Binary paths/hash/size: manifest.json (frozen independently from statistics)
+Parent clock: Python perf_counter_ns / CLOCK_MONOTONIC
+Child clock: captured native performance.now / CLOCK_MONOTONIC ms
+Clock gate: parent reports nominal 1ns resolution; observed smallest positive child delta about0.00014ms in this probe (includes call overhead, not exact hardware resolution)
+UTC: timestamp label only, never used for durations or overlap
+Affinity: not pinned; common inherited process policy, migration possible
+Power/frequency control: UNKNOWN, not privileged or claimed fixed
+Background system load: not controlled; raw/environment and ps/load snapshots retained
+Pre/post boot IDs: per raw sample and environment, checked independently
+WSL host scheduling: UNKNOWN, a limit for external generalization
+Samples: serial new processes; no simultaneous build/diagnostic/performance task launched by campaign

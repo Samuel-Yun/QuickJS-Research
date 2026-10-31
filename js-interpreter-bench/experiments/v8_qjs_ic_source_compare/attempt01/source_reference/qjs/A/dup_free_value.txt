@@ -1,0 +1,48 @@
+707: static inline JSValue JS_DupValue(JSContext *ctx, JSValueConst v)
+708: {
+709:     if (JS_VALUE_HAS_REF_COUNT(v)) {
+710:         JSRefCountHeader *p = __js_rc(JS_VALUE_GET_PTR(v));
+711:         p->ref_count++;
+712:     }
+713:     return (JSValue)v;
+714: }
+715: 
+716: static inline JSValue JS_DupValueRT(JSRuntime *rt, JSValueConst v)
+717: {
+718:     if (JS_VALUE_HAS_REF_COUNT(v)) {
+719:         JSRefCountHeader *p = __js_rc(JS_VALUE_GET_PTR(v));
+720:         p->ref_count++;
+721:     }
+722:     return (JSValue)v;
+723: }
+724: 
+725: JS_BOOL JS_StrictEq(JSContext *ctx, JSValueConst op1, JSValueConst op2);
+726: JS_BOOL JS_SameValue(JSContext *ctx, JSValueConst op1, JSValueConst op2);
+727: JS_BOOL JS_SameValueZero(JSContext *ctx, JSValueConst op1, JSValueConst op2);
+728: 
+729: int JS_ToBool(JSContext *ctx, JSValueConst val); /* return -1 for JS_EXCEPTION */
+730: int JS_ToInt32(JSContext *ctx, int32_t *pres, JSValueConst val);
+731: static inline int JS_ToUint32(JSContext *ctx, uint32_t *pres, JSValueConst val)
+732: {
+733:     return JS_ToInt32(ctx, (int32_t*)pres, val);
+734: }
+735: int JS_ToInt64(JSContext *ctx, int64_t *pres, JSValueConst val);
+736: int JS_ToIndex(JSContext *ctx, uint64_t *plen, JSValueConst val);
+737: int JS_ToFloat64(JSContext *ctx, double *pres, JSValueConst val);
+738: /* return an exception if 'val' is a Number */
+739: int JS_ToBigInt64(JSContext *ctx, int64_t *pres, JSValueConst val);
+740: /* same as JS_ToInt64() but allow BigInt */
+741: int JS_ToInt64Ext(JSContext *ctx, int64_t *pres, JSValueConst val);
+742: 
+743: JSValue JS_NewStringLen(JSContext *ctx, const char *str1, size_t len1);
+744: static inline JSValue JS_NewString(JSContext *ctx, const char *str)
+745: {
+746:     return JS_NewStringLen(ctx, str, strlen(str));
+747: }
+748: JSValue JS_NewAtomString(JSContext *ctx, const char *str);
+749: JSValue JS_ToString(JSContext *ctx, JSValueConst val);
+750: JSValue JS_ToPropertyKey(JSContext *ctx, JSValueConst val);
+751: const char *JS_ToCStringLen2(JSContext *ctx, size_t *plen, JSValueConst val1, JS_BOOL cesu8);
+752: static inline const char *JS_ToCStringLen(JSContext *ctx, size_t *plen, JSValueConst val1)
+753: {
+754:     return JS_ToCStringLen2(ctx, plen, val1, 0);

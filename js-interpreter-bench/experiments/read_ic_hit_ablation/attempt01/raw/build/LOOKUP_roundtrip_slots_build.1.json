@@ -1,0 +1,28 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-I/home/mzyx/read_ic_hit_ablation_attempt01/SW",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_hit_ablation/attempt01/correctness/roundtrip_slots.c",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/.obj/quickjs.o",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/.obj/dtoa.o",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/.obj/libregexp.o",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/.obj/libunicode.o",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/.obj/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/roundtrip_slots_LOOKUP_check"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T10:05:48.710211+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "wall_ns": 242308651,
+  "relevant_env": {
+    "QJS_READ_IC_MODE": "0"
+  }
+}

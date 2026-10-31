@@ -1,0 +1,29 @@
+{
+  "case": "RegExp.RegExp",
+  "variant": "LOOKUP",
+  "N": 8,
+  "rep": 0,
+  "order": 3,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_hit_ablation/attempt01/raw/memory/RegExp.RegExp/rep0.LOOKUP.pos3.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_hit_ablation/attempt01/generated/RegExp.RegExp.N8.measure.js"
+  ],
+  "binary_sha256": "53680f048a6f53c1f94cc1dc3c52e1263311fb0a36ea6b93b697547069d65267",
+  "script_sha256": "824d96953de3f1b071ddc80c4fd56ad6d8c9a6928c60020a64a059f6d6f22139",
+  "mode_value": "0",
+  "timestamp": "2026-10-24T10:45:32.710101+00:00",
+  "outer_start_ns": 2191007420942,
+  "outer_stop_ns": 2192941744384,
+  "peak_rss_KiB": 6768,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"RegExp.RegExp\",\"suite\":\"RegExp\",\"subbenchmark\":\"RegExp\",\"mode\":\"READ_IC_HIT_ABLATION_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":8,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":2191036.036209,\"stop_ms\":2192938.01813,\"elapsed_ms\":1901.9819210004061,\"elapsed_per_call_ms\":237.74774012505077,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "valid": true,
+  "performance_sample": false
+}

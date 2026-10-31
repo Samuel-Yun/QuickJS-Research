@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-10-30T12:48:12.513707+00:00",
+  "elapsed_seconds": 42.739619541,
+  "budget_seconds": 1800,
+  "Box2D": {
+    "case": "Box2D.Box2D",
+    "status": "RUNS_NO_TRUSTED_OUTPUT_GATE",
+    "formal_included": false,
+    "reason": "original runBox2D creates local world and steps20 times; no final output/checksum assertion, teardown nulls globals; successful internal assertions/exit alone not a whole-result gate",
+    "actual_records": 5,
+    "valid_process_records": 5
+  },
+  "zlib": {
+    "case": "zlib.zlib",
+    "status": "PASS_ORIGINAL_VALIDATION_WITH_READ_ADAPTER",
+    "formal_included": true,
+    "reason": "Decoded frozen InitializeZlibBenchmark payload exports _main:a2; argument1 selects60 iterations of a1 over100000 pseudo-random bytes. Original a1 checks decompressed length==100000 and aG(input,output)==0, otherwise calls az imported __assert_func. Keep all original checks and dynamic initialization in Run; shared read host API only. Actual process results still required.",
+    "actual_records": 10,
+    "valid_process_records": 5,
+    "flags": [
+      "--std"
+    ],
+    "read_adapter": "inputs/zlib_read.js",
+    "Run_IO_dynamic_compile_not_moved": true
+  }
+}

@@ -1,0 +1,14 @@
+229: typedef struct JSValue {
+230:     JSValueUnion u;
+231:     int64_t tag;
+232: } JSValue;
+233: 
+234: #define JSValueConst JSValue
+235: 
+236: #define JS_VALUE_GET_TAG(v) ((int32_t)(v).tag)
+237: /* same as JS_VALUE_GET_TAG, but return JS_TAG_FLOAT64 with NaN boxing */
+238: #define JS_VALUE_GET_NORM_TAG(v) JS_VALUE_GET_TAG(v)
+239: #define JS_VALUE_GET_INT(v) ((int)(v).u.uint64)
+240: #define JS_VALUE_GET_BOOL(v) ((int)(v).u.uint64)
+241: #define JS_VALUE_GET_FLOAT64(v) ((v).u.float64)
+242: #define JS_VALUE_GET_SHORT_BIG_INT(v) ((v).u.short_big_int)

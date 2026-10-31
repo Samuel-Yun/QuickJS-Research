@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"case\":\"own_method_call\",\"N\":1,\"mode\":\"FUNCTION_VALUE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"correctness\",\"correctness\":\"PASS\",\"checksum\":8390656,\"last\":8390656,\"start_ms\":null,\"stop_ms\":null,\"elapsed_ms\":null,\"warmup_calls\":0,\"inner_iterations\":4096,\"first_Run_included\":true}\nLAYOUT_PASS:own_method_call\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--jitless",
+    "--no-lazy",
+    "--use-ic",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/function_value_call_path/attempt01/scripts/diagnostic/own_method_call.layout.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-28T14:46:09.635515+00:00",
+  "completed_at": "2026-10-28T14:46:09.659504+00:00",
+  "outer_start_ns": 126359306410,
+  "outer_stop_ns": 126383278226,
+  "outer_wall_ns": 23971816,
+  "boot_id": "b7eb7cea-19fc-4686-9887-587ef4bb1661"
+}

@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "artifact": {
+    "path": "/home/mzyx/ic_mechanism_audit_attempt01/M_prepare_snapshot/qjs",
+    "sha256": "d54f2ae98788a9312aa2632c1cd6e5053bac1b2bb3cde9284ff2f7e09bafb795",
+    "source": "/home/mzyx/ic_mechanism_audit_attempt01/M_prepare_snapshot",
+    "formal": false,
+    "header_sha256": "06be58629d01189c1b0edbf993aa9a9a9ae8064c784f9bdf0a905ee1185bae07",
+    "read_ic_prepare_sha256": "bcadbb032fe1ba55589f40227fdf8b36ce754a92e4e2142af7f6de4f78b33843",
+    "quickjs_sha256": "089fcde113f939e10fee08a8c26dadc30ff15a2cb173474f86b3127b20843cf3"
+  },
+  "snapshots": [
+    {
+      "case": "M1.own_integer",
+      "source_sha256": "a56cb8c0530ec201fefd68e9d75d5d56daa79ed3f4bbc2596ff60070681da946",
+      "changes": [
+        {
+          "pc": 13,
+          "property": "x",
+          "before": "get_field",
+          "atom32": 626,
+          "after": "get_field_rdi",
+          "site_index32": 0
+        }
+      ],
+      "compressed_path": "raw/diagnostic/M_prepare.M1.own_integer.jsonl.gz",
+      "compressed_sha256": "9da16684cf480ecfce011385f9adaa9c4273f3112a176f3b02826c155c859c5b",
+      "uncompressed_sha256": "9f1a0cba7e06ee65dfc52939375e5c2de1d42dc53d552223f2b806eb09fd6ce8",
+      "script_sha256": "db2322784a8a37bdf89f81b6824d99af3b5f076e437f3e708def8203fa103f99"
+    },
+    {
+      "case": "Richards.Richards",
+      "source_sha256": "69d692d6d84a116d2415efdd3219009659a0266edd7ecbd0d1e83a51ca9d39b5",
+      "changes": [
+        {
+          "pc": 3,
+          "property": "state",
+          "before": "get_field",
+          "atom32": 757,
+          "after": "get_field_rdi",
+          "site_index32": 0
+        },
+        {
+          "pc": 19,
+          "property": "state",
+          "before": "get_field",
+          "atom32": 757,
+          "after": "get_field_rdi",
+          "site_index32": 1
+        }
+      ],
+      "compressed_path": "raw/diagnostic/M_prepare.Richards.Richards.jsonl.gz",
+      "compressed_sha256": "fe2b825f7a8b83e08f19e4238e2810d8ed3fda3e4ac202a699e261990225fa24",
+      "uncompressed_sha256": "f7b36a29e9c4bf3f9fba284d0a7ef7ace543a2c9eb42fd1909541faeb2732c3b",
+      "script_sha256": "ab41bbd378eba915666a976f30a4539f3ff24fa56225f2dee6c44020b24b7239"
+    }
+  ],
+  "stage0": "final compiler passes complete; before rdi_prepare allocation/rewrite",
+  "stage1": "immediately after rdi_prepare rewrite; before any workload call",
+  "formal_timing": false
+}

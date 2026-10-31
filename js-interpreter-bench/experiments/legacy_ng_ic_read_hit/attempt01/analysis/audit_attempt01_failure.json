@@ -1,0 +1,10 @@
+{
+  "status": "FAILED_AUDIT_ASSERTION",
+  "stage": "independent data-only audit, after all measurements",
+  "command": "python audit.py (initial audit revision)",
+  "assertion": "next UTC start >= previous UTC start + previous perf_counter duration",
+  "finding": "This mixed CLOCK_REALTIME calendar timestamp and monotonic duration. 82 inferred inconsistencies; max 873.542 ms; zero regressions of UTC start order. All 1440 recorded Octane absolute monotonic timed intervals are non-overlapping. Micros did not record absolute start/stop; only elapsed.",
+  "resolution": "Preserve all raw. Audit now checks monotonic intervals where available and reports the UTC/monotonic metadata limitation, rather than claiming precise cross-clock process end times. Why the clocks diverged is UNKNOWN.",
+  "formal_performance_sample_failure": false,
+  "raw_modified": false
+}

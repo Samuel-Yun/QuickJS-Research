@@ -1,0 +1,68 @@
+5400: /* remove the deleted properties. */
+5401: static int compact_properties(JSContext *ctx, JSObject *p)
+5402: {
+5403:     JSShape *sh, *old_sh;
+5404:     intptr_t h;
+5405:     uint32_t new_hash_size, i, j, new_hash_mask, new_size;
+5406:     JSShapeProperty *old_pr, *pr;
+5407:     JSProperty *prop, *new_prop;
+5408: 
+5409:     sh = p->shape;
+5410:     assert(!sh->is_hashed);
+5411: 
+5412:     new_size = max_int(JS_PROP_INITIAL_SIZE,
+5413:                        sh->prop_count - sh->deleted_prop_count);
+5414:     assert(new_size <= sh->prop_size);
+5415: 
+5416:     new_hash_size = sh->prop_hash_mask + 1;
+5417:     while ((new_hash_size / 2) >= new_size)
+5418:         new_hash_size = new_hash_size / 2;
+5419:     new_hash_mask = new_hash_size - 1;
+5420: 
+5421:     /* resize the hash table and the properties */
+5422:     old_sh = sh;
+5423:     sh = js_malloc(ctx, get_shape_size(new_hash_size, new_size));
+5424:     if (!sh)
+5425:         return -1;
+5426:     remove_gc_object(&old_sh->header);
+5427: 
+5428:     js_rc(sh)->ref_count = 1;
+5429:     add_gc_object(ctx->rt, &sh->header, JS_GC_OBJ_TYPE_SHAPE);
+5430: 
+5431:     memcpy(&sh->header + 1, &old_sh->header + 1,
+5432:            sizeof(JSShape) - sizeof(JSGCObjectHeader));
+5433: 
+5434:     memset(sh->hash_table, 0, sizeof(sh->hash_table[0]) * new_hash_size);
+5435:     sh->prop_hash_mask = new_hash_mask;
+5436: 
+5437:     j = 0;
+5438:     old_pr = get_shape_prop(old_sh);
+5439:     pr = get_shape_prop(sh);
+5440:     prop = p->prop;
+5441:     for(i = 0; i < sh->prop_count; i++) {
+5442:         if (old_pr->atom != JS_ATOM_NULL) {
+5443:             pr->atom = old_pr->atom;
+5444:             pr->flags = old_pr->flags;
+5445:             h = ((uintptr_t)old_pr->atom & new_hash_mask);
+5446:             pr->hash_next = sh->hash_table[h];
+5447:             sh->hash_table[h] = j + 1;
+5448:             prop[j] = prop[i];
+5449:             j++;
+5450:             pr++;
+5451:         }
+5452:         old_pr++;
+5453:     }
+5454:     assert(j == (sh->prop_count - sh->deleted_prop_count));
+5455:     sh->prop_size = new_size;
+5456:     sh->deleted_prop_count = 0;
+5457:     sh->prop_count = j;
+5458: 
+5459:     p->shape = sh;
+5460:     js_free(ctx, old_sh);
+5461: 
+5462:     /* reduce the size of the object properties */
+5463:     new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
+5464:     if (new_prop)
+5465:         p->prop = new_prop;
+5466:     return 0;
+5467: }

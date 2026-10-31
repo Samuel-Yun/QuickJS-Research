@@ -1,0 +1,250 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d700c0 <Builtins_CallUndefinedReceiver2Handler>:
+ 1d700c0:	43 8d 1c 09          	lea    ebx,[r9+r9*1]
+ 1d700c4:	48 8b d5             	mov    rdx,rbp
+ 1d700c7:	48 89 5a d8          	mov    QWORD PTR [rdx-0x28],rbx
+ 1d700cb:	4b 0f be 5c 0c 01    	movsx  rbx,BYTE PTR [r12+r9*1+0x1]
+ 1d700d1:	48 8b 4a d0          	mov    rcx,QWORD PTR [rdx-0x30]
+ 1d700d5:	48 8b 72 f8          	mov    rsi,QWORD PTR [rdx-0x8]
+ 1d700d9:	47 0f b6 44 0c 04    	movzx  r8d,BYTE PTR [r12+r9*1+0x4]
+ 1d700df:	48 8b 3c da          	mov    rdi,QWORD PTR [rdx+rbx*8]
+ 1d700e3:	8b 59 ff             	mov    ebx,DWORD PTR [rcx-0x1]
+ 1d700e6:	81 fb 95 08 00 00    	cmp    ebx,0x895
+ 1d700ec:	0f 85 b7 02 00 00    	jne    1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d700f2:	42 8b 5c 81 1f       	mov    ebx,DWORD PTR [rcx+r8*4+0x1f]
+ 1d700f7:	83 c3 10             	add    ebx,0x10
+ 1d700fa:	48 63 db             	movsxd rbx,ebx
+ 1d700fd:	42 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],ebx
+ 1d70102:	42 8b 5c 81 1b       	mov    ebx,DWORD PTR [rcx+r8*4+0x1b]
+ 1d70107:	49 0b de             	or     rbx,r14
+ 1d7010a:	44 8b db             	mov    r11d,ebx
+ 1d7010d:	41 83 e3 fd          	and    r11d,0xfffffffd
+ 1d70111:	41 3b fb             	cmp    edi,r11d
+ 1d70114:	0f 84 8f 02 00 00    	je     1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d7011a:	81 fb c5 0e 00 00    	cmp    ebx,0xec5
+ 1d70120:	0f 84 83 02 00 00    	je     1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d70126:	81 fb b5 0e 00 00    	cmp    ebx,0xeb5
+ 1d7012c:	0f 84 a5 01 00 00    	je     1d702d7 <Builtins_CallUndefinedReceiver2Handler+0x217>
+ 1d70132:	83 fb 03             	cmp    ebx,0x3
+ 1d70135:	0f 84 75 01 00 00    	je     1d702b0 <Builtins_CallUndefinedReceiver2Handler+0x1f0>
+ 1d7013b:	4c 8b db             	mov    r11,rbx
+ 1d7013e:	49 83 e3 fd          	and    r11,0xfffffffffffffffd
+ 1d70142:	46 8b 7c 81 1f       	mov    r15d,DWORD PTR [rcx+r8*4+0x1f]
+ 1d70147:	41 8b c7             	mov    eax,r15d
+ 1d7014a:	83 e0 03             	and    eax,0x3
+ 1d7014d:	3c 03                	cmp    al,0x3
+ 1d7014f:	0f 84 db 00 00 00    	je     1d70230 <Builtins_CallUndefinedReceiver2Handler+0x170>
+ 1d70155:	41 f6 c7 01          	test   r15b,0x1
+ 1d70159:	0f 85 d1 00 00 00    	jne    1d70230 <Builtins_CallUndefinedReceiver2Handler+0x170>
+ 1d7015f:	41 d1 ff             	sar    r15d,1
+ 1d70162:	4d 63 ff             	movsxd r15,r15d
+ 1d70165:	41 f6 c7 04          	test   r15b,0x4
+ 1d70169:	0f 84 c1 00 00 00    	je     1d70230 <Builtins_CallUndefinedReceiver2Handler+0x170>
+ 1d7016f:	8b 46 ff             	mov    eax,DWORD PTR [rsi-0x1]
+ 1d70172:	41 8b 44 06 13       	mov    eax,DWORD PTR [r14+rax*1+0x13]
+ 1d70177:	49 0b c6             	or     rax,r14
+ 1d7017a:	83 78 03 1a          	cmp    DWORD PTR [rax+0x3],0x1a
+ 1d7017e:	77 01                	ja     1d70181 <Builtins_CallUndefinedReceiver2Handler+0xc1>
+ 1d70180:	cc                   	int3
+ 1d70181:	39 78 3b             	cmp    DWORD PTR [rax+0x3b],edi
+ 1d70184:	0f 85 a6 00 00 00    	jne    1d70230 <Builtins_CallUndefinedReceiver2Handler+0x170>
+ 1d7018a:	8b db                	mov    ebx,ebx
+ 1d7018c:	83 e3 fd             	and    ebx,0xfffffffd
+ 1d7018f:	41 bb 11 00 00 00    	mov    r11d,0x11
+ 1d70195:	44 3b db             	cmp    r11d,ebx
+ 1d70198:	0f 84 0b 02 00 00    	je     1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d7019e:	49 83 e7 fb          	and    r15,0xfffffffffffffffb
+ 1d701a2:	43 8d 1c 3f          	lea    ebx,[r15+r15*1]
+ 1d701a6:	42 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],ebx
+ 1d701ab:	40 f6 c7 01          	test   dil,0x1
+ 1d701af:	0f 84 eb 01 00 00    	je     1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d701b5:	48 8b df             	mov    rbx,rdi
+ 1d701b8:	eb 0c                	jmp    1d701c6 <Builtins_CallUndefinedReceiver2Handler+0x106>
+ 1d701ba:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+ 1d701c0:	8b 5b 0b             	mov    ebx,DWORD PTR [rbx+0xb]
+ 1d701c3:	49 0b de             	or     rbx,r14
+ 1d701c6:	44 8b 5b ff          	mov    r11d,DWORD PTR [rbx-0x1]
+ 1d701ca:	47 0f b7 5c 1e 07    	movzx  r11d,WORD PTR [r14+r11*1+0x7]
+ 1d701d0:	41 81 fb 22 08 00 00 	cmp    r11d,0x822
+ 1d701d7:	74 e7                	je     1d701c0 <Builtins_CallUndefinedReceiver2Handler+0x100>
+ 1d701d9:	41 81 eb 10 08 00 00 	sub    r11d,0x810
+ 1d701e0:	41 83 fb 11          	cmp    r11d,0x11
+ 1d701e4:	0f 87 b6 01 00 00    	ja     1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d701ea:	8b 5b 13             	mov    ebx,DWORD PTR [rbx+0x13]
+ 1d701ed:	44 8b 5e ff          	mov    r11d,DWORD PTR [rsi-0x1]
+ 1d701f1:	41 8b 5c 1e ff       	mov    ebx,DWORD PTR [r14+rbx*1-0x1]
+ 1d701f6:	47 8b 5c 1e 13       	mov    r11d,DWORD PTR [r14+r11*1+0x13]
+ 1d701fb:	45 39 5c 1e 13       	cmp    DWORD PTR [r14+rbx*1+0x13],r11d
+ 1d70200:	0f 85 9a 01 00 00    	jne    1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d70206:	48 8b df             	mov    rbx,rdi
+ 1d70209:	48 83 cb 03          	or     rbx,0x3
+ 1d7020d:	42 89 5c 81 1b       	mov    DWORD PTR [rcx+r8*4+0x1b],ebx
+ 1d70212:	f6 c3 01             	test   bl,0x1
+ 1d70215:	74 14                	je     1d7022b <Builtins_CallUndefinedReceiver2Handler+0x16b>
+ 1d70217:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d7021e:	4c 23 d9             	and    r11,rcx
+ 1d70221:	41 f6 03 04          	test   BYTE PTR [r11],0x4
+ 1d70225:	0f 85 14 02 00 00    	jne    1d7043f <Builtins_CallUndefinedReceiver2Handler+0x37f>
+ 1d7022b:	e9 79 01 00 00       	jmp    1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d70230:	40 f6 c7 01          	test   dil,0x1
+ 1d70234:	0f 84 66 01 00 00    	je     1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d7023a:	8b 5f ff             	mov    ebx,DWORD PTR [rdi-0x1]
+ 1d7023d:	41 0f b7 5c 1e 07    	movzx  ebx,WORD PTR [r14+rbx*1+0x7]
+ 1d70243:	81 eb 10 08 00 00    	sub    ebx,0x810
+ 1d70249:	83 fb 11             	cmp    ebx,0x11
+ 1d7024c:	0f 87 4e 01 00 00    	ja     1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d70252:	8b 5f 17             	mov    ebx,DWORD PTR [rdi+0x17]
+ 1d70255:	44 3b db             	cmp    r11d,ebx
+ 1d70258:	0f 84 4b 01 00 00    	je     1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d7025e:	45 8b 7b ff          	mov    r15d,DWORD PTR [r11-0x1]
+ 1d70262:	47 0f b7 7c 3e 07    	movzx  r15d,WORD PTR [r14+r15*1+0x7]
+ 1d70268:	41 81 ef 10 08 00 00 	sub    r15d,0x810
+ 1d7026f:	41 83 ff 11          	cmp    r15d,0x11
+ 1d70273:	0f 87 27 01 00 00    	ja     1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d70279:	45 8b 5b 17          	mov    r11d,DWORD PTR [r11+0x17]
+ 1d7027d:	4d 0b de             	or     r11,r14
+ 1d70280:	41 3b db             	cmp    ebx,r11d
+ 1d70283:	0f 85 17 01 00 00    	jne    1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d70289:	49 83 cb 03          	or     r11,0x3
+ 1d7028d:	46 89 5c 81 1b       	mov    DWORD PTR [rcx+r8*4+0x1b],r11d
+ 1d70292:	41 f6 c3 01          	test   r11b,0x1
+ 1d70296:	74 13                	je     1d702ab <Builtins_CallUndefinedReceiver2Handler+0x1eb>
+ 1d70298:	48 c7 c3 00 00 fc ff 	mov    rbx,0xfffffffffffc0000
+ 1d7029f:	48 23 d9             	and    rbx,rcx
+ 1d702a2:	f6 03 04             	test   BYTE PTR [rbx],0x4
+ 1d702a5:	0f 85 62 01 00 00    	jne    1d7040d <Builtins_CallUndefinedReceiver2Handler+0x34d>
+ 1d702ab:	e9 f9 00 00 00       	jmp    1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d702b0:	42 8b 5c 81 1f       	mov    ebx,DWORD PTR [rcx+r8*4+0x1f]
+ 1d702b5:	44 8b db             	mov    r11d,ebx
+ 1d702b8:	41 83 e3 03          	and    r11d,0x3
+ 1d702bc:	41 80 fb 03          	cmp    r11b,0x3
+ 1d702c0:	74 15                	je     1d702d7 <Builtins_CallUndefinedReceiver2Handler+0x217>
+ 1d702c2:	f6 c3 01             	test   bl,0x1
+ 1d702c5:	75 10                	jne    1d702d7 <Builtins_CallUndefinedReceiver2Handler+0x217>
+ 1d702c7:	d1 fb                	sar    ebx,1
+ 1d702c9:	48 63 db             	movsxd rbx,ebx
+ 1d702cc:	48 83 e3 fb          	and    rbx,0xfffffffffffffffb
+ 1d702d0:	d1 e3                	shl    ebx,1
+ 1d702d2:	42 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],ebx
+ 1d702d7:	8b 5e ff             	mov    ebx,DWORD PTR [rsi-0x1]
+ 1d702da:	41 8b 5c 1e 13       	mov    ebx,DWORD PTR [r14+rbx*1+0x13]
+ 1d702df:	49 0b de             	or     rbx,r14
+ 1d702e2:	83 7b 03 1a          	cmp    DWORD PTR [rbx+0x3],0x1a
+ 1d702e6:	77 01                	ja     1d702e9 <Builtins_CallUndefinedReceiver2Handler+0x229>
+ 1d702e8:	cc                   	int3
+ 1d702e9:	39 7b 3b             	cmp    DWORD PTR [rbx+0x3b],edi
+ 1d702ec:	74 05                	je     1d702f3 <Builtins_CallUndefinedReceiver2Handler+0x233>
+ 1d702ee:	48 8b df             	mov    rbx,rdi
+ 1d702f1:	eb 2b                	jmp    1d7031e <Builtins_CallUndefinedReceiver2Handler+0x25e>
+ 1d702f3:	42 8b 5c 81 1f       	mov    ebx,DWORD PTR [rcx+r8*4+0x1f]
+ 1d702f8:	44 8b db             	mov    r11d,ebx
+ 1d702fb:	41 83 e3 03          	and    r11d,0x3
+ 1d702ff:	41 80 fb 03          	cmp    r11b,0x3
+ 1d70303:	74 15                	je     1d7031a <Builtins_CallUndefinedReceiver2Handler+0x25a>
+ 1d70305:	f6 c3 01             	test   bl,0x1
+ 1d70308:	75 10                	jne    1d7031a <Builtins_CallUndefinedReceiver2Handler+0x25a>
+ 1d7030a:	d1 fb                	sar    ebx,1
+ 1d7030c:	48 63 db             	movsxd rbx,ebx
+ 1d7030f:	48 83 cb 04          	or     rbx,0x4
+ 1d70313:	d1 e3                	shl    ebx,1
+ 1d70315:	42 89 5c 81 1f       	mov    DWORD PTR [rcx+r8*4+0x1f],ebx
+ 1d7031a:	49 8d 5e 11          	lea    rbx,[r14+0x11]
+ 1d7031e:	f6 c3 01             	test   bl,0x1
+ 1d70321:	0f 84 79 00 00 00    	je     1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d70327:	4c 8b db             	mov    r11,rbx
+ 1d7032a:	eb 1b                	jmp    1d70347 <Builtins_CallUndefinedReceiver2Handler+0x287>
+ 1d7032c:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d70333:	00 00 
+ 1d70335:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d7033c:	00 00 
+ 1d7033e:	66 90                	xchg   ax,ax
+ 1d70340:	45 8b 5b 0b          	mov    r11d,DWORD PTR [r11+0xb]
+ 1d70344:	4d 0b de             	or     r11,r14
+ 1d70347:	45 8b 7b ff          	mov    r15d,DWORD PTR [r11-0x1]
+ 1d7034b:	47 0f b7 7c 3e 07    	movzx  r15d,WORD PTR [r14+r15*1+0x7]
+ 1d70351:	41 81 ff 22 08 00 00 	cmp    r15d,0x822
+ 1d70358:	74 e6                	je     1d70340 <Builtins_CallUndefinedReceiver2Handler+0x280>
+ 1d7035a:	41 81 ef 10 08 00 00 	sub    r15d,0x810
+ 1d70361:	41 83 ff 11          	cmp    r15d,0x11
+ 1d70365:	77 39                	ja     1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d70367:	45 8b 5b 13          	mov    r11d,DWORD PTR [r11+0x13]
+ 1d7036b:	44 8b 7e ff          	mov    r15d,DWORD PTR [rsi-0x1]
+ 1d7036f:	47 8b 5c 1e ff       	mov    r11d,DWORD PTR [r14+r11*1-0x1]
+ 1d70374:	47 8b 7c 3e 13       	mov    r15d,DWORD PTR [r14+r15*1+0x13]
+ 1d70379:	47 39 7c 1e 13       	cmp    DWORD PTR [r14+r11*1+0x13],r15d
+ 1d7037e:	75 20                	jne    1d703a0 <Builtins_CallUndefinedReceiver2Handler+0x2e0>
+ 1d70380:	48 83 cb 03          	or     rbx,0x3
+ 1d70384:	42 89 5c 81 1b       	mov    DWORD PTR [rcx+r8*4+0x1b],ebx
+ 1d70389:	f6 c3 01             	test   bl,0x1
+ 1d7038c:	74 10                	je     1d7039e <Builtins_CallUndefinedReceiver2Handler+0x2de>
+ 1d7038e:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d70395:	4c 23 d9             	and    r11,rcx
+ 1d70398:	41 f6 03 04          	test   BYTE PTR [r11],0x4
+ 1d7039c:	75 44                	jne    1d703e2 <Builtins_CallUndefinedReceiver2Handler+0x322>
+ 1d7039e:	eb 09                	jmp    1d703a9 <Builtins_CallUndefinedReceiver2Handler+0x2e9>
+ 1d703a0:	42 c7 44 81 1b c5 0e 	mov    DWORD PTR [rcx+r8*4+0x1b],0xec5
+ 1d703a7:	00 00 
+ 1d703a9:	4b 0f be 5c 0c 02    	movsx  rbx,BYTE PTR [r12+r9*1+0x2]
+ 1d703af:	4b 0f be 4c 0c 03    	movsx  rcx,BYTE PTR [r12+r9*1+0x3]
+ 1d703b5:	48 8b 1c da          	mov    rbx,QWORD PTR [rdx+rbx*8]
+ 1d703b9:	48 8b 14 ca          	mov    rdx,QWORD PTR [rdx+rcx*8]
+ 1d703bd:	48 83 ec 10          	sub    rsp,0x10
+ 1d703c1:	ff 74 24 10          	push   QWORD PTR [rsp+0x10]
+ 1d703c5:	b8 03 00 00 00       	mov    eax,0x3
+ 1d703ca:	48 89 54 24 18       	mov    QWORD PTR [rsp+0x18],rdx
+ 1d703cf:	4d 8d 56 11          	lea    r10,[r14+0x11]
+ 1d703d3:	4c 89 54 24 08       	mov    QWORD PTR [rsp+0x8],r10
+ 1d703d8:	48 89 5c 24 10       	mov    QWORD PTR [rsp+0x10],rbx
+ 1d703dd:	e9 9e 36 e1 ff       	jmp    1b83a80 <Builtins_Call_ReceiverIsNullOrUndefined>
+ 1d703e2:	8b db                	mov    ebx,ebx
+ 1d703e4:	49 0b de             	or     rbx,r14
+ 1d703e7:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d703ee:	4c 23 db             	and    r11,rbx
+ 1d703f1:	41 f6 03 02          	test   BYTE PTR [r11],0x2
+ 1d703f5:	74 a7                	je     1d7039e <Builtins_CallUndefinedReceiver2Handler+0x2de>
+ 1d703f7:	4e 8d 7c 81 1b       	lea    r15,[rcx+r8*4+0x1b]
+ 1d703fc:	53                   	push   rbx
+ 1d703fd:	57                   	push   rdi
+ 1d703fe:	48 8b f9             	mov    rdi,rcx
+ 1d70401:	49 8b df             	mov    rbx,r15
+ 1d70404:	e8 37 21 e1 ff       	call   1b82540 <Builtins_RecordWriteIgnoreFP>
+ 1d70409:	5f                   	pop    rdi
+ 1d7040a:	5b                   	pop    rbx
+ 1d7040b:	eb 91                	jmp    1d7039e <Builtins_CallUndefinedReceiver2Handler+0x2de>
+ 1d7040d:	45 8b db             	mov    r11d,r11d
+ 1d70410:	4d 0b de             	or     r11,r14
+ 1d70413:	48 c7 c3 00 00 fc ff 	mov    rbx,0xfffffffffffc0000
+ 1d7041a:	49 23 db             	and    rbx,r11
+ 1d7041d:	f6 03 02             	test   BYTE PTR [rbx],0x2
+ 1d70420:	0f 84 85 fe ff ff    	je     1d702ab <Builtins_CallUndefinedReceiver2Handler+0x1eb>
+ 1d70426:	4e 8d 7c 81 1b       	lea    r15,[rcx+r8*4+0x1b]
+ 1d7042b:	53                   	push   rbx
+ 1d7042c:	57                   	push   rdi
+ 1d7042d:	48 8b f9             	mov    rdi,rcx
+ 1d70430:	49 8b df             	mov    rbx,r15
+ 1d70433:	e8 08 21 e1 ff       	call   1b82540 <Builtins_RecordWriteIgnoreFP>
+ 1d70438:	5f                   	pop    rdi
+ 1d70439:	5b                   	pop    rbx
+ 1d7043a:	e9 6c fe ff ff       	jmp    1d702ab <Builtins_CallUndefinedReceiver2Handler+0x1eb>
+ 1d7043f:	8b db                	mov    ebx,ebx
+ 1d70441:	49 0b de             	or     rbx,r14
+ 1d70444:	49 c7 c3 00 00 fc ff 	mov    r11,0xfffffffffffc0000
+ 1d7044b:	4c 23 db             	and    r11,rbx
+ 1d7044e:	41 f6 03 02          	test   BYTE PTR [r11],0x2
+ 1d70452:	0f 84 d3 fd ff ff    	je     1d7022b <Builtins_CallUndefinedReceiver2Handler+0x16b>
+ 1d70458:	4e 8d 7c 81 1b       	lea    r15,[rcx+r8*4+0x1b]
+ 1d7045d:	53                   	push   rbx
+ 1d7045e:	57                   	push   rdi
+ 1d7045f:	48 8b f9             	mov    rdi,rcx
+ 1d70462:	49 8b df             	mov    rbx,r15
+ 1d70465:	e8 d6 20 e1 ff       	call   1b82540 <Builtins_RecordWriteIgnoreFP>
+ 1d7046a:	5f                   	pop    rdi
+ 1d7046b:	5b                   	pop    rbx
+ 1d7046c:	e9 ba fd ff ff       	jmp    1d7022b <Builtins_CallUndefinedReceiver2Handler+0x16b>
+ 1d70471:	90                   	nop
+ 1d70472:	66 90                	xchg   ax,ax

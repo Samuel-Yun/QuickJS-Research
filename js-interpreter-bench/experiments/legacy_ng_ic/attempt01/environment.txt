@@ -1,0 +1,30 @@
+Collection: legacy_ng_ic/attempt01, new A/B only
+Host: LAPTOP-QPKCPDCB
+Cohort: wsl2-ubuntu2404-x64-20261004
+OS: Ubuntu 24.04.2 LTS under WSL2; not Windows-native runtime
+Kernel: 5.15.167.4-microsoft-standard-WSL2
+Architecture: x86_64
+CPU: AMD Ryzen 7 5800H with Radeon Graphics; 8 physical/16 logical cores
+Guest MemTotal observed: 8252637184 bytes
+Guest Swap observed: 2147483648 bytes
+Compiler: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Build: make -j2 qjs qjsc, unchanged official upstream Makefile
+Compile flags (qjs/quickjs): -g -Wall -MMD -MF <object>.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION="2026-06-04" -DHAVE_CLOSEFROM -O2
+Link qjs: gcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl
+Complete all qjsc/generated-repl compile/link lines: raw/build/A_release.1.log, B_release.2.log (failed B_release.1.log retained)
+LTO: disabled; PGO: disabled; NDEBUG: not defined
+Runtime options: [] on both versions; no per-version GC/stack tuning
+Dependencies: libm.so.6, libc.so.6, ld-linux-x86-64.so.2; exact resolved paths/hashes in source_evidence/final_identity.json
+Binary paths and SHA256: manifest.json, artifact copies: artifacts/{A,B}/
+Clock: native performance.now captured before benchmark replaces it, Linux CLOCK_MONOTONIC, milliseconds
+Formal sample dates UTC: 2026-10-22T16:26:08.454443+00:00 to 2026-10-22T16:59:42.992498+00:00
+Formal date Asia/Shanghai: 2026-10-23 00:26-00:59
+Formal boot id: 2934b94e-37f5-44fc-9693-1d2101aa2a41
+Source acquisition/build/diagnostic sessions can have different WSL boot ids; recorded separately, no pooled historical times.
+Power policy: UNKNOWN
+Per-sample clock frequency/temperature: UNKNOWN
+Background: not fully isolated; ps/load/memory snapshots before/pilot/formal/completion retained in raw/environment
+Sampling serial; compiler absence checked before formal; diagnostics and memory checks after formal.
+No full test262; targeted ASan/UBSan and available upstream tests passed.
+Formal wait4 peak RSS warning: fork/pre-exec high-water includes launcher footprint; independent GNU time check n=3/version/unit recorded separately.
+Crypto warning: source-level Math.random rng_pool initialization precedes ResetRNG; pairwise identical random padding not guaranteed.

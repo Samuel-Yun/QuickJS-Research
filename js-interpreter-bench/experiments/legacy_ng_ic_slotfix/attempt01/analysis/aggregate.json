@@ -1,0 +1,154 @@
+{
+  "MAIN_no_Crypto": {
+    "cases": [
+      "Richards.Richards",
+      "DeltaBlue.DeltaBlue",
+      "RayTrace.RayTrace",
+      "EarleyBoyer.Earley",
+      "EarleyBoyer.Boyer",
+      "RegExp.RegExp",
+      "Splay.Splay",
+      "NavierStokes.NavierStokes",
+      "PdfJS.PdfJS",
+      "Mandreel.Mandreel",
+      "Gameboy.Gameboy",
+      "CodeLoad.CodeLoadClosure",
+      "CodeLoad.CodeLoadJQuery",
+      "Typescript.Typescript"
+    ],
+    "unit_count": 14,
+    "suite_count": 12,
+    "comparisons": {
+      "AB": {
+        "suite_geomean": 0.9262761939701806,
+        "by_suite": {
+          "Richards": 0.8503818300446802,
+          "DeltaBlue": 0.9161442888826214,
+          "RayTrace": 0.849842379949833,
+          "EarleyBoyer": 0.9636399986741405,
+          "RegExp": 0.9779861150034993,
+          "Splay": 0.888431732041599,
+          "NavierStokes": 1.0121309665118052,
+          "PdfJS": 0.9837367136132946,
+          "Mandreel": 1.029142979691846,
+          "Gameboy": 0.855535334313657,
+          "CodeLoad": 0.9328441956397225,
+          "Typescript": 0.8799537625380609
+        }
+      },
+      "BC": {
+        "suite_geomean": 1.0025462737969943,
+        "by_suite": {
+          "Richards": 1.0036011456506768,
+          "DeltaBlue": 1.0028443553837068,
+          "RayTrace": 0.9813375197887505,
+          "EarleyBoyer": 1.0146279958908053,
+          "RegExp": 1.0195847489869592,
+          "Splay": 1.0239936002471683,
+          "NavierStokes": 0.9871497832020312,
+          "PdfJS": 0.9963893562641531,
+          "Mandreel": 0.9920336249724446,
+          "Gameboy": 0.9939836475527174,
+          "CodeLoad": 1.0056119526992133,
+          "Typescript": 1.0103327522563321
+        }
+      },
+      "AC": {
+        "suite_geomean": 0.9286347467716665,
+        "by_suite": {
+          "Richards": 0.85344417887336,
+          "DeltaBlue": 0.9187501288229568,
+          "RayTrace": 0.8339822133513382,
+          "EarleyBoyer": 0.9777361206149616,
+          "RegExp": 0.9971397275785742,
+          "Splay": 0.9097484078671045,
+          "NavierStokes": 0.9991248641641908,
+          "PdfJS": 0.9801847908105643,
+          "Mandreel": 1.0209444407586452,
+          "Gameboy": 0.8503881322113223,
+          "CodeLoad": 0.9380792731413884,
+          "Typescript": 0.889046106763394
+        }
+      }
+    }
+  },
+  "sensitivity_with_Crypto": {
+    "cases": [
+      "Richards.Richards",
+      "DeltaBlue.DeltaBlue",
+      "Crypto.Encrypt",
+      "Crypto.Decrypt",
+      "RayTrace.RayTrace",
+      "EarleyBoyer.Earley",
+      "EarleyBoyer.Boyer",
+      "RegExp.RegExp",
+      "Splay.Splay",
+      "NavierStokes.NavierStokes",
+      "PdfJS.PdfJS",
+      "Mandreel.Mandreel",
+      "Gameboy.Gameboy",
+      "CodeLoad.CodeLoadClosure",
+      "CodeLoad.CodeLoadJQuery",
+      "Typescript.Typescript"
+    ],
+    "unit_count": 16,
+    "suite_count": 13,
+    "comparisons": {
+      "AB": {
+        "suite_geomean": 0.928522888804774,
+        "by_suite": {
+          "Richards": 0.8503818300446802,
+          "DeltaBlue": 0.9161442888826214,
+          "Crypto": 0.9559120822699578,
+          "RayTrace": 0.849842379949833,
+          "EarleyBoyer": 0.9636399986741405,
+          "RegExp": 0.9779861150034993,
+          "Splay": 0.888431732041599,
+          "NavierStokes": 1.0121309665118052,
+          "PdfJS": 0.9837367136132946,
+          "Mandreel": 1.029142979691846,
+          "Gameboy": 0.855535334313657,
+          "CodeLoad": 0.9328441956397225,
+          "Typescript": 0.8799537625380609
+        }
+      },
+      "BC": {
+        "suite_geomean": 1.003386797359277,
+        "by_suite": {
+          "Richards": 1.0036011456506768,
+          "DeltaBlue": 1.0028443553837068,
+          "Crypto": 1.01352821490213,
+          "RayTrace": 0.9813375197887505,
+          "EarleyBoyer": 1.0146279958908053,
+          "RegExp": 1.0195847489869592,
+          "Splay": 1.0239936002471683,
+          "NavierStokes": 0.9871497832020312,
+          "PdfJS": 0.9963893562641531,
+          "Mandreel": 0.9920336249724446,
+          "Gameboy": 0.9939836475527174,
+          "CodeLoad": 1.0056119526992133,
+          "Typescript": 1.0103327522563321
+        }
+      },
+      "AC": {
+        "suite_geomean": 0.9316676076726061,
+        "by_suite": {
+          "Richards": 0.85344417887336,
+          "DeltaBlue": 0.9187501288229568,
+          "Crypto": 0.9688438663464484,
+          "RayTrace": 0.8339822133513382,
+          "EarleyBoyer": 0.9777361206149616,
+          "RegExp": 0.9971397275785742,
+          "Splay": 0.9097484078671045,
+          "NavierStokes": 0.9991248641641908,
+          "PdfJS": 0.9801847908105643,
+          "Mandreel": 1.0209444407586452,
+          "Gameboy": 0.8503881322113223,
+          "CodeLoad": 0.9380792731413884,
+          "Typescript": 0.889046106763394
+        }
+      }
+    }
+  },
+  "official_Octane_score": false
+}

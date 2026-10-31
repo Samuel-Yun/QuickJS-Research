@@ -1,0 +1,23 @@
+{
+  "inputs": {
+    "benchmarks/octane/upstream/base.js": "a4710cf27b9be9a68d44226ea84b5e4bf03feb0a0533f1a7eba3238ca70a2d54",
+    "benchmarks/octane/upstream/richards.js": "39cd766ec9db421d267358e397acf534d34e3c46c6198da959133c4f050d5e4a",
+    "experiments/call_path_followup/attempt01/richards/original.N1.js": "a1a0d7f0714ff818f8e8bca013e16fb0cc5ec29e9ae36fb9c279c1d8fc70afaf",
+    "experiments/richards_site_attribution/attempt01/manifest.json": "06e5c60dc90c73c59df2b6da7b5e047a323b0ea6a426f9d3b4b5bd6aad297ea9",
+    "experiments/richards_site_attribution/attempt01/summary/site_samples.csv": "e755fe7d7ab60cf3a2f0c6d426ceba86e6e1a5163a9c7e2ce44f1ae36c74df4e",
+    "experiments/richards_site_attribution/attempt01/summary/perturbation.json": "1241f4942e16ad10cfe5e3b091033c8c5634a434f5cf838eeeacd41cb34a5369",
+    "experiments/three_engine_baseline/probes/tier/summary.json": "793b3a5c3964f482743d9f41302fc35645bf7a5c3feb81e7699c19f8385619bc",
+    "experiments/bytecode_whitebox_simple/attempt01/source_evidence/qjs_monotonic_clock.txt": "ad6d706002d416e21b661ab103adb91a96ccbbb681e64ac69cfed73246274ef7",
+    "experiments/richards_site_attribution/attempt01/bytecode/quickjs/TaskControlBlock.prototype.isHeldOrSuspended.decoded.json": "94f996e358d9ee7dab027ecc7e5b34d7059c39114852f8c1c3d0085c5dff64ea",
+    "experiments/richards_site_attribution/attempt01/bytecode/quickjs/TaskControlBlock.prototype.isHeldOrSuspended.txt": "7fb818e0812f5677908cd1a89e91c3393116e9565b265c4521ad43c8268aab26",
+    "experiments/richards_site_attribution/attempt01/bytecode/v8/TaskControlBlock.isHeldOrSuspended.decoded.json": "b0d5263016b055980bca0924aea1d3f5b81ade660bea782bd0bc2b9c0f265dac",
+    "experiments/richards_site_attribution/attempt01/bytecode/v8/TaskControlBlock.isHeldOrSuspended.txt": "86ed52646ac95692dc20546a3b37afeed97fbe9412ac69b9df509872e75f3653",
+    "experiments/three_engine_baseline/adapters/quickjs.js": "f20aa7b460675d08600a58945203034feb50b2a3515aba579219f648b1235c6c",
+    "experiments/timer_recovery/adapters/quickjs.js": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7",
+    "experiments/three_engine_baseline/adapters/v8.js": "0ab3ed677381191d7e7839cbbc3f07895104a8b8299679ab9f37b856d76d3a22",
+    "experiments/timer_recovery/adapters/v8.js": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+  },
+  "original_function_sha256": "d75a4572f184bf1403229f373888ea8fc0d6ad2c48e9de35793cc5ab3eceb485",
+  "A_driver": "exact prior original.N1.js bytes except N substitutions; no method replacement",
+  "B_source": "exact base.js and richards.js bytes, not hand-rewritten target or constructor"
+}

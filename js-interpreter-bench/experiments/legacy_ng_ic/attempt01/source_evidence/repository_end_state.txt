@@ -1,0 +1,17 @@
+Final read-only repository check (2026-10-23, Asia/Shanghai session)
+Working directory: C:/Users/mzyx/Desktop/0921
+
+git -c safe.directory=C:/Users/mzyx/Desktop/0921 rev-parse --abbrev-ref HEAD
+myx
+
+git -c safe.directory=C:/Users/mzyx/Desktop/0921 rev-parse HEAD
+01377f432f448830957219380e1cd8c903a6de46
+
+git -c safe.directory=C:/Users/mzyx/Desktop/0921 status --short
+?? js-interpreter-bench/experiments/legacy_ng_ic/
+
+git -c safe.directory=C:/Users/mzyx/Desktop/0921 diff --check
+(empty output, exit code 0)
+
+No branch switch, commit, push, reset or clean. Existing tracked research files unchanged.
+All task edits/results isolated to the new experiment directory.

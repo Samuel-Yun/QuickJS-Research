@@ -1,0 +1,30 @@
+{
+  "campaign": "read_ic_dequickening/attempt01",
+  "case": "Splay.Splay",
+  "variant": "R",
+  "rep": 1,
+  "order": 1,
+  "N": 1024,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/raw/memory/Splay.Splay/rep1.R.pos1.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_dequickening_attempt01/R/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/generated/Splay.Splay.N1024.measure.js"
+  ],
+  "binary_sha256": "7d803b42a94848540c9d4aab7b844c3facff3be90b0bec550dc4282a7f7ba12a",
+  "script_sha256": "0e3ed2f7a24e70eccddff628f05fe03d73723b7e8813181b7cbeef5fb5ebe53f",
+  "peak_rss_KiB": 147344,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Splay.Splay\",\"suite\":\"Splay\",\"subbenchmark\":\"Splay\",\"mode\":\"READ_IC_DEQUICKEN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":1024,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5468010.271788,\"stop_ms\":5470733.403227,\"elapsed_ms\":2723.131438999437,\"elapsed_per_call_ms\":2.6593080458978875,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-24T13:17:22.355141+00:00",
+  "outer_wall_ns": 3286703477,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

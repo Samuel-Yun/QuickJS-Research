@@ -1,0 +1,1551 @@
+{
+  "status": "PASS_WITH_CLOCK_METADATA_LIMITATION",
+  "data_only": true,
+  "runtime_files_required": false,
+  "records": 1890,
+  "Octane_valid": 1440,
+  "micro_valid": 450,
+  "UTC_start_timestamps_ordered": true,
+  "Octane_absolute_monotonic_intervals_checked": 1440,
+  "Octane_timed_regions_nonoverlap": true,
+  "micro_absolute_monotonic_start_stop_recorded": false,
+  "whole_process_absolute_monotonic_endpoints": null,
+  "serial_runner_evidence": "run.py hash in measurement_manifest: blocking subprocess.run inside one schedule loop; no background performance processes",
+  "mixed_clock_warning": "UTC/calendar timestamp + monotonic duration cannot be used to infer exact process end. Cause of divergence UNKNOWN; no sample removed.",
+  "mixed_clock_inconsistencies": [
+    {
+      "previous": [
+        "Crypto.Decrypt",
+        6,
+        "C",
+        2
+      ],
+      "current": [
+        "RayTrace.RayTrace",
+        6,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 439.42900000000003
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Earley",
+        7,
+        "C",
+        2
+      ],
+      "current": [
+        "RegExp.RegExp",
+        7,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 422.651
+    },
+    {
+      "previous": [
+        "Typescript.Typescript",
+        8,
+        "C",
+        1
+      ],
+      "current": [
+        "Typescript.Typescript",
+        8,
+        "D",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 279.337
+    },
+    {
+      "previous": [
+        "NavierStokes.NavierStokes",
+        8,
+        "D",
+        0
+      ],
+      "current": [
+        "NavierStokes.NavierStokes",
+        8,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 451.551
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        9,
+        "D",
+        2
+      ],
+      "current": [
+        "EarleyBoyer.Earley",
+        9,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 365.952
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        9,
+        "C",
+        1
+      ],
+      "current": [
+        "Splay.Splay",
+        9,
+        "D",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 359.767
+    },
+    {
+      "previous": [
+        "M4.numeric_control",
+        9,
+        "D",
+        0
+      ],
+      "current": [
+        "M4.numeric_control",
+        9,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 373.363
+    },
+    {
+      "previous": [
+        "M4.numeric_control",
+        10,
+        "D",
+        0
+      ],
+      "current": [
+        "M4.numeric_control",
+        10,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 393.459
+    },
+    {
+      "previous": [
+        "CodeLoad.CodeLoadJQuery",
+        10,
+        "C",
+        0
+      ],
+      "current": [
+        "CodeLoad.CodeLoadJQuery",
+        10,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 379.625
+    },
+    {
+      "previous": [
+        "M2.own_reference",
+        10,
+        "A",
+        2
+      ],
+      "current": [
+        "Richards.Richards",
+        10,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 437.132
+    },
+    {
+      "previous": [
+        "Crypto.Encrypt",
+        10,
+        "A",
+        2
+      ],
+      "current": [
+        "M5.write_control",
+        10,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 400.763
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Earley",
+        11,
+        "D",
+        2
+      ],
+      "current": [
+        "Typescript.Typescript",
+        11,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 329.822
+    },
+    {
+      "previous": [
+        "RayTrace.RayTrace",
+        11,
+        "A",
+        2
+      ],
+      "current": [
+        "M4.numeric_control",
+        11,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 408.567
+    },
+    {
+      "previous": [
+        "NavierStokes.NavierStokes",
+        11,
+        "D",
+        0
+      ],
+      "current": [
+        "NavierStokes.NavierStokes",
+        11,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 387.983
+    },
+    {
+      "previous": [
+        "M1.own_integer",
+        11,
+        "C",
+        0
+      ],
+      "current": [
+        "M1.own_integer",
+        11,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 363.036
+    },
+    {
+      "previous": [
+        "M2.own_reference",
+        12,
+        "D",
+        0
+      ],
+      "current": [
+        "M2.own_reference",
+        12,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 415.493
+    },
+    {
+      "previous": [
+        "NavierStokes.NavierStokes",
+        12,
+        "A",
+        1
+      ],
+      "current": [
+        "NavierStokes.NavierStokes",
+        12,
+        "C",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 367.824
+    },
+    {
+      "previous": [
+        "Gameboy.Gameboy",
+        12,
+        "C",
+        1
+      ],
+      "current": [
+        "Gameboy.Gameboy",
+        12,
+        "D",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 388.748
+    },
+    {
+      "previous": [
+        "PdfJS.PdfJS",
+        13,
+        "A",
+        0
+      ],
+      "current": [
+        "PdfJS.PdfJS",
+        13,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 622.61
+    },
+    {
+      "previous": [
+        "M4.numeric_control",
+        13,
+        "D",
+        2
+      ],
+      "current": [
+        "Splay.Splay",
+        13,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 420.53000000000003
+    },
+    {
+      "previous": [
+        "Richards.Richards",
+        13,
+        "C",
+        2
+      ],
+      "current": [
+        "M2.own_reference",
+        13,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 440.53999999999996
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        13,
+        "D",
+        0
+      ],
+      "current": [
+        "Mandreel.Mandreel",
+        13,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 325.83
+    },
+    {
+      "previous": [
+        "RegExp.RegExp",
+        14,
+        "C",
+        0
+      ],
+      "current": [
+        "RegExp.RegExp",
+        14,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 451.128
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        14,
+        "D",
+        1
+      ],
+      "current": [
+        "Mandreel.Mandreel",
+        14,
+        "A",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 330.15099999999995
+    },
+    {
+      "previous": [
+        "M5.write_control",
+        14,
+        "C",
+        1
+      ],
+      "current": [
+        "M5.write_control",
+        14,
+        "D",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 372.716
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Boyer",
+        14,
+        "A",
+        2
+      ],
+      "current": [
+        "M1.own_integer",
+        14,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 470.543
+    },
+    {
+      "previous": [
+        "NavierStokes.NavierStokes",
+        15,
+        "D",
+        2
+      ],
+      "current": [
+        "Richards.Richards",
+        15,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 407.625
+    },
+    {
+      "previous": [
+        "CodeLoad.CodeLoadJQuery",
+        15,
+        "C",
+        2
+      ],
+      "current": [
+        "M3.own_method",
+        15,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 435.589
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Earley",
+        15,
+        "D",
+        0
+      ],
+      "current": [
+        "EarleyBoyer.Earley",
+        15,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 423.448
+    },
+    {
+      "previous": [
+        "RegExp.RegExp",
+        15,
+        "D",
+        0
+      ],
+      "current": [
+        "RegExp.RegExp",
+        15,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 399.68199999999996
+    },
+    {
+      "previous": [
+        "CodeLoad.CodeLoadJQuery",
+        16,
+        "C",
+        0
+      ],
+      "current": [
+        "CodeLoad.CodeLoadJQuery",
+        16,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 421.615
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Earley",
+        16,
+        "C",
+        1
+      ],
+      "current": [
+        "EarleyBoyer.Earley",
+        16,
+        "A",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 432.15799999999996
+    },
+    {
+      "previous": [
+        "M2.own_reference",
+        16,
+        "C",
+        2
+      ],
+      "current": [
+        "DeltaBlue.DeltaBlue",
+        16,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 419.445
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Boyer",
+        16,
+        "C",
+        2
+      ],
+      "current": [
+        "Crypto.Decrypt",
+        16,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 420.49399999999997
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        17,
+        "D",
+        0
+      ],
+      "current": [
+        "Splay.Splay",
+        17,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 436.233
+    },
+    {
+      "previous": [
+        "DeltaBlue.DeltaBlue",
+        17,
+        "C",
+        1
+      ],
+      "current": [
+        "DeltaBlue.DeltaBlue",
+        17,
+        "A",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 412.192
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        17,
+        "D",
+        2
+      ],
+      "current": [
+        "EarleyBoyer.Boyer",
+        17,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 497.545
+    },
+    {
+      "previous": [
+        "Crypto.Encrypt",
+        18,
+        "A",
+        0
+      ],
+      "current": [
+        "Crypto.Encrypt",
+        18,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 454.033
+    },
+    {
+      "previous": [
+        "PdfJS.PdfJS",
+        18,
+        "D",
+        0
+      ],
+      "current": [
+        "PdfJS.PdfJS",
+        18,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 482.86899999999997
+    },
+    {
+      "previous": [
+        "M2.own_reference",
+        18,
+        "D",
+        2
+      ],
+      "current": [
+        "CodeLoad.CodeLoadClosure",
+        18,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 424.253
+    },
+    {
+      "previous": [
+        "M3.own_method",
+        18,
+        "C",
+        0
+      ],
+      "current": [
+        "M3.own_method",
+        18,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 460.061
+    },
+    {
+      "previous": [
+        "CodeLoad.CodeLoadJQuery",
+        19,
+        "A",
+        1
+      ],
+      "current": [
+        "CodeLoad.CodeLoadJQuery",
+        19,
+        "C",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 431.70799999999997
+    },
+    {
+      "previous": [
+        "Gameboy.Gameboy",
+        19,
+        "D",
+        2
+      ],
+      "current": [
+        "Splay.Splay",
+        19,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 316.517
+    },
+    {
+      "previous": [
+        "PdfJS.PdfJS",
+        19,
+        "D",
+        0
+      ],
+      "current": [
+        "PdfJS.PdfJS",
+        19,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 337.32099999999997
+    },
+    {
+      "previous": [
+        "M5.write_control",
+        19,
+        "D",
+        2
+      ],
+      "current": [
+        "M2.own_reference",
+        19,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 481.433
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        20,
+        "D",
+        2
+      ],
+      "current": [
+        "M2.own_reference",
+        20,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 428.53599999999994
+    },
+    {
+      "previous": [
+        "PdfJS.PdfJS",
+        20,
+        "A",
+        0
+      ],
+      "current": [
+        "PdfJS.PdfJS",
+        20,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 432.958
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Boyer",
+        20,
+        "C",
+        1
+      ],
+      "current": [
+        "EarleyBoyer.Boyer",
+        20,
+        "A",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 425.0
+    },
+    {
+      "previous": [
+        "Gameboy.Gameboy",
+        20,
+        "C",
+        0
+      ],
+      "current": [
+        "Gameboy.Gameboy",
+        20,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 422.856
+    },
+    {
+      "previous": [
+        "Gameboy.Gameboy",
+        21,
+        "C",
+        0
+      ],
+      "current": [
+        "Gameboy.Gameboy",
+        21,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 425.388
+    },
+    {
+      "previous": [
+        "Richards.Richards",
+        21,
+        "C",
+        0
+      ],
+      "current": [
+        "Richards.Richards",
+        21,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 438.456
+    },
+    {
+      "previous": [
+        "DeltaBlue.DeltaBlue",
+        21,
+        "D",
+        0
+      ],
+      "current": [
+        "DeltaBlue.DeltaBlue",
+        21,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 485.448
+    },
+    {
+      "previous": [
+        "CodeLoad.CodeLoadClosure",
+        22,
+        "C",
+        1
+      ],
+      "current": [
+        "CodeLoad.CodeLoadClosure",
+        22,
+        "D",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 465.534
+    },
+    {
+      "previous": [
+        "DeltaBlue.DeltaBlue",
+        22,
+        "A",
+        2
+      ],
+      "current": [
+        "Crypto.Decrypt",
+        22,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 483.582
+    },
+    {
+      "previous": [
+        "M5.write_control",
+        22,
+        "C",
+        0
+      ],
+      "current": [
+        "M5.write_control",
+        22,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 456.944
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        22,
+        "D",
+        2
+      ],
+      "current": [
+        "Richards.Richards",
+        22,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 415.334
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        23,
+        "D",
+        2
+      ],
+      "current": [
+        "M4.numeric_control",
+        23,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 416.713
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Earley",
+        23,
+        "D",
+        2
+      ],
+      "current": [
+        "M1.own_integer",
+        23,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 481.53000000000003
+    },
+    {
+      "previous": [
+        "NavierStokes.NavierStokes",
+        23,
+        "D",
+        0
+      ],
+      "current": [
+        "NavierStokes.NavierStokes",
+        23,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 531.8629999999999
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        23,
+        "C",
+        2
+      ],
+      "current": [
+        "M3.own_method",
+        23,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 465.904
+    },
+    {
+      "previous": [
+        "M3.own_method",
+        24,
+        "C",
+        1
+      ],
+      "current": [
+        "M3.own_method",
+        24,
+        "D",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 469.158
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Boyer",
+        24,
+        "C",
+        1
+      ],
+      "current": [
+        "EarleyBoyer.Boyer",
+        24,
+        "D",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 438.707
+    },
+    {
+      "previous": [
+        "Typescript.Typescript",
+        24,
+        "A",
+        2
+      ],
+      "current": [
+        "Gameboy.Gameboy",
+        24,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 480.045
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        24,
+        "C",
+        0
+      ],
+      "current": [
+        "Splay.Splay",
+        24,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 446.846
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Boyer",
+        25,
+        "A",
+        0
+      ],
+      "current": [
+        "EarleyBoyer.Boyer",
+        25,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 516.466
+    },
+    {
+      "previous": [
+        "M3.own_method",
+        25,
+        "D",
+        0
+      ],
+      "current": [
+        "M3.own_method",
+        25,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 506.351
+    },
+    {
+      "previous": [
+        "M5.write_control",
+        25,
+        "C",
+        0
+      ],
+      "current": [
+        "M5.write_control",
+        25,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 515.103
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        26,
+        "D",
+        2
+      ],
+      "current": [
+        "CodeLoad.CodeLoadJQuery",
+        26,
+        "A",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 603.302
+    },
+    {
+      "previous": [
+        "RegExp.RegExp",
+        26,
+        "D",
+        1
+      ],
+      "current": [
+        "RegExp.RegExp",
+        26,
+        "A",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 496.95
+    },
+    {
+      "previous": [
+        "DeltaBlue.DeltaBlue",
+        26,
+        "C",
+        2
+      ],
+      "current": [
+        "RayTrace.RayTrace",
+        26,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 446.259
+    },
+    {
+      "previous": [
+        "M3.own_method",
+        26,
+        "C",
+        0
+      ],
+      "current": [
+        "M3.own_method",
+        26,
+        "A",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 513.294
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        27,
+        "C",
+        1
+      ],
+      "current": [
+        "Splay.Splay",
+        27,
+        "A",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 533.372
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Earley",
+        27,
+        "A",
+        0
+      ],
+      "current": [
+        "EarleyBoyer.Earley",
+        27,
+        "C",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 527.18
+    },
+    {
+      "previous": [
+        "M2.own_reference",
+        27,
+        "D",
+        1
+      ],
+      "current": [
+        "M2.own_reference",
+        27,
+        "A",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 873.542
+    },
+    {
+      "previous": [
+        "Splay.Splay",
+        28,
+        "A",
+        2
+      ],
+      "current": [
+        "EarleyBoyer.Boyer",
+        28,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 449.587
+    },
+    {
+      "previous": [
+        "M5.write_control",
+        28,
+        "A",
+        0
+      ],
+      "current": [
+        "M5.write_control",
+        28,
+        "D",
+        1
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 594.8449999999999
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        28,
+        "A",
+        1
+      ],
+      "current": [
+        "Mandreel.Mandreel",
+        28,
+        "C",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 476.99399999999997
+    },
+    {
+      "previous": [
+        "M3.own_method",
+        28,
+        "A",
+        1
+      ],
+      "current": [
+        "M3.own_method",
+        28,
+        "C",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 530.298
+    },
+    {
+      "previous": [
+        "Mandreel.Mandreel",
+        29,
+        "A",
+        2
+      ],
+      "current": [
+        "DeltaBlue.DeltaBlue",
+        29,
+        "D",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 579.692
+    },
+    {
+      "previous": [
+        "EarleyBoyer.Boyer",
+        29,
+        "D",
+        2
+      ],
+      "current": [
+        "RegExp.RegExp",
+        29,
+        "C",
+        0
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 551.926
+    },
+    {
+      "previous": [
+        "Typescript.Typescript",
+        29,
+        "D",
+        1
+      ],
+      "current": [
+        "Typescript.Typescript",
+        29,
+        "C",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 479.569
+    },
+    {
+      "previous": [
+        "NavierStokes.NavierStokes",
+        29,
+        "D",
+        1
+      ],
+      "current": [
+        "NavierStokes.NavierStokes",
+        29,
+        "C",
+        2
+      ],
+      "UTC_plus_monotonic_end_minus_next_UTC_start_ms": 542.7189999999999
+    }
+  ],
+  "balanced_positions": true,
+  "per_case": [
+    {
+      "case": "Richards.Richards",
+      "N": 512,
+      "valid": 90,
+      "pilot_min_ms": 1701.4114219999756,
+      "orders": {
+        "DAC": 5,
+        "DCA": 5,
+        "CDA": 5,
+        "ADC": 5,
+        "CAD": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "DeltaBlue.DeltaBlue",
+      "N": 256,
+      "valid": 90,
+      "pilot_min_ms": 1766.879197000002,
+      "orders": {
+        "ADC": 5,
+        "CAD": 5,
+        "ACD": 5,
+        "CDA": 5,
+        "DCA": 5,
+        "DAC": 5
+      }
+    },
+    {
+      "case": "Crypto.Encrypt",
+      "N": 256,
+      "valid": 90,
+      "pilot_min_ms": 1310.6019220000017,
+      "orders": {
+        "CAD": 5,
+        "DCA": 5,
+        "CDA": 5,
+        "ACD": 5,
+        "DAC": 5,
+        "ADC": 5
+      }
+    },
+    {
+      "case": "Crypto.Decrypt",
+      "N": 16,
+      "valid": 90,
+      "pilot_min_ms": 1563.4587089999695,
+      "orders": {
+        "DCA": 5,
+        "CDA": 5,
+        "ADC": 5,
+        "DAC": 5,
+        "CAD": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "RayTrace.RayTrace",
+      "N": 32,
+      "valid": 90,
+      "pilot_min_ms": 1173.1060280000092,
+      "orders": {
+        "ADC": 5,
+        "DCA": 5,
+        "ACD": 5,
+        "CDA": 5,
+        "DAC": 5,
+        "CAD": 5
+      }
+    },
+    {
+      "case": "EarleyBoyer.Earley",
+      "N": 256,
+      "valid": 90,
+      "pilot_min_ms": 1754.435559000005,
+      "orders": {
+        "ACD": 5,
+        "DAC": 5,
+        "CDA": 5,
+        "ADC": 5,
+        "CAD": 5,
+        "DCA": 5
+      }
+    },
+    {
+      "case": "EarleyBoyer.Boyer",
+      "N": 16,
+      "valid": 90,
+      "pilot_min_ms": 1668.4641810000176,
+      "orders": {
+        "CDA": 5,
+        "DCA": 5,
+        "CAD": 5,
+        "ADC": 5,
+        "DAC": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "RegExp.RegExp",
+      "N": 8,
+      "valid": 90,
+      "pilot_min_ms": 1414.9435400000075,
+      "orders": {
+        "ACD": 5,
+        "ADC": 5,
+        "DCA": 5,
+        "DAC": 5,
+        "CAD": 5,
+        "CDA": 5
+      }
+    },
+    {
+      "case": "Splay.Splay",
+      "N": 1024,
+      "valid": 90,
+      "pilot_min_ms": 2255.671527999977,
+      "orders": {
+        "ADC": 5,
+        "CAD": 5,
+        "ACD": 5,
+        "DAC": 5,
+        "CDA": 5,
+        "DCA": 5
+      }
+    },
+    {
+      "case": "NavierStokes.NavierStokes",
+      "N": 32,
+      "valid": 90,
+      "pilot_min_ms": 1800.4030090000015,
+      "orders": {
+        "DCA": 5,
+        "CAD": 5,
+        "ACD": 5,
+        "CDA": 5,
+        "ADC": 5,
+        "DAC": 5
+      }
+    },
+    {
+      "case": "PdfJS.PdfJS",
+      "N": 8,
+      "valid": 90,
+      "pilot_min_ms": 1358.5637540000025,
+      "orders": {
+        "CAD": 5,
+        "ADC": 5,
+        "CDA": 5,
+        "DCA": 5,
+        "DAC": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "Mandreel.Mandreel",
+      "N": 1,
+      "valid": 90,
+      "pilot_min_ms": 1675.353402000037,
+      "orders": {
+        "DAC": 5,
+        "DCA": 5,
+        "CDA": 5,
+        "ADC": 5,
+        "CAD": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "Gameboy.Gameboy",
+      "N": 4,
+      "valid": 90,
+      "pilot_min_ms": 1275.5358320000814,
+      "orders": {
+        "DCA": 5,
+        "CDA": 5,
+        "ADC": 5,
+        "CAD": 5,
+        "DAC": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "CodeLoad.CodeLoadClosure",
+      "N": 2048,
+      "valid": 90,
+      "pilot_min_ms": 1195.4659830000019,
+      "orders": {
+        "CAD": 5,
+        "DAC": 5,
+        "DCA": 5,
+        "CDA": 5,
+        "ADC": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "CodeLoad.CodeLoadJQuery",
+      "N": 128,
+      "valid": 90,
+      "pilot_min_ms": 1363.3384999999544,
+      "orders": {
+        "ACD": 5,
+        "ADC": 5,
+        "CAD": 5,
+        "DCA": 5,
+        "CDA": 5,
+        "DAC": 5
+      }
+    },
+    {
+      "case": "Typescript.Typescript",
+      "N": 1,
+      "valid": 90,
+      "pilot_min_ms": 2029.7909559999825,
+      "orders": {
+        "DCA": 5,
+        "DAC": 5,
+        "ADC": 5,
+        "CAD": 5,
+        "CDA": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "M1.own_integer",
+      "N": 32768,
+      "valid": 90,
+      "pilot_min_ms": 1879.707781999954,
+      "orders": {
+        "CAD": 5,
+        "CDA": 5,
+        "ACD": 5,
+        "ADC": 5,
+        "DCA": 5,
+        "DAC": 5
+      }
+    },
+    {
+      "case": "M2.own_reference",
+      "N": 16384,
+      "valid": 90,
+      "pilot_min_ms": 1223.9677950000623,
+      "orders": {
+        "CAD": 5,
+        "DAC": 5,
+        "DCA": 5,
+        "ADC": 5,
+        "CDA": 5,
+        "ACD": 5
+      }
+    },
+    {
+      "case": "M3.own_method",
+      "N": 8192,
+      "valid": 90,
+      "pilot_min_ms": 1783.2368279999355,
+      "orders": {
+        "CAD": 5,
+        "DAC": 5,
+        "CDA": 5,
+        "ACD": 5,
+        "ADC": 5,
+        "DCA": 5
+      }
+    },
+    {
+      "case": "M4.numeric_control",
+      "N": 32768,
+      "valid": 90,
+      "pilot_min_ms": 1204.0337219999637,
+      "orders": {
+        "ADC": 5,
+        "DCA": 5,
+        "ACD": 5,
+        "CDA": 5,
+        "DAC": 5,
+        "CAD": 5
+      }
+    },
+    {
+      "case": "M5.write_control",
+      "N": 32768,
+      "valid": 90,
+      "pilot_min_ms": 1345.7589450000087,
+      "orders": {
+        "CDA": 5,
+        "DCA": 5,
+        "DAC": 5,
+        "ACD": 5,
+        "CAD": 5,
+        "ADC": 5
+      }
+    }
+  ],
+  "CSV_LF_checked": 13,
+  "current_executable_identity": "separate identity.py",
+  "boot_ids": [
+    "f91486e7-632c-47a5-ab93-864311f1fcc3"
+  ],
+  "below_threshold_retained": 0,
+  "outliers_removed": 0
+}

@@ -1,0 +1,24 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/probes/pc_sampler.c: In function ‘finish_sampler’:\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/probes/pc_sampler.c:51:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   51 |     if(in>=0) close(in); if(out>=0) close(out);\n      |     ^~\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/probes/pc_sampler.c:51:26: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   51 |     if(in>=0) close(in); if(out>=0) close(out);\n      |                          ^~\n",
+  "command": [
+    "gcc",
+    "-O2",
+    "-fPIC",
+    "-shared",
+    "-Wall",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/probes/pc_sampler.c",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/probes/pc_sampler.so"
+  ],
+  "timestamp_utc": "2026-10-17T07:20:30.382269+00:00",
+  "outer_wall_ns": 404056014,
+  "load_average": [
+    0.6416015625,
+    0.89892578125,
+    0.61669921875
+  ],
+  "boot_id": "b9e7871f-89d5-4e15-819c-15250b020cda",
+  "LD_PRELOAD": null
+}

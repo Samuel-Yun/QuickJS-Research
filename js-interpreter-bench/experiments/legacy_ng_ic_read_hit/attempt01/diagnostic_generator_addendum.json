@@ -1,0 +1,7 @@
+{
+  "applies_to": "diagnostic_manifest.json/generator_scope",
+  "correction": "The initial generated scope string said only paths changed. In fact the D generator ALSO substitutes the read-wrapper declaration lookup anchor to include force_inline, preserving that attribute in the diagnostic source. Counter insertions, HEADER and object layout are identical in C/D. The original manifest is retained, not silently overwritten.",
+  "counter_implementation_source": "experiments/legacy_ng_ic/attempt01/diagnostic.py: HEADER and build AST",
+  "formal_binary_changed_by_diagnostic_generator": false,
+  "performance_uses_diagnostic_binary": false
+}

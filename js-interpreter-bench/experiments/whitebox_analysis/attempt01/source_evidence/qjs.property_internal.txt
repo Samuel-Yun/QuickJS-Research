@@ -1,0 +1,52 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L8210
+8210: JSValue JS_GetPropertyInternal(JSContext *ctx, JSValueConst obj,
+8211:                                JSAtom prop, JSValueConst this_obj,
+8212:                                BOOL throw_ref_error)
+8213: {
+8214:     JSObject *p;
+8215:     JSProperty *pr;
+8216:     JSShapeProperty *prs;
+8217:     uint32_t tag;
+8218: 
+8219:     tag = JS_VALUE_GET_TAG(obj);
+8220:     if (unlikely(tag != JS_TAG_OBJECT)) {
+8221:         switch(tag) {
+8222:         case JS_TAG_NULL:
+8223:             return JS_ThrowTypeErrorAtom(ctx, "cannot read property '%s' of null", prop);
+8224:         case JS_TAG_UNDEFINED:
+8225:             return JS_ThrowTypeErrorAtom(ctx, "cannot read property '%s' of undefined", prop);
+8226:         case JS_TAG_EXCEPTION:
+8227:             return JS_EXCEPTION;
+8228:         case JS_TAG_STRING:
+8229:             {
+8230:                 JSString *p1 = JS_VALUE_GET_STRING(obj);
+8231:                 if (__JS_AtomIsTaggedInt(prop)) {
+8232:                     uint32_t idx;
+8233:                     idx = __JS_AtomToUInt32(prop);
+8234:                     if (idx < p1->len) {
+8235:                         return js_new_string_char(ctx, string_get(p1, idx));
+8236:                     }
+8237:                 } else if (prop == JS_ATOM_length) {
+8238:                     return JS_NewInt32(ctx, p1->len);
+8239:                 }
+8240:             }
+8241:             break;
+8242:         case JS_TAG_STRING_ROPE:
+8243:             {
+8244:                 JSStringRope *p1 = JS_VALUE_GET_STRING_ROPE(obj);
+8245:                 if (__JS_AtomIsTaggedInt(prop)) {
+8246:                     uint32_t idx;
+8247:                     idx = __JS_AtomToUInt32(prop);
+8248:                     if (idx < p1->len) {
+8249:                         return js_new_string_char(ctx, string_rope_get(obj, idx));
+8250:                     }
+8251:                 } else if (prop == JS_ATOM_length) {
+8252:                     return JS_NewInt32(ctx, p1->len);
+8253:                 }
+8254:             }
+8255:             break;
+8256:         default:
+8257:             break;
+8258:         }

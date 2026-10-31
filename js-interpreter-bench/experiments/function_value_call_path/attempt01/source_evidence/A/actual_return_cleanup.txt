@@ -1,0 +1,13 @@
+20699:     done:
+20700:         if (unlikely(b->var_ref_count != 0)) {
+20701:             /* variable references reference the stack: must close them */
+20702:             close_var_refs(rt, b, sf);
+20703:         }
+20704:         /* free the local variables and stack */
+20705:         for(pval = local_buf; pval < sp; pval++) {
+20706:             JS_FreeValue(ctx, *pval);
+20707:         }
+20708:     }
+20709:     rt->current_stack_frame = sf->prev_frame;
+20710:     return ret_val;
+20711: }

@@ -1,0 +1,30 @@
+{
+  "campaign": "read_ic_mic/attempt01",
+  "case": "RayTrace.RayTrace",
+  "variant": "M",
+  "rep": 2,
+  "order": 0,
+  "N": 32,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/raw/memory/RayTrace.RayTrace/rep2.M.pos0.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_mic_attempt01/M/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/generated/RayTrace.RayTrace.N32.measure.js"
+  ],
+  "binary_sha256": "27d7cb724b4d89fdd4466e65cd6b9d2ceba6e95919b83e6bcc934a24f76797dd",
+  "script_sha256": "b3677023f012629bc735a517842121363015244c1eae3e92703a9a3266165704",
+  "peak_rss_KiB": 3360,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"RayTrace.RayTrace\",\"suite\":\"RayTrace\",\"subbenchmark\":\"RayTrace\",\"mode\":\"READ_IC_MIC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":32,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5367712.886549,\"stop_ms\":5369178.484252,\"elapsed_ms\":1465.5977030005306,\"elapsed_per_call_ms\":45.79992821876658,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-24T08:52:26.931637+00:00",
+  "outer_wall_ns": 1498300635,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

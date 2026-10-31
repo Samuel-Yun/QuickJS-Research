@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "stdout": "Linux LAPTOP-QPKCPDCB 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux\n 22:14:15 up 0 min,  1 user,  load average: 0.16, 0.03, 0.01\n               total        used        free      shared  buff/cache   available\nMem:      8252637184   724566016  7264186368     3338240   505491456  7528071168\nSwap:     2147483648           0  2147483648\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "sh",
+    "-c",
+    "uname -a; uptime; free -b; for p in /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq; do if test -r \"$p\"; then head -c 200 \"$p\"; fi; done; true"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-25T14:14:15.564444+00:00",
+  "completed_at": "2026-10-25T14:14:15.571694+00:00",
+  "outer_start_ns": 6376822964,
+  "outer_stop_ns": 6384070383,
+  "outer_wall_ns": 7247419,
+  "boot_id": "1a913de3-bac4-472b-b534-9a4be65ecb1f"
+}

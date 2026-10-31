@@ -1,0 +1,23 @@
+{
+  "exit_code": 0,
+  "stdout": "\n/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64\n\n\nDisassembly of section .text:\n\n0000000001d5ca00 <Builtins_MovHandler>:\n 1d5ca00:\t4b 0f be 5c 0c 01    \tmovsx  rbx,BYTE PTR [r12+r9*1+0x1]\n 1d5ca06:\t48 8b d5             \tmov    rdx,rbp\n 1d5ca09:\t4b 0f be 74 0c 02    \tmovsx  rsi,BYTE PTR [r12+r9*1+0x2]\n 1d5ca0f:\t48 8b 1c da          \tmov    rbx,QWORD PTR [rdx+rbx*8]\n 1d5ca13:\t48 89 1c f2          \tmov    QWORD PTR [rdx+rsi*8],rbx\n 1d5ca17:\t49 8d 59 03          \tlea    rbx,[r9+0x3]\n 1d5ca1b:\t43 0f b6 54 0c 03    \tmovzx  edx,BYTE PTR [r12+r9*1+0x3]\n 1d5ca21:\t49 8b 0c d7          \tmov    rcx,QWORD PTR [r15+rdx*8]\n 1d5ca25:\t4c 8b cb             \tmov    r9,rbx\n 1d5ca28:\tff e1                \tjmp    rcx\n 1d5ca2a:\t90                   \tnop\n 1d5ca2b:\t90                   \tnop\n",
+  "stderr": "",
+  "command": [
+    "objdump",
+    "-d",
+    "-M",
+    "intel",
+    "--start-address=30788096",
+    "--stop-address=30788140",
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8"
+  ],
+  "timestamp_utc": "2026-10-15T03:53:11.145686+00:00",
+  "outer_wall_ns": 171952577,
+  "load_average": [
+    0.64111328125,
+    0.15673828125,
+    0.05029296875
+  ],
+  "boot_id": "b6d14a6a-617f-4dc4-9abc-055cce9de2c4",
+  "LD_PRELOAD": null
+}

@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "stdout": "TEST_SUM 499999500000\nPROFILE_TYPE {\"type\":\"string\",\"keys\":null}\nCPU_PROFILE {\"nodes\":[{\"id\":1,\"hitCount\":0,\"callFrame\":{\"functionName\":\"(root)\",\"lineNumber\":-1,\"columnNumber\":-1,\"scriptId\":0,\"url\":\"\"},\"children\":[2]},{\"id\":2,\"hitCount\":0,\"callFrame\":{\"functionName\":\"\",\"lineNumber\":-1,\"columnNumber\":-1,\"scriptId\":5,\"url\":\"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_function_timing/attempt01/diagnostics/profiler_api_test.js\"},\"children\":[3]},{\"id\":3,\"hitCount\":15,\"callFrame\":{\"functionName\":\"rftDiagnosticSum\",\"lineNumber\":5,\"columnNumber\":25,\"scriptId\":5,\"url\":\"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_function_timing/attempt01/diagnostics/profiler_api_test.js\"},\"positionTicks\":[{\"line\":6,\"ticks\":15}]}],\"startTime\":4435585,\"endTime\":4458109,\"samples\":[2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],\"timeDeltas\":[609,1247,1110,1102,5192,1087,1080,1085,1085,1096,1091,1102,1098,1095,1091,1086]}\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_function_timing/attempt01/diagnostics/profiler_api_test.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-18T16:02:05.572452+00:00",
+  "outer_wall_ns": 61086652,
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "boot_id": "e0fbb7e4-0d54-42ba-bade-48bbc9c6dc5a",
+  "LD_PRELOAD": null
+}

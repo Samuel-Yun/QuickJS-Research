@@ -1,0 +1,102 @@
+{
+  "stage": "correctness",
+  "case": "number_value_read",
+  "condition": "SHIM_ON",
+  "N": 2,
+  "rep": 2,
+  "order": 2,
+  "period_us": 7000,
+  "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+  "cohort": "WSL2-call-boundary-20261029-attempt01",
+  "command": [
+    "/home/mzyx/call_boundary_cost_attempt01/shim/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/scripts/number_value_read/N2.correctness.shim.js"
+  ],
+  "script_relative": "scripts/number_value_read/N2.correctness.shim.js",
+  "script_sha256": "af8dd8d035c008f448eda50a2d810e5fd64aeac583ff6211bac77e868d08345f",
+  "binary_sha256": "dfc547ff0db4a4318c812a65f4d2d485a9a2bb169aee405152bf4a596268c437",
+  "input_sha256": "a8a637d5233364a3e2baa25699217c5e2b4c91260d1092901bf5d57d34e0508e",
+  "sample_prefix": "/home/mzyx/call_boundary_cost_attempt01/reports/correctness/number_value_read/rep2.SHIM_ON.N2.p7000",
+  "boot_id": "efb4b77d-8afe-4d8c-be17-96f489f6563f",
+  "valid": true,
+  "timestamp": "2026-10-29T03:08:36.551374+00:00",
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"case\":\"number_value_read\",\"N\":2,\"mode\":\"CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"correctness\",\"correctness\":\"PASS\",\"checksum\":16781312,\"last\":8390656,\"start_ms\":null,\"stop_ms\":null,\"elapsed_ms\":null,\"warmup_calls\":0,\"inner_iterations\":4096,\"first_Run_included\":true}\n",
+  "stderr": "",
+  "timeout": false,
+  "completed_at": "2026-10-29T03:08:36.563542+00:00",
+  "outer_start_ns": 17924842875,
+  "outer_stop_ns": 17936968444,
+  "outer_wall_ns": 12125569,
+  "child_user_seconds": 0.004369999999999999,
+  "child_system_seconds": 0.0,
+  "child_voluntary_switches": 28,
+  "child_involuntary_switches": 0,
+  "payload": {
+    "case": "number_value_read",
+    "N": 2,
+    "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+    "phase": "correctness",
+    "correctness": "PASS",
+    "checksum": 16781312,
+    "last": 8390656,
+    "start_ms": null,
+    "stop_ms": null,
+    "elapsed_ms": null,
+    "warmup_calls": 0,
+    "inner_iterations": 4096,
+    "first_Run_included": true
+  },
+  "elapsed_ms": null,
+  "elapsed_per_Run_ms": null,
+  "sampler": {
+    "schema": "little-endian uint64 rip,uint64 CLOCK_MONOTONIC_ns",
+    "sample_bytes": 16,
+    "pid": 619,
+    "enabled": true,
+    "period_us": 7000,
+    "capacity": 131072,
+    "delivered": 0,
+    "retained": 0,
+    "overflow": 0,
+    "clock_errors": 0,
+    "drained_pending": 0,
+    "threads_before": 1,
+    "threads_after": 1,
+    "atomics_lock_free": true,
+    "old_handler_default": true,
+    "old_timer_zero": true,
+    "window_start_ns": 17935442618,
+    "window_stop_ns": 17935694411,
+    "window_cpu_start_ns": 3282500,
+    "window_cpu_stop_ns": 3286200,
+    "voluntary_switches": 0,
+    "involuntary_switches": 0
+  },
+  "sampler_archives": {
+    "meta.json": {
+      "path": "raw/samples/correctness/number_value_read/rep2.SHIM_ON.N2.p7000.meta.json.gz",
+      "sha256": "b0996839250c7ce0662020fa03e1d8065f3d3a33d5902e3633197f1cc4e5a111",
+      "uncompressed_sha256": "7e09110a960940f401bb8a80be4b2a935095c938d278e6f409a0a3cc84df9059",
+      "bytes": 496
+    },
+    "samples.bin": {
+      "path": "raw/samples/correctness/number_value_read/rep2.SHIM_ON.N2.p7000.samples.bin.gz",
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "begin.maps": {
+      "path": "raw/samples/correctness/number_value_read/rep2.SHIM_ON.N2.p7000.begin.maps.gz",
+      "sha256": "06c260339913d388d83e3e5fdb5cf4c8f19a1892c6510cc2e232c51915993989",
+      "uncompressed_sha256": "559c500ccb9d3918ab1c3a59510b3c74022c021cdf45dccaca693ae1ed2bcc7c",
+      "bytes": 2768
+    },
+    "end.maps": {
+      "path": "raw/samples/correctness/number_value_read/rep2.SHIM_ON.N2.p7000.end.maps.gz",
+      "sha256": "06c260339913d388d83e3e5fdb5cf4c8f19a1892c6510cc2e232c51915993989",
+      "uncompressed_sha256": "559c500ccb9d3918ab1c3a59510b3c74022c021cdf45dccaca693ae1ed2bcc7c",
+      "bytes": 2768
+    }
+  }
+}

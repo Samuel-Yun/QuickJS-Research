@@ -1,0 +1,65 @@
+9311: static int delete_property(JSContext *ctx, JSObject *p, JSAtom atom)
+9312: {
+9313:     JSShape *sh;
+9314:     JSShapeProperty *pr, *lpr, *prop;
+9315:     JSProperty *pr1;
+9316:     uint32_t lpr_idx;
+9317:     intptr_t h, h1;
+9318: 
+9319:  redo:
+9320:     sh = p->shape;
+9321:     h1 = atom & sh->prop_hash_mask;
+9322:     h = sh->hash_table[h1];
+9323:     prop = get_shape_prop(sh);
+9324:     lpr = NULL;
+9325:     lpr_idx = 0;   /* prevent warning */
+9326:     while (h != 0) {
+9327:         pr = &prop[h - 1];
+9328:         if (likely(pr->atom == atom)) {
+9329:             /* found ! */
+9330:             if (!(pr->flags & JS_PROP_CONFIGURABLE))
+9331:                 return FALSE;
+9332:             /* realloc the shape if needed */
+9333:             if (lpr)
+9334:                 lpr_idx = lpr - get_shape_prop(sh);
+9335:             if (js_shape_prepare_update(ctx, p, &pr))
+9336:                 return -1;
+9337:             sh = p->shape;
+9338:             /* remove property */
+9339:             if (lpr) {
+9340:                 lpr = get_shape_prop(sh) + lpr_idx;
+9341:                 lpr->hash_next = pr->hash_next;
+9342:             } else {
+9343:                 sh->hash_table[h1] = pr->hash_next;
+9344:             }
+9345:             sh->deleted_prop_count++;
+9346:             /* free the entry */
+9347:             pr1 = &p->prop[h - 1];
+9348:             if (unlikely(p->class_id == JS_CLASS_GLOBAL_OBJECT)) {
+9349:                 if ((pr->flags & JS_PROP_TMASK) == JS_PROP_VARREF)
+9350:                     if (remove_global_object_property(ctx, p, pr, pr1))
+9351:                         return -1;
+9352:             }
+9353:             free_property(ctx->rt, pr1, pr->flags);
+9354:             JS_FreeAtom(ctx, pr->atom);
+9355:             /* put default values */
+9356:             pr->flags = 0;
+9357:             pr->atom = JS_ATOM_NULL;
+9358:             pr1->u.value = JS_UNDEFINED;
+9359: 
+9360:             /* compact the properties if too many deleted properties */
+9361:             if (sh->deleted_prop_count >= 8 &&
+9362:                 sh->deleted_prop_count >= ((unsigned)sh->prop_count / 2)) {
+9363:                 compact_properties(ctx, p);
+9364:             }
+9365:             return TRUE;
+9366:         }
+9367:         lpr = pr;
+9368:         h = pr->hash_next;
+9369:     }
+9370: 
+9371:     if (p->is_exotic) {
+9372:         if (p->fast_array) {
+9373:             uint32_t idx;
+9374:             if (JS_AtomIsArrayIndex(ctx, &idx, atom) &&
+9375:                 idx < p->u.array.count) {

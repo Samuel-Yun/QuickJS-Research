@@ -1,0 +1,11 @@
+case,variant,function,atom,read_queries,read_hits,read_fallback,write_queries,write_hits,write_fallback,probes,max_filled_slots
+M1.own_integer,C,m1Read,x,8191,8191,0,0,0,0,8191,1
+M1.own_integer,D,m1Read,x,8191,8191,0,0,0,0,8191,1
+M2.own_reference,C,m2Read,x,8191,8191,0,0,0,0,8191,1
+M2.own_reference,D,m2Read,x,8191,8191,0,0,0,0,8191,1
+M3.own_method,C,m3Call,step,8191,8191,0,0,0,0,8191,1
+M3.own_method,C,m3Step,bias,8191,8191,0,0,0,0,8191,1
+M3.own_method,D,m3Call,step,8191,8191,0,0,0,0,8191,1
+M3.own_method,D,m3Step,bias,8191,8191,0,0,0,0,8191,1
+M5.write_control,C,m5Write,x,0,0,0,8191,8191,0,8191,1
+M5.write_control,D,m5Write,x,0,0,0,8191,8191,0,8191,1

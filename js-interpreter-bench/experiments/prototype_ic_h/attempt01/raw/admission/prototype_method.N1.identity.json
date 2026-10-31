@@ -1,0 +1,42 @@
+{
+  "binary": {
+    "path": "/home/mzyx/prototype_ic_h_attempt01/M_admission/qjs",
+    "sha256": "266955b2231cb168bc7591a86a177518fcd2232be51b4503d5507584a4cba410",
+    "source": "/home/mzyx/prototype_ic_h_attempt01/M_admission",
+    "formal": false,
+    "source_files": {
+      "quickjs.c": "5eba9250d3d3d039c2846be761de3d73b553405c063a368e180b74259a0afdc1",
+      "qjs.c": "43310504874a83fc73acd516350aa4debf53462aac6f53ff75ae01a80b0f8130",
+      "read_ic_opcodes.inc": "cda3e87fdc1d7c3db35b909345dce08f4187c809f863f533106e6bb07a124c56",
+      "read_ic_runtime.inc": "c6d63e5f55a68d7b4b23628f1745d619a3a6bc844c75702b7b89bbd19d94fb0b",
+      "audit_hooks.h": "98efbadf0639827d0969c8009fe150b1e5bf8631bba68973369c3f659cc0110c",
+      "audit_tail.inc": "a8fde0cd80aa418319ef908d6e20b977a08526b7f21b3d2a466f1bca3b1b791d"
+    }
+  },
+  "script_relative": "scripts/prototype_method/N1.js",
+  "script_sha256": "6c2cc1fadb5e33ab8fdffc24824e287ec9359e106f6a44538ebbf2311152850e",
+  "compressed_sha256": "4e777fbf068095b0d0235b69703297df7a86204a04f73340925d406dc4bf4701",
+  "raw_sha256": "fcef8cf54e823f2173b605206d1a9d8c45c82322b837ea8838c45f8c5f556715",
+  "raw_bytes": 157352,
+  "input_sources": {
+    "experiments/inherited_method_opportunity/attempt01/inputs/richards.js": "1246a64a24b931158bf01c24640343259fa74b0226e73bad630bd1f686aa0fa7",
+    "experiments/inherited_method_opportunity/attempt01/cases/method_control.js": "8bd7bcd60096c55999a66276b6448d637fe149a184e3b6c7980b8fb1af90d155"
+  },
+  "phase": "admission only",
+  "formal_performance": false,
+  "payload": {
+    "case": "prototype_method",
+    "N": 1,
+    "mode": "H_ADMISSION_DIAGNOSTIC_V1",
+    "phase": "correctness",
+    "correctness": "PASS",
+    "checksum": 8390656,
+    "last": 8390656,
+    "start_ms": null,
+    "stop_ms": null,
+    "elapsed_ms": null,
+    "warmup_calls": 0,
+    "inner_iterations": 4096,
+    "first_Run_included": true
+  }
+}

@@ -1,0 +1,61 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:633:29: function: <null>
+  args: packet
+  locals:
+    0: var t
+    1: var this
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc1 1: this
+        get_loc1 1: this
+
+;;   var t = this.blocks[packet.id];
+
+        get_field blocks
+        get_arg0 0: packet
+        get_field id
+        get_array_el
+
+;;   if (t == null) return t;
+
+        set_loc0 0: t
+        null
+        eq
+        if_false8 22
+        get_loc0 0: t
+        return
+
+;;   this.queueCount++;
+
+   22:  get_loc1 1: this
+        get_field2 queueCount
+        inc
+        put_field queueCount
+
+;;   packet.link = null;
+
+        get_arg0 0: packet
+        null
+        put_field link
+
+;;   packet.id = this.currentId;
+
+        get_arg0 0: packet
+        get_loc1 1: this
+        get_field currentId
+        put_field id
+
+;;   return t.checkPriorityAdd(this.currentTcb, packet);
+
+        get_loc0 0: t
+        get_field2 checkPriorityAdd
+        get_loc1 1: this
+        get_field currentTcb
+        get_arg0 0: packet
+        tail_call_method 2
+
+;; }
+

@@ -1,0 +1,192 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d6cf00 <Builtins_IncHandler>:
+ 1d6cf00:	48 8b fd             	mov    rdi,rbp
+ 1d6cf03:	48 8b 77 f8          	mov    rsi,QWORD PTR [rdi-0x8]
+ 1d6cf07:	45 33 c0             	xor    r8d,r8d
+ 1d6cf0a:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d6cf11:	00 00 
+ 1d6cf13:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d6cf1a:	00 00 
+ 1d6cf1c:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d6cf23:	00 00 
+ 1d6cf25:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d6cf2c:	00 00 
+ 1d6cf2e:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d6cf35:	00 00 
+ 1d6cf37:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d6cf3e:	00 00 
+ 1d6cf40:	44 8b d8             	mov    r11d,eax
+ 1d6cf43:	a8 01                	test   al,0x1
+ 1d6cf45:	74 3d                	je     1d6cf84 <Builtins_IncHandler+0x84>
+ 1d6cf47:	44 8b 58 ff          	mov    r11d,DWORD PTR [rax-0x1]
+ 1d6cf4b:	4d 0b de             	or     r11,r14
+ 1d6cf4e:	41 81 fb 15 05 00 00 	cmp    r11d,0x515
+ 1d6cf55:	74 4e                	je     1d6cfa5 <Builtins_IncHandler+0xa5>
+ 1d6cf57:	45 0f b7 5b 07       	movzx  r11d,WORD PTR [r11+0x7]
+ 1d6cf5c:	41 81 fb 81 00 00 00 	cmp    r11d,0x81
+ 1d6cf63:	0f 84 ac 01 00 00    	je     1d6d115 <Builtins_IncHandler+0x215>
+ 1d6cf69:	41 81 fb 83 00 00 00 	cmp    r11d,0x83
+ 1d6cf70:	0f 85 ed 00 00 00    	jne    1d6d063 <Builtins_IncHandler+0x163>
+ 1d6cf76:	8b 40 0f             	mov    eax,DWORD PTR [rax+0xf]
+ 1d6cf79:	49 0b c6             	or     rax,r14
+ 1d6cf7c:	41 b8 3e 00 00 00    	mov    r8d,0x3e
+ 1d6cf82:	eb bc                	jmp    1d6cf40 <Builtins_IncHandler+0x40>
+ 1d6cf84:	41 83 c3 02          	add    r11d,0x2
+ 1d6cf88:	70 0f                	jo     1d6cf99 <Builtins_IncHandler+0x99>
+ 1d6cf8a:	45 8b c0             	mov    r8d,r8d
+ 1d6cf8d:	41 83 c8 02          	or     r8d,0x2
+ 1d6cf91:	4d 63 db             	movsxd r11,r11d
+ 1d6cf94:	4d 63 c0             	movsxd r8,r8d
+ 1d6cf97:	eb 59                	jmp    1d6cff2 <Builtins_IncHandler+0xf2>
+ 1d6cf99:	d1 f8                	sar    eax,1
+ 1d6cf9b:	66 0f 57 c0          	xorpd  xmm0,xmm0
+ 1d6cf9f:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
+ 1d6cfa3:	eb 05                	jmp    1d6cfaa <Builtins_IncHandler+0xaa>
+ 1d6cfa5:	f2 0f 10 40 03       	movsd  xmm0,QWORD PTR [rax+0x3]
+ 1d6cfaa:	4d 8b 5d 50          	mov    r11,QWORD PTR [r13+0x50]
+ 1d6cfae:	49 8d 43 0c          	lea    rax,[r11+0xc]
+ 1d6cfb2:	49 39 45 58          	cmp    QWORD PTR [r13+0x58],rax
+ 1d6cfb6:	0f 86 c0 01 00 00    	jbe    1d6d17c <Builtins_IncHandler+0x27c>
+ 1d6cfbc:	49 8d 43 0c          	lea    rax,[r11+0xc]
+ 1d6cfc0:	49 89 45 50          	mov    QWORD PTR [r13+0x50],rax
+ 1d6cfc4:	66 0f 76 c9          	pcmpeqd xmm1,xmm1
+ 1d6cfc8:	66 0f 73 f1 36       	psllq  xmm1,0x36
+ 1d6cfcd:	66 0f 73 d1 02       	psrlq  xmm1,0x2
+ 1d6cfd2:	f2 0f 58 c8          	addsd  xmm1,xmm0
+ 1d6cfd6:	49 83 c3 01          	add    r11,0x1
+ 1d6cfda:	41 c7 43 ff 15 05 00 	mov    DWORD PTR [r11-0x1],0x515
+ 1d6cfe1:	00 
+ 1d6cfe2:	f2 41 0f 11 4b 03    	movsd  QWORD PTR [r11+0x3],xmm1
+ 1d6cfe8:	45 8b c0             	mov    r8d,r8d
+ 1d6cfeb:	41 83 c8 1e          	or     r8d,0x1e
+ 1d6cfef:	4d 63 c0             	movsxd r8,r8d
+ 1d6cff2:	41 d1 f8             	sar    r8d,1
+ 1d6cff5:	49 8b c1             	mov    rax,r9
+ 1d6cff8:	49 8b dc             	mov    rbx,r12
+ 1d6cffb:	0f b6 54 03 01       	movzx  edx,BYTE PTR [rbx+rax*1+0x1]
+ 1d6d000:	48 8b ca             	mov    rcx,rdx
+ 1d6d003:	c1 e1 04             	shl    ecx,0x4
+ 1d6d006:	49 8b b5 d0 30 00 00 	mov    rsi,QWORD PTR [r13+0x30d0]
+ 1d6d00d:	46 0f b6 04 06       	movzx  r8d,BYTE PTR [rsi+r8*1]
+ 1d6d012:	44 0b c1             	or     r8d,ecx
+ 1d6d015:	49 8b 8d c8 30 00 00 	mov    rcx,QWORD PTR [r13+0x30c8]
+ 1d6d01c:	46 0f b6 04 01       	movzx  r8d,BYTE PTR [rcx+r8*1]
+ 1d6d021:	41 3a d0             	cmp    dl,r8b
+ 1d6d024:	74 05                	je     1d6d02b <Builtins_IncHandler+0x12b>
+ 1d6d026:	44 88 44 03 01       	mov    BYTE PTR [rbx+rax*1+0x1],r8b
+ 1d6d02b:	4c 8b 67 e0          	mov    r12,QWORD PTR [rdi-0x20]
+ 1d6d02f:	4c 8d 48 02          	lea    r9,[rax+0x2]
+ 1d6d033:	45 0f b6 44 04 02    	movzx  r8d,BYTE PTR [r12+rax*1+0x2]
+ 1d6d039:	41 80 f8 c6          	cmp    r8b,0xc6
+ 1d6d03d:	73 09                	jae    1d6d048 <Builtins_IncHandler+0x148>
+ 1d6d03f:	4b 8b 0c c7          	mov    rcx,QWORD PTR [r15+r8*8]
+ 1d6d043:	49 8b c3             	mov    rax,r11
+ 1d6d046:	ff e1                	jmp    rcx
+ 1d6d048:	4e 89 9c c7 20 f9 ff 	mov    QWORD PTR [rdi+r8*8-0x6e0],r11
+ 1d6d04f:	ff 
+ 1d6d050:	49 83 c1 01          	add    r9,0x1
+ 1d6d054:	41 0f b6 7c 04 03    	movzx  edi,BYTE PTR [r12+rax*1+0x3]
+ 1d6d05a:	49 8b 0c ff          	mov    rcx,QWORD PTR [r15+rdi*8]
+ 1d6d05e:	49 8b c3             	mov    rax,r11
+ 1d6d061:	ff e1                	jmp    rcx
+ 1d6d063:	55                   	push   rbp
+ 1d6d064:	48 8b ec             	mov    rbp,rsp
+ 1d6d067:	6a 10                	push   0x10
+ 1d6d069:	48 83 ec 38          	sub    rsp,0x38
+ 1d6d06d:	47 8d 04 09          	lea    r8d,[r9+r9*1]
+ 1d6d071:	4c 89 47 d8          	mov    QWORD PTR [rdi-0x28],r8
+ 1d6d075:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d6d079:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d6d07d:	48 89 7d e0          	mov    QWORD PTR [rbp-0x20],rdi
+ 1d6d081:	4c 89 65 d8          	mov    QWORD PTR [rbp-0x28],r12
+ 1d6d085:	48 89 75 c8          	mov    QWORD PTR [rbp-0x38],rsi
+ 1d6d089:	4c 89 45 c0          	mov    QWORD PTR [rbp-0x40],r8
+ 1d6d08d:	e8 ee 52 f4 ff       	call   1cb2380 <Builtins_NonNumberToNumeric>
+ 1d6d092:	41 b8 fe 03 00 00    	mov    r8d,0x3fe
+ 1d6d098:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d6d09c:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d6d0a0:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d6d0a4:	4c 8b 65 d8          	mov    r12,QWORD PTR [rbp-0x28]
+ 1d6d0a8:	48 8b 75 c8          	mov    rsi,QWORD PTR [rbp-0x38]
+ 1d6d0ac:	48 8b e5             	mov    rsp,rbp
+ 1d6d0af:	5d                   	pop    rbp
+ 1d6d0b0:	e9 8b fe ff ff       	jmp    1d6cf40 <Builtins_IncHandler+0x40>
+ 1d6d0b5:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d6d0b9:	4c 8b 65 d8          	mov    r12,QWORD PTR [rbp-0x28]
+ 1d6d0bd:	43 0f b6 7c 0c 01    	movzx  edi,BYTE PTR [r12+r9*1+0x1]
+ 1d6d0c3:	4c 8b c7             	mov    r8,rdi
+ 1d6d0c6:	41 c1 e0 04          	shl    r8d,0x4
+ 1d6d0ca:	4d 8b 9d d0 30 00 00 	mov    r11,QWORD PTR [r13+0x30d0]
+ 1d6d0d1:	45 0f b6 9b ff 01 00 	movzx  r11d,BYTE PTR [r11+0x1ff]
+ 1d6d0d8:	00 
+ 1d6d0d9:	45 0b d8             	or     r11d,r8d
+ 1d6d0dc:	4d 8b 85 c8 30 00 00 	mov    r8,QWORD PTR [r13+0x30c8]
+ 1d6d0e3:	47 0f b6 04 18       	movzx  r8d,BYTE PTR [r8+r11*1]
+ 1d6d0e8:	41 3a f8             	cmp    dil,r8b
+ 1d6d0eb:	74 05                	je     1d6d0f2 <Builtins_IncHandler+0x1f2>
+ 1d6d0ed:	47 88 44 0c 01       	mov    BYTE PTR [r12+r9*1+0x1],r8b
+ 1d6d0f2:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d6d0f6:	44 8b 45 c0          	mov    r8d,DWORD PTR [rbp-0x40]
+ 1d6d0fa:	4c 89 47 d8          	mov    QWORD PTR [rdi-0x28],r8
+ 1d6d0fe:	50                   	push   rax
+ 1d6d0ff:	49 8b 9d 88 48 00 00 	mov    rbx,QWORD PTR [r13+0x4888]
+ 1d6d106:	b8 01 00 00 00       	mov    eax,0x1
+ 1d6d10b:	48 8b 75 c8          	mov    rsi,QWORD PTR [rbp-0x38]
+ 1d6d10f:	e8 ac 42 ee ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d6d114:	cc                   	int3
+ 1d6d115:	55                   	push   rbp
+ 1d6d116:	48 8b ec             	mov    rbp,rsp
+ 1d6d119:	6a 10                	push   0x10
+ 1d6d11b:	48 83 ec 38          	sub    rsp,0x38
+ 1d6d11f:	45 8b c0             	mov    r8d,r8d
+ 1d6d122:	41 81 c8 c0 00 00 00 	or     r8d,0xc0
+ 1d6d129:	4d 63 c0             	movsxd r8,r8d
+ 1d6d12c:	47 8d 1c 09          	lea    r11d,[r9+r9*1]
+ 1d6d130:	4c 89 5f d8          	mov    QWORD PTR [rdi-0x28],r11
+ 1d6d134:	50                   	push   rax
+ 1d6d135:	6a 1c                	push   0x1c
+ 1d6d137:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d6d13b:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d6d13f:	48 89 7d e0          	mov    QWORD PTR [rbp-0x20],rdi
+ 1d6d143:	4c 89 65 d8          	mov    QWORD PTR [rbp-0x28],r12
+ 1d6d147:	4c 89 45 d0          	mov    QWORD PTR [rbp-0x30],r8
+ 1d6d14b:	49 8b 9d e8 43 00 00 	mov    rbx,QWORD PTR [r13+0x43e8]
+ 1d6d152:	b8 02 00 00 00       	mov    eax,0x2
+ 1d6d157:	e8 64 42 ee ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d6d15c:	4c 8b 45 d0          	mov    r8,QWORD PTR [rbp-0x30]
+ 1d6d160:	4c 8b d8             	mov    r11,rax
+ 1d6d163:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d6d167:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d6d16b:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d6d16f:	4c 8b 65 d8          	mov    r12,QWORD PTR [rbp-0x28]
+ 1d6d173:	48 8b e5             	mov    rsp,rbp
+ 1d6d176:	5d                   	pop    rbp
+ 1d6d177:	e9 76 fe ff ff       	jmp    1d6cff2 <Builtins_IncHandler+0xf2>
+ 1d6d17c:	55                   	push   rbp
+ 1d6d17d:	48 8b ec             	mov    rbp,rsp
+ 1d6d180:	6a 10                	push   0x10
+ 1d6d182:	48 83 ec 38          	sub    rsp,0x38
+ 1d6d186:	ba 0c 00 00 00       	mov    edx,0xc
+ 1d6d18b:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d6d18f:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d6d193:	48 89 7d e0          	mov    QWORD PTR [rbp-0x20],rdi
+ 1d6d197:	4c 89 65 d8          	mov    QWORD PTR [rbp-0x28],r12
+ 1d6d19b:	4c 89 45 d0          	mov    QWORD PTR [rbp-0x30],r8
+ 1d6d19f:	f2 0f 11 45 c8       	movsd  QWORD PTR [rbp-0x38],xmm0
+ 1d6d1a4:	e8 d7 53 e2 ff       	call   1b92580 <Builtins_AllocateInYoungGeneration>
+ 1d6d1a9:	4c 8d 58 ff          	lea    r11,[rax-0x1]
+ 1d6d1ad:	f2 0f 10 45 c8       	movsd  xmm0,QWORD PTR [rbp-0x38]
+ 1d6d1b2:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d6d1b6:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d6d1ba:	48 8b 7d e0          	mov    rdi,QWORD PTR [rbp-0x20]
+ 1d6d1be:	4c 8b 65 d8          	mov    r12,QWORD PTR [rbp-0x28]
+ 1d6d1c2:	44 8b 45 d0          	mov    r8d,DWORD PTR [rbp-0x30]
+ 1d6d1c6:	48 8b e5             	mov    rsp,rbp
+ 1d6d1c9:	5d                   	pop    rbp
+ 1d6d1ca:	e9 ed fd ff ff       	jmp    1d6cfbc <Builtins_IncHandler+0xbc>
+ 1d6d1cf:	90                   	nop

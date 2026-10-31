@@ -1,0 +1,28 @@
+{
+  "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_MONOTONIC_SIMPLE_V1",
+  "clock": "existing benchNow wrapper over native performance.now; monotonic",
+  "before_timer": [
+    "process and VM startup",
+    "adapters",
+    "source loading and static function compilation",
+    "objects/input setup"
+  ],
+  "timed": [
+    "first target invocation and remaining N-1 calls",
+    "repeat driver and int32 checksum",
+    "loop support operations",
+    "runtime/helper/GC/builtin costs as encountered"
+  ],
+  "after_timer": [
+    "result validation",
+    "JSON output",
+    "process shutdown"
+  ],
+  "warmup": false,
+  "v8_flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "same_script": true,
+  "timing_not": "pure interpreter-loop self time; no operation-level self time or frontend-percentage claim"
+}

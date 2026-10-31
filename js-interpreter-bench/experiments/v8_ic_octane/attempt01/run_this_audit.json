@@ -1,0 +1,114 @@
+[
+  {
+    "case": "Richards.Richards",
+    "registered_Run_source": "function runRichards() {\n  var scheduler = new Scheduler();\n  scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);\n\n  var queue = new Packet(null, ID_WORKER, KIND_WORK);\n  queue = new Packet(queue,  ID_WORKER, KIND_WORK);\n  scheduler.addWorkerTask(ID_WORKER, 1000, queue);\n\n  queue = new Packet(null, ID_DEVICE_A, KIND_DEVICE);\n  queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);\n  queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);\n  scheduler.addHandlerTask(ID_HANDLER_A, 2000, queue);\n\n  queue = new Packet(null, ID_DEVICE_B, KIND_DEVICE);\n  queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);\n  queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);\n  scheduler.addHandlerTask(ID_HANDLER_B, 3000, queue);\n\n  scheduler.addDeviceTask(ID_DEVICE_A, 4000, null);\n\n  scheduler.addDeviceTask(ID_DEVICE_B, 5000, null);\n\n  scheduler.schedule();\n\n  if (scheduler.queueCount != EXPECTED_QUEUE_COUNT ||\n      scheduler.holdCount != EXPECTED_HOLD_COUNT) {\n    var msg =\n        \"Error during execution: queueCount = \" + scheduler.queueCount +\n        \", holdCount = \" + scheduler.holdCount + \".\";\n    throw new Error(msg);\n  }\n}",
+    "source_sha256": "c9607a22fdc3e43b2d8519ea2842ca03ec0d90074cd8dfdb85d43197d5d8217a",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "DeltaBlue.DeltaBlue",
+    "registered_Run_source": "function deltaBlue() {\n  chainTest(100);\n  projectionTest(100);\n}",
+    "source_sha256": "ffb4490a9402fa18436f3f15f7f2ddef2dc41cb4b771621aa850c5d5f8707e88",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "Crypto.Encrypt",
+    "registered_Run_source": "function encrypt() {\n  var RSA = new RSAKey();\n  RSA.setPublic(nValue, eValue);\n  RSA.setPrivateEx(nValue, eValue, dValue, pValue, qValue, dmp1Value, dmq1Value, coeffValue);\n  encrypted = RSA.encrypt(TEXT);\n}",
+    "source_sha256": "4e924deb99095bcde72963d0af884fe0415e361ea966a1ac5bd4c82095efc225",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "Crypto.Decrypt",
+    "registered_Run_source": "function decrypt() {\n  var RSA = new RSAKey();\n  RSA.setPublic(nValue, eValue);\n  RSA.setPrivateEx(nValue, eValue, dValue, pValue, qValue, dmp1Value, dmq1Value, coeffValue);\n  var decrypted = RSA.decrypt(encrypted);\n  if (decrypted != TEXT) {\n    throw new Error(\"Crypto operation failed\");\n  }\n}",
+    "source_sha256": "2b772cf2f52a2d50b848a8af771694cce41585ecc078c944bd49f213999c7a89",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "RayTrace.RayTrace",
+    "registered_Run_source": "function renderScene(){\n    var scene = new Flog.RayTracer.Scene();\n\n    scene.camera = new Flog.RayTracer.Camera(\n                        new Flog.RayTracer.Vector(0, 0, -15),\n                        new Flog.RayTracer.Vector(-0.2, 0, 5),\n                        new Flog.RayTracer.Vector(0, 1, 0)\n                    );\n\n    scene.background = new Flog.RayTracer.Background(\n                                new Flog.RayTracer.Color(0.5, 0.5, 0.5),\n                                0.4\n                            );\n\n    var sphere = new Flog.RayTracer.Shape.Sphere(\n        new Flog.RayTracer.Vector(-1.5, 1.5, 2),\n        1.5,\n        new Flog.RayTracer.Material.Solid(\n            new Flog.RayTracer.Color(0,0.5,0.5),\n            0.3,\n            0.0,\n            0.0,\n            2.0\n        )\n    );\n\n    var sphere1 = new Flog.RayTracer.Shape.Sphere(\n        new Flog.RayTracer.Vector(1, 0.25, 1),\n        0.5,\n        new Flog.RayTracer.Material.Solid(\n            new Flog.RayTracer.Color(0.9,0.9,0.9),\n            0.1,\n            0.0,\n            0.0,\n            1.5\n        )\n    );\n\n    var plane = new Flog.RayTracer.Shape.Plane(\n                                new Flog.RayTracer.Vector(0.1, 0.9, -0.5).normalize(),\n                                1.2,\n                                new Flog.RayTracer.Material.Chessboard(\n                                    new Flog.RayTracer.Color(1,1,1),\n                                    new Flog.RayTracer.Color(0,0,0),\n                                    0.2,\n                                    0.0,\n                                    1.0,\n                                    0.7\n                                )\n                            );\n\n    scene.shapes.push(plane);\n    scene.shapes.push(sphere);\n    scene.shapes.push(sphere1);\n\n    var light = new Flog.RayTracer.Light(\n        new Flog.RayTracer.Vector(5, 10, -1),\n        new Flog.RayTracer.Color(0.8, 0.8, 0.8)\n    );\n\n    var light1 = new Flog.RayTracer.Light(\n        new Flog.RayTracer.Vector(-3, 5, -15),\n        new Flog.RayTracer.Color(0.8, 0.8, 0.8),\n        100\n    );\n\n    scene.lights.push(light);\n    scene.lights.push(light1);\n\n    var imageWidth = 100; // $F('imageWidth');\n    var imageHeight = 100; // $F('imageHeight');\n    var pixelSize = \"5,5\".split(','); //  $F('pixelSize').split(',');\n    var renderDiffuse = true; // $F('renderDiffuse');\n    var renderShadows = true; // $F('renderShadows');\n    var renderHighlights = true; // $F('renderHighlights');\n    var renderReflections = true; // $F('renderReflections');\n    var rayDepth = 2;//$F('rayDepth');\n\n    var raytracer = new Flog.RayTracer.Engine(\n        {\n            canvasWidth: imageWidth,\n            canvasHeight: imageHeight,\n            pixelWidth: pixelSize[0],\n            pixelHeight: pixelSize[1],\n            \"renderDiffuse\": renderDiffuse,\n            \"renderHighlights\": renderHighlights,\n            \"renderShadows\": renderShadows,\n            \"renderReflections\": renderReflections,\n            \"rayDepth\": rayDepth\n        }\n    );\n\n    raytracer.renderScene(scene, null, 0);\n}",
+    "source_sha256": "68073dafded701f592c3ecc41ae8503017036aa2d7e03134900e41db13c5c084",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "EarleyBoyer.Earley",
+    "registered_Run_source": "function () { BgL_earleyzd2benchmarkzd2(); }",
+    "source_sha256": "5897da8475e910d51487784dc97544d72bb614293e9207823cf59801b4c06945",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "EarleyBoyer.Boyer",
+    "registered_Run_source": "function () { BgL_nboyerzd2benchmarkzd2(); }",
+    "source_sha256": "2c4133c1e9c886c327702bfd9a348f6fa54d2d8a315a8a07c71f27c39e4b9ca0",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "RegExp.RegExp",
+    "registered_Run_source": "function RegExpRun() {\n  regExpBenchmark.run();\n}",
+    "source_sha256": "695597b698adda7e78b391ea5310bb7d886273f6f4628d6f022c67363221f4ab",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "Splay.Splay",
+    "registered_Run_source": "function SplayRun() {\n  // Replace a few nodes in the splay tree.\n  for (var i = 0; i < kSplayTreeModifications; i++) {\n    var key = InsertNewNode();\n    var greatest = splayTree.findGreatestLessThan(key);\n    if (greatest == null) splayTree.remove(key);\n    else splayTree.remove(greatest.key);\n  }\n  SplayUpdateStats(performance.now());\n}",
+    "source_sha256": "d4ca5b17cf0573ba57e5c594522ef9b530765e2e646e637ea5ecc9f67bb0df20",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "NavierStokes.NavierStokes",
+    "registered_Run_source": "function runNavierStokes()\n{\n    solver.update();\n    nsFrameCounter++;\n\n    if(nsFrameCounter==15)\n        checkResult(solver.getDens());\n}",
+    "source_sha256": "3a6c67e0613f1f00ff0ad607d6eee5a9eaa631585d48099ee75f54eec4887c6e",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "PdfJS.PdfJS",
+    "registered_Run_source": "function runPdfJS() {\n  PDFJS.getDocument(pdf_file).then(function(pdf) {\n    var canvas = PdfJS_window.document.getElementById('canvas');\n    var context = canvas.getContext('2d');\n    var renderContext = {canvasContext: context};\n    canvas_logs.push(context.__log__);\n\n    // Cycle through all pages.\n    function renderPages(i, j) {\n      if (i > j) return;\n      context.clearRect(0, 0, canvas.width, canvas.height);\n      pdf.getPage(i).then(function(page) {\n        renderContext.viewport = page.getViewport(1);\n        canvas.height = renderContext.viewport.height;\n        canvas.width = renderContext.viewport.width;\n        page.render(renderContext).then(renderPages.bind(null, i + 1, j));\n      });\n    }\n    renderPages(1, pdf.numPages);\n  });\n\n  // Wait for everything to complete.\n  PdfJS_window.flushTimeouts();\n}",
+    "source_sha256": "39478b242eb9833014f3d59512c05539bd8b3bea02bb3977412314dacdda698a",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "Mandreel.Mandreel",
+    "registered_Run_source": "function runMandreel() {\n  Mandreel_currentTime = 0;\n  var sp = g_stack_pointer+800*1024;\n  for (var i=0;i<mandreel_total_memory/4;i++) {\n    heap32[i] = my_heap32[i];\n  }\n  tlsf_ptr = 0;\n  heapNewPos = my_heapNewPos;\n  my_old_constructors(llvm_2E_global_ctors,5,sp);\n  heapU32[sp>>2] = 640;\n  heapU32[(sp+4)>>2] = 480;\n  __mandreel_internal_SetResolution(sp);\n  __mandreel_internal_init(g_stack_pointer+800*1024);\n  __init(g_stack_pointer+800*1024);\n  for (var i = 0; i < 20; i++) {\n    render();\n    Mandreel_flushTimeouts();\n    updateMandreelStats(performance.now());\n  }\n  Mandreel_checkState();\n}",
+    "source_sha256": "6a99ae7ce3996f9afd593b57e6593f99491f210bf14731e49e062abfe9a95bc1",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "Gameboy.Gameboy",
+    "registered_Run_source": "function runGameboy() {\n  start(new GameBoyCanvas(), decoded_gameboy_rom);\n\n  gameboy.instructions = 0;\n  gameboy.totalInstructions = 250000;\n\n  while (gameboy.instructions <= gameboy.totalInstructions) {\n    gameboy.run();\n    GameBoyAudioNode.run();\n  }\n\n  resetGlobalVariables();\n}",
+    "source_sha256": "fc4b7b66ad8511de47f3a06bd794c46c1318574a1b26f1a5efea3a025de61f03",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "CodeLoad.CodeLoadClosure",
+    "registered_Run_source": "function runCodeLoadClosure() {\n  runClosure();\n  salt++;\n}",
+    "source_sha256": "75fb13721b06bb386fd5570655889060d8b58806cf7af7bff7a29d8ea9fca132",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "CodeLoad.CodeLoadJQuery",
+    "registered_Run_source": "function runCodeLoadJQuery() {\n  runJQuery();\n  salt++;\n}",
+    "source_sha256": "b5e3fc842b690df1ab55690d9299060d5e15e3aa85098fc44d73160863fe04d4",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  },
+  {
+    "case": "Typescript.Typescript",
+    "registered_Run_source": "function runTypescript() {\n  var compiler = createCompiler();\n  compiler.addUnit(compiler_input, \"compiler_input.ts\");\n  parseErrors = [];\n  compiler.reTypeCheck();\n  compiler.emit({\n           createFile: function (fileName) { return outfile; },\n           fileExists: function (path) { return false; },\n           directoryExists: function (path) { return false; },\n           resolvePath: function (path) { return path; }\n  });\n  \n  if (parseErrors.length != 192 && parseErrors.length != 193) {\n    throw new Error(\"Parse errors.\");\n  }\n  compiler = null;\n}",
+    "source_sha256": "f72aabe3cc14f2f22cd863751e25811bd23c554edfd63c99b3f913f6d1246e83",
+    "no_entry_this_token": true,
+    "evidence": "actual registered V8 function source; same frozen registration/workload for all conditions"
+  }
+]

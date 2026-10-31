@@ -1,0 +1,22 @@
+{
+  "exit_code": 0,
+  "stdout": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor UNKNOWN\n/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq UNKNOWN\n",
+  "stderr": "",
+  "command": [
+    "sh",
+    "-c",
+    "for p in /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq; do if test -f \"$p\"; then printf \"%s \" \"$p\"; cat \"$p\"; else printf \"%s UNKNOWN\n\" \"$p\"; fi; done"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:06:32.225523+00:00",
+  "outer_start_ns": 286410947886,
+  "outer_stop_ns": 286413285404,
+  "outer_wall_ns": 2337518,
+  "boot_id": "4778ecdc-6957-4a86-80db-dba12c2d5b52",
+  "load_average": [
+    1.189453125,
+    0.73046875,
+    0.32177734375
+  ],
+  "LD_PRELOAD": null
+}
