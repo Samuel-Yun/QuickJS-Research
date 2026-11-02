@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "initial_manifest_stages_are_planned_not_success_evidence": true,
+  "successful_method": "GDB exact JS_CallInternal native entry; x86_64 SysV argument registers; traverse compiled root constant pool before script execution",
+  "successful_records": ["raw/A.gdb_entry_abi2.json", "raw/E.gdb_entry_abi2.json"],
+  "successful_memory": ["bytecode/A.entry2.live.json", "bytecode/E.entry2.live.json"],
+  "failed_methods_retained": [
+    {"record": "raw/A.gdb.json", "reason": "source-line breakpoint: b optimized out"},
+    {"record": "raw/A.gdb_final.json", "reason": "free_function_bytecode inlined, no independent native symbol"},
+    {"record": "raw/A.gdb_entry_abi.json", "reason": "GDB register tag is signed -1, first equality did not normalize to uint64"}
+  ],
+  "target_snapshots_per_engine": 1,
+  "driver_calls_per_engine": 12,
+  "performance_measurement": false,
+  "runtime_rebuilt_or_replaced": false,
+  "E_feedback_vector_before_execution": false,
+  "E_feedback_state_after_execution": null,
+  "after_execution_state_reason": "not captured; no per-query hit trace in this example"
+}

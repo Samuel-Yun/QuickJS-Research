@@ -1,0 +1,33 @@
+{
+  "purpose": "correctness and live bytecode inspection only; no timing or rebuild",
+  "source_commit": "cd1674f0f12b40b3e110ee295507b7f4fa55edcd",
+  "artifacts": {
+    "A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "size_bytes": 5090704
+    },
+    "E": {
+      "path": "/home/mzyx/v8_inspired_ic_attempt02/E/qjs",
+      "sha256": "3d36ec898484efca3a3a445662d1e9cfec1ec83c1fcce98e8cf8e0c7b908e482",
+      "size_bytes": 5116168
+    },
+    "V8_ON": {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "size_bytes": 53498016
+    }
+  },
+  "v8_flags": [
+    "--jitless",
+    "--no-lazy",
+    "--use-ic"
+  ],
+  "source_sha256": "e510bfbe0199cc9a8dd80fd63675a39cdbf05199ab112894fc339ad1defa36ac",
+  "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "host": "LAPTOP-QPKCPDCB",
+  "gdb": "/usr/bin/gdb",
+  "stages": "first and twelfth target frame entry before first opcode",
+  "writes_to_VM_source": false,
+  "inferior_function_calls": false
+}

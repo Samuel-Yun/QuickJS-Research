@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gdb",
+    "-q",
+    "-batch",
+    "-ex",
+    "source /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/e_ic_bytecode_example/attempt02/gdb_feedback.py",
+    "--args",
+    "/home/mzyx/v8_inspired_ic_attempt02/E_diag_sites/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/e_ic_bytecode_example/attempt02/example.js"
+  ],
+  "exit_code": 0,
+  "stdout": "[Thread debugging using libthread_db enabled]\nUsing host libthread_db library \"/lib/x86_64-linux-gnu/libthread_db.so.1\".\nAFTER 1 result=4 checksum=4\nAFTER 2 result=4 checksum=8\nAFTER 3 result=4 checksum=12\nAFTER 4 result=4 checksum=16\nAFTER 5 result=4 checksum=20\nAFTER 6 result=4 checksum=24\nAFTER 7 result=4 checksum=28\nAFTER 8 result=4 checksum=32\nAFTER 9 result=4 checksum=36\nAFTER 10 result=4 checksum=40\n[Inferior 1 (process 610) exited normally]\n",
+  "stderr": "EIC_STATS:{\"queries\":10,\"hits\":2,\"fallback\":8,\"own_hits\":2,\"proto_hits\":0,\"store_hits\":0,\"mono\":1,\"poly\":0,\"generic\":0,\"recompute\":0,\"ineligible\":0,\"alloc_fail\":0,\"metadata\":1,\"vectors\":1,\"polys\":0,\"chains\":0,\"shape_refs\":1,\"shape_frees\":1,\"live_bytes\":0,\"peak_bytes\":48,\"requested_bytes\":48,\"released_bytes\":48,\"get_length_reads\":0,\"proto_guard_fail\":0,\"store_refresh\":0,\"store_refresh_inactive\":0,\"named_read\":10,\"named_store\":0,\"keyed_read\":0,\"keyed_store\":0,\"binding_varref_read\":112,\"binding_varref_store\":33,\"scope\":\"whole_process_after_FreeRuntime\"}\n"
+}
