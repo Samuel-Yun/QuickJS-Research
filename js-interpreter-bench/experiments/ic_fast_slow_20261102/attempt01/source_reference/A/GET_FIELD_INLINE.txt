@@ -1,0 +1,56 @@
+#define GET_FIELD_INLINE(name, keep, is_length)                         \
+            {                                                           \
+                JSValue val, obj;                                       \
+                JSAtom atom;                                            \
+                JSObject *p;                                            \
+                JSProperty *pr;                                         \
+                JSShapeProperty *prs;                                   \
+                                                                        \
+                if (is_length) {                                        \
+                    atom = JS_ATOM_length;                              \
+                } else {                                                \
+                    atom = get_u32(pc);                                 \
+                    pc += 4;                                            \
+                }                                                       \
+                                                                        \
+                obj = sp[-1];                                           \
+                if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {   \
+                    p = JS_VALUE_GET_OBJ(obj);                          \
+                    for(;;) {                                           \
+                        prs = find_own_property(&pr, p, atom);          \
+                        if (prs) {                                      \
+                            /* found */                                 \
+                            if (unlikely(prs->flags & JS_PROP_TMASK))   \
+                                    goto name ## _slow_path;            \
+                            val = JS_DupValue(ctx, pr->u.value);        \
+                            break;                                      \
+                        }                                               \
+                        if (unlikely(p->is_exotic)) {                   \
+                            /* XXX: should avoid the slow path for arrays \
+                               and typed arrays by ensuring that 'prop' is \
+                               not numeric */                           \
+                            obj = JS_MKPTR(JS_TAG_OBJECT, p);           \
+                            goto name ## _slow_path;                    \
+                        }                                               \
+                        p = p->shape->proto;                            \
+                        if (!p) {                                       \
+                            val = JS_UNDEFINED;                         \
+                            break;                                      \
+                        }                                               \
+                    }                                                   \
+                } else {                                                \
+                name ## _slow_path:                                     \
+                    sf->cur_pc = pc;                                    \
+                    val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0); \
+                    if (unlikely(JS_IsException(val)))                  \
+                        goto exception;                                 \
+                }                                                       \
+                if (keep) {                                             \
+                    *sp++ = val;                                        \
+                } else {                                                \
+                    JS_FreeValue(ctx, sp[-1]);                          \
+                    sp[-1] = val;                                       \
+                }                                                       \
+            }
+
+            

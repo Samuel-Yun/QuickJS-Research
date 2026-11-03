@@ -1,0 +1,43 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-I/home/mzyx/ic_fast_slow_20261102_attempt01/U_san_build03",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-D_GNU_SOURCE",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/correctness/offset_boundary.c",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_san_build03/.obj/asan/ubsan/dtoa.o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_san_build03/.obj/asan/ubsan/libregexp.o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_san_build03/.obj/asan/ubsan/libunicode.o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_san_build03/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_san_build03/offset_boundary_check"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01",
+  "label": "U_san_offset_boundary_compile",
+  "timestamp": "2026-11-02T13:38:27.275338+00:00",
+  "completed_at": "2026-11-02T13:39:32.600064+00:00",
+  "outer_start_ns": 16425969936040,
+  "outer_stop_ns": 16491294764231,
+  "external_wall_ms": 65324.828191,
+  "child_user_ms": 63141.276000000005,
+  "child_system_ms": 1941.599,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    1.00244140625,
+    0.54541015625,
+    0.22412109375
+  ]
+}

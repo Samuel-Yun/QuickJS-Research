@@ -1,0 +1,32 @@
+{
+  "exit_code": 0,
+  "stdout": "$1 = 16\n$2 = 128\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "gdb",
+    "-q",
+    "-batch",
+    "-ex",
+    "p sizeof(JSProperty)",
+    "-ex",
+    "p sizeof(JSFunctionBytecode)",
+    "/home/mzyx/read_ic_dequickening_attempt01/A/qjs"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01",
+  "label": "A struct sizes",
+  "timestamp": "2026-11-02T09:01:43.947014+00:00",
+  "completed_at": "2026-11-02T09:01:44.158129+00:00",
+  "outer_start_ns": 768231768182,
+  "outer_stop_ns": 768442961349,
+  "external_wall_ms": 211.193167,
+  "child_user_ms": 145.71699999999998,
+  "child_system_ms": 57.734,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    0.00146484375,
+    0.05859375,
+    0.03515625
+  ]
+}
