@@ -1,0 +1,141 @@
+                }
+                sp[-1] = JS_NewBool(ctx, !res);
+            }
+            BREAK;
+
+#define GET_FIELD_INLINE(name, keep, is_length)                         \
+            {                                                           \
+                JSValue val, obj;                                       \
+                JSAtom atom;                                            \
+                JSObject *p;                                            \
+                JSProperty *pr;                                         \
+                JSShapeProperty *prs;                                   \
+                                                                        \
+                if (is_length) {                                        \
+                    atom = JS_ATOM_length;                              \
+                } else {                                                \
+                    atom = get_u32(pc);                                 \
+                    pc += 4;                                            \
+                }                                                       \
+                                                                        \
+                obj = sp[-1];                                           \
+                if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {   \
+                    p = JS_VALUE_GET_OBJ(obj);                          \
+                    for(;;) {                                           \
+                        prs = find_own_property(&pr, p, atom);          \
+                        if (prs) {                                      \
+                            /* found */                                 \
+                            if (unlikely(prs->flags & JS_PROP_TMASK))   \
+                                    goto name ## _slow_path;            \
+                            val = JS_DupValue(ctx, pr->u.value);        \
+                            break;                                      \
+                        }                                               \
+                        if (unlikely(p->is_exotic)) {                   \
+                            /* XXX: should avoid the slow path for arrays \
+                               and typed arrays by ensuring that 'prop' is \
+                               not numeric */                           \
+                            obj = JS_MKPTR(JS_TAG_OBJECT, p);           \
+                            goto name ## _slow_path;                    \
+                        }                                               \
+                        p = p->shape->proto;                            \
+                        if (!p) {                                       \
+                            val = JS_UNDEFINED;                         \
+                            break;                                      \
+                        }                                               \
+                    }                                                   \
+                } else {                                                \
+                name ## _slow_path:                                     \
+                    sf->cur_pc = pc;                                    \
+                    val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0); \
+                    if (unlikely(JS_IsException(val)))                  \
+                        goto exception;                                 \
+                }                                                       \
+                if (keep) {                                             \
+                    *sp++ = val;                                        \
+                } else {                                                \
+                    JS_FreeValue(ctx, sp[-1]);                          \
+                    sp[-1] = val;                                       \
+                }                                                       \
+            }
+
+            
+        CASE(OP_get_field):
+            GET_FIELD_INLINE(get_field, 0, 0);
+            BREAK;
+
+        CASE(OP_get_field2):
+            GET_FIELD_INLINE(get_field2, 1, 0);
+            BREAK;
+
+#if SHORT_OPCODES
+        CASE(OP_get_length):
+            GET_FIELD_INLINE(get_length, 0, 1);
+            BREAK;
+#endif
+            
+        CASE(OP_put_field):
+            {
+                int ret;
+                JSValue obj;
+                JSAtom atom;
+                JSObject *p;
+                JSProperty *pr;
+                JSShapeProperty *prs;
+
+                atom = get_u32(pc);
+                pc += 4;
+
+                obj = sp[-2];
+                if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {
+                    p = JS_VALUE_GET_OBJ(obj);
+                    prs = find_own_property(&pr, p, atom);
+                    if (!prs)
+                        goto put_field_slow_path;
+                    if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+                                              JS_PROP_LENGTH)) == JS_PROP_WRITABLE)) {
+                        /* fast path */
+                        set_value(ctx, &pr->u.value, sp[-1]);
+                    } else {
+                        goto put_field_slow_path;
+                    }
+                    JS_FreeValue(ctx, obj);
+                    sp -= 2;
+                } else {
+                put_field_slow_path:
+                    sf->cur_pc = pc;
+                    ret = JS_SetPropertyInternal(ctx, obj, atom, sp[-1], obj,
+                                                 JS_PROP_THROW_STRICT);
+                    JS_FreeValue(ctx, obj);
+                    sp -= 2;
+                    if (unlikely(ret < 0))
+                        goto exception;
+                }
+                
+            }
+            BREAK;
+
+        CASE(OP_private_symbol):
+            {
+                JSAtom atom;
+                JSValue val;
+
+                atom = get_u32(pc);
+                pc += 4;
+                val = JS_NewSymbolFromAtom(ctx, atom, JS_ATOM_TYPE_PRIVATE);
+                if (JS_IsException(val))
+                    goto exception;
+                *sp++ = val;
+            }
+            BREAK;
+
+        CASE(OP_get_private_field):
+            {
+                JSValue val;
+
+                val = JS_GetPrivateField(ctx, sp[-2], sp[-1]);
+                JS_FreeValue(ctx, sp[-1]);
+                JS_FreeValue(ctx, sp[-2]);
+                sp[-2] = val;
+                sp--;
+                if (unlikely(JS_IsException(val)))
+       

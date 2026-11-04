@@ -1,0 +1,27 @@
+{
+  "exit_code": 2,
+  "stdout": "mkdir -p .obj .obj/examples .obj/tests\n",
+  "stderr": "make: *** No rule to make target 'repl.js', needed by 'repl.c'.  Stop.\nmake: *** Waiting for unfinished jobs....\n",
+  "timeout": false,
+  "command": [
+    "make",
+    "-j2",
+    "qjs"
+  ],
+  "label": "A independent diagnostic build",
+  "cwd": "/home/mzyx/splay_ic_20261104_attempt01/A_diag2",
+  "timestamp": "2026-11-04T06:34:16.969585+00:00",
+  "completed_at": "2026-11-04T06:34:17.002704+00:00",
+  "outer_start_ns": 4849292175,
+  "outer_stop_ns": 4882494716,
+  "external_wall_ms": 33.202541,
+  "child_user_ms": 12.216,
+  "child_system_ms": 0.0,
+  "boot_id": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "boot_id_after": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ]
+}
