@@ -1,0 +1,213 @@
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,6 +311,7 @@
+     exit(1);
+ }
+ 
++extern void sp_control_install(JSContext*);
+ int main(int argc, char **argv)
+ {
+     JSRuntime *rt;
+@@ -483,6 +484,7 @@
+ 
+     if (!empty_run) {
+         js_std_add_helpers(ctx, argc - optind, argv + optind);
++        sp_control_install(ctx);
+ 
+         /* make 'std' and 'os' visible to non module code */
+         if (load_std) {
+--- a/sp_control.inc
++++ b/sp_control.inc
+@@ -0,0 +1,45 @@
++/* Mechanism-only controller. Ordinary bytecode and IC site retain independent
++ * atom ownership. Repeating the same configuration never dup's an atom twice.
++ * Exact target source/opcode/operand specifications are generated from saved dump.
++ */
++static int sp_disable;
++static JSFunctionBytecode *sp_control_b;
++static void sp_control_forget(void *ptr){if(sp_control_b==ptr)sp_control_b=NULL;}
++static JSValue sp_control(JSContext *ctx,JSValueConst self,int argc,JSValueConst *argv){
++    if(argc!=1||JS_VALUE_GET_TAG(argv[0])!=JS_TAG_OBJECT)return JS_ThrowTypeError(ctx,"control expects function");
++    JSObject *obj=JS_VALUE_GET_OBJ(argv[0]);if(obj->class_id!=JS_CLASS_BYTECODE_FUNCTION)return JS_ThrowTypeError(ctx,"bytecode function required");
++    JSFunctionBytecode *b=obj->u.func.function_bytecode;
++    if(!b->has_debug||b->debug.source_len!=sizeof(sp_target_source)-1||memcmp(b->debug.source,sp_target_source,sizeof(sp_target_source)-1))return JS_NewInt32(ctx,0);
++    if(sp_control_b && sp_control_b!=b)return JS_ThrowTypeError(ctx,"multiple target instances");
++    if(b->byte_code_len!=sp_expected_length)return JS_ThrowTypeError(ctx,"target length");
++    /* Validate every opcode start and non-atom operand, except the three
++     * already-restored sites on a repeated OFF call. No guessing by PC/name. */
++    for(unsigned j=0;j<sizeof(sp_expected_ops)/sizeof(sp_expected_ops[0]);j++){
++        const SPSpec *spec=&sp_expected_ops[j];const uint8_t *pc=b->byte_code_buf+spec->pc;
++        int selected=-1;for(unsigned k=0;k<3;k++)if(spec->pc==sp_control_pcs[k])selected=k;
++        if(selected>=0 && sp_disable && *pc==OP_get_field){
++            unsigned index=sp_control_indices[selected];if(index>=b->read_ic_count||get_u32(pc+1)!=b->read_ic_sites[index].atom)return JS_ThrowTypeError(ctx,"restored atom");
++        }else{
++            if(*pc!=spec->op)return JS_ThrowTypeError(ctx,"target opcode");
++            if(!spec->atom && memcmp(pc+1,sp_expected_code+spec->pc+1,spec->size-1))return JS_ThrowTypeError(ctx,"target operand");
++        }
++    }
++    for(unsigned k=0;k<3;k++){
++        unsigned index=sp_control_indices[k];if(index>=b->read_ic_count)return JS_ThrowTypeError(ctx,"target site");
++        ReadICSite *site=&b->read_ic_sites[index];uint8_t *pc=b->byte_code_buf+sp_control_pcs[k];
++        const char *name=JS_AtomToCString(ctx,site->atom);if(!name)return JS_EXCEPTION;
++        int ok=!strcmp(name,k==2?"right":"key");JS_FreeCString(ctx,name);if(!ok)return JS_ThrowTypeError(ctx,"target property");
++        /* Actual target sites are all get_field (5 bytes, receiver consumed).
++         * Reject get_field2 instead of silently changing receiver semantics. */
++        if(*pc==OP_get_field_rdi){
++            if(get_u32(pc+1)!=index)return JS_ThrowTypeError(ctx,"target index");
++            if(sp_disable){JSAtom atom=JS_DupAtom(ctx,site->atom);*pc=OP_get_field;put_u32(pc+1,atom);}
++        }else if(!sp_disable||*pc!=OP_get_field||get_u32(pc+1)!=site->atom)return JS_ThrowTypeError(ctx,"target state");
++    }
++    sp_control_b=b;return JS_NewInt32(ctx,3);
++}
++void sp_control_install(JSContext *ctx){
++    const char *mode=getenv("SP_DISABLE");if(!mode||(strcmp(mode,"0")&&strcmp(mode,"1"))){fprintf(stderr,"SP_DISABLE must be 0 or 1\n");exit(2);}
++    sp_disable=mode[0]=='1';JSValue g=JS_GetGlobalObject(ctx);
++    if(JS_SetPropertyStr(ctx,g,"__spControl",JS_NewCFunction(ctx,sp_control,"__spControl",1))<0)abort();JS_FreeValue(ctx,g);
++}
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,130 @@
++static void sp_control_forget(void*);
++static const char sp_target_source[]="function(key) {\n  if (this.isEmpty()) {\n    return;\n  }\n  // Create a dummy node.  The use of the dummy node is a bit\n  // counter-intuitive: The right child of the dummy node will hold\n  // the L tree of the algorithm.  The left child of the dummy node\n  // will hold the R tree of the algorithm.  Using a dummy node, left\n  // and right will always be nodes and we avoid special cases.\n  var dummy, left, right;\n  dummy = left = right = new SplayTree.Node(null, null);\n  var current = this.root_;\n  while (true) {\n    if (key < current.key) {\n      if (!current.left) {\n        break;\n      }\n      if (key < current.left.key) {\n        // Rotate right.\n        var tmp = current.left;\n        current.left = tmp.right;\n        tmp.right = current;\n        current = tmp;\n        if (!current.left) {\n          break;\n        }\n      }\n      // Link right.\n      right.left = current;\n      right = current;\n      current = current.left;\n    } else if (key > current.key) {\n      if (!current.right) {\n        break;\n      }\n      if (key > current.right.key) {\n        // Rotate left.\n        var tmp = current.right;\n        current.right = tmp.left;\n        tmp.left = current;\n        current = tmp;\n        if (!current.right) {\n          break;\n        }\n      }\n      // Link left.\n      left.right = current;\n      left = current;\n      current = current.right;\n    } else {\n      break;\n    }\n  }\n  // Assemble.\n  left.right = current.left;\n  right.left = current.right;\n  current.left = dummy.right;\n  current.right = dummy.left;\n  this.root_ = current;\n}";
++static const unsigned sp_control_pcs[3]={43,138,147};
++static const unsigned sp_control_indices[3]={3,11,12};
++static const unsigned sp_expected_length=286;
++static const unsigned char sp_expected_code[]={8,193,5,192,5,245,0,0,0,0,36,0,0,232,2,41,56,0,0,244,1,0,0,0,17,7,7,33,2,0,205,204,199,192,5,244,2,0,0,0,202,207,198,244,3,0,0,0,161,232,86,198,244,4,0,0,0,148,105,170,0,0,0,207,198,244,5,0,0,0,244,6,0,0,0,161,232,41,198,244,7,0,0,0,193,4,198,192,4,244,8,0,0,0,63,205,2,0,0,192,4,198,63,206,2,0,0,192,4,206,244,9,0,0,0,148,233,112,197,198,63,205,2,0,0,198,201,198,244,10,0,0,0,202,234,162,207,198,244,11,0,0,0,163,232,84,198,244,12,0,0,0,148,233,75,207,198,244,13,0,0,0,244,14,0,0,0,163,232,41,198,244,15,0,0,0,193,4,198,192,4,244,16,0,0,0,63,206,2,0,0,192,4,198,63,205,2,0,0,192,4,206,244,17,0,0,0,148,233,20,196,198,63,206,2,0,0,198,200,198,244,18,0,0,0,202,235,70,255,196,198,244,19,0,0,0,63,206,2,0,0,197,198,244,20,0,0,0,63,205,2,0,0,198,195,244,21,0,0,0,63,205,2,0,0,198,195,244,22,0,0,0,63,206,2,0,0,192,5,198,63,225,2,0,0,41};
++typedef struct SPSpec{unsigned pc,size,op,atom;}SPSpec;
++static const SPSpec sp_expected_ops[]={
++{0,1,8,0},
++{1,2,193,0},
++{3,2,192,0},
++{5,5,245,0},
++{10,3,36,0},
++{13,2,232,0},
++{15,1,41,0},
++{16,3,56,0},
++{19,5,244,0},
++{24,1,17,0},
++{25,1,7,0},
++{26,1,7,0},
++{27,3,33,0},
++{30,1,205,0},
++{31,1,204,0},
++{32,1,199,0},
++{33,2,192,0},
++{35,5,244,0},
++{40,1,202,0},
++{41,1,207,0},
++{42,1,198,0},
++{43,5,244,0},
++{48,1,161,0},
++{49,2,232,0},
++{51,1,198,0},
++{52,5,244,0},
++{57,1,148,0},
++{58,5,105,0},
++{63,1,207,0},
++{64,1,198,0},
++{65,5,244,0},
++{70,5,244,0},
++{75,1,161,0},
++{76,2,232,0},
++{78,1,198,0},
++{79,5,244,0},
++{84,2,193,0},
++{86,1,198,0},
++{87,2,192,0},
++{89,5,244,0},
++{94,5,63,1},
++{99,2,192,0},
++{101,1,198,0},
++{102,5,63,1},
++{107,2,192,0},
++{109,1,206,0},
++{110,5,244,0},
++{115,1,148,0},
++{116,2,233,0},
++{118,1,197,0},
++{119,1,198,0},
++{120,5,63,1},
++{125,1,198,0},
++{126,1,201,0},
++{127,1,198,0},
++{128,5,244,0},
++{133,1,202,0},
++{134,2,234,0},
++{136,1,207,0},
++{137,1,198,0},
++{138,5,244,0},
++{143,1,163,0},
++{144,2,232,0},
++{146,1,198,0},
++{147,5,244,0},
++{152,1,148,0},
++{153,2,233,0},
++{155,1,207,0},
++{156,1,198,0},
++{157,5,244,0},
++{162,5,244,0},
++{167,1,163,0},
++{168,2,232,0},
++{170,1,198,0},
++{171,5,244,0},
++{176,2,193,0},
++{178,1,198,0},
++{179,2,192,0},
++{181,5,244,0},
++{186,5,63,1},
++{191,2,192,0},
++{193,1,198,0},
++{194,5,63,1},
++{199,2,192,0},
++{201,1,206,0},
++{202,5,244,0},
++{207,1,148,0},
++{208,2,233,0},
++{210,1,196,0},
++{211,1,198,0},
++{212,5,63,1},
++{217,1,198,0},
++{218,1,200,0},
++{219,1,198,0},
++{220,5,244,0},
++{225,1,202,0},
++{226,3,235,0},
++{229,1,196,0},
++{230,1,198,0},
++{231,5,244,0},
++{236,5,63,1},
++{241,1,197,0},
++{242,1,198,0},
++{243,5,244,0},
++{248,5,63,1},
++{253,1,198,0},
++{254,1,195,0},
++{255,5,244,0},
++{260,5,63,1},
++{265,1,198,0},
++{266,1,195,0},
++{267,5,244,0},
++{272,5,63,1},
++{277,2,192,0},
++{279,1,198,0},
++{280,5,63,1},
++{285,1,41,0}
++};
++
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -36311,6 +36438,7 @@
+ 
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b)
+ {
++    sp_control_forget(b);
+     int i;
+ 
+ #if 0
+@@ -61456,3 +61584,5 @@
+     JS_FreeValue(ctx, obj);
+     return 0;
+ }
++
++#include "sp_control.inc"

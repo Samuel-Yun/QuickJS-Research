@@ -1,0 +1,49 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "--list",
+    "--verbose"
+  ],
+  "timestamp": "2026-11-04T09:32:20.109109+00:00",
+  "host_pid": 49540,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "After the interrupted gate, record host distro state without starting Linux or another experiment.",
+  "changed_factor": "Host-side list-only query; no Linux child launch, no restart, no settings change.",
+  "timeout_s": 15.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204309504000,
+      "free": 10438856704
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  },
+  "completed_at": "2026-11-04T09:32:20.168044+00:00",
+  "host_child_pid": 61888,
+  "wsl_exit_code": 0,
+  "wsl_exit_u32": 0,
+  "host_terminated_client": false,
+  "external_wall_ms": 57.6621,
+  "stdout": {
+    "encoding": "utf-16-le",
+    "text": "  NAME      STATE           VERSION\r\n* Ubuntu    Stopped         2\r\n"
+  },
+  "stderr": {
+    "encoding": "utf-8",
+    "text": ""
+  },
+  "stdout_sha256": "071e6b286a54d9ca86d2e21b060270924477ada89fe559d72026edbc5e3100fa",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "linux_child_exit_code": null,
+  "linux_child_signal": null,
+  "linux_boot_before": null,
+  "linux_boot_after": null,
+  "linux_child_cpu_ms": null,
+  "linux_single_process_peak_rss_kib": null,
+  "missing_linux_evidence": "UNKNOWN unless child JSON is actually produced"
+}

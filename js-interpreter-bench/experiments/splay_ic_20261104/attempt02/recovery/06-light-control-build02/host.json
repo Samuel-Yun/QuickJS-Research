@@ -1,0 +1,55 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/",
+    "--exec",
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/build.py",
+    "build02"
+  ],
+  "timestamp": "2026-11-04T09:15:56.219724+00:00",
+  "host_pid": 120248,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "Correct the saved-dump schema handling; decode site operands from the actual executable byte array.",
+  "changed_factor": "Build-script metadata decoding only; same diagnostic/controller C sources and compiler.",
+  "timeout_s": 900.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204161843200,
+      "free": 10586517504
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  },
+  "completed_at": "2026-11-04T09:16:31.020393+00:00",
+  "host_child_pid": 51912,
+  "wsl_exit_code": 1,
+  "wsl_exit_u32": 1,
+  "host_terminated_client": false,
+  "external_wall_ms": 34800.5929,
+  "stdout": {
+    "encoding": "utf-8",
+    "text": ""
+  },
+  "stderr": {
+    "encoding": "UTF-16LE WSL prefix + UTF-8 child suffix",
+    "text": "wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。\r\nTraceback (most recent call last):\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/build.py\", line 88, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/build.py\", line 77, in main\n    assert r['exit_code']==0,r['stderr'][-4000:]\n           ^^^^^^^^^^^^^^^^^\nAssertionError: intf(l->names[i],40,\"%s\",name);JS_FreeCString(ctx,name);l->flags_all[i]=pr->flags;l->copied++;\n      |                              ^~~~~~~~\naudit_tail.inc:37:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   37 |             if(o->is_exotic||depth>=8)break;o=o->shape->proto;\n      |             ^~\naudit_tail.inc:37:45: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   37 |             if(o->is_exotic||depth>=8)break;o=o->shape->proto;\n      |                                             ^\naudit_tail.inc: In function ‘audit_register’:\naudit_tail.inc:46:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   46 |     if(sp_focus_b||++sp_focus_instances>1)abort();sp_focus_b=b;\n      |     ^~\naudit_tail.inc:46:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   46 |     if(sp_focus_b||++sp_focus_instances>1)abort();sp_focus_b=b;\n      |                                                   ^~~~~~~~~~\naudit_tail.inc: In function ‘audit_report’:\naudit_tail.inc:90:9: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]\n   90 |         for(unsigned i=0;i<f->seq_count;i++)fprintf(o,\"%s%llu\",i?\",\":\"\",(unsigned long long)f->seq[i]);fprintf(o,\"],\\\"layouts\\\":[\");\n      |         ^~~\naudit_tail.inc:90:104: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’\n   90 |         for(unsigned i=0;i<f->seq_count;i++)fprintf(o,\"%s%llu\",i?\",\":\"\",(unsigned long long)f->seq[i]);fprintf(o,\"],\\\"layouts\\\":[\");\n      |                                                                                                        ^~~~~~~\nquickjs.c: At top level:\nquickjs.c:7:21: warning: ‘sp_expected_ops’ defined but not used [-Wunused-const-variable=]\n    7 | static const SPSpec sp_expected_ops[]={\n      |                     ^~~~~~~~~~~~~~~\nquickjs.c:5:28: warning: ‘sp_expected_code’ defined but not used [-Wunused-const-variable=]\n    5 | static const unsigned char sp_expected_code[]={8,193,5,192,5,245,0,0,0,0,36,0,0,232,2,41,56,0,0,244,1,0,0,0,17,7,7,33,2,0,205,204,199,192,5,244,2,0,0,0,202,207,198,244,3,0,0,0,161,232,86,198,244,4,0,0,0,148,105,170,0,0,0,207,198,244,5,0,0,0,244,6,0,0,0,161,232,41,198,244,7,0,0,0,193,4,198,192,4,244,8,0,0,0,63,205,2,0,0,192,4,198,63,206,2,0,0,192,4,206,244,9,0,0,0,148,233,112,197,198,63,205,2,0,0,198,201,198,244,10,0,0,0,202,234,162,207,198,244,11,0,0,0,163,232,84,198,244,12,0,0,0,148,233,75,207,198,244,13,0,0,0,244,14,0,0,0,163,232,41,198,244,15,0,0,0,193,4,198,192,4,244,16,0,0,0,63,206,2,0,0,192,4,198,63,205,2,0,0,192,4,206,244,17,0,0,0,148,233,20,196,198,63,206,2,0,0,198,200,198,244,18,0,0,0,202,235,70,255,196,198,244,19,0,0,0,63,206,2,0,0,197,198,244,20,0,0,0,63,205,2,0,0,198,195,244,21,0,0,0,63,205,2,0,0,198,195,244,22,0,0,0,63,206,2,0,0,192,5,198,63,225,2,0,0,41};\n      |                            ^~~~~~~~~~~~~~~~\nquickjs.c:4:23: warning: ‘sp_expected_length’ defined but not used [-Wunused-const-variable=]\n    4 | static const unsigned sp_expected_length=286;\n      |                       ^~~~~~~~~~~~~~~~~~\nquickjs.c:3:23: warning: ‘sp_control_indices’ defined but not used [-Wunused-const-variable=]\n    3 | static const unsigned sp_control_indices[3]={3,11,12};\n      |                       ^~~~~~~~~~~~~~~~~~\nquickjs.c:2:23: warning: ‘sp_control_pcs’ defined but not used [-Wunused-const-variable=]\n    2 | static const unsigned sp_control_pcs[3]={43,138,147};\n      |                       ^~~~~~~~~~~~~~\n/usr/bin/ld: .obj/quickjs.o: in function `sp_shape_death':\n/home/mzyx/splay_ic_20261104_attempt02/build02/M_light/audit_tail.inc:7:(.text+0x20bc): undefined reference to `free_is_forbidden'\n/usr/bin/ld: /home/mzyx/splay_ic_20261104_attempt02/build02/M_light/audit_tail.inc:7:(.text+0x5798): undefined reference to `free_is_forbidden'\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile:273: qjsc] Error 1\n\n"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "8831aacff89424469e4a21a304649d62ae0766736b170f549cbb475708e24836",
+  "linux_child_exit_code": null,
+  "linux_child_signal": null,
+  "linux_boot_before": null,
+  "linux_boot_after": null,
+  "linux_child_cpu_ms": null,
+  "linux_single_process_peak_rss_kib": null,
+  "missing_linux_evidence": "UNKNOWN unless child JSON is actually produced"
+}

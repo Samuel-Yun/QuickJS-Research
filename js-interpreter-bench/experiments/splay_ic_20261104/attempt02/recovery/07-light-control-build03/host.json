@@ -1,0 +1,55 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/",
+    "--exec",
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/build.py",
+    "build03"
+  ],
+  "timestamp": "2026-11-04T09:17:26.795175+00:00",
+  "host_pid": 103924,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "Diagnostic libc allocations must pair with libc free rather than QuickJS forbidden-free macro.",
+  "changed_factor": "Undefine free only in the diagnostic tail after VM implementation; keep all frozen and formal IC logic unchanged.",
+  "timeout_s": 900.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204253339648,
+      "free": 10495021056
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  },
+  "completed_at": "2026-11-04T09:18:17.580283+00:00",
+  "host_child_pid": 91428,
+  "wsl_exit_code": 1,
+  "wsl_exit_u32": 1,
+  "host_terminated_client": false,
+  "external_wall_ms": 50782.6549,
+  "stdout": {
+    "encoding": "utf-8",
+    "text": "BUILT_VERIFIED M_light 5173432\n"
+  },
+  "stderr": {
+    "encoding": "UTF-16LE WSL prefix + UTF-8 child suffix",
+    "text": "wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。\r\n"
+  },
+  "stdout_sha256": "c0104d949ce2b657145691a3b2c0a311f58ca4329985f8a091436bd2be036d4c",
+  "stderr_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+  "linux_child_exit_code": null,
+  "linux_child_signal": null,
+  "linux_boot_before": null,
+  "linux_boot_after": null,
+  "linux_child_cpu_ms": null,
+  "linux_single_process_peak_rss_kib": null,
+  "missing_linux_evidence": "UNKNOWN unless child JSON is actually produced"
+}

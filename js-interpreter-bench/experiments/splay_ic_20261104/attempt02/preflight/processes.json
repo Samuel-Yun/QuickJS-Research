@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ps",
+    "-eo",
+    "pid,ppid,etime,comm,args"
+  ],
+  "label": "inventory; never terminate unrelated processes",
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-11-04T08:56:21.088520+00:00",
+  "completed_at": "2026-11-04T08:56:21.103734+00:00",
+  "child_pid": 544,
+  "exit_code": 0,
+  "signal": null,
+  "stdout": "    PID    PPID     ELAPSED COMMAND         COMMAND\n      1       0       00:03 systemd         /sbin/init\n      2       1       00:03 init-systemd(Ub /init\n      9       2       00:02 init            plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     55       1       00:02 systemd-journal /usr/lib/systemd/systemd-journald\n     97       1       00:02 systemd-udevd   /usr/lib/systemd/systemd-udevd\n    105      97       00:02 (udev-worker)   (udev-worker)\n    106      97       00:02 (udev-worker)   (udev-worker)\n    107      97       00:02 (udev-worker)   (udev-worker)\n    108      97       00:02 (udev-worker)   (udev-worker)\n    109      97       00:02 (udev-worker)   (udev-worker)\n    111      97       00:02 (udev-worker)   (udev-worker)\n    112      97       00:02 (udev-worker)   (udev-worker)\n    113      97       00:02 (udev-worker)   (udev-worker)\n    114      97       00:02 (udev-worker)   (udev-worker)\n    115      97       00:02 (udev-worker)   (udev-worker)\n    116      97       00:02 (udev-worker)   (udev-worker)\n    117      97       00:02 (udev-worker)   (udev-worker)\n    120      97       00:02 (udev-worker)   (udev-worker)\n    122      97       00:02 (udev-worker)   (udev-worker)\n    134       1       00:02 systemd-resolve /usr/lib/systemd/systemd-resolved\n    135       1       00:02 systemd-timesyn /usr/lib/systemd/systemd-timesyncd\n    144       1       00:02 cron            /usr/sbin/cron -f -P\n    145       1       00:02 dbus-daemon     @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    151       1       00:01 snapd           /usr/lib/snapd/snapd\n    152       1       00:01 systemd-logind  /usr/lib/systemd/systemd-logind\n    160       1       00:01 agetty          /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    178       1       00:01 rsyslogd        /usr/sbin/rsyslogd -n -iNONE\n    181       1       00:01 agetty          /sbin/agetty -o -p -- \\u --noclear - linux\n    182       1       00:01 containerd      /usr/bin/containerd\n    189       1       00:01 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    255       1       00:01 systemd-timedat /usr/lib/systemd/systemd-timedated\n    256       1       00:01 dockerd         /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    507       2       00:00 SessionLeader   /init\n    508     507       00:00 Relay(509)      /init\n    509     508       00:00 python3         python3 /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/preflight.py\n    510       2       00:00 login           /bin/login -f\n    511     510       00:00 sh              sh -c -- /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new\n    512     511       00:00 run-parts       run-parts --lsbsysinit /etc/update-motd.d\n    544     509       00:00 ps              ps -eo pid,ppid,etime,comm,args\n    547     512 441077234-00:18:40 99-wsl   [99-wsl]\n",
+  "stderr": "",
+  "timeout": false,
+  "host_timeout": false,
+  "outer_start_ns": 4346679180,
+  "outer_stop_ns": 4361962147,
+  "external_wall_ms": 15.282967,
+  "child_user_ms": 3.8919999999999995,
+  "child_system_ms": 0.0,
+  "single_child_peak_rss_kib": 17580,
+  "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+  "boot_id": "4985a50f-b722-4e29-8a97-3db676c0dcd3",
+  "boot_id_after": "4985a50f-b722-4e29-8a97-3db676c0dcd3",
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ]
+}

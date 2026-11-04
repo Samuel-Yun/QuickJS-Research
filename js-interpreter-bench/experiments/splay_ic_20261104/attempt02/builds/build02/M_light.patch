@@ -1,0 +1,535 @@
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,6 +311,9 @@
+     exit(1);
+ }
+ 
++extern void audit_report(void);
++extern void sp_install(JSContext*);
++extern void sp_destroy(void);
+ int main(int argc, char **argv)
+ {
+     JSRuntime *rt;
+@@ -483,6 +486,7 @@
+ 
+     if (!empty_run) {
+         js_std_add_helpers(ctx, argc - optind, argv + optind);
++        sp_install(ctx);
+ 
+         /* make 'std' and 'os' visible to non module code */
+         if (load_std) {
+@@ -532,6 +536,7 @@
+         JS_DumpMemoryUsage(stdout, &stats, rt);
+     }
+     js_std_free_handlers(rt);
++    sp_destroy();
+     JS_FreeContext(ctx);
+     JS_FreeRuntime(rt);
+ 
+@@ -559,10 +564,13 @@
+                best[1] + best[2] + best[3] + best[4],
+                best[1], best[2], best[3], best[4]);
+     }
++    audit_report();
+     return 0;
+  fail:
+     js_std_free_handlers(rt);
++    sp_destroy();
+     JS_FreeContext(ctx);
+     JS_FreeRuntime(rt);
++    audit_report();
+     return 1;
+ }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -5,17 +5,17 @@
+ static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+ {
+ #if RDI_CAPACITY == 1
+-    RDI_COUNT(comparisons);
++    audit_probe(); RDI_COUNT(comparisons);
+     if (s->shape == shape)
+         return s->prop_offset;
+ #else
+     unsigned i, first = s->recent;
+-    RDI_COUNT(comparisons);
++    audit_probe(); RDI_COUNT(comparisons);
+     if (s->shape[first] == shape)
+         return s->prop_offset[first];
+     for (unsigned k = 1; k < 4; k++) {
+         i = (first + k) & 3;
+-        RDI_COUNT(comparisons);
++        audit_probe(); RDI_COUNT(comparisons);
+         if (s->shape[i] == shape) {
+             s->recent = i;
+             return s->prop_offset[i];
+@@ -27,14 +27,18 @@
+ static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+-    RDI_COUNT(updates);
++    audit_change(0); RDI_COUNT(updates);
+ #if RDI_CAPACITY == 1
+     if (s->shape == shape) {
++        audit_change(3);
+         s->prop_offset = offset;
+         return;
+     }
++    audit_change(s->shape ? 2 : 1);
+     if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++    sp_maint(0);
+     js_dup_shape(shape);
++    if(s->shape)sp_maint(1);
+     js_free_shape_null(ctx->rt, s->shape);
+     s->shape = shape;
+     s->prop_offset = offset;
+@@ -58,6 +62,7 @@
+         s->victim = (i + 1) & 3;
+         RDI_REPLACE();
+     }
++    sp_maint(0);
+     js_dup_shape(shape);
+     js_free_shape_null(ctx->rt, s->shape[i]);
+     s->shape[i] = shape;
+@@ -72,6 +77,7 @@
+         ReadICSite *s = &b->read_ic_sites[i];
+         JS_FreeAtomRT(rt, s->atom);
+ #if RDI_CAPACITY == 1
++        if(s->shape)sp_maint(1);
+         js_free_shape_null(rt, s->shape);
+ #else
+         for (unsigned j = 0; j < 4; j++)
+--- a/audit_tail.inc
++++ b/audit_tail.inc
+@@ -0,0 +1,96 @@
++/* Only live-shape numeric identity is retained; deaths remove entries.
++ * No JS reference is acquired, no dead function source/opcode history exists. */
++typedef struct SPBirth {void *ptr;uint64_t generation;struct SPBirth *next;} SPBirth;
++static SPBirth *sp_live[4096];
++static uint64_t sp_next_generation,sp_live_count,sp_peak_live,sp_birth_overflow;
++static unsigned sp_hash(void *p){return ((uintptr_t)p>>4)&4095;}
++static void sp_shape_death(void *p){unsigned h=sp_hash(p);SPBirth **e=&sp_live[h];while(*e){if((*e)->ptr==p){SPBirth *v=*e;*e=v->next;free(v);sp_live_count--;return;}e=&(*e)->next;}}
++static void sp_shape_birth(void *p){
++    unsigned h=sp_hash(p);sp_shape_death(p);
++    if(sp_live_count>=65536){sp_birth_overflow++;return;}
++    SPBirth *e=calloc(1,sizeof(*e));if(!e){sp_birth_overflow++;return;}
++    *e=(SPBirth){p,++sp_next_generation,sp_live[h]};sp_live[h]=e;
++    sp_live_count++;if(sp_live_count>sp_peak_live)sp_peak_live=sp_live_count;
++}
++static uint64_t sp_shape_id(void *p){for(SPBirth *e=sp_live[sp_hash(p)];e;e=e->next)if(e->ptr==p)return e->generation;return 0;}
++typedef struct SPLayout {uint64_t id,count;unsigned hashed,class_id,exotic,prop_count,copied;int depth,index,flags;char names[32][40];unsigned flags_all[32];} SPLayout;
++typedef struct SPFocus {unsigned used,seq_count;uint64_t unknown,overflow,last,transitions,seq[128];SPLayout layouts[128];} SPFocus;
++static SPFocus sp_shapes[3];
++static void sp_receiver(JSContext *ctx,JSValueConst v,JSAtom atom){
++    if(sp_phase!=2||!audit_focus_active)return;
++    unsigned k=0;while(k<3 && audit_focus_active!=&sp_sites[2][k])k++;if(k==3)abort();
++    SPFocus *f=&sp_shapes[k];if(JS_VALUE_GET_TAG(v)!=JS_TAG_OBJECT){f->unknown++;return;}
++    JSObject *p=JS_VALUE_GET_OBJ(v);JSShape *sh=p->shape;uint64_t id=sp_shape_id(&sh->header);
++    if(!id){f->unknown++;return;}
++    if(f->last!=id){if(f->last)f->transitions++;f->last=id;if(f->seq_count<128)f->seq[f->seq_count++]=id;}
++    SPLayout *l=NULL;for(unsigned i=0;i<f->used;i++)if(f->layouts[i].id==id){l=&f->layouts[i];break;}
++    if(!l){
++        if(f->used==128){f->overflow++;return;}l=&f->layouts[f->used++];l->id=id;l->hashed=sh->is_hashed;l->class_id=p->class_id;l->exotic=p->is_exotic;l->prop_count=sh->prop_count;l->depth=l->index=l->flags=-1;
++        AuditScope saved=audit_pause();
++        for(unsigned i=0;i<sh->prop_count&&i<32;i++){
++            JSShapeProperty *pr=&get_shape_prop(sh)[i];const char *name=JS_AtomToCString(ctx,pr->atom);
++            if(!name)abort();snprintf(l->names[i],40,"%s",name);JS_FreeCString(ctx,name);l->flags_all[i]=pr->flags;l->copied++;
++        }
++        for(JSObject *o=p;o && l->depth<0;){
++            unsigned depth=0;JSObject *a=p;while(a!=o && a){depth++;a=a->shape->proto;}
++            for(unsigned i=0;i<o->shape->prop_count;i++)if(get_shape_prop(o->shape)[i].atom==atom){l->depth=depth;l->index=i;l->flags=get_shape_prop(o->shape)[i].flags;break;}
++            if(o->is_exotic||depth>=8)break;o=o->shape->proto;
++        }
++        audit_end(&saved);
++    }
++    l->count++;
++}
++static void audit_register(JSContext *ctx,JSFunctionBytecode *b){
++    if(!b->has_debug||b->debug.source_len!=sizeof(sp_target_source)-1||memcmp(b->debug.source,sp_target_source,sizeof(sp_target_source)-1))return;
++    if(sp_focus_b==b)return;
++    if(sp_focus_b||++sp_focus_instances>1)abort();sp_focus_b=b;
++    for(unsigned k=0;k<3;k++){
++        unsigned pos=0;while(pos<sp_pcs[k]){unsigned n=short_opcode_info(b->byte_code_buf[pos]).size;if(!n)abort();pos+=n;}
++        if(pos!=sp_pcs[k]||pos+5>b->byte_code_len)abort();
++        unsigned op=b->byte_code_buf[pos];JSAtom atom;
++        if(op==OP_get_field||op==OP_get_field2)atom=get_u32(b->byte_code_buf+pos+1);
++#if AUDIT_VARIANT == 1
++        else if(op==OP_get_field_rdi||op==OP_get_field2_rdi){unsigned ix=get_u32(b->byte_code_buf+pos+1);if(ix>=b->read_ic_count)abort();atom=b->read_ic_sites[ix].atom;}
++#endif
++        else abort();
++        const char *s=JS_AtomToCString(ctx,atom);if(!s||strcmp(s,k==2?"right":"key"))abort();JS_FreeCString(ctx,s);
++    }
++}
++static void audit_free(JSFunctionBytecode *b){if(sp_focus_b==b)sp_focus_b=NULL;}
++static AuditScope audit_begin(JSFunctionBytecode *b,const uint8_t *pc){
++    AuditScope saved={audit_active,audit_focus_active};unsigned off=pc-b->byte_code_buf;unsigned op=*pc;
++    audit_active=&sp_totals[sp_phase][op==OP_put_field];audit_focus_active=NULL;
++    if(b==sp_focus_b)for(unsigned k=0;k<3;k++)if(off==sp_pcs[k])audit_focus_active=&sp_sites[sp_phase][k];
++    SP_INC(operations);
++#if AUDIT_VARIANT == 1
++    if(op==OP_get_field_rdi||op==OP_get_field2_rdi)SP_INC(ic_queries);
++#endif
++    return saved;
++}
++static JSValue sp_stage(JSContext *ctx,JSValueConst self,int argc,JSValueConst *argv){int32_t n;if(argc!=1||JS_ToInt32(ctx,&n,argv[0])||n<0||n>5)return JS_ThrowTypeError(ctx,"stage");if(audit_active||audit_focus_active)abort();sp_phase=n;return JS_UNDEFINED;}
++void sp_install(JSContext *ctx){JSValue g=JS_GetGlobalObject(ctx);if(JS_SetPropertyStr(ctx,g,"__spStage",JS_NewCFunction(ctx,sp_stage,"__spStage",1))<0)abort();JS_FreeValue(ctx,g);}
++void sp_destroy(void){sp_phase=5;}
++static void sp_counter_json(FILE *o,AuditSite *s){
++    fprintf(o,"{");
++#define F(name) fprintf(o,"\""#name"\":%llu,",(unsigned long long)s->name)
++    F(operations);F(ic_queries);F(hits);F(misses);F(cache_probes);F(updates);F(insertions);F(replacements);F(same_shape_updates);F(find_normal);F(buckets);F(chain_probes);F(generic_get);F(value_int);F(value_object);F(value_other);F(retains);F(releases);
++#undef F
++    fprintf(o,"\"reasons\":[");for(unsigned i=0;i<8;i++)fprintf(o,"%s%llu",i?",":"",(unsigned long long)s->reasons[i]);fprintf(o,"]}");
++}
++void audit_report(void){
++    const char *path=getenv("IC_MECHANISM_REPORT");if(!path)return;FILE *o=fopen(path,"wx");if(!o)abort();
++    fprintf(o,"{\"schema\":\"bounded_splay_aggregate_v1\",\"variant\":%d,\"target_instances\":%u,\"live_shapes\":%llu,\"peak_live_shapes\":%llu,\"shape_birth_overflow\":%llu,\"phases\":[",AUDIT_VARIANT,sp_focus_instances,(unsigned long long)sp_live_count,(unsigned long long)sp_peak_live,(unsigned long long)sp_birth_overflow);
++    for(unsigned p=0;p<6;p++){
++        fprintf(o,"%s{\"phase\":%u,\"all_find\":%llu,\"outside_find\":%llu,\"reads\":",p?",":"",p,(unsigned long long)sp_all_find[p],(unsigned long long)sp_outside_find[p]);sp_counter_json(o,&sp_totals[p][0]);fprintf(o,",\"writes\":");sp_counter_json(o,&sp_totals[p][1]);fprintf(o,",\"sites\":[");
++        for(unsigned k=0;k<3;k++){if(k)fprintf(o,",");sp_counter_json(o,&sp_sites[p][k]);}fprintf(o,"]}");
++    }
++    fprintf(o,"],\"shape_focus\":[");
++    for(unsigned k=0;k<3;k++){
++        SPFocus *f=&sp_shapes[k];fprintf(o,"%s{\"pc\":%u,\"unknown_events\":%llu,\"overflow_events\":%llu,\"transitions\":%llu,\"sequence_truncated\":%s,\"sequence\":[",k?",":"",sp_pcs[k],(unsigned long long)f->unknown,(unsigned long long)f->overflow,(unsigned long long)f->transitions,f->transitions+1>f->seq_count?"true":"false");
++        for(unsigned i=0;i<f->seq_count;i++)fprintf(o,"%s%llu",i?",":"",(unsigned long long)f->seq[i]);fprintf(o,"],\"layouts\":[");
++        for(unsigned i=0;i<f->used;i++){
++            SPLayout *l=&f->layouts[i];fprintf(o,"%s{\"generation\":%llu,\"count\":%llu,\"hashed\":%u,\"class_id\":%u,\"exotic\":%u,\"prop_count\":%u,\"holder_depth\":%d,\"property_index\":%d,\"property_byte_offset\":%lld,\"property_flags\":%d,\"layout_truncated\":%s,\"layout\":[",i?",":"",(unsigned long long)l->id,(unsigned long long)l->count,l->hashed,l->class_id,l->exotic,l->prop_count,l->depth,l->index,(long long)l->index*sizeof(JSProperty),l->flags,l->copied<l->prop_count?"true":"false");
++            for(unsigned j=0;j<l->copied;j++){fprintf(o,"%s{\"index\":%u,\"name_hex\":\"",j?",":"",j);for(unsigned c=0;c<strlen(l->names[j]);c++)fprintf(o,"%02x",(unsigned char)l->names[j][c]);fprintf(o,"\",\"flags\":%u}",l->flags_all[j]);}fprintf(o,"]}");
++        }fprintf(o,"]}");
++    }fprintf(o,"]}\n");if(fclose(o))abort();
++}
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -30,7 +30,7 @@
+ #define RDI_DPARAM
+ #define RDI_DARG(x)
+ #define RDI_COUNT(field) ((void)0)
+-#define RDI_REASON(field) ((void)0)
++#define RDI_REASON(field) sp_reason(#field)
+ #define RDI_DLOCAL(index)
+ #define RDI_QUERY() ((void)0)
+ #define RDI_OCCUPY() ((void)0)
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,133 @@
++static const char sp_target_source[]="function(key) {\n  if (this.isEmpty()) {\n    return;\n  }\n  // Create a dummy node.  The use of the dummy node is a bit\n  // counter-intuitive: The right child of the dummy node will hold\n  // the L tree of the algorithm.  The left child of the dummy node\n  // will hold the R tree of the algorithm.  Using a dummy node, left\n  // and right will always be nodes and we avoid special cases.\n  var dummy, left, right;\n  dummy = left = right = new SplayTree.Node(null, null);\n  var current = this.root_;\n  while (true) {\n    if (key < current.key) {\n      if (!current.left) {\n        break;\n      }\n      if (key < current.left.key) {\n        // Rotate right.\n        var tmp = current.left;\n        current.left = tmp.right;\n        tmp.right = current;\n        current = tmp;\n        if (!current.left) {\n          break;\n        }\n      }\n      // Link right.\n      right.left = current;\n      right = current;\n      current = current.left;\n    } else if (key > current.key) {\n      if (!current.right) {\n        break;\n      }\n      if (key > current.right.key) {\n        // Rotate left.\n        var tmp = current.right;\n        current.right = tmp.left;\n        tmp.left = current;\n        current = tmp;\n        if (!current.right) {\n          break;\n        }\n      }\n      // Link left.\n      left.right = current;\n      left = current;\n      current = current.right;\n    } else {\n      break;\n    }\n  }\n  // Assemble.\n  left.right = current.left;\n  right.left = current.right;\n  current.left = dummy.right;\n  current.right = dummy.left;\n  this.root_ = current;\n}";
++static const unsigned sp_control_pcs[3]={43,138,147};
++static const unsigned sp_control_indices[3]={3,11,12};
++static const unsigned sp_expected_length=286;
++static const unsigned char sp_expected_code[]={8,193,5,192,5,245,0,0,0,0,36,0,0,232,2,41,56,0,0,244,1,0,0,0,17,7,7,33,2,0,205,204,199,192,5,244,2,0,0,0,202,207,198,244,3,0,0,0,161,232,86,198,244,4,0,0,0,148,105,170,0,0,0,207,198,244,5,0,0,0,244,6,0,0,0,161,232,41,198,244,7,0,0,0,193,4,198,192,4,244,8,0,0,0,63,205,2,0,0,192,4,198,63,206,2,0,0,192,4,206,244,9,0,0,0,148,233,112,197,198,63,205,2,0,0,198,201,198,244,10,0,0,0,202,234,162,207,198,244,11,0,0,0,163,232,84,198,244,12,0,0,0,148,233,75,207,198,244,13,0,0,0,244,14,0,0,0,163,232,41,198,244,15,0,0,0,193,4,198,192,4,244,16,0,0,0,63,206,2,0,0,192,4,198,63,205,2,0,0,192,4,206,244,17,0,0,0,148,233,20,196,198,63,206,2,0,0,198,200,198,244,18,0,0,0,202,235,70,255,196,198,244,19,0,0,0,63,206,2,0,0,197,198,244,20,0,0,0,63,205,2,0,0,198,195,244,21,0,0,0,63,205,2,0,0,198,195,244,22,0,0,0,63,206,2,0,0,192,5,198,63,225,2,0,0,41};
++typedef struct SPSpec{unsigned pc,size,op,atom;}SPSpec;
++static const SPSpec sp_expected_ops[]={
++{0,1,8,0},
++{1,2,193,0},
++{3,2,192,0},
++{5,5,245,0},
++{10,3,36,0},
++{13,2,232,0},
++{15,1,41,0},
++{16,3,56,0},
++{19,5,244,0},
++{24,1,17,0},
++{25,1,7,0},
++{26,1,7,0},
++{27,3,33,0},
++{30,1,205,0},
++{31,1,204,0},
++{32,1,199,0},
++{33,2,192,0},
++{35,5,244,0},
++{40,1,202,0},
++{41,1,207,0},
++{42,1,198,0},
++{43,5,244,0},
++{48,1,161,0},
++{49,2,232,0},
++{51,1,198,0},
++{52,5,244,0},
++{57,1,148,0},
++{58,5,105,0},
++{63,1,207,0},
++{64,1,198,0},
++{65,5,244,0},
++{70,5,244,0},
++{75,1,161,0},
++{76,2,232,0},
++{78,1,198,0},
++{79,5,244,0},
++{84,2,193,0},
++{86,1,198,0},
++{87,2,192,0},
++{89,5,244,0},
++{94,5,63,1},
++{99,2,192,0},
++{101,1,198,0},
++{102,5,63,1},
++{107,2,192,0},
++{109,1,206,0},
++{110,5,244,0},
++{115,1,148,0},
++{116,2,233,0},
++{118,1,197,0},
++{119,1,198,0},
++{120,5,63,1},
++{125,1,198,0},
++{126,1,201,0},
++{127,1,198,0},
++{128,5,244,0},
++{133,1,202,0},
++{134,2,234,0},
++{136,1,207,0},
++{137,1,198,0},
++{138,5,244,0},
++{143,1,163,0},
++{144,2,232,0},
++{146,1,198,0},
++{147,5,244,0},
++{152,1,148,0},
++{153,2,233,0},
++{155,1,207,0},
++{156,1,198,0},
++{157,5,244,0},
++{162,5,244,0},
++{167,1,163,0},
++{168,2,232,0},
++{170,1,198,0},
++{171,5,244,0},
++{176,2,193,0},
++{178,1,198,0},
++{179,2,192,0},
++{181,5,244,0},
++{186,5,63,1},
++{191,2,192,0},
++{193,1,198,0},
++{194,5,63,1},
++{199,2,192,0},
++{201,1,206,0},
++{202,5,244,0},
++{207,1,148,0},
++{208,2,233,0},
++{210,1,196,0},
++{211,1,198,0},
++{212,5,63,1},
++{217,1,198,0},
++{218,1,200,0},
++{219,1,198,0},
++{220,5,244,0},
++{225,1,202,0},
++{226,3,235,0},
++{229,1,196,0},
++{230,1,198,0},
++{231,5,244,0},
++{236,5,63,1},
++{241,1,197,0},
++{242,1,198,0},
++{243,5,244,0},
++{248,5,63,1},
++{253,1,198,0},
++{254,1,195,0},
++{255,5,244,0},
++{260,5,63,1},
++{265,1,198,0},
++{266,1,195,0},
++{267,5,244,0},
++{272,5,63,1},
++{277,2,192,0},
++{279,1,198,0},
++{280,5,63,1},
++{285,1,41,0}
++};
++
++static void sp_shape_birth(void*);
++static void sp_shape_death(void*);
++#define DUMP_BYTECODE 0
++#define AUDIT_VARIANT 1
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -6141,6 +6271,8 @@
+     return NULL;
+ }
+ 
++#include "audit_hooks.h"
++
+ static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+                                                        JSObject *p,
+                                                        JSAtom atom)
+@@ -6148,11 +6280,14 @@
+     JSShape *sh;
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
++    audit_lookup(0);
+     sh = p->shape;
+     h = (uintptr_t)atom & sh->prop_hash_mask;
++    audit_bucket();
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+     while (h) {
++        audit_chain();
+         pr = &prop[h - 1];
+         if (likely(pr->atom == atom)) {
+             *ppr = &p->prop[h - 1];
+@@ -6551,6 +6686,7 @@
+ static void add_gc_object(JSRuntime *rt, JSGCObjectHeader *h,
+                           JSGCObjectTypeEnum type)
+ {
++    if(type==JS_GC_OBJ_TYPE_SHAPE)sp_shape_birth(h);
+     js_rc(h)->mark = 0;
+     js_rc(h)->gc_obj_type = type;
+     list_add_tail(&h->link, &rt->gc_obj_list);
+@@ -6558,6 +6694,7 @@
+ 
+ static void remove_gc_object(JSGCObjectHeader *h)
+ {
++    if(js_rc(h)->gc_obj_type==JS_GC_OBJ_TYPE_SHAPE)sp_shape_death(h);
+     list_del(&h->link);
+ }
+ 
+@@ -8232,6 +8369,7 @@
+                                JSAtom prop, JSValueConst this_obj,
+                                BOOL throw_ref_error)
+ {
++    audit_generic();
+     JSObject *p;
+     JSProperty *pr;
+     JSShapeProperty *prs;
+@@ -17768,6 +17906,7 @@
+                                JSValueConst this_obj, JSValueConst new_target,
+                                int argc, JSValue *argv, int flags)
+ {
++    AuditScope audit_frame __attribute__((cleanup(audit_end)))=audit_pause();
+     JSRuntime *rt = caller_ctx->rt;
+     JSContext *ctx;
+     JSObject *p;
+@@ -19127,6 +19266,7 @@
+ 
+ #define GET_FIELD_INLINE(name, keep, is_length)                         \
+             {                                                           \
++                AUDIT_SCOPE(b,pc-1);                                    \
+                 JSValue val, obj;                                       \
+                 JSAtom atom;                                            \
+                 JSObject *p;                                            \
+@@ -19141,6 +19281,7 @@
+                 }                                                       \
+                                                                         \
+                 obj = sp[-1];                                           \
++                sp_receiver(ctx,obj,atom);                                           \
+                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {   \
+                     p = JS_VALUE_GET_OBJ(obj);                          \
+                     for(;;) {                                           \
+@@ -19172,6 +19313,7 @@
+                     if (unlikely(JS_IsException(val)))                  \
+                         goto exception;                                 \
+                 }                                                       \
++                audit_value(val);                                       \
+                 if (keep) {                                             \
+                     *sp++ = val;                                        \
+                 } else {                                                \
+@@ -19199,6 +19341,7 @@
+             
+         CASE(OP_put_field):
+             {
++                AUDIT_SCOPE(b,pc-1);
+                 int ret;
+                 JSValue obj;
+                 JSAtom atom;
+@@ -36303,6 +36446,7 @@
+         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
+         return JS_EXCEPTION;
+     }
++    audit_register(ctx,b);
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -36311,6 +36455,7 @@
+ 
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b)
+ {
++    audit_free(b);
+     int i;
+ 
+ #if 0
+@@ -61456,3 +61601,5 @@
+     JS_FreeValue(ctx, obj);
+     return 0;
+ }
++
++#include "audit_tail.inc"
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,6 +1,7 @@
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+ #define GET_READ_IC(name, keep)                                          \
+     {                                                                   \
++        AUDIT_SCOPE(b,pc-1);                                          \
+         uint32_t index = get_u32(pc), offset;                            \
+         ReadICSite *site = &b->read_ic_sites[index];                     \
+         JSValue obj = sp[-1], val;                                      \
+@@ -11,19 +12,20 @@
+         RDI_DLOCAL(index);                                              \
+         pc += 4;                                                        \
+         RDI_QUERY();                                                    \
++        sp_receiver(ctx,obj,site->atom);                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+-                    RDI_COUNT(hits);                                   \
++                    audit_hit(); RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+-        RDI_COUNT(fallback);                                            \
++        audit_miss(); RDI_COUNT(fallback);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+@@ -60,6 +62,7 @@
+             if (unlikely(JS_IsException(val))) goto exception;          \
+         }                                                               \
+     name ## _done:                                                      \
++        audit_value(val);                                                      \
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
+     }
+--- a/audit_hooks.h
++++ b/audit_hooks.h
+@@ -0,0 +1,34 @@
++/* Aggregate stages + exactly three Splay sites. No per-byte/function history. */
++typedef struct AuditSite {
++    uint64_t operations,ic_queries,hits,misses,cache_probes;
++    uint64_t updates,insertions,replacements,same_shape_updates;
++    uint64_t find_normal,find_with_offset,buckets,chain_probes,generic_get;
++    uint64_t value_int,value_object,value_other,retains,releases,reasons[8];
++} AuditSite;
++typedef struct AuditScope { AuditSite *previous,*focus; } AuditScope;
++static unsigned sp_phase;
++static AuditSite sp_totals[6][2],sp_sites[6][3];
++static uint64_t sp_all_find[6],sp_outside_find[6];
++static AuditSite *audit_active,*audit_focus_active;
++static JSFunctionBytecode *sp_focus_b;
++static unsigned sp_focus_instances;
++static const unsigned sp_pcs[3]={43,138,147};
++static void audit_register(JSContext*,JSFunctionBytecode*);
++static void audit_free(JSFunctionBytecode*);
++static AuditScope audit_begin(JSFunctionBytecode*,const uint8_t*);
++static AuditScope audit_pause(void){AuditScope s={audit_active,audit_focus_active};audit_active=audit_focus_active=NULL;return s;}
++static void audit_end(AuditScope *s){audit_active=s->previous;audit_focus_active=s->focus;}
++#define SP_INC(field) do {if(audit_active)audit_active->field++;if(audit_focus_active)audit_focus_active->field++;}while(0)
++static void audit_lookup(int kind){sp_all_find[sp_phase]++;if(!audit_active)sp_outside_find[sp_phase]++;if(kind)SP_INC(find_with_offset);else SP_INC(find_normal);}
++static void audit_bucket(void){SP_INC(buckets);}
++static void audit_chain(void){SP_INC(chain_probes);}
++static void audit_probe(void){SP_INC(cache_probes);}
++static void audit_hit(void){SP_INC(hits);}
++static void audit_miss(void){SP_INC(misses);}
++static void audit_generic(void){SP_INC(generic_get);}
++static void audit_change(int k){if(k==0)SP_INC(updates);else if(k==1)SP_INC(insertions);else if(k==2)SP_INC(replacements);else SP_INC(same_shape_updates);}
++static void audit_value(JSValueConst v){if(JS_VALUE_GET_TAG(v)==JS_TAG_INT)SP_INC(value_int);else if(JS_VALUE_GET_TAG(v)==JS_TAG_OBJECT)SP_INC(value_object);else SP_INC(value_other);}
++static void sp_maint(int k){if(k)SP_INC(releases);else SP_INC(retains);}
++static void sp_reason(const char *s){const char *names[]={"own_miss","descriptor","special","unhashed","inherited","missing","primitive"};unsigned k;for(k=0;k<7;k++)if(!strcmp(s,names[k]))break;if(audit_active)audit_active->reasons[k]++;if(audit_focus_active)audit_focus_active->reasons[k]++;}
++static void sp_receiver(JSContext*,JSValueConst,JSAtom);
++#define AUDIT_SCOPE(b,pc) AuditScope audit_local __attribute__((cleanup(audit_end)))=audit_begin((b),(pc))
