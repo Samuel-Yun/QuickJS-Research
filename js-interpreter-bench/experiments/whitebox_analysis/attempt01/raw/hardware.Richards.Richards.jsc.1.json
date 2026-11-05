@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Richards.Richards\",\"suite\":\"Richards\",\"subbenchmark\":\"Richards\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":512,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":0,\"stop_ms\":1112.38,\"elapsed_ms\":1112.38,\"elapsed_per_call_ms\":2.1726171875,\"warmup_calls\":0}\n",
+  "stderr": "WB_PERF cycles errno=0 bytes=24 raw=4077186526 enabled_ns=1069168300 running_ns=1069168300\nWB_PERF instructions errno=0 bytes=24 raw=13384653552 enabled_ns=1069147200 running_ns=1069147200\nWB_PERF branches errno=0 bytes=24 raw=2913145584 enabled_ns=1069132700 running_ns=1069132700\nWB_PERF branch-misses errno=0 bytes=24 raw=8880966 enabled_ns=1069116600 running_ns=1069116600\nWB_PERF task-clock errno=0 bytes=24 raw=1066326700 enabled_ns=1066326700 running_ns=1066326700\n",
+  "command": [
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/perf_exec",
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.N512.original.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:57:54.252235+00:00",
+  "outer_start_ns": 101845901231,
+  "outer_stop_ns": 103009629984,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 1163728753
+}

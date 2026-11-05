@@ -1,0 +1,50 @@
+{
+  "case": "Richards.Richards",
+  "N": 512,
+  "rep": 8,
+  "order": 0,
+  "variant": "ON",
+  "stage": "bridge_matched_environment_only",
+  "command": [
+    "/home/mzyx/read_ic_dequickening_attempt01/SW/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/generated/Richards.Richards.N512.measure.js"
+  ],
+  "environment": {
+    "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Users/mzyx/.codex/tmp/arg0/codex-arg0WS0TYb:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.8/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.8/libnvvp:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/java8path:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/d/python3/Scripts/:/mnt/d/python3/:/mnt/d/jdk-11.0.14/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/d/app/bandizip/:/mnt/d/samuel_yun/Git/cmd:/mnt/d/nodejs/:/mnt/c/Users/mzyx/Desktop/mingw64(1)/mingw64/bin:/mnt/c/Program Files/Pandoc/:/mnt/f/software/quartus/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/e/leidian/LDPlayer9:/mnt/e/Linux/WinSCP/:/mnt/e/Linux/PuTTY/:/mnt/e/CMake/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2022.3.0/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Bandizip/:/mnt/c/Program Files/Go/bin:/mnt/c/Users/mzyx/.cargo/bin:/mnt/c/Users/mzyx/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/mzyx/.dotnet/tools:/mnt/d/vs code/Microsoft VS Code/bin:/mnt/e/mingw64/bin:/mnt/d/nodejs/node_global:/mnt/e/IntelliJ IDEA 2023.2/bin:/mnt/d/pycharm/PyCharm 2024.1.4/bin:/mnt/e/leidian/LDPlayer9:/mnt/e/IDEA/IntelliJ IDEA 2024.3.4.1/bin:/mnt/c/Users/mzyx/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/mzyx/go/bin:/mnt/c/Users/mzyx/AppData/Local/Microsoft/WinGet/Links:/mnt/c/Users/mzyx/.vscode/extensions/openai.chatgpt-26.1007.21434-win32-x64/bin/windows-x86_64",
+    "HOME": "/home/mzyx",
+    "USER": "mzyx",
+    "LOGNAME": "mzyx",
+    "LANG": "C.UTF-8",
+    "QJS_READ_IC_MODE": "1"
+  },
+  "mode_value": "1",
+  "binary_sha256": "73b92de1518e25f11d3b99a0fe2487b8bd3a47bac242493dcd172b575a2124fc",
+  "script_sha256": "cb0a596dbb59f0920e2f19a2b14744a2adf3de8deffc0e9ec647c6b79c57e3b6",
+  "outer_start_ns": 52740099191,
+  "timestamp": "2026-10-24T13:28:44.960838+00:00",
+  "valid": true,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Richards.Richards\",\"suite\":\"Richards\",\"subbenchmark\":\"Richards\",\"mode\":\"READ_IC_DEQUICKEN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":512,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":52750.485582,\"stop_ms\":54446.094369,\"elapsed_ms\":1695.6087869999974,\"elapsed_per_call_ms\":3.31173591210937,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "outer_stop_ns": 54446580434,
+  "payload": {
+    "benchmark": "Octane",
+    "case": "Richards.Richards",
+    "suite": "Richards",
+    "subbenchmark": "Richards",
+    "mode": "READ_IC_DEQUICKEN_MONOTONIC_V1",
+    "phase": "measure",
+    "N": 512,
+    "correctness": "PASS",
+    "extra_validation_calls": 0,
+    "checksum": null,
+    "timer": "benchNow",
+    "start_ms": 52750.485582,
+    "stop_ms": 54446.094369,
+    "elapsed_ms": 1695.6087869999974,
+    "elapsed_per_call_ms": 3.31173591210937,
+    "warmup_calls": 0
+  },
+  "elapsed_ms": 1695.6087869999974,
+  "ms_per_Run": 3.31173591210937
+}

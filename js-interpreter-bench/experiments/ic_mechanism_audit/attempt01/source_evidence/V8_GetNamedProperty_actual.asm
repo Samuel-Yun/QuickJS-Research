@@ -1,0 +1,1084 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d63140 <Builtins_GetNamedPropertyHandler>:
+ 1d63140:	4c 8b c5             	mov    r8,rbp
+ 1d63143:	4f 0f be 5c 0c 01    	movsx  r11,BYTE PTR [r12+r9*1+0x1]
+ 1d63149:	4f 8b 1c d8          	mov    r11,QWORD PTR [r8+r11*8]
+ 1d6314d:	49 8b 58 d0          	mov    rbx,QWORD PTR [r8-0x30]
+ 1d63151:	41 8b c3             	mov    eax,r11d
+ 1d63154:	41 f6 c3 01          	test   r11b,0x1
+ 1d63158:	0f 84 e6 01 00 00    	je     1d63344 <Builtins_GetNamedPropertyHandler+0x204>
+ 1d6315e:	41 8b 43 ff          	mov    eax,DWORD PTR [r11-0x1]
+ 1d63162:	49 0b c6             	or     rax,r14
+ 1d63165:	83 fb 11             	cmp    ebx,0x11
+ 1d63168:	0f 84 e7 0f 00 00    	je     1d64155 <Builtins_GetNamedPropertyHandler+0x1015>
+ 1d6316e:	48 83 c8 03          	or     rax,0x3
+ 1d63172:	43 0f b6 54 0c 03    	movzx  edx,BYTE PTR [r12+r9*1+0x3]
+ 1d63178:	8b 4c 93 1b          	mov    ecx,DWORD PTR [rbx+rdx*4+0x1b]
+ 1d6317c:	49 0b ce             	or     rcx,r14
+ 1d6317f:	3b c8                	cmp    ecx,eax
+ 1d63181:	74 62                	je     1d631e5 <Builtins_GetNamedPropertyHandler+0xa5>
+ 1d63183:	f6 c1 02             	test   cl,0x2
+ 1d63186:	0f 85 45 02 00 00    	jne    1d633d1 <Builtins_GetNamedPropertyHandler+0x291>
+ 1d6318c:	8b 51 ff             	mov    edx,DWORD PTR [rcx-0x1]
+ 1d6318f:	81 fa 55 06 00 00    	cmp    edx,0x655
+ 1d63195:	0f 85 bc 01 00 00    	jne    1d63357 <Builtins_GetNamedPropertyHandler+0x217>
+ 1d6319b:	8b 51 03             	mov    edx,DWORD PTR [rcx+0x3]
+ 1d6319e:	83 ea 02             	sub    edx,0x2
+ 1d631a1:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d631a8:	00 00 
+ 1d631aa:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d631b1:	00 00 
+ 1d631b3:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+ 1d631ba:	00 00 
+ 1d631bc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+ 1d631c0:	39 44 91 07          	cmp    DWORD PTR [rcx+rdx*4+0x7],eax
+ 1d631c4:	74 0c                	je     1d631d2 <Builtins_GetNamedPropertyHandler+0x92>
+ 1d631c6:	83 ea 02             	sub    edx,0x2
+ 1d631c9:	85 d2                	test   edx,edx
+ 1d631cb:	7d f3                	jge    1d631c0 <Builtins_GetNamedPropertyHandler+0x80>
+ 1d631cd:	e9 e4 01 00 00       	jmp    1d633b6 <Builtins_GetNamedPropertyHandler+0x276>
+ 1d631d2:	55                   	push   rbp
+ 1d631d3:	48 8b ec             	mov    rbp,rsp
+ 1d631d6:	6a 10                	push   0x10
+ 1d631d8:	48 83 ec 50          	sub    rsp,0x50
+ 1d631dc:	8b 44 91 0b          	mov    eax,DWORD PTR [rcx+rdx*4+0xb]
+ 1d631e0:	49 0b c6             	or     rax,r14
+ 1d631e3:	eb 11                	jmp    1d631f6 <Builtins_GetNamedPropertyHandler+0xb6>
+ 1d631e5:	55                   	push   rbp
+ 1d631e6:	48 8b ec             	mov    rbp,rsp
+ 1d631e9:	6a 10                	push   0x10
+ 1d631eb:	48 83 ec 50          	sub    rsp,0x50
+ 1d631ef:	8b 44 93 1f          	mov    eax,DWORD PTR [rbx+rdx*4+0x1f]
+ 1d631f3:	49 0b c6             	or     rax,r14
+ 1d631f6:	8b d0                	mov    edx,eax
+ 1d631f8:	a8 01                	test   al,0x1
+ 1d631fa:	0f 85 ec 01 00 00    	jne    1d633ec <Builtins_GetNamedPropertyHandler+0x2ac>
+ 1d63200:	49 8b d3             	mov    rdx,r11
+ 1d63203:	48 8b c8             	mov    rcx,rax
+ 1d63206:	8b f1                	mov    esi,ecx
+ 1d63208:	8b f9                	mov    edi,ecx
+ 1d6320a:	d1 ff                	sar    edi,1
+ 1d6320c:	83 e6 1e             	and    esi,0x1e
+ 1d6320f:	40 80 fe 0a          	cmp    sil,0xa
+ 1d63213:	74 1d                	je     1d63232 <Builtins_GetNamedPropertyHandler+0xf2>
+ 1d63215:	40 80 fe 0c          	cmp    sil,0xc
+ 1d63219:	0f 84 d9 05 00 00    	je     1d637f8 <Builtins_GetNamedPropertyHandler+0x6b8>
+ 1d6321f:	40 80 fe 1a          	cmp    sil,0x1a
+ 1d63223:	0f 85 f6 05 00 00    	jne    1d6381f <Builtins_GetNamedPropertyHandler+0x6df>
+ 1d63229:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d6322d:	e9 ce 00 00 00       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63232:	f7 c1 00 00 04 00    	test   ecx,0x40000
+ 1d63238:	75 09                	jne    1d63243 <Builtins_GetNamedPropertyHandler+0x103>
+ 1d6323a:	8b 42 03             	mov    eax,DWORD PTR [rdx+0x3]
+ 1d6323d:	49 0b c6             	or     rax,r14
+ 1d63240:	48 8b d0             	mov    rdx,rax
+ 1d63243:	48 c1 ef 06          	shr    rdi,0x6
+ 1d63247:	81 e7 ff 07 00 00    	and    edi,0x7ff
+ 1d6324d:	8b 44 ba ff          	mov    eax,DWORD PTR [rdx+rdi*4-0x1]
+ 1d63251:	49 0b c6             	or     rax,r14
+ 1d63254:	f7 c1 00 00 08 00    	test   ecx,0x80000
+ 1d6325a:	0f 84 a0 00 00 00    	je     1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63260:	a8 01                	test   al,0x1
+ 1d63262:	0f 84 d7 0d 00 00    	je     1d6403f <Builtins_GetNamedPropertyHandler+0xeff>
+ 1d63268:	8b 50 ff             	mov    edx,DWORD PTR [rax-0x1]
+ 1d6326b:	81 fa 15 05 00 00    	cmp    edx,0x515
+ 1d63271:	0f 85 c8 0d 00 00    	jne    1d6403f <Builtins_GetNamedPropertyHandler+0xeff>
+ 1d63277:	f2 0f 10 40 03       	movsd  xmm0,QWORD PTR [rax+0x3]
+ 1d6327c:	4d 8b 5d 50          	mov    r11,QWORD PTR [r13+0x50]
+ 1d63280:	49 8d 43 0c          	lea    rax,[r11+0xc]
+ 1d63284:	49 39 45 58          	cmp    QWORD PTR [r13+0x58],rax
+ 1d63288:	0f 86 c2 0d 00 00    	jbe    1d64050 <Builtins_GetNamedPropertyHandler+0xf10>
+ 1d6328e:	49 8d 43 0c          	lea    rax,[r11+0xc]
+ 1d63292:	49 89 45 50          	mov    QWORD PTR [r13+0x50],rax
+ 1d63296:	49 83 c3 01          	add    r11,0x1
+ 1d6329a:	41 c7 43 ff 15 05 00 	mov    DWORD PTR [r11-0x1],0x515
+ 1d632a1:	00 
+ 1d632a2:	f2 41 0f 11 43 03    	movsd  QWORD PTR [r11+0x3],xmm0
+ 1d632a8:	49 8b c3             	mov    rax,r11
+ 1d632ab:	eb 53                	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d632ad:	49 8b 40 e0          	mov    rax,QWORD PTR [r8-0x20]
+ 1d632b1:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d632b5:	49 8b d1             	mov    rdx,r9
+ 1d632b8:	0f b6 4c 10 02       	movzx  ecx,BYTE PTR [rax+rdx*1+0x2]
+ 1d632bd:	8b 78 17             	mov    edi,DWORD PTR [rax+0x17]
+ 1d632c0:	49 0b bd 98 02 00 00 	or     rdi,QWORD PTR [r13+0x298]
+ 1d632c7:	44 8d 0c 12          	lea    r9d,[rdx+rdx*1]
+ 1d632cb:	8b 4c 8f 07          	mov    ecx,DWORD PTR [rdi+rcx*4+0x7]
+ 1d632cf:	49 0b ce             	or     rcx,r14
+ 1d632d2:	0f b6 44 10 03       	movzx  eax,BYTE PTR [rax+rdx*1+0x3]
+ 1d632d7:	4d 89 48 d8          	mov    QWORD PTR [r8-0x28],r9
+ 1d632db:	41 53                	push   r11
+ 1d632dd:	48 d1 e0             	shl    rax,1
+ 1d632e0:	51                   	push   rcx
+ 1d632e1:	50                   	push   rax
+ 1d632e2:	53                   	push   rbx
+ 1d632e3:	49 8b 9d 28 47 00 00 	mov    rbx,QWORD PTR [r13+0x4728]
+ 1d632ea:	b8 04 00 00 00       	mov    eax,0x4
+ 1d632ef:	e8 cc e0 ee ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d632f4:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d632f8:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d632fc:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63300:	4d 8b 60 e0          	mov    r12,QWORD PTR [r8-0x20]
+ 1d63304:	4d 8b d9             	mov    r11,r9
+ 1d63307:	4d 8d 4b 04          	lea    r9,[r11+0x4]
+ 1d6330b:	43 0f b6 5c 1c 04    	movzx  ebx,BYTE PTR [r12+r11*1+0x4]
+ 1d63311:	80 fb c6             	cmp    bl,0xc6
+ 1d63314:	73 0e                	jae    1d63324 <Builtins_GetNamedPropertyHandler+0x1e4>
+ 1d63316:	49 8b 0c df          	mov    rcx,QWORD PTR [r15+rbx*8]
+ 1d6331a:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d6331e:	48 83 c4 60          	add    rsp,0x60
+ 1d63322:	ff e1                	jmp    rcx
+ 1d63324:	49 89 84 d8 20 f9 ff 	mov    QWORD PTR [r8+rbx*8-0x6e0],rax
+ 1d6332b:	ff 
+ 1d6332c:	49 83 c1 01          	add    r9,0x1
+ 1d63330:	47 0f b6 44 1c 05    	movzx  r8d,BYTE PTR [r12+r11*1+0x5]
+ 1d63336:	4b 8b 0c c7          	mov    rcx,QWORD PTR [r15+r8*8]
+ 1d6333a:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d6333e:	48 83 c4 60          	add    rsp,0x60
+ 1d63342:	ff e1                	jmp    rcx
+ 1d63344:	4d 8b 5d 80          	mov    r11,QWORD PTR [r13-0x80]
+ 1d63348:	4c 03 d8             	add    r11,rax
+ 1d6334b:	49 8d 86 15 05 00 00 	lea    rax,[r14+0x515]
+ 1d63352:	e9 0e fe ff ff       	jmp    1d63165 <Builtins_GetNamedPropertyHandler+0x25>
+ 1d63357:	55                   	push   rbp
+ 1d63358:	48 8b ec             	mov    rbp,rsp
+ 1d6335b:	6a 10                	push   0x10
+ 1d6335d:	48 83 ec 50          	sub    rsp,0x50
+ 1d63361:	49 8b 40 e0          	mov    rax,QWORD PTR [r8-0x20]
+ 1d63365:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63369:	42 0f b6 54 08 02    	movzx  edx,BYTE PTR [rax+r9*1+0x2]
+ 1d6336f:	8b 48 17             	mov    ecx,DWORD PTR [rax+0x17]
+ 1d63372:	49 0b 8d 98 02 00 00 	or     rcx,QWORD PTR [r13+0x298]
+ 1d63379:	43 8d 3c 09          	lea    edi,[r9+r9*1]
+ 1d6337d:	8b 4c 91 07          	mov    ecx,DWORD PTR [rcx+rdx*4+0x7]
+ 1d63381:	49 0b ce             	or     rcx,r14
+ 1d63384:	42 0f b6 44 08 03    	movzx  eax,BYTE PTR [rax+r9*1+0x3]
+ 1d6338a:	48 d1 e0             	shl    rax,1
+ 1d6338d:	49 89 78 d8          	mov    QWORD PTR [r8-0x28],rdi
+ 1d63391:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d63395:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d63399:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d6339d:	49 8b d3             	mov    rdx,r11
+ 1d633a0:	e8 5b 80 e7 ff       	call   1bdb400 <Builtins_LoadIC_Noninlined>
+ 1d633a5:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d633a9:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d633ad:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d633b1:	e9 4a ff ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d633b6:	55                   	push   rbp
+ 1d633b7:	48 8b ec             	mov    rbp,rsp
+ 1d633ba:	6a 10                	push   0x10
+ 1d633bc:	48 83 ec 50          	sub    rsp,0x50
+ 1d633c0:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d633c4:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d633c8:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d633cc:	e9 dc fe ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d633d1:	55                   	push   rbp
+ 1d633d2:	48 8b ec             	mov    rbp,rsp
+ 1d633d5:	6a 10                	push   0x10
+ 1d633d7:	48 83 ec 50          	sub    rsp,0x50
+ 1d633db:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d633df:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d633e3:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d633e7:	e9 c1 fe ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d633ec:	83 e2 03             	and    edx,0x3
+ 1d633ef:	4c 89 5d d0          	mov    QWORD PTR [rbp-0x30],r11
+ 1d633f3:	48 89 5d c8          	mov    QWORD PTR [rbp-0x38],rbx
+ 1d633f7:	48 89 45 c0          	mov    QWORD PTR [rbp-0x40],rax
+ 1d633fb:	4c 89 65 a8          	mov    QWORD PTR [rbp-0x58],r12
+ 1d633ff:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d63403:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d63407:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d6340b:	80 fa 03             	cmp    dl,0x3
+ 1d6340e:	0f 84 03 0d 00 00    	je     1d64117 <Builtins_GetNamedPropertyHandler+0xfd7>
+ 1d63414:	8b 50 ff             	mov    edx,DWORD PTR [rax-0x1]
+ 1d63417:	81 fa c5 0d 00 00    	cmp    edx,0xdc5
+ 1d6341d:	0f 84 62 0c 00 00    	je     1d64085 <Builtins_GetNamedPropertyHandler+0xf45>
+ 1d63423:	8b 50 07             	mov    edx,DWORD PTR [rax+0x7]
+ 1d63426:	49 0b d6             	or     rdx,r14
+ 1d63429:	85 d2                	test   edx,edx
+ 1d6342b:	74 15                	je     1d63442 <Builtins_GetNamedPropertyHandler+0x302>
+ 1d6342d:	8b 52 03             	mov    edx,DWORD PTR [rdx+0x3]
+ 1d63430:	49 0b d6             	or     rdx,r14
+ 1d63433:	b9 03 00 00 00       	mov    ecx,0x3
+ 1d63438:	3b ca                	cmp    ecx,edx
+ 1d6343a:	0f 84 6d fe ff ff    	je     1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63440:	eb 02                	jmp    1d63444 <Builtins_GetNamedPropertyHandler+0x304>
+ 1d63442:	33 d2                	xor    edx,edx
+ 1d63444:	8b 48 03             	mov    ecx,DWORD PTR [rax+0x3]
+ 1d63447:	8b f1                	mov    esi,ecx
+ 1d63449:	d1 fe                	sar    esi,1
+ 1d6344b:	48 63 f6             	movsxd rsi,esi
+ 1d6344e:	48 89 4d b0          	mov    QWORD PTR [rbp-0x50],rcx
+ 1d63452:	40 f6 c6 30          	test   sil,0x30
+ 1d63456:	0f 84 91 03 00 00    	je     1d637ed <Builtins_GetNamedPropertyHandler+0x6ad>
+ 1d6345c:	40 f6 c6 10          	test   sil,0x10
+ 1d63460:	74 60                	je     1d634c2 <Builtins_GetNamedPropertyHandler+0x382>
+ 1d63462:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63466:	48 83 e2 fd          	and    rdx,0xfffffffffffffffd
+ 1d6346a:	8b 76 ff             	mov    esi,DWORD PTR [rsi-0x1]
+ 1d6346d:	41 8b 74 36 13       	mov    esi,DWORD PTR [r14+rsi*1+0x13]
+ 1d63472:	49 0b f6             	or     rsi,r14
+ 1d63475:	3b d6                	cmp    edx,esi
+ 1d63477:	0f 84 70 03 00 00    	je     1d637ed <Builtins_GetNamedPropertyHandler+0x6ad>
+ 1d6347d:	41 f6 c3 01          	test   r11b,0x1
+ 1d63481:	0f 84 26 fe ff ff    	je     1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63487:	41 8b 7b ff          	mov    edi,DWORD PTR [r11-0x1]
+ 1d6348b:	81 ff 00 00 1a 00    	cmp    edi,0x1a0000
+ 1d63491:	0f 82 16 fe ff ff    	jb     1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63497:	81 7a 03 8a 01 00 00 	cmp    DWORD PTR [rdx+0x3],0x18a
+ 1d6349e:	77 01                	ja     1d634a1 <Builtins_GetNamedPropertyHandler+0x361>
+ 1d634a0:	cc                   	int3
+ 1d634a1:	8b 92 1b 03 00 00    	mov    edx,DWORD PTR [rdx+0x31b]
+ 1d634a7:	81 7e 03 8a 01 00 00 	cmp    DWORD PTR [rsi+0x3],0x18a
+ 1d634ae:	77 01                	ja     1d634b1 <Builtins_GetNamedPropertyHandler+0x371>
+ 1d634b0:	cc                   	int3
+ 1d634b1:	39 96 1b 03 00 00    	cmp    DWORD PTR [rsi+0x31b],edx
+ 1d634b7:	0f 84 30 03 00 00    	je     1d637ed <Builtins_GetNamedPropertyHandler+0x6ad>
+ 1d634bd:	e9 eb fd ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d634c2:	41 8b 53 03          	mov    edx,DWORD PTR [r11+0x3]
+ 1d634c6:	49 0b d6             	or     rdx,r14
+ 1d634c9:	f6 c2 01             	test   dl,0x1
+ 1d634cc:	75 07                	jne    1d634d5 <Builtins_GetNamedPropertyHandler+0x395>
+ 1d634ce:	49 8d 96 f5 0e 00 00 	lea    rdx,[r14+0xef5]
+ 1d634d5:	43 0f b6 74 0c 02    	movzx  esi,BYTE PTR [r12+r9*1+0x2]
+ 1d634db:	41 8b 7c 24 17       	mov    edi,DWORD PTR [r12+0x17]
+ 1d634e0:	49 0b bd 98 02 00 00 	or     rdi,QWORD PTR [r13+0x298]
+ 1d634e7:	8b 74 b7 07          	mov    esi,DWORD PTR [rdi+rsi*4+0x7]
+ 1d634eb:	49 0b f6             	or     rsi,r14
+ 1d634ee:	8b 7a 0f             	mov    edi,DWORD PTR [rdx+0xf]
+ 1d634f1:	44 8b 46 03          	mov    r8d,DWORD PTR [rsi+0x3]
+ 1d634f5:	48 89 55 b8          	mov    QWORD PTR [rbp-0x48],rdx
+ 1d634f9:	41 f6 c0 01          	test   r8b,0x1
+ 1d634fd:	75 50                	jne    1d6354f <Builtins_GetNamedPropertyHandler+0x40f>
+ 1d634ff:	d1 ff                	sar    edi,1
+ 1d63501:	41 c1 e8 02          	shr    r8d,0x2
+ 1d63505:	48 83 ef 01          	sub    rdi,0x1
+ 1d63509:	4c 23 c7             	and    r8,rdi
+ 1d6350c:	45 33 db             	xor    r11d,r11d
+ 1d6350f:	4b 8d 04 40          	lea    rax,[r8+r8*2]
+ 1d63513:	48 8d 58 06          	lea    rbx,[rax+0x6]
+ 1d63517:	8b 44 82 1f          	mov    eax,DWORD PTR [rdx+rax*4+0x1f]
+ 1d6351b:	83 f8 11             	cmp    eax,0x11
+ 1d6351e:	74 1a                	je     1d6353a <Builtins_GetNamedPropertyHandler+0x3fa>
+ 1d63520:	3b c6                	cmp    eax,esi
+ 1d63522:	0f 84 82 00 00 00    	je     1d635aa <Builtins_GetNamedPropertyHandler+0x46a>
+ 1d63528:	49 83 c3 01          	add    r11,0x1
+ 1d6352c:	4d 03 c3             	add    r8,r11
+ 1d6352f:	48 8b c7             	mov    rax,rdi
+ 1d63532:	49 23 c0             	and    rax,r8
+ 1d63535:	4c 8b c0             	mov    r8,rax
+ 1d63538:	eb d5                	jmp    1d6350f <Builtins_GetNamedPropertyHandler+0x3cf>
+ 1d6353a:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d6353e:	4c 8b 5d d0          	mov    r11,QWORD PTR [rbp-0x30]
+ 1d63542:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d63546:	48 8b 45 c0          	mov    rax,QWORD PTR [rbp-0x40]
+ 1d6354a:	e9 9e 02 00 00       	jmp    1d637ed <Builtins_GetNamedPropertyHandler+0x6ad>
+ 1d6354f:	4c 8b d4             	mov    r10,rsp
+ 1d63552:	48 83 ec 08          	sub    rsp,0x8
+ 1d63556:	48 83 e4 f0          	and    rsp,0xfffffffffffffff0
+ 1d6355a:	4c 89 14 24          	mov    QWORD PTR [rsp],r10
+ 1d6355e:	49 8d 7d 80          	lea    rdi,[r13-0x80]
+ 1d63562:	4c 8b d6             	mov    r10,rsi
+ 1d63565:	48 8b f2             	mov    rsi,rdx
+ 1d63568:	49 8b d2             	mov    rdx,r10
+ 1d6356b:	49 8b 85 d8 2a 00 00 	mov    rax,QWORD PTR [r13+0x2ad8]
+ 1d63572:	4c 8d 15 10 00 00 00 	lea    r10,[rip+0x10]        # 1d63589 <Builtins_GetNamedPropertyHandler+0x449>
+ 1d63579:	4d 89 95 a8 00 00 00 	mov    QWORD PTR [r13+0xa8],r10
+ 1d63580:	49 89 ad b0 00 00 00 	mov    QWORD PTR [r13+0xb0],rbp
+ 1d63587:	ff d0                	call   rax
+ 1d63589:	48 8b 24 24          	mov    rsp,QWORD PTR [rsp]
+ 1d6358d:	49 c7 85 b0 00 00 00 	mov    QWORD PTR [r13+0xb0],0x0
+ 1d63594:	00 00 00 00 
+ 1d63598:	48 83 f8 ff          	cmp    rax,0xffffffffffffffff
+ 1d6359c:	0f 84 2c 02 00 00    	je     1d637ce <Builtins_GetNamedPropertyHandler+0x68e>
+ 1d635a2:	4c 8d 04 40          	lea    r8,[rax+rax*2]
+ 1d635a6:	49 8d 58 06          	lea    rbx,[r8+0x6]
+ 1d635aa:	48 8b 55 b8          	mov    rdx,QWORD PTR [rbp-0x48]
+ 1d635ae:	44 8b 44 9a 0f       	mov    r8d,DWORD PTR [rdx+rbx*4+0xf]
+ 1d635b3:	44 8b 5a 03          	mov    r11d,DWORD PTR [rdx+0x3]
+ 1d635b7:	48 8d 43 01          	lea    rax,[rbx+0x1]
+ 1d635bb:	49 3b c3             	cmp    rax,r11
+ 1d635be:	72 01                	jb     1d635c1 <Builtins_GetNamedPropertyHandler+0x481>
+ 1d635c0:	cc                   	int3
+ 1d635c1:	8b 44 9a 0b          	mov    eax,DWORD PTR [rdx+rbx*4+0xb]
+ 1d635c5:	49 0b c6             	or     rax,r14
+ 1d635c8:	4c 8b 5d e0          	mov    r11,QWORD PTR [rbp-0x20]
+ 1d635cc:	49 8b 7b f8          	mov    rdi,QWORD PTR [r11-0x8]
+ 1d635d0:	48 8b 5d e8          	mov    rbx,QWORD PTR [rbp-0x18]
+ 1d635d4:	4c 8b 65 a8          	mov    r12,QWORD PTR [rbp-0x58]
+ 1d635d8:	41 0f b6 54 1c 02    	movzx  edx,BYTE PTR [r12+rbx*1+0x2]
+ 1d635de:	41 8b 4c 24 17       	mov    ecx,DWORD PTR [r12+0x17]
+ 1d635e3:	49 0b 8d 98 02 00 00 	or     rcx,QWORD PTR [r13+0x298]
+ 1d635ea:	8b 54 91 07          	mov    edx,DWORD PTR [rcx+rdx*4+0x7]
+ 1d635ee:	41 f6 c0 02          	test   r8b,0x2
+ 1d635f2:	75 37                	jne    1d6362b <Builtins_GetNamedPropertyHandler+0x4eb>
+ 1d635f4:	41 80 7d cf 00       	cmp    BYTE PTR [r13-0x31],0x0
+ 1d635f9:	0f 84 c0 01 00 00    	je     1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d635ff:	a8 01                	test   al,0x1
+ 1d63601:	0f 84 b8 01 00 00    	je     1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d63607:	44 8b 40 ff          	mov    r8d,DWORD PTR [rax-0x1]
+ 1d6360b:	41 81 f8 9d 0d 00 00 	cmp    r8d,0xd9d
+ 1d63612:	0f 85 a7 01 00 00    	jne    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d63618:	4c 8b cb             	mov    r9,rbx
+ 1d6361b:	4d 8b c3             	mov    r8,r11
+ 1d6361e:	4c 8b 5d d0          	mov    r11,QWORD PTR [rbp-0x30]
+ 1d63622:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d63626:	e9 82 fc ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d6362b:	44 8b 40 ff          	mov    r8d,DWORD PTR [rax-0x1]
+ 1d6362f:	41 81 f8 f1 10 00 00 	cmp    r8d,0x10f1
+ 1d63636:	0f 84 da 00 00 00    	je     1d63716 <Builtins_GetNamedPropertyHandler+0x5d6>
+ 1d6363c:	4c 8b 45 d0          	mov    r8,QWORD PTR [rbp-0x30]
+ 1d63640:	41 8b 40 ff          	mov    eax,DWORD PTR [r8-0x1]
+ 1d63644:	41 0f b7 44 06 07    	movzx  eax,WORD PTR [r14+rax*1+0x7]
+ 1d6364a:	3d 4c 08 00 00       	cmp    eax,0x84c
+ 1d6364f:	0f 84 a9 00 00 00    	je     1d636fe <Builtins_GetNamedPropertyHandler+0x5be>
+ 1d63655:	8d 88 f0 f7 ff ff    	lea    ecx,[rax-0x810]
+ 1d6365b:	83 f9 11             	cmp    ecx,0x11
+ 1d6365e:	76 47                	jbe    1d636a7 <Builtins_GetNamedPropertyHandler+0x567>
+ 1d63660:	3d 11 04 00 00       	cmp    eax,0x411
+ 1d63665:	74 15                	je     1d6367c <Builtins_GetNamedPropertyHandler+0x53c>
+ 1d63667:	4c 8b cb             	mov    r9,rbx
+ 1d6366a:	4d 8b d0             	mov    r10,r8
+ 1d6366d:	4d 8b c3             	mov    r8,r11
+ 1d63670:	4d 8b da             	mov    r11,r10
+ 1d63673:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d63677:	e9 31 fc ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d6367c:	81 fa 39 0e 00 00    	cmp    edx,0xe39
+ 1d63682:	75 e3                	jne    1d63667 <Builtins_GetNamedPropertyHandler+0x527>
+ 1d63684:	41 8b 40 0b          	mov    eax,DWORD PTR [r8+0xb]
+ 1d63688:	49 0b c6             	or     rax,r14
+ 1d6368b:	a8 01                	test   al,0x1
+ 1d6368d:	74 d8                	je     1d63667 <Builtins_GetNamedPropertyHandler+0x527>
+ 1d6368f:	8b 50 ff             	mov    edx,DWORD PTR [rax-0x1]
+ 1d63692:	81 fa 25 04 00 00    	cmp    edx,0x425
+ 1d63698:	77 cd                	ja     1d63667 <Builtins_GetNamedPropertyHandler+0x527>
+ 1d6369a:	44 8b 40 07          	mov    r8d,DWORD PTR [rax+0x7]
+ 1d6369e:	43 8d 04 00          	lea    eax,[r8+r8*1]
+ 1d636a2:	e9 18 01 00 00       	jmp    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d636a7:	81 fa 11 0e 00 00    	cmp    edx,0xe11
+ 1d636ad:	75 b8                	jne    1d63667 <Builtins_GetNamedPropertyHandler+0x527>
+ 1d636af:	2d 11 08 00 00       	sub    eax,0x811
+ 1d636b4:	83 f8 10             	cmp    eax,0x10
+ 1d636b7:	77 ae                	ja     1d63667 <Builtins_GetNamedPropertyHandler+0x527>
+ 1d636b9:	41 8b 40 1b          	mov    eax,DWORD PTR [r8+0x1b]
+ 1d636bd:	49 0b c6             	or     rax,r14
+ 1d636c0:	3d fd ff 02 00       	cmp    eax,0x2fffd
+ 1d636c5:	74 a0                	je     1d63667 <Builtins_GetNamedPropertyHandler+0x527>
+ 1d636c7:	44 8b 40 ff          	mov    r8d,DWORD PTR [rax-0x1]
+ 1d636cb:	4d 0b c6             	or     r8,r14
+ 1d636ce:	41 0f b7 50 07       	movzx  edx,WORD PTR [r8+0x7]
+ 1d636d3:	81 fa ca 00 00 00    	cmp    edx,0xca
+ 1d636d9:	74 18                	je     1d636f3 <Builtins_GetNamedPropertyHandler+0x5b3>
+ 1d636db:	41 81 f8 51 15 00 00 	cmp    r8d,0x1551
+ 1d636e2:	0f 85 d7 00 00 00    	jne    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d636e8:	8b 40 07             	mov    eax,DWORD PTR [rax+0x7]
+ 1d636eb:	49 0b c6             	or     rax,r14
+ 1d636ee:	e9 cc 00 00 00       	jmp    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d636f3:	8b 40 0f             	mov    eax,DWORD PTR [rax+0xf]
+ 1d636f6:	49 0b c6             	or     rax,r14
+ 1d636f9:	e9 c1 00 00 00       	jmp    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d636fe:	81 fa 39 0e 00 00    	cmp    edx,0xe39
+ 1d63704:	0f 85 5d ff ff ff    	jne    1d63667 <Builtins_GetNamedPropertyHandler+0x527>
+ 1d6370a:	41 8b 40 0b          	mov    eax,DWORD PTR [r8+0xb]
+ 1d6370e:	49 0b c6             	or     rax,r14
+ 1d63711:	e9 a9 00 00 00       	jmp    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d63716:	8b 50 03             	mov    edx,DWORD PTR [rax+0x3]
+ 1d63719:	49 0b d6             	or     rdx,r14
+ 1d6371c:	44 8b 42 ff          	mov    r8d,DWORD PTR [rdx-0x1]
+ 1d63720:	4d 0b c6             	or     r8,r14
+ 1d63723:	41 f6 40 09 01       	test   BYTE PTR [r8+0x9],0x1
+ 1d63728:	75 6f                	jne    1d63799 <Builtins_GetNamedPropertyHandler+0x659>
+ 1d6372a:	41 81 f8 29 1f 00 00 	cmp    r8d,0x1f29
+ 1d63731:	74 0c                	je     1d6373f <Builtins_GetNamedPropertyHandler+0x5ff>
+ 1d63733:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d63737:	4c 8b c0             	mov    r8,rax
+ 1d6373a:	e9 80 00 00 00       	jmp    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d6373f:	44 8b 42 27          	mov    r8d,DWORD PTR [rdx+0x27]
+ 1d63743:	41 81 f8 fd ff 02 00 	cmp    r8d,0x2fffd
+ 1d6374a:	0f 85 c8 fe ff ff    	jne    1d63618 <Builtins_GetNamedPropertyHandler+0x4d8>
+ 1d63750:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+ 1d63754:	44 8b 40 ff          	mov    r8d,DWORD PTR [rax-0x1]
+ 1d63758:	47 8b 44 06 ff       	mov    r8d,DWORD PTR [r14+r8*1-0x1]
+ 1d6375d:	43 8b 74 06 13       	mov    esi,DWORD PTR [r14+r8*1+0x13]
+ 1d63762:	49 0b f6             	or     rsi,r14
+ 1d63765:	83 fe 2d             	cmp    esi,0x2d
+ 1d63768:	74 1d                	je     1d63787 <Builtins_GetNamedPropertyHandler+0x647>
+ 1d6376a:	44 8d 04 1b          	lea    r8d,[rbx+rbx*1]
+ 1d6376e:	4d 89 43 d8          	mov    QWORD PTR [r11-0x28],r8
+ 1d63772:	50                   	push   rax
+ 1d63773:	b9 01 00 00 00       	mov    ecx,0x1
+ 1d63778:	e8 83 52 e2 ff       	call   1b88a00 <Builtins_CallFunctionTemplate_Generic>
+ 1d6377d:	4c 8b 5d e0          	mov    r11,QWORD PTR [rbp-0x20]
+ 1d63781:	48 8b 5d e8          	mov    rbx,QWORD PTR [rbp-0x18]
+ 1d63785:	eb 38                	jmp    1d637bf <Builtins_GetNamedPropertyHandler+0x67f>
+ 1d63787:	4c 8b cb             	mov    r9,rbx
+ 1d6378a:	4d 8b c3             	mov    r8,r11
+ 1d6378d:	4c 8b d8             	mov    r11,rax
+ 1d63790:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d63794:	e9 14 fb ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63799:	4c 8b c3             	mov    r8,rbx
+ 1d6379c:	43 8d 04 00          	lea    eax,[r8+r8*1]
+ 1d637a0:	49 89 43 d8          	mov    QWORD PTR [r11-0x28],rax
+ 1d637a4:	ff 75 d0             	push   QWORD PTR [rbp-0x30]
+ 1d637a7:	48 8b f7             	mov    rsi,rdi
+ 1d637aa:	48 8b fa             	mov    rdi,rdx
+ 1d637ad:	b8 01 00 00 00       	mov    eax,0x1
+ 1d637b2:	e8 49 04 e2 ff       	call   1b83c00 <Builtins_Call_ReceiverIsAny>
+ 1d637b7:	4c 8b 5d e0          	mov    r11,QWORD PTR [rbp-0x20]
+ 1d637bb:	48 8b 5d e8          	mov    rbx,QWORD PTR [rbp-0x18]
+ 1d637bf:	4d 8b c3             	mov    r8,r11
+ 1d637c2:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d637c6:	4c 8b cb             	mov    r9,rbx
+ 1d637c9:	e9 32 fb ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d637ce:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d637d2:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d637d6:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d637da:	4c 8b 5d d0          	mov    r11,QWORD PTR [rbp-0x30]
+ 1d637de:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d637e2:	48 8b 45 c0          	mov    rax,QWORD PTR [rbp-0x40]
+ 1d637e6:	4c 8b 65 a8          	mov    r12,QWORD PTR [rbp-0x58]
+ 1d637ea:	8b 4d b0             	mov    ecx,DWORD PTR [rbp-0x50]
+ 1d637ed:	8b 50 0b             	mov    edx,DWORD PTR [rax+0xb]
+ 1d637f0:	49 0b d6             	or     rdx,r14
+ 1d637f3:	f6 c2 01             	test   dl,0x1
+ 1d637f6:	75 08                	jne    1d63800 <Builtins_GetNamedPropertyHandler+0x6c0>
+ 1d637f8:	48 8b c2             	mov    rax,rdx
+ 1d637fb:	e9 00 fb ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63800:	83 fa 2d             	cmp    edx,0x2d
+ 1d63803:	74 12                	je     1d63817 <Builtins_GetNamedPropertyHandler+0x6d7>
+ 1d63805:	83 fa 03             	cmp    edx,0x3
+ 1d63808:	0f 84 9f fa ff ff    	je     1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d6380e:	48 83 e2 fd          	and    rdx,0xfffffffffffffffd
+ 1d63812:	e9 ef f9 ff ff       	jmp    1d63206 <Builtins_GetNamedPropertyHandler+0xc6>
+ 1d63817:	49 8b d3             	mov    rdx,r11
+ 1d6381a:	e9 e7 f9 ff ff       	jmp    1d63206 <Builtins_GetNamedPropertyHandler+0xc6>
+ 1d6381f:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+ 1d63823:	4c 89 5d d0          	mov    QWORD PTR [rbp-0x30],r11
+ 1d63827:	48 89 5d c8          	mov    QWORD PTR [rbp-0x38],rbx
+ 1d6382b:	48 89 4d b0          	mov    QWORD PTR [rbp-0x50],rcx
+ 1d6382f:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d63833:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d63837:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d6383b:	40 80 fe 06          	cmp    sil,0x6
+ 1d6383f:	0f 84 88 04 00 00    	je     1d63ccd <Builtins_GetNamedPropertyHandler+0xb8d>
+ 1d63845:	40 80 fe 0e          	cmp    sil,0xe
+ 1d63849:	0f 84 50 04 00 00    	je     1d63c9f <Builtins_GetNamedPropertyHandler+0xb5f>
+ 1d6384f:	40 80 fe 10          	cmp    sil,0x10
+ 1d63853:	0f 84 e3 03 00 00    	je     1d63c3c <Builtins_GetNamedPropertyHandler+0xafc>
+ 1d63859:	40 80 fe 12          	cmp    sil,0x12
+ 1d6385d:	0f 84 98 03 00 00    	je     1d63bfb <Builtins_GetNamedPropertyHandler+0xabb>
+ 1d63863:	40 80 fe 08          	cmp    sil,0x8
+ 1d63867:	0f 84 f6 02 00 00    	je     1d63b63 <Builtins_GetNamedPropertyHandler+0xa23>
+ 1d6386d:	40 80 fe 16          	cmp    sil,0x16
+ 1d63871:	0f 84 9a 02 00 00    	je     1d63b11 <Builtins_GetNamedPropertyHandler+0x9d1>
+ 1d63877:	40 80 fe 18          	cmp    sil,0x18
+ 1d6387b:	0f 84 db 01 00 00    	je     1d63a5c <Builtins_GetNamedPropertyHandler+0x91c>
+ 1d63881:	40 80 fe 1c          	cmp    sil,0x1c
+ 1d63885:	0f 84 4a 01 00 00    	je     1d639d5 <Builtins_GetNamedPropertyHandler+0x895>
+ 1d6388b:	40 80 fe 14          	cmp    sil,0x14
+ 1d6388f:	74 53                	je     1d638e4 <Builtins_GetNamedPropertyHandler+0x7a4>
+ 1d63891:	49 8b 40 e0          	mov    rax,QWORD PTR [r8-0x20]
+ 1d63895:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63899:	49 8b d1             	mov    rdx,r9
+ 1d6389c:	0f b6 4c 10 02       	movzx  ecx,BYTE PTR [rax+rdx*1+0x2]
+ 1d638a1:	8b 78 17             	mov    edi,DWORD PTR [rax+0x17]
+ 1d638a4:	49 0b bd 98 02 00 00 	or     rdi,QWORD PTR [r13+0x298]
+ 1d638ab:	44 8d 0c 12          	lea    r9d,[rdx+rdx*1]
+ 1d638af:	8b 4c 8f 07          	mov    ecx,DWORD PTR [rdi+rcx*4+0x7]
+ 1d638b3:	49 0b ce             	or     rcx,r14
+ 1d638b6:	0f b6 44 10 03       	movzx  eax,BYTE PTR [rax+rdx*1+0x3]
+ 1d638bb:	48 d1 e0             	shl    rax,1
+ 1d638be:	4d 89 48 d8          	mov    QWORD PTR [r8-0x28],r9
+ 1d638c2:	49 8b d3             	mov    rdx,r11
+ 1d638c5:	4c 8b d0             	mov    r10,rax
+ 1d638c8:	48 8b c1             	mov    rax,rcx
+ 1d638cb:	49 8b ca             	mov    rcx,r10
+ 1d638ce:	e8 ed 13 e8 ff       	call   1be4cc0 <Builtins_KeyedLoadIC_Megamorphic>
+ 1d638d3:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d638d7:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d638db:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d638df:	e9 1c fa ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d638e4:	8b 40 0f             	mov    eax,DWORD PTR [rax+0xf]
+ 1d638e7:	49 0b c6             	or     rax,r14
+ 1d638ea:	48 89 45 c0          	mov    QWORD PTR [rbp-0x40],rax
+ 1d638ee:	83 fa 2d             	cmp    edx,0x2d
+ 1d638f1:	75 03                	jne    1d638f6 <Builtins_GetNamedPropertyHandler+0x7b6>
+ 1d638f3:	49 8b d3             	mov    rdx,r11
+ 1d638f6:	49 8b 70 e0          	mov    rsi,QWORD PTR [r8-0x20]
+ 1d638fa:	49 8b 78 f8          	mov    rdi,QWORD PTR [r8-0x8]
+ 1d638fe:	46 0f b6 64 0e 02    	movzx  r12d,BYTE PTR [rsi+r9*1+0x2]
+ 1d63904:	8b 76 17             	mov    esi,DWORD PTR [rsi+0x17]
+ 1d63907:	49 0b b5 98 02 00 00 	or     rsi,QWORD PTR [r13+0x298]
+ 1d6390e:	47 8d 1c 09          	lea    r11d,[r9+r9*1]
+ 1d63912:	42 8b 74 a6 07       	mov    esi,DWORD PTR [rsi+r12*4+0x7]
+ 1d63917:	49 0b f6             	or     rsi,r14
+ 1d6391a:	4d 89 58 d8          	mov    QWORD PTR [r8-0x28],r11
+ 1d6391e:	52                   	push   rdx
+ 1d6391f:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+ 1d63923:	4c 89 5d b8          	mov    QWORD PTR [rbp-0x48],r11
+ 1d63927:	4c 8b d7             	mov    r10,rdi
+ 1d6392a:	48 8b fe             	mov    rdi,rsi
+ 1d6392d:	49 8b f2             	mov    rsi,r10
+ 1d63930:	48 8b d8             	mov    rbx,rax
+ 1d63933:	e8 c8 e8 e2 ff       	call   1b92200 <Builtins_CallNamedInterceptorGetter>
+ 1d63938:	83 f8 01             	cmp    eax,0x1
+ 1d6393b:	74 11                	je     1d6394e <Builtins_GetNamedPropertyHandler+0x80e>
+ 1d6393d:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63941:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63945:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63949:	e9 b2 f9 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d6394e:	f6 45 b0 80          	test   BYTE PTR [rbp-0x50],0x80
+ 1d63952:	75 6c                	jne    1d639c0 <Builtins_GetNamedPropertyHandler+0x880>
+ 1d63954:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63958:	4d 8b 58 e0          	mov    r11,QWORD PTR [r8-0x20]
+ 1d6395c:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63960:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+ 1d63964:	41 0f b6 5c 03 02    	movzx  ebx,BYTE PTR [r11+rax*1+0x2]
+ 1d6396a:	41 8b 53 17          	mov    edx,DWORD PTR [r11+0x17]
+ 1d6396e:	49 0b 95 98 02 00 00 	or     rdx,QWORD PTR [r13+0x298]
+ 1d63975:	45 0f b6 5c 03 03    	movzx  r11d,BYTE PTR [r11+rax*1+0x3]
+ 1d6397b:	8b 5c 9a 07          	mov    ebx,DWORD PTR [rdx+rbx*4+0x7]
+ 1d6397f:	49 0b de             	or     rbx,r14
+ 1d63982:	8b 55 b8             	mov    edx,DWORD PTR [rbp-0x48]
+ 1d63985:	49 89 50 d8          	mov    QWORD PTR [r8-0x28],rdx
+ 1d63989:	53                   	push   rbx
+ 1d6398a:	ff 75 d0             	push   QWORD PTR [rbp-0x30]
+ 1d6398d:	ff 75 d8             	push   QWORD PTR [rbp-0x28]
+ 1d63990:	49 d1 e3             	shl    r11,1
+ 1d63993:	ff 75 c0             	push   QWORD PTR [rbp-0x40]
+ 1d63996:	41 53                	push   r11
+ 1d63998:	ff 75 c8             	push   QWORD PTR [rbp-0x38]
+ 1d6399b:	49 8b 9d 60 47 00 00 	mov    rbx,QWORD PTR [r13+0x4760]
+ 1d639a2:	b8 06 00 00 00       	mov    eax,0x6
+ 1d639a7:	4c 8b d8             	mov    r11,rax
+ 1d639aa:	e8 11 da ee ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d639af:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d639b3:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d639b7:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d639bb:	e9 40 f9 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d639c0:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d639c4:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d639c8:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d639cc:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d639d0:	e9 2b f9 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d639d5:	44 8b 5a 0f          	mov    r11d,DWORD PTR [rdx+0xf]
+ 1d639d9:	48 c1 ef 06          	shr    rdi,0x6
+ 1d639dd:	47 8b 5c 1e 03       	mov    r11d,DWORD PTR [r14+r11*1+0x3]
+ 1d639e2:	4d 0b de             	or     r11,r14
+ 1d639e5:	81 e7 ff ff ff 01    	and    edi,0x1ffffff
+ 1d639eb:	41 8b 43 03          	mov    eax,DWORD PTR [r11+0x3]
+ 1d639ef:	48 3b f8             	cmp    rdi,rax
+ 1d639f2:	72 01                	jb     1d639f5 <Builtins_GetNamedPropertyHandler+0x8b5>
+ 1d639f4:	cc                   	int3
+ 1d639f5:	45 8b 5c bb 07       	mov    r11d,DWORD PTR [r11+rdi*4+0x7]
+ 1d639fa:	43 8b 44 1e 03       	mov    eax,DWORD PTR [r14+r11*1+0x3]
+ 1d639ff:	49 0b c6             	or     rax,r14
+ 1d63a02:	3d fd ff 02 00       	cmp    eax,0x2fffd
+ 1d63a07:	0f 85 f3 f8 ff ff    	jne    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63a0d:	4d 8b 58 e0          	mov    r11,QWORD PTR [r8-0x20]
+ 1d63a11:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63a15:	49 8b c1             	mov    rax,r9
+ 1d63a18:	41 0f b6 5c 03 02    	movzx  ebx,BYTE PTR [r11+rax*1+0x2]
+ 1d63a1e:	45 8b 5b 17          	mov    r11d,DWORD PTR [r11+0x17]
+ 1d63a22:	4d 0b 9d 98 02 00 00 	or     r11,QWORD PTR [r13+0x298]
+ 1d63a29:	8d 14 00             	lea    edx,[rax+rax*1]
+ 1d63a2c:	45 8b 5c 9b 07       	mov    r11d,DWORD PTR [r11+rbx*4+0x7]
+ 1d63a31:	4d 0b de             	or     r11,r14
+ 1d63a34:	49 89 50 d8          	mov    QWORD PTR [r8-0x28],rdx
+ 1d63a38:	41 53                	push   r11
+ 1d63a3a:	49 8b 9d 40 48 00 00 	mov    rbx,QWORD PTR [r13+0x4840]
+ 1d63a41:	b8 01 00 00 00       	mov    eax,0x1
+ 1d63a46:	e8 75 d9 ee ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d63a4b:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63a4f:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63a53:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63a57:	e9 a4 f8 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63a5c:	a8 01                	test   al,0x1
+ 1d63a5e:	74 0b                	je     1d63a6b <Builtins_GetNamedPropertyHandler+0x92b>
+ 1d63a60:	8b 48 ff             	mov    ecx,DWORD PTR [rax-0x1]
+ 1d63a63:	81 f9 91 16 00 00    	cmp    ecx,0x1691
+ 1d63a69:	74 4c                	je     1d63ab7 <Builtins_GetNamedPropertyHandler+0x977>
+ 1d63a6b:	49 8b 40 e0          	mov    rax,QWORD PTR [r8-0x20]
+ 1d63a6f:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63a73:	49 8b d9             	mov    rbx,r9
+ 1d63a76:	0f b6 4c 18 02       	movzx  ecx,BYTE PTR [rax+rbx*1+0x2]
+ 1d63a7b:	8b 40 17             	mov    eax,DWORD PTR [rax+0x17]
+ 1d63a7e:	49 0b 85 98 02 00 00 	or     rax,QWORD PTR [r13+0x298]
+ 1d63a85:	8d 3c 1b             	lea    edi,[rbx+rbx*1]
+ 1d63a88:	8b 44 88 07          	mov    eax,DWORD PTR [rax+rcx*4+0x7]
+ 1d63a8c:	49 0b c6             	or     rax,r14
+ 1d63a8f:	49 89 78 d8          	mov    QWORD PTR [r8-0x28],rdi
+ 1d63a93:	48 8b d8             	mov    rbx,rax
+ 1d63a96:	48 8b c2             	mov    rax,rdx
+ 1d63a99:	ba 02 00 00 00       	mov    edx,0x2
+ 1d63a9e:	49 8b cb             	mov    rcx,r11
+ 1d63aa1:	e8 9a 5b f8 ff       	call   1ce9640 <Builtins_ProxyGetProperty>
+ 1d63aa6:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63aaa:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63aae:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63ab2:	e9 49 f8 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63ab7:	49 8b 50 e0          	mov    rdx,QWORD PTR [r8-0x20]
+ 1d63abb:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63abf:	49 8b c9             	mov    rcx,r9
+ 1d63ac2:	0f b6 7c 0a 02       	movzx  edi,BYTE PTR [rdx+rcx*1+0x2]
+ 1d63ac7:	8b 52 17             	mov    edx,DWORD PTR [rdx+0x17]
+ 1d63aca:	49 0b 95 98 02 00 00 	or     rdx,QWORD PTR [r13+0x298]
+ 1d63ad1:	44 8d 0c 09          	lea    r9d,[rcx+rcx*1]
+ 1d63ad5:	8b 54 ba 07          	mov    edx,DWORD PTR [rdx+rdi*4+0x7]
+ 1d63ad9:	49 0b d6             	or     rdx,r14
+ 1d63adc:	4d 89 48 d8          	mov    QWORD PTR [r8-0x28],r9
+ 1d63ae0:	48 8b da             	mov    rbx,rdx
+ 1d63ae3:	48 8b d0             	mov    rdx,rax
+ 1d63ae6:	49 8b c3             	mov    rax,r11
+ 1d63ae9:	49 8b cb             	mov    rcx,r11
+ 1d63aec:	e8 4f 42 e6 ff       	call   1bc7d40 <Builtins_ProxyGetPropertyFastPath>
+ 1d63af1:	3d fd ff 02 00       	cmp    eax,0x2fffd
+ 1d63af6:	0f 85 41 fe ff ff    	jne    1d6393d <Builtins_GetNamedPropertyHandler+0x7fd>
+ 1d63afc:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63b00:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63b04:	4c 8b 5d d0          	mov    r11,QWORD PTR [rbp-0x30]
+ 1d63b08:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d63b0c:	e9 9c f7 ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63b11:	49 8b 40 e0          	mov    rax,QWORD PTR [r8-0x20]
+ 1d63b15:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63b19:	49 8b d9             	mov    rbx,r9
+ 1d63b1c:	0f b6 54 18 02       	movzx  edx,BYTE PTR [rax+rbx*1+0x2]
+ 1d63b21:	8b 40 17             	mov    eax,DWORD PTR [rax+0x17]
+ 1d63b24:	49 0b 85 98 02 00 00 	or     rax,QWORD PTR [r13+0x298]
+ 1d63b2b:	8d 0c 1b             	lea    ecx,[rbx+rbx*1]
+ 1d63b2e:	8b 44 90 07          	mov    eax,DWORD PTR [rax+rdx*4+0x7]
+ 1d63b32:	49 0b c6             	or     rax,r14
+ 1d63b35:	49 89 48 d8          	mov    QWORD PTR [r8-0x28],rcx
+ 1d63b39:	41 53                	push   r11
+ 1d63b3b:	50                   	push   rax
+ 1d63b3c:	41 53                	push   r11
+ 1d63b3e:	49 8b 9d 50 4b 00 00 	mov    rbx,QWORD PTR [r13+0x4b50]
+ 1d63b45:	b8 03 00 00 00       	mov    eax,0x3
+ 1d63b4a:	4c 8b db             	mov    r11,rbx
+ 1d63b4d:	e8 6e d8 ee ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d63b52:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63b56:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63b5a:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63b5e:	e9 9d f7 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63b63:	8b 42 0b             	mov    eax,DWORD PTR [rdx+0xb]
+ 1d63b66:	49 0b c6             	or     rax,r14
+ 1d63b69:	3d fd ff 04 00       	cmp    eax,0x4fffd
+ 1d63b6e:	0f 84 39 f7 ff ff    	je     1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63b74:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63b78:	f6 42 07 02          	test   BYTE PTR [rdx+0x7],0x2
+ 1d63b7c:	75 27                	jne    1d63ba5 <Builtins_GetNamedPropertyHandler+0xa65>
+ 1d63b7e:	41 80 7d cf 00       	cmp    BYTE PTR [r13-0x31],0x0
+ 1d63b83:	0f 84 77 f7 ff ff    	je     1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63b89:	a8 01                	test   al,0x1
+ 1d63b8b:	0f 84 6f f7 ff ff    	je     1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63b91:	8b 50 ff             	mov    edx,DWORD PTR [rax-0x1]
+ 1d63b94:	81 fa 9d 0d 00 00    	cmp    edx,0xd9d
+ 1d63b9a:	0f 84 0d f7 ff ff    	je     1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63ba0:	e9 5b f7 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63ba5:	8b 58 ff             	mov    ebx,DWORD PTR [rax-0x1]
+ 1d63ba8:	81 fb f1 10 00 00    	cmp    ebx,0x10f1
+ 1d63bae:	74 01                	je     1d63bb1 <Builtins_GetNamedPropertyHandler+0xa71>
+ 1d63bb0:	cc                   	int3
+ 1d63bb1:	8b 78 03             	mov    edi,DWORD PTR [rax+0x3]
+ 1d63bb4:	49 0b fe             	or     rdi,r14
+ 1d63bb7:	8b 47 ff             	mov    eax,DWORD PTR [rdi-0x1]
+ 1d63bba:	49 0b c6             	or     rax,r14
+ 1d63bbd:	f6 40 09 01          	test   BYTE PTR [rax+0x9],0x1
+ 1d63bc1:	75 11                	jne    1d63bd4 <Builtins_GetNamedPropertyHandler+0xa94>
+ 1d63bc3:	3d 29 1f 00 00       	cmp    eax,0x1f29
+ 1d63bc8:	74 09                	je     1d63bd3 <Builtins_GetNamedPropertyHandler+0xa93>
+ 1d63bca:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d63bce:	e9 2d f7 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63bd3:	cc                   	int3
+ 1d63bd4:	49 8b c1             	mov    rax,r9
+ 1d63bd7:	8d 1c 00             	lea    ebx,[rax+rax*1]
+ 1d63bda:	49 89 58 d8          	mov    QWORD PTR [r8-0x28],rbx
+ 1d63bde:	41 53                	push   r11
+ 1d63be0:	b8 01 00 00 00       	mov    eax,0x1
+ 1d63be5:	e8 16 00 e2 ff       	call   1b83c00 <Builtins_Call_ReceiverIsAny>
+ 1d63bea:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63bee:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63bf2:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63bf6:	e9 05 f7 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63bfb:	8b 40 0f             	mov    eax,DWORD PTR [rax+0xf]
+ 1d63bfe:	49 0b c6             	or     rax,r14
+ 1d63c01:	83 f8 03             	cmp    eax,0x3
+ 1d63c04:	74 35                	je     1d63c3b <Builtins_GetNamedPropertyHandler+0xafb>
+ 1d63c06:	49 8b d9             	mov    rbx,r9
+ 1d63c09:	8d 0c 1b             	lea    ecx,[rbx+rbx*1]
+ 1d63c0c:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63c10:	48 83 e0 fd          	and    rax,0xfffffffffffffffd
+ 1d63c14:	49 89 48 d8          	mov    QWORD PTR [r8-0x28],rcx
+ 1d63c18:	41 53                	push   r11
+ 1d63c1a:	33 c9                	xor    ecx,ecx
+ 1d63c1c:	48 8b da             	mov    rbx,rdx
+ 1d63c1f:	48 8b d6             	mov    rdx,rsi
+ 1d63c22:	48 8b f0             	mov    rsi,rax
+ 1d63c25:	e8 56 e1 e2 ff       	call   1b91d80 <Builtins_CallApiCallbackGeneric>
+ 1d63c2a:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63c2e:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63c32:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63c36:	e9 c5 f6 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63c3b:	cc                   	int3
+ 1d63c3c:	48 c1 ef 06          	shr    rdi,0x6
+ 1d63c40:	81 e7 ff 03 00 00    	and    edi,0x3ff
+ 1d63c46:	4c 8d 1c 7f          	lea    r11,[rdi+rdi*2]
+ 1d63c4a:	8b 42 ff             	mov    eax,DWORD PTR [rdx-0x1]
+ 1d63c4d:	49 8b 58 e0          	mov    rbx,QWORD PTR [r8-0x20]
+ 1d63c51:	41 8b 44 06 17       	mov    eax,DWORD PTR [r14+rax*1+0x17]
+ 1d63c56:	49 0b c6             	or     rax,r14
+ 1d63c59:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63c5d:	49 8b c9             	mov    rcx,r9
+ 1d63c60:	0f b6 7c 0b 02       	movzx  edi,BYTE PTR [rbx+rcx*1+0x2]
+ 1d63c65:	8b 5b 17             	mov    ebx,DWORD PTR [rbx+0x17]
+ 1d63c68:	46 8b 5c 98 17       	mov    r11d,DWORD PTR [rax+r11*4+0x17]
+ 1d63c6d:	4d 0b de             	or     r11,r14
+ 1d63c70:	49 0b 9d 98 02 00 00 	or     rbx,QWORD PTR [r13+0x298]
+ 1d63c77:	8d 04 09             	lea    eax,[rcx+rcx*1]
+ 1d63c7a:	8b 7c bb 07          	mov    edi,DWORD PTR [rbx+rdi*4+0x7]
+ 1d63c7e:	49 0b fe             	or     rdi,r14
+ 1d63c81:	49 89 40 d8          	mov    QWORD PTR [r8-0x28],rax
+ 1d63c85:	52                   	push   rdx
+ 1d63c86:	49 8b db             	mov    rbx,r11
+ 1d63c89:	e8 32 e4 e2 ff       	call   1b920c0 <Builtins_CallApiGetter>
+ 1d63c8e:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63c92:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63c96:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63c9a:	e9 61 f6 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63c9f:	49 8b c1             	mov    rax,r9
+ 1d63ca2:	8d 1c 00             	lea    ebx,[rax+rax*1]
+ 1d63ca5:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d63ca9:	49 89 58 d8          	mov    QWORD PTR [r8-0x28],rbx
+ 1d63cad:	41 53                	push   r11
+ 1d63caf:	48 8b fa             	mov    rdi,rdx
+ 1d63cb2:	b8 01 00 00 00       	mov    eax,0x1
+ 1d63cb7:	e8 44 ff e1 ff       	call   1b83c00 <Builtins_Call_ReceiverIsAny>
+ 1d63cbc:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63cc0:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63cc4:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d63cc8:	e9 33 f6 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d63ccd:	8b 42 03             	mov    eax,DWORD PTR [rdx+0x3]
+ 1d63cd0:	49 0b c6             	or     rax,r14
+ 1d63cd3:	a8 01                	test   al,0x1
+ 1d63cd5:	75 07                	jne    1d63cde <Builtins_GetNamedPropertyHandler+0xb9e>
+ 1d63cd7:	49 8d 86 f5 0e 00 00 	lea    rax,[r14+0xef5]
+ 1d63cde:	48 89 45 c0          	mov    QWORD PTR [rbp-0x40],rax
+ 1d63ce2:	81 ff 83 ff ff 3f    	cmp    edi,0x3fffff83
+ 1d63ce8:	74 4f                	je     1d63d39 <Builtins_GetNamedPropertyHandler+0xbf9>
+ 1d63cea:	c1 ef 07             	shr    edi,0x7
+ 1d63ced:	81 e7 ff ff 7f 00    	and    edi,0x7fffff
+ 1d63cf3:	48 8d 0c 7f          	lea    rcx,[rdi+rdi*2]
+ 1d63cf7:	8b 70 03             	mov    esi,DWORD PTR [rax+0x3]
+ 1d63cfa:	48 8d 79 06          	lea    rdi,[rcx+0x6]
+ 1d63cfe:	48 3b f7             	cmp    rsi,rdi
+ 1d63d01:	76 36                	jbe    1d63d39 <Builtins_GetNamedPropertyHandler+0xbf9>
+ 1d63d03:	48 3b fe             	cmp    rdi,rsi
+ 1d63d06:	72 01                	jb     1d63d09 <Builtins_GetNamedPropertyHandler+0xbc9>
+ 1d63d08:	cc                   	int3
+ 1d63d09:	4d 8b 60 e0          	mov    r12,QWORD PTR [r8-0x20]
+ 1d63d0d:	49 8b f1             	mov    rsi,r9
+ 1d63d10:	45 0f b6 4c 34 02    	movzx  r9d,BYTE PTR [r12+rsi*1+0x2]
+ 1d63d16:	45 8b 44 24 17       	mov    r8d,DWORD PTR [r12+0x17]
+ 1d63d1b:	4d 0b 85 98 02 00 00 	or     r8,QWORD PTR [r13+0x298]
+ 1d63d22:	47 8b 44 88 07       	mov    r8d,DWORD PTR [r8+r9*4+0x7]
+ 1d63d27:	44 39 44 88 1f       	cmp    DWORD PTR [rax+rcx*4+0x1f],r8d
+ 1d63d2c:	0f 84 ef 00 00 00    	je     1d63e21 <Builtins_GetNamedPropertyHandler+0xce1>
+ 1d63d32:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63d36:	4c 8b ce             	mov    r9,rsi
+ 1d63d39:	43 0f b6 4c 0c 02    	movzx  ecx,BYTE PTR [r12+r9*1+0x2]
+ 1d63d3f:	41 8b 74 24 17       	mov    esi,DWORD PTR [r12+0x17]
+ 1d63d44:	49 0b b5 98 02 00 00 	or     rsi,QWORD PTR [r13+0x298]
+ 1d63d4b:	8b 4c 8e 07          	mov    ecx,DWORD PTR [rsi+rcx*4+0x7]
+ 1d63d4f:	49 0b ce             	or     rcx,r14
+ 1d63d52:	8b 70 0f             	mov    esi,DWORD PTR [rax+0xf]
+ 1d63d55:	8b 79 03             	mov    edi,DWORD PTR [rcx+0x3]
+ 1d63d58:	4c 89 65 a8          	mov    QWORD PTR [rbp-0x58],r12
+ 1d63d5c:	40 f6 c7 01          	test   dil,0x1
+ 1d63d60:	75 53                	jne    1d63db5 <Builtins_GetNamedPropertyHandler+0xc75>
+ 1d63d62:	d1 fe                	sar    esi,1
+ 1d63d64:	c1 ef 02             	shr    edi,0x2
+ 1d63d67:	48 83 ee 01          	sub    rsi,0x1
+ 1d63d6b:	48 23 fe             	and    rdi,rsi
+ 1d63d6e:	45 33 c0             	xor    r8d,r8d
+ 1d63d71:	4c 8d 1c 7f          	lea    r11,[rdi+rdi*2]
+ 1d63d75:	49 8d 5b 06          	lea    rbx,[r11+0x6]
+ 1d63d79:	46 8b 5c 98 1f       	mov    r11d,DWORD PTR [rax+r11*4+0x1f]
+ 1d63d7e:	41 83 fb 11          	cmp    r11d,0x11
+ 1d63d82:	74 20                	je     1d63da4 <Builtins_GetNamedPropertyHandler+0xc64>
+ 1d63d84:	44 3b d9             	cmp    r11d,ecx
+ 1d63d87:	74 13                	je     1d63d9c <Builtins_GetNamedPropertyHandler+0xc5c>
+ 1d63d89:	49 83 c0 01          	add    r8,0x1
+ 1d63d8d:	4d 8d 1c 38          	lea    r11,[r8+rdi*1]
+ 1d63d91:	48 8b de             	mov    rbx,rsi
+ 1d63d94:	49 23 db             	and    rbx,r11
+ 1d63d97:	48 8b fb             	mov    rdi,rbx
+ 1d63d9a:	eb d5                	jmp    1d63d71 <Builtins_GetNamedPropertyHandler+0xc31>
+ 1d63d9c:	49 8b f1             	mov    rsi,r9
+ 1d63d9f:	48 8b fb             	mov    rdi,rbx
+ 1d63da2:	eb 7d                	jmp    1d63e21 <Builtins_GetNamedPropertyHandler+0xce1>
+ 1d63da4:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d63da8:	4c 8b 5d d0          	mov    r11,QWORD PTR [rbp-0x30]
+ 1d63dac:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d63db0:	e9 f8 f4 ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63db5:	4c 8b d4             	mov    r10,rsp
+ 1d63db8:	48 83 ec 08          	sub    rsp,0x8
+ 1d63dbc:	48 83 e4 f0          	and    rsp,0xfffffffffffffff0
+ 1d63dc0:	4c 89 14 24          	mov    QWORD PTR [rsp],r10
+ 1d63dc4:	49 8d 7d 80          	lea    rdi,[r13-0x80]
+ 1d63dc8:	48 8b f0             	mov    rsi,rax
+ 1d63dcb:	48 8b d1             	mov    rdx,rcx
+ 1d63dce:	49 8b 85 d8 2a 00 00 	mov    rax,QWORD PTR [r13+0x2ad8]
+ 1d63dd5:	4c 8d 15 10 00 00 00 	lea    r10,[rip+0x10]        # 1d63dec <Builtins_GetNamedPropertyHandler+0xcac>
+ 1d63ddc:	4d 89 95 a8 00 00 00 	mov    QWORD PTR [r13+0xa8],r10
+ 1d63de3:	49 89 ad b0 00 00 00 	mov    QWORD PTR [r13+0xb0],rbp
+ 1d63dea:	ff d0                	call   rax
+ 1d63dec:	48 8b 24 24          	mov    rsp,QWORD PTR [rsp]
+ 1d63df0:	49 c7 85 b0 00 00 00 	mov    QWORD PTR [r13+0xb0],0x0
+ 1d63df7:	00 00 00 00 
+ 1d63dfb:	48 83 f8 ff          	cmp    rax,0xffffffffffffffff
+ 1d63dff:	0f 84 f7 fc ff ff    	je     1d63afc <Builtins_GetNamedPropertyHandler+0x9bc>
+ 1d63e05:	4c 8d 04 40          	lea    r8,[rax+rax*2]
+ 1d63e09:	49 8d 78 06          	lea    rdi,[r8+0x6]
+ 1d63e0d:	4c 8b 65 a8          	mov    r12,QWORD PTR [rbp-0x58]
+ 1d63e11:	48 8b 45 c0          	mov    rax,QWORD PTR [rbp-0x40]
+ 1d63e15:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63e19:	48 8b 75 e8          	mov    rsi,QWORD PTR [rbp-0x18]
+ 1d63e1d:	48 8b 55 d8          	mov    rdx,QWORD PTR [rbp-0x28]
+ 1d63e21:	44 8b 44 b8 0f       	mov    r8d,DWORD PTR [rax+rdi*4+0xf]
+ 1d63e26:	44 8b 58 03          	mov    r11d,DWORD PTR [rax+0x3]
+ 1d63e2a:	48 8d 5f 01          	lea    rbx,[rdi+0x1]
+ 1d63e2e:	49 3b db             	cmp    rbx,r11
+ 1d63e31:	72 01                	jb     1d63e34 <Builtins_GetNamedPropertyHandler+0xcf4>
+ 1d63e33:	cc                   	int3
+ 1d63e34:	44 8b 5c b8 0b       	mov    r11d,DWORD PTR [rax+rdi*4+0xb]
+ 1d63e39:	4d 0b de             	or     r11,r14
+ 1d63e3c:	48 8b 45 e0          	mov    rax,QWORD PTR [rbp-0x20]
+ 1d63e40:	48 8b 78 f8          	mov    rdi,QWORD PTR [rax-0x8]
+ 1d63e44:	48 8b de             	mov    rbx,rsi
+ 1d63e47:	41 0f b6 4c 1c 02    	movzx  ecx,BYTE PTR [r12+rbx*1+0x2]
+ 1d63e4d:	41 8b 74 24 17       	mov    esi,DWORD PTR [r12+0x17]
+ 1d63e52:	49 0b b5 98 02 00 00 	or     rsi,QWORD PTR [r13+0x298]
+ 1d63e59:	8b 4c 8e 07          	mov    ecx,DWORD PTR [rsi+rcx*4+0x7]
+ 1d63e5d:	41 f6 c0 02          	test   r8b,0x2
+ 1d63e61:	75 35                	jne    1d63e98 <Builtins_GetNamedPropertyHandler+0xd58>
+ 1d63e63:	41 80 7d cf 00       	cmp    BYTE PTR [r13-0x31],0x0
+ 1d63e68:	74 13                	je     1d63e7d <Builtins_GetNamedPropertyHandler+0xd3d>
+ 1d63e6a:	41 f6 c3 01          	test   r11b,0x1
+ 1d63e6e:	74 0d                	je     1d63e7d <Builtins_GetNamedPropertyHandler+0xd3d>
+ 1d63e70:	45 8b 43 ff          	mov    r8d,DWORD PTR [r11-0x1]
+ 1d63e74:	41 81 f8 9d 0d 00 00 	cmp    r8d,0xd9d
+ 1d63e7b:	74 08                	je     1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63e7d:	4d 8b c3             	mov    r8,r11
+ 1d63e80:	e9 a9 01 00 00       	jmp    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d63e85:	4c 8b cb             	mov    r9,rbx
+ 1d63e88:	4c 8b c0             	mov    r8,rax
+ 1d63e8b:	4c 8b 5d d0          	mov    r11,QWORD PTR [rbp-0x30]
+ 1d63e8f:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d63e93:	e9 15 f4 ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d63e98:	45 8b 43 ff          	mov    r8d,DWORD PTR [r11-0x1]
+ 1d63e9c:	41 81 f8 f1 10 00 00 	cmp    r8d,0x10f1
+ 1d63ea3:	0f 84 dd 00 00 00    	je     1d63f86 <Builtins_GetNamedPropertyHandler+0xe46>
+ 1d63ea9:	44 8b 42 ff          	mov    r8d,DWORD PTR [rdx-0x1]
+ 1d63ead:	47 0f b7 44 06 07    	movzx  r8d,WORD PTR [r14+r8*1+0x7]
+ 1d63eb3:	41 81 f8 4c 08 00 00 	cmp    r8d,0x84c
+ 1d63eba:	0f 84 ae 00 00 00    	je     1d63f6e <Builtins_GetNamedPropertyHandler+0xe2e>
+ 1d63ec0:	45 8d 98 f0 f7 ff ff 	lea    r11d,[r8-0x810]
+ 1d63ec7:	41 83 fb 11          	cmp    r11d,0x11
+ 1d63ecb:	76 37                	jbe    1d63f04 <Builtins_GetNamedPropertyHandler+0xdc4>
+ 1d63ecd:	41 81 f8 11 04 00 00 	cmp    r8d,0x411
+ 1d63ed4:	75 af                	jne    1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63ed6:	81 f9 39 0e 00 00    	cmp    ecx,0xe39
+ 1d63edc:	75 a7                	jne    1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63ede:	44 8b 42 0b          	mov    r8d,DWORD PTR [rdx+0xb]
+ 1d63ee2:	4d 0b c6             	or     r8,r14
+ 1d63ee5:	41 f6 c0 01          	test   r8b,0x1
+ 1d63ee9:	74 9a                	je     1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63eeb:	45 8b 58 ff          	mov    r11d,DWORD PTR [r8-0x1]
+ 1d63eef:	41 81 fb 25 04 00 00 	cmp    r11d,0x425
+ 1d63ef6:	77 8d                	ja     1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63ef8:	45 8b 40 07          	mov    r8d,DWORD PTR [r8+0x7]
+ 1d63efc:	41 d1 e0             	shl    r8d,1
+ 1d63eff:	e9 2a 01 00 00       	jmp    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d63f04:	81 f9 11 0e 00 00    	cmp    ecx,0xe11
+ 1d63f0a:	0f 85 75 ff ff ff    	jne    1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63f10:	41 81 e8 11 08 00 00 	sub    r8d,0x811
+ 1d63f17:	41 83 f8 10          	cmp    r8d,0x10
+ 1d63f1b:	0f 87 64 ff ff ff    	ja     1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63f21:	44 8b 42 1b          	mov    r8d,DWORD PTR [rdx+0x1b]
+ 1d63f25:	4d 0b c6             	or     r8,r14
+ 1d63f28:	41 81 f8 fd ff 02 00 	cmp    r8d,0x2fffd
+ 1d63f2f:	0f 84 50 ff ff ff    	je     1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63f35:	45 8b 58 ff          	mov    r11d,DWORD PTR [r8-0x1]
+ 1d63f39:	4d 0b de             	or     r11,r14
+ 1d63f3c:	41 0f b7 53 07       	movzx  edx,WORD PTR [r11+0x7]
+ 1d63f41:	81 fa ca 00 00 00    	cmp    edx,0xca
+ 1d63f47:	74 19                	je     1d63f62 <Builtins_GetNamedPropertyHandler+0xe22>
+ 1d63f49:	41 81 fb 51 15 00 00 	cmp    r11d,0x1551
+ 1d63f50:	0f 85 d8 00 00 00    	jne    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d63f56:	45 8b 40 07          	mov    r8d,DWORD PTR [r8+0x7]
+ 1d63f5a:	4d 0b c6             	or     r8,r14
+ 1d63f5d:	e9 cc 00 00 00       	jmp    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d63f62:	45 8b 40 0f          	mov    r8d,DWORD PTR [r8+0xf]
+ 1d63f66:	4d 0b c6             	or     r8,r14
+ 1d63f69:	e9 c0 00 00 00       	jmp    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d63f6e:	81 f9 39 0e 00 00    	cmp    ecx,0xe39
+ 1d63f74:	0f 85 0b ff ff ff    	jne    1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63f7a:	44 8b 42 0b          	mov    r8d,DWORD PTR [rdx+0xb]
+ 1d63f7e:	4d 0b c6             	or     r8,r14
+ 1d63f81:	e9 a8 00 00 00       	jmp    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d63f86:	45 8b 43 03          	mov    r8d,DWORD PTR [r11+0x3]
+ 1d63f8a:	4d 0b c6             	or     r8,r14
+ 1d63f8d:	45 8b 58 ff          	mov    r11d,DWORD PTR [r8-0x1]
+ 1d63f91:	4d 0b de             	or     r11,r14
+ 1d63f94:	41 f6 43 09 01       	test   BYTE PTR [r11+0x9],0x1
+ 1d63f99:	75 66                	jne    1d64001 <Builtins_GetNamedPropertyHandler+0xec1>
+ 1d63f9b:	41 81 fb 29 1f 00 00 	cmp    r11d,0x1f29
+ 1d63fa2:	74 09                	je     1d63fad <Builtins_GetNamedPropertyHandler+0xe6d>
+ 1d63fa4:	4d 8d 46 11          	lea    r8,[r14+0x11]
+ 1d63fa8:	e9 81 00 00 00       	jmp    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d63fad:	45 8b 58 27          	mov    r11d,DWORD PTR [r8+0x27]
+ 1d63fb1:	41 81 fb fd ff 02 00 	cmp    r11d,0x2fffd
+ 1d63fb8:	0f 85 c7 fe ff ff    	jne    1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63fbe:	44 8b 5a ff          	mov    r11d,DWORD PTR [rdx-0x1]
+ 1d63fc2:	47 8b 5c 1e ff       	mov    r11d,DWORD PTR [r14+r11*1-0x1]
+ 1d63fc7:	43 8b 74 1e 13       	mov    esi,DWORD PTR [r14+r11*1+0x13]
+ 1d63fcc:	49 0b f6             	or     rsi,r14
+ 1d63fcf:	83 fe 2d             	cmp    esi,0x2d
+ 1d63fd2:	0f 84 ad fe ff ff    	je     1d63e85 <Builtins_GetNamedPropertyHandler+0xd45>
+ 1d63fd8:	44 8d 1c 1b          	lea    r11d,[rbx+rbx*1]
+ 1d63fdc:	4c 89 58 d8          	mov    QWORD PTR [rax-0x28],r11
+ 1d63fe0:	ff 75 d0             	push   QWORD PTR [rbp-0x30]
+ 1d63fe3:	49 8b d0             	mov    rdx,r8
+ 1d63fe6:	b9 01 00 00 00       	mov    ecx,0x1
+ 1d63feb:	e8 10 4a e2 ff       	call   1b88a00 <Builtins_CallFunctionTemplate_Generic>
+ 1d63ff0:	4c 8b c0             	mov    r8,rax
+ 1d63ff3:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d63ff7:	48 8b 5d e8          	mov    rbx,QWORD PTR [rbp-0x18]
+ 1d63ffb:	48 8b 45 e0          	mov    rax,QWORD PTR [rbp-0x20]
+ 1d63fff:	eb 2d                	jmp    1d6402e <Builtins_GetNamedPropertyHandler+0xeee>
+ 1d64001:	4c 8b db             	mov    r11,rbx
+ 1d64004:	43 8d 1c 1b          	lea    ebx,[r11+r11*1]
+ 1d64008:	48 89 58 d8          	mov    QWORD PTR [rax-0x28],rbx
+ 1d6400c:	ff 75 d0             	push   QWORD PTR [rbp-0x30]
+ 1d6400f:	48 8b f7             	mov    rsi,rdi
+ 1d64012:	49 8b f8             	mov    rdi,r8
+ 1d64015:	b8 01 00 00 00       	mov    eax,0x1
+ 1d6401a:	e8 e1 fb e1 ff       	call   1b83c00 <Builtins_Call_ReceiverIsAny>
+ 1d6401f:	4c 8b c0             	mov    r8,rax
+ 1d64022:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d64026:	48 8b 5d e8          	mov    rbx,QWORD PTR [rbp-0x18]
+ 1d6402a:	48 8b 45 e0          	mov    rax,QWORD PTR [rbp-0x20]
+ 1d6402e:	4c 8b d0             	mov    r10,rax
+ 1d64031:	49 8b c0             	mov    rax,r8
+ 1d64034:	4d 8b c2             	mov    r8,r10
+ 1d64037:	4c 8b cb             	mov    r9,rbx
+ 1d6403a:	e9 c1 f2 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d6403f:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d64043:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d64047:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d6404b:	e9 5d f2 ff ff       	jmp    1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d64050:	ba 0c 00 00 00       	mov    edx,0xc
+ 1d64055:	f2 0f 11 45 d8       	movsd  QWORD PTR [rbp-0x28],xmm0
+ 1d6405a:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d6405e:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d64062:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d64066:	e8 15 e5 e2 ff       	call   1b92580 <Builtins_AllocateInYoungGeneration>
+ 1d6406b:	4c 8d 58 ff          	lea    r11,[rax-0x1]
+ 1d6406f:	f2 0f 10 45 d8       	movsd  xmm0,QWORD PTR [rbp-0x28]
+ 1d64074:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d64078:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d6407c:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d64080:	e9 09 f2 ff ff       	jmp    1d6328e <Builtins_GetNamedPropertyHandler+0x14e>
+ 1d64085:	8b 40 03             	mov    eax,DWORD PTR [rax+0x3]
+ 1d64088:	c1 e8 09             	shr    eax,0x9
+ 1d6408b:	c1 e0 03             	shl    eax,0x3
+ 1d6408e:	49 8b 95 50 5a 00 00 	mov    rdx,QWORD PTR [r13+0x5a50]
+ 1d64095:	48 8b 04 02          	mov    rax,QWORD PTR [rdx+rax*1]
+ 1d64099:	48 8b d0             	mov    rdx,rax
+ 1d6409c:	48 c1 ea 31          	shr    rdx,0x31
+ 1d640a0:	48 83 fa 0e          	cmp    rdx,0xe
+ 1d640a4:	74 02                	je     1d640a8 <Builtins_GetNamedPropertyHandler+0xf68>
+ 1d640a6:	33 c0                	xor    eax,eax
+ 1d640a8:	49 8b 50 e0          	mov    rdx,QWORD PTR [r8-0x20]
+ 1d640ac:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d640b0:	49 8b c9             	mov    rcx,r9
+ 1d640b3:	0f b6 7c 0a 02       	movzx  edi,BYTE PTR [rdx+rcx*1+0x2]
+ 1d640b8:	44 8b 4a 17          	mov    r9d,DWORD PTR [rdx+0x17]
+ 1d640bc:	4d 0b 8d 98 02 00 00 	or     r9,QWORD PTR [r13+0x298]
+ 1d640c3:	44 8d 24 09          	lea    r12d,[rcx+rcx*1]
+ 1d640c7:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffff
+ 1d640ce:	ff 00 00 
+ 1d640d1:	4c 23 d8             	and    r11,rax
+ 1d640d4:	41 8b 44 b9 07       	mov    eax,DWORD PTR [r9+rdi*4+0x7]
+ 1d640d9:	49 0b c6             	or     rax,r14
+ 1d640dc:	0f b6 54 0a 03       	movzx  edx,BYTE PTR [rdx+rcx*1+0x3]
+ 1d640e1:	48 d1 e2             	shl    rdx,1
+ 1d640e4:	4d 89 60 d8          	mov    QWORD PTR [r8-0x28],r12
+ 1d640e8:	48 8b c8             	mov    rcx,rax
+ 1d640eb:	48 8b c2             	mov    rax,rdx
+ 1d640ee:	48 8b 55 d0          	mov    rdx,QWORD PTR [rbp-0x30]
+ 1d640f2:	4d 8b 5b 17          	mov    r11,QWORD PTR [r11+0x17]
+ 1d640f6:	49 ba 00 00 00 00 00 	movabs r10,0x3000000000000
+ 1d640fd:	00 03 00 
+ 1d64100:	4d 33 da             	xor    r11,r10
+ 1d64103:	41 ff d3             	call   r11
+ 1d64106:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d6410a:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d6410e:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d64112:	e9 e9 f1 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d64117:	83 f8 03             	cmp    eax,0x3
+ 1d6411a:	0f 84 8d f1 ff ff    	je     1d632ad <Builtins_GetNamedPropertyHandler+0x16d>
+ 1d64120:	48 83 e0 fd          	and    rax,0xfffffffffffffffd
+ 1d64124:	8b 78 03             	mov    edi,DWORD PTR [rax+0x3]
+ 1d64127:	49 0b fe             	or     rdi,r14
+ 1d6412a:	49 8b c1             	mov    rax,r9
+ 1d6412d:	8d 1c 00             	lea    ebx,[rax+rax*1]
+ 1d64130:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d64134:	49 89 58 d8          	mov    QWORD PTR [r8-0x28],rbx
+ 1d64138:	41 53                	push   r11
+ 1d6413a:	b8 01 00 00 00       	mov    eax,0x1
+ 1d6413f:	e8 7c f1 e1 ff       	call   1b832c0 <Builtins_CallFunction_ReceiverIsNotNullOrUndefined>
+ 1d64144:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d64148:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d6414c:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d64150:	e9 ab f1 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d64155:	55                   	push   rbp
+ 1d64156:	48 8b ec             	mov    rbp,rsp
+ 1d64159:	6a 10                	push   0x10
+ 1d6415b:	48 83 ec 50          	sub    rsp,0x50
+ 1d6415f:	49 8b 40 e0          	mov    rax,QWORD PTR [r8-0x20]
+ 1d64163:	49 8b 70 f8          	mov    rsi,QWORD PTR [r8-0x8]
+ 1d64167:	49 8b d9             	mov    rbx,r9
+ 1d6416a:	0f b6 54 18 02       	movzx  edx,BYTE PTR [rax+rbx*1+0x2]
+ 1d6416f:	8b 40 17             	mov    eax,DWORD PTR [rax+0x17]
+ 1d64172:	49 0b 85 98 02 00 00 	or     rax,QWORD PTR [r13+0x298]
+ 1d64179:	8d 0c 1b             	lea    ecx,[rbx+rbx*1]
+ 1d6417c:	8b 44 90 07          	mov    eax,DWORD PTR [rax+rdx*4+0x7]
+ 1d64180:	49 0b c6             	or     rax,r14
+ 1d64183:	49 89 48 d8          	mov    QWORD PTR [r8-0x28],rcx
+ 1d64187:	4c 89 7d f0          	mov    QWORD PTR [rbp-0x10],r15
+ 1d6418b:	4c 89 4d e8          	mov    QWORD PTR [rbp-0x18],r9
+ 1d6418f:	4c 89 45 e0          	mov    QWORD PTR [rbp-0x20],r8
+ 1d64193:	49 8b d3             	mov    rdx,r11
+ 1d64196:	48 8b c8             	mov    rcx,rax
+ 1d64199:	b8 0a 00 00 00       	mov    eax,0xa
+ 1d6419e:	e8 1d d3 e3 ff       	call   1ba14c0 <Builtins_LoadIC_NoFeedback>
+ 1d641a3:	4c 8b 45 e0          	mov    r8,QWORD PTR [rbp-0x20]
+ 1d641a7:	4c 8b 7d f0          	mov    r15,QWORD PTR [rbp-0x10]
+ 1d641ab:	4c 8b 4d e8          	mov    r9,QWORD PTR [rbp-0x18]
+ 1d641af:	e9 4c f1 ff ff       	jmp    1d63300 <Builtins_GetNamedPropertyHandler+0x1c0>
+ 1d641b4:	90                   	nop
+ 1d641b5:	0f 1f 00             	nop    DWORD PTR [rax]
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section malloc_hook:
+
+Disassembly of section .plt:

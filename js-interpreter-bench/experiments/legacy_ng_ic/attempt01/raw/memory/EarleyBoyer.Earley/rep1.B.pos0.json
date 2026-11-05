@@ -1,0 +1,29 @@
+{
+  "case": "EarleyBoyer.Earley",
+  "variant": "B",
+  "rep": 1,
+  "order": 0,
+  "N": 256,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/raw/memory/EarleyBoyer.Earley/rep1.B.pos0.time.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/EarleyBoyer.Earley.N256.measure.js"
+  ],
+  "binary_sha256": "aedb704e6d38aa48414357911446e47b0b05ef9f35b9c244589b7d36e5318802",
+  "script_sha256": "b144c94bdc660bcac086e7fbadd04ba22dcff11ae27b5489c5ed13cae5582dc3",
+  "valid": true,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"EarleyBoyer.Earley\",\"suite\":\"EarleyBoyer\",\"subbenchmark\":\"Earley\",\"mode\":\"LEGACY_NG_IC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":69245.407833,\"stop_ms\":71034.716996,\"elapsed_ms\":1789.309162999998,\"elapsed_per_call_ms\":6.9894889179687425,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "peak_rss_kib": 6684,
+  "outer_wall_ns": 1811320493,
+  "timestamp": "2026-10-22T17:10:57.470800+00:00",
+  "method": "GNU time 1 fresh small launcher -> qjs; KiB",
+  "performance_sample": false,
+  "instrumented_binary": false
+}

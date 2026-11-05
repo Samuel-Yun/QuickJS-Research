@@ -1,0 +1,20 @@
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -10,7 +10,7 @@
+ #endif
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         op = b->byte_code_buf[pos];
+-        if (op == OP_get_field || op == OP_get_field2) count++;
++        if (op == OP_get_field) count++;
+     }
+     if (!count) return 0;
+     if (count > SIZE_MAX / sizeof(ReadICSite)) {
+@@ -26,7 +26,7 @@
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         uint8_t *pc = b->byte_code_buf + pos;
+         op = *pc;
+-        if (op == OP_get_field || op == OP_get_field2) {
++        if (op == OP_get_field) {
+             b->read_ic_sites[index].atom = get_u32(pc + 1);
+             *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
+             put_u32(pc + 1, index++);

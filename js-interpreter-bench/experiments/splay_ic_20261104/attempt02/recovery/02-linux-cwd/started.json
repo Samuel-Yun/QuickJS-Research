@@ -1,0 +1,30 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/",
+    "--exec",
+    "/bin/true"
+  ],
+  "timestamp": "2026-11-04T08:44:28.187723+00:00",
+  "host_pid": 123612,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "The inherited Windows working directory may prevent startup; use a known Linux root directory.",
+  "changed_factor": "Only add --cd /; keep distro, default user and /bin/true unchanged.",
+  "timeout_s": 30.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204050161664,
+      "free": 10698199040
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "richards_run": {
+    "point": 0.6078843020303758,
+    "low": 0.6027935774002056,
+    "high": 0.6149775522140466,
+    "method": {
+      "resamples": 10000,
+      "seed": 20262018,
+      "confidence": 0.95,
+      "unit": "independent process batch average; engines resampled independently",
+      "estimator": "ratio of process medians, V8/QuickJS",
+      "interval": "percentile, linear (n-1)*p"
+    }
+  },
+  "left_true": {
+    "point": 0.6142493612169372,
+    "low": 0.6061409245953483,
+    "high": 0.6200321948862467,
+    "method": {
+      "resamples": 10000,
+      "seed": 20262018,
+      "confidence": 0.95,
+      "unit": "independent process batch average; engines resampled independently",
+      "estimator": "ratio of process medians, V8/QuickJS",
+      "interval": "percentile, linear (n-1)*p"
+    }
+  },
+  "left_false_right_true": {
+    "point": 0.6765803325364258,
+    "low": 0.6607434267675059,
+    "high": 0.6841278358496601,
+    "method": {
+      "resamples": 10000,
+      "seed": 20262018,
+      "confidence": 0.95,
+      "unit": "independent process batch average; engines resampled independently",
+      "estimator": "ratio of process medians, V8/QuickJS",
+      "interval": "percentile, linear (n-1)*p"
+    }
+  },
+  "left_false_right_false": {
+    "point": 0.6594094216360469,
+    "low": 0.6552723592064652,
+    "high": 0.6694009520155481,
+    "method": {
+      "resamples": 10000,
+      "seed": 20262018,
+      "confidence": 0.95,
+      "unit": "independent process batch average; engines resampled independently",
+      "estimator": "ratio of process medians, V8/QuickJS",
+      "interval": "percentile, linear (n-1)*p"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "status": "COMPLETE_WITH_DISCLOSED_LIMITATIONS",
+  "timestamp": "2026-10-28T11:25:28.400784+00:00",
+  "task_elapsed_wall_seconds": 5969.405881,
+  "budget_seconds": 21600,
+  "stages": {
+    "version_audit": "COMPLETED",
+    "clean_original_M_build": "COMPLETED",
+    "correctness_N1_N2": "24/24 PASS",
+    "selected_N_correctness": "12/12 PASS",
+    "pilot": "36/36 PASS all>=1000ms",
+    "formal": "360/360 VALID; 90 complete quadruples",
+    "mechanism": "A/B/M N1/N2 + scope checks + M prepare before/after COMPLETED",
+    "release_regressions": "12/12 PASS",
+    "V8_flags_and_ON_evidence": "COMPLETED_WITH_OFF_OBSERVABILITY_LIMITATION",
+    "statistics": "COMPLETED;10000 within-case quadruple bootstrap",
+    "portable_replay": "PASS",
+    "final_identity": "PASS"
+  },
+  "limitations": {
+    "OFF_direct_feedback_snapshot": null,
+    "V8_per_site_hit_rate": null,
+    "V8_exact_build_source_commit": null,
+    "V8_specific_installed_handler": null,
+    "unknown_source_standard_library_queries_N1": 37,
+    "whole_VM_lookup_total": null,
+    "per_operation_time": null,
+    "power_frequency_temperature": "UNKNOWN/uncontrolled",
+    "IC_cost_decomposition": "UNKNOWN"
+  },
+  "new_engine_optimization": false,
+  "new_V8_build": false,
+  "full_Octane_rerun": false,
+  "old_data_overwritten": false,
+  "auto_commit_push": false
+}

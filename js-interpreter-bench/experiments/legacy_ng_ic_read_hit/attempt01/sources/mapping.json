@@ -1,0 +1,46 @@
+{
+  "quickjs.c": [
+    {
+      "line": 726,
+      "text": "static uint32_t get_ic_prop_offset(const JSInlineCacheUpdate *icu,"
+    },
+    {
+      "line": 8482,
+      "text": "static force_inline JSValue JS_GetPropertyInternalWithIC(JSContext *ctx, JSValue obj,"
+    },
+    {
+      "line": 8493,
+      "text": "    offset = get_ic_prop_offset(icu, p->shape);"
+    },
+    {
+      "line": 10093,
+      "text": "        uint32_t offset = get_ic_prop_offset(icu, p->shape);"
+    },
+    {
+      "line": 19401,
+      "text": "        CASE(OP_get_field_ic):"
+    },
+    {
+      "line": 19409,
+      "text": "                val = JS_GetPropertyInternalWithIC(ctx, sp[-1], atom, sp[-1], &icu, FALSE);"
+    },
+    {
+      "line": 19417,
+      "text": "        CASE(OP_get_field2_ic):"
+    },
+    {
+      "line": 19425,
+      "text": "                val = JS_GetPropertyInternalWithIC(ctx, sp[-1], atom, sp[-1], &icu, FALSE);"
+    },
+    {
+      "line": 19432,
+      "text": "        CASE(OP_put_field_ic):"
+    }
+  ],
+  "cutils.h": [
+    {
+      "line": 34,
+      "text": "#define force_inline inline __attribute__((always_inline))"
+    }
+  ]
+}

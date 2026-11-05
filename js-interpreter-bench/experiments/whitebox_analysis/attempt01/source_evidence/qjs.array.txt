@@ -1,0 +1,52 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L19398
+19398:                 JSValue val, obj, prop;                                 \
+19399:                 JSObject *p;                                            \
+19400:                 uint32_t idx;                                           \
+19401:                                                                         \
+19402:                 obj = sp[-2];                                           \
+19403:                 prop = sp[-1];                                          \
+19404:                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT &&    \
+19405:                            JS_VALUE_GET_TAG(prop) == JS_TAG_INT)) {     \
+19406:                     p = JS_VALUE_GET_OBJ(obj);                          \
+19407:                     idx = JS_VALUE_GET_INT(prop);                       \
+19408:                     if (unlikely(p->class_id != JS_CLASS_ARRAY))        \
+19409:                         goto name ## _slow_path;                        \
+19410:                     if (unlikely(idx >= p->u.array.count))              \
+19411:                         goto name ## _slow_path;                        \
+19412:                     val = JS_DupValue(ctx, p->u.array.u.values[idx]);   \
+19413:                 } else {                                                \
+19414:                     name ## _slow_path:                                 \
+19415:                     sf->cur_pc = pc;                                    \
+19416:                     val = JS_GetPropertyValue(ctx, obj, prop);          \
+19417:                     if (unlikely(JS_IsException(val))) {                \
+19418:                         if (keep)                                       \
+19419:                             sp[-1] = JS_UNDEFINED;                      \
+19420:                         else                                            \
+19421:                             sp--;                                       \
+19422:                         goto exception;                                 \
+19423:                     }                                                   \
+19424:                 }                                                       \
+19425:                 if (keep) {                                             \
+19426:                     sp[-1] = val;                                       \
+19427:                 } else {                                                \
+19428:                     JS_FreeValue(ctx, obj);                             \
+19429:                     sp[-2] = val;                                       \
+19430:                     sp--;                                               \
+19431:                 }                                                       \
+19432:             }
+19433:             
+19434:         CASE(OP_get_array_el):
+19435:             GET_ARRAY_EL_INLINE(get_array_el, 0);
+19436:             BREAK;
+19437: 
+19438:         CASE(OP_get_array_el2):
+19439:             GET_ARRAY_EL_INLINE(get_array_el2, 1);
+19440:             BREAK;
+19441: 
+19442:         CASE(OP_get_array_el3):
+19443:             {
+19444:                 JSValue val;
+19445:                 JSObject *p;
+19446:                 uint32_t idx;

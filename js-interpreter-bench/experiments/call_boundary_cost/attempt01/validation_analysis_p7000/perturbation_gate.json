@@ -1,0 +1,91 @@
+{
+  "status": "PARTIAL_OR_FAILED",
+  "accepted_period_us": 7000,
+  "cases": {
+    "local_function_call": {
+      "N": 32768,
+      "relink": {
+        "case": "local_function_call",
+        "numerator": "SHIM_OFF",
+        "denominator": "BASE",
+        "ratio": 0.9997858148037013,
+        "CI95_low": 0.9770797433229249,
+        "CI95_high": 1.0187728059751657,
+        "engineering_point_limit": 1.05,
+        "engineering_CI_high_limit": 1.1,
+        "accepted": true,
+        "complete9_rounds": 11
+      },
+      "sampling": {
+        "case": "local_function_call",
+        "numerator": "SHIM_ON",
+        "denominator": "SHIM_OFF",
+        "ratio": 0.992472260237735,
+        "CI95_low": 0.9743704837836699,
+        "CI95_high": 1.020140483075554,
+        "engineering_point_limit": 1.03,
+        "engineering_CI_high_limit": 1.05,
+        "accepted": true,
+        "complete9_rounds": 11
+      },
+      "accepted": true
+    },
+    "number_value_read": {
+      "N": 65536,
+      "relink": {
+        "case": "number_value_read",
+        "numerator": "SHIM_OFF",
+        "denominator": "BASE",
+        "ratio": 1.0208929196619425,
+        "CI95_low": 0.9880714548561446,
+        "CI95_high": 1.04988517020713,
+        "engineering_point_limit": 1.05,
+        "engineering_CI_high_limit": 1.1,
+        "accepted": true,
+        "complete9_rounds": 11
+      },
+      "sampling": {
+        "case": "number_value_read",
+        "numerator": "SHIM_ON",
+        "denominator": "SHIM_OFF",
+        "ratio": 0.9894909536828448,
+        "CI95_low": 0.9657912169029466,
+        "CI95_high": 1.023473733258308,
+        "engineering_point_limit": 1.03,
+        "engineering_CI_high_limit": 1.05,
+        "accepted": true,
+        "complete9_rounds": 11
+      },
+      "accepted": true
+    },
+    "Richards.Richards": {
+      "N": 1024,
+      "relink": {
+        "case": "Richards.Richards",
+        "numerator": "SHIM_OFF",
+        "denominator": "BASE",
+        "ratio": 1.0151520919309582,
+        "CI95_low": 0.9543352834030862,
+        "CI95_high": 1.04089088678102,
+        "engineering_point_limit": 1.05,
+        "engineering_CI_high_limit": 1.1,
+        "accepted": true,
+        "complete9_rounds": 11
+      },
+      "sampling": {
+        "case": "Richards.Richards",
+        "numerator": "SHIM_ON",
+        "denominator": "SHIM_OFF",
+        "ratio": 0.9883045066938714,
+        "CI95_low": 0.9356644786391306,
+        "CI95_high": 1.0590282069366723,
+        "engineering_point_limit": 1.03,
+        "engineering_CI_high_limit": 1.05,
+        "accepted": false,
+        "complete9_rounds": 11
+      },
+      "accepted": false
+    }
+  },
+  "policy": "pre-fixed engineering thresholds, not proof of zero perturbation; no long window for failed workload"
+}

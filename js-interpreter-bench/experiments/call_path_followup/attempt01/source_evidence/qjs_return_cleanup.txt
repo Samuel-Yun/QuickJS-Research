@@ -1,0 +1,35 @@
+Revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+20690:     ret_val = JS_EXCEPTION;
+20691:     /* the local variables are freed by the caller in the generator
+20692:        case. Hence the label 'done' should never be reached in a
+20693:        generator function. */
+20694:     if (b->func_kind != JS_FUNC_NORMAL) {
+20695:     done_generator:
+20696:         sf->cur_pc = pc;
+20697:         sf->cur_sp = sp;
+20698:     } else {
+20699:     done:
+20700:         if (unlikely(b->var_ref_count != 0)) {
+20701:             /* variable references reference the stack: must close them */
+20702:             close_var_refs(rt, b, sf);
+20703:         }
+20704:         /* free the local variables and stack */
+20705:         for(pval = local_buf; pval < sp; pval++) {
+20706:             JS_FreeValue(ctx, *pval);
+20707:         }
+20708:     }
+20709:     rt->current_stack_frame = sf->prev_frame;
+20710:     return ret_val;
+20711: }
+20712: 
+20713: #ifdef OPCODE_ASM_LABEL
+20714: #pragma GCC diagnostic pop
+20715: #endif
+20716: 
+20717: JSValue JS_Call(JSContext *ctx, JSValueConst func_obj, JSValueConst this_obj,
+20718:                 int argc, JSValueConst *argv)
+20719: {
+20720:     return JS_CallInternal(ctx, func_obj, this_obj, JS_UNDEFINED,
+20721:                            argc, (JSValue *)argv, JS_CALL_FLAG_COPY_ARGV);
+20722: }
+20723: 

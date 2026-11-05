@@ -1,0 +1,32 @@
+{
+  "exit_code": 0,
+  "stdout": "[Thread debugging using libthread_db enabled]\nUsing host libthread_db library \"/lib/x86_64-linux-gnu/libthread_db.so.1\".\nSELECTOR_OK\n[Inferior 1 (process 594) exited normally]\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "gdb",
+    "-q",
+    "-batch",
+    "-ex",
+    "source /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/selector_gdb.py",
+    "--args",
+    "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/mechanism/selector_probe.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01",
+  "label": "selector",
+  "timestamp": "2026-11-02T08:49:21.234417+00:00",
+  "completed_at": "2026-11-02T08:49:21.675018+00:00",
+  "outer_start_ns": 4382244357,
+  "outer_stop_ns": 4822921870,
+  "external_wall_ms": 440.677513,
+  "child_user_ms": 287.983,
+  "child_system_ms": 157.572,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ]
+}

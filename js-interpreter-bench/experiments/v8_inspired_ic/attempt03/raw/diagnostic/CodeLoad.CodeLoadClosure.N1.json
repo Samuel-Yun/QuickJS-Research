@@ -1,0 +1,41 @@
+{
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"correctness\",\"start_ms\":5688225.164468,\"stop_ms\":5688225.857376,\"elapsed_ms\":0.6929080002009869,\"elapsed_per_Run_ms\":0.6929080002009869,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":\"function runCodeLoadClosure() {\\n  runClosure();\\n  salt++;\\n}\",\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "EIC_STATS:{\"queries\":141,\"hits\":0,\"fallback\":141,\"own_hits\":0,\"proto_hits\":0,\"store_hits\":0,\"mono\":17,\"poly\":0,\"generic\":0,\"recompute\":0,\"ineligible\":78,\"alloc_fail\":0,\"metadata\":72,\"vectors\":4,\"polys\":0,\"chains\":0,\"shape_refs\":17,\"shape_frees\":17,\"live_bytes\":0,\"peak_bytes\":9504,\"requested_bytes\":9504,\"released_bytes\":9504,\"get_length_reads\":2,\"proto_guard_fail\":0,\"store_refresh\":1,\"store_refresh_inactive\":1,\"named_read\":52,\"named_store\":91,\"keyed_read\":3,\"keyed_store\":0,\"binding_varref_read\":120,\"binding_varref_store\":13,\"scope\":\"whole_process_after_FreeRuntime\"}\n",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/v8_inspired_ic_attempt02/E_diag_sites/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt03/scripts/CodeLoad.CodeLoadClosure/N1.correctness.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-31T09:38:27.110112+00:00",
+  "completed_at": "2026-10-31T09:38:27.117294+00:00",
+  "outer_start_ns": 5688219217667,
+  "outer_stop_ns": 5688226300699,
+  "outer_wall_ns": 7083032,
+  "external_wall_ms": 7.083032,
+  "child_user_ms": 0.0,
+  "child_system_ms": 3.4330000000000194,
+  "cpu_scope": "whole child, sequential RUSAGE_CHILDREN delta, not timed-region CPU",
+  "boot_id": "958f13bd-b1fb-4c8e-8a10-b5e6bfe65282",
+  "boot_id_after": "958f13bd-b1fb-4c8e-8a10-b5e6bfe65282",
+  "affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "environment_sha256": "295431f7da4e164c798dc9a4455ed8da44a1e56435eb47c30a8846cf16c2ded6"
+}

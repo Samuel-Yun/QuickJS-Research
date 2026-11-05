@@ -1,0 +1,30 @@
+{
+  "campaign": "read_ic_dequickening/attempt01",
+  "case": "NavierStokes.NavierStokes",
+  "variant": "M",
+  "rep": 1,
+  "order": 0,
+  "N": 32,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/raw/memory/NavierStokes.NavierStokes/rep1.M.pos0.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_dequickening_attempt01/M/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/generated/NavierStokes.NavierStokes.N32.measure.js"
+  ],
+  "binary_sha256": "d22127a30779f78e35aaef853929188f9d042726f131da7946520c9afbd75c42",
+  "script_sha256": "7670b2b5f98cf5dee3d825d0edece062a373ceaa4ba8fc6badcca65ad632aebc",
+  "peak_rss_KiB": 5376,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"NavierStokes.NavierStokes\",\"suite\":\"NavierStokes\",\"subbenchmark\":\"NavierStokes\",\"mode\":\"READ_IC_DEQUICKEN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":32,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5489653.217723,\"stop_ms\":5491528.788904,\"elapsed_ms\":1875.5711810002103,\"elapsed_per_call_ms\":58.61159940625657,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-24T13:17:40.235474+00:00",
+  "outer_wall_ns": 1911226978,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

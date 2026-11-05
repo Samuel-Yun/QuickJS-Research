@@ -1,0 +1,42 @@
+{
+  "time": "2026-10-05T10:25:46.184339+00:00",
+  "host": "LAPTOP-QPKCPDCB",
+  "kernel": "5.15.167.4-microsoft-standard-WSL2",
+  "architecture": "x86_64",
+  "distro": "Ubuntu",
+  "boot_id": "8422e0d9-a31b-488b-ba95-98e89d3e8407",
+  "python_clock_info": {
+    "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 1e-09
+  },
+  "temperature": null,
+  "physical_frequency": null,
+  "power_limits": null,
+  "cpu": {
+    "stdout": "Architecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        48 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               16\nOn-line CPU(s) list:                  0-15\nVendor ID:                            AuthenticAMD\nModel name:                           AMD Ryzen 7 5800H with Radeon Graphics\nCPU family:                           25\nModel:                                80\nThread(s) per core:                   2\nCore(s) per socket:                   8\nSocket(s):                            1\nStepping:                             0\nBogoMIPS:                             6387.84\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm\nVirtualization:                       AMD-V\nHypervisor vendor:                    Microsoft\nVirtualization type:                  full\nL1d cache:                            256 KiB (8 instances)\nL1i cache:                            256 KiB (8 instances)\nL2 cache:                             4 MiB (8 instances)\nL3 cache:                             16 MiB (1 instance)\nVulnerability Gather data sampling:   Not affected\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Not affected\nVulnerability Mds:                    Not affected\nVulnerability Meltdown:               Not affected\nVulnerability Mmio stale data:        Not affected\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Not affected\nVulnerability Spec rstack overflow:   Mitigation; safe RET\nVulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl and seccomp\nVulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:             Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Not affected\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  "os": {
+    "stdout": "PRETTY_NAME=\"Ubuntu 24.04.2 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.2 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  "load": {
+    "stdout": "1.01 0.37 0.14 1/323 1199\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  "processes": {
+    "stdout": "    PID COMMAND         COMMAND\n      1 systemd         /sbin/init\n      2 init-systemd(Ub /init\n      9 init            plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     55 systemd-journal /usr/lib/systemd/systemd-journald\n     97 systemd-udevd   /usr/lib/systemd/systemd-udevd\n    105 (udev-worker)   (udev-worker)\n    106 (udev-worker)   (udev-worker)\n    107 (udev-worker)   (udev-worker)\n    108 (udev-worker)   (udev-worker)\n    110 (udev-worker)   (udev-worker)\n    111 (udev-worker)   (udev-worker)\n    112 (udev-worker)   (udev-worker)\n    113 (udev-worker)   (udev-worker)\n    114 (udev-worker)   (udev-worker)\n    115 (udev-worker)   (udev-worker)\n    116 (udev-worker)   (udev-worker)\n    117 (udev-worker)   (udev-worker)\n    118 (udev-worker)   (udev-worker)\n    120 (udev-worker)   (udev-worker)\n    124 (udev-worker)   (udev-worker)\n    125 (udev-worker)   (udev-worker)\n    126 (udev-worker)   (udev-worker)\n    127 (udev-worker)   (udev-worker)\n    128 (udev-worker)   (udev-worker)\n    136 systemd-resolve /usr/lib/systemd/systemd-resolved\n    137 systemd-timesyn /usr/lib/systemd/systemd-timesyncd\n    149 cron            /usr/sbin/cron -f -P\n    150 dbus-daemon     @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    157 systemd-logind  /usr/lib/systemd/systemd-logind\n    165 agetty          /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    184 agetty          /sbin/agetty -o -p -- \\u --noclear - linux\n    185 rsyslogd        /usr/sbin/rsyslogd -n -iNONE\n    186 containerd      /usr/bin/containerd\n    194 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    262 dockerd         /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    512 SessionLeader   /init\n    513 Relay(514)      /init\n    514 python3         python3 -B /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/mechanism.py\n    515 login           /bin/login -f\n    555 systemd         /usr/lib/systemd/systemd --user\n    556 (sd-pam)        (sd-pam)\n    567 bash            -bash\n   1200 ps              ps -eo pid,comm,args\n",
+    "stderr": "your 131072x1 screen size is bogus. expect trouble\n",
+    "exit_code": 0
+  },
+  "memory": {
+    "stdout": "               total        used        free      shared  buff/cache   available\nMem:      8252641280   720179200  7181955072     3346432   592953344  7532462080\nSwap:     2147483648           0  2147483648\n",
+    "stderr": "",
+    "exit_code": 0
+  }
+}

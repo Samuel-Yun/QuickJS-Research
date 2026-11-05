@@ -1,0 +1,41 @@
+{
+  "status": "PASS_BOUNDED_INPUT_IDENTITY",
+  "case": "Crypto.Encrypt",
+  "N": 512,
+  "seed": 305419896,
+  "scope": "only current frozen source/keys/seed/N/three conditions; not security RNG",
+  "processes": 8,
+  "core_sha256": "2745b0e64dba750cd003ce353033eb948888d95df03f9b6a39b550fa7cebda6e",
+  "observed_event_counts": [
+    {
+      "core": 516,
+      "seed": 1,
+      "init": 1,
+      "byte": 7197,
+      "padding": 512
+    },
+    {
+      "core": 516,
+      "seed": 1,
+      "init": 1,
+      "byte": 7197,
+      "padding": 512
+    },
+    {
+      "core": 516,
+      "seed": 1,
+      "init": 1,
+      "byte": 7197,
+      "padding": 512
+    },
+    {
+      "core": 516,
+      "seed": 1,
+      "init": 1,
+      "byte": 7197,
+      "padding": 512
+    }
+  ],
+  "final_ciphertext": "53565803e0a843e95749c36d0e184169c0ee6da889bfc1afbb85810b8c5f2e667a7ae97fb0148bf505f9b1b101c08610e1ca13e24269f0da75b557e15d47f79c6f463cba71ffbaaf01c08050cdf9b973d400602580c0437774884e8a710aee87d4044d143e30ccf76728f74aedda0ddaaa21294db42d2fca3ec045fba93d9f80",
+  "plain_observed_and_conditions_match": true
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "whole process, not timed-region counters",
+  "cases": {
+    "M1.own_integer": {
+      "formal_N": 32768,
+      "diagnostic_N": 32768
+    },
+    "M2.own_reference": {
+      "formal_N": 16384,
+      "diagnostic_N": 16384
+    },
+    "M4.numeric_control": {
+      "formal_N": 32768,
+      "diagnostic_N": 32768
+    },
+    "M6.poly2": {
+      "formal_N": 8192,
+      "diagnostic_N": 8192
+    },
+    "Richards.Richards": {
+      "formal_N": 512,
+      "diagnostic_N": 512
+    },
+    "RegExp.RegExp": {
+      "formal_N": 8,
+      "diagnostic_N": 8
+    },
+    "RayTrace.RayTrace": {
+      "formal_N": 32,
+      "diagnostic_N": 32
+    },
+    "CodeLoad.CodeLoadClosure": {
+      "formal_N": 2048,
+      "diagnostic_N": 8
+    }
+  },
+  "CodeLoad_cap": 8
+}

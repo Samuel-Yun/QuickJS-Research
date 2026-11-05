@@ -1,0 +1,75 @@
+{
+  "exit_code": 0,
+  "stdout": "ML_RESULT:{\"variant\":\"B\",\"N\":512,\"mode\":\"FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1\",\"start_ms\":355712.295901,\"stop_ms\":357478.443676,\"elapsed_ms\":1766.1477750000195,\"elapsed_per_call_ms\":3.449507373046913,\"checksum\":\"512:2322:928\",\"correctness\":\"PASS\",\"warmup_calls\":0,\"original_assertions_per_run\":1}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/microbench/generated/B.N512.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:24:12.128257+00:00",
+  "outer_start_ns": 355699054854,
+  "outer_stop_ns": 357479307881,
+  "outer_wall_ns": 1780253027,
+  "boot_id": "4ef67569-6a6b-4f4d-8c1a-16b8ac8c99ed",
+  "load_average": [
+    1.0966796875,
+    0.78515625,
+    0.36962890625
+  ],
+  "LD_PRELOAD": null,
+  "stage": "formal",
+  "variant": "B",
+  "engine": "quickjs",
+  "N": 512,
+  "rep": 26,
+  "order": 3,
+  "schedule_index": 50,
+  "permutation": [
+    "jsc",
+    "v8",
+    "quickjs"
+  ],
+  "block_variant_order": [
+    "B",
+    "A"
+  ],
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1",
+  "flags": [],
+  "binary_sha256": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+  "dependency_hashes": {
+    "/usr/lib/x86_64-linux-gnu/libm.so.6": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+    "/usr/lib/x86_64-linux-gnu/libc.so.6": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+  },
+  "adapter_hashes": {
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js": "f20aa7b460675d08600a58945203034feb50b2a3515aba579219f648b1235c6c",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7"
+  },
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_method_lookup/attempt01/microbench/generated/B.N512.js",
+  "script_sha256": "b460b7c0e748901126d04d0b2682b195df6f9c50f0fa8216d5c6aee455c0311f",
+  "design_sha256": "b7c78fecb179c090ff9c614b71471956942482d0c52136c333866b7fed734562",
+  "payload": {
+    "variant": "B",
+    "N": 512,
+    "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_DERIVED_METHOD_LOOKUP_V1",
+    "start_ms": 355712.295901,
+    "stop_ms": 357478.443676,
+    "elapsed_ms": 1766.1477750000195,
+    "elapsed_per_call_ms": 3.449507373046913,
+    "checksum": "512:2322:928",
+    "correctness": "PASS",
+    "warmup_calls": 0,
+    "original_assertions_per_run": 1
+  },
+  "elapsed_ms": 1766.1477750000195,
+  "elapsed_per_call_ms": 3.449507373046913,
+  "checksum": "512:2322:928",
+  "valid": true,
+  "errors": []
+}

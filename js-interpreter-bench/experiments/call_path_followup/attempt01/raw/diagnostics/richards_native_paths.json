@@ -1,0 +1,22 @@
+{
+  "exit_code": 0,
+  "stdout": "RICHARDS {\"N\":1,\"start_ms\":875130.328072,\"stop_ms\":875133.867904,\"elapsed_ms\":3.5398320000385866,\"correctness\":\"PASS\",\"assertions_per_Run\":1,\"warmup_calls\":0}\nNATIVE_PATHS {\"scope\":\"explicit_Run_loop\",\"categories\":[{\"kind\":0,\"lookups\":6573,\"own_hit\":0,\"prototype_hit\":6573,\"fallback\":0,\"helper_entries\":0,\"get_field\":0,\"get_field2\":6573,\"hops\":[0,6573,0,0,0,0,0,0]},{\"kind\":1,\"lookups\":6573,\"own_hit\":0,\"prototype_hit\":6573,\"fallback\":0,\"helper_entries\":0,\"get_field\":0,\"get_field2\":6573,\"hops\":[0,6573,0,0,0,0,0,0]},{\"kind\":2,\"lookups\":0,\"own_hit\":0,\"prototype_hit\":0,\"fallback\":0,\"helper_entries\":0,\"get_field\":0,\"get_field2\":0,\"hops\":[0,0,0,0,0,0,0,0]}],\"selected_entries\":6573,\"selected_native_call_helper\":0,\"selected_direct_call_method\":6573,\"selected_builtin_call_method\":0}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/richards_method_diag_04be246_attempt01/qjs",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/richards/original.native_paths.N1.js"
+  ],
+  "timestamp_utc": "2026-10-17T07:21:06.759993+00:00",
+  "outer_wall_ns": 24312128,
+  "load_average": [
+    0.80126953125,
+    0.91259765625,
+    0.6337890625
+  ],
+  "boot_id": "b9e7871f-89d5-4e15-819c-15250b020cda",
+  "LD_PRELOAD": null
+}

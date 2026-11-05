@@ -1,0 +1,7 @@
+# New campaign records: stable Git checkout bytes without changing old experiments.
+* text eol=lf
+*.gz -text
+*.bin -text
+# Frozen workload/assembled script artifacts retain their exact original bytes.
+inputs/** -text
+scripts/** -text

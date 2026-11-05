@@ -1,0 +1,9 @@
+{
+  "Box2D_original_output_validation_trusted": false,
+  "Box2D_reason": "Original runBox2D steps a function-local world but neither returns final state nor asserts a known result; existing internal b2Assert guards do not constitute a full-result oracle. Try all five without claiming whole-result correctness.",
+  "zlib_original_validation_trusted": true,
+  "zlib_reason": "Decoded frozen InitializeZlibBenchmark payload exports _main:a2; argument1 selects60 iterations of a1 over100000 pseudo-random bytes. Original a1 checks decompressed length==100000 and aG(input,output)==0, otherwise calls az imported __assert_func. Keep all original checks and dynamic initialization in Run; shared read host API only. Actual process results still required.",
+  "source": "benchmarks/octane/upstream/zlib-data.js and box2d.js at fixed Octane570ad1ccfe86e3eecba0636c8f932ac08edec517",
+  "review_only_not_execution": true,
+  "no_expected_checksum_invented_from_engine_output": true
+}

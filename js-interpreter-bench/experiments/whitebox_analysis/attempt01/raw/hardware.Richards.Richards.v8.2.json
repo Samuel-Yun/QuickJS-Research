@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Richards.Richards\",\"suite\":\"Richards\",\"subbenchmark\":\"Richards\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":512,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":27.883,\"stop_ms\":1156.445,\"elapsed_ms\":1128.562,\"elapsed_per_call_ms\":2.20422265625,\"warmup_calls\":0}\n",
+  "stderr": "WB_PERF cycles errno=0 bytes=24 raw=4176416628 enabled_ns=1068076300 running_ns=1068076300\nWB_PERF instructions errno=0 bytes=24 raw=16296689975 enabled_ns=1068057800 running_ns=1068057800\nWB_PERF branches errno=0 bytes=24 raw=3033422804 enabled_ns=1068038800 running_ns=1068038800\nWB_PERF branch-misses errno=0 bytes=24 raw=8575570 enabled_ns=1068038800 running_ns=1068038800\nWB_PERF task-clock errno=0 bytes=24 raw=1066714100 enabled_ns=1066714100 running_ns=1066714100\n",
+  "command": [
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/perf_exec",
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.N512.original.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:57:51.778786+00:00",
+  "outer_start_ns": 99363283716,
+  "outer_stop_ns": 100536183297,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 1172899581
+}

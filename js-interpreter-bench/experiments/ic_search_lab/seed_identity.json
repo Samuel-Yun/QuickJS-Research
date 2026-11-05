@@ -1,0 +1,48 @@
+{
+  "seed": "M",
+  "reason": "No later implementation has passed a keep gate; U not used",
+  "A_frozen": true,
+  "artifacts": {
+    "A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "expected_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "size": 5090704,
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "ELF": true
+    },
+    "M": {
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+      "expected_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "size": 5102680,
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "ELF": true
+    }
+  },
+  "source": {
+    "path": "/home/mzyx/ic_mechanism_audit_attempt01/M",
+    "files": {
+      "quickjs.c": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd",
+      "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+      "quickjs-opcode.h": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+      "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+      "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+      "read_ic_types.h": "f7cbb27c6d5882d2553222dd5709280b85ff21623a88b531709933c86cc0046c",
+      "read_ic_prepare.inc": "6c0918de10801c641279e20af9e5295e726675dbe821c3c86e71c0ee8e273b19",
+      "read_ic_runtime.inc": "8d12bb9c2ea08f87291f7d5339eb8a41d641ed38adf916b3ff9be6dfa44f201b",
+      "read_ic_opcodes.inc": "5f160fc754c496603a5baa3fbbff3796c132c2eda7845ceb197af8ce9d3aa624"
+    }
+  },
+  "source_checks": {
+    "quickjs.c": true,
+    "quickjs.h": true,
+    "quickjs-opcode.h": true,
+    "LICENSE": true,
+    "read_ic_config.h": true,
+    "read_ic_types.h": true,
+    "read_ic_prepare.inc": true,
+    "read_ic_runtime.inc": true,
+    "read_ic_opcodes.inc": true
+  },
+  "upstream_commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "upstream_version": "2026-06-04"
+}

@@ -1,0 +1,30 @@
+{
+  "campaign": "legacy_ng_ic_read_hit/attempt01",
+  "case": "PdfJS.PdfJS",
+  "variant": "D",
+  "rep": 1,
+  "order": 1,
+  "N": 8,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/raw/memory/PdfJS.PdfJS/rep1.D.pos1.rss.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_read_hit_attempt01/D/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/PdfJS.PdfJS.N8.measure.js"
+  ],
+  "binary_sha256": "9c61a6636b6ece15a8ee249f9a534c94aa9a40ce25e01e65fd66b8ef144c5fc6",
+  "script_sha256": "198b4391955f2c40d1fbf51197bc514afec9fc9875fccf897c37fdc6c2aa25db",
+  "peak_rss_KiB": 28792,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"PdfJS.PdfJS\",\"suite\":\"PdfJS\",\"subbenchmark\":\"PdfJS\",\"mode\":\"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1\",\"phase\":\"measure\",\"N\":8,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":4921515.138355,\"stop_ms\":4923007.946144,\"elapsed_ms\":1492.8077889997512,\"elapsed_per_call_ms\":186.6009736249689,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-23T16:04:20.592785+00:00",
+  "outer_wall_ns": 1702547792,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

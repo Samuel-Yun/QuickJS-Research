@@ -1,0 +1,41 @@
+{
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"NavierStokes.NavierStokes\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"correctness\",\"start_ms\":5681328.185854,\"stop_ms\":5681388.340118,\"elapsed_ms\":60.15426400024444,\"elapsed_per_Run_ms\":60.15426400024444,\"checksum\":null,\"extra_validation_calls\":14,\"run_source\":\"function runNavierStokes()\\n{\\n    solver.update();\\n    nsFrameCounter++;\\n\\n    if(nsFrameCounter==15)\\n        checkResult(solver.getDens());\\n}\",\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "EIC_STATS:{\"queries\":1691,\"hits\":1146,\"fallback\":545,\"own_hits\":1146,\"proto_hits\":0,\"store_hits\":0,\"mono\":24,\"poly\":0,\"generic\":10,\"recompute\":0,\"ineligible\":103,\"alloc_fail\":0,\"metadata\":33,\"vectors\":9,\"polys\":0,\"chains\":0,\"shape_refs\":24,\"shape_frees\":24,\"live_bytes\":0,\"peak_bytes\":5312,\"requested_bytes\":5312,\"released_bytes\":5312,\"get_length_reads\":1,\"proto_guard_fail\":0,\"store_refresh\":1,\"store_refresh_inactive\":1,\"named_read\":1342,\"named_store\":350,\"keyed_read\":51416862,\"keyed_store\":15440664,\"binding_varref_read\":193,\"binding_varref_store\":42,\"scope\":\"whole_process_after_FreeRuntime\"}\n",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/v8_inspired_ic_attempt02/E_diag_sites/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt03/scripts/NavierStokes.NavierStokes/N1.correctness.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-31T09:38:20.208339+00:00",
+  "completed_at": "2026-10-31T09:38:21.081865+00:00",
+  "outer_start_ns": 5681317477858,
+  "outer_stop_ns": 5682190871513,
+  "outer_wall_ns": 873393655,
+  "external_wall_ms": 873.393655,
+  "child_user_ms": 839.564,
+  "child_system_ms": 9.762999999999995,
+  "cpu_scope": "whole child, sequential RUSAGE_CHILDREN delta, not timed-region CPU",
+  "boot_id": "958f13bd-b1fb-4c8e-8a10-b5e6bfe65282",
+  "boot_id_after": "958f13bd-b1fb-4c8e-8a10-b5e6bfe65282",
+  "affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "environment_sha256": "295431f7da4e164c798dc9a4455ed8da44a1e56435eb47c30a8846cf16c2ded6"
+}

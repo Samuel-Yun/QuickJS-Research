@@ -1,0 +1,30 @@
+{
+  "campaign": "legacy_ng_ic_slotfix/attempt01",
+  "case": "CodeLoad.CodeLoadJQuery",
+  "variant": "C",
+  "rep": 2,
+  "order": 0,
+  "N": 128,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/raw/memory/CodeLoad.CodeLoadJQuery/rep2.C.pos0.rss.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/generated/CodeLoad.CodeLoadJQuery.N128.measure.js"
+  ],
+  "binary_sha256": "938ac3db6e09209a9e316f62e682a96722f4a2a79de6b667de661a1f72c834eb",
+  "script_sha256": "4c1f49f00f083cc5e0818f39d8c8a74aa3cd08789fc7d58989fd4531db2801a8",
+  "peak_rss_KiB": 8736,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"CodeLoad.CodeLoadJQuery\",\"suite\":\"CodeLoad\",\"subbenchmark\":\"CodeLoadJQuery\",\"mode\":\"LEGACY_NG_IC_SLOTFIX_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":128,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":3201476.372746,\"stop_ms\":3202908.883872,\"elapsed_ms\":1432.5111259999685,\"elapsed_per_call_ms\":11.191493171874754,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-23T11:08:45.477794+00:00",
+  "outer_wall_ns": 1462043372,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

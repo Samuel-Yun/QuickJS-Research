@@ -1,0 +1,16 @@
+quickjs.c; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+36260:                                      fd->eval_type == JS_EVAL_TYPE_INDIRECT);
+36261:     b->realm = JS_DupContext(ctx);
+36262: 
+36263:     add_gc_object(ctx->rt, &b->header, JS_GC_OBJ_TYPE_FUNCTION_BYTECODE);
+36264: 
+36265: #if defined(DUMP_BYTECODE) && (DUMP_BYTECODE & 1)
+36266:     if (!fd->strip_debug) {
+36267:         js_dump_function_bytecode(ctx, b);
+36268:     }
+36269: #endif
+36270: 
+36271:     if (fd->parent) {
+36272:         /* remove from parent list */
+36273:         list_del(&fd->link);
+36274:     }

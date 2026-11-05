@@ -1,0 +1,58 @@
+{
+  "engine": "QJS_A",
+  "case": "prototype_update",
+  "n": 2,
+  "command": [
+    "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_qjs_ic_source_compare/attempt01/scripts/prototype_update.N2.js"
+  ],
+  "cwd": "/home/mzyx/read_ic_dequickening_attempt01/A",
+  "binary_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+  "dependencies": [],
+  "script_sha256": "b6bd21dbaf410414c0c85723ea65d52678930f7c847f87858a712a931c7009e4",
+  "common_js_sha256": "c5dc2fc74ba59a369b6b3b8dd667b9d70290450916fc350ec5c9a7c6a11b0e36",
+  "expected": {
+    "case": "prototype_update",
+    "n": 2,
+    "rounds": [
+      [
+        2,
+        2,
+        9,
+        9
+      ],
+      [
+        2,
+        2,
+        9,
+        9
+      ]
+    ]
+  },
+  "actual": {
+    "case": "prototype_update",
+    "n": 2,
+    "rounds": [
+      [
+        2,
+        2,
+        9,
+        9
+      ],
+      [
+        2,
+        2,
+        9,
+        9
+      ]
+    ]
+  },
+  "stdout": "IC_CORRECTNESS={\"case\":\"prototype_update\",\"n\":2,\"rounds\":[[2,2,9,9],[2,2,9,9]]}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timed_out": false,
+  "valid": true,
+  "status": "PASS",
+  "timestamp": "2026-10-29T10:04:16.842457+00:00",
+  "wall_time_ns_diagnostic_only": 35895827
+}

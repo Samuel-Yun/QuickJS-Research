@@ -1,0 +1,113 @@
+{
+  "expressions": {
+    "3d-cube": "i",
+    "3d-morph": "Math.round(testOutput * 1e12)",
+    "3d-raytrace": "testOutput.length",
+    "access-binary-trees": "ret",
+    "access-fannkuch": "ret",
+    "access-nbody": "ret",
+    "access-nsieve": "result",
+    "bitops-3bit-bits-in-byte": "sum",
+    "bitops-bits-in-byte": "result",
+    "bitops-bitwise-and": "result",
+    "bitops-nsieve-bits": "sum",
+    "controlflow-recursive": "result",
+    "crypto-aes": "decryptedText.length",
+    "crypto-md5": "md5Output",
+    "crypto-sha1": "sha1Output",
+    "date-format-tofte": "shortFormat + '|' + longFormat + '|' + date.getTime()",
+    "date-format-xparb": "shortFormat + '|' + longFormat + '|' + date.getTime()",
+    "math-cordic": "total",
+    "math-partial-sums": "total",
+    "math-spectral-norm": "total",
+    "regexp-dna": "dnaOutputString.length + ':' + dnaInput.length",
+    "string-base64": "str.length",
+    "string-fasta": "ret",
+    "string-tagcloud": "tagcloud.length",
+    "string-unpack-code": "result",
+    "string-validate-input": "endResult.length"
+  },
+  "allowed": {
+    "3d-cube": [
+      "320"
+    ],
+    "3d-morph": [
+      "0"
+    ],
+    "3d-raytrace": [
+      "20969",
+      "20970"
+    ],
+    "access-binary-trees": [
+      "-4"
+    ],
+    "access-fannkuch": [
+      "22"
+    ],
+    "access-nbody": [
+      "-1.3524862408537381"
+    ],
+    "access-nsieve": [
+      "14302"
+    ],
+    "bitops-3bit-bits-in-byte": [
+      "512000"
+    ],
+    "bitops-bits-in-byte": [
+      "358400"
+    ],
+    "bitops-bitwise-and": [
+      "0"
+    ],
+    "bitops-nsieve-bits": [
+      "-1286749544853"
+    ],
+    "controlflow-recursive": [
+      "57775"
+    ],
+    "crypto-aes": [
+      "1343"
+    ],
+    "crypto-md5": [
+      "a831e91e0f70eddcb70dc61c6f82f6cd"
+    ],
+    "crypto-sha1": [
+      "2524d264def74cce2498bf112bedf00e6c0b796d"
+    ],
+    "date-format-tofte": [
+      "2008-05-01|Thursday, May 01, 2008 5:31:22 PM|1209718549000"
+    ],
+    "date-format-xparb": [
+      "2017-09-05|Tuesday, September 05, 2017 7:43:48 AM|1504652895000"
+    ],
+    "math-cordic": [
+      "10362.570468755888"
+    ],
+    "math-partial-sums": [
+      "60.08994194659945"
+    ],
+    "math-spectral-norm": [
+      "5.086694231303284"
+    ],
+    "regexp-dna": [
+      "249:300056"
+    ],
+    "string-base64": [
+      "32768"
+    ],
+    "string-fasta": [
+      "1456000"
+    ],
+    "string-tagcloud": [
+      "315241"
+    ],
+    "string-unpack-code": [
+      "511508"
+    ],
+    "string-validate-input": [
+      "462000"
+    ]
+  },
+  "oracle_sha256": "88c6f0f2725b38f7cde5b15b1b76577f2fcef18aa902eb051780414766157443",
+  "no_new_tolerance": true
+}

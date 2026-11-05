@@ -1,0 +1,167 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000005f2fb0 <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)>:
+  5f2fb0:	55                   	push   %rbp
+  5f2fb1:	48 89 e5             	mov    %rsp,%rbp
+  5f2fb4:	41 57                	push   %r15
+  5f2fb6:	41 56                	push   %r14
+  5f2fb8:	41 55                	push   %r13
+  5f2fba:	41 54                	push   %r12
+  5f2fbc:	53                   	push   %rbx
+  5f2fbd:	48 83 ec 68          	sub    $0x68,%rsp
+  5f2fc1:	89 cb                	mov    %ecx,%ebx
+  5f2fc3:	49 89 d6             	mov    %rdx,%r14
+  5f2fc6:	49 89 f7             	mov    %rsi,%r15
+  5f2fc9:	49 89 fc             	mov    %rdi,%r12
+  5f2fcc:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f2fd3:	00 00 
+  5f2fd5:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  5f2fd9:	4c 8b af d8 1e 01 00 	mov    0x11ed8(%rdi),%r13
+  5f2fe0:	0f b6 05 69 54 b2 01 	movzbl 0x1b25469(%rip),%eax        # 2118450 <v8::Shell::cached_code_mutex_>
+  5f2fe7:	3c 02                	cmp    $0x2,%al
+  5f2fe9:	74 4f                	je     5f303a <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x8a>
+  5f2feb:	48 8d 05 1e e8 02 00 	lea    0x2e81e(%rip),%rax        # 621810 <void std::__Cr::__function::__policy_func<void ()>::__call_func[abi:sqn240000]<void v8::base::CallOnce<v8::StartupData*>(std::__Cr::atomic<unsigned char>*, v8::base::FunctionWithArgs<v8::StartupData*>::type, v8::StartupData*) requires std::conjunction_v<std::__Cr::is_scalar<v8::StartupData*> >::{lambda()#1}>(std::__Cr::__function::__policy_storage const*)>
+  5f2ff2:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+  5f2ff6:	48 8d 05 3b 70 bc ff 	lea    -0x438fc5(%rip),%rax        # 1ba038 <std::__Cr::__function::__policy::__create[abi:sqn240000]<void v8::base::CallOnce<void*>(std::__Cr::atomic<unsigned char>*, v8::base::FunctionWithArgs<void*>::type, void*) requires std::conjunction_v<std::__Cr::is_scalar<void*> >::{lambda()#1}>()::__policy>
+  5f2ffd:	48 89 45 c8          	mov    %rax,-0x38(%rbp)
+  5f3001:	48 8d 05 f8 e7 02 00 	lea    0x2e7f8(%rip),%rax        # 621800 <v8::base::LazyInstanceImpl<v8::base::Mutex, v8::base::StaticallyAllocatedInstanceTrait<v8::base::Mutex>, v8::base::DefaultConstructTrait<v8::base::Mutex>, v8::base::ThreadSafeInitOnceTrait, v8::base::LeakyInstanceTrait<v8::base::Mutex> >::InitInstance(void*)>
+  5f3008:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+  5f300c:	48 8d 05 45 54 b2 01 	lea    0x1b25445(%rip),%rax        # 2118458 <v8::Shell::cached_code_mutex_+0x8>
+  5f3013:	48 89 45 b8          	mov    %rax,-0x48(%rbp)
+  5f3017:	48 8d 3d 32 54 b2 01 	lea    0x1b25432(%rip),%rdi        # 2118450 <v8::Shell::cached_code_mutex_>
+  5f301e:	48 8d 75 b0          	lea    -0x50(%rbp),%rsi
+  5f3022:	e8 a9 c5 7d 01       	call   1dcf5d0 <v8::base::CallOnceImpl(std::__Cr::atomic<unsigned char>*, std::__Cr::function<void ()>)>
+  5f3027:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  5f302b:	48 8b 40 08          	mov    0x8(%rax),%rax
+  5f302f:	48 85 c0             	test   %rax,%rax
+  5f3032:	74 06                	je     5f303a <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x8a>
+  5f3034:	48 8b 7d b0          	mov    -0x50(%rbp),%rdi
+  5f3038:	ff d0                	call   *%rax
+  5f303a:	48 8d 3d 17 54 b2 01 	lea    0x1b25417(%rip),%rdi        # 2118458 <v8::Shell::cached_code_mutex_+0x8>
+  5f3041:	48 89 7d a0          	mov    %rdi,-0x60(%rbp)
+  5f3045:	e8 f6 cd 7d 01       	call   1dcfe40 <v8::base::Mutex::TryLock()>
+  5f304a:	84 c0                	test   %al,%al
+  5f304c:	75 71                	jne    5f30bf <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x10f>
+  5f304e:	4c 89 7d 98          	mov    %r15,-0x68(%rbp)
+  5f3052:	89 5d a8             	mov    %ebx,-0x58(%rbp)
+  5f3055:	49 8d 5d 08          	lea    0x8(%r13),%rbx
+  5f3059:	45 0f b6 7d 10       	movzbl 0x10(%r13),%r15d
+  5f305e:	49 8b 7d 08          	mov    0x8(%r13),%rdi
+  5f3062:	e8 e9 cb 23 00       	call   82fc50 <v8::internal::Heap::stack()>
+  5f3067:	49 89 c5             	mov    %rax,%r13
+  5f306a:	41 80 ff 01          	cmp    $0x1,%r15b
+  5f306e:	75 19                	jne    5f3089 <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0xd9>
+  5f3070:	48 89 5d b0          	mov    %rbx,-0x50(%rbp)
+  5f3074:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+  5f3078:	48 89 45 b8          	mov    %rax,-0x48(%rbp)
+  5f307c:	48 8d 15 ad 68 02 00 	lea    0x268ad(%rip),%rdx        # 619930 <void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::LocalHeap::ExecuteWhileParked<v8::internal::ParkedMutexGuard::ParkedMutexGuard(v8::internal::LocalHeap*, v8::base::Mutex*)::{lambda()#1}>(v8::internal::ParkedMutexGuard::ParkedMutexGuard(v8::internal::LocalHeap*, v8::base::Mutex*)::{lambda()#1})::{lambda()#1}>(heap::base::Stack*, void*, void const*)>
+  5f3083:	48 8d 75 b0          	lea    -0x50(%rbp),%rsi
+  5f3087:	eb 27                	jmp    5f30b0 <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x100>
+  5f3089:	e8 c2 d8 19 00       	call   790950 <v8::internal::ThreadId::GetCurrentThreadId()>
+  5f308e:	48 89 5d b0          	mov    %rbx,-0x50(%rbp)
+  5f3092:	48 8d 4d a0          	lea    -0x60(%rbp),%rcx
+  5f3096:	48 89 4d b8          	mov    %rcx,-0x48(%rbp)
+  5f309a:	89 45 88             	mov    %eax,-0x78(%rbp)
+  5f309d:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+  5f30a1:	48 89 45 90          	mov    %rax,-0x70(%rbp)
+  5f30a5:	48 8d 15 f4 68 02 00 	lea    0x268f4(%rip),%rdx        # 6199a0 <void heap::base::Stack::SetMarkerForBackgroundThreadAndCallbackImpl<v8::internal::LocalHeap::ExecuteWhileParked<v8::internal::ParkedMutexGuard::ParkedMutexGuard(v8::internal::LocalHeap*, v8::base::Mutex*)::{lambda()#1}>(v8::internal::ParkedMutexGuard::ParkedMutexGuard(v8::internal::LocalHeap*, v8::base::Mutex*)::{lambda()#1})::{lambda()#1}>(heap::base::Stack*, void*, void const*)>
+  5f30ac:	48 8d 75 88          	lea    -0x78(%rbp),%rsi
+  5f30b0:	4c 89 ef             	mov    %r13,%rdi
+  5f30b3:	e8 d8 9c b6 00       	call   115cd90 <heap::base::Stack::TrampolineCallbackHelper(void*, void (*)(heap::base::Stack*, void*, void const*))>
+  5f30b8:	8b 5d a8             	mov    -0x58(%rbp),%ebx
+  5f30bb:	4c 8b 7d 98          	mov    -0x68(%rbp),%r15
+  5f30bf:	49 8b 07             	mov    (%r15),%rax
+  5f30c2:	89 c1                	mov    %eax,%ecx
+  5f30c4:	83 e1 03             	and    $0x3,%ecx
+  5f30c7:	83 f9 01             	cmp    $0x1,%ecx
+  5f30ca:	0f 85 1b 01 00 00    	jne    5f31eb <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x23b>
+  5f30d0:	81 78 ff 26 04 00 00 	cmpl   $0x426,-0x1(%rax)
+  5f30d7:	0f 83 0e 01 00 00    	jae    5f31eb <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x23b>
+  5f30dd:	4d 85 f6             	test   %r14,%r14
+  5f30e0:	0f 84 de 00 00 00    	je     5f31c4 <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x214>
+  5f30e6:	48 8d 7d 88          	lea    -0x78(%rbp),%rdi
+  5f30ea:	4c 89 e6             	mov    %r12,%rsi
+  5f30ed:	4c 89 fa             	mov    %r15,%rdx
+  5f30f0:	e8 ab fe 04 00       	call   642fa0 <v8::String::Utf8Value::Utf8Value(v8::Isolate*, v8::Local<v8::Value>)>
+  5f30f5:	41 8b 46 08          	mov    0x8(%r14),%eax
+  5f30f9:	4c 63 f8             	movslq %eax,%r15
+  5f30fc:	4c 89 ff             	mov    %r15,%rdi
+  5f30ff:	e8 ec 23 81 01       	call   1e054f0 <operator new[](unsigned long)>
+  5f3104:	49 89 c4             	mov    %rax,%r12
+  5f3107:	49 8b 36             	mov    (%r14),%rsi
+  5f310a:	48 89 c7             	mov    %rax,%rdi
+  5f310d:	4c 89 fa             	mov    %r15,%rdx
+  5f3110:	e8 eb 0f a8 01       	call   2074100 <memcpy@plt>
+  5f3115:	48 8b 75 88          	mov    -0x78(%rbp),%rsi
+  5f3119:	4c 8d 75 b0          	lea    -0x50(%rbp),%r14
+  5f311d:	48 8d 55 80          	lea    -0x80(%rbp),%rdx
+  5f3121:	4c 89 f7             	mov    %r14,%rdi
+  5f3124:	e8 c7 83 00 00       	call   5fb4f0 <std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >::basic_string<0>(char const*, std::__Cr::allocator<char> const&)>
+  5f3129:	89 5d c8             	mov    %ebx,-0x38(%rbp)
+  5f312c:	bf 18 00 00 00       	mov    $0x18,%edi
+  5f3131:	e8 ba 23 81 01       	call   1e054f0 <operator new[](unsigned long)>
+  5f3136:	49 89 c5             	mov    %rax,%r13
+  5f3139:	48 89 c7             	mov    %rax,%rdi
+  5f313c:	4c 89 e6             	mov    %r12,%rsi
+  5f313f:	44 89 fa             	mov    %r15d,%edx
+  5f3142:	b9 01 00 00 00       	mov    $0x1,%ecx
+  5f3147:	e8 94 b9 03 00       	call   62eae0 <v8::ScriptCompiler::CachedData::CachedData(unsigned char const*, int, v8::ScriptCompiler::CachedData::BufferPolicy)>
+  5f314c:	4c 89 b5 78 ff ff ff 	mov    %r14,-0x88(%rbp)
+  5f3153:	48 8d 05 06 53 b2 01 	lea    0x1b25306(%rip),%rax        # 2118460 <v8::Shell::cached_code_map_>
+  5f315a:	48 89 45 80          	mov    %rax,-0x80(%rbp)
+  5f315e:	48 8d 15 de 3b bc ff 	lea    -0x43c422(%rip),%rdx        # 1b6d43 <std::__Cr::piecewise_construct>
+  5f3165:	48 8d 7d 80          	lea    -0x80(%rbp),%rdi
+  5f3169:	48 8d 8d 78 ff ff ff 	lea    -0x88(%rbp),%rcx
+  5f3170:	4c 8d 45 af          	lea    -0x51(%rbp),%r8
+  5f3174:	4c 89 f6             	mov    %r14,%rsi
+  5f3177:	e8 e4 e8 02 00       	call   621a60 <std::__Cr::__tree<std::__Cr::__value_type<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType>, std::__Cr::unique_ptr<v8::ScriptCompiler::CachedData, std::__Cr::default_delete<v8::ScriptCompiler::CachedData> > >, std::__Cr::__map_value_compare<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType>, std::__Cr::pair<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const, std::__Cr::unique_ptr<v8::ScriptCompiler::CachedData, std::__Cr::default_delete<v8::ScriptCompiler::CachedData> > >, std::__Cr::less<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> > >, std::__Cr::allocator<std::__Cr::pair<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const, std::__Cr::unique_ptr<v8::ScriptCompiler::CachedData, std::__Cr::default_delete<v8::ScriptCompiler::CachedData> > > > >::__emplace_unique[abi:sqn240000]<std::__Cr::piecewise_construct_t const&, std::__Cr::tuple<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const&>, std::__Cr::tuple<> >(std::__Cr::piecewise_construct_t const&, std::__Cr::tuple<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const&>&&, std::__Cr::tuple<>&&)::{lambda(std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const&, std::__Cr::piecewise_construct_t const&, std::__Cr::tuple<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const&>&&, std::__Cr::tuple<>&&)#1}::operator()[abi:sqn240000](std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const&, std::__Cr::piecewise_construct_t const&, std::__Cr::tuple<std::__Cr::pair<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, v8::ScriptType> const&>&&, std::__Cr::tuple<>&&) const>
+  5f317c:	48 8b 58 40          	mov    0x40(%rax),%rbx
+  5f3180:	4c 89 68 40          	mov    %r13,0x40(%rax)
+  5f3184:	48 85 db             	test   %rbx,%rbx
+  5f3187:	74 15                	je     5f319e <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x1ee>
+  5f3189:	48 89 df             	mov    %rbx,%rdi
+  5f318c:	e8 6f b9 03 00       	call   62eb00 <v8::ScriptCompiler::CachedData::~CachedData()>
+  5f3191:	be 18 00 00 00       	mov    $0x18,%esi
+  5f3196:	48 89 df             	mov    %rbx,%rdi
+  5f3199:	e8 b2 23 81 01       	call   1e05550 <operator delete[](void*)>
+  5f319e:	80 7d c7 00          	cmpb   $0x0,-0x39(%rbp)
+  5f31a2:	79 17                	jns    5f31bb <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x20b>
+  5f31a4:	48 8b 7d b0          	mov    -0x50(%rbp),%rdi
+  5f31a8:	48 be ff ff ff ff ff 	movabs $0x7fffffffffffffff,%rsi
+  5f31af:	ff ff 7f 
+  5f31b2:	48 23 75 c0          	and    -0x40(%rbp),%rsi
+  5f31b6:	e8 95 23 81 01       	call   1e05550 <operator delete[](void*)>
+  5f31bb:	48 8d 7d 88          	lea    -0x78(%rbp),%rdi
+  5f31bf:	e8 dc ff 04 00       	call   6431a0 <v8::String::Utf8Value::~Utf8Value()>
+  5f31c4:	48 8b 7d a0          	mov    -0x60(%rbp),%rdi
+  5f31c8:	e8 13 cc 7d 01       	call   1dcfde0 <v8::base::Mutex::Unlock()>
+  5f31cd:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f31d4:	00 00 
+  5f31d6:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+  5f31da:	75 29                	jne    5f3205 <v8::Shell::StoreInCodeCache(v8::Isolate*, v8::Local<v8::Value>, v8::ScriptCompiler::CachedData const*, v8::ScriptType)+0x255>
+  5f31dc:	48 83 c4 68          	add    $0x68,%rsp
+  5f31e0:	5b                   	pop    %rbx
+  5f31e1:	41 5c                	pop    %r12
+  5f31e3:	41 5d                	pop    %r13
+  5f31e5:	41 5e                	pop    %r14
+  5f31e7:	41 5f                	pop    %r15
+  5f31e9:	5d                   	pop    %rbp
+  5f31ea:	c3                   	ret
+  5f31eb:	48 8d 3d 84 df b5 ff 	lea    -0x4a207c(%rip),%rdi        # 151176 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x45966>
+  5f31f2:	48 8d 35 3f e0 b5 ff 	lea    -0x4a1fc1(%rip),%rsi        # 151238 <v8::internal::wasm::fuzzing::(anonymous namespace)::BodyGen::choose_sub_type(v8::internal::wasm::HeapType, v8::internal::wasm::fuzzing::(anonymous namespace)::DataRange*)::generic_types+0x45a28>
+  5f31f9:	31 c0                	xor    %eax,%eax
+  5f31fb:	e8 e0 70 7d 01       	call   1dca2e0 <V8_Fatal(char const*, ...)>
+  5f3200:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  5f3205:	e8 66 0f a8 01       	call   2074170 <__stack_chk_fail@plt>
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section malloc_hook:
+
+Disassembly of section .plt:

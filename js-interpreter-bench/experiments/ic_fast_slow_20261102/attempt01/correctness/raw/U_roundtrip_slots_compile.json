@@ -1,0 +1,42 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-I/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03",
+    "-D_GNU_SOURCE",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/correctness/roundtrip_slots.c",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/.obj/dtoa.o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/.obj/libregexp.o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/.obj/libunicode.o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/.obj/cutils.o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/.obj/quickjs.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/roundtrip_slots_check"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01",
+  "label": "U_roundtrip_slots_compile",
+  "timestamp": "2026-11-02T13:38:05.126229+00:00",
+  "completed_at": "2026-11-02T13:38:05.357673+00:00",
+  "outer_start_ns": 16403820851429,
+  "outer_stop_ns": 16404052375903,
+  "external_wall_ms": 231.524474,
+  "child_user_ms": 74.19699999999996,
+  "child_system_ms": 22.96799999999999,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    1.0185546875,
+    0.39111328125,
+    0.1455078125
+  ]
+}

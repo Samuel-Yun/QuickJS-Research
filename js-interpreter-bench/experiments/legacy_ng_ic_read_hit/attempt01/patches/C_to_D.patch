@@ -1,0 +1,11 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -8479,7 +8479,7 @@
+     return JS_GetPropertyInternalIC(ctx, obj, prop, this_obj, throw_ref_error, NULL);
+ }
+ 
+-static JSValue JS_GetPropertyInternalWithIC(JSContext *ctx, JSValue obj,
++static force_inline JSValue JS_GetPropertyInternalWithIC(JSContext *ctx, JSValue obj,
+                                             JSAtom prop, JSValue this_obj,
+                                             JSInlineCacheUpdate *icu,
+                                             BOOL throw_ref_error)

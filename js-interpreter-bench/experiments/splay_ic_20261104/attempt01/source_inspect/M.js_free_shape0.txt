@@ -1,0 +1,216 @@
+rn sh;
+}
+
+static JSShape *js_dup_shape(JSShape *sh)
+{
+    js_rc(sh)->ref_count++;
+    return sh;
+}
+
+static void js_free_shape0(JSRuntime *rt, JSShape *sh)
+{
+    uint32_t i;
+    JSShapeProperty *pr;
+
+    assert(js_rc(sh)->ref_count == 0);
+    if (sh->is_hashed)
+        js_shape_hash_unlink(rt, sh);
+    if (sh->proto != NULL) {
+        JS_FreeValueRT(rt, JS_MKPTR(JS_TAG_OBJECT, sh->proto));
+    }
+    pr = get_shape_prop(sh);
+    for(i = 0; i < sh->prop_count; i++) {
+        JS_FreeAtomRT(rt, pr->atom);
+        pr++;
+    }
+    remove_gc_object(&sh->header);
+    js_free_rt(rt, sh);
+}
+
+static void js_free_shape(JSRuntime *rt, JSShape *sh)
+{
+    if (unlikely(--js_rc(sh)->ref_count <= 0)) {
+        js_free_shape0(rt, sh);
+    }
+}
+
+static void js_free_shape_null(JSRuntime *rt, JSShape *sh)
+{
+    if (sh)
+        js_free_shape(rt, sh);
+}
+
+/* make space to hold at least 'count' properties */
+static no_inline int resize_properties(JSContext *ctx, JSShape **psh,
+                                       JSObject *p, uint32_t count)
+{
+    JSShape *sh;
+    uint32_t new_size, new_hash_size, new_hash_mask, i;
+    JSShapeProperty *pr;
+    intptr_t h;
+    JSShape *old_sh;
+
+    sh = *psh;
+    new_size = max_int(count, sh->prop_size * 3 / 2);
+    /* Reallocate prop array first to avoid crash or size inconsistency
+       in case of memory allocation failure */
+    if (p) {
+        JSProperty *new_prop;
+        new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
+        if (unlikely(!new_prop))
+            return -1;
+        p->prop = new_prop;
+    }
+    new_hash_size = sh->prop_hash_mask + 1;
+    while (new_hash_size < new_size)
+        new_hash_size = 2 * new_hash_size;
+    /* resize the property shapes. Using js_realloc() is not possible in
+       case the GC runs during the allocation */
+    old_sh = sh;
+    sh = js_malloc(ctx, get_shape_size(new_hash_size, new_size));
+    if (!sh)
+        return -1;
+    remove_gc_object(&old_sh->header);
+
+    js_rc(sh)->ref_count = 1;
+    add_gc_object(ctx->rt, &sh->header, JS_GC_OBJ_TYPE_SHAPE);
+
+    memcpy(&sh->header + 1, &old_sh->header + 1,
+           sizeof(JSShape) - sizeof(JSGCObjectHeader));
+    
+    if (new_hash_size != (sh->prop_hash_mask + 1)) {
+        /* resize the hash table and the properties */
+        new_hash_mask = new_hash_size - 1;
+        sh->prop_hash_mask = new_hash_mask;
+        memset(sh->hash_table, 0,
+               sizeof(sh->hash_table[0]) * new_hash_size);
+        memcpy(get_shape_prop(sh), get_shape_prop(old_sh),
+               sizeof(JSShapeProperty) * old_sh->prop_count);
+        for(i = 0, pr = get_shape_prop(sh); i < sh->prop_count; i++, pr++) {
+            if (pr->atom != JS_ATOM_NULL) {
+                h = ((uintptr_t)pr->atom & new_hash_mask);
+                pr->hash_next = sh->hash_table[h];
+                sh->hash_table[h] = i + 1;
+            }
+        }
+    } else {
+        /* just copy the previous hash table and the properties */
+        memcpy(sh->hash_table, old_sh->hash_table,
+               sizeof(sh->hash_table[0]) * new_hash_size);
+
+        memcpy(get_shape_prop(sh), get_shape_prop(old_sh),
+               sizeof(JSShapeProperty) * old_sh->prop_count);
+    }
+    js_free(ctx, old_sh);
+    *psh = sh;
+    sh->prop_size = new_size;
+    return 0;
+}
+
+/* remove the deleted properties. */
+static int compact_properties(JSContext *ctx, JSObject *p)
+{
+    JSShape *sh, *old_sh;
+    intptr_t h;
+    uint32_t new_hash_size, i, j, new_hash_mask, new_size;
+    JSShapeProperty *old_pr, *pr;
+    JSProperty *prop, *new_prop;
+
+    sh = p->shape;
+    assert(!sh->is_hashed);
+
+    new_size = max_int(JS_PROP_INITIAL_SIZE,
+                       sh->prop_count - sh->deleted_prop_count);
+    assert(new_size <= sh->prop_size);
+
+    new_hash_size = sh->prop_hash_mask + 1;
+    while ((new_hash_size / 2) >= new_size)
+        new_hash_size = new_hash_size / 2;
+    new_hash_mask = new_hash_size - 1;
+
+    /* resize the hash table and the properties */
+    old_sh = sh;
+    sh = js_malloc(ctx, get_shape_size(new_hash_size, new_size));
+    if (!sh)
+        return -1;
+    remove_gc_object(&old_sh->header);
+
+    js_rc(sh)->ref_count = 1;
+    add_gc_object(ctx->rt, &sh->header, JS_GC_OBJ_TYPE_SHAPE);
+
+    memcpy(&sh->header + 1, &old_sh->header + 1,
+           sizeof(JSShape) - sizeof(JSGCObjectHeader));
+
+    memset(sh->hash_table, 0, sizeof(sh->hash_table[0]) * new_hash_size);
+    sh->prop_hash_mask = new_hash_mask;
+
+    j = 0;
+    old_pr = get_shape_prop(old_sh);
+    pr = get_shape_prop(sh);
+    prop = p->prop;
+    for(i = 0; i < sh->prop_count; i++) {
+        if (old_pr->atom != JS_ATOM_NULL) {
+            pr->atom = old_pr->atom;
+            pr->flags = old_pr->flags;
+            h = ((uintptr_t)old_pr->atom & new_hash_mask);
+            pr->hash_next = sh->hash_table[h];
+            sh->hash_table[h] = j + 1;
+            prop[j] = prop[i];
+            j++;
+            pr++;
+        }
+        old_pr++;
+    }
+    assert(j == (sh->prop_count - sh->deleted_prop_count));
+    sh->prop_size = new_size;
+    sh->deleted_prop_count = 0;
+    sh->prop_count = j;
+
+    p->shape = sh;
+    js_free(ctx, old_sh);
+
+    /* reduce the size of the object properties */
+    new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
+    if (new_prop)
+        p->prop = new_prop;
+    return 0;
+}
+
+static int add_shape_property(JSContext *ctx, JSShape **psh,
+                              JSObject *p, JSAtom atom, int prop_flags)
+{
+    JSRuntime *rt = ctx->rt;
+    JSShape *sh = *psh;
+    JSShapeProperty *pr, *prop;
+    uint32_t hash_mask, new_shape_hash = 0;
+    intptr_t h;
+
+    /* update the shape hash */
+    if (sh->is_hashed) {
+        js_shape_hash_unlink(rt, sh);
+        new_shape_hash = shape_hash(shape_hash(sh->hash, atom), prop_flags);
+    }
+
+    if (unlikely(sh->prop_count >= sh->prop_size)) {
+        if (resize_properties(ctx, psh, p, sh->prop_count + 1)) {
+            /* in case of error, reinsert in the hash table.
+               sh is still valid if resize_properties() failed */
+            if (sh->is_hashed)
+                js_shape_hash_link(rt, sh);
+            return -1;
+        }
+        sh = *psh;
+    }
+    if (sh->is_hashed) {
+        sh->hash = new_shape_hash;
+        js_shape_hash_link(rt, sh);
+    }
+    /* Initialize the new shape property.
+       The object property at p->prop[sh->prop_count] is uninitialized */
+    prop = get_shape_prop(sh);
+    pr = &prop[sh->prop_count++];
+    pr->atom = JS_DupAtom(ctx, atom);
+    pr->flags = prop_flags;
+    /* add in hash table */
+    hash_mask = sh->prop_hash_mask;
+    h = atom & hash_m

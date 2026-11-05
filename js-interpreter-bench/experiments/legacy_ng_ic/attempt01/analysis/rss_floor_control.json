@@ -1,0 +1,19 @@
+{
+  "controls": [
+    {
+      "parent_inflate_MiB": 0,
+      "parent_peak_KiB": 32352,
+      "popen_wait4_child_peak_KiB": 12536,
+      "gnu_time_qjs_peak_KiB": 2880
+    },
+    {
+      "parent_inflate_MiB": 64,
+      "parent_peak_KiB": 78400,
+      "popen_wait4_child_peak_KiB": 78400,
+      "gnu_time_qjs_peak_KiB": 2956
+    }
+  ],
+  "scope": "small -e shell control only; diagnostic of measurement mechanism",
+  "formal_records_unchanged": true,
+  "interpretation": "Popen/wait4 peak includes fork/pre-exec footprint; GNU time launches qjs after its own small exec. Do not interpret formal floor as qjs live memory."
+}

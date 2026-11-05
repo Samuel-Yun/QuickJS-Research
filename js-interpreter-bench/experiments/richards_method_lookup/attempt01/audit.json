@@ -1,0 +1,100 @@
+{
+  "status": "COMPLETED_WITH_PARTIAL_REFERENCE_PROVENANCE",
+  "formal": {
+    "status": "PASS",
+    "formal_valid": 180,
+    "formal_expected": 180,
+    "correctness_N1_N2": 12,
+    "selected_N_correctness": 6,
+    "pilot_count": 60,
+    "selected_N": 512,
+    "script_bytes_identical_across_engines": true,
+    "six_permutations_each_five": true,
+    "each_engine_position_ten": true,
+    "A_first_B_first_blocks": [
+      15,
+      15
+    ],
+    "frozen_design_before_first_pilot": true,
+    "old_data_preservation": "PASS current bytes before/after; historical restoration scope separate",
+    "runtime_dependencies_adapters_before_after": "PASS",
+    "independent_stdout_clock_and_statistics": "PASS",
+    "diagnostic_formal_serial_separation": "PASS",
+    "below_threshold_retained": 0,
+    "boot_ids": [
+      "4ef67569-6a6b-4f4d-8c1a-16b8ac8c99ed"
+    ],
+    "errors": []
+  },
+  "diagnostics": {
+    "status": "PASS",
+    "explicit_Run_loop_counters": true,
+    "sequence_processes": 27,
+    "sequence": {
+      "count": 3365376,
+      "hash": 4133815237,
+      "receiver_ids": [
+        512000,
+        239616,
+        596480,
+        595456,
+        711680,
+        710144
+      ]
+    },
+    "selected_calls_per_Run": 6573,
+    "bytecodes": {
+      "A": {
+        "quickjs": {
+          "call_opcode": "get_field2 call -> call_method 1 -> js_function_call -> JS_CallInternal",
+          "evidence": "diagnostics/bytecode/A.quickjs.txt"
+        },
+        "v8": {
+          "schedule_length": 94,
+          "call_opcode": "CallProperty1 (same A/B)",
+          "evidence": "diagnostics/bytecode/A.v8.txt"
+        },
+        "jsc": {
+          "call_opcode": "op_call; both mlSchedule functions use jneq_ptr identity guard/direct-call fast branch plus .call fallback. Do NOT assume native .call helper actually called.",
+          "evidence": "diagnostics/bytecode/A.jsc.txt"
+        }
+      },
+      "B": {
+        "quickjs": {
+          "call_opcode": "get_field2 call -> call_method 1 -> js_function_call -> JS_CallInternal",
+          "evidence": "diagnostics/bytecode/B.quickjs.txt"
+        },
+        "v8": {
+          "schedule_length": 94,
+          "call_opcode": "CallProperty1 (same A/B)",
+          "evidence": "diagnostics/bytecode/B.v8.txt"
+        },
+        "jsc": {
+          "call_opcode": "op_call; both mlSchedule functions use jneq_ptr identity guard/direct-call fast branch plus .call fallback. Do NOT assume native .call helper actually called.",
+          "evidence": "diagnostics/bytecode/B.jsc.txt"
+        }
+      }
+    },
+    "per_engine_exact_self_time": "UNKNOWN",
+    "sequence_checksum_is_collision_free_proof": false,
+    "counter_build_overhead": "overhead_summary.csv; three paired original processes, not formal/no self-time"
+  },
+  "old_inputs": {
+    "unique_code_cache_identities": 45,
+    "actual_matches_recorded": 45,
+    "git_blob_differences": 21,
+    "archive_git_export_windows_linux": "PASS",
+    "unrestored_in_audited_scope": 0,
+    "repository_wide_historical_recovery": "NOT_CLAIMED"
+  },
+  "runtime_and_old_file_final_check": "performed separately by completion_check.py",
+  "reference_source_review": "fixed-version official view completed; local full-file artifact/revision PARTIAL",
+  "unknown": [
+    "lookup/call self-time",
+    "original Richards fraction explained",
+    "fully excluded JSC frontend",
+    "V8 artifact source/toolchain",
+    "NG full local source hash/40-digit v0.8 resolution",
+    "host power/temperature/frequency"
+  ]
+}

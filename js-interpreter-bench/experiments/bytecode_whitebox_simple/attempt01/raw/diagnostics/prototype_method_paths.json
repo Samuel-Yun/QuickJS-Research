@@ -1,0 +1,22 @@
+{
+  "exit_code": 0,
+  "stdout": "PATHS {\"scope\":\"single_target_call_no_timing\",\"categories\":[{\"atom\":\"value\",\"lookups\":0,\"own_hit\":0,\"prototype_hit\":0,\"fallback\":0,\"helper_entries\":0,\"get_field\":0,\"get_field2\":0,\"hops\":[0,0,0,0,0,0,0,0]},{\"atom\":\"step\",\"lookups\":4096,\"own_hit\":0,\"prototype_hit\":4096,\"fallback\":0,\"helper_entries\":0,\"get_field\":0,\"get_field2\":4096,\"hops\":[0,4096,0,0,0,0,0,0]},{\"atom\":\"bias\",\"lookups\":4096,\"own_hit\":4096,\"prototype_hit\":0,\"fallback\":0,\"helper_entries\":0,\"get_field\":4096,\"get_field2\":0,\"hops\":[4096,0,0,0,0,0,0,0]}],\"selected_entries\":4096,\"selected_native_call_helper\":0,\"selected_direct_call_method\":4096,\"selected_builtin_call_method\":0}\n",
+  "stderr": "",
+  "command": [
+    "/tmp/bytecode_whitebox_simple_attempt01_diag/qjs",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/probes/prototype_method_paths.js"
+  ],
+  "timestamp_utc": "2026-10-15T03:45:49.068881+00:00",
+  "outer_wall_ns": 12951065,
+  "load_average": [
+    1.25732421875,
+    0.3603515625,
+    0.123046875
+  ],
+  "boot_id": "12852467-9132-4279-ac1e-06c74119e72d",
+  "LD_PRELOAD": null
+}

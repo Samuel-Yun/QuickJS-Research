@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "case": "M1.own_integer",
+      "variant": "ON",
+      "target_sites": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "M1.own_integer",
+      "variant": "LOOKUP",
+      "target_sites": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "M2.own_reference",
+      "variant": "ON",
+      "target_sites": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "M2.own_reference",
+      "variant": "LOOKUP",
+      "target_sites": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "M4.numeric_control",
+      "variant": "ON",
+      "target_sites": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "M4.numeric_control",
+      "variant": "LOOKUP",
+      "target_sites": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "M6.poly2",
+      "variant": "ON",
+      "target_sites": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "M6.poly2",
+      "variant": "LOOKUP",
+      "target_sites": 1,
+      "status": "PASS"
+    }
+  ],
+  "candidate_sequences_and_maintenance_match": true,
+  "own_hash_eliminated_ON_and_retained_LOOKUP": true,
+  "numeric_target_read_sites": 0,
+  "process_configuration_latched": true,
+  "identity": "source SHA + canonical final bytecode/atom map + final pc; duplicate compiled instances compared as multiset, not ID"
+}

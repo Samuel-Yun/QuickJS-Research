@@ -1,0 +1,20 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Richards.Richards\",\"suite\":\"Richards\",\"subbenchmark\":\"Richards\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":2,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":28.736,\"stop_ms\":37.469,\"elapsed_ms\":8.733,\"elapsed_per_call_ms\":4.3665,\"warmup_calls\":0}\nWB_COUNTS:{\"runRichards\":2,\"Scheduler.prototype.addIdleTask\":2,\"Scheduler.prototype.addRunningTask\":2,\"Scheduler.prototype.addTask\":12,\"TaskControlBlock.prototype.setRunning\":2,\"Scheduler.prototype.addWorkerTask\":2,\"Scheduler.prototype.addHandlerTask\":4,\"Scheduler.prototype.addDeviceTask\":4,\"Scheduler.prototype.schedule\":2,\"TaskControlBlock.prototype.isHeldOrSuspended\":21342,\"TaskControlBlock.prototype.run\":13146,\"HandlerTask.prototype.run\":4656,\"Packet.prototype.addTo\":4016,\"Scheduler.prototype.suspendCurrent\":4648,\"TaskControlBlock.prototype.markAsSuspended\":4648,\"WorkerTask.prototype.run\":936,\"Scheduler.prototype.queue\":4644,\"TaskControlBlock.prototype.checkPriorityAdd\":4644,\"TaskControlBlock.prototype.markAsRunnable\":2958,\"DeviceTask.prototype.run\":5554,\"Scheduler.prototype.holdCurrent\":1856,\"TaskControlBlock.prototype.markAsHeld\":1856,\"IdleTask.prototype.run\":2000,\"Scheduler.prototype.release\":1998,\"TaskControlBlock.prototype.markAsNotHeld\":1998}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.N2.count.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:41:00.661023+00:00",
+  "outer_start_ns": 51005305320,
+  "outer_stop_ns": 51050693655,
+  "boot_id": "441e3b90-9a71-4533-8969-b267d582448a",
+  "outer_wall_ns": 45388335
+}

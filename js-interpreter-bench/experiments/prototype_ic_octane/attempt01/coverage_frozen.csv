@@ -1,0 +1,21 @@
+case,status,formal_included,reason
+Richards.Richards,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+DeltaBlue.DeltaBlue,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+Crypto.Encrypt,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+Crypto.Decrypt,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+RayTrace.RayTrace,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+EarleyBoyer.Earley,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+EarleyBoyer.Boyer,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+RegExp.RegExp,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+Splay.Splay,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+NavierStokes.NavierStokes,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+PdfJS.PdfJS,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+Mandreel.Mandreel,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+Gameboy.Gameboy,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+CodeLoad.CodeLoadClosure,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+CodeLoad.CodeLoadJQuery,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+Typescript.Typescript,PENDING_CORRECTNESS,True,existing canonical Run and frozen correctness contract
+Box2D.Box2D,RUNS_NO_TRUSTED_OUTPUT_GATE,False,"original runBox2D creates local world and steps20 times; no final output/checksum assertion, teardown nulls globals; successful internal assertions/exit alone not a whole-result gate"
+zlib.zlib,PASS_ORIGINAL_VALIDATION_WITH_READ_ADAPTER,True,"Decoded frozen InitializeZlibBenchmark payload exports _main:a2; argument1 selects60 iterations of a1 over100000 pseudo-random bytes. Original a1 checks decompressed length==100000 and aG(input,output)==0, otherwise calls az imported __assert_func. Keep all original checks and dynamic initialization in Run; shared read host API only. Actual process results still required."
+Splay.latency,NOT_THIS_METRIC,False,"official adaptive latency, not complete Run execution time"
+Mandreel.latency,NOT_THIS_METRIC,False,"official adaptive latency, not complete Run execution time"

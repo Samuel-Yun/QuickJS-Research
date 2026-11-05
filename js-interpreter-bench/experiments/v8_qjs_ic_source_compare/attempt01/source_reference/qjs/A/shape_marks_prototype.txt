@@ -1,0 +1,7 @@
+6662:     case JS_GC_OBJ_TYPE_SHAPE:
+6663:         {
+6664:             JSShape *sh = (JSShape *)gp;
+6665:             if (sh->proto != NULL) {
+6666:                 mark_func(rt, &sh->proto->header);
+6667:             }
+6668:         }

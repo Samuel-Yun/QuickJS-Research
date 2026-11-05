@@ -1,0 +1,14 @@
+{
+  "candidate": "c004",
+  "parent": "c002",
+  "build_profile": "matched",
+  "selection_stage": "after twelve complete matched SunSpider screens and matched Octane coarse checks",
+  "reason": "lowest matched all26 SunSpider point ratio; complete17 Octane coarse has no >10% single-case regression; still a small unverified effect",
+  "new_candidates_allowed": false,
+  "recheck": {"conditions": ["A", "c004", "c002"], "sunspider_rounds": 3, "octane_rounds": 3, "same_original_N": true, "no_workload_warmup": true},
+  "predeclared_decision": "If either whole-suite recheck A comparison remains direction-unclear (exploratory paired95 interval crosses1 or inconsistent round directions), do not promote to final30. If coherent positive evidence and no verified >10% unacceptable regression, inspect narrow mechanism/assembly and full safety, then decide formal confirmation. Small positive effects are not rejected merely for missing20%.",
+  "bootstrap": "10000 seed20261104 complete-round paired resamples; shared round indices across cases; recompute medians and ratios; small3-round exploratory interval, not final evidence or multiple-comparison-adjusted significance",
+  "exclusions": "legacy build configurations remain excluded, old time tables are not denominators",
+  "formal_samples_so_far": 0,
+  "V8_ON": "not run unless candidate reaches full-safety/final gate; frozen --jitless --no-lazy --use-ic unchanged"
+}

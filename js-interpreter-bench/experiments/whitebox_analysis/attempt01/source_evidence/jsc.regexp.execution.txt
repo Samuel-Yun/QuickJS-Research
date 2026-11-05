@@ -1,0 +1,85 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/runtime/RegExp.cpp
+SHA256: 1341ae1ca4c692412504da326673514b85f01e507f57168095188ea7c8f24ee5
+312:     if (!hasCode()) {
+313:         ASSERT(m_state == NotCompiled);
+314:         vm->regExpCache()->addToStrongCache(this);
+315:         m_state = ByteCode;
+316:     }
+317: 
+318: #if ENABLE(YARR_JIT)
+319:     if (!pattern.containsUnsignedLengthPattern() && Options::useRegExpJIT()) {
+320:         auto& jitCode = ensureRegExpJITCode();
+321:         Yarr::jitCompile(pattern, m_patternString, charSize, sampleString, vm, jitCode, Yarr::ExecutionMode::IncludeSubpatterns);
+322:         if (!jitCode.failureReason()) {
+323:             m_state = JITCode;
+324:             m_minimumSize = pattern.m_body->m_minimumSize;
+325:             return;
+326:         }
+327:     }
+328: #else
+329:     UNUSED_PARAM(charSize);
+330:     UNUSED_PARAM(sampleString);
+331: #endif
+332: 
+333:     dataLogLnIf(Options::dumpCompiledRegExpPatterns(), "Can't JIT this regular expression: \"/", m_patternString, "/\"");
+334: 
+335:     m_state = ByteCode;
+336:     m_regExpBytecode = byteCodeCompilePattern(vm, pattern, m_constructionErrorCode);
+337:     if (!m_regExpBytecode) {
+338:         m_state = ParseError;
+
+394:     if (!hasCode()) {
+395:         ASSERT(m_state == NotCompiled);
+396:         vm->regExpCache()->addToStrongCache(this);
+397:         m_state = ByteCode;
+398:     }
+399: 
+400: #if ENABLE(YARR_JIT)
+401:     if (!pattern.containsUnsignedLengthPattern() && Options::useRegExpJIT()) {
+402:         auto& jitCode = ensureRegExpJITCode();
+403:         Yarr::jitCompile(pattern, m_patternString, charSize, sampleString, vm, jitCode, Yarr::ExecutionMode::MatchOnly);
+404:         if (!jitCode.failureReason()) {
+405:             m_state = JITCode;
+406:             m_minimumSize = pattern.m_body->m_minimumSize;
+407:             return;
+408:         }
+409:     }
+410: #else
+411:     UNUSED_PARAM(charSize);
+412:     UNUSED_PARAM(sampleString);
+413: #endif
+414: 
+415:     dataLogLnIf(Options::dumpCompiledRegExpPatterns(), "Can't JIT this regular expression: \"/", m_patternString, "/\"");
+416: 
+417:     m_state = ByteCode;
+418:     // m_regExpBytecode is shared with capture-observing operations (exec/match) and the Yarr
+419:     // interpreter has no StringList fast path, so compile it from a capture-complete pattern rather
+420:     // than the match-only one above, whose capturing fixed-string alternations may have been
+
+488: 
+489:     // Initialize interpreterOffsetVector with the return value (index 0) and the 
+490:     // first subpattern start indices (even index values) set to -1.
+491:     // No need to init the subpattern end indices.
+492:     for (unsigned j = 0, i = 0; i < m_numSubpatterns + 1; j += 2, i++)
+493:         interpreterOffsetVector[j] = -1;
+494: 
+495:     interpreterResult = Yarr::interpret(m_regExpBytecode.get(), s, startOffset, reinterpret_cast<unsigned*>(interpreterOffsetVector));
+496: 
+497:     if (jitResult != interpreterResult)
+498:         differences++;
+499: 
+500:     for (unsigned j = 2, i = 0; i < m_numSubpatterns; j +=2, i++)
+501:         if ((offsetVector[j] != interpreterOffsetVector[j])
+502:             || ((offsetVector[j] >= 0) && (offsetVector[j+1] != interpreterOffsetVector[j+1])))
+503:             differences++;
+504: 
+505:     if (differences) {
+506:         dataLog("RegExp Discrepency for ", toSourceString(), "\n    string input ");
+507:         unsigned segmentLen = s.length() - static_cast<unsigned>(startOffset);
+508: 
+509:         SAFE_DATALOGF((segmentLen < 150) ? "\"%s\"\n" : "\"%148s...\"\n", s.utf8() + startOffset);
+510: 
+511:         if (jitResult != interpreterResult) {
+512:             dataLogF("    JIT result = %d, interpreted result = %d\n", jitResult, interpreterResult);
+513:             differences--;
+514:         } else {

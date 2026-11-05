@@ -1,0 +1,20 @@
+{
+  "command": [
+    "objdump",
+    "-d",
+    "-Mintel",
+    "--disassemble=JS_CallInternal",
+    "/home/mzyx/prototype_ic_ablation_attempt01/switch/qjs"
+  ],
+  "binary_sha256": "e4c346263639aab390a033a7d0bb1892bb747821c68919c816803a65ae98f44d",
+  "compressed_sha256": "491ccda602975f52353803096e4e5f8c23899b134b3d7076928bc99330216c20",
+  "raw_sha256": "7e93201bdaff60016d3eeaa7e85407189ab1c736af28c3582669393cf6353253",
+  "option_references": [
+    "   2c2ac:\t83 3d 61 ad 0d 00 00 \tcmp    DWORD PTR [rip+0xdad61],0x0        # 107014 <qjs_experiment_proto_ic_enabled>",
+    "   2c3e7:\t83 3d 26 ac 0d 00 00 \tcmp    DWORD PTR [rip+0xdac26],0x0        # 107014 <qjs_experiment_proto_ic_enabled>"
+  ],
+  "probe_update_out_of_line_symbols": [],
+  "source_check": "only eligible inherited fill conditional uses option; own hit source block unchanged",
+  "cycle_claim": false,
+  "actual_own_branch_execution_trace": null
+}

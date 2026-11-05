@@ -1,0 +1,29 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-rdynamic",
+    "-o",
+    "/home/mzyx/mr_native_layout_attempt01/final/R_p032/qjs",
+    ".obj/qjs.o",
+    ".obj/repl.o",
+    "/home/mzyx/mr_native_layout_attempt01/final/R_p032/pad.o",
+    ".obj/quickjs.o",
+    ".obj/dtoa.o",
+    ".obj/libregexp.o",
+    ".obj/libunicode.o",
+    ".obj/cutils.o",
+    ".obj/quickjs-libc.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-Wl,-Map=/home/mzyx/mr_native_layout_attempt01/final/R_p032/link.map",
+    "-Wl,-t"
+  ],
+  "cwd": "/home/mzyx/mr_native_layout_attempt01/R_base",
+  "timestamp": "2026-10-24T15:14:08.993868+00:00",
+  "exit_code": 0,
+  "stdout": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o\n/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o\n.obj/qjs.o\n.obj/repl.o\n/home/mzyx/mr_native_layout_attempt01/final/R_p032/pad.o\n.obj/quickjs.o\n.obj/dtoa.o\n.obj/libregexp.o\n.obj/libunicode.o\n.obj/cutils.o\n.obj/quickjs-libc.o\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libm.so\n/lib/x86_64-linux-gnu/libm.so.6\n/lib/x86_64-linux-gnu/libmvec.so.1\n/lib/x86_64-linux-gnu/libmvec.so.1\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libpthread.a\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libdl.a\n/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a\n/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1\n/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.so\n/lib/x86_64-linux-gnu/libc.so.6\n/usr/lib/x86_64-linux-gnu/libc_nonshared.a\n/lib64/ld-linux-x86-64.so.2\n/usr/lib/x86_64-linux-gnu/libc_nonshared.a\n/lib64/ld-linux-x86-64.so.2\n/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a\n/usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1\n/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a\n/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o\n/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o\n",
+  "stderr": "",
+  "wall_ns": 170789355
+}

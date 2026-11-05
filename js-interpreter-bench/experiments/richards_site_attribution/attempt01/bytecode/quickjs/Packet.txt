@@ -1,0 +1,51 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:907:1: function: Packet
+  args: link id kind
+  locals:
+    0: var this
+  closure vars:
+    0: var Array [global_ref37]
+    1: var DATA_SIZE [global_ref30]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function Packet(link, id, kind) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.link = link;
+
+        get_loc0 0: this
+        get_arg0 0: link
+        put_field link
+
+;;   this.id = id;
+
+        get_loc0 0: this
+        get_arg1 1: id
+        put_field id
+
+;;   this.kind = kind;
+
+        get_loc0 0: this
+        get_arg2 2: kind
+        put_field kind
+
+;;   this.a1 = 0;
+
+        get_loc0 0: this
+        push_0 0
+        put_field a1
+
+;;   this.a2 = new Array(DATA_SIZE);
+
+        get_loc0 0: this
+        get_var 0: Array
+        dup
+        get_var 1: DATA_SIZE
+        call_constructor 1
+        put_field a2
+        return_undef
+
+;; }
+

@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"NavierStokes.NavierStokes\",\"suite\":\"NavierStokes\",\"subbenchmark\":\"NavierStokes\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":32,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":0,\"stop_ms\":2173.34,\"elapsed_ms\":2173.34,\"elapsed_per_call_ms\":67.916875,\"warmup_calls\":0}\n",
+  "stderr": "\n\nSampling rate: 1000.000000 microseconds. Total samples: 1692\nTop functions as <numSamples  'functionName#hash:sourceID'>\n  1190    'lin_solve#CqqW5g:2'\n   187    'advect#BTw3BU:2'\n   142    'project#Dz1vhP:2'\n    52    '(unknown C PC)#<nil>:4294967295'\n    46    'addFields#EYCHtT:2'\n    32    'set_bnd#CW1yfq:2'\n    22    'lin_solve2#BZsgO9:2'\n    18    'queryUI#EiwYVd:2'\n     2    'reset#AlgPGH:2'\n     1    'prepareFrame#Cg1zWf:2'\n\n\nSampling rate: 1000.000000 microseconds. Total samples: 1692\n\nTier breakdown:\n-----------------------------------\nLLInt:                  1640  (96.926714%)\nBaseline:                  0  (0.000000%)\nDFG:                       0  (0.000000%)\nFTL:                       0  (0.000000%)\njs builtin:                0  (0.000000%)\nIPInt:                     0  (0.000000%)\nBBQ:                       0  (0.000000%)\nOMG:                       0  (0.000000%)\nWasm:                      0  (0.000000%)\nHost:                      0  (0.000000%)\nRegExp:                    0  (0.000000%)\nC/C++:                    52  (3.073286%)\n\n\nHottest bytecodes as <numSamples   'functionName#hash:JITType:bytecodeIndex'>\n   124    'lin_solve#CqqW5g:LLInt:bc#354'\n   115    'lin_solve#CqqW5g:LLInt:bc#372'\n    84    'lin_solve#CqqW5g:LLInt:bc#369'\n    83    'lin_solve#CqqW5g:LLInt:bc#420'\n    82    'lin_solve#CqqW5g:LLInt:bc#432'\n    81    'lin_solve#CqqW5g:LLInt:bc#390'\n    76    'lin_solve#CqqW5g:LLInt:bc#408'\n    62    'lin_solve#CqqW5g:LLInt:bc#426'\n    62    'lin_solve#CqqW5g:LLInt:bc#396'\n    56    'lin_solve#CqqW5g:LLInt:bc#414'\n    52    '(unknown C PC)#<nil>:None:<nil>'\n    51    'lin_solve#CqqW5g:LLInt:bc#438'\n    42    'lin_solve#CqqW5g:LLInt:bc#378'\n    39    'lin_solve#CqqW5g:LLInt:bc#405'\n    31    'lin_solve#CqqW5g:LLInt:bc#387'\n    28    'lin_solve#CqqW5g:LLInt:bc#347'\n    17    'lin_solve#CqqW5g:LLInt:bc#466'\n    17    'lin_solve#CqqW5g:LLInt:bc#450'\n    16    'lin_solve#CqqW5g:LLInt:bc#366'\n    15    'lin_solve#CqqW5g:LLInt:bc#444'\n    14    'lin_solve#CqqW5g:LLInt:bc#351'\n    14    'lin_solve#CqqW5g:LLInt:bc#360'\n    14    'lin_solve#CqqW5g:LLInt:bc#346'\n    13    'lin_solve#CqqW5g:LLInt:bc#457'\n    11    'advect#BTw3BU:LLInt:bc#369'\n    10    'advect#BTw3BU:LLInt:bc#351'\n    10    'project#Dz1vhP:LLInt:bc#808'\n    10    'lin_solve#CqqW5g:LLInt:bc#348'\n     9    'lin_solve#CqqW5g:LLInt:bc#384'\n     9    'addFields#EYCHtT:LLInt:bc#41'\n     9    'advect#BTw3BU:LLInt:bc#271'\n     8    'advect#BTw3BU:LLInt:bc#305'\n     8    'addFields#EYCHtT:LLInt:bc#47'\n     8    'lin_solve#CqqW5g:LLInt:bc#447'\n     8    'advect#BTw3BU:LLInt:bc#375'\n     7    'advect#BTw3BU:LLInt:bc#423'\n     7    'project#Dz1vhP:LLInt:bc#307'\n     7    'advect#BTw3BU:LLInt:bc#203'\n     6    'advect#BTw3BU:LLInt:bc#441'\n     6    'advect#BTw3BU:LLInt:bc#237'\n",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "--sample",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/NavierStokes.NavierStokes.N32.original.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/NavierStokes.NavierStokes.jsc.1",
+  "timestamp_utc": "2026-10-05T08:41:38.481769+00:00",
+  "outer_start_ns": 88395042399,
+  "outer_stop_ns": 90624187580,
+  "boot_id": "441e3b90-9a71-4533-8969-b267d582448a",
+  "outer_wall_ns": 2229145181
+}

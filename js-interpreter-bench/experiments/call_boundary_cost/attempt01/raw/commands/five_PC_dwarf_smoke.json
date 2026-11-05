@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "stdout": "0x0000000000026a6d\nJS_CallInternal\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c:20072\n0x0000000000022b88\nJS_CallInternal\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c:17749\n0x0000000000027d73\nJS_CallInternal\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c:19704 (discriminator 1)\n0x0000000000022c6c\nJS_CallInternal\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c:17837 (discriminator 1)\n0x0000000000022bc7\njs_poll_interrupts\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c:7879\nJS_CallInternal\n/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c:17787\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "addr2line",
+    "-a",
+    "-f",
+    "-i",
+    "-e",
+    "/home/mzyx/call_boundary_cost_attempt01/shim/qjs"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-29T08:20:31.139396+00:00",
+  "completed_at": "2026-10-29T08:20:31.296970+00:00",
+  "outer_start_ns": 6849382870,
+  "outer_stop_ns": 7006911073,
+  "outer_wall_ns": 157528203,
+  "boot_id": "c575fad3-878b-4531-bb95-f76032b0280b"
+}

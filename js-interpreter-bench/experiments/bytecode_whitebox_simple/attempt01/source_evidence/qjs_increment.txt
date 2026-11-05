@@ -1,0 +1,35 @@
+quickjs.c; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+20047:         CASE(OP_inc_loc):
+20048:             {
+20049:                 JSValue op1;
+20050:                 int val;
+20051:                 int idx;
+20052:                 idx = *pc;
+20053:                 pc += 1;
+20054: 
+20055:                 op1 = var_buf[idx];
+20056:                 if (JS_VALUE_GET_TAG(op1) == JS_TAG_INT) {
+20057:                     val = JS_VALUE_GET_INT(op1);
+20058:                     if (unlikely(val == INT32_MAX))
+20059:                         goto inc_loc_slow;
+20060:                     var_buf[idx] = JS_NewInt32(ctx, val + 1);
+20061:                 } else {
+20062:                 inc_loc_slow:
+20063:                     sf->cur_pc = pc;
+20064:                     /* must duplicate otherwise the variable value may
+20065:                        be destroyed before JS code accesses it */
+20066:                     op1 = JS_DupValue(ctx, op1);
+20067:                     if (js_unary_arith_slow(ctx, &op1 + 1, OP_inc))
+20068:                         goto exception;
+20069:                     set_value(ctx, &var_buf[idx], op1);
+20070:                 }
+20071:             }
+20072:             BREAK;
+20073:         CASE(OP_dec_loc):
+20074:             {
+20075:                 JSValue op1;
+20076:                 int val;
+20077:                 int idx;
+20078:                 idx = *pc;
+20079:                 pc += 1;
+20080: 

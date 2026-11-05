@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-10-29T07:47:42.685079+00:00",
+  "reason": "user explicitly requested continuation after interrupted turn",
+  "original_start": {
+    "timestamp": "2026-10-29T02:57:47.974358+00:00",
+    "budget_seconds": 14400,
+    "sampler_setup_budget_seconds": 3600,
+    "note": "initial repository/document reading approximately 4 minutes before this checkpoint"
+  },
+  "validation_policy": "retain107/108, do not run never-started last position; all valid descriptive, complete11 nine-process rounds for paired bootstrap; engineering thresholds unchanged",
+  "missing_positions": [
+    {
+      "index": 107,
+      "rep": 11,
+      "case": "Richards.Richards",
+      "case_order": 2,
+      "condition": "SHIM_OFF",
+      "order": 2,
+      "N": 1024,
+      "period_us": 7000
+    }
+  ],
+  "UTC_discontinuity": "one retained record spans about3h51 UTC but about7.2s internal/parent monotonic/CPU; cause UNKNOWN",
+  "budget": "do not reset old start or claim wall elapsed<4h; exclude externally interrupted/inactive interval, cap this continuation at90 active monotonic minutes; prior sampler setup finished within60min",
+  "remaining_active_budget_seconds": 5400
+}

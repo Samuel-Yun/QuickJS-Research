@@ -1,0 +1,52 @@
+{
+  "platform": "Windows-10-10.0.26200-SP0",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout": "5c61757c834e6dd6c5517346fcc2e3fcba5e0b73\n",
+      "stderr": "",
+      "exit_code": 0,
+      "timestamp": "2026-10-28T09:54:46.342774+00:00"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "branch",
+        "--show-current"
+      ],
+      "stdout": "myx\n",
+      "stderr": "",
+      "exit_code": 0,
+      "timestamp": "2026-10-28T09:54:46.398875+00:00"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "status",
+        "--short"
+      ],
+      "stdout": "?? js-interpreter-bench/experiments/ic_mechanism_audit/\n",
+      "stderr": "",
+      "exit_code": 0,
+      "timestamp": "2026-10-28T09:54:46.945808+00:00"
+    }
+  ],
+  "initial_status_before_new_attempt": "clean (first read-only tool check)",
+  "purpose": "Git-only client; runtimes/builds/measurements remain Linux WSL2"
+}

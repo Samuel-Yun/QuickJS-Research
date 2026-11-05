@@ -1,0 +1,42 @@
+{
+  "exit_code": 0,
+  "stdout": "gcc -g -Wall -MMD -MF .obj/bjson.pic.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -fPIC -DJS_SHARED_LIBRARY -c -o .obj/tests/bjson.pic.o tests/bjson.c\ngcc -g -Wall -MMD -MF .obj/point.pic.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -fPIC -DJS_SHARED_LIBRARY -c -o .obj/examples/point.pic.o examples/point.c\ngcc -g -shared -o tests/bjson.so .obj/tests/bjson.pic.o -lm -lpthread -ldl \ngcc -g -shared -o examples/point.so .obj/examples/point.pic.o\n./qjs tests/test_closure.js\n./qjs tests/test_language.js\n./qjs --std tests/test_builtin.js\n./qjs tests/test_loop.js\n./qjs tests/test_bigint.js\n./qjs tests/test_cyclic_import.js\n./qjs tests/test_worker.js\n./qjs tests/test_std.js\n./qjs tests/test_rw_handler.js\n./qjs tests/test_bjson.js\n./qjs examples/test_point.js\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "make",
+    "-j2",
+    "test"
+  ],
+  "cwd": "/home/mzyx/v8_inspired_ic_attempt02/E",
+  "timestamp": "2026-10-31T05:28:58.202383+00:00",
+  "completed_at": "2026-10-31T05:28:58.697877+00:00",
+  "outer_start_ns": 140444239609,
+  "outer_stop_ns": 140939579914,
+  "outer_wall_ns": 495340305,
+  "external_wall_ms": 495.340305,
+  "child_user_ms": 176.83499999999998,
+  "child_system_ms": 45.891,
+  "cpu_scope": "whole child, sequential RUSAGE_CHILDREN delta, not timed-region CPU",
+  "boot_id": "16179a04-cfef-4bf5-a920-d27dca923d2f",
+  "boot_id_after": "16179a04-cfef-4bf5-a920-d27dca923d2f",
+  "affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "environment_sha256": "7ce1ee3d9c12afc6d1fd8b0fdc9a0c5b89f91bef5f8aa3904b718fdef6230290"
+}

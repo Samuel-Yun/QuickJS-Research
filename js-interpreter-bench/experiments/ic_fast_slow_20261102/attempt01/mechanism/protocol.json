@@ -1,0 +1,36 @@
+{
+  "conditions": [
+    "A",
+    "M",
+    "C100",
+    "C75",
+    "C50",
+    "C25",
+    "C0"
+  ],
+  "cases": [
+    "M1.own_integer",
+    "M2.own_reference",
+    "M4.numeric_control"
+  ],
+  "seed": 20261102,
+  "repetitions": 30,
+  "prepared_calls": 1,
+  "metric": "internal ms per complete 4096-iteration microRun, after one explicit preparation Run",
+  "quotas": [
+    100,
+    75,
+    50,
+    25,
+    0
+  ],
+  "controller": "one ELF; period4; policy read once at initialization; guard before adoption; no updates on forced lookup",
+  "Nmax": 131072,
+  "timeout": 300,
+  "pilot_per_condition": 2,
+  "threshold_ms": 1000,
+  "balance": "cyclic rotations, each position4or5; not 5040 permutations",
+  "target_scope": "exact public function debug-source bytes/SHA + PC + x + one compiled instance",
+  "numeric_control_adoption": "N/A: zero target reads",
+  "bootstrap": "10000 complete same-round condition groups; seed20261102; exploratory linear percentile95"
+}

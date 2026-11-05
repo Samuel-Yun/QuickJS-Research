@@ -1,0 +1,76 @@
+[
+  {
+    "address": "0x207401000410",
+    "pc": 0,
+    "bytes": [
+      "23",
+      "00",
+      "00"
+    ],
+    "instruction": "LdaGlobal [0:\"selectedLoop\"], FBV[0]"
+  },
+  {
+    "address": "0x207401000413",
+    "pc": 3,
+    "bytes": [
+      "d5"
+    ],
+    "instruction": "Star0"
+  },
+  {
+    "address": "0x207401000414",
+    "pc": 4,
+    "bytes": [
+      "23",
+      "01",
+      "02"
+    ],
+    "instruction": "LdaGlobal [1:\"microObject\"], FBV[2]"
+  },
+  {
+    "address": "0x207401000417",
+    "pc": 7,
+    "bytes": [
+      "d4"
+    ],
+    "instruction": "Star1"
+  },
+  {
+    "address": "0x207401000418",
+    "pc": 8,
+    "bytes": [
+      "23",
+      "02",
+      "04"
+    ],
+    "instruction": "LdaGlobal [2:\"expectedValue\"], FBV[4]"
+  },
+  {
+    "address": "0x20740100041b",
+    "pc": 11,
+    "bytes": [
+      "d3"
+    ],
+    "instruction": "Star2"
+  },
+  {
+    "address": "0x20740100041c",
+    "pc": 12,
+    "bytes": [
+      "6e",
+      "f9",
+      "f8",
+      "f7",
+      "06"
+    ],
+    "instruction": "CallUndefinedReceiver2 r0, r1, r2, FBV[6]"
+  },
+  {
+    "address": "0x207401000421",
+    "pc": 17,
+    "bytes": [
+      "b9"
+    ],
+    "instruction": "Return"
+  }
+]

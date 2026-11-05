@@ -1,0 +1,30 @@
+{
+  "campaign": "read_ic_mic/attempt01",
+  "case": "EarleyBoyer.Earley",
+  "variant": "M",
+  "rep": 2,
+  "order": 0,
+  "N": 256,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/raw/memory/EarleyBoyer.Earley/rep2.M.pos0.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_mic_attempt01/M/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/generated/EarleyBoyer.Earley.N256.measure.js"
+  ],
+  "binary_sha256": "27d7cb724b4d89fdd4466e65cd6b9d2ceba6e95919b83e6bcc934a24f76797dd",
+  "script_sha256": "786472c15655d80e3dac4d1c337035d251df2dda503f6503776509144868aa96",
+  "peak_rss_KiB": 6580,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"EarleyBoyer.Earley\",\"suite\":\"EarleyBoyer\",\"subbenchmark\":\"Earley\",\"mode\":\"READ_IC_MIC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5383755.184831,\"stop_ms\":5385593.783598,\"elapsed_ms\":1838.5987670002505,\"elapsed_per_call_ms\":7.182026433594729,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-24T08:52:41.045399+00:00",
+  "outer_wall_ns": 1893065467,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

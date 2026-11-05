@@ -1,0 +1,27 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 131, in <module>\n    if __name__=='__main__':globals()[sys.argv[1]]()\n                            ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 70, in build\n    save(HERE/'raw/build'/f'{dst.name}.diagnostic.json',r);assert r['exit_code']==0,r['stderr'][-4000:]\n                                                                  ^^^^^^^^^^^^^^^^^\nAssertionError:  once for each function it appears in\nIn file included from quickjs.c:61443:\naudit_tail.inc: In function ‘audit_report’:\naudit_tail.inc:72:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   72 |             if(!first)fprintf(out,\",\");first=0;\n      |             ^~\naudit_tail.inc:72:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   72 |             if(!first)fprintf(out,\",\");first=0;\n      |                                        ^~~~~\naudit_tail.inc:77:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   77 |                 if(!f->phases[phase])continue;AuditSite *s=&f->phases[phase][pc];if(!s->operations)continue;\n      |                 ^~\naudit_tail.inc:77:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   77 |                 if(!f->phases[phase])continue;AuditSite *s=&f->phases[phase][pc];if(!s->operations)continue;\n      |                                               ^~~~~~~~~\naudit_tail.inc:78:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   78 |                 if(!first_phase)fprintf(out,\",\");first_phase=0;\n      |                 ^~\naudit_tail.inc:78:50: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   78 |                 if(!first_phase)fprintf(out,\",\");first_phase=0;\n      |                                                  ^~~~~~~~~~~\naudit_tail.inc: In function ‘sp_shape_birth’:\nquickjs.c:2235:19: warning: implicit declaration of function ‘malloc_is_forbidden’ [-Wimplicit-function-declaration]\n 2235 | #define malloc(s) malloc_is_forbidden(s)\n      |                   ^~~~~~~~~~~~~~~~~~~\naudit_tail.inc:99:7: note: in expansion of macro ‘malloc’\n   99 |     e=malloc(sizeof(*e));if(!e)abort();*e=(SPBirth){ptr,++sp_next_shape,sp_births[h]};sp_births[h]=e;\n      |       ^~~~~~\naudit_tail.inc:99:6: warning: assignment to ‘SPBirth *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]\n   99 |     e=malloc(sizeof(*e));if(!e)abort();*e=(SPBirth){ptr,++sp_next_shape,sp_births[h]};sp_births[h]=e;\n      |      ^\naudit_tail.inc: In function ‘sp_stage’:\naudit_tail.inc:114:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n  114 |     if(audit_active)abort();sp_phase=n;return JS_UNDEFINED;\n      |     ^~\naudit_tail.inc:114:29: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n  114 |     if(audit_active)abort();sp_phase=n;return JS_UNDEFINED;\n      |                             ^~~~~~~~\naudit_tail.inc: At top level:\naudit_tail.inc:106:13: warning: ‘sp_reason’ defined but not used [-Wunused-function]\n  106 | static void sp_reason(const char *name) {\n      |             ^~~~~~~~~\nIn file included from quickjs.c:6138:\naudit_hooks.h:58:13: warning: ‘sp_maint’ defined but not used [-Wunused-function]\n   58 | static void sp_maint(int k){if(k){sp_all_releases[sp_phase]++;if(audit_active)audit_active->releases++;}else{sp_all_retains[sp_phase]++;if(audit_active)audit_active->retains++;}}\n      |             ^~~~~~~~\naudit_hooks.h:41:13: warning: ‘audit_change’ defined but not used [-Wunused-function]\n   41 | static void audit_change(int k) {\n      |             ^~~~~~~~~~~~\naudit_hooks.h:39:13: warning: ‘audit_miss’ defined but not used [-Wunused-function]\n   39 | static void audit_miss(void) { if(audit_active)audit_active->misses++; }\n      |             ^~~~~~~~~~\naudit_hooks.h:38:13: warning: ‘audit_hit’ defined but not used [-Wunused-function]\n   38 | static void audit_hit(void) { if(audit_active)audit_active->hits++; }\n      |             ^~~~~~~~~\naudit_hooks.h:37:13: warning: ‘audit_probe’ defined but not used [-Wunused-function]\n   37 | static void audit_probe(void) { if(audit_active)audit_active->cache_probes++; }\n      |             ^~~~~~~~~~~\nmake: *** [Makefile:339: .obj/quickjs.o] Error 1\n\n",
+  "timeout": false,
+  "command": [
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py",
+    "build"
+  ],
+  "label": "03_build_diagnostic",
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01",
+  "timestamp": "2026-11-04T06:35:14.280583+00:00",
+  "completed_at": "2026-11-04T06:35:24.508801+00:00",
+  "outer_start_ns": 62160271515,
+  "outer_stop_ns": 72388589808,
+  "external_wall_ms": 10228.318293,
+  "child_user_ms": 9917.845,
+  "child_system_ms": 297.268,
+  "boot_id": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "boot_id_after": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "load_average": [
+    0.2275390625,
+    0.04931640625,
+    0.01611328125
+  ]
+}

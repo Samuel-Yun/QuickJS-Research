@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "python": "3.11.4",
+  "OS": "Windows",
+  "syntax_checked": 15,
+  "replay_commands": [
+    {
+      "script": "analyze.py",
+      "args": [
+        "formal"
+      ],
+      "exit_code": 0
+    },
+    {
+      "script": "analyze.py",
+      "args": [
+        "legacy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "script": "recover.py",
+      "args": [
+        "verify"
+      ],
+      "exit_code": 0
+    },
+    {
+      "script": "recover.py",
+      "args": [
+        "old-diagnostics"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "uses_recorded_linux_executables": false,
+  "old_tracked_experiment_unchanged": true,
+  "git_HEAD_unchanged": true,
+  "files_above_50_MiB_outside_ignored_outputs": [],
+  "maximum_nonignored_file_bytes": 5136745
+}

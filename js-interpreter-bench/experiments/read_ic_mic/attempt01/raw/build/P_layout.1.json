@@ -1,0 +1,22 @@
+{
+  "command": [
+    "gdb",
+    "--batch",
+    "--nx",
+    "--nh",
+    "-ex",
+    "file /home/mzyx/read_ic_mic_attempt01/P/qjs",
+    "-ex",
+    "p sizeof(JSFunctionBytecode)",
+    "-ex",
+    "p sizeof(ReadICSite)",
+    "-ex",
+    "p offsetof(JSFunctionBytecode, debug)"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T07:21:07.514846+00:00",
+  "exit_code": 1,
+  "stdout": "$1 = 144\n$2 = 56\n",
+  "stderr": "No symbol \"offsetof\" in current context.\n",
+  "wall_ns": 187792436
+}

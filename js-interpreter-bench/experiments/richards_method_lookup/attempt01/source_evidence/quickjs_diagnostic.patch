@@ -1,0 +1,41 @@
+diff --git a/quickjs.c b/quickjs.c
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -93,1 +93,1 @@
+-//#define DUMP_BYTECODE  (1)
++#define DUMP_BYTECODE  (1)
+@@ -8209,0 +8210,2 @@
++#include "ml_counters.h"
++
+@@ -8217,0 +8220,2 @@
++    int ml_k = ml_kind(obj, prop);
++    if (ml_k >= 0) ml_helper[ml_k]++;
+@@ -17759,0 +17764,1 @@
++    ml_entry(func_obj);
+@@ -18226,0 +18232,1 @@
++                ml_method(call_argv[-1], call_argv[-2]);
+@@ -19113,0 +19120,1 @@
++                int ml_k = -1, ml_depth = 0;                          \
+@@ -19122,0 +19130,2 @@
++                ml_k = ml_kind(obj, atom);                            \
++                if (ml_k >= 0) { ml_look[ml_k]++; ml_opcode[ml_k][keep]++; } \
+@@ -19130,0 +19140,1 @@
++                            ml_hit(ml_k, ml_depth);                   \
+@@ -19141,0 +19152,1 @@
++                        ml_depth++;                                  \
+@@ -19148,0 +19160,1 @@
++                    if (ml_k >= 0) ml_fallback[ml_k]++;               \
+@@ -36266,1 +36279,1 @@
+-    if (!fd->strip_debug) {
++    if (!fd->strip_debug && getenv("ML_DUMP")) {
+@@ -41242,0 +41255,2 @@
++    if (ml_active && JS_IsObject(this_val) && JS_VALUE_GET_OBJ(this_val)==ml_target)
++        ml_native_call++;
+diff --git a/qjs.c b/qjs.c
+--- a/qjs.c
++++ b/qjs.c
+@@ -105,0 +106,2 @@
++extern void ml_install(JSContext *ctx);
++
+@@ -485,0 +488,1 @@
++        ml_install(ctx);

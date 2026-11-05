@@ -1,0 +1,49 @@
+{
+  "status": "COMPLETED_WITH_PARTIAL_PROFILING",
+  "formal_experiment": "PASS",
+  "formal": {
+    "status": "PASS",
+    "formal_valid": 360,
+    "formal_expected": 360,
+    "correctness_N1_N2": 24,
+    "selected_correctness": 12,
+    "calibration_count": 108,
+    "selected_N": {
+      "richards": 256,
+      "navier": 256
+    },
+    "six_permutations_each_five": true,
+    "engine_each_position_ten": true,
+    "same_variant_N_bytes": true,
+    "old_data_preservation": "PASS",
+    "runtime_flags_dependencies_hashes": "PASS",
+    "monotonic_consistency": "PASS",
+    "statistics_CSV_independently_recomputed": "PASS",
+    "diagnostic_formal_separation": "PASS",
+    "below_calibration_threshold_retained": 0,
+    "boot_ids": [
+      "b3ee321e-69da-462d-8718-4589949b17d0",
+      "f6560751-86c2-43ce-9404-f3eca71582fd"
+    ],
+    "failures": []
+  },
+  "baseline_raw_recomputation": "PASS",
+  "old_files_runtime_adapter_hashes": "PASS",
+  "counter_correctness_cross_engine": "PASS",
+  "diagnostic_native_build_compiler_revision": "PASS",
+  "profile_parser_recomputation": "PASS",
+  "profiling_coverage": "PARTIAL: QJS lacks sampling self-time; V8 native symbols and exact internal-Run filtering unknown",
+  "regexp_generated_executable_PC_evidence": {
+    "regex_ticks": 124,
+    "executable_map_hits": 124,
+    "status": "OBSERVED"
+  },
+  "no_optimization_of_frozen_VM": true,
+  "old_full_formal_rebenchmark": false,
+  "new_engines_or_migration": false,
+  "frontend_complete_exclusion": null,
+  "artifact_V8_source_commit": null,
+  "advisor_engine_version": null,
+  "paper_novelty_established": false,
+  "formal_audit_sha256": "a7536841d86cb0e00eca824474fa2c758ba87b414b581c690ba52318e8498407"
+}

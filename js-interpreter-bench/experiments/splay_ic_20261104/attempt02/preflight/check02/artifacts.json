@@ -1,0 +1,248 @@
+{
+  "artifacts": {
+    "A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "expected_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "exists": true,
+      "size": 5090704,
+      "magic_hex": "7f454c46",
+      "ELF": true,
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "identity_matches": true,
+      "smoke": {
+        "command": [
+          "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "A bounded smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T09:05:28.643342+00:00",
+        "completed_at": "2026-11-04T09:05:28.655567+00:00",
+        "child_pid": 573,
+        "exit_code": 0,
+        "signal": null,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "host_timeout": false,
+        "outer_start_ns": 4706671079,
+        "outer_stop_ns": 4718982567,
+        "external_wall_ms": 12.311488,
+        "child_user_ms": 1.08,
+        "child_system_ms": 0.0,
+        "single_child_peak_rss_kib": 19960,
+        "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+        "boot_id": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "boot_id_after": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "smoke_valid": true
+    },
+    "M": {
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+      "expected_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "exists": true,
+      "size": 5102680,
+      "magic_hex": "7f454c46",
+      "ELF": true,
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "identity_matches": true,
+      "smoke": {
+        "command": [
+          "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "M bounded smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T09:05:28.663612+00:00",
+        "completed_at": "2026-11-04T09:05:28.676179+00:00",
+        "child_pid": 574,
+        "exit_code": 0,
+        "signal": null,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "host_timeout": false,
+        "outer_start_ns": 4726925348,
+        "outer_stop_ns": 4739594892,
+        "external_wall_ms": 12.669544,
+        "child_user_ms": 1.1509999999999998,
+        "child_system_ms": 0.0,
+        "single_child_peak_rss_kib": 19960,
+        "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+        "boot_id": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "boot_id_after": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "smoke_valid": true
+    },
+    "V8_ON": {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "expected_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "exists": true,
+      "size": 53498016,
+      "magic_hex": "7f454c46",
+      "ELF": true,
+      "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "identity_matches": true,
+      "smoke": {
+        "command": [
+          "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+          "--jitless",
+          "--no-lazy",
+          "--use-ic",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "V8_ON bounded smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T09:05:28.764733+00:00",
+        "completed_at": "2026-11-04T09:05:28.807411+00:00",
+        "child_pid": 597,
+        "exit_code": 0,
+        "signal": null,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "host_timeout": false,
+        "outer_start_ns": 4828055807,
+        "outer_stop_ns": 4870827027,
+        "external_wall_ms": 42.77122,
+        "child_user_ms": 0.0,
+        "child_system_ms": 28.102999999999998,
+        "single_child_peak_rss_kib": 28360,
+        "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+        "boot_id": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "boot_id_after": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "smoke_valid": true
+    },
+    "A_diagnostic_v3": {
+      "path": "/home/mzyx/splay_ic_20261104_attempt01/A_diag7/qjs",
+      "expected_sha256": "39a14a462be5594ea801af7d0489f308553e79d53d37ddfb5bfd5f5fd074d7e1",
+      "exists": true,
+      "size": 5143024,
+      "magic_hex": "7f454c46",
+      "ELF": true,
+      "sha256": "39a14a462be5594ea801af7d0489f308553e79d53d37ddfb5bfd5f5fd074d7e1",
+      "identity_matches": true,
+      "smoke": {
+        "command": [
+          "/home/mzyx/splay_ic_20261104_attempt01/A_diag7/qjs",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "A_diagnostic_v3 bounded smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T09:05:28.816161+00:00",
+        "completed_at": "2026-11-04T09:05:28.829010+00:00",
+        "child_pid": 643,
+        "exit_code": 0,
+        "signal": null,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "host_timeout": false,
+        "outer_start_ns": 4879486378,
+        "outer_stop_ns": 4892416619,
+        "external_wall_ms": 12.930241,
+        "child_user_ms": 1.1689999999999998,
+        "child_system_ms": 0.0,
+        "single_child_peak_rss_kib": 19960,
+        "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+        "boot_id": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "boot_id_after": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "smoke_valid": true
+    },
+    "M_diagnostic_v3": {
+      "path": "/home/mzyx/splay_ic_20261104_attempt01/M_diag3/qjs",
+      "expected_sha256": "d739aac9a733eab80dac827c4abed22e24e0f42e7b816052f61e2a8ded1bde0e",
+      "exists": true,
+      "size": 5162216,
+      "magic_hex": "7f454c46",
+      "ELF": true,
+      "sha256": "d739aac9a733eab80dac827c4abed22e24e0f42e7b816052f61e2a8ded1bde0e",
+      "identity_matches": true,
+      "smoke": {
+        "command": [
+          "/home/mzyx/splay_ic_20261104_attempt01/M_diag3/qjs",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "M_diagnostic_v3 bounded smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T09:05:28.837879+00:00",
+        "completed_at": "2026-11-04T09:05:28.850259+00:00",
+        "child_pid": 644,
+        "exit_code": 0,
+        "signal": null,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "host_timeout": false,
+        "outer_start_ns": 4901205059,
+        "outer_stop_ns": 4913674053,
+        "external_wall_ms": 12.468994,
+        "child_user_ms": 1.3,
+        "child_system_ms": 0.0,
+        "single_child_peak_rss_kib": 19960,
+        "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+        "boot_id": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "boot_id_after": "99b425bb-edc6-401e-92ac-634ace13a13a",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "smoke_valid": true
+    },
+    "A_diag5_known_invalid": {
+      "path": "/home/mzyx/splay_ic_20261104_attempt01/A_diag5/qjs",
+      "expected_sha256": null,
+      "exists": true,
+      "size": 0,
+      "magic_hex": "",
+      "ELF": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identity_matches": null
+    }
+  },
+  "dependencies": [
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+      "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+      "size_bytes": 374368,
+      "actual_sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+      "matches": true
+    },
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat",
+      "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+      "size_bytes": 10819840,
+      "actual_sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+      "matches": true
+    }
+  ]
+}

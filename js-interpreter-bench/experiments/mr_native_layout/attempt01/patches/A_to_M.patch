@@ -1,0 +1,439 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -361,6 +361,10 @@
+ DEF( typeof_is_function, 1, 1, 1, none)
+ #endif
+ 
++/* Post-finalization runtime opcodes; prior opcode values unchanged. */
++DEF(get_field_rdi, 5, 1, 1, u32)
++DEF(get_field2_rdi, 5, 1, 2, u32)
++
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -682,6 +682,8 @@
+     JS_FUNC_ASYNC_GENERATOR = (JS_FUNC_GENERATOR | JS_FUNC_ASYNC),
+ } JSFunctionKindEnum;
+ 
++#include "read_ic_types.h"
++
+ typedef struct JSFunctionBytecode {
+     JSGCObjectHeader header; /* must come first */
+     uint8_t js_mode;
+@@ -713,6 +715,12 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    ReadICSite *read_ic_sites;
++    uint32_t read_ic_count;
++    uint8_t read_ic_ready;
++#ifdef READ_IC_DIAGNOSTIC
++    RDIFunctionDiag *read_ic_diag;
++#endif
+     struct {
+         /* debug info, move to separate structure to save memory? */
+         JSAtom filename;
+@@ -1148,6 +1156,7 @@
+                                int atom_type);
+ static void JS_FreeAtomStruct(JSRuntime *rt, JSAtomStruct *p);
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b);
++static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b);
+ static JSValue js_call_c_function(JSContext *ctx, JSValueConst func_obj,
+                                   JSValueConst this_obj,
+                                   int argc, JSValueConst *argv, int flags);
+@@ -6156,6 +6165,8 @@
+     return NULL;
+ }
+ 
++#include "read_ic_runtime.inc"
++
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+ {
+@@ -6617,6 +6628,16 @@
+             int i;
+             for(i = 0; i < b->cpool_count; i++) {
+                 JS_MarkValue(rt, b->cpool[i], mark_func);
++            }
++            for (uint32_t ri = 0; ri < b->read_ic_count; ri++) {
++#if RDI_CAPACITY == 1
++                if (b->read_ic_sites[ri].shape)
++                    mark_func(rt, &b->read_ic_sites[ri].shape->header);
++#else
++                for (unsigned rj = 0; rj < 4; rj++)
++                    if (b->read_ic_sites[ri].shape[rj])
++                        mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
++#endif
+             }
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+@@ -19160,6 +19181,8 @@
+             }
+ 
+             
++#include "read_ic_opcodes.inc"
++
+         CASE(OP_get_field):
+             GET_FIELD_INLINE(get_field, 0, 0);
+             BREAK;
+@@ -32124,6 +32147,8 @@
+     return fd;
+ }
+ 
++#include "read_ic_prepare.inc"
++
+ static void free_bytecode_atoms(JSRuntime *rt,
+                                 const uint8_t *bc_buf, int bc_len,
+                                 BOOL use_short_opcodes)
+@@ -36274,6 +36299,10 @@
+     }
+ 
+     js_free(ctx, fd);
++    if (rdi_prepare(ctx, b) < 0) {
++        JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
++        return JS_EXCEPTION;
++    }
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -36291,6 +36320,7 @@
+                JS_AtomGetStrRT(rt, buf, sizeof(buf), b->func_name));
+     }
+ #endif
++    rdi_free(rt, b);
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+ 
+@@ -37715,7 +37745,7 @@
+ }
+ 
+ static int JS_WriteFunctionBytecode(BCWriterState *s,
+-                                    const uint8_t *bc_buf1, int bc_len)
++                                    const uint8_t *bc_buf1, int bc_len, JSFunctionBytecode *b)
+ {
+     int pos, len, op;
+     JSAtom atom;
+@@ -37730,6 +37760,13 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++            uint32_t ri = get_u32(bc_buf + pos + 1);
++            assert(ri < b->read_ic_count);
++            op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
++            bc_buf[pos] = op;
++            put_u32(bc_buf + pos + 1, b->read_ic_sites[ri].atom);
++        }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+         case OP_FMT_atom:
+@@ -37888,7 +37925,7 @@
+         bc_put_u16(s, flags);
+     }
+ 
+-    if (JS_WriteFunctionBytecode(s, b->byte_code_buf, b->byte_code_len))
++    if (JS_WriteFunctionBytecode(s, b->byte_code_buf, b->byte_code_len, b))
+         goto fail;
+ 
+     if (b->has_debug) {
+@@ -38620,17 +38657,8 @@
+     JSAtom atom;
+     uint32_t idx;
+ 
+-    if (s->is_rom_data) {
+-        /* directly use the input buffer */
+-        if (unlikely(s->buf_end - s->ptr < bc_len))
+-            return bc_read_error_end(s);
+-        bc_buf = (uint8_t *)s->ptr;
+-        s->ptr += bc_len;
+-    } else {
+-        bc_buf = (void *)((uint8_t*)b + byte_code_offset);
+-        if (bc_get_buf(s, bc_buf, bc_len))
+-            return -1;
+-    }
++    bc_buf = (void *)((uint8_t*)b + byte_code_offset);
++    if (bc_get_buf(s, bc_buf, bc_len)) return -1;
+     b->byte_code_buf = bc_buf;
+ 
+     if (is_be())
+@@ -38639,6 +38667,11 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++            b->byte_code_len = pos;
++            JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
++            return -1;
++        }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+         case OP_FMT_atom:
+@@ -38769,7 +38802,7 @@
+     bc.arguments_allowed = bc_get_flags(v16, &idx, 1);
+     bc.has_debug = bc_get_flags(v16, &idx, 1);
+     bc.is_direct_or_indirect_eval = bc_get_flags(v16, &idx, 1);
+-    bc.read_only_bytecode = s->is_rom_data;
++    bc.read_only_bytecode = FALSE; /* IC: own writable copy even for ROM input */
+     if (bc_get_u8(s, &v8))
+         goto fail;
+     bc.js_mode = v8;
+@@ -38937,6 +38970,7 @@
+         bc_read_trace(s, "}\n");
+     }
+     b->realm = JS_DupContext(ctx);
++    if (rdi_prepare(ctx, b) < 0) goto fail;
+     return obj;
+  fail:
+     JS_FreeValue(ctx, obj);
+--- /dev/null
++++ b/read_ic_config.h
+@@ -0,0 +1 @@
++#define RDI_CAPACITY 1
+--- /dev/null
++++ b/read_ic_opcodes.inc
+@@ -0,0 +1,72 @@
++/* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
++#define GET_READ_IC(name, keep)                                          \
++    {                                                                   \
++        uint32_t index = get_u32(pc), offset;                            \
++        ReadICSite *site = &b->read_ic_sites[index];                     \
++        JSValue obj = sp[-1], val;                                      \
++        JSAtom atom;                                                    \
++        JSObject *p, *origin;                                           \
++        JSProperty *pr;                                                 \
++        JSShapeProperty *prs;                                           \
++        RDI_DLOCAL(index);                                              \
++        pc += 4;                                                        \
++        RDI_QUERY();                                                    \
++        if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
++            p = JS_VALUE_GET_OBJ(obj);                                  \
++            if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
++                offset = rdi_probe(site, p->shape RDI_DARG(d));           \
++                if (offset != UINT32_MAX) {                             \
++                    RDI_COUNT(hits);                                   \
++                    val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    goto name ## _done;                                \
++                }                                                       \
++                RDI_COUNT(shape_misses);                               \
++            }                                                           \
++        }                                                               \
++        RDI_COUNT(fallback);                                            \
++        atom = site->atom;                                              \
++        if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
++            p = origin = JS_VALUE_GET_OBJ(obj);                         \
++            for (;;) {                                                  \
++                prs = find_own_property(&pr, p, atom);                   \
++                if (prs) {                                              \
++                    if (unlikely(prs->flags & JS_PROP_TMASK)) {          \
++                        RDI_REASON(descriptor);                        \
++                        goto name ## _slow;                            \
++                    }                                                   \
++                    val = JS_DupValue(ctx, pr->u.value);                \
++                    if (p != origin) { RDI_REASON(inherited); }         \
++                    else if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) { RDI_REASON(special); } \
++                    else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
++                    else {                                              \
++                        RDI_REASON(own_miss);                           \
++                        rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
++                    }                                                   \
++                    break;                                              \
++                }                                                       \
++                if (unlikely(p->is_exotic)) {                           \
++                    RDI_REASON(special);                               \
++                    obj = JS_MKPTR(JS_TAG_OBJECT, p);                   \
++                    goto name ## _slow;                                \
++                }                                                       \
++                p = p->shape->proto;                                    \
++                if (!p) { RDI_REASON(missing); val = JS_UNDEFINED; break; } \
++            }                                                           \
++        } else {                                                        \
++            RDI_REASON(primitive);                                     \
++        name ## _slow:                                                  \
++            sf->cur_pc = pc;                                            \
++            val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0);     \
++            if (unlikely(JS_IsException(val))) goto exception;          \
++        }                                                               \
++    name ## _done:                                                      \
++        if (keep) { *sp++ = val; }                                      \
++        else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
++    }
++        CASE(OP_get_field_rdi):
++            GET_READ_IC(get_field_rdi, 0);
++            BREAK;
++        CASE(OP_get_field2_rdi):
++            GET_READ_IC(get_field2_rdi, 1);
++            BREAK;
++#undef GET_READ_IC
+--- /dev/null
++++ b/read_ic_prepare.inc
+@@ -0,0 +1,37 @@
++/* Called only for fully built b, after all compiler passes / atom fixups. */
++static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b)
++{
++    uint32_t count = 0, index = 0;
++    int pos, op;
++    assert(!b->read_ic_ready && !b->read_ic_sites);
++    b->read_ic_ready = 1;
++#ifdef READ_IC_DIAGNOSTIC
++    rdi_diag_header_init();
++#endif
++    for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
++        op = b->byte_code_buf[pos];
++        if (op == OP_get_field || op == OP_get_field2) count++;
++    }
++    if (!count) return 0;
++    if (count > SIZE_MAX / sizeof(ReadICSite)) {
++        JS_ThrowOutOfMemory(ctx);
++        return -1;
++    }
++    b->read_ic_sites = js_mallocz(ctx, count * sizeof(ReadICSite));
++    if (!b->read_ic_sites) return -1;
++    b->read_ic_count = count;
++#ifdef READ_IC_DIAGNOSTIC
++    rdi_diag_prepare(ctx, b);
++#endif
++    for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
++        uint8_t *pc = b->byte_code_buf + pos;
++        op = *pc;
++        if (op == OP_get_field || op == OP_get_field2) {
++            b->read_ic_sites[index].atom = get_u32(pc + 1);
++            *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
++            put_u32(pc + 1, index++);
++        }
++    }
++    assert(index == count);
++    return 0;
++}
+--- /dev/null
++++ b/read_ic_runtime.inc
+@@ -0,0 +1,87 @@
++/* Included after upstream find_own_property, with shape helpers available. */
++#ifdef READ_IC_DIAGNOSTIC
++#include "read_ic_diag.h"
++#endif
++static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
++{
++#if RDI_CAPACITY == 1
++    RDI_COUNT(comparisons);
++    if (s->shape == shape)
++        return s->prop_offset;
++#else
++    unsigned i, first = s->recent;
++    RDI_COUNT(comparisons);
++    if (s->shape[first] == shape)
++        return s->prop_offset[first];
++    for (unsigned k = 1; k < 4; k++) {
++        i = (first + k) & 3;
++        RDI_COUNT(comparisons);
++        if (s->shape[i] == shape) {
++            s->recent = i;
++            return s->prop_offset[i];
++        }
++    }
++#endif
++    return UINT32_MAX;
++}
++static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
++                                    JSShape *shape, uint32_t offset RDI_DPARAM)
++{
++    RDI_COUNT(updates);
++#if RDI_CAPACITY == 1
++    if (s->shape == shape) {
++        s->prop_offset = offset;
++        return;
++    }
++    if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++    js_dup_shape(shape);
++    js_free_shape_null(ctx->rt, s->shape);
++    s->shape = shape;
++    s->prop_offset = offset;
++#else
++    unsigned i, empty = 4;
++    for (i = 0; i < 4; i++) {
++        RDI_COUNT(update_comparisons);
++        if (s->shape[i] == shape) {
++            s->prop_offset[i] = offset;
++            s->recent = i;
++            return;
++        }
++        if (!s->shape[i] && empty == 4)
++            empty = i;
++    }
++    if (empty < 4) {
++        i = empty;
++        RDI_OCCUPY();
++    } else {
++        i = s->victim;
++        s->victim = (i + 1) & 3;
++        RDI_REPLACE();
++    }
++    js_dup_shape(shape);
++    js_free_shape_null(ctx->rt, s->shape[i]);
++    s->shape[i] = shape;
++    s->prop_offset[i] = offset;
++    s->recent = i;
++#endif
++}
++static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
++{
++    uint32_t i;
++    for (i = 0; i < b->read_ic_count; i++) {
++        ReadICSite *s = &b->read_ic_sites[i];
++        JS_FreeAtomRT(rt, s->atom);
++#if RDI_CAPACITY == 1
++        js_free_shape_null(rt, s->shape);
++#else
++        for (unsigned j = 0; j < 4; j++)
++            js_free_shape_null(rt, s->shape[j]);
++#endif
++    }
++#ifdef READ_IC_DIAGNOSTIC
++    rdi_diag_release(b);
++#endif
++    js_free_rt(rt, b->read_ic_sites);
++    b->read_ic_sites = NULL;
++    b->read_ic_count = 0;
++}
+--- /dev/null
++++ b/read_ic_types.h
+@@ -0,0 +1,38 @@
++/* Experimental per-final-read-site IC. No QuickJS-NG runtime code imported. */
++#include "read_ic_config.h"
++#if RDI_CAPACITY == 1
++typedef struct ReadICSite {
++    JSShape *shape;
++    uint32_t prop_offset;
++    JSAtom atom;
++} ReadICSite;
++#elif RDI_CAPACITY == 4
++typedef struct ReadICSite {
++    JSShape *shape[4];
++    uint32_t prop_offset[4];
++    JSAtom atom;
++    uint8_t recent, victim;
++} ReadICSite;
++#else
++#error unsupported read IC capacity
++#endif
++typedef struct RDIFunctionDiag RDIFunctionDiag;
++#ifdef READ_IC_DIAGNOSTIC
++#define RDI_DPARAM , RDICounters *d
++#define RDI_DARG(x) , (x)
++#define RDI_COUNT(field) (++d->field)
++#define RDI_REASON(field) (++d->field)
++#define RDI_DLOCAL(index) RDICounters *d = &b->read_ic_diag->sites[index]
++#define RDI_QUERY() rdi_diag_query(d)
++#define RDI_OCCUPY() rdi_diag_occupy(d)
++#define RDI_REPLACE() (++rdi_diag_shape_unref, ++rdi_diag_shape_ref, ++d->replacements)
++#else
++#define RDI_DPARAM
++#define RDI_DARG(x)
++#define RDI_COUNT(field) ((void)0)
++#define RDI_REASON(field) ((void)0)
++#define RDI_DLOCAL(index)
++#define RDI_QUERY() ((void)0)
++#define RDI_OCCUPY() ((void)0)
++#define RDI_REPLACE() ((void)0)
++#endif

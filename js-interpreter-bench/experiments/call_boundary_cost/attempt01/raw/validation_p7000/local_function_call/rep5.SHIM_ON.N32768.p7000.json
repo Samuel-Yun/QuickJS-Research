@@ -1,0 +1,102 @@
+{
+  "stage": "validation_p7000",
+  "case": "local_function_call",
+  "condition": "SHIM_ON",
+  "N": 32768,
+  "rep": 5,
+  "order": 1,
+  "period_us": 7000,
+  "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+  "cohort": "WSL2-call-boundary-20261029-attempt01",
+  "command": [
+    "/home/mzyx/call_boundary_cost_attempt01/shim/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/scripts/local_function_call/N32768.measure.shim.js"
+  ],
+  "script_relative": "scripts/local_function_call/N32768.measure.shim.js",
+  "script_sha256": "627a2d07fa45fed9432d6be7ffd8cdbd7cb80186d739665b624b5180110f7556",
+  "binary_sha256": "dfc547ff0db4a4318c812a65f4d2d485a9a2bb169aee405152bf4a596268c437",
+  "input_sha256": "a8a637d5233364a3e2baa25699217c5e2b4c91260d1092901bf5d57d34e0508e",
+  "sample_prefix": "/home/mzyx/call_boundary_cost_attempt01/reports/validation_p7000/local_function_call/rep5.SHIM_ON.N32768.p7000",
+  "boot_id": "46544d7b-a2ba-4f7f-a97f-f0692a95b1e4",
+  "valid": true,
+  "timestamp": "2026-10-29T03:20:04.725986+00:00",
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"case\":\"local_function_call\",\"N\":32768,\"mode\":\"CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"correctness\":\"PASS\",\"checksum\":274945015808,\"last\":8390656,\"start_ms\":575718.904275,\"stop_ms\":581356.166259,\"elapsed_ms\":5637.2619839999825,\"warmup_calls\":0,\"inner_iterations\":4096,\"first_Run_included\":true}\n",
+  "stderr": "",
+  "timeout": false,
+  "completed_at": "2026-10-29T03:20:10.373990+00:00",
+  "outer_start_ns": 575711466730,
+  "outer_stop_ns": 581359412169,
+  "outer_wall_ns": 5647945439,
+  "child_user_seconds": 5.6411809999999605,
+  "child_system_seconds": 0.0,
+  "child_voluntary_switches": 28,
+  "child_involuntary_switches": 4,
+  "payload": {
+    "case": "local_function_call",
+    "N": 32768,
+    "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+    "phase": "measure",
+    "correctness": "PASS",
+    "checksum": 274945015808,
+    "last": 8390656,
+    "start_ms": 575718.904275,
+    "stop_ms": 581356.166259,
+    "elapsed_ms": 5637.2619839999825,
+    "warmup_calls": 0,
+    "inner_iterations": 4096,
+    "first_Run_included": true
+  },
+  "elapsed_ms": 5637.2619839999825,
+  "elapsed_per_Run_ms": 0.17203558300781197,
+  "sampler": {
+    "schema": "little-endian uint64 rip,uint64 CLOCK_MONOTONIC_ns",
+    "sample_bytes": 16,
+    "pid": 788,
+    "enabled": true,
+    "period_us": 7000,
+    "capacity": 131072,
+    "delivered": 563,
+    "retained": 563,
+    "overflow": 0,
+    "clock_errors": 0,
+    "drained_pending": 0,
+    "threads_before": 1,
+    "threads_after": 1,
+    "atomics_lock_free": true,
+    "old_handler_default": true,
+    "old_timer_zero": true,
+    "window_start_ns": 575718889096,
+    "window_stop_ns": 581356167001,
+    "window_cpu_start_ns": 3063700,
+    "window_cpu_stop_ns": 5634130600,
+    "voluntary_switches": 0,
+    "involuntary_switches": 4
+  },
+  "sampler_archives": {
+    "meta.json": {
+      "path": "raw/samples/validation_p7000/local_function_call/rep5.SHIM_ON.N32768.p7000.meta.json.gz",
+      "sha256": "bab29f498e85d2de0da102e11423a585add7168ece87274871fe97419be4c882",
+      "uncompressed_sha256": "ea9db6b60ae986dc2c511f5daf351f2a7ff2299d6d7c3ba0ab941515e993bccb",
+      "bytes": 505
+    },
+    "samples.bin": {
+      "path": "raw/samples/validation_p7000/local_function_call/rep5.SHIM_ON.N32768.p7000.samples.bin.gz",
+      "sha256": "5791e8d4bf881a17bdfb4e056a2a749e4239c4c5d4174090287084f0d120a577",
+      "uncompressed_sha256": "d09a69732dd50d7de82e4c08c3cf1416b79c11cdbe2422ddb2e842e423993d77",
+      "bytes": 9008
+    },
+    "begin.maps": {
+      "path": "raw/samples/validation_p7000/local_function_call/rep5.SHIM_ON.N32768.p7000.begin.maps.gz",
+      "sha256": "befe8dfc6088eb73adfc230f375ba539b1ca0b8af42f3cacdbb0bcb9b8359e19",
+      "uncompressed_sha256": "6109a9b98dbb9c3f6192466d506297b4e7e5ae7e6a8bc119410c7d584d088333",
+      "bytes": 2768
+    },
+    "end.maps": {
+      "path": "raw/samples/validation_p7000/local_function_call/rep5.SHIM_ON.N32768.p7000.end.maps.gz",
+      "sha256": "befe8dfc6088eb73adfc230f375ba539b1ca0b8af42f3cacdbb0bcb9b8359e19",
+      "uncompressed_sha256": "6109a9b98dbb9c3f6192466d506297b4e7e5ae7e6a8bc119410c7d584d088333",
+      "bytes": 2768
+    }
+  }
+}

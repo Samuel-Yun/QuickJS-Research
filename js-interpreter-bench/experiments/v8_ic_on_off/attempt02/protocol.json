@@ -1,0 +1,56 @@
+{
+  "seed": 20261025,
+  "conditions": [
+    "QJS_ORIGINAL",
+    "V8_IC_ON",
+    "V8_IC_OFF"
+  ],
+  "cases": [
+    "Richards",
+    "own_integer",
+    "numeric_control"
+  ],
+  "V8_common_flags": [
+    "--jitless",
+    "--no-lazy"
+  ],
+  "only_V8_condition_difference": "--use-ic versus --no-use-ic",
+  "formal_target": 270,
+  "repetitions_per_case_condition": 30,
+  "six_orders_each": 5,
+  "timeout_seconds": 60,
+  "max_N": 131072,
+  "pilot_policy": "common N; powers of two; three new-process pilots per condition all >=1000ms",
+  "pilot_and_formal_budget_seconds": 7200,
+  "capability_budget_seconds": 3600,
+  "first_Run_included": true,
+  "performance_warmup_calls": 0,
+  "timer": "captured native performance.now; no Date.now",
+  "outside": "source loading/static compilation, adapter, required Setup, post validation/TearDown/output",
+  "inside": "N original Run calls plus loop/call control, original in-Run assertions, GC, helper, builtin and dynamic work",
+  "capture_Run": "local function reference; runRichards and microRun do not read their entry this; never cache workload internal methods",
+  "failures": "preserve; no retry or outlier deletion; version-specific correctness failure stops comparison",
+  "statistics": "median; mean; sample sd; Tukey-halves Q1/Q3/IQR; min/max; paired complete-triple bootstrap 10000; seed 20261025; percentile linear 95% exploratory intervals",
+  "ratios": [
+    "OFF/ON",
+    "QJS/ON",
+    "QJS/OFF"
+  ],
+  "GM": false,
+  "forbidden_attribution": [
+    "(OFF-ON)/(QJS-ON)",
+    "single hash cost from total time",
+    "QuickJS expected IC gain equals V8 switch effect"
+  ],
+  "formal_gate": "protocol_amendment.md: configuration switch; no direct OFF snapshot requirement",
+  "formal_gate_current": "PASS_WITH_OBSERVABILITY_LIMITATION",
+  "formal_N": null,
+  "formal_order_frozen": false,
+  "formal_scripts_frozen": false,
+  "note": "Inherited rules, amended gate before any pilot; no historical time reused",
+  "initial_N": {
+    "Richards": 512,
+    "own_integer": 32768,
+    "numeric_control": 32768
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "stdout": "\tlinux-vdso.so.1 (0x00007ffd33df5000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f61dc3cf000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f61dc1bc000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f61dc5c8000)\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "ldd",
+    "/home/mzyx/read_ic_dequickening_attempt01/A/qjs"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01",
+  "label": "A final dependencies",
+  "timestamp": "2026-11-02T20:11:42.734268+00:00",
+  "completed_at": "2026-11-02T20:11:42.759823+00:00",
+  "outer_start_ns": 40536782748277,
+  "outer_stop_ns": 40536808542887,
+  "external_wall_ms": 25.79461,
+  "child_user_ms": 2.4779999999999998,
+  "child_system_ms": 16.374,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    0.841796875,
+    0.82568359375,
+    0.91845703125
+  ]
+}

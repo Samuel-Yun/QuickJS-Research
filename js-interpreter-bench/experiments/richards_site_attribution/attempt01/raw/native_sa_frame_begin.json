@@ -1,0 +1,24 @@
+{
+  "exit_code": 0,
+  "stdout": "\n/home/mzyx/richards_site_attribution_attempt01_diag/qjs:     file format elf64-x86-64\n\n\nDisassembly of section .init:\n\nDisassembly of section .plt:\n\nDisassembly of section .plt.got:\n\nDisassembly of section .plt.sec:\n\nDisassembly of section .text:\n\nDisassembly of section .fini:\n",
+  "stderr": "",
+  "command": [
+    "objdump",
+    "-d",
+    "-S",
+    "-l",
+    "-M",
+    "intel",
+    "--disassemble=sa_frame_begin",
+    "/home/mzyx/richards_site_attribution_attempt01_diag/qjs"
+  ],
+  "timestamp_utc": "2026-10-17T09:14:53.834362+00:00",
+  "outer_wall_ns": 17176053,
+  "load_average": [
+    0.080078125,
+    0.0166015625,
+    0.00537109375
+  ],
+  "boot_id": "add88663-068b-4f41-abfd-09203d995c6f",
+  "LD_PRELOAD": null
+}

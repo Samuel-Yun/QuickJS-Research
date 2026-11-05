@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    "A",
+    "M",
+    "U"
+  ],
+  "cases": [
+    "M1.own_integer",
+    "M2.own_reference",
+    "M4.numeric_control"
+  ],
+  "seed": 20261102,
+  "repetitions": 30,
+  "threshold_ms": 1000,
+  "pilot_per_condition": 2,
+  "max_N": 131072,
+  "timeout": 300,
+  "first_Run_included": true,
+  "workload_warmup_calls": 0,
+  "metric": "internal native monotonic ms per complete Run",
+  "balance": "cyclic rotations; 4conditions each position7or8, 3conditions10; not all permutations",
+  "failures": "record once, no automatic retry, invalid case excluded with reason; global identity/timer violation stops",
+  "aggregate": "none",
+  "bootstrap": "10000 complete same-round groups; global shared complete-round blocks; seed20261102; linear percentile95; exploratory unadjusted"
+}

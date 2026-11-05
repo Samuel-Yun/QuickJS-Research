@@ -1,0 +1,1 @@
+function once(o){return o.x;}var z=0,o={x:3};for(var i=0;i<200;i++)z+=once(o);if(z!==600)throw Error('z');console.log('PASS');

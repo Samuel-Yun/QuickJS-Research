@@ -1,0 +1,106 @@
+--- /dev/null
++++ b/read_ic_exit.inc
+@@ -0,0 +1,21 @@
++/* Permanent dequickening. Called before the threshold miss performs a lookup. */
++static BOOL rdi_exit(JSContext *ctx, JSFunctionBytecode *b, uint32_t index,
++                     uint8_t *instruction RDI_DPARAM)
++{
++    ReadICSite *site=&b->read_ic_sites[index];
++    int op=*instruction;
++    if(op==OP_get_field || op==OP_get_field2)
++        return FALSE; /* completed earlier, including a reentrant invocation */
++    assert((op==OP_get_field_rdi || op==OP_get_field2_rdi) && get_u32(instruction+1)==index);
++    assert(site->miss_streak==32);
++    JSAtom atom=JS_DupAtom(ctx,site->atom);
++    JSShape *old_shape=site->shape;
++    site->shape=NULL;
++    site->prop_offset=0;
++    put_u32(instruction+1,atom);
++    *instruction=(op==OP_get_field_rdi)?OP_get_field:OP_get_field2;
++    RDI_EXIT_RECORD(instruction,old_shape);
++    /* No partially updated opcode/site may be visible when references are released. */
++    js_free_shape_null(ctx->rt,old_shape);
++    return TRUE;
++}
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,6 +1,7 @@
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+ #define GET_READ_IC(name, keep)                                          \
+     {                                                                   \
++        uint8_t *instruction = (uint8_t *)pc - 1;                       \
+         uint32_t index = get_u32(pc), offset;                            \
+         ReadICSite *site = &b->read_ic_sites[index];                     \
+         JSValue obj = sp[-1], val;                                      \
+@@ -16,6 +17,11 @@
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
++                    RDI_STREAK_READ();                                \
++                    if (site->miss_streak) {                             \
++                        site->miss_streak=0;                            \
++                        RDI_STREAK_WRITE(); RDI_STREAK_RESET();          \
++                    }                                                   \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+@@ -25,6 +31,12 @@
+         }                                                               \
+         RDI_COUNT(fallback);                                            \
+         atom = site->atom;                                              \
++        RDI_STREAK_READ();                                              \
++        if (site->miss_streak < 32) {                                    \
++            site->miss_streak++; RDI_STREAK_WRITE();                     \
++        }                                                               \
++        if (site->miss_streak == 32)                                    \
++            rdi_exit(ctx,b,index,instruction RDI_DARG(d));                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+             for (;;) {                                                  \
+@@ -40,7 +52,8 @@
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+                         RDI_REASON(own_miss);                           \
+-                        rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
++                        if (site->miss_streak < 32)                     \
++                            rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
+                     }                                                   \
+                     break;                                              \
+                 }                                                       \
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -65,6 +65,8 @@
+     s->recent = i;
+ #endif
+ }
++#include "read_ic_exit.inc"
++
+ static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
+ {
+     uint32_t i;
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -5,6 +5,7 @@
+     JSShape *shape;
+     uint32_t prop_offset;
+     JSAtom atom;
++    uint8_t miss_streak; /* fixed K=32; permanent ordinary opcode at threshold */
+ } ReadICSite;
+ #elif RDI_CAPACITY == 4
+ typedef struct ReadICSite {
+@@ -36,3 +37,15 @@
+ #define RDI_OCCUPY() ((void)0)
+ #define RDI_REPLACE() ((void)0)
+ #endif
++
++#ifdef READ_IC_DIAGNOSTIC
++#define RDI_EXIT_RECORD(pc,old) rdi_diag_exit(d,(pc),(old)!=NULL)
++#define RDI_STREAK_READ() (++d->streak_reads)
++#define RDI_STREAK_WRITE() (++d->streak_writes)
++#define RDI_STREAK_RESET() (++d->streak_resets)
++#else
++#define RDI_EXIT_RECORD(pc,old) ((void)0)
++#define RDI_STREAK_READ() ((void)0)
++#define RDI_STREAK_WRITE() ((void)0)
++#define RDI_STREAK_RESET() ((void)0)
++#endif

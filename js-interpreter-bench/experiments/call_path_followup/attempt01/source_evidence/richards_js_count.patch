@@ -1,0 +1,252 @@
+--- upstream/richards.js
++++ DIAGNOSTIC_ONLY/richards.js
+@@ -123,7 +123,7 @@
+  * @param {Packet} queue the queue of work to be processed by the task
+  * @param {int} count the number of times to schedule the task
+  */
+-Scheduler.prototype.addIdleTask = function (id, priority, queue, count) {
++Scheduler.prototype.addIdleTask = function (id, priority, queue, count) { __cfCount("Scheduler.prototype.addIdleTask");
+   this.addRunningTask(id, priority, queue, new IdleTask(this, 1, count));
+ };
+ 
+@@ -133,7 +133,7 @@
+  * @param {int} priority the task's priority
+  * @param {Packet} queue the queue of work to be processed by the task
+  */
+-Scheduler.prototype.addWorkerTask = function (id, priority, queue) {
++Scheduler.prototype.addWorkerTask = function (id, priority, queue) { __cfCount("Scheduler.prototype.addWorkerTask");
+   this.addTask(id, priority, queue, new WorkerTask(this, ID_HANDLER_A, 0));
+ };
+ 
+@@ -143,7 +143,7 @@
+  * @param {int} priority the task's priority
+  * @param {Packet} queue the queue of work to be processed by the task
+  */
+-Scheduler.prototype.addHandlerTask = function (id, priority, queue) {
++Scheduler.prototype.addHandlerTask = function (id, priority, queue) { __cfCount("Scheduler.prototype.addHandlerTask");
+   this.addTask(id, priority, queue, new HandlerTask(this));
+ };
+ 
+@@ -153,7 +153,7 @@
+  * @param {int} priority the task's priority
+  * @param {Packet} queue the queue of work to be processed by the task
+  */
+-Scheduler.prototype.addDeviceTask = function (id, priority, queue) {
++Scheduler.prototype.addDeviceTask = function (id, priority, queue) { __cfCount("Scheduler.prototype.addDeviceTask");
+   this.addTask(id, priority, queue, new DeviceTask(this))
+ };
+ 
+@@ -164,7 +164,7 @@
+  * @param {Packet} queue the queue of work to be processed by the task
+  * @param {Task} task the task to add
+  */
+-Scheduler.prototype.addRunningTask = function (id, priority, queue, task) {
++Scheduler.prototype.addRunningTask = function (id, priority, queue, task) { __cfCount("Scheduler.prototype.addRunningTask");
+   this.addTask(id, priority, queue, task);
+   this.currentTcb.setRunning();
+ };
+@@ -176,7 +176,7 @@
+  * @param {Packet} queue the queue of work to be processed by the task
+  * @param {Task} task the task to add
+  */
+-Scheduler.prototype.addTask = function (id, priority, queue, task) {
++Scheduler.prototype.addTask = function (id, priority, queue, task) { __cfCount("Scheduler.prototype.addTask");
+   this.currentTcb = new TaskControlBlock(this.list, id, priority, queue, task);
+   this.list = this.currentTcb;
+   this.blocks[id] = this.currentTcb;
+@@ -185,7 +185,7 @@
+ /**
+  * Execute the tasks managed by this scheduler.
+  */
+-Scheduler.prototype.schedule = function () {
++Scheduler.prototype.schedule = function () { __cfCount("Scheduler.prototype.schedule");
+   this.currentTcb = this.list;
+   while (this.currentTcb != null) {
+     if (this.currentTcb.isHeldOrSuspended()) {
+@@ -201,7 +201,7 @@
+  * Release a task that is currently blocked and return the next block to run.
+  * @param {int} id the id of the task to suspend
+  */
+-Scheduler.prototype.release = function (id) {
++Scheduler.prototype.release = function (id) { __cfCount("Scheduler.prototype.release");
+   var tcb = this.blocks[id];
+   if (tcb == null) return tcb;
+   tcb.markAsNotHeld();
+@@ -217,7 +217,7 @@
+  * to run.  The blocked task will not be made runnable until it is explicitly
+  * released, even if new work is added to it.
+  */
+-Scheduler.prototype.holdCurrent = function () {
++Scheduler.prototype.holdCurrent = function () { __cfCount("Scheduler.prototype.holdCurrent");
+   this.holdCount++;
+   this.currentTcb.markAsHeld();
+   return this.currentTcb.link;
+@@ -227,7 +227,7 @@
+  * Suspend the currently executing task and return the next task control block
+  * to run.  If new work is added to the suspended task it will be made runnable.
+  */
+-Scheduler.prototype.suspendCurrent = function () {
++Scheduler.prototype.suspendCurrent = function () { __cfCount("Scheduler.prototype.suspendCurrent");
+   this.currentTcb.markAsSuspended();
+   return this.currentTcb;
+ };
+@@ -238,7 +238,7 @@
+  * suspended.
+  * @param {Packet} packet the packet to add
+  */
+-Scheduler.prototype.queue = function (packet) {
++Scheduler.prototype.queue = function (packet) { __cfCount("Scheduler.prototype.queue");
+   var t = this.blocks[packet.id];
+   if (t == null) return t;
+   this.queueCount++;
+@@ -294,34 +294,36 @@
+ var STATE_SUSPENDED_RUNNABLE = STATE_SUSPENDED | STATE_RUNNABLE;
+ var STATE_NOT_HELD = ~STATE_HELD;
+ 
+-TaskControlBlock.prototype.setRunning = function () {
++TaskControlBlock.prototype.setRunning = function () { __cfCount("TaskControlBlock.prototype.setRunning");
+   this.state = STATE_RUNNING;
+ };
+ 
+-TaskControlBlock.prototype.markAsNotHeld = function () {
++TaskControlBlock.prototype.markAsNotHeld = function () { __cfCount("TaskControlBlock.prototype.markAsNotHeld");
+   this.state = this.state & STATE_NOT_HELD;
+ };
+ 
+-TaskControlBlock.prototype.markAsHeld = function () {
++TaskControlBlock.prototype.markAsHeld = function () { __cfCount("TaskControlBlock.prototype.markAsHeld");
+   this.state = this.state | STATE_HELD;
+ };
+ 
+-TaskControlBlock.prototype.isHeldOrSuspended = function () {
++TaskControlBlock.prototype.isHeldOrSuspended = function () { __cfCount("TaskControlBlock.prototype.isHeldOrSuspended");
+   return (this.state & STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);
+ };
+ 
+-TaskControlBlock.prototype.markAsSuspended = function () {
++TaskControlBlock.prototype.markAsSuspended = function () { __cfCount("TaskControlBlock.prototype.markAsSuspended");
+   this.state = this.state | STATE_SUSPENDED;
+ };
+ 
+-TaskControlBlock.prototype.markAsRunnable = function () {
++TaskControlBlock.prototype.markAsRunnable = function () { __cfCount("TaskControlBlock.prototype.markAsRunnable");
+   this.state = this.state | STATE_RUNNABLE;
+ };
+ 
+ /**
+  * Runs this task, if it is ready to be run, and returns the next task to run.
+  */
+-TaskControlBlock.prototype.run = function () {
++TaskControlBlock.prototype.run = function () { __cfCount("TaskControlBlock.prototype.run");var __cfP=Object.getPrototypeOf(this.task),__cfK=__cfP===IdleTask.prototype?'IdleTask':__cfP===WorkerTask.prototype?'WorkerTask':__cfP===HandlerTask.prototype?'HandlerTask':__cfP===DeviceTask.prototype?'DeviceTask':'OTHER';
++var __cfShapeKey=__cfK+':TCBownRun='+Object.prototype.hasOwnProperty.call(this,'run')+':taskOwnRun='+Object.prototype.hasOwnProperty.call(this.task,'run')+':TCBproto='+(Object.getPrototypeOf(this)===TaskControlBlock.prototype)+':taskOwn='+Object.prototype.hasOwnProperty.call(this,'task');
++__cfShapes[__cfShapeKey]=(__cfShapes[__cfShapeKey]||0)+1;
+   var packet;
+   if (this.state == STATE_SUSPENDED_RUNNABLE) {
+     packet = this.queue;
+@@ -342,7 +344,7 @@
+  * necessary, and returns the next runnable object to run (the one
+  * with the highest priority).
+  */
+-TaskControlBlock.prototype.checkPriorityAdd = function (task, packet) {
++TaskControlBlock.prototype.checkPriorityAdd = function (task, packet) { __cfCount("TaskControlBlock.prototype.checkPriorityAdd");
+   if (this.queue == null) {
+     this.queue = packet;
+     this.markAsRunnable();
+@@ -353,7 +355,7 @@
+   return task;
+ };
+ 
+-TaskControlBlock.prototype.toString = function () {
++TaskControlBlock.prototype.toString = function () { __cfCount("TaskControlBlock.prototype.toString");
+   return "tcb { " + this.task + "@" + this.state + " }";
+ };
+ 
+@@ -371,7 +373,7 @@
+   this.count = count;
+ }
+ 
+-IdleTask.prototype.run = function (packet) {
++IdleTask.prototype.run = function (packet) { __cfCount("IdleTask.prototype.run");
+   this.count--;
+   if (this.count == 0) return this.scheduler.holdCurrent();
+   if ((this.v1 & 1) == 0) {
+@@ -383,7 +385,7 @@
+   }
+ };
+ 
+-IdleTask.prototype.toString = function () {
++IdleTask.prototype.toString = function () { __cfCount("IdleTask.prototype.toString");
+   return "IdleTask"
+ };
+ 
+@@ -398,7 +400,7 @@
+   this.v1 = null;
+ }
+ 
+-DeviceTask.prototype.run = function (packet) {
++DeviceTask.prototype.run = function (packet) { __cfCount("DeviceTask.prototype.run");
+   if (packet == null) {
+     if (this.v1 == null) return this.scheduler.suspendCurrent();
+     var v = this.v1;
+@@ -410,7 +412,7 @@
+   }
+ };
+ 
+-DeviceTask.prototype.toString = function () {
++DeviceTask.prototype.toString = function () { __cfCount("DeviceTask.prototype.toString");
+   return "DeviceTask";
+ };
+ 
+@@ -427,7 +429,7 @@
+   this.v2 = v2;
+ }
+ 
+-WorkerTask.prototype.run = function (packet) {
++WorkerTask.prototype.run = function (packet) { __cfCount("WorkerTask.prototype.run");
+   if (packet == null) {
+     return this.scheduler.suspendCurrent();
+   } else {
+@@ -447,7 +449,7 @@
+   }
+ };
+ 
+-WorkerTask.prototype.toString = function () {
++WorkerTask.prototype.toString = function () { __cfCount("WorkerTask.prototype.toString");
+   return "WorkerTask";
+ };
+ 
+@@ -462,7 +464,7 @@
+   this.v2 = null;
+ }
+ 
+-HandlerTask.prototype.run = function (packet) {
++HandlerTask.prototype.run = function (packet) { __cfCount("HandlerTask.prototype.run");
+   if (packet != null) {
+     if (packet.kind == KIND_WORK) {
+       this.v1 = packet.addTo(this.v1);
+@@ -490,7 +492,7 @@
+   return this.scheduler.suspendCurrent();
+ };
+ 
+-HandlerTask.prototype.toString = function () {
++HandlerTask.prototype.toString = function () { __cfCount("HandlerTask.prototype.toString");
+   return "HandlerTask";
+ };
+ 
+@@ -524,7 +526,7 @@
+  * Add this packet to the end of a worklist, and return the worklist.
+  * @param {Packet} queue the worklist to add this packet to
+  */
+-Packet.prototype.addTo = function (queue) {
++Packet.prototype.addTo = function (queue) { __cfCount("Packet.prototype.addTo");
+   this.link = null;
+   if (queue == null) return this;
+   var peek, next = queue;
+@@ -534,6 +536,6 @@
+   return queue;
+ };
+ 
+-Packet.prototype.toString = function () {
++Packet.prototype.toString = function () { __cfCount("Packet.prototype.toString");
+   return "Packet";
+ };

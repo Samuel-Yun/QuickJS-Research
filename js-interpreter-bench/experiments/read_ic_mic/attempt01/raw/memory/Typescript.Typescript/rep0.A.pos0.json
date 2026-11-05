@@ -1,0 +1,30 @@
+{
+  "campaign": "read_ic_mic/attempt01",
+  "case": "Typescript.Typescript",
+  "variant": "A",
+  "rep": 0,
+  "order": 0,
+  "N": 1,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/raw/memory/Typescript.Typescript/rep0.A.pos0.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_mic_attempt01/A/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_mic/attempt01/generated/Typescript.Typescript.N1.measure.js"
+  ],
+  "binary_sha256": "0fe524aae16ad6e96373b08763babf6b362c6fbfbafa47003d773353865f3520",
+  "script_sha256": "de2f5f1ce27ea06a45aaa32d7d921de3967431951ecc7dfb65d5964b72282413",
+  "peak_rss_KiB": 100972,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Typescript.Typescript\",\"suite\":\"Typescript\",\"subbenchmark\":\"Typescript\",\"mode\":\"READ_IC_MIC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":1,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5552495.478674,\"stop_ms\":5554708.535624,\"elapsed_ms\":2213.0569500001147,\"elapsed_per_call_ms\":2213.0569500001147,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-24T08:55:18.487558+00:00",
+  "outer_wall_ns": 2472502129,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

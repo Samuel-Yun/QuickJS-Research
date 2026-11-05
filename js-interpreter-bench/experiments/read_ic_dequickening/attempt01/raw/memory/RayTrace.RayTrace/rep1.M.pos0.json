@@ -1,0 +1,30 @@
+{
+  "campaign": "read_ic_dequickening/attempt01",
+  "case": "RayTrace.RayTrace",
+  "variant": "M",
+  "rep": 1,
+  "order": 0,
+  "N": 32,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/raw/memory/RayTrace.RayTrace/rep1.M.pos0.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_dequickening_attempt01/M/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_dequickening/attempt01/generated/RayTrace.RayTrace.N32.measure.js"
+  ],
+  "binary_sha256": "d22127a30779f78e35aaef853929188f9d042726f131da7946520c9afbd75c42",
+  "script_sha256": "d5823b373a19d81370c61b3f574a1a06f9c270f21f65d3efe1da46ed57b25dc8",
+  "peak_rss_KiB": 3660,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"RayTrace.RayTrace\",\"suite\":\"RayTrace\",\"subbenchmark\":\"RayTrace\",\"mode\":\"READ_IC_DEQUICKEN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":32,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5394493.430267,\"stop_ms\":5395979.411383,\"elapsed_ms\":1485.981116000563,\"elapsed_per_call_ms\":46.43690987501759,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-24T13:16:14.088888+00:00",
+  "outer_wall_ns": 1517862255,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

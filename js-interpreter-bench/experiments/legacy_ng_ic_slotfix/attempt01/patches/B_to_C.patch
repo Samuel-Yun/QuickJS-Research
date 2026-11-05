@@ -1,0 +1,24 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -61823,7 +61823,7 @@
+ static void add_ic_slot(JSContext *ctx, JSInlineCacheUpdate *icu,
+                         JSAtom atom, JSObject *object, uint32_t prop_offset)
+ {
+-    int32_t i;
++    int32_t i, first_empty = -1;
+     uint32_t h;
+     JSInlineCacheHashSlot *ch;
+     JSInlineCacheRingSlot *cr;
+@@ -61853,8 +61853,12 @@
+             cr->prop_offset[i] = prop_offset;
+             goto end;
+         }
++        if (cr->shape[i] == NULL && first_empty < 0)
++            first_empty = i;
+         i = (i + 1) % countof(cr->shape);
+     } while (i != cr->index);
++    if (first_empty >= 0)
++        i = first_empty;
+     js_free_shape_null(ctx->rt, cr->shape[i]);
+     cr->shape[i] = js_dup_shape(sh);
+     cr->prop_offset[i] = prop_offset;

@@ -1,0 +1,58 @@
+{
+  "status": "READY_VERIFIED_CACHE_PATH",
+  "binary_source_commit": null,
+  "version_reference_commit": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+  "version_reference_source_retrieval": "FAILED_TIMEOUT_TLS; actual binary disassembly and runtime trace used instead",
+  "interfaces": {
+    "none": {
+      "supported": true,
+      "evidence": "probes/logs/cache_none.json"
+    },
+    "code": {
+      "supported": true,
+      "evidence": "probes/logs/cache_code.json"
+    },
+    "after-execute": {
+      "supported": true,
+      "evidence": "probes/logs/cache_after-execute.json"
+    },
+    "full-code-cache": {
+      "supported": true,
+      "evidence": "probes/logs/cache_full-code-cache.json"
+    }
+  },
+  "cache_path": "IN_PROCESS_CROSS_ISOLATE",
+  "cache_storage": "Shell::cached_code_map_; serialized CachedData heap-owned buffer, not persistent file",
+  "producer_position": "temporary fresh producer isolate via Shell::Main lambda; disposed; consumer uses distinct original main isolate",
+  "isolation_evidence": "actual binary Shell::Main lambda Isolate::New/Dispose; CC_TOP globals and heap object undefined and calls=1 in both passes",
+  "code_serialization_time": "before Script::Run/top-level execution; trace and ExecuteSource disassembly",
+  "after_execute_serialization_time": "after Script::Run (separate diagnostic mode only)",
+  "target_script_cache_acceptance_evidence": "PROVEN_TARGET_SERIALIZATION_DESERIALIZATION for all four N1 targets; selected-N proof required before sampling",
+  "explicit_rejected_field": null,
+  "per_formal_invocation_trace_enabled": false,
+  "per_formal_invocation_acceptance_direct_observation": null,
+  "persistent_save_load_cli_verified": null,
+  "cross_process_cache_verified": null,
+  "persisted_cache_files_created": false,
+  "source_compile_metric_ms": null,
+  "cache_validation_deserialization_metric_ms": null,
+  "cache_only_startup_metric_ms": null,
+  "profile_deserialization_intervals": "retained diagnostic values only; unverified boundaries, not parser/bytecode-generation metrics",
+  "static_function_preparation_proven": [
+    "cacheStaticWorkload",
+    "cacheStaticCallee"
+  ],
+  "exhaustive_static_and_dynamic_function_coverage": null,
+  "default_lazy_probe": "bytecode generation for two named functions occurs after CC_TIMER_START",
+  "no_lazy_probe": "two named function generation events occur before CC_TOP and CC_TIMER_START",
+  "cached_probe": "target deserialization before CC_TOP; no new generated-bytecode event in consumer",
+  "source_no_cache_control": "no Deserializing from target-code-cache event; snapshot deserialization distinct",
+  "producer_cpu_os_cache_power_confound": true,
+  "consumer_performance_warmup_calls": 0,
+  "timing": "frozen benchNow internal interval, isolate-local; producer/consumer not subtracted",
+  "formal_conditions": [
+    "SOURCE_NO_LAZY",
+    "CACHE_NO_LAZY_CONSUMER"
+  ],
+  "mechanism_budget_minutes": 30
+}

@@ -1,0 +1,21 @@
+case,status,formal_included,actual,valid,expected,complete_rounds,reason
+Richards.Richards,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+DeltaBlue.DeltaBlue,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+Crypto.Encrypt,INCOMPLETE,True,125,125,150,25,existing canonical Run and frozen correctness contract
+Crypto.Decrypt,INCOMPLETE,True,125,125,150,25,existing canonical Run and frozen correctness contract
+RayTrace.RayTrace,INCOMPLETE,True,125,125,150,25,existing canonical Run and frozen correctness contract
+EarleyBoyer.Earley,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+EarleyBoyer.Boyer,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+RegExp.RegExp,INCOMPLETE,True,125,125,150,25,existing canonical Run and frozen correctness contract
+Splay.Splay,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+NavierStokes.NavierStokes,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+PdfJS.PdfJS,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+Mandreel.Mandreel,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+Gameboy.Gameboy,INCOMPLETE,True,125,125,150,25,existing canonical Run and frozen correctness contract
+CodeLoad.CodeLoadClosure,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+CodeLoad.CodeLoadJQuery,INCOMPLETE,True,130,130,150,26,existing canonical Run and frozen correctness contract
+Typescript.Typescript,INCOMPLETE,True,126,126,150,25,existing canonical Run and frozen correctness contract
+Box2D.Box2D,RUNS_NO_TRUSTED_OUTPUT_GATE,False,0,0,0,0,"original runBox2D creates local world and steps20 times; no final output/checksum assertion, teardown nulls globals; successful internal assertions/exit alone not a whole-result gate"
+zlib.zlib,INCOMPLETE,True,130,130,150,26,"Decoded frozen InitializeZlibBenchmark payload exports _main:a2; argument1 selects60 iterations of a1 over100000 pseudo-random bytes. Original a1 checks decompressed length==100000 and aG(input,output)==0, otherwise calls az imported __assert_func. Keep all original checks and dynamic initialization in Run; shared read host API only. Actual process results still required."
+Splay.latency,NOT_THIS_METRIC,False,0,0,0,0,"official adaptive latency, not complete Run execution time"
+Mandreel.latency,NOT_THIS_METRIC,False,0,0,0,0,"official adaptive latency, not complete Run execution time"

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--cache=after-execute",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/probes/preparation.js"
+  ],
+  "timestamp_utc": "2026-10-05T10:25:46.541392+00:00",
+  "boot_id": "8422e0d9-a31b-488b-ba95-98e89d3e8407",
+  "exit_code": 0,
+  "stdout": "============ Run: Produce code cache ============\nCC_TOP:{\"prior\":\"undefined\",\"objectPrior\":\"undefined\"}\nCC_TIMER_START\nCC_FIRST_CALL\nCC_TIMER_STOP\nCC_RESULT:{\"checksum\":1499500,\"calls\":1,\"elapsed_ms\":0.0449999999999946}\n============ Run: Consume code cache ============\nCC_TOP:{\"prior\":\"undefined\",\"objectPrior\":\"undefined\"}\nCC_TIMER_START\nCC_FIRST_CALL\nCC_TIMER_STOP\nCC_RESULT:{\"checksum\":1499500,\"calls\":1,\"elapsed_ms\":0.043000000000006366}\n",
+  "stderr": "",
+  "external_wall_ns": 67873867
+}

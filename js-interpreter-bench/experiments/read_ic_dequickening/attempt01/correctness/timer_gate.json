@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "parent_clock": {
+    "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+    "resolution_seconds": 1e-09,
+    "monotonic": true
+  },
+  "child_clock": "captured native performance.now CLOCK_MONOTONIC ms",
+  "min_positive_delta_includes_call_overhead": true,
+  "rows": [
+    {
+      "variant": "A",
+      "rep": 0,
+      "outer_start_ns": 41788301578,
+      "outer_stop_ns": 41830245687,
+      "start_ms": 41813.620641,
+      "stop_ms": 41829.682239,
+      "min_delta_ms": 0.00013999999646330252,
+      "backwards": 0
+    },
+    {
+      "variant": "A",
+      "rep": 1,
+      "outer_start_ns": 41830280092,
+      "outer_stop_ns": 41852255726,
+      "start_ms": 41835.803606,
+      "stop_ms": 41851.812253,
+      "min_delta_ms": 0.00013999999646330252,
+      "backwards": 0
+    },
+    {
+      "variant": "A",
+      "rep": 2,
+      "outer_start_ns": 41852284531,
+      "outer_stop_ns": 41873889095,
+      "start_ms": 41857.413059,
+      "stop_ms": 41873.49174,
+      "min_delta_ms": 0.00014999999984866008,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 0,
+      "outer_start_ns": 41873921056,
+      "outer_stop_ns": 41895464073,
+      "start_ms": 41879.133935,
+      "stop_ms": 41895.008347,
+      "min_delta_ms": 0.00013999999646330252,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 1,
+      "outer_start_ns": 41895498569,
+      "outer_stop_ns": 41916959617,
+      "start_ms": 41900.858978,
+      "stop_ms": 41916.489206,
+      "min_delta_ms": 0.00013999999646330252,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 2,
+      "outer_start_ns": 41916990576,
+      "outer_stop_ns": 41939310235,
+      "start_ms": 41922.734954,
+      "stop_ms": 41938.858205,
+      "min_delta_ms": 0.00013999999646330252,
+      "backwards": 0
+    },
+    {
+      "variant": "R",
+      "rep": 0,
+      "outer_start_ns": 41939340823,
+      "outer_stop_ns": 41961697227,
+      "start_ms": 41944.608125,
+      "stop_ms": 41961.124593,
+      "min_delta_ms": 0.00013999999646330252,
+      "backwards": 0
+    },
+    {
+      "variant": "R",
+      "rep": 1,
+      "outer_start_ns": 41961728847,
+      "outer_stop_ns": 41984884359,
+      "start_ms": 41967.544228,
+      "stop_ms": 41984.370034,
+      "min_delta_ms": 0.00013999999646330252,
+      "backwards": 0
+    },
+    {
+      "variant": "R",
+      "rep": 2,
+      "outer_start_ns": 41984916099,
+      "outer_stop_ns": 42007154269,
+      "start_ms": 41989.905476,
+      "stop_ms": 42006.720097,
+      "min_delta_ms": 0.00014999999984866008,
+      "backwards": 0
+    }
+  ],
+  "UTC_role": "date only"
+}

@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "stdout": "    PID STAT COMMAND         %CPU COMMAND\n      1 Ss   systemd          0.2 /sbin/init\n      2 Sl   init-systemd(Ub  0.0 /init\n      9 Sl   init             0.0 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     55 S<s  systemd-journal  0.0 /usr/lib/systemd/systemd-journald\n     97 Ss   systemd-udevd    0.1 /usr/lib/systemd/systemd-udevd\n    140 Ss   systemd-resolve  0.0 /usr/lib/systemd/systemd-resolved\n    141 Ssl  systemd-timesyn  0.0 /usr/lib/systemd/systemd-timesyncd\n    150 Ss   cron             0.0 /usr/sbin/cron -f -P\n    151 Ss   dbus-daemon      0.0 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    158 Ss   systemd-logind   0.0 /usr/lib/systemd/systemd-logind\n    166 Ss+  agetty           0.0 /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    188 Ss+  agetty           0.0 /sbin/agetty -o -p -- \\u --noclear - linux\n    191 Ssl  rsyslogd         0.3 /usr/sbin/rsyslogd -n -iNONE\n    192 Ssl  containerd       0.7 /usr/bin/containerd\n    202 Ssl  unattended-upgr  0.2 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    272 Ssl  dockerd          0.2 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    524 Ss   SessionLeader    0.0 /init\n    525 S    Relay(526)       0.0 /init\n    526 Ss+  python3          0.7 python3 /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/recover.py fallback\n    527 Ss   login            0.0 /bin/login -f\n    568 Ss   systemd          0.0 /usr/lib/systemd/systemd --user\n    569 S    (sd-pam)         0.0 (sd-pam)\n    580 S+   bash             0.0 -bash\n    676 S    (udev-worker)    0.0 (udev-worker)\n    677 S    (udev-worker)    0.0 (udev-worker)\n    678 R+   ps               100 ps -eo pid,stat,comm,pcpu,args\n",
+  "stderr": "your 131072x1 screen size is bogus. expect trouble\n",
+  "timeout": false,
+  "command": [
+    "ps",
+    "-eo",
+    "pid,stat,comm,pcpu,args"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-29T07:55:46.456658+00:00",
+  "completed_at": "2026-10-29T07:55:46.474820+00:00",
+  "outer_start_ns": 285741222755,
+  "outer_stop_ns": 285759352547,
+  "outer_wall_ns": 18129792,
+  "boot_id": "b59caadd-3aab-4531-8e09-a77d8d4df1a3"
+}

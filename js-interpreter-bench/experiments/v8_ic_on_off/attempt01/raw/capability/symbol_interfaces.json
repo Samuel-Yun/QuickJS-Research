@@ -1,0 +1,40 @@
+{
+  "command": [
+    "nm",
+    "-C",
+    "--defined-only",
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8"
+  ],
+  "exit_code": 0,
+  "stderr": "",
+  "matching_symbols": [
+    "0000000000a29040 t v8::internal::FeedbackVector::ClearSlots(v8::internal::Isolate*, v8::internal::ClearBehavior)",
+    "0000000000a28e40 t v8::internal::FeedbackVector::reset_flags()",
+    "00000000008dcb30 t void v8::internal::FeedbackVector::BodyDescriptor::IterateBody<v8::internal::(anonymous namespace)::PromotedPageRecordMigratedSlotVisitor>(v8::internal::Tagged<v8::internal::Map>, v8::internal::Tagged<v8::internal::HeapObject>, int, v8::internal::(anonymous namespace)::PromotedPageRecordMigratedSlotVisitor*)",
+    "000000000086b2b0 t void v8::internal::FeedbackVector::BodyDescriptor::IterateBody<v8::internal::MainMarkingVisitor>(v8::internal::Tagged<v8::internal::Map>, v8::internal::Tagged<v8::internal::HeapObject>, int, v8::internal::MainMarkingVisitor*)",
+    "00000000008e47c0 t void v8::internal::FeedbackVector::BodyDescriptor::IterateBody<v8::internal::ObjectVisitorForwarder>(v8::internal::Tagged<v8::internal::Map>, v8::internal::Tagged<v8::internal::HeapObject>, int, v8::internal::ObjectVisitorForwarder*)",
+    "00000000008739e0 t void v8::internal::FeedbackVector::BodyDescriptor::IterateBody<v8::internal::RecordMigratedSlotVisitor>(v8::internal::Tagged<v8::internal::Map>, v8::internal::Tagged<v8::internal::HeapObject>, int, v8::internal::RecordMigratedSlotVisitor*)",
+    "00000000007d4b70 t void v8::internal::FeedbackVector::BodyDescriptor::IterateBody<v8::internal::YoungGenerationMarkingVisitor<(v8::internal::YoungGenerationMarkingVisitationMode)0> >(v8::internal::Tagged<v8::internal::Map>, v8::internal::Tagged<v8::internal::HeapObject>, int, v8::internal::YoungGenerationMarkingVisitor<(v8::internal::YoungGenerationMarkingVisitationMode)0>*)",
+    "00000000007d4b70 t void v8::internal::FeedbackVector::BodyDescriptor::IterateBody<v8::internal::YoungGenerationMarkingVisitor<(v8::internal::YoungGenerationMarkingVisitationMode)1> >(v8::internal::Tagged<v8::internal::Map>, v8::internal::Tagged<v8::internal::HeapObject>, int, v8::internal::YoungGenerationMarkingVisitor<(v8::internal::YoungGenerationMarkingVisitationMode)1>*)",
+    "00000000007ccad0 t v8::internal::FeedbackVector::BodyDescriptor::SizeOf(v8::internal::Tagged<v8::internal::Map>, v8::internal::Tagged<v8::internal::HeapObject>)",
+    "00000000006bc5a0 t v8::internal::FeedbackVector::GetOptimizedOsrCode(v8::internal::Isolate*, v8::internal::Handle<v8::internal::BytecodeArray>, v8::internal::FeedbackSlot)",
+    "0000000000a28e50 t v8::internal::FeedbackVector::SetOptimizedOsrCode(v8::internal::Isolate*, v8::internal::FeedbackSlot, v8::internal::Tagged<v8::internal::Code>)",
+    "0000000000a29010 t v8::internal::FeedbackVector::osr_tiering_in_progress()",
+    "0000000000a28e20 t v8::internal::FeedbackVector::set_tiering_in_progress(bool)",
+    "0000000000a29020 t v8::internal::FeedbackVector::set_osr_tiering_in_progress(bool)",
+    "00000000006bc670 t v8::internal::FeedbackVector::RecomputeOptimizedOsrCodeFlags(v8::internal::Isolate*, v8::internal::Handle<v8::internal::BytecodeArray>)",
+    "0000000000a28b50 t v8::internal::FeedbackVector::New(v8::internal::Isolate*, v8::internal::DirectHandle<v8::internal::SharedFunctionInfo>, v8::internal::DirectHandle<v8::internal::ClosureFeedbackCellArray>, v8::internal::DirectHandle<v8::internal::FeedbackCell>, v8::internal::IsCompiledScope*)",
+    "0000000000c1f8d0 t v8::internal::Runtime_DebugPrint(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c248c0 t v8::internal::Runtime_GetFeedback(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c1ffb0 t v8::internal::Runtime_DebugPrintPtr(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c20170 t v8::internal::Runtime_DebugPrintWord(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c205d0 t v8::internal::Runtime_DebugPrintFloat(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c1fa30 t v8::internal::Runtime_DebugPrintGeneric(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c24b80 t v8::internal::Runtime_DebugPrintCppHeapPointerTable(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c24bd0 t v8::internal::Runtime_DebugPrintExternalPointerTable(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c24b80 t v8::internal::Runtime_DebugPrintCppHeapPointerTableFilterTag(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000c24bd0 t v8::internal::Runtime_DebugPrintExternalPointerTableFilterTag(int, unsigned long*, v8::internal::Isolate*)",
+    "0000000000a28720 t v8::internal::FeedbackVector::GetKind(v8::internal::FeedbackSlot) const"
+  ],
+  "total_symbol_lines": 98459
+}

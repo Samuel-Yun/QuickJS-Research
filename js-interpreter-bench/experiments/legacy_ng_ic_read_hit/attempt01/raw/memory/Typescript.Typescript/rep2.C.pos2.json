@@ -1,0 +1,30 @@
+{
+  "campaign": "legacy_ng_ic_read_hit/attempt01",
+  "case": "Typescript.Typescript",
+  "variant": "C",
+  "rep": 2,
+  "order": 2,
+  "N": 1,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/raw/memory/Typescript.Typescript/rep2.C.pos2.rss.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_read_hit_attempt01/C/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/Typescript.Typescript.N1.measure.js"
+  ],
+  "binary_sha256": "9ca2cbd471914e6810b6ca3e2f00cf937e263f2a8f8b83d635a80c99554d8b67",
+  "script_sha256": "e259e766b2b4b793ab687cf202fe5a7e1134998fc7114439a637b444cd662d8e",
+  "peak_rss_KiB": 104416,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Typescript.Typescript\",\"suite\":\"Typescript\",\"subbenchmark\":\"Typescript\",\"mode\":\"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1\",\"phase\":\"measure\",\"N\":1,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":5021004.787988,\"stop_ms\":5023416.103572,\"elapsed_ms\":2411.3155840002,\"elapsed_per_call_ms\":2411.3155840002,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-23T16:05:59.313282+00:00",
+  "outer_wall_ns": 2653802984,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

@@ -1,0 +1,84 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:766:26: function: <null>
+  args: packet
+  locals:
+    0: var this
+  closure vars:
+    0: var ID_DEVICE_A [global_ref14]
+    1: var ID_DEVICE_B [global_ref15]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.count--;
+
+        get_loc0 0: this
+        get_field2 count
+        dec
+        put_field count
+        get_loc0 0: this
+
+;;   if (this.count == 0) return this.scheduler.holdCurrent();
+
+        get_field count
+        push_0 0
+        eq
+        if_false8 38
+        get_loc0 0: this
+        get_field scheduler
+        get_field2 holdCurrent
+        tail_call_method 0
+   38:  get_loc0 0: this
+
+;;   if ((this.v1 & 1) == 0) {
+
+        get_field v1
+        push_1 1
+        and
+        push_0 0
+        eq
+        if_false8 81
+
+;;     this.v1 = this.v1 >> 1;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field v1
+        push_1 1
+        sar
+        put_field v1
+        get_loc0 0: this
+
+;;     return this.scheduler.release(ID_DEVICE_A);
+
+        get_field scheduler
+        get_field2 release
+        get_var 0: ID_DEVICE_A
+        tail_call_method 1
+
+;;   } else {
+;;     this.v1 = (this.v1 >> 1) ^ 0xD008;
+
+   81:  get_loc0 0: this
+        get_loc0 0: this
+        get_field v1
+        push_1 1
+        sar
+        push_i32 53256
+        xor
+        put_field v1
+        get_loc0 0: this
+
+;;     return this.scheduler.release(ID_DEVICE_B);
+
+        get_field scheduler
+        get_field2 release
+        get_var 1: ID_DEVICE_B
+        tail_call_method 1
+
+;;   }
+;; }
+

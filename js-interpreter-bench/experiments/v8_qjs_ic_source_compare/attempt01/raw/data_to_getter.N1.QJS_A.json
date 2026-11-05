@@ -1,0 +1,52 @@
+{
+  "engine": "QJS_A",
+  "case": "data_to_getter",
+  "n": 1,
+  "command": [
+    "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_qjs_ic_source_compare/attempt01/scripts/data_to_getter.N1.js"
+  ],
+  "cwd": "/home/mzyx/read_ic_dequickening_attempt01/A",
+  "binary_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+  "dependencies": [],
+  "script_sha256": "9f73329be093dcbccd9b457c54671c2742c43d5289114bd0fe9e8155b55e1788",
+  "common_js_sha256": "c5dc2fc74ba59a369b6b3b8dd667b9d70290450916fc350ec5c9a7c6a11b0e36",
+  "expected": {
+    "case": "data_to_getter",
+    "n": 1,
+    "rounds": [
+      [
+        6,
+        6,
+        21,
+        22,
+        "expected_exception",
+        3,
+        true
+      ]
+    ]
+  },
+  "actual": {
+    "case": "data_to_getter",
+    "n": 1,
+    "rounds": [
+      [
+        6,
+        6,
+        21,
+        22,
+        "expected_exception",
+        3,
+        true
+      ]
+    ]
+  },
+  "stdout": "IC_CORRECTNESS={\"case\":\"data_to_getter\",\"n\":1,\"rounds\":[[6,6,21,22,\"expected_exception\",3,true]]}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timed_out": false,
+  "valid": true,
+  "status": "PASS",
+  "timestamp": "2026-10-29T10:04:18.773933+00:00",
+  "wall_time_ns_diagnostic_only": 51571888
+}

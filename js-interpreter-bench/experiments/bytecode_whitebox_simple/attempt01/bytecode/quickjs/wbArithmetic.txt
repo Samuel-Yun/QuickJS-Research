@@ -1,0 +1,45 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/dump/arithmetic_N1.js:2:1: function: wbArithmetic
+  args: a b c
+  locals:
+    0: var x
+    1: var y
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function wbArithmetic(a, b, c) {
+;;     var x = a + b * c;
+
+        get_arg0 0: a
+        get_arg1 1: b
+        get_arg2 2: c
+        mul
+        add
+        put_loc0 0: x
+
+;;     var y = a - b;
+
+        get_arg0 0: a
+        get_arg1 1: b
+        sub
+        put_loc1 1: y
+
+;;     if (x > y) return x - y;
+
+        get_loc0 0: x
+        get_loc1 1: y
+        gt
+        if_false8 19
+        get_loc0 0: x
+        get_loc1 1: y
+        sub
+        return
+
+;;     return x + y;
+
+   19:  get_loc0 0: x
+        get_loc1 1: y
+        add
+        return
+
+;; }
+

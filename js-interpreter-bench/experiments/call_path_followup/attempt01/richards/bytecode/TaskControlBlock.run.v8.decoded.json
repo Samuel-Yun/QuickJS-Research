@@ -1,0 +1,158 @@
+[
+  {
+    "offset": 0,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [0:\"state\"], FBV[0]"
+  },
+  {
+    "offset": 4,
+    "size": 1,
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 5,
+    "size": 3,
+    "opcode": "LdaGlobal",
+    "operands": "[1:\"STATE_SUSPENDED_RUNNABLE\"], FBV[2]"
+  },
+  {
+    "offset": 8,
+    "size": 3,
+    "opcode": "TestEqual",
+    "operands": "r1, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 11,
+    "size": 2,
+    "opcode": "JumpIfFalse",
+    "operands": "[40] (0x30a401000fcf @ 51)"
+  },
+  {
+    "offset": 13,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [2:\"queue\"], FBV[4]"
+  },
+  {
+    "offset": 17,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 18,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "r0, [3:\"link\"], FBV[6]"
+  },
+  {
+    "offset": 22,
+    "size": 4,
+    "opcode": "SetNamedProperty",
+    "operands": "<this>, [2:\"queue\"], FBV[8]"
+  },
+  {
+    "offset": 26,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [2:\"queue\"], FBV[10]"
+  },
+  {
+    "offset": 30,
+    "size": 1,
+    "opcode": "TestUndetectable",
+    "operands": ""
+  },
+  {
+    "offset": 31,
+    "size": 2,
+    "opcode": "JumpIfFalse",
+    "operands": "[11] (0x30a401000fc6 @ 42)"
+  },
+  {
+    "offset": 33,
+    "size": 3,
+    "opcode": "LdaGlobal",
+    "operands": "[4:\"STATE_RUNNING\"], FBV[12]"
+  },
+  {
+    "offset": 36,
+    "size": 4,
+    "opcode": "SetNamedProperty",
+    "operands": "<this>, [0:\"state\"], FBV[14]"
+  },
+  {
+    "offset": 40,
+    "size": 2,
+    "opcode": "Jump",
+    "operands": "[9] (0x30a401000fcd @ 49)"
+  },
+  {
+    "offset": 42,
+    "size": 3,
+    "opcode": "LdaGlobal",
+    "operands": "[5:\"STATE_RUNNABLE\"], FBV[16]"
+  },
+  {
+    "offset": 45,
+    "size": 4,
+    "opcode": "SetNamedProperty",
+    "operands": "<this>, [0:\"state\"], FBV[18]"
+  },
+  {
+    "offset": 49,
+    "size": 2,
+    "opcode": "Jump",
+    "operands": "[4] (0x30a401000fd1 @ 53)"
+  },
+  {
+    "offset": 51,
+    "size": 1,
+    "opcode": "LdaNull",
+    "operands": ""
+  },
+  {
+    "offset": 52,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 53,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [6:\"task\"], FBV[20]"
+  },
+  {
+    "offset": 57,
+    "size": 1,
+    "opcode": "Star2",
+    "operands": ""
+  },
+  {
+    "offset": 58,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "r2, [7:\"run\"], FBV[22]"
+  },
+  {
+    "offset": 62,
+    "size": 1,
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 63,
+    "size": 5,
+    "opcode": "CallProperty1",
+    "operands": "r1, r2, r0, FBV[24]"
+  },
+  {
+    "offset": 68,
+    "size": 1,
+    "opcode": "Return",
+    "operands": ""
+  }
+]

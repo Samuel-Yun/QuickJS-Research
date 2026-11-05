@@ -1,0 +1,19 @@
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -9,7 +9,7 @@
+     if (s->shape == shape)
+         return s->prop_offset;
+ #else
+-    unsigned i, first = s->recent;
++    unsigned i, first = 0;
+     RDI_COUNT(comparisons);
+     if (s->shape[first] == shape)
+         return s->prop_offset[first];
+@@ -17,7 +17,6 @@
+         i = (first + k) & (RDI_CAPACITY - 1);
+         RDI_COUNT(comparisons);
+         if (s->shape[i] == shape) {
+-            s->recent = i;
+             return s->prop_offset[i];
+         }
+     }

@@ -1,0 +1,51 @@
+{
+  "status": "COMPLETE_WITH_DISCLOSED_LIMITATIONS",
+  "formal_audit": "PASS",
+  "formal_valid": 960,
+  "formal_target": 960,
+  "formal_failed": 0,
+  "first_timestamp": "2026-10-22T16:26:08.454443+00:00",
+  "last_timestamp": "2026-10-22T16:59:42.992498+00:00",
+  "formal_boot_ids": [
+    "2934b94e-37f5-44fc-9693-1d2101aa2a41"
+  ],
+  "correctness_eligible_N1_N2_valid": 64,
+  "selected_N_correctness_valid": 32,
+  "existing_smoke_processes_valid": 24,
+  "mechanism_regression_processes_valid": 2,
+  "assertions_per_mechanism_process": 952,
+  "pilot_at_selected_N_valid": 96,
+  "upstream_tests_A_B": "PASS",
+  "targeted_ASan_UBSan": "PASS",
+  "warmed_serialization_load_embedding_and_OOM": "PASS",
+  "diagnostic_units_valid": 16,
+  "diagnostic_micro_programs_valid": 9,
+  "separate_memory_processes_valid": 102,
+  "archives_and_source_hash_check": "source_evidence/final_identity.json",
+  "artifact_copy_hashes": {
+    "A": {
+      "qjs": "0505d8d3af32cc768a10c9eddd5a8c0b30b946ff39d083e512852c27f0912d9d",
+      "qjsc": "71c614451d2fc89ae8be7472a159598062be3a7408ca5f37320146263e85ccb1",
+      "quickjs.c": "b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17",
+      "quickjs-opcode.h": "edf63cfcd3684e4f21c702e7005f7c013abcd90d5019fb3baa83ca2739d1dec1",
+      "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448"
+    },
+    "B": {
+      "qjs": "aedb704e6d38aa48414357911446e47b0b05ef9f35b9c244589b7d36e5318802",
+      "qjsc": "85e28b536fc8fa73041644a788f8c965e61c46cf6d81807a7642175bb3ffcd25",
+      "quickjs.c": "f5fd30f523ea808397eb71af070d362f9496b95e31619be2afdfd026dd8f29b8",
+      "quickjs-opcode.h": "660624272bec9cd8d572ffaf78576aea72ee68f9c98a1014d464cfcca7c062a1",
+      "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448"
+    }
+  },
+  "changed_files_scope": "only experiments/legacy_ng_ic; confirm with git status --short",
+  "limitations": [
+    "formal wait4 RSS includes launcher footprint; separate GNU time memory checks n=3",
+    "Crypto random padding/input bytes not pairwise frozen; excluding Crypto sensitivity reported",
+    "Box2D no trusted correctness gate; zlib lacks read(); official latency scores excluded",
+    "not full test262; no full Octane sanitizer campaign",
+    "single WSL2 host; uncontrolled power/frequency/background; exploratory pointwise CI",
+    "diagnostic counters cover whole process and rewritten IC only; not timed-region site counts",
+    "shape diversity and instruction/cost decomposition UNKNOWN; code-layout effects not excluded"
+  ]
+}

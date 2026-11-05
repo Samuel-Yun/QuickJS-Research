@@ -1,0 +1,51 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "-d",
+    "Ubuntu",
+    "--exec",
+    "/bin/true"
+  ],
+  "timestamp": "2026-11-04T08:42:41.735248+00:00",
+  "host_pid": 110988,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "Check whether the prior failed ps launch was transient: a minimal process must start before reading any artifacts.",
+  "changed_factor": "Replace ps with a minimal /bin/true command; no engine or diagnostic workload.",
+  "timeout_s": 30.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204057878528,
+      "free": 10690482176
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  },
+  "completed_at": "2026-11-04T08:42:45.581622+00:00",
+  "host_child_pid": 121204,
+  "wsl_exit_code": 4294967295,
+  "wsl_exit_u32": 4294967295,
+  "host_terminated_client": false,
+  "external_wall_ms": 3843.6709,
+  "stdout": {
+    "encoding": "utf-16-le",
+    "text": "灾难性故障 \r\n错误代码: Wsl/Service/E_UNEXPECTED\r\n"
+  },
+  "stderr": {
+    "encoding": "utf-16-le",
+    "text": "wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。\r\n"
+  },
+  "stdout_sha256": "b084a56090a1a21b085ccf41c193298e8a0b61ec46a8a1d667e592d3b6015885",
+  "stderr_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+  "linux_child_exit_code": null,
+  "linux_child_signal": null,
+  "linux_boot_before": null,
+  "linux_boot_after": null,
+  "linux_child_cpu_ms": null,
+  "linux_single_process_peak_rss_kib": null,
+  "missing_linux_evidence": "UNKNOWN unless child JSON is actually produced"
+}

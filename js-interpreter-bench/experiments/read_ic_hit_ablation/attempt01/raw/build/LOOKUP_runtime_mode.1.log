@@ -1,0 +1,40 @@
+Breakpoint 1 at 0xaec10: file quickjs.c, line 2612.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, JS_NewContextRaw (rt=rt@entry=0x55c76fb912a0) at quickjs.c:2612
+2612	{
+$1 = 0
+$2 = 0 '\000'
+$3 = 0x55c76719cba0
+process 654
+Mapped address spaces:
+
+          Start Addr           End Addr       Size     Offset  Perms  objfile
+      0x55c76717a000     0x55c76718b000    0x11000        0x0  r--p   /home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs
+      0x55c76718b000     0x55c767247000    0xbc000    0x11000  r-xp   /home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs
+      0x55c767247000     0x55c767279000    0x32000    0xcd000  r--p   /home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs
+      0x55c767279000     0x55c767281000     0x8000    0xfe000  r--p   /home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs
+      0x55c767281000     0x55c767282000     0x1000   0x106000  rw-p   /home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs
+      0x55c76fb91000     0x55c76fbb2000    0x21000        0x0  rw-p   [heap]
+      0x7fa68dbc1000     0x7fa68dbc4000     0x3000        0x0  rw-p   
+      0x7fa68dbc4000     0x7fa68dbec000    0x28000        0x0  r--p   /usr/lib/x86_64-linux-gnu/libc.so.6
+      0x7fa68dbec000     0x7fa68dd75000   0x189000    0x28000  r-xp   /usr/lib/x86_64-linux-gnu/libc.so.6
+      0x7fa68dd75000     0x7fa68ddc4000    0x4f000   0x1b1000  r--p   /usr/lib/x86_64-linux-gnu/libc.so.6
+      0x7fa68ddc4000     0x7fa68ddc8000     0x4000   0x1ff000  r--p   /usr/lib/x86_64-linux-gnu/libc.so.6
+      0x7fa68ddc8000     0x7fa68ddca000     0x2000   0x203000  rw-p   /usr/lib/x86_64-linux-gnu/libc.so.6
+      0x7fa68ddca000     0x7fa68ddd7000     0xd000        0x0  rw-p   
+      0x7fa68ddd7000     0x7fa68dde7000    0x10000        0x0  r--p   /usr/lib/x86_64-linux-gnu/libm.so.6
+      0x7fa68dde7000     0x7fa68de66000    0x7f000    0x10000  r-xp   /usr/lib/x86_64-linux-gnu/libm.so.6
+      0x7fa68de66000     0x7fa68debe000    0x58000    0x8f000  r--p   /usr/lib/x86_64-linux-gnu/libm.so.6
+      0x7fa68debe000     0x7fa68debf000     0x1000    0xe7000  r--p   /usr/lib/x86_64-linux-gnu/libm.so.6
+      0x7fa68debf000     0x7fa68dec0000     0x1000    0xe8000  rw-p   /usr/lib/x86_64-linux-gnu/libm.so.6
+      0x7fa68dec7000     0x7fa68dec9000     0x2000        0x0  rw-p   
+      0x7fa68dec9000     0x7fa68deca000     0x1000        0x0  r--p   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+      0x7fa68deca000     0x7fa68def5000    0x2b000     0x1000  r-xp   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+      0x7fa68def5000     0x7fa68deff000     0xa000    0x2c000  r--p   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+      0x7fa68deff000     0x7fa68df01000     0x2000    0x36000  r--p   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+      0x7fa68df01000     0x7fa68df03000     0x2000    0x38000  rw-p   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+      0x7fffa4496000     0x7fffa44b7000    0x21000        0x0  rw-p   [stack]
+      0x7fffa44cc000     0x7fffa44d0000     0x4000        0x0  r--p   [vvar]
+      0x7fffa44d0000     0x7fffa44d2000     0x2000        0x0  r-xp   [vdso]

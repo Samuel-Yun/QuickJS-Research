@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "adapter_manifest": "adapters/manifest.json",
+  "input_hash_manifest": "input_manifest.json",
+  "cohort_id": "wsl2-ubuntu2404-x64-20261004",
+  "created_at_utc": "2026-10-04T14:03:01.780960+00:00",
+  "platform_class": "WSL2",
+  "distro": "Ubuntu",
+  "architecture": "x86_64",
+  "project_root": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "runtime_store": "/home/mzyx/three_engine_20261004",
+  "same_host_os_architecture_required": true,
+  "old_windows_data_comparable": false,
+  "protocol_exception": "User authorized a separate same-distro WSL2 cohort on 2026-10-04; old Windows definitions unchanged",
+  "engines": {
+    "quickjs": {
+      "engine": "upstream QuickJS",
+      "shell": "qjs",
+      "version": "2026-06-04",
+      "source_repository": "https://github.com/bellard/quickjs.git",
+      "source_commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+      "binary": {
+        "path": "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs",
+        "sha256": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+        "size_bytes": 5090744
+      },
+      "dependencies": [],
+      "runtime_flags": [],
+      "command_prefix": [
+        "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs"
+      ],
+      "compiler": {
+        "command": [
+          "gcc",
+          "--version"
+        ],
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "exit_code": 0,
+        "stdout": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "stderr": ""
+      },
+      "build_mode": "upstream optimized -O2; debug symbols retained",
+      "build_flags_evidence": "runtime/quickjs_build.log",
+      "dynamic_libraries": [
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+          "size_bytes": 952616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+          "size_bytes": 2129424
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "size_bytes": 236616
+        }
+      ],
+      "timer_adapter": {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+        "sha256": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7"
+      }
+    },
+    "v8": {
+      "engine": "V8",
+      "shell": "d8",
+      "version": "15.6.21",
+      "binary": {
+        "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+        "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+        "size_bytes": 53498016
+      },
+      "dependencies": [
+        {
+          "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+          "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+          "size_bytes": 374368
+        },
+        {
+          "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat",
+          "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+          "size_bytes": 10819840
+        }
+      ],
+      "archive": {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/v8-official-linux64-15.6.21/v8-linux64-rel-15.6.21.zip",
+        "sha256": "5791134b7e2bca44468e37c536511809d47fb0302ab86d37b875073887be81c1",
+        "size_bytes": 21045495
+      },
+      "download_url": "https://storage.googleapis.com/chromium-v8/official/canary/v8-linux64-rel-15.6.21.zip",
+      "binary_source": "official chromium-v8 canary rel storage; no jsvu wrapper",
+      "archive_members": [
+        "d8",
+        "icudtl.dat",
+        "snapshot_blob.bin",
+        "v8_build_config.json"
+      ],
+      "source_commit": null,
+      "version_tag_commit_reference": "37fb84941c9be9f9914ee50b1ad366f06a1bd764",
+      "version_tag_is_artifact_commit_proof": false,
+      "compiler": null,
+      "full_gn_args": null,
+      "build_mode": "official rel artifact; metadata file retained if present",
+      "runtime_flags": [
+        "--max-opt=0",
+        "--no-lazy"
+      ],
+      "command_prefix": [
+        "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+        "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+        "--max-opt=0",
+        "--no-lazy"
+      ],
+      "dynamic_libraries": [
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+          "sha256": "90491a21ce44efcf3bd4b65ec82501c091d7ebe7f8d9b341dd01d721001d9ecd",
+          "size_bytes": 14408
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+          "size_bytes": 952616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+          "size_bytes": 183024
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+          "size_bytes": 2129424
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "size_bytes": 236616
+        }
+      ],
+      "build_metadata": {
+        "arch": "x64",
+        "asan": false,
+        "atomic_object_field_writes": true,
+        "cet_shadow_stack": false,
+        "cfi": false,
+        "clang": true,
+        "clang_coverage": false,
+        "code_comments": false,
+        "component_build": false,
+        "concurrent_marking": true,
+        "current_cpu": "x64",
+        "dcheck_always_on": false,
+        "debug_code": false,
+        "DEBUG_defined": false,
+        "debugging_features": false,
+        "dict_property_const_tracking": false,
+        "direct_handle": false,
+        "disassembler": false,
+        "dumpling": false,
+        "full_debug": false,
+        "gdbjit": false,
+        "has_jitless": false,
+        "sparkplug_plus": true,
+        "has_maglev": true,
+        "has_turbofan": true,
+        "has_webassembly": true,
+        "has_wasm_interpreter": false,
+        "i18n": true,
+        "temporal": true,
+        "is_android": false,
+        "is_ios": false,
+        "is_linux": true,
+        "js_shared_memory": true,
+        "lite_mode": false,
+        "local_off_stack_check": false,
+        "mips_arch_variant": "",
+        "mips_use_msa": false,
+        "msan": false,
+        "official_build": false,
+        "pointer_compression": true,
+        "pointer_compression_shared_cage": true,
+        "runtime_call_stats": false,
+        "sandbox": true,
+        "sandbox_hardware_support": false,
+        "simd_mips": false,
+        "simulator_run": false,
+        "single_generation": false,
+        "slow_dchecks": false,
+        "target_cpu": "x64",
+        "tsan": false,
+        "ubsan": false,
+        "use_sanitizer": false,
+        "v8_cfi": false,
+        "v8_current_cpu": "x64",
+        "v8_target_cpu": "x64",
+        "verification_features": false,
+        "verify_csa": false,
+        "verify_heap": false,
+        "verify_predictable": false,
+        "wasm_random_fuzzers": true,
+        "memory_corruption_api": false,
+        "lower_limits_mode": false,
+        "test_only_sync_points": false
+      },
+      "build_metadata_artifact": {
+        "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/v8_build_config.json",
+        "sha256": "31f543da4178f02deca3aa3ca13d8873607edc1d57dbd57bd29b7ca2bff84cb6",
+        "size_bytes": 1502
+      },
+      "timer_adapter": {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+        "sha256": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+      }
+    },
+    "jsc": {
+      "engine": "JavaScriptCore",
+      "shell": "jsc",
+      "version": "fd3406f133a4e56d7aaf399ba5611ae44b8da7e9",
+      "source_repository": "https://github.com/WebKit/WebKit",
+      "source_commit": "fd3406f133a4e56d7aaf399ba5611ae44b8da7e9",
+      "binary": {
+        "path": "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+        "sha256": "65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f",
+        "size_bytes": 633408
+      },
+      "dependencies": [
+        {
+          "path": "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/lib/libJavaScriptCore.so.1.0.0",
+          "sha256": "2ba4fe56f79c97cafafe065454bd5b5c6c168e536ab00d33d5cc48f65b375f79",
+          "size_bytes": 44406776
+        }
+      ],
+      "compiler": "GCC/G++ 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1)",
+      "build_mode": "JSCOnly Release -O3 -DNDEBUG; ENABLE_C_LOOP=OFF; lightweight _GLIBCXX_ASSERTIONS=1",
+      "build_flags_evidence": "../jsc_baseline/build_configuration.txt",
+      "runtime_flags": [
+        "--useJIT=false",
+        "--useLLInt=true",
+        "--validateOptions=true"
+      ],
+      "command_prefix": [
+        "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+        "--useJIT=false",
+        "--useLLInt=true",
+        "--validateOptions=true"
+      ],
+      "dynamic_libraries": [
+        {
+          "path": "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/lib/libJavaScriptCore.so.1.0.0",
+          "sha256": "2ba4fe56f79c97cafafe065454bd5b5c6c168e536ab00d33d5cc48f65b375f79",
+          "size_bytes": 44406776
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+          "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+          "size_bytes": 2592224
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+          "size_bytes": 952616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+          "size_bytes": 2129424
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libatomic.so.1.2.0",
+          "sha256": "9d8a34468e614a71a6427dbabb0ac24eb8cb1e324dc6aa3bf95eb6f59201f000",
+          "size_bytes": 35120
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libicui18n.so.74.2",
+          "sha256": "3550b194eb2cf2e6f798f033eb9ca279d498c21296b4a18790ce158d2023e47b",
+          "size_bytes": 3455304
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libicuuc.so.74.2",
+          "sha256": "7560aadde38e5f4237a47a1ddd5891f9b36768a77a60faae30beee003ac01901",
+          "size_bytes": 2140336
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+          "size_bytes": 183024
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+          "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+          "size_bytes": 236616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libicudata.so.74.2",
+          "sha256": "ddbb3718b8bd9cbd780e5ab08b4503c30a6c4fa0706ebe5d074ed6b596c1714e",
+          "size_bytes": 30795392
+        }
+      ],
+      "timer_adapter": {
+        "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+        "sha256": "0c485996a598b7e36f2f292b66397adc0390cbe6b69b55199e47e1c6c1e37010"
+      }
+    }
+  },
+  "mode": "MAIN_MONOTONIC_V1",
+  "old_manifest_sha256": "40c566a7213e0fd6c3421e849328cad074eec0736f12d42c9c29ada45c3d92dd",
+  "clock": "benchNow -> captured native performance.now -> CLOCK_MONOTONIC elapsed milliseconds",
+  "new_quickjs_shell": false
+}

@@ -1,0 +1,207 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000005f2ce0 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE>:
+  5f2ce0:	55                   	push   %rbp
+  5f2ce1:	48 89 e5             	mov    %rsp,%rbp
+  5f2ce4:	41 57                	push   %r15
+  5f2ce6:	41 56                	push   %r14
+  5f2ce8:	41 55                	push   %r13
+  5f2cea:	41 54                	push   %r12
+  5f2cec:	53                   	push   %rbx
+  5f2ced:	48 83 ec 48          	sub    $0x48,%rsp
+  5f2cf1:	89 d3                	mov    %edx,%ebx
+  5f2cf3:	49 89 f6             	mov    %rsi,%r14
+  5f2cf6:	49 89 ff             	mov    %rdi,%r15
+  5f2cf9:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f2d00:	00 00 
+  5f2d02:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  5f2d06:	4c 8b a7 d8 1e 01 00 	mov    0x11ed8(%rdi),%r12
+  5f2d0d:	0f b6 05 3c 57 b2 01 	movzbl 0x1b2573c(%rip),%eax        # 2118450 <_ZN2v85Shell18cached_code_mutex_E>
+  5f2d14:	3c 02                	cmp    $0x2,%al
+  5f2d16:	74 4f                	je     5f2d67 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x87>
+  5f2d18:	48 8d 05 f1 ea 02 00 	lea    0x2eaf1(%rip),%rax        # 621810 <_ZNSt4__Cr10__function13__policy_funcIFvvEE11__call_funcB9sqn240000IZN2v84base8CallOnceIJPNS5_11StartupDataEEEEvPNS_6atomicIhEENS6_16FunctionWithArgsIJDpT_EE4typeESF_Qsr3stdE13conjunction_vIDpNS_9is_scalarISE_EEEEUlvE_EEvPKNS0_16__policy_storageE>
+  5f2d1f:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+  5f2d23:	48 8d 05 0e 73 bc ff 	lea    -0x438cf2(%rip),%rax        # 1ba038 <_ZZNSt4__Cr10__function8__policy8__createB9sqn240000IZN2v84base8CallOnceIJPvEEEvPNS_6atomicIhEENS4_16FunctionWithArgsIJDpT_EE4typeESC_Qsr3stdE13conjunction_vIDpNS_9is_scalarISB_EEEEUlvE_EEPKS1_vE8__policy>
+  5f2d2a:	48 89 45 c8          	mov    %rax,-0x38(%rbp)
+  5f2d2e:	48 8d 05 cb ea 02 00 	lea    0x2eacb(%rip),%rax        # 621800 <_ZN2v84base16LazyInstanceImplINS0_5MutexENS0_32StaticallyAllocatedInstanceTraitIS2_EENS0_21DefaultConstructTraitIS2_EENS0_23ThreadSafeInitOnceTraitENS0_18LeakyInstanceTraitIS2_EEE12InitInstanceEPv>
+  5f2d35:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+  5f2d39:	48 8d 05 18 57 b2 01 	lea    0x1b25718(%rip),%rax        # 2118458 <_ZN2v85Shell18cached_code_mutex_E+0x8>
+  5f2d40:	48 89 45 b8          	mov    %rax,-0x48(%rbp)
+  5f2d44:	48 8d 3d 05 57 b2 01 	lea    0x1b25705(%rip),%rdi        # 2118450 <_ZN2v85Shell18cached_code_mutex_E>
+  5f2d4b:	48 8d 75 b0          	lea    -0x50(%rbp),%rsi
+  5f2d4f:	e8 7c c8 7d 01       	call   1dcf5d0 <_ZN2v84base12CallOnceImplEPNSt4__Cr6atomicIhEENS1_8functionIFvvEEE>
+  5f2d54:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  5f2d58:	48 8b 40 08          	mov    0x8(%rax),%rax
+  5f2d5c:	48 85 c0             	test   %rax,%rax
+  5f2d5f:	74 06                	je     5f2d67 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x87>
+  5f2d61:	48 8b 7d b0          	mov    -0x50(%rbp),%rdi
+  5f2d65:	ff d0                	call   *%rax
+  5f2d67:	48 8d 3d ea 56 b2 01 	lea    0x1b256ea(%rip),%rdi        # 2118458 <_ZN2v85Shell18cached_code_mutex_E+0x8>
+  5f2d6e:	48 89 7d a0          	mov    %rdi,-0x60(%rbp)
+  5f2d72:	e8 c9 d0 7d 01       	call   1dcfe40 <_ZN2v84base5Mutex7TryLockEv>
+  5f2d77:	84 c0                	test   %al,%al
+  5f2d79:	75 6b                	jne    5f2de6 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x106>
+  5f2d7b:	89 5d a8             	mov    %ebx,-0x58(%rbp)
+  5f2d7e:	4d 8d 6c 24 08       	lea    0x8(%r12),%r13
+  5f2d83:	41 0f b6 5c 24 10    	movzbl 0x10(%r12),%ebx
+  5f2d89:	49 8b 7c 24 08       	mov    0x8(%r12),%rdi
+  5f2d8e:	e8 bd ce 23 00       	call   82fc50 <_ZN2v88internal4Heap5stackEv>
+  5f2d93:	49 89 c4             	mov    %rax,%r12
+  5f2d96:	80 fb 01             	cmp    $0x1,%bl
+  5f2d99:	75 19                	jne    5f2db4 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0xd4>
+  5f2d9b:	4c 89 6d b0          	mov    %r13,-0x50(%rbp)
+  5f2d9f:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+  5f2da3:	48 89 45 b8          	mov    %rax,-0x48(%rbp)
+  5f2da7:	48 8d 15 82 6b 02 00 	lea    0x26b82(%rip),%rdx        # 619930 <_ZN4heap4base5Stack24SetMarkerAndCallbackImplIZN2v88internal9LocalHeap18ExecuteWhileParkedIZNS4_16ParkedMutexGuardC1EPS5_PNS3_4base5MutexEEUlvE_EEvT_EUlvE_EEvPS1_PvPKv>
+  5f2dae:	48 8d 75 b0          	lea    -0x50(%rbp),%rsi
+  5f2db2:	eb 27                	jmp    5f2ddb <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0xfb>
+  5f2db4:	e8 97 db 19 00       	call   790950 <_ZN2v88internal8ThreadId18GetCurrentThreadIdEv>
+  5f2db9:	4c 89 6d b0          	mov    %r13,-0x50(%rbp)
+  5f2dbd:	48 8d 4d a0          	lea    -0x60(%rbp),%rcx
+  5f2dc1:	48 89 4d b8          	mov    %rcx,-0x48(%rbp)
+  5f2dc5:	89 45 90             	mov    %eax,-0x70(%rbp)
+  5f2dc8:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+  5f2dcc:	48 89 45 98          	mov    %rax,-0x68(%rbp)
+  5f2dd0:	48 8d 15 c9 6b 02 00 	lea    0x26bc9(%rip),%rdx        # 6199a0 <_ZN4heap4base5Stack43SetMarkerForBackgroundThreadAndCallbackImplIZN2v88internal9LocalHeap18ExecuteWhileParkedIZNS4_16ParkedMutexGuardC1EPS5_PNS3_4base5MutexEEUlvE_EEvT_EUlvE_EEvPS1_PvPKv>
+  5f2dd7:	48 8d 75 90          	lea    -0x70(%rbp),%rsi
+  5f2ddb:	4c 89 e7             	mov    %r12,%rdi
+  5f2dde:	e8 ad 9f b6 00       	call   115cd90 <_ZN4heap4base5Stack24TrampolineCallbackHelperEPvPFvPS1_S2_PKvE>
+  5f2de3:	8b 5d a8             	mov    -0x58(%rbp),%ebx
+  5f2de6:	49 8b 06             	mov    (%r14),%rax
+  5f2de9:	89 c1                	mov    %eax,%ecx
+  5f2deb:	83 e1 03             	and    $0x3,%ecx
+  5f2dee:	83 f9 01             	cmp    $0x1,%ecx
+  5f2df1:	0f 85 95 01 00 00    	jne    5f2f8c <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x2ac>
+  5f2df7:	81 78 ff 26 04 00 00 	cmpl   $0x426,-0x1(%rax)
+  5f2dfe:	0f 83 88 01 00 00    	jae    5f2f8c <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x2ac>
+  5f2e04:	48 8d 7d 90          	lea    -0x70(%rbp),%rdi
+  5f2e08:	4c 89 fe             	mov    %r15,%rsi
+  5f2e0b:	4c 89 f2             	mov    %r14,%rdx
+  5f2e0e:	e8 8d 01 05 00       	call   642fa0 <_ZN2v86String9Utf8ValueC1EPNS_7IsolateENS_5LocalINS_5ValueEEE>
+  5f2e13:	48 8b 75 90          	mov    -0x70(%rbp),%rsi
+  5f2e17:	4c 8d 7d b0          	lea    -0x50(%rbp),%r15
+  5f2e1b:	48 8d 55 af          	lea    -0x51(%rbp),%rdx
+  5f2e1f:	4c 89 ff             	mov    %r15,%rdi
+  5f2e22:	e8 c9 86 00 00       	call   5fb4f0 <_ZNSt4__Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2ILi0EEEPKcRKS4_>
+  5f2e27:	89 5d c8             	mov    %ebx,-0x38(%rbp)
+  5f2e2a:	4c 8b 25 37 56 b2 01 	mov    0x1b25637(%rip),%r12        # 2118468 <_ZN2v85Shell16cached_code_map_E+0x8>
+  5f2e31:	4d 85 e4             	test   %r12,%r12
+  5f2e34:	0f 84 ff 00 00 00    	je     5f2f39 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x259>
+  5f2e3a:	4c 0f be 6d c7       	movsbq -0x39(%rbp),%r13
+  5f2e3f:	4d 85 ed             	test   %r13,%r13
+  5f2e42:	79 19                	jns    5f2e5d <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x17d>
+  5f2e44:	4c 8b 7d b0          	mov    -0x50(%rbp),%r15
+  5f2e48:	4c 8b 6d b8          	mov    -0x48(%rbp),%r13
+  5f2e4c:	eb 0f                	jmp    5f2e5d <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x17d>
+  5f2e4e:	66 90                	xchg   %ax,%ax
+  5f2e50:	4d 8b 24 24          	mov    (%r12),%r12
+  5f2e54:	4d 85 e4             	test   %r12,%r12
+  5f2e57:	0f 84 dc 00 00 00    	je     5f2f39 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x259>
+  5f2e5d:	4d 0f be 74 24 37    	movsbq 0x37(%r12),%r14
+  5f2e63:	4d 85 f6             	test   %r14,%r14
+  5f2e66:	79 18                	jns    5f2e80 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x1a0>
+  5f2e68:	49 8b 74 24 20       	mov    0x20(%r12),%rsi
+  5f2e6d:	4d 8b 74 24 28       	mov    0x28(%r12),%r14
+  5f2e72:	eb 11                	jmp    5f2e85 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x1a5>
+  5f2e74:	66 66 66 2e 0f 1f 84 	data16 data16 cs nopw 0x0(%rax,%rax,1)
+  5f2e7b:	00 00 00 00 00 
+  5f2e80:	49 8d 74 24 20       	lea    0x20(%r12),%rsi
+  5f2e85:	4d 39 ee             	cmp    %r13,%r14
+  5f2e88:	4c 89 ea             	mov    %r13,%rdx
+  5f2e8b:	49 0f 42 d6          	cmovb  %r14,%rdx
+  5f2e8f:	4c 89 ff             	mov    %r15,%rdi
+  5f2e92:	e8 f9 12 a8 01       	call   2074190 <memcmp@plt>
+  5f2e97:	85 c0                	test   %eax,%eax
+  5f2e99:	75 25                	jne    5f2ec0 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x1e0>
+  5f2e9b:	4d 39 f5             	cmp    %r14,%r13
+  5f2e9e:	75 13                	jne    5f2eb3 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x1d3>
+  5f2ea0:	41 3b 5c 24 38       	cmp    0x38(%r12),%ebx
+  5f2ea5:	0f 9c c1             	setl   %cl
+  5f2ea8:	0f 9f c0             	setg   %al
+  5f2eab:	28 c8                	sub    %cl,%al
+  5f2ead:	84 c0                	test   %al,%al
+  5f2eaf:	79 1d                	jns    5f2ece <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x1ee>
+  5f2eb1:	eb 9d                	jmp    5f2e50 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x170>
+  5f2eb3:	0f 93 c0             	setae  %al
+  5f2eb6:	0f b6 c0             	movzbl %al,%eax
+  5f2eb9:	8d 04 45 ff ff ff ff 	lea    -0x1(,%rax,2),%eax
+  5f2ec0:	85 c0                	test   %eax,%eax
+  5f2ec2:	0f 98 c1             	sets   %cl
+  5f2ec5:	0f 9f c0             	setg   %al
+  5f2ec8:	28 c8                	sub    %cl,%al
+  5f2eca:	84 c0                	test   %al,%al
+  5f2ecc:	78 82                	js     5f2e50 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x170>
+  5f2ece:	74 0c                	je     5f2edc <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x1fc>
+  5f2ed0:	4d 8b 64 24 08       	mov    0x8(%r12),%r12
+  5f2ed5:	4d 85 e4             	test   %r12,%r12
+  5f2ed8:	75 83                	jne    5f2e5d <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x17d>
+  5f2eda:	eb 5d                	jmp    5f2f39 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x259>
+  5f2edc:	48 8d 05 85 55 b2 01 	lea    0x1b25585(%rip),%rax        # 2118468 <_ZN2v85Shell16cached_code_map_E+0x8>
+  5f2ee3:	49 39 c4             	cmp    %rax,%r12
+  5f2ee6:	74 51                	je     5f2f39 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x259>
+  5f2ee8:	4d 8b 74 24 40       	mov    0x40(%r12),%r14
+  5f2eed:	4d 85 f6             	test   %r14,%r14
+  5f2ef0:	74 47                	je     5f2f39 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x259>
+  5f2ef2:	41 8b 46 08          	mov    0x8(%r14),%eax
+  5f2ef6:	48 63 d8             	movslq %eax,%rbx
+  5f2ef9:	48 89 df             	mov    %rbx,%rdi
+  5f2efc:	e8 ef 25 81 01       	call   1e054f0 <_Znam>
+  5f2f01:	49 89 c7             	mov    %rax,%r15
+  5f2f04:	49 8b 36             	mov    (%r14),%rsi
+  5f2f07:	48 89 c7             	mov    %rax,%rdi
+  5f2f0a:	48 89 da             	mov    %rbx,%rdx
+  5f2f0d:	e8 ee 11 a8 01       	call   2074100 <memcpy@plt>
+  5f2f12:	bf 18 00 00 00       	mov    $0x18,%edi
+  5f2f17:	e8 d4 25 81 01       	call   1e054f0 <_Znam>
+  5f2f1c:	49 89 c6             	mov    %rax,%r14
+  5f2f1f:	48 89 c7             	mov    %rax,%rdi
+  5f2f22:	4c 89 fe             	mov    %r15,%rsi
+  5f2f25:	89 da                	mov    %ebx,%edx
+  5f2f27:	b9 01 00 00 00       	mov    $0x1,%ecx
+  5f2f2c:	e8 af bb 03 00       	call   62eae0 <_ZN2v814ScriptCompiler10CachedDataC1EPKhiNS1_12BufferPolicyE>
+  5f2f31:	80 7d c7 00          	cmpb   $0x0,-0x39(%rbp)
+  5f2f35:	79 22                	jns    5f2f59 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x279>
+  5f2f37:	eb 09                	jmp    5f2f42 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x262>
+  5f2f39:	45 31 f6             	xor    %r14d,%r14d
+  5f2f3c:	80 7d c7 00          	cmpb   $0x0,-0x39(%rbp)
+  5f2f40:	79 17                	jns    5f2f59 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x279>
+  5f2f42:	48 8b 7d b0          	mov    -0x50(%rbp),%rdi
+  5f2f46:	48 be ff ff ff ff ff 	movabs $0x7fffffffffffffff,%rsi
+  5f2f4d:	ff ff 7f 
+  5f2f50:	48 23 75 c0          	and    -0x40(%rbp),%rsi
+  5f2f54:	e8 f7 25 81 01       	call   1e05550 <_ZdaPv>
+  5f2f59:	48 8d 7d 90          	lea    -0x70(%rbp),%rdi
+  5f2f5d:	e8 3e 02 05 00       	call   6431a0 <_ZN2v86String9Utf8ValueD1Ev>
+  5f2f62:	48 8b 7d a0          	mov    -0x60(%rbp),%rdi
+  5f2f66:	e8 75 ce 7d 01       	call   1dcfde0 <_ZN2v84base5Mutex6UnlockEv>
+  5f2f6b:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  5f2f72:	00 00 
+  5f2f74:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+  5f2f78:	75 2c                	jne    5f2fa6 <_ZN2v85Shell15LookupCodeCacheEPNS_7IsolateENS_5LocalINS_5ValueEEENS_10ScriptTypeE+0x2c6>
+  5f2f7a:	4c 89 f0             	mov    %r14,%rax
+  5f2f7d:	48 83 c4 48          	add    $0x48,%rsp
+  5f2f81:	5b                   	pop    %rbx
+  5f2f82:	41 5c                	pop    %r12
+  5f2f84:	41 5d                	pop    %r13
+  5f2f86:	41 5e                	pop    %r14
+  5f2f88:	41 5f                	pop    %r15
+  5f2f8a:	5d                   	pop    %rbp
+  5f2f8b:	c3                   	ret
+  5f2f8c:	48 8d 3d e3 e1 b5 ff 	lea    -0x4a1e1d(%rip),%rdi        # 151176 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x45966>
+  5f2f93:	48 8d 35 9e e2 b5 ff 	lea    -0x4a1d62(%rip),%rsi        # 151238 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x45a28>
+  5f2f9a:	31 c0                	xor    %eax,%eax
+  5f2f9c:	e8 3f 73 7d 01       	call   1dca2e0 <_Z8V8_FatalPKcz>
+  5f2fa1:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  5f2fa6:	e8 c5 11 a8 01       	call   2074170 <__stack_chk_fail@plt>
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section malloc_hook:
+
+Disassembly of section .plt:

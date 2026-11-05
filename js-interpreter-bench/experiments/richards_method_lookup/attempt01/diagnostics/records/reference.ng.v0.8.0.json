@@ -1,0 +1,26 @@
+{
+  "exit_code": 60,
+  "stdout": "",
+  "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (60) SSL certificate problem: self-signed certificate in certificate chain\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.\n",
+  "command": [
+    "curl",
+    "-fL",
+    "--connect-timeout",
+    "10",
+    "--max-time",
+    "20",
+    "https://raw.githubusercontent.com/quickjs-ng/quickjs/v0.8.0/quickjs.c"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-08T14:37:03.958258+00:00",
+  "outer_start_ns": 4147375813,
+  "outer_stop_ns": 4184263397,
+  "outer_wall_ns": 36887584,
+  "boot_id": "b8b45e52-a8a1-4d8c-ab48-72f26dd975c6",
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "LD_PRELOAD": null
+}

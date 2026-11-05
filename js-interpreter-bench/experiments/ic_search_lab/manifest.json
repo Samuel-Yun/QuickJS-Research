@@ -1,0 +1,186 @@
+{
+  "status": "BOUNDED_SEARCH_COMPLETE_NO_ACCEPTED_CANDIDATE",
+  "branch": "myx",
+  "start_commit": "f191a09a21be9a672f2c4ac06ddbe9d11b483a77",
+  "environment": "environment.postreboot.json",
+  "cohort": "WSL2 Ubuntu24.04.2 / x86_64 / AMD Ryzen7 5800H",
+  "boot_id": "05b4c4ae-91e8-4b42-a8b6-a958aa7b93ef",
+  "affinity": [
+    2
+  ],
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1)13.3.0",
+  "build": "make -B -j1 qjs qjsc; unchanged Makefile; -O2 -g -fwrapv -DHAVE_CLOSEFROM; assertions retained; no LTO/PGO/new NDEBUG",
+  "upstream_version": "2026-06-04",
+  "upstream_commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "frozen_artifacts": {
+    "A": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/A.qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "size": 5090704,
+      "source": "byte-identical copy of frozen /home/mzyx/read_ic_dequickening_attempt01/A/qjs"
+    },
+    "M": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/M.qjs",
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "size": 5102680,
+      "source": "byte-identical copy of frozen /home/mzyx/ic_mechanism_audit_attempt01/M/qjs"
+    }
+  },
+  "seed_archive": "seed_M.tar.gz",
+  "seed_archive_sha256": "4eab4d528e4324c328d716780252ed1c41bcdfef706009f9424d39a2e777db52",
+  "candidates": [
+    {
+      "id": "c001",
+      "parent": "M",
+      "manifest": "c001.matched.json",
+      "manifest_sha256": "479deba0598d9e5700d88cbd3176e93a547ef6e9c129d65c2e02c723eabc6a82",
+      "binary_sha256": "f40c184e780f590c973b3a0453c0db754fc005c55a3e86c9a0e17f014567c73d",
+      "binary_bytes": 5102920,
+      "local_artifact": "artifacts/c001.matched.qjs",
+      "patch": "patches/c001.patch",
+      "patch_sha256": "b3627ebdda14987031dbd8e52500bfa789403d67cf36455bdb1bb00fe8c22f82"
+    },
+    {
+      "id": "c002",
+      "parent": "M",
+      "manifest": "c002.matched.json",
+      "manifest_sha256": "8eea9b9a26bbad1b6e5c58bb2849cd8e2bf735b677e9e2cfac9c55ad7f9412f3",
+      "binary_sha256": "546c62165d6b51db50df6a0b72f3bac6e14d8e2a6d429c33845dc8ccc8c7394e",
+      "binary_bytes": 5103840,
+      "local_artifact": "artifacts/c002.matched.qjs",
+      "patch": "patches/c002.patch",
+      "patch_sha256": "52327655654f604f4815ff8ed1b7b310bc1a0047131e02d96a48503097060d6a"
+    },
+    {
+      "id": "c003",
+      "parent": "M",
+      "manifest": "c003.matched.json",
+      "manifest_sha256": "7d01b4c0153ecde612254f95f9b700cf8168ba220a738ed3a836d89a230a86a6",
+      "binary_sha256": "90b32fdbe90a1739fda469c8ddaaf142434d9a3b41fc36db65d3e15a651d0fee",
+      "binary_bytes": 5102784,
+      "local_artifact": "artifacts/c003.matched.qjs",
+      "patch": "patches/c003.patch",
+      "patch_sha256": "90ffef8664e102f24620f17494440dc16e3c0be7d46af740c1fbc08ee94f22ee"
+    },
+    {
+      "id": "c004",
+      "parent": "c002",
+      "manifest": "c004.matched.json",
+      "manifest_sha256": "0a1612af70fb5f8dd141b0fa76a7a2dffde301d166d23e9ed58177db91260f56",
+      "binary_sha256": "0927203361edf3caa4d74c7d65b905fd4ecf255315d9a8fbd4a7eafea50c044a",
+      "binary_bytes": 5103864,
+      "local_artifact": "artifacts/c004.matched.qjs",
+      "patch": "patches/c004.patch",
+      "patch_sha256": "409994133acee8fa884235ff55abc6e6c6843fde3e721936f2eec7d1c4557b57"
+    },
+    {
+      "id": "c005",
+      "parent": "M",
+      "manifest": "c005.matched.json",
+      "manifest_sha256": "baa6d8a5a4efd4292489f564a877fa58e34e0c8cdbfd44a37c4758abb83c0622",
+      "binary_sha256": "286c6f61822e3fc9812d5f01c69bcf481532f1ff31c98c3c39ee1a8b84b13e4a",
+      "binary_bytes": 5103056,
+      "local_artifact": "artifacts/c005.matched.qjs",
+      "patch": "patches/c005.patch",
+      "patch_sha256": "d0c6c3b2d394c602d469dc21e1d0dbff9d44a24e8281d65e1bbcc5e136a02d6a"
+    },
+    {
+      "id": "c006",
+      "parent": "M",
+      "manifest": "c006.matched.json",
+      "manifest_sha256": "4b95e748d1501e1695aaf1f3e3cde76254e0c6e16d6a6e569a1b08116dea7344",
+      "binary_sha256": "b3ae365f0294ad4206cd31885a13b61b892a02121bebb65311ab549f8e906841",
+      "binary_bytes": 5102720,
+      "local_artifact": "artifacts/c006.matched.qjs",
+      "patch": "patches/c006.patch",
+      "patch_sha256": "d08feb18cdab07497f89833fbf47f41cc3cab77ddca9caf8c27225ad6f9c808a"
+    },
+    {
+      "id": "c007",
+      "parent": "M",
+      "manifest": "c007.matched.json",
+      "manifest_sha256": "d97b617ce79d5ea1efba282747324636fc109e946557fca2629bbef796895d6f",
+      "binary_sha256": "b4008009cb0b4e40b60947d92b292a5fd1a2ec3e308e1be6686c6a1466aa468d",
+      "binary_bytes": 5102800,
+      "local_artifact": "artifacts/c007.matched.qjs",
+      "patch": "patches/c007.patch",
+      "patch_sha256": "2d9478fcae892386823e779191ea6f341c5b90feab00ffc0a73446c83b8317e8"
+    },
+    {
+      "id": "c008",
+      "parent": "M",
+      "manifest": "c008.matched.json",
+      "manifest_sha256": "47fe27f4783d8c11e41d793895b9c69cbe0fff9c9bd95c1d3f844a439ea82f5c",
+      "binary_sha256": "ea2a6cff46de2a43749656def5d5814cc25efa27edc37980914e72302d9f6f48",
+      "binary_bytes": 5102040,
+      "local_artifact": "artifacts/c008.matched.qjs",
+      "patch": "patches/c008.patch",
+      "patch_sha256": "df6866456025f71cfff8c040aca00c40950127380331d5eefbb2683b38fe32b1"
+    },
+    {
+      "id": "c009",
+      "parent": "M",
+      "manifest": "c009.matched.json",
+      "manifest_sha256": "072577dba5edd51b143f8768fd587ce4e18202d52bfdea346409afcf48829d19",
+      "binary_sha256": "73348b49ce965cf26b2da983662d36e979d4331c13f6fe8f7a85371a81a62144",
+      "binary_bytes": 5104464,
+      "local_artifact": "artifacts/c009.matched.qjs",
+      "patch": "patches/c009.patch",
+      "patch_sha256": "8bcc6926849fef54dca60ff8d1628d96d6f37b003e2b36b4ed91f5489d653715"
+    },
+    {
+      "id": "c010",
+      "parent": "M",
+      "manifest": "c010.matched.json",
+      "manifest_sha256": "c727c579e0742cfece0a32b1cb7a9cf29ca64a22d16c8795e826bed79e987efc",
+      "binary_sha256": "bbb26dc7f0c1024ba422fb27b102ca8ae4aaa85036a908072dc4c922c305fa0a",
+      "binary_bytes": 5102880,
+      "local_artifact": "artifacts/c010.matched.qjs",
+      "patch": "patches/c010.patch",
+      "patch_sha256": "09ff48527059d6f146cb1c491037e950729bfbf476d2ceaf9776686adcc4a1d3"
+    },
+    {
+      "id": "c011",
+      "parent": "M",
+      "manifest": "c011.matched.json",
+      "manifest_sha256": "822031c9beab92dd83ae06ac6431070f6ad1fb0ced6827e2f182611833e30377",
+      "binary_sha256": "d626f785ab3646fff525610a1a5ae23807f82a59109cae77b53438512bad4a0a",
+      "binary_bytes": 5102104,
+      "local_artifact": "artifacts/c011.matched.qjs",
+      "patch": "patches/c011.patch",
+      "patch_sha256": "a5ec54ce955e8e3c47abbdecf6b1eedfe714349777dbbdc198856c451673652e"
+    },
+    {
+      "id": "c012",
+      "parent": "M",
+      "manifest": "c012.matched.json",
+      "manifest_sha256": "cb8a189d5a7b5fbdf6212bdf11a4cc63c75fc43925548fd9243f32dc5094ce6f",
+      "binary_sha256": "7f3d79f894e8f0fb86725756462b3b42b16af8c46c79934d52ff5eee6e455b83",
+      "binary_bytes": 5102744,
+      "local_artifact": "artifacts/c012.matched.qjs",
+      "patch": "patches/c012.patch",
+      "patch_sha256": "80097432293734af55f557c7563a3c6e1e0822620e4b04fb23661b9344e45501"
+    }
+  ],
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "formal_mode_entered": false,
+  "V8": {
+    "status": "NOT_RUN_THIS_SEARCH",
+    "flags_if_final": [
+      "--jitless",
+      "--no-lazy",
+      "--use-ic"
+    ]
+  },
+  "evidence_files": {
+    "runs.jsonl": "c7e7aa3ce82abd41cca46929ca401b028156baa43cf155ee22f540bbccba5d38",
+    "host_runs.jsonl": "db358569cbff0b6cb69b38e50c7df5e04f4de17fb268582b5ead534fb42b3d06",
+    "search_protocol.json": "e26e8d76becc9a251bcfbb75339c174cf540d61c737aa8c4ce982b292ab58970",
+    "shortlist.json": "6885b4ea5d91ffea8cd513e51de95e7bf8488e82e04f98e7b70deaacb7306fe1",
+    "input_control_limitations.json": "57c7e354449831d22ba9455bea4ae5cc9e065863a8990341b88db3528b5b562a",
+    "regression_followups.json": "196e1097575895d777c67cbb3dba84e083d7a1173e2281b49d68b18c33177c19",
+    "decision.json": "05c58d20a2ae88d6f8a9441036e3b28a620d051f23ccd96716d6ad633f786eb2"
+  },
+  "private_JWST": "Not used/read/copied/modified; excluded from all source archives",
+  "note": "ELFs/active objects are ignored local artifacts. Public source archive plus parent patches restore code, not identical DWARF paths or old timings."
+}

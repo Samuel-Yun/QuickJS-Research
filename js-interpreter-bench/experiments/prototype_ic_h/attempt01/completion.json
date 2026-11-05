@@ -1,0 +1,112 @@
+{
+  "status": "H_IMPLEMENTED_VALIDATED_NO_SUPPORTED_NET_GAIN",
+  "timestamp": "2026-10-29T14:04:29.405255+00:00",
+  "started_recorded_UTC": "2026-10-29T11:31:35.782388+00:00",
+  "elapsed_recorded_UTC_seconds": 9173.622867,
+  "admission": "PASS_NONZERO_ALL_THREE_RICHARDS_SITES",
+  "H_sha256": "37b1aa9f755e94fb0db61a789d78c97addbff61835b99f3288a3ceb26e8932e4",
+  "semantic_correctness": {
+    "expected": 96,
+    "actual_valid": 96,
+    "independent_cases": 8,
+    "modes": 2
+  },
+  "workload_correctness_N1_N2": 30,
+  "selected_N_correctness": 15,
+  "admission_processes": 4,
+  "matched_M_H_workload_mechanism_processes": 20,
+  "guard_coverage_diagnostic_processes": 14,
+  "additional_lifecycle_diagnostic_processes": 1,
+  "internal_regression": "PASS",
+  "COW_OOM_failures_checked": 32,
+  "sanitizer": "ASan+UBSan targeted PASS; not complete test262",
+  "formal": {
+    "status": "PASS",
+    "expected": 450,
+    "actual": 450,
+    "valid": 450,
+    "invalid": 0,
+    "missing": 0,
+    "complete_15_process_blocks": 30,
+    "counts_by_group": {
+      "prototype_method": {
+        "A": 30,
+        "M": 30,
+        "H": 30
+      },
+      "own_method": {
+        "A": 30,
+        "M": 30,
+        "H": 30
+      },
+      "own_integer": {
+        "A": 30,
+        "M": 30,
+        "H": 30
+      },
+      "numeric_control": {
+        "A": 30,
+        "M": 30,
+        "H": 30
+      },
+      "Richards.Richards": {
+        "A": 30,
+        "M": 30,
+        "H": 30
+      }
+    },
+    "schedule_permutations": "PASS",
+    "case_positions": "PASS",
+    "commands_flags_hashes": "PASS",
+    "payload_correctness": "PASS",
+    "one_formal_boot": "PASS",
+    "all_outliers_retained": true,
+    "below_1000ms_formal": 0,
+    "raw_only": true,
+    "no_runtime_paths_opened": true,
+    "confidence_intervals": "exploratory percentile; whole-block paired; no multiple-testing correction"
+  },
+  "source_and_binary_identity": "PASS",
+  "independent_raw_audit": "PASS",
+  "final_prepared_bytecode_M_H": {
+    "compiled_functions": 200,
+    "identical": true
+  },
+  "diagnostic_requested_array_bytes_Richards": {
+    "M": 4976,
+    "H": 7464
+  },
+  "actual_sizeof_site": {
+    "M": 16,
+    "H": 24
+  },
+  "unknown": [
+    "peak indirectly retained shape/object bytes",
+    "RSS effect",
+    "per-step time attribution",
+    "cause of numeric_control change",
+    "host power/frequency and Windows background control"
+  ],
+  "limitations": [
+    "one WSL2 host",
+    "visible variability and exploratory intervals",
+    "no multiple-testing correction",
+    "native layout/compiler decisions not isolated"
+  ],
+  "VM_optimizations_this_round": "restricted H only",
+  "V8_processes": 0,
+  "old_tracked_files_modified": false,
+  "automatic_commits": false,
+  "push": false,
+  "all_outliers_retained": true,
+  "automatic_retries": false,
+  "failure_records": [
+    "correctness/failure_01.md",
+    "correctness/failure_02.md",
+    "correctness/failure_03.md",
+    "correctness/failure_04.md"
+  ],
+  "files_before_closure": 2133,
+  "bytes_before_closure": 3706816,
+  "next_phase_run": false
+}

@@ -1,0 +1,78 @@
+mlSchedule#BDFaIH:[0x7fac85165980->0x7fac8513ed00, NoneFunctionCall, 184]: 40 instructions (1 16-bit instructions, 0 32-bit instructions, 23 instructions with metadata); 288 bytes (104 metadata bytes); 1 parameter(s); 18 callee register(s); 7 variable(s); scope at loc4
+
+bb#1
+Predecessors: [ ]
+[   0] enter              
+[   1] mov                dst:loc5, src:callee
+[   4] to_this            srcDst:this, ecmaMode:NotStrictMode, valueProfile:1
+[   9] mov                dst:loc7, src:this
+[  12] get_by_id          dst:loc8, base:this, property:0, valueProfile:2
+[  18] put_by_id          base:loc7, property:1, value:loc8, flags:
+[  24] get_by_id          dst:loc7, base:this, property:1, valueProfile:3
+[  30] jeq_null           value:loc7, targetLabel:152(->182)
+Successors: [ #9 #2 ]
+
+bb#2
+Predecessors: [ #1 #8 ]
+[  33] loop_hint          
+[  34] check_traps        
+[  35] get_by_id          dst:loc8, base:this, property:1, valueProfile:4
+[  41] get_by_id          dst:loc7, base:loc8, property:2, valueProfile:5
+[  47] call               dst:loc7, callee:loc7, argc:1, argv:14, valueProfile:6
+[  54] jfalse             condition:loc7, targetLabel:26(->80)
+Successors: [ #4 #3 ]
+
+bb#3
+Predecessors: [ #2 ]
+[  57] mov                dst:loc7, src:this
+[  60] get_by_id          dst:loc9, base:this, property:1, valueProfile:7
+[  66] get_by_id          dst:loc8, base:loc9, property:3, valueProfile:8
+[  72] put_by_id          base:loc7, property:1, value:loc8, flags:
+[  78] jmp                targetLabel:89(->167)
+Successors: [ #8 ]
+
+bb#4
+Predecessors: [ #2 ]
+[  80] mov                dst:loc7, src:this
+[  83] get_by_id          dst:loc9, base:this, property:1, valueProfile:9
+[  89] get_by_id          dst:loc8, base:loc9, property:4, valueProfile:10
+[  95] put_by_id          base:loc7, property:5, value:loc8, flags:
+[ 101] get_by_id          dst:loc7, base:this, property:1, valueProfile:11
+[ 107] get_by_id          dst:loc6, base:loc7, property:6, valueProfile:12
+[ 113] mov                dst:loc7, src:this
+[ 116] get_by_id          dst:loc9, base:loc6, property:7, valueProfile:13
+[ 122] jneq_ptr           value:loc9, specialPointer:Object: 0x7fac7f00cb68 with butterfly (nil) (Structure 0x7fab01001ad0:[0x1001ad0/16784080, Function, (0/0, 0/0){}, NonArray, Unknown, Proto:0x7fac7f00be28, Leaf]), StructureID: 16784080(const0), targetLabel:23(->145)
+Successors: [ #6 #5 ]
+
+bb#5
+Predecessors: [ #4 ]
+[ 127] mov                dst:loc10, src:loc6
+[ 130] get_by_id          dst:loc12, base:this, property:1, valueProfile:14
+[ 136] call               dst:loc8, callee:loc10, argc:1, argv:18, valueProfile:15
+[ 143] jmp                targetLabel:18(->161)
+Successors: [ #7 ]
+
+bb#6
+Predecessors: [ #4 ]
+[ 145] mov                dst:loc12, src:loc6
+[ 148] get_by_id          dst:loc11, base:this, property:1, valueProfile:16
+[ 154] call               dst:loc8, callee:loc9, argc:2, argv:18, valueProfile:17
+Successors: [ #7 ]
+
+bb#7
+Predecessors: [ #5 #6 ]
+[ 161] put_by_id          base:loc7, property:1, value:loc8, flags:
+Successors: [ #8 ]
+
+bb#8
+Predecessors: [ #3 #7 ]
+[ 167] get_by_id          dst:loc7, base:this, property:1, valueProfile:18
+[ 173] neq_null           dst:loc7, operand:loc7
+[ 176] *jtrue             condition:loc7, targetLabel:-143(->33)
+Successors: [ #2 #9 ]
+
+bb#9
+Predecessors: [ #1 #8 ]
+[ 182] ret                value:Undefined(const1)
+Successors: [ ]
+

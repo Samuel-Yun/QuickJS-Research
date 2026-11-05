@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "stdout": "Linux LAPTOP-QPKCPDCB 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux\n 15:47:42 up 0 min,  1 user,  load average: 0.00, 0.00, 0.00\n    PID STAT COMMAND         %CPU COMMAND\n      1 Ss   systemd          8.5 /sbin/init\n      2 Sl   init-systemd(Ub  0.0 /init\n      9 Sl   init             0.0 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     55 S<s  systemd-journal  3.4 /usr/lib/systemd/systemd-journald\n     95 Ss   systemd-udevd    3.2 /usr/lib/systemd/systemd-udevd\n    106 S    (udev-worker)    0.3 (udev-worker)\n    107 S    (udev-worker)    1.0 (udev-worker)\n    108 S    (udev-worker)    1.0 (udev-worker)\n    109 S    (udev-worker)    0.3 (udev-worker)\n    110 S    (udev-worker)    0.3 (udev-worker)\n    111 S    (udev-worker)    0.0 (udev-worker)\n    112 S    (udev-worker)    0.0 (udev-worker)\n    113 S    (udev-worker)    0.7 (udev-worker)\n    114 S    (udev-worker)    0.0 (udev-worker)\n    115 S    (udev-worker)    0.7 (udev-worker)\n    116 S    (udev-worker)    0.0 (udev-worker)\n    117 S    (udev-worker)    0.3 (udev-worker)\n    118 S    (udev-worker)    0.0 (udev-worker)\n    123 S    (udev-worker)    0.0 (udev-worker)\n    124 S    (udev-worker)    0.0 (udev-worker)\n    126 S    (udev-worker)    0.0 (udev-worker)\n    132 Ss   systemd-resolve  2.9 /usr/lib/systemd/systemd-resolved\n    134 Ssl  systemd-timesyn  1.8 /usr/lib/systemd/systemd-timesyncd\n    146 Ss   cron             0.0 /usr/sbin/cron -f -P\n    147 Ss   dbus-daemon      0.7 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    153 Ssl  snapd            4.6 /usr/lib/snapd/snapd\n    154 Ss   systemd-logind   2.3 /usr/lib/systemd/systemd-logind\n    163 Ss+  agetty           0.0 /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    173 Ss+  agetty           0.0 /sbin/agetty -o -p -- \\u --noclear - linux\n    181 Ssl  rsyslogd         2.3 /usr/sbin/rsyslogd -n -iNONE\n    182 Ssl  containerd       5.1 /usr/bin/containerd\n    191 Ssl  unattended-upgr  2.8 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    258 Ss   systemd-timedat  1.7 /usr/lib/systemd/systemd-timedated\n    259 Ssl  dockerd         14.2 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    512 Ss   SessionLeader    0.0 /init\n    513 S    Relay(514)       0.0 /init\n    514 Ss+  python3         14.6 python3 /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/recover.py seal\n    515 Ss   login            0.0 /bin/login -f\n    555 Ss   systemd         11.3 /usr/lib/systemd/systemd --user\n    556 S    (sd-pam)         0.0 (sd-pam)\n    567 S+   bash             2.2 -bash\n    583 S+   sh               0.0 sh -c uname -a; uptime; ps -eo pid,stat,comm,pcpu,args; true\n    586 R+   ps               0.0 ps -eo pid,stat,comm,pcpu,args\n",
+  "stderr": "your 131072x1 screen size is bogus. expect trouble\n",
+  "timeout": false,
+  "command": [
+    "sh",
+    "-c",
+    "uname -a; uptime; ps -eo pid,stat,comm,pcpu,args; true"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-29T07:47:42.722098+00:00",
+  "completed_at": "2026-10-29T07:47:42.732086+00:00",
+  "outer_start_ns": 4856899531,
+  "outer_stop_ns": 4866864041,
+  "outer_wall_ns": 9964510,
+  "boot_id": "1ca86cce-aaa6-4f29-8607-5de634cdfff9"
+}

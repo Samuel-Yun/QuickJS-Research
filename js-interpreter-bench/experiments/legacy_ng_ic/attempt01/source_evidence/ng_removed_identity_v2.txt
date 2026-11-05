@@ -1,0 +1,18 @@
+commit 7de6d467ebc3598b5e10169f7be3de5b46ff0245
+Author:     Ben Noordhuis <info@bnoordhuis.nl>
+AuthorDate: Thu Feb 6 21:01:41 2025 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Thu Feb 6 21:01:41 2025 +0100
+
+    Remove inline caches (#884)
+    
+    Inline caches are supposed to improve performance but benchmarks show
+    it's currently a mixed bag: sometimes faster, sometimes slower, always
+    more memory hungry. After due consideration, I think it's better to
+    remove the current implementation and start afresh.
+    
+    Refs: https://github.com/quickjs-ng/quickjs/issues/876
+7de6d467ebc3598b5e10169f7be3de5b46ff0245
+e1b5978775f75f9637c624fc45e69b92d2c15f42
+2025-02-06T21:01:41+01:00
+2025-02-06T21:01:41+01:00

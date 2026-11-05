@@ -1,0 +1,394 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d78100 <Builtins_JumpLoopHandler>:
+ 1d78100:	55                   	push   rbp
+ 1d78101:	48 8b ec             	mov    rbp,rsp
+ 1d78104:	6a 10                	push   0x10
+ 1d78106:	48 83 ec 50          	sub    rsp,0x50
+ 1d7810a:	48 8b 55 00          	mov    rdx,QWORD PTR [rbp+0x0]
+ 1d7810e:	43 0f b6 7c 0c 01    	movzx  edi,BYTE PTR [r12+r9*1+0x1]
+ 1d78114:	4c 8b 42 d0          	mov    r8,QWORD PTR [rdx-0x30]
+ 1d78118:	41 83 f8 11          	cmp    r8d,0x11
+ 1d7811c:	75 25                	jne    1d78143 <Builtins_JumpLoopHandler+0x43>
+ 1d7811e:	4c 8b 42 f0          	mov    r8,QWORD PTR [rdx-0x10]
+ 1d78122:	45 8b 40 17          	mov    r8d,DWORD PTR [r8+0x17]
+ 1d78126:	47 8b 44 06 03       	mov    r8d,DWORD PTR [r14+r8*1+0x3]
+ 1d7812b:	4d 0b c6             	or     r8,r14
+ 1d7812e:	45 8b 58 ff          	mov    r11d,DWORD PTR [r8-0x1]
+ 1d78132:	41 81 fb 95 08 00 00 	cmp    r11d,0x895
+ 1d78139:	0f 85 77 00 00 00    	jne    1d781b6 <Builtins_JumpLoopHandler+0xb6>
+ 1d7813f:	4c 89 42 d0          	mov    QWORD PTR [rdx-0x30],r8
+ 1d78143:	45 0f be 58 0c       	movsx  r11d,BYTE PTR [r8+0xc]
+ 1d78148:	43 0f be 44 0c 02    	movsx  eax,BYTE PTR [r12+r9*1+0x2]
+ 1d7814e:	45 0f b6 db          	movzx  r11d,r11b
+ 1d78152:	44 3b d8             	cmp    r11d,eax
+ 1d78155:	0f 87 af 02 00 00    	ja     1d7840a <Builtins_JumpLoopHandler+0x30a>
+ 1d7815b:	48 8b 5a f0          	mov    rbx,QWORD PTR [rdx-0x10]
+ 1d7815f:	8b 5b 0f             	mov    ebx,DWORD PTR [rbx+0xf]
+ 1d78162:	41 8b 5c 1e 03       	mov    ebx,DWORD PTR [r14+rbx*1+0x3]
+ 1d78167:	85 db                	test   ebx,ebx
+ 1d78169:	74 4b                	je     1d781b6 <Builtins_JumpLoopHandler+0xb6>
+ 1d7816b:	c1 eb 09             	shr    ebx,0x9
+ 1d7816e:	c1 e3 03             	shl    ebx,0x3
+ 1d78171:	49 8b 8d 50 5a 00 00 	mov    rcx,QWORD PTR [r13+0x5a50]
+ 1d78178:	48 8b 1c 19          	mov    rbx,QWORD PTR [rcx+rbx*1]
+ 1d7817c:	48 8b f3             	mov    rsi,rbx
+ 1d7817f:	48 c1 ee 31          	shr    rsi,0x31
+ 1d78183:	48 83 ee 09          	sub    rsi,0x9
+ 1d78187:	48 89 45 d0          	mov    QWORD PTR [rbp-0x30],rax
+ 1d7818b:	48 83 fe 05          	cmp    rsi,0x5
+ 1d7818f:	76 02                	jbe    1d78193 <Builtins_JumpLoopHandler+0x93>
+ 1d78191:	33 db                	xor    ebx,ebx
+ 1d78193:	48 be ff ff ff ff ff 	movabs rsi,0xffffffffffff
+ 1d7819a:	ff 00 00 
+ 1d7819d:	48 23 de             	and    rbx,rsi
+ 1d781a0:	8b 43 ff             	mov    eax,DWORD PTR [rbx-0x1]
+ 1d781a3:	41 0f b7 44 06 07    	movzx  eax,WORD PTR [r14+rax*1+0x7]
+ 1d781a9:	3d b9 00 00 00       	cmp    eax,0xb9
+ 1d781ae:	0f 84 81 00 00 00    	je     1d78235 <Builtins_JumpLoopHandler+0x135>
+ 1d781b4:	eb 00                	jmp    1d781b6 <Builtins_JumpLoopHandler+0xb6>
+ 1d781b6:	4c 8b 42 f0          	mov    r8,QWORD PTR [rdx-0x10]
+ 1d781ba:	4c 63 df             	movsxd r11,edi
+ 1d781bd:	45 8b 40 17          	mov    r8d,DWORD PTR [r8+0x17]
+ 1d781c1:	4d 0b c6             	or     r8,r14
+ 1d781c4:	83 c7 04             	add    edi,0x4
+ 1d781c7:	41 8b 40 0b          	mov    eax,DWORD PTR [r8+0xb]
+ 1d781cb:	2b c7                	sub    eax,edi
+ 1d781cd:	41 89 40 0b          	mov    DWORD PTR [r8+0xb],eax
+ 1d781d1:	85 c0                	test   eax,eax
+ 1d781d3:	7d 42                	jge    1d78217 <Builtins_JumpLoopHandler+0x117>
+ 1d781d5:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d781d9:	47 8d 04 09          	lea    r8d,[r9+r9*1]
+ 1d781dd:	48 8b 72 f8          	mov    rsi,QWORD PTR [rdx-0x8]
+ 1d781e1:	4c 89 42 d8          	mov    QWORD PTR [rdx-0x28],r8
+ 1d781e5:	57                   	push   rdi
+ 1d781e6:	48 89 55 e8          	mov    QWORD PTR [rbp-0x18],rdx
+ 1d781ea:	4c 89 4d e0          	mov    QWORD PTR [rbp-0x20],r9
+ 1d781ee:	4c 89 7d d8          	mov    QWORD PTR [rbp-0x28],r15
+ 1d781f2:	4c 89 5d f0          	mov    QWORD PTR [rbp-0x10],r11
+ 1d781f6:	49 8b 9d 28 49 00 00 	mov    rbx,QWORD PTR [r13+0x4928]
+ 1d781fd:	b8 01 00 00 00       	mov    eax,0x1
+ 1d78202:	e8 b9 91 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d78207:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d7820b:	4c 8b 4d e0          	mov    r9,QWORD PTR [rbp-0x20]
+ 1d7820f:	4c 8b 7d d8          	mov    r15,QWORD PTR [rbp-0x28]
+ 1d78213:	4c 8b 5d f0          	mov    r11,QWORD PTR [rbp-0x10]
+ 1d78217:	4c 8b 62 e0          	mov    r12,QWORD PTR [rdx-0x20]
+ 1d7821b:	4d 2b cb             	sub    r9,r11
+ 1d7821e:	43 0f b6 14 0c       	movzx  edx,BYTE PTR [r12+r9*1]
+ 1d78223:	49 8b 0c d7          	mov    rcx,QWORD PTR [r15+rdx*8]
+ 1d78227:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d7822b:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d7822f:	48 83 c4 60          	add    rsp,0x60
+ 1d78233:	ff e1                	jmp    rcx
+ 1d78235:	8b 43 23             	mov    eax,DWORD PTR [rbx+0x23]
+ 1d78238:	83 e0 0f             	and    eax,0xf
+ 1d7823b:	48 89 7d c8          	mov    QWORD PTR [rbp-0x38],rdi
+ 1d7823f:	3c 0b                	cmp    al,0xb
+ 1d78241:	0f 85 69 04 00 00    	jne    1d786b0 <Builtins_JumpLoopHandler+0x5b0>
+ 1d78247:	49 8b c1             	mov    rax,r9
+ 1d7824a:	41 0f b6 5c 04 03    	movzx  ebx,BYTE PTR [r12+rax*1+0x3]
+ 1d78250:	4c 8b 4a f8          	mov    r9,QWORD PTR [rdx-0x8]
+ 1d78254:	41 8b 7c 98 1b       	mov    edi,DWORD PTR [r8+rbx*4+0x1b]
+ 1d78259:	49 0b fe             	or     rdi,r14
+ 1d7825c:	83 ff 03             	cmp    edi,0x3
+ 1d7825f:	74 33                	je     1d78294 <Builtins_JumpLoopHandler+0x194>
+ 1d78261:	48 83 e7 fd          	and    rdi,0xfffffffffffffffd
+ 1d78265:	8b 7f 03             	mov    edi,DWORD PTR [rdi+0x3]
+ 1d78268:	c1 ef 09             	shr    edi,0x9
+ 1d7826b:	c1 e7 03             	shl    edi,0x3
+ 1d7826e:	48 8b 3c 39          	mov    rdi,QWORD PTR [rcx+rdi*1]
+ 1d78272:	48 8b cf             	mov    rcx,rdi
+ 1d78275:	48 c1 e9 31          	shr    rcx,0x31
+ 1d78279:	48 83 f9 0e          	cmp    rcx,0xe
+ 1d7827d:	74 02                	je     1d78281 <Builtins_JumpLoopHandler+0x181>
+ 1d7827f:	33 ff                	xor    edi,edi
+ 1d78281:	48 23 f7             	and    rsi,rdi
+ 1d78284:	f6 46 23 80          	test   BYTE PTR [rsi+0x23],0x80
+ 1d78288:	74 2c                	je     1d782b6 <Builtins_JumpLoopHandler+0x1b6>
+ 1d7828a:	bf 03 00 00 00       	mov    edi,0x3
+ 1d7828f:	41 89 7c 98 1b       	mov    DWORD PTR [r8+rbx*4+0x1b],edi
+ 1d78294:	41 83 e3 07          	and    r11d,0x7
+ 1d78298:	48 8b 7d d0          	mov    rdi,QWORD PTR [rbp-0x30]
+ 1d7829c:	41 3b fb             	cmp    edi,r11d
+ 1d7829f:	0f 83 4c 01 00 00    	jae    1d783f1 <Builtins_JumpLoopHandler+0x2f1>
+ 1d782a5:	41 0f b7 78 0d       	movzx  edi,WORD PTR [r8+0xd]
+ 1d782aa:	40 f6 c7 02          	test   dil,0x2
+ 1d782ae:	0f 85 3d 01 00 00    	jne    1d783f1 <Builtins_JumpLoopHandler+0x2f1>
+ 1d782b4:	33 f6                	xor    esi,esi
+ 1d782b6:	41 8b 7c 24 07       	mov    edi,DWORD PTR [r12+0x7]
+ 1d782bb:	4c 8b 42 f0          	mov    r8,QWORD PTR [rdx-0x10]
+ 1d782bf:	d1 ff                	sar    edi,1
+ 1d782c1:	45 8b 40 17          	mov    r8d,DWORD PTR [r8+0x17]
+ 1d782c5:	4d 0b c6             	or     r8,r14
+ 1d782c8:	44 8d 5f 04          	lea    r11d,[rdi+0x4]
+ 1d782cc:	41 8b 58 0b          	mov    ebx,DWORD PTR [r8+0xb]
+ 1d782d0:	41 2b db             	sub    ebx,r11d
+ 1d782d3:	41 89 58 0b          	mov    DWORD PTR [r8+0xb],ebx
+ 1d782d7:	48 89 55 e8          	mov    QWORD PTR [rbp-0x18],rdx
+ 1d782db:	48 89 45 e0          	mov    QWORD PTR [rbp-0x20],rax
+ 1d782df:	4c 89 7d d8          	mov    QWORD PTR [rbp-0x28],r15
+ 1d782e3:	48 89 7d c0          	mov    QWORD PTR [rbp-0x40],rdi
+ 1d782e7:	85 db                	test   ebx,ebx
+ 1d782e9:	7d 4c                	jge    1d78337 <Builtins_JumpLoopHandler+0x237>
+ 1d782eb:	4c 8b 42 f0          	mov    r8,QWORD PTR [rdx-0x10]
+ 1d782ef:	44 8d 1c 00          	lea    r11d,[rax+rax*1]
+ 1d782f3:	48 8b 5a f8          	mov    rbx,QWORD PTR [rdx-0x8]
+ 1d782f7:	4c 89 5a d8          	mov    QWORD PTR [rdx-0x28],r11
+ 1d782fb:	41 50                	push   r8
+ 1d782fd:	4c 89 4d f0          	mov    QWORD PTR [rbp-0x10],r9
+ 1d78301:	48 89 75 b8          	mov    QWORD PTR [rbp-0x48],rsi
+ 1d78305:	4c 89 65 b0          	mov    QWORD PTR [rbp-0x50],r12
+ 1d78309:	48 8b f3             	mov    rsi,rbx
+ 1d7830c:	b8 01 00 00 00       	mov    eax,0x1
+ 1d78311:	49 8b 9d 20 49 00 00 	mov    rbx,QWORD PTR [r13+0x4920]
+ 1d78318:	4c 8b c0             	mov    r8,rax
+ 1d7831b:	4c 8b db             	mov    r11,rbx
+ 1d7831e:	e8 9d 90 ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d78323:	4c 8b 4d f0          	mov    r9,QWORD PTR [rbp-0x10]
+ 1d78327:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d7832b:	48 8b 45 e0          	mov    rax,QWORD PTR [rbp-0x20]
+ 1d7832f:	48 8b 75 b8          	mov    rsi,QWORD PTR [rbp-0x48]
+ 1d78333:	4c 8b 65 b0          	mov    r12,QWORD PTR [rbp-0x50]
+ 1d78337:	4c 63 45 c8          	movsxd r8,DWORD PTR [rbp-0x38]
+ 1d7833b:	4c 8b d8             	mov    r11,rax
+ 1d7833e:	43 8d 04 1b          	lea    eax,[r11+r11*1]
+ 1d78342:	49 8b dc             	mov    rbx,r12
+ 1d78345:	0f b7 5b 1f          	movzx  ebx,WORD PTR [rbx+0x1f]
+ 1d78349:	d1 e3                	shl    ebx,1
+ 1d7834b:	48 89 42 d8          	mov    QWORD PTR [rdx-0x28],rax
+ 1d7834f:	4c 89 45 d0          	mov    QWORD PTR [rbp-0x30],r8
+ 1d78353:	48 89 45 a8          	mov    QWORD PTR [rbp-0x58],rax
+ 1d78357:	48 8b c6             	mov    rax,rsi
+ 1d7835a:	49 8b f1             	mov    rsi,r9
+ 1d7835d:	e8 5e 8a e1 ff       	call   1b90dc0 <Builtins_InterpreterOnStackReplacement>
+ 1d78362:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d78366:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d7836a:	8b 7f 17             	mov    edi,DWORD PTR [rdi+0x17]
+ 1d7836d:	49 0b fe             	or     rdi,r14
+ 1d78370:	44 8b 45 c0          	mov    r8d,DWORD PTR [rbp-0x40]
+ 1d78374:	41 f7 d8             	neg    r8d
+ 1d78377:	44 8b 5f 0b          	mov    r11d,DWORD PTR [rdi+0xb]
+ 1d7837b:	45 2b d8             	sub    r11d,r8d
+ 1d7837e:	44 89 5f 0b          	mov    DWORD PTR [rdi+0xb],r11d
+ 1d78382:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d78386:	8b 7f 17             	mov    edi,DWORD PTR [rdi+0x17]
+ 1d78389:	49 0b fe             	or     rdi,r14
+ 1d7838c:	4c 8b 45 c8          	mov    r8,QWORD PTR [rbp-0x38]
+ 1d78390:	41 83 c0 04          	add    r8d,0x4
+ 1d78394:	44 8b 5f 0b          	mov    r11d,DWORD PTR [rdi+0xb]
+ 1d78398:	45 2b d8             	sub    r11d,r8d
+ 1d7839b:	44 89 5f 0b          	mov    DWORD PTR [rdi+0xb],r11d
+ 1d7839f:	45 85 db             	test   r11d,r11d
+ 1d783a2:	7d 26                	jge    1d783ca <Builtins_JumpLoopHandler+0x2ca>
+ 1d783a4:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d783a8:	48 8b 72 f8          	mov    rsi,QWORD PTR [rdx-0x8]
+ 1d783ac:	44 8b 45 a8          	mov    r8d,DWORD PTR [rbp-0x58]
+ 1d783b0:	4c 89 42 d8          	mov    QWORD PTR [rdx-0x28],r8
+ 1d783b4:	57                   	push   rdi
+ 1d783b5:	49 8b 9d 28 49 00 00 	mov    rbx,QWORD PTR [r13+0x4928]
+ 1d783bc:	b8 01 00 00 00       	mov    eax,0x1
+ 1d783c1:	e8 fa 8f ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d783c6:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d783ca:	4c 8b 62 e0          	mov    r12,QWORD PTR [rdx-0x20]
+ 1d783ce:	4c 8b 4d e0          	mov    r9,QWORD PTR [rbp-0x20]
+ 1d783d2:	4c 2b 4d d0          	sub    r9,QWORD PTR [rbp-0x30]
+ 1d783d6:	43 0f b6 14 0c       	movzx  edx,BYTE PTR [r12+r9*1]
+ 1d783db:	4c 8b 7d d8          	mov    r15,QWORD PTR [rbp-0x28]
+ 1d783df:	49 8b 0c d7          	mov    rcx,QWORD PTR [r15+rdx*8]
+ 1d783e3:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d783e7:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d783eb:	48 83 c4 60          	add    rsp,0x60
+ 1d783ef:	ff e1                	jmp    rcx
+ 1d783f1:	48 8b f8             	mov    rdi,rax
+ 1d783f4:	d1 e7                	shl    edi,1
+ 1d783f6:	48 89 7a d8          	mov    QWORD PTR [rdx-0x28],rdi
+ 1d783fa:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d783fe:	49 8b f1             	mov    rsi,r9
+ 1d78401:	48 83 c4 60          	add    rsp,0x60
+ 1d78405:	e9 b6 8c e1 ff       	jmp    1b910c0 <Builtins_InterpreterOnStackReplacement_ToBaseline>
+ 1d7840a:	43 0f b6 5c 0c 03    	movzx  ebx,BYTE PTR [r12+r9*1+0x3]
+ 1d78410:	48 8b 72 f8          	mov    rsi,QWORD PTR [rdx-0x8]
+ 1d78414:	41 8b 4c 98 1b       	mov    ecx,DWORD PTR [r8+rbx*4+0x1b]
+ 1d78419:	49 0b ce             	or     rcx,r14
+ 1d7841c:	4c 89 5d c0          	mov    QWORD PTR [rbp-0x40],r11
+ 1d78420:	48 89 55 e8          	mov    QWORD PTR [rbp-0x18],rdx
+ 1d78424:	4c 89 4d e0          	mov    QWORD PTR [rbp-0x20],r9
+ 1d78428:	4c 89 7d d8          	mov    QWORD PTR [rbp-0x28],r15
+ 1d7842c:	48 89 7d c8          	mov    QWORD PTR [rbp-0x38],rdi
+ 1d78430:	4c 89 65 b0          	mov    QWORD PTR [rbp-0x50],r12
+ 1d78434:	48 89 75 f0          	mov    QWORD PTR [rbp-0x10],rsi
+ 1d78438:	83 f9 03             	cmp    ecx,0x3
+ 1d7843b:	74 47                	je     1d78484 <Builtins_JumpLoopHandler+0x384>
+ 1d7843d:	48 83 e1 fd          	and    rcx,0xfffffffffffffffd
+ 1d78441:	8b 49 03             	mov    ecx,DWORD PTR [rcx+0x3]
+ 1d78444:	c1 e9 09             	shr    ecx,0x9
+ 1d78447:	c1 e1 03             	shl    ecx,0x3
+ 1d7844a:	4d 8b 9d 50 5a 00 00 	mov    r11,QWORD PTR [r13+0x5a50]
+ 1d78451:	4d 8b 1c 0b          	mov    r11,QWORD PTR [r11+rcx*1]
+ 1d78455:	49 8b cb             	mov    rcx,r11
+ 1d78458:	48 c1 e9 31          	shr    rcx,0x31
+ 1d7845c:	48 83 f9 0e          	cmp    rcx,0xe
+ 1d78460:	74 03                	je     1d78465 <Builtins_JumpLoopHandler+0x365>
+ 1d78462:	45 33 db             	xor    r11d,r11d
+ 1d78465:	48 8b 0d 29 fd ff ff 	mov    rcx,QWORD PTR [rip+0xfffffffffffffd29]        # 1d78195 <Builtins_JumpLoopHandler+0x95>
+ 1d7846c:	49 23 cb             	and    rcx,r11
+ 1d7846f:	f6 41 23 80          	test   BYTE PTR [rcx+0x23],0x80
+ 1d78473:	74 2d                	je     1d784a2 <Builtins_JumpLoopHandler+0x3a2>
+ 1d78475:	41 bb 03 00 00 00    	mov    r11d,0x3
+ 1d7847b:	45 89 5c 98 1b       	mov    DWORD PTR [r8+rbx*4+0x1b],r11d
+ 1d78480:	44 8b 5d c0          	mov    r11d,DWORD PTR [rbp-0x40]
+ 1d78484:	41 83 e3 07          	and    r11d,0x7
+ 1d78488:	41 3b c3             	cmp    eax,r11d
+ 1d7848b:	0f 83 31 01 00 00    	jae    1d785c2 <Builtins_JumpLoopHandler+0x4c2>
+ 1d78491:	45 0f b7 40 0d       	movzx  r8d,WORD PTR [r8+0xd]
+ 1d78496:	41 f6 c0 02          	test   r8b,0x2
+ 1d7849a:	0f 85 22 01 00 00    	jne    1d785c2 <Builtins_JumpLoopHandler+0x4c2>
+ 1d784a0:	33 c9                	xor    ecx,ecx
+ 1d784a2:	45 8b 44 24 07       	mov    r8d,DWORD PTR [r12+0x7]
+ 1d784a7:	4c 8b 5a f0          	mov    r11,QWORD PTR [rdx-0x10]
+ 1d784ab:	48 63 c7             	movsxd rax,edi
+ 1d784ae:	41 d1 f8             	sar    r8d,1
+ 1d784b1:	45 8b 5b 17          	mov    r11d,DWORD PTR [r11+0x17]
+ 1d784b5:	4d 0b de             	or     r11,r14
+ 1d784b8:	41 8d 58 04          	lea    ebx,[r8+0x4]
+ 1d784bc:	41 8b 7b 0b          	mov    edi,DWORD PTR [r11+0xb]
+ 1d784c0:	2b fb                	sub    edi,ebx
+ 1d784c2:	41 89 7b 0b          	mov    DWORD PTR [r11+0xb],edi
+ 1d784c6:	48 89 4d b8          	mov    QWORD PTR [rbp-0x48],rcx
+ 1d784ca:	48 89 45 c0          	mov    QWORD PTR [rbp-0x40],rax
+ 1d784ce:	4c 89 45 a8          	mov    QWORD PTR [rbp-0x58],r8
+ 1d784d2:	85 ff                	test   edi,edi
+ 1d784d4:	7d 3f                	jge    1d78515 <Builtins_JumpLoopHandler+0x415>
+ 1d784d6:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d784da:	47 8d 1c 09          	lea    r11d,[r9+r9*1]
+ 1d784de:	48 8b 5a f8          	mov    rbx,QWORD PTR [rdx-0x8]
+ 1d784e2:	4c 89 5a d8          	mov    QWORD PTR [rdx-0x28],r11
+ 1d784e6:	57                   	push   rdi
+ 1d784e7:	48 8b f3             	mov    rsi,rbx
+ 1d784ea:	b8 01 00 00 00       	mov    eax,0x1
+ 1d784ef:	49 8b 9d 20 49 00 00 	mov    rbx,QWORD PTR [r13+0x4920]
+ 1d784f6:	48 8b f8             	mov    rdi,rax
+ 1d784f9:	4c 8b db             	mov    r11,rbx
+ 1d784fc:	e8 bf 8e ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d78501:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d78505:	4c 8b 4d e0          	mov    r9,QWORD PTR [rbp-0x20]
+ 1d78509:	4c 8b 65 b0          	mov    r12,QWORD PTR [rbp-0x50]
+ 1d7850d:	48 8b 75 f0          	mov    rsi,QWORD PTR [rbp-0x10]
+ 1d78511:	48 8b 4d b8          	mov    rcx,QWORD PTR [rbp-0x48]
+ 1d78515:	43 8d 3c 09          	lea    edi,[r9+r9*1]
+ 1d78519:	45 0f b7 5c 24 1f    	movzx  r11d,WORD PTR [r12+0x1f]
+ 1d7851f:	43 8d 1c 1b          	lea    ebx,[r11+r11*1]
+ 1d78523:	48 89 7a d8          	mov    QWORD PTR [rdx-0x28],rdi
+ 1d78527:	48 89 7d d0          	mov    QWORD PTR [rbp-0x30],rdi
+ 1d7852b:	48 8b c1             	mov    rax,rcx
+ 1d7852e:	e8 8d 88 e1 ff       	call   1b90dc0 <Builtins_InterpreterOnStackReplacement>
+ 1d78533:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d78537:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d7853b:	8b 7f 17             	mov    edi,DWORD PTR [rdi+0x17]
+ 1d7853e:	49 0b fe             	or     rdi,r14
+ 1d78541:	44 8b 45 a8          	mov    r8d,DWORD PTR [rbp-0x58]
+ 1d78545:	41 f7 d8             	neg    r8d
+ 1d78548:	44 8b 5f 0b          	mov    r11d,DWORD PTR [rdi+0xb]
+ 1d7854c:	45 2b d8             	sub    r11d,r8d
+ 1d7854f:	44 89 5f 0b          	mov    DWORD PTR [rdi+0xb],r11d
+ 1d78553:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d78557:	8b 7f 17             	mov    edi,DWORD PTR [rdi+0x17]
+ 1d7855a:	49 0b fe             	or     rdi,r14
+ 1d7855d:	48 8b 5d c8          	mov    rbx,QWORD PTR [rbp-0x38]
+ 1d78561:	44 8d 43 04          	lea    r8d,[rbx+0x4]
+ 1d78565:	44 8b 5f 0b          	mov    r11d,DWORD PTR [rdi+0xb]
+ 1d78569:	45 2b d8             	sub    r11d,r8d
+ 1d7856c:	44 89 5f 0b          	mov    DWORD PTR [rdi+0xb],r11d
+ 1d78570:	45 85 db             	test   r11d,r11d
+ 1d78573:	7d 26                	jge    1d7859b <Builtins_JumpLoopHandler+0x49b>
+ 1d78575:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d78579:	48 8b 72 f8          	mov    rsi,QWORD PTR [rdx-0x8]
+ 1d7857d:	44 8b 45 d0          	mov    r8d,DWORD PTR [rbp-0x30]
+ 1d78581:	4c 89 42 d8          	mov    QWORD PTR [rdx-0x28],r8
+ 1d78585:	57                   	push   rdi
+ 1d78586:	49 8b 9d 28 49 00 00 	mov    rbx,QWORD PTR [r13+0x4928]
+ 1d7858d:	b8 01 00 00 00       	mov    eax,0x1
+ 1d78592:	e8 29 8e ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d78597:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d7859b:	4c 8b 62 e0          	mov    r12,QWORD PTR [rdx-0x20]
+ 1d7859f:	4c 8b 4d e0          	mov    r9,QWORD PTR [rbp-0x20]
+ 1d785a3:	4c 2b 4d c0          	sub    r9,QWORD PTR [rbp-0x40]
+ 1d785a7:	43 0f b6 14 0c       	movzx  edx,BYTE PTR [r12+r9*1]
+ 1d785ac:	4c 8b 7d d8          	mov    r15,QWORD PTR [rbp-0x28]
+ 1d785b0:	49 8b 0c d7          	mov    rcx,QWORD PTR [r15+rdx*8]
+ 1d785b4:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d785b8:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d785bc:	48 83 c4 60          	add    rsp,0x60
+ 1d785c0:	ff e1                	jmp    rcx
+ 1d785c2:	4c 8b 42 f0          	mov    r8,QWORD PTR [rdx-0x10]
+ 1d785c6:	45 8b 58 0f          	mov    r11d,DWORD PTR [r8+0xf]
+ 1d785ca:	47 8b 5c 1e 03       	mov    r11d,DWORD PTR [r14+r11*1+0x3]
+ 1d785cf:	45 85 db             	test   r11d,r11d
+ 1d785d2:	74 46                	je     1d7861a <Builtins_JumpLoopHandler+0x51a>
+ 1d785d4:	41 c1 eb 09          	shr    r11d,0x9
+ 1d785d8:	41 c1 e3 03          	shl    r11d,0x3
+ 1d785dc:	49 8b 85 50 5a 00 00 	mov    rax,QWORD PTR [r13+0x5a50]
+ 1d785e3:	4e 8b 1c 18          	mov    r11,QWORD PTR [rax+r11*1]
+ 1d785e7:	49 8b c3             	mov    rax,r11
+ 1d785ea:	48 c1 e8 31          	shr    rax,0x31
+ 1d785ee:	48 83 e8 09          	sub    rax,0x9
+ 1d785f2:	48 83 f8 05          	cmp    rax,0x5
+ 1d785f6:	76 03                	jbe    1d785fb <Builtins_JumpLoopHandler+0x4fb>
+ 1d785f8:	45 33 db             	xor    r11d,r11d
+ 1d785fb:	48 8b 05 93 fb ff ff 	mov    rax,QWORD PTR [rip+0xfffffffffffffb93]        # 1d78195 <Builtins_JumpLoopHandler+0x95>
+ 1d78602:	49 23 c3             	and    rax,r11
+ 1d78605:	44 8b 58 ff          	mov    r11d,DWORD PTR [rax-0x1]
+ 1d78609:	47 0f b7 5c 1e 07    	movzx  r11d,WORD PTR [r14+r11*1+0x7]
+ 1d7860f:	41 81 fb b9 00 00 00 	cmp    r11d,0xb9
+ 1d78616:	74 74                	je     1d7868c <Builtins_JumpLoopHandler+0x58c>
+ 1d78618:	eb 00                	jmp    1d7861a <Builtins_JumpLoopHandler+0x51a>
+ 1d7861a:	4c 63 df             	movsxd r11,edi
+ 1d7861d:	45 8b 40 17          	mov    r8d,DWORD PTR [r8+0x17]
+ 1d78621:	4d 0b c6             	or     r8,r14
+ 1d78624:	83 c7 04             	add    edi,0x4
+ 1d78627:	41 8b 40 0b          	mov    eax,DWORD PTR [r8+0xb]
+ 1d7862b:	2b c7                	sub    eax,edi
+ 1d7862d:	41 89 40 0b          	mov    DWORD PTR [r8+0xb],eax
+ 1d78631:	4c 89 5d f0          	mov    QWORD PTR [rbp-0x10],r11
+ 1d78635:	85 c0                	test   eax,eax
+ 1d78637:	7d 35                	jge    1d7866e <Builtins_JumpLoopHandler+0x56e>
+ 1d78639:	48 8b 7a f0          	mov    rdi,QWORD PTR [rdx-0x10]
+ 1d7863d:	4d 8b c1             	mov    r8,r9
+ 1d78640:	43 8d 04 00          	lea    eax,[r8+r8*1]
+ 1d78644:	48 8b 72 f8          	mov    rsi,QWORD PTR [rdx-0x8]
+ 1d78648:	48 89 42 d8          	mov    QWORD PTR [rdx-0x28],rax
+ 1d7864c:	57                   	push   rdi
+ 1d7864d:	49 8b 9d 28 49 00 00 	mov    rbx,QWORD PTR [r13+0x4928]
+ 1d78654:	b8 01 00 00 00       	mov    eax,0x1
+ 1d78659:	e8 62 8d ed ff       	call   1c513c0 <Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit>
+ 1d7865e:	48 8b 55 e8          	mov    rdx,QWORD PTR [rbp-0x18]
+ 1d78662:	4c 8b 4d e0          	mov    r9,QWORD PTR [rbp-0x20]
+ 1d78666:	4c 8b 7d d8          	mov    r15,QWORD PTR [rbp-0x28]
+ 1d7866a:	4c 8b 5d f0          	mov    r11,QWORD PTR [rbp-0x10]
+ 1d7866e:	4c 8b 62 e0          	mov    r12,QWORD PTR [rdx-0x20]
+ 1d78672:	4d 2b cb             	sub    r9,r11
+ 1d78675:	43 0f b6 14 0c       	movzx  edx,BYTE PTR [r12+r9*1]
+ 1d7867a:	49 8b 0c d7          	mov    rcx,QWORD PTR [r15+rdx*8]
+ 1d7867e:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d78682:	49 8d 46 11          	lea    rax,[r14+0x11]
+ 1d78686:	48 83 c4 60          	add    rsp,0x60
+ 1d7868a:	ff e1                	jmp    rcx
+ 1d7868c:	8b 78 23             	mov    edi,DWORD PTR [rax+0x23]
+ 1d7868f:	83 e7 0f             	and    edi,0xf
+ 1d78692:	40 80 ff 0b          	cmp    dil,0xb
+ 1d78696:	74 01                	je     1d78699 <Builtins_JumpLoopHandler+0x599>
+ 1d78698:	cc                   	int3
+ 1d78699:	49 8b d9             	mov    rbx,r9
+ 1d7869c:	8d 3c 1b             	lea    edi,[rbx+rbx*1]
+ 1d7869f:	48 89 7a d8          	mov    QWORD PTR [rdx-0x28],rdi
+ 1d786a3:	48 8b 6d 00          	mov    rbp,QWORD PTR [rbp+0x0]
+ 1d786a7:	48 83 c4 60          	add    rsp,0x60
+ 1d786ab:	e9 10 8a e1 ff       	jmp    1b910c0 <Builtins_InterpreterOnStackReplacement_ToBaseline>
+ 1d786b0:	cc                   	int3
+ 1d786b1:	90                   	nop
+ 1d786b2:	66 90                	xchg   ax,ax

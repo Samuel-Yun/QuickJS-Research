@@ -1,0 +1,115 @@
+18531:         CASE(OP_get_loc):
+18532:             {
+18533:                 int idx;
+18534:                 idx = get_u16(pc);
+18535:                 pc += 2;
+18536:                 sp[0] = JS_DupValue(ctx, var_buf[idx]);
+18537:                 sp++;
+18538:             }
+18539:             BREAK;
+18540:         CASE(OP_put_loc):
+18541:             {
+18542:                 int idx;
+18543:                 idx = get_u16(pc);
+18544:                 pc += 2;
+18545:                 set_value(ctx, &var_buf[idx], sp[-1]);
+18546:                 sp--;
+18547:             }
+18548:             BREAK;
+18549:         CASE(OP_set_loc):
+18550:             {
+18551:                 int idx;
+18552:                 idx = get_u16(pc);
+18553:                 pc += 2;
+18554:                 set_value(ctx, &var_buf[idx], JS_DupValue(ctx, sp[-1]));
+18555:             }
+18556:             BREAK;
+18557:         CASE(OP_get_arg):
+18558:             {
+18559:                 int idx;
+18560:                 idx = get_u16(pc);
+18561:                 pc += 2;
+18562:                 sp[0] = JS_DupValue(ctx, arg_buf[idx]);
+18563:                 sp++;
+18564:             }
+18565:             BREAK;
+18566:         CASE(OP_put_arg):
+18567:             {
+18568:                 int idx;
+18569:                 idx = get_u16(pc);
+18570:                 pc += 2;
+18571:                 set_value(ctx, &arg_buf[idx], sp[-1]);
+18572:                 sp--;
+18573:             }
+18574:             BREAK;
+18575:         CASE(OP_set_arg):
+18576:             {
+18577:                 int idx;
+18578:                 idx = get_u16(pc);
+18579:                 pc += 2;
+18580:                 set_value(ctx, &arg_buf[idx], JS_DupValue(ctx, sp[-1]));
+18581:             }
+18582:             BREAK;
+18583: 
+18584: #if SHORT_OPCODES
+18585:         CASE(OP_get_loc8): *sp++ = JS_DupValue(ctx, var_buf[*pc++]); BREAK;
+18586:         CASE(OP_put_loc8): set_value(ctx, &var_buf[*pc++], *--sp); BREAK;
+18587:         CASE(OP_set_loc8): set_value(ctx, &var_buf[*pc++], JS_DupValue(ctx, sp[-1])); BREAK;
+18588: 
+18589:         CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
+18590:         CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
+18591:         CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
+18592:         CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
+18593:         CASE(OP_put_loc0): set_value(ctx, &var_buf[0], *--sp); BREAK;
+18594:         CASE(OP_put_loc1): set_value(ctx, &var_buf[1], *--sp); BREAK;
+18595:         CASE(OP_put_loc2): set_value(ctx, &var_buf[2], *--sp); BREAK;
+18596:         CASE(OP_put_loc3): set_value(ctx, &var_buf[3], *--sp); BREAK;
+18597:         CASE(OP_set_loc0): set_value(ctx, &var_buf[0], JS_DupValue(ctx, sp[-1])); BREAK;
+18598:         CASE(OP_set_loc1): set_value(ctx, &var_buf[1], JS_DupValue(ctx, sp[-1])); BREAK;
+18599:         CASE(OP_set_loc2): set_value(ctx, &var_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+18600:         CASE(OP_set_loc3): set_value(ctx, &var_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+18601:         CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
+18602:         CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
+18603:         CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
+18604:         CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
+18605:         CASE(OP_put_arg0): set_value(ctx, &arg_buf[0], *--sp); BREAK;
+18606:         CASE(OP_put_arg1): set_value(ctx, &arg_buf[1], *--sp); BREAK;
+18607:         CASE(OP_put_arg2): set_value(ctx, &arg_buf[2], *--sp); BREAK;
+18608:         CASE(OP_put_arg3): set_value(ctx, &arg_buf[3], *--sp); BREAK;
+18609:         CASE(OP_set_arg0): set_value(ctx, &arg_buf[0], JS_DupValue(ctx, sp[-1])); BREAK;
+18610:         CASE(OP_set_arg1): set_value(ctx, &arg_buf[1], JS_DupValue(ctx, sp[-1])); BREAK;
+18611:         CASE(OP_set_arg2): set_value(ctx, &arg_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+18612:         CASE(OP_set_arg3): set_value(ctx, &arg_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+18613:         CASE(OP_get_var_ref0): *sp++ = JS_DupValue(ctx, *var_refs[0]->pvalue); BREAK;
+18614:         CASE(OP_get_var_ref1): *sp++ = JS_DupValue(ctx, *var_refs[1]->pvalue); BREAK;
+18615:         CASE(OP_get_var_ref2): *sp++ = JS_DupValue(ctx, *var_refs[2]->pvalue); BREAK;
+18616:         CASE(OP_get_var_ref3): *sp++ = JS_DupValue(ctx, *var_refs[3]->pvalue); BREAK;
+18617:         CASE(OP_put_var_ref0): set_value(ctx, var_refs[0]->pvalue, *--sp); BREAK;
+18618:         CASE(OP_put_var_ref1): set_value(ctx, var_refs[1]->pvalue, *--sp); BREAK;
+18619:         CASE(OP_put_var_ref2): set_value(ctx, var_refs[2]->pvalue, *--sp); BREAK;
+18620:         CASE(OP_put_var_ref3): set_value(ctx, var_refs[3]->pvalue, *--sp); BREAK;
+18621:         CASE(OP_set_var_ref0): set_value(ctx, var_refs[0]->pvalue, JS_DupValue(ctx, sp[-1])); BREAK;
+18622:         CASE(OP_set_var_ref1): set_value(ctx, var_refs[1]->pvalue, JS_DupValue(ctx, sp[-1])); BREAK;
+18623:         CASE(OP_set_var_ref2): set_value(ctx, var_refs[2]->pvalue, JS_DupValue(ctx, sp[-1])); BREAK;
+18624:         CASE(OP_set_var_ref3): set_value(ctx, var_refs[3]->pvalue, JS_DupValue(ctx, sp[-1])); BREAK;
+18625: #endif
+18626: 
+18627:         CASE(OP_get_var_ref):
+18628:             {
+18629:                 int idx;
+18630:                 JSValue val;
+18631:                 idx = get_u16(pc);
+18632:                 pc += 2;
+18633:                 val = *var_refs[idx]->pvalue;
+18634:                 sp[0] = JS_DupValue(ctx, val);
+18635:                 sp++;
+18636:             }
+18637:             BREAK;
+18638:         CASE(OP_put_var_ref):
+18639:             {
+18640:                 int idx;
+18641:                 idx = get_u16(pc);
+18642:                 pc += 2;
+18643:                 set_value(ctx, var_refs[idx]->pvalue, sp[-1]);
+18644:                 sp--;
+18645:             }

@@ -1,0 +1,69 @@
+{
+  "case": "own_property",
+  "N": 16384,
+  "threshold_ms": 1000,
+  "pilot": [
+    {
+      "case": "own_property",
+      "engine": "quickjs",
+      "phase": "calibration",
+      "position": "N16384",
+      "N": 16384,
+      "valid": true,
+      "elapsed_ms": 1092.1116760000004,
+      "elapsed_per_call_ms": 0.0666572067871094,
+      "checksum": 201326592,
+      "exit_code": 0,
+      "script_sha256": "55a56331fdc829f752a67050ab8275a303ebe4193bd1d4c8e9103c435ac3aa9b",
+      "target_sha256": "9aa17955d70fd22fc796201fb7e98450340137c976fe0f9bfccba4667c9116ec",
+      "binary_sha256": "140d5233b0337d91cb0f994ae4a051e49aa04da8802acfaedf0a01b81a620b79",
+      "command": [
+        "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjs",
+        "-I",
+        "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+        "-I",
+        "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+        "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/calibration/own_property_N16384.js"
+      ],
+      "timestamp_utc": "2026-10-15T03:32:36.028486+00:00",
+      "outer_wall_ns": 1115507794,
+      "stdout": "WB_RESULT {\"N\":16384,\"last\":12288,\"checksum\":201326592,\"elapsed_ms\":1092.1116760000004}\n",
+      "stderr": "",
+      "record": "raw/calibration/N16384_quickjs_own_property.json",
+      "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_MONOTONIC_SIMPLE_V1",
+      "cohort": "wsl2-ubuntu2404-x64-20261004"
+    },
+    {
+      "case": "own_property",
+      "engine": "v8",
+      "phase": "calibration",
+      "position": "N16384",
+      "N": 16384,
+      "valid": true,
+      "elapsed_ms": 1088.572,
+      "elapsed_per_call_ms": 0.066441162109375,
+      "checksum": 201326592,
+      "exit_code": 0,
+      "script_sha256": "55a56331fdc829f752a67050ab8275a303ebe4193bd1d4c8e9103c435ac3aa9b",
+      "target_sha256": "9aa17955d70fd22fc796201fb7e98450340137c976fe0f9bfccba4667c9116ec",
+      "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "command": [
+        "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+        "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+        "--max-opt=0",
+        "--no-lazy",
+        "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+        "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+        "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/calibration/own_property_N16384.js"
+      ],
+      "timestamp_utc": "2026-10-15T03:32:37.200680+00:00",
+      "outer_wall_ns": 1129113422,
+      "stdout": "WB_RESULT {\"N\":16384,\"last\":12288,\"checksum\":201326592,\"elapsed_ms\":1088.572}\n",
+      "stderr": "",
+      "record": "raw/calibration/N16384_v8_own_property.json",
+      "mode": "FIRST_CALL_INCLUSIVE_INTERPRETER_MODE_MONOTONIC_SIMPLE_V1",
+      "cohort": "wsl2-ubuntu2404-x64-20261004"
+    }
+  ],
+  "all_pass": true
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "offset": 0,
+    "opcode": "push_this",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 1,
+    "opcode": "put_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 2,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 3,
+    "opcode": "get_field2",
+    "operands": "holdCount",
+    "size": 5
+  },
+  {
+    "offset": 8,
+    "opcode": "inc",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 9,
+    "opcode": "put_field",
+    "operands": "holdCount",
+    "size": 5
+  },
+  {
+    "offset": 14,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 15,
+    "opcode": "get_field",
+    "operands": "currentTcb",
+    "size": 5
+  },
+  {
+    "offset": 20,
+    "opcode": "get_field2",
+    "operands": "markAsHeld",
+    "size": 5
+  },
+  {
+    "offset": 25,
+    "opcode": "call_method",
+    "operands": "0",
+    "size": 3
+  },
+  {
+    "offset": 28,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 29,
+    "opcode": "get_loc0",
+    "operands": "0: this",
+    "size": 1
+  },
+  {
+    "offset": 30,
+    "opcode": "get_field",
+    "operands": "currentTcb",
+    "size": 5
+  },
+  {
+    "offset": 35,
+    "opcode": "get_field",
+    "operands": "link",
+    "size": 5
+  },
+  {
+    "offset": 40,
+    "opcode": "return",
+    "operands": "",
+    "size": 1
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "status": "INTERRUPTED_READ_ONLY_DIAGNOSTIC",
+  "linux_process": 548,
+  "parent_prepare_process": 511,
+  "observed_state": "D",
+  "observed_elapsed": "07:05",
+  "operation": "git status --short on /mnt/c repository",
+  "action": "SIGTERM own prepare PID511; SIGKILL own git PID548; pending D-state exit not forcibly assumed complete",
+  "reason": "avoid blocking independent work; native Windows Git records preserved instead",
+  "timestamp": "2026-10-28T09:54:47.164001+00:00",
+  "performance_started": false
+}

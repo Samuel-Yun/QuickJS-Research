@@ -1,0 +1,147 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -90,7 +90,7 @@
+   32: dump line number table
+   64: dump compute_stack_size
+  */
+-//#define DUMP_BYTECODE  (1)
++#define DUMP_BYTECODE  (1)
+ /* dump the occurence of the automatic GC */
+ //#define DUMP_GC
+ /* dump objects freed by the garbage collector */
+@@ -6132,6 +6132,8 @@
+     return NULL;
+ }
+ 
++#include "site_hooks.h"
++
+ static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+                                                        JSObject *p,
+                                                        JSAtom atom)
+@@ -6155,6 +6157,17 @@
+     *ppr = NULL;
+     return NULL;
+ }
++
++/* Every later caller, including writes/runtime helpers, goes through this.
++ * __LINE__ records this diagnostic source, not the old binary/source layout. */
++static force_inline JSShapeProperty *sa_find_own_property(JSProperty **ppr,
++                                    JSObject *p, JSAtom atom, unsigned origin)
++{
++    JSShapeProperty *result=find_own_property(ppr,p,atom);
++    sa_probe(origin,result!=NULL);
++    return result;
++}
++#define find_own_property(ppr,p,atom) sa_find_own_property(ppr,p,atom,__LINE__)
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -17747,6 +17760,8 @@
+                                JSValueConst this_obj, JSValueConst new_target,
+                                int argc, JSValue *argv, int flags)
+ {
++    SAFrame sa_fs __attribute__((cleanup(sa_frame_end))) = sa_frame_begin();
++    unsigned sa_fnid = 0;
+     JSRuntime *rt = caller_ctx->rt;
+     JSContext *ctx;
+     JSObject *p;
+@@ -17794,6 +17809,8 @@
+             sf = &s->frame;
+             p = JS_VALUE_GET_OBJ(sf->cur_func);
+             b = p->u.func.function_bytecode;
++            sa_fnid = sa_enabled ? sa_fid(b) : 0;
++            sa_function_enter(&sa_fs, sa_fnid);
+             ctx = b->realm;
+             var_refs = p->u.func.var_refs;
+             local_buf = arg_buf = sf->arg_buf;
+@@ -17824,6 +17841,8 @@
+                          (JSValueConst *)argv, flags);
+     }
+     b = p->u.func.function_bytecode;
++            sa_fnid = sa_enabled ? sa_fid(b) : 0;
++            sa_function_enter(&sa_fs, sa_fnid);
+ 
+     if (unlikely(argc < b->arg_count || (flags & JS_CALL_FLAG_COPY_ARGV))) {
+         arg_allocated_size = b->arg_count;
+@@ -19106,6 +19125,8 @@
+ 
+ #define GET_FIELD_INLINE(name, keep, is_length)                         \
+             {                                                           \
++                SA_PROP_SCOPE();                                       \
++                int sa_depth = 0;                                      \
+                 JSValue val, obj;                                       \
+                 JSAtom atom;                                            \
+                 JSObject *p;                                            \
+@@ -19125,6 +19146,7 @@
+                     for(;;) {                                           \
+                         prs = find_own_property(&pr, p, atom);          \
+                         if (prs) {                                      \
++                            sa_hit(sa_depth, pr->u.value, prs->flags); \
+                             /* found */                                 \
+                             if (unlikely(prs->flags & JS_PROP_TMASK))   \
+                                     goto name ## _slow_path;            \
+@@ -19138,14 +19160,17 @@
+                             obj = JS_MKPTR(JS_TAG_OBJECT, p);           \
+                             goto name ## _slow_path;                    \
+                         }                                               \
++                        sa_depth++;                                \
+                         p = p->shape->proto;                            \
+                         if (!p) {                                       \
++                            sa_flag(1);                                \
+                             val = JS_UNDEFINED;                         \
+                             break;                                      \
+                         }                                               \
+                     }                                                   \
+                 } else {                                                \
+                 name ## _slow_path:                                     \
++                    sa_flag(0);                                        \
+                     sf->cur_pc = pc;                                    \
+                     val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0); \
+                     if (unlikely(JS_IsException(val)))                  \
+@@ -19176,6 +19201,7 @@
+             
+         CASE(OP_put_field):
+             {
++                SA_PROP_SCOPE();
+                 int ret;
+                 JSValue obj;
+                 JSAtom atom;
+@@ -19194,6 +19220,8 @@
+                         goto put_field_slow_path;
+                     if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+                                               JS_PROP_LENGTH)) == JS_PROP_WRITABLE)) {
++                        sa_hit(0, pr->u.value, prs->flags);
++                        sa_flag(2);
+                         /* fast path */
+                         set_value(ctx, &pr->u.value, sp[-1]);
+                     } else {
+@@ -19203,6 +19231,7 @@
+                     sp -= 2;
+                 } else {
+                 put_field_slow_path:
++                    sa_flag(0);
+                     sf->cur_pc = pc;
+                     ret = JS_SetPropertyInternal(ctx, obj, atom, sp[-1], obj,
+                                                  JS_PROP_THROW_STRICT);
+@@ -22184,6 +22213,8 @@
+ #else
+ #define short_opcode_info(op) opcode_info[op]
+ #endif
++
++#include "site_metadata.h"
+ 
+ static __exception int next_token(JSParseState *s);
+ 
+@@ -36260,10 +36291,11 @@
+                                      fd->eval_type == JS_EVAL_TYPE_INDIRECT);
+     b->realm = JS_DupContext(ctx);
+ 
++    sa_register(ctx, b);
+     add_gc_object(ctx->rt, &b->header, JS_GC_OBJ_TYPE_FUNCTION_BYTECODE);
+ 
+ #if defined(DUMP_BYTECODE) && (DUMP_BYTECODE & 1)
+-    if (!fd->strip_debug) {
++    if (!fd->strip_debug && getenv("SA_DUMP")) {
+         js_dump_function_bytecode(ctx, b);
+     }
+ #endif

@@ -1,0 +1,382 @@
+{
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "timestamp": "2026-11-02T13:59:59.508040+00:00",
+  "target": 3120,
+  "schedule_count": 3120,
+  "artifacts": {
+    "A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "expected_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "matches": true,
+      "size_bytes": 5090704
+    },
+    "M": {
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "expected_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "matches": true,
+      "size_bytes": 5102680
+    },
+    "U": {
+      "path": "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/qjs",
+      "source": "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03",
+      "sha256": "b07d3ca8a3347a5acfb744c9452f31f2d78f79255c04aaa2c27cf4954ae80842",
+      "size_bytes": 5103464,
+      "source_hashes": {
+        ".github/workflows/ci.yml": "91fe57826693797d4351c3c592e4acf49f170d04958ed30e9590484424fd3869",
+        ".gitignore": "4eab41c4a2a1489a15f28fa85b4a2ae78505777c79654d1931cb08afbf383f6b",
+        "Changelog": "43969be5db51dd7917b00330517dac3ba541b1e0e647fccd96c85bd850b030c8",
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "TODO": "1065e7f25c4d72f402943418875d0f0cbe702cfb32e27ba1c6a3c4f475148815",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "compat/test-closefrom.c": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "doc/quickjs.texi": "3beaddd4b40f739565d71656cd91656667f62d9535eac282523c25fdba870da7",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "examples/fib.c": "10abb9208119d2e83c7460ce946cbc77730447457e42ff97b0686603f4cd6b1f",
+        "examples/fib_module.js": "c4d285444cfce755587da2a6a14651666b1a0016165bca03f621273ff1bd0fc8",
+        "examples/hello.js": "54c112db94c206e1d289fe73ca4ccf5edbb2166f21f7195d10b6ac9e59be9a5a",
+        "examples/hello_module.js": "656ad9f4dd484c77d55c4febb21c1ab83b6e69215109d81dc6b2cdcbd11f4a9a",
+        "examples/message.json": "80eafa0a5c82afec9b9a3ee04f481554ee2bdc2c51b3749d686efc1e786b6d99",
+        "examples/pi_bigint.js": "324a08da2f764f5310587998cef711556380755ba46ddeb21a95530e20c2b28c",
+        "examples/point.c": "d3b05690f5d9c180db4b3b57e01b0e658048ce9a65dab0d3a9b6d5589ab66097",
+        "examples/test_fib.js": "879d1b5d2184fc2f93c5254815c1f20b3e0f365e27e6355c3e6d1b9f07bd2729",
+        "examples/test_point.js": "6c1b5b9c4191b5d4a11d890babe24099c33ea3498c714a47725a336cf0d11552",
+        "fuzz/README": "c31521fa9f2c10b3a299b14295401a66777ceafdd249055a9f56af13d201c7fa",
+        "fuzz/fuzz.dict": "f69c72bdc48ad1d6f49bf38d159adc471b7e43cc29098ef497a46d2339aae81d",
+        "fuzz/fuzz_bytecode.c": "b8ba4d694a1301949bc510084b56f608c41f4d0a2f08305e8c2d93f313bc5b27",
+        "fuzz/fuzz_common.c": "993baa6aab8932445a016a47faac6ab8f96a67f1db97d0cd35d823ce19e28d28",
+        "fuzz/fuzz_common.h": "70789c76c14f05a8a042f89645a9c3148139d2d39d55f93d62e93c254a6c2570",
+        "fuzz/fuzz_compile.c": "b4eece9d13142fc0a139307edc364ac6389eb801eb3e234ff9e40929356d374d",
+        "fuzz/fuzz_eval.c": "684de47998e652bf3a28e370439139aaa63a75c5c557b548c2f4f9c9deae5807",
+        "fuzz/fuzz_json.c": "e40a7facf20d321676f0ec40242789a907ccb7c16b83f3c052ed8a492e2a5723",
+        "fuzz/fuzz_module_export.c": "1f16e49ca5baceabe976181778e974999472ad7a4ee4af300afac8963496244c",
+        "fuzz/fuzz_regexp.c": "464caa3b1f394e9eb7df737cbdfd8f66fc350b71ed35587358e95bb0cf083724",
+        "fuzz/fuzz_regexp_compile.c": "7e3a95a8d54ec2fe02986d93656642ce8df3b5537c3a591430b23b381a9e8d7c",
+        "fuzz/generate_dict.js": "516da98a66a7708bcdb74c1525d365fb6a3b9fb76c8009506a2b6b429c97d785",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+        "quickjs.c": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "c650b31eaa757a53e490687efdad54e096dd3b4d15a235a2c147fd29ca1afe11",
+        "read_ic_prepare.inc": "6c0918de10801c641279e20af9e5295e726675dbe821c3c86e71c0ee8e273b19",
+        "read_ic_runtime.inc": "68e0703e4b6c4cfc06c984f8041462e066aa0e2fdedefe9c1f83f74a4d7c3376",
+        "read_ic_types.h": "d4c54c346becb5bffd6c71bdcf6c417788fe765b2bc4976811b5c080fe3f9b55",
+        "readme-cosmo.txt": "4bd96c54647ec1f995e1f0ec418fab9f9a7699187eec4634b29171b43d6c6393",
+        "readme.txt": "c131aa57e45c2a6efc1a5abf626708de28c6d0810a570a7bd710f9429045479f",
+        "release.sh": "5d58be9ddbd3d46b397cb2bf9dd72260c0b3a5fbab1536063fb9776c28dbff75",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "test262.conf": "2dbce74772b73277c02d12bb7149a5279c377808136607022f9e482efd83b516",
+        "test262_errors.txt": "282e00214880bdb2af9a2a472a3f800f0de033fcc4bd2f61fc87b3f3cd8a2743",
+        "test262o.conf": "ae541efe59f5958451375666d4ffc0c7bf48cea707fceadd82498421bb9a8c2f",
+        "test262o_errors.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/assert.js": "eb855c61c6c63fb025c24c1b54966955c0944aac70799119580b24143dbcd537",
+        "tests/bjson.c": "8866739b84ab1dfc2929fb5e90c1105aef10ff127b47ddcf903e9cc754b9b8f4",
+        "tests/fixture_cyclic_import.js": "327dd0593d0acd15e7e07ed4a34e900f8f97fa18d01ead6fa3a9ad01b83fb995",
+        "tests/microbench.js": "1ddbec9a4a04f25418dac2ef62b96a8aedfcea5d72d9b9c61bde8025470fd9c3",
+        "tests/test262.patch": "7aa1deb7d2caa001dec08c5b64e484cbc384f9a87c66670443d37473f8d94ab2",
+        "tests/test_bigint.js": "0a369c708d5d0042f1162b00243a8506e4538e0d90f7b0dc57b7017a187ef8c6",
+        "tests/test_bjson.js": "eef0d44d6b2a6e3c10ce13971e5e01889c5e8840a93baa2bfcc2bbac87e4b8f8",
+        "tests/test_builtin.js": "8c7b2ff258313dd4cf401dcbc4dd383a802dc90644fd5d4d918c688810299893",
+        "tests/test_closure.js": "5eebef577be5aacc54467ce2424dbaf02216112874b17836b481db37d866dab8",
+        "tests/test_cyclic_import.js": "c0c5729db8564cd3f2e752dc67d169e452ffcaa6470dcac2ae4c3f9b3a3d8390",
+        "tests/test_language.js": "47006ce2089c3152bf7a7ba79b026f6b134275405196450f6948b3ba578ac3dd",
+        "tests/test_loop.js": "6d27e2f39dfd72a6770241ac9cd49c7b1042915cc9dceaa087c6154b45d895aa",
+        "tests/test_rw_handler.js": "a488cccdbc726d6bff5ccb0b6e59865925bd168d15083b3c7d972bcbf249165b",
+        "tests/test_std.js": "645efbf4e1eb16b2d4769994ca7af56d0d3b82c498784cdeb456fea815375b26",
+        "tests/test_worker.js": "4655fec5e74cc5ee34b4d24401d9c3bf27cc6591bb85970d6db46f41cda4aeda",
+        "tests/test_worker_module.js": "40dbd9ad905c08aac732d9899c55b78004f8647cfa454a7d5f74d9050d2f49e3",
+        "unicode_download.sh": "1ac5230010d572a86c6dabc4d084c2ac8e0d53ab75387a3d9ca50c20942626b7",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "changed_from_M": [
+        "read_ic_opcodes.inc",
+        "read_ic_runtime.inc",
+        "read_ic_types.h"
+      ],
+      "diagnostic": false,
+      "sanitizer": false,
+      "patch_sha256": "88a218fbb103175fcb37970816758af09b1cb6c5c26744a0930ff6910dfc7931",
+      "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "command": [
+        "make",
+        "-j2",
+        "qjs",
+        "qjsc"
+      ]
+    },
+    "V8_ON": {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "expected_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "matches": true,
+      "size_bytes": 53498016
+    }
+  },
+  "dependencies": [
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+      "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+      "size_bytes": 374368,
+      "actual_sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749"
+    },
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat",
+      "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+      "size_bytes": 10819840,
+      "actual_sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+    }
+  ],
+  "script_hashes": {
+    "3d-cube": "227c8fd354720a2cccdf2aa07bab12513b65c33f9c72fe2ceb7ba24edf6b5f0f",
+    "3d-morph": "398f5eb46574442c77ff0505046d9c621165dd8b1d77b207b940d28616331004",
+    "3d-raytrace": "37a87d9bfc66db0990c5ba4ab79e26e286894c388c76d5128f5e5411762c228f",
+    "access-binary-trees": "d3b85e17037273f782b49ad7cef0726b4ffa4ae70e8ef334aa78824308825e92",
+    "access-fannkuch": "10507e36d7fc5c3f431c721848237b5ef28fcd8f8738d7dc9cf5a97f43cb6af6",
+    "access-nbody": "f12b133b28d4e1a07a70890d191aa10150396d89cbca43756f3c168620d46fa7",
+    "access-nsieve": "a8203778bb18a8fdbf6236415a8db3ac807538592178209a73e4c6cc16555c30",
+    "bitops-3bit-bits-in-byte": "c208d629a965664536cff2843ccba8da5ad94727a20d9a6d4badb66af5888455",
+    "bitops-bits-in-byte": "02319bfe2523f4c1d773e611eb4178edc7c0b90791874116399e1960a8399f5d",
+    "bitops-bitwise-and": "084fe3259a2b63da2b3d7a85328ac073b3a4641ea448857244607fbc09bcd5c3",
+    "bitops-nsieve-bits": "a5adabd88f46a28cfa4fe11fe273b2ed7d0ab5c610c31df5e04f1dea5b26ce05",
+    "controlflow-recursive": "304396f8f5ff3d5a2798b56d4695647ebd8d3dde1b35a500eba500544ea78e18",
+    "crypto-aes": "3b08e87018fc45b97752aed77db64ac24f57e0f5b7c47978166fc4c3eff5611c",
+    "crypto-md5": "d558de7ce4c83dbd8ec9c41e2f8fb167231c545272cc2a5e81f90586e7a09c46",
+    "crypto-sha1": "adc93b49863cc885d09cb4efdb95146d5afe93e1ad287fdf161af1f6b9c4e3ca",
+    "date-format-tofte": "946645db6221714f08d811c5557abb6c13d3146e96454fae3b9a0de996964fbd",
+    "date-format-xparb": "0dd75b6864d7d6abed8c89a90d5efac83bb46287060b182571d3d514dd739b87",
+    "math-cordic": "f5d03478ff129fc3809f21f54003d365d7e3a17e20b2b96310c4d44edcd558aa",
+    "math-partial-sums": "b6ce2d67440329ebac21d494e4b8210b1659602c5791620c4fc347b192dc188e",
+    "math-spectral-norm": "9418d93f87e395c44b8b8682e65e7e57e4c6aa61dba26dffd0a7dbf5d05ec7ac",
+    "regexp-dna": "4f8325e5d7cfb7a7b9e874c9b66372ca280552b0ec486e027514a55b27f971a9",
+    "string-base64": "2a571b088d0fbf50dd1c8c1aed9c53b170ab49d4263425ae83f4a43c884104c0",
+    "string-fasta": "51cc75296b44041cc728ab756bb8159568f0793344407dd82cd8394f9d8e2a1a",
+    "string-tagcloud": "c3b9197c1b215afec6e48f7db61dff920e89c164b4da01bcf9b9d32513e8c7b1",
+    "string-unpack-code": "2dcc86fee1a5dc964eafbc0338e09ae889fec3ba69922ee6933b00ee48e926e6",
+    "string-validate-input": "03774efb551e00cc2172d683089e90c9235070a128c050e01e8e2541814a72bf"
+  },
+  "input_sha256": {
+    "sunspider/inputs/3d-cube.js": "3b140ae1a61a98b37fa82fa7e4d390c00692a99eb76f5bb6dd67558049f82b5d",
+    "sunspider/inputs/3d-morph.js": "c765d13c9f8e958c072f8d821d560f5d86ae36eb92ef33794fda8aefd6e1b240",
+    "sunspider/inputs/3d-raytrace.js": "6c3a4a2bf41393d875d1814c472354abde69fd7a446df8edc87f085d735d409e",
+    "sunspider/inputs/access-binary-trees.js": "af16d6f52b448094138cfd8e5f6e24c8d60772654463a4a8627cd54f910f93b5",
+    "sunspider/inputs/access-fannkuch.js": "a768076e7bae5e4e52fd6709732ccd52bcf1299bea7e464c02b905d189bb7f69",
+    "sunspider/inputs/access-nbody.js": "84f08150e27c075e4a6b1b900b743cc2845abd3a47175cd444f6a1178493487c",
+    "sunspider/inputs/access-nsieve.js": "ef62b42b6f926d61d9741a8e57b2758a9aea28ad2d1ee1e7d4747957d00fdc20",
+    "sunspider/inputs/bitops-3bit-bits-in-byte.js": "908076ee39ddf74f3d6be54b7f7c78fae8ddc9a308849f1ab1e40f1676779b41",
+    "sunspider/inputs/bitops-bits-in-byte.js": "4f1a917cd52ebc07ec30dbe9d3e369e03c09825f9d2898fc3403ebd34a9bd853",
+    "sunspider/inputs/bitops-bitwise-and.js": "65ce384a6a7bf6a3d7590bb3efb7b275d9964fdf55bd964bc226be8821da47e2",
+    "sunspider/inputs/bitops-nsieve-bits.js": "de7b6de8f565b877dfc5449c6b23d808fa22058a662a81421f1810cbbdc8b6bc",
+    "sunspider/inputs/controlflow-recursive.js": "7689048105ae415ad60df2a882384063df640371d806d7a7d91446f2881b7d83",
+    "sunspider/inputs/crypto-aes.js": "7151c362dd1d10ec6bf8bd332a57bf96aa3d6bf64a87695b7b670af09e430365",
+    "sunspider/inputs/crypto-md5.js": "5a2688c93d64256f7fb19a771240050da2a3c37a1cadd5d802d82ba3d39f5d20",
+    "sunspider/inputs/crypto-sha1.js": "967f4dda44c6225118cdaaca3fdf4302c12b0ea44ecf553470ffc8b4b6bc1aa1",
+    "sunspider/inputs/date-format-tofte.js": "cbefaffbecb6769a85f5877765b21f967a1cff5ab2625d4a9066c050fcdc7b5e",
+    "sunspider/inputs/date-format-xparb.js": "6765d8008ad9abdb51889d7e791f716d9e9791e6bf710de0ac71c488b2f22bf7",
+    "sunspider/inputs/math-cordic.js": "ad8710fb0e502fb0d214179751102861eff3b3d5c4603344e3129afa693305a6",
+    "sunspider/inputs/math-partial-sums.js": "3c0cca9004d6e1d1c651addeaaf59dad90e7df15973eca7c8948dd3d758c7d0c",
+    "sunspider/inputs/math-spectral-norm.js": "d57283fcb398ed3fd512991068768c5a20b8af3aa8c69ed0d6dc5416f6d0023f",
+    "sunspider/inputs/regexp-dna.js": "0897d1123aa12283a6865cb5e5925db8d09a08097c6fc51117e21f51c76d4135",
+    "sunspider/inputs/string-base64.js": "48e6106fc6df6cb725b2c56934aff1591c97527862d27accfc11e419467639fc",
+    "sunspider/inputs/string-fasta.js": "b790324ca6c5caa25da93638fa0cf9a9014a3764cbf4f04b4ff3babf6999f6dd",
+    "sunspider/inputs/string-tagcloud.js": "9634886bcb846c76141f97b681b33a11df444901e0b4c899d8f72a3b6544f9d5",
+    "sunspider/inputs/string-unpack-code.js": "6ff9856ad51b877ef29262b942015ec04dd2ffe916b5adc85324aee2a144d382",
+    "sunspider/inputs/string-validate-input.js": "518ed0c67fde0c0d65af6238b91f5e498d8ba5d188c428f4a76dd498704737d5",
+    "sunspider/inputs/driver.js": "ac75965f6750ba8a2d93e508c748edf33559f3caad01587e213e0f72af4e2e22",
+    "sunspider/inputs/adapter.js": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7"
+  },
+  "protocol_sha256": "b9b427517bd7df3a0e12acb6ee6a351dcee3ba161f370ff9dfd3df91a0f0a9de",
+  "schedule_sha256": "a0156e51e2c7fd76e8164cedc94e057055254b90d132759ba9a174dd5fe608c6",
+  "runner_sha256": "96891cd464625a25051b203ff025d3a68dd963166ec25798971fb2bd6438a6e9",
+  "identity_check": "full SHA256 before/after campaign; size/mtime_ns/inode before every formal child",
+  "file_stats": {
+    "/home/mzyx/read_ic_dequickening_attempt01/A/qjs": [
+      5090704,
+      1792841166597652100,
+      110116
+    ],
+    "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs": [
+      5102680,
+      1793181355560296244,
+      112004
+    ],
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8": [
+      53498016,
+      1791122581618474193,
+      44051
+    ],
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/qjs": [
+      5103464,
+      1793626599813302930,
+      116301
+    ],
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin": [
+      374368,
+      1791122581748474194,
+      44054
+    ],
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat": [
+      10819840,
+      1791122581748474194,
+      44053
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/3d-cube.js": [
+      8564,
+      1793626776410016800,
+      2251799814766088
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/3d-morph.js": [
+      2434,
+      1793626776448031700,
+      2251799814766089
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/3d-raytrace.js": [
+      14599,
+      1793626776550678300,
+      2251799814766090
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/access-binary-trees.js": [
+      1366,
+      1793626776690074200,
+      2251799814766091
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/access-fannkuch.js": [
+      1673,
+      1793626776742107300,
+      2251799814766092
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/access-nbody.js": [
+      4289,
+      1793626776796279300,
+      2251799814766093
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/access-nsieve.js": [
+      907,
+      1793626776847944900,
+      2251799814766094
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/bitops-3bit-bits-in-byte.js": [
+      930,
+      1793626776911838900,
+      2251799814766095
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/bitops-bits-in-byte.js": [
+      571,
+      1793626776958202600,
+      2251799814766096
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/bitops-bitwise-and.js": [
+      1591,
+      1793626777008688500,
+      2251799814766097
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/bitops-nsieve-bits.js": [
+      889,
+      1793626777047899400,
+      2251799814766098
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/controlflow-recursive.js": [
+      675,
+      1793626777100030200,
+      2251799814766099
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/crypto-aes.js": [
+      17164,
+      1793626777152099200,
+      2251799814766100
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/crypto-md5.js": [
+      9903,
+      1793626777207212200,
+      2251799814766101
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/crypto-sha1.js": [
+      6507,
+      1793626777264137000,
+      2251799814766102
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/date-format-tofte.js": [
+      10592,
+      1793626777330532400,
+      2251799814766103
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/date-format-xparb.js": [
+      12130,
+      1793626777410088300,
+      2251799814766104
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/math-cordic.js": [
+      2873,
+      1793626777473837800,
+      2251799814766105
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/math-partial-sums.js": [
+      1078,
+      1793626777514547400,
+      2251799814766106
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/math-spectral-norm.js": [
+      1028,
+      1793626777551985300,
+      2251799814766107
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/regexp-dna.js": [
+      408689,
+      1793626777675339000,
+      2251799814766108
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/string-base64.js": [
+      5185,
+      1793626777781166000,
+      2251799814766109
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/string-fasta.js": [
+      1994,
+      1793626777833081300,
+      2251799814766110
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/string-tagcloud.js": [
+      175109,
+      1793626777890862700,
+      2251799814766111
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/string-unpack-code.js": [
+      167215,
+      1793626778078164400,
+      2251799814766112
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/string-validate-input.js": [
+      2084,
+      1793626778249087700,
+      2251799814766113
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/driver.js": [
+      1382,
+      1793626778291836400,
+      2251799814766115
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/adapter.js": [
+      429,
+      1793626778314459900,
+      2251799814766116
+    ]
+  }
+}

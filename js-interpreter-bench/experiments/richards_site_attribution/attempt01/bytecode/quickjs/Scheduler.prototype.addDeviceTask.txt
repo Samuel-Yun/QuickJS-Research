@@ -1,0 +1,30 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:548:37: function: <null>
+  args: id priority queue
+  locals:
+    0: var this
+  closure vars:
+    0: var DeviceTask [global_ref27]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function (id, priority, queue) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.addTask(id, priority, queue, new DeviceTask(this))
+
+        get_loc0 0: this
+        get_field2 addTask
+        get_arg0 0: id
+        get_arg1 1: priority
+        get_arg2 2: queue
+        get_var 0: DeviceTask
+        dup
+        get_loc0 0: this
+        call_constructor 1
+        call_method 4
+        return_undef
+
+;; }
+

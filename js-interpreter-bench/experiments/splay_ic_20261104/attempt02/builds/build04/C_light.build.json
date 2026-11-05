@@ -1,0 +1,33 @@
+{
+  "command": [
+    "make",
+    "-j1",
+    "qjs",
+    "qjsc"
+  ],
+  "label": "C lightweight diagnostic build",
+  "cwd": "/home/mzyx/splay_ic_20261104_attempt02/build04/C_light",
+  "timestamp": "2026-11-04T09:26:44.143244+00:00",
+  "completed_at": "2026-11-04T09:27:15.020172+00:00",
+  "child_pid": 597,
+  "exit_code": 0,
+  "signal": null,
+  "stdout": "mkdir -p .obj .obj/examples .obj/tests\ngcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/qjs.o qjs.c\ngcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DCONFIG_CC=\\\"gcc\\\" -DCONFIG_PREFIX=\\\"/usr/local\\\" -O2 -c -o .obj/qjsc.o qjsc.c\ngcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/quickjs.o quickjs.c\ngcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/dtoa.o dtoa.c\ngcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/libregexp.o libregexp.c\ngcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/libunicode.o libunicode.c\ngcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/cutils.o cutils.c\ngcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c\ngcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl \n./qjsc -s -c -o repl.c -m repl.js\ngcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -O2 -c -o .obj/repl.o repl.c\ngcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl \nmake: 'qjsc' is up to date.\n",
+  "stderr": "In file included from quickjs.c:61607:\naudit_tail.inc: In function ‘sp_receiver’:\naudit_tail.inc:35:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   35 |             if(!name)abort();snprintf(l->names[i],40,\"%s\",name);JS_FreeCString(ctx,name);l->flags_all[i]=pr->flags;l->copied++;\n      |             ^~\naudit_tail.inc:35:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   35 |             if(!name)abort();snprintf(l->names[i],40,\"%s\",name);JS_FreeCString(ctx,name);l->flags_all[i]=pr->flags;l->copied++;\n      |                              ^~~~~~~~\naudit_tail.inc:40:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   40 |             if(o->is_exotic||depth>=8)break;o=o->shape->proto;\n      |             ^~\naudit_tail.inc:40:45: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   40 |             if(o->is_exotic||depth>=8)break;o=o->shape->proto;\n      |                                             ^\naudit_tail.inc: In function ‘audit_register’:\naudit_tail.inc:49:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   49 |     if(sp_focus_b||++sp_focus_instances>1)abort();sp_focus_b=b;\n      |     ^~\naudit_tail.inc:49:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   49 |     if(sp_focus_b||++sp_focus_instances>1)abort();sp_focus_b=b;\n      |                                                   ^~~~~~~~~~\naudit_tail.inc: In function ‘audit_report’:\naudit_tail.inc:93:9: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]\n   93 |         for(unsigned i=0;i<f->seq_count;i++)fprintf(o,\"%s%llu\",i?\",\":\"\",(unsigned long long)f->seq[i]);fprintf(o,\"],\\\"layouts\\\":[\");\n      |         ^~~\naudit_tail.inc:93:104: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’\n   93 |         for(unsigned i=0;i<f->seq_count;i++)fprintf(o,\"%s%llu\",i?\",\":\"\",(unsigned long long)f->seq[i]);fprintf(o,\"],\\\"layouts\\\":[\");\n      |                                                                                                        ^~~~~~~\nIn file included from quickjs.c:61609:\nsp_control.inc: In function ‘sp_control_install’:\nsp_control.inc:44:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   44 |     if(JS_SetPropertyStr(ctx,g,\"__spControl\",JS_NewCFunction(ctx,sp_control,\"__spControl\",1))<0)abort();JS_FreeValue(ctx,g);\n      |     ^~\nsp_control.inc:44:105: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   44 |     if(JS_SetPropertyStr(ctx,g,\"__spControl\",JS_NewCFunction(ctx,sp_control,\"__spControl\",1))<0)abort();JS_FreeValue(ctx,g);\n      |                                                                                                         ^~~~~~~~~~~~\n",
+  "timeout": false,
+  "host_timeout": false,
+  "outer_start_ns": 4745997777,
+  "outer_stop_ns": 35623032219,
+  "external_wall_ms": 30877.034442,
+  "child_user_ms": 29021.341,
+  "child_system_ms": 959.681,
+  "single_child_peak_rss_kib": 346580,
+  "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+  "boot_id": "a942c57c-35f3-483b-b96e-081fe949c37a",
+  "boot_id_after": "a942c57c-35f3-483b-b96e-081fe949c37a",
+  "load_average": [
+    0.443359375,
+    0.11181640625,
+    0.03759765625
+  ]
+}

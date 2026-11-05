@@ -1,0 +1,15 @@
+mkdir -p .obj .obj/examples .obj/tests
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/qjs.o qjs.c
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/qjsc.o qjsc.c
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/quickjs.o quickjs.c
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/dtoa.o dtoa.c
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/libregexp.o libregexp.c
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/libunicode.o libunicode.c
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/cutils.o cutils.c
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c
+gcc -g -fsanitize=address,undefined -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl 
+ar rcs libquickjs.a .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o
+./qjsc -s -c -o repl.c -m repl.js
+make: 'qjsc' is up to date.
+gcc -g -O1 -Wall -fwrapv -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address,undefined -fno-omit-frame-pointer -O2 -c -o .obj/repl.o repl.c
+gcc -g -fsanitize=address,undefined -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl 

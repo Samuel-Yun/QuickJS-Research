@@ -1,0 +1,22 @@
+{
+  "exit_code": -6,
+  "stdout": "",
+  "stderr": "Flag processing error: Contradictory value for readonly flag --trace-regexp-tier-up.\nIf a test variant caused this, it might be necessary to specify additional contradictory flags in tools/testrunner/local/variants.py.\n",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--trace-regexp-tier-up",
+    "--trace-regexp-exec",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/RegExp.RegExp.N1.original.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:42:07.191712+00:00",
+  "outer_start_ns": 121624032263,
+  "outer_stop_ns": 121637716765,
+  "boot_id": "441e3b90-9a71-4533-8969-b267d582448a",
+  "outer_wall_ns": 13684502
+}

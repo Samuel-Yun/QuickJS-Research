@@ -1,0 +1,89 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -716,6 +716,7 @@
+     int cpool_count;
+     int closure_var_count;
+     ReadICSite *read_ic_sites;
++    JSAtom *read_ic_atoms; /* c005: cold tail of the same site allocation */
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
+ #ifdef READ_IC_DIAGNOSTIC
+@@ -37765,7 +37766,7 @@
+             assert(ri < b->read_ic_count);
+             op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
+             bc_buf[pos] = op;
+-            put_u32(bc_buf + pos + 1, b->read_ic_sites[ri].atom);
++            put_u32(bc_buf + pos + 1, b->read_ic_atoms[ri]);
+         }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -24,7 +24,7 @@
+             }                                                           \
+         }                                                               \
+         RDI_COUNT(fallback);                                            \
+-        atom = site->atom;                                              \
++        atom = b->read_ic_atoms[index];                                 \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+             for (;;) {                                                  \
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -13,12 +13,13 @@
+         if (op == OP_get_field || op == OP_get_field2) count++;
+     }
+     if (!count) return 0;
+-    if (count > SIZE_MAX / sizeof(ReadICSite)) {
++    if (count > SIZE_MAX / (sizeof(ReadICSite) + sizeof(JSAtom))) {
+         JS_ThrowOutOfMemory(ctx);
+         return -1;
+     }
+-    b->read_ic_sites = js_mallocz(ctx, count * sizeof(ReadICSite));
++    b->read_ic_sites = js_mallocz(ctx, count * (sizeof(ReadICSite) + sizeof(JSAtom)));
+     if (!b->read_ic_sites) return -1;
++    b->read_ic_atoms = (JSAtom *)(b->read_ic_sites + count);
+     b->read_ic_count = count;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_prepare(ctx, b);
+@@ -27,7 +28,7 @@
+         uint8_t *pc = b->byte_code_buf + pos;
+         op = *pc;
+         if (op == OP_get_field || op == OP_get_field2) {
+-            b->read_ic_sites[index].atom = get_u32(pc + 1);
++            b->read_ic_atoms[index] = get_u32(pc + 1);
+             *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
+             put_u32(pc + 1, index++);
+         }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -70,7 +70,7 @@
+     uint32_t i;
+     for (i = 0; i < b->read_ic_count; i++) {
+         ReadICSite *s = &b->read_ic_sites[i];
+-        JS_FreeAtomRT(rt, s->atom);
++        JS_FreeAtomRT(rt, b->read_ic_atoms[i]);
+ #if RDI_CAPACITY == 1
+         js_free_shape_null(rt, s->shape);
+ #else
+@@ -83,5 +83,6 @@
+ #endif
+     js_free_rt(rt, b->read_ic_sites);
+     b->read_ic_sites = NULL;
++    b->read_ic_atoms = NULL;
+     b->read_ic_count = 0;
+ }
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -1,10 +1,9 @@
+ /* Experimental per-final-read-site IC. No QuickJS-NG runtime code imported. */
+ #include "read_ic_config.h"
+ #if RDI_CAPACITY == 1
+-typedef struct ReadICSite {
++typedef struct __attribute__((packed)) ReadICSite {
+     JSShape *shape;
+     uint32_t prop_offset;
+-    JSAtom atom;
+ } ReadICSite;
+ #elif RDI_CAPACITY == 4
+ typedef struct ReadICSite {

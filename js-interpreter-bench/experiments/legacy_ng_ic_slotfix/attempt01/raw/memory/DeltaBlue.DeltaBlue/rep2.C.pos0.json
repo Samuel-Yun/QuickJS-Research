@@ -1,0 +1,30 @@
+{
+  "campaign": "legacy_ng_ic_slotfix/attempt01",
+  "case": "DeltaBlue.DeltaBlue",
+  "variant": "C",
+  "rep": 2,
+  "order": 0,
+  "N": 256,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/raw/memory/DeltaBlue.DeltaBlue/rep2.C.pos0.rss.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/generated/DeltaBlue.DeltaBlue.N256.measure.js"
+  ],
+  "binary_sha256": "938ac3db6e09209a9e316f62e682a96722f4a2a79de6b667de661a1f72c834eb",
+  "script_sha256": "07c0f35da5222b6d6d4acd5ab8ae739758fec882c99b64414612dc9281b2f6fb",
+  "peak_rss_KiB": 3764,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"DeltaBlue.DeltaBlue\",\"suite\":\"DeltaBlue\",\"subbenchmark\":\"DeltaBlue\",\"mode\":\"LEGACY_NG_IC_SLOTFIX_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":2983455.218587,\"stop_ms\":2985368.044668,\"elapsed_ms\":1912.8260810002685,\"elapsed_per_call_ms\":7.471976878907299,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-23T11:05:07.942155+00:00",
+  "outer_wall_ns": 1947594478,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

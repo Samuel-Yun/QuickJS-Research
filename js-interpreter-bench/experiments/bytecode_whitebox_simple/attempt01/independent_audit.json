@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "formal_valid": 180,
+  "formal_expected": 180,
+  "correctness_pass": 36,
+  "selected_correctness_pass": 6,
+  "groups": 6,
+  "samples_per_group": 30,
+  "first_position_per_engine_per_case": 15,
+  "second_position_per_engine_per_case": 15,
+  "same_script_and_command_verified": true,
+  "zero_epsilon_or_outlier_deletion": false,
+  "first_qualifying_power_of_two_verified": true,
+  "formal_boot_ids": [
+    "41fb6b24-2b14-4152-a21c-9ff4a8f987f0"
+  ],
+  "below_1000ms_retained": {
+    "own_property/v8": 12,
+    "numeric_loop/quickjs": 29,
+    "numeric_loop/v8": 23,
+    "own_property/quickjs": 2
+  },
+  "raw_record_count": 180,
+  "final_bytecode_functions": 8,
+  "engine_function_dumps": 16,
+  "native_v8_handlers": 9,
+  "quickjs_representation_equal_cases": 6,
+  "quickjs_property_path_counters_measured": true,
+  "full_dynamic_opcode_profiler": false,
+  "logical_opcode_visits": "DERIVED_NOT_MEASURED",
+  "exact_v8_source_commit": null,
+  "v8_native_branch_hit_rates": null,
+  "post_measurement_artifact_hashes_verified": true,
+  "old_files_preservation_audit": true,
+  "initial_runner_sha256": "7ef4845a1f41b0dc0fc7766cca57457a0862ccfc868e6d6338ca9b2184aa543a",
+  "final_code_hashes": {
+    "run.py": "82bb982ddfb020a8645e8fef1375fcce4fc03046be318f76940fd06b9c0c836a",
+    "evidence.py": "2b08524159fea11241367c85183d5e167f12ae40d2581ca93dce0f11324b6e5f",
+    "native_handlers.py": "131f9b6d61bb655ba50e0d6b1a562d3bfa5566d03d941a104ee8770696de42f3",
+    "representation.py": "cd9e7fcfd0c0620a2a23e63bbe280f3630642b7308efafb4c289a05648baa882",
+    "write_notes.py": "454dc840db78b18fee48a58ab78e9ea04fcb95a8b0a95811b51fdcbe7a7d9082",
+    "audit_independent.py": "5d1004bcdad9052ce3099c6d7a09e1f293636813c8959cfd3932ef6f7d874519"
+  },
+  "note": "Offline parser/auxiliary recovery and diagnostic additions changed entry code hashes; targets, formal driver semantics, runtime flags and measurements unchanged."
+}

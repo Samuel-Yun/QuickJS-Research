@@ -1,0 +1,118 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:822:28: function: <null>
+  args: packet
+  locals:
+    0: var i
+    1: var this
+  closure vars:
+    0: var ID_HANDLER_A [global_ref12]
+    1: var ID_HANDLER_B [global_ref13]
+    2: var DATA_SIZE [global_ref30]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc1 1: this
+
+;;   if (packet == null) {
+
+        get_arg0 0: packet
+        null
+        eq
+        if_false8 21
+        get_loc1 1: this
+
+;;     return this.scheduler.suspendCurrent();
+
+        get_field scheduler
+        get_field2 suspendCurrent
+        tail_call_method 0
+   21:  get_loc1 1: this
+
+;;   } else {
+;;     if (this.v1 == ID_HANDLER_A) {
+
+        get_field v1
+        get_var 0: ID_HANDLER_A
+        eq
+        if_false8 44
+
+;;       this.v1 = ID_HANDLER_B;
+
+        get_loc1 1: this
+        get_var 1: ID_HANDLER_B
+        put_field v1
+        goto8 53
+
+;;     } else {
+;;       this.v1 = ID_HANDLER_A;
+
+   44:  get_loc1 1: this
+        get_var 0: ID_HANDLER_A
+        put_field v1
+
+;;     }
+;;     packet.id = this.v1;
+
+   53:  get_arg0 0: packet
+        get_loc1 1: this
+        get_field v1
+        put_field id
+
+;;     packet.a1 = 0;
+
+        get_arg0 0: packet
+        push_0 0
+        put_field a1
+        push_0 0
+
+;;     for (var i = 0; i < DATA_SIZE; i++) {
+
+        put_loc0 0: i
+   74:  get_loc0 0: i
+        get_var 2: DATA_SIZE
+        lt
+        if_false8 129
+
+;;       this.v2++;
+
+        get_loc1 1: this
+        get_field2 v2
+        inc
+        put_field v2
+        get_loc1 1: this
+
+;;       if (this.v2 > 26) this.v2 = 1;
+
+        get_field v2
+        push_i8 26
+        gt
+        if_false8 111
+        get_loc1 1: this
+        push_1 1
+        put_field v2
+
+;;       packet.a2[i] = this.v2;
+
+  111:  get_arg0 0: packet
+        get_field a2
+        get_loc0 0: i
+        get_loc1 1: this
+        get_field v2
+        put_array_el
+        inc_loc 0: i
+        goto8 74
+  129:  get_loc1 1: this
+
+;;     }
+;;     return this.scheduler.queue(packet);
+
+        get_field scheduler
+        get_field2 queue
+        get_arg0 0: packet
+        tail_call_method 1
+
+;;   }
+;; }
+

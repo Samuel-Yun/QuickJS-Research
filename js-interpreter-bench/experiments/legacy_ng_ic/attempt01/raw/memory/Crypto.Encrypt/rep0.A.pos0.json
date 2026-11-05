@@ -1,0 +1,29 @@
+{
+  "case": "Crypto.Encrypt",
+  "variant": "A",
+  "rep": 0,
+  "order": 0,
+  "N": 256,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/raw/memory/Crypto.Encrypt/rep0.A.pos0.time.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_attempt01/A/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/Crypto.Encrypt.N256.measure.js"
+  ],
+  "binary_sha256": "0505d8d3af32cc768a10c9eddd5a8c0b30b946ff39d083e512852c27f0912d9d",
+  "script_sha256": "c20a1df49dd2989f769c42a0349ed9eb6e979ca9931c57ca169f46ede289765c",
+  "valid": true,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Crypto.Encrypt\",\"suite\":\"Crypto\",\"subbenchmark\":\"Encrypt\",\"mode\":\"LEGACY_NG_IC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":38427.789676,\"stop_ms\":39738.662503,\"elapsed_ms\":1310.8728269999992,\"elapsed_per_call_ms\":5.120596980468747,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "peak_rss_kib": 3500,
+  "outer_wall_ns": 1420550679,
+  "timestamp": "2026-10-22T17:10:26.265359+00:00",
+  "method": "GNU time 1 fresh small launcher -> qjs; KiB",
+  "performance_sample": false,
+  "instrumented_binary": false
+}

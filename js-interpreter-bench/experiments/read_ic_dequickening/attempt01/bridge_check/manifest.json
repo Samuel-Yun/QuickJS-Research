@@ -1,0 +1,40 @@
+{
+  "artifacts": {
+    "A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "source": "/home/mzyx/read_ic_dequickening_attempt01/A",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "qjsc_sha256": "3715fd24ad098c9b3801c7c84b0e9e6cd7982133a03ac341e1dd3cdcfa2f4259",
+      "size": 5090704
+    },
+    "M": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/M/qjs",
+      "source": "/home/mzyx/read_ic_dequickening_attempt01/M",
+      "sha256": "d22127a30779f78e35aaef853929188f9d042726f131da7946520c9afbd75c42",
+      "qjsc_sha256": "1bfe5488a798be35930ae3eb2fb4b29a5d574b256828bcaa7cedf7570edc049f",
+      "size": 5102680
+    },
+    "SW": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/SW/qjs",
+      "source": "/home/mzyx/read_ic_dequickening_attempt01/SW",
+      "sha256": "73b92de1518e25f11d3b99a0fe2487b8bd3a47bac242493dcd172b575a2124fc",
+      "qjsc_sha256": "5e614c50dd9223d7551931411a7e33e7042c13168a6d1b8dd3b899d3aa5a9ce3",
+      "size": 5104640
+    }
+  },
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "command": [
+    "make",
+    "-j2",
+    "qjs",
+    "qjsc"
+  ],
+  "optimization": "-O2 -g -fwrapv",
+  "NDEBUG": false,
+  "LTO": false,
+  "PGO": false,
+  "created_at": "2026-10-24T11:26:57.818328+00:00",
+  "host": "LAPTOP-QPKCPDCB",
+  "kernel": "5.15.167.4-microsoft-standard-WSL2",
+  "architecture": "x86_64"
+}

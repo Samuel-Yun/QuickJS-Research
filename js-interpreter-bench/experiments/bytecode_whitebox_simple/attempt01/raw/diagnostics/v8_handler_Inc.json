@@ -1,0 +1,24 @@
+{
+  "exit_code": -6,
+  "stdout": "",
+  "stderr": "Flag processing error: Contradictory value for readonly flag --print-builtin-code.\nIf a test variant caused this, it might be necessary to specify additional contradictory flags in tools/testrunner/local/variants.py.\n",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--print-builtin-code",
+    "--print-builtin-code-filter=Inc",
+    "-e",
+    "print('HANDLER_DUMP_DONE')"
+  ],
+  "timestamp_utc": "2026-10-15T03:45:04.397680+00:00",
+  "outer_wall_ns": 19727216,
+  "load_average": [
+    0.322265625,
+    0.08935546875,
+    0.02783203125
+  ],
+  "boot_id": "12852467-9132-4279-ac1e-06c74119e72d",
+  "LD_PRELOAD": null
+}

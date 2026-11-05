@@ -1,0 +1,50 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L48130
+48130:     ret = JS_EXCEPTION;
+48131:     obj = JS_NULL;
+48132:     groups = JS_UNDEFINED;
+48133:     indices = JS_UNDEFINED;
+48134:     indices_groups = JS_UNDEFINED;
+48135:     capture = NULL;
+48136:     group_name = JS_ATOM_NULL;
+48137:     
+48138:     if (js_regexp_get_lastIndex(ctx, &last_index, this_val))
+48139:         goto fail;
+48140: 
+48141:     re_bytecode = re->bytecode->u.str8;
+48142:     re_flags = lre_get_flags(re_bytecode);
+48143:     if ((re_flags & (LRE_FLAG_GLOBAL | LRE_FLAG_STICKY)) == 0) {
+48144:         last_index = 0;
+48145:     }
+48146:     str = JS_VALUE_GET_STRING(str_val);
+48147:     alloc_count = lre_get_alloc_count(re_bytecode);
+48148:     if (alloc_count > 0) {
+48149:         capture = js_malloc(ctx, sizeof(capture[0]) * alloc_count);
+48150:         if (!capture)
+48151:             goto fail;
+48152:     }
+48153:     capture_count = lre_get_capture_count(re_bytecode);
+48154:     shift = str->is_wide_char;
+48155:     str_buf = str->u.str8;
+48156:     if (last_index > str->len) {
+48157:         rc = 2;
+48158:     } else {
+48159:         rc = lre_exec(capture, re_bytecode,
+48160:                       str_buf, last_index, str->len,
+48161:                       shift, ctx);
+48162:     }
+48163:     if (rc != 1) {
+48164:         if (rc >= 0) {
+48165:             if (rc == 2 || (re_flags & (LRE_FLAG_GLOBAL | LRE_FLAG_STICKY))) {
+48166:                 if (js_regexp_set_lastIndex(ctx, this_val, 0) < 0)
+48167:                     goto fail;
+48168:             }
+48169:         } else {
+48170:             if (rc == LRE_RET_TIMEOUT) {
+48171:                 JS_ThrowInterrupted(ctx);
+48172:             } else {
+48173:                 JS_ThrowInternalError(ctx, "out of memory in regexp execution");
+48174:             }
+48175:             goto fail;
+48176:         }

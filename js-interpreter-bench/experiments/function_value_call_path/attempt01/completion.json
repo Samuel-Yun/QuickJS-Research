@@ -1,0 +1,28 @@
+{
+  "status": "COMPLETED",
+  "timestamp": "2026-10-28T15:32:11.674237+00:00",
+  "formal_valid": 360,
+  "formal_expected": 360,
+  "complete_rounds": 30,
+  "N": 16384,
+  "correctness_N1_N2": 24,
+  "correctness_selected_N": 12,
+  "property_diagnostic_processes": 16,
+  "call_diagnostic_processes": 16,
+  "V8_bytecode_processes": 4,
+  "independent_audit": "PASS",
+  "Windows_Linux_raw_only_replay_byte_identical": true,
+  "old_tracked_files_untouched": true,
+  "formal_runtime_unchanged": true,
+  "new_VM_optimization": false,
+  "elapsed_task_checkpoint_seconds": 2895.590233,
+  "total_budget_seconds": 14400,
+  "limitations": [
+    "per-component native self-time UNKNOWN",
+    "exact d8 build commit UNKNOWN",
+    "V8 per-site handler/hit rate UNKNOWN",
+    "UTC metadata discrepancy retained",
+    "host frequency/power/background uncontrolled"
+  ],
+  "decision": "one missing cost attribution for local bytecode-call entry/normal return, no optimization yet"
+}

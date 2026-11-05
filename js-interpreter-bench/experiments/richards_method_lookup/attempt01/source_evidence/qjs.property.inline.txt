@@ -1,0 +1,67 @@
+Upstream revision04be246001599f5995fa2f2d8c91a0f198d3f34c
+/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256=b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+19107: #define GET_FIELD_INLINE(name, keep, is_length)                         \
+19108:             {                                                           \
+19109:                 JSValue val, obj;                                       \
+19110:                 JSAtom atom;                                            \
+19111:                 JSObject *p;                                            \
+19112:                 JSProperty *pr;                                         \
+19113:                 JSShapeProperty *prs;                                   \
+19114:                                                                         \
+19115:                 if (is_length) {                                        \
+19116:                     atom = JS_ATOM_length;                              \
+19117:                 } else {                                                \
+19118:                     atom = get_u32(pc);                                 \
+19119:                     pc += 4;                                            \
+19120:                 }                                                       \
+19121:                                                                         \
+19122:                 obj = sp[-1];                                           \
+19123:                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {   \
+19124:                     p = JS_VALUE_GET_OBJ(obj);                          \
+19125:                     for(;;) {                                           \
+19126:                         prs = find_own_property(&pr, p, atom);          \
+19127:                         if (prs) {                                      \
+19128:                             /* found */                                 \
+19129:                             if (unlikely(prs->flags & JS_PROP_TMASK))   \
+19130:                                     goto name ## _slow_path;            \
+19131:                             val = JS_DupValue(ctx, pr->u.value);        \
+19132:                             break;                                      \
+19133:                         }                                               \
+19134:                         if (unlikely(p->is_exotic)) {                   \
+19135:                             /* XXX: should avoid the slow path for arrays \
+19136:                                and typed arrays by ensuring that 'prop' is \
+19137:                                not numeric */                           \
+19138:                             obj = JS_MKPTR(JS_TAG_OBJECT, p);           \
+19139:                             goto name ## _slow_path;                    \
+19140:                         }                                               \
+19141:                         p = p->shape->proto;                            \
+19142:                         if (!p) {                                       \
+19143:                             val = JS_UNDEFINED;                         \
+19144:                             break;                                      \
+19145:                         }                                               \
+19146:                     }                                                   \
+19147:                 } else {                                                \
+19148:                 name ## _slow_path:                                     \
+19149:                     sf->cur_pc = pc;                                    \
+19150:                     val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0); \
+19151:                     if (unlikely(JS_IsException(val)))                  \
+19152:                         goto exception;                                 \
+19153:                 }                                                       \
+19154:                 if (keep) {                                             \
+19155:                     *sp++ = val;                                        \
+19156:                 } else {                                                \
+19157:                     JS_FreeValue(ctx, sp[-1]);                          \
+19158:                     sp[-1] = val;                                       \
+19159:                 }                                                       \
+19160:             }
+19161: 
+19162:             
+19163:         CASE(OP_get_field):
+19164:             GET_FIELD_INLINE(get_field, 0, 0);
+19165:             BREAK;
+19166: 
+19167:         CASE(OP_get_field2):
+19168:             GET_FIELD_INLINE(get_field2, 1, 0);
+19169:             BREAK;
+19170: 

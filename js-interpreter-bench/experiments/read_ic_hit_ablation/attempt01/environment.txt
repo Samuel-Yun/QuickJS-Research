@@ -1,0 +1,19 @@
+Campaign: read_ic_hit_ablation/attempt01
+Reference HEAD: 94fd9872ab90832621b516c5e7d6de4beae5d302 (myx; initially clean)
+Platform: WSL2 Ubuntu24.04.2 LTS x86_64; Linux5.15.167.4-microsoft-standard-WSL2
+Host: LAPTOP-QPKCPDCB; AMD Ryzen7 5800H; guest8 physical/16 logical
+Compiler: gcc Ubuntu13.3.0-6ubuntu2~24.04.1, GCC13.3.0
+Build: make -j2 qjs qjsc; official -O2 -g -fwrapv; no NDEBUG/LTO/PGO
+Runtime flags: [] in all four conditions; source and command/ELF hashes in manifest/raw
+A/M: original source bytes exactly checked against previous committed identities
+ON/LOOKUP: same SW/qjs, same ELF SHA and argv, only QJS_READ_IC_MODE=1/0 differs
+Mode: pthread_once native process initialization, no JS setter; per-runtime private byte
+Mode storage: site unchanged16bytes; runtime sizeof+8bytes (including padding); once4bytes bss + cached mode4bytes data
+Clock: parent perf_counter_ns absolute start/stop; child captured native performance.now CLOCK_MONOTONIC ms
+UTC: date labels only, not duration/overlap inference
+Environment: frozen relevant whitelist in base_environment.json; same keys/value lengths across ON/LOOKUP
+Affinity: inherited, not pinned; recorded in raw/environment
+Power/frequency and Windows-host background/scheduling: UNKNOWN/uncontrolled; snapshots retained
+ASLR: kernel setting2; PIE; not privileged-disabled; sampled GDB mappings retained
+No mixture with old Windows or earlier campaign times. New A/M bridge is measured in this campaign.
+RSS: independent GNU time KiB, n3/condition/case, not formal performance data

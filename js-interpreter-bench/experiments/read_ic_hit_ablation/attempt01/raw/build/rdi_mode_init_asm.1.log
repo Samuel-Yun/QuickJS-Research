@@ -1,0 +1,40 @@
+
+/home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+0000000000016870 <rdi_mode_init>:
+   16870:	f3 0f 1e fa          	endbr64
+   16874:	48 83 ec 08          	sub    rsp,0x8
+   16878:	48 8d 3d 9c 69 0b 00 	lea    rdi,[rip+0xb699c]        # cd21b <_IO_stdin_used+0x21b>
+   1687f:	e8 6c af ff ff       	call   117f0 <getenv@plt>
+   16884:	48 85 c0             	test   rax,rax
+   16887:	74 0b                	je     16894 <rdi_mode_init+0x24>
+   16889:	0f be 10             	movsx  edx,BYTE PTR [rax]
+   1688c:	8d 4a d0             	lea    ecx,[rdx-0x30]
+   1688f:	80 f9 01             	cmp    cl,0x1
+   16892:	76 24                	jbe    168b8 <rdi_mode_init+0x48>
+   16894:	48 8b 0d 45 08 0f 00 	mov    rcx,QWORD PTR [rip+0xf0845]        # 1070e0 <stderr@GLIBC_2.2.5>
+   1689b:	ba 28 00 00 00       	mov    edx,0x28
+   168a0:	be 01 00 00 00       	mov    esi,0x1
+   168a5:	48 8d 3d dc 9f 0b 00 	lea    rdi,[rip+0xb9fdc]        # d0888 <_IO_stdin_used+0x3888>
+   168ac:	48 83 c4 08          	add    rsp,0x8
+   168b0:	e9 4b b6 ff ff       	jmp    11f00 <fwrite@plt>
+   168b5:	0f 1f 00             	nop    DWORD PTR [rax]
+   168b8:	80 78 01 00          	cmp    BYTE PTR [rax+0x1],0x0
+   168bc:	75 d6                	jne    16894 <rdi_mode_init+0x24>
+   168be:	83 ea 30             	sub    edx,0x30
+   168c1:	89 15 49 07 0f 00    	mov    DWORD PTR [rip+0xf0749],edx        # 107010 <rdi_process_mode>
+   168c7:	48 83 c4 08          	add    rsp,0x8
+   168cb:	c3                   	ret
+
+Disassembly of section .fini:

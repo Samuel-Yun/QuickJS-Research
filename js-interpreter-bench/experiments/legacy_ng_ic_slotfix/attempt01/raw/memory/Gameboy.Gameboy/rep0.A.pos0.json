@@ -1,0 +1,30 @@
+{
+  "campaign": "legacy_ng_ic_slotfix/attempt01",
+  "case": "Gameboy.Gameboy",
+  "variant": "A",
+  "rep": 0,
+  "order": 0,
+  "N": 4,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/raw/memory/Gameboy.Gameboy/rep0.A.pos0.rss.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/A/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/generated/Gameboy.Gameboy.N4.measure.js"
+  ],
+  "binary_sha256": "e45cda1e9518b93a6f371926fe829369fe940ef78c1cc640fc6b38996c29eb7e",
+  "script_sha256": "f29efb844e4d22ff6f28599a439f8f58c76cf0abdd0e5379131216196b344ce3",
+  "peak_rss_KiB": 23440,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Gameboy.Gameboy\",\"suite\":\"Gameboy\",\"subbenchmark\":\"Gameboy\",\"mode\":\"LEGACY_NG_IC_SLOTFIX_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":4,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":3165895.755577,\"stop_ms\":3167164.520366,\"elapsed_ms\":1268.7647890001535,\"elapsed_per_call_ms\":317.1911972500384,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-23T11:08:09.735589+00:00",
+  "outer_wall_ns": 1333119845,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

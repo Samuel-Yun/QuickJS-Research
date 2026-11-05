@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gdb",
+    "-q",
+    "-batch",
+    "-ex",
+    "source /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/e_ic_bytecode_example/attempt01/gdb_dump.py",
+    "--args",
+    "/home/mzyx/v8_inspired_ic_attempt02/E/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/e_ic_bytecode_example/attempt01/example.js"
+  ],
+  "stdout": "[Thread debugging using libthread_db enabled]\nUsing host libthread_db library \"/lib/x86_64-linux-gnu/libthread_db.so.1\".\nIC_EXAMPLE_CHECKSUM 48\n[Inferior 1 (process 611) exited normally]\n",
+  "stderr": "",
+  "exit_code": 0
+}

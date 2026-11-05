@@ -1,0 +1,21 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/oracle.c: In function ‘main’:\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/oracle.c:7:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n    7 |   if(argc!=2)return 2;int n=atoi(argv[1]),w=64,stride=66,size=66*66;\n      |   ^~\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/oracle.c:7:23: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n    7 |   if(argc!=2)return 2;int n=atoi(argv[1]),w=64,stride=66,size=66*66;\n      |                       ^~~\n",
+  "command": [
+    "gcc",
+    "-O2",
+    "-Wall",
+    "-ffp-contract=off",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/oracle.c",
+    "-lm",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/microbench/oracle"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T09:00:37.903999+00:00",
+  "outer_start_ns": 276648274266,
+  "outer_stop_ns": 277053422404,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 405148138
+}

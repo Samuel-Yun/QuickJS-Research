@@ -1,0 +1,43 @@
+{
+  "formal_status": "PASS",
+  "original_runtime_mode_reverification": "not repeated: artifacts/deps/adapters unchanged; frozen prior probes retained",
+  "new_diagnostics": {
+    "quickjs_segmented_counters": "PASS",
+    "three_engine_sequence_27_processes": "PASS",
+    "actual_A_B_bytecode": "PASS",
+    "new_profiling": "NOT_RUN; previous three-replicate V8/JSC profiles reused",
+    "quickjs_perf_self_time": "UNKNOWN; old capability limits retained",
+    "d8_helper_self_time": "UNKNOWN",
+    "jsc_call_intrinsic_specialization": "bytecode identity guard/direct fast call shown in BOTH variants",
+    "all_frontend_excluded": null
+  },
+  "formal_counts": {
+    "status": "PASS",
+    "formal_valid": 180,
+    "formal_expected": 180,
+    "correctness_N1_N2": 12,
+    "selected_N_correctness": 6,
+    "pilot_count": 60,
+    "selected_N": 512,
+    "script_bytes_identical_across_engines": true,
+    "six_permutations_each_five": true,
+    "each_engine_position_ten": true,
+    "A_first_B_first_blocks": [
+      15,
+      15
+    ],
+    "frozen_design_before_first_pilot": true,
+    "old_data_preservation": "PASS current bytes before/after; historical restoration scope separate",
+    "runtime_dependencies_adapters_before_after": "PASS",
+    "independent_stdout_clock_and_statistics": "PASS",
+    "diagnostic_formal_serial_separation": "PASS",
+    "below_threshold_retained": 0,
+    "boot_ids": [
+      "4ef67569-6a6b-4f4d-8c1a-16b8ac8c99ed"
+    ],
+    "errors": []
+  },
+  "reference_local_download": "BLOCKED_TLS_CERTIFICATE; bounded failures kept, no bypass",
+  "NG_viewed_version": "v0.8.0 / displayed4822912; full SHA UNKNOWN",
+  "NG_fixed_source_view": "official source viewer, relevant line coverage in prior_art.md"
+}

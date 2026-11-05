@@ -1,0 +1,41 @@
+{
+  "exit_code": 0,
+  "stdout": "\tlinux-vdso.so.1 (0x00007fff9ad76000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f2a8b423000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f2a8b33a000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f2a8b30c000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f2a8b0f9000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f2a8d57f000)\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "ldd",
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-31T03:30:33.777305+00:00",
+  "completed_at": "2026-10-31T03:30:33.782980+00:00",
+  "outer_start_ns": 4259466919,
+  "outer_stop_ns": 4265073155,
+  "outer_wall_ns": 5606236,
+  "external_wall_ms": 5.606236,
+  "child_user_ms": 1.4989999999999994,
+  "child_system_ms": 2.29,
+  "cpu_scope": "whole child, sequential RUSAGE_CHILDREN delta, not timed-region CPU",
+  "boot_id": "6d11f68e-881e-495a-97be-352cd4b8a4be",
+  "boot_id_after": "6d11f68e-881e-495a-97be-352cd4b8a4be",
+  "affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "environment_sha256": "ec9dbfc3b8d26853f1486b9445eec834964252b787c216ed1f5e16edca2c8575"
+}

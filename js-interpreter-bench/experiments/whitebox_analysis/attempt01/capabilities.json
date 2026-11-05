@@ -1,0 +1,54 @@
+{
+  "perf_utility": {
+    "status": "NOT_AVAILABLE",
+    "version": null,
+    "evidence": "raw/capability.perf_version.json"
+  },
+  "perf_event_open": {
+    "hardware_and_software_probe": "PASS",
+    "user_space_whole_process_counters": "PASS",
+    "events": [
+      "cycles",
+      "instructions",
+      "branches",
+      "branch-misses",
+      "cpu-clock",
+      "task-clock"
+    ],
+    "sampling_per_event": null,
+    "system_security_changes": false,
+    "identity": "uid=1000(mzyx) gid=1000(mzyx) groups=1000(mzyx),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)\n"
+  },
+  "quickjs": {
+    "sampling_self_time": null,
+    "function_entry_counts": "PASS",
+    "native_opcode_and_array_branch_counts": "PASS",
+    "isolated_diagnostic_revision": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+    "diagnostic_sha256": "d91b5c35c5b5951dd0a822f317987e42977c7221e4138a5a95c6843e9679533c",
+    "frozen_binary_replaced": false
+  },
+  "v8": {
+    "help_flags_tested": [
+      "--prof",
+      "--no-logfile-per-isolate",
+      "--logfile",
+      "--print-bytecode",
+      "--print-bytecode-filter"
+    ],
+    "statistical_top_PC_sampling": "PASS",
+    "native_CXX_symbol_resolution": null,
+    "precise_function_self_time": null,
+    "trace_regexp_tier_up": "NOT_AVAILABLE_READONLY",
+    "artifact_source_commit": null,
+    "compiler": null
+  },
+  "jsc": {
+    "sample_switch": "PASS",
+    "LLInt_function_hash_and_bytecode_sampling": "PASS",
+    "anonymous_hash_source_association": "PASS",
+    "CXX_unknown_PC_resolution": "PARTIAL",
+    "first_call_frontend_fully_excluded": null
+  },
+  "scope": "profiles/counters cover process (startup/frontend/Setup can mix); cannot exchange classification percentages across engines",
+  "diagnostic_attempt_failures_retained": true
+}

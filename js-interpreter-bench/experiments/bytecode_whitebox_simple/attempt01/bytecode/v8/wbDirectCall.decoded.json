@@ -1,0 +1,192 @@
+[
+  {
+    "offset": 0,
+    "size": 1,
+    "hex": [
+      "0c"
+    ],
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 1,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 2,
+    "size": 1,
+    "hex": [
+      "0c"
+    ],
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 3,
+    "size": 1,
+    "hex": [
+      "d4"
+    ],
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 4,
+    "size": 2,
+    "hex": [
+      "0b",
+      "03"
+    ],
+    "opcode": "Ldar",
+    "operands": "a0"
+  },
+  {
+    "offset": 6,
+    "size": 3,
+    "hex": [
+      "79",
+      "f8",
+      "00"
+    ],
+    "opcode": "TestLessThan",
+    "operands": "r1, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 9,
+    "size": 2,
+    "hex": [
+      "a8",
+      "1a"
+    ],
+    "opcode": "JumpIfFalse",
+    "operands": "[26] (0x347d010003f3 @ 35)"
+  },
+  {
+    "offset": 11,
+    "size": 3,
+    "hex": [
+      "23",
+      "00",
+      "00"
+    ],
+    "opcode": "LdaGlobal",
+    "operands": "[0:\"wbSmallFunction\"], FBV[0]"
+  },
+  {
+    "offset": 14,
+    "size": 1,
+    "hex": [
+      "d2"
+    ],
+    "opcode": "Star3",
+    "operands": ""
+  },
+  {
+    "offset": 15,
+    "size": 4,
+    "hex": [
+      "6d",
+      "f6",
+      "f8",
+      "02"
+    ],
+    "opcode": "CallUndefinedReceiver1",
+    "operands": "r3, r1, FBV[2]"
+  },
+  {
+    "offset": 19,
+    "size": 3,
+    "hex": [
+      "42",
+      "f9",
+      "00"
+    ],
+    "opcode": "Add",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 22,
+    "size": 3,
+    "hex": [
+      "1b",
+      "f9",
+      "f7"
+    ],
+    "opcode": "Mov",
+    "operands": "r0, r2"
+  },
+  {
+    "offset": 25,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 26,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f8"
+    ],
+    "opcode": "Ldar",
+    "operands": "r1"
+  },
+  {
+    "offset": 28,
+    "size": 2,
+    "hex": [
+      "5b",
+      "00"
+    ],
+    "opcode": "Inc",
+    "operands": "EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 30,
+    "size": 1,
+    "hex": [
+      "d4"
+    ],
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 31,
+    "size": 4,
+    "hex": [
+      "97",
+      "1b",
+      "00",
+      "04"
+    ],
+    "opcode": "JumpLoop",
+    "operands": "[27], [0], FBV[4] (0x347d010003d4 @ 4)"
+  },
+  {
+    "offset": 35,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f9"
+    ],
+    "opcode": "Ldar",
+    "operands": "r0"
+  },
+  {
+    "offset": 37,
+    "size": 1,
+    "hex": [
+      "b9"
+    ],
+    "opcode": "Return",
+    "operands": ""
+  }
+]

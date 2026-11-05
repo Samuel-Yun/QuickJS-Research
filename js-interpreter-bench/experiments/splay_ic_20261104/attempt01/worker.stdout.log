@@ -1,0 +1,14 @@
+START 01_build_diagnostic.json ['python3', '/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py', 'build']
+DONE 01_build_diagnostic.json 1  Traceback (most recent call last):
+  File "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py", line 128, in <module>
+    if __name__=='__main__':globals()[sys.argv[1]]()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py", line 63, in build
+    s=one(s,'    JS_FreeContext(ctx);\n    JS_FreeRuntime(rt);','    sp_destroy();\n    JS_FreeContext(ctx);\n    JS_FreeRuntime(rt);');p.write_text(s)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/common.py", line 41, in one
+    def one(s,a,b):assert s.count(a)==1,(a[:90],s.count(a));return s.replace(a,b,1)
+                          ^^^^^^^^^^^^^
+AssertionError: ('    JS_FreeContext(ctx);\n    JS_FreeRuntime(rt);', 2)
+
+JOB_FAILED_OTHER_JOBS_NOT_AUTO_STARTED

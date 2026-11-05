@@ -1,0 +1,131 @@
+[
+  {
+    "case": "Richards.Richards",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "DeltaBlue.DeltaBlue",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "Crypto.Encrypt",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "Crypto.Decrypt",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "RayTrace.RayTrace",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "EarleyBoyer.Earley",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "EarleyBoyer.Boyer",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "RegExp.RegExp",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "Splay.Splay",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "NavierStokes.NavierStokes",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "PdfJS.PdfJS",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "Mandreel.Mandreel",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "Gameboy.Gameboy",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "CodeLoad.CodeLoadClosure",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "CodeLoad.CodeLoadJQuery",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "Typescript.Typescript",
+    "status": "PENDING_CORRECTNESS",
+    "formal_included": true,
+    "reason": "existing canonical Run and frozen correctness contract"
+  },
+  {
+    "case": "Box2D.Box2D",
+    "status": "RUNS_NO_TRUSTED_OUTPUT_GATE",
+    "formal_included": false,
+    "reason": "original runBox2D creates local world and steps20 times; no final output/checksum assertion, teardown nulls globals; successful internal assertions/exit alone not a whole-result gate",
+    "actual_records": 5,
+    "valid_process_records": 5
+  },
+  {
+    "case": "zlib.zlib",
+    "status": "PASS_ORIGINAL_VALIDATION_WITH_READ_ADAPTER",
+    "formal_included": true,
+    "reason": "Decoded frozen InitializeZlibBenchmark payload exports _main:a2; argument1 selects60 iterations of a1 over100000 pseudo-random bytes. Original a1 checks decompressed length==100000 and aG(input,output)==0, otherwise calls az imported __assert_func. Keep all original checks and dynamic initialization in Run; shared read host API only. Actual process results still required.",
+    "actual_records": 10,
+    "valid_process_records": 5,
+    "flags": [
+      "--std"
+    ],
+    "read_adapter": "inputs/zlib_read.js",
+    "Run_IO_dynamic_compile_not_moved": true
+  },
+  {
+    "case": "Splay.latency",
+    "status": "NOT_THIS_METRIC",
+    "formal_included": false,
+    "reason": "official adaptive latency, not complete Run execution time"
+  },
+  {
+    "case": "Mandreel.latency",
+    "status": "NOT_THIS_METRIC",
+    "formal_included": false,
+    "reason": "official adaptive latency, not complete Run execution time"
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "exit_code": 0,
+  "stdout": "WB_RESULT:{\"mode\":\"MAIN_MONOTONIC_V1_DERIVED\",\"variant\":\"richards_cached\",\"N\":256,\"checksum\":41943040,\"correctness\":\"PASS\",\"warmup_calls\":0,\"start_ms\":28.835,\"stop_ms\":1796.931,\"elapsed_ms\":1768.096}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/microbench/generated/richards_cached.N256.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T09:12:58.329122+00:00",
+  "outer_start_ns": 467597939900,
+  "outer_stop_ns": 469403072454,
+  "boot_id": "b3ee321e-69da-462d-8718-4589949b17d0",
+  "outer_wall_ns": 1805132554,
+  "stage": "formal",
+  "case": "richards",
+  "variant": "richards_cached",
+  "engine": "v8",
+  "N": 256,
+  "rep": 13,
+  "order": 1,
+  "permutation": [
+    "v8",
+    "jsc",
+    "quickjs"
+  ],
+  "schedule_index": 65,
+  "mode": "MAIN_MONOTONIC_V1_DERIVED",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+  "script_sha256": "cd82f87df8726d3925d311bc35b59c55c82f34d580c53045efc86fb1db040c6e",
+  "adapters": [
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+      "sha256": "0ab3ed677381191d7e7839cbbc3f07895104a8b8299679ab9f37b856d76d3a22"
+    },
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+      "sha256": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+    }
+  ],
+  "design_sha256": "7354c1868ce2f8a6cc0d43c8be772c69eece3966b70d20df8f98270cddf07e2b",
+  "checksum": 41943040,
+  "expected_checksum": 41943040,
+  "payload": {
+    "mode": "MAIN_MONOTONIC_V1_DERIVED",
+    "variant": "richards_cached",
+    "N": 256,
+    "checksum": 41943040,
+    "correctness": "PASS",
+    "warmup_calls": 0,
+    "start_ms": 28.835,
+    "stop_ms": 1796.931,
+    "elapsed_ms": 1768.096
+  },
+  "elapsed_ms": 1768.096,
+  "elapsed_per_call_ms": 6.906625,
+  "errors": [],
+  "valid": true
+}

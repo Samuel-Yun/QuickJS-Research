@@ -1,0 +1,121 @@
+640:     JS_VAR_NORMAL,
+641:     JS_VAR_FUNCTION_DECL, /* lexical var with function declaration */
+642:     JS_VAR_NEW_FUNCTION_DECL, /* lexical var with async/generator
+643:                                  function declaration */
+644:     JS_VAR_CATCH,
+645:     JS_VAR_FUNCTION_NAME, /* function expression name */
+646:     JS_VAR_PRIVATE_FIELD,
+647:     JS_VAR_PRIVATE_METHOD,
+648:     JS_VAR_PRIVATE_GETTER,
+649:     JS_VAR_PRIVATE_SETTER, /* must come after JS_VAR_PRIVATE_GETTER */
+650:     JS_VAR_PRIVATE_GETTER_SETTER, /* must come after JS_VAR_PRIVATE_SETTER */
+651:     JS_VAR_GLOBAL_FUNCTION_DECL, /* global function definition, only in JSVarDef */
+652: } JSVarKindEnum;
+653: 
+654: typedef struct JSBytecodeVarDef {
+655:     JSAtom var_name;
+656:     /* index into JSFunctionBytecode.vars of the next variable in the same or
+657:        enclosing lexical scope
+658:     */
+659:     int scope_next; /* XXX: store on 16 bits */
+660:     uint8_t is_const : 1;
+661:     uint8_t is_lexical : 1;
+662:     uint8_t is_captured : 1; /* XXX: could remove and use a var_ref_idx value */
+663:     uint8_t has_scope: 1; /* true if JSVarDef.scope_level != 0 */
+664:     uint8_t var_kind : 4; /* see JSVarKindEnum */
+665:     /* If is_captured = TRUE, provides, the index of the corresponding
+666:        JSVarRef on stack. It would be more compact to have a separate
+667:        table with the corresponding inverted table but it requires
+668:        more modifications in the code. */
+669:     uint16_t var_ref_idx;
+670: } JSBytecodeVarDef;
+671: 
+672: /* for the encoding of the pc2line table */
+673: #define PC2LINE_BASE     (-1)
+674: #define PC2LINE_RANGE    5
+675: #define PC2LINE_OP_FIRST 1
+676: #define PC2LINE_DIFF_PC_MAX ((255 - PC2LINE_OP_FIRST) / PC2LINE_RANGE)
+677: 
+678: typedef enum JSFunctionKindEnum {
+679:     JS_FUNC_NORMAL = 0,
+680:     JS_FUNC_GENERATOR = (1 << 0),
+681:     JS_FUNC_ASYNC = (1 << 1),
+682:     JS_FUNC_ASYNC_GENERATOR = (JS_FUNC_GENERATOR | JS_FUNC_ASYNC),
+683: } JSFunctionKindEnum;
+684: 
+685: typedef struct JSFunctionBytecode {
+686:     JSGCObjectHeader header; /* must come first */
+687:     uint8_t js_mode;
+688:     uint8_t has_prototype : 1; /* true if a prototype field is necessary */
+689:     uint8_t has_simple_parameter_list : 1;
+690:     uint8_t is_derived_class_constructor : 1;
+691:     /* true if home_object needs to be initialized */
+692:     uint8_t need_home_object : 1;
+693:     uint8_t func_kind : 2;
+694:     uint8_t new_target_allowed : 1;
+695:     uint8_t super_call_allowed : 1;
+696:     uint8_t super_allowed : 1;
+697:     uint8_t arguments_allowed : 1;
+698:     uint8_t has_debug : 1;
+699:     uint8_t read_only_bytecode : 1;
+700:     uint8_t is_direct_or_indirect_eval : 1; /* used by JS_GetScriptOrModuleName() */
+701:     /* XXX: 10 bits available */
+702:     uint8_t *byte_code_buf; /* (self pointer) */
+703:     int byte_code_len;
+704:     JSAtom func_name;
+705:     JSBytecodeVarDef *vardefs; /* arguments + local variables (arg_count + var_count) (self pointer) */
+706:     JSClosureVar *closure_var; /* list of variables in the closure (self pointer) */
+707:     uint16_t arg_count;
+708:     uint16_t var_count;
+709:     uint16_t defined_arg_count; /* for length function property */
+710:     uint16_t stack_size; /* maximum stack size */
+711:     uint16_t var_ref_count; /* number of local variable references */
+712:     JSContext *realm; /* function realm */
+713:     JSValue *cpool; /* constant pool (self pointer) */
+714:     int cpool_count;
+715:     int closure_var_count;
+716:     struct {
+717:         /* debug info, move to separate structure to save memory? */
+718:         JSAtom filename;
+719:         int source_len; 
+720:         int pc2line_len;
+721:         uint8_t *pc2line_buf;
+722:         char *source;
+723:     } debug;
+724: } JSFunctionBytecode;
+725: 
+726: typedef struct JSBoundFunction {
+727:     JSValue func_obj;
+728:     JSValue this_val;
+729:     int argc;
+730:     JSValue argv[0];
+731: } JSBoundFunction;
+732: 
+733: typedef enum JSIteratorKindEnum {
+734:     JS_ITERATOR_KIND_KEY,
+735:     JS_ITERATOR_KIND_VALUE,
+736:     JS_ITERATOR_KIND_KEY_AND_VALUE,
+737: } JSIteratorKindEnum;
+738: 
+739: typedef struct JSForInIterator {
+740:     JSValue obj;
+741:     uint32_t idx;
+742:     uint32_t atom_count;
+743:     uint8_t in_prototype_chain;
+744:     uint8_t is_array;
+745:     JSPropertyEnum *tab_atom; /* is_array = FALSE */
+746: } JSForInIterator;
+747: 
+748: typedef struct JSRegExp {
+749:     JSString *pattern;
+750:     JSString *bytecode; /* also contains the flags */
+751: } JSRegExp;
+752: 
+753: typedef struct JSProxyData {
+754:     JSValue target;
+755:     JSValue handler;
+756:     uint8_t is_func;
+757:     uint8_t is_revoked;
+758: } JSProxyData;
+759: 
+760: typedef struct JSArrayBuffer {

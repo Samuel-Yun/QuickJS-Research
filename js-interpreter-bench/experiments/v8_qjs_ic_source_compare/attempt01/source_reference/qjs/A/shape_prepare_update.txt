@@ -1,0 +1,37 @@
+10302: static int js_shape_prepare_update(JSContext *ctx, JSObject *p,
+10303:                                    JSShapeProperty **pprs)
+10304: {
+10305:     JSShape *sh;
+10306:     uint32_t idx = 0;    /* prevent warning */
+10307: 
+10308:     sh = p->shape;
+10309:     if (sh->is_hashed) {
+10310:         if (js_rc(sh)->ref_count != 1) {
+10311:             if (pprs)
+10312:                 idx = *pprs - get_shape_prop(sh);
+10313:             /* clone the shape (the resulting one is no longer hashed) */
+10314:             sh = js_clone_shape(ctx, sh);
+10315:             if (!sh)
+10316:                 return -1;
+10317:             js_free_shape(ctx->rt, p->shape);
+10318:             p->shape = sh;
+10319:             if (pprs)
+10320:                 *pprs = get_shape_prop(sh) + idx;
+10321:         } else {
+10322:             js_shape_hash_unlink(ctx->rt, sh);
+10323:             sh->is_hashed = FALSE;
+10324:         }
+10325:     }
+10326:     return 0;
+10327: }
+10328: 
+10329: static int js_update_property_flags(JSContext *ctx, JSObject *p,
+10330:                                     JSShapeProperty **pprs, int flags)
+10331: {
+10332:     if (flags != (*pprs)->flags) {
+10333:         if (js_shape_prepare_update(ctx, p, pprs))
+10334:             return -1;
+10335:         (*pprs)->flags = flags;
+10336:     }
+10337:     return 0;
+10338: }

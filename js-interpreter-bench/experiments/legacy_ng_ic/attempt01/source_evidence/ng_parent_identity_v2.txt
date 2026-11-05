@@ -1,0 +1,25 @@
+commit e1b5978775f75f9637c624fc45e69b92d2c15f42
+Author:     Ben Noordhuis <info@bnoordhuis.nl>
+AuthorDate: Thu Feb 6 15:54:33 2025 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Thu Feb 6 15:54:33 2025 +0100
+
+    Fix unnoticed exception in JS_DetectModule (#889)
+    
+    JS_DetectModule calls JS_AddIntrinsicRegExp but that indirectly uses
+    `ctx->global_obj` when it tries to define `globalThis.RegExp`.
+    
+    There is no `ctx->global_obj` however because JS_NewContextRaw doesn't
+    create one. It raised an "not an object" TypeError that went unnoticed
+    because there is no error checking in JS_NewGlobalCConstructor2.
+    
+    Using JS_AddIntrinsicRegExpCompiler is better all around because we
+    only need to parse regexp literals, nothing more.
+    
+    JS_NewGlobalCConstructor2 should probably be changed to do proper error
+    checking, and __JS_EvalInternal to return JS_EXCEPTION when an exception
+    is pending on entry, but I'll save that for another commit.
+e1b5978775f75f9637c624fc45e69b92d2c15f42
+766d967109fbd249199b0aa07a4aa53653a571be
+2025-02-06T15:54:33+01:00
+2025-02-06T15:54:33+01:00

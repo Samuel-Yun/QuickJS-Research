@@ -1,0 +1,28 @@
+{
+  "command": [
+    "gdb",
+    "--batch",
+    "--nx",
+    "--nh",
+    "-ex",
+    "file /home/mzyx/read_ic_dequickening_attempt01/R/qjs",
+    "-ex",
+    "p sizeof(JSRuntime)",
+    "-ex",
+    "p sizeof(JSFunctionBytecode)",
+    "-ex",
+    "p sizeof(ReadICSite)",
+    "-ex",
+    "p (long)&((ReadICSite*)0)->atom",
+    "-ex",
+    "p (long)&((ReadICSite*)0)->miss_streak"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T11:53:25.611933+00:00",
+  "exit_code": 0,
+  "stdout": "$1 = 1440\n$2 = 144\n$3 = 24\n$4 = 12\n$5 = 16\n",
+  "stderr": "",
+  "wall_ns": 192704732,
+  "mode_variable_present": false,
+  "relevant_env": {}
+}

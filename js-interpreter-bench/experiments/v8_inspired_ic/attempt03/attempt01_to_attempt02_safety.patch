@@ -1,0 +1,19 @@
+--- attempt01/eic_opcodes.inc
++++ attempt02/eic_opcodes.inc
+@@ -74,8 +74,15 @@
+                 if (JS_VALUE_GET_TAG(obj)==JS_TAG_OBJECT) {
+                     p=JS_VALUE_GET_OBJ(obj); prs=find_own_property(&pr,p,atom);
+                     if (prs && (prs->flags & (JS_PROP_TMASK|JS_PROP_WRITABLE|JS_PROP_LENGTH))==JS_PROP_WRITABLE) {
+-                        eic_update(ctx,site,p,p,pr-p->prop);
+                         set_value(ctx,&pr->u.value,sp[-1]);
++                        /* set_value and cache-edge release can invoke native
++                         * finalizers. Commit first; reacquire current storage,
++                         * and never use pr after an IC update releases edges. */
++                        prs=find_own_property(&pr,p,atom);
++                        if (prs && (prs->flags & (JS_PROP_TMASK|JS_PROP_WRITABLE|JS_PROP_LENGTH))==JS_PROP_WRITABLE)
++                            eic_update(ctx,site,p,p,pr-p->prop);
++                        else
++                            eic_ineligible(ctx->rt,site);
+                         JS_FreeValue(ctx,obj); sp-=2; BREAK;
+                     }
+                 }

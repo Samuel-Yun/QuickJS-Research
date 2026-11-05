@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "campaigns": [
+    {
+      "campaign": "mechanism",
+      "valid": 630,
+      "raw_hashes_identical": true
+    },
+    {
+      "campaign": "sunspider",
+      "valid": 3120,
+      "raw_hashes_identical": true
+    },
+    {
+      "campaign": "micro",
+      "valid": 270,
+      "raw_hashes_identical": true
+    },
+    {
+      "campaign": "octane",
+      "valid": 2040,
+      "raw_hashes_identical": true
+    }
+  ],
+  "differences": [],
+  "maximum_numeric_absolute_difference": 0,
+  "numeric_comparison_tolerance": "1e-12 relative/absolute for cross-libm statistics only, NOT workload correctness",
+  "executed_on": "Windows native Python",
+  "engines_started": 0,
+  "private_source_required": false,
+  "byte_format_note": "Windows replay text output may use CRLF; compare parsed numeric records, original raw SHA256 must match exactly"
+}

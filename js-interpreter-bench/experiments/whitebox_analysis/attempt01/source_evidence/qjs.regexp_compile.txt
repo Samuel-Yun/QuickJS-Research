@@ -1,0 +1,49 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L47612
+47612:             bad_flags:
+47613:                 JS_FreeCString(ctx, str);
+47614:                 goto bad_flags1;
+47615:             }
+47616:             re_flags |= mask;
+47617:         }
+47618:         JS_FreeCString(ctx, str);
+47619:     }
+47620: 
+47621:     /* 'u' and 'v' cannot be both set */
+47622:     if ((re_flags & LRE_FLAG_UNICODE_SETS) && (re_flags & LRE_FLAG_UNICODE)) {
+47623:     bad_flags1:
+47624:         return JS_ThrowSyntaxError(ctx, "invalid regular expression flags");
+47625:     }
+47626:     
+47627:     str = JS_ToCStringLen2(ctx, &len, pattern, !(re_flags & (LRE_FLAG_UNICODE | LRE_FLAG_UNICODE_SETS)));
+47628:     if (!str)
+47629:         return JS_EXCEPTION;
+47630:     re_bytecode_buf = lre_compile(&re_bytecode_len, error_msg,
+47631:                                   sizeof(error_msg), str, len, re_flags, ctx);
+47632:     JS_FreeCString(ctx, str);
+47633:     if (!re_bytecode_buf) {
+47634:         JS_ThrowSyntaxError(ctx, "%s", error_msg);
+47635:         return JS_EXCEPTION;
+47636:     }
+47637: 
+47638:     ret = js_new_string8_len(ctx, (const char *)re_bytecode_buf, re_bytecode_len);
+47639:     js_free(ctx, re_bytecode_buf);
+47640:     return ret;
+47641: }
+47642: 
+47643: /* fast regexp creation */
+47644: static JSValue JS_NewRegexp(JSContext *ctx, JSValue pattern, JSValue bc)
+47645: {
+47646:     JSValue obj;
+47647:     JSProperty props[1];
+47648:     JSObject *p;
+47649:     JSRegExp *re;
+47650: 
+47651:     /* sanity check */
+47652:     if (unlikely(JS_VALUE_GET_TAG(bc) != JS_TAG_STRING ||
+47653:                  JS_VALUE_GET_TAG(pattern) != JS_TAG_STRING)) {
+47654:         JS_ThrowTypeError(ctx, "string expected");
+47655:         goto fail;
+47656:     }
+47657:     props[0].u.value = JS_NewInt32(ctx, 0); /* lastIndex */

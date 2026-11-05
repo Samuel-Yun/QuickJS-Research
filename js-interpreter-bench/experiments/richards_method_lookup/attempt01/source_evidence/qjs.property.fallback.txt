@@ -1,0 +1,139 @@
+Upstream revision04be246001599f5995fa2f2d8c91a0f198d3f34c
+/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256=b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+8210: JSValue JS_GetPropertyInternal(JSContext *ctx, JSValueConst obj,
+8211:                                JSAtom prop, JSValueConst this_obj,
+8212:                                BOOL throw_ref_error)
+8213: {
+8214:     JSObject *p;
+8215:     JSProperty *pr;
+8216:     JSShapeProperty *prs;
+8217:     uint32_t tag;
+8218: 
+8219:     tag = JS_VALUE_GET_TAG(obj);
+8220:     if (unlikely(tag != JS_TAG_OBJECT)) {
+8221:         switch(tag) {
+8222:         case JS_TAG_NULL:
+8223:             return JS_ThrowTypeErrorAtom(ctx, "cannot read property '%s' of null", prop);
+8224:         case JS_TAG_UNDEFINED:
+8225:             return JS_ThrowTypeErrorAtom(ctx, "cannot read property '%s' of undefined", prop);
+8226:         case JS_TAG_EXCEPTION:
+8227:             return JS_EXCEPTION;
+8228:         case JS_TAG_STRING:
+8229:             {
+8230:                 JSString *p1 = JS_VALUE_GET_STRING(obj);
+8231:                 if (__JS_AtomIsTaggedInt(prop)) {
+8232:                     uint32_t idx;
+8233:                     idx = __JS_AtomToUInt32(prop);
+8234:                     if (idx < p1->len) {
+8235:                         return js_new_string_char(ctx, string_get(p1, idx));
+8236:                     }
+8237:                 } else if (prop == JS_ATOM_length) {
+8238:                     return JS_NewInt32(ctx, p1->len);
+8239:                 }
+8240:             }
+8241:             break;
+8242:         case JS_TAG_STRING_ROPE:
+8243:             {
+8244:                 JSStringRope *p1 = JS_VALUE_GET_STRING_ROPE(obj);
+8245:                 if (__JS_AtomIsTaggedInt(prop)) {
+8246:                     uint32_t idx;
+8247:                     idx = __JS_AtomToUInt32(prop);
+8248:                     if (idx < p1->len) {
+8249:                         return js_new_string_char(ctx, string_rope_get(obj, idx));
+8250:                     }
+8251:                 } else if (prop == JS_ATOM_length) {
+8252:                     return JS_NewInt32(ctx, p1->len);
+8253:                 }
+8254:             }
+8255:             break;
+8256:         default:
+8257:             break;
+8258:         }
+8259:         /* cannot raise an exception */
+8260:         p = JS_VALUE_GET_OBJ(JS_GetPrototypePrimitive(ctx, obj));
+8261:         if (!p)
+8262:             return JS_UNDEFINED;
+8263:     } else {
+8264:         p = JS_VALUE_GET_OBJ(obj);
+8265:     }
+8266: 
+8267:     for(;;) {
+8268:         prs = find_own_property(&pr, p, prop);
+8269:         if (prs) {
+8270:             /* found */
+8271:             if (unlikely(prs->flags & JS_PROP_TMASK)) {
+8272:                 if ((prs->flags & JS_PROP_TMASK) == JS_PROP_GETSET) {
+8273:                     if (unlikely(!pr->u.getset.getter)) {
+8274:                         return JS_UNDEFINED;
+8275:                     } else {
+8276:                         JSValue func = JS_MKPTR(JS_TAG_OBJECT, pr->u.getset.getter);
+8277:                         /* Note: the field could be removed in the getter */
+8278:                         func = JS_DupValue(ctx, func);
+8279:                         return JS_CallFree(ctx, func, this_obj, 0, NULL);
+8280:                     }
+8281:                 } else if ((prs->flags & JS_PROP_TMASK) == JS_PROP_VARREF) {
+8282:                     JSValue val = *pr->u.var_ref->pvalue;
+8283:                     if (unlikely(JS_IsUninitialized(val)))
+8284:                         return JS_ThrowReferenceErrorUninitialized(ctx, prs->atom);
+8285:                     return JS_DupValue(ctx, val);
+8286:                 } else if ((prs->flags & JS_PROP_TMASK) == JS_PROP_AUTOINIT) {
+8287:                     /* Instantiate property and retry */
+8288:                     if (JS_AutoInitProperty(ctx, p, prop, pr, prs))
+8289:                         return JS_EXCEPTION;
+8290:                     continue;
+8291:                 }
+8292:             } else {
+8293:                 return JS_DupValue(ctx, pr->u.value);
+8294:             }
+8295:         }
+8296:         if (unlikely(p->is_exotic)) {
+8297:             /* exotic behaviors */
+8298:             if (p->fast_array) {
+8299:                 if (__JS_AtomIsTaggedInt(prop)) {
+8300:                     uint32_t idx = __JS_AtomToUInt32(prop);
+8301:                     if (idx < p->u.array.count) {
+8302:                         /* we avoid duplicating the code */
+8303:                         return JS_GetPropertyUint32(ctx, JS_MKPTR(JS_TAG_OBJECT, p), idx);
+8304:                     } else if (p->class_id >= JS_CLASS_UINT8C_ARRAY &&
+8305:                                p->class_id <= JS_CLASS_FLOAT64_ARRAY) {
+8306:                         return JS_UNDEFINED;
+8307:                     }
+8308:                 } else if (p->class_id >= JS_CLASS_UINT8C_ARRAY &&
+8309:                            p->class_id <= JS_CLASS_FLOAT64_ARRAY) {
+8310:                     int ret;
+8311:                     ret = JS_AtomIsNumericIndex(ctx, prop);
+8312:                     if (ret != 0) {
+8313:                         if (ret < 0)
+8314:                             return JS_EXCEPTION;
+8315:                         return JS_UNDEFINED;
+8316:                     }
+8317:                 }
+8318:             } else {
+8319:                 const JSClassExoticMethods *em = ctx->rt->class_array[p->class_id].exotic;
+8320:                 if (em) {
+8321:                     if (em->get_property) {
+8322:                         JSValue obj1, retval;
+8323:                         /* XXX: should pass throw_ref_error */
+8324:                         /* Note: if 'p' is a prototype, it can be
+8325:                            freed in the called function */
+8326:                         obj1 = JS_DupValue(ctx, JS_MKPTR(JS_TAG_OBJECT, p));
+8327:                         retval = em->get_property(ctx, obj1, prop, this_obj);
+8328:                         JS_FreeValue(ctx, obj1);
+8329:                         return retval;
+8330:                     }
+8331:                     if (em->get_own_property) {
+8332:                         JSPropertyDescriptor desc;
+8333:                         int ret;
+8334:                         JSValue obj1;
+8335: 
+8336:                         /* Note: if 'p' is a prototype, it can be
+8337:                            freed in the called function */
+8338:                         obj1 = JS_DupValue(ctx, JS_MKPTR(JS_TAG_OBJECT, p));
+8339:                         ret = em->get_own_property(ctx, &desc, obj1, prop);
+8340:                         JS_FreeValue(ctx, obj1);
+8341:                         if (ret < 0)
+8342:                             return JS_EXCEPTION;
+8343:                         if (ret) {
+8344:                             if (desc.flags & JS_PROP_GETSET) {
+8345:                                 JS_FreeValue(ctx, desc.setter);

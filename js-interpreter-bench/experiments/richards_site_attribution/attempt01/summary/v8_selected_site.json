@@ -1,0 +1,64 @@
+{
+  "status": "ACTUAL_SAME_PROCESS_BYTECODE_AND_IC_TRANSITIONS",
+  "N": 32,
+  "transitions": [
+    {
+      "event": "LoadIC",
+      "address": "0x1eef01001650",
+      "bytecode_offset": 0,
+      "opcode": "GetNamedProperty",
+      "generated_line": 702,
+      "column": 16,
+      "old_state_code": "0",
+      "new_state_code": "1",
+      "receiver_map": "0x189b01023ef1",
+      "property": "state",
+      "raw_record": [
+        "LoadIC",
+        "0x1eef01001650",
+        "538450",
+        "702",
+        "16",
+        "0",
+        "1",
+        "0x189b01023ef1",
+        "state",
+        "",
+        ""
+      ]
+    },
+    {
+      "event": "LoadIC",
+      "address": "0x1eef01001663",
+      "bytecode_offset": 19,
+      "opcode": "GetNamedProperty",
+      "generated_line": 702,
+      "column": 50,
+      "old_state_code": "0",
+      "new_state_code": "1",
+      "receiver_map": "0x189b01023ef1",
+      "property": "state",
+      "raw_record": [
+        "LoadIC",
+        "0x1eef01001663",
+        "538797",
+        "702",
+        "50",
+        "0",
+        "1",
+        "0x189b01023ef1",
+        "state",
+        "",
+        ""
+      ]
+    }
+  ],
+  "no_later_transition_in_this_log": true,
+  "hit_count": null,
+  "miss_count": null,
+  "hit_rate": null,
+  "executed_handler_branch": null,
+  "exact_source_commit": null,
+  "state_code_interpretation": "raw actual log codes retained; no artifact-source attestation",
+  "DebugPrint": "short JSFunction identity only; no feedback-vector detail in this artifact"
+}
