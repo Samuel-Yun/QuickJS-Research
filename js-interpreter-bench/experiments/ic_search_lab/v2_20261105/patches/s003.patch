@@ -1,0 +1,33 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -17892,6 +17892,11 @@
+     ctx = b->realm; /* set the current realm */
+ 
+  restart:
++    if (unlikely(!b->read_ic_ready)) {
++        sf->cur_pc = pc;
++        if (rdi_prepare(ctx, b) < 0)
++            goto exception;
++    }
+     for(;;) {
+         int call_argc;
+         JSValue *call_argv;
+@@ -36299,10 +36304,6 @@
+     }
+ 
+     js_free(ctx, fd);
+-    if (rdi_prepare(ctx, b) < 0) {
+-        JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
+-        return JS_EXCEPTION;
+-    }
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -38970,7 +38971,6 @@
+         bc_read_trace(s, "}\n");
+     }
+     b->realm = JS_DupContext(ctx);
+-    if (rdi_prepare(ctx, b) < 0) goto fail;
+     return obj;
+  fail:
+     JS_FreeValue(ctx, obj);

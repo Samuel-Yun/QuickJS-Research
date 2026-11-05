@@ -1,0 +1,13 @@
+{
+  "fixed_before_any_recheck": true,
+  "rounds": 3,
+  "conditions": ["A", "candidate", "actual parent M"],
+  "selection": "at most two correct candidates with complete26+17 screens, ordered by Octane core16/13suite point ratio; inspect and bound-check all >10% coarse regressions. Selection is exploratory, not an engine ranking.",
+  "balance": "per case each condition appears in each of three positions exactly once; fixed seed20261105 shuffles cases and rotations",
+  "statistics": "10000 shared complete-round paired resamples, seed20261105, recompute per-case medians and hierarchical GM; percentile95, exploratory unadjusted",
+  "primary_for_possible_formal": "Octane core16/13suite, with expanded17/14suite separately reported; SunSpider all26 is supporting/robustness evidence, not a requirement to invent a universal win",
+  "formal_gate_clarification": "Correctness and mechanism evidence required. Primary recheck direction must be supported versus BOTH frozen A and actual M parent (point<1, exploratory upper95<1, at least two of three rounds<1); major regressions must be checked and explained/disclosed. Otherwise no final30, no new V8 campaign.",
+  "small_effects": "No minimum20% or mandatory3%; a crossing interval is inconclusive, not proof of zero benefit",
+  "random_two_cases": "No deletion or changed random input in all26. If a final selection depends on the two unseeded cases, separately named seeded sensitivity is required; no mixing of modes.",
+  "search_stop": "Four complete designs planned, alternatives rejected for overlap/safety budget; no parameter-enumeration candidates added to force six or a favorable result. At most two rechecks, then decision."
+}

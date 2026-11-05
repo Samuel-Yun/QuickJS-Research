@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "mode": "mono",
+      "exit_code": 0,
+      "stdout": "CODE phase=before_first_call ready=1 sites=1 bytes=7 hex=cff40000000028\nFIELD offset=1 opcode=get_field_rdi operand=0\nCOUNT mode=mono phase=0 N=8192 result=90112 expected=90112 queries=8192 hits=8191 fallback=1 find=1 hash_paths=1 updates=1 replacements=0 comparisons=8192 inserts=1 prepares=0 hint_hits=0\nCODE phase=after_first_phase ready=1 sites=1 bytes=7 hex=cff40000000028\nFIELD offset=1 opcode=get_field_rdi operand=0\nCOUNT mode=mono phase=1 N=8192 result=811008 expected=811008 queries=8192 hits=8192 fallback=0 find=0 hash_paths=0 updates=0 replacements=0 comparisons=8192 inserts=0 prepares=0 hint_hits=0\nCOUNT mode=mono phase=2 N=8192 result=811008 expected=811008 queries=8192 hits=8191 fallback=1 find=1 hash_paths=1 updates=1 replacements=1 comparisons=8192 inserts=0 prepares=0 hint_hits=0\nNARROW_PASS\n",
+      "stderr": "",
+      "token": "2026-11-05T04:29:55.257066+00:00:M.mono"
+    },
+    {
+      "mode": "poly2",
+      "exit_code": 0,
+      "stdout": "CODE phase=before_first_call ready=1 sites=1 bytes=7 hex=cff40000000028\nFIELD offset=1 opcode=get_field_rdi operand=0\nCOUNT mode=poly2 phase=0 N=8192 result=135168 expected=135168 queries=8192 hits=0 fallback=8192 find=8192 hash_paths=8192 updates=8192 replacements=8191 comparisons=8192 inserts=1 prepares=0 hint_hits=0\nCODE phase=after_first_phase ready=1 sites=1 bytes=7 hex=cff40000000028\nFIELD offset=1 opcode=get_field_rdi operand=0\nCOUNT mode=poly2 phase=1 N=8192 result=495616 expected=495616 queries=8192 hits=0 fallback=8192 find=8192 hash_paths=8192 updates=8192 replacements=8192 comparisons=8192 inserts=0 prepares=0 hint_hits=0\nCOUNT mode=poly2 phase=2 N=8192 result=495616 expected=495616 queries=8192 hits=0 fallback=8192 find=8192 hash_paths=8192 updates=8192 replacements=8192 comparisons=8192 inserts=0 prepares=0 hint_hits=0\nNARROW_PASS\n",
+      "stderr": "",
+      "token": "2026-11-05T04:29:55.311451+00:00:M.poly2"
+    }
+  ],
+  "no_performance_claim": true,
+  "scope": "only JS_Call(work,items,8192); setup, value/layout mutation and printing outside enabled counters; NOT timing",
+  "first_phase_no_target_prerun": true,
+  "later_phases": "same diagnostic process, explicit value then layout change; not formal warmup"
+}

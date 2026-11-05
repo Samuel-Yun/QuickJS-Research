@@ -1,0 +1,24 @@
+{
+  "start_commit": "0bbfe03062d2dc67e91cdf54033529f03b309886",
+  "max_candidates": 6,
+  "planned_actual_candidates": 4,
+  "boot_id": "3232ff5b-05a5-4446-ad1c-25dbd2e8e6e7",
+  "seed": 20261105,
+  "metric": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "warmup_calls": 0,
+  "original_N": "reuse fixed previous repetitions; no previous times",
+  "screen_order": "A,candidate,A",
+  "shortlist_max": 2,
+  "recheck_rounds": 3,
+  "recheck_conditions": "A,candidate,actual parent; each position once over3 rounds",
+  "bootstrap": "10000 shared-round paired draws seed20261105; recompute per-case medians and hierarchical GM; exploratory unadjusted",
+  "final_gate": "correctness+supported whole-suite recheck direction+regression check+mechanism evidence; no forced winner",
+  "final_if_ready": "Octane17 A/M/frozen/V8_ON30 each; SunSpider26 A/M/frozen30 each; new data only",
+  "V8_flags": [
+    "--jitless",
+    "--no-lazy",
+    "--use-ic"
+  ],
+  "raw_newlines": "UTF-8 LF; JSONL/bin/patch -text",
+  "random_input": "original26 retained; 2 unseeded cases acknowledged, not a blanket block; separate seeded sensitivity only if final decision depends on them"
+}

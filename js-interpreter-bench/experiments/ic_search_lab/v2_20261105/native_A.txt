@@ -1,0 +1,166 @@
+Breakpoint 1 at 0x22a00: file quickjs.c, line 17749.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, JS_CallInternal (caller_ctx=caller_ctx@entry=0x55c664ea3120, func_obj=..., this_obj=..., new_target=..., argc=argc@entry=0, argv=0x0, flags=2) at quickjs.c:17749
+17749	{
+$1 = 0x3d
+$2 = 0x55c645c9a258
+Dump of assembler code from 0x55c645c9a258 to 0x55c645c9a4d8:
+   0x000055c645c9a258 <JS_CallInternal+10328>:	f3 0f 1e fa        	endbr64
+   0x000055c645c9a25c <JS_CallInternal+10332>:	48 8b 7b f8        	mov    -0x8(%rbx),%rdi
+   0x000055c645c9a260 <JS_CallInternal+10336>:	41 8b 34 24        	mov    (%r12),%esi
+   0x000055c645c9a264 <JS_CallInternal+10340>:	4d 8d 74 24 04     	lea    0x4(%r12),%r14
+   0x000055c645c9a269 <JS_CallInternal+10345>:	4c 8b 53 f0        	mov    -0x10(%rbx),%r10
+   0x000055c645c9a26d <JS_CallInternal+10349>:	83 ff ff           	cmp    $0xffffffff,%edi
+   0x000055c645c9a270 <JS_CallInternal+10352>:	0f 85 3d 3d 00 00  	jne    0x55c645c9dfb3 <JS_CallInternal+26035>
+   0x000055c645c9a276 <JS_CallInternal+10358>:	4c 89 d1           	mov    %r10,%rcx
+   0x000055c645c9a279 <JS_CallInternal+10361>:	0f 1f 80 00 00 00 00	nopl   0x0(%rax)
+   0x000055c645c9a280 <JS_CallInternal+10368>:	48 8b 51 18        	mov    0x18(%rcx),%rdx
+   0x000055c645c9a284 <JS_CallInternal+10372>:	8b 42 18           	mov    0x18(%rdx),%eax
+   0x000055c645c9a287 <JS_CallInternal+10375>:	41 89 c0           	mov    %eax,%r8d
+   0x000055c645c9a28a <JS_CallInternal+10378>:	41 21 f0           	and    %esi,%r8d
+   0x000055c645c9a28d <JS_CallInternal+10381>:	46 8b 44 82 38     	mov    0x38(%rdx,%r8,4),%r8d
+   0x000055c645c9a292 <JS_CallInternal+10386>:	4d 85 c0           	test   %r8,%r8
+   0x000055c645c9a295 <JS_CallInternal+10389>:	0f 84 00 38 00 00  	je     0x55c645c9da9b <JS_CallInternal+24731>
+   0x000055c645c9a29b <JS_CallInternal+10395>:	4c 8d 0c 85 34 00 00 00	lea    0x34(,%rax,4),%r9
+   0x000055c645c9a2a3 <JS_CallInternal+10403>:	4b 8d 04 c1        	lea    (%r9,%r8,8),%rax
+   0x000055c645c9a2a7 <JS_CallInternal+10407>:	48 01 d0           	add    %rdx,%rax
+   0x000055c645c9a2aa <JS_CallInternal+10410>:	39 70 04           	cmp    %esi,0x4(%rax)
+   0x000055c645c9a2ad <JS_CallInternal+10413>:	0f 85 d8 37 00 00  	jne    0x55c645c9da8b <JS_CallInternal+24715>
+   0x000055c645c9a2b3 <JS_CallInternal+10419>:	80 78 03 3f        	cmpb   $0x3f,0x3(%rax)
+   0x000055c645c9a2b7 <JS_CallInternal+10423>:	0f 87 f6 3c 00 00  	ja     0x55c645c9dfb3 <JS_CallInternal+26035>
+   0x000055c645c9a2bd <JS_CallInternal+10429>:	48 8b 41 20        	mov    0x20(%rcx),%rax
+   0x000055c645c9a2c1 <JS_CallInternal+10433>:	49 c1 e0 04        	shl    $0x4,%r8
+   0x000055c645c9a2c5 <JS_CallInternal+10437>:	4a 8d 54 00 f0     	lea    -0x10(%rax,%r8,1),%rdx
+   0x000055c645c9a2ca <JS_CallInternal+10442>:	4c 8b 42 08        	mov    0x8(%rdx),%r8
+   0x000055c645c9a2ce <JS_CallInternal+10446>:	48 8b 02           	mov    (%rdx),%rax
+   0x000055c645c9a2d1 <JS_CallInternal+10449>:	41 83 f8 f6        	cmp    $0xfffffff6,%r8d
+   0x000055c645c9a2d5 <JS_CallInternal+10453>:	76 04              	jbe    0x55c645c9a2db <JS_CallInternal+10459>
+   0x000055c645c9a2d7 <JS_CallInternal+10455>:	83 40 fc 01        	addl   $0x1,-0x4(%rax)
+   0x000055c645c9a2db <JS_CallInternal+10459>:	4c 8d 6b f0        	lea    -0x10(%rbx),%r13
+   0x000055c645c9a2df <JS_CallInternal+10463>:	49 8b 55 08        	mov    0x8(%r13),%rdx
+   0x000055c645c9a2e3 <JS_CallInternal+10467>:	49 8b 75 00        	mov    0x0(%r13),%rsi
+   0x000055c645c9a2e7 <JS_CallInternal+10471>:	83 fa f6           	cmp    $0xfffffff6,%edx
+   0x000055c645c9a2ea <JS_CallInternal+10474>:	76 11              	jbe    0x55c645c9a2fd <JS_CallInternal+10493>
+   0x000055c645c9a2ec <JS_CallInternal+10476>:	8b 4e fc           	mov    -0x4(%rsi),%ecx
+   0x000055c645c9a2ef <JS_CallInternal+10479>:	83 e9 01           	sub    $0x1,%ecx
+   0x000055c645c9a2f2 <JS_CallInternal+10482>:	89 4e fc           	mov    %ecx,-0x4(%rsi)
+   0x000055c645c9a2f5 <JS_CallInternal+10485>:	85 c9              	test   %ecx,%ecx
+   0x000055c645c9a2f7 <JS_CallInternal+10487>:	0f 8e f6 4c 00 00  	jle    0x55c645c9eff3 <JS_CallInternal+30195>
+   0x000055c645c9a2fd <JS_CallInternal+10493>:	48 89 43 f0        	mov    %rax,-0x10(%rbx)
+   0x000055c645c9a301 <JS_CallInternal+10497>:	49 83 c4 05        	add    $0x5,%r12
+   0x000055c645c9a305 <JS_CallInternal+10501>:	4c 89 43 f8        	mov    %r8,-0x8(%rbx)
+   0x000055c645c9a309 <JS_CallInternal+10505>:	41 0f b6 44 24 ff  	movzbl -0x1(%r12),%eax
+   0x000055c645c9a30f <JS_CallInternal+10511>:	49 89 c5           	mov    %rax,%r13
+   0x000055c645c9a312 <JS_CallInternal+10514>:	49 8b 04 c7        	mov    (%r15,%rax,8),%rax
+   0x000055c645c9a316 <JS_CallInternal+10518>:	ff e0              	jmp    *%rax
+   0x000055c645c9a318 <JS_CallInternal+10520>:	f3 0f 1e fa        	endbr64
+   0x000055c645c9a31c <JS_CallInternal+10524>:	83 7b f8 03        	cmpl   $0x3,-0x8(%rbx)
+   0x000055c645c9a320 <JS_CallInternal+10528>:	48 8b 53 f0        	mov    -0x10(%rbx),%rdx
+   0x000055c645c9a324 <JS_CallInternal+10532>:	48 8b 43 f8        	mov    -0x8(%rbx),%rax
+   0x000055c645c9a328 <JS_CallInternal+10536>:	0f 87 02 45 00 00  	ja     0x55c645c9e830 <JS_CallInternal+28208>
+   0x000055c645c9a32e <JS_CallInternal+10542>:	31 c0              	xor    %eax,%eax
+   0x000055c645c9a330 <JS_CallInternal+10544>:	85 d2              	test   %edx,%edx
+   0x000055c645c9a332 <JS_CallInternal+10546>:	0f 95 c0           	setne  %al
+   0x000055c645c9a335 <JS_CallInternal+10549>:	85 c0              	test   %eax,%eax
+   0x000055c645c9a337 <JS_CallInternal+10551>:	48 c7 43 f8 01 00 00 00	movq   $0x1,-0x8(%rbx)
+   0x000055c645c9a33f <JS_CallInternal+10559>:	0f 94 c0           	sete   %al
+   0x000055c645c9a342 <JS_CallInternal+10562>:	49 83 c4 01        	add    $0x1,%r12
+   0x000055c645c9a346 <JS_CallInternal+10566>:	0f b6 c0           	movzbl %al,%eax
+   0x000055c645c9a349 <JS_CallInternal+10569>:	48 89 43 f0        	mov    %rax,-0x10(%rbx)
+   0x000055c645c9a34d <JS_CallInternal+10573>:	41 0f b6 44 24 ff  	movzbl -0x1(%r12),%eax
+   0x000055c645c9a353 <JS_CallInternal+10579>:	49 89 c5           	mov    %rax,%r13
+   0x000055c645c9a356 <JS_CallInternal+10582>:	49 8b 04 c7        	mov    (%r15,%rax,8),%rax
+   0x000055c645c9a35a <JS_CallInternal+10586>:	ff e0              	jmp    *%rax
+   0x000055c645c9a35c <JS_CallInternal+10588>:	f3 0f 1e fa        	endbr64
+   0x000055c645c9a360 <JS_CallInternal+10592>:	45 0f b6 34 24     	movzbl (%r12),%r14d
+   0x000055c645c9a365 <JS_CallInternal+10597>:	48 8b 85 c8 fe ff ff	mov    -0x138(%rbp),%rax
+   0x000055c645c9a36c <JS_CallInternal+10604>:	4d 8d 6c 24 01     	lea    0x1(%r12),%r13
+   0x000055c645c9a371 <JS_CallInternal+10609>:	4c 8b 43 c0        	mov    -0x40(%rbx),%r8
+   0x000055c645c9a375 <JS_CallInternal+10613>:	4c 8b 4b c8        	mov    -0x38(%rbx),%r9
+   0x000055c645c9a379 <JS_CallInternal+10617>:	4c 89 68 30        	mov    %r13,0x30(%rax)
+   0x000055c645c9a37d <JS_CallInternal+10621>:	44 89 f0           	mov    %r14d,%eax
+   0x000055c645c9a380 <JS_CallInternal+10624>:	48 8b bd e8 fe ff ff	mov    -0x118(%rbp),%rdi
+   0x000055c645c9a387 <JS_CallInternal+10631>:	83 e0 01           	and    $0x1,%eax
+   0x000055c645c9a38a <JS_CallInternal+10634>:	4c 89 c6           	mov    %r8,%rsi
+   0x000055c645c9a38d <JS_CallInternal+10637>:	4c 89 ca           	mov    %r9,%rdx
+   0x000055c645c9a390 <JS_CallInternal+10640>:	3c 01              	cmp    $0x1,%al
+   0x000055c645c9a392 <JS_CallInternal+10642>:	19 c9              	sbb    %ecx,%ecx
+   0x000055c645c9a394 <JS_CallInternal+10644>:	48 83 ec 08        	sub    $0x8,%rsp
+   0x000055c645c9a398 <JS_CallInternal+10648>:	6a 00              	push   $0x0
+   0x000055c645c9a39a <JS_CallInternal+10650>:	83 e1 ef           	and    $0xffffffef,%ecx
+   0x000055c645c9a39d <JS_CallInternal+10653>:	83 c1 17           	add    $0x17,%ecx
+   0x000055c645c9a3a0 <JS_CallInternal+10656>:	e8 9b 74 00 00     	call   0x55c645ca1840 <JS_GetPropertyInternal>
+   0x000055c645c9a3a5 <JS_CallInternal+10661>:	41 58              	pop    %r8
+   0x000055c645c9a3a7 <JS_CallInternal+10663>:	41 59              	pop    %r9
+   0x000055c645c9a3a9 <JS_CallInternal+10665>:	83 fa 06           	cmp    $0x6,%edx
+   0x000055c645c9a3ac <JS_CallInternal+10668>:	0f 84 16 4c 00 00  	je     0x55c645c9efc8 <JS_CallInternal+30152>
+   0x000055c645c9a3b2 <JS_CallInternal+10674>:	8d 72 fe           	lea    -0x2(%rdx),%esi
+   0x000055c645c9a3b5 <JS_CallInternal+10677>:	b9 01 00 00 00     	mov    $0x1,%ecx
+   0x000055c645c9a3ba <JS_CallInternal+10682>:	83 fe 01           	cmp    $0x1,%esi
+   0x000055c645c9a3bd <JS_CallInternal+10685>:	0f 87 3d 40 00 00  	ja     0x55c645c9e400 <JS_CallInternal+27136>
+   0x000055c645c9a3c3 <JS_CallInternal+10691>:	48 89 0b           	mov    %rcx,(%rbx)
+   0x000055c645c9a3c6 <JS_CallInternal+10694>:	49 83 c4 02        	add    $0x2,%r12
+   0x000055c645c9a3ca <JS_CallInternal+10698>:	48 83 c3 10        	add    $0x10,%rbx
+   0x000055c645c9a3ce <JS_CallInternal+10702>:	48 c7 43 f8 01 00 00 00	movq   $0x1,-0x8(%rbx)
+   0x000055c645c9a3d6 <JS_CallInternal+10710>:	41 0f b6 44 24 ff  	movzbl -0x1(%r12),%eax
+   0x000055c645c9a3dc <JS_CallInternal+10716>:	49 89 c5           	mov    %rax,%r13
+   0x000055c645c9a3df <JS_CallInternal+10719>:	49 8b 04 c7        	mov    (%r15,%rax,8),%rax
+   0x000055c645c9a3e3 <JS_CallInternal+10723>:	ff e0              	jmp    *%rax
+   0x000055c645c9a3e5 <JS_CallInternal+10725>:	f3 0f 1e fa        	endbr64
+   0x000055c645c9a3e9 <JS_CallInternal+10729>:	48 8b 85 c8 fe ff ff	mov    -0x138(%rbp),%rax
+   0x000055c645c9a3f0 <JS_CallInternal+10736>:	4c 8d 6b f0        	lea    -0x10(%rbx),%r13
+   0x000055c645c9a3f4 <JS_CallInternal+10740>:	48 8b 4b c0        	mov    -0x40(%rbx),%rcx
+   0x000055c645c9a3f8 <JS_CallInternal+10744>:	48 c7 85 f0 fd ff ff 00 00 00 00	movq   $0x0,-0x210(%rbp)
+   0x000055c645c9a403 <JS_CallInternal+10755>:	4c 8b 43 c8        	mov    -0x38(%rbx),%r8
+   0x000055c645c9a407 <JS_CallInternal+10759>:	48 8b 73 d0        	mov    -0x30(%rbx),%rsi
+   0x000055c645c9a40b <JS_CallInternal+10763>:	41 b9 01 00 00 00  	mov    $0x1,%r9d
+   0x000055c645c9a411 <JS_CallInternal+10769>:	48 c7 85 f8 fd ff ff 03 00 00 00	movq   $0x3,-0x208(%rbp)
+   0x000055c645c9a41c <JS_CallInternal+10780>:	48 8b 53 d8        	mov    -0x28(%rbx),%rdx
+   0x000055c645c9a420 <JS_CallInternal+10784>:	48 8b bd e8 fe ff ff	mov    -0x118(%rbp),%rdi
+   0x000055c645c9a427 <JS_CallInternal+10791>:	4c 89 60 30        	mov    %r12,0x30(%rax)
+   0x000055c645c9a42b <JS_CallInternal+10795>:	6a 02              	push   $0x2
+   0x000055c645c9a42d <JS_CallInternal+10797>:	41 55              	push   %r13
+   0x000055c645c9a42f <JS_CallInternal+10799>:	ff b5 f8 fd ff ff  	push   -0x208(%rbp)
+   0x000055c645c9a435 <JS_CallInternal+10805>:	ff b5 f0 fd ff ff  	push   -0x210(%rbp)
+   0x000055c645c9a43b <JS_CallInternal+10811>:	e8 c0 d5 ff ff     	call   0x55c645c97a00 <JS_CallInternal>
+   0x000055c645c9a440 <JS_CallInternal+10816>:	48 83 c4 20        	add    $0x20,%rsp
+   0x000055c645c9a444 <JS_CallInternal+10820>:	48 89 c1           	mov    %rax,%rcx
+   0x000055c645c9a447 <JS_CallInternal+10823>:	49 89 d6           	mov    %rdx,%r14
+   0x000055c645c9a44a <JS_CallInternal+10826>:	83 fa 06           	cmp    $0x6,%edx
+   0x000055c645c9a44d <JS_CallInternal+10829>:	0f 84 4d dd ff ff  	je     0x55c645c981a0 <JS_CallInternal+1952>
+   0x000055c645c9a453 <JS_CallInternal+10835>:	48 8b 53 f8        	mov    -0x8(%rbx),%rdx
+   0x000055c645c9a457 <JS_CallInternal+10839>:	48 8b 73 f0        	mov    -0x10(%rbx),%rsi
+   0x000055c645c9a45b <JS_CallInternal+10843>:	83 fa f6           	cmp    $0xfffffff6,%edx
+   0x000055c645c9a45e <JS_CallInternal+10846>:	76 11              	jbe    0x55c645c9a471 <JS_CallInternal+10865>
+   0x000055c645c9a460 <JS_CallInternal+10848>:	8b 46 fc           	mov    -0x4(%rsi),%eax
+   0x000055c645c9a463 <JS_CallInternal+10851>:	83 e8 01           	sub    $0x1,%eax
+   0x000055c645c9a466 <JS_CallInternal+10854>:	89 46 fc           	mov    %eax,-0x4(%rsi)
+   0x000055c645c9a469 <JS_CallInternal+10857>:	85 c0              	test   %eax,%eax
+   0x000055c645c9a46b <JS_CallInternal+10859>:	0f 8e 5f 4b 00 00  	jle    0x55c645c9efd0 <JS_CallInternal+30160>
+   0x000055c645c9a471 <JS_CallInternal+10865>:	48 89 4b f0        	mov    %rcx,-0x10(%rbx)
+   0x000055c645c9a475 <JS_CallInternal+10869>:	49 83 c4 01        	add    $0x1,%r12
+   0x000055c645c9a479 <JS_CallInternal+10873>:	4c 89 73 f8        	mov    %r14,-0x8(%rbx)
+   0x000055c645c9a47d <JS_CallInternal+10877>:	41 0f b6 44 24 ff  	movzbl -0x1(%r12),%eax
+   0x000055c645c9a483 <JS_CallInternal+10883>:	49 89 c5           	mov    %rax,%r13
+   0x000055c645c9a486 <JS_CallInternal+10886>:	49 8b 04 c7        	mov    (%r15,%rax,8),%rax
+   0x000055c645c9a48a <JS_CallInternal+10890>:	ff e0              	jmp    *%rax
+   0x000055c645c9a48c <JS_CallInternal+10892>:	f3 0f 1e fa        	endbr64
+   0x000055c645c9a490 <JS_CallInternal+10896>:	4c 8b 6b f0        	mov    -0x10(%rbx),%r13
+   0x000055c645c9a494 <JS_CallInternal+10900>:	4c 8d 73 f0        	lea    -0x10(%rbx),%r14
+   0x000055c645c9a498 <JS_CallInternal+10904>:	48 8b 5b f8        	mov    -0x8(%rbx),%rbx
+   0x000055c645c9a49c <JS_CallInternal+10908>:	4c 39 b5 68 fe ff ff	cmp    %r14,-0x198(%rbp)
+   0x000055c645c9a4a3 <JS_CallInternal+10915>:	0f 83 ea 37 00 00  	jae    0x55c645c9dc93 <JS_CallInternal+25235>
+   0x000055c645c9a4a9 <JS_CallInternal+10921>:	4c 89 a5 50 fe ff ff	mov    %r12,-0x1b0(%rbp)
+   0x000055c645c9a4b0 <JS_CallInternal+10928>:	4d 89 f4           	mov    %r14,%r12
+   0x000055c645c9a4b3 <JS_CallInternal+10931>:	49 89 de           	mov    %rbx,%r14
+   0x000055c645c9a4b6 <JS_CallInternal+10934>:	48 8b 9d 68 fe ff ff	mov    -0x198(%rbp),%rbx
+   0x000055c645c9a4bd <JS_CallInternal+10941>:	eb 0a              	jmp    0x55c645c9a4c9 <JS_CallInternal+10953>
+   0x000055c645c9a4bf <JS_CallInternal+10943>:	90                 	nop
+   0x000055c645c9a4c0 <JS_CallInternal+10944>:	4c 39 e3           	cmp    %r12,%rbx
+   0x000055c645c9a4c3 <JS_CallInternal+10947>:	0f 83 bd 37 00 00  	jae    0x55c645c9dc86 <JS_CallInternal+25222>
+   0x000055c645c9a4c9 <JS_CallInternal+10953>:	41 83 7c 24 f8 05  	cmpl   $0x5,-0x8(%r12)
+   0x000055c645c9a4cf <JS_CallInternal+10959>:	0f 84 b1 37 00 00  	je     0x55c645c9dc86 <JS_CallInternal+25222>
+   0x000055c645c9a4d5 <JS_CallInternal+10965>:	49 8b 4c 24 f8     	mov    -0x8(%r12),%rcx
+End of assembler dump.

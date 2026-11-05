@@ -1,0 +1,18 @@
+# New raw is explicitly UTF-8/LF; preserve byte hashes across Git checkout.
+*.jsonl -text
+*.bin -text
+*.gz -text
+*.patch -text
+*.json text eol=lf
+*.csv text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.inc text eol=lf
+*.txt text eol=lf
+# These are exact byte-identity archives / the mechanically reused wrapper.
+# Some inherited runner bytes are CRLF. Never normalize their recorded SHA.
+runners/*.py -text
+host.py -text

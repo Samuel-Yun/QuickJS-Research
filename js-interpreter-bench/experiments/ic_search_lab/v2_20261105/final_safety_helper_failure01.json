@@ -1,0 +1,10 @@
+{
+  "status": "HELPER_CHECK_STOP_BEFORE_BUILD_OR_ENGINE_TESTS",
+  "candidate": "s001",
+  "evidence_token": "2026-11-05T05:37:27.277866+00:00:upstream_tests_status",
+  "observation": "Windows Git status clean; WSL Git lists16 test files modified in the same Windows checkout",
+  "recovery": "read-only per-command core.autocrlf=true/core.filemode=false plus explicit LF-normalized Git blob verification; original test bytes are not edited",
+  "retained": "original raw process records and original helper in runners/final_safety.<SHA>.py",
+  "candidate_source_changed": false,
+  "performance_samples_discarded": 0
+}

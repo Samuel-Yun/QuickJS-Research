@@ -1,0 +1,37 @@
+{
+  "status": "COMPLETE_BOUNDED_SEARCH_AND_FRESH_CONFIRMATION",
+  "candidate": "s001",
+  "actual_designs": 4,
+  "formal_valid": 4380,
+  "formal_expected": 4380,
+  "independent_valid": 230,
+  "primary_supported_vs_A_and_M": true,
+  "primary_over_A": {
+    "kind": "octane",
+    "scope": "core16_13suite",
+    "comparison": "s001/A",
+    "ratio": "0.9858680489571708",
+    "low95": "0.9826883051937211",
+    "high95": "0.9895160181626271",
+    "rounds": "30",
+    "draws": "10000",
+    "seed": "20261105"
+  },
+  "primary_over_M": {
+    "kind": "octane",
+    "scope": "core16_13suite",
+    "comparison": "s001/M",
+    "ratio": "0.9844060396655394",
+    "low95": "0.981236747974013",
+    "high95": "0.9876103049720346",
+    "rounds": "30",
+    "draws": "10000",
+    "seed": "20261105"
+  },
+  "all_cases_faster": false,
+  "gain20percent": false,
+  "close_to_V8": false,
+  "interpretation": "small cohort-specific aggregate gain, not all-case or instruction-self-time attribution; inspect independent sensitivity table",
+  "no_more_search": true,
+  "no_auto_commit_push": true
+}

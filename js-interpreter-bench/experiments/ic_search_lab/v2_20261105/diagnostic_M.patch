@@ -1,0 +1,33 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6149,6 +6149,9 @@
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
+     sh = p->shape;
++#ifdef V2_NARROW
++    if (v2d_on) { v2d.find_calls++; v2d.hash_paths++; }
++#endif
+     h = (uintptr_t)atom & sh->prop_hash_mask;
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -4,6 +4,9 @@
+     uint32_t count = 0, index = 0;
+     int pos, op;
+     assert(!b->read_ic_ready && !b->read_ic_sites);
++#ifdef V2_NARROW
++    if (v2d_on) v2d.prepares++;
++#endif
+     b->read_ic_ready = 1;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_header_init();
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -36,3 +36,6 @@
+ #define RDI_OCCUPY() ((void)0)
+ #define RDI_REPLACE() ((void)0)
+ #endif
++#ifdef V2_NARROW
++#include "narrow_counts.h"
++#endif

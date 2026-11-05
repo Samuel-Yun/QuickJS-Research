@@ -1,0 +1,60 @@
+{
+  "boot_id": "3232ff5b-05a5-4446-ad1c-25dbd2e8e6e7",
+  "timestamp": "2026-11-05T05:59:03.997991+00:00",
+  "platform": {
+    "system": "Linux",
+    "node": "LAPTOP-QPKCPDCB",
+    "release": "5.15.167.4-microsoft-standard-WSL2",
+    "version": "#1 SMP Tue Nov 5 00:21:55 UTC 2024",
+    "machine": "x86_64",
+    "processor": "x86_64"
+  },
+  "OS": "PRETTY_NAME=\"Ubuntu 24.04.2 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.2 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "affinity": [
+    2
+  ],
+  "meminfo": "MemTotal:        8059220 kB\nMemFree:         6835692 kB\nMemAvailable:    7339516 kB\nBuffers:           12328 kB\nCached:           688940 kB\nSwapCached:            0 kB\nActive:           190608 kB\nInactive:         664652 kB\nActive(anon):       2324 kB\nInactive(anon):   154944 kB\nActive(file):     188284 kB\nInactive(file):   509708 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       2097152 kB\nSwapFree:        2097152 kB\nDirty:                12 kB\nWriteback:             0 kB\nAnonPages:        154096 kB\nMapped:           193368 kB\nShmem:              3276 kB\nKReclaimable:      43360 kB\nSlab:             112360 kB\nSReclaimable:      43360 kB\nSUnreclaim:        69000 kB\nKernelStack:        4880 kB\nPageTables:         3756 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     6126760 kB\nCommitted_AS:     973180 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       26900 kB\nVmallocChunk:          0 kB\nPercpu:             6976 kB\nAnonHugePages:     61440 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:      117760 kB\nDirectMap2M:     6096896 kB\nDirectMap1G:    11534336 kB\n",
+  "load_average": [
+    0.11767578125,
+    0.60107421875,
+    0.71533203125
+  ],
+  "reported_monotonic_clock": {
+    "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 1e-09
+  },
+  "ldd": {
+    "A": "\tlinux-vdso.so.1 (0x00007ffea7bd2000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fe1f826a000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fe1f8057000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fe1f8463000)\n",
+    "M": "\tlinux-vdso.so.1 (0x00007ffe1567b000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fcbc4265000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fcbc4052000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fcbc445f000)\n",
+    "s001": "\tlinux-vdso.so.1 (0x00007ffc47717000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f809acbf000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f809aaac000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f809aeb9000)\n",
+    "V8_ON": "\tlinux-vdso.so.1 (0x00007ffcaad82000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc46cf3c000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fc46ce53000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fc46ce25000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc46cc12000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fc46f098000)\n"
+  },
+  "dynamic_library_sha256": {
+    "/lib/x86_64-linux-gnu/libm.so.6": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+    "/lib/x86_64-linux-gnu/libc.so.6": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+    "/lib64/ld-linux-x86-64.so.2": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+    "/lib/x86_64-linux-gnu/libpthread.so.0": "90491a21ce44efcf3bd4b65ec82501c091d7ebe7f8d9b341dd01d721001d9ecd",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+  },
+  "idle_helper": {
+    "pid": 3989,
+    "uid": 1000,
+    "boot_id": "3232ff5b-05a5-4446-ad1c-25dbd2e8e6e7",
+    "command": [
+      "python3",
+      "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v2_20261105/idle_guard.py",
+      "IC_SEARCH_V2_FINAL_IDLE"
+    ],
+    "seconds": 43200,
+    "purpose": "sleep only, prevent idle WSL shutdown between stages; no compiler or benchmark",
+    "old_helper_pid": 515,
+    "old_helper_not_terminated": true
+  },
+  "process_inventory_token": "2026-11-05T05:59:03.605809+00:00:processes",
+  "temperature": "UNKNOWN",
+  "power_frequency_control": "UNKNOWN",
+  "background_load_control": "UNKNOWN",
+  "note": "preformal after all builds/diagnostics; no full-cold-state or frequency-isolation claim"
+}

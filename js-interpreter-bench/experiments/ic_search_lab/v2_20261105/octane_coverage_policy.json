@@ -1,0 +1,13 @@
+{
+  "frozen_before_s003_s004_implementation": true,
+  "coarse_if_correct": ["s001", "s002", "s003", "s004"],
+  "reason": {
+    "s001": "selected at first two-candidate checkpoint",
+    "s002": "one reserved non-SunSpider-winner slot: function-wide budget and sharing may affect dynamic-code/many-site workloads; no gain claimed",
+    "s003": "metadata lifetime changes cold function/dynamic-code coverage; direct full17 check",
+    "s004": "helper lookup coverage extends beyond named-read opcode misses; direct full17 check"
+  },
+  "samples": "each case one candidate child with A-before/A-after, not30 rounds",
+  "recheck_max_candidates": 2,
+  "no_source_or_N_changes": true
+}
