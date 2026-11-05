@@ -1,0 +1,433 @@
+{
+  "candidate": "c004",
+  "kind": "sunspider",
+  "campaign": "postreboot.c004.sunspider.screen01",
+  "status": "COMPLETE_EXPLORATORY_SCREEN",
+  "groups": [
+    {
+      "case": "access-fannkuch",
+      "N": 64,
+      "A_before_ms": 2404.2695999999996,
+      "candidate_ms": 2259.1674310001545,
+      "A_after_ms": 2312.1458529999945,
+      "ratio": 0.9581846796190944,
+      "drift": 1.0398433978031598,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:56:40.593084+00:00:postreboot.c004.sunspider.screen01/access-fannkuch/A/rep0/pos0",
+        "2026-11-04T11:56:43.149025+00:00:postreboot.c004.sunspider.screen01/access-fannkuch/c004/rep0/pos1",
+        "2026-11-04T11:56:45.561065+00:00:postreboot.c004.sunspider.screen01/access-fannkuch/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "date-format-xparb",
+      "N": 512,
+      "A_before_ms": 11420.199869999895,
+      "candidate_ms": 10759.632514999714,
+      "A_after_ms": 10463.329948000144,
+      "ratio": 0.9842957865964448,
+      "drift": 1.0914498469182496,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:56:48.022201+00:00:postreboot.c004.sunspider.screen01/date-format-xparb/A/rep0/pos0",
+        "2026-11-04T11:56:59.600919+00:00:postreboot.c004.sunspider.screen01/date-format-xparb/c004/rep0/pos1",
+        "2026-11-04T11:57:10.503006+00:00:postreboot.c004.sunspider.screen01/date-format-xparb/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "3d-raytrace",
+      "N": 128,
+      "A_before_ms": 1960.8790259999223,
+      "candidate_ms": 1931.7347260001116,
+      "A_after_ms": 1890.1123740002513,
+      "ratio": 1.0034096507576449,
+      "drift": 1.037440446913693,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:57:21.111066+00:00:postreboot.c004.sunspider.screen01/3d-raytrace/A/rep0/pos0",
+        "2026-11-04T11:57:23.219991+00:00:postreboot.c004.sunspider.screen01/3d-raytrace/c004/rep0/pos1",
+        "2026-11-04T11:57:25.293202+00:00:postreboot.c004.sunspider.screen01/3d-raytrace/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "access-nbody",
+      "N": 128,
+      "A_before_ms": 1997.9939180002548,
+      "candidate_ms": 1985.424264000263,
+      "A_after_ms": 1958.6557549997233,
+      "ratio": 1.0036382111757545,
+      "drift": 1.0200842659053873,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:57:27.331231+00:00:postreboot.c004.sunspider.screen01/access-nbody/A/rep0/pos0",
+        "2026-11-04T11:57:27.983316+00:00:postreboot.c004.sunspider.screen01/access-nbody/c004/rep0/pos1",
+        "2026-11-04T11:57:30.119821+00:00:postreboot.c004.sunspider.screen01/access-nbody/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "crypto-sha1",
+      "N": 256,
+      "A_before_ms": 1626.233177000191,
+      "candidate_ms": 1672.3157369997352,
+      "A_after_ms": 1614.113962000236,
+      "ratio": 1.032190294334588,
+      "drift": 1.0075082771633652,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:57:32.253017+00:00:postreboot.c004.sunspider.screen01/crypto-sha1/A/rep0/pos0",
+        "2026-11-04T11:57:34.024134+00:00:postreboot.c004.sunspider.screen01/crypto-sha1/c004/rep0/pos1",
+        "2026-11-04T11:57:35.839959+00:00:postreboot.c004.sunspider.screen01/crypto-sha1/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "access-binary-trees",
+      "N": 256,
+      "A_before_ms": 3171.750802000053,
+      "candidate_ms": 3345.501618999988,
+      "A_after_ms": 3290.085001000203,
+      "ratio": 1.035638426158151,
+      "drift": 1.0373087945388175,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:57:37.593476+00:00:postreboot.c004.sunspider.screen01/access-binary-trees/A/rep0/pos0",
+        "2026-11-04T11:57:40.916686+00:00:postreboot.c004.sunspider.screen01/access-binary-trees/c004/rep0/pos1",
+        "2026-11-04T11:57:44.419144+00:00:postreboot.c004.sunspider.screen01/access-binary-trees/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "string-unpack-code",
+      "N": 256,
+      "A_before_ms": 11674.721886999905,
+      "candidate_ms": 11507.580651000142,
+      "A_after_ms": 11710.180782999843,
+      "ratio": 0.984190017175302,
+      "drift": 1.0030372368903642,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:57:47.868116+00:00:postreboot.c004.sunspider.screen01/string-unpack-code/A/rep0/pos0",
+        "2026-11-04T11:57:59.706843+00:00:postreboot.c004.sunspider.screen01/string-unpack-code/c004/rep0/pos1",
+        "2026-11-04T11:58:09.777874+00:00:postreboot.c004.sunspider.screen01/string-unpack-code/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "string-validate-input",
+      "N": 256,
+      "A_before_ms": 2999.544830999803,
+      "candidate_ms": 2962.541685000062,
+      "A_after_ms": 3019.360264999792,
+      "ratio": 0.9844174954560085,
+      "drift": 1.0066061469711003,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:58:21.648314+00:00:postreboot.c004.sunspider.screen01/string-validate-input/A/rep0/pos0",
+        "2026-11-04T11:58:24.804742+00:00:postreboot.c004.sunspider.screen01/string-validate-input/c004/rep0/pos1",
+        "2026-11-04T11:58:27.929013+00:00:postreboot.c004.sunspider.screen01/string-validate-input/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "math-cordic",
+      "N": 128,
+      "A_before_ms": 2854.8439540001564,
+      "candidate_ms": 6169.946138000116,
+      "A_after_ms": 3039.870176000055,
+      "ratio": 2.0944146507222934,
+      "drift": 1.0648113259362717,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:58:31.105298+00:00:postreboot.c004.sunspider.screen01/math-cordic/A/rep0/pos0",
+        "2026-11-04T11:58:32.148983+00:00:postreboot.c004.sunspider.screen01/math-cordic/c004/rep0/pos1",
+        "2026-11-04T11:58:38.468006+00:00:postreboot.c004.sunspider.screen01/math-cordic/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "3d-morph",
+      "N": 128,
+      "A_before_ms": 1836.2141879997216,
+      "candidate_ms": 1883.8683159998618,
+      "A_after_ms": 1822.0230499999598,
+      "ratio": 1.0299400329786046,
+      "drift": 1.0077886709499981,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:58:41.670006+00:00:postreboot.c004.sunspider.screen01/3d-morph/A/rep0/pos0",
+        "2026-11-04T11:58:43.657841+00:00:postreboot.c004.sunspider.screen01/3d-morph/c004/rep0/pos1",
+        "2026-11-04T11:58:45.699836+00:00:postreboot.c004.sunspider.screen01/3d-morph/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "string-base64",
+      "N": 256,
+      "A_before_ms": 4261.11762000015,
+      "candidate_ms": 4378.698414999992,
+      "A_after_ms": 4187.920601000078,
+      "ratio": 1.0365351957279896,
+      "drift": 1.0174781295955306,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:58:47.679955+00:00:postreboot.c004.sunspider.screen01/string-base64/A/rep0/pos0",
+        "2026-11-04T11:58:52.102109+00:00:postreboot.c004.sunspider.screen01/string-base64/c004/rep0/pos1",
+        "2026-11-04T11:58:56.641651+00:00:postreboot.c004.sunspider.screen01/string-base64/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "N": 256,
+      "A_before_ms": 1991.002144999802,
+      "candidate_ms": 1979.4183579999954,
+      "A_after_ms": 1961.0117759997956,
+      "ratio": 1.0017552542611305,
+      "drift": 1.0152933140774825,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:00.983528+00:00:postreboot.c004.sunspider.screen01/bitops-bitwise-and/A/rep0/pos0",
+        "2026-11-04T11:59:03.130272+00:00:postreboot.c004.sunspider.screen01/bitops-bitwise-and/c004/rep0/pos1",
+        "2026-11-04T11:59:03.410533+00:00:postreboot.c004.sunspider.screen01/bitops-bitwise-and/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "N": 128,
+      "A_before_ms": 2483.1898389998823,
+      "candidate_ms": 2390.589210000355,
+      "A_after_ms": 2455.8441860000603,
+      "ratio": 0.9680540120838291,
+      "drift": 1.0111349299583867,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:05.521140+00:00:postreboot.c004.sunspider.screen01/bitops-bits-in-byte/A/rep0/pos0",
+        "2026-11-04T11:59:08.157264+00:00:postreboot.c004.sunspider.screen01/bitops-bits-in-byte/c004/rep0/pos1",
+        "2026-11-04T11:59:10.684101+00:00:postreboot.c004.sunspider.screen01/bitops-bits-in-byte/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "crypto-md5",
+      "N": 256,
+      "A_before_ms": 1781.8276340002194,
+      "candidate_ms": 1808.6512299999595,
+      "A_after_ms": 1900.512229999993,
+      "ratio": 0.9828486573105034,
+      "drift": 1.0666083484929043,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:13.289768+00:00:postreboot.c004.sunspider.screen01/crypto-md5/A/rep0/pos0",
+        "2026-11-04T11:59:15.226117+00:00:postreboot.c004.sunspider.screen01/crypto-md5/c004/rep0/pos1",
+        "2026-11-04T11:59:17.187434+00:00:postreboot.c004.sunspider.screen01/crypto-md5/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "string-fasta",
+      "N": 128,
+      "A_before_ms": 3216.5350359999575,
+      "candidate_ms": 3285.0627850000747,
+      "A_after_ms": 3267.1180270002224,
+      "ratio": 1.013367843942834,
+      "drift": 1.015725925703943,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:19.241452+00:00:postreboot.c004.sunspider.screen01/string-fasta/A/rep0/pos0",
+        "2026-11-04T11:59:22.613151+00:00:postreboot.c004.sunspider.screen01/string-fasta/c004/rep0/pos1",
+        "2026-11-04T11:59:26.054991+00:00:postreboot.c004.sunspider.screen01/string-fasta/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "math-spectral-norm",
+      "N": 256,
+      "A_before_ms": 2296.3754380000755,
+      "candidate_ms": 2283.3512239996344,
+      "A_after_ms": 2337.465168000199,
+      "ratio": 0.9855500836554103,
+      "drift": 1.0178932979861117,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:29.477713+00:00:postreboot.c004.sunspider.screen01/math-spectral-norm/A/rep0/pos0",
+        "2026-11-04T11:59:31.933973+00:00:postreboot.c004.sunspider.screen01/math-spectral-norm/c004/rep0/pos1",
+        "2026-11-04T11:59:34.382231+00:00:postreboot.c004.sunspider.screen01/math-spectral-norm/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "crypto-aes",
+      "N": 128,
+      "A_before_ms": 1915.4211470000446,
+      "candidate_ms": 1784.357396000065,
+      "A_after_ms": 1980.9531120001338,
+      "ratio": 0.9160361404964789,
+      "drift": 1.0342128231708865,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:36.881842+00:00:postreboot.c004.sunspider.screen01/crypto-aes/A/rep0/pos0",
+        "2026-11-04T11:59:37.054476+00:00:postreboot.c004.sunspider.screen01/crypto-aes/c004/rep0/pos1",
+        "2026-11-04T11:59:38.990144+00:00:postreboot.c004.sunspider.screen01/crypto-aes/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "N": 256,
+      "A_before_ms": 2514.1021700003184,
+      "candidate_ms": 2360.2964610001072,
+      "A_after_ms": 2722.023688999936,
+      "ratio": 0.9022546802584623,
+      "drift": 1.0827020959930165,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:41.121781+00:00:postreboot.c004.sunspider.screen01/bitops-3bit-bits-in-byte/A/rep0/pos0",
+        "2026-11-04T11:59:43.801753+00:00:postreboot.c004.sunspider.screen01/bitops-3bit-bits-in-byte/c004/rep0/pos1",
+        "2026-11-04T11:59:46.314886+00:00:postreboot.c004.sunspider.screen01/bitops-3bit-bits-in-byte/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "3d-cube",
+      "N": 128,
+      "A_before_ms": 2861.512598000001,
+      "candidate_ms": 2873.387382999994,
+      "A_after_ms": 2797.5792890000157,
+      "ratio": 1.0155589718533387,
+      "drift": 1.0228530820382353,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:49.196397+00:00:postreboot.c004.sunspider.screen01/3d-cube/A/rep0/pos0",
+        "2026-11-04T11:59:52.218875+00:00:postreboot.c004.sunspider.screen01/3d-cube/c004/rep0/pos1",
+        "2026-11-04T11:59:55.250670+00:00:postreboot.c004.sunspider.screen01/3d-cube/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "math-partial-sums",
+      "N": 128,
+      "A_before_ms": 1538.7632689997554,
+      "candidate_ms": 1546.8009850000963,
+      "A_after_ms": 1476.7331199999899,
+      "ratio": 1.0261185217753397,
+      "drift": 1.0420049825927693,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T11:59:58.199824+00:00:postreboot.c004.sunspider.screen01/math-partial-sums/A/rep0/pos0",
+        "2026-11-04T11:59:59.891423+00:00:postreboot.c004.sunspider.screen01/math-partial-sums/c004/rep0/pos1",
+        "2026-11-04T12:00:01.589557+00:00:postreboot.c004.sunspider.screen01/math-partial-sums/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "date-format-tofte",
+      "N": 256,
+      "A_before_ms": 7565.987078000326,
+      "candidate_ms": 7720.310210999567,
+      "A_after_ms": 7817.874408999924,
+      "ratio": 1.003824078598308,
+      "drift": 1.0332920646576325,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T12:00:03.213345+00:00:postreboot.c004.sunspider.screen01/date-format-tofte/A/rep0/pos0",
+        "2026-11-04T12:00:08.919092+00:00:postreboot.c004.sunspider.screen01/date-format-tofte/c004/rep0/pos1",
+        "2026-11-04T12:00:16.792070+00:00:postreboot.c004.sunspider.screen01/date-format-tofte/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "controlflow-recursive",
+      "N": 256,
+      "A_before_ms": 1988.5252869999968,
+      "candidate_ms": 2022.241628000047,
+      "A_after_ms": 1840.811362999957,
+      "ratio": 1.0569704453018678,
+      "drift": 1.0802439223100575,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T12:00:24.763481+00:00:postreboot.c004.sunspider.screen01/controlflow-recursive/A/rep0/pos0",
+        "2026-11-04T12:00:26.899140+00:00:postreboot.c004.sunspider.screen01/controlflow-recursive/c004/rep0/pos1",
+        "2026-11-04T12:00:29.082051+00:00:postreboot.c004.sunspider.screen01/controlflow-recursive/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "N": 128,
+      "A_before_ms": 1916.5869930000044,
+      "candidate_ms": 1853.2037309999578,
+      "A_after_ms": 1819.6551630003378,
+      "ratio": 0.9923488040639427,
+      "drift": 1.0532693402412798,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T12:00:31.068580+00:00:postreboot.c004.sunspider.screen01/bitops-nsieve-bits/A/rep0/pos0",
+        "2026-11-04T12:00:33.127550+00:00:postreboot.c004.sunspider.screen01/bitops-nsieve-bits/c004/rep0/pos1",
+        "2026-11-04T12:00:35.125319+00:00:postreboot.c004.sunspider.screen01/bitops-nsieve-bits/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "access-nsieve",
+      "N": 256,
+      "A_before_ms": 5021.964128999971,
+      "candidate_ms": 5102.226043999661,
+      "A_after_ms": 4930.575054000132,
+      "ratio": 1.0253546494550427,
+      "drift": 1.0185351757145844,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T12:00:37.091074+00:00:postreboot.c004.sunspider.screen01/access-nsieve/A/rep0/pos0",
+        "2026-11-04T12:00:40.578086+00:00:postreboot.c004.sunspider.screen01/access-nsieve/c004/rep0/pos1",
+        "2026-11-04T12:00:45.828115+00:00:postreboot.c004.sunspider.screen01/access-nsieve/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "regexp-dna",
+      "N": 256,
+      "A_before_ms": 17884.491073000245,
+      "candidate_ms": 17260.05730499979,
+      "A_after_ms": 17662.89222499961,
+      "ratio": 0.9711202957507346,
+      "drift": 1.0125460114446596,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T12:00:50.914299+00:00:postreboot.c004.sunspider.screen01/regexp-dna/A/rep0/pos0",
+        "2026-11-04T12:01:08.967931+00:00:postreboot.c004.sunspider.screen01/regexp-dna/c004/rep0/pos1",
+        "2026-11-04T12:01:24.635653+00:00:postreboot.c004.sunspider.screen01/regexp-dna/A/rep0/pos2"
+      ]
+    },
+    {
+      "case": "string-tagcloud",
+      "N": 256,
+      "A_before_ms": 5948.520169999916,
+      "candidate_ms": 5841.377003000118,
+      "A_after_ms": 6141.484455999918,
+      "ratio": 0.9664382022332332,
+      "drift": 1.0324390403806945,
+      "status": "OK",
+      "retry": [],
+      "primary_tokens": [
+        "2026-11-04T12:01:42.454896+00:00:postreboot.c004.sunspider.screen01/string-tagcloud/A/rep0/pos0",
+        "2026-11-04T12:01:46.740714+00:00:postreboot.c004.sunspider.screen01/string-tagcloud/c004/rep0/pos1",
+        "2026-11-04T12:01:52.736570+00:00:postreboot.c004.sunspider.screen01/string-tagcloud/A/rep0/pos2"
+      ]
+    }
+  ],
+  "unstable_cases": [],
+  "boot_id": "05b4c4ae-91e8-4b42-a8b6-a958aa7b93ef",
+  "timestamp": "2026-11-04T12:01:59.252818+00:00",
+  "complete_case_count": 26,
+  "ratio_GM": 1.0234524405446301,
+  "greater_than_10pct_regressions": [
+    "math-cordic"
+  ],
+  "confidence_interval": null
+}

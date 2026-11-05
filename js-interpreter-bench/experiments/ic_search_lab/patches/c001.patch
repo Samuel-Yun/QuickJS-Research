@@ -1,0 +1,13 @@
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -33,6 +33,10 @@
+         s->prop_offset = offset;
+         return;
+     }
++    /* c001: keep the existing exact-shape anchor for equal-offset misses.
++       The missed object has already used the ordinary property lookup. */
++    if (s->shape && s->prop_offset == offset)
++        return;
+     if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
+     js_dup_shape(shape);
+     js_free_shape_null(ctx->rt, s->shape);

@@ -1,0 +1,83 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6634,7 +6634,7 @@
+                 if (b->read_ic_sites[ri].shape)
+                     mark_func(rt, &b->read_ic_sites[ri].shape->header);
+ #else
+-                for (unsigned rj = 0; rj < 4; rj++)
++                for (unsigned rj = 0; rj < RDI_CAPACITY; rj++)
+                     if (b->read_ic_sites[ri].shape[rj])
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+--- a/read_ic_config.h
++++ b/read_ic_config.h
+@@ -1 +1 @@
+-#define RDI_CAPACITY 1
++#define RDI_CAPACITY 2
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -13,8 +13,8 @@
+     RDI_COUNT(comparisons);
+     if (s->shape[first] == shape)
+         return s->prop_offset[first];
+-    for (unsigned k = 1; k < 4; k++) {
+-        i = (first + k) & 3;
++    for (unsigned k = 1; k < RDI_CAPACITY; k++) {
++        i = (first + k) & (RDI_CAPACITY - 1);
+         RDI_COUNT(comparisons);
+         if (s->shape[i] == shape) {
+             s->recent = i;
+@@ -39,23 +39,23 @@
+     s->shape = shape;
+     s->prop_offset = offset;
+ #else
+-    unsigned i, empty = 4;
+-    for (i = 0; i < 4; i++) {
++    unsigned i, empty = RDI_CAPACITY;
++    for (i = 0; i < RDI_CAPACITY; i++) {
+         RDI_COUNT(update_comparisons);
+         if (s->shape[i] == shape) {
+             s->prop_offset[i] = offset;
+             s->recent = i;
+             return;
+         }
+-        if (!s->shape[i] && empty == 4)
++        if (!s->shape[i] && empty == RDI_CAPACITY)
+             empty = i;
+     }
+-    if (empty < 4) {
++    if (empty < RDI_CAPACITY) {
+         i = empty;
+         RDI_OCCUPY();
+     } else {
+         i = s->victim;
+-        s->victim = (i + 1) & 3;
++        s->victim = (i + 1) & (RDI_CAPACITY - 1);
+         RDI_REPLACE();
+     }
+     js_dup_shape(shape);
+@@ -74,7 +74,7 @@
+ #if RDI_CAPACITY == 1
+         js_free_shape_null(rt, s->shape);
+ #else
+-        for (unsigned j = 0; j < 4; j++)
++        for (unsigned j = 0; j < RDI_CAPACITY; j++)
+             js_free_shape_null(rt, s->shape[j]);
+ #endif
+     }
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -6,10 +6,10 @@
+     uint32_t prop_offset;
+     JSAtom atom;
+ } ReadICSite;
+-#elif RDI_CAPACITY == 4
++#elif RDI_CAPACITY == 2 || RDI_CAPACITY == 4
+ typedef struct ReadICSite {
+-    JSShape *shape[4];
+-    uint32_t prop_offset[4];
++    JSShape *shape[RDI_CAPACITY];
++    uint32_t prop_offset[RDI_CAPACITY];
+     JSAtom atom;
+     uint8_t recent, victim;
+ } ReadICSite;
