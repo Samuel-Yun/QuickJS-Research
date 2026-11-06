@@ -1,0 +1,15 @@
+{
+  "stage": "USER_AUTHORIZED_ALL_EXISTING_CANDIDATE_COMPLETION",
+  "source_campaign": "NEW_BATCH_EXPAND01",
+  "selected": ["B2", "K1", "L1", "W1", "P1", "C1", "ID_CTRL", "ID_READ"],
+  "controls": ["A", "s001"],
+  "full_labels": ["A", "s001", "B2", "K1", "L1", "W1", "P1", "C1", "ID_CTRL", "ID_READ"],
+  "rounds": 3,
+  "expected_octane_records": 510,
+  "expected_sunspider_records": 780,
+  "selection_limit": 8,
+  "authorization": "User requested completing remaining five candidates and comparing with A, s001, B2, K1 and prior L1. User typed L2; no L2 artifact exists in this frozen cohort, so L1 is used and disclosed.",
+  "old_performance_pooled": false,
+  "extra_warmup": 0,
+  "new_implementation": false
+}

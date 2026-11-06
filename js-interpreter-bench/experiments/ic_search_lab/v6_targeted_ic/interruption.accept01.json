@@ -1,0 +1,20 @@
+{
+  "status": "BLOCKED_EXTERNAL_WSL_AVAILABILITY",
+  "affected_campaign": "full_accept01_sunspider",
+  "expected_records": 390,
+  "valid_records_before_interruption": 2,
+  "last_saved_event": "process_start",
+  "last_process_token": "2026-11-06T15:45:08.421643+00:00:full_accept01_sunspider/date-format-tofte/L1/rep0/pos2",
+  "last_child_pid": 1117,
+  "last_parent_pid": 1113,
+  "old_boot_id": "1273e914-93c0-476a-86d8-828bf27a8689",
+  "current_boot_id": null,
+  "current_boot_status": "UNKNOWN: direct boot query failed",
+  "release_exit_code_or_signal": null,
+  "release_crash": "UNKNOWN: no process_result",
+  "wsl_client_failure": "Wsl/Service/CreateInstance/CreateVm/WSAENOTCONN",
+  "completed_before_interruption": ["short_accept01", "full_accept01_octane"],
+  "identity_after_saved_for_completed_campaigns": true,
+  "partial_sunspider_aggregate": null,
+  "action": "Preserve all records; one bounded read-only availability retry, no shutdown or automatic platform changes"
+}

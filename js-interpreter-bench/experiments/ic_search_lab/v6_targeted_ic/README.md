@@ -1,5 +1,74 @@
 # 按机制验证 IC 候选
 
+## 最新：2026-11-07十条件完整比较
+
+用户要求补齐另外五个候选后，新建独立 expand01 批次。
+A、s001、B2、K1、L1、W1、P1、C1、ID_CTRL、ID_READ 使用同一 boot、输入与固定工作量。
+冻结清单只有 L1，用户提及的 L2 本次按 L1 处理。
+Octane 17 项每条件三轮，共 510 条；SunSpider 按用户中途调整每条件一轮，共 260 条。
+770/770 条有效，零缺失、零重复、零不足 1000ms 样本，106 个当前文件身份通过核对。
+SunSpider 在第一轮边界停止，第二轮子进程启动数为零，原三轮计划及停止记录均保留。
+
+三个聚合的最低点估计均为 s001，相对 A 的核心 Octane、完整 Octane 和 SunSpider
+耗时变化分别为 -3.57%、-3.83%、-6.71%。Octane 为三轮探索性统计，SunSpider 为单轮点估计。
+
+- [完整逐项和聚合比较](results.expand01.md)
+- [Octane 十条件时间与相对 A 变化](octane.all_conditions.expand01.csv)
+- [SunSpider 十条件时间与相对 A 变化](sunspider.all_conditions.expand01.csv)
+- [聚合与区间](all_conditions.expand01.aggregate.csv)
+- [独立原始数据及当前文件核验](audit.expand01.files.json)
+- [本批原始归档](performance_expand01.runs.jsonl.gz)
+- [扩展协议](protocol_amendment.expand01.md)及[SunSpider 一轮调整](protocol_amendment.expand01_sunspider_one_round.md)
+
+离线重算，在本目录运行
+
+```powershell
+python performance_report.py summary --epoch expand01 --campaign full_expand01_octane
+python finish_expand01.py
+```
+
+附加本机文件核对使用 `python finish_expand01.py --check-files`。
+新采集必须使用新 epoch，保留本批及旧 accept01/accept02 原始记录。
+
+## 此前：2026-11-07完整复测已完成
+
+新accept02已通过时钟和实际负载预检，完整SunSpider为390/390条有效记录。
+与之前已完成的短测144条、Octane255条合计接受789条；旧失败SunSpider的2条仍隔离。
+不同boot的suite分别报告，不混合样本或GM。独立审计已核对全部位置、命令、flags、
+同一JS身份、时钟/结果与24项聚合值；另核对120个本地文件身份。
+
+完整结果：[performance_results.complete.md](performance_results.complete.md)。
+逐想法状态：[ideas.performance_complete.csv](ideas.performance_complete.csv)。
+孙蜘蛛逐项：[full_accept02_sunspider.parent_summary.csv](full_accept02_sunspider.parent_summary.csv)。
+原始快照：[performance_accept02.runs.jsonl.gz](performance_accept02.runs.jsonl.gz)。
+审计：[independent_audit.complete.files.json](independent_audit.complete.files.json)。
+
+离线重算：`python performance_report.py summary --epoch accept02`；
+独立统计审计：`python audit_performance_complete.py`（无需WSL/ELF）。
+本机附加文件核验：`python audit_performance_complete.py --check-files`。
+三个入围候选未整体超过s001，不晋级、不启动正式30轮，不扩大候选。
+下方“SunSpider2/390”等为之前故障的历史记录。
+
+## 性能续跑：2026-11-06
+
+已复用原制品完成实际负载预检、144/144条短测及255/255条完整Octane三轮复测。
+SunSpider在2/390条后丢失进程退出记录；随后WSL返回
+`Wsl/Service/CreateInstance/CreateVm/WSAENOTCONN`，唯一一次可用性重试失败。
+Windows另外报告`0x800705AF`（页面文件太小）；因果关系UNKNOWN，未调整系统配置。
+
+最新状态与逐项时间见[performance_results.accept01.md](performance_results.accept01.md)，
+全部候选相对实际parent的短测数据见[short_accept01.parent_summary.csv](short_accept01.parent_summary.csv)，
+入围完整Octane见[full_accept01_octane.parent_summary.csv](full_accept01_octane.parent_summary.csv)。
+原始数据独立保存在[performance_accept01.runs.jsonl.gz](performance_accept01.runs.jsonl.gz)，
+新交付核验为[performance_delivery.accept01.json](performance_delivery.accept01.json)。
+
+离线重算使用`python performance_report.py summary --epoch accept01`，无需WSL/旧ELF。
+恢复命令见[next_commands.accept02.md](next_commands.accept02.md)。不补接2条部分SunSpider，
+不覆盖旧STOP、隔离数据或旧冻结审计。本次没有新候选晋级，默认仍为s001。
+下方“0/144”和原analyze.py等说明是续跑前历史状态，当前进度以上述新文件为准。
+
+## 续跑前冻结说明
+
 本轮从 `8e42cc8bb8e69429f6c901ee4282df86659ad5aa` 的干净 myx 工作区开始。
 旧 v5 的 STOP、11 条 d05 部分记录及全部历史样本保持不变。
 只在本目录维护一份活动源码，性能始终使用另存、校验过的制品。

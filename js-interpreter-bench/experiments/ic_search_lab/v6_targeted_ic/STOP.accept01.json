@@ -1,0 +1,17 @@
+{
+  "status": "BLOCKED_EXTERNAL_WSL_AVAILABILITY",
+  "reason": "Wsl/Service/CreateInstance/CreateVm/WSAENOTCONN",
+  "affected_campaigns": ["full_accept01_sunspider"],
+  "completed_before_interruption": ["short_accept01", "full_accept01_octane"],
+  "completed_campaigns_have_post_identity_checks": true,
+  "boot_before": "1273e914-93c0-476a-86d8-828bf27a8689",
+  "boot_after": null,
+  "boot_after_status": "UNKNOWN: WSL query failed",
+  "clock_contradiction_observed_in_completed_campaigns": false,
+  "partial_sunspider_valid_records": 2,
+  "partial_sunspider_expected_records": 390,
+  "no_missing_exit_inferred_as_candidate_crash": true,
+  "bounded_retry_used": 1,
+  "retry_result": "wsl_retry.accept01.json",
+  "next_action": "Restore WSL externally, then new epoch and fresh complete SunSpider campaign; never pool the2 partial records"
+}

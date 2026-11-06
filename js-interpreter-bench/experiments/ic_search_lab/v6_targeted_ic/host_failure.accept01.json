@@ -1,0 +1,13 @@
+{
+  "status": "HOST_RESOURCE_FAILURE",
+  "stage": "offline_result_archival_after_WSL_failed",
+  "command_type": "default_PowerShell_startup",
+  "exit_code": -532462766,
+  "exception": "System.IO.FileLoadException",
+  "assembly": "System.Management.Automation.dll",
+  "hresult": "0x800705AF",
+  "message": "页面文件太小，无法完成操作",
+  "relation_to_prior_WSL_failure": "UNKNOWN: concurrent host evidence, not established causality",
+  "fallback": "cmd.exe plus existing Python for offline archival only",
+  "system_configuration_changed": false
+}

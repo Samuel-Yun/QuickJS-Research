@@ -1,0 +1,31 @@
+{
+  "purpose": "Fresh complete SunSpider recheck after external WSL/host failure",
+  "previous_attempt": "accept01",
+  "current_epoch": "accept02",
+  "current_boot_id": "0513636d-fc76-4ede-b79a-0f676e41ef0c",
+  "previous_boot_id": "1273e914-93c0-476a-86d8-828bf27a8689",
+  "same_host_OS_architecture": "Existing Windows host, Ubuntu WSL2 x86_64; separate boot/campaign",
+  "conditions": ["A", "s001", "B2", "K1", "L1"],
+  "expected_fresh_records": 390,
+  "old_partial_sunspider_records_excluded": 2,
+  "old_short_and_octane_repeated": false,
+  "new_implementation_or_rebuild": false,
+  "old_diagnostics_repeated": false,
+  "selection_source": "selection.accept01.json",
+  "clock_precheck": "clock_check.accept02.json",
+  "real_workload_precheck": "load_precheck.accept02.json",
+  "host_resource_observation_before_load_precheck": {
+    "source": "Win32_OperatingSystem and Win32_PageFileUsage, read-only CIM",
+    "free_physical_kib": 8287784,
+    "free_virtual_kib": 16294728,
+    "pagefile": "D:\\pagefile.sys",
+    "pagefile_allocated_MiB": 12799,
+    "pagefile_current_usage_MiB": 797,
+    "pagefile_peak_usage_MiB": 1886,
+    "observation_exact_timestamp": null,
+    "timing": "Immediately before real workload precheck; not a continuous resource trace"
+  },
+  "cross_boot_pooling": false,
+  "combined_Octane_and_SunSpider_GM": null,
+  "note": "clock_check.py previous_epoch is a legacy recovery pointer; actual previous campaign is explicitly accept01 here"
+}

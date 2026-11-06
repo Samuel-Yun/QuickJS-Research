@@ -1,0 +1,1462 @@
+{
+  "name": "full_expand01_sunspider",
+  "labels": [
+    "A",
+    "s001",
+    "B2",
+    "K1",
+    "L1",
+    "W1",
+    "P1",
+    "C1",
+    "ID_CTRL",
+    "ID_READ"
+  ],
+  "stage": "sunspider",
+  "rounds": 3,
+  "order": [
+    {
+      "kind": "sunspider",
+      "case": "math-cordic",
+      "rep": 0,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-binary-trees",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bitwise-and",
+      "rep": 0,
+      "conditions": [
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-unpack-code",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-fasta",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "rep": 0,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-tofte",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "controlflow-recursive",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "regexp-dna",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-partial-sums",
+      "rep": 0,
+      "conditions": [
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-morph",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-aes",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-cube",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-fannkuch",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-xparb",
+      "rep": 0,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bits-in-byte",
+      "rep": 0,
+      "conditions": [
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-spectral-norm",
+      "rep": 0,
+      "conditions": [
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nsieve",
+      "rep": 0,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nbody",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-sha1",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-validate-input",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-raytrace",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-md5",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-base64",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-tagcloud",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-base64",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-unpack-code",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bits-in-byte",
+      "rep": 1,
+      "conditions": [
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-tofte",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-partial-sums",
+      "rep": 1,
+      "conditions": [
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-fannkuch",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "sunspider",
+      "case": "controlflow-recursive",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-binary-trees",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-morph",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-aes",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-raytrace",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-cube",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "rep": 1,
+      "conditions": [
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-cordic",
+      "rep": 1,
+      "conditions": [
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-validate-input",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-fasta",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-tagcloud",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nsieve",
+      "rep": 1,
+      "conditions": [
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nbody",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "regexp-dna",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bitwise-and",
+      "rep": 1,
+      "conditions": [
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-md5",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-spectral-norm",
+      "rep": 1,
+      "conditions": [
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-xparb",
+      "rep": 1,
+      "conditions": [
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-sha1",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-validate-input",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-partial-sums",
+      "rep": 2,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-cube",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-fasta",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-aes",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-xparb",
+      "rep": 2,
+      "conditions": [
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-unpack-code",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nbody",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-md5",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bitwise-and",
+      "rep": 2,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-fannkuch",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-cordic",
+      "rep": 2,
+      "conditions": [
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-tagcloud",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "controlflow-recursive",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-binary-trees",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-base64",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-sha1",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nsieve",
+      "rep": 2,
+      "conditions": [
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-tofte",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-spectral-norm",
+      "rep": 2,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "rep": 2,
+      "conditions": [
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bits-in-byte",
+      "rep": 2,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-morph",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-raytrace",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "regexp-dna",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 256
+    }
+  ],
+  "boot_id": "fae4f703-266b-4b6e-949c-fee4630235b6",
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "seed": 2026110706,
+  "full_collection": true,
+  "N": {
+    "sunspider/3d-cube": 128,
+    "sunspider/3d-morph": 128,
+    "sunspider/3d-raytrace": 128,
+    "sunspider/access-binary-trees": 256,
+    "sunspider/access-fannkuch": 64,
+    "sunspider/access-nbody": 128,
+    "sunspider/access-nsieve": 256,
+    "sunspider/bitops-3bit-bits-in-byte": 256,
+    "sunspider/bitops-bits-in-byte": 128,
+    "sunspider/bitops-bitwise-and": 256,
+    "sunspider/bitops-nsieve-bits": 128,
+    "sunspider/controlflow-recursive": 256,
+    "sunspider/crypto-aes": 128,
+    "sunspider/crypto-md5": 256,
+    "sunspider/crypto-sha1": 256,
+    "sunspider/date-format-tofte": 256,
+    "sunspider/date-format-xparb": 512,
+    "sunspider/math-cordic": 128,
+    "sunspider/math-partial-sums": 128,
+    "sunspider/math-spectral-norm": 256,
+    "sunspider/regexp-dna": 256,
+    "sunspider/string-base64": 256,
+    "sunspider/string-fasta": 128,
+    "sunspider/string-tagcloud": 256,
+    "sunspider/string-unpack-code": 256,
+    "sunspider/string-validate-input": 256
+  },
+  "epoch": "expand01",
+  "environment_sha256": "7f5883501d102a6e8079b3d156dab8bdc3e0bf9991520f57a861931dd6e373da",
+  "selection": "selection.expand01.json",
+  "extra_warmup": 0,
+  "wrapper_sha256": "902aab4ddd0314081db0bbacd5a7d899ccb4001109fb2eceaf0f4216e6a4ca89",
+  "experiment_sha256": "5c8d9b8b9343520bbcdc9c05f1d951dc090edb0d5067b128390e87341b787ac9",
+  "measure_sha256": "3e6a626e7991d93403f5feb814f25b58049825ec695a603907000e58c7799b92"
+}
