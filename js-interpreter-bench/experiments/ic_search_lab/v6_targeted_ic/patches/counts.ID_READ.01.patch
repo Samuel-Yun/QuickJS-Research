@@ -1,0 +1,418 @@
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -2159,9 +2159,11 @@
+ }
+ #endif
+ 
++extern void v6_clock_boundary(void);
+ static JSValue js_os_now(JSContext *ctx, JSValue this_val,
+                          int argc, JSValue *argv)
+ {
++    v6_clock_boundary();
+     return JS_NewFloat64(ctx, (double)get_time_ns() / 1e6);
+ }
+ 
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -716,6 +716,7 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    uint32_t v6_diagnostic_entries;
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
+@@ -1158,6 +1159,126 @@
+                                int atom_type);
+ static void JS_FreeAtomStruct(JSRuntime *rt, JSAtomStruct *p);
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b);
++#include <time.h>
++static struct {
++    unsigned long long get_field;
++    unsigned long long get_field2;
++    unsigned long long get_length;
++    unsigned long long put_field;
++    unsigned long long put_fast_ordinary;
++    unsigned long long put_fast_other;
++    unsigned long long put_missing_own;
++    unsigned long long put_descriptor_fallback;
++    unsigned long long put_slow;
++    unsigned long long put_created_after_slow;
++    unsigned long long put_failed;
++    unsigned long long property_creations;
++    unsigned long long shape_clones;
++    unsigned long long shape_new;
++    unsigned long long shape_inplace_prepare;
++    unsigned long long shape_shared_prepare;
++    unsigned long long property_array_growth;
++    unsigned long long ic_operations;
++    unsigned long long ic_probe_calls;
++    unsigned long long ic_hits;
++    unsigned long long ic_fallback;
++    unsigned long long ic_updates;
++    unsigned long long ic_replacements;
++    unsigned long long ic_empty_fills;
++    unsigned long long ic_retains;
++    unsigned long long ic_releases;
++    unsigned long long proto_hits;
++    unsigned long long proto_updates;
++    unsigned long long store_ic_hits;
++    unsigned long long store_refreshes;
++    unsigned long long compiled_functions;
++    unsigned long long loaded_functions;
++    unsigned long long interpreter_entries;
++    unsigned long long functions_never_entered;
++    unsigned long long functions_entered_once;
++    unsigned long long functions_entered_twice;
++    unsigned long long functions_entered_hot;
++    unsigned long long prepare_calls;
++    unsigned long long prepare_ns;
++    unsigned long long site_bytes_requested;
++    unsigned long long code_copy_bytes;
++    unsigned long long live_linked_bytes;
++    unsigned long long peak_linked_bytes;
++} v6_count;
++static __typeof__(v6_count) v6_before, v6_after;
++static unsigned v6_timer_calls;
++void v6_clock_boundary(void) {
++    if (++v6_timer_calls==1) v6_before=v6_count;
++    else if(v6_timer_calls==2) v6_after=v6_count;
++}
++static unsigned long long v6_attempt[256], v6_adjacent[256], v6_fused[256];
++static unsigned long long v6_clock_ns(void) {
++    struct timespec ts; if(clock_gettime(CLOCK_MONOTONIC,&ts)) return 0;
++    return (unsigned long long)ts.tv_sec*1000000000ULL+ts.tv_nsec;
++}
++static void __attribute__((destructor)) v6_report(void) {
++    fprintf(stderr,"V6_COUNTERS:{");
++    fprintf(stderr,"\"get_field\":%llu",v6_count.get_field);
++    fprintf(stderr,",\"get_field2\":%llu",v6_count.get_field2);
++    fprintf(stderr,",\"get_length\":%llu",v6_count.get_length);
++    fprintf(stderr,",\"put_field\":%llu",v6_count.put_field);
++    fprintf(stderr,",\"put_fast_ordinary\":%llu",v6_count.put_fast_ordinary);
++    fprintf(stderr,",\"put_fast_other\":%llu",v6_count.put_fast_other);
++    fprintf(stderr,",\"put_missing_own\":%llu",v6_count.put_missing_own);
++    fprintf(stderr,",\"put_descriptor_fallback\":%llu",v6_count.put_descriptor_fallback);
++    fprintf(stderr,",\"put_slow\":%llu",v6_count.put_slow);
++    fprintf(stderr,",\"put_created_after_slow\":%llu",v6_count.put_created_after_slow);
++    fprintf(stderr,",\"put_failed\":%llu",v6_count.put_failed);
++    fprintf(stderr,",\"property_creations\":%llu",v6_count.property_creations);
++    fprintf(stderr,",\"shape_clones\":%llu",v6_count.shape_clones);
++    fprintf(stderr,",\"shape_new\":%llu",v6_count.shape_new);
++    fprintf(stderr,",\"shape_inplace_prepare\":%llu",v6_count.shape_inplace_prepare);
++    fprintf(stderr,",\"shape_shared_prepare\":%llu",v6_count.shape_shared_prepare);
++    fprintf(stderr,",\"property_array_growth\":%llu",v6_count.property_array_growth);
++    fprintf(stderr,",\"ic_operations\":%llu",v6_count.ic_operations);
++    fprintf(stderr,",\"ic_probe_calls\":%llu",v6_count.ic_probe_calls);
++    fprintf(stderr,",\"ic_hits\":%llu",v6_count.ic_hits);
++    fprintf(stderr,",\"ic_fallback\":%llu",v6_count.ic_fallback);
++    fprintf(stderr,",\"ic_updates\":%llu",v6_count.ic_updates);
++    fprintf(stderr,",\"ic_replacements\":%llu",v6_count.ic_replacements);
++    fprintf(stderr,",\"ic_empty_fills\":%llu",v6_count.ic_empty_fills);
++    fprintf(stderr,",\"ic_retains\":%llu",v6_count.ic_retains);
++    fprintf(stderr,",\"ic_releases\":%llu",v6_count.ic_releases);
++    fprintf(stderr,",\"proto_hits\":%llu",v6_count.proto_hits);
++    fprintf(stderr,",\"proto_updates\":%llu",v6_count.proto_updates);
++    fprintf(stderr,",\"store_ic_hits\":%llu",v6_count.store_ic_hits);
++    fprintf(stderr,",\"store_refreshes\":%llu",v6_count.store_refreshes);
++    fprintf(stderr,",\"compiled_functions\":%llu",v6_count.compiled_functions);
++    fprintf(stderr,",\"loaded_functions\":%llu",v6_count.loaded_functions);
++    fprintf(stderr,",\"interpreter_entries\":%llu",v6_count.interpreter_entries);
++    fprintf(stderr,",\"functions_never_entered\":%llu",v6_count.functions_never_entered);
++    fprintf(stderr,",\"functions_entered_once\":%llu",v6_count.functions_entered_once);
++    fprintf(stderr,",\"functions_entered_twice\":%llu",v6_count.functions_entered_twice);
++    fprintf(stderr,",\"functions_entered_hot\":%llu",v6_count.functions_entered_hot);
++    fprintf(stderr,",\"prepare_calls\":%llu",v6_count.prepare_calls);
++    fprintf(stderr,",\"prepare_ns\":%llu",v6_count.prepare_ns);
++    fprintf(stderr,",\"site_bytes_requested\":%llu",v6_count.site_bytes_requested);
++    fprintf(stderr,",\"code_copy_bytes\":%llu",v6_count.code_copy_bytes);
++    fprintf(stderr,",\"live_linked_bytes\":%llu",v6_count.live_linked_bytes);
++    fprintf(stderr,",\"peak_linked_bytes\":%llu",v6_count.peak_linked_bytes);
++    fprintf(stderr,",\"timer_calls\":%u",v6_timer_calls);
++    fprintf(stderr,",\"run_compiled_functions\":%llu",v6_after.compiled_functions-v6_before.compiled_functions);
++    fprintf(stderr,",\"run_loaded_functions\":%llu",v6_after.loaded_functions-v6_before.loaded_functions);
++    fprintf(stderr,",\"run_interpreter_entries\":%llu",v6_after.interpreter_entries-v6_before.interpreter_entries);
++    fprintf(stderr,",\"run_prepare_calls\":%llu",v6_after.prepare_calls-v6_before.prepare_calls);
++    fprintf(stderr,",\"run_prepare_ns\":%llu",v6_after.prepare_ns-v6_before.prepare_ns);
++    fprintf(stderr,",\"run_site_bytes_requested\":%llu",v6_after.site_bytes_requested-v6_before.site_bytes_requested);
++    fprintf(stderr,",\"run_code_copy_bytes\":%llu",v6_after.code_copy_bytes-v6_before.code_copy_bytes);
++
++    fprintf(stderr,",\"site_size\":%zu,\"shape_size\":%zu,\"function_header_size\":%zu,\"fusion\":[",sizeof(ReadICSite),sizeof(JSShape),sizeof(JSFunctionBytecode));
++    int first=1;
++    for(int i=0;i<256;i++)if(v6_attempt[i] || v6_fused[i]) {
++        fprintf(stderr,"%s{\"opcode\":%d,\"attempts\":%llu,\"adjacent\":%llu,\"hits\":%llu}",
++                first?"":",",i,v6_attempt[i],v6_adjacent[i],v6_fused[i]);first=0;
++    }
++    fprintf(stderr,"]}\n");
++}
++
+ static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b);
+ static JSValue js_call_c_function(JSContext *ctx, JSValueConst func_obj,
+                                   JSValueConst this_obj,
+@@ -5246,6 +5367,7 @@
+     sh->prop_hash_mask = hash_size - 1;
+     sh->prop_size = prop_size;
+     sh->v6_layout_id = 0;
++    ++v6_count.shape_new;
+     sh->prop_count = 0;
+     sh->deleted_prop_count = 0;
+     sh->is_hashed = FALSE;
+@@ -5296,6 +5418,7 @@
+     sh = js_malloc(ctx, size);
+     if (!sh)
+         return NULL;
++    ++v6_count.shape_clones;
+     memcpy(&sh->header + 1, &sh1->header + 1,
+            size - sizeof(JSGCObjectHeader));
+     js_rc(sh)->ref_count = 1;
+@@ -5362,6 +5485,7 @@
+ 
+     sh = *psh;
+     sh->v6_layout_id = 0;
++    ++v6_count.property_array_growth;
+     new_size = max_int(count, sh->prop_size * 3 / 2);
+     /* Reallocate prop array first to avoid crash or size inconsistency
+        in case of memory allocation failure */
+@@ -5497,6 +5621,7 @@
+     intptr_t h;
+ 
+     sh->v6_layout_id = 0; /* invalidate before allocation/mutation */
++    ++v6_count.property_creations;
+     /* update the shape hash */
+     if (sh->is_hashed) {
+         js_shape_hash_unlink(rt, sh);
+@@ -10344,6 +10469,7 @@
+         if (js_rc(sh)->ref_count != 1) {
+             if (pprs)
+                 idx = *pprs - get_shape_prop(sh);
++            ++v6_count.shape_shared_prepare;
+             /* clone the shape (the resulting one is no longer hashed) */
+             sh = js_clone_shape(ctx, sh);
+             if (!sh)
+@@ -10353,6 +10479,7 @@
+             if (pprs)
+                 *pprs = get_shape_prop(sh) + idx;
+         } else {
++            ++v6_count.shape_inplace_prepare;
+             js_shape_hash_unlink(ctx->rt, sh);
+             sh->is_hashed = FALSE;
+         }
+@@ -17905,6 +18032,7 @@
+     ctx = b->realm; /* set the current realm */
+ 
+  restart:
++    ++v6_count.interpreter_entries; ++b->v6_diagnostic_entries;
+     for(;;) {
+         int call_argc;
+         JSValue *call_argv;
+@@ -19197,22 +19325,26 @@
+ #include "read_ic_opcodes.inc"
+ 
+         CASE(OP_get_field):
++            ++v6_count.get_field;
+             GET_FIELD_INLINE(get_field, 0, 0);
+             BREAK;
+ 
+         CASE(OP_get_field2):
++            ++v6_count.get_field2;
+             GET_FIELD_INLINE(get_field2, 1, 0);
+             BREAK;
+ 
+ #if SHORT_OPCODES
+         CASE(OP_get_length):
++            ++v6_count.get_length;
+             GET_FIELD_INLINE(get_length, 0, 1);
+             BREAK;
+ #endif
+             
+         CASE(OP_put_field):
++            ++v6_count.put_field;
+             {
+-                int ret;
++                int ret, v6_had_own = 0;
+                 JSValue obj;
+                 JSAtom atom;
+                 JSObject *p;
+@@ -19226,22 +19358,33 @@
+                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {
+                     p = JS_VALUE_GET_OBJ(obj);
+                     prs = find_own_property(&pr, p, atom);
+-                    if (!prs)
++                    v6_had_own = prs != NULL;
++                    if (!prs) { ++v6_count.put_missing_own; goto put_field_slow_path; }
++                    if (0)
+                         goto put_field_slow_path;
+                     if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+                                               JS_PROP_LENGTH)) == JS_PROP_WRITABLE)) {
++                        if(p->class_id==JS_CLASS_OBJECT && !p->is_exotic) ++v6_count.put_fast_ordinary; else ++v6_count.put_fast_other;
+                         /* fast path */
+                         set_value(ctx, &pr->u.value, sp[-1]);
+                     } else {
++                        ++v6_count.put_descriptor_fallback;
+                         goto put_field_slow_path;
+                     }
+                     JS_FreeValue(ctx, obj);
+                     sp -= 2;
+                 } else {
+                 put_field_slow_path:
++                    ++v6_count.put_slow;
+                     sf->cur_pc = pc;
+                     ret = JS_SetPropertyInternal(ctx, obj, atom, sp[-1], obj,
+                                                  JS_PROP_THROW_STRICT);
++                    if (ret < 0) ++v6_count.put_failed;
++                    else if (!v6_had_own && JS_VALUE_GET_TAG(obj)==JS_TAG_OBJECT) {
++                        p=JS_VALUE_GET_OBJ(obj);
++                        if(p->class_id==JS_CLASS_OBJECT && !p->is_exotic && find_own_property(&pr,p,atom))
++                            ++v6_count.put_created_after_slow;
++                    }
+                     JS_FreeValue(ctx, obj);
+                     sp -= 2;
+                     if (unlikely(ret < 0))
+@@ -36311,6 +36454,7 @@
+         list_del(&fd->link);
+     }
+ 
++    ++v6_count.compiled_functions;
+     js_free(ctx, fd);
+     if (rdi_prepare(ctx, b) < 0) {
+         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
+@@ -36335,6 +36479,10 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
++    if (b->v6_diagnostic_entries==0) ++v6_count.functions_never_entered;
++    else if (b->v6_diagnostic_entries==1) ++v6_count.functions_entered_once;
++    else if (b->v6_diagnostic_entries==2) ++v6_count.functions_entered_twice;
++    else ++v6_count.functions_entered_hot;
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+@@ -38983,6 +39131,7 @@
+         }
+         bc_read_trace(s, "}\n");
+     }
++    ++v6_count.loaded_functions;
+     b->realm = JS_DupContext(ctx);
+     if (rdi_prepare(ctx, b) < 0) goto fail;
+     return obj;
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -10,20 +10,20 @@
+         JSShapeProperty *prs;                                           \
+         RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+-        RDI_QUERY();                                                    \
++        ++v6_count.ic_operations; RDI_QUERY();                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+-                    RDI_COUNT(hits);                                   \
++                    ++v6_count.ic_hits; RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+-        RDI_COUNT(fallback);                                            \
++        ++v6_count.ic_fallback; RDI_COUNT(fallback);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+@@ -64,9 +64,11 @@
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
+     }
+         CASE(OP_get_field_rdi):
++            ++v6_count.get_field;
+             GET_READ_IC(get_field_rdi, 0);
+             BREAK;
+         CASE(OP_get_field2_rdi):
++            ++v6_count.get_field2;
+             GET_READ_IC(get_field2_rdi, 1);
+             BREAK;
+ #undef GET_READ_IC
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -5,6 +5,7 @@
+     size_t code_size, total;
+     uint8_t *linked;
+     int pos, op;
++    unsigned long long v6_begin=v6_clock_ns(); ++v6_count.prepare_calls;
+     assert(!b->read_ic_ready && !b->read_ic_sites);
+     b->read_ic_ready = 1;
+ #ifdef READ_IC_DIAGNOSTIC
+@@ -14,22 +15,26 @@
+         op = b->byte_code_buf[pos];
+         if (op == OP_get_field || op == OP_get_field2) count++;
+     }
+-    if (!count) return 0;
++    if (!count) { v6_count.prepare_ns += v6_clock_ns()-v6_begin; return 0; }
+     code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+     if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+         JS_ThrowOutOfMemory(ctx);
+-        return -1;
++        { v6_count.prepare_ns += v6_clock_ns()-v6_begin; return -1; }
+     }
+     total = code_size + count * sizeof(ReadICSite);
++    v6_count.site_bytes_requested += count*sizeof(ReadICSite);
++    v6_count.code_copy_bytes += code_size;
+     if (total > UINT32_MAX) {
+         JS_ThrowOutOfMemory(ctx);
+-        return -1;
++        { v6_count.prepare_ns += v6_clock_ns()-v6_begin; return -1; }
+     }
+     linked = js_mallocz(ctx, total);
+-    if (!linked) return -1;
++    if (!linked) { v6_count.prepare_ns += v6_clock_ns()-v6_begin; return -1; }
+     memcpy(linked, b->byte_code_buf, b->byte_code_len);
+     b->byte_code_buf = linked;
+     b->read_ic_sites = (ReadICSite *)(linked + code_size);
++    v6_count.live_linked_bytes += total;
++    if(v6_count.live_linked_bytes>v6_count.peak_linked_bytes) v6_count.peak_linked_bytes=v6_count.live_linked_bytes;
+     b->read_ic_count = count;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_prepare(ctx, b);
+@@ -44,5 +49,5 @@
+         }
+     }
+     assert(index == count);
+-    return 0;
++    { v6_count.prepare_ns += v6_clock_ns()-v6_begin; return 0; }
+ }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -4,6 +4,7 @@
+ #endif
+ static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+ {
++    ++v6_count.ic_probe_calls;
+ #if RDI_CAPACITY == 1
+     RDI_COUNT(comparisons);
+     if (s->layout_id && shape->is_hashed && s->layout_id == shape->v6_layout_id)
+@@ -27,6 +28,7 @@
+ static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
++    ++v6_count.ic_updates; if (!s->layout_id) ++v6_count.ic_empty_fills; else if (s->layout_id != shape->v6_layout_id) ++v6_count.ic_replacements;
+     RDI_COUNT(updates);
+     if (!shape->v6_layout_id && shape->is_hashed)
+         shape->v6_layout_id = v6_fresh_layout_id(ctx->rt);
+@@ -54,7 +56,7 @@
+         s->victim = (i + 1) & 3;
+         RDI_REPLACE();
+     }
+-    js_dup_shape(shape);
++    ++v6_count.ic_retains; js_dup_shape(shape);
+     js_free_shape_null(ctx->rt, s->shape[i]);
+     s->shape[i] = shape;
+     s->prop_offset[i] = offset;
+@@ -64,6 +66,7 @@
+ static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
+ {
+     uint32_t i;
++    if (b->read_ic_sites) v6_count.live_linked_bytes -= (((size_t)b->byte_code_len + 7) & ~(size_t)7) + b->read_ic_count*sizeof(ReadICSite);
+     for (i = 0; i < b->read_ic_count; i++) {
+         ReadICSite *s = &b->read_ic_sites[i];
+         JS_FreeAtomRT(rt, s->atom);

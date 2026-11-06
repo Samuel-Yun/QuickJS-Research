@@ -1,0 +1,60 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6644,8 +6644,7 @@
+             }
+             for (uint32_t ri = 0; ri < b->read_ic_count; ri++) {
+ #if RDI_CAPACITY == 1
+-                if (b->read_ic_sites[ri].shape)
+-                    mark_func(rt, &b->read_ic_sites[ri].shape->header);
++                /* Numeric layout ID is not a GC root. */
+ #else
+                 for (unsigned rj = 0; rj < 4; rj++)
+                     if (b->read_ic_sites[ri].shape[rj])
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -6,7 +6,7 @@
+ {
+ #if RDI_CAPACITY == 1
+     RDI_COUNT(comparisons);
+-    if (s->shape == shape)
++    if (s->layout_id && shape->is_hashed && s->layout_id == shape->v6_layout_id)
+         return s->prop_offset;
+ #else
+     unsigned i, first = s->recent;
+@@ -31,14 +31,8 @@
+     if (!shape->v6_layout_id && shape->is_hashed)
+         shape->v6_layout_id = v6_fresh_layout_id(ctx->rt);
+ #if RDI_CAPACITY == 1
+-    if (s->shape == shape) {
+-        s->prop_offset = offset;
+-        return;
+-    }
+-    if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
+-    js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape);
+-    s->shape = shape;
++    if (!shape->is_hashed || !shape->v6_layout_id) return;
++    s->layout_id = shape->v6_layout_id;
+     s->prop_offset = offset;
+ #else
+     unsigned i, empty = 4;
+@@ -74,7 +68,7 @@
+         ReadICSite *s = &b->read_ic_sites[i];
+         JS_FreeAtomRT(rt, s->atom);
+ #if RDI_CAPACITY == 1
+-        js_free_shape_null(rt, s->shape);
++        /* Numeric runtime-local ID has no shape GC edge. */
+ #else
+         for (unsigned j = 0; j < 4; j++)
+             js_free_shape_null(rt, s->shape[j]);
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -2,7 +2,7 @@
+ #include "read_ic_config.h"
+ #if RDI_CAPACITY == 1
+ typedef struct ReadICSite {
+-    JSShape *shape;
++    uint64_t layout_id;
+     uint32_t prop_offset;
+     JSAtom atom;
+ } ReadICSite;

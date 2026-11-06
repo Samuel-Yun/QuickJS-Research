@@ -1,0 +1,28 @@
+{
+  "seed": 2026110706,
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "warmup_calls": 0,
+  "serial": true,
+  "short_N": "prior fixed N / 4, minimum1; Crypto full validated N",
+  "repeat_N": "prior full fixed N, all conditions identical",
+  "short_cases_octane": [
+    "Richards.Richards",
+    "DeltaBlue.DeltaBlue",
+    "RayTrace.RayTrace",
+    "Splay.Splay",
+    "CodeLoad.CodeLoadClosure",
+    "CodeLoad.CodeLoadJQuery",
+    "Typescript.Typescript"
+  ],
+  "short_cases_sunspider": [
+    "crypto-sha1",
+    "access-nbody",
+    "bitops-bitwise-and"
+  ],
+  "maximum_recheck_candidates": 3,
+  "recheck_rounds": 3,
+  "bootstrap_draws": 10000,
+  "promotion": "mechanism or meaningful gain, complete collections, no unacceptable regression, safety before formal30",
+  "timer_gate": "boot unchanged; UTC versus outer monotonic absolute difference <=1s; internal interval enclosed by outer",
+  "failures": "preserve; no time-based outlier deletion; partial collections have no complete GM"
+}

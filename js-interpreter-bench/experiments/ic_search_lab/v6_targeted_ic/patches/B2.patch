@@ -1,0 +1,93 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -365,6 +365,8 @@
+ DEF(get_field_rdi, 5, 1, 1, u32)
+ DEF(get_field2_rdi, 5, 1, 2, u32)
+ 
++DEF(v6_get_loc0, 1, 0, 1, none)
++DEF(v6_get_arg0, 1, 0, 1, none)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -17779,6 +17779,24 @@
+     JSVarRef **var_refs;
+     size_t alloca_size;
+ 
++/* Prepared-only borrowed load. Preparation proved the next instruction;
++   the execution image is not rewritten after prepare. The original owning
++   argument/local slot is untouched and no callback/allocation occurs here. */
++#define V6_PREPARED_BORROW(slot) do {                                    \
++    JSValueConst receiver = (slot);                                    \
++    if (JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) {                   \
++        JSObject *object = JS_VALUE_GET_OBJ(receiver);                  \
++        ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
++        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
++            site->shape == object->shape) {                            \
++            *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
++            pc += 5;                                                   \
++            break;                                                     \
++        }                                                              \
++    }                                                                  \
++    *sp++ = JS_DupValue(ctx, receiver);                                 \
++} while (0)
++
+ #if !DIRECT_DISPATCH
+ #define SWITCH(pc)      switch (opcode = *pc++)
+ #define CASE(op)        case op
+@@ -18608,6 +18626,7 @@
+         CASE(OP_set_loc8): set_value(ctx, &var_buf[*pc++], JS_DupValue(ctx, sp[-1])); BREAK;
+ 
+         CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
++        CASE(OP_v6_get_loc0): V6_PREPARED_BORROW(var_buf[0]); BREAK;
+         CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
+         CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
+         CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
+@@ -18620,6 +18639,7 @@
+         CASE(OP_set_loc2): set_value(ctx, &var_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_set_loc3): set_value(ctx, &var_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
++        CASE(OP_v6_get_arg0): V6_PREPARED_BORROW(arg_buf[0]); BREAK;
+         CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
+         CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
+         CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
+@@ -37760,6 +37780,8 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
++        if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
+             uint32_t delta = get_u32(bc_buf + pos + 1);
+             ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
+@@ -38668,7 +38690,8 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++            op == OP_v6_get_loc0 || op == OP_v6_get_arg0) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+             return -1;
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -43,6 +43,17 @@
+             put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
+         }
+     }
++    /* Walk actual final instruction boundaries, never search operand bytes. */
++    for (pos = 0; pos < b->byte_code_len; ) {
++        uint8_t *pc = b->byte_code_buf + pos;
++        op = *pc;
++        int size = short_opcode_info(op).size;
++        if (size == 1 && pos + 1 < b->byte_code_len && pc[1] == OP_get_field_rdi) {
++            if (op == OP_get_loc0) *pc = OP_v6_get_loc0;
++            if (op == OP_get_arg0) *pc = OP_v6_get_arg0;
++        }
++        pos += size;
++    }
+     assert(index == count);
+     return 0;
+ }

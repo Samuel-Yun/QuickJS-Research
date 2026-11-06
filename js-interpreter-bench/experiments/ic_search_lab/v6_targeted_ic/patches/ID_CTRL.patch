@@ -1,0 +1,90 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -386,6 +386,7 @@
+     int shape_hash_bits;
+     int shape_hash_size;
+     int shape_hash_count; /* number of hashed shapes */
++    uint64_t v6_next_layout_id;
+     JSShape **shape_hash;
+     void *user_opaque;
+ };
+@@ -981,6 +982,7 @@
+ 
+ struct JSShape {
+     JSGCObjectHeader header;
++    uint64_t v6_layout_id;
+     /* true if the shape is inserted in the shape hash table. If not,
+        JSShape.hash is not valid */
+     uint8_t is_hashed;
+@@ -5219,6 +5221,12 @@
+     rt->shape_hash_count--;
+ }
+ 
++static uint64_t v6_fresh_layout_id(JSRuntime *rt)
++{
++    if (rt->v6_next_layout_id == UINT64_MAX) return 0;
++    return ++rt->v6_next_layout_id;
++}
++
+ /* create a new empty shape with prototype 'proto'. It is not hashed */
+ static inline JSShape *js_new_shape_nohash(JSContext *ctx, JSObject *proto,
+                                            int hash_size, int prop_size)
+@@ -5237,6 +5245,7 @@
+     memset(sh->hash_table, 0, sizeof(sh->hash_table[0]) * hash_size);
+     sh->prop_hash_mask = hash_size - 1;
+     sh->prop_size = prop_size;
++    sh->v6_layout_id = 0;
+     sh->prop_count = 0;
+     sh->deleted_prop_count = 0;
+     sh->is_hashed = FALSE;
+@@ -5263,6 +5272,7 @@
+     sh->hash = shape_initial_hash(proto);
+     sh->is_hashed = TRUE;
+     js_shape_hash_link(ctx->rt, sh);
++    sh->v6_layout_id = v6_fresh_layout_id(rt);
+     return sh;
+ }
+ 
+@@ -5291,6 +5301,7 @@
+     js_rc(sh)->ref_count = 1;
+     add_gc_object(ctx->rt, &sh->header, JS_GC_OBJ_TYPE_SHAPE);
+     sh->is_hashed = FALSE;
++    sh->v6_layout_id = 0;
+     if (sh->proto) {
+         JS_DupValue(ctx, JS_MKPTR(JS_TAG_OBJECT, sh->proto));
+     }
+@@ -5350,6 +5361,7 @@
+     JSShape *old_sh;
+ 
+     sh = *psh;
++    sh->v6_layout_id = 0;
+     new_size = max_int(count, sh->prop_size * 3 / 2);
+     /* Reallocate prop array first to avoid crash or size inconsistency
+        in case of memory allocation failure */
+@@ -5484,6 +5496,7 @@
+     uint32_t hash_mask, new_shape_hash = 0;
+     intptr_t h;
+ 
++    sh->v6_layout_id = 0; /* invalidate before allocation/mutation */
+     /* update the shape hash */
+     if (sh->is_hashed) {
+         js_shape_hash_unlink(rt, sh);
+@@ -10327,6 +10340,7 @@
+     uint32_t idx = 0;    /* prevent warning */
+ 
+     sh = p->shape;
++    sh->v6_layout_id = 0;
+     if (sh->is_hashed) {
+         if (js_rc(sh)->ref_count != 1) {
+             if (pprs)
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -28,6 +28,8 @@
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+     RDI_COUNT(updates);
++    if (!shape->v6_layout_id && shape->is_hashed)
++        shape->v6_layout_id = v6_fresh_layout_id(ctx->rt);
+ #if RDI_CAPACITY == 1
+     if (s->shape == shape) {
+         s->prop_offset = offset;
