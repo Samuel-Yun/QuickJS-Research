@@ -1,0 +1,40 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,8 +1,13 @@
++#ifdef READ_IC_DIAGNOSTIC
++#define RDI_EARLY_DIAG_SITE(site, pc) ((site) = (ReadICSite *)((pc) + get_u32(pc)))
++#else
++#define RDI_EARLY_DIAG_SITE(site, pc) ((void)0)
++#endif
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+ #define GET_READ_IC(name, keep)                                          \
+     {                                                                   \
+-        uint32_t delta = get_u32(pc), offset;                            \
+-        ReadICSite *site = (ReadICSite *)(pc + delta);                   \
++        uint32_t offset; const uint8_t *operand_pc = pc;                            \
++        ReadICSite *site = NULL; RDI_EARLY_DIAG_SITE(site, operand_pc);                   \
+         JSValue obj = sp[-1], val;                                      \
+         JSAtom atom;                                                    \
+         JSObject *p, *origin;                                           \
+@@ -14,6 +19,7 @@
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
++                site = (ReadICSite *)(operand_pc + get_u32(operand_pc)); \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+@@ -24,6 +30,7 @@
+             }                                                           \
+         }                                                               \
+         RDI_COUNT(fallback);                                            \
++        site = (ReadICSite *)(operand_pc + get_u32(operand_pc)); \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+@@ -70,3 +77,5 @@
+             GET_READ_IC(get_field2_rdi, 1);
+             BREAK;
+ #undef GET_READ_IC
++
++#undef RDI_EARLY_DIAG_SITE

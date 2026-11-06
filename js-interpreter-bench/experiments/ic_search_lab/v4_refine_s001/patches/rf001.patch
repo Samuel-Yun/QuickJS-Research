@@ -1,0 +1,15 @@
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -34,10 +34,11 @@
+         return;
+     }
+     if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++    JSShape *old_shape = s->shape;
+     js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape);
+     s->shape = shape;
+     s->prop_offset = offset;
++    js_free_shape_null(ctx->rt, old_shape);
+ #else
+     unsigned i, empty = 4;
+     for (i = 0; i < 4; i++) {

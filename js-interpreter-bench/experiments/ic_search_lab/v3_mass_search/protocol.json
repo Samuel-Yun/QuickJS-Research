@@ -1,0 +1,62 @@
+{
+  "status": "FROZEN_BEFORE_SEARCH",
+  "seed": 20261105,
+  "initial_seeds": 288,
+  "short_cases": [
+    [
+      "sunspider",
+      "3d-raytrace"
+    ],
+    [
+      "sunspider",
+      "access-binary-trees"
+    ],
+    [
+      "sunspider",
+      "bitops-bitwise-and"
+    ],
+    [
+      "sunspider",
+      "regexp-dna"
+    ],
+    [
+      "octane",
+      "Richards.Richards"
+    ],
+    [
+      "octane",
+      "Splay.Splay"
+    ],
+    [
+      "octane",
+      "RayTrace.RayTrace"
+    ],
+    [
+      "octane",
+      "CodeLoad.CodeLoadClosure"
+    ]
+  ],
+  "metric": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "warmup_calls": 0,
+  "affinity": [
+    2
+  ],
+  "short_target_ms": 200,
+  "short_drift_limit": 1.15,
+  "block_candidates": 6,
+  "block_retry_limit": 1,
+  "pilot_representatives": 14,
+  "level2_target": 28,
+  "level3_max": 4,
+  "level3_rounds": 3,
+  "final_if_ready_rounds": 30,
+  "maximum_short_candidates": 416,
+  "maximum_build_seconds": 300,
+  "per_process_timeout_seconds": 300,
+  "short_ranking": "Each candidate / geometric mean of block endpoints; Sun4 and Octane4 separate; no CI",
+  "level2": "Whole26+17, one sample each, same-batch A/s001 endpoints; Crypto old N exact ciphertext",
+  "formal_bootstrap": "10000 shared-round paired draws seed20261105, exploratory unadjusted",
+  "old_times_used": false,
+  "private_JWST_used": false,
+  "fixed_build": "GCC13.3, -O2 -g -fwrapv -DHAVE_CLOSEFROM; no LTO/PGO/NDEBUG/padding"
+}

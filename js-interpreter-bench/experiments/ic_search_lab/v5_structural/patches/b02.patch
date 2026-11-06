@@ -1,0 +1,122 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -715,6 +715,7 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    ReadICSide *read_ic_side;
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
+@@ -6638,6 +6639,12 @@
+                     if (b->read_ic_sites[ri].shape[rj])
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
++            }
++            if (b->read_ic_side) {
++                for (uint32_t i = 0; i < b->read_ic_count; i++)
++                    for (unsigned j = 0; j < SIDE_COUNT; j++)
++                        if (b->read_ic_side[i].shape[j])
++                            mark_func(rt, &b->read_ic_side[i].shape[j]->header);
+             }
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+--- a/read_ic_config.h
++++ b/read_ic_config.h
+@@ -1 +1,3 @@
+ #define RDI_CAPACITY 1
++
++#define SIDE_COUNT 7
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -17,6 +17,11 @@
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
++                    val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    goto name ## _done;                                \
++                }                                                       \
++                offset = rdi_side_probe(b, site, p->shape);            \
++                if (offset != UINT32_MAX) {                            \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+@@ -40,7 +45,7 @@
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+                         RDI_REASON(own_miss);                           \
+-                        rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
++                        rdi_side_update(ctx, b, site, p->shape, pr - p->prop); \
+                     }                                                   \
+                     break;                                              \
+                 }                                                       \
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -85,6 +85,59 @@
+         js_free_rt(rt, b->byte_code_buf);
+         b->byte_code_buf = NULL;
+     }
++    if (b->read_ic_side) {
++        for (uint32_t i = 0; i < b->read_ic_count; i++)
++            for (unsigned j = 0; j < SIDE_COUNT; j++)
++                js_free_shape_null(rt, b->read_ic_side[i].shape[j]);
++        js_free_rt(rt, b->read_ic_side);
++        b->read_ic_side = NULL;
++    }
+     b->read_ic_sites = NULL;
+     b->read_ic_count = 0;
+ }
++
++static force_inline uint32_t rdi_side_probe(JSFunctionBytecode *b, ReadICSite *s, JSShape *shape)
++{
++    if (b->read_ic_side) {
++        ReadICSide *side = &b->read_ic_side[s - b->read_ic_sites];
++        for (unsigned j = 0; j < SIDE_COUNT; j++)
++            if (side->shape[j] == shape) return side->common_offset;
++    }
++    return UINT32_MAX;
++}
++static void rdi_side_update(JSContext *ctx, JSFunctionBytecode *b, ReadICSite *s,
++                            JSShape *shape, uint32_t offset)
++{
++    if (!s->shape || s->shape == shape) { rdi_update(ctx, s, shape, offset); return; }
++    if (offset != s->prop_offset) {
++        if (b->read_ic_side) {
++            ReadICSide *side = &b->read_ic_side[s - b->read_ic_sites];
++            for (unsigned k = 0; k < SIDE_COUNT; k++) {
++                JSShape *old = side->shape[k];
++                side->shape[k] = NULL;
++                js_free_shape_null(ctx->rt, old);
++            }
++            side->victim = 0;
++        }
++        rdi_update(ctx, s, shape, offset);
++        return;
++    }
++    if (!b->read_ic_side) {
++        /* Optional optimization allocation cannot introduce a JS exception. */
++        b->read_ic_side = js_mallocz_rt(ctx->rt, sizeof(ReadICSide) * b->read_ic_count);
++        if (!b->read_ic_side) { rdi_update(ctx, s, shape, offset); return; }
++    }
++    ReadICSide *side = &b->read_ic_side[s - b->read_ic_sites];
++    unsigned empty = SIDE_COUNT, j;
++    for (j = 0; j < SIDE_COUNT; j++) {
++        if (side->shape[j] == shape) { side->common_offset = offset; return; }
++        if (!side->shape[j] && empty == SIDE_COUNT) empty = j;
++    }
++    if (empty == SIDE_COUNT) { j = side->victim; side->victim = (j + 1) % SIDE_COUNT; }
++    else j = empty;
++    JSShape *old = side->shape[j];
++    js_dup_shape(shape);
++    side->shape[j] = shape;
++    side->common_offset = offset;
++    js_free_shape_null(ctx->rt, old);
++}
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -36,3 +36,5 @@
+ #define RDI_OCCUPY() ((void)0)
+ #define RDI_REPLACE() ((void)0)
+ #endif
++
++typedef struct ReadICSide { JSShape *shape[7]; uint32_t common_offset; uint8_t victim; } ReadICSide;

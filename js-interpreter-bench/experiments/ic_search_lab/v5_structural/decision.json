@@ -1,0 +1,57 @@
+{
+  "status": "BOUNDED_SEARCH_COMPLETED_WITH_BLOCKED_TWELFTH_SCREEN",
+  "structural_designs": 12,
+  "complete_single_screen_designs": 11,
+  "source_attempts": 16,
+  "successful_builds": 14,
+  "build_failures": [
+    "d01",
+    "d02"
+  ],
+  "withdrawn_before_timing": [
+    "b01",
+    "b02"
+  ],
+  "best_exploratory_candidate": "d03",
+  "promoted_candidate": null,
+  "baseline": "s001",
+  "formal30_started": false,
+  "octane": {
+    "valid": 425,
+    "expected": 425,
+    "rounds": 5,
+    "conditions": 5,
+    "campaign": "recovery.v5.octane",
+    "d03_over_s001": 0.989789340573507,
+    "d03_over_A": 0.980460842951209,
+    "d03_over_mx019": 0.9943203775656202
+  },
+  "sunspider": {
+    "valid": 416,
+    "expected": 416,
+    "rounds": 4,
+    "conditions": 4,
+    "campaign": "sun.v5.sunspider",
+    "d03_over_s001": 1.0063980102528325
+  },
+  "blocked": {
+    "candidate": "d05",
+    "records": 11,
+    "expected": 51,
+    "full_score": null,
+    "reason": "UTC9.423441s vs monotonic8.227088203s"
+  },
+  "old_independent": {
+    "records": 372,
+    "expected": 425,
+    "status": "INVALID_ENVIRONMENT_DISCONTINUITY_PARTIAL",
+    "not_pooled": true
+  },
+  "next_requirement": "Stable timing and a new complete d05 campaign, then only a qualifying candidate receives full safety/formal confirmation",
+  "limitations": [
+    "Exploratory paired intervals, no multiple-comparison correction",
+    "No full test262 or selected-candidate ASan/UBSan/GC/OOM/qjsc acceptance",
+    "Power, temperature, background load control UNKNOWN",
+    "No isolated dispatch or refcount self-time"
+  ]
+}

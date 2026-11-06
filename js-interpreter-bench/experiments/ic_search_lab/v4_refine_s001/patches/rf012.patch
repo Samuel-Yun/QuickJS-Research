@@ -1,0 +1,11 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -15,7 +15,7 @@
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+-                if (offset != UINT32_MAX) {                             \
++                if (likely(offset != UINT32_MAX)) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \

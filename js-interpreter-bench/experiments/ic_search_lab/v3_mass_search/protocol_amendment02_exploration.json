@@ -1,0 +1,19 @@
+{
+  "status": "FROZEN_BEFORE_BROAD_EXPLORATION",
+  "date": "2026-11-06",
+  "reason": "The agent-selected15% drift limit stopped all exploration. The user asked whether broad search can proceed.",
+  "applies_to": [
+    "layer1 exploratory screening",
+    "layer2 budget allocation"
+  ],
+  "old_gate": "Original STOP and failed recovery certificates remain historical records",
+  "new_rule": "15% is a quality label in exploration. Repeat an unstable block once, retain both trials, then continue other configurations even when both drift.",
+  "runtime_failures": "Source/binary/boot/timer contradictions and baseline failures remain fatal; no invalid measurements enter summaries",
+  "correctness": "Every configuration must pass existing minimal checks; invalid configurations cannot be promoted",
+  "inference": "Short points allocate budget only. No CI, confirmed speedup, or official suite score from layer1.",
+  "formal": "A final candidate still needs independent longer repeated data, safety gates and timing-quality review",
+  "short_N": "Reuse the original pre-candidate short_n.json repetition counts for this new low-budget campaign; no historical elapsed values",
+  "template_control": "CTRL000 measures the common AoS single-slot template, whose record is24B versus16B in frozen s001",
+  "bootstrap_seed": 20261105,
+  "order_seed": 20261106
+}

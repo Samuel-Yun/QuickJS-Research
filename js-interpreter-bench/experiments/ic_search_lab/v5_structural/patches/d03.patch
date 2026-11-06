@@ -1,0 +1,56 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -17779,6 +17779,23 @@
+     JSVarRef **var_refs;
+     size_t alloca_size;
+ 
++/* The slot still owns receiver. No callback/allocation or release is permitted
++   between the borrowed read and the completed normal-data exact-shape hit. */
++#define RDI_BORROW_LOAD(slot) do {                                       \
++    JSValueConst receiver = (slot);                                     \
++    if (*pc == OP_get_field_rdi && JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) { \
++        JSObject *object = JS_VALUE_GET_OBJ(receiver);                   \
++        ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
++        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
++            site->shape == object->shape) {                             \
++            *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
++            pc += 5;                                                    \
++            break;                                                      \
++        }                                                               \
++    }                                                                   \
++    *sp++ = JS_DupValue(ctx, receiver);                                  \
++} while (0)
++
+ #if !DIRECT_DISPATCH
+ #define SWITCH(pc)      switch (opcode = *pc++)
+ #define CASE(op)        case op
+@@ -18607,10 +18624,10 @@
+         CASE(OP_put_loc8): set_value(ctx, &var_buf[*pc++], *--sp); BREAK;
+         CASE(OP_set_loc8): set_value(ctx, &var_buf[*pc++], JS_DupValue(ctx, sp[-1])); BREAK;
+ 
+-        CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
+-        CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
+-        CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
+-        CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
++        CASE(OP_get_loc0): RDI_BORROW_LOAD(var_buf[0]); BREAK;
++        CASE(OP_get_loc1): RDI_BORROW_LOAD(var_buf[1]); BREAK;
++        CASE(OP_get_loc2): RDI_BORROW_LOAD(var_buf[2]); BREAK;
++        CASE(OP_get_loc3): RDI_BORROW_LOAD(var_buf[3]); BREAK;
+         CASE(OP_put_loc0): set_value(ctx, &var_buf[0], *--sp); BREAK;
+         CASE(OP_put_loc1): set_value(ctx, &var_buf[1], *--sp); BREAK;
+         CASE(OP_put_loc2): set_value(ctx, &var_buf[2], *--sp); BREAK;
+@@ -18619,10 +18636,10 @@
+         CASE(OP_set_loc1): set_value(ctx, &var_buf[1], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_set_loc2): set_value(ctx, &var_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_set_loc3): set_value(ctx, &var_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+-        CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
+-        CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
+-        CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
+-        CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
++        CASE(OP_get_arg0): RDI_BORROW_LOAD(arg_buf[0]); BREAK;
++        CASE(OP_get_arg1): RDI_BORROW_LOAD(arg_buf[1]); BREAK;
++        CASE(OP_get_arg2): RDI_BORROW_LOAD(arg_buf[2]); BREAK;
++        CASE(OP_get_arg3): RDI_BORROW_LOAD(arg_buf[3]); BREAK;
+         CASE(OP_put_arg0): set_value(ctx, &arg_buf[0], *--sp); BREAK;
+         CASE(OP_put_arg1): set_value(ctx, &arg_buf[1], *--sp); BREAK;
+         CASE(OP_put_arg2): set_value(ctx, &arg_buf[2], *--sp); BREAK;

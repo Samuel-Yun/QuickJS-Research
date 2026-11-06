@@ -1,0 +1,2930 @@
+{
+  "campaign": "v3.recheck.1793905935201043337.L030.sunspider",
+  "boot_id": "60e5fc2a-8093-43c7-92f5-9a5aaf3d53a5",
+  "candidates": [
+    "L030"
+  ],
+  "labels": [
+    "A",
+    "s001",
+    "L030",
+    "CTRL000"
+  ],
+  "kind": "sunspider",
+  "rounds": 4,
+  "positions": [
+    {
+      "case": "access-nbody",
+      "condition": "s001",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "L030",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "A",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "L030",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "A",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "s001",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "A",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "s001",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "L030",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "s001",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "L030",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "A",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "A",
+      "rep": 0,
+      "order": 0,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "s001",
+      "rep": 0,
+      "order": 1,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "L030",
+      "rep": 0,
+      "order": 2,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 3,
+      "N": 128
+    },
+    {
+      "case": "math-cordic",
+      "condition": "s001",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "L030",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "A",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-base64",
+      "condition": "s001",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "L030",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "A",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "L030",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "A",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "s001",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "s001",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "L030",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "A",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "A",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "s001",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "L030",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-fasta",
+      "condition": "L030",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "A",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "s001",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "A",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "s001",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "L030",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "A",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "s001",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "L030",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "A",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "s001",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "L030",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "L030",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "A",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "s001",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "s001",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "L030",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "A",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "A",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "s001",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "L030",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "A",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "s001",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "L030",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "L030",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "A",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "s001",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "A",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "s001",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "L030",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "3d-cube",
+      "condition": "A",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "s001",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "L030",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "A",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "s001",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "L030",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "A",
+      "rep": 0,
+      "order": 0,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "s001",
+      "rep": 0,
+      "order": 1,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "L030",
+      "rep": 0,
+      "order": 2,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 3,
+      "N": 16
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "L030",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "A",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "s001",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "s001",
+      "rep": 0,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "L030",
+      "rep": 0,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "A",
+      "rep": 0,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "A",
+      "rep": 0,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "s001",
+      "rep": 0,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "L030",
+      "rep": 0,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "CTRL000",
+      "rep": 0,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "A",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "s001",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "L030",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "s001",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "L030",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "A",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "L030",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "A",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "s001",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "L030",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "A",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "s001",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "A",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "s001",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "L030",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-fasta",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "A",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "s001",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "L030",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "L030",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "A",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "s001",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "L030",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "A",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "s001",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "A",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "s001",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "L030",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "s001",
+      "rep": 1,
+      "order": 0,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "L030",
+      "rep": 1,
+      "order": 1,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 2,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "A",
+      "rep": 1,
+      "order": 3,
+      "N": 128
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "A",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "s001",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "L030",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "A",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "s001",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "L030",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "s001",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "L030",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "A",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "s001",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "L030",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "A",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "s001",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "L030",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "A",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "A",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "s001",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "L030",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "A",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "s001",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "L030",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "A",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "s001",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "L030",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "L030",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "A",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "s001",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "A",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "s001",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "L030",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "s001",
+      "rep": 1,
+      "order": 0,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "L030",
+      "rep": 1,
+      "order": 1,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 2,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "A",
+      "rep": 1,
+      "order": 3,
+      "N": 16
+    },
+    {
+      "case": "3d-morph",
+      "condition": "L030",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "A",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "s001",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "A",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "s001",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "L030",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "s001",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "L030",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "A",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-base64",
+      "condition": "L030",
+      "rep": 1,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "A",
+      "rep": 1,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "s001",
+      "rep": 1,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "CTRL000",
+      "rep": 1,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "A",
+      "rep": 1,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "s001",
+      "rep": 1,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "L030",
+      "rep": 1,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "A",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "s001",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "L030",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "L030",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "A",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "s001",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "L030",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "A",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "s001",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-base64",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "A",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "s001",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "L030",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "s001",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "L030",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "A",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-fasta",
+      "condition": "A",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "s001",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "L030",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "L030",
+      "rep": 2,
+      "order": 0,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 1,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "A",
+      "rep": 2,
+      "order": 2,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "s001",
+      "rep": 2,
+      "order": 3,
+      "N": 128
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "s001",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "L030",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "A",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "s001",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "L030",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "A",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "A",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "s001",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "L030",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "L030",
+      "rep": 2,
+      "order": 0,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 1,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "A",
+      "rep": 2,
+      "order": 2,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "s001",
+      "rep": 2,
+      "order": 3,
+      "N": 16
+    },
+    {
+      "case": "access-nbody",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "A",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "s001",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "L030",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "s001",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "L030",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "A",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "3d-morph",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "A",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "s001",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "L030",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "s001",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "L030",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "A",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "A",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "s001",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "L030",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "A",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "s001",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "L030",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "A",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "s001",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "L030",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "L030",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "A",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "s001",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "3d-cube",
+      "condition": "L030",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "A",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "s001",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "A",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "s001",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "L030",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "L030",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "A",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "s001",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "A",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "s001",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "L030",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "s001",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "L030",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "A",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "A",
+      "rep": 2,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "s001",
+      "rep": 2,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "L030",
+      "rep": 2,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "A",
+      "rep": 2,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "s001",
+      "rep": 2,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "L030",
+      "rep": 2,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "CTRL000",
+      "rep": 2,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 0,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "A",
+      "rep": 3,
+      "order": 1,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "s001",
+      "rep": 3,
+      "order": 2,
+      "N": 128
+    },
+    {
+      "case": "date-format-xparb",
+      "condition": "L030",
+      "rep": 3,
+      "order": 3,
+      "N": 128
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "s001",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "L030",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-nsieve-bits",
+      "condition": "A",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "A",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "s001",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "regexp-dna",
+      "condition": "L030",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "s001",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "L030",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-nsieve",
+      "condition": "A",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "A",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "s001",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "L030",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-base64",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "A",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "s001",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "bitops-bits-in-byte",
+      "condition": "L030",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "s001",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "L030",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-partial-sums",
+      "condition": "A",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "s001",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "L030",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "string-fasta",
+      "condition": "A",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "s001",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "L030",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-raytrace",
+      "condition": "A",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "A",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "s001",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "L030",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "math-cordic",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "A",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "s001",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "crypto-aes",
+      "condition": "L030",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "L030",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "A",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-3bit-bits-in-byte",
+      "condition": "s001",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "L030",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "A",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "access-binary-trees",
+      "condition": "s001",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "A",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "s001",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-unpack-code",
+      "condition": "L030",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "L030",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "A",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-tagcloud",
+      "condition": "s001",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "s001",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "L030",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-sha1",
+      "condition": "A",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "3d-cube",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "A",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "s001",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-cube",
+      "condition": "L030",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "A",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "s001",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "L030",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "string-validate-input",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "L030",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "A",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "controlflow-recursive",
+      "condition": "s001",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "A",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "s001",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "L030",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "crypto-md5",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 0,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "A",
+      "rep": 3,
+      "order": 1,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "s001",
+      "rep": 3,
+      "order": 2,
+      "N": 16
+    },
+    {
+      "case": "access-fannkuch",
+      "condition": "L030",
+      "rep": 3,
+      "order": 3,
+      "N": 16
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "L030",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "A",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "math-spectral-norm",
+      "condition": "s001",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "A",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "s001",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "L030",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "bitops-bitwise-and",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "L030",
+      "rep": 3,
+      "order": 0,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 1,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "A",
+      "rep": 3,
+      "order": 2,
+      "N": 64
+    },
+    {
+      "case": "date-format-tofte",
+      "condition": "s001",
+      "rep": 3,
+      "order": 3,
+      "N": 64
+    },
+    {
+      "case": "3d-morph",
+      "condition": "A",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "s001",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "L030",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "3d-morph",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "A",
+      "rep": 3,
+      "order": 0,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "s001",
+      "rep": 3,
+      "order": 1,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "L030",
+      "rep": 3,
+      "order": 2,
+      "N": 32
+    },
+    {
+      "case": "access-nbody",
+      "condition": "CTRL000",
+      "rep": 3,
+      "order": 3,
+      "N": 32
+    }
+  ],
+  "warmup_calls": 0
+}

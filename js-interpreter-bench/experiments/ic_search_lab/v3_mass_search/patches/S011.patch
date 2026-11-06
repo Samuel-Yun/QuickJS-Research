@@ -1,0 +1,52 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,4 @@
++#include "read_ic_config.h"
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -6140,6 +6141,22 @@
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
+     sh = p->shape;
++    if (sh->is_hashed && sh->deleted_prop_count == 0 && atom != JS_ATOM_NULL &&
++        sh->prop_count <= SEARCH_SCAN_MAX && p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {
++        prop = get_shape_prop(sh);
++        for (uint32_t k = 0; k < (uint32_t)sh->prop_count; k++) {
++            uint32_t index = SEARCH_SCAN_REVERSE ? sh->prop_count - 1 - k : k;
++            pr = &prop[index];
++#if !SEARCH_SCAN_ALL
++            if (pr->flags & JS_PROP_TMASK) goto search_original_hash;
++#endif
++            if (pr->atom == atom) { *ppr = &p->prop[index]; return pr; }
++        }
++        *ppr = NULL; return NULL;
++    }
++#if !SEARCH_SCAN_ALL
++search_original_hash:
++#endif
+     h = (uintptr_t)atom & sh->prop_hash_mask;
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+--- a/read_ic_config.h
++++ b/read_ic_config.h
+@@ -0,0 +1,19 @@
++#define SEARCH_SLOTS 1
++#define SEARCH_MRU 0
++#define SEARCH_EVICTION 0
++#define SEARCH_LAYOUT 0
++#define SEARCH_PC_REL 1
++#define SEARCH_TABLE_ENTRIES 0
++#define SEARCH_TABLE_WAYS 1
++#define SEARCH_TABLE_ADMISSION 1
++#define SEARCH_POLICY 0
++#define SEARCH_WARM 2
++#define SEARCH_HINT_SCOPE 0
++#define SEARCH_HINTS 1
++#define SEARCH_HINT_UPDATE 0
++#define SEARCH_SCAN_MAX 4
++#define SEARCH_SCAN_REVERSE 1
++#define SEARCH_SCAN_ALL 0
++#define SEARCH_FUSE_DROP 0
++#define SEARCH_SHARED_FALLBACK 0
++#define RDI_CAPACITY SEARCH_SLOTS

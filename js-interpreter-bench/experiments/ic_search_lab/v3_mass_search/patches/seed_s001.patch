@@ -1,0 +1,108 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -36320,9 +36320,9 @@
+                JS_AtomGetStrRT(rt, buf, sizeof(buf), b->func_name));
+     }
+ #endif
+-    rdi_free(rt, b);
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
++    rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+         for(i = 0; i < b->arg_count + b->var_count; i++) {
+@@ -37761,11 +37761,12 @@
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
+-            uint32_t ri = get_u32(bc_buf + pos + 1);
+-            assert(ri < b->read_ic_count);
++            uint32_t delta = get_u32(bc_buf + pos + 1);
++            ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
++            assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
+             op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
+             bc_buf[pos] = op;
+-            put_u32(bc_buf + pos + 1, b->read_ic_sites[ri].atom);
++            put_u32(bc_buf + pos + 1, site->atom);
+         }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,14 +1,14 @@
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+ #define GET_READ_IC(name, keep)                                          \
+     {                                                                   \
+-        uint32_t index = get_u32(pc), offset;                            \
+-        ReadICSite *site = &b->read_ic_sites[index];                     \
++        uint32_t delta = get_u32(pc), offset;                            \
++        ReadICSite *site = (ReadICSite *)(pc + delta);                   \
+         JSValue obj = sp[-1], val;                                      \
+         JSAtom atom;                                                    \
+         JSObject *p, *origin;                                           \
+         JSProperty *pr;                                                 \
+         JSShapeProperty *prs;                                           \
+-        RDI_DLOCAL(index);                                              \
++        RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+         RDI_QUERY();                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -2,6 +2,8 @@
+ static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b)
+ {
+     uint32_t count = 0, index = 0;
++    size_t code_size, total;
++    uint8_t *linked;
+     int pos, op;
+     assert(!b->read_ic_ready && !b->read_ic_sites);
+     b->read_ic_ready = 1;
+@@ -13,12 +15,21 @@
+         if (op == OP_get_field || op == OP_get_field2) count++;
+     }
+     if (!count) return 0;
+-    if (count > SIZE_MAX / sizeof(ReadICSite)) {
++    code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
++    if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+         JS_ThrowOutOfMemory(ctx);
+         return -1;
+     }
+-    b->read_ic_sites = js_mallocz(ctx, count * sizeof(ReadICSite));
+-    if (!b->read_ic_sites) return -1;
++    total = code_size + count * sizeof(ReadICSite);
++    if (total > UINT32_MAX) {
++        JS_ThrowOutOfMemory(ctx);
++        return -1;
++    }
++    linked = js_mallocz(ctx, total);
++    if (!linked) return -1;
++    memcpy(linked, b->byte_code_buf, b->byte_code_len);
++    b->byte_code_buf = linked;
++    b->read_ic_sites = (ReadICSite *)(linked + code_size);
+     b->read_ic_count = count;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_prepare(ctx, b);
+@@ -29,7 +40,7 @@
+         if (op == OP_get_field || op == OP_get_field2) {
+             b->read_ic_sites[index].atom = get_u32(pc + 1);
+             *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
+-            put_u32(pc + 1, index++);
++            put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
+         }
+     }
+     assert(index == count);
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -81,7 +81,10 @@
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_release(b);
+ #endif
+-    js_free_rt(rt, b->read_ic_sites);
++    if (b->read_ic_sites) {
++        js_free_rt(rt, b->byte_code_buf);
++        b->byte_code_buf = NULL;
++    }
+     b->read_ic_sites = NULL;
+     b->read_ic_count = 0;
+ }

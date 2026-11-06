@@ -1,0 +1,608 @@
+{
+  "status": "COMPLETE_SINGLE_PASS_NO_CI",
+  "candidate": "rf014",
+  "groups": [
+    {
+      "case": "Crypto.Decrypt",
+      "N": 32,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.5622987799250816,
+          "tokens": [
+            "2026-11-06T02:48:58.395879+00:00:refine.1793930807821099270.rf014.case0.trial0/Crypto.Decrypt/s001/rep0/pos0",
+            "2026-11-06T02:49:01.871163+00:00:refine.1793930807821099270.rf014.case0.trial0/Crypto.Decrypt/rf014/rep0/pos1",
+            "2026-11-06T02:49:05.302369+00:00:refine.1793930807821099270.rf014.case0.trial0/Crypto.Decrypt/A/rep0/pos2",
+            "2026-11-06T02:49:08.980870+00:00:refine.1793930807821099270.rf014.case0.trial0/Crypto.Decrypt/s001/rep0/pos3"
+          ],
+          "over_s001": 0.7872244951512606,
+          "over_A": 0.9447526418201599,
+          "candidate_ms_per_Run": 91.37640793751052,
+          "s001_reference_ms_per_Run": 116.07414212886387
+        },
+        {
+          "trial": 1,
+          "drift": 1.538464865127254,
+          "tokens": [
+            "2026-11-06T02:49:14.503008+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/s001/rep0/pos0",
+            "2026-11-06T02:49:19.701690+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/rf014/rep0/pos1",
+            "2026-11-06T02:49:24.280000+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/A/rep0/pos2",
+            "2026-11-06T02:49:27.912094+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/s001/rep0/pos3"
+          ],
+          "over_s001": 1.1062122681377544,
+          "over_A": 1.2951549217417604,
+          "candidate_ms_per_Run": 126.20030978124123,
+          "s001_reference_ms_per_Run": 114.0832672138886
+        }
+      ],
+      "quality": "UNSTABLE",
+      "trial": 1,
+      "drift": 1.538464865127254,
+      "tokens": [
+        "2026-11-06T02:49:14.503008+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/s001/rep0/pos0",
+        "2026-11-06T02:49:19.701690+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/rf014/rep0/pos1",
+        "2026-11-06T02:49:24.280000+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/A/rep0/pos2",
+        "2026-11-06T02:49:27.912094+00:00:refine.1793930807821099270.rf014.case0.trial1/Crypto.Decrypt/s001/rep0/pos3"
+      ],
+      "over_s001": 1.1062122681377544,
+      "over_A": 1.2951549217417604,
+      "candidate_ms_per_Run": 126.20030978124123,
+      "s001_reference_ms_per_Run": 114.0832672138886
+    },
+    {
+      "case": "EarleyBoyer.Boyer",
+      "N": 8,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0078280023070876,
+          "tokens": [
+            "2026-11-06T02:49:31.467073+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/s001/rep0/pos0",
+            "2026-11-06T02:49:32.774850+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/A/rep0/pos1",
+            "2026-11-06T02:49:34.101018+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/rf014/rep0/pos2",
+            "2026-11-06T02:49:35.391796+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/s001/rep0/pos3"
+          ],
+          "over_s001": 0.9974238190789939,
+          "over_A": 0.9644716116573838,
+          "candidate_ms_per_Run": 100.0078574999934,
+          "s001_reference_ms_per_Run": 100.26616127168404
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0078280023070876,
+      "tokens": [
+        "2026-11-06T02:49:31.467073+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/s001/rep0/pos0",
+        "2026-11-06T02:49:32.774850+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/A/rep0/pos1",
+        "2026-11-06T02:49:34.101018+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/rf014/rep0/pos2",
+        "2026-11-06T02:49:35.391796+00:00:refine.1793930807821099270.rf014.case1.trial0/EarleyBoyer.Boyer/s001/rep0/pos3"
+      ],
+      "over_s001": 0.9974238190789939,
+      "over_A": 0.9644716116573838,
+      "candidate_ms_per_Run": 100.0078574999934,
+      "s001_reference_ms_per_Run": 100.26616127168404
+    },
+    {
+      "case": "Mandreel.Mandreel",
+      "N": 1,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0099653107682351,
+          "tokens": [
+            "2026-11-06T02:49:36.843353+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/s001/rep0/pos0",
+            "2026-11-06T02:49:40.391855+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/A/rep0/pos1",
+            "2026-11-06T02:49:43.995697+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/rf014/rep0/pos2",
+            "2026-11-06T02:49:47.579208+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0132598298274198,
+          "over_A": 0.987787181627274,
+          "candidate_ms_per_Run": 1656.939976000227,
+          "s001_reference_ms_per_Run": 1635.2567497740831
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0099653107682351,
+      "tokens": [
+        "2026-11-06T02:49:36.843353+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/s001/rep0/pos0",
+        "2026-11-06T02:49:40.391855+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/A/rep0/pos1",
+        "2026-11-06T02:49:43.995697+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/rf014/rep0/pos2",
+        "2026-11-06T02:49:47.579208+00:00:refine.1793930807821099270.rf014.case2.trial0/Mandreel.Mandreel/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0132598298274198,
+      "over_A": 0.987787181627274,
+      "candidate_ms_per_Run": 1656.939976000227,
+      "s001_reference_ms_per_Run": 1635.2567497740831
+    },
+    {
+      "case": "RegExp.RegExp",
+      "N": 16,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0041832698718682,
+          "tokens": [
+            "2026-11-06T02:49:51.108669+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/s001/rep0/pos0",
+            "2026-11-06T02:49:54.454350+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/A/rep0/pos1",
+            "2026-11-06T02:49:57.805451+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/rf014/rep0/pos2",
+            "2026-11-06T02:50:01.154453+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0044444104722945,
+          "over_A": 0.998734307590742,
+          "candidate_ms_per_Run": 177.51455737501965,
+          "s001_reference_ms_per_Run": 176.7291007090691
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0041832698718682,
+      "tokens": [
+        "2026-11-06T02:49:51.108669+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/s001/rep0/pos0",
+        "2026-11-06T02:49:54.454350+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/A/rep0/pos1",
+        "2026-11-06T02:49:57.805451+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/rf014/rep0/pos2",
+        "2026-11-06T02:50:01.154453+00:00:refine.1793930807821099270.rf014.case3.trial0/RegExp.RegExp/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0044444104722945,
+      "over_A": 0.998734307590742,
+      "candidate_ms_per_Run": 177.51455737501965,
+      "s001_reference_ms_per_Run": 176.7291007090691
+    },
+    {
+      "case": "Splay.Splay",
+      "N": 512,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0039076214598432,
+          "tokens": [
+            "2026-11-06T02:50:04.577279+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/s001/rep0/pos0",
+            "2026-11-06T02:50:06.697431+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/rf014/rep0/pos1",
+            "2026-11-06T02:50:08.760469+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/A/rep0/pos2",
+            "2026-11-06T02:50:10.730569+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0195115133019756,
+          "over_A": 1.08357723765805,
+          "candidate_ms_per_Run": 2.186153277343692,
+          "s001_reference_ms_per_Run": 2.1443144572867237
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0039076214598432,
+      "tokens": [
+        "2026-11-06T02:50:04.577279+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/s001/rep0/pos0",
+        "2026-11-06T02:50:06.697431+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/rf014/rep0/pos1",
+        "2026-11-06T02:50:08.760469+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/A/rep0/pos2",
+        "2026-11-06T02:50:10.730569+00:00:refine.1793930807821099270.rf014.case4.trial0/Splay.Splay/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0195115133019756,
+      "over_A": 1.08357723765805,
+      "candidate_ms_per_Run": 2.186153277343692,
+      "s001_reference_ms_per_Run": 2.1443144572867237
+    },
+    {
+      "case": "Richards.Richards",
+      "N": 256,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0294990684201288,
+          "tokens": [
+            "2026-11-06T02:50:12.950720+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/s001/rep0/pos0",
+            "2026-11-06T02:50:14.216401+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/A/rep0/pos1",
+            "2026-11-06T02:50:15.572305+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/rf014/rep0/pos2",
+            "2026-11-06T02:50:16.866401+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0130012282040712,
+          "over_A": 0.9321066752000918,
+          "candidate_ms_per_Run": 3.156122414062338,
+          "s001_reference_ms_per_Run": 3.115615584847574
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0294990684201288,
+      "tokens": [
+        "2026-11-06T02:50:12.950720+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/s001/rep0/pos0",
+        "2026-11-06T02:50:14.216401+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/A/rep0/pos1",
+        "2026-11-06T02:50:15.572305+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/rf014/rep0/pos2",
+        "2026-11-06T02:50:16.866401+00:00:refine.1793930807821099270.rf014.case5.trial0/Richards.Richards/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0130012282040712,
+      "over_A": 0.9321066752000918,
+      "candidate_ms_per_Run": 3.156122414062338,
+      "s001_reference_ms_per_Run": 3.115615584847574
+    },
+    {
+      "case": "EarleyBoyer.Earley",
+      "N": 128,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.000733960405648,
+          "tokens": [
+            "2026-11-06T02:50:18.264241+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/s001/rep0/pos0",
+            "2026-11-06T02:50:19.650174+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/A/rep0/pos1",
+            "2026-11-06T02:50:21.006562+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/rf014/rep0/pos2",
+            "2026-11-06T02:50:22.358742+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0124049622787827,
+          "over_A": 1.0091444530255025,
+          "candidate_ms_per_Run": 6.729625937499804,
+          "s001_reference_ms_per_Run": 6.647168068351179
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.000733960405648,
+      "tokens": [
+        "2026-11-06T02:50:18.264241+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/s001/rep0/pos0",
+        "2026-11-06T02:50:19.650174+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/A/rep0/pos1",
+        "2026-11-06T02:50:21.006562+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/rf014/rep0/pos2",
+        "2026-11-06T02:50:22.358742+00:00:refine.1793930807821099270.rf014.case6.trial0/EarleyBoyer.Earley/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0124049622787827,
+      "over_A": 1.0091444530255025,
+      "candidate_ms_per_Run": 6.729625937499804,
+      "s001_reference_ms_per_Run": 6.647168068351179
+    },
+    {
+      "case": "zlib.zlib",
+      "N": 1,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.3132627351148345,
+          "tokens": [
+            "2026-11-06T02:50:23.806998+00:00:refine.1793930807821099270.rf014.case7.trial0/zlib.zlib/s001/rep0/pos0",
+            "2026-11-06T02:50:34.384730+00:00:refine.1793930807821099270.rf014.case7.trial0/zlib.zlib/A/rep0/pos1",
+            "2026-11-06T02:50:45.160094+00:00:refine.1793930807821099270.rf014.case7.trial0/zlib.zlib/rf014/rep0/pos2",
+            "2026-11-06T02:50:54.317295+00:00:refine.1793930807821099270.rf014.case7.trial0/zlib.zlib/s001/rep0/pos3"
+          ],
+          "over_s001": 1.000208804268131,
+          "over_A": 0.8446313510463118,
+          "candidate_ms_per_Run": 8661.271718000062,
+          "s001_reference_ms_per_Run": 8659.46358504378
+        },
+        {
+          "trial": 1,
+          "drift": 1.0061018720587065,
+          "tokens": [
+            "2026-11-06T02:51:02.501375+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/s001/rep0/pos0",
+            "2026-11-06T02:51:10.607521+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/A/rep0/pos1",
+            "2026-11-06T02:51:19.209725+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/rf014/rep0/pos2",
+            "2026-11-06T02:51:27.427714+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0191601807859856,
+          "over_A": 0.9552634262663541,
+          "candidate_ms_per_Run": 7735.171011999715,
+          "s001_reference_ms_per_Run": 7589.750029317551
+        }
+      ],
+      "quality": "RETRY_RECOVERED",
+      "trial": 1,
+      "drift": 1.0061018720587065,
+      "tokens": [
+        "2026-11-06T02:51:02.501375+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/s001/rep0/pos0",
+        "2026-11-06T02:51:10.607521+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/A/rep0/pos1",
+        "2026-11-06T02:51:19.209725+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/rf014/rep0/pos2",
+        "2026-11-06T02:51:27.427714+00:00:refine.1793930807821099270.rf014.case7.trial1/zlib.zlib/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0191601807859856,
+      "over_A": 0.9552634262663541,
+      "candidate_ms_per_Run": 7735.171011999715,
+      "s001_reference_ms_per_Run": 7589.750029317551
+    },
+    {
+      "case": "CodeLoad.CodeLoadJQuery",
+      "N": 128,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0263282219389944,
+          "tokens": [
+            "2026-11-06T02:51:35.591140+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/s001/rep0/pos0",
+            "2026-11-06T02:51:37.421432+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/rf014/rep0/pos1",
+            "2026-11-06T02:51:39.233256+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/A/rep0/pos2",
+            "2026-11-06T02:51:41.007895+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/s001/rep0/pos3"
+          ],
+          "over_s001": 0.9855303481378711,
+          "over_A": 1.0313362581640662,
+          "candidate_ms_per_Run": 10.382265359374287,
+          "s001_reference_ms_per_Run": 10.534698783240165
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0263282219389944,
+      "tokens": [
+        "2026-11-06T02:51:35.591140+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/s001/rep0/pos0",
+        "2026-11-06T02:51:37.421432+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/rf014/rep0/pos1",
+        "2026-11-06T02:51:39.233256+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/A/rep0/pos2",
+        "2026-11-06T02:51:41.007895+00:00:refine.1793930807821099270.rf014.case8.trial0/CodeLoad.CodeLoadJQuery/s001/rep0/pos3"
+      ],
+      "over_s001": 0.9855303481378711,
+      "over_A": 1.0313362581640662,
+      "candidate_ms_per_Run": 10.382265359374287,
+      "s001_reference_ms_per_Run": 10.534698783240165
+    },
+    {
+      "case": "NavierStokes.NavierStokes",
+      "N": 8,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.016214974712983,
+          "tokens": [
+            "2026-11-06T02:51:42.960623+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/s001/rep0/pos0",
+            "2026-11-06T02:51:44.227803+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/rf014/rep0/pos1",
+            "2026-11-06T02:51:45.534563+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/A/rep0/pos2",
+            "2026-11-06T02:51:46.855552+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0411869536917004,
+          "over_A": 0.985823623810411,
+          "candidate_ms_per_Run": 54.43950187496375,
+          "s001_reference_ms_per_Run": 52.28600078203007
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.016214974712983,
+      "tokens": [
+        "2026-11-06T02:51:42.960623+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/s001/rep0/pos0",
+        "2026-11-06T02:51:44.227803+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/rf014/rep0/pos1",
+        "2026-11-06T02:51:45.534563+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/A/rep0/pos2",
+        "2026-11-06T02:51:46.855552+00:00:refine.1793930807821099270.rf014.case9.trial0/NavierStokes.NavierStokes/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0411869536917004,
+      "over_A": 0.985823623810411,
+      "candidate_ms_per_Run": 54.43950187496375,
+      "s001_reference_ms_per_Run": 52.28600078203007
+    },
+    {
+      "case": "Typescript.Typescript",
+      "N": 1,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0234419958078997,
+          "tokens": [
+            "2026-11-06T02:51:48.293872+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/s001/rep0/pos0",
+            "2026-11-06T02:51:50.940771+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/rf014/rep0/pos1",
+            "2026-11-06T02:51:53.547930+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/A/rep0/pos2",
+            "2026-11-06T02:51:56.250083+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/s001/rep0/pos3"
+          ],
+          "over_s001": 0.999792745708908,
+          "over_A": 0.9638037833550814,
+          "candidate_ms_per_Run": 1910.568442999851,
+          "s001_reference_ms_per_Run": 1910.9644985923087
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0234419958078997,
+      "tokens": [
+        "2026-11-06T02:51:48.293872+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/s001/rep0/pos0",
+        "2026-11-06T02:51:50.940771+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/rf014/rep0/pos1",
+        "2026-11-06T02:51:53.547930+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/A/rep0/pos2",
+        "2026-11-06T02:51:56.250083+00:00:refine.1793930807821099270.rf014.case10.trial0/Typescript.Typescript/s001/rep0/pos3"
+      ],
+      "over_s001": 0.999792745708908,
+      "over_A": 0.9638037833550814,
+      "candidate_ms_per_Run": 1910.568442999851,
+      "s001_reference_ms_per_Run": 1910.9644985923087
+    },
+    {
+      "case": "CodeLoad.CodeLoadClosure",
+      "N": 1024,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0236007209115212,
+          "tokens": [
+            "2026-11-06T02:51:58.900592+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/s001/rep0/pos0",
+            "2026-11-06T02:52:00.009398+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/rf014/rep0/pos1",
+            "2026-11-06T02:52:01.142171+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/A/rep0/pos2",
+            "2026-11-06T02:52:02.236786+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0328003364886276,
+          "over_A": 1.0718285928975833,
+          "candidate_ms_per_Run": 0.6072606201173585,
+          "s001_reference_ms_per_Run": 0.5879748472797338
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0236007209115212,
+      "tokens": [
+        "2026-11-06T02:51:58.900592+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/s001/rep0/pos0",
+        "2026-11-06T02:52:00.009398+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/rf014/rep0/pos1",
+        "2026-11-06T02:52:01.142171+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/A/rep0/pos2",
+        "2026-11-06T02:52:02.236786+00:00:refine.1793930807821099270.rf014.case11.trial0/CodeLoad.CodeLoadClosure/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0328003364886276,
+      "over_A": 1.0718285928975833,
+      "candidate_ms_per_Run": 0.6072606201173585,
+      "s001_reference_ms_per_Run": 0.5879748472797338
+    },
+    {
+      "case": "Gameboy.Gameboy",
+      "N": 2,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0098170087406935,
+          "tokens": [
+            "2026-11-06T02:52:03.479750+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/s001/rep0/pos0",
+            "2026-11-06T02:52:04.675552+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/A/rep0/pos1",
+            "2026-11-06T02:52:05.878898+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/rf014/rep0/pos2",
+            "2026-11-06T02:52:07.070643+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0053387280698787,
+          "over_A": 0.9740590571504358,
+          "candidate_ms_per_Run": 329.3579879999161,
+          "s001_reference_ms_per_Run": 327.6089727809861
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0098170087406935,
+      "tokens": [
+        "2026-11-06T02:52:03.479750+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/s001/rep0/pos0",
+        "2026-11-06T02:52:04.675552+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/A/rep0/pos1",
+        "2026-11-06T02:52:05.878898+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/rf014/rep0/pos2",
+        "2026-11-06T02:52:07.070643+00:00:refine.1793930807821099270.rf014.case12.trial0/Gameboy.Gameboy/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0053387280698787,
+      "over_A": 0.9740590571504358,
+      "candidate_ms_per_Run": 329.3579879999161,
+      "s001_reference_ms_per_Run": 327.6089727809861
+    },
+    {
+      "case": "RayTrace.RayTrace",
+      "N": 32,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.002013952392024,
+          "tokens": [
+            "2026-11-06T02:52:08.346133+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/s001/rep0/pos0",
+            "2026-11-06T02:52:10.127260+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/A/rep0/pos1",
+            "2026-11-06T02:52:11.796926+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/rf014/rep0/pos2",
+            "2026-11-06T02:52:13.546807+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/s001/rep0/pos3"
+          ],
+          "over_s001": 0.987732599072313,
+          "over_A": 1.0700233664196852,
+          "candidate_ms_per_Run": 39.718855937506305,
+          "s001_reference_ms_per_Run": 40.212154559655716
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.002013952392024,
+      "tokens": [
+        "2026-11-06T02:52:08.346133+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/s001/rep0/pos0",
+        "2026-11-06T02:52:10.127260+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/A/rep0/pos1",
+        "2026-11-06T02:52:11.796926+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/rf014/rep0/pos2",
+        "2026-11-06T02:52:13.546807+00:00:refine.1793930807821099270.rf014.case13.trial0/RayTrace.RayTrace/s001/rep0/pos3"
+      ],
+      "over_s001": 0.987732599072313,
+      "over_A": 1.0700233664196852,
+      "candidate_ms_per_Run": 39.718855937506305,
+      "s001_reference_ms_per_Run": 40.212154559655716
+    },
+    {
+      "case": "DeltaBlue.DeltaBlue",
+      "N": 128,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0092238718029602,
+          "tokens": [
+            "2026-11-06T02:52:15.422053+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/s001/rep0/pos0",
+            "2026-11-06T02:52:16.746956+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/rf014/rep0/pos1",
+            "2026-11-06T02:52:18.083199+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/A/rep0/pos2",
+            "2026-11-06T02:52:19.423933+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0258728532383241,
+          "over_A": 1.0009705254675978,
+          "candidate_ms_per_Run": 6.7278902187499625,
+          "s001_reference_ms_per_Run": 6.558210598430742
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0092238718029602,
+      "tokens": [
+        "2026-11-06T02:52:15.422053+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/s001/rep0/pos0",
+        "2026-11-06T02:52:16.746956+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/rf014/rep0/pos1",
+        "2026-11-06T02:52:18.083199+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/A/rep0/pos2",
+        "2026-11-06T02:52:19.423933+00:00:refine.1793930807821099270.rf014.case14.trial0/DeltaBlue.DeltaBlue/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0258728532383241,
+      "over_A": 1.0009705254675978,
+      "candidate_ms_per_Run": 6.7278902187499625,
+      "s001_reference_ms_per_Run": 6.558210598430742
+    },
+    {
+      "case": "PdfJS.PdfJS",
+      "N": 4,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.002439212834059,
+          "tokens": [
+            "2026-11-06T02:52:20.875186+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/s001/rep0/pos0",
+            "2026-11-06T02:52:22.208036+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/A/rep0/pos1",
+            "2026-11-06T02:52:23.571087+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/rf014/rep0/pos2",
+            "2026-11-06T02:52:24.933837+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/s001/rep0/pos3"
+          ],
+          "over_s001": 1.0259361609191116,
+          "over_A": 0.9689545422148634,
+          "candidate_ms_per_Run": 173.21502574998885,
+          "s001_reference_ms_per_Run": 168.83606636382683
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.002439212834059,
+      "tokens": [
+        "2026-11-06T02:52:20.875186+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/s001/rep0/pos0",
+        "2026-11-06T02:52:22.208036+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/A/rep0/pos1",
+        "2026-11-06T02:52:23.571087+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/rf014/rep0/pos2",
+        "2026-11-06T02:52:24.933837+00:00:refine.1793930807821099270.rf014.case15.trial0/PdfJS.PdfJS/s001/rep0/pos3"
+      ],
+      "over_s001": 1.0259361609191116,
+      "over_A": 0.9689545422148634,
+      "candidate_ms_per_Run": 173.21502574998885,
+      "s001_reference_ms_per_Run": 168.83606636382683
+    },
+    {
+      "case": "Crypto.Encrypt",
+      "N": 512,
+      "attempts": [
+        {
+          "trial": 0,
+          "drift": 1.0091574213015264,
+          "tokens": [
+            "2026-11-06T02:52:26.359543+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/s001/rep0/pos0",
+            "2026-11-06T02:52:29.450966+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/rf014/rep0/pos1",
+            "2026-11-06T02:52:32.520650+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/A/rep0/pos2",
+            "2026-11-06T02:52:35.661923+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/s001/rep0/pos3"
+          ],
+          "over_s001": 0.9925700286176623,
+          "over_A": 0.9683767888054575,
+          "candidate_ms_per_Run": 4.8320748867181464,
+          "s001_reference_ms_per_Run": 4.868245813796842
+        }
+      ],
+      "quality": "OK",
+      "trial": 0,
+      "drift": 1.0091574213015264,
+      "tokens": [
+        "2026-11-06T02:52:26.359543+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/s001/rep0/pos0",
+        "2026-11-06T02:52:29.450966+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/rf014/rep0/pos1",
+        "2026-11-06T02:52:32.520650+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/A/rep0/pos2",
+        "2026-11-06T02:52:35.661923+00:00:refine.1793930807821099270.rf014.case16.trial0/Crypto.Encrypt/s001/rep0/pos3"
+      ],
+      "over_s001": 0.9925700286176623,
+      "over_A": 0.9683767888054575,
+      "candidate_ms_per_Run": 4.8320748867181464,
+      "s001_reference_ms_per_Run": 4.868245813796842
+    }
+  ],
+  "core_over_s001": 1.0150817422922305,
+  "expanded_over_s001": 1.0153725172963919,
+  "local5": [],
+  "regressions10": [
+    "Crypto.Decrypt"
+  ],
+  "quality_counts": {
+    "UNSTABLE": 1,
+    "OK": 15,
+    "RETRY_RECOVERED": 1
+  },
+  "boot_id": "e6c4e5c5-924c-4956-861b-c93eea3d1296",
+  "source_sha256": "0bb0ba135022d0ac2f28e88baf9005285c15bb8ffd193f8cce509769e52b01e5"
+}

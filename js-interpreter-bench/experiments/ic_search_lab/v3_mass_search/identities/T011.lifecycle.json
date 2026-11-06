@@ -1,0 +1,31 @@
+{
+  "status": "PASS_NARROW_LIFECYCLE",
+  "candidate": "T011",
+  "results": [
+    {
+      "name": "read_roundtrip",
+      "valid": true,
+      "token": "2026-11-05T15:11:03.096942+00:00:T011/read_roundtrip",
+      "stdout": "READ_METHOD_REFERENCE_ROUNDTRIP_PASS\n"
+    },
+    {
+      "name": "roundtrip_slots",
+      "valid": true,
+      "token": "2026-11-05T15:11:04.476151+00:00:T011/roundtrip_slots",
+      "stdout": "MULTI_ROUNDTRIP_OOM PASS failed_limits=47 successful_limits=145\n"
+    },
+    {
+      "name": "gc_cycles",
+      "valid": true,
+      "token": "2026-11-05T15:11:05.490949+00:00:T011/gc_cycles",
+      "stdout": "GC_CYCLES_PASS rounds=12 cyclic_function_prototypes=1800\n"
+    },
+    {
+      "name": "qjsc",
+      "valid": true,
+      "token": "2026-11-05T15:11:06.586375+00:00:T011"
+    }
+  ],
+  "full_test262": false,
+  "sanitizer": false
+}

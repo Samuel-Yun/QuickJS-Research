@@ -1,0 +1,37 @@
+{
+  "campaign": "recovery.v5.octane",
+  "labels": [
+    "s001",
+    "A",
+    "mx019",
+    "d03",
+    "d04"
+  ],
+  "kind": "octane",
+  "rounds": 5,
+  "boot_id": "97b464b7-20de-4375-8a35-0e8dfd4a86c8",
+  "seed": 2026110605,
+  "N": {
+    "octane/Richards.Richards": 1024,
+    "octane/DeltaBlue.DeltaBlue": 512,
+    "octane/Crypto.Encrypt": 512,
+    "octane/Crypto.Decrypt": 32,
+    "octane/RayTrace.RayTrace": 128,
+    "octane/EarleyBoyer.Earley": 512,
+    "octane/EarleyBoyer.Boyer": 32,
+    "octane/RegExp.RegExp": 64,
+    "octane/Splay.Splay": 2048,
+    "octane/NavierStokes.NavierStokes": 32,
+    "octane/PdfJS.PdfJS": 16,
+    "octane/Mandreel.Mandreel": 1,
+    "octane/Gameboy.Gameboy": 8,
+    "octane/CodeLoad.CodeLoadClosure": 4096,
+    "octane/CodeLoad.CodeLoadJQuery": 512,
+    "octane/Typescript.Typescript": 1,
+    "octane/zlib.zlib": 1
+  },
+  "N_note": "Independent recheck uses the full previously validated N; search used quarter N. No old elapsed values reused.",
+  "runner_sha256": "6d724218f9be0e763b49efd984ed33fb3a60708929918fac8e88b8893fd646a3",
+  "warmup_calls": 0,
+  "order": "Seeded per-case base permutation, cyclic rotation every round; independent case order shuffle"
+}

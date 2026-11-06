@@ -1,0 +1,114 @@
+{
+  "status": "COMPLETE_EXPLORATORY",
+  "campaign": "screen.b04.octane",
+  "kind": "octane",
+  "rounds": 1,
+  "valid": 34,
+  "labels": [
+    "s001",
+    "b04"
+  ],
+  "median_ms_per_Run": {
+    "Richards.Richards": {
+      "s001": 3.11595308984397,
+      "b04": 3.360172503906142
+    },
+    "DeltaBlue.DeltaBlue": {
+      "s001": 6.407342984377465,
+      "b04": 7.333772968751873
+    },
+    "Crypto.Encrypt": {
+      "s001": 4.744999775391079,
+      "b04": 4.90531358593762
+    },
+    "Crypto.Decrypt": {
+      "s001": 88.94323078125308,
+      "b04": 91.50724296875705
+    },
+    "RayTrace.RayTrace": {
+      "s001": 40.54763818749052,
+      "b04": 41.599396156248986
+    },
+    "EarleyBoyer.Earley": {
+      "s001": 6.583716125001956,
+      "b04": 6.733314406250429
+    },
+    "EarleyBoyer.Boyer": {
+      "s001": 100.19387675001053,
+      "b04": 100.31600562500535
+    },
+    "RegExp.RegExp": {
+      "s001": 177.25317893750616,
+      "b04": 179.41819312499138
+    },
+    "Splay.Splay": {
+      "s001": 2.1449383222652614,
+      "b04": 2.267716193358865
+    },
+    "NavierStokes.NavierStokes": {
+      "s001": 52.87135675002355,
+      "b04": 54.87927099998342
+    },
+    "PdfJS.PdfJS": {
+      "s001": 166.12446424993686,
+      "b04": 171.50483024993446
+    },
+    "Mandreel.Mandreel": {
+      "s001": 1598.4620269997977,
+      "b04": 1646.7175829997286
+    },
+    "Gameboy.Gameboy": {
+      "s001": 326.52850200003013,
+      "b04": 331.78057800000533
+    },
+    "CodeLoad.CodeLoadClosure": {
+      "s001": 0.5769377509768674,
+      "b04": 0.580777961914464
+    },
+    "CodeLoad.CodeLoadJQuery": {
+      "s001": 10.90542094531338,
+      "b04": 10.3234837265627
+    },
+    "Typescript.Typescript": {
+      "s001": 1910.9808159996755,
+      "b04": 2022.5854420000687
+    },
+    "zlib.zlib": {
+      "s001": 7542.724701999687,
+      "b04": 8095.082677999977
+    }
+  },
+  "ratios": {
+    "b04": {
+      "CodeLoad.CodeLoadJQuery": 0.9466378031926618,
+      "NavierStokes.NavierStokes": 1.037977354344306,
+      "Crypto.Decrypt": 1.0288275135160079,
+      "Typescript.Typescript": 1.0584017511143933,
+      "Splay.Splay": 1.0572407466541687,
+      "RegExp.RegExp": 1.0122142474423466,
+      "EarleyBoyer.Earley": 1.0227224683458582,
+      "Crypto.Encrypt": 1.0337858415458676,
+      "RayTrace.RayTrace": 1.0259388219825574,
+      "PdfJS.PdfJS": 1.0323875596787644,
+      "zlib.zlib": 1.0732305629362096,
+      "Richards.Richards": 1.0783771151299333,
+      "Mandreel.Mandreel": 1.0301887409177328,
+      "EarleyBoyer.Boyer": 1.0012189255367325,
+      "Gameboy.Gameboy": 1.0160845866985746,
+      "CodeLoad.CodeLoadClosure": 1.006656196324637,
+      "DeltaBlue.DeltaBlue": 1.1445887923642064
+    }
+  },
+  "core": {
+    "b04": 1.0387380108062256
+  },
+  "expanded": {
+    "b04": 1.0411645720516312
+  },
+  "max_regressions": {
+    "b04": [
+      "DeltaBlue.DeltaBlue"
+    ]
+  },
+  "intervals": null
+}

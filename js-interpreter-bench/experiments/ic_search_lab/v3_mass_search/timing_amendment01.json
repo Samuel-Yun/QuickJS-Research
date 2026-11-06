@@ -1,0 +1,8 @@
+{
+  "reason": "Observed pilot drift21-57%; short timings cannot rank candidates",
+  "original": "short_n.json; pilot.block*.json",
+  "new": "short_n_override.json",
+  "seed": 20261105,
+  "decision": "Uniformly multiply N by4 for all8 cases and conditions; never adjust candidate-specific inputs or threshold",
+  "if_repeat_drift": "stop performance search with no candidate ranking, preserve all evidence and restore commands"
+}

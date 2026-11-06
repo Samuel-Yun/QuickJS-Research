@@ -1,0 +1,587 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -716,6 +716,13 @@
+     int cpool_count;
+     int closure_var_count;
+     ReadICSite *read_ic_sites;
++#if SEARCH_LAYOUT == 2
++    JSAtom *read_ic_atoms;
++#endif
++#if SEARCH_TABLE_ENTRIES
++    SearchEntry *read_ic_shared;
++    uint32_t read_ic_shared_cursor;
++#endif
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
+ #ifdef READ_IC_DIAGNOSTIC
+@@ -6149,6 +6156,22 @@
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
+     sh = p->shape;
++    if (sh->is_hashed && sh->deleted_prop_count == 0 && atom != JS_ATOM_NULL &&
++        sh->prop_count <= SEARCH_SCAN_MAX && p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {
++        prop = get_shape_prop(sh);
++        for (uint32_t k = 0; k < (uint32_t)sh->prop_count; k++) {
++            uint32_t index = SEARCH_SCAN_REVERSE ? sh->prop_count - 1 - k : k;
++            pr = &prop[index];
++#if !SEARCH_SCAN_ALL
++            if (pr->flags & JS_PROP_TMASK) goto search_original_hash;
++#endif
++            if (pr->atom == atom) { *ppr = &p->prop[index]; return pr; }
++        }
++        *ppr = NULL; return NULL;
++    }
++#if !SEARCH_SCAN_ALL
++search_original_hash:
++#endif
+     h = (uintptr_t)atom & sh->prop_hash_mask;
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+@@ -6629,16 +6652,7 @@
+             for(i = 0; i < b->cpool_count; i++) {
+                 JS_MarkValue(rt, b->cpool[i], mark_func);
+             }
+-            for (uint32_t ri = 0; ri < b->read_ic_count; ri++) {
+-#if RDI_CAPACITY == 1
+-                if (b->read_ic_sites[ri].shape)
+-                    mark_func(rt, &b->read_ic_sites[ri].shape->header);
+-#else
+-                for (unsigned rj = 0; rj < 4; rj++)
+-                    if (b->read_ic_sites[ri].shape[rj])
+-                        mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+-#endif
+-            }
++            rdi_mark(rt, b, mark_func);
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -37766,7 +37780,7 @@
+             assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
+             op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
+             bc_buf[pos] = op;
+-            put_u32(bc_buf + pos + 1, site->atom);
++            put_u32(bc_buf + pos + 1, rdi_atom(b, site));
+         }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+--- a/read_ic_config.h
++++ b/read_ic_config.h
+@@ -1 +1,19 @@
+-#define RDI_CAPACITY 1
++#define SEARCH_SLOTS 1
++#define SEARCH_MRU 0
++#define SEARCH_EVICTION 0
++#define SEARCH_LAYOUT 0
++#define SEARCH_PC_REL 1
++#define SEARCH_TABLE_ENTRIES 0
++#define SEARCH_TABLE_WAYS 1
++#define SEARCH_TABLE_ADMISSION 1
++#define SEARCH_POLICY 0
++#define SEARCH_WARM 2
++#define SEARCH_HINT_SCOPE 0
++#define SEARCH_HINTS 1
++#define SEARCH_HINT_UPDATE 0
++#define SEARCH_SCAN_MAX 8
++#define SEARCH_SCAN_REVERSE 1
++#define SEARCH_SCAN_ALL 1
++#define SEARCH_FUSE_DROP 0
++#define SEARCH_SHARED_FALLBACK 0
++#define RDI_CAPACITY SEARCH_SLOTS
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,8 +1,13 @@
++#if SEARCH_PC_REL
++#define SEARCH_SITE(b, pc) ((ReadICSite *)((pc) + get_u32(pc)))
++#else
++#define SEARCH_SITE(b, pc) (&(b)->read_ic_sites[get_u32(pc)])
++#endif
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+ #define GET_READ_IC(name, keep)                                          \
+     {                                                                   \
+-        uint32_t delta = get_u32(pc), offset;                            \
+-        ReadICSite *site = (ReadICSite *)(pc + delta);                   \
++        uint32_t offset;                                                \
++        ReadICSite *site = SEARCH_SITE(b, pc);                            \
+         JSValue obj = sp[-1], val;                                      \
+         JSAtom atom;                                                    \
+         JSObject *p, *origin;                                           \
+@@ -14,7 +19,7 @@
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+-                offset = rdi_probe(site, p->shape RDI_DARG(d));           \
++                offset = rdi_probe(b, site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+@@ -24,7 +29,7 @@
+             }                                                           \
+         }                                                               \
+         RDI_COUNT(fallback);                                            \
+-        atom = site->atom;                                              \
++        atom = rdi_atom(b, site);                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+             for (;;) {                                                  \
+@@ -40,7 +45,7 @@
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+                         RDI_REASON(own_miss);                           \
+-                        rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
++                        rdi_update(ctx, b, site, p->shape, pr - p->prop RDI_DARG(d)); \
+                     }                                                   \
+                     break;                                              \
+                 }                                                       \
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -1,46 +1,63 @@
+-/* Called only for fully built b, after all compiler passes / atom fixups. */
++/* Final-bytecode preparation. On allocation failure no opcode is rewritten. */
+ static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b)
+ {
+     uint32_t count = 0, index = 0;
+-    size_t code_size, total;
+-    uint8_t *linked;
+     int pos, op;
+     assert(!b->read_ic_ready && !b->read_ic_sites);
+     b->read_ic_ready = 1;
+-#ifdef READ_IC_DIAGNOSTIC
+-    rdi_diag_header_init();
+-#endif
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         op = b->byte_code_buf[pos];
+         if (op == OP_get_field || op == OP_get_field2) count++;
+     }
+     if (!count) return 0;
+-    code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+-    if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+-        JS_ThrowOutOfMemory(ctx);
+-        return -1;
++    size_t code_size = SEARCH_PC_REL ? (((size_t)b->byte_code_len + 7) & ~(size_t)7) : 0;
++    size_t atom_size = SEARCH_LAYOUT == 2 ? (size_t)count * sizeof(JSAtom) : 0;
++    if (count > (SIZE_MAX - code_size - atom_size - 7 - SEARCH_TABLE_ENTRIES * sizeof(SearchEntry)) / sizeof(ReadICSite)) {
++        JS_ThrowOutOfMemory(ctx); return -1;
+     }
+-    total = code_size + count * sizeof(ReadICSite);
+-    if (total > UINT32_MAX) {
+-        JS_ThrowOutOfMemory(ctx);
+-        return -1;
+-    }
+-    linked = js_mallocz(ctx, total);
++    size_t table_start = (code_size + count * sizeof(ReadICSite) + atom_size + 7) & ~(size_t)7;
++    size_t total = table_start + SEARCH_TABLE_ENTRIES * sizeof(SearchEntry);
++    if (total > UINT32_MAX) { JS_ThrowOutOfMemory(ctx); return -1; }
++    uint8_t *linked = js_mallocz(ctx, total);
+     if (!linked) return -1;
++#if SEARCH_PC_REL
+     memcpy(linked, b->byte_code_buf, b->byte_code_len);
+     b->byte_code_buf = linked;
++#endif
+     b->read_ic_sites = (ReadICSite *)(linked + code_size);
+     b->read_ic_count = count;
+-#ifdef READ_IC_DIAGNOSTIC
+-    rdi_diag_prepare(ctx, b);
++#if SEARCH_LAYOUT == 2
++    b->read_ic_atoms = (JSAtom *)(b->read_ic_sites + count);
++#endif
++#if SEARCH_TABLE_ENTRIES
++    b->read_ic_shared = (SearchEntry *)(linked + table_start);
++    b->read_ic_shared_cursor = 0;
+ #endif
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         uint8_t *pc = b->byte_code_buf + pos;
+         op = *pc;
+         if (op == OP_get_field || op == OP_get_field2) {
+-            b->read_ic_sites[index].atom = get_u32(pc + 1);
+-            *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
+-            put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
++            JSAtom atom = get_u32(pc + 1);
++#if SEARCH_LAYOUT == 2
++            b->read_ic_atoms[index] = atom;
++#else
++            b->read_ic_sites[index].atom = atom;
++#endif
++#if SEARCH_HINT_SCOPE == 3
++            b->read_ic_sites[index].hint_owner = &b->read_ic_sites[index];
++            for (uint32_t j = 0; j < index; j++)
++                if (rdi_atom(b, &b->read_ic_sites[j]) == atom) {
++                    b->read_ic_sites[index].hint_owner = b->read_ic_sites[j].hint_owner;
++                    break;
++                }
++#endif
++            *pc = op == OP_get_field ? OP_get_field_rdi : OP_get_field2_rdi;
++#if SEARCH_PC_REL
++            put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index] - (pc + 1));
++#else
++            put_u32(pc + 1, index);
++#endif
++            index++;
+         }
+     }
+     assert(index == count);
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -1,90 +1,200 @@
+-/* Included after upstream find_own_property, with shape helpers available. */
+-#ifdef READ_IC_DIAGNOSTIC
+-#include "read_ic_diag.h"
+-#endif
+-static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+-{
+-#if RDI_CAPACITY == 1
+-    RDI_COUNT(comparisons);
+-    if (s->shape == shape)
+-        return s->prop_offset;
+-#else
+-    unsigned i, first = s->recent;
+-    RDI_COUNT(comparisons);
+-    if (s->shape[first] == shape)
+-        return s->prop_offset[first];
+-    for (unsigned k = 1; k < 4; k++) {
+-        i = (first + k) & 3;
+-        RDI_COUNT(comparisons);
+-        if (s->shape[i] == shape) {
+-            s->recent = i;
+-            return s->prop_offset[i];
+-        }
+-    }
+-#endif
++/* Included after find_own_property. No counters in performance builds. */
++#if SEARCH_LAYOUT == 1 || SEARCH_LAYOUT == 3
++#define RDI_SHAPE(s, i) ((s)->shapes[i])
++#define RDI_OFFSET(s, i) ((s)->offsets[i])
++#else
++#define RDI_SHAPE(s, i) ((s)->entries[i].shape)
++#define RDI_OFFSET(s, i) ((s)->entries[i].offset)
++#endif
++static force_inline JSAtom rdi_atom(JSFunctionBytecode *b, ReadICSite *s)
++{
++#if SEARCH_LAYOUT == 2
++    return b->read_ic_atoms[s - b->read_ic_sites];
++#else
++    return s->atom;
++#endif
++}
++static force_inline void rdi_policy_result(ReadICSite *s, int hit)
++{
++#if SEARCH_POLICY == 1 || SEARCH_POLICY == 4
++    if (hit) { if (s->streak) s->streak = 0; }
++    else if (++s->streak >= SEARCH_WARM * 8) {
++        s->cooldown = SEARCH_POLICY == 1 ? UINT32_MAX : SEARCH_WARM * 32;
++        s->streak = 0;
++        s->skip_update = 1;
++    }
++#elif SEARCH_POLICY == 2
++    s->queries++;
++    s->misses += !hit;
++    if (s->queries == 64) {
++        if (s->misses >= 48) { s->cooldown = 256; s->skip_update = 1; }
++        s->queries = s->misses = 0;
++    }
++#elif SEARCH_POLICY == 3
++    if (hit) { if (s->confidence < 31) s->confidence++; }
++    else if (s->confidence > 2) s->confidence -= 2;
++    else { s->confidence = 8; s->cooldown = SEARCH_WARM * 8; s->skip_update = 1; }
++#endif
++}
++static force_inline void rdi_touch(ReadICSite *s, unsigned i)
++{
++#if SEARCH_MRU
++    s->recent = i;
++#endif
++#if SEARCH_EVICTION == 1
++    if (++s->tick == 0) {
++        for (unsigned k = 0; k < SEARCH_SLOTS; k++) s->age[k] = 0;
++        s->tick = 1;
++    }
++    s->age[i] = s->tick;
++#elif SEARCH_EVICTION == 2
++    s->referenced[i] = 1;
++#endif
++}
++#if SEARCH_TABLE_ENTRIES
++static force_inline unsigned rdi_table_base(JSShape *shape, JSAtom atom)
++{
++    return ((((uintptr_t)shape >> 4) ^ atom) % (SEARCH_TABLE_ENTRIES / SEARCH_TABLE_WAYS)) * SEARCH_TABLE_WAYS;
++}
++#endif
++static force_inline uint32_t rdi_probe(JSFunctionBytecode *b, ReadICSite *s, JSShape *shape)
++{
++#if SEARCH_POLICY
++    s->skip_update = 0;
++    if (s->seen < SEARCH_WARM) {
++        if (++s->seen < SEARCH_WARM) { s->skip_update = 1; return UINT32_MAX; }
++        s->confidence = 8;
++    }
++    if (s->cooldown) {
++        if (s->cooldown != UINT32_MAX) s->cooldown--;
++        s->skip_update = 1;
++        return UINT32_MAX;
++    }
++#endif
++    for (unsigned k = 0; k < SEARCH_SLOTS; k++) {
++#if SEARCH_MRU
++        unsigned i = (s->recent + k) % SEARCH_SLOTS;
++#else
++        unsigned i = k;
++#endif
++        if (RDI_SHAPE(s, i) == shape) {
++            rdi_touch(s, i);
++            rdi_policy_result(s, 1);
++            return RDI_OFFSET(s, i);
++        }
++    }
++#if SEARCH_TABLE_ENTRIES
++    JSAtom atom = rdi_atom(b, s);
++    unsigned base = rdi_table_base(shape, atom);
++    for (unsigned i = base; i < base + SEARCH_TABLE_WAYS; i++) {
++        SearchEntry *entry = &b->read_ic_shared[i];
++        if (entry->shape == shape && entry->atom == atom && entry->ready)
++            return entry->offset;
++    }
++#endif
++    rdi_policy_result(s, 0);
+     return UINT32_MAX;
+ }
+-static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
+-                                    JSShape *shape, uint32_t offset RDI_DPARAM)
+-{
+-    RDI_COUNT(updates);
+-#if RDI_CAPACITY == 1
+-    if (s->shape == shape) {
+-        s->prop_offset = offset;
+-        return;
+-    }
+-    if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++static force_inline void rdi_update(JSContext *ctx, JSFunctionBytecode *b,
++                                    ReadICSite *s, JSShape *shape, uint32_t offset)
++{
++#if SEARCH_POLICY
++    if (s->skip_update) return;
++#endif
++#if SEARCH_LAYOUT == 3
++    if (offset >= UINT16_MAX) return;
++#endif
++    unsigned i, empty = SEARCH_SLOTS;
++    for (i = 0; i < SEARCH_SLOTS; i++) {
++        if (RDI_SHAPE(s, i) == shape) {
++            RDI_OFFSET(s, i) = offset;
++            rdi_touch(s, i);
++            goto shared_update;
++        }
++        if (!RDI_SHAPE(s, i) && empty == SEARCH_SLOTS) empty = i;
++    }
++    if (empty < SEARCH_SLOTS) i = empty;
++    else {
++#if SEARCH_SLOTS == 1
++        i = 0;
++#elif SEARCH_EVICTION == 1
++        i = 0;
++        for (unsigned k = 1; k < SEARCH_SLOTS; k++) if (s->age[k] < s->age[i]) i = k;
++#elif SEARCH_EVICTION == 2
++        i = s->victim;
++        while (s->referenced[i]) {
++            s->referenced[i] = 0;
++            i = (i + 1) % SEARCH_SLOTS;
++        }
++        s->victim = (i + 1) % SEARCH_SLOTS;
++#else
++        i = s->victim;
++        s->victim = (i + 1) % SEARCH_SLOTS;
++#endif
++    }
++    JSShape *old = RDI_SHAPE(s, i);
+     js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape);
+-    s->shape = shape;
+-    s->prop_offset = offset;
+-#else
+-    unsigned i, empty = 4;
+-    for (i = 0; i < 4; i++) {
+-        RDI_COUNT(update_comparisons);
+-        if (s->shape[i] == shape) {
+-            s->prop_offset[i] = offset;
+-            s->recent = i;
++    RDI_SHAPE(s, i) = shape;
++    RDI_OFFSET(s, i) = offset;
++    rdi_touch(s, i);
++    /* Publish before releasing old shape: release may invoke finalizers. */
++    js_free_shape_null(ctx->rt, old);
++shared_update:
++#if SEARCH_TABLE_ENTRIES
++    JSAtom atom = rdi_atom(b, s);
++    unsigned base = rdi_table_base(shape, atom), slot = SEARCH_TABLE_ENTRIES;
++    for (unsigned k = base; k < base + SEARCH_TABLE_WAYS; k++) {
++        SearchEntry *entry = &b->read_ic_shared[k];
++        if (entry->shape == shape && entry->atom == atom) {
++            entry->offset = offset;
++            entry->ready = 1;
+             return;
+         }
+-        if (!s->shape[i] && empty == 4)
+-            empty = i;
+-    }
+-    if (empty < 4) {
+-        i = empty;
+-        RDI_OCCUPY();
+-    } else {
+-        i = s->victim;
+-        s->victim = (i + 1) & 3;
+-        RDI_REPLACE();
+-    }
++        if (!entry->shape && slot == SEARCH_TABLE_ENTRIES) slot = k;
++    }
++    if (slot == SEARCH_TABLE_ENTRIES) slot = base + b->read_ic_shared_cursor++ % SEARCH_TABLE_WAYS;
++    SearchEntry *entry = &b->read_ic_shared[slot];
++    old = entry->shape;
+     js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape[i]);
+-    s->shape[i] = shape;
+-    s->prop_offset[i] = offset;
+-    s->recent = i;
++    entry->shape = shape; entry->atom = atom; entry->offset = offset;
++    entry->ready = SEARCH_TABLE_ADMISSION == 1;
++    js_free_shape_null(ctx->rt, old);
++#else
++    (void)b;
++#endif
++}
++static void rdi_mark(JSRuntime *rt, JSFunctionBytecode *b, JS_MarkFunc *mark_func)
++{
++    for (uint32_t i = 0; i < b->read_ic_count; i++)
++        for (unsigned k = 0; k < SEARCH_SLOTS; k++)
++            if (RDI_SHAPE(&b->read_ic_sites[i], k)) mark_func(rt, &RDI_SHAPE(&b->read_ic_sites[i], k)->header);
++#if SEARCH_TABLE_ENTRIES
++    if (b->read_ic_shared)
++        for (unsigned k = 0; k < SEARCH_TABLE_ENTRIES; k++)
++            if (b->read_ic_shared[k].shape) mark_func(rt, &b->read_ic_shared[k].shape->header);
+ #endif
+ }
+ static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
+ {
+-    uint32_t i;
+-    for (i = 0; i < b->read_ic_count; i++) {
++    for (uint32_t i = 0; i < b->read_ic_count; i++) {
+         ReadICSite *s = &b->read_ic_sites[i];
+-        JS_FreeAtomRT(rt, s->atom);
+-#if RDI_CAPACITY == 1
+-        js_free_shape_null(rt, s->shape);
+-#else
+-        for (unsigned j = 0; j < 4; j++)
+-            js_free_shape_null(rt, s->shape[j]);
+-#endif
+-    }
+-#ifdef READ_IC_DIAGNOSTIC
+-    rdi_diag_release(b);
+-#endif
+-    if (b->read_ic_sites) {
+-        js_free_rt(rt, b->byte_code_buf);
+-        b->byte_code_buf = NULL;
+-    }
+-    b->read_ic_sites = NULL;
+-    b->read_ic_count = 0;
+-}
++        JS_FreeAtomRT(rt, rdi_atom(b, s));
++        for (unsigned k = 0; k < SEARCH_SLOTS; k++) {
++            JSShape *old = RDI_SHAPE(s, k); RDI_SHAPE(s, k) = NULL;
++            js_free_shape_null(rt, old);
++        }
++    }
++#if SEARCH_TABLE_ENTRIES
++    if (b->read_ic_shared)
++        for (unsigned k = 0; k < SEARCH_TABLE_ENTRIES; k++) {
++            JSShape *old = b->read_ic_shared[k].shape; b->read_ic_shared[k].shape = NULL;
++            js_free_shape_null(rt, old);
++        }
++#endif
++#if SEARCH_PC_REL
++    if (b->read_ic_sites) { js_free_rt(rt, b->byte_code_buf); b->byte_code_buf = NULL; }
++#else
++    js_free_rt(rt, b->read_ic_sites);
++#endif
++    b->read_ic_sites = NULL; b->read_ic_count = 0;
++}
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -1,32 +1,52 @@
+-/* Experimental per-final-read-site IC. No QuickJS-NG runtime code imported. */
++/* Public experimental templates derived from the frozen MIT-licensed M. */
+ #include "read_ic_config.h"
+-#if RDI_CAPACITY == 1
++typedef struct SearchHints {
++    uint32_t offsets[SEARCH_HINTS]; /* encoded offset+1; zero is empty */
++    uint32_t pending;
++    uint8_t victim;
++} SearchHints;
++typedef struct SearchEntry {
++    JSShape *shape;
++    uint32_t offset;
++    JSAtom atom;
++    uint8_t ready;
++} SearchEntry;
+ typedef struct ReadICSite {
+-    JSShape *shape;
+-    uint32_t prop_offset;
++#if SEARCH_LAYOUT == 1
++    JSShape *shapes[SEARCH_SLOTS];
++    uint32_t offsets[SEARCH_SLOTS];
++#elif SEARCH_LAYOUT == 3
++    JSShape *shapes[SEARCH_SLOTS];
++    uint16_t offsets[SEARCH_SLOTS];
++#else
++    struct { JSShape *shape; uint32_t offset; } entries[SEARCH_SLOTS];
++#endif
++#if SEARCH_LAYOUT != 2
+     JSAtom atom;
++#endif
++#if SEARCH_MRU
++    uint8_t recent;
++#endif
++#if SEARCH_SLOTS > 1
++    uint8_t victim;
++#endif
++#if SEARCH_EVICTION == 1
++    uint32_t age[SEARCH_SLOTS], tick;
++#elif SEARCH_EVICTION == 2
++    uint8_t referenced[SEARCH_SLOTS];
++#endif
++#if SEARCH_POLICY
++    uint32_t seen, queries, misses, streak, cooldown;
++    uint8_t confidence, skip_update;
++#endif
++#if SEARCH_HINT_SCOPE == 1 || SEARCH_HINT_SCOPE == 3
++    SearchHints hints;
++#endif
++#if SEARCH_HINT_SCOPE == 3
++    struct ReadICSite *hint_owner;
++#endif
+ } ReadICSite;
+-#elif RDI_CAPACITY == 4
+-typedef struct ReadICSite {
+-    JSShape *shape[4];
+-    uint32_t prop_offset[4];
+-    JSAtom atom;
+-    uint8_t recent, victim;
+-} ReadICSite;
+-#else
+-#error unsupported read IC capacity
+-#endif
+ typedef struct RDIFunctionDiag RDIFunctionDiag;
+-#ifdef READ_IC_DIAGNOSTIC
+-#define RDI_DPARAM , RDICounters *d
+-#define RDI_DARG(x) , (x)
+-#define RDI_COUNT(field) (++d->field)
+-#define RDI_REASON(field) (++d->field)
+-#define RDI_DLOCAL(index) RDICounters *d = &b->read_ic_diag->sites[index]
+-#define RDI_QUERY() rdi_diag_query(d)
+-#define RDI_OCCUPY() rdi_diag_occupy(d)
+-#define RDI_REPLACE() (++rdi_diag_shape_unref, ++rdi_diag_shape_ref, ++d->replacements)
+-#else
+ #define RDI_DPARAM
+ #define RDI_DARG(x)
+ #define RDI_COUNT(field) ((void)0)
+@@ -35,4 +55,3 @@
+ #define RDI_QUERY() ((void)0)
+ #define RDI_OCCUPY() ((void)0)
+ #define RDI_REPLACE() ((void)0)
+-#endif
