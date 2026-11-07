@@ -1,0 +1,70 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    {
+      "name": "semantic/checks.js",
+      "token": "semantic/checks.js"
+    },
+    {
+      "name": "semantic/semantic.js",
+      "token": "semantic/semantic.js"
+    },
+    {
+      "name": "semantic/targeted.js",
+      "token": "semantic/targeted.js"
+    },
+    {
+      "name": "semantic/combined.js",
+      "token": "semantic/combined.js"
+    },
+    {
+      "name": "safety_run/read_roundtrip",
+      "token": "safety_run/read_roundtrip"
+    },
+    {
+      "name": "safety_run/roundtrip_slots",
+      "token": "safety_run/roundtrip_slots"
+    },
+    {
+      "name": "safety_run/gc_cycles",
+      "token": "safety_run/gc_cycles"
+    },
+    {
+      "name": "safety_run/first_entry_roundtrip",
+      "token": "safety_run/first_entry_roundtrip"
+    },
+    {
+      "name": "safety_run/native_finalizer",
+      "token": "safety_run/native_finalizer"
+    },
+    {
+      "name": "embed_run/combination",
+      "token": "embed_run/combination"
+    },
+    {
+      "name": "ASan/UBSan combined.js",
+      "token": "sanitizer_followup/combined.js"
+    },
+    {
+      "name": "ASan/UBSan targeted.js",
+      "token": "sanitizer_followup/targeted.js"
+    },
+    {
+      "name": "ASan/UBSan semantic.js",
+      "token": "sanitizer_followup/semantic.js"
+    }
+  ],
+  "serialization_and_qjsc": true,
+  "sanitizers": true,
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "leak_validation": "UNAVAILABLE_IN_CURRENT_EXECUTION_ENVIRONMENT",
+  "mechanism": {
+    "status": "PASS",
+    "stdout": "COMBINATION_MECHANISM_PASS site_bytes=24 fused_hits=62 proto_hits=31 second_entry_preserved=1\n",
+    "token": "mechanism_run/both_paths",
+    "performance_sample": false
+  },
+  "full_test262": false
+}

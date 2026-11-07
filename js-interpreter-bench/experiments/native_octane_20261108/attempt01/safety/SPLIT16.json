@@ -1,0 +1,64 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    {
+      "name": "checks.js",
+      "token": "semantic/SPLIT16/checks.js"
+    },
+    {
+      "name": "semantic.js",
+      "token": "semantic/SPLIT16/semantic.js"
+    },
+    {
+      "name": "targeted.js",
+      "token": "semantic/SPLIT16/targeted.js"
+    },
+    {
+      "name": "combined.js",
+      "token": "semantic/SPLIT16/combined.js"
+    },
+    {
+      "name": "extra.js",
+      "token": "semantic/SPLIT16/extra.js"
+    },
+    {
+      "name": "read_roundtrip.c",
+      "token": "safety_run/SPLIT16/read_roundtrip"
+    },
+    {
+      "name": "roundtrip_slots.c",
+      "token": "safety_run/SPLIT16/roundtrip_slots"
+    },
+    {
+      "name": "gc_cycles.c",
+      "token": "safety_run/SPLIT16/gc_cycles"
+    },
+    {
+      "name": "first_entry_roundtrip.c",
+      "token": "safety_run/SPLIT16/first_entry_roundtrip"
+    },
+    {
+      "name": "native_finalizer.c",
+      "token": "safety_run/SPLIT16/native_finalizer"
+    },
+    {
+      "name": "ASan/UBSan combined.js",
+      "token": "sanitizer/SPLIT16/combined.js"
+    },
+    {
+      "name": "ASan/UBSan extra.js",
+      "token": "sanitizer/SPLIT16/extra.js"
+    },
+    {
+      "name": "ASan/UBSan semantic.js",
+      "token": "sanitizer/SPLIT16/semantic.js"
+    }
+  ],
+  "mechanism": "LAYOUT fixture=0 own=1 keep=0 bytes=24 parent_bytes=24 function_header=144\nLAYOUT fixture=1 own=0 keep=1 bytes=32 parent_bytes=24 function_header=144\nLAYOUT fixture=2 own=4 keep=2 bytes=120 parent_bytes=144 function_header=144\nLAYOUT fixture=3 own=4 keep=0 bytes=72 parent_bytes=96 function_header=144\nLAYOUT fixture=4 own=2 keep=0 bytes=40 parent_bytes=48 function_header=144\nMECHANISM_PASS fused_hits=342 proto_hits=93 function_header=144\n",
+  "preparation_equivalence": false,
+  "split_record_sizes_verified": true,
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "full_test262": false
+}
