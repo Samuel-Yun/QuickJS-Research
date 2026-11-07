@@ -1,0 +1,207 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -365,6 +365,9 @@
+ DEF(get_field_rdi, 5, 1, 1, u32)
+ DEF(get_field2_rdi, 5, 1, 2, u32)
+ 
++DEF(get_field_aq, 5, 1, 1, u32)
++DEF(get_field2_aq, 5, 1, 2, u32)
++
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -718,6 +718,8 @@
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
++    uint8_t aq_pending;
++    uint32_t aq_entries;
+ #ifdef READ_IC_DIAGNOSTIC
+     RDIFunctionDiag *read_ic_diag;
+ #endif
+@@ -17886,6 +17888,7 @@
+     for(i = 0; i < b->var_ref_count; i++)
+         sf->var_refs[i] = NULL;
+     sp = stack_buf;
++    aq_entry(caller_ctx,b);
+     pc = b->byte_code_buf;
+     sf->prev_frame = rt->current_stack_frame;
+     rt->current_stack_frame = sf;
+@@ -37760,11 +37763,11 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_get_field_aq || op == OP_get_field2_aq) {
+             uint32_t delta = get_u32(bc_buf + pos + 1);
+             ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
+             assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
+-            op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
++            op = (op == OP_get_field_rdi || op == OP_get_field_aq) ? OP_get_field : OP_get_field2;
+             bc_buf[pos] = op;
+             put_u32(bc_buf + pos + 1, site->atom);
+         }
+@@ -38668,7 +38671,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_get_field_aq || op == OP_get_field2_aq) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+             return -1;
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,5 +1,5 @@
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+-#define GET_READ_IC(name, keep)                                          \
++#define GET_READ_IC(name, keep, observe)                                          \
+     {                                                                   \
+         uint32_t delta = get_u32(pc), offset;                            \
+         ReadICSite *site = (ReadICSite *)(pc + delta);                   \
+@@ -10,19 +10,22 @@
+         JSShapeProperty *prs;                                           \
+         RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+-        RDI_QUERY();                                                    \
++        RDI_QUERY(); \
++        if((observe) && site->observed<8) site->observed++;                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+-                offset = rdi_probe(site, p->shape RDI_DARG(d));           \
++                offset = (observe) ? UINT32_MAX : rdi_probe(site,p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+-                    RDI_COUNT(hits);                                   \
++                    RDI_COUNT(hits); if(site->misses) site->misses=0;                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
++        if(!(observe) && site->state==AQ_MONO && ++site->misses>=4) \
++            aq_exit(ctx,b,site,(uint8_t *)pc-5); \
+         RDI_COUNT(fallback);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+@@ -40,7 +43,11 @@
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+                         RDI_REASON(own_miss);                           \
+-                        rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
++                        if(site->state==AQ_MONO || (site->state==AQ_OBSERVE && site->observed==8)) { \
++                            rdi_update(ctx,site,p->shape,pr-p->prop RDI_DARG(d)); \
++                            site->state=AQ_MONO; \
++                            *((uint8_t *)pc-5)=(keep)?OP_get_field2_rdi:OP_get_field_rdi; \
++                        } \
+                     }                                                   \
+                     break;                                              \
+                 }                                                       \
+@@ -59,14 +66,22 @@
+             val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0);     \
+             if (unlikely(JS_IsException(val))) goto exception;          \
+         }                                                               \
+-    name ## _done:                                                      \
++    name ## _done: \
++        if(site->state==AQ_OBSERVE && site->observed==8) \
++            aq_exit(ctx,b,site,(uint8_t *)pc-5);                                                      \
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
+     }
+         CASE(OP_get_field_rdi):
+-            GET_READ_IC(get_field_rdi, 0);
++            GET_READ_IC(get_field_rdi, 0, 0);
+             BREAK;
+         CASE(OP_get_field2_rdi):
+-            GET_READ_IC(get_field2_rdi, 1);
++            GET_READ_IC(get_field2_rdi, 1, 0);
++            BREAK;
++        CASE(OP_get_field_aq):
++            GET_READ_IC(get_field_aq, 0, 1);
++            BREAK;
++        CASE(OP_get_field2_aq):
++            GET_READ_IC(get_field2_aq, 1, 1);
+             BREAK;
+ #undef GET_READ_IC
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -38,8 +38,9 @@
+         uint8_t *pc = b->byte_code_buf + pos;
+         op = *pc;
+         if (op == OP_get_field || op == OP_get_field2) {
++            b->read_ic_sites[index].pc_offset = pos;
+             b->read_ic_sites[index].atom = get_u32(pc + 1);
+-            *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
++            *pc = (op == OP_get_field) ? OP_get_field_aq : OP_get_field2_aq;
+             put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
+         }
+     }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -34,10 +34,10 @@
+         return;
+     }
+     if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++    JSShape *old=s->shape;
+     js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape);
+-    s->shape = shape;
+-    s->prop_offset = offset;
++    s->shape=shape;s->prop_offset=offset;
++    js_free_shape_null(ctx->rt,old);
+ #else
+     unsigned i, empty = 4;
+     for (i = 0; i < 4; i++) {
+@@ -65,6 +65,38 @@
+     s->recent = i;
+ #endif
+ }
++
++enum { AQ_OBSERVE, AQ_MONO, AQ_EXIT };
++static void aq_exit(JSContext *ctx, JSFunctionBytecode *b, ReadICSite *s, uint8_t *opcode)
++{
++    JSShape *old=s->shape;
++    JS_DupAtom(ctx,s->atom);
++    *opcode=(*opcode==OP_get_field_rdi || *opcode==OP_get_field_aq)?OP_get_field:OP_get_field2;
++    put_u32(opcode+1,s->atom);
++    s->state=AQ_EXIT;s->shape=NULL;s->prop_offset=0;s->exit_entry=b->aq_entries;
++    if(!s->retried) b->aq_pending=1;
++    js_free_shape_null(ctx->rt,old);
++}
++static force_inline void aq_entry(JSContext *ctx, JSFunctionBytecode *b)
++{
++    if(unlikely(b->aq_pending)) {
++        b->aq_entries++; /* cooldown clock advances at every pending function entry */
++        unsigned pending=0;
++        for(uint32_t i=0;i<b->read_ic_count;i++) {
++            ReadICSite *s=&b->read_ic_sites[i];
++            if(s->state!=AQ_EXIT || s->retried) continue;
++            if((uint32_t)(b->aq_entries-s->exit_entry)<32) { pending=1;continue; }
++            uint8_t *op=b->byte_code_buf+s->pc_offset;
++            assert(*op==OP_get_field || *op==OP_get_field2);
++            *op=(*op==OP_get_field)?OP_get_field_aq:OP_get_field2_aq;
++            put_u32(op+1,(uint8_t *)s-(op+1));
++            s->state=AQ_OBSERVE;s->observed=s->misses=0;s->retried=1;
++            JS_FreeAtom(ctx,s->atom); /* ordinary operand's extra ownership */
++        }
++        b->aq_pending=pending;
++    }
++}
++
+ static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
+ {
+     uint32_t i;
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -5,6 +5,8 @@
+     JSShape *shape;
+     uint32_t prop_offset;
+     JSAtom atom;
++    uint32_t pc_offset, exit_entry;
++    uint8_t observed, misses, state, retried;
+ } ReadICSite;
+ #elif RDI_CAPACITY == 4
+ typedef struct ReadICSite {

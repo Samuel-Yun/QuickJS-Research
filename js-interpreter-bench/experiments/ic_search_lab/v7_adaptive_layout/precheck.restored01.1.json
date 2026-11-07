@@ -1,0 +1,10 @@
+{
+  "status": "FAIL_RAW_MONOTONIC_DRIFT",
+  "boot_id": "bf4a2c0e-4821-410b-a26d-acddb0e5a61c",
+  "raw_monotonic_drift_seconds": 0.77690846,
+  "clock_observations": null,
+  "clock_observations_note": "Existing recovery code asserted before persisting the observations; not reconstructed.",
+  "workloads_started": 0,
+  "evidence": "run.py recover exited with AssertionError ('RAW_MONOTONIC_DRIFT', 0.77690846)",
+  "next_check": "one final pinned-CPU host-enclosed probe with actual zlib loads; no system settings changed"
+}

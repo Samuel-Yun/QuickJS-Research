@@ -1,0 +1,71 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -5341,15 +5341,26 @@
+         js_free_shape(rt, sh);
+ }
+ 
++static uint64_t io_obj_allocs,io_arrays,io_obj_bytes,io_array_bytes,io_tail_allocs,io_spills,io_waste_slots;
++static uint64_t io_hits,io_inline_hits;
++static void __attribute__((destructor)) v7_io_stats_report(void) {
++ fprintf(stderr,"V7_IO_COVERAGE %llu %llu\n",(unsigned long long)io_hits,(unsigned long long)io_inline_hits);
++ fprintf(stderr,"V7_IO_STATS {\"object_requests\":%llu,\"array_requests\":%llu,\"object_requested_bytes\":%llu,\"array_requested_bytes\":%llu,\"tail_allocations\":%llu,\"spills\":%llu,\"unused_tail_slots_at_free\":%llu}\n",
++ (unsigned long long)io_obj_allocs,(unsigned long long)io_arrays,(unsigned long long)io_obj_bytes,(unsigned long long)io_array_bytes,
++ (unsigned long long)io_tail_allocs,(unsigned long long)io_spills,(unsigned long long)io_waste_slots);
++}
+ /* v7: inline storage is an allocation property, not a shape property. */
+ #define V7_INLINE_CAP 4
+ static JSProperty *v7_resize_prop(JSContext *ctx, JSObject *p, uint32_t count)
+ {
+     JSProperty *next;
+-    if (!p->v7_prop_inline)
++    if (!p->v7_prop_inline) {
++        if(p->class_id==JS_CLASS_OBJECT) {io_arrays++;io_array_bytes+=sizeof(*p->prop)*count;}
+         return js_realloc(ctx, p->prop, sizeof(*p->prop) * count);
++    }
+     if (count <= V7_INLINE_CAP)
+         return p->prop;
++    io_spills++;io_arrays++;io_array_bytes+=sizeof(*next)*count;
+     next = js_malloc(ctx, sizeof(*next) * count);
+     if (!next)
+         return NULL;
+@@ -5649,6 +5660,10 @@
+     size_t tail = (class_id == JS_CLASS_OBJECT && sh->prop_size <= V7_INLINE_CAP)
+         ? V7_INLINE_CAP * sizeof(JSProperty) : 0;
+     js_trigger_gc(ctx->rt, sizeof(JSObject) + tail);
++    if(class_id==JS_CLASS_OBJECT) {
++        io_obj_allocs++;io_obj_bytes+=sizeof(JSObject)+tail;
++        if(tail) io_tail_allocs++;
++    }
+     p = js_malloc(ctx, sizeof(JSObject) + tail);
+     if (unlikely(!p))
+         goto fail;
+@@ -5666,6 +5681,7 @@
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
++    if(!tail && class_id==JS_CLASS_OBJECT) {io_arrays++;io_array_bytes+=sizeof(JSProperty)*sh->prop_size;}
+     p->prop = tail ? (JSProperty *)(p + 1) : js_malloc(ctx, sizeof(JSProperty) * sh->prop_size);
+     if (unlikely(!p->prop)) {
+         js_free(ctx, p);
+@@ -6379,6 +6395,10 @@
+     JSShape *sh;
+     JSShapeProperty *pr;
+ 
++    if(p->v7_has_inline_tail) {
++        uint32_t used=p->v7_prop_inline?p->shape->prop_count:0;
++        if(used<V7_INLINE_CAP) io_waste_slots+=V7_INLINE_CAP-used;
++    }
+     p->free_mark = 1; /* used to tell the object is invalid when
+                          freeing cycles */
+     /* free all the fields */
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -16,7 +16,7 @@
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+-                    RDI_COUNT(hits);                                   \
++                    RDI_COUNT(hits);io_hits++;io_inline_hits+=p->v7_prop_inline;                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \

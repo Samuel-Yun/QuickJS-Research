@@ -1,0 +1,91 @@
+{
+  "selected": [
+    "IO2_LAYOUT",
+    "AQ1",
+    "AP1"
+  ],
+  "evaluations": [
+    {
+      "label": "IO2_LAYOUT",
+      "complete": true,
+      "case_signals": [
+        "octane/EarleyBoyer.Earley",
+        "octane/PdfJS.PdfJS",
+        "octane/RayTrace.RayTrace",
+        "sunspider/string-validate-input"
+      ],
+      "suite_signal": false,
+      "qualifies": true,
+      "selection_rank_expanded_octane_over_s001": 1.014230612428382
+    },
+    {
+      "label": "IO2_DIRECT",
+      "complete": true,
+      "case_signals": [
+        "octane/Mandreel.Mandreel",
+        "sunspider/math-cordic"
+      ],
+      "suite_signal": false,
+      "qualifies": true,
+      "selection_rank_expanded_octane_over_s001": 1.0410782720432772
+    },
+    {
+      "label": "IO4_LAYOUT",
+      "complete": true,
+      "case_signals": [
+        "sunspider/bitops-3bit-bits-in-byte",
+        "sunspider/crypto-sha1"
+      ],
+      "suite_signal": false,
+      "qualifies": true,
+      "selection_rank_expanded_octane_over_s001": 1.032170663554201
+    },
+    {
+      "label": "IO4_DIRECT",
+      "complete": true,
+      "case_signals": [],
+      "suite_signal": false,
+      "qualifies": false,
+      "selection_rank_expanded_octane_over_s001": 1.0438298803862982
+    },
+    {
+      "label": "AQ1",
+      "complete": true,
+      "case_signals": [
+        "octane/RayTrace.RayTrace",
+        "octane/Splay.Splay",
+        "sunspider/crypto-sha1",
+        "sunspider/string-fasta"
+      ],
+      "suite_signal": false,
+      "qualifies": true,
+      "selection_rank_expanded_octane_over_s001": 1.0106711533855586
+    },
+    {
+      "label": "AP1",
+      "complete": true,
+      "case_signals": [
+        "octane/Typescript.Typescript",
+        "sunspider/bitops-bitwise-and",
+        "sunspider/date-format-tofte",
+        "sunspider/string-base64"
+      ],
+      "suite_signal": false,
+      "qualifies": true,
+      "selection_rank_expanded_octane_over_s001": 1.0261805590169877
+    },
+    {
+      "label": "ST1",
+      "complete": true,
+      "case_signals": [],
+      "suite_signal": false,
+      "qualifies": false,
+      "selection_rank_expanded_octane_over_s001": 1.0256399903605549
+    }
+  ],
+  "rounds": 3,
+  "maximum": 4,
+  "rule": "any case/parent <=.95 or suite GM/parent <=.98; one per direction; IO chooses lowest expanded Octane/s001 point",
+  "timing_quality": "EXPLORATORY_CLOCK_LIMITED",
+  "not_statistical_significance": true
+}

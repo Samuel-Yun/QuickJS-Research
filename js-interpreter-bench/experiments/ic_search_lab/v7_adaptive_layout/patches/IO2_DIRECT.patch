@@ -1,0 +1,11 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -17,7 +17,7 @@
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+-                    val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    val = JS_DupValue(ctx, (p->v7_prop_inline ? (JSProperty *)(p + 1) : p->prop)[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \

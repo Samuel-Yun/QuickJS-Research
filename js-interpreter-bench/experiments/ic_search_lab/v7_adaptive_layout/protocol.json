@@ -1,0 +1,17 @@
+{
+  "seed": 2026110707,
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "compiler": "GCC13.3",
+  "flags": "-O2 -g -fwrapv -DHAVE_CLOSEFROM",
+  "warmup_calls": 0,
+  "repeats": "frozen complete N",
+  "serial": true,
+  "p1_rounds": 5,
+  "screen_rounds": 1,
+  "recheck_rounds": 3,
+  "signal_rule": "any case <=0.95 of actual parent, or suite GM <=0.98",
+  "maximum_representatives": 4,
+  "bootstrap_draws": 10000,
+  "timing_gate": "same boot; UTC/outer monotonic disagreement <=1s; internal enclosed by external",
+  "failures": "preserve every result and stop on actual semantic/timer failures"
+}

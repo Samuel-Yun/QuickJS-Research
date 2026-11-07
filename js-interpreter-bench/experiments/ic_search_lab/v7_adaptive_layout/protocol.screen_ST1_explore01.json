@@ -1,0 +1,566 @@
+{
+  "name": "screen_ST1_explore01",
+  "labels": [
+    "A",
+    "s001",
+    "ST1"
+  ],
+  "rounds": 1,
+  "order": [
+    {
+      "kind": "sunspider",
+      "case": "string-unpack-code",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "s001",
+        "A"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "N": 4096,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "A",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "PdfJS.PdfJS",
+      "N": 16,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "A",
+        "s001"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "N": 32,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "N": 32,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "ST1",
+        "s001"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "N": 512,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "A",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-validate-input",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "ST1",
+        "s001"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nbody",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "A",
+        "s001"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Earley",
+      "N": 512,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "s001",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "controlflow-recursive",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "A",
+        "s001"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-tofte",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "s001",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-spectral-norm",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-tagcloud",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "A",
+        "s001"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "N": 512,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "s001",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-cube",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "s001",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bitwise-and",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "s001",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-fasta",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "ST1",
+        "s001"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-partial-sums",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "s001",
+        "A"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "N": 1024,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-aes",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "s001",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "math-cordic",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "A",
+        "s001"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "RayTrace.RayTrace",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "A",
+        "s001"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "date-format-xparb",
+      "N": 512,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "ST1",
+        "s001"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "zlib.zlib",
+      "N": 1,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "A",
+        "s001"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "string-base64",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "s001",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-md5",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "Gameboy.Gameboy",
+      "N": 8,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-fannkuch",
+      "N": 64,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "ST1",
+        "s001"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "regexp-dna",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "A",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-sha1",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "A",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "Mandreel.Mandreel",
+      "N": 1,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "s001",
+        "A"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "N": 2048,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "s001",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "RegExp.RegExp",
+      "N": 64,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "A",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-binary-trees",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "s001",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nsieve",
+      "N": 256,
+      "rep": 0,
+      "conditions": [
+        "ST1",
+        "s001",
+        "A"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Encrypt",
+      "N": 512,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "s001",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-morph",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "ST1",
+        "A"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bits-in-byte",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "A",
+        "ST1"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Decrypt",
+      "N": 32,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "ST1",
+        "s001"
+      ]
+    },
+    {
+      "kind": "octane",
+      "case": "Typescript.Typescript",
+      "N": 1,
+      "rep": 0,
+      "conditions": [
+        "A",
+        "ST1",
+        "s001"
+      ]
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-raytrace",
+      "N": 128,
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "A",
+        "ST1"
+      ]
+    }
+  ],
+  "seed": 2026110707,
+  "boot_id": "4a50aae0-b7c8-4d64-94cd-555b2872f677",
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "artifacts": {
+    "A": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/A.qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "size": 5090704,
+      "source": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/A.qjs",
+      "id": "A"
+    },
+    "s001": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/s001.qjs",
+      "sha256": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b",
+      "size": 5103992,
+      "source": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v2_20261105/artifacts/s001.matched.qjs",
+      "id": "s001"
+    },
+    "ST1": {
+      "id": "ST1",
+      "parent": "s001",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v7_adaptive_layout/artifacts/ST1.qjs",
+      "sha256": "b92f4f2c549eaff1dc25d42f85d39c0cda2437afac531680d5b0f6ec65f432d8",
+      "size": 5114496,
+      "source_sha256": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "9449d7bfa16e53d87993b191c84d9c882bdf09a6e0198758edef665da9e29c0c",
+        "quickjs.c": "60dba435437efb6d149b5d2962ba22c94558ae3cd9978e8186b731ff35cad647",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "9329815170c11f139d95e9e43995c945bf010d06cad2de3e7e3bd0b2e5e602be",
+        "read_ic_prepare.inc": "80b97eccc0fce519e56a7862d58f6c101c78b64816162e82c241d509fe0a36b5",
+        "read_ic_runtime.inc": "440613915bf666a5dc9a8e2e2bbaf6efde9cd4770e5358bf80522abb89e13fb9",
+        "read_ic_types.h": "6449e18d51df56f84f7782594df72321772a86ff33592a4f3af2423b741aae24",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "patch_base": "s001",
+      "patch_sha256": "22b1d178536f2e9f9bdca53c271d81d5e5f6e4786471a758ed1860011dd7f6a4",
+      "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "commands": [
+        "gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c",
+        "gcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -DCONFIG_CC=\\\"gcc\\\" -DCONFIG_PREFIX=\\\"/usr/local\\\" -O2 -c -o .obj/qjsc.o qjsc.c",
+        "gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c",
+        "gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c",
+        "gcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libregexp.o libregexp.c",
+        "gcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libunicode.o libunicode.c",
+        "gcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/cutils.o cutils.c",
+        "gcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c",
+        "gcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl ",
+        "gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c",
+        "gcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl "
+      ],
+      "boot_id": "4a50aae0-b7c8-4d64-94cd-555b2872f677",
+      "performance_instrumentation": false
+    }
+  },
+  "runner_sha256": "bf05d2d8736393c6cdd6fad9bdfc496e2c7a606516823b25d15335056b2a4dce",
+  "warmup_calls": 0,
+  "epoch": "explore01",
+  "timing_quality": "EXPLORATORY_CLOCK_LIMITED"
+}

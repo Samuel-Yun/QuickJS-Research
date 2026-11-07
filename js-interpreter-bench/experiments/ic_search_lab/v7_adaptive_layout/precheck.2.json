@@ -1,0 +1,14 @@
+{
+  "status": "FAIL_INDEPENDENT_CLOCK_CONTRADICTION",
+  "boot_id": "e9f25f68-b442-4024-bf25-08c4c4fa0884",
+  "old_idle_utc_monotonic_threshold_passed": true,
+  "old_idle_utc_monotonic_drift_seconds": 0.802920607,
+  "idle_raw_monotonic_drift_seconds": 0.768869030,
+  "linux_monotonic_exceeds_enclosing_windows_stopwatch_seconds": 0.430209283,
+  "zlib_A_correctness": "PASS",
+  "zlib_s001_correctness": "PASS",
+  "raw_evidence": ["precheck.2.raw.json", "precheck.2.host.json"],
+  "conclusion": "Not merely UTC stepping: the selected Linux monotonic timer also disagrees with RAW and exceeds an independently enclosing host interval. No further performance retries in this environment.",
+  "candidates_rejected_for_performance": false,
+  "original_STOP_preserved": true
+}

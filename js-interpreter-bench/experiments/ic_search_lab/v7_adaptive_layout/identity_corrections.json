@@ -1,0 +1,9 @@
+{
+  "IO_DIAG": {
+    "field": "performance_instrumentation",
+    "frozen_identity_value": false,
+    "correct_interpretation": "This is a counter-instrumented diagnostic binary, not a performance binary. The original identity field was a controller metadata mistake. Original identity and hash are preserved.",
+    "evidence": ["patches/IO_DIAG.from_s001.patch", "io_histogram.json", "runs.jsonl process records stage=memory_probe"],
+    "used_for_performance_samples": false
+  }
+}
