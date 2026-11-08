@@ -1,0 +1,310 @@
+{
+  "cohort_id": "native-ubuntu-s002-migration-20261108-attempt07",
+  "labels": [
+    "PREP2_S002",
+    "READ_STORE_S002"
+  ],
+  "parents": {
+    "PREP2_S002": "PREP2",
+    "READ_STORE_S002": "READ_STORE"
+  },
+  "repetitions": 5,
+  "seed": 2026110807,
+  "affinity": [
+    2
+  ],
+  "cases": [
+    "Richards.Richards",
+    "DeltaBlue.DeltaBlue",
+    "Crypto.Encrypt",
+    "Crypto.Decrypt",
+    "RayTrace.RayTrace",
+    "EarleyBoyer.Earley",
+    "EarleyBoyer.Boyer",
+    "RegExp.RegExp",
+    "Splay.Splay",
+    "NavierStokes.NavierStokes",
+    "PdfJS.PdfJS",
+    "Mandreel.Mandreel",
+    "Gameboy.Gameboy",
+    "CodeLoad.CodeLoadClosure",
+    "CodeLoad.CodeLoadJQuery",
+    "Typescript.Typescript",
+    "zlib.zlib"
+  ],
+  "N": {
+    "Richards.Richards": 1024,
+    "DeltaBlue.DeltaBlue": 512,
+    "Crypto.Encrypt": 512,
+    "Crypto.Decrypt": 32,
+    "RayTrace.RayTrace": 128,
+    "EarleyBoyer.Earley": 512,
+    "EarleyBoyer.Boyer": 32,
+    "RegExp.RegExp": 64,
+    "Splay.Splay": 2048,
+    "NavierStokes.NavierStokes": 32,
+    "PdfJS.PdfJS": 16,
+    "Mandreel.Mandreel": 1,
+    "Gameboy.Gameboy": 8,
+    "CodeLoad.CodeLoadClosure": 4096,
+    "CodeLoad.CodeLoadJQuery": 512,
+    "Typescript.Typescript": 1,
+    "zlib.zlib": 1
+  },
+  "scripts": {
+    "Richards.Richards": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Richards.Richards.N1.correctness.js",
+        "sha256": "a3c1395c7e28710a1099074548000e822f8da2846edcff001e62d8ef05889cb8",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Richards.Richards.N1024.measure.js",
+        "sha256": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+        "N": 1024
+      }
+    },
+    "DeltaBlue.DeltaBlue": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.DeltaBlue.DeltaBlue.N1.correctness.js",
+        "sha256": "324087e54b48dc8ee8caa17b41246c0b2533216dcba95a24866e545078c329bd",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.DeltaBlue.DeltaBlue.N512.measure.js",
+        "sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+        "N": 512
+      }
+    },
+    "Crypto.Encrypt": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Encrypt.N1.correctness.js",
+        "sha256": "478e142f3253c66d1528650a148a78fcce4de7e82db9dafcc8170eecefbe876d",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Encrypt.N512.measure.js",
+        "sha256": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+        "N": 512
+      }
+    },
+    "Crypto.Decrypt": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Decrypt.N1.correctness.js",
+        "sha256": "6306c0fd1d825d305acdd9e4d9d81e333fb977a4ad1ec06011ad06580deaed18",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Decrypt.N32.measure.js",
+        "sha256": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+        "N": 32
+      }
+    },
+    "RayTrace.RayTrace": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RayTrace.RayTrace.N1.correctness.js",
+        "sha256": "c89d6fef6c64fd403a0c883e00e3057493ba2c625453df1244ebe45c8bcea933",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RayTrace.RayTrace.N128.measure.js",
+        "sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+        "N": 128
+      }
+    },
+    "EarleyBoyer.Earley": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Earley.N1.correctness.js",
+        "sha256": "861ad1b10ccee0d98d69ed30a14efab8091269de64c708d3a4f852a3d12929d5",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Earley.N512.measure.js",
+        "sha256": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+        "N": 512
+      }
+    },
+    "EarleyBoyer.Boyer": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Boyer.N1.correctness.js",
+        "sha256": "965f24e05c40f6cf884a485e64e17b34ba182324f8fdf2707229e8e222b1b66e",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Boyer.N32.measure.js",
+        "sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+        "N": 32
+      }
+    },
+    "RegExp.RegExp": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RegExp.RegExp.N1.correctness.js",
+        "sha256": "00fd2f3229281154fe650d5ff572c257f3ed5a42fbc2610fcd54281fa0b27c2e",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RegExp.RegExp.N64.measure.js",
+        "sha256": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+        "N": 64
+      }
+    },
+    "Splay.Splay": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Splay.Splay.N1.correctness.js",
+        "sha256": "3319715201b9758dc9d507e99f7c0875029ad1122fec18ef40b9669cfd6f1155",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Splay.Splay.N2048.measure.js",
+        "sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+        "N": 2048
+      }
+    },
+    "NavierStokes.NavierStokes": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.NavierStokes.NavierStokes.N1.correctness.js",
+        "sha256": "413db48309c33b6e65ef73f924347c3f855a733c055707c7d39a25051f8414f3",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.NavierStokes.NavierStokes.N32.measure.js",
+        "sha256": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+        "N": 32
+      }
+    },
+    "PdfJS.PdfJS": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.PdfJS.PdfJS.N1.correctness.js",
+        "sha256": "1afccf77417bde732b48d0d37fc955253db0bba2704ad737e1a5d782c5d71f6b",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.PdfJS.PdfJS.N16.measure.js",
+        "sha256": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+        "N": 16
+      }
+    },
+    "Mandreel.Mandreel": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Mandreel.Mandreel.N1.correctness.js",
+        "sha256": "3233e65563bac81c1ab92fac092631f6364204b6e8fa04c526429358130b4cda",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Mandreel.Mandreel.N1.measure.js",
+        "sha256": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+        "N": 1
+      }
+    },
+    "Gameboy.Gameboy": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Gameboy.Gameboy.N1.correctness.js",
+        "sha256": "41141a9acf97022cf76b739f0b2a25b31fd2a2cc6b01131cc3732a953424b99b",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Gameboy.Gameboy.N8.measure.js",
+        "sha256": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+        "N": 8
+      }
+    },
+    "CodeLoad.CodeLoadClosure": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadClosure.N1.correctness.js",
+        "sha256": "a7686d55e54e81fa6414335b6c5b18f2c72d056937ff5338bb2a9838adc59f64",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadClosure.N4096.measure.js",
+        "sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+        "N": 4096
+      }
+    },
+    "CodeLoad.CodeLoadJQuery": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadJQuery.N1.correctness.js",
+        "sha256": "d3528c0778be857c66ffbfd30197f45ce47a45b1a3fd31a61db09d545426b22b",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadJQuery.N512.measure.js",
+        "sha256": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+        "N": 512
+      }
+    },
+    "Typescript.Typescript": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Typescript.Typescript.N1.correctness.js",
+        "sha256": "2406ae2a0d5d38b30ff0692ddcd4e4d076aa6be246916777238506389e15e978",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Typescript.Typescript.N1.measure.js",
+        "sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+        "N": 1
+      }
+    },
+    "zlib.zlib": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.zlib.zlib.N1.correctness.js",
+        "sha256": "426cace255f13e426cbfb959aeee0caff819334d6aca85163a662628d93d1ffc",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.zlib.zlib.N1.measure.js",
+        "sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+        "N": 1
+      }
+    }
+  },
+  "metric": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1, ms per complete Run",
+  "warmup_calls": 0,
+  "build_flags": "GCC15.2; -O2 -g -fwrapv -DHAVE_CLOSEFROM; no added NDEBUG/LTO/PGO/march=native",
+  "frozen_files": {
+    "experiments/native_octane_20261108/attempt07/run.py": "73697d2bbcbc7ae3822d7668d97587b706a9b00d441bf75d66985cfc2dd12738",
+    "experiments/native_octane_20261108/attempt07/variants.py": "dceb666c2b543fe55dd11cabaabe0246f1106c0c0dcc36d6909fd78972738964",
+    "experiments/native_octane_20261107/attempt01/run.py": "f7efbdeacd99e849730f90044d8d92067bba712320f906c0bb55eb3d0bd4aa5f",
+    "experiments/native_octane_20261107/attempt01/protocol.json": "2a8d384bc55fc8dc0abce07aa449dcd146b7c6bc4ae689aace1623860ec3a7d2",
+    "experiments/native_octane_20261108/attempt01/variants.py": "4482b468667e78de2c967086b4d9a705cc83ab66e839a1204a7c76d422ea528f",
+    "experiments/native_octane_20261108/attempt01/source_manifest.json": "68b73b945a02397f1dc634b23009544c6e0ca27da0a84e58bb5026ccc918f8b1",
+    "experiments/native_octane_20261108/attempt04/variants.py": "9b38dbe427a09c53585509f4390930493c586a02b9350008ea0913a8ff974edb",
+    "experiments/native_octane_20261108/attempt04/source_manifest.json": "0500feee0aa199dc1b29e9a1e5c7ae25d1926b50cf2a7b9f9f2bb1ba39c92eda",
+    "experiments/ic_search_lab/checks.js": "1cfa20f512307aaf8dab74960924b60cba798cd779be6dd0d919428eefb228af",
+    "experiments/ic_search_lab/v3_mass_search/semantic.js": "99002e55ea4465fb74ea4a36fd8b8e51c0db33fea1271fd310d4a407cfc184c7",
+    "experiments/ic_search_lab/v6_targeted_ic/targeted.js": "338d83259f76d7d485591102f6dcd0fe1f142e11c1d9ce3f6eb1085f74dc5ef6",
+    "experiments/native_octane_20261107/attempt02/combined.js": "4c0dab492b2773931fd040e9c7ca9e43378c122af264a941e95264a9757bcf02",
+    "experiments/native_octane_20261108/attempt04/extra.js": "7db5a4bb0f577c73070d14afd2f17f1cc14801ac198a08d679dfe76a18fe46e5",
+    "experiments/native_octane_20261108/attempt04/old_layout.js": "5d3d66b32911dd50638e3321f3fa030b9c2dc35ff08eb22e5cec3945387e4430",
+    "experiments/native_octane_20261108/attempt07/targeted.js": "3b67cbd6b469d8fa75ff177837e40806d4a0c5f4387c55922f7f8e0db3721910",
+    "experiments/read_ic_mic/attempt01/correctness/read_roundtrip.c": "cb2d79970270f90fb50b39c6953c7bf5eca8add7edb9a15ed25f2483af258f17",
+    "experiments/read_ic_mic/attempt01/correctness/gc_cycles.c": "ea059b60c169beefc9b3b1a90bb7384983ec80b5913fc8a30e597c36829d14cf",
+    "experiments/native_octane_20261108/attempt04/reentrant_store.c": "ac3ca48222436a04b0823b865b97d8454c10ec0bd8785e30e30f71ea7cfcc045",
+    "experiments/native_octane_20261107/attempt01/runtime_manifest.json": "d4d22ca890b037e88add591b00c25bdb04df44d5eaf9de67e1f354fe68b2dab5",
+    "experiments/native_octane_20261107/attempt01/raw/archive.json": "3a1efe3cebbdf9263bd20289b9442eb7ecbe5553faa631aaea58948a24cd4c4c",
+    "experiments/native_octane_20261108/attempt01/runtime_manifest.json": "c42d6b0ade9b1f4caed381dee8d7901760bf29617b503dd66933df352be986c2",
+    "experiments/native_octane_20261108/attempt01/raw/archive.json": "13ffd6242dcd6b28700b95e115036bf4b9a98b63541c552e5d88e6ba5a2b9980",
+    "experiments/native_octane_20261108/attempt04/runtime_manifest.json": "c5a7d9b4838b906af3b0d1e449a290cf9231511c7736111e60c833bcfc438af9",
+    "experiments/native_octane_20261108/attempt04/raw/archive.json": "e2ea8651e9a698387b1f954a30011bbabc8ce74d9c79e672046d21a38fe8f318",
+    "experiments/native_octane_20261108/attempt06/runtime_manifest.json": "200baaf2b0babd44915afc331822be41e181bf0c4062ce1895a57124bbb3a44a",
+    "experiments/native_octane_20261108/attempt06/raw/archive.json": "9d9e6ee84389f3993aa6fa15664fab68cac80b7e83eda82a107bc266e2eda075"
+  },
+  "new_performance_samples": 170,
+  "new_control_samples": 0,
+  "controls_reused": [
+    "A",
+    "PREP2",
+    "READ_STORE",
+    "S002"
+  ],
+  "same_boot_as_parents": true,
+  "transformation": "S002 lookup branch only; up to two ordinary properties; no benchmark identification or per-case executable selection",
+  "preserved": "parent IC opcodes, preparation, caches, fusion and shared-write logic",
+  "desired_outcome": "all three target cases near A and no other-case time regressions relative to the respective parent; report all failures",
+  "interpretation": "cross-batch exploratory; independent whole-round bootstrap excludes unobserved drift; no proof of noninferiority from five samples",
+  "correctness": "semantic, small-object descriptors, C API roundtrip/GC/reentrant store, ASan/UBSan, 34 N1 gates",
+  "LSan": "disabled: unavailable in existing sandbox checks",
+  "preserve_slow_samples": true,
+  "no_automatic_failure_retry": true,
+  "SunSpider": false,
+  "V8_OFF": false
+}

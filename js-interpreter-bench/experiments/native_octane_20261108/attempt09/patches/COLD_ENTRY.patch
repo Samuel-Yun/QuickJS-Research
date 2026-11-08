@@ -1,0 +1,162 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -184,6 +184,7 @@
+     JS_CLASS_WEAK_REF,
+     JS_CLASS_FINALIZATION_REGISTRY,
+     
++    JS_CLASS_COLD_BYTECODE_FUNCTION, /* same u.func, one-time entry trampoline */
+     JS_CLASS_INIT_COUNT, /* last entry for predefined classes */
+ };
+ 
+@@ -1157,6 +1158,9 @@
+ static void JS_FreeAtomStruct(JSRuntime *rt, JSAtomStruct *p);
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b);
+ static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b);
++static JSValue js_cold_entry_call(JSContext *ctx, JSValueConst func_obj,
++                                  JSValueConst this_obj, int argc,
++                                  JSValueConst *argv, int flags);
+ static JSValue js_call_c_function(JSContext *ctx, JSValueConst func_obj,
+                                   JSValueConst this_obj,
+                                   int argc, JSValueConst *argv, int flags);
+@@ -2030,6 +2034,10 @@
+     { JS_ATOM_Object, NULL, NULL }, /* JS_CLASS_RAWJSON */
+ };
+ 
++static JSClassShortDef const cold_bytecode_class = {
++    JS_ATOM_Function, js_bytecode_function_finalizer, js_bytecode_function_mark
++};
++
+ static int init_class_range(JSRuntime *rt, JSClassShortDef const *tab,
+                             int start, int count)
+ {
+@@ -2114,6 +2122,9 @@
+     rt->class_array[JS_CLASS_STRING].exotic = &js_string_exotic_methods;
+     rt->class_array[JS_CLASS_MODULE_NS].exotic = &js_module_ns_exotic_methods;
+ 
++    if (init_class_range(rt, &cold_bytecode_class, JS_CLASS_COLD_BYTECODE_FUNCTION, 1) < 0)
++        goto fail;
++    rt->class_array[JS_CLASS_COLD_BYTECODE_FUNCTION].call = js_cold_entry_call;
+     rt->class_array[JS_CLASS_C_FUNCTION].call = js_call_c_function;
+     rt->class_array[JS_CLASS_C_FUNCTION_DATA].call = js_c_function_data_call;
+     rt->class_array[JS_CLASS_BOUND_FUNCTION].call = js_call_bound_function;
+@@ -5872,6 +5883,7 @@
+ static BOOL js_class_has_bytecode(JSClassID class_id)
+ {
+     return (class_id == JS_CLASS_BYTECODE_FUNCTION ||
++            class_id == JS_CLASS_COLD_BYTECODE_FUNCTION ||
+             class_id == JS_CLASS_GENERATOR_FUNCTION ||
+             class_id == JS_CLASS_ASYNC_FUNCTION ||
+             class_id == JS_CLASS_ASYNC_GENERATOR_FUNCTION);
+@@ -7088,6 +7100,7 @@
+         case JS_CLASS_C_FUNCTION:        /* u.cfunc */
+             s->c_func_count++;
+             break;
++        case JS_CLASS_COLD_BYTECODE_FUNCTION:
+         case JS_CLASS_BYTECODE_FUNCTION: /* u.func */
+             {
+                 JSFunctionBytecode *b = p->u.func.function_bytecode;
+@@ -10986,6 +10999,7 @@
+         return FALSE;
+     p = JS_VALUE_GET_OBJ(val);
+     switch(p->class_id) {
++    case JS_CLASS_COLD_BYTECODE_FUNCTION:
+     case JS_CLASS_BYTECODE_FUNCTION:
+         return TRUE;
+     case JS_CLASS_PROXY:
+@@ -17354,6 +17368,8 @@
+             var_refs[i] = var_ref;
+         }
+     }
++    if (b->func_kind == JS_FUNC_NORMAL && !b->read_ic_ready)
++        p->class_id = JS_CLASS_COLD_BYTECODE_FUNCTION;
+     return func_obj;
+  fail:
+     /* bfunc is freed when func_obj is freed */
+@@ -20787,6 +20803,29 @@
+ #pragma GCC diagnostic pop
+ #endif
+ 
++/* This class is used only before a function object's first call. Once the
++   shared bytecode has been prepared (or declined), the object rejoins BASE.
++   Normal warm calls therefore retain the parent's interpreter entry. */
++static JSValue js_cold_entry_call(JSContext *ctx, JSValueConst func_obj,
++                                  JSValueConst this_obj, int argc,
++                                  JSValueConst *argv, int flags)
++{
++    JSObject *p = JS_VALUE_GET_OBJ(func_obj);
++    JSFunctionBytecode *b = p->u.func.function_bytecode;
++    if (js_check_stack_overflow(ctx->rt, 0))
++        return JS_ThrowStackOverflow(ctx);
++    if (!b->read_ic_ready)
++        rdi_prepare(ctx, b);
++    p->class_id = JS_CLASS_BYTECODE_FUNCTION;
++    /* The existing class-call dispatchers supply writable argv whenever
++       COPY_ARGV is clear. Preserve that ownership contract exactly. */
++    if (flags & JS_CALL_FLAG_CONSTRUCTOR)
++        return JS_CallConstructorInternal(ctx, func_obj, this_obj, argc,
++                                          (JSValue *)argv, flags);
++    return JS_CallInternal(ctx, func_obj, this_obj, JS_UNDEFINED, argc,
++                           (JSValue *)argv, flags);
++}
++
+ JSValue JS_Call(JSContext *ctx, JSValueConst func_obj, JSValueConst this_obj,
+                 int argc, JSValueConst *argv)
+ {
+@@ -20817,6 +20856,7 @@
+     case JS_CLASS_C_FUNCTION:
+         realm = p->u.cfunc.realm;
+         break;
++    case JS_CLASS_COLD_BYTECODE_FUNCTION:
+     case JS_CLASS_BYTECODE_FUNCTION:
+     case JS_CLASS_GENERATOR_FUNCTION:
+     case JS_CLASS_ASYNC_FUNCTION:
+@@ -36349,7 +36389,8 @@
+     }
+ 
+     js_free(ctx, fd);
+-    if (rdi_prepare(ctx, b) < 0) {
++    /* Suspended generator/async images keep eager preparation. */
++    if (b->func_kind != JS_FUNC_NORMAL && rdi_prepare(ctx, b) < 0) {
+         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
+         return JS_EXCEPTION;
+     }
+@@ -39024,7 +39065,7 @@
+         bc_read_trace(s, "}\n");
+     }
+     b->realm = JS_DupContext(ctx);
+-    if (rdi_prepare(ctx, b) < 0) goto fail;
++    if (b->func_kind != JS_FUNC_NORMAL && rdi_prepare(ctx, b) < 0) goto fail;
+     return obj;
+  fail:
+     JS_FreeValue(ctx, obj);
+@@ -56486,6 +56527,7 @@
+     if (JS_IsException(ctx->function_proto))
+         return -1;
+     ctx->class_proto[JS_CLASS_BYTECODE_FUNCTION] = JS_DupValue(ctx, ctx->function_proto);
++    ctx->class_proto[JS_CLASS_COLD_BYTECODE_FUNCTION] = JS_DupValue(ctx, ctx->function_proto);
+ 
+     ctx->global_obj = JS_NewObjectProtoClassAlloc(ctx, ctx->class_proto[JS_CLASS_OBJECT],
+                                                   JS_CLASS_GLOBAL_OBJECT, 64);
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -18,16 +18,14 @@
+     if (!count) return 0;
+     code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+     if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+-        JS_ThrowOutOfMemory(ctx);
+-        return -1;
++        return 0; /* optional optimization, retain ordinary image */
+     }
+     total = code_size + count * sizeof(ReadICSite);
+     if (total > UINT32_MAX) {
+-        JS_ThrowOutOfMemory(ctx);
+-        return -1;
++        return 0; /* optional optimization, retain ordinary image */
+     }
+-    linked = js_mallocz(ctx, total);
+-    if (!linked) return -1;
++    linked = js_mallocz_rt(ctx->rt, total);
++    if (!linked) return 0; /* no pending-exception mutation, no retry */
+     memcpy(linked, b->byte_code_buf, b->byte_code_len);
+     b->byte_code_buf = linked;
+     b->read_ic_sites = (ReadICSite *)(linked + code_size);

@@ -1,0 +1,32 @@
+{
+  "normalization": "existing normalization plus replace internal jump offset annotations by INTERNAL; no target-CFG equivalence proof",
+  "changes": [
+    {
+      "operation": "replace",
+      "parent_indices": [
+        6243,
+        6244
+      ],
+      "candidate_indices": [
+        6243,
+        6247
+      ],
+      "parent": [
+        "nopl 0x0(%rax,%rax,1)"
+      ],
+      "candidate": [
+        "nopl 0x0(%rax)",
+        "data16 cs nopw 0x0(%rax,%rax,1)",
+        "data16 cs nopw 0x0(%rax,%rax,1)",
+        "data16 cs nopw 0x0(%rax,%rax,1)"
+      ]
+    }
+  ],
+  "only_differences_are_alignment_nops": true,
+  "new_computational_instruction_claim_supported": false,
+  "cycle_equivalence_proven": false,
+  "source_files": {
+    "READ_STORE.normalized.txt": "10c362880c65d47b2d4db0a28e0b14c2b9ea7e01c9b0b2cf607efccfc4de25b6",
+    "COLD_ENTRY.normalized.txt": "d427f8ce8f056940f64e501f7d365ae9049996ae18c1f03f50e39275ca86b01d"
+  }
+}

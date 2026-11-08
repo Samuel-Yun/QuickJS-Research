@@ -1,0 +1,6 @@
+replace parent[6243:6244] cold[6243:6247]
+- nopl 0x0(%rax,%rax,1)
++ nopl 0x0(%rax)
++ data16 cs nopw 0x0(%rax,%rax,1)
++ data16 cs nopw 0x0(%rax,%rax,1)
++ data16 cs nopw 0x0(%rax,%rax,1)
