@@ -1,0 +1,75 @@
+--------------------------------------------------------------------------------
+Profile data file '/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/post_diagnostics/CALL02.EarleyBoyer.Boyer.callgrind.1' (creator: callgrind-3.26.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 188515265
+Trigger: Client Request
+Profiled target:  /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt02/diagnostics/scripts/EarleyBoyer.Boyer.js (PID 28, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir                     
+--------------------------------------------------------------------------------
+1,133,635,487 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                    file:function
+--------------------------------------------------------------------------------
+458,856,927 (40.48%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_CallInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 83,510,201 ( 7.37%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_CallInternal'2
+ 77,494,529 ( 6.84%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_SetPropertyInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 70,380,094 ( 6.21%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_GetPropertyInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 35,416,516 ( 3.12%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_call_c_function [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 35,412,517 ( 3.12%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:add_property [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 31,590,155 ( 2.79%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:__js_malloc [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 30,879,096 ( 2.72%)  experiments/native_octane_20261108/attempt03/work/CALL02/read_ic_opcodes.inc:JS_CallInternal'2
+ 22,222,324 ( 1.96%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:mark_children [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 20,766,882 ( 1.83%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:__js_free [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 20,366,680 ( 1.80%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:free_gc_object [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 19,245,828 ( 1.70%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:add_shape_property [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 18,219,157 ( 1.61%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_CallConstructorInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 17,216,045 ( 1.52%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_IsInstanceOf [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 16,549,255 ( 1.46%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_OrdinaryIsInstanceOf [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 15,402,829 ( 1.36%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_NewObjectFromShape [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 14,883,438 ( 1.31%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_new_shape2.constprop.0 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 14,610,562 ( 1.29%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_free_shape [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 10,329,669 ( 0.91%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_CallFree [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 10,007,829 ( 0.88%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_NewObjectProtoClass [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  8,362,094 ( 0.74%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_ToBoolFree [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  7,954,724 ( 0.70%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_create_from_ctor [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  6,394,531 ( 0.56%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_function_hasInstance [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  5,671,711 ( 0.50%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_GetPropertyInternal
+  5,658,468 ( 0.50%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_FreeValue [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  5,418,592 ( 0.48%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_strict_eq2.isra.0 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  5,410,757 ( 0.48%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_IsInstanceOf
+  5,401,564 ( 0.48%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_OrdinaryIsInstanceOf
+  4,763,367 ( 0.42%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:__JS_FreeValueRT'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  4,385,370 ( 0.39%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:free_property
+  3,935,112 ( 0.35%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_CallFree
+  3,335,852 ( 0.29%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:js_create_from_ctor
+  3,141,629 ( 0.28%)  experiments/native_octane_20261108/attempt03/work/CALL02/read_ic_runtime.inc:JS_CallInternal'2
+  3,068,495 ( 0.27%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:__JS_FreeValueRT [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  2,899,756 ( 0.26%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:gc_decref_child [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  2,570,722 ( 0.23%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:gc_scan_incref_child [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  2,268,270 ( 0.20%)  experiments/native_octane_20261108/attempt03/work/CALL02/list.h:__JS_FreeValueRT'2
+  2,013,845 ( 0.18%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:gc_decref [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  1,796,900 ( 0.16%)  experiments/native_octane_20261108/attempt03/work/CALL02/list.h:JS_NewObjectFromShape
+  1,796,277 ( 0.16%)  experiments/native_octane_20261108/attempt03/work/CALL02/list.h:js_new_shape2.constprop.0
+  1,693,265 ( 0.15%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_malloc_new_arena [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  1,634,961 ( 0.14%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_string_eq.isra.0 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  1,613,348 ( 0.14%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:__JS_AtomToValue [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  1,604,904 ( 0.14%)  experiments/native_octane_20261108/attempt03/work/CALL02/list.h:gc_scan_incref_child
+  1,539,666 ( 0.14%)  experiments/native_octane_20261108/attempt03/work/CALL02/list.h:js_free_shape
+  1,527,528 ( 0.13%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:free_property [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  1,476,835 ( 0.13%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:gc_scan [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+  1,475,661 ( 0.13%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:js_function_hasInstance
+  1,320,786 ( 0.12%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:js_string_memcmp [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+

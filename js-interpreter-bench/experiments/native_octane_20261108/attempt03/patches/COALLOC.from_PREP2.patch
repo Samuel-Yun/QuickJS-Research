@@ -1,0 +1,138 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -717,7 +717,7 @@
+     int closure_var_count;
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+-    uint8_t read_ic_ready;
++    uint8_t read_ic_ready; /* bit0 prepared, bit1 function-owned records */
+ #ifdef READ_IC_DIAGNOSTIC
+     RDIFunctionDiag *read_ic_diag;
+ #endif
+@@ -36074,8 +36074,9 @@
+     JSFunctionBytecode *b;
+     struct list_head *el, *el1;
+     int stack_size, scope, idx;
+-    int function_size, byte_code_offset, cpool_offset;
+-    int closure_var_offset, vardefs_offset;
++    size_t function_size, byte_code_offset, cpool_offset;
++    size_t closure_var_offset, vardefs_offset, sites_offset = 0;
++    uint32_t field_count;
+     BOOL strip_var_debug;
+     
+     /* recompute scope linkage */
+@@ -36178,6 +36179,19 @@
+     function_size += fd->closure_var_count * sizeof(*fd->closure_var);
+     byte_code_offset = function_size;
+     function_size += fd->byte_code.size;
++    field_count = rdi_count_fields(fd->byte_code.buf, fd->byte_code.size);
++    if (function_size > INT32_MAX - 7) {
++        JS_ThrowOutOfMemory(ctx);
++        goto fail;
++    }
++    if (field_count) {
++        sites_offset = (function_size + 7) & ~(size_t)7;
++        if (field_count > (INT32_MAX - sites_offset) / sizeof(ReadICSite)) {
++            JS_ThrowOutOfMemory(ctx);
++            goto fail;
++        }
++        function_size = sites_offset + (size_t)field_count * sizeof(ReadICSite);
++    }
+ 
+     b = js_mallocz(ctx, function_size);
+     if (!b)
+@@ -36186,6 +36200,10 @@
+ 
+     b->byte_code_buf = (void *)((uint8_t*)b + byte_code_offset);
+     b->byte_code_len = fd->byte_code.size;
++    b->read_ic_ready = 2; /* count already known, final storage already owned */
++    b->read_ic_count = field_count;
++    if (field_count)
++        b->read_ic_sites = (ReadICSite *)((uint8_t *)b + sites_offset);
+     memcpy(b->byte_code_buf, fd->byte_code.buf, fd->byte_code.size);
+     js_free(ctx, fd->byte_code.buf);
+     fd->byte_code.buf = NULL;
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -1,3 +1,13 @@
++/* Final source-compiled code is counted before the owning function allocation. */
++static uint32_t rdi_count_fields(const uint8_t *code, int length)
++{
++    uint32_t count = 0;
++    for (int pos = 0, op; pos < length; pos += short_opcode_info(op).size) {
++        op = code[pos];
++        if (op == OP_get_field || op == OP_get_field2) count++;
++    }
++    return count;
++}
+ /* Called only for fully built b, after all compiler passes / atom fixups. */
+ static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b)
+ {
+@@ -5,32 +15,34 @@
+     size_t code_size, total;
+     uint8_t *linked;
+     int pos, op;
+-    assert(!b->read_ic_ready && !b->read_ic_sites);
+-    b->read_ic_ready = 1;
++    int in_function = (b->read_ic_ready == 2);
++    assert(!b->read_ic_ready || in_function);
++    assert(in_function || !b->read_ic_sites);
++    /* bit0=prepared; bit1=records owned by the function allocation. */
++    b->read_ic_ready = in_function ? 3 : 1;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_header_init();
+ #endif
+-    for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+-        op = b->byte_code_buf[pos];
+-        if (op == OP_get_field || op == OP_get_field2) count++;
++    count = in_function ? b->read_ic_count : rdi_count_fields(b->byte_code_buf, b->byte_code_len);
++    if (!count) return 0;
++    if (!in_function) {
++        code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
++        if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
++            JS_ThrowOutOfMemory(ctx);
++            return -1;
++        }
++        total = code_size + count * sizeof(ReadICSite);
++        if (total > UINT32_MAX) {
++            JS_ThrowOutOfMemory(ctx);
++            return -1;
++        }
++        linked = js_mallocz(ctx, total);
++        if (!linked) return -1;
++        memcpy(linked, b->byte_code_buf, b->byte_code_len);
++        b->byte_code_buf = linked;
++        b->read_ic_sites = (ReadICSite *)(linked + code_size);
++        b->read_ic_count = count;
+     }
+-    if (!count) return 0;
+-    code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+-    if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+-        JS_ThrowOutOfMemory(ctx);
+-        return -1;
+-    }
+-    total = code_size + count * sizeof(ReadICSite);
+-    if (total > UINT32_MAX) {
+-        JS_ThrowOutOfMemory(ctx);
+-        return -1;
+-    }
+-    linked = js_mallocz(ctx, total);
+-    if (!linked) return -1;
+-    memcpy(linked, b->byte_code_buf, b->byte_code_len);
+-    b->byte_code_buf = linked;
+-    b->read_ic_sites = (ReadICSite *)(linked + code_size);
+-    b->read_ic_count = count;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_prepare(ctx, b);
+ #endif
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -67,7 +67,7 @@
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_release(b);
+ #endif
+-    if (b->read_ic_sites) {
++    if (b->read_ic_sites && !(b->read_ic_ready & 2)) {
+         js_free_rt(rt, b->byte_code_buf);
+         b->byte_code_buf = NULL;
+     }

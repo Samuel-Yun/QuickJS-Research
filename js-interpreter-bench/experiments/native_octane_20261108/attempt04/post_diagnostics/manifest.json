@@ -1,0 +1,21 @@
+{
+  "status": "PASS_DIAGNOSTIC",
+  "formal_performance_samples": 0,
+  "identities": {
+    "CHAIN2": {
+      "binary_sha256": "980a994b83a7e306e5291ed6e04c1f2df358cf00c177c4773141050f052e9975",
+      "VM_object_sha256": "fe94466af163f99cb6eea1e9a17360190b53d4028f7c9b1b344b0926e2298afd",
+      "helper_object_sha256": "d86e2f480db5993aea981ef02da145ca9547cf443cecec73bb2ce5150989c2a3",
+      "source": "exact release VM object; diagnostic libc hooks only"
+    },
+    "READ_STORE": {
+      "binary_sha256": "9f7f0c4f62904ff115e971aebd0ca5e4cf1aad17109b01f8df13478266b3e39b",
+      "VM_object_sha256": "7f8be6fae0fc99c6502e5b67f26d224a0f50e072e8e441c3ea1a649dcde8bcb2",
+      "helper_object_sha256": "d86e2f480db5993aea981ef02da145ca9547cf443cecec73bb2ce5150989c2a3",
+      "source": "exact release VM object; diagnostic libc hooks only"
+    }
+  },
+  "selection": "after all five performance rounds: check whether measured structural changes reduce whole-run instruction work",
+  "native_time_inference": false,
+  "cold_write_release_and_sanitized": true
+}

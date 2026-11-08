@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+Profile data file '/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/post_diagnostics/READ_STORE.Richards.Richards.callgrind.1' (creator: callgrind-3.26.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 5432169
+Trigger: Client Request
+Profiled target:  /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/work/READ_STORE.profile /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt02/diagnostics/scripts/Richards.Richards.js (PID 26, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir                  
+--------------------------------------------------------------------------------
+31,786,628 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                   file:function
+--------------------------------------------------------------------------------
+23,106,430 (72.69%)  experiments/native_octane_20261108/attempt04/work/READ_STORE/quickjs.c:JS_CallInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/work/READ_STORE.profile]
+ 3,942,008 (12.40%)  experiments/native_octane_20261108/attempt04/work/READ_STORE/read_ic_opcodes.inc:JS_CallInternal'2
+ 3,866,627 (12.16%)  experiments/native_octane_20261108/attempt04/work/READ_STORE/quickjs.h:JS_CallInternal'2
+   386,869 ( 1.22%)  experiments/native_octane_20261108/attempt04/work/READ_STORE/quickjs.h:JS_FreeValue [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/work/READ_STORE.profile]
+   283,392 ( 0.89%)  experiments/native_octane_20261108/attempt04/work/READ_STORE/read_ic_runtime.inc:JS_CallInternal'2
+

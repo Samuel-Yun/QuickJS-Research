@@ -1,0 +1,84 @@
+--------------------------------------------------------------------------------
+Profile data file '/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/post_diagnostics/FUSE_A1L1.RayTrace.RayTrace.callgrind.1' (creator: callgrind-3.26.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 68519036
+Trigger: Client Request
+Profiled target:  /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt02/diagnostics/scripts/RayTrace.RayTrace.js (PID 22, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir                   
+--------------------------------------------------------------------------------
+397,518,955 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                    file:function
+--------------------------------------------------------------------------------
+137,413,594 (34.57%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_CallInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+ 28,075,004 ( 7.06%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:__js_malloc [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+ 24,154,163 ( 6.08%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:JS_CallInternal'2
+ 23,481,578 ( 5.91%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_SetPropertyInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+ 19,111,696 ( 4.81%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:__js_free [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+ 18,403,357 ( 4.63%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/read_ic_opcodes.inc:JS_CallInternal'2
+ 14,504,833 ( 3.65%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:add_property [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+ 12,462,240 ( 3.14%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:free_gc_object [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  9,723,434 ( 2.45%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_NewObjectFromShape [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  9,262,638 ( 2.33%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:add_shape_property [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  7,460,020 ( 1.88%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_GetPropertyInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  7,423,653 ( 1.87%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_build_mapped_arguments [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  6,016,432 ( 1.51%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:build_arg_list [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  5,480,824 ( 1.38%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_free_shape [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  4,779,437 ( 1.20%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_call_c_function [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  4,716,392 ( 1.19%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_function_apply [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  4,660,793 ( 1.17%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_create_var_ref [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  4,497,062 ( 1.13%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:__JS_FreeValueRT [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  3,881,622 ( 0.98%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_CallConstructorInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  3,864,554 ( 0.97%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_new_shape2.constprop.0 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  3,340,063 ( 0.84%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:__js_realloc [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  2,638,008 ( 0.66%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_ToBoolFree [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  2,611,001 ( 0.66%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_NewObjectProtoClass [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  2,609,029 ( 0.66%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_mapped_arguments_finalizer [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  2,571,472 ( 0.65%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:free_var_ref [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  2,175,687 ( 0.55%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:free_property
+  2,064,476 ( 0.52%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_create_from_ctor [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  2,064,414 ( 0.52%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_get_length64 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  1,308,487 ( 0.33%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/read_ic_runtime.inc:JS_CallInternal'2
+  1,265,286 ( 0.32%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_ToInt64Clamp [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  1,223,798 ( 0.31%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_binary_arith_slow [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  1,184,247 ( 0.30%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:free_property [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  1,177,970 ( 0.30%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:__JS_FreeValueRT
+  1,125,019 ( 0.28%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:js_create_var_ref
+  1,073,156 ( 0.27%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_function_apply'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+  1,060,647 ( 0.27%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:js_build_mapped_arguments
+    964,302 ( 0.24%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:free_var_ref
+    932,393 ( 0.23%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:JS_NewObjectFromShape
+    909,936 ( 0.23%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:__js_free
+    905,121 ( 0.23%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:__memcpy_avx_unaligned_erms [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    870,816 ( 0.22%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_call_c_function'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+    865,748 ( 0.22%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:js_create_from_ctor
+    865,722 ( 0.22%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_mallocz [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+    846,731 ( 0.21%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:JS_CallConstructorInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+    846,104 ( 0.21%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:js_realloc [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+    794,599 ( 0.20%)  ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S:__memset_avx2_unaligned_erms [/usr/lib/x86_64-linux-gnu/libc.so.6]
+    794,318 ( 0.20%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:__js_malloc
+    746,495 ( 0.19%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/cutils.h:JS_CallInternal'2
+    665,970 ( 0.17%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:free_gc_object
+    532,843 ( 0.13%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:JS_GetPropertyInternal
+    532,752 ( 0.13%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:check_function [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+    532,752 ( 0.13%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:js_get_length64
+    466,228 ( 0.12%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:js_new_shape2.constprop.0
+    423,756 ( 0.11%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/list.h:js_free_shape
+    361,508 ( 0.09%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:free_var_ref
+    353,125 ( 0.09%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:js_free_shape
+    328,113 ( 0.08%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.h:build_arg_list
+    323,369 ( 0.08%)  experiments/native_octane_20261108/attempt03/work/FUSE_A1L1/quickjs.c:__JS_FreeValueRT'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/FUSE_A1L1.profile]
+
