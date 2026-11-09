@@ -1,0 +1,17 @@
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Thread 1 "d8" received signal SIGTRAP, Trace/breakpoint trap.
+0x000063553cca96fd in v8::base::OS::DebugBreak() ()
+
+Thread 1 "d8" received signal SIGTRAP, Trace/breakpoint trap.
+0x000063553cca96fd in v8::base::OS::DebugBreak() ()
+{"kind":"own_read","requested_hit_percent":50,"iterations":16,"sequence_length":65536,"modeled_hits":8,"modeled_misses":8,"modeled_hit_percent":50,"cyclic_hit_percent":50,"actual_ic_hit_percent":null,"checksum":48,"elapsed_ms":18.045,"ns_per_read_including_loop":1127812.5,"warmup_calls":0,"min_ms":0,"duration_pass":true}
+[Inferior 1 (process 526179) exited normally]
+V8_GDB_COUNTER_STATUS:PASS

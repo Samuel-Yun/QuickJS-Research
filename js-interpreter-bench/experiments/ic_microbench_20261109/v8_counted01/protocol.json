@@ -1,0 +1,73 @@
+{
+  "started_at": "2026-11-09T21:43:48.657985+08:00",
+  "scope": "readLoop's sole named property load; original V8 ELF under GDB",
+  "rates": [
+    0,
+    25,
+    50,
+    75,
+    90,
+    99,
+    100
+  ],
+  "N": 201326592,
+  "cpu": 2,
+  "formal_performance_samples": 0,
+  "gating": "9 short probes with direct named-load entry counts before seven complete runs",
+  "numerator": "N - no_feedback - ic_miss; generic fallback must be zero",
+  "definition": "no-feedback reads are not IC hits; no-feedback runtime fallback is a subset, not subtracted twice",
+  "flags": [
+    "--jitless",
+    "--no-lazy",
+    "--use-ic",
+    "--allow-natives-syntax"
+  ],
+  "flags_not_added": [
+    "--log-ic",
+    "--runtime-call-stats",
+    "--no-lazy-feedback-allocation"
+  ],
+  "frozen_tools": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/own_read.js": "d3cdd9fce6f6778d04369dedaff81b88ffaddcd8db55f1e30b34ee3f0397d42a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/v8_gdb_counts.py": "d61eb7a4a6bc3ef2fec3a46bdda224206854a7f20ecd2d973cf3f9fd5ad099ae",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/v8_gdb_driver.py": "2587efb170cf94939df6a30bedc6cac1527aeb71ebf94e256a1ba0b36b8ab0ee",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/v8_counted_suite.py": "45f17bff29c273e463549bec3ceef6acba81c855d3e2447e5a04dca3966de913"
+  },
+  "runtime": {
+    "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+    "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+    "dependencies": [
+      {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749"
+      },
+      {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/icudtl.dat",
+        "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+      }
+    ],
+    "system_libraries": [
+      {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "sha256": "bda779ea9e9ad234f60315477d7cfd0bdde861cd8ddd9df8cdaf62f18c4cec14"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "85e64f97e348786a8fb4d9f3d52fec289e2fb86bba20f0731dfe61990525e0f7"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "sha256": "9d339ecb409578d6a5d587e6c537a8f9589b8a13fefba30d167433a4b5758bee"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+        "sha256": "1c488db6f4fe8cecb72456bc018de000b7a9b539c2994864b0416b5e8371b3d8"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+        "sha256": "1327fc40710691dbd94e88b6cf4efce27fefe8fbb93f7d1164a75b4dccaea696"
+      }
+    ],
+    "ldd": "\tlinux-vdso.so.1 (0x000071398281d000)\n\tlibpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00007139827fb000)\n\tlibm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007139804da000)\n\tlibgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007139827cd000)\n\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x0000713980200000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000071398281f000)\n"
+  }
+}

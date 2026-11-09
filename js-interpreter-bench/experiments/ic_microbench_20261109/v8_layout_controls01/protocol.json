@@ -1,0 +1,56 @@
+{
+  "purpose": "input control validation only, not formal performance comparison",
+  "cases": [
+    {
+      "name": "one_shape",
+      "shapes": 1,
+      "run": 1,
+      "n": 4096
+    },
+    {
+      "name": "two_shapes",
+      "shapes": 2,
+      "run": 1,
+      "n": 4096
+    },
+    {
+      "name": "sixteen_shapes",
+      "shapes": 16,
+      "run": 1,
+      "n": 4096
+    },
+    {
+      "name": "large_pool_cycle",
+      "shapes": 65536,
+      "run": 1,
+      "n": 65536
+    },
+    {
+      "name": "repeat2",
+      "shapes": 65536,
+      "run": 2,
+      "n": 4096
+    },
+    {
+      "name": "repeat4",
+      "shapes": 65536,
+      "run": 4,
+      "n": 4096
+    },
+    {
+      "name": "repeat16",
+      "shapes": 65536,
+      "run": 16,
+      "n": 4096
+    }
+  ],
+  "sequence_length": 1048576,
+  "warmup_iterations": 2097152,
+  "construction": "ordinary Object.create(unique ordinary prototype), two own data fields; alternate x insertion position",
+  "frozen_tools": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/own_read_layouts.js": "1b3821b2f52c4040981e013338564c5b38c39743866d16116141edb03a8256f5",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/probe_v8_layouts.py": "60ee81f9692bf38eef30e35f18a6da400e359f35540495ca2281cceff12800fc",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/v8_gdb_driver.py": "2587efb170cf94939df6a30bedc6cac1527aeb71ebf94e256a1ba0b36b8ab0ee",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/validate_v8_layout_controls.py": "29df28bc7668ab8a1e72e53ae104d0b32b454685b5ac6682892002b165be7d2d"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "EVAL_COLD": {
+    "repeat1": {
+      "N": 65536,
+      "hits": 0,
+      "misses": 65536,
+      "actual_hit_percent": 0.0,
+      "method": "existing diagnostic ELF, counters reset at first JS performance.now; captured at second"
+    },
+    "repeat2": {
+      "N": 65536,
+      "hits": 32768,
+      "misses": 32768,
+      "actual_hit_percent": 50.0,
+      "method": "existing diagnostic ELF, counters reset at first JS performance.now; captured at second"
+    },
+    "repeat4": {
+      "N": 65536,
+      "hits": 49152,
+      "misses": 16384,
+      "actual_hit_percent": 75.0,
+      "method": "existing diagnostic ELF, counters reset at first JS performance.now; captured at second"
+    },
+    "repeat8": {
+      "N": 65536,
+      "hits": 57344,
+      "misses": 8192,
+      "actual_hit_percent": 87.5,
+      "method": "existing diagnostic ELF, counters reset at first JS performance.now; captured at second"
+    },
+    "repeat16": {
+      "N": 65536,
+      "hits": 61440,
+      "misses": 4096,
+      "actual_hit_percent": 93.75,
+      "method": "existing diagnostic ELF, counters reset at first JS performance.now; captured at second"
+    },
+    "mono": {
+      "N": 65536,
+      "hits": 65536,
+      "misses": 0,
+      "actual_hit_percent": 100.0,
+      "method": "existing diagnostic ELF, counters reset at first JS performance.now; captured at second"
+    }
+  },
+  "V8_ON": {
+    "repeat1": {
+      "actual_hit_percent": 0.29144287109375,
+      "N": 65536,
+      "method": "prior matched-input diagnostic, same source/layout/sequence/warmup",
+      "source": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_layout_controls01/results.json"
+    },
+    "repeat2": {
+      "actual_hit_percent": 50.0732421875,
+      "N": 4096,
+      "method": "prior matched-input diagnostic, same source/layout/sequence/warmup",
+      "source": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_layout_controls01/results.json"
+    },
+    "repeat4": {
+      "actual_hit_percent": 75.1220703125,
+      "N": 4096,
+      "method": "prior matched-input diagnostic, same source/layout/sequence/warmup",
+      "source": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_layout_controls01/results.json"
+    },
+    "repeat16": {
+      "actual_hit_percent": 93.8232421875,
+      "N": 4096,
+      "method": "prior matched-input diagnostic, same source/layout/sequence/warmup",
+      "source": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_layout_controls01/results.json"
+    },
+    "mono": {
+      "actual_hit_percent": 100.0,
+      "N": 4096,
+      "method": "prior matched-input diagnostic, same source/layout/sequence/warmup",
+      "source": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_layout_controls01/results.json"
+    },
+    "repeat8": {
+      "actual_hit_percent": 87.8662109375,
+      "N": 4096,
+      "method": "new matched-input diagnostic",
+      "source": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/counts/v8_repeat8/results.json"
+    }
+  },
+  "note": "independent count windows, not instrumentation of the timing samples",
+  "qjs_diagnostic_sha256": "d065beed854c5182464718d11eb50ce0f593477313fb1c8427f4ae5dae220acf",
+  "driver_sha256": "39273419dbef66623d88face8286a0518028e3d44e24e4a334c412d3b3e8d815",
+  "runner_sha256": "b10917917c8c18c6b7139c47b68d28391e2905c24a1c02e2f2d6df367e01cb89"
+}

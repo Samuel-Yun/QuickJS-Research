@@ -1,0 +1,30 @@
+{
+  "runtime": {
+    "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/A/qjs",
+    "sha256": "9018bc2d8a37bfdff4b816aa0a28d1a4bc2ed51fbf68d4cdf76d8fe0ce1d4635",
+    "qjsc_sha256": "9bbe69d609164fc245643b93937da370924804af58be9d3bc278b800fa817d71",
+    "compile_line": "gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c",
+    "system_libraries": [
+      {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "sha256": "bda779ea9e9ad234f60315477d7cfd0bdde861cd8ddd9df8cdaf62f18c4cec14"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "85e64f97e348786a8fb4d9f3d52fec289e2fb86bba20f0731dfe61990525e0f7"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+        "sha256": "1c488db6f4fe8cecb72456bc018de000b7a9b539c2994864b0416b5e8371b3d8"
+      }
+    ],
+    "ldd": "\tlinux-vdso.so.1 (0x0000772ee0ab1000)\n\tlibm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x0000772ee085c000)\n\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x0000772ee0600000)\n\t/lib64/ld-linux-x86-64.so.2 (0x0000772ee0ab3000)\n"
+  },
+  "script_sha256": "1b3821b2f52c4040981e013338564c5b38c39743866d16116141edb03a8256f5",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/A/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/own_read_layouts.js"
+  ],
+  "cpu": 2,
+  "scope": "one-run duration validation, not a comparative performance result"
+}

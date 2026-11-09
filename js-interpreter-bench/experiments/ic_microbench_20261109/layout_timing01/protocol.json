@@ -1,0 +1,67 @@
+{
+  "started_at": "2026-11-09T22:13:33.988070+08:00",
+  "rounds": 1,
+  "N": 134217728,
+  "sequence_length": 1048576,
+  "warmup_iterations": 2097152,
+  "cases": [
+    [
+      "repeat1",
+      65536,
+      1
+    ],
+    [
+      "repeat2",
+      65536,
+      2
+    ],
+    [
+      "repeat4",
+      65536,
+      4
+    ],
+    [
+      "repeat8",
+      65536,
+      8
+    ],
+    [
+      "repeat16",
+      65536,
+      16
+    ],
+    [
+      "mono",
+      1,
+      1
+    ]
+  ],
+  "labels": [
+    "A",
+    "EVAL_COLD",
+    "V8_ON"
+  ],
+  "cpu": 2,
+  "seed": 2026110902,
+  "timing": "performance.now around one readLoop invocation after two full sequence warmup cycles; setup excluded",
+  "engine_policy": "same script bytes and parameters per case; original release ELFs, no instrumentation",
+  "stopping_rule": "exactly one timing process per engine/input, no selective retries or trimming",
+  "case_order": "shuffled; all six engine permutations used once, two occurrences per label/position overall",
+  "A_duration_requirement": "all A measurement intervals strictly exceed 3000 ms",
+  "statistics": "single observations, no variance estimate",
+  "mono_caveat": "one shape changes receiver working set; separately labelled reference",
+  "frozen_files": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/measure.repeat1.js": "cd95c3d48905d2f8f952c7c2c43c2f856223dace173e804d4b1e2e56f461f0e2",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/measure.repeat2.js": "c98771a2492e242f54c725a8c4e787c20620e75de99dd2d798a9bc6aae4230b2",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/measure.repeat4.js": "223c5366c0a93b988b24a033f07641cf4a4a48c015e382efa2dcc78457348e5d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/measure.repeat8.js": "c56ce71846e7dae3036187b12d36d969a6707cd7be85ea908bf448a2be81116a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/measure.repeat16.js": "990a9402d6f375cec55133eacbda8f351ff95d64e27b4ea96886d9fe35fb0a3f",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/measure.mono.js": "83643b202c8e432213eada02d8c8bc94ba53f22eda0662ad2c6e557235ba2973",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/gate.repeat1.js": "edc57d07644e9b4cb43c73ba172152ac3fb099c2fa00049ebdb4007c8aeb8acf",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/scripts/gate.mono.js": "bdfdc8561d2a8c9e501a2fbbbc95bd8a4e04cab982b9fb807a5d93fe1106390a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/source.js": "1b3821b2f52c4040981e013338564c5b38c39743866d16116141edb03a8256f5",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/runner.py": "1e688db4f4259114d6b76ab02b0064a0e79d3e4c2fb4abed2fdde9d535c3ad7a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/runtime_manifest.json": "070b143dc18976685adb7265d4f25e14fdf4533901c87c27ae88ed5d60d537e6",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/layout_timing01/schedule.json": "573ac5f7a7839231a9e501cee76a668d4272b45bd46db6e5eb393c4c4a08cf01"
+  }
+}

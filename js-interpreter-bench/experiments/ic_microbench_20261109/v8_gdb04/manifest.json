@@ -1,0 +1,60 @@
+{
+  "runtime": {
+    "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+    "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+    "dependencies": [
+      {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749"
+      },
+      {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/icudtl.dat",
+        "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+      }
+    ],
+    "system_libraries": [
+      {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "sha256": "bda779ea9e9ad234f60315477d7cfd0bdde861cd8ddd9df8cdaf62f18c4cec14"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "85e64f97e348786a8fb4d9f3d52fec289e2fb86bba20f0731dfe61990525e0f7"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "sha256": "9d339ecb409578d6a5d587e6c537a8f9589b8a13fefba30d167433a4b5758bee"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+        "sha256": "1c488db6f4fe8cecb72456bc018de000b7a9b539c2994864b0416b5e8371b3d8"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+        "sha256": "1327fc40710691dbd94e88b6cf4efce27fefe8fbb93f7d1164a75b4dccaea696"
+      }
+    ],
+    "ldd": "\tlinux-vdso.so.1 (0x000071398281d000)\n\tlibpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00007139827fb000)\n\tlibm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007139804da000)\n\tlibgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007139827cd000)\n\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x0000713980200000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000071398281f000)\n"
+  },
+  "command": [
+    "gdb",
+    "--batch",
+    "-q",
+    "-nx",
+    "-x",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_gdb04/gdb_driver.py",
+    "--args",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+    "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+    "--jitless",
+    "--no-lazy",
+    "--use-ic",
+    "--allow-natives-syntax",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_gdb04/marked.js"
+  ],
+  "source_sha256": "d3cdd9fce6f6778d04369dedaff81b88ffaddcd8db55f1e30b34ee3f0397d42a",
+  "script_sha256": "29f4dc760299addc2ad7f099a6b89a1373e6f5ca64c85b74d60d0f6dad760df7",
+  "driver_sha256": "112ac08521e87606df34797a74af26394a237aa9bacec88d1dde893b02871f9a",
+  "runner_sha256": "d61eb7a4a6bc3ef2fec3a46bdda224206854a7f20ecd2d973cf3f9fd5ad099ae",
+  "note": "diagnostic only; counts only between two native SystemBreak markers; no IC logging flags"
+}
