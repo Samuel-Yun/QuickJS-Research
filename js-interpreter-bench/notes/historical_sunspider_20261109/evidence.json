@@ -1,0 +1,182 @@
+{
+  "task": "readonly historical SunSpider review; no benchmark executed",
+  "sources": {
+    "single": {
+      "path": "experiments/ic_search_lab/v6_targeted_ic/full_expand01_sunspider.one_round.aggregate.csv",
+      "sha256": "dbcc303b52c762245b6a25a08a8940d4e679fd43bca5713fe4362fe37e6a0336"
+    },
+    "three": {
+      "path": "experiments/ic_search_lab/v6_targeted_ic/full_accept02_sunspider.aggregate.csv",
+      "sha256": "54e5e8791a3cd3b27c788b35cafcf16569e0685fd2ebe52b1b631e83bb12eb27"
+    },
+    "final": {
+      "path": "experiments/ic_search_lab/v2_20261105/final.sunspider.aggregates.csv",
+      "sha256": "ca6960c13dfd09200c74ad84af61aaa163ba4122f03b45c69b3626b79c123d2a"
+    },
+    "short": {
+      "path": "experiments/ic_search_lab/v3_mass_search/exploration02.summary.csv",
+      "sha256": "8fa26e69333832a2ce9cfa7ce95ff4e1c71bc7437705d2739340091e08e51ac7"
+    },
+    "four": {
+      "path": "experiments/ic_search_lab/v3_mass_search/exploration.level3.summary.csv",
+      "sha256": "596bde7811814e23dc886b5c0d61935cc49ba04e406757a38bf88d1989e44c64"
+    },
+    "current": {
+      "path": "experiments/native_confirmation_20261108/attempt02/aggregate.csv",
+      "sha256": "5ec9aa8caea42e4e10a96b0ef7710b6fbf91a066f5de28a4f5d4ea7ac679c0a5"
+    }
+  },
+  "selected_rows": [
+    {
+      "label": "s001",
+      "source": "single",
+      "row": {
+        "subset": "SunSpider26",
+        "condition": "s001",
+        "denominator": "A",
+        "time_ratio": "0.9328935766435393",
+        "time_change_pct": "-6.7106423356460665",
+        "ci95_low": "",
+        "ci95_high": "",
+        "rounds": "1",
+        "bootstrap_draws": "0",
+        "unit": "one fresh process per case and condition",
+        "direction": "point_only",
+        "interpretation": "User-requested single round; uncertainty UNKNOWN"
+      }
+    },
+    {
+      "label": "W1",
+      "source": "single",
+      "row": {
+        "subset": "SunSpider26",
+        "condition": "W1",
+        "denominator": "A",
+        "time_ratio": "0.9477892129530618",
+        "time_change_pct": "-5.221078704693816",
+        "ci95_low": "",
+        "ci95_high": "",
+        "rounds": "1",
+        "bootstrap_draws": "0",
+        "unit": "one fresh process per case and condition",
+        "direction": "point_only",
+        "interpretation": "User-requested single round; uncertainty UNKNOWN"
+      }
+    },
+    {
+      "label": "K1",
+      "source": "single",
+      "row": {
+        "subset": "SunSpider26",
+        "condition": "K1",
+        "denominator": "A",
+        "time_ratio": "0.9492294492632553",
+        "time_change_pct": "-5.077055073674474",
+        "ci95_low": "",
+        "ci95_high": "",
+        "rounds": "1",
+        "bootstrap_draws": "0",
+        "unit": "one fresh process per case and condition",
+        "direction": "point_only",
+        "interpretation": "User-requested single round; uncertainty UNKNOWN"
+      }
+    },
+    {
+      "label": "P1",
+      "source": "single",
+      "row": {
+        "subset": "SunSpider26",
+        "condition": "P1",
+        "denominator": "A",
+        "time_ratio": "0.9586134187219876",
+        "time_change_pct": "-4.138658127801243",
+        "ci95_low": "",
+        "ci95_high": "",
+        "rounds": "1",
+        "bootstrap_draws": "0",
+        "unit": "one fresh process per case and condition",
+        "direction": "point_only",
+        "interpretation": "User-requested single round; uncertainty UNKNOWN"
+      }
+    },
+    {
+      "label": "s001",
+      "source": "three",
+      "row": {
+        "subset": "SunSpider26",
+        "condition": "s001",
+        "denominator": "A",
+        "time_ratio": "0.9931750812555398",
+        "time_change_pct": "-0.6824918744460229",
+        "ci95_low": "0.9665365104699094",
+        "ci95_high": "1.0061548493341044",
+        "rounds": "3",
+        "bootstrap_draws": "10000",
+        "unit": "whole paired round, all conditions/cases together",
+        "direction": "unclear",
+        "interpretation": "exploratory, three rounds only; not multiplicity adjusted"
+      }
+    },
+    {
+      "label": "s001",
+      "source": "final",
+      "row": {
+        "scope": "all26_case_equal",
+        "comparison": "s001/A",
+        "ratio": "0.9935083554777104",
+        "low95": "0.9912391393217236",
+        "high95": "0.9952631712157384",
+        "rounds": "30",
+        "draws": "10000",
+        "seed": "20261105"
+      }
+    },
+    {
+      "label": "P013",
+      "source": "short",
+      "row": {
+        "candidate": "P013",
+        "family": "P",
+        "kind": "sunspider",
+        "denominator": "A",
+        "subset_gm": "0.9143465686664358",
+        "trial": "0",
+        "timing_quality": "UNSTABLE",
+        "block": "41",
+        "official_score": "False",
+        "CI": "not estimated"
+      }
+    },
+    {
+      "label": "P013",
+      "source": "four",
+      "row": {
+        "candidate": "P013",
+        "kind": "sunspider",
+        "scope": "all26",
+        "denominator": "A",
+        "ratio": "1.003968377814424",
+        "low95": "1.0023074580367932",
+        "high95": "1.0409899122178403",
+        "rounds": "4",
+        "round_ratios": "[1.0038212248174034, 1.002686829721312, 1.0409899122178403, 1.00333866661272]",
+        "inference": "exploratory unadjusted10000 whole-round paired bootstrap seed20261105"
+      }
+    },
+    {
+      "label": "EVAL_COLD",
+      "source": "current",
+      "row": {
+        "kind": "sunspider",
+        "metric": "suite_GM",
+        "condition": "EVAL_COLD",
+        "denominator": "A",
+        "ratio": "0.9851303219030475",
+        "change_pct": "-1.4869678096952499",
+        "low95": "0.9847195644837713",
+        "high95": "0.9856394064476517",
+        "inference": "10000 paired whole-round percentile bootstrap; 30 prespecified rounds; no multiplicity correction"
+      }
+    }
+  ]
+}
