@@ -1,0 +1,17 @@
+0000  b3             push_0
+0001  c7             put_loc0
+0002  b3             push_0
+0003  c8             put_loc1
+0004  c4             get_loc1
+0005  d0             get_arg1
+0006  a1             lt
+0007  e80e           if_false8 -> 22
+0009  c3             get_loc0
+0010  f7             v6_get_arg0
+0011  f40c000000     get_field_rdi x [IC0; delta=12]
+0016  9b             add
+0017  c7             put_loc0
+0018  9101           inc_loc
+0020  eaef           goto8 -> 4
+0022  c3             get_loc0
+0023  28             return

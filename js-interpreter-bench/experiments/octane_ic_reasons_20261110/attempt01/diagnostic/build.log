@@ -1,0 +1,25 @@
+mkdir -p .obj .obj/examples .obj/tests
+gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c
+gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c
+gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c
+In file included from quickjs.c:6180:
+micro_ic_diag.h: In function ‘oct_count_end’:
+micro_ic_diag.h:153:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  153 |         if(!first)fputc(',',stderr);first=0;
+      |         ^~
+micro_ic_diag.h:153:37: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  153 |         if(!first)fputc(',',stderr);first=0;
+      |                                     ^~~~~
+quickjs.c:2253:17: error: implicit declaration of function ‘free_is_forbidden’ [-Wimplicit-function-declaration]
+ 2253 | #define free(p) free_is_forbidden(p)
+      |                 ^~~~~~~~~~~~~~~~~
+micro_ic_diag.h:160:84: note: in expansion of macro ‘free’
+  160 |     while(reason_site_list){ReasonSite *s=reason_site_list;reason_site_list=s->all;free(s);}
+      |                                                                                    ^~~~
+quickjs.c: In function ‘js_default_module_normalize_name’:
+quickjs.c:30068:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+30068 |     p = strrchr(base_name, '/');
+      |       ^
+gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c
+make: *** [Makefile:339: .obj/quickjs.o] Error 1
+make: *** Waiting for unfinished jobs....

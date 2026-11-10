@@ -1,0 +1,77 @@
+/* A guarded own-property position hint for non-interned shapes.
+ * No additional ReadICSite storage and no non-interned shape references.
+ * The ordinary shape-hit path, borrowed loads and shared stores are unchanged.
+ * A hint always has NULL shape/holder_shape, so those paths cannot use its
+ * tagged offset. Probe only in the existing object fallback before hashing.
+ */
+#define RDI_OFFSET_HINT_FLAG UINT32_C(0x80000000)
+
+#ifdef RDI_OFFSET_DIAGNOSTIC
+static uint64_t rdi_offset_fills, rdi_offset_hits, rdi_offset_rejects;
+static int rdi_offset_report_registered;
+static void rdi_offset_report(void)
+{
+    fprintf(stderr, "OFFSET_COUNTS:{\"fills\":%llu,\"hits\":%llu,\"rejects\":%llu}\n",
+            (unsigned long long)rdi_offset_fills,
+            (unsigned long long)rdi_offset_hits,
+            (unsigned long long)rdi_offset_rejects);
+}
+#define RDI_OFFSET_COUNT(field) (++rdi_offset_ ## field)
+#else
+#define RDI_OFFSET_COUNT(field) ((void)0)
+#endif
+
+static force_inline BOOL rdi_guarded_offset_probe(JSContext *ctx,
+                                                 ReadICSite *s,
+                                                 JSObject *p, JSValue *value)
+{
+    uint32_t offset;
+    JSShapeProperty *property;
+    if (s->shape || s->holder_shape || !(s->prop_offset & RDI_OFFSET_HINT_FLAG))
+        return FALSE;
+    /* Recheck against the CURRENT shape; an unhashed one can change in place.
+     * Check bounds before dereferencing either the descriptor or value array.
+     * Exotic receivers and accessors/autoinit/varrefs always use the original
+     * fallback. No callbacks or allocations occur between validation and load.
+     */
+    if (p->class_id != JS_CLASS_OBJECT || p->is_exotic)
+        goto reject;
+    offset = s->prop_offset & ~RDI_OFFSET_HINT_FLAG;
+    if (offset >= p->shape->prop_count)
+        goto reject;
+    property = &get_shape_prop(p->shape)[offset];
+    if (property->atom != s->atom || (property->flags & JS_PROP_TMASK))
+        goto reject;
+    *value = JS_DupValue(ctx, p->prop[offset].u.value);
+    RDI_OFFSET_COUNT(hits);
+    return TRUE;
+reject:
+    RDI_OFFSET_COUNT(rejects);
+    return FALSE;
+}
+
+static void rdi_guarded_offset_update(JSContext *ctx, ReadICSite *s,
+                                      uint32_t offset)
+{
+    JSShape *old, *old_holder;
+    if (offset >= RDI_OFFSET_HINT_FLAG)
+        return;
+    old = s->shape;
+    old_holder = s->holder_shape;
+    /* Publish an entirely non-owning hint BEFORE releasing old shape roots.
+     * Normal rdi_update/v6_proto_update replace this offset with an untagged
+     * one if the site later returns to the original cache modes.
+     */
+    s->shape = NULL;
+    s->holder_shape = NULL;
+    s->prop_offset = offset | RDI_OFFSET_HINT_FLAG;
+    RDI_OFFSET_COUNT(fills);
+#ifdef RDI_OFFSET_DIAGNOSTIC
+    if (!rdi_offset_report_registered) {
+        rdi_offset_report_registered = 1;
+        if (atexit(rdi_offset_report)) abort();
+    }
+#endif
+    js_free_shape_null(ctx->rt, old_holder);
+    js_free_shape_null(ctx->rt, old);
+}

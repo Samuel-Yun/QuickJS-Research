@@ -1,0 +1,117 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6176,6 +6176,8 @@
+     *ppr = NULL;
+     return NULL;
+ }
++
++#include "micro_ic_diag.h"
+ 
+ #include "read_ic_runtime.inc"
+ 
+@@ -17807,6 +17809,7 @@
+         ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
+         if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
+             site->shape == object->shape) {                            \
++            micro_ic_hit(site, 1); \
+             *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
+             pc += 5;                                                   \
+             break;                                                     \
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -10,7 +10,8 @@
+         JSShapeProperty *prs;                                           \
+         RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+-        RDI_QUERY();                                                    \
++        RDI_QUERY();                                                     \
++        micro_ic_regular_query(site);                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+@@ -19,6 +20,7 @@
+                     if (site->shape == p->shape && holder &&            \
+                         holder->class_id == JS_CLASS_OBJECT && !holder->is_exotic && \
+                         site->holder_shape == holder->shape) {          \
++                        micro_ic_hit(site, 0); \
+                         val = JS_DupValue(ctx, holder->prop[site->prop_offset].u.value); \
+                         goto name ## _done;                            \
+                     }                                                  \
+@@ -28,13 +30,15 @@
+                 }                                                      \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
++                    micro_ic_hit(site, 0); \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+-        RDI_COUNT(fallback);                                            \
++        RDI_COUNT(fallback);                                               \
++        micro_ic_miss(site);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -56,5 +56,6 @@
+         }
+     }
+     assert(index == count);
++    micro_ic_watch(ctx, b);
+     return 0;
+ }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -28,6 +28,7 @@
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+     RDI_COUNT(updates);
++    micro_ic_fill(s);
+     JSShape *old = s->shape, *old_holder = s->holder_shape;
+     js_dup_shape(shape);
+     s->shape = shape;
+--- a/micro_ic_diag.h
++++ b/micro_ic_diag.h
+@@ -0,0 +1,39 @@
++/* Diagnostic only: all prepared non-length named read sites. */
++static int oct_count_active;
++static unsigned long long oct_queries, oct_hits, oct_misses, oct_fused_hits;
++static unsigned long long oct_proto_hits, oct_regular_queries, oct_own_fills;
++static void micro_ic_watch(JSContext *ctx, JSFunctionBytecode *b) { }
++static force_inline void micro_ic_regular_query(ReadICSite *site)
++{
++    if (oct_count_active && site->atom != JS_ATOM_length) {
++        oct_queries++; oct_regular_queries++;
++    }
++}
++static force_inline void micro_ic_hit(ReadICSite *site, int fused)
++{
++    if (oct_count_active && site->atom != JS_ATOM_length) {
++        oct_hits++;
++        if (fused) { oct_queries++; oct_fused_hits++; }
++        else if (site->holder_shape) oct_proto_hits++;
++    }
++}
++static force_inline void micro_ic_miss(ReadICSite *site)
++{
++    if (oct_count_active && site->atom != JS_ATOM_length) oct_misses++;
++}
++static force_inline void micro_ic_fill(ReadICSite *site)
++{
++    if (oct_count_active && site->atom != JS_ATOM_length) oct_own_fills++;
++}
++void oct_count_begin(void)
++{
++    oct_queries=oct_hits=oct_misses=oct_fused_hits=oct_proto_hits=0;
++    oct_regular_queries=oct_own_fills=0; oct_count_active=1;
++}
++void oct_count_end(void)
++{
++    oct_count_active=0;
++    fprintf(stderr,"OCTANE_IC_COUNTS:{\"queries\":%llu,\"hits\":%llu,\"misses\":%llu,"
++        "\"fused_hits\":%llu,\"proto_hits\":%llu,\"regular_queries\":%llu,\"own_fills\":%llu}\n",
++        oct_queries,oct_hits,oct_misses,oct_fused_hits,oct_proto_hits,oct_regular_queries,oct_own_fills);
++}

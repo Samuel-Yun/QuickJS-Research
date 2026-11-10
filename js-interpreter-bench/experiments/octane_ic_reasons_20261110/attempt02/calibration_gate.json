@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "case": "own_repeat",
+      "counts": {
+        "queries": 16,
+        "hits": 15,
+        "misses": 1,
+        "fused_hits": 15,
+        "proto_hits": 0,
+        "regular_queries": 1,
+        "own_fills": 1,
+        "compiled_instance_sites": 1,
+        "single_read_sites": 0,
+        "single_read_filled_sites": 0,
+        "groups": [
+          {
+            "reason": "own_first_fill",
+            "class_id": 1,
+            "class_name": "JS_CLASS_OBJECT",
+            "atom_hex": "78",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "case": "string",
+      "counts": {
+        "queries": 16,
+        "hits": 0,
+        "misses": 16,
+        "fused_hits": 0,
+        "proto_hits": 0,
+        "regular_queries": 16,
+        "own_fills": 0,
+        "compiled_instance_sites": 1,
+        "single_read_sites": 0,
+        "single_read_filled_sites": 0,
+        "groups": [
+          {
+            "reason": "primitive_string",
+            "class_id": 0,
+            "class_name": "NONE",
+            "atom_hex": "63686172436f64654174",
+            "count": 16
+          }
+        ]
+      }
+    },
+    {
+      "case": "function",
+      "counts": {
+        "queries": 16,
+        "hits": 0,
+        "misses": 16,
+        "fused_hits": 0,
+        "proto_hits": 0,
+        "regular_queries": 16,
+        "own_fills": 0,
+        "compiled_instance_sites": 1,
+        "single_read_sites": 0,
+        "single_read_filled_sites": 0,
+        "groups": [
+          {
+            "reason": "unsupported_receiver_class",
+            "class_id": 13,
+            "class_name": "JS_CLASS_BYTECODE_FUNCTION",
+            "atom_hex": "63616c6c",
+            "count": 16
+          }
+        ]
+      }
+    },
+    {
+      "case": "eval_once",
+      "counts": {
+        "queries": 16,
+        "hits": 0,
+        "misses": 16,
+        "fused_hits": 0,
+        "proto_hits": 0,
+        "regular_queries": 16,
+        "own_fills": 16,
+        "compiled_instance_sites": 16,
+        "single_read_sites": 16,
+        "single_read_filled_sites": 16,
+        "groups": [
+          {
+            "reason": "own_first_fill",
+            "class_id": 1,
+            "class_name": "JS_CLASS_OBJECT",
+            "atom_hex": "78",
+            "count": 16
+          }
+        ]
+      }
+    }
+  ]
+}

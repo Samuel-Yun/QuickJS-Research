@@ -1,0 +1,106 @@
+{
+  "rows": [
+    {
+      "case": "RegExp.RegExp",
+      "N": 64,
+      "queries": 7912384,
+      "hits": 63,
+      "misses": 7912321,
+      "hit_percent": 0.0007962202036706004,
+      "compiled_instance_sites": 751,
+      "single_read_sites": 0,
+      "single_read_filled_sites": 0,
+      "single_read_share_of_reads": 0.0,
+      "reason_totals": {
+        "primitive_string": 2480320,
+        "unsupported_receiver_class": 5432000,
+        "own_first_fill": 1
+      }
+    },
+    {
+      "case": "Mandreel.Mandreel",
+      "N": 1,
+      "queries": 333428,
+      "hits": 980,
+      "misses": 332448,
+      "hit_percent": 0.29391652770613147,
+      "compiled_instance_sites": 13,
+      "single_read_sites": 0,
+      "single_read_filled_sites": 0,
+      "single_read_share_of_reads": 0.0,
+      "reason_totals": {
+        "own_first_fill": 1,
+        "own_unhashed": 332303,
+        "autoinit_descriptor": 3,
+        "primitive_string": 8,
+        "unsupported_receiver_class": 133
+      }
+    },
+    {
+      "case": "CodeLoad.CodeLoadClosure",
+      "N": 4096,
+      "queries": 57344,
+      "hits": 0,
+      "misses": 57344,
+      "hit_percent": 0.0,
+      "compiled_instance_sites": 32774,
+      "single_read_sites": 32768,
+      "single_read_filled_sites": 16384,
+      "single_read_share_of_reads": 57.142857142857146,
+      "reason_totals": {
+        "own_unhashed": 12286,
+        "own_first_fill": 16384,
+        "unsupported_receiver_class": 8192,
+        "autoinit_descriptor": 2,
+        "primitive_string": 8192,
+        "primitive_other": 12288
+      }
+    },
+    {
+      "case": "CodeLoad.CodeLoadJQuery",
+      "N": 512,
+      "queries": 510976,
+      "hits": 37888,
+      "misses": 473088,
+      "hit_percent": 7.414829659318637,
+      "compiled_instance_sites": 190470,
+      "single_read_sites": 145408,
+      "single_read_filled_sites": 35840,
+      "single_read_share_of_reads": 28.45691382765531,
+      "reason_totals": {
+        "own_first_fill": 42496,
+        "missing_property": 28160,
+        "own_unhashed": 3069,
+        "unsupported_receiver_class": 366080,
+        "prototype_value_read_not_cached": 6144,
+        "own_guard_or_shape_change": 1024,
+        "prototype_first_fill": 512,
+        "primitive_string": 24576,
+        "autoinit_descriptor": 3,
+        "primitive_other": 1024
+      }
+    },
+    {
+      "case": "zlib.zlib",
+      "N": 1,
+      "queries": 14648,
+      "hits": 74,
+      "misses": 14574,
+      "hit_percent": 0.505188421627526,
+      "compiled_instance_sites": 182,
+      "single_read_sites": 146,
+      "single_read_filled_sites": 96,
+      "single_read_share_of_reads": 0.9967231021299836,
+      "reason_totals": {
+        "own_first_fill": 108,
+        "missing_property": 17,
+        "primitive_string": 32,
+        "unsupported_receiver_class": 101,
+        "own_unhashed": 14247,
+        "own_guard_or_shape_change": 8,
+        "prototype_unhashed": 43,
+        "autoinit_descriptor": 18
+      }
+    }
+  ]
+}

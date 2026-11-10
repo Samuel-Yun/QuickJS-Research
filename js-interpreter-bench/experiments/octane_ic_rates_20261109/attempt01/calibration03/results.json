@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": "proto_method",
+      "label": "EVAL_COLD",
+      "counts": {
+        "queries": 16,
+        "hits": 15,
+        "misses": 1,
+        "fused_hits": 0,
+        "proto_hits": 15,
+        "regular_queries": 16,
+        "own_fills": 0
+      }
+    },
+    {
+      "case": "proto_method",
+      "label": "V8_ON",
+      "counts": {
+        "queries_all": 16,
+        "length_queries": 0,
+        "misses_all": 1,
+        "length_misses": 0,
+        "no_feedback_all": 10,
+        "length_no_feedback": 0,
+        "generic_runtime_all": 0,
+        "length_generic_runtime": 0,
+        "no_feedback_runtime_all": 0,
+        "length_no_feedback_runtime": 0,
+        "bad_frame": 0
+      }
+    },
+    {
+      "case": "getter_throw",
+      "label": "EVAL_COLD",
+      "counts": {
+        "queries": 31,
+        "hits": 14,
+        "misses": 17,
+        "fused_hits": 0,
+        "proto_hits": 0,
+        "regular_queries": 31,
+        "own_fills": 1
+      }
+    },
+    {
+      "case": "getter_throw",
+      "label": "V8_ON",
+      "counts": {
+        "queries_all": 31,
+        "length_queries": 0,
+        "misses_all": 2,
+        "length_misses": 0,
+        "no_feedback_all": 18,
+        "length_no_feedback": 0,
+        "generic_runtime_all": 0,
+        "length_generic_runtime": 0,
+        "no_feedback_runtime_all": 0,
+        "length_no_feedback_runtime": 0,
+        "bad_frame": 0
+      }
+    }
+  ]
+}
