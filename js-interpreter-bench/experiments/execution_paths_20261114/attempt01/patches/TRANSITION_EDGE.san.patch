@@ -1,0 +1,142 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -223,6 +223,7 @@
+ #define __exception __attribute__((warn_unused_result))
+ 
+ typedef struct JSShape JSShape;
++typedef struct ExEdge { JSShape *from,*to; JSAtom atom; int flags; } ExEdge;
+ typedef struct JSString JSString;
+ typedef struct JSString JSAtomStruct;
+ typedef struct JSObject JSObject;
+@@ -389,6 +390,7 @@
+     int shape_hash_count; /* number of hashed shapes */
+     JSShape **shape_hash;
+     void *user_opaque;
++    ExEdge transition_edges[32];
+ };
+ 
+ struct JSClass {
+@@ -985,6 +987,7 @@
+     /* true if the shape is inserted in the shape hash table. If not,
+        JSShape.hash is not valid */
+     uint8_t is_hashed;
++    uint8_t has_transition_edge;
+     uint32_t hash; /* current hash value */
+     uint32_t prop_hash_mask; /* >= 2 */
+     int prop_size; /* allocated properties */
+@@ -5208,6 +5211,35 @@
+     return 0;
+ }
+ 
++#ifdef EX_DIAGNOSTIC
++static int ex_active;
++static uint64_t ex_rmw_attempts,ex_rmw_hits,ex_rmw_guard,ex_rmw_type,ex_rmw_overflow;
++static uint64_t ex_rmw_const_other,ex_loop_entries,ex_loop_iters,ex_loop_guard;
++static uint64_t ex_loop_overflow,ex_loop_checkpoints,ex_edge_queries,ex_edge_hits;
++static uint64_t ex_rmw_constants[33];
++#define EX_COUNT(x) do { if(ex_active) ++ex_##x; } while(0)
++void ex_begin(void) { ex_active=1; }
++void ex_end(void)
++{
++    ex_active=0;
++    fprintf(stderr,"EXECUTION_COUNTS:{\"rmw_attempts\":%llu,\"rmw_hits\":%llu,\"rmw_guard\":%llu,"
++        "\"rmw_type\":%llu,\"rmw_overflow\":%llu,\"rmw_const_other\":%llu,"
++        "\"loop_entries\":%llu,\"loop_iters\":%llu,\"loop_guard\":%llu,\"loop_overflow\":%llu,"
++        "\"loop_checkpoints\":%llu,\"edge_queries\":%llu,\"edge_hits\":%llu,\"constants\":[",
++        (unsigned long long)ex_rmw_attempts,(unsigned long long)ex_rmw_hits,
++        (unsigned long long)ex_rmw_guard,(unsigned long long)ex_rmw_type,(unsigned long long)ex_rmw_overflow,
++        (unsigned long long)ex_rmw_const_other,(unsigned long long)ex_loop_entries,
++        (unsigned long long)ex_loop_iters,(unsigned long long)ex_loop_guard,(unsigned long long)ex_loop_overflow,
++        (unsigned long long)ex_loop_checkpoints,(unsigned long long)ex_edge_queries,(unsigned long long)ex_edge_hits);
++    for(int i=0;i<33;i++) fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)ex_rmw_constants[i]);
++    fprintf(stderr,"]}\n");
++}
++#else
++#define EX_COUNT(x) ((void)0)
++#endif
++
++#include "edge_helpers.inc"
++
+ static void js_shape_hash_link(JSRuntime *rt, JSShape *sh)
+ {
+     uint32_t h;
+@@ -5219,6 +5251,7 @@
+ 
+ static void js_shape_hash_unlink(JSRuntime *rt, JSShape *sh)
+ {
++    ex_edge_invalidate(rt,sh);
+     uint32_t h;
+     JSShape **psh;
+ 
+@@ -5251,6 +5284,7 @@
+     sh->prop_count = 0;
+     sh->deleted_prop_count = 0;
+     sh->is_hashed = FALSE;
++    sh->has_transition_edge = FALSE;
+     return sh;
+ }
+ 
+@@ -5302,6 +5336,7 @@
+     js_rc(sh)->ref_count = 1;
+     add_gc_object(ctx->rt, &sh->header, JS_GC_OBJ_TYPE_SHAPE);
+     sh->is_hashed = FALSE;
++    sh->has_transition_edge = FALSE;
+     if (sh->proto) {
+         JS_DupValue(ctx, JS_MKPTR(JS_TAG_OBJECT, sh->proto));
+     }
+@@ -9241,7 +9276,11 @@
+     sh = p->shape;
+     if (sh->is_hashed) {
+         /* try to find an existing shape */
+-        new_sh = find_hashed_shape_prop(ctx->rt, sh, prop, prop_flags);
++        new_sh = ex_edge_lookup(ctx->rt,sh,prop,prop_flags);
++        if (!new_sh) {
++            new_sh = find_hashed_shape_prop(ctx->rt, sh, prop, prop_flags);
++            if (new_sh) ex_edge_fill(ctx->rt,sh,prop,prop_flags,new_sh);
++        }
+         if (new_sh) {
+             /* matching shape found: use it */
+             /*  the property array may need to be resized */
+@@ -10357,6 +10396,7 @@
+         } else {
+             js_shape_hash_unlink(ctx->rt, sh);
+             sh->is_hashed = FALSE;
++    sh->has_transition_edge = FALSE;
+         }
+     }
+     return 0;
+--- a/edge_helpers.inc
++++ b/edge_helpers.inc
+@@ -0,0 +1,32 @@
++/* Weak transition entries. Invalidate before either endpoint is unlinked,
++ * mutated or freed; no extra shape roots, references or GC marking needed.
++ * The edge flag fits in preexisting JSShape alignment padding on this target.
++ */
++_Static_assert(sizeof(JSShape)==56,"shape layout must remain unchanged");
++static void ex_edge_invalidate(JSRuntime *rt,JSShape *shape)
++{
++    if(!shape->has_transition_edge) return;
++    for(int i=0;i<32;i++) {
++        ExEdge *e=&rt->transition_edges[i];
++        if(e->from==shape || e->to==shape) { e->from=NULL;e->to=NULL; }
++    }
++    shape->has_transition_edge=FALSE;
++}
++static JSShape *ex_edge_lookup(JSRuntime *rt,JSShape *from,JSAtom atom,int flags)
++{
++    uint32_t index=(((uintptr_t)from>>4)^atom^((uint32_t)flags<<3))&31;
++    ExEdge *e=&rt->transition_edges[index];
++    EX_COUNT(edge_queries);
++    if(e->from==from && e->atom==atom && e->flags==flags) {
++        assert(from->is_hashed && e->to && e->to->is_hashed);
++        EX_COUNT(edge_hits);return e->to;
++    }
++    return NULL;
++}
++static void ex_edge_fill(JSRuntime *rt,JSShape *from,JSAtom atom,int flags,JSShape *to)
++{
++    uint32_t index=(((uintptr_t)from>>4)^atom^((uint32_t)flags<<3))&31;
++    ExEdge *e=&rt->transition_edges[index];
++    e->from=from;e->to=to;e->atom=atom;e->flags=flags;
++    from->has_transition_edge=TRUE;to->has_transition_edge=TRUE;
++}
