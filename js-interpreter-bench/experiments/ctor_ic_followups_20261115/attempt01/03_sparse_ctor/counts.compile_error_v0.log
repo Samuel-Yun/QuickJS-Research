@@ -1,0 +1,34 @@
+mkdir -p .obj .obj/examples .obj/tests
+gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c
+gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c
+gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c
+In file included from quickjs.c:6233:
+four_runtime.inc: In function ‘plan_recipe’:
+four_runtime.inc:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |         ^~
+four_runtime.inc:39:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |                                        ^
+In file included from four_runtime.inc:146:
+sparse_runtime.inc: In function ‘sparse_remember’:
+sparse_runtime.inc:26:21: error: ‘JS_CLASS_BYTECODE_FUNCTION_COLD’ undeclared (first use in this function); did you mean ‘JS_CLASS_BYTECODE_FUNCTION’?
+   26 |     if(f->class_id==JS_CLASS_BYTECODE_FUNCTION_COLD)return;
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                     JS_CLASS_BYTECODE_FUNCTION
+sparse_runtime.inc:26:21: note: each undeclared identifier is reported only once for each function it appears in
+quickjs.c: In function ‘js_default_module_normalize_name’:
+quickjs.c:30168:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+30168 |     p = strrchr(base_name, '/');
+      |       ^
+In file included from quickjs.c:32343:
+four_prepare.inc: In function ‘four_prepare’:
+four_prepare.inc:8:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |     ^~
+four_prepare.inc:8:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |                                   ^
+gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c
+make: *** [Makefile:339: .obj/quickjs.o] Error 1
+make: *** Waiting for unfinished jobs....

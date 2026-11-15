@@ -1,0 +1,207 @@
+{
+  "source": "frozen R3 counts, across all43 cases; get_field2 retains receiver and calls so excluded",
+  "cases": {
+    "RayTrace.RayTrace/get_field2": {
+      "sites": 1,
+      "attempts": 128,
+      "hits": 0,
+      "examples": [
+        {
+          "function": "renderScene",
+          "site_id": 11,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 385,
+          "attempts": 128,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 128,
+          "overflow": 0,
+          "bytecode_hex": "210300f55b050000240000bd15380000f466050000f479050000f48c05000011380000f49b050000f4ae05000011b4b4b4210300380000f4b7050000f4ca05000011b3b3b3210300bd16b3b4bd17210600210300caf6f4c8050000f5db050000c62401000ef6f4e8050000f5fb050000c42401000ef6f408060000f51b060000"
+        }
+      ]
+    },
+    "CodeLoad.CodeLoadJQuery/get_field2": {
+      "sites": 1024,
+      "attempts": 1024,
+      "hits": 0,
+      "examples": [
+        {
+          "function": "",
+          "site_id": 1,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 4,
+          "attempts": 1,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 1,
+          "overflow": 0,
+          "bytecode_hex": "210000f508000000250000"
+        },
+        {
+          "function": "",
+          "site_id": 2,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 24,
+          "attempts": 1,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 1,
+          "overflow": 0,
+          "bytecode_hex": "210000f58c0000002400009bc8dcf499000000c9c304f2080000c49b04c10800009b3fa0030000c5f597000000c3c5f4a80000002402000edcf5b6000000c424010011e81d0edef4c0000000be003f63050000def4cb000000be01153f630500000ec5f5d4000000c32401000e07cbc929"
+        }
+      ]
+    },
+    "zlib.zlib/get_field2": {
+      "sites": 1,
+      "attempts": 2,
+      "hits": 0,
+      "examples": [
+        {
+          "function": "S",
+          "site_id": 0,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 4,
+          "attempts": 2,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 2,
+          "overflow": 0,
+          "bytecode_hex": "210000f530000000cf240100d3d111e80a0ecfd1153f320000000ed011e90c0ecff52a000000b32401000ecf28"
+        }
+      ]
+    },
+    "zlib.zlib/get_field": {
+      "sites": 2,
+      "attempts": 2,
+      "hits": 0,
+      "examples": [
+        {
+          "function": "<eval>",
+          "site_id": 19,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 1384,
+          "attempts": 1,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 1,
+          "overflow": 0,
+          "bytecode_hex": "210100f4ac8f010094940400040000eec738b2001138350021010039360038b3001138360021010011392600c738b4001138360021010011392800c738b0001138360021010011392a00c73893001138360021010011392700c738b5001138360021010011392900c738b6001138360021010011392b00c738b7001138360021"
+        },
+        {
+          "function": "<eval>",
+          "site_id": 20,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 1365,
+          "attempts": 1,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 1,
+          "overflow": 0,
+          "bytecode_hex": "210100f4a78f0100949411e8110e38b00011b4210100f4ac8f010094940400040000eec738b2001138350021010039360038b3001138360021010011392600c738b4001138360021010011392800c738b0001138360021010011392a00c73893001138360021010011392700c738b5001138360021010011392900c738b60011"
+        }
+      ]
+    },
+    "3d-raytrace/get_field2": {
+      "sites": 1,
+      "attempts": 128,
+      "hits": 0,
+      "examples": [
+        {
+          "function": "raytraceScene",
+          "site_id": 20,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 4,
+          "attempts": 128,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 128,
+          "overflow": 0,
+          "bytecode_hex": "210000f5c8020000240000c7b5b998c838010011210000c9ddbbf6bb0abbf6efcaddbb0abb0abbf6efc104ddbbf6bb0abb0aefc105ddbb0abb0abb0aefc106ddbbf6bbf6bbf6efc107ddbb0abbf6bbf6efc108ddbbf6bbf6bb0aefc109ddbb0abbf6bb0aefc10ab3c10bc5c00b8fc10bde11c6c004c00821030046c5c00b8fc1"
+        }
+      ]
+    },
+    "crypto-aes/get_field2": {
+      "sites": 1,
+      "attempts": 128,
+      "hits": 0,
+      "examples": [
+        {
+          "function": "AESEncryptCtr",
+          "site_id": 4,
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pc": 119,
+          "attempts": 128,
+          "hits": 0,
+          "eligible": 0,
+          "fills": 0,
+          "fallbacks": 128,
+          "overflow": 0,
+          "bytecode_hex": "210000f5ad010000240000c106b3c9c5b7a1e814c005c5c006c5bb0898a0bcff00ab469102eae9b3c9c5b7a1e819c005c5b79bc006bd0099c5bb0898a0bcff00ab469102eae4ddc6edc107380400f57a010000cfe7c00499240100c10838000011c008210100c109b3c10ac00ac008a168b1000000b3c10bc00bb7a1e819c005"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,255 @@
+--- a/four_prepare.inc
++++ b/four_prepare.inc
+@@ -9,6 +9,9 @@
+     for(int p=0;p<b->byte_code_len;){uint8_t*pc=b->byte_code_buf+p;int op=*pc,n=short_opcode_info(op).size;
+         if(op==OP_call_constructor){FourSite*s=&b->four_sites[b->four_count];s->pc=p;s->argc=get_u16(pc+1);
+ #ifdef FOUR_DIAG
++            follow_stats[8]++;follow_stats[11]+=sizeof(FourSite);
++#endif
++#ifdef FOUR_DIAG
+             s->diag=four_dnew(ctx,b,p);
+ #endif
+             *pc=OP_four_ctor;put_u16(pc+1,b->four_count++);
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -1,5 +1,15 @@
+ typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
+-typedef struct FourSite {
++typedef struct FullPlan FullPlan;
++struct FourSite {
++    FullPlan *plan;
++    JSValue negative;
++    uint32_t pc;
++    uint16_t argc;
++#ifdef FOUR_DIAG
++    FourDiag *diag;
++#endif
++};
++struct FullPlan {
+     JSValue callee;
+     JSShape *initial,*final;
+     FourRecipe recipe;
+@@ -8,7 +18,7 @@
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+-} FourSite;
++};
+ static inline __exception int js_poll_interrupts(JSContext*ctx);
+ #ifdef FOUR_DIAG
+ static FourSite *four_ctor_observer;
+@@ -17,8 +27,9 @@
+ static void four_ctor_search(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work1);}
+ static void four_ctor_switch(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work2);}
+ #endif
+-static int four_ctor_recipe(JSFunctionBytecode*b,FourRecipe*r)
++static int plan_recipe(JSFunctionBytecode*b,FourRecipe*r)
+ {
++    FOLLOW(0);
+     const uint8_t*p=b->byte_code_buf,*end=p+b->byte_code_len;
+     if(b->func_kind!=JS_FUNC_NORMAL || b->var_count!=1 || b->var_ref_count || b->closure_var_count ||
+        b->need_home_object || b->is_derived_class_constructor || !b->has_simple_parameter_list ||
+@@ -36,7 +47,7 @@
+     }
+     return r->n && p+1==end && *p==OP_return_undef;
+ }
+-static JSObject*four_ctor_proto(JSObject*f)
++static JSObject*plan_proto(JSObject*f)
+ {
+     JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,f,JS_ATOM_prototype);
+     if(!d || (d->flags&JS_PROP_TMASK) || JS_VALUE_GET_TAG(pr->u.value)!=JS_TAG_OBJECT)return NULL;
+@@ -45,7 +56,7 @@
+ }
+ /* Unhashed prototypes are NOT trusted by pointer identity. Check the current
+  * descriptors along the current entire chain before performing any write. */
+-static int four_ctor_chain(JSObject*proto,const FourRecipe*r)
++static int plan_chain(JSObject*proto,const FourRecipe*r)
+ {
+     for(unsigned i=0;i<r->n;i++){
+         JSObject*p=proto;unsigned depth=0;
+@@ -57,7 +68,7 @@
+         }
+     }return 1;
+ }
+-static int four_ctor_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
++static int plan_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
+ {
+     if(ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT ||
+        JS_VALUE_GET_TAG(target)!=JS_TAG_OBJECT || JS_VALUE_GET_OBJ(callee)!=JS_VALUE_GET_OBJ(target))return 0;
+@@ -76,39 +87,51 @@
+            ctx->rt->malloc_ctx.malloc_state.malloc_size+sizeof(JSObject)<=ctx->rt->malloc_gc_threshold;
+ #endif
+ }
+-static int four_ctor_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc)
++static int plan_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc)
+ {
+     JSObject*f,*proto;FourRecipe r;
+-    if(!four_ctor_base(ctx,callee,target,argc,&f) || !four_ctor_recipe(f->u.func.function_bytecode,&r) ||
+-       !(proto=four_ctor_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
+-    return four_ctor_chain(proto,&r);
++    if(!plan_base(ctx,callee,target,argc,&f) || !plan_recipe(f->u.func.function_bytecode,&r) ||
++       !(proto=plan_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
++    return plan_chain(proto,&r);
+ }
+-static void four_ctor_learn(JSContext*ctx,FourSite*s,JSValueConst callee,JSValueConst result)
++static void plan_learn(JSContext*ctx,FourSite*slot,JSValueConst callee,JSValueConst result)
+ {
+     if(JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT || JS_VALUE_GET_TAG(result)!=JS_TAG_OBJECT)return;
+     JSObject*f=JS_VALUE_GET_OBJ(callee),*o=JS_VALUE_GET_OBJ(result),*proto;FourRecipe r;
+-    if(f->class_id!=JS_CLASS_BYTECODE_FUNCTION || !four_ctor_recipe(f->u.func.function_bytecode,&r) ||
+-       !(proto=four_ctor_proto(f)) || !four_ctor_chain(proto,&r) || o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
++    if(f->class_id!=JS_CLASS_BYTECODE_FUNCTION || !plan_recipe(f->u.func.function_bytecode,&r) ||
++       !(proto=plan_proto(f)) || !plan_chain(proto,&r) || o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
+        !o->shape->is_hashed || o->shape->proto!=proto || o->shape->prop_count!=r.n || o->shape->deleted_prop_count)return;
+     JSShapeProperty*d=get_shape_prop(o->shape);
+     for(unsigned i=0;i<r.n;i++)if(d[i].atom!=r.atom[i] || d[i].flags!=JS_PROP_C_W_E)return;
+     JSShape*initial=find_hashed_shape_proto(ctx->rt,proto);if(!initial)return;
+-    FOUR_COUNT(s,eligible);
++    FOUR_COUNT(slot,eligible);
+ #ifndef FOUR_PROBE
++    FullPlan*s=slot->plan;
++    if(!s){
++        s=js_mallocz_rt(ctx->rt,sizeof(*s));
++        if(!s){FOLLOW(4);return;}
++        s->pc=slot->pc;s->argc=slot->argc;
++#ifdef FOUR_DIAG
++        s->diag=slot->diag;follow_stats[9]++;follow_stats[10]+=sizeof(*s);
++#endif
++        slot->plan=s;FOLLOW(1);
++    }
+     JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
+     s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
++    JSValue negative=slot->negative;slot->negative=JS_UNDEFINED;
+     FOUR_COUNT(s,fill);
++    JS_FreeValue(ctx,negative);
+     JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldinitial);js_free_shape_null(ctx->rt,oldfinal);
+ #endif
+ }
+-static int four_ctor_try(JSContext*ctx,FourSite*s,JSValueConst callee,JSValueConst target,JSValue*args,JSValue*out)
++static int plan_try(JSContext*ctx,FullPlan*s,JSValueConst callee,JSValueConst target,JSValue*args,JSValue*out)
+ {
+     FOUR_COUNT(s,q);
+ #ifndef FOUR_PROBE
+     JSObject*f;
+     if(s->final && JS_VALUE_GET_TAG(s->callee)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(callee)==JS_TAG_OBJECT &&
+-       JS_VALUE_GET_OBJ(s->callee)==JS_VALUE_GET_OBJ(callee) && four_ctor_base(ctx,callee,target,s->argc,&f) &&
+-       four_ctor_proto(f)==s->final->proto && four_ctor_chain(s->final->proto,&s->recipe)){
++       JS_VALUE_GET_OBJ(s->callee)==JS_VALUE_GET_OBJ(callee) && plan_base(ctx,callee,target,s->argc,&f) &&
++       plan_proto(f)==s->final->proto && plan_chain(s->final->proto,&s->recipe)){
+         /* The two old entries each poll once. Hooks were excluded above. */
+         if(js_poll_interrupts(ctx) || js_poll_interrupts(ctx))return 0;
+         *out=JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
+@@ -120,5 +143,6 @@
+ #endif
+     FOUR_COUNT(s,guard);return 0;
+ }
++#include "sparse_runtime.inc"
+ static size_t four_extra_size(JSFunctionBytecode*b);
+ static void four_prepare(JSContext*ctx,JSFunctionBytecode*b);
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6710,7 +6710,7 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
+-            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}
++            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}}
+             if(b->forward_site){JS_MarkValue(rt,b->forward_site->target,mark_func);JS_MarkValue(rt,b->forward_site->apply,mark_func);}
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+@@ -18353,7 +18353,7 @@
+                 call_argv=sp-call_argc;sf->cur_pc=pc;
+                 int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+                 if(!fast){
+-                    int eligible=four_ctor_slow_eligible(ctx,call_argv[-2],call_argv[-1],call_argc);
++                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
+ #ifdef FOUR_DIAG
+                     FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+ #endif
+@@ -18362,6 +18362,7 @@
+                     four_ctor_observer=oldscope;
+ #endif
+                     if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
++                    else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
+                 }
+                 if(unlikely(JS_IsException(ret_val))){
+                     if(fast){
+@@ -36547,7 +36548,7 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+-    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);}
++    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
+     if(b->forward_site){JS_FreeValueRT(rt,b->forward_site->target);JS_FreeValueRT(rt,b->forward_site->apply);}
+     rdi_free(rt, b);
+ 
+@@ -41492,7 +41493,7 @@
+        JS_VALUE_GET_TAG(argv[0])==JS_TAG_OBJECT && JS_VALUE_GET_OBJ(argv[0])==JS_VALUE_GET_OBJ(fwd->receiver) &&
+        JS_VALUE_GET_TAG(ctx->rt->current_stack_frame->cur_func)==JS_TAG_OBJECT &&
+        JS_VALUE_GET_OBJ(ctx->rt->current_stack_frame->cur_func)==JS_VALUE_GET_OBJ(fwd->apply)){
+-        fwd->consumed=1;FOLLOW(4);FOLLOW(5);FOLLOW_ADD(6,fwd->argc);FOLLOW_ADD(7,2*(uint64_t)fwd->argc);
++        fwd->consumed=1;FOLLOW(16);FOLLOW(17);FOLLOW_ADD(18,fwd->argc);FOLLOW_ADD(19,2*(uint64_t)fwd->argc);
+         return JS_Call(ctx,this_val,argv[0],fwd->argc,(JSValueConst*)fwd->argv);
+     }
+     this_arg = argv[0];
+--- a/follow_runtime.inc
++++ b/follow_runtime.inc
+@@ -18,7 +18,7 @@
+ }
+ static int fwd_resolve(JSContext*ctx,FwdSite*s,JSValueConst receiver,int construct,JSValue*target,JSValue*apply)
+ {
+- FOUR_COUNT(s,q);FOLLOW(0);
++ FOUR_COUNT(s,q);FOLLOW(12);
+  if(!construct || ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(receiver)!=JS_TAG_OBJECT)goto fail;
+  JSObject*o=JS_VALUE_GET_OBJ(receiver);
+  if(o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
+@@ -30,14 +30,14 @@
+  JSObject*p=JS_VALUE_GET_OBJ(a);
+  if(p->class_id!=JS_CLASS_C_FUNCTION || p->u.cfunc.cproto!=JS_CFUNC_generic_magic ||
+     p->u.cfunc.magic || p->u.cfunc.c_function.generic_magic!=js_function_apply)goto fail;
+- FOUR_COUNT(s,eligible);FOLLOW(1);
++ FOUR_COUNT(s,eligible);FOLLOW(13);
+ #ifndef FOLLOW_PROBE
+  if(JS_VALUE_GET_TAG(s->target)==JS_TAG_OBJECT && JS_VALUE_GET_OBJ(s->target)==f &&
+     JS_VALUE_GET_TAG(s->apply)==JS_TAG_OBJECT && JS_VALUE_GET_OBJ(s->apply)==p){
+-  *target=JS_DupValue(ctx,t);*apply=JS_DupValue(ctx,a);FOUR_COUNT(s,h);FOLLOW(2);return 1;
++  *target=JS_DupValue(ctx,t);*apply=JS_DupValue(ctx,a);FOUR_COUNT(s,h);FOLLOW(14);return 1;
+  }
+  JSValue oldt=s->target,olda=s->apply;s->target=JS_DupValue(ctx,t);s->apply=JS_DupValue(ctx,a);
+  FOUR_COUNT(s,fill);JS_FreeValue(ctx,oldt);JS_FreeValue(ctx,olda);
+ #endif
+-fail:FOUR_COUNT(s,guard);FOLLOW(3);return 0;
++fail:FOUR_COUNT(s,guard);FOLLOW(15);return 0;
+ }
+--- a/sparse_runtime.inc
++++ b/sparse_runtime.inc
+@@ -0,0 +1,29 @@
++/* The negative entry owns its target. Only immutable, definitely unsupported
++ * bytecode/class is remembered, never prototype/GC/argc-dependent failure. */
++static int sparse_same(FourSite*s,JSValueConst c)
++{
++    return JS_VALUE_GET_TAG(c)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(s->negative)==JS_TAG_OBJECT &&
++        JS_VALUE_GET_OBJ(c)==JS_VALUE_GET_OBJ(s->negative);
++}
++static int four_ctor_try(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,JSValue*a,JSValue*out)
++{
++    if(!s->plan){FOUR_COUNT(s,q);FOUR_COUNT(s,guard);return 0;}
++    return plan_try(ctx,s->plan,c,t,a,out);
++}
++static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,unsigned n)
++{
++    if(sparse_same(s,c)){FOLLOW(2);return 0;}
++    return plan_slow_eligible(ctx,c,t,n);
++}
++static void four_ctor_learn(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst result)
++{
++    plan_learn(ctx,s,c,result);
++}
++static void sparse_remember(JSContext*ctx,FourSite*s,JSValueConst c)
++{
++    if(sparse_same(s,c) || JS_VALUE_GET_TAG(c)!=JS_TAG_OBJECT)return;
++    JSObject*f=JS_VALUE_GET_OBJ(c);FourRecipe r;
++    if(f->class_id==JS_CLASS_COLD_BYTECODE_FUNCTION)return;
++    if(f->class_id==JS_CLASS_BYTECODE_FUNCTION && plan_recipe(f->u.func.function_bytecode,&r))return;
++    JSValue old=s->negative;s->negative=JS_DupValue(ctx,c);FOLLOW(3);JS_FreeValue(ctx,old);
++}

@@ -1,0 +1,61 @@
+{
+  "parent_archive_sha256": "b7efa495f5521d4a52c3494c80b64833c0aef049b62d2d7cf6319df1d507a25e",
+  "independent_from_same_R3": true,
+  "rounds": {
+    "01_forward_ctor": {
+      "status": "PASS",
+      "source_archive": "source.tar.gz",
+      "source_archive_sha256": "60b35ee7a23ab937d74920b757b8f6a6fab236087296dfed39dd70bbd1806337",
+      "ELF_sha256": "34043075230f18f5a1046af6d03028fa91736f605c32763da25971d45d3b27c8",
+      "patch_applies_exactly": true,
+      "source_manifest_exact": true,
+      "samples": {
+        "octane": 17,
+        "sunspider": 26
+      },
+      "diagnostic_only": false
+    },
+    "02_proto_ticket": {
+      "status": "PASS",
+      "source_archive": "source.tar.gz",
+      "source_archive_sha256": "150d77c02d99272900bbc4d31fac3b1155b8d9f360dced7c7a563218130d53c0",
+      "ELF_sha256": "53cbfdbe54514c612382e4a3dfbcf936fa7ab4cd6aa03a6583064ae65654a1ce",
+      "patch_applies_exactly": true,
+      "source_manifest_exact": true,
+      "samples": {
+        "octane": 17,
+        "sunspider": 26
+      },
+      "diagnostic_only": false
+    },
+    "03_sparse_ctor": {
+      "status": "PASS",
+      "source_archive": "source.tar.gz",
+      "source_archive_sha256": "6adbf325cd071715347862083495692ebd4eedf0895b1a1dedf95c48a8ca84bb",
+      "ELF_sha256": "83cbb45250f99335fe6474b64001e94911389fd540927285663643ab6f67c19c",
+      "patch_applies_exactly": true,
+      "source_manifest_exact": true,
+      "samples": {
+        "octane": 17,
+        "sunspider": 26
+      },
+      "diagnostic_only": false
+    },
+    "04_construct_consume": {
+      "status": "NO_REAL_COVERAGE",
+      "source_archive": "probe-source.tar.gz",
+      "source_archive_sha256": "19eb75905247e8ad6abfeab8a59793a271c2af6150fe805f4c1a6baf99826a39",
+      "ELF_sha256": "5f66314b9c04c0b25ad05378bbe21a4edd40ebf22196addb962306a2c21cd1af",
+      "patch_applies_exactly": true,
+      "source_manifest_exact": true,
+      "samples": {
+        "octane": 17,
+        "sunspider": 26
+      },
+      "diagnostic_only": true
+    }
+  },
+  "formal_new_R3_C_suites": 0,
+  "auto_combination": false,
+  "push": false
+}
