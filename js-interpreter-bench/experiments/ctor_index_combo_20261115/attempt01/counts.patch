@@ -1,0 +1,572 @@
+--- a/four_diag.inc
++++ b/four_diag.inc
+@@ -0,0 +1,54 @@
++#ifdef FOUR_DIAG
++#pragma push_macro("free")
++#undef free
++typedef struct FourDiag {
++    uint64_t q,h,eligible,fill,guard,overflow;
++    uint64_t work1,work2,work3,work4,work5,work6;
++    unsigned pc;
++    char *name,*target;
++    char bytes[257];
++    struct FourDiag *next;
++} FourDiag;
++static FourDiag *four_dlist;
++static int four_active;
++static FourDiag *four_dnew(JSContext *ctx,JSFunctionBytecode *b,unsigned pc)
++{
++    FourDiag *d=calloc(1,sizeof(*d));assert(d);d->pc=pc;
++    const char *n=JS_AtomToCString(ctx,b->func_name);assert(n);
++    d->name=strdup(n);assert(d->name);JS_FreeCString(ctx,n);
++    unsigned count=min_int(128,b->byte_code_len-pc);
++    for(unsigned i=0;i<count;i++)snprintf(d->bytes+2*i,3,"%02x",b->byte_code_buf[pc+i]);
++    d->next=four_dlist;four_dlist=d;return d;
++}
++#define FOUR_COUNT(s,k) do{if(four_active)(s)->diag->k++;}while(0)
++#define FOUR_ADD(s,k,n) do{if(four_active)(s)->diag->k+=(n);}while(0)
++static void four_json_string(const char *s)
++{
++    fputc('"',stderr);
++    for(const unsigned char *p=(const unsigned char*)s;*p;p++) {
++        if(*p=='"'||*p=='\\'){fputc('\\',stderr);fputc(*p,stderr);}
++        else if(*p<32)fprintf(stderr,"\\u%04x",*p);else fputc(*p,stderr);
++    }
++    fputc('"',stderr);
++}
++void four_begin(void){four_active=1;}
++void four_end(void)
++{
++    four_active=0;uint64_t q=0,h=0,e=0,f=0,g=0,o=0;
++    for(FourDiag*d=four_dlist;d;d=d->next){q+=d->q;h+=d->h;e+=d->eligible;f+=d->fill;g+=d->guard;o+=d->overflow;}
++    fprintf(stderr,"FOUR_COUNTS:{\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"sites\":[",
++        (unsigned long long)q,(unsigned long long)h,(unsigned long long)e,(unsigned long long)f,(unsigned long long)g,(unsigned long long)o);
++    unsigned k=0;for(FourDiag*d=four_dlist;d;d=d->next)if(d->q){
++        fprintf(stderr,"%s{\"function\":",k++?",":"");four_json_string(d->name);
++        if(d->target){fprintf(stderr,",\"target\":");four_json_string(d->target);}
++        fprintf(stderr,",\"site_id\":%u,\"work\":[%llu,%llu,%llu,%llu,%llu,%llu]",k-1,
++            (unsigned long long)d->work1,(unsigned long long)d->work2,(unsigned long long)d->work3,(unsigned long long)d->work4,(unsigned long long)d->work5,(unsigned long long)d->work6);
++        fprintf(stderr,",\"pc\":%u,\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"bytecode_hex\":\"%s\"}",d->pc,
++            (unsigned long long)d->q,(unsigned long long)d->h,(unsigned long long)d->eligible,(unsigned long long)d->fill,(unsigned long long)d->guard,(unsigned long long)d->overflow,d->bytes);
++    }fprintf(stderr,"]}\n");
++}
++#pragma pop_macro("free")
++#else
++#define FOUR_COUNT(s,k) ((void)0)
++#define FOUR_ADD(s,k,n) ((void)0)
++#endif
+--- a/four_prepare.inc
++++ b/four_prepare.inc
+@@ -0,0 +1,17 @@
++static size_t four_extra_size(JSFunctionBytecode*b)
++{
++    unsigned n=0;for(int p=0;p<b->byte_code_len;){int op=b->byte_code_buf[p];n+=op==OP_call_constructor;p+=short_opcode_info(op).size;}
++    return n>65535?0:n*sizeof(FourSite);
++}
++static void four_prepare(JSContext*ctx,JSFunctionBytecode*b)
++{
++    if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
++    for(int p=0;p<b->byte_code_len;){uint8_t*pc=b->byte_code_buf+p;int op=*pc,n=short_opcode_info(op).size;
++        if(op==OP_call_constructor){FourSite*s=&b->four_sites[b->four_count];s->pc=p;s->argc=get_u16(pc+1);
++#ifdef FOUR_DIAG
++            s->diag=four_dnew(ctx,b,p);
++#endif
++            *pc=OP_four_ctor;put_u16(pc+1,b->four_count++);
++        }p+=n;
++    }
++}
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -0,0 +1,124 @@
++typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
++typedef struct FourSite {
++    JSValue callee;
++    JSShape *initial,*final;
++    FourRecipe recipe;
++    uint32_t pc;
++    uint16_t argc;
++#ifdef FOUR_DIAG
++    FourDiag *diag;
++#endif
++} FourSite;
++static inline __exception int js_poll_interrupts(JSContext*ctx);
++#ifdef FOUR_DIAG
++static FourSite *four_ctor_observer;
++static void four_ctor_alloc(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work3);}
++static void four_ctor_resize(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work4);}
++static void four_ctor_search(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work1);}
++static void four_ctor_switch(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work2);}
++#endif
++static int four_ctor_recipe(JSFunctionBytecode*b,FourRecipe*r)
++{
++    const uint8_t*p=b->byte_code_buf,*end=p+b->byte_code_len;
++    if(b->func_kind!=JS_FUNC_NORMAL || b->var_count!=1 || b->var_ref_count || b->closure_var_count ||
++       b->need_home_object || b->is_derived_class_constructor || !b->has_simple_parameter_list ||
++       end-p<10 || p[0]!=OP_push_this || p[1]!=OP_put_loc0)return 0;
++    p+=2;r->n=0;
++    while(p<end && *p==OP_get_loc0){
++        if(r->n==8 || end-p<7)return 0;p++;
++        unsigned index;
++        if(*p>=OP_get_arg0 && *p<=OP_get_arg3){index=*p-OP_get_arg0;p++;}
++        else if(*p==OP_get_arg && end-p>=3){index=get_u16(p+1);p+=3;}
++        else return 0;
++        if(end-p<5 || *p!=OP_put_field || index>=b->arg_count)return 0;
++        JSAtom atom=get_u32(p+1);for(unsigned i=0;i<r->n;i++)if(r->atom[i]==atom)return 0;
++        r->atom[r->n]=atom;r->arg[r->n++]=index;p+=5;
++    }
++    return r->n && p+1==end && *p==OP_return_undef;
++}
++static JSObject*four_ctor_proto(JSObject*f)
++{
++    JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,f,JS_ATOM_prototype);
++    if(!d || (d->flags&JS_PROP_TMASK) || JS_VALUE_GET_TAG(pr->u.value)!=JS_TAG_OBJECT)return NULL;
++    JSObject*p=JS_VALUE_GET_OBJ(pr->u.value);
++    return p->class_id==JS_CLASS_OBJECT && !p->is_exotic?p:NULL;
++}
++/* Unhashed prototypes are NOT trusted by pointer identity. Check the current
++ * descriptors along the current entire chain before performing any write. */
++static int four_ctor_chain(JSObject*proto,const FourRecipe*r)
++{
++    for(unsigned i=0;i<r->n;i++){
++        JSObject*p=proto;unsigned depth=0;
++        while(p){
++            if(++depth>32 || p->class_id!=JS_CLASS_OBJECT || p->is_exotic)return 0;
++            JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,p,r->atom[i]);
++            if(d){if((d->flags&JS_PROP_TMASK) || !(d->flags&JS_PROP_WRITABLE))return 0;break;}
++            p=p->shape->proto;
++        }
++    }return 1;
++}
++static int four_ctor_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
++{
++    if(ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT ||
++       JS_VALUE_GET_TAG(target)!=JS_TAG_OBJECT || JS_VALUE_GET_OBJ(callee)!=JS_VALUE_GET_OBJ(target))return 0;
++    *f=JS_VALUE_GET_OBJ(callee);
++    if((*f)->class_id!=JS_CLASS_BYTECODE_FUNCTION || !(*f)->is_constructor || (*f)->is_exotic)return 0;
++    JSFunctionBytecode*b=(*f)->u.func.function_bytecode;
++    if(argc<b->arg_count)return 0;
++    size_t size=sizeof(JSValue)*(b->var_count+b->stack_size)+sizeof(JSVarRef*)*b->var_ref_count;
++    if(js_check_stack_overflow(ctx->rt,size+sizeof(JSStackFrame)+512))return 0;
++#ifdef FORCE_GC_AT_MALLOC
++    return 0;
++#else
++    /* JS_NewObjectFromShape's GC could run a native finalizer after guards.
++     * Leave that construction to the original path; never redo it afterward. */
++    return ctx->rt->malloc_ctx.malloc_state.malloc_size<=SIZE_MAX-sizeof(JSObject) &&
++           ctx->rt->malloc_ctx.malloc_state.malloc_size+sizeof(JSObject)<=ctx->rt->malloc_gc_threshold;
++#endif
++}
++static int four_ctor_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc)
++{
++    JSObject*f,*proto;FourRecipe r;
++    if(!four_ctor_base(ctx,callee,target,argc,&f) || !four_ctor_recipe(f->u.func.function_bytecode,&r) ||
++       !(proto=four_ctor_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
++    return four_ctor_chain(proto,&r);
++}
++static void four_ctor_learn(JSContext*ctx,FourSite*s,JSValueConst callee,JSValueConst result)
++{
++    if(JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT || JS_VALUE_GET_TAG(result)!=JS_TAG_OBJECT)return;
++    JSObject*f=JS_VALUE_GET_OBJ(callee),*o=JS_VALUE_GET_OBJ(result),*proto;FourRecipe r;
++    if(f->class_id!=JS_CLASS_BYTECODE_FUNCTION || !four_ctor_recipe(f->u.func.function_bytecode,&r) ||
++       !(proto=four_ctor_proto(f)) || !four_ctor_chain(proto,&r) || o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
++       !o->shape->is_hashed || o->shape->proto!=proto || o->shape->prop_count!=r.n || o->shape->deleted_prop_count)return;
++    JSShapeProperty*d=get_shape_prop(o->shape);
++    for(unsigned i=0;i<r.n;i++)if(d[i].atom!=r.atom[i] || d[i].flags!=JS_PROP_C_W_E)return;
++    JSShape*initial=find_hashed_shape_proto(ctx->rt,proto);if(!initial)return;
++    FOUR_COUNT(s,eligible);
++#ifndef FOUR_PROBE
++    JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
++    s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
++    FOUR_COUNT(s,fill);
++    JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldinitial);js_free_shape_null(ctx->rt,oldfinal);
++#endif
++}
++static int four_ctor_try(JSContext*ctx,FourSite*s,JSValueConst callee,JSValueConst target,JSValue*args,JSValue*out)
++{
++    FOUR_COUNT(s,q);
++#ifndef FOUR_PROBE
++    JSObject*f;
++    if(s->final && JS_VALUE_GET_TAG(s->callee)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(callee)==JS_TAG_OBJECT &&
++       JS_VALUE_GET_OBJ(s->callee)==JS_VALUE_GET_OBJ(callee) && four_ctor_base(ctx,callee,target,s->argc,&f) &&
++       four_ctor_proto(f)==s->final->proto && four_ctor_chain(s->final->proto,&s->recipe)){
++        /* The two old entries each poll once. Hooks were excluded above. */
++        if(js_poll_interrupts(ctx) || js_poll_interrupts(ctx))return 0;
++        *out=JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
++        if(JS_IsException(*out)){FOUR_COUNT(s,h);FOUR_COUNT(s,overflow);return 1;} /* no retry after allocation */
++        JSObject*o=JS_VALUE_GET_OBJ(*out);
++        for(unsigned i=0;i<s->recipe.n;i++)o->prop[i].u.value=JS_DupValue(ctx,args[s->recipe.arg[i]]);
++        FOUR_COUNT(s,h);FOUR_ADD(s,work5,s->recipe.n);FOUR_COUNT(s,work6);FOUR_COUNT(s,work3);return 1;
++    }
++#endif
++    FOUR_COUNT(s,guard);return 0;
++}
++static size_t four_extra_size(JSFunctionBytecode*b);
++static void four_prepare(JSContext*ctx,JSFunctionBytecode*b);
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4095,6 +4095,9 @@
+     return ret;
+ }
+ 
++extern void four_begin(void);extern void four_end(void);
++static JSValue js_four_begin(JSContext*c,JSValueConst t,int n,JSValueConst*v){four_begin();return JS_UNDEFINED;}
++static JSValue js_four_end(JSContext*c,JSValueConst t,int n,JSValueConst*v){four_end();return JS_UNDEFINED;}
+ void js_std_add_helpers(JSContext *ctx, int argc, char **argv)
+ {
+     JSValue global_obj, console, args, performance;
+@@ -4111,7 +4114,9 @@
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));
+-    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx,global_obj,"__four_begin",JS_NewCFunction(ctx,js_four_begin,"__four_begin",0));
++    JS_SetPropertyStr(ctx,global_obj,"__four_end",JS_NewCFunction(ctx,js_four_end,"__four_end",0));
+ 
+     /* same methods as the mozilla JS shell */
+     if (argc >= 0) {
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -368,6 +368,8 @@
+ DEF(v6_get_loc0, 1, 0, 1, none)
+ DEF(v6_get_arg0, 1, 0, 1, none)
+ DEF(put_field_shared, 5, 2, 0, u32)
++DEF(four_ctor,3,0,0,u16)
++DEF(four_index,1,2,1,none)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,4 @@
++#define FOUR_DIAG 1
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -690,6 +691,8 @@
+ 
+ #include "read_ic_types.h"
+ 
++typedef struct FourSite FourSite;
++typedef struct IndexSite IndexSite;
+ typedef struct JSFunctionBytecode {
+     JSGCObjectHeader header; /* must come first */
+     uint8_t js_mode;
+@@ -724,6 +727,10 @@
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
++    FourSite *four_sites;
++    uint32_t four_count;
++    IndexSite *index_sites;
++    uint32_t index_count;
+ #ifdef READ_IC_DIAGNOSTIC
+     RDIFunctionDiag *read_ic_diag;
+ #endif
+@@ -1377,6 +1384,9 @@
+ static int js_shape_prepare_update(JSContext *ctx, JSObject *p,
+                                    JSShapeProperty **pprs);
+ static int init_shape_hash(JSRuntime *rt);
++#ifdef FOUR_DIAG
++static void four_ctor_alloc(void);static void four_ctor_resize(void);static void four_ctor_search(void);static void four_ctor_switch(void);
++#endif
+ static __exception int js_get_length32(JSContext *ctx, uint32_t *pres,
+                                        JSValueConst obj);
+ static __exception int js_get_length64(JSContext *ctx, int64_t *pres,
+@@ -5401,6 +5411,9 @@
+        in case of memory allocation failure */
+     if (p) {
+         JSProperty *new_prop;
++#ifdef FOUR_DIAG
++    four_ctor_resize();
++#endif
+         new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
+         if (unlikely(!new_prop))
+             return -1;
+@@ -5447,6 +5460,9 @@
+                sizeof(JSShapeProperty) * old_sh->prop_count);
+     }
+     js_free(ctx, old_sh);
++#ifdef FOUR_DIAG
++    four_ctor_switch();
++#endif
+     *psh = sh;
+     sh->prop_size = new_size;
+     return 0;
+@@ -5688,6 +5704,9 @@
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
++#ifdef FOUR_DIAG
++    four_ctor_alloc();
++#endif
+     p->prop = js_malloc(ctx, sizeof(JSProperty) * sh->prop_size);
+     if (unlikely(!p->prop)) {
+         js_free(ctx, p);
+@@ -6213,6 +6232,9 @@
+ }
+ 
+ #include "read_ic_runtime.inc"
++#include "four_diag.inc"
++#include "four_runtime.inc"
++#include "index_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -6688,6 +6710,7 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
++            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -9278,6 +9301,9 @@
+         /* try to find an existing shape */
+         new_sh = ex_edge_lookup(ctx->rt,sh,prop,prop_flags);
+         if (!new_sh) {
++#ifdef FOUR_DIAG
++    four_ctor_search();
++#endif
+             new_sh = find_hashed_shape_prop(ctx->rt, sh, prop, prop_flags);
+             if (new_sh) ex_edge_fill(ctx->rt,sh,prop,prop_flags,new_sh);
+         }
+@@ -9286,12 +9312,18 @@
+             /*  the property array may need to be resized */
+             if (new_sh->prop_size != sh->prop_size) {
+                 JSProperty *new_prop;
++#ifdef FOUR_DIAG
++    four_ctor_resize();
++#endif
+                 new_prop = js_realloc(ctx, p->prop, sizeof(p->prop[0]) *
+                                       new_sh->prop_size);
+                 if (!new_prop)
+                     return NULL;
+                 p->prop = new_prop;
+             }
++#ifdef FOUR_DIAG
++    four_ctor_switch();
++#endif
+             p->shape = js_dup_shape(new_sh);
+             js_free_shape(ctx->rt, sh);
+             return &p->prop[new_sh->prop_count - 1];
+@@ -9304,6 +9336,9 @@
+             new_sh->is_hashed = TRUE;
+             js_shape_hash_link(ctx->rt, new_sh);
+             js_free_shape(ctx->rt, p->shape);
++#ifdef FOUR_DIAG
++    four_ctor_switch();
++#endif
+             p->shape = new_sh;
+         }
+     }
+@@ -18296,6 +18331,37 @@
+                 *sp++ = ret_val;
+             }
+             BREAK;
++        CASE(OP_four_ctor):
++            {
++                FourSite*s=&b->four_sites[get_u16(pc)];call_argc=s->argc;pc+=2;
++                call_argv=sp-call_argc;sf->cur_pc=pc;
++                int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
++                if(!fast){
++                    int eligible=four_ctor_slow_eligible(ctx,call_argv[-2],call_argv[-1],call_argc);
++#ifdef FOUR_DIAG
++                    FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
++#endif
++                    ret_val=JS_CallConstructorInternal(ctx,call_argv[-2],call_argv[-1],call_argc,call_argv,0);
++#ifdef FOUR_DIAG
++                    four_ctor_observer=oldscope;
++#endif
++                    if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
++                }
++                if(unlikely(JS_IsException(ret_val))){
++                    if(fast){
++                        /* Own the original OOM value while formatting a trace:
++                         * formatting may itself replace current_exception. */
++                        JSValue error=JS_GetException(ctx);
++                        if(is_backtrace_needed(ctx,error))build_backtrace(ctx,error,NULL,0,0,0);
++                        JS_Throw(ctx,error);
++                        goto four_ctor_exception_cleanup;
++                    }
++                    goto exception;
++                }
++                for(i=-2;i<call_argc;i++)JS_FreeValue(ctx,call_argv[i]);
++                sp-=call_argc+2;*sp++=ret_val;
++            }
++            BREAK;
+         CASE(OP_call_constructor):
+             {
+                 call_argc = get_u16(pc);
+@@ -19559,6 +19625,17 @@
+                 }                                                       \
+             }
+             
++        CASE(OP_four_index):
++            {
++                IndexSite*s=four_index_site(b,pc-b->byte_code_buf-1);JSValue result;
++                if(four_index_try(ctx,s,sp,var_buf,&result)){
++                    /* ref_count>1 excludes finalization on this release. */
++                    JS_FreeValue(ctx,sp[-2]);sp-=3;var_buf[s->local]=result;
++                    pc=b->byte_code_buf+s->end;BREAK;
++                }
++            }
++            GET_ARRAY_EL_INLINE(four_index_fallback,0);
++            BREAK;
+         CASE(OP_get_array_el):
+             GET_ARRAY_EL_INLINE(get_array_el, 0);
+             BREAK;
+@@ -20795,6 +20872,7 @@
+         sf->cur_pc = pc;
+         build_backtrace(ctx, rt->current_exception, NULL, 0, 0, 0);
+     }
++four_ctor_exception_cleanup:
+     if (!rt->current_exception_is_uncatchable) {
+         while (sp > stack_buf) {
+             JSValue val = *--sp;
+@@ -32276,6 +32354,8 @@
+     return fd;
+ }
+ 
++#include "four_prepare.inc"
++#include "index_prepare.inc"
+ #include "read_ic_prepare.inc"
+ 
+ static void free_bytecode_atoms(JSRuntime *rt,
+@@ -36462,6 +36542,7 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
++    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);}
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+@@ -37900,6 +37981,8 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if(op==OP_four_ctor){FourSite*fs=&b->four_sites[get_u16(bc_buf+pos+1)];op=OP_call_constructor;bc_buf[pos]=op;put_u16(bc_buf+pos+1,fs->argc);}
++        if(op==OP_four_index){op=OP_get_array_el;bc_buf[pos]=op;}
+         if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
+         if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_put_field_shared) {
+@@ -38810,7 +38893,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++        if (op == OP_four_index || op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
+             op == OP_v6_get_loc0 || op == OP_v6_get_arg0) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -15,12 +15,12 @@
+         op = b->byte_code_buf[pos];
+         if (op == OP_get_field || op == OP_get_field2) count++;
+     }
+-    if (!count) return 0;
++    if (!count && !four_extra_size(b) && !index_extra_size(b)) return 0;
+     code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+     if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+         return 0; /* optional optimization, retain ordinary image */
+     }
+-    total = code_size + count * sizeof(ReadICSite);
++    total = code_size + count * sizeof(ReadICSite) + four_extra_size(b) + index_extra_size(b);
+     if (total > UINT32_MAX) {
+         return 0; /* optional optimization, retain ordinary image */
+     }
+@@ -56,5 +56,7 @@
+         }
+     }
+     assert(index == count);
++    four_prepare(ctx,b);
++    index_prepare(ctx,b);
+     return 0;
+ }
+--- a/index_runtime.inc
++++ b/index_runtime.inc
+@@ -0,0 +1,40 @@
++typedef struct IndexSite {
++    uint32_t pc,end;
++    uint16_t class_id;
++    uint8_t local,kind,index_tag,value_tag,acc_tag,reserved;
++#ifdef FOUR_DIAG
++    FourDiag*diag;
++#endif
++} IndexSite;
++/* Per-function move-to-front lookup; each record remains bound to its own PC.
++ * Neither an element address nor array length is retained. */
++static IndexSite*four_index_site(JSFunctionBytecode*b,unsigned pc)
++{
++    IndexSite*s=b->index_sites;
++    if(s->pc!=pc){unsigned i=1;while(i<b->index_count && s[i].pc!=pc)i++;
++        assert(i<b->index_count);IndexSite tmp=s[0];s[0]=s[i];s[i]=tmp;
++    }return s;
++}
++static int four_index_try(JSContext*ctx,IndexSite*s,JSValue*sp,JSValue*vars,JSValue*out)
++{
++    FOUR_COUNT(s,q);
++    if(JS_VALUE_GET_TAG(sp[-2])!=JS_TAG_OBJECT || JS_VALUE_GET_TAG(sp[-1])!=JS_TAG_INT ||
++       JS_VALUE_GET_TAG(sp[-3])!=JS_TAG_INT || JS_VALUE_GET_TAG(vars[s->local])!=JS_TAG_INT)goto fail;
++    JSObject*o=JS_VALUE_GET_OBJ(sp[-2]);
++    if(o->class_id!=(s->kind?s->class_id:JS_CLASS_ARRAY) || !o->fast_array ||
++       js_rc(o)->ref_count<=1 || (uint32_t)JS_VALUE_GET_INT(sp[-1])>=o->u.array.count)goto fail;
++    JSValue value=o->u.array.u.values[(uint32_t)JS_VALUE_GET_INT(sp[-1])];
++    if(JS_VALUE_GET_TAG(value)!=JS_TAG_INT)goto fail;
++    int64_t n=(int64_t)JS_VALUE_GET_INT(sp[-3])+JS_VALUE_GET_INT(value);
++    if(n<INT32_MIN || n>INT32_MAX){FOUR_COUNT(s,overflow);goto fail;}
++    if(!s->kind){
++        s->class_id=o->class_id;s->kind=1;
++        s->index_tag=JS_VALUE_GET_TAG(sp[-1]);s->value_tag=JS_VALUE_GET_TAG(value);s->acc_tag=JS_VALUE_GET_TAG(sp[-3]);
++        FOUR_COUNT(s,eligible);FOUR_COUNT(s,fill);goto fail;
++    }
++    *out=JS_NewInt32(ctx,n);FOUR_COUNT(s,h);FOUR_ADD(s,work1,2);FOUR_ADD(s,work2,2);return 1;
++fail:
++    FOUR_COUNT(s,guard);return 0;
++}
++static size_t index_extra_size(JSFunctionBytecode*b);
++static void index_prepare(JSContext*ctx,JSFunctionBytecode*b);
+--- a/index_prepare.inc
++++ b/index_prepare.inc
+@@ -0,0 +1,40 @@
++static int four_interior_target(JSFunctionBytecode*b,int begin,int end)
++{
++    for(int p=0;p<b->byte_code_len;){
++        int op=b->byte_code_buf[p],fmt=short_opcode_info(op).fmt,target=-1;
++        const uint8_t *v=b->byte_code_buf+p;
++        if(fmt==OP_FMT_label)target=p+1+(int32_t)get_u32(v+1);
++        else if(fmt==OP_FMT_label8)target=p+1+(int8_t)v[1];
++        else if(fmt==OP_FMT_label16)target=p+1+(int16_t)get_u16(v+1);
++        else if(fmt==OP_FMT_atom_label_u8)target=p+5+(int32_t)get_u32(v+5);
++        if(target>begin && target<end)return 1;
++        p+=short_opcode_info(op).size;
++    }return 0;
++}
++
++static int four_index_match(JSFunctionBytecode*b,int pc,int*local,int*end)
++{
++    uint8_t*p=b->byte_code_buf+pc;
++    if(pc+3>b->byte_code_len || p[0]!=OP_get_array_el || p[1]!=OP_add)return 0;
++    if(p[2]>=OP_put_loc0 && p[2]<=OP_put_loc3){*local=p[2]-OP_put_loc0;*end=pc+3;}
++    else if(pc+4<=b->byte_code_len && p[2]==OP_put_loc8){*local=p[3];*end=pc+4;}
++    else return 0;
++    return *local<b->var_count && !four_interior_target(b,pc,*end);
++}
++static size_t index_extra_size(JSFunctionBytecode*b)
++{
++    unsigned n=0;for(int p=0;p<b->byte_code_len;){int op=b->byte_code_buf[p],local,end;n+=four_index_match(b,p,&local,&end);p+=short_opcode_info(op).size;}
++    return n*sizeof(IndexSite);
++}
++static void index_prepare(JSContext*ctx,JSFunctionBytecode*b)
++{
++    b->index_sites=(IndexSite*)((uint8_t*)(b->read_ic_sites+b->read_ic_count)+b->four_count*sizeof(FourSite));
++    for(int p=0;p<b->byte_code_len;){int op=b->byte_code_buf[p],local,end,n=short_opcode_info(op).size;
++        if(four_index_match(b,p,&local,&end)){IndexSite*s=&b->index_sites[b->index_count++];s->pc=p;s->end=end;s->local=local;
++#ifdef FOUR_DIAG
++            s->diag=four_dnew(ctx,b,p);
++#endif
++            b->byte_code_buf[p]=OP_four_index;
++        }p+=n;
++    }
++}

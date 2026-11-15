@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "both_semantics_equal_to_C": true,
+  "both_handlers_active_in_same_function": {
+    "constructor": {
+      "attempts": 2000512,
+      "hits": 2000511,
+      "fallbacks": 1,
+      "fills": 1
+    },
+    "index": {
+      "attempts": 2000512,
+      "hits": 2000511,
+      "fallbacks": 1,
+      "fills": 1
+    }
+  },
+  "native_ownership_oom_interrupt_rom_pass": true,
+  "sanitizer_leak_detection": false,
+  "coexist": {
+    "C": {
+      "elapsed_ms": 290.82922500371933,
+      "sum": 2000004017408,
+      "N": 2000000
+    },
+    "release": {
+      "elapsed_ms": 131.60062101483345,
+      "sum": 2000004017408,
+      "N": 2000000
+    },
+    "counts": {
+      "elapsed_ms": 134.62278598546982,
+      "sum": 2000004017408,
+      "N": 2000000
+    },
+    "san": {
+      "elapsed_ms": 2212.785925000906,
+      "sum": 2000004017408,
+      "N": 2000000
+    }
+  },
+  "frozen_files": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_index_combo_20261115/attempt01/ctor_safety.js": "8f57dc4d2735ffad8d3ecf2531c44f866aeaf02edd4fc3714cb9ecbceeed081d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_index_combo_20261115/attempt01/index_safety.js": "e21fa817b327746474d943ca56610119d4d5bc1c4a09b0d46a55446afb1378cd",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_index_combo_20261115/attempt01/coexist.js": "23078e398d5262d313e5937a8a731484984ef9faadabc3b1f03f6bce9971e485",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_index_combo_20261115/attempt01/serialization.c": "29b04bac188000eecd6658d5debb8ac5066561ca71529ea67888ed79dc396ff7",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_index_combo_20261115/attempt01/ownership.c": "fae887c8358132a7e4582451e560e982839aa7c751d6943e9e24cb1c9431865c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_index_combo_20261115/attempt01/interrupt.c": "2d22eae0b7e13d065076e3b33f90771fe0c2417ee6b71e7e3ebc97faa31ccde4",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_index_combo_20261115/attempt01/qualify.py": "d74989c86e848630d37bc0fbc23e89d79c24fbbb2288af7322594f8e8a5319d1"
+  }
+}

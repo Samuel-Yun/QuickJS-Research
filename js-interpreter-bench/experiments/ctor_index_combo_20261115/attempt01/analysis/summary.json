@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "fresh_release_processes": 43,
+  "independent_counter_processes": 43,
+  "formal_control_retests": 0,
+  "aggregates": {
+    "octane": {
+      "A": -7.212783262509415,
+      "EVAL_COLD": -1.5931272423981069,
+      "C": -0.8292079198005453,
+      "R3": -0.190319472845335,
+      "R4": -0.5464213645755556,
+      "V8_ON": 54.134701851343436,
+      "standalone_R3_vs_C_pct": -0.6401066946421063,
+      "standalone_R4_vs_C_pct": -0.2843402511051196,
+      "independent_multiplicative_reference_pct": -0.9226268647643421
+    },
+    "sunspider": {
+      "A": -1.9046377025085048,
+      "EVAL_COLD": -0.4239742534839497,
+      "C": -0.34235129108709517,
+      "R3": 1.8019344280291838,
+      "R4": 0.5092254131431107,
+      "V8_ON": 42.159062735162124,
+      "standalone_R3_vs_C_pct": -2.106331015381846,
+      "standalone_R4_vs_C_pct": -0.8472622296409216,
+      "independent_multiplicative_reference_pct": -2.9357470978982225,
+      "sum_ms": {
+        "C": 398.20031219284283,
+        "R3": 393.04693526995834,
+        "R4": 395.4155729099293,
+        "combo": 396.4185327909654
+      }
+    }
+  },
+  "coverage_totals": {
+    "constructor": {
+      "attempts": 49231038,
+      "hits": 24218118,
+      "fallbacks": 25012920,
+      "fills": 928
+    },
+    "index": {
+      "attempts": 36700864,
+      "hits": 4511117,
+      "fallbacks": 32189747,
+      "fills": 3
+    }
+  },
+  "unit": "ms / complete Run",
+  "comparison": "fresh combo single vs historical single C/R3/R4; A/EVAL_COLD/V8_ON historical medians"
+}
