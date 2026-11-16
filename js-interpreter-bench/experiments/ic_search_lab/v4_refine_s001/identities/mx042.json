@@ -1,0 +1,73 @@
+{
+  "id": "mx042",
+  "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v4_refine_s001/artifacts/mx042.qjs",
+  "sha256": "f5cd2c50e661103c6e3313db8d9b679ad64c4055f9bc353c588ffbdfa3c1d25b",
+  "size": 5105704,
+  "design": {
+    "id": "mx042",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced."
+  },
+  "source_sha256": {
+    "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+    "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+    "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+    "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+    "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+    "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+    "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+    "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+    "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+    "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+    "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+    "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+    "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+    "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+    "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+    "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+    "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+    "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+    "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+    "quickjs-opcode.h": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+    "quickjs.c": "2b53fca0fd422ccfcb068e6bc98aa1cf27adf9f4e52a92381080867fde74126d",
+    "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+    "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+    "read_ic_opcodes.inc": "9a4bebd8fdbaf4e2456a616954b42dcfdb6ab7d2bfdb1e1f7be9a0cd48e3adeb",
+    "read_ic_prepare.inc": "76d8ddda250608ee3d0bfaa289cd7f4c3b1d55b60cc17f490a9090e63b58eb50",
+    "read_ic_runtime.inc": "da9854f5217c4878e9f84caf79b9c57a76a64adc923ffece3232b9fcfde17e27",
+    "read_ic_types.h": "f7cbb27c6d5882d2553222dd5709280b85ff21623a88b531709933c86cc0046c",
+    "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+    "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+    "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+    "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+    "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+  },
+  "compile_link_commands": [
+    "gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c",
+    "gcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl",
+    "gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c",
+    "gcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl"
+  ],
+  "patch_sha256": "3ec542d9a0dee3fc93dc47e6255a25ed5888f1a0d39dd8ecac3e9a54d7ea876b",
+  "controller_sha256": {
+    "refine.py": "3bd5afb33a9295c258cdc56986909b6d2b44b3baf71662357bf680ffa242e3de",
+    "variants.py": "c13fd3dcfc65baa9fdddc7824fd419f904bde15b7ede05d31f51d9e31576217d",
+    "broad.py": "fff1eab9ffb7566522ae9c465c08dd926ce96392ce88e711eb0932691731bcc8",
+    "combinations.py": "efe2d42509d60de11ee429b375277f49f21dccfc448f292a789fb7cc81d96e35"
+  },
+  "support_sha256": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+  "build_token": "2026-11-06T03:35:15.339612+00:00:mx042",
+  "boot_id": "e6c4e5c5-924c-4956-861b-c93eea3d1296",
+  "text_sha256": "09e05f19de5f4894a17dbd5cdbe9d1d3318588649d5cdd8034085f092ce247b2"
+}

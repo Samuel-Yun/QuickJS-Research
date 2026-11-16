@@ -1,0 +1,26 @@
+{
+  "unit": "ms/complete Run, median",
+  "sample_counts": {
+    "old_Windows_native": 30,
+    "old_WSL": 30,
+    "native_Ubuntu": 5
+  },
+  "old_Windows": "Windows11 / Ryzen7 5800H / MinGW GCC13.1, Date.now, original non-deterministic Crypto padding",
+  "old_WSL": "WSL2 Ubuntu24.04.2 / Ryzen7 5800H / GCC13.3, native CLOCK_MONOTONIC, same inputs and N as native run",
+  "native_Ubuntu": "Ubuntu26.04.1 / i9-14900 / GCC15.2, native CLOCK_MONOTONIC",
+  "files": {
+    "native": {
+      "path": "js-interpreter-bench/experiments/native_octane_20261107/attempt01/statistics.csv",
+      "sha256": "a21d8b6218f55cec714173d31af17c777294b97efaf8c20e09e84476ba2001ba"
+    },
+    "old_wsl": {
+      "path": "js-interpreter-bench/experiments/ic_search_lab/v2_20261105/final.octane.per_case.csv",
+      "sha256": "a52dfeb99af5c3abaa06fe874ece9882f4133524336251a3fa33fbadeedc38c0"
+    },
+    "old_windows": {
+      "path": "js-interpreter-bench/experiments/octane_strict/summary/strict_summary.csv",
+      "sha256": "b1435181a0a5794ac20b72e34b312b029158f74c4c82db6772c0fb5fb57664f8"
+    }
+  },
+  "no_performance_samples_collected": true
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "condition": "V8_IC_ON",
+    "target_body": "function stableOwn(obj) { return obj.x; }",
+    "body_sha256": "d6c564528435958178b098d14e6b912e604fb58c72963dd8c6693e4bfc869aae",
+    "checksum": 30000,
+    "observed_IC_transitions": 1,
+    "target_feedback_snapshot": null,
+    "hit_rate": null,
+    "interpretation": "positive selected-site transition"
+  },
+  {
+    "condition": "V8_IC_OFF",
+    "target_body": "function stableOwn(obj) { return obj.x; }",
+    "body_sha256": "d6c564528435958178b098d14e6b912e604fb58c72963dd8c6693e4bfc869aae",
+    "checksum": 30000,
+    "observed_IC_transitions": 0,
+    "target_feedback_snapshot": null,
+    "hit_rate": null,
+    "interpretation": "absence only; NOT proof of uninitialized/no-cache state"
+  }
+]

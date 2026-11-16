@@ -1,0 +1,27 @@
+{
+  "stage": "FROZEN_AFTER_ALL_144_SHORT_RECORDS_BEFORE_COMPLETE_RECHECKS",
+  "source_campaign": "short_accept01",
+  "selected": ["B2", "K1", "L1"],
+  "controls": ["A", "s001"],
+  "full_labels": ["A", "s001", "B2", "K1", "L1"],
+  "rounds": 3,
+  "expected_octane_records": 255,
+  "expected_sunspider_records": 390,
+  "selection_limit": 3,
+  "selection_rule": "Exploratory queue only: local timing signals with an independently verified mechanism, then complete collections. No subset overall engine score, CI, or promotion from one short sample.",
+  "reason": {
+    "B2": "Richards about4.5pct and DeltaBlue about12.7pct lower than s001; Typescript about9.5pct lower. CodeLoad.Closure about7.5pct higher and crypto-sha1 about5.7pct higher retained as regressions to recheck.",
+    "K1": "Splay about6.5pct and NavierStokes about8.0pct lower than s001. crypto-sha1 about10.9pct higher explicitly flagged. Mechanism reproduction, not new algorithm; numerical effects are not automatically IC savings.",
+    "L1": "Both CodeLoad units lower than s001 (Closure about2.7pct, JQuery about7.5pct); known prepare reduction supports this question. Richards and Splay regressions retained; deferred prepare can move into timed Run."
+  },
+  "not_selected": {
+    "ID_CTRL": "Required control for ID mechanism, not a separately promoted design; all12 case times retained.",
+    "ID_READ": "Mixed single-sample results, no broad timing signal; all12 times and ID_CTRL comparison retained.",
+    "W1": "Typescript local improvement but access-nbody about16.2pct and Closure about11.0pct slower; not selected within the three-candidate bound.",
+    "P1": "Richards slower and bitwise numerical control about19.2pct slower despite a RayTrace positive point; no method-site benefit demonstrated.",
+    "C1": "Must compare with actual P1 parent. Richards not improved versus P1; some other improvements coexist with Splay/Closure regressions. Not promoted from single points."
+  },
+  "formal30": "Conditional on complete recheck outcomes, safety already saved; not automatically required for a regressing candidate.",
+  "old_performance_pooled": false,
+  "extra_warmup": 0
+}

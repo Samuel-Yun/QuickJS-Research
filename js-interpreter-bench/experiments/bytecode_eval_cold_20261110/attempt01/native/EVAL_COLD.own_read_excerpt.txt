@@ -1,0 +1,40 @@
+Original frozen Release ELF: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt11/work/EVAL_COLD/qjs
+Selected blocks only. Other branch destinations remain in the full dump.
+These are static instructions, not measured cycles or retired-instruction counts.
+
+v6_get_arg0 entry
+   27a37:	f3 0f 1e fa          	endbr64
+   27a3b:	48 8b 8d 80 fe ff ff 	mov    -0x180(%rbp),%rcx
+   27a42:	48 8b 51 08          	mov    0x8(%rcx),%rdx
+   27a46:	48 8b 01             	mov    (%rcx),%rax
+   27a49:	83 fa ff             	cmp    $0xffffffff,%edx
+   27a4c:	0f 84 f3 46 00 00    	je     2c145 <JS_CallInternal+0x71b5>
+
+object guard and fused hit
+   2c145:	41 8b 4d 01          	mov    0x1(%r13),%ecx
+   2c149:	49 8d 4c 0d 01       	lea    0x1(%r13,%rcx,1),%rcx
+   2c14e:	66 83 78 12 01       	cmpw   $0x1,0x12(%rax)
+   2c153:	0f 85 f9 b8 ff ff    	jne    27a52 <JS_CallInternal+0x2ac2>
+   2c159:	f6 40 10 08          	testb  $0x8,0x10(%rax)
+   2c15d:	0f 85 ef b8 ff ff    	jne    27a52 <JS_CallInternal+0x2ac2>
+   2c163:	48 8b 70 18          	mov    0x18(%rax),%rsi
+   2c167:	48 39 31             	cmp    %rsi,(%rcx)
+   2c16a:	0f 85 e2 b8 ff ff    	jne    27a52 <JS_CallInternal+0x2ac2>
+   2c170:	8b 51 10             	mov    0x10(%rcx),%edx
+   2c173:	48 8d 4b 10          	lea    0x10(%rbx),%rcx
+   2c177:	48 c1 e2 04          	shl    $0x4,%rdx
+   2c17b:	48 03 50 20          	add    0x20(%rax),%rdx
+   2c17f:	48 89 d0             	mov    %rdx,%rax
+   2c182:	48 8b 12             	mov    (%rdx),%rdx
+   2c185:	48 8b 40 08          	mov    0x8(%rax),%rax
+   2c189:	83 f8 f6             	cmp    $0xfffffff6,%eax
+   2c18c:	76 04                	jbe    2c192 <JS_CallInternal+0x7202>
+   2c18e:	83 42 fc 01          	addl   $0x1,-0x4(%rdx)
+   2c192:	48 89 43 08          	mov    %rax,0x8(%rbx)
+   2c196:	49 8d 45 05          	lea    0x5(%r13),%rax
+   2c19a:	48 89 13             	mov    %rdx,(%rbx)
+   2c19d:	4c 8d 68 01          	lea    0x1(%rax),%r13
+   2c1a1:	0f b6 00             	movzbl (%rax),%eax
+   2c1a4:	48 89 cb             	mov    %rcx,%rbx
+   2c1a7:	49 89 c2             	mov    %rax,%r10
+   2c1aa:	41 ff 24 c6          	jmp    *(%r14,%rax,8)

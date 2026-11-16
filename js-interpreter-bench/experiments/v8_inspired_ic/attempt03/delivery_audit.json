@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-10-31T09:51:34.013819+00:00",
+  "formal_valid": 1530,
+  "portable_replay": {
+    "samples.csv": {
+      "rows": 1530,
+      "numeric_replay_equal": true,
+      "relative_and_absolute_tolerance": 1e-12
+    },
+    "statistics.csv": {
+      "rows": 255,
+      "numeric_replay_equal": true,
+      "relative_and_absolute_tolerance": 1e-12
+    },
+    "comparison.csv": {
+      "rows": 17,
+      "numeric_replay_equal": true,
+      "relative_and_absolute_tolerance": 1e-12
+    },
+    "ratios.csv": {
+      "rows": 51,
+      "numeric_replay_equal": true,
+      "relative_and_absolute_tolerance": 1e-12
+    },
+    "aggregate.csv": {
+      "rows": 6,
+      "numeric_replay_equal": true,
+      "relative_and_absolute_tolerance": 1e-12
+    }
+  },
+  "aggregate_replay_equal": true,
+  "independent_WSL_and_Windows_audits": "PASS_COMPLETE",
+  "SVG": [
+    {
+      "path": "plots/A_over_V8_ON.svg",
+      "points": 17,
+      "valid_XML": true
+    },
+    {
+      "path": "plots/E_over_A.svg",
+      "points": 17,
+      "valid_XML": true
+    },
+    {
+      "path": "plots/E_over_V8_ON.svg",
+      "points": 17,
+      "valid_XML": true
+    }
+  ],
+  "public_files": 7314,
+  "public_total_bytes": 169206215,
+  "largest_files": [
+    {
+      "path": "attempt01/scripts/Mandreel.Mandreel/N1.correctness.js",
+      "bytes": 5015057
+    },
+    {
+      "path": "attempt01/scripts/Mandreel.Mandreel/N2.correctness.js",
+      "bytes": 5015057
+    },
+    {
+      "path": "attempt02/scripts/Mandreel.Mandreel/N1.correctness.js",
+      "bytes": 5015057
+    },
+    {
+      "path": "attempt02/scripts/Mandreel.Mandreel/N2.correctness.js",
+      "bytes": 5015057
+    },
+    {
+      "path": "attempt03/scripts/Mandreel.Mandreel/N1.correctness.js",
+      "bytes": 5015057
+    },
+    {
+      "path": "attempt03/scripts/Mandreel.Mandreel/N2.correctness.js",
+      "bytes": 5015057
+    },
+    {
+      "path": "attempt01/scripts/Mandreel.Mandreel/N1.measure.js",
+      "bytes": 5015053
+    },
+    {
+      "path": "attempt02/scripts/Mandreel.Mandreel/N1.measure.js",
+      "bytes": 5015053
+    }
+  ],
+  "no_ELF_in_experiment_tree": true,
+  "no_file_over_100MiB": true,
+  "max_whole_child_CPU_over_monotonic_wall": 1.0281303286993135,
+  "no_VM_executed_in_this_check": true,
+  "no_previous_cohort_timing_imported": true
+}

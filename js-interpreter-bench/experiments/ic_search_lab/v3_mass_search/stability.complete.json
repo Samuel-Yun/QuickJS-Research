@@ -1,0 +1,86 @@
+{
+  "status": "BLOCKED_TIMING_DRIFT",
+  "blocks": [
+    "longer_pilot.block0"
+  ],
+  "offending": [
+    {
+      "kind": "octane",
+      "case": "RayTrace.RayTrace",
+      "label": "A",
+      "max_over_min": 1.2679097601387455
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "label": "A",
+      "max_over_min": 1.4434531584512482
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-binary-trees",
+      "label": "A",
+      "max_over_min": 1.2807979596376031
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-binary-trees",
+      "label": "s001",
+      "max_over_min": 1.1784589219367123
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "label": "A",
+      "max_over_min": 1.4062794270751526
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "label": "s001",
+      "max_over_min": 1.3836514842181575
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-raytrace",
+      "label": "A",
+      "max_over_min": 1.3589840362217054
+    },
+    {
+      "kind": "sunspider",
+      "case": "3d-raytrace",
+      "label": "s001",
+      "max_over_min": 1.215083212624378
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "label": "A",
+      "max_over_min": 1.2774106946824162
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "label": "s001",
+      "max_over_min": 1.2910685867975091
+    },
+    {
+      "kind": "sunspider",
+      "case": "regexp-dna",
+      "label": "A",
+      "max_over_min": 1.1558459335613798
+    },
+    {
+      "kind": "sunspider",
+      "case": "regexp-dna",
+      "label": "s001",
+      "max_over_min": 1.4905050876209571
+    }
+  ],
+  "original_short_N": "short_n.json",
+  "longer_N": "short_n_override.json",
+  "longer_samples": 80,
+  "seconds": 129.46651981700006,
+  "candidate_ranking_allowed": false,
+  "environmental_root_cause": "UNKNOWN; drift observed in unchanged A/s001, not attributed to a candidate or engine crash"
+}

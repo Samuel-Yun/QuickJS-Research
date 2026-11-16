@@ -1,0 +1,29 @@
+{
+  "exit_code": 2,
+  "stdout": "patching file read_ic_runtime.inc\n",
+  "stderr": "patch: **** malformed patch at line 21: @@ -28,6 +39,9 @@\n\n",
+  "timeout": false,
+  "command": [
+    "patch",
+    "--fuzz=0",
+    "-p1",
+    "-i",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/patches/M_to_U.patch"
+  ],
+  "cwd": "/home/mzyx/ic_fast_slow_20261102_attempt01/U",
+  "label": "U apply",
+  "timestamp": "2026-11-02T13:28:19.750120+00:00",
+  "completed_at": "2026-11-02T13:28:19.758383+00:00",
+  "outer_start_ns": 15818444654864,
+  "outer_stop_ns": 15818453079342,
+  "external_wall_ms": 8.424478,
+  "child_user_ms": 2.095,
+  "child_system_ms": 0.0,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    0.04638671875,
+    0.01611328125,
+    0.001953125
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "targets": [
+    {
+      "function": "m1Read",
+      "source": "function m1Read(obj) {\n  var sum=0;\n  for(var i=0;i<4096;i++) sum+=obj.x;\n  return sum;\n}",
+      "source_sha256": "a56cb8c0530ec201fefd68e9d75d5d56daa79ed3f4bbc2596ff60070681da946",
+      "bytecode_hex": "b3c7b3c8c4bc0010a1e80ec3cff4000000009bc79101eaedc328",
+      "bytecode_bytes": 26,
+      "site_count": 1,
+      "target_pc": 13,
+      "selector": "exact debug source bytes + true opcode PC + atom; one compiled instance required"
+    },
+    {
+      "function": "m2Read",
+      "source": "function m2Read(obj,anchor) {\n  var count=0;\n  for(var i=0;i<4096;i++) if(obj.x===anchor)count++;\n  return count;\n}",
+      "source_sha256": "4ad365d05e56b58c14b49f3cf1bba4fa33ccebc87c4c96e13ad3e1bf3c8a7037",
+      "bytecode_hex": "b3c7b3c8c4bc0010a1e811cff400000000d0a9e80391009101eaeac328",
+      "bytecode_bytes": 29,
+      "site_count": 1,
+      "target_pc": 12,
+      "selector": "exact debug source bytes + true opcode PC + atom; one compiled instance required"
+    },
+    {
+      "function": "polyRead2",
+      "source": "function polyRead2(o){return o.x;}",
+      "source_sha256": "4858679fe8a23f911eaac57924f259165d614cbcd6fcefd326efc36c841fe6fe",
+      "bytecode_hex": "cff40000000028",
+      "bytecode_bytes": 7,
+      "site_count": 1,
+      "target_pc": 1,
+      "selector": "exact debug source bytes + true opcode PC + atom; one compiled instance required"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,48 @@
+{
+  "R3": {
+    "sizeof(JSObject)": 64,
+    "sizeof(JSRuntime)": 2216,
+    "sizeof(JSFunctionBytecode)": 160,
+    "sizeof(FourSite)": 96,
+    "(long)&((FourSite*)0)->callee": 0,
+    "(long)&((FourSite*)0)->initial": 16,
+    "(long)&((FourSite*)0)->final": 24,
+    "(long)&((FourSite*)0)->recipe": 32,
+    "(long)&((FourSite*)0)->pc": 84,
+    "(long)&((FourSite*)0)->argc": 88
+  },
+  "SPARSE": {
+    "sizeof(JSObject)": 64,
+    "sizeof(JSRuntime)": 2216,
+    "sizeof(JSFunctionBytecode)": 160,
+    "sizeof(FourSite)": 32
+  },
+  "LAYOUT_OFF": {
+    "sizeof(JSObject)": 64,
+    "sizeof(JSRuntime)": 2240,
+    "sizeof(JSFunctionBytecode)": 160,
+    "sizeof(FourSite)": 96,
+    "(long)&((FourSite*)0)->callee": 0,
+    "(long)&((FourSite*)0)->initial": 16,
+    "(long)&((FourSite*)0)->final": 24,
+    "(long)&((FourSite*)0)->recipe": 32,
+    "(long)&((FourSite*)0)->pc": 84,
+    "(long)&((FourSite*)0)->argc": 88,
+    "(long)&((FourSite*)0)->negative_index": 92,
+    "sizeof(R3NegativeEntry)": 16
+  },
+  "NEGATIVE_ONLY": {
+    "sizeof(JSObject)": 64,
+    "sizeof(JSRuntime)": 2240,
+    "sizeof(JSFunctionBytecode)": 160,
+    "sizeof(FourSite)": 96,
+    "(long)&((FourSite*)0)->callee": 0,
+    "(long)&((FourSite*)0)->initial": 16,
+    "(long)&((FourSite*)0)->final": 24,
+    "(long)&((FourSite*)0)->recipe": 32,
+    "(long)&((FourSite*)0)->pc": 84,
+    "(long)&((FourSite*)0)->argc": 88,
+    "(long)&((FourSite*)0)->negative_index": 92,
+    "sizeof(R3NegativeEntry)": 16
+  }
+}

@@ -1,0 +1,131 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6633,6 +6633,8 @@
+ #if RDI_CAPACITY == 1
+                 if (b->read_ic_sites[ri].shape)
+                     mark_func(rt, &b->read_ic_sites[ri].shape->header);
++                if (b->read_ic_sites[ri].holder_shape)
++                    mark_func(rt, &b->read_ic_sites[ri].holder_shape->header);
+ #else
+                 for (unsigned rj = 0; rj < 4; rj++)
+                     if (b->read_ic_sites[ri].shape[rj])
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -14,7 +14,18 @@
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+-                offset = rdi_probe(site, p->shape RDI_DARG(d));           \
++                if (keep && site->holder_shape) {                       \
++                    JSObject *holder = p->shape->proto;                 \
++                    if (site->shape == p->shape && holder &&            \
++                        holder->class_id == JS_CLASS_OBJECT && !holder->is_exotic && \
++                        site->holder_shape == holder->shape) {          \
++                        val = JS_DupValue(ctx, holder->prop[site->prop_offset].u.value); \
++                        goto name ## _done;                            \
++                    }                                                  \
++                    offset = UINT32_MAX;                               \
++                } else {                                               \
++                    offset = rdi_probe(site, p->shape RDI_DARG(d));      \
++                }                                                      \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+@@ -35,7 +46,14 @@
+                         goto name ## _slow;                            \
+                     }                                                   \
+                     val = JS_DupValue(ctx, pr->u.value);                \
+-                    if (p != origin) { RDI_REASON(inherited); }         \
++                    if (p != origin) {                                 \
++                        RDI_REASON(inherited);                         \
++                        if (keep && p == origin->shape->proto &&       \
++                            origin->class_id == JS_CLASS_OBJECT && !origin->is_exotic && \
++                            p->class_id == JS_CLASS_OBJECT && !p->is_exotic && \
++                            origin->shape->is_hashed && p->shape->is_hashed) \
++                            v6_proto_update(ctx, site, origin->shape, p->shape, pr - p->prop); \
++                    }                                                  \
+                     else if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) { RDI_REASON(special); } \
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -28,43 +28,28 @@
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+     RDI_COUNT(updates);
+-#if RDI_CAPACITY == 1
+-    if (s->shape == shape) {
+-        s->prop_offset = offset;
+-        return;
+-    }
+-    if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++    JSShape *old = s->shape, *old_holder = s->holder_shape;
+     js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape);
+     s->shape = shape;
++    s->holder_shape = NULL;
+     s->prop_offset = offset;
+-#else
+-    unsigned i, empty = 4;
+-    for (i = 0; i < 4; i++) {
+-        RDI_COUNT(update_comparisons);
+-        if (s->shape[i] == shape) {
+-            s->prop_offset[i] = offset;
+-            s->recent = i;
+-            return;
+-        }
+-        if (!s->shape[i] && empty == 4)
+-            empty = i;
+-    }
+-    if (empty < 4) {
+-        i = empty;
+-        RDI_OCCUPY();
+-    } else {
+-        i = s->victim;
+-        s->victim = (i + 1) & 3;
+-        RDI_REPLACE();
+-    }
+-    js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape[i]);
+-    s->shape[i] = shape;
+-    s->prop_offset[i] = offset;
+-    s->recent = i;
+-#endif
++    js_free_shape_null(ctx->rt, old_holder);
++    js_free_shape_null(ctx->rt, old);
+ }
++static void v6_proto_update(JSContext *ctx, ReadICSite *s, JSShape *receiver,
++                            JSShape *holder, uint32_t offset)
++{
++    JSShape *old = s->shape, *old_holder = s->holder_shape;
++    js_dup_shape(receiver);
++    js_dup_shape(holder);
++    /* Publish before releases that can enter native finalizers. */
++    s->shape = receiver;
++    s->holder_shape = holder;
++    s->prop_offset = offset;
++    js_free_shape_null(ctx->rt, old_holder);
++    js_free_shape_null(ctx->rt, old);
++}
++
+ static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
+ {
+     uint32_t i;
+@@ -72,6 +57,7 @@
+         ReadICSite *s = &b->read_ic_sites[i];
+         JS_FreeAtomRT(rt, s->atom);
+ #if RDI_CAPACITY == 1
++        js_free_shape_null(rt, s->holder_shape);
+         js_free_shape_null(rt, s->shape);
+ #else
+         for (unsigned j = 0; j < 4; j++)
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -3,6 +3,7 @@
+ #if RDI_CAPACITY == 1
+ typedef struct ReadICSite {
+     JSShape *shape;
++    JSShape *holder_shape;
+     uint32_t prop_offset;
+     JSAtom atom;
+ } ReadICSite;

@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-10-29T15:43:32.894144+00:00",
+  "boot_id": "fd746fd2-aab3-4418-b5cb-ddb781702256",
+  "sanitizer_source_exists": true,
+  "sanitizer_binary_exists": false,
+  "objects": [
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/libregexp.o",
+      "bytes": 1397096
+    },
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/libunicode.o",
+      "bytes": 757928
+    },
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/quickjs.o",
+      "bytes": 0
+    },
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/cutils.o",
+      "bytes": 192736
+    },
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/dtoa.o",
+      "bytes": 346344
+    },
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/quickjs-libc.o",
+      "bytes": 1334256
+    },
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/qjs.o",
+      "bytes": 141688
+    },
+    {
+      "path": "/home/mzyx/prototype_ic_ablation_attempt01/sanitizer/.obj/asan/ubsan/qjsc.o",
+      "bytes": 227400
+    }
+  ],
+  "memory": "MemTotal:        8059220 kB\nMemFree:         7102048 kB\nMemAvailable:    7346716 kB\nBuffers:           22944 kB\nCached:           424400 kB\nSwapCached:            0 kB\nActive:            67492 kB\nInactive:         538020 kB\nActive(anon):       2328 kB\nInactive(anon):   158788 kB\nActive(file):      65164 kB\nInactive(file):   379232 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       2097152 kB\nSwapFree:        2097152 kB\nDirty:              4544 kB\nWriteback:             0 kB\nAnonPages:        157376 kB\nMapped:           203500 kB\nShmem:              3144 kB\nKReclaimable:      32236 kB\nSlab:              93808 kB\nSReclaimable:      32236 kB\nSUnreclaim:        61572 kB\nKernelStack:        5552 kB\nPageTables:         4504 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     6126760 kB\nCommitted_AS:    1047364 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       27324 kB\nVmallocChunk:          0 kB\nPercpu:             6528 kB\nAnonHugePages:     53248 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:       89088 kB\nDirectMap2M:     5076992 kB\nDirectMap1G:    12582912 kB\n",
+  "processes": "    PID    PPID STAT COMMAND         %CPU COMMAND\n      1       0 Ss   systemd         15.0 /sbin/init\n      2       1 Sl   init-systemd(Ub  0.2 /init\n      9       2 Sl   init             0.2 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     55       1 S<s  systemd-journal  9.2 /usr/lib/systemd/systemd-journald\n    100       1 Ss   systemd-udevd    6.2 /usr/lib/systemd/systemd-udevd\n    109     100 S    (udev-worker)    0.7 (udev-worker)\n    110     100 S    (udev-worker)    0.7 (udev-worker)\n    111     100 S    (udev-worker)    0.7 (udev-worker)\n    112     100 S    (udev-worker)    0.3 (udev-worker)\n    113     100 S    (udev-worker)    1.4 (udev-worker)\n    114     100 S    (udev-worker)    2.1 (udev-worker)\n    115     100 S    (udev-worker)    0.7 (udev-worker)\n    116     100 S    (udev-worker)    0.3 (udev-worker)\n    117     100 S    (udev-worker)    0.3 (udev-worker)\n    118     100 S    (udev-worker)    0.7 (udev-worker)\n    119     100 S    (udev-worker)    1.0 (udev-worker)\n    120     100 S    (udev-worker)    0.0 (udev-worker)\n    125     100 S    (udev-worker)    0.0 (udev-worker)\n    126     100 S    (udev-worker)    0.0 (udev-worker)\n    127     100 S    (udev-worker)    0.0 (udev-worker)\n    128     100 S    (udev-worker)    0.7 (udev-worker)\n    129     100 S    (udev-worker)    0.3 (udev-worker)\n    130     100 S    (udev-worker)    1.8 (udev-worker)\n    132     100 S    (udev-worker)    0.0 (udev-worker)\n    133     100 S    (udev-worker)    1.0 (udev-worker)\n    134     100 S    (udev-worker)    0.3 (udev-worker)\n    135     100 S    (udev-worker)    0.0 (udev-worker)\n    145       1 Ss   systemd-resolve  6.0 /usr/lib/systemd/systemd-resolved\n    146       1 Ssl  systemd-timesyn  3.3 /usr/lib/systemd/systemd-timesyncd\n    155       1 Ss   cron             0.0 /usr/sbin/cron -f -P\n    156       1 Ss   dbus-daemon      1.6 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    162       1 Ssl  snapd           11.9 /usr/lib/snapd/snapd\n    163       1 Ss   systemd-logind   6.1 /usr/lib/systemd/systemd-logind\n    174       1 Ss+  agetty           0.0 /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    193       1 Ss+  agetty           0.4 /sbin/agetty -o -p -- \\u --noclear - linux\n    194       1 Ssl  rsyslogd         5.1 /usr/sbin/rsyslogd -n -iNONE\n    195       1 Ssl  containerd      11.5 /usr/bin/containerd\n    204       1 Ssl  unattended-upgr  8.0 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    268       1 Ss   systemd-timedat  4.5 /usr/lib/systemd/systemd-timedated\n    272       1 Ssl  dockerd         26.0 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    525       2 Ss   SessionLeader    0.0 /init\n    526     525 S    Relay(527)       0.0 /init\n    527     526 Ss+  python3         32.1 /usr/bin/python3 -B /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_ablation/attempt01/inspect_build.py\n    528       2 Ss+  login            0.0 /bin/login -f\n    529     528 S+   sh               0.0 sh -c -- /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new\n    530     529 S+   run-parts        0.0 run-parts --lsbsysinit /etc/update-motd.d\n    536     530 S+   50-landscape-sy  0.0 /bin/sh /etc/update-motd.d/50-landscape-sysinfo\n    543     536 S+   50-landscape-sy  0.0 /bin/sh /etc/update-motd.d/50-landscape-sysinfo\n    545     543 R+   landscape-sysin 90.9 /usr/bin/python3 /usr/bin/landscape-sysinfo\n    546     527 R+   ps               0.0 ps -eo pid,ppid,stat,comm,pcpu,args\n",
+  "prior_frontend_exit": 1,
+  "prior_frontend_stderr": "",
+  "cause": "UNKNOWN; no sanitizer build completion record yet"
+}

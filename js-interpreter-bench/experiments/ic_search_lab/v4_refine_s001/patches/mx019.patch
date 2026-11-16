@@ -1,0 +1,34 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -18,7 +18,23 @@
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    if (!(keep)) {                                     \
++                        JS_FreeValue(ctx, JS_MKPTR(JS_TAG_OBJECT, p));   \
++                        sp[-1] = val;                                  \
++                        goto name ## _finished;                        \
++                    }                                                   \
+                     goto name ## _done;                                \
++                }                                                       \
++                if (site->shape && p->shape->is_hashed && site->atom != JS_ATOM_NULL) { \
++                    uint32_t predicted = site->prop_offset;              \
++                    if (predicted < (uint32_t)p->shape->prop_count) {     \
++                        JSShapeProperty *entry = &get_shape_prop(p->shape)[predicted]; \
++                        if (entry->atom == site->atom && !(entry->flags & JS_PROP_TMASK)) { \
++                            val = JS_DupValue(ctx, p->prop[predicted].u.value); \
++                            RDI_COUNT(hits);                            \
++                            goto name ## _done;                         \
++                        }                                               \
++                    }                                                   \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+@@ -62,6 +78,7 @@
+     name ## _done:                                                      \
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
++    name ## _finished:;                                                \
+     }
+         CASE(OP_get_field_rdi):
+             GET_READ_IC(get_field_rdi, 0);

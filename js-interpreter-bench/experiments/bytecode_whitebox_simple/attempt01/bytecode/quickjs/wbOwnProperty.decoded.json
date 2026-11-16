@@ -1,0 +1,155 @@
+[
+  {
+    "offset": 0,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_int"
+  },
+  {
+    "offset": 1,
+    "opcode": "put_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 2,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_int"
+  },
+  {
+    "offset": 3,
+    "opcode": "put_loc1",
+    "operands": "1: i",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 4,
+    "opcode": "get_loc1",
+    "operands": "1: i",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 5,
+    "opcode": "get_arg1",
+    "operands": "1: n",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "offset": 6,
+    "opcode": "lt",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 7,
+    "opcode": "if_false8",
+    "operands": "22",
+    "size": 2,
+    "pop": 1,
+    "push": 0,
+    "fmt": "label8"
+  },
+  {
+    "offset": 9,
+    "opcode": "get_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 10,
+    "opcode": "get_arg0",
+    "operands": "0: obj",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "offset": 11,
+    "opcode": "get_field",
+    "operands": "value",
+    "size": 5,
+    "pop": 1,
+    "push": 1,
+    "fmt": "atom"
+  },
+  {
+    "offset": 16,
+    "opcode": "add",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 17,
+    "opcode": "put_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 18,
+    "opcode": "inc_loc",
+    "operands": "1: i",
+    "size": 2,
+    "pop": 0,
+    "push": 0,
+    "fmt": "loc8"
+  },
+  {
+    "offset": 20,
+    "opcode": "goto8",
+    "operands": "4",
+    "size": 2,
+    "pop": 0,
+    "push": 0,
+    "fmt": "label8"
+  },
+  {
+    "offset": 22,
+    "opcode": "get_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 23,
+    "opcode": "return",
+    "operands": "",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none"
+  }
+]

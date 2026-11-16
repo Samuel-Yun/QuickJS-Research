@@ -1,0 +1,129 @@
+{
+  "variant": "E",
+  "source": "/home/mzyx/v8_inspired_ic_attempt02/E/quickjs.c",
+  "opcode_header": "/home/mzyx/v8_inspired_ic_attempt02/E/quickjs-opcode.h",
+  "breakpoint_source_line": 17878,
+  "target": "readPlusOne",
+  "interpretation": "nested compiled target from root constant pool at exact first JS_CallInternal instruction; before script execution",
+  "target_frame_entries": 1,
+  "snapshots": [
+    {
+      "entry_number": 0,
+      "bytes": 9,
+      "instruction_count": 5,
+      "raw_hex": "cff400000000b49b28",
+      "instructions": [
+        {
+          "pc": 0,
+          "opcode": "get_arg0",
+          "opcode_number": 207,
+          "raw_hex": "cf",
+          "size": 1,
+          "pop": 0,
+          "push": 1,
+          "fmt": "none_arg"
+        },
+        {
+          "pc": 1,
+          "opcode": "get_field_eic",
+          "opcode_number": 244,
+          "raw_hex": "f400000000",
+          "size": 5,
+          "pop": 1,
+          "push": 1,
+          "fmt": "u32",
+          "operand_unsigned": 0
+        },
+        {
+          "pc": 6,
+          "opcode": "push_1",
+          "opcode_number": 180,
+          "raw_hex": "b4",
+          "size": 1,
+          "pop": 0,
+          "push": 1,
+          "fmt": "none_int"
+        },
+        {
+          "pc": 7,
+          "opcode": "add",
+          "opcode_number": 155,
+          "raw_hex": "9b",
+          "size": 1,
+          "pop": 2,
+          "push": 1,
+          "fmt": "none"
+        },
+        {
+          "pc": 8,
+          "opcode": "return",
+          "opcode_number": 40,
+          "raw_hex": "28",
+          "size": 1,
+          "pop": 1,
+          "push": 0,
+          "fmt": "none"
+        }
+      ],
+      "arg_count": 1,
+      "local_count": 0,
+      "stack_size": 2,
+      "feedback_vector_present": false,
+      "heat": 0,
+      "metadata": [
+        {
+          "site_index": 0,
+          "pc": 1,
+          "atom": 620,
+          "property": "x"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "inferior_function_calls": false,
+  "counter_meaning": "target bytecode snapshots found in compiled root, NOT a dynamic call counter",
+  "ABI": "Linux x86_64 SysV: caller_ctx=rdi, func_obj.u=rsi, func_obj.tag=rdx",
+  "entry_register_observations": [
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887088",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887160",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887160",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887160",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887160",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887160",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887160",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94543700775200",
+      "rsi": "94543700887160",
+      "rdx": "-1"
+    }
+  ]
+}

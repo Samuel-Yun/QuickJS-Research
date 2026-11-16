@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ID_CTRL",
+    "status": "CHECKED_TARGETED",
+    "description": "Wide runtime-local layout version maintenance; original strong pointer IC retained."
+  },
+  {
+    "id": "ID_READ",
+    "status": "CHECKED_TARGETED",
+    "description": "Same wide version maintenance, numeric16B record, remove only own-read IC shape edges."
+  },
+  {
+    "id": "W1",
+    "status": "CHECKED_TARGETED",
+    "description": "Only named put_field, existing writable own data; publish before free and refresh after reentry."
+  },
+  {
+    "id": "P1",
+    "status": "CHECKED_TARGETED",
+    "description": "Only get_field2 one-direct-prototype data cache, strong receiver+holder shape guards."
+  },
+  {
+    "id": "L1",
+    "status": "CHECKED_TARGETED",
+    "description": "Prepare at third safe ordinary entry, no live image migration, optional RT allocation."
+  },
+  {
+    "id": "K1",
+    "status": "CHECKED_TARGETED",
+    "description": "Mechanism reproduction of c011 on s001 parent: only rdi_update no_inline, ordinary GCC ABI."
+  }
+]

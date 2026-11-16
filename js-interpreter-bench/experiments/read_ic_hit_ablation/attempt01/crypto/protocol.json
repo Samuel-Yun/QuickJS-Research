@@ -1,0 +1,16 @@
+{
+  "protocol": "BENCH_ONLY_XORSHIFT32_PRELOAD_V1",
+  "seeds": [
+    1,
+    305419896,
+    3735928559
+  ],
+  "N": 2,
+  "formal_performance": false,
+  "setup": "prelude before base.js and crypto.js, NOT ResetRNG after loading",
+  "source_sha256": "6d1bc4f74a7c7b5912010365f8767bbd0f67fcd807a1ed580026a28a0e0129cf",
+  "base_sha256": "a4710cf27b9be9a68d44226ea84b5e4bf03feb0a0533f1a7eba3238ca70a2d54",
+  "time": "crypto rng_seed_time mixes fixed literal1122926989487; Date/Date.now calls observed and must be0",
+  "hooks": "diagnostic wrappers only around original byte/pad/seed/RC4-init; plain script retains original crypto functions",
+  "warning": "deterministic input protocol for benchmark only, NEVER secure cryptography; do not rewrite historical raw"
+}

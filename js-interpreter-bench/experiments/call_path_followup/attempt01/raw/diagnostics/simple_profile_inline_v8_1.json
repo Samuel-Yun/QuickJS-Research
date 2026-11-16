@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "stdout": "WB_RESULT {\"start_ms\":437.487,\"stop_ms\":2407.851,\"N\":32768,\"last\":8398848,\"checksum\":335544320,\"elapsed_ms\":1970.364}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--prof",
+    "--no-logfile-per-isolate",
+    "--logfile=/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/diagnostics/inline.v8.rep1.log",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/probes/inline_DIAGNOSTIC_PC.js"
+  ],
+  "timestamp_utc": "2026-10-17T07:27:25.138820+00:00",
+  "outer_wall_ns": 2418961880,
+  "load_average": [
+    0.375,
+    0.08203125,
+    0.02685546875
+  ],
+  "boot_id": "166835c7-89ef-4b30-9dd6-3a529ba22125",
+  "LD_PRELOAD": null
+}

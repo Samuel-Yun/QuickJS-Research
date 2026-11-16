@@ -1,0 +1,1133 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000618200 <_ZN2v85Shell4MainEiPPc>:
+  618200:	55                   	push   %rbp
+  618201:	48 89 e5             	mov    %rsp,%rbp
+  618204:	41 57                	push   %r15
+  618206:	41 56                	push   %r14
+  618208:	41 55                	push   %r13
+  61820a:	41 54                	push   %r12
+  61820c:	53                   	push   %rbx
+  61820d:	48 81 ec 48 05 00 00 	sub    $0x548,%rsp
+  618214:	49 89 f4             	mov    %rsi,%r12
+  618217:	41 89 fe             	mov    %edi,%r14d
+  61821a:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  618221:	00 00 
+  618223:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  618227:	0f 57 c0             	xorps  %xmm0,%xmm0
+  61822a:	0f 29 85 50 fe ff ff 	movaps %xmm0,-0x1b0(%rbp)
+  618231:	48 c7 85 60 fe ff ff 	movq   $0xf0000,-0x1a0(%rbp)
+  618238:	00 00 0f 00 
+  61823c:	0f 11 85 68 fe ff ff 	movups %xmm0,-0x198(%rbp)
+  618243:	0f 11 85 78 fe ff ff 	movups %xmm0,-0x188(%rbp)
+  61824a:	0f 29 85 b0 fc ff ff 	movaps %xmm0,-0x350(%rbp)
+  618251:	48 c7 85 c0 fc ff ff 	movq   $0xf0000,-0x340(%rbp)
+  618258:	00 00 0f 00 
+  61825c:	0f 11 85 c8 fc ff ff 	movups %xmm0,-0x338(%rbp)
+  618263:	0f 11 85 d8 fc ff ff 	movups %xmm0,-0x328(%rbp)
+  61826a:	0f 29 85 b0 fd ff ff 	movaps %xmm0,-0x250(%rbp)
+  618271:	48 c7 85 c0 fd ff ff 	movq   $0xf0000,-0x240(%rbp)
+  618278:	00 00 0f 00 
+  61827c:	0f 11 85 c8 fd ff ff 	movups %xmm0,-0x238(%rbp)
+  618283:	0f 11 85 d8 fd ff ff 	movups %xmm0,-0x228(%rbp)
+  61828a:	48 8b 85 e0 fd ff ff 	mov    -0x220(%rbp),%rax
+  618291:	48 89 84 24 a0 00 00 	mov    %rax,0xa0(%rsp)
+  618298:	00 
+  618299:	0f 28 85 b0 fd ff ff 	movaps -0x250(%rbp),%xmm0
+  6182a0:	0f 28 8d c0 fd ff ff 	movaps -0x240(%rbp),%xmm1
+  6182a7:	0f 28 95 d0 fd ff ff 	movaps -0x230(%rbp),%xmm2
+  6182ae:	0f 11 94 24 90 00 00 	movups %xmm2,0x90(%rsp)
+  6182b5:	00 
+  6182b6:	0f 11 8c 24 80 00 00 	movups %xmm1,0x80(%rsp)
+  6182bd:	00 
+  6182be:	0f 11 44 24 70       	movups %xmm0,0x70(%rsp)
+  6182c3:	48 8b 85 e0 fc ff ff 	mov    -0x320(%rbp),%rax
+  6182ca:	48 89 44 24 68       	mov    %rax,0x68(%rsp)
+  6182cf:	0f 28 85 b0 fc ff ff 	movaps -0x350(%rbp),%xmm0
+  6182d6:	0f 28 8d c0 fc ff ff 	movaps -0x340(%rbp),%xmm1
+  6182dd:	0f 28 95 d0 fc ff ff 	movaps -0x330(%rbp),%xmm2
+  6182e4:	0f 11 54 24 58       	movups %xmm2,0x58(%rsp)
+  6182e9:	0f 11 4c 24 48       	movups %xmm1,0x48(%rsp)
+  6182ee:	0f 11 44 24 38       	movups %xmm0,0x38(%rsp)
+  6182f3:	48 8b 85 80 fe ff ff 	mov    -0x180(%rbp),%rax
+  6182fa:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+  6182ff:	0f 28 85 50 fe ff ff 	movaps -0x1b0(%rbp),%xmm0
+  618306:	0f 28 8d 60 fe ff ff 	movaps -0x1a0(%rbp),%xmm1
+  61830d:	0f 28 95 70 fe ff ff 	movaps -0x190(%rbp),%xmm2
+  618314:	0f 11 54 24 20       	movups %xmm2,0x20(%rsp)
+  618319:	0f 11 4c 24 10       	movups %xmm1,0x10(%rsp)
+  61831e:	0f 11 04 24          	movups %xmm0,(%rsp)
+  618322:	c7 84 24 a8 00 00 00 	movl   $0x0,0xa8(%rsp)
+  618329:	00 00 00 00 
+  61832d:	bb 01 00 00 00       	mov    $0x1,%ebx
+  618332:	bf 01 00 00 00       	mov    $0x1,%edi
+  618337:	31 f6                	xor    %esi,%esi
+  618339:	31 d2                	xor    %edx,%edx
+  61833b:	b9 01 00 00 00       	mov    $0x1,%ecx
+  618340:	45 31 c0             	xor    %r8d,%r8d
+  618343:	45 31 c9             	xor    %r9d,%r9d
+  618346:	e8 45 dc 7e 01       	call   1e05f90 <_ZN14allocator_shim19ConfigurePartitionsEN15partition_alloc8internal4base11StrongAliasINS_12EnableBrpTagEbEEmNS3_INS_22EnableMemoryTaggingTagEbEENS0_25TagViolationReportingModeENS_18BucketDistributionENS1_29SchedulerLoopQuarantineConfigESA_SA_NS3_INS_28EventuallyZeroFreedMemoryTagEbEENS3_INS_33EnableTighterAlignedAllocBoundTagEbEE>
+  61834b:	31 ff                	xor    %edi,%edi
+  61834d:	e8 1e dc 7e 01       	call   1e05f70 <_ZN14allocator_shim8internal20PartitionAllocMalloc9AllocatorEm>
+  618352:	48 89 c7             	mov    %rax,%rdi
+  618355:	e8 06 ca 7d 01       	call   1df4d60 <_ZN15partition_alloc13PartitionRoot28EnableThreadCacheIfSupportedEv>
+  61835a:	bf 00 80 00 00       	mov    $0x8000,%edi
+  61835f:	e8 0c cc 7e 01       	call   1e04f70 <_ZN15partition_alloc11ThreadCache20SetLargestCachedSizeEm>
+  618364:	31 ff                	xor    %edi,%edi
+  618366:	e8 05 dc 7e 01       	call   1e05f70 <_ZN14allocator_shim8internal20PartitionAllocMalloc9AllocatorEm>
+  61836b:	48 89 c7             	mov    %rax,%rdi
+  61836e:	be 00 04 00 00       	mov    $0x400,%esi
+  618373:	ba 02 00 00 00       	mov    $0x2,%edx
+  618378:	e8 73 e1 7d 01       	call   1df64f0 <_ZN15partition_alloc13PartitionRoot18AdjustSlotSpanRingEsi>
+  61837d:	4c 8d 3d 7c 7c ad 01 	lea    0x1ad7c7c(%rip),%r15        # 20f0000 <_ZN2v88internal8v8_flagsE>
+  618384:	41 80 bf 70 07 00 00 	cmpb   $0x0,0x770(%r15)
+  61838b:	00 
+  61838c:	75 0d                	jne    61839b <_ZN2v85Shell4MainEiPPc+0x19b>
+  61838e:	e8 9d 0c 19 00       	call   7a9030 <_ZN2v88internal8FlagList13ResetFlagHashEv>
+  618393:	41 c6 87 70 07 00 00 	movb   $0x1,0x770(%r15)
+  61839a:	01 
+  61839b:	44 89 f7             	mov    %r14d,%edi
+  61839e:	4c 89 e6             	mov    %r12,%rsi
+  6183a1:	e8 3a c8 ff ff       	call   614be0 <_ZN2v85Shell10SetOptionsEiPPc>
+  6183a6:	84 c0                	test   %al,%al
+  6183a8:	0f 84 ab 10 00 00    	je     619459 <_ZN2v85Shell4MainEiPPc+0x1259>
+  6183ae:	41 80 bf 68 07 00 00 	cmpb   $0x0,0x768(%r15)
+  6183b5:	00 
+  6183b6:	75 40                	jne    6183f8 <_ZN2v85Shell4MainEiPPc+0x1f8>
+  6183b8:	48 8d 05 41 84 00 00 	lea    0x8441(%rip),%rax        # 620800 <_ZN2v812_GLOBAL__N_118d8_sigterm_handlerEiP9siginfo_tPv>
+  6183bf:	48 89 85 50 fe ff ff 	mov    %rax,-0x1b0(%rbp)
+  6183c6:	48 8d bd 58 fe ff ff 	lea    -0x1a8(%rbp),%rdi
+  6183cd:	e8 5e bf a5 01       	call   2074330 <sigemptyset@plt>
+  6183d2:	c7 85 d8 fe ff ff 00 	movl   $0x0,-0x128(%rbp)
+  6183d9:	00 00 00 
+  6183dc:	48 8d b5 50 fe ff ff 	lea    -0x1b0(%rbp),%rsi
+  6183e3:	bf 0f 00 00 00       	mov    $0xf,%edi
+  6183e8:	31 d2                	xor    %edx,%edx
+  6183ea:	e8 51 bf a5 01       	call   2074340 <sigaction@plt>
+  6183ef:	83 f8 ff             	cmp    $0xffffffff,%eax
+  6183f2:	0f 84 fc 11 00 00    	je     6195f4 <_ZN2v85Shell4MainEiPPc+0x13f4>
+  6183f8:	0f b6 1d c9 04 b0 01 	movzbl 0x1b004c9(%rip),%ebx        # 21188c8 <_ZN2v85Shell7optionsE+0x3f8>
+  6183ff:	e8 8c d6 79 01       	call   1db5a90 <_ZN2v84base3FPU17GetFlushDenormalsEv>
+  618404:	41 89 c6             	mov    %eax,%r14d
+  618407:	89 df                	mov    %ebx,%edi
+  618409:	e8 a2 d6 79 01       	call   1db5ab0 <_ZN2v84base3FPU17SetFlushDenormalsEb>
+  61840e:	49 8b 3c 24          	mov    (%r12),%rdi
+  618412:	48 8b 35 a7 02 b0 01 	mov    0x1b002a7(%rip),%rsi        # 21186c0 <_ZN2v85Shell7optionsE+0x1f0>
+  618419:	e8 92 4a 02 00       	call   63ceb0 <_ZN2v82V828InitializeICUDefaultLocationEPKcS2_>
+  61841e:	84 c0                	test   %al,%al
+  618420:	0f 84 5a 10 00 00    	je     619480 <_ZN2v85Shell4MainEiPPc+0x1280>
+  618426:	4c 89 a5 90 fc ff ff 	mov    %r12,-0x370(%rbp)
+  61842d:	44 88 b5 af fc ff ff 	mov    %r14b,-0x351(%rbp)
+  618434:	48 8b 35 9d 02 b0 01 	mov    0x1b0029d(%rip),%rsi        # 21186d8 <_ZN2v85Shell7optionsE+0x208>
+  61843b:	48 85 f6             	test   %rsi,%rsi
+  61843e:	74 37                	je     618477 <_ZN2v85Shell4MainEiPPc+0x277>
+  618440:	48 8d 9d 50 fe ff ff 	lea    -0x1b0(%rbp),%rbx
+  618447:	48 89 df             	mov    %rbx,%rdi
+  61844a:	31 d2                	xor    %edx,%edx
+  61844c:	31 c9                	xor    %ecx,%ecx
+  61844e:	45 31 c0             	xor    %r8d,%r8d
+  618451:	e8 aa ee 8f 01       	call   1f17300 <_ZN6icu_786LocaleC1EPKcS2_S2_S2_>
+  618456:	c7 85 b0 fc ff ff 00 	movl   $0x0,-0x350(%rbp)
+  61845d:	00 00 00 
+  618460:	48 8d b5 b0 fc ff ff 	lea    -0x350(%rbp),%rsi
+  618467:	48 89 df             	mov    %rbx,%rdi
+  61846a:	e8 91 ff 8f 01       	call   1f18400 <_ZN6icu_786Locale10setDefaultERKS0_R10UErrorCode>
+  61846f:	48 89 df             	mov    %rbx,%rdi
+  618472:	e8 59 ed 8f 01       	call   1f171d0 <_ZN6icu_786LocaleD1Ev>
+  618477:	0f b6 1d 12 03 b0 01 	movzbl 0x1b00312(%rip),%ebx        # 2118790 <_ZN2v85Shell7optionsE+0x2c0>
+  61847e:	48 c7 85 30 ff ff ff 	movq   $0x0,-0xd0(%rbp)
+  618485:	00 00 00 00 
+  618489:	4c 8d 35 30 ea ab 01 	lea    0x1abea30(%rip),%r14        # 20d6ec0 <_ZTVNSt4__Cr14basic_ofstreamIcNS_11char_traitsIcEEEE>
+  618490:	4d 8d 7e 40          	lea    0x40(%r14),%r15
+  618494:	4c 89 bd 00 ff ff ff 	mov    %r15,-0x100(%rbp)
+  61849b:	4c 8d ad 58 fe ff ff 	lea    -0x1a8(%rbp),%r13
+  6184a2:	48 8d 0d 67 ea ab 01 	lea    0x1abea67(%rip),%rcx        # 20d6f10 <_ZTTNSt4__Cr14basic_ofstreamIcNS_11char_traitsIcEEEE>
+  6184a9:	48 8b 41 08          	mov    0x8(%rcx),%rax
+  6184ad:	48 8b 49 10          	mov    0x10(%rcx),%rcx
+  6184b1:	48 89 85 50 fe ff ff 	mov    %rax,-0x1b0(%rbp)
+  6184b8:	48 8b 40 e8          	mov    -0x18(%rax),%rax
+  6184bc:	48 89 8c 05 50 fe ff 	mov    %rcx,-0x1b0(%rbp,%rax,1)
+  6184c3:	ff 
+  6184c4:	48 8b 85 50 fe ff ff 	mov    -0x1b0(%rbp),%rax
+  6184cb:	4c 8b 60 e8          	mov    -0x18(%rax),%r12
+  6184cf:	49 8d 3c 2c          	lea    (%r12,%rbp,1),%rdi
+  6184d3:	48 81 c7 50 fe ff ff 	add    $0xfffffffffffffe50,%rdi
+  6184da:	4c 89 ee             	mov    %r13,%rsi
+  6184dd:	e8 0e 48 98 01       	call   1f9ccf0 <_ZNSt4__Cr8ios_base4initEPv>
+  6184e2:	4a c7 84 25 d8 fe ff 	movq   $0x0,-0x128(%rbp,%r12,1)
+  6184e9:	ff 00 00 00 00 
+  6184ee:	42 c6 84 25 e4 fe ff 	movb   $0x0,-0x11c(%rbp,%r12,1)
+  6184f5:	ff 00 
+  6184f7:	42 c7 84 25 e0 fe ff 	movl   $0xffffffff,-0x120(%rbp,%r12,1)
+  6184fe:	ff ff ff ff ff 
+  618503:	49 83 c6 18          	add    $0x18,%r14
+  618507:	4c 89 b5 50 fe ff ff 	mov    %r14,-0x1b0(%rbp)
+  61850e:	4c 89 bd 00 ff ff ff 	mov    %r15,-0x100(%rbp)
+  618515:	4c 89 ef             	mov    %r13,%rdi
+  618518:	e8 63 6f 98 01       	call   1f9f480 <_ZNSt4__Cr13basic_filebufIcNS_11char_traitsIcEEEC1Ev>
+  61851d:	45 31 ed             	xor    %r13d,%r13d
+  618520:	80 3d e1 01 b0 01 01 	cmpb   $0x1,0x1b001e1(%rip)        # 2118708 <_ZN2v85Shell7optionsE+0x238>
+  618527:	0f 85 08 01 00 00    	jne    618635 <_ZN2v85Shell4MainEiPPc+0x435>
+  61852d:	4c 8d 35 cc 7a ad 01 	lea    0x1ad7acc(%rip),%r14        # 20f0000 <_ZN2v88internal8v8_flagsE>
+  618534:	41 80 be 65 08 00 00 	cmpb   $0x0,0x865(%r14)
+  61853b:	00 
+  61853c:	0f 85 bd 00 00 00    	jne    6185ff <_ZN2v85Shell4MainEiPPc+0x3ff>
+  618542:	bf 50 00 00 00       	mov    $0x50,%edi
+  618547:	e8 a4 cf 7e 01       	call   1e054f0 <_Znam>
+  61854c:	49 89 c5             	mov    %rax,%r13
+  61854f:	48 89 c7             	mov    %rax,%rdi
+  618552:	e8 79 7f 7c 01       	call   1de04d0 <_ZN2v88platform7tracing17TracingControllerC1Ev>
+  618557:	80 3d 0a 03 b0 01 00 	cmpb   $0x0,0x1b0030a(%rip)        # 2118868 <_ZN2v85Shell7optionsE+0x398>
+  61855e:	75 7b                	jne    6185db <_ZN2v85Shell4MainEiPPc+0x3db>
+  618560:	48 8b 05 b1 01 b0 01 	mov    0x1b001b1(%rip),%rax        # 2118718 <_ZN2v85Shell7optionsE+0x248>
+  618567:	48 85 c0             	test   %rax,%rax
+  61856a:	4c 8d 3d ee 40 b8 ff 	lea    -0x47bf12(%rip),%r15        # 19c65f <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x90e4f>
+  618571:	4c 0f 45 f8          	cmovne %rax,%r15
+  618575:	48 8d bd 50 fe ff ff 	lea    -0x1b0(%rbp),%rdi
+  61857c:	4c 89 fe             	mov    %r15,%rsi
+  61857f:	ba 10 00 00 00       	mov    $0x10,%edx
+  618584:	e8 b7 6e 98 01       	call   1f9f440 <_ZNSt4__Cr14basic_ofstreamIcNS_11char_traitsIcEEE4openEPKcj>
+  618589:	48 8b 85 50 fe ff ff 	mov    -0x1b0(%rbp),%rax
+  618590:	48 8b 40 e8          	mov    -0x18(%rax),%rax
+  618594:	83 bc 05 70 fe ff ff 	cmpl   $0x0,-0x190(%rbp,%rax,1)
+  61859b:	00 
+  61859c:	74 3d                	je     6185db <_ZN2v85Shell4MainEiPPc+0x3db>
+  61859e:	e8 dd bc a5 01       	call   2074280 <__errno_location@plt>
+  6185a3:	8b 38                	mov    (%rax),%edi
+  6185a5:	e8 e6 bc a5 01       	call   2074290 <strerror@plt>
+  6185aa:	48 8d 3d cf 8a b2 ff 	lea    -0x4d7531(%rip),%rdi        # 141080 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x35870>
+  6185b1:	4c 89 fe             	mov    %r15,%rsi
+  6185b4:	48 89 c2             	mov    %rax,%rdx
+  6185b7:	31 c0                	xor    %eax,%eax
+  6185b9:	e8 c2 bb a5 01       	call   2074180 <printf@plt>
+  6185be:	bb 01 00 00 00       	mov    $0x1,%ebx
+  6185c3:	4d 85 ed             	test   %r13,%r13
+  6185c6:	0f 84 2d 0e 00 00    	je     6193f9 <_ZN2v85Shell4MainEiPPc+0x11f9>
+  6185cc:	49 8b 45 00          	mov    0x0(%r13),%rax
+  6185d0:	4c 89 ef             	mov    %r13,%rdi
+  6185d3:	ff 50 08             	call   *0x8(%rax)
+  6185d6:	e9 1e 0e 00 00       	jmp    6193f9 <_ZN2v85Shell4MainEiPPc+0x11f9>
+  6185db:	48 8d bd 50 fe ff ff 	lea    -0x1b0(%rbp),%rdi
+  6185e2:	e8 b9 7e 7c 01       	call   1de04a0 <_ZN2v88platform7tracing11TraceWriter21CreateJSONTraceWriterERNSt4__Cr13basic_ostreamIcNS3_11char_traitsIcEEEE>
+  6185e7:	bf 00 04 00 00       	mov    $0x400,%edi
+  6185ec:	48 89 c6             	mov    %rax,%rsi
+  6185ef:	e8 fc 61 7c 01       	call   1dde7f0 <_ZN2v88platform7tracing11TraceBuffer27CreateTraceBufferRingBufferEmPNS1_11TraceWriterE>
+  6185f4:	4c 89 ef             	mov    %r13,%rdi
+  6185f7:	48 89 c6             	mov    %rax,%rsi
+  6185fa:	e8 b1 82 7c 01       	call   1de08b0 <_ZN2v88platform7tracing17TracingController10InitializeEPNS1_11TraceBufferE>
+  6185ff:	83 f3 01             	xor    $0x1,%ebx
+  618602:	e8 01 74 fc ff       	call   5dfa08 <malloc_stats>
+  618607:	41 80 be 67 08 00 00 	cmpb   $0x1,0x867(%r14)
+  61860e:	01 
+  61860f:	75 3d                	jne    61864e <_ZN2v85Shell4MainEiPPc+0x44e>
+  618611:	bf 01 00 00 00       	mov    $0x1,%edi
+  618616:	89 de                	mov    %ebx,%esi
+  618618:	4c 89 ea             	mov    %r13,%rdx
+  61861b:	e8 00 eb 7b 01       	call   1dd7120 <_ZN2v88platform32NewSingleThreadedDefaultPlatformENS0_15IdleTaskSupportENS0_21InProcessStackDumpingENSt4__Cr10unique_ptrINS_17TracingControllerENS3_14default_deleteIS5_EEEE>
+  618620:	48 8b 3d 71 65 af 01 	mov    0x1af6571(%rip),%rdi        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  618627:	48 89 05 6a 65 af 01 	mov    %rax,0x1af656a(%rip)        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  61862e:	48 85 ff             	test   %rdi,%rdi
+  618631:	75 4b                	jne    61867e <_ZN2v85Shell4MainEiPPc+0x47e>
+  618633:	eb 4f                	jmp    618684 <_ZN2v85Shell4MainEiPPc+0x484>
+  618635:	4c 8d 35 c4 79 ad 01 	lea    0x1ad79c4(%rip),%r14        # 20f0000 <_ZN2v88internal8v8_flagsE>
+  61863c:	83 f3 01             	xor    $0x1,%ebx
+  61863f:	e8 c4 73 fc ff       	call   5dfa08 <malloc_stats>
+  618644:	41 80 be 67 08 00 00 	cmpb   $0x1,0x867(%r14)
+  61864b:	01 
+  61864c:	74 c3                	je     618611 <_ZN2v85Shell4MainEiPPc+0x411>
+  61864e:	8b 3d 8c 01 b0 01    	mov    0x1b0018c(%rip),%edi        # 21187e0 <_ZN2v85Shell7optionsE+0x310>
+  618654:	44 0f b6 05 74 01 b0 	movzbl 0x1b00174(%rip),%r8d        # 21187d0 <_ZN2v85Shell7optionsE+0x300>
+  61865b:	01 
+  61865c:	be 01 00 00 00       	mov    $0x1,%esi
+  618661:	89 da                	mov    %ebx,%edx
+  618663:	4c 89 e9             	mov    %r13,%rcx
+  618666:	e8 25 ea 7b 01       	call   1dd7090 <_ZN2v88platform18NewDefaultPlatformEiNS0_15IdleTaskSupportENS0_21InProcessStackDumpingENSt4__Cr10unique_ptrINS_17TracingControllerENS3_14default_deleteIS5_EEEENS0_12PriorityModeE>
+  61866b:	48 8b 3d 26 65 af 01 	mov    0x1af6526(%rip),%rdi        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  618672:	48 89 05 1f 65 af 01 	mov    %rax,0x1af651f(%rip)        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  618679:	48 85 ff             	test   %rdi,%rdi
+  61867c:	74 06                	je     618684 <_ZN2v85Shell4MainEiPPc+0x484>
+  61867e:	48 8b 07             	mov    (%rdi),%rax
+  618681:	ff 50 08             	call   *0x8(%rax)
+  618684:	48 8b 3d 0d 65 af 01 	mov    0x1af650d(%rip),%rdi        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  61868b:	48 89 3d 7e 02 b0 01 	mov    %rdi,0x1b0027e(%rip)        # 2118910 <_ZN2v812_GLOBAL__N_118g_default_platformE>
+  618692:	41 80 be 65 08 00 00 	cmpb   $0x1,0x865(%r14)
+  618699:	01 
+  61869a:	75 36                	jne    6186d2 <_ZN2v85Shell4MainEiPPc+0x4d2>
+  61869c:	48 c7 05 f1 64 af 01 	movq   $0x0,0x1af64f1(%rip)        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  6186a3:	00 00 00 00 
+  6186a7:	e8 24 a5 fc ff       	call   5e2bd0 <_ZN2v823MakePredictablePlatformENSt4__Cr10unique_ptrINS_8PlatformENS0_14default_deleteIS2_EEEE>
+  6186ac:	48 89 c7             	mov    %rax,%rdi
+  6186af:	48 8b 05 e2 64 af 01 	mov    0x1af64e2(%rip),%rax        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  6186b6:	48 89 3d db 64 af 01 	mov    %rdi,0x1af64db(%rip)        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  6186bd:	48 85 c0             	test   %rax,%rax
+  6186c0:	74 10                	je     6186d2 <_ZN2v85Shell4MainEiPPc+0x4d2>
+  6186c2:	48 8b 08             	mov    (%rax),%rcx
+  6186c5:	48 89 c7             	mov    %rax,%rdi
+  6186c8:	ff 51 08             	call   *0x8(%rcx)
+  6186cb:	48 8b 3d c6 64 af 01 	mov    0x1af64c6(%rip),%rdi        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  6186d2:	80 3d 17 01 b0 01 01 	cmpb   $0x1,0x1b00117(%rip)        # 21187f0 <_ZN2v85Shell7optionsE+0x320>
+  6186d9:	75 4b                	jne    618726 <_ZN2v85Shell4MainEiPPc+0x526>
+  6186db:	41 8b 86 04 07 00 00 	mov    0x704(%r14),%eax
+  6186e2:	85 c0                	test   %eax,%eax
+  6186e4:	75 07                	jne    6186ed <_ZN2v85Shell4MainEiPPc+0x4ed>
+  6186e6:	41 8b 86 00 07 00 00 	mov    0x700(%r14),%eax
+  6186ed:	48 63 f0             	movslq %eax,%rsi
+  6186f0:	48 c7 05 9d 64 af 01 	movq   $0x0,0x1af649d(%rip)        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  6186f7:	00 00 00 00 
+  6186fb:	e8 00 a5 fc ff       	call   5e2c00 <_ZN2v824MakeDelayedTasksPlatformENSt4__Cr10unique_ptrINS_8PlatformENS0_14default_deleteIS2_EEEEl>
+  618700:	48 89 c7             	mov    %rax,%rdi
+  618703:	48 8b 05 8e 64 af 01 	mov    0x1af648e(%rip),%rax        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  61870a:	48 89 3d 87 64 af 01 	mov    %rdi,0x1af6487(%rip)        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  618711:	48 85 c0             	test   %rax,%rax
+  618714:	74 10                	je     618726 <_ZN2v85Shell4MainEiPPc+0x526>
+  618716:	48 8b 08             	mov    (%rax),%rcx
+  618719:	48 89 c7             	mov    %rax,%rdi
+  61871c:	ff 51 08             	call   *0x8(%rcx)
+  61871f:	48 8b 3d 72 64 af 01 	mov    0x1af6472(%rip),%rdi        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  618726:	e8 15 46 02 00       	call   63cd40 <_ZN2v82V818InitializePlatformEPNS_8PlatformE>
+  61872b:	83 3d 56 ff af 01 00 	cmpl   $0x0,0x1afff56(%rip)        # 2118688 <_ZN2v85Shell7optionsE+0x1b8>
+  618732:	74 17                	je     61874b <_ZN2v85Shell4MainEiPPc+0x54b>
+  618734:	41 80 be 71 07 00 00 	cmpb   $0x0,0x771(%r14)
+  61873b:	00 
+  61873c:	74 0d                	je     61874b <_ZN2v85Shell4MainEiPPc+0x54b>
+  61873e:	e8 ed 08 19 00       	call   7a9030 <_ZN2v88internal8FlagList13ResetFlagHashEv>
+  618743:	41 c6 86 71 07 00 00 	movb   $0x0,0x771(%r14)
+  61874a:	00 
+  61874b:	bf 07 00 00 00       	mov    $0x7,%edi
+  618750:	e8 0b 46 02 00       	call   63cd60 <_ZN2v82V810InitializeEi>
+  618755:	48 8b 3d 94 ff af 01 	mov    0x1afff94(%rip),%rdi        # 21186f0 <_ZN2v85Shell7optionsE+0x220>
+  61875c:	48 85 ff             	test   %rdi,%rdi
+  61875f:	74 07                	je     618768 <_ZN2v85Shell4MainEiPPc+0x568>
+  618761:	e8 6a 47 02 00       	call   63ced0 <_ZN2v82V837InitializeExternalStartupDataFromFileEPKc>
+  618766:	eb 0f                	jmp    618777 <_ZN2v85Shell4MainEiPPc+0x577>
+  618768:	48 8b 85 90 fc ff ff 	mov    -0x370(%rbp),%rax
+  61876f:	48 8b 38             	mov    (%rax),%rdi
+  618772:	e8 49 47 02 00       	call   63cec0 <_ZN2v82V829InitializeExternalStartupDataEPKc>
+  618777:	48 8d 05 32 6c b0 01 	lea    0x1b06c32(%rip),%rax        # 211f3b0 <_ZN2v88internal7Sandbox16default_sandbox_E>
+  61877e:	48 8b 18             	mov    (%rax),%rbx
+  618781:	bf 00 39 00 00       	mov    $0x3900,%edi
+  618786:	be 40 00 00 00       	mov    $0x40,%esi
+  61878b:	e8 00 ce 7e 01       	call   1e05590 <_ZnamSt11align_val_t>
+  618790:	49 89 c7             	mov    %rax,%r15
+  618793:	0f 57 c0             	xorps  %xmm0,%xmm0
+  618796:	0f 11 40 08          	movups %xmm0,0x8(%rax)
+  61879a:	48 8d 05 0f e4 a5 01 	lea    0x1a5e40f(%rip),%rax        # 2076bb0 <_ZTVNSt4__Cr20__shared_ptr_emplaceB9sqn240000IN2v820PAInSandboxAllocatorENS_9allocatorIS2_EEEE+0x10>
+  6187a1:	49 89 07             	mov    %rax,(%r15)
+  6187a4:	4d 89 fc             	mov    %r15,%r12
+  6187a7:	49 83 c4 40          	add    $0x40,%r12
+  6187ab:	0f 84 8e 0d 00 00    	je     61953f <_ZN2v85Shell4MainEiPPc+0x133f>
+  6187b1:	4c 89 e7             	mov    %r12,%rdi
+  6187b4:	48 89 de             	mov    %rbx,%rsi
+  6187b7:	e8 24 d2 00 00       	call   6259e0 <_ZN2v820PAInSandboxAllocatorC2EPNS_8internal7SandboxE>
+  6187bc:	4c 89 e7             	mov    %r12,%rdi
+  6187bf:	4c 89 fe             	mov    %r15,%rsi
+  6187c2:	e8 29 47 02 00       	call   63cef0 <_ZN2v82V821SetInSandboxAllocatorENSt4__Cr10shared_ptrINS_9AllocatorEEE>
+  6187c7:	c7 85 a8 fc ff ff 00 	movl   $0x0,-0x358(%rbp)
+  6187ce:	00 00 00 
+  6187d1:	48 8d bd b0 fd ff ff 	lea    -0x250(%rbp),%rdi
+  6187d8:	e8 b3 93 02 00       	call   641b90 <_ZN2v87Isolate12CreateParamsC1Ev>
+  6187dd:	48 8d 9d b8 fd ff ff 	lea    -0x248(%rbp),%rbx
+  6187e4:	e8 67 8c 7b 01       	call   1dd1450 <_ZN2v84base7SysInfo22AmountOfPhysicalMemoryEv>
+  6187e9:	49 89 c7             	mov    %rax,%r15
+  6187ec:	e8 9f 8c 7b 01       	call   1dd1490 <_ZN2v84base7SysInfo21AmountOfVirtualMemoryEv>
+  6187f1:	48 89 df             	mov    %rbx,%rdi
+  6187f4:	4c 89 fe             	mov    %r15,%rsi
+  6187f7:	48 89 c2             	mov    %rax,%rdx
+  6187fa:	e8 41 32 01 00       	call   62ba40 <_ZN2v819ResourceConstraints17ConfigureDefaultsEmm>
+  6187ff:	48 8b 05 ba fc af 01 	mov    0x1affcba(%rip),%rax        # 21184c0 <_ZN2v85Shell22array_buffer_allocatorE>
+  618806:	48 89 85 10 fe ff ff 	mov    %rax,-0x1f0(%rbp)
+  61880d:	e8 ae 7b 02 00       	call   6403c0 <_ZN2v811ArrayBuffer9Allocator19NewDefaultAllocatorEv>
+  618812:	48 89 85 70 fc ff ff 	mov    %rax,-0x390(%rbp)
+  618819:	48 8d 05 38 e0 a5 01 	lea    0x1a5e038(%rip),%rax        # 2076858 <_ZTVN2v812_GLOBAL__N_125ShellArrayBufferAllocatorE+0x10>
+  618820:	48 89 85 68 fc ff ff 	mov    %rax,-0x398(%rbp)
+  618827:	e8 94 7b 02 00       	call   6403c0 <_ZN2v811ArrayBuffer9Allocator19NewDefaultAllocatorEv>
+  61882c:	48 89 85 80 fc ff ff 	mov    %rax,-0x380(%rbp)
+  618833:	48 8d 05 ae e0 a5 01 	lea    0x1a5e0ae(%rip),%rax        # 20768e8 <_ZTVN2v812_GLOBAL__N_124MockArrayBufferAllocatorE+0x10>
+  61883a:	48 89 85 78 fc ff ff 	mov    %rax,-0x388(%rbp)
+  618841:	48 8b 05 f0 fd af 01 	mov    0x1affdf0(%rip),%rax        # 2118638 <_ZN2v85Shell7optionsE+0x168>
+  618848:	48 63 1d 19 fe af 01 	movslq 0x1affe19(%rip),%rbx        # 2118668 <_ZN2v85Shell7optionsE+0x198>
+  61884f:	48 0f af d8          	imul   %rax,%rbx
+  618853:	48 39 c3             	cmp    %rax,%rbx
+  618856:	49 c7 c6 ff ff ff ff 	mov    $0xffffffffffffffff,%r14
+  61885d:	4c 0f 43 f3          	cmovae %rbx,%r14
+  618861:	e8 5a 7b 02 00       	call   6403c0 <_ZN2v811ArrayBuffer9Allocator19NewDefaultAllocatorEv>
+  618866:	48 89 85 e0 fb ff ff 	mov    %rax,-0x420(%rbp)
+  61886d:	48 8d 05 bc e0 a5 01 	lea    0x1a5e0bc(%rip),%rax        # 2076930 <_ZTVN2v812_GLOBAL__N_134MockArrayBufferAllocatiorWithLimitE+0x10>
+  618874:	48 89 85 d8 fb ff ff 	mov    %rax,-0x428(%rbp)
+  61887b:	4c 89 b5 e8 fb ff ff 	mov    %r14,-0x418(%rbp)
+  618882:	4c 89 b5 f0 fb ff ff 	mov    %r14,-0x410(%rbp)
+  618889:	e8 32 7b 02 00       	call   6403c0 <_ZN2v811ArrayBuffer9Allocator19NewDefaultAllocatorEv>
+  61888e:	48 89 85 00 fc ff ff 	mov    %rax,-0x400(%rbp)
+  618895:	48 8d 05 dc e0 a5 01 	lea    0x1a5e0dc(%rip),%rax        # 2076978 <_ZTVN2v812_GLOBAL__N_120MultiMappedAllocatorE+0x10>
+  61889c:	48 89 85 f8 fb ff ff 	mov    %rax,-0x408(%rbp)
+  6188a3:	0f 57 c0             	xorps  %xmm0,%xmm0
+  6188a6:	0f 11 85 08 fc ff ff 	movups %xmm0,-0x3f8(%rbp)
+  6188ad:	0f 11 85 18 fc ff ff 	movups %xmm0,-0x3e8(%rbp)
+  6188b4:	c7 85 28 fc ff ff 00 	movl   $0x3f800000,-0x3d8(%rbp)
+  6188bb:	00 80 3f 
+  6188be:	48 8d bd 30 fc ff ff 	lea    -0x3d0(%rbp),%rdi
+  6188c5:	e8 86 70 7b 01       	call   1dcf950 <_ZN2v84base17ConditionVariableC1Ev>
+  6188ca:	80 3d 7f fd af 01 00 	cmpb   $0x0,0x1affd7f(%rip)        # 2118650 <_ZN2v85Shell7optionsE+0x180>
+  6188d1:	48 8d 85 f8 fb ff ff 	lea    -0x408(%rbp),%rax
+  6188d8:	48 8d 8d 68 fc ff ff 	lea    -0x398(%rbp),%rcx
+  6188df:	48 0f 45 c8          	cmovne %rax,%rcx
+  6188e3:	48 85 db             	test   %rbx,%rbx
+  6188e6:	48 8d 85 78 fc ff ff 	lea    -0x388(%rbp),%rax
+  6188ed:	48 8d 95 d8 fb ff ff 	lea    -0x428(%rbp),%rdx
+  6188f4:	48 0f 44 d0          	cmove  %rax,%rdx
+  6188f8:	80 3d 29 fd af 01 00 	cmpb   $0x0,0x1affd29(%rip)        # 2118628 <_ZN2v85Shell7optionsE+0x158>
+  6188ff:	48 0f 44 d1          	cmove  %rcx,%rdx
+  618903:	48 89 15 b6 fb af 01 	mov    %rdx,0x1affbb6(%rip)        # 21184c0 <_ZN2v85Shell22array_buffer_allocatorE>
+  61890a:	48 89 95 10 fe ff ff 	mov    %rdx,-0x1f0(%rbp)
+  618911:	bf 28 00 00 00       	mov    $0x28,%edi
+  618916:	e8 d5 cb 7e 01       	call   1e054f0 <_Znam>
+  61891b:	0f 57 c0             	xorps  %xmm0,%xmm0
+  61891e:	0f 11 00             	movups %xmm0,(%rax)
+  618921:	0f 11 40 10          	movups %xmm0,0x10(%rax)
+  618925:	c7 40 20 00 00 80 3f 	movl   $0x3f800000,0x20(%rax)
+  61892c:	48 89 05 6d 62 af 01 	mov    %rax,0x1af626d(%rip)        # 210eba0 <_ZN2v85Shell12counter_map_E>
+  618933:	80 3d ae fc af 01 00 	cmpb   $0x0,0x1affcae(%rip)        # 21185e8 <_ZN2v85Shell7optionsE+0x118>
+  61893a:	4c 8d 35 bf 76 ad 01 	lea    0x1ad76bf(%rip),%r14        # 20f0000 <_ZN2v88internal8v8_flagsE>
+  618941:	75 2c                	jne    61896f <_ZN2v85Shell4MainEiPPc+0x76f>
+  618943:	80 3d ae fc af 01 00 	cmpb   $0x0,0x1affcae(%rip)        # 21185f8 <_ZN2v85Shell7optionsE+0x128>
+  61894a:	75 23                	jne    61896f <_ZN2v85Shell4MainEiPPc+0x76f>
+  61894c:	41 80 be 00 01 00 00 	cmpb   $0x0,0x100(%r14)
+  618953:	00 
+  618954:	75 19                	jne    61896f <_ZN2v85Shell4MainEiPPc+0x76f>
+  618956:	48 8d 05 eb 58 b0 01 	lea    0x1b058eb(%rip),%rax        # 211e248 <_ZN2v88internal12TracingFlags8gc_statsE>
+  61895d:	8b 00                	mov    (%rax),%eax
+  61895f:	85 c0                	test   %eax,%eax
+  618961:	75 0c                	jne    61896f <_ZN2v85Shell4MainEiPPc+0x76f>
+  618963:	49 8b 86 e0 07 00 00 	mov    0x7e0(%r14),%rax
+  61896a:	80 38 00             	cmpb   $0x0,(%rax)
+  61896d:	74 2a                	je     618999 <_ZN2v85Shell4MainEiPPc+0x799>
+  61896f:	48 8d 05 0a f2 fe ff 	lea    -0x10df6(%rip),%rax        # 607b80 <_ZN2v85Shell13LookupCounterEPKc>
+  618976:	48 89 85 f8 fd ff ff 	mov    %rax,-0x208(%rbp)
+  61897d:	48 8d 05 0c f2 fe ff 	lea    -0x10df4(%rip),%rax        # 607b90 <_ZN2v85Shell15CreateHistogramEPKciim>
+  618984:	48 89 85 00 fe ff ff 	mov    %rax,-0x200(%rbp)
+  61898b:	48 8d 05 0e f2 fe ff 	lea    -0x10df2(%rip),%rax        # 607ba0 <_ZN2v85Shell18AddHistogramSampleEPvi>
+  618992:	48 89 85 08 fe ff ff 	mov    %rax,-0x1f8(%rbp)
+  618999:	80 3d 08 ff af 01 01 	cmpb   $0x1,0x1afff08(%rip)        # 21188a8 <_ZN2v85Shell7optionsE+0x3d8>
+  6189a0:	75 12                	jne    6189b4 <_ZN2v85Shell4MainEiPPc+0x7b4>
+  6189a2:	bf 01 00 00 00       	mov    $0x1,%edi
+  6189a7:	e8 94 44 02 00       	call   63ce40 <_ZN2v82V828EnableWebAssemblyTrapHandlerEb>
+  6189ac:	84 c0                	test   %al,%al
+  6189ae:	0f 84 8e 0c 00 00    	je     619642 <_ZN2v85Shell4MainEiPPc+0x1442>
+  6189b4:	41 80 3e 01          	cmpb   $0x1,(%r14)
+  6189b8:	0f 84 e5 0a 00 00    	je     6194a3 <_ZN2v85Shell4MainEiPPc+0x12a3>
+  6189be:	41 80 7e 02 01       	cmpb   $0x1,0x2(%r14)
+  6189c3:	0f 84 05 0b 00 00    	je     6194ce <_ZN2v85Shell4MainEiPPc+0x12ce>
+  6189c9:	4c 89 ad 90 fc ff ff 	mov    %r13,-0x370(%rbp)
+  6189d0:	41 80 7e 03 01       	cmpb   $0x1,0x3(%r14)
+  6189d5:	0f 84 25 0b 00 00    	je     619500 <_ZN2v85Shell4MainEiPPc+0x1300>
+  6189db:	48 8d bd b0 fd ff ff 	lea    -0x250(%rbp),%rdi
+  6189e2:	e8 c9 95 02 00       	call   641fb0 <_ZN2v87Isolate3NewERKNS0_12CreateParamsE>
+  6189e7:	49 89 c5             	mov    %rax,%r13
+  6189ea:	48 89 c7             	mov    %rax,%rdi
+  6189ed:	e8 4e 96 02 00       	call   642040 <_ZN2v87Isolate5EnterEv>
+  6189f2:	4c 89 ef             	mov    %r13,%rdi
+  6189f5:	e8 46 8f 02 00       	call   641940 <_ZNK2v87Isolate10GetCppHeapEv>
+  6189fa:	48 89 c7             	mov    %rax,%rdi
+  6189fd:	e8 1e 83 1c 00       	call   7e0d20 <_ZN2v87CppHeap19GetAllocationHandleEv>
+  618a02:	48 8d 0d 97 52 af 01 	lea    0x1af5297(%rip),%rcx        # 210dca0 <_ZN5cppgc8internal11GCInfoTraitIN2v88internal19CppGCManagedWrapperEE7gc_infoE>
+  618a09:	48 8d 15 b0 52 af 01 	lea    0x1af52b0(%rip),%rdx        # 210dcc0 <_ZN5cppgc8internal11GCInfoTraitIN2v89D8ConsoleEE7gc_infoE>
+  618a10:	29 ca                	sub    %ecx,%edx
+  618a12:	c1 ea 05             	shr    $0x5,%edx
+  618a15:	ff c2                	inc    %edx
+  618a17:	0f b7 d2             	movzwl %dx,%edx
+  618a1a:	be 40 00 00 00       	mov    $0x40,%esi
+  618a1f:	48 89 c7             	mov    %rax,%rdi
+  618a22:	e8 b9 a2 b1 00       	call   1132ce0 <_ZN5cppgc8internal33MakeGarbageCollectedTraitInternal8AllocateERNS_16AllocationHandleEmtNS1_8MixinTagE>
+  618a27:	48 89 c3             	mov    %rax,%rbx
+  618a2a:	48 89 c7             	mov    %rax,%rdi
+  618a2d:	4c 89 ee             	mov    %r13,%rsi
+  618a30:	e8 eb 85 fc ff       	call   5e1020 <_ZN2v89D8ConsoleC1EPNS_7IsolateE>
+  618a35:	66 81 4b fc 00 80    	orw    $0x8000,-0x4(%rbx)
+  618a3b:	4c 89 ef             	mov    %r13,%rdi
+  618a3e:	48 89 de             	mov    %rbx,%rsi
+  618a41:	ba 01 00 00 00       	mov    $0x1,%edx
+  618a46:	e8 a5 19 ff ff       	call   60a3f0 <_ZN2v85Shell10InitializeEPNS_7IsolateEPNS_9D8ConsoleEb>
+  618a4b:	4c 89 ad b0 fc ff ff 	mov    %r13,-0x350(%rbp)
+  618a52:	0f 57 c0             	xorps  %xmm0,%xmm0
+  618a55:	0f 11 85 20 fd ff ff 	movups %xmm0,-0x2e0(%rbp)
+  618a5c:	0f 11 85 30 fd ff ff 	movups %xmm0,-0x2d0(%rbp)
+  618a63:	0f 11 85 c0 fc ff ff 	movups %xmm0,-0x340(%rbp)
+  618a6a:	0f 11 85 d0 fc ff ff 	movups %xmm0,-0x330(%rbp)
+  618a71:	0f 11 85 e8 fc ff ff 	movups %xmm0,-0x318(%rbp)
+  618a78:	0f 11 85 f8 fc ff ff 	movups %xmm0,-0x308(%rbp)
+  618a7f:	0f 11 85 08 fd ff ff 	movups %xmm0,-0x2f8(%rbp)
+  618a86:	c7 85 40 fd ff ff 00 	movl   $0x3f800000,-0x2c0(%rbp)
+  618a8d:	00 80 3f 
+  618a90:	48 8d 85 60 fd ff ff 	lea    -0x2a0(%rbp),%rax
+  618a97:	0f 11 85 60 fd ff ff 	movups %xmm0,-0x2a0(%rbp)
+  618a9e:	0f 11 85 48 fd ff ff 	movups %xmm0,-0x2b8(%rbp)
+  618aa5:	48 89 85 58 fd ff ff 	mov    %rax,-0x2a8(%rbp)
+  618aac:	48 8d 85 78 fd ff ff 	lea    -0x288(%rbp),%rax
+  618ab3:	0f 11 85 78 fd ff ff 	movups %xmm0,-0x288(%rbp)
+  618aba:	48 89 85 70 fd ff ff 	mov    %rax,-0x290(%rbp)
+  618ac1:	0f 11 85 88 fd ff ff 	movups %xmm0,-0x278(%rbp)
+  618ac8:	0f 11 85 98 fd ff ff 	movups %xmm0,-0x268(%rbp)
+  618acf:	c7 85 a8 fd ff ff 00 	movl   $0x3f800000,-0x258(%rbp)
+  618ad6:	00 80 3f 
+  618ad9:	48 8d 85 b0 fc ff ff 	lea    -0x350(%rbp),%rax
+  618ae0:	49 89 85 b0 02 00 00 	mov    %rax,0x2b0(%r13)
+  618ae7:	41 80 be 63 06 00 00 	cmpb   $0x1,0x663(%r14)
+  618aee:	01 
+  618aef:	75 1f                	jne    618b10 <_ZN2v85Shell4MainEiPPc+0x910>
+  618af1:	bf 80 00 00 00       	mov    $0x80,%edi
+  618af6:	e8 f5 c9 7e 01       	call   1e054f0 <_Znam>
+  618afb:	48 89 c3             	mov    %rax,%rbx
+  618afe:	48 89 c7             	mov    %rax,%rdi
+  618b01:	4c 89 ee             	mov    %r13,%rsi
+  618b04:	e8 e7 55 fc ff       	call   5de0f0 <_ZN2v810AsyncHooksC1EPNS_7IsolateE>
+  618b09:	48 89 9d 18 fd ff ff 	mov    %rbx,-0x2e8(%rbp)
+  618b10:	c6 85 e0 fc ff ff 00 	movb   $0x0,-0x320(%rbp)
+  618b17:	41 80 be 6d 07 00 00 	cmpb   $0x1,0x76d(%r14)
+  618b1e:	01 
+  618b1f:	0f 84 b2 0a 00 00    	je     6195d7 <_ZN2v85Shell4MainEiPPc+0x13d7>
+  618b25:	c7 85 a8 fc ff ff 00 	movl   $0x0,-0x358(%rbp)
+  618b2c:	00 00 00 
+  618b2f:	80 3d d2 fb af 01 01 	cmpb   $0x1,0x1affbd2(%rip)        # 2118708 <_ZN2v85Shell7optionsE+0x238>
+  618b36:	0f 85 ae 03 00 00    	jne    618eea <_ZN2v85Shell4MainEiPPc+0xcea>
+  618b3c:	48 8b 35 ed fb af 01 	mov    0x1affbed(%rip),%rsi        # 2118730 <_ZN2v85Shell7optionsE+0x260>
+  618b43:	48 85 f6             	test   %rsi,%rsi
+  618b46:	0f 84 22 01 00 00    	je     618c6e <_ZN2v85Shell4MainEiPPc+0xa6e>
+  618b4c:	48 8d bd 40 fc ff ff 	lea    -0x3c0(%rbp),%rdi
+  618b53:	e8 d8 47 fe ff       	call   5fd330 <_ZN2v85Shell9ReadCharsEPKc>
+  618b58:	4c 8b a5 40 fc ff ff 	mov    -0x3c0(%rbp),%r12
+  618b5f:	4d 85 e4             	test   %r12,%r12
+  618b62:	0f 84 ed 0a 00 00    	je     619655 <_ZN2v85Shell4MainEiPPc+0x1455>
+  618b68:	48 8b 9d 48 fc ff ff 	mov    -0x3b8(%rbp),%rbx
+  618b6f:	bf 20 00 00 00       	mov    $0x20,%edi
+  618b74:	e8 77 c9 7e 01       	call   1e054f0 <_Znam>
+  618b79:	49 89 c7             	mov    %rax,%r15
+  618b7c:	c6 40 04 00          	movb   $0x0,0x4(%rax)
+  618b80:	0f 57 c0             	xorps  %xmm0,%xmm0
+  618b83:	0f 11 40 08          	movups %xmm0,0x8(%rax)
+  618b87:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  618b8e:	00 
+  618b8f:	4c 89 ad 50 fc ff ff 	mov    %r13,-0x3b0(%rbp)
+  618b96:	49 8b 85 28 02 00 00 	mov    0x228(%r13),%rax
+  618b9d:	48 89 85 58 fc ff ff 	mov    %rax,-0x3a8(%rbp)
+  618ba4:	49 8b 85 30 02 00 00 	mov    0x230(%r13),%rax
+  618bab:	48 89 85 60 fc ff ff 	mov    %rax,-0x3a0(%rbp)
+  618bb2:	41 ff 85 38 02 00 00 	incl   0x238(%r13)
+  618bb9:	0f 29 85 b0 fb ff ff 	movaps %xmm0,-0x450(%rbp)
+  618bc0:	0f 29 85 40 fb ff ff 	movaps %xmm0,-0x4c0(%rbp)
+  618bc7:	0f 11 44 24 18       	movups %xmm0,0x18(%rsp)
+  618bcc:	0f 28 85 b0 fb ff ff 	movaps -0x450(%rbp),%xmm0
+  618bd3:	0f 11 44 24 08       	movups %xmm0,0x8(%rsp)
+  618bd8:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+  618bdf:	00 
+  618be0:	4c 89 ef             	mov    %r13,%rdi
+  618be3:	31 f6                	xor    %esi,%esi
+  618be5:	31 d2                	xor    %edx,%edx
+  618be7:	31 c9                	xor    %ecx,%ecx
+  618be9:	45 31 c0             	xor    %r8d,%r8d
+  618bec:	45 31 c9             	xor    %r9d,%r9d
+  618bef:	e8 fc 48 02 00       	call   63d4f0 <_ZN2v87Context3NewEPNS_7IsolateEPNS_22ExtensionConfigurationENS_10MaybeLocalINS_14ObjectTemplateEEENS5_INS_5ValueEEENS_33DeserializeInternalFieldsCallbackEPNS_14MicrotaskQueueENS_30DeserializeContextDataCallbackENS_29DeserializeAPIWrapperCallbackE>
+  618bf4:	49 89 c6             	mov    %rax,%r14
+  618bf7:	48 89 c7             	mov    %rax,%rdi
+  618bfa:	e8 21 34 01 00       	call   62c020 <_ZN2v87Context5EnterEv>
+  618bff:	4c 89 ad c0 fb ff ff 	mov    %r13,-0x440(%rbp)
+  618c06:	49 8b 85 28 02 00 00 	mov    0x228(%r13),%rax
+  618c0d:	48 89 85 38 fc ff ff 	mov    %rax,-0x3c8(%rbp)
+  618c14:	49 8b 85 30 02 00 00 	mov    0x230(%r13),%rax
+  618c1b:	48 89 85 a0 fc ff ff 	mov    %rax,-0x360(%rbp)
+  618c22:	48 89 85 d0 fb ff ff 	mov    %rax,-0x430(%rbp)
+  618c29:	41 ff 85 38 02 00 00 	incl   0x238(%r13)
+  618c30:	48 8d bd 50 fb ff ff 	lea    -0x4b0(%rbp),%rdi
+  618c37:	4c 89 ee             	mov    %r13,%rsi
+  618c3a:	e8 f1 99 01 00       	call   632630 <_ZN2v88TryCatchC1EPNS_7IsolateE>
+  618c3f:	48 81 fb e9 ff ff 1f 	cmp    $0x1fffffe9,%rbx
+  618c46:	72 4f                	jb     618c97 <_ZN2v85Shell4MainEiPPc+0xa97>
+  618c48:	48 8d 35 df 90 b9 ff 	lea    -0x466f21(%rip),%rsi        # 1b1d2e <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0xa651e>
+  618c4f:	4c 89 ef             	mov    %r13,%rdi
+  618c52:	31 d2                	xor    %edx,%edx
+  618c54:	b9 18 00 00 00       	mov    $0x18,%ecx
+  618c59:	e8 82 4f 02 00       	call   63dbe0 <_ZN2v86String18NewFromUtf8LiteralEPNS_7IsolateEPKcNS_13NewStringTypeEi>
+  618c5e:	4c 89 ef             	mov    %r13,%rdi
+  618c61:	48 89 c6             	mov    %rax,%rsi
+  618c64:	e8 d7 8a 02 00       	call   641740 <_ZN2v87Isolate10ThrowErrorENS_5LocalINS_6StringEEE>
+  618c69:	e9 a1 01 00 00       	jmp    618e0f <_ZN2v85Shell4MainEiPPc+0xc0f>
+  618c6e:	e8 0d 60 7c 01       	call   1ddec80 <_ZN2v88platform7tracing11TraceConfig24CreateDefaultTraceConfigEv>
+  618c73:	49 89 c7             	mov    %rax,%r15
+  618c76:	80 3d db fb af 01 01 	cmpb   $0x1,0x1affbdb(%rip)        # 2118858 <_ZN2v85Shell7optionsE+0x388>
+  618c7d:	0f 85 58 02 00 00    	jne    618edb <_ZN2v85Shell4MainEiPPc+0xcdb>
+  618c83:	48 8d 35 b4 2d b0 ff 	lea    -0x4fd24c(%rip),%rsi        # 11ba3e <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x1022e>
+  618c8a:	4c 89 ff             	mov    %r15,%rdi
+  618c8d:	e8 ce 64 7c 01       	call   1ddf160 <_ZN2v88platform7tracing11TraceConfig19AddIncludedCategoryEPKc>
+  618c92:	e9 44 02 00 00       	jmp    618edb <_ZN2v85Shell4MainEiPPc+0xcdb>
+  618c97:	4c 89 ef             	mov    %r13,%rdi
+  618c9a:	4c 89 e6             	mov    %r12,%rsi
+  618c9d:	31 d2                	xor    %edx,%edx
+  618c9f:	89 d9                	mov    %ebx,%ecx
+  618ca1:	e8 9a 4f 02 00       	call   63dc40 <_ZN2v86String11NewFromUtf8EPNS_7IsolateEPKcNS_13NewStringTypeEi>
+  618ca6:	48 89 c3             	mov    %rax,%rbx
+  618ca9:	48 85 c0             	test   %rax,%rax
+  618cac:	0f 84 fc 08 00 00    	je     6195ae <_ZN2v85Shell4MainEiPPc+0x13ae>
+  618cb2:	c6 45 a0 00          	movb   $0x0,-0x60(%rbp)
+  618cb6:	c6 45 c8 00          	movb   $0x0,-0x38(%rbp)
+  618cba:	0f 10 45 a0          	movups -0x60(%rbp),%xmm0
+  618cbe:	0f 10 4d b0          	movups -0x50(%rbp),%xmm1
+  618cc2:	0f 10 55 c0          	movups -0x40(%rbp),%xmm2
+  618cc6:	0f 11 54 24 20       	movups %xmm2,0x20(%rsp)
+  618ccb:	0f 11 4c 24 10       	movups %xmm1,0x10(%rsp)
+  618cd0:	0f 11 04 24          	movups %xmm0,(%rsp)
+  618cd4:	4c 89 f7             	mov    %r14,%rdi
+  618cd7:	48 89 de             	mov    %rbx,%rsi
+  618cda:	e8 21 af 01 00       	call   633c00 <_ZN2v84JSON5ParseENS_5LocalINS_7ContextEEENS1_INS_6StringEEENSt4__Cr8optionalINS_12ScriptOriginEEE>
+  618cdf:	48 85 c0             	test   %rax,%rax
+  618ce2:	0f 84 27 01 00 00    	je     618e0f <_ZN2v85Shell4MainEiPPc+0xc0f>
+  618ce8:	49 89 c4             	mov    %rax,%r12
+  618ceb:	48 89 c7             	mov    %rax,%rdi
+  618cee:	e8 0d c9 01 00       	call   635600 <_ZNK2v85Value8IsObjectEv>
+  618cf3:	84 c0                	test   %al,%al
+  618cf5:	0f 84 bd 08 00 00    	je     6195b8 <_ZN2v85Shell4MainEiPPc+0x13b8>
+  618cfb:	48 8d 35 07 13 ba ff 	lea    -0x45ecf9(%rip),%rsi        # 1ba009 <_ZN2v87tracing12_GLOBAL__N_117kTraceConfigParamE>
+  618d02:	4c 89 ef             	mov    %r13,%rdi
+  618d05:	31 d2                	xor    %edx,%edx
+  618d07:	b9 ff ff ff ff       	mov    $0xffffffff,%ecx
+  618d0c:	e8 2f 4f 02 00       	call   63dc40 <_ZN2v86String11NewFromUtf8EPNS_7IsolateEPKcNS_13NewStringTypeEi>
+  618d11:	48 85 c0             	test   %rax,%rax
+  618d14:	74 24                	je     618d3a <_ZN2v85Shell4MainEiPPc+0xb3a>
+  618d16:	4c 89 e7             	mov    %r12,%rdi
+  618d19:	4c 89 f6             	mov    %r14,%rsi
+  618d1c:	48 89 c2             	mov    %rax,%rdx
+  618d1f:	e8 fc fc 01 00       	call   638a20 <_ZN2v86Object3GetENS_5LocalINS_7ContextEEENS1_INS_5ValueEEE>
+  618d24:	48 85 c0             	test   %rax,%rax
+  618d27:	74 11                	je     618d3a <_ZN2v85Shell4MainEiPPc+0xb3a>
+  618d29:	48 89 c3             	mov    %rax,%rbx
+  618d2c:	48 89 c7             	mov    %rax,%rdi
+  618d2f:	e8 cc c8 01 00       	call   635600 <_ZNK2v85Value8IsObjectEv>
+  618d34:	84 c0                	test   %al,%al
+  618d36:	4c 0f 45 e3          	cmovne %rbx,%r12
+  618d3a:	48 8d 35 df 12 ba ff 	lea    -0x45ed21(%rip),%rsi        # 1ba020 <_ZN2v87tracing12_GLOBAL__N_124kIncludedCategoriesParamE>
+  618d41:	4c 89 ef             	mov    %r13,%rdi
+  618d44:	31 d2                	xor    %edx,%edx
+  618d46:	b9 ff ff ff ff       	mov    $0xffffffff,%ecx
+  618d4b:	e8 f0 4e 02 00       	call   63dc40 <_ZN2v86String11NewFromUtf8EPNS_7IsolateEPKcNS_13NewStringTypeEi>
+  618d50:	48 85 c0             	test   %rax,%rax
+  618d53:	0f 84 b6 00 00 00    	je     618e0f <_ZN2v85Shell4MainEiPPc+0xc0f>
+  618d59:	4c 89 e7             	mov    %r12,%rdi
+  618d5c:	4c 89 f6             	mov    %r14,%rsi
+  618d5f:	48 89 c2             	mov    %rax,%rdx
+  618d62:	e8 b9 fc 01 00       	call   638a20 <_ZN2v86Object3GetENS_5LocalINS_7ContextEEENS1_INS_5ValueEEE>
+  618d67:	48 89 85 98 fc ff ff 	mov    %rax,-0x368(%rbp)
+  618d6e:	48 85 c0             	test   %rax,%rax
+  618d71:	0f 84 98 00 00 00    	je     618e0f <_ZN2v85Shell4MainEiPPc+0xc0f>
+  618d77:	48 8b bd 98 fc ff ff 	mov    -0x368(%rbp),%rdi
+  618d7e:	e8 5d c5 01 00       	call   6352e0 <_ZNK2v85Value7IsArrayEv>
+  618d83:	84 c0                	test   %al,%al
+  618d85:	0f 84 84 00 00 00    	je     618e0f <_ZN2v85Shell4MainEiPPc+0xc0f>
+  618d8b:	48 8b bd 98 fc ff ff 	mov    -0x368(%rbp),%rdi
+  618d92:	e8 79 5c 02 00       	call   63ea10 <_ZNK2v85Array6LengthEv>
+  618d97:	89 85 8c fc ff ff    	mov    %eax,-0x374(%rbp)
+  618d9d:	85 c0                	test   %eax,%eax
+  618d9f:	7e 62                	jle    618e03 <_ZN2v85Shell4MainEiPPc+0xc03>
+  618da1:	45 31 e4             	xor    %r12d,%r12d
+  618da4:	48 8b bd 98 fc ff ff 	mov    -0x368(%rbp),%rdi
+  618dab:	4c 89 f6             	mov    %r14,%rsi
+  618dae:	44 89 e2             	mov    %r12d,%edx
+  618db1:	e8 4a fe 01 00       	call   638c00 <_ZN2v86Object3GetENS_5LocalINS_7ContextEEEj>
+  618db6:	48 85 c0             	test   %rax,%rax
+  618db9:	74 54                	je     618e0f <_ZN2v85Shell4MainEiPPc+0xc0f>
+  618dbb:	48 89 c7             	mov    %rax,%rdi
+  618dbe:	4c 89 f6             	mov    %r14,%rsi
+  618dc1:	e8 2a cf 01 00       	call   635cf0 <_ZNK2v85Value8ToStringENS_5LocalINS_7ContextEEE>
+  618dc6:	48 85 c0             	test   %rax,%rax
+  618dc9:	74 44                	je     618e0f <_ZN2v85Shell4MainEiPPc+0xc0f>
+  618dcb:	48 8d 9d a0 fb ff ff 	lea    -0x460(%rbp),%rbx
+  618dd2:	48 89 df             	mov    %rbx,%rdi
+  618dd5:	4c 89 ee             	mov    %r13,%rsi
+  618dd8:	48 89 c2             	mov    %rax,%rdx
+  618ddb:	e8 c0 a1 02 00       	call   642fa0 <_ZN2v86String9Utf8ValueC1EPNS_7IsolateENS_5LocalINS_5ValueEEE>
+  618de0:	48 8b b5 a0 fb ff ff 	mov    -0x460(%rbp),%rsi
+  618de7:	4c 89 ff             	mov    %r15,%rdi
+  618dea:	e8 71 63 7c 01       	call   1ddf160 <_ZN2v88platform7tracing11TraceConfig19AddIncludedCategoryEPKc>
+  618def:	48 89 df             	mov    %rbx,%rdi
+  618df2:	e8 a9 a3 02 00       	call   6431a0 <_ZN2v86String9Utf8ValueD1Ev>
+  618df7:	41 ff c4             	inc    %r12d
+  618dfa:	44 39 a5 8c fc ff ff 	cmp    %r12d,-0x374(%rbp)
+  618e01:	75 a1                	jne    618da4 <_ZN2v85Shell4MainEiPPc+0xba4>
+  618e03:	48 8b bd 98 fc ff ff 	mov    -0x368(%rbp),%rdi
+  618e0a:	e8 01 5c 02 00       	call   63ea10 <_ZNK2v85Array6LengthEv>
+  618e0f:	4c 89 f3             	mov    %r14,%rbx
+  618e12:	48 8d bd 50 fb ff ff 	lea    -0x4b0(%rbp),%rdi
+  618e19:	e8 72 99 01 00       	call   632790 <_ZNK2v88TryCatch9HasCaughtEv>
+  618e1e:	84 c0                	test   %al,%al
+  618e20:	0f 85 66 08 00 00    	jne    61968c <_ZN2v85Shell4MainEiPPc+0x148c>
+  618e26:	48 8d bd 50 fb ff ff 	lea    -0x4b0(%rbp),%rdi
+  618e2d:	e8 6e 98 01 00       	call   6326a0 <_ZN2v88TryCatchD1Ev>
+  618e32:	4d 85 ed             	test   %r13,%r13
+  618e35:	4c 8d 35 c4 71 ad 01 	lea    0x1ad71c4(%rip),%r14        # 20f0000 <_ZN2v88internal8v8_flagsE>
+  618e3c:	74 37                	je     618e75 <_ZN2v85Shell4MainEiPPc+0xc75>
+  618e3e:	49 8b 85 28 02 00 00 	mov    0x228(%r13),%rax
+  618e45:	48 8b 8d 38 fc ff ff 	mov    -0x3c8(%rbp),%rcx
+  618e4c:	49 89 8d 28 02 00 00 	mov    %rcx,0x228(%r13)
+  618e53:	48 89 85 c8 fb ff ff 	mov    %rax,-0x438(%rbp)
+  618e5a:	41 ff 8d 38 02 00 00 	decl   0x238(%r13)
+  618e61:	48 8b 85 a0 fc ff ff 	mov    -0x360(%rbp),%rax
+  618e68:	49 39 85 30 02 00 00 	cmp    %rax,0x230(%r13)
+  618e6f:	0f 85 e4 06 00 00    	jne    619559 <_ZN2v85Shell4MainEiPPc+0x1359>
+  618e75:	48 89 df             	mov    %rbx,%rdi
+  618e78:	e8 a3 33 01 00       	call   62c220 <_ZN2v87Context4ExitEv>
+  618e7d:	48 8b b5 50 fc ff ff 	mov    -0x3b0(%rbp),%rsi
+  618e84:	48 85 f6             	test   %rsi,%rsi
+  618e87:	74 36                	je     618ebf <_ZN2v85Shell4MainEiPPc+0xcbf>
+  618e89:	48 8b 86 28 02 00 00 	mov    0x228(%rsi),%rax
+  618e90:	48 8b 8d 58 fc ff ff 	mov    -0x3a8(%rbp),%rcx
+  618e97:	48 89 8e 28 02 00 00 	mov    %rcx,0x228(%rsi)
+  618e9e:	48 89 85 58 fc ff ff 	mov    %rax,-0x3a8(%rbp)
+  618ea5:	ff 8e 38 02 00 00    	decl   0x238(%rsi)
+  618eab:	48 8b 85 60 fc ff ff 	mov    -0x3a0(%rbp),%rax
+  618eb2:	48 39 86 30 02 00 00 	cmp    %rax,0x230(%rsi)
+  618eb9:	0f 85 bc 06 00 00    	jne    61957b <_ZN2v85Shell4MainEiPPc+0x137b>
+  618ebf:	48 8b bd 40 fc ff ff 	mov    -0x3c0(%rbp),%rdi
+  618ec6:	48 c7 85 40 fc ff ff 	movq   $0x0,-0x3c0(%rbp)
+  618ecd:	00 00 00 00 
+  618ed1:	48 85 ff             	test   %rdi,%rdi
+  618ed4:	74 05                	je     618edb <_ZN2v85Shell4MainEiPPc+0xcdb>
+  618ed6:	e8 75 c6 7e 01       	call   1e05550 <_ZdaPv>
+  618edb:	48 8b bd 90 fc ff ff 	mov    -0x370(%rbp),%rdi
+  618ee2:	4c 89 fe             	mov    %r15,%rsi
+  618ee5:	e8 d6 7b 7c 01       	call   1de0ac0 <_ZN2v88platform7tracing17TracingController12StartTracingEPNS1_11TraceConfigE>
+  618eea:	80 3d 37 f9 af 01 01 	cmpb   $0x1,0x1aff937(%rip)        # 2118828 <_ZN2v85Shell7optionsE+0x358>
+  618ef1:	75 71                	jne    618f64 <_ZN2v85Shell4MainEiPPc+0xd64>
+  618ef3:	4c 89 ef             	mov    %r13,%rdi
+  618ef6:	be 01 00 00 00       	mov    $0x1,%esi
+  618efb:	31 d2                	xor    %edx,%edx
+  618efd:	e8 8e ac 02 00       	call   643b90 <_ZN2v811CpuProfiler3NewEPNS_7IsolateENS_22CpuProfilingNamingModeENS_23CpuProfilingLoggingModeE>
+  618f02:	48 89 c3             	mov    %rax,%rbx
+  618f05:	4d 8d bd c0 03 00 00 	lea    0x3c0(%r13),%r15
+  618f0c:	4c 8d a5 80 fb ff ff 	lea    -0x480(%rbp),%r12
+  618f13:	4c 89 e7             	mov    %r12,%rdi
+  618f16:	31 f6                	xor    %esi,%esi
+  618f18:	ba ff ff ff ff       	mov    $0xffffffff,%edx
+  618f1d:	31 c9                	xor    %ecx,%ecx
+  618f1f:	45 31 c0             	xor    %r8d,%r8d
+  618f22:	45 31 c9             	xor    %r9d,%r9d
+  618f25:	e8 a6 ac 02 00       	call   643bd0 <_ZN2v819CpuProfilingOptionsC1ENS_16CpuProfilingModeEjiNS_10MaybeLocalINS_7ContextEEENS_16CpuProfileSourceE>
+  618f2a:	48 89 9d a0 fc ff ff 	mov    %rbx,-0x360(%rbp)
+  618f31:	48 89 df             	mov    %rbx,%rdi
+  618f34:	4c 89 fe             	mov    %r15,%rsi
+  618f37:	4c 89 e2             	mov    %r12,%rdx
+  618f3a:	31 c9                	xor    %ecx,%ecx
+  618f3c:	e8 5f ad 02 00       	call   643ca0 <_ZN2v811CpuProfiler14StartProfilingENS_5LocalINS_6StringEEENS_19CpuProfilingOptionsENSt4__Cr10unique_ptrINS_24DiscardedSamplesDelegateENS5_14default_deleteIS7_EEEE>
+  618f41:	48 8b bd 90 fb ff ff 	mov    -0x470(%rbp),%rdi
+  618f48:	48 85 ff             	test   %rdi,%rdi
+  618f4b:	74 10                	je     618f5d <_ZN2v85Shell4MainEiPPc+0xd5d>
+  618f4d:	e8 5e 2e 01 00       	call   62bdb0 <_ZN2v812api_internal13DisposeGlobalEPm>
+  618f52:	48 c7 85 90 fb ff ff 	movq   $0x0,-0x470(%rbp)
+  618f59:	00 00 00 00 
+  618f5d:	4c 8d 35 9c 70 ad 01 	lea    0x1ad709c(%rip),%r14        # 20f0000 <_ZN2v88internal8v8_flagsE>
+  618f64:	41 8b 86 08 02 00 00 	mov    0x208(%r14),%eax
+  618f6b:	85 c0                	test   %eax,%eax
+  618f6d:	0f 8e bc 00 00 00    	jle    61902f <_ZN2v85Shell4MainEiPPc+0xe2f>
+  618f73:	80 3d af 90 ac 01 01 	cmpb   $0x1,0x1ac90af(%rip)        # 20e2029 <_ZN2v828check_d8_flag_contradictionsE>
+  618f7a:	75 0d                	jne    618f89 <_ZN2v85Shell4MainEiPPc+0xd89>
+  618f7c:	80 3d 21 f6 af 01 00 	cmpb   $0x0,0x1aff621(%rip)        # 21185a4 <_ZN2v85Shell7optionsE+0xd4>
+  618f83:	0f 85 7e 06 00 00    	jne    619607 <_ZN2v85Shell4MainEiPPc+0x1407>
+  618f89:	89 05 11 f6 af 01    	mov    %eax,0x1aff611(%rip)        # 21185a0 <_ZN2v85Shell7optionsE+0xd0>
+  618f8f:	c6 05 0e f6 af 01 01 	movb   $0x1,0x1aff60e(%rip)        # 21185a4 <_ZN2v85Shell7optionsE+0xd4>
+  618f96:	4c 8d 3d d0 36 b8 ff 	lea    -0x47c930(%rip),%r15        # 19c66d <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x90e5d>
+  618f9d:	45 31 e4             	xor    %r12d,%r12d
+  618fa0:	8b 15 fa f5 af 01    	mov    0x1aff5fa(%rip),%edx        # 21185a0 <_ZN2v85Shell7optionsE+0xd0>
+  618fa6:	41 39 d4             	cmp    %edx,%r12d
+  618fa9:	0f 8d 00 01 00 00    	jge    6190af <_ZN2v85Shell4MainEiPPc+0xeaf>
+  618faf:	45 89 e6             	mov    %r12d,%r14d
+  618fb2:	45 8d 66 01          	lea    0x1(%r14),%r12d
+  618fb6:	4c 89 ff             	mov    %r15,%rdi
+  618fb9:	44 89 e6             	mov    %r12d,%esi
+  618fbc:	31 c0                	xor    %eax,%eax
+  618fbe:	e8 bd b1 a5 01       	call   2074180 <printf@plt>
+  618fc3:	8b 1d d7 f5 af 01    	mov    0x1aff5d7(%rip),%ebx        # 21185a0 <_ZN2v85Shell7optionsE+0xd0>
+  618fc9:	ff cb                	dec    %ebx
+  618fcb:	31 f6                	xor    %esi,%esi
+  618fcd:	41 39 de             	cmp    %ebx,%r14d
+  618fd0:	40 0f 94 c6          	sete   %sil
+  618fd4:	4c 89 ef             	mov    %r13,%rdi
+  618fd7:	e8 34 e0 ff ff       	call   617010 <_ZN2v85Shell7RunMainEPNS_7IsolateEb>
+  618fdc:	85 c0                	test   %eax,%eax
+  618fde:	74 c0                	je     618fa0 <_ZN2v85Shell4MainEiPPc+0xda0>
+  618fe0:	c7 85 a8 fc ff ff 01 	movl   $0x1,-0x358(%rbp)
+  618fe7:	00 00 00 
+  618fea:	41 39 de             	cmp    %ebx,%r14d
+  618fed:	0f 84 bc 00 00 00    	je     6190af <_ZN2v85Shell4MainEiPPc+0xeaf>
+  618ff3:	4c 89 ef             	mov    %r13,%rdi
+  618ff6:	e8 15 07 16 00       	call   779710 <_ZN2v88internal7Isolate22main_thread_local_heapEv>
+  618ffb:	49 89 c7             	mov    %rax,%r15
+  618ffe:	48 8b 38             	mov    (%rax),%rdi
+  619001:	e8 4a 6c 21 00       	call   82fc50 <_ZN2v88internal4Heap5stackEv>
+  619006:	4c 89 7d a0          	mov    %r15,-0x60(%rbp)
+  61900a:	48 8d 15 cf 66 00 00 	lea    0x66cf(%rip),%rdx        # 61f6e0 <_ZN4heap4base5Stack24SetMarkerAndCallbackImplIZN2v88internal9LocalHeap28ExecuteMainThreadWhileParkedIZNS3_12_GLOBAL__N_130JoinAllWorkerAndIsolateThreadsEPNS3_7IsolateEE3$_0EEvT_EUlvE_EEvPS1_PvPKv>
+  619011:	48 8d 75 a0          	lea    -0x60(%rbp),%rsi
+  619015:	48 89 c7             	mov    %rax,%rdi
+  619018:	e8 73 3d b4 00       	call   115cd90 <_ZN4heap4base5Stack24TrampolineCallbackHelperEPvPFvPS1_S2_PKvE>
+  61901d:	80 3d 8c f5 af 01 00 	cmpb   $0x0,0x1aff58c(%rip)        # 21185b0 <_ZN2v85Shell7optionsE+0xe0>
+  619024:	0f 85 8e 00 00 00    	jne    6190b8 <_ZN2v85Shell4MainEiPPc+0xeb8>
+  61902a:	e9 be 00 00 00       	jmp    6190ed <_ZN2v85Shell4MainEiPPc+0xeed>
+  61902f:	83 3d 52 f6 af 01 00 	cmpl   $0x0,0x1aff652(%rip)        # 2118688 <_ZN2v85Shell7optionsE+0x1b8>
+  619036:	0f 84 95 00 00 00    	je     6190d1 <_ZN2v85Shell4MainEiPPc+0xed1>
+  61903c:	49 8b 9d d8 1e 01 00 	mov    0x11ed8(%r13),%rbx
+  619043:	48 8b 7b 08          	mov    0x8(%rbx),%rdi
+  619047:	48 83 c3 08          	add    $0x8,%rbx
+  61904b:	e8 00 6c 21 00       	call   82fc50 <_ZN2v88internal4Heap5stackEv>
+  619050:	48 89 5d a0          	mov    %rbx,-0x60(%rbp)
+  619054:	48 8d 8d a8 fc ff ff 	lea    -0x358(%rbp),%rcx
+  61905b:	48 89 4d a8          	mov    %rcx,-0x58(%rbp)
+  61905f:	48 8d 15 ca cb 00 00 	lea    0xcbca(%rip),%rdx        # 625c30 <_ZN4heap4base5Stack24SetMarkerAndCallbackImplIZN2v88internal9LocalHeap28ExecuteMainThreadWhileParkedIZNS3_5Shell4MainEiPPcE3$_0EEvT_EUlvE_EEvPS1_PvPKv>
+  619066:	48 8d 75 a0          	lea    -0x60(%rbp),%rsi
+  61906a:	48 89 c7             	mov    %rax,%rdi
+  61906d:	e8 1e 3d b4 00       	call   115cd90 <_ZN4heap4base5Stack24TrampolineCallbackHelperEPvPFvPS1_S2_PKvE>
+  619072:	c7 05 fc f5 af 01 01 	movl   $0x1,0x1aff5fc(%rip)        # 2118678 <_ZN2v85Shell7optionsE+0x1a8>
+  619079:	00 00 00 
+  61907c:	c7 05 02 f6 af 01 00 	movl   $0x0,0x1aff602(%rip)        # 2118688 <_ZN2v85Shell7optionsE+0x1b8>
+  619083:	00 00 00 
+  619086:	48 8d 3d 1c 81 b5 ff 	lea    -0x4a7ee4(%rip),%rdi        # 1711a9 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x65999>
+  61908d:	e8 ce b0 a5 01       	call   2074160 <puts@plt>
+  619092:	4c 89 ef             	mov    %r13,%rdi
+  619095:	be 01 00 00 00       	mov    $0x1,%esi
+  61909a:	e8 71 df ff ff       	call   617010 <_ZN2v85Shell7RunMainEPNS_7IsolateEb>
+  61909f:	89 85 a8 fc ff ff    	mov    %eax,-0x358(%rbp)
+  6190a5:	c7 05 c9 f5 af 01 00 	movl   $0x0,0x1aff5c9(%rip)        # 2118678 <_ZN2v85Shell7optionsE+0x1a8>
+  6190ac:	00 00 00 
+  6190af:	80 3d fa f4 af 01 00 	cmpb   $0x0,0x1aff4fa(%rip)        # 21185b0 <_ZN2v85Shell7optionsE+0xe0>
+  6190b6:	74 35                	je     6190ed <_ZN2v85Shell4MainEiPPc+0xeed>
+  6190b8:	80 3d f9 f4 af 01 00 	cmpb   $0x0,0x1aff4f9(%rip)        # 21185b8 <_ZN2v85Shell7optionsE+0xe8>
+  6190bf:	4c 8d 35 b2 d8 a5 01 	lea    0x1a5d8b2(%rip),%r14        # 2076978 <_ZTVN2v812_GLOBAL__N_120MultiMappedAllocatorE+0x10>
+  6190c6:	48 8b 9d a0 fc ff ff 	mov    -0x360(%rbp),%rbx
+  6190cd:	74 40                	je     61910f <_ZN2v85Shell4MainEiPPc+0xf0f>
+  6190cf:	eb 46                	jmp    619117 <_ZN2v85Shell4MainEiPPc+0xf17>
+  6190d1:	4c 89 ef             	mov    %r13,%rdi
+  6190d4:	be 01 00 00 00       	mov    $0x1,%esi
+  6190d9:	e8 32 df ff ff       	call   617010 <_ZN2v85Shell7RunMainEPNS_7IsolateEb>
+  6190de:	89 85 a8 fc ff ff    	mov    %eax,-0x358(%rbp)
+  6190e4:	80 3d c5 f4 af 01 00 	cmpb   $0x0,0x1aff4c5(%rip)        # 21185b0 <_ZN2v85Shell7optionsE+0xe0>
+  6190eb:	75 cb                	jne    6190b8 <_ZN2v85Shell4MainEiPPc+0xeb8>
+  6190ed:	0f b6 05 54 f3 af 01 	movzbl 0x1aff354(%rip),%eax        # 2118448 <_ZN2v85Shell16script_executed_E>
+  6190f4:	84 c0                	test   %al,%al
+  6190f6:	4c 8d 35 7b d8 a5 01 	lea    0x1a5d87b(%rip),%r14        # 2076978 <_ZTVN2v812_GLOBAL__N_120MultiMappedAllocatorE+0x10>
+  6190fd:	48 8b 9d a0 fc ff ff 	mov    -0x360(%rbp),%rbx
+  619104:	75 11                	jne    619117 <_ZN2v85Shell4MainEiPPc+0xf17>
+  619106:	80 3d ab f4 af 01 00 	cmpb   $0x0,0x1aff4ab(%rip)        # 21185b8 <_ZN2v85Shell7optionsE+0xe8>
+  61910d:	75 08                	jne    619117 <_ZN2v85Shell4MainEiPPc+0xf17>
+  61910f:	4c 89 ef             	mov    %r13,%rdi
+  619112:	e8 f9 78 ff ff       	call   610a10 <_ZN2v85Shell8RunShellEPNS_7IsolateE>
+  619117:	80 3d 0a f7 af 01 01 	cmpb   $0x1,0x1aff70a(%rip)        # 2118828 <_ZN2v85Shell7optionsE+0x358>
+  61911e:	75 3d                	jne    61915d <_ZN2v85Shell4MainEiPPc+0xf5d>
+  619120:	49 8d b5 c0 03 00 00 	lea    0x3c0(%r13),%rsi
+  619127:	48 89 df             	mov    %rbx,%rdi
+  61912a:	e8 61 ac 02 00       	call   643d90 <_ZN2v811CpuProfiler13StopProfilingENS_5LocalINS_6StringEEE>
+  61912f:	49 89 c7             	mov    %rax,%r15
+  619132:	80 3d ff f6 af 01 01 	cmpb   $0x1,0x1aff6ff(%rip)        # 2118838 <_ZN2v85Shell7optionsE+0x368>
+  619139:	75 12                	jne    61914d <_ZN2v85Shell4MainEiPPc+0xf4d>
+  61913b:	4c 89 ff             	mov    %r15,%rdi
+  61913e:	e8 8d a8 02 00       	call   6439d0 <_ZNK2v810CpuProfile14GetTopDownRootEv>
+  619143:	48 89 c7             	mov    %rax,%rdi
+  619146:	31 f6                	xor    %esi,%esi
+  619148:	e8 c3 70 56 00       	call   b80210 <_ZNK2v88internal11ProfileNode5PrintEi>
+  61914d:	4c 89 ff             	mov    %r15,%rdi
+  619150:	e8 5b a8 02 00       	call   6439b0 <_ZN2v810CpuProfile6DeleteEv>
+  619155:	48 89 df             	mov    %rbx,%rdi
+  619158:	e8 f3 aa 02 00       	call   643c50 <_ZN2v811CpuProfiler7DisposeEv>
+  61915d:	48 8d 1d 04 f3 af 01 	lea    0x1aff304(%rip),%rbx        # 2118468 <_ZN2v85Shell16cached_code_map_E+0x8>
+  619164:	48 8b 35 fd f2 af 01 	mov    0x1aff2fd(%rip),%rsi        # 2118468 <_ZN2v85Shell16cached_code_map_E+0x8>
+  61916b:	48 8d 05 ee f2 af 01 	lea    0x1aff2ee(%rip),%rax        # 2118460 <_ZN2v85Shell16cached_code_map_E>
+  619172:	48 89 45 a0          	mov    %rax,-0x60(%rbp)
+  619176:	48 8d 7d a0          	lea    -0x60(%rbp),%rdi
+  61917a:	e8 11 88 00 00       	call   621990 <_ZNSt4__Cr6__treeINS_12__value_typeINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEN2v810ScriptTypeEEENS_10unique_ptrINS9_14ScriptCompiler10CachedDataENS_14default_deleteISE_EEEEEENS_19__map_value_compareISB_NS2_IKSB_SH_EENS_4lessISB_EEEENS6_ISL_EEE14__tree_deleterclB9sqn240000EPNS_11__tree_nodeISI_PvEE>
+  61917f:	48 89 1d da f2 af 01 	mov    %rbx,0x1aff2da(%rip)        # 2118460 <_ZN2v85Shell16cached_code_map_E>
+  619186:	0f 57 c0             	xorps  %xmm0,%xmm0
+  619189:	0f 11 05 d8 f2 af 01 	movups %xmm0,0x1aff2d8(%rip)        # 2118468 <_ZN2v85Shell16cached_code_map_E+0x8>
+  619190:	48 8b 3d 21 f3 af 01 	mov    0x1aff321(%rip),%rdi        # 21184b8 <_ZN2v85Shell19evaluation_context_E>
+  619197:	48 85 ff             	test   %rdi,%rdi
+  61919a:	74 10                	je     6191ac <_ZN2v85Shell4MainEiPPc+0xfac>
+  61919c:	e8 0f 2c 01 00       	call   62bdb0 <_ZN2v812api_internal13DisposeGlobalEPm>
+  6191a1:	48 c7 05 0c f3 af 01 	movq   $0x0,0x1aff30c(%rip)        # 21184b8 <_ZN2v85Shell19evaluation_context_E>
+  6191a8:	00 00 00 00 
+  6191ac:	48 8b 3d 35 f2 af 01 	mov    0x1aff235(%rip),%rdi        # 21183e8 <_ZN2v85Shell19stringify_function_E>
+  6191b3:	48 85 ff             	test   %rdi,%rdi
+  6191b6:	74 10                	je     6191c8 <_ZN2v85Shell4MainEiPPc+0xfc8>
+  6191b8:	e8 f3 2b 01 00       	call   62bdb0 <_ZN2v812api_internal13DisposeGlobalEPm>
+  6191bd:	48 c7 05 20 f2 af 01 	movq   $0x0,0x1aff220(%rip)        # 21183e8 <_ZN2v85Shell19stringify_function_E>
+  6191c4:	00 00 00 00 
+  6191c8:	48 8d 3d 21 f2 af 01 	lea    0x1aff221(%rip),%rdi        # 21183f0 <_ZN2v85Shell27profiler_end_callback_lock_E>
+  6191cf:	e8 dc 6b 7b 01       	call   1dcfdb0 <_ZN2v84base5Mutex4LockEv>
+  6191d4:	48 8b 35 25 f2 af 01 	mov    0x1aff225(%rip),%rsi        # 2118400 <_ZN2v85Shell22profiler_end_callback_E+0x8>
+  6191db:	48 85 f6             	test   %rsi,%rsi
+  6191de:	75 18                	jne    6191f8 <_ZN2v85Shell4MainEiPPc+0xff8>
+  6191e0:	eb 44                	jmp    619226 <_ZN2v85Shell4MainEiPPc+0x1026>
+  6191e2:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+  6191e9:	1f 84 00 00 00 00 00 
+  6191f0:	48 8b 36             	mov    (%rsi),%rsi
+  6191f3:	48 85 f6             	test   %rsi,%rsi
+  6191f6:	74 2e                	je     619226 <_ZN2v85Shell4MainEiPPc+0x1026>
+  6191f8:	48 8b 46 20          	mov    0x20(%rsi),%rax
+  6191fc:	49 39 c5             	cmp    %rax,%r13
+  6191ff:	72 ef                	jb     6191f0 <_ZN2v85Shell4MainEiPPc+0xff0>
+  619201:	76 0b                	jbe    61920e <_ZN2v85Shell4MainEiPPc+0x100e>
+  619203:	48 8b 76 08          	mov    0x8(%rsi),%rsi
+  619207:	48 85 f6             	test   %rsi,%rsi
+  61920a:	75 ec                	jne    6191f8 <_ZN2v85Shell4MainEiPPc+0xff8>
+  61920c:	eb 18                	jmp    619226 <_ZN2v85Shell4MainEiPPc+0x1026>
+  61920e:	48 8d 05 eb f1 af 01 	lea    0x1aff1eb(%rip),%rax        # 2118400 <_ZN2v85Shell22profiler_end_callback_E+0x8>
+  619215:	48 39 c6             	cmp    %rax,%rsi
+  619218:	74 0c                	je     619226 <_ZN2v85Shell4MainEiPPc+0x1026>
+  61921a:	48 8d 3d d7 f1 af 01 	lea    0x1aff1d7(%rip),%rdi        # 21183f8 <_ZN2v85Shell22profiler_end_callback_E>
+  619221:	e8 ca a9 00 00       	call   623bf0 <_ZNSt4__Cr6__treeINS_12__value_typeIPN2v87IsolateENS_4pairINS2_6GlobalINS2_8FunctionEEENS6_INS2_7ContextEEEEEEENS_19__map_value_compareIS4_NS5_IKS4_SB_EENS_4lessIS4_EEEENS_9allocatorISF_EEE5eraseB9sqn240000ENS_21__tree_const_iteratorISC_PNS_11__tree_nodeISC_PvEElEE>
+  619226:	48 8d 3d c3 f1 af 01 	lea    0x1aff1c3(%rip),%rdi        # 21183f0 <_ZN2v85Shell27profiler_end_callback_lock_E>
+  61922d:	e8 ae 6b 7b 01       	call   1dcfde0 <_ZN2v84base5Mutex6UnlockEv>
+  619232:	80 3d 27 f4 af 01 00 	cmpb   $0x0,0x1aff427(%rip)        # 2118660 <_ZN2v85Shell7optionsE+0x190>
+  619239:	75 11                	jne    61924c <_ZN2v85Shell4MainEiPPc+0x104c>
+  61923b:	49 8b bd b0 1e 01 00 	mov    0x11eb0(%r13),%rdi
+  619242:	48 85 ff             	test   %rdi,%rdi
+  619245:	74 05                	je     61924c <_ZN2v85Shell4MainEiPPc+0x104c>
+  619247:	e8 e4 7e fc ff       	call   5e1130 <_ZN2v89D8Console15DisposeProfilerEv>
+  61924c:	80 3d fd f2 af 01 01 	cmpb   $0x1,0x1aff2fd(%rip)        # 2118550 <_ZN2v85Shell7optionsE+0x80>
+  619253:	75 0d                	jne    619262 <_ZN2v85Shell4MainEiPPc+0x1062>
+  619255:	4c 89 ef             	mov    %r13,%rdi
+  619258:	be 01 00 00 00       	mov    $0x1,%esi
+  61925d:	e8 5e 97 02 00       	call   6429c0 <_ZN2v87Isolate27ContextDisposedNotificationENS_17ContextDependantsE>
+  619262:	80 3d f7 f2 af 01 01 	cmpb   $0x1,0x1aff2f7(%rip)        # 2118560 <_ZN2v85Shell7optionsE+0x90>
+  619269:	75 08                	jne    619273 <_ZN2v85Shell4MainEiPPc+0x1073>
+  61926b:	4c 89 ef             	mov    %r13,%rdi
+  61926e:	e8 7d 93 02 00       	call   6425f0 <_ZN2v87Isolate21LowMemoryNotificationEv>
+  619273:	48 8d bd b0 fc ff ff 	lea    -0x350(%rbp),%rdi
+  61927a:	e8 01 44 fe ff       	call   5fd680 <_ZN2v814PerIsolateDataD1Ev>
+  61927f:	4c 89 ef             	mov    %r13,%rdi
+  619282:	e8 c9 8d 02 00       	call   642050 <_ZN2v87Isolate4ExitEv>
+  619287:	4c 89 ef             	mov    %r13,%rdi
+  61928a:	be 01 00 00 00       	mov    $0x1,%esi
+  61928f:	e8 cc e2 fe ff       	call   607560 <_ZN2v85Shell6OnExitEPNS_7IsolateEb>
+  619294:	80 3d 6d f4 af 01 01 	cmpb   $0x1,0x1aff46d(%rip)        # 2118708 <_ZN2v85Shell7optionsE+0x238>
+  61929b:	75 0c                	jne    6192a9 <_ZN2v85Shell4MainEiPPc+0x10a9>
+  61929d:	48 8b bd 90 fc ff ff 	mov    -0x370(%rbp),%rdi
+  6192a4:	e8 17 74 7c 01       	call   1de06c0 <_ZN2v88platform7tracing17TracingController11StopTracingEv>
+  6192a9:	48 c7 05 5c f6 af 01 	movq   $0x0,0x1aff65c(%rip)        # 2118910 <_ZN2v812_GLOBAL__N_118g_default_platformE>
+  6192b0:	00 00 00 00 
+  6192b4:	48 8b 3d dd 58 af 01 	mov    0x1af58dd(%rip),%rdi        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  6192bb:	48 c7 05 d2 58 af 01 	movq   $0x0,0x1af58d2(%rip)        # 210eb98 <_ZN2v812_GLOBAL__N_110g_platformE>
+  6192c2:	00 00 00 00 
+  6192c6:	48 85 ff             	test   %rdi,%rdi
+  6192c9:	74 06                	je     6192d1 <_ZN2v85Shell4MainEiPPc+0x10d1>
+  6192cb:	48 8b 07             	mov    (%rdi),%rax
+  6192ce:	ff 50 08             	call   *0x8(%rax)
+  6192d1:	48 c7 05 e4 f1 af 01 	movq   $0x0,0x1aff1e4(%rip)        # 21184c0 <_ZN2v85Shell22array_buffer_allocatorE>
+  6192d8:	00 00 00 00 
+  6192dc:	8b 9d a8 fc ff ff    	mov    -0x358(%rbp),%ebx
+  6192e2:	4c 89 b5 f8 fb ff ff 	mov    %r14,-0x408(%rbp)
+  6192e9:	48 8d bd 30 fc ff ff 	lea    -0x3d0(%rbp),%rdi
+  6192f0:	e8 13 67 fc ff       	call   5dfa08 <malloc_stats>
+  6192f5:	48 8b bd 18 fc ff ff 	mov    -0x3e8(%rbp),%rdi
+  6192fc:	48 85 ff             	test   %rdi,%rdi
+  6192ff:	74 2e                	je     61932f <_ZN2v85Shell4MainEiPPc+0x112f>
+  619301:	66 66 66 66 66 66 2e 	data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+  619308:	0f 1f 84 00 00 00 00 
+  61930f:	00 
+  619310:	48 83 ff f0          	cmp    $0xfffffffffffffff0,%rdi
+  619314:	0f 84 0b 02 00 00    	je     619525 <_ZN2v85Shell4MainEiPPc+0x1325>
+  61931a:	4c 8b 37             	mov    (%rdi),%r14
+  61931d:	be 20 00 00 00       	mov    $0x20,%esi
+  619322:	e8 29 c2 7e 01       	call   1e05550 <_ZdaPv>
+  619327:	4c 89 f7             	mov    %r14,%rdi
+  61932a:	4d 85 f6             	test   %r14,%r14
+  61932d:	75 e1                	jne    619310 <_ZN2v85Shell4MainEiPPc+0x1110>
+  61932f:	48 8b bd 08 fc ff ff 	mov    -0x3f8(%rbp),%rdi
+  619336:	48 c7 85 08 fc ff ff 	movq   $0x0,-0x3f8(%rbp)
+  61933d:	00 00 00 00 
+  619341:	48 85 ff             	test   %rdi,%rdi
+  619344:	74 10                	je     619356 <_ZN2v85Shell4MainEiPPc+0x1156>
+  619346:	48 8b b5 10 fc ff ff 	mov    -0x3f0(%rbp),%rsi
+  61934d:	48 c1 e6 03          	shl    $0x3,%rsi
+  619351:	e8 fa c1 7e 01       	call   1e05550 <_ZdaPv>
+  619356:	4c 8d 3d 43 d5 a5 01 	lea    0x1a5d543(%rip),%r15        # 20768a0 <_ZTVN2v812_GLOBAL__N_124ArrayBufferAllocatorBaseE+0x10>
+  61935d:	4c 89 bd f8 fb ff ff 	mov    %r15,-0x408(%rbp)
+  619364:	48 8b bd 00 fc ff ff 	mov    -0x400(%rbp),%rdi
+  61936b:	48 c7 85 00 fc ff ff 	movq   $0x0,-0x400(%rbp)
+  619372:	00 00 00 00 
+  619376:	48 85 ff             	test   %rdi,%rdi
+  619379:	74 06                	je     619381 <_ZN2v85Shell4MainEiPPc+0x1181>
+  61937b:	48 8b 07             	mov    (%rdi),%rax
+  61937e:	ff 50 08             	call   *0x8(%rax)
+  619381:	4c 89 bd d8 fb ff ff 	mov    %r15,-0x428(%rbp)
+  619388:	48 8b bd e0 fb ff ff 	mov    -0x420(%rbp),%rdi
+  61938f:	48 c7 85 e0 fb ff ff 	movq   $0x0,-0x420(%rbp)
+  619396:	00 00 00 00 
+  61939a:	48 85 ff             	test   %rdi,%rdi
+  61939d:	74 06                	je     6193a5 <_ZN2v85Shell4MainEiPPc+0x11a5>
+  61939f:	48 8b 07             	mov    (%rdi),%rax
+  6193a2:	ff 50 08             	call   *0x8(%rax)
+  6193a5:	4c 89 bd 78 fc ff ff 	mov    %r15,-0x388(%rbp)
+  6193ac:	48 8b bd 80 fc ff ff 	mov    -0x380(%rbp),%rdi
+  6193b3:	48 c7 85 80 fc ff ff 	movq   $0x0,-0x380(%rbp)
+  6193ba:	00 00 00 00 
+  6193be:	48 85 ff             	test   %rdi,%rdi
+  6193c1:	74 06                	je     6193c9 <_ZN2v85Shell4MainEiPPc+0x11c9>
+  6193c3:	48 8b 07             	mov    (%rdi),%rax
+  6193c6:	ff 50 08             	call   *0x8(%rax)
+  6193c9:	4c 89 bd 68 fc ff ff 	mov    %r15,-0x398(%rbp)
+  6193d0:	48 8b bd 70 fc ff ff 	mov    -0x390(%rbp),%rdi
+  6193d7:	48 c7 85 70 fc ff ff 	movq   $0x0,-0x390(%rbp)
+  6193de:	00 00 00 00 
+  6193e2:	48 85 ff             	test   %rdi,%rdi
+  6193e5:	74 06                	je     6193ed <_ZN2v85Shell4MainEiPPc+0x11ed>
+  6193e7:	48 8b 07             	mov    (%rdi),%rax
+  6193ea:	ff 50 08             	call   *0x8(%rax)
+  6193ed:	48 8d bd b0 fd ff ff 	lea    -0x250(%rbp),%rdi
+  6193f4:	e8 e7 87 02 00       	call   641be0 <_ZN2v87Isolate12CreateParamsD1Ev>
+  6193f9:	4c 8d bd 00 ff ff ff 	lea    -0x100(%rbp),%r15
+  619400:	4c 8d 35 09 db ab 01 	lea    0x1abdb09(%rip),%r14        # 20d6f10 <_ZTTNSt4__Cr14basic_ofstreamIcNS_11char_traitsIcEEEE>
+  619407:	49 8b 06             	mov    (%r14),%rax
+  61940a:	49 8b 4e 18          	mov    0x18(%r14),%rcx
+  61940e:	48 89 85 50 fe ff ff 	mov    %rax,-0x1b0(%rbp)
+  619415:	48 8b 40 e8          	mov    -0x18(%rax),%rax
+  619419:	48 89 8c 05 50 fe ff 	mov    %rcx,-0x1b0(%rbp,%rax,1)
+  619420:	ff 
+  619421:	48 8d bd 58 fe ff ff 	lea    -0x1a8(%rbp),%rdi
+  619428:	e8 93 61 98 01       	call   1f9f5c0 <_ZNSt4__Cr13basic_filebufIcNS_11char_traitsIcEEED1Ev>
+  61942d:	49 83 c6 08          	add    $0x8,%r14
+  619431:	48 8d bd 50 fe ff ff 	lea    -0x1b0(%rbp),%rdi
+  619438:	4c 89 f6             	mov    %r14,%rsi
+  61943b:	e8 c8 65 fc ff       	call   5dfa08 <malloc_stats>
+  619440:	4c 89 ff             	mov    %r15,%rdi
+  619443:	e8 18 3d 98 01       	call   1f9d160 <_ZNSt4__Cr9basic_iosIcNS_11char_traitsIcEEED1Ev>
+  619448:	44 0f b6 b5 af fc ff 	movzbl -0x351(%rbp),%r14d
+  61944f:	ff 
+  619450:	41 0f b6 fe          	movzbl %r14b,%edi
+  619454:	e8 57 c6 79 01       	call   1db5ab0 <_ZN2v84base3FPU17SetFlushDenormalsEb>
+  619459:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  619460:	00 00 
+  619462:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+  619466:	0f 85 66 01 00 00    	jne    6195d2 <_ZN2v85Shell4MainEiPPc+0x13d2>
+  61946c:	89 d8                	mov    %ebx,%eax
+  61946e:	48 81 c4 48 05 00 00 	add    $0x548,%rsp
+  619475:	5b                   	pop    %rbx
+  619476:	41 5c                	pop    %r12
+  619478:	41 5d                	pop    %r13
+  61947a:	41 5e                	pop    %r14
+  61947c:	41 5f                	pop    %r15
+  61947e:	5d                   	pop    %rbp
+  61947f:	c3                   	ret
+  619480:	48 8b 05 99 54 ac 01 	mov    0x1ac5499(%rip),%rax        # 20de920 <stderr@GLIBC_2.2.5>
+  619487:	48 8b 38             	mov    (%rax),%rdi
+  61948a:	49 8b 14 24          	mov    (%r12),%rdx
+  61948e:	48 8d 35 ad 24 b3 ff 	lea    -0x4cdb53(%rip),%rsi        # 14b942 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x40132>
+  619495:	31 c0                	xor    %eax,%eax
+  619497:	e8 84 ac a5 01       	call   2074120 <fprintf@plt>
+  61949c:	bb 01 00 00 00       	mov    $0x1,%ebx
+  6194a1:	eb ad                	jmp    619450 <_ZN2v85Shell4MainEiPPc+0x1250>
+  6194a3:	48 8b 05 76 54 ac 01 	mov    0x1ac5476(%rip),%rax        # 20de920 <stderr@GLIBC_2.2.5>
+  6194aa:	48 8b 08             	mov    (%rax),%rcx
+  6194ad:	48 8d 3d 98 88 b8 ff 	lea    -0x477768(%rip),%rdi        # 1a1d4c <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x9653c>
+  6194b4:	be 56 00 00 00       	mov    $0x56,%esi
+  6194b9:	ba 01 00 00 00       	mov    $0x1,%edx
+  6194be:	e8 6d ac a5 01       	call   2074130 <fwrite@plt>
+  6194c3:	41 80 7e 02 01       	cmpb   $0x1,0x2(%r14)
+  6194c8:	0f 85 fb f4 ff ff    	jne    6189c9 <_ZN2v85Shell4MainEiPPc+0x7c9>
+  6194ce:	48 8b 05 4b 54 ac 01 	mov    0x1ac544b(%rip),%rax        # 20de920 <stderr@GLIBC_2.2.5>
+  6194d5:	48 8b 08             	mov    (%rax),%rcx
+  6194d8:	48 8d 3d 97 7e b3 ff 	lea    -0x4c8169(%rip),%rdi        # 151376 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x45b66>
+  6194df:	be a1 00 00 00       	mov    $0xa1,%esi
+  6194e4:	ba 01 00 00 00       	mov    $0x1,%edx
+  6194e9:	e8 42 ac a5 01       	call   2074130 <fwrite@plt>
+  6194ee:	4c 89 ad 90 fc ff ff 	mov    %r13,-0x370(%rbp)
+  6194f5:	41 80 7e 03 01       	cmpb   $0x1,0x3(%r14)
+  6194fa:	0f 85 db f4 ff ff    	jne    6189db <_ZN2v85Shell4MainEiPPc+0x7db>
+  619500:	48 8b 05 19 54 ac 01 	mov    0x1ac5419(%rip),%rax        # 20de920 <stderr@GLIBC_2.2.5>
+  619507:	48 8b 08             	mov    (%rax),%rcx
+  61950a:	48 8d 3d 46 d8 b7 ff 	lea    -0x4827ba(%rip),%rdi        # 196d57 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x8b547>
+  619511:	be 58 00 00 00       	mov    $0x58,%esi
+  619516:	ba 01 00 00 00       	mov    $0x1,%edx
+  61951b:	e8 10 ac a5 01       	call   2074130 <fwrite@plt>
+  619520:	e9 b6 f4 ff ff       	jmp    6189db <_ZN2v85Shell4MainEiPPc+0x7db>
+  619525:	48 8d 3d 5c 7c b3 ff 	lea    -0x4c83a4(%rip),%rdi        # 151188 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x45978>
+  61952c:	48 8d 35 90 26 b5 ff 	lea    -0x4ad970(%rip),%rsi        # 16bbc3 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x603b3>
+  619533:	31 c0                	xor    %eax,%eax
+  619535:	e8 c6 f9 9a 01       	call   1fc8f00 <_ZNSt4__Cr22__libcpp_verbose_abortEPKcz>
+  61953a:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  61953f:	48 8d 3d 42 7c b3 ff 	lea    -0x4c83be(%rip),%rdi        # 151188 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x45978>
+  619546:	48 8d 35 c9 79 b5 ff 	lea    -0x4a8637(%rip),%rsi        # 170f16 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x65706>
+  61954d:	31 c0                	xor    %eax,%eax
+  61954f:	e8 ac f9 9a 01       	call   1fc8f00 <_ZNSt4__Cr22__libcpp_verbose_abortEPKcz>
+  619554:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  619559:	48 8b 85 a0 fc ff ff 	mov    -0x360(%rbp),%rax
+  619560:	49 89 85 30 02 00 00 	mov    %rax,0x230(%r13)
+  619567:	48 8d bd c0 fb ff ff 	lea    -0x440(%rbp),%rdi
+  61956e:	4c 89 ee             	mov    %r13,%rsi
+  619571:	e8 9a 28 01 00       	call   62be10 <_ZN2v811HandleScope16DeleteExtensionsEPNS_7IsolateE>
+  619576:	e9 fa f8 ff ff       	jmp    618e75 <_ZN2v85Shell4MainEiPPc+0xc75>
+  61957b:	48 89 86 30 02 00 00 	mov    %rax,0x230(%rsi)
+  619582:	48 8d bd 50 fc ff ff 	lea    -0x3b0(%rbp),%rdi
+  619589:	e8 82 28 01 00       	call   62be10 <_ZN2v811HandleScope16DeleteExtensionsEPNS_7IsolateE>
+  61958e:	48 8b bd 40 fc ff ff 	mov    -0x3c0(%rbp),%rdi
+  619595:	48 c7 85 40 fc ff ff 	movq   $0x0,-0x3c0(%rbp)
+  61959c:	00 00 00 00 
+  6195a0:	48 85 ff             	test   %rdi,%rdi
+  6195a3:	0f 85 2d f9 ff ff    	jne    618ed6 <_ZN2v85Shell4MainEiPPc+0xcd6>
+  6195a9:	e9 2d f9 ff ff       	jmp    618edb <_ZN2v85Shell4MainEiPPc+0xcdb>
+  6195ae:	e8 2d 28 01 00       	call   62bde0 <_ZN2v812api_internal12ToLocalEmptyEv>
+  6195b3:	e9 fa f6 ff ff       	jmp    618cb2 <_ZN2v85Shell4MainEiPPc+0xab2>
+  6195b8:	48 8d 3d b7 7b b3 ff 	lea    -0x4c8449(%rip),%rdi        # 151176 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x45966>
+  6195bf:	48 8d 35 0a 7b b1 ff 	lea    -0x4e84f6(%rip),%rsi        # 1310d0 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x258c0>
+  6195c6:	31 c0                	xor    %eax,%eax
+  6195c8:	e8 13 0d 7b 01       	call   1dca2e0 <_Z8V8_FatalPKcz>
+  6195cd:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  6195d2:	e8 99 ab a5 01       	call   2074170 <__stack_chk_fail@plt>
+  6195d7:	48 8d 3d 15 22 b1 ff 	lea    -0x4eddeb(%rip),%rdi        # 12b7f3 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x1ffe3>
+  6195de:	31 c0                	xor    %eax,%eax
+  6195e0:	e8 9b ab a5 01       	call   2074180 <printf@plt>
+  6195e5:	bf 01 00 00 00       	mov    $0x1,%edi
+  6195ea:	e8 41 b4 7b 01       	call   1dd4a30 <_ZN2v84base2OS11ExitProcessEi>
+  6195ef:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  6195f4:	48 8d 3d 50 cc b1 ff 	lea    -0x4e33b0(%rip),%rdi        # 13624b <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x2aa3b>
+  6195fb:	31 c0                	xor    %eax,%eax
+  6195fd:	e8 de 0c 7b 01       	call   1dca2e0 <_Z8V8_FatalPKcz>
+  619602:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  619607:	48 8b 35 8a ef af 01 	mov    0x1afef8a(%rip),%rsi        # 2118598 <_ZN2v85Shell7optionsE+0xc8>
+  61960e:	80 3d b3 ee af 01 01 	cmpb   $0x1,0x1afeeb3(%rip)        # 21184c8 <_ZN2v827exit_on_flag_contradictionsE>
+  619615:	75 62                	jne    619679 <_ZN2v85Shell4MainEiPPc+0x1479>
+  619617:	48 8d 3d 28 2f b9 ff 	lea    -0x46d0d8(%rip),%rdi        # 1ac546 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0xa0d36>
+  61961e:	31 c0                	xor    %eax,%eax
+  619620:	e8 0b b7 7b 01       	call   1dd4d30 <_ZN2v84base2OS10PrintErrorEPKcz>
+  619625:	48 8d 3d 62 cc b5 ff 	lea    -0x4a339e(%rip),%rdi        # 17628e <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x6aa7e>
+  61962c:	31 c0                	xor    %eax,%eax
+  61962e:	e8 fd b6 7b 01       	call   1dd4d30 <_ZN2v84base2OS10PrintErrorEPKcz>
+  619633:	bf ff ff ff ff       	mov    $0xffffffff,%edi
+  619638:	e8 f3 b3 7b 01       	call   1dd4a30 <_ZN2v84base2OS11ExitProcessEi>
+  61963d:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  619642:	48 8d 3d 09 86 b9 ff 	lea    -0x4679f7(%rip),%rdi        # 1b1c52 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0xa6442>
+  619649:	31 c0                	xor    %eax,%eax
+  61964b:	e8 90 0c 7b 01       	call   1dca2e0 <_Z8V8_FatalPKcz>
+  619650:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  619655:	48 8b 35 d4 f0 af 01 	mov    0x1aff0d4(%rip),%rsi        # 2118730 <_ZN2v85Shell7optionsE+0x260>
+  61965c:	48 8d 3d e1 25 b4 ff 	lea    -0x4bda1f(%rip),%rdi        # 15bc44 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x50434>
+  619663:	31 c0                	xor    %eax,%eax
+  619665:	e8 16 ab a5 01       	call   2074180 <printf@plt>
+  61966a:	bf 01 00 00 00       	mov    $0x1,%edi
+  61966f:	e8 bc b3 7b 01       	call   1dd4a30 <_ZN2v84base2OS11ExitProcessEi>
+  619674:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  619679:	48 8d 3d c6 2e b9 ff 	lea    -0x46d13a(%rip),%rdi        # 1ac546 <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0xa0d36>
+  619680:	31 c0                	xor    %eax,%eax
+  619682:	e8 59 0c 7b 01       	call   1dca2e0 <_Z8V8_FatalPKcz>
+  619687:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+  61968c:	48 8d 3d 48 22 b1 ff 	lea    -0x4eddb8(%rip),%rdi        # 12b8db <_ZZN2v88internal4wasm7fuzzing12_GLOBAL__N_17BodyGen15choose_sub_typeENS1_8HeapTypeEPNS3_9DataRangeEE13generic_types_2+0x200cb>
+  619693:	e8 c8 aa a5 01       	call   2074160 <puts@plt>
+  619698:	48 8d b5 50 fb ff ff 	lea    -0x4b0(%rbp),%rsi
+  61969f:	4c 89 ef             	mov    %r13,%rdi
+  6196a2:	e8 59 1f fe ff       	call   5fb600 <_ZN2v85Shell15ReportExceptionEPNS_7IsolateERKNS_8TryCatchE>
+  6196a7:	bf 01 00 00 00       	mov    $0x1,%edi
+  6196ac:	e8 7f b3 7b 01       	call   1dd4a30 <_ZN2v84base2OS11ExitProcessEi>
+  6196b1:	67 0f b9 40 01       	ud1    0x1(%eax),%eax
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section malloc_hook:
+
+Disassembly of section .plt:

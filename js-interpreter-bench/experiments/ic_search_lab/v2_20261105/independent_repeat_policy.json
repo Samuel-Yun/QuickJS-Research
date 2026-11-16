@@ -1,0 +1,13 @@
+{
+  "fixed_before_formal_aggregate_results": true,
+  "trigger": "fresh formal core16_13suite candidate/A and candidate/M both point<1 and upper95<1; otherwise retain the formal result and stop without chasing significance",
+  "rounds": 10,
+  "Octane_cases": ["Richards.Richards", "Splay.Splay", "RegExp.RegExp", "CodeLoad.CodeLoadClosure", "RayTrace.RayTrace"],
+  "SunSpider_cases": ["bitops-bitwise-and"],
+  "selection_reason": "stable own reads, state/GC-heavy, builtin-heavy and dynamic frontend, plus the observed regression and numeric/non-target control; fixed keys, not a selection of formal winners",
+  "conditions": "A/M/frozen s001/V8_ON for Octane; A/M/s001 for SunSpider",
+  "mode_and_N": "same frozen contract and formal N, fresh processes, no extra workload warmup, same immutable runtime hashes",
+  "ordering": "seed20261105; balanced cyclic/opposite orders over10 rounds, per-position counts differ by at most1; cases shuffled per round",
+  "statistics": "10000 shared whole-round paired bootstrap seed20261105, exploratory unadjusted per-case intervals; no new GM ranking for this selected key subset",
+  "preservation": "separate independent campaign, do not merge with or replace formal30 samples"
+}

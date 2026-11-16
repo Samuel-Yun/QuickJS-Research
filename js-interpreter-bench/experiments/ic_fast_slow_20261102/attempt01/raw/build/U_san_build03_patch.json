@@ -1,0 +1,29 @@
+{
+  "exit_code": 0,
+  "stdout": "patching file read_ic_runtime.inc\npatching file read_ic_types.h\npatching file read_ic_opcodes.inc\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "patch",
+    "--fuzz=0",
+    "-p1",
+    "-i",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/patches/M_to_U_generated.patch"
+  ],
+  "cwd": "/home/mzyx/ic_fast_slow_20261102_attempt01/U_san_build03",
+  "label": "U_san apply",
+  "timestamp": "2026-11-02T13:36:39.856945+00:00",
+  "completed_at": "2026-11-02T13:36:39.863214+00:00",
+  "outer_start_ns": 16318551578247,
+  "outer_stop_ns": 16318557916744,
+  "external_wall_ms": 6.338497,
+  "child_user_ms": 1.4339999999997133,
+  "child_system_ms": 0.0,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    0.44775390625,
+    0.11181640625,
+    0.03759765625
+  ]
+}

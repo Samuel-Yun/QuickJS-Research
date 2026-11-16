@@ -1,0 +1,24 @@
+{
+  "command": [
+    "gcc",
+    "-O2",
+    "-g",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.san",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/serialization_rom.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.san/.obj/asan/ubsan/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.san/.obj/asan/ubsan/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.san/.obj/asan/ubsan/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.san/.obj/asan/ubsan/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.san/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.san/serialization_rom"
+  ],
+  "returncode": 0,
+  "stdout": "ROM_ROUNDTRIP_PASS 144\n",
+  "stderr": ""
+}

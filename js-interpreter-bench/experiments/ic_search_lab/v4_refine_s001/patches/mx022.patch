@@ -1,0 +1,29 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -13,12 +13,24 @@
+         RDI_QUERY();                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
++            uint32_t earlier_offset = (site->shape == p->shape) ? site->prop_offset : UINT32_MAX;                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+-                offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+-                if (offset != UINT32_MAX) {                             \
++                offset = earlier_offset; RDI_COUNT(comparisons);           \
++                if (likely(offset != UINT32_MAX)) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
++                }                                                       \
++                if (site->shape && p->shape->is_hashed && site->atom != JS_ATOM_NULL) { \
++                    uint32_t predicted = site->prop_offset;              \
++                    if (predicted < (uint32_t)p->shape->prop_count) {     \
++                        JSShapeProperty *entry = &get_shape_prop(p->shape)[predicted]; \
++                        if (entry->atom == site->atom && !(entry->flags & JS_PROP_TMASK)) { \
++                            val = JS_DupValue(ctx, p->prop[predicted].u.value); \
++                            RDI_COUNT(hits);                            \
++                            goto name ## _done;                         \
++                        }                                               \
++                    }                                                   \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \

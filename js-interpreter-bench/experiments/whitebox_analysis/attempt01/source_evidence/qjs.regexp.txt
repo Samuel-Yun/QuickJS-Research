@@ -1,0 +1,94 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L45680
+45680:     JSString *p;
+45681:     JSString *p1;
+45682: 
+45683:     str = JS_ToStringCheckObject(ctx, this_val);
+45684:     if (JS_IsException(str))
+45685:         return str;
+45686:     v = JS_ToString(ctx, argv[0]);
+45687:     if (JS_IsException(v))
+45688:         goto fail;
+45689:     p = JS_VALUE_GET_STRING(str);
+45690:     p1 = JS_VALUE_GET_STRING(v);
+45691:     len = p->len;
+45692:     v_len = p1->len;
+45693:     if (lastIndexOf) {
+45694:         pos = len - v_len;
+45695:         if (argc > 1) {
+45696:             double d;
+45697:             if (JS_ToFloat64(ctx, &d, argv[1]))
+45698:                 goto fail;
+45699:             if (!isnan(d)) {
+45700:                 if (d <= 0)
+45701:                     pos = 0;
+45702:                 else if (d < pos)
+45703:                     pos = d;
+45704:             }
+45705:         }
+45706:         start = pos;
+45707:         stop = 0;
+45708:         inc = -1;
+45709:     } else {
+45710:         pos = 0;
+45711:         if (argc > 1) {
+45712:             if (JS_ToInt32Clamp(ctx, &pos, argv[1], 0, len, 0))
+45713:                 goto fail;
+45714:         }
+45715:         start = pos;
+45716:         stop = len - v_len;
+45717:         inc = 1;
+45718:     }
+45719:     ret = -1;
+45720:     if (len >= v_len && inc * (stop - start) >= 0) {
+45721:         for (i = start;; i += inc) {
+45722:             if (!string_cmp(p, p1, i, 0, v_len)) {
+45723:                 ret = i;
+45724:                 break;
+45725:             }
+45726:             if (i == stop)
+45727:                 break;
+45728:         }
+45729:     }
+45730:     JS_FreeValue(ctx, str);
+45731:     JS_FreeValue(ctx, v);
+45732:     return JS_NewInt32(ctx, ret);
+45733: 
+45734: fail:
+45735:     JS_FreeValue(ctx, str);
+45736:     JS_FreeValue(ctx, v);
+45737:     return JS_EXCEPTION;
+45738: }
+45739: 
+45740: /* return < 0 if exception or TRUE/FALSE */
+45741: static int js_is_regexp(JSContext *ctx, JSValueConst obj);
+45742: 
+45743: static JSValue js_string_includes(JSContext *ctx, JSValueConst this_val,
+45744:                                   int argc, JSValueConst *argv, int magic)
+45745: {
+45746:     JSValue str, v = JS_UNDEFINED;
+45747:     int i, len, v_len, pos, start, stop, ret;
+45748:     JSString *p;
+45749:     JSString *p1;
+45750: 
+45751:     str = JS_ToStringCheckObject(ctx, this_val);
+45752:     if (JS_IsException(str))
+45753:         return str;
+45754:     ret = js_is_regexp(ctx, argv[0]);
+45755:     if (ret) {
+45756:         if (ret > 0)
+45757:             JS_ThrowTypeError(ctx, "regexp not supported");
+45758:         goto fail;
+45759:     }
+45760:     v = JS_ToString(ctx, argv[0]);
+45761:     if (JS_IsException(v))
+45762:         goto fail;
+45763:     p = JS_VALUE_GET_STRING(str);
+45764:     p1 = JS_VALUE_GET_STRING(v);
+45765:     len = p->len;
+45766:     v_len = p1->len;
+45767:     pos = (magic == 2) ? len : 0;
+45768:     if (argc > 1 && !JS_IsUndefined(argv[1])) {
+45769:         if (JS_ToInt32Clamp(ctx, &pos, argv[1], 0, len, 0))
+45770:             goto fail;

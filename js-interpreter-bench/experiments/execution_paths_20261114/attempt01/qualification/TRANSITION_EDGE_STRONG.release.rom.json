@@ -1,0 +1,22 @@
+{
+  "command": [
+    "gcc",
+    "-O2",
+    "-g",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/serialization_rom.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/.obj/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/.obj/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/serialization_rom"
+  ],
+  "returncode": 0,
+  "stdout": "ROM_ROUNDTRIP_PASS 144\n",
+  "stderr": ""
+}

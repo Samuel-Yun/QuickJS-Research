@@ -1,0 +1,270 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -682,6 +682,59 @@
+     JS_FUNC_ASYNC_GENERATOR = (JS_FUNC_GENERATOR | JS_FUNC_ASYNC),
+ } JSFunctionKindEnum;
+ 
++
++typedef struct LegacyDUnit {
++    struct LegacyDUnit *next;
++    unsigned long long cache_id;
++    unsigned slot;
++    char function[120], atom[120];
++    unsigned long long query[2],hit[2],fallback[2],nonobject[2];
++    unsigned long long probes,shape_hit,shape_miss,descriptor_fallback,update_probes;
++    unsigned long long updates,replacements,insertions,mask,max_filled;
++} LegacyDUnit;
++static LegacyDUnit *legacy_d_head;
++static unsigned long long legacy_d_init, legacy_d_units;
++static unsigned long long legacy_d_requested,legacy_d_live,legacy_d_peak;
++static void *legacy_d_alloc(JSContext *ctx,size_t n,int zero) {
++    void *p;
++    legacy_d_requested+=n;
++    p=zero?js_mallocz(ctx,n):js_malloc(ctx,n);
++    if(p){legacy_d_live+=n;if(legacy_d_live>legacy_d_peak)legacy_d_peak=legacy_d_live;}
++    return p;
++}
++static void legacy_d_free(JSRuntime *rt,void *p,size_t n) {
++    if(p){assert(legacy_d_live>=n);legacy_d_live-=n;}
++    js_free_rt(rt,p);
++}
++static LegacyDUnit *legacy_d_new(JSContext *ctx,JSAtom atom,unsigned long long id,unsigned slot){
++    LegacyDUnit *d=calloc(1,sizeof(*d));
++    const char *s=JS_AtomToCString(ctx,atom);
++    if(!d||!s)abort();
++    snprintf(d->atom,sizeof(d->atom),"%s",s);JS_FreeCString(ctx,s);
++    d->cache_id=id;d->slot=slot;d->next=legacy_d_head;legacy_d_head=d;legacy_d_units++;
++    return d;
++}
++void legacy_ic_report(void) {
++    LegacyDUnit *d;
++    FILE *f;
++    const char *p=getenv("LEGACY_IC_REPORT");
++    if(!p)return;
++    f=fopen(p,"wx");if(!f)abort();
++    fprintf(f,"{\"initializations\":%llu,\"units\":%llu,\"requested_bytes_diagnostic_layout\":%llu,\"peak_live_bytes_diagnostic_layout\":%llu,\"live_bytes_after_runtime_free\":%llu,\"units_detail\":[",
++        legacy_d_init,legacy_d_units,legacy_d_requested,legacy_d_peak,legacy_d_live);
++    for(d=legacy_d_head;d;d=d->next){
++        /* Names are hex to preserve every byte without JSON escaping hazards. */
++        unsigned i;
++        fprintf(f,"{\"cache_id\":%llu,\"slot\":%u,\"function_hex\":\"",d->cache_id,d->slot);
++        for(i=0;d->function[i];i++)fprintf(f,"%02x",(unsigned char)d->function[i]);
++        fprintf(f,"\",\"atom_hex\":\"");for(i=0;d->atom[i];i++)fprintf(f,"%02x",(unsigned char)d->atom[i]);
++        fprintf(f,"\",\"read_queries\":%llu,\"write_queries\":%llu,\"read_hits\":%llu,\"write_hits\":%llu,\"read_fallback\":%llu,\"write_fallback\":%llu,\"read_nonobject\":%llu,\"write_nonobject\":%llu,\"probes\":%llu,\"shape_hits\":%llu,\"shape_misses\":%llu,\"descriptor_fallback\":%llu,\"updates\":%llu,\"replacements\":%llu,\"insertions\":%llu,\"ever_filled_slot_mask\":%llu,\"max_filled_slots\":%llu,\"update_probes\":%llu}%s",
++            d->query[0],d->query[1],d->hit[0],d->hit[1],d->fallback[0],d->fallback[1],d->nonobject[0],d->nonobject[1],
++            d->probes,d->shape_hit,d->shape_miss,d->descriptor_fallback,d->updates,d->replacements,d->insertions,d->mask,d->max_filled,d->update_probes,d->next?",":"");
++    }
++    fprintf(f,"]}\n");fclose(f);
++}
++
+ #define IC_CACHE_ITEM_CAPACITY 4
+ 
+ typedef struct JSInlineCacheRingSlot {
+@@ -690,6 +743,7 @@
+     uint32_t prop_offset[IC_CACHE_ITEM_CAPACITY];
+     JSAtom atom;
+     uint8_t index;
++    LegacyDUnit *diag;
+ } JSInlineCacheRingSlot;
+ 
+ typedef struct JSInlineCacheHashSlot {
+@@ -704,6 +758,7 @@
+     uint32_t hash_bits;
+     JSInlineCacheHashSlot **hash;
+     JSInlineCacheRingSlot *cache;
++    unsigned long long diag_id;
+ } JSInlineCache;
+ 
+ #define INLINE_CACHE_MISS ((uint32_t)-1) // sentinel
+@@ -734,8 +789,10 @@
+     cr = ic->cache + cache_offset;
+     i = cr->index;
+     for (;;) {
++        cr->diag->probes++;
+         shape_slot = *(cr->shape + i);
+         if (likely(shape_slot == shape)) {
++            cr->diag->shape_hit++;
+             cr->index = i;
+             return cr->prop_offset[i];
+         }
+@@ -746,6 +803,7 @@
+         }
+   }
+ 
++  cr->diag->shape_miss++;
+   return INLINE_CACHE_MISS;
+ }
+ 
+@@ -8486,14 +8544,18 @@
+ {
+     uint32_t tag, offset;
+     JSObject *p;
++    LegacyDUnit *d=icu->ic->cache[icu->offset].diag;
++    d->query[0]++;
+     tag = JS_VALUE_GET_TAG(obj);
+-    if (unlikely(tag != JS_TAG_OBJECT))
+-        goto slow_path;
++    if (unlikely(tag != JS_TAG_OBJECT)) {d->nonobject[0]++;goto slow_path;}
+     p = JS_VALUE_GET_OBJ(obj);
+     offset = get_ic_prop_offset(icu, p->shape);
+-    if (likely(offset != INLINE_CACHE_MISS))
++    if (likely(offset != INLINE_CACHE_MISS)) {
++        d->hit[0]++;
+         return JS_DupValue(ctx, p->prop[offset].u.value);
++    }
+ slow_path:
++    d->fallback[0]++;
+     return JS_GetPropertyInternalIC(ctx, obj, prop, this_obj, throw_ref_error, icu);
+ }
+ 
+@@ -10088,6 +10150,8 @@
+                                       JSAtom prop, JSValue val, int flags,
+                                       JSInlineCacheUpdate *icu)
+ {
++    LegacyDUnit *d=icu->ic->cache[icu->offset].diag;
++    d->query[1]++;
+     if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {
+         JSObject *p = JS_VALUE_GET_OBJ(obj);
+         uint32_t offset = get_ic_prop_offset(icu, p->shape);
+@@ -10097,11 +10161,15 @@
+             JSShapeProperty *prs = &get_shape_prop(p->shape)[offset];
+             if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+                                       JS_PROP_LENGTH)) == JS_PROP_WRITABLE)) {
++                d->hit[1]++;
+                 set_value(ctx, &p->prop[offset].u.value, val);
+                 return TRUE;
+             }
+-        }
+-    }
++            d->descriptor_fallback++;
++        }
++    }
++    d->fallback[1]++;
++    if(JS_VALUE_GET_TAG(obj)!=JS_TAG_OBJECT)d->nonobject[1]++;
+     return JS_SetPropertyInternalIC(ctx, obj, prop, val, obj, flags, icu);
+ }
+ 
+@@ -24099,7 +24167,7 @@
+     for (ch = ic->hash[h]; ch != NULL; ch = ch->next)
+         if (ch->atom == atom)
+             return;
+-    ch = js_malloc(ctx, sizeof(*ch));
++    ch = legacy_d_alloc(ctx, sizeof(*ch), 0);
+     if (unlikely(!ch)) { s->cur_func->byte_code.error = 1; return; }
+     ch->atom = JS_DupAtom(ctx, atom);
+     ch->index = 0;
+@@ -36402,6 +36470,14 @@
+         goto fail;
+ 
+     if (rebuild_ic(ctx, fd->ic)) goto fail;
++    {
++        uint32_t j;
++        const char *fn=JS_AtomToCString(ctx,fd->func_name);
++        if(!fn)abort();
++        for(j=0;j<fd->ic->count;j++)
++            snprintf(fd->ic->cache[j].diag->function,120,"%s",fn);
++        JS_FreeCString(ctx,fn);
++    }
+ 
+     if (fd->strip_debug) {
+         function_size = offsetof(JSFunctionBytecode, debug);
+@@ -61728,19 +61804,20 @@
+ JSInlineCache *init_ic(JSContext *ctx)
+ {
+     JSInlineCache *ic;
+-    ic = js_mallocz(ctx, sizeof(JSInlineCache));
++    ic = legacy_d_alloc(ctx, sizeof(JSInlineCache), 1);
+     if (unlikely(!ic))
+         goto fail;
++    ic->diag_id = ++legacy_d_init;
+     ic->count = 0;
+     ic->hash_bits = 2;
+     ic->capacity = 1 << ic->hash_bits;
+-    ic->hash = js_mallocz(ctx, sizeof(ic->hash[0]) * ic->capacity);
++    ic->hash = legacy_d_alloc(ctx, sizeof(ic->hash[0]) * ic->capacity, 1);
+     if (unlikely(!ic->hash))
+         goto fail;
+     ic->cache = NULL;
+     return ic;
+ fail:
+-    js_free(ctx, ic);
++    legacy_d_free(JS_GetRuntime(ctx), ic, sizeof(*ic));
+     return NULL;
+ }
+ 
+@@ -61751,7 +61828,7 @@
+     if (ic->count == 0)
+         goto end;
+     count = 0;
+-    ic->cache = js_mallocz(ctx, sizeof(JSInlineCacheRingSlot) * ic->count);
++    ic->cache = legacy_d_alloc(ctx, sizeof(JSInlineCacheRingSlot) * ic->count, 1);
+     if (unlikely(!ic->cache))
+         goto fail;
+     for (i = 0; i < ic->capacity; i++) {
+@@ -61759,6 +61836,7 @@
+             ch->index = count++;
+             ic->cache[ch->index].atom = JS_DupAtom(ctx, ch->atom);
+             ic->cache[ch->index].index = 0;
++            ic->cache[ch->index].diag = legacy_d_new(ctx,ch->atom,ic->diag_id,ch->index);
+         }
+     }
+ end:
+@@ -61773,7 +61851,7 @@
+     JSInlineCacheHashSlot *ch, *ch_next;
+     JSInlineCacheHashSlot **new_hash;
+     new_capacity = 1 << (ic->hash_bits + 1);
+-    new_hash = js_mallocz(ctx, sizeof(ic->hash[0]) * new_capacity);
++    new_hash = legacy_d_alloc(ctx, sizeof(ic->hash[0]) * new_capacity, 1);
+     if (unlikely(!new_hash))
+         goto fail;
+     ic->hash_bits += 1;
+@@ -61785,7 +61863,7 @@
+             new_hash[h] = ch;
+         }
+     }
+-    js_free(ctx, ic->hash);
++    legacy_d_free(JS_GetRuntime(ctx), ic->hash, sizeof(ic->hash[0])*ic->capacity);
+     ic->hash = new_hash;
+     ic->capacity = new_capacity;
+     return 0;
+@@ -61810,13 +61888,13 @@
+         for (ch = ic->hash[i]; ch != NULL; ch = ch_next) {
+             ch_next = ch->next;
+             JS_FreeAtomRT(rt, ch->atom);
+-            js_free_rt(rt, ch);
++            legacy_d_free(rt, ch, sizeof(*ch));
+         }
+     }
+     if (ic->count > 0)
+-        js_free_rt(rt, ic->cache);
+-    js_free_rt(rt, ic->hash);
+-    js_free_rt(rt, ic);
++        legacy_d_free(rt, ic->cache, sizeof(*ic->cache)*ic->count);
++    legacy_d_free(rt, ic->hash, sizeof(*ic->hash)*ic->capacity);
++    legacy_d_free(rt, ic, sizeof(*ic));
+     return 0;
+ }
+ 
+@@ -61849,12 +61927,22 @@
+     assert(cr != NULL);
+     i = cr->index;
+     do {
++        cr->diag->update_probes++;
+         if (sh == cr->shape[i]) {
++            cr->diag->updates++;
+             cr->prop_offset[i] = prop_offset;
+             goto end;
+         }
+         i = (i + 1) % countof(cr->shape);
+     } while (i != cr->index);
++    {
++        unsigned k,filled=0;
++        if(cr->shape[i])cr->diag->replacements++;else cr->diag->insertions++;
++        cr->diag->mask |= 1ULL<<i;
++        for(k=0;k<IC_CACHE_ITEM_CAPACITY;k++)if(cr->shape[k])filled++;
++        if(!cr->shape[i])filled++;
++        if(filled>cr->diag->max_filled)cr->diag->max_filled=filled;
++    }
+     js_free_shape_null(ctx->rt, cr->shape[i]);
+     cr->shape[i] = js_dup_shape(sh);
+     cr->prop_offset[i] = prop_offset;

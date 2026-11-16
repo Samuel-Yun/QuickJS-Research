@@ -1,0 +1,223 @@
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,6 +311,7 @@
+     exit(1);
+ }
+ 
++extern void audit_report(void);
+ int main(int argc, char **argv)
+ {
+     JSRuntime *rt;
+@@ -559,10 +560,12 @@
+                best[1] + best[2] + best[3] + best[4],
+                best[1], best[2], best[3], best[4]);
+     }
++    audit_report();
+     return 0;
+  fail:
+     js_std_free_handlers(rt);
+     JS_FreeContext(ctx);
+     JS_FreeRuntime(rt);
++    audit_report();
+     return 1;
+ }
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,5 @@
++#define DUMP_BYTECODE 0
++#define AUDIT_VARIANT 2
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -723,6 +725,7 @@
+ static void add_ic_slot(JSContext *ctx, JSInlineCacheUpdate *icu,
+                         JSAtom atom, JSObject *object, uint32_t prop_offset);
+ 
++static void audit_probe(void);
+ static uint32_t get_ic_prop_offset(const JSInlineCacheUpdate *icu,
+                                    JSShape *shape)
+ {
+@@ -734,6 +737,7 @@
+     cr = ic->cache + cache_offset;
+     i = cr->index;
+     for (;;) {
++        audit_probe();
+         shape_slot = *(cr->shape + i);
+         if (likely(shape_slot == shape)) {
+             cr->index = i;
+@@ -6206,6 +6210,8 @@
+     return NULL;
+ }
+ 
++#include "audit_hooks.h"
++
+ static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+                                                        JSObject *p,
+                                                        JSAtom atom)
+@@ -6213,11 +6219,14 @@
+     JSShape *sh;
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
++    audit_lookup(0);
+     sh = p->shape;
+     h = (uintptr_t)atom & sh->prop_hash_mask;
++    audit_bucket();
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+     while (h) {
++        audit_chain();
+         pr = &prop[h - 1];
+         if (likely(pr->atom == atom)) {
+             *ppr = &p->prop[h - 1];
+@@ -6236,11 +6245,14 @@
+     JSShape* sh;
+     JSShapeProperty *pr, *prop;
+     intptr_t h, i;
++    audit_lookup(1);
+     sh = p->shape;
+     h = (uintptr_t)atom & sh->prop_hash_mask;
++    audit_bucket();
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+     while (h) {
++        audit_chain();
+         i = h - 1;
+         pr = &prop[i];
+         if (likely(pr->atom == atom)) {
+@@ -8317,6 +8329,7 @@
+                                JSAtom prop, JSValueConst this_obj,
+                                BOOL throw_ref_error, JSInlineCacheUpdate *icu)
+ {
++    audit_generic();
+     JSObject *p;
+     JSProperty *pr;
+     JSShapeProperty *prs;
+@@ -8491,9 +8504,10 @@
+         goto slow_path;
+     p = JS_VALUE_GET_OBJ(obj);
+     offset = get_ic_prop_offset(icu, p->shape);
+-    if (likely(offset != INLINE_CACHE_MISS))
+-        return JS_DupValue(ctx, p->prop[offset].u.value);
++    if (likely(offset != INLINE_CACHE_MISS)) { audit_hit();
++        return JS_DupValue(ctx, p->prop[offset].u.value); }
+ slow_path:
++    audit_miss();
+     return JS_GetPropertyInternalIC(ctx, obj, prop, this_obj, throw_ref_error, icu);
+ }
+ 
+@@ -17919,6 +17933,7 @@
+                                JSValueConst this_obj, JSValueConst new_target,
+                                int argc, JSValue *argv, int flags)
+ {
++    AuditScope audit_frame __attribute__((cleanup(audit_end)))=audit_pause();
+     JSRuntime *rt = caller_ctx->rt;
+     JSContext *ctx;
+     JSObject *p;
+@@ -19278,6 +19293,7 @@
+ 
+ #define GET_FIELD_INLINE(name, keep, is_length)                         \
+             {                                                           \
++                AUDIT_SCOPE(b,pc-1);                                    \
+                 JSValue val, obj;                                       \
+                 JSAtom atom;                                            \
+                 JSObject *p;                                            \
+@@ -19331,6 +19347,7 @@
+                 }                                                       \
+                 if (!is_length)                                        \
+                     rewrite_ic(ctx, pc, &icu, keep ? OP_get_field2_ic : OP_get_field_ic, atom); \
++                audit_value(val);                                       \
+                 if (keep) {                                             \
+                     *sp++ = val;                                        \
+                 } else {                                                \
+@@ -19356,6 +19373,7 @@
+             
+         CASE(OP_put_field):
+             {
++                AUDIT_SCOPE(b,pc-1);
+                 int ret;
+                 JSValue obj;
+                 JSAtom atom;
+@@ -19400,6 +19418,7 @@
+ 
+         CASE(OP_get_field_ic):
+             {
++                AUDIT_SCOPE(b,pc-1);
+                 uint32_t index = get_u32(pc);
+                 JSInlineCacheUpdate icu = { b->ic, index };
+                 JSAtom atom = get_ic_atom(b->ic, index);
+@@ -19407,6 +19426,7 @@
+                 pc += 4;
+                 sf->cur_pc = pc;
+                 val = JS_GetPropertyInternalWithIC(ctx, sp[-1], atom, sp[-1], &icu, FALSE);
++                audit_value(val);
+                 if (unlikely(JS_IsException(val))) goto exception;
+                 assert(icu.offset == index);
+                 JS_FreeValue(ctx, sp[-1]);
+@@ -19416,6 +19436,7 @@
+ 
+         CASE(OP_get_field2_ic):
+             {
++                AUDIT_SCOPE(b,pc-1);
+                 uint32_t index = get_u32(pc);
+                 JSInlineCacheUpdate icu = { b->ic, index };
+                 JSAtom atom = get_ic_atom(b->ic, index);
+@@ -19423,6 +19444,7 @@
+                 pc += 4;
+                 sf->cur_pc = pc;
+                 val = JS_GetPropertyInternalWithIC(ctx, sp[-1], atom, sp[-1], &icu, FALSE);
++                audit_value(val);
+                 if (unlikely(JS_IsException(val))) goto exception;
+                 assert(icu.offset == index);
+                 *sp++ = val;
+@@ -19431,6 +19453,7 @@
+ 
+         CASE(OP_put_field_ic):
+             {
++                AUDIT_SCOPE(b,pc-1);
+                 uint32_t index = get_u32(pc);
+                 JSInlineCacheUpdate icu = { b->ic, index };
+                 JSAtom atom = get_ic_atom(b->ic, index);
+@@ -36562,6 +36585,7 @@
+     }
+ 
+     js_free(ctx, fd);
++    audit_register(ctx,b);
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -36570,6 +36594,7 @@
+ 
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b)
+ {
++    audit_free(b);
+     int i;
+ 
+ #if 0
+@@ -61823,6 +61848,7 @@
+ static void add_ic_slot(JSContext *ctx, JSInlineCacheUpdate *icu,
+                         JSAtom atom, JSObject *object, uint32_t prop_offset)
+ {
++    audit_change(0);
+     int32_t i;
+     uint32_t h;
+     JSInlineCacheHashSlot *ch;
+@@ -61850,11 +61876,13 @@
+     i = cr->index;
+     do {
+         if (sh == cr->shape[i]) {
++            audit_change(3);
+             cr->prop_offset[i] = prop_offset;
+             goto end;
+         }
+         i = (i + 1) % countof(cr->shape);
+     } while (i != cr->index);
++    audit_change(cr->shape[i] ? 2 : 1);
+     js_free_shape_null(ctx->rt, cr->shape[i]);
+     cr->shape[i] = js_dup_shape(sh);
+     cr->prop_offset[i] = prop_offset;
+@@ -61862,3 +61890,5 @@
+     icu->offset = ch->index;
+ }
+ 
++
++#include "audit_tail.inc"

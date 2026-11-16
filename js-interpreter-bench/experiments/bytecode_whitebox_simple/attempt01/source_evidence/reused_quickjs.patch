@@ -1,0 +1,104 @@
+--- upstream/quickjs.c
++++ reused-diagnostic/quickjs.c
+@@ -90,7 +90,7 @@
+   32: dump line number table
+   64: dump compute_stack_size
+  */
+-//#define DUMP_BYTECODE  (1)
++#define DUMP_BYTECODE  (1)
+ /* dump the occurence of the automatic GC */
+ //#define DUMP_GC
+ /* dump objects freed by the garbage collector */
+@@ -8207,6 +8207,8 @@
+     return 0;
+ }
+ 
++#include "ml_counters.h"
++
+ JSValue JS_GetPropertyInternal(JSContext *ctx, JSValueConst obj,
+                                JSAtom prop, JSValueConst this_obj,
+                                BOOL throw_ref_error)
+@@ -8215,6 +8217,8 @@
+     JSProperty *pr;
+     JSShapeProperty *prs;
+     uint32_t tag;
++    int ml_k = ml_kind(obj, prop);
++    if (ml_k >= 0) ml_helper[ml_k]++;
+ 
+     tag = JS_VALUE_GET_TAG(obj);
+     if (unlikely(tag != JS_TAG_OBJECT)) {
+@@ -17757,6 +17761,7 @@
+     JSValue *local_buf, *stack_buf, *var_buf, *arg_buf, *sp, ret_val, *pval;
+     JSVarRef **var_refs;
+     size_t alloca_size;
++    ml_entry(func_obj);
+ 
+ #if !DIRECT_DISPATCH
+ #define SWITCH(pc)      switch (opcode = *pc++)
+@@ -18224,6 +18229,7 @@
+                 pc += 2;
+                 call_argv = sp - call_argc;
+                 sf->cur_pc = pc;
++                ml_method(call_argv[-1], call_argv[-2]);
+                 ret_val = JS_CallInternal(ctx, call_argv[-1], call_argv[-2],
+                                           JS_UNDEFINED, call_argc, call_argv, 0);
+                 if (unlikely(JS_IsException(ret_val)))
+@@ -19111,6 +19117,7 @@
+                 JSObject *p;                                            \
+                 JSProperty *pr;                                         \
+                 JSShapeProperty *prs;                                   \
++                int ml_k = -1, ml_depth = 0;                          \
+                                                                         \
+                 if (is_length) {                                        \
+                     atom = JS_ATOM_length;                              \
+@@ -19120,6 +19127,8 @@
+                 }                                                       \
+                                                                         \
+                 obj = sp[-1];                                           \
++                ml_k = ml_kind(obj, atom);                            \
++                if (ml_k >= 0) { ml_look[ml_k]++; ml_opcode[ml_k][keep]++; } \
+                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {   \
+                     p = JS_VALUE_GET_OBJ(obj);                          \
+                     for(;;) {                                           \
+@@ -19128,6 +19137,7 @@
+                             /* found */                                 \
+                             if (unlikely(prs->flags & JS_PROP_TMASK))   \
+                                     goto name ## _slow_path;            \
++                            ml_hit(ml_k, ml_depth);                   \
+                             val = JS_DupValue(ctx, pr->u.value);        \
+                             break;                                      \
+                         }                                               \
+@@ -19139,6 +19149,7 @@
+                             goto name ## _slow_path;                    \
+                         }                                               \
+                         p = p->shape->proto;                            \
++                        ml_depth++;                                  \
+                         if (!p) {                                       \
+                             val = JS_UNDEFINED;                         \
+                             break;                                      \
+@@ -19146,6 +19157,7 @@
+                     }                                                   \
+                 } else {                                                \
+                 name ## _slow_path:                                     \
++                    if (ml_k >= 0) ml_fallback[ml_k]++;               \
+                     sf->cur_pc = pc;                                    \
+                     val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0); \
+                     if (unlikely(JS_IsException(val)))                  \
+@@ -36263,7 +36275,7 @@
+     add_gc_object(ctx->rt, &b->header, JS_GC_OBJ_TYPE_FUNCTION_BYTECODE);
+ 
+ #if defined(DUMP_BYTECODE) && (DUMP_BYTECODE & 1)
+-    if (!fd->strip_debug) {
++    if (!fd->strip_debug && getenv("ML_DUMP")) {
+         js_dump_function_bytecode(ctx, b);
+     }
+ #endif
+@@ -41240,6 +41252,8 @@
+ static JSValue js_function_call(JSContext *ctx, JSValueConst this_val,
+                                 int argc, JSValueConst *argv)
+ {
++    if (ml_active && JS_IsObject(this_val) && JS_VALUE_GET_OBJ(this_val)==ml_target)
++        ml_native_call++;
+     if (argc <= 0) {
+         return JS_Call(ctx, this_val, JS_UNDEFINED, 0, NULL);
+     } else {

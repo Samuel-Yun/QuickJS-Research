@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "round": "01_forward_ctor",
+  "aggregates": {
+    "octane": {
+      "A": -7.8716658065451695,
+      "EVAL_COLD": -2.2919149952042916,
+      "C": -1.533420267981056,
+      "R3": -0.8990685714542535,
+      "V8_ON": 53.04019047304307,
+      "max_regression": {
+        "case": "CodeLoad.CodeLoadClosure",
+        "N": 4096,
+        "A_ms": 0.4794792135071475,
+        "EVAL_COLD_ms": 0.49119090905878693,
+        "C_ms": 0.48942294043081347,
+        "R3_ms": 0.49211163158906857,
+        "candidate_ms": 0.5136474555692985,
+        "V8_ON_ms": 0.20989404296875,
+        "attempts": 4096,
+        "hits": 0,
+        "fallbacks": 4096,
+        "fills": 0,
+        "vs_A_pct": 7.126115397626442,
+        "vs_EVAL_COLD_pct": 4.571857112246325,
+        "vs_C_pct": 4.949607616913387,
+        "vs_R3_pct": 4.376207063159421,
+        "vs_V8_ON_pct": 144.71750046082664
+      },
+      "hits": 16906603,
+      "attempts": 32545470,
+      "sum_ms": {
+        "A": 8753.443533238169,
+        "EVAL_COLD": 8113.9236723789945,
+        "C": 8149.78952291813,
+        "R3": 8289.348012797964,
+        "candidate": 8132.247021128955,
+        "V8_ON": 6980.745217285156
+      }
+    },
+    "sunspider": {
+      "A": -4.025205599657944,
+      "EVAL_COLD": -2.5765502629737314,
+      "C": -2.496691777812854,
+      "R3": -0.39875996729915597,
+      "V8_ON": 39.08595165565141,
+      "max_regression": {
+        "case": "crypto-aes",
+        "N": 128,
+        "A_ms": 9.99013133207336,
+        "EVAL_COLD_ms": 10.017841148423031,
+        "C_ms": 9.720802437514067,
+        "R3_ms": 9.616001140791923,
+        "candidate_ms": 9.997063929680735,
+        "V8_ON_ms": 9.941847656250001,
+        "attempts": 2617984,
+        "hits": 0,
+        "fallbacks": 2617984,
+        "fills": 0,
+        "vs_A_pct": 0.06939445916107623,
+        "vs_EVAL_COLD_pct": -0.20740215815426843,
+        "vs_C_pct": 2.8419618024591475,
+        "vs_R3_pct": 3.9627989151572507,
+        "vs_V8_ON_pct": 0.5553924717003778
+      },
+      "hits": 2103280,
+      "attempts": 25209600,
+      "sum_ms": {
+        "A": 401.84999168262584,
+        "EVAL_COLD": 396.6749892469961,
+        "C": 398.20031219284283,
+        "R3": 393.04693526995834,
+        "candidate": 391.4414129567449,
+        "V8_ON": 250.257126953125
+      }
+    }
+  },
+  "samples": 43,
+  "independent_counter_processes": 43,
+  "R3_formal_retests": 0,
+  "C_formal_retests": 0,
+  "unit": "ms/complete Run",
+  "comparison": "cross-batch single screening vs historical standalone R3 (not combination); A/EVAL_COLD/V8_ON historical 30 medians"
+}

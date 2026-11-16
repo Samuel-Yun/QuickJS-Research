@@ -1,0 +1,3 @@
+# 辅助时间口径
+
+external_wall_ms、child_user_ms、child_system_ms均为整个新进程（包含加载/退出）的分布，不是内部区间CPU。内部elapsed只围住N次Run；两种中位数不可相减后叫精确初始化时间。whole_child_auxiliary.csv未用来筛选或删除正式样本。

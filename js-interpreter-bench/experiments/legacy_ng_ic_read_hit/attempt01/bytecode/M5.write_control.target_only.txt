@@ -1,0 +1,31 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M5.write_control.N2.check.js:11:1: function: m5Write
+  args: obj
+  locals:
+    0: var i
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function m5Write(obj) {
+
+        push_0 0
+
+;;   for(var i=0;i<4096;i++)obj.x=i;
+
+        put_loc0 0: i
+    2:  get_loc0 0: i
+        push_i16 4096
+        lt
+        if_false8 20
+        get_arg0 0: obj
+        get_loc0 0: i
+        put_field x
+        inc_loc 0: i
+        goto8 2
+
+;;   return i;
+
+   20:  get_loc0 0: i
+        return
+
+;; }
+

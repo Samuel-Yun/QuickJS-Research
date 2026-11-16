@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Richards.Richards\",\"suite\":\"Richards\",\"subbenchmark\":\"Richards\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":512,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":66821.061103,\"stop_ms\":69061.970305,\"elapsed_ms\":2240.9092019999953,\"elapsed_per_call_ms\":4.376775785156241,\"warmup_calls\":0}\n",
+  "stderr": "WB_OPCODE 1 push_i32 254466\nWB_OPCODE 4 push_atom_value 17\nWB_OPCODE 7 null 21895173\nWB_OPCODE 8 push_this 20728834\nWB_OPCODE 9 push_false 3\nWB_OPCODE 10 push_true 1\nWB_OPCODE 11 object 4\nWB_OPCODE 14 drop 8117765\nWB_OPCODE 17 dup 5479431\nWB_OPCODE 21 insert2 49\nWB_OPCODE 33 call_constructor 15362\nWB_OPCODE 36 call_method 12798984\nWB_OPCODE 37 tail_call_method 7919618\nWB_OPCODE 38 array_from 3\nWB_OPCODE 40 return 9857029\nWB_OPCODE 41 return_undef 2952711\nWB_OPCODE 56 get_var 21153353\nWB_OPCODE 57 put_var 22\nWB_OPCODE 61 get_field 79984695\nWB_OPCODE 62 get_field2 23373834\nWB_OPCODE 63 put_field 25951806\nWB_OPCODE 67 get_array_el 2177026\nWB_OPCODE 70 put_array_el 482304\nWB_OPCODE 73 define_field 24\nWB_OPCODE 74 set_name 2\nWB_OPCODE 88 get_arg 3077\nWB_OPCODE 92 put_var_ref 8\nWB_OPCODE 104 if_false 1191936\nWB_OPCODE 140 dec 512000\nWB_OPCODE 141 inc 2143232\nWB_OPCODE 145 inc_loc 479744\nWB_OPCODE 147 not 1\nWB_OPCODE 148 lnot 1\nWB_OPCODE 153 div 1\nWB_OPCODE 155 add 476673\nWB_OPCODE 156 sub 1\nWB_OPCODE 159 sar 511488\nWB_OPCODE 161 lt 1636866\nWB_OPCODE 163 gt 1747968\nWB_OPCODE 167 eq 18003968\nWB_OPCODE 168 neq 14767104\nWB_OPCODE 169 strict_eq 5\nWB_OPCODE 170 strict_neq 3\nWB_OPCODE 171 and 6486528\nWB_OPCODE 172 xor 254464\nWB_OPCODE 173 or 2422273\nWB_OPCODE 179 push_0 6732809\nWB_OPCODE 180 push_1 1518084\nWB_OPCODE 181 push_2 2\nWB_OPCODE 182 push_3 1\nWB_OPCODE 183 push_4 3\nWB_OPCODE 184 push_5 1\nWB_OPCODE 185 push_6 1\nWB_OPCODE 187 push_i8 479233\nWB_OPCODE 188 push_i16 2565\nWB_OPCODE 189 push_const8 1\nWB_OPCODE 190 fclosure8 65\nWB_OPCODE 192 get_loc8 523\nWB_OPCODE 193 put_loc8 7\nWB_OPCODE 194 set_loc8 1\nWB_OPCODE 195 get_loc0 66344465\nWB_OPCODE 196 get_loc1 25248263\nWB_OPCODE 197 get_loc2 10329091\nWB_OPCODE 198 get_loc3 515\nWB_OPCODE 199 put_loc0 15740470\nWB_OPCODE 200 put_loc1 7862785\nWB_OPCODE 201 put_loc2 2220032\nWB_OPCODE 202 put_loc3 1\nWB_OPCODE 203 set_loc0 3274243\nWB_OPCODE 204 set_loc1 1\nWB_OPCODE 205 set_loc2 1\nWB_OPCODE 207 get_arg0 14491138\nWB_OPCODE 208 get_arg1 1203714\nWB_OPCODE 209 get_arg2 14850\nWB_OPCODE 210 get_arg3 10241\nWB_OPCODE 219 get_var_ref0 2\nWB_OPCODE 220 get_var_ref1 2\nWB_OPCODE 224 put_var_ref1 1\nWB_OPCODE 225 put_var_ref2 1\nWB_OPCODE 226 put_var_ref3 1\nWB_OPCODE 231 get_length 1\nWB_OPCODE 232 if_false8 29784590\nWB_OPCODE 233 if_true8 5464070\nWB_OPCODE 234 goto8 7332352\nWB_OPCODE 236 call0 6\nWB_OPCODE 241 is_null 2\nWB_OPCODE 243 typeof_is_function 1\nWB_ARRAY fast=2177026 slow=0\n",
+  "command": [
+    "/home/mzyx/whitebox_diag_04be246_attempt01/qjs",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js",
+    "-I",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/Richards.Richards.N512.original.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:57:21.909760+00:00",
+  "outer_start_ns": 66809148260,
+  "outer_stop_ns": 69063066652,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 2253918392
+}

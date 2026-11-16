@@ -1,0 +1,29 @@
+{
+  "case": "Richards.Richards",
+  "variant": "LOOKUP",
+  "N": 512,
+  "rep": 1,
+  "order": 1,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_hit_ablation/attempt01/raw/memory/Richards.Richards/rep1.LOOKUP.pos1.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/SW/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_hit_ablation/attempt01/generated/Richards.Richards.N512.measure.js"
+  ],
+  "binary_sha256": "53680f048a6f53c1f94cc1dc3c52e1263311fb0a36ea6b93b697547069d65267",
+  "script_sha256": "d18aaf9ec81628ea28878cad53e25e5aeb03064728641c8df02af020b69435ed",
+  "mode_value": "0",
+  "timestamp": "2026-10-24T10:45:15.998986+00:00",
+  "outer_start_ns": 2171751990361,
+  "outer_stop_ns": 2173763327354,
+  "peak_rss_KiB": 3480,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Richards.Richards\",\"suite\":\"Richards\",\"subbenchmark\":\"Richards\",\"mode\":\"READ_IC_HIT_ABLATION_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":512,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":2171761.42642,\"stop_ms\":2173760.458853,\"elapsed_ms\":1999.0324329999276,\"elapsed_per_call_ms\":3.9043602207029835,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "valid": true,
+  "performance_sample": false
+}

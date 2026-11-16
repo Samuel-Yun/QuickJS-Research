@@ -1,0 +1,1 @@
+var z=0;for(var i=0;i<200;i++){var f=Function('o','return o.x');z+=f({x:3});}if(z!==600)throw Error('z');console.log('PASS');

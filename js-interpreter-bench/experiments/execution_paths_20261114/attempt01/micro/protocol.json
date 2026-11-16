@@ -1,0 +1,42 @@
+{
+  "script_sha256": "259ea62fdf8d97b835fd7ab30a0c73765375f0cc5293b1d2941aa548a4563143",
+  "binary_hashes": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt11/work/EVAL_COLD/qjs": "bc0afe62ae3a4270dfc087db23042ca41c7502dd08f7b16c7863fea9cc2d4e74",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/FIELD_RMW_I32.release/qjs": "0a380744d89f79a376cfea4f33e115d9db60f93fecd81537878dffa1be83746d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_KERNEL.release/qjs": "e04541ca463fdf30943059c6c4c59ae0df8a3acd424ffd34e908b4b89daeea06",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/FIELD_RMW_UPDATE.release/qjs": "881c0f6b79ffb1a7ce8f360660e833f5e216765b342d9a10990819dfa0ad0ad8",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/INT_LOOP_BITS.release/qjs": "ab1ad924ca1d41af831530c4c37bd475b3b8cd3cece52ecd03a74c9af293f39b",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/qjs": "b460a43732eb9d48b23bbef65e4ed0632ea831f39db23d6f32298ebbe863bfa3"
+  },
+  "cases": [
+    [
+      "FIELD_RMW_I32",
+      "field",
+      33554432
+    ],
+    [
+      "INT_LOOP_KERNEL",
+      "integer",
+      131072
+    ],
+    [
+      "FIELD_RMW_UPDATE",
+      "update",
+      33554432
+    ],
+    [
+      "INT_LOOP_BITS",
+      "bits",
+      16777216
+    ],
+    [
+      "TRANSITION_EDGE_STRONG",
+      "edge",
+      1048576
+    ]
+  ],
+  "rounds": 1,
+  "CPU": 2,
+  "warmup_calls": 0,
+  "benchmark_algorithm_unchanged": true
+}

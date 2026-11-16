@@ -1,0 +1,100 @@
+alueConst this_obj,
+                                      int argc, JSValueConst *argv, int flags);
+static JSValue JS_CallInternal(JSContext *ctx, JSValueConst func_obj,
+                               JSValueConst this_obj, JSValueConst new_target,
+                               int argc, JSValue *argv, int flags);
+static JSValue JS_CallConstructorInternal(JSContext *ctx,
+                                          JSValueConst func_obj,
+                                          JSValueConst new_target,
+                                          int argc, JSValue *argv, int flags);
+static JSValue JS_CallFree(JSContext *ctx, JSValue func_obj, JSValueConst this_obj,
+                           int argc, JSValueConst *argv);
+static JSValue JS_InvokeFree(JSContext *ctx, JSValue this_val, JSAtom atom,
+                             int argc, JSValueConst *argv);
+static __exception int JS_ToArrayLengthFree(JSContext *ctx, uint32_t *plen,
+                                            JSValue val, BOOL is_array_ctor);
+static JSValue JS_EvalObject(JSContext *ctx, JSValueConst this_obj,
+                             JSValueConst val, int flags, int scope_idx);
+JSValue __attribute__((format(printf, 2, 3))) JS_ThrowInternalError(JSContext *ctx, const char *fmt, ...);
+static __maybe_unused void JS_DumpAtoms(JSRuntime *rt);
+static __maybe_unused void JS_DumpString(JSRuntime *rt, const JSString *p);
+static __maybe_unused void JS_DumpObjectHeader(JSRuntime *rt);
+static __maybe_unused void JS_DumpObject(JSRuntime *rt, JSObject *p);
+static __maybe_unused void JS_DumpGCObject(JSRuntime *rt, JSGCObjectHeader *p);
+static __maybe_unused void JS_DumpAtom(JSContext *ctx, const char *str, JSAtom atom);
+static __maybe_unused void JS_DumpValueRT(JSRuntime *rt, const char *str, JSValueConst val);
+static __maybe_unused void JS_DumpValue(JSContext *ctx, const char *str, JSValueConst val);
+static __maybe_unused void JS_DumpShapes(JSRuntime *rt);
+static void js_dump_value_write(void *opaque, const char *buf, size_t len);
+static JSValue js_function_apply(JSContext *ctx, JSValueConst this_val,
+                                 int argc, JSValueConst *argv, int magic);
+static void js_array_finalizer(JSRuntime *rt, JSValue val);
+static void js_array_mark(JSRuntime *rt, JSValueConst val, JS_MarkFunc *mark_func);
+static void js_mapped_arguments_finalizer(JSRuntime *rt, JSValue val);
+static void js_mapped_arguments_mark(JSRuntime *rt, JSValueConst val, JS_MarkFunc *mark_func);
+static void js_object_data_finalizer(JSRuntime *rt, JSValue val);
+static void js_object_data_mark(JSRuntime *rt, JSValueConst val, JS_MarkFunc *mark_func);
+static void js_c_function_finalizer(JSRuntime *rt, JSValue val);
+static void js_c_function_mark(JSRuntime *rt, JSValueConst val, JS_MarkFunc *mark_func);
+static void js_bytecode_function_finalizer(JSRuntime *rt, JSValue val);
+static void js_bytecode_function_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_bound_function_finalizer(JSRuntime *rt, JSValue val);
+static void js_bound_function_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_for_in_iterator_finalizer(JSRuntime *rt, JSValue val);
+static void js_for_in_iterator_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_regexp_finalizer(JSRuntime *rt, JSValue val);
+static void js_array_buffer_finalizer(JSRuntime *rt, JSValue val);
+static void js_typed_array_finalizer(JSRuntime *rt, JSValue val);
+static void js_typed_array_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_proxy_finalizer(JSRuntime *rt, JSValue val);
+static void js_proxy_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_map_finalizer(JSRuntime *rt, JSValue val);
+static void js_map_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_map_iterator_finalizer(JSRuntime *rt, JSValue val);
+static void js_map_iterator_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_array_iterator_finalizer(JSRuntime *rt, JSValue val);
+static void js_array_iterator_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_iterator_concat_finalizer(JSRuntime *rt, JSValue val);
+static void js_iterator_concat_mark(JSRuntime *rt, JSValueConst val,
+                                    JS_MarkFunc *mark_func);
+static void js_iterator_helper_finalizer(JSRuntime *rt, JSValue val);
+static void js_iterator_helper_mark(JSRuntime *rt, JSValueConst val,
+                                    JS_MarkFunc *mark_func);
+static void js_iterator_wrap_finalizer(JSRuntime *rt, JSValue val);
+static void js_iterator_wrap_mark(JSRuntime *rt, JSValueConst val,
+                                  JS_MarkFunc *mark_func);
+static void js_regexp_string_iterator_finalizer(JSRuntime *rt, JSValue val);
+static void js_regexp_string_iterator_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_generator_finalizer(JSRuntime *rt, JSValue obj);
+static void js_generator_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_global_object_finalizer(JSRuntime *rt, JSValue obj);
+static void js_global_object_mark(JSRuntime *rt, JSValueConst val,
+                                  JS_MarkFunc *mark_func);
+static void js_promise_finalizer(JSRuntime *rt, JSValue val);
+static void js_promise_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+static void js_promise_resolve_function_finalizer(JSRuntime *rt, JSValue val);
+static void js_promise_resolve_function_mark(JSRuntime *rt, JSValueConst val,
+                                JS_MarkFunc *mark_func);
+
+#define HINT_STRING  0
+#define HINT_NUMBER  1
+#define HINT_NONE    2
+#define HINT_FORCE_ORDINARY (1 << 4) // don't try Symbol.toPrimitive
+static JSValue JS_ToPrimitiveFree(JSContext *ctx, JSValue val, int hint);
+static JSValue JS_ToStringFree(JSContext *ctx, JSValue val);
+static int JS_ToBoolFree(JSContext *ctx, JSValue val);
+static int JS_ToInt32Free(JSContext *ctx, int32_t *pres, JSValue val);
+static int JS_ToFloat64Free(JSContext *ctx, double *pres, JSValue val);
+static int JS_ToUint8ClampFree(JSContext *ctx, int32_t *pres, JSValue val);
+static JSValue js_new_string8_len(JSContext *ctx, const

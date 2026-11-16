@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "templates": [
+    {
+      "template": "read_ic_types.h",
+      "sha256": "f7cbb27c6d5882d2553222dd5709280b85ff21623a88b531709933c86cc0046c",
+      "matches_actual_M_P": true
+    },
+    {
+      "template": "read_ic_runtime.inc",
+      "sha256": "8d12bb9c2ea08f87291f7d5339eb8a41d641ed38adf916b3ff9be6dfa44f201b",
+      "matches_actual_M_P": true
+    },
+    {
+      "template": "read_ic_prepare.inc",
+      "sha256": "6c0918de10801c641279e20af9e5295e726675dbe821c3c86e71c0ee8e273b19",
+      "matches_actual_M_P": true
+    },
+    {
+      "template": "read_ic_opcodes.inc",
+      "sha256": "5f160fc754c496603a5baa3fbbff3796c132c2eda7845ceb197af8ce9d3aa624",
+      "matches_actual_M_P": true
+    }
+  ],
+  "formal_sources_match_frozen": true,
+  "P_M_only_config": true,
+  "no_diagnostic_symbols_in_formal": true,
+  "write_body_upstream_identical": true
+}

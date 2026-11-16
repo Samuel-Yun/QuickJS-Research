@@ -1,0 +1,164 @@
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4095,6 +4095,7 @@
+     return ret;
+ }
+ 
++extern JSValue qjs_snapshot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv);
+ void js_std_add_helpers(JSContext *ctx, int argc, char **argv)
+ {
+     JSValue global_obj, console, args, performance;
+@@ -4112,6 +4113,7 @@
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));
+     JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx, global_obj, "__snapshot", JS_NewCFunction(ctx, qjs_snapshot, "__snapshot", 3));
+ 
+     /* same methods as the mozilla JS shell */
+     if (argc >= 0) {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -61562,3 +61562,6 @@
+     JS_FreeValue(ctx, obj);
+     return 0;
+ }
++
++#define SNAPSHOT_EVAL_COLD 1
++#include "snapshot.inc"
+--- a/snapshot.inc
++++ b/snapshot.inc
+@@ -0,0 +1,134 @@
++/* Diagnostic inspection only. The compiler, preparer and opcode handlers are
++ * unchanged. Decode the live bytecode image rather than the compiler's earlier
++ * DUMP_BYTECODE output. The opcode/format names use the SAME tables/header as
++ * the interpreter, without enabling DUMP_BYTECODE or changing JSOpCode layout.
++ */
++static const char *const snapshot_opcode_names[] = {
++#define FMT(f)
++#define DEF(id, size, n_pop, n_push, f) #id,
++#include "quickjs-opcode.h"
++#undef DEF
++#undef FMT
++};
++static const char *const snapshot_format_names[] = {
++#define FMT(f) #f,
++#define DEF(id, size, n_pop, n_push, f)
++#include "quickjs-opcode.h"
++#undef DEF
++#undef FMT
++};
++_Static_assert(countof(snapshot_opcode_names) == countof(opcode_info), "opcode name table");
++
++static void snapshot_string(const char *s)
++{
++    const unsigned char *p = (const unsigned char *)s;
++    fputc('"', stdout);
++    for (; *p; ++p) {
++        if (*p == '"' || *p == '\\') { fputc('\\', stdout); fputc(*p, stdout); }
++        else if (*p < 32) printf("\\u%04x", (unsigned)*p);
++        else fputc(*p, stdout);
++    }
++    fputc('"', stdout);
++}
++
++static void snapshot_atom(JSContext *ctx, JSAtom atom)
++{
++    const char *s = JS_AtomToCString(ctx, atom);
++    assert(s);
++    snapshot_string(s);
++    JS_FreeCString(ctx, s);
++}
++
++static void snapshot_shape(JSShape *shape)
++{
++    if (!shape) { printf("null"); return; }
++    printf("{\"address\":\"%p\",\"is_hashed\":%s,\"prop_count\":%u}",
++           (void *)shape, shape->is_hashed ? "true" : "false", shape->prop_count);
++}
++
++JSValue qjs_snapshot(JSContext *ctx, JSValueConst this_val,
++                     int argc, JSValueConst *argv)
++{
++    JSFunctionBytecode *b;
++    JSObject *fn, *receiver;
++    const char *label;
++    int pos;
++    if (argc != 3 || !(b = JS_GetFunctionBytecode(argv[0])) ||
++        JS_VALUE_GET_TAG(argv[2]) != JS_TAG_OBJECT)
++        return JS_ThrowTypeError(ctx, "snapshot requires function, label, receiver");
++    label = JS_ToCString(ctx, argv[1]);
++    if (!label) return JS_EXCEPTION;
++    fn = JS_VALUE_GET_OBJ(argv[0]);
++    receiver = JS_VALUE_GET_OBJ(argv[2]);
++    printf("BYTECODE_SNAPSHOT:{\"label\":"); snapshot_string(label);
++    printf(",\"function\":"); snapshot_atom(ctx, b->func_name);
++    printf(",\"function_class\":%u,\"byte_code_len\":%d,\"arg_count\":%u,"
++           "\"var_count\":%u,\"stack_size\":%u", fn->class_id,
++           b->byte_code_len, b->arg_count, b->var_count, b->stack_size);
++#ifdef SNAPSHOT_EVAL_COLD
++    printf(",\"ic_ready\":%s,\"ic_count\":%u,\"site_size\":%zu",
++           b->read_ic_ready ? "true" : "false", b->read_ic_count, sizeof(ReadICSite));
++#else
++    printf(",\"ic_ready\":null,\"ic_count\":0,\"site_size\":0");
++#endif
++    printf(",\"receiver\":{\"class\":%u,\"is_exotic\":%s,\"shape\":",
++           receiver->class_id, receiver->is_exotic ? "true" : "false");
++    snapshot_shape(receiver->shape);
++    printf(",\"prototype_shape\":");
++    snapshot_shape(receiver->shape->proto ? receiver->shape->proto->shape : NULL);
++    printf("},\"opcodes\":[");
++    for (pos = 0; pos < b->byte_code_len;) {
++        int op = b->byte_code_buf[pos], i, index;
++        const JSOpCode *oi;
++        JSAtom atom = JS_ATOM_NULL;
++        assert(op < OP_COUNT);
++        oi = &short_opcode_info(op);
++        assert(oi->size && pos + oi->size <= b->byte_code_len);
++#if SHORT_OPCODES
++        index = op >= OP_TEMP_START ? op + (OP_TEMP_END - OP_TEMP_START) : op;
++#else
++        index = op;
++#endif
++        if (pos) printf(",");
++        printf("{\"pc\":%d,\"op\":%d,\"name\":", pos, op);
++        snapshot_string(snapshot_opcode_names[index]);
++        printf(",\"size\":%u,\"pop\":%u,\"push\":%u,\"format\":", oi->size, oi->n_pop, oi->n_push);
++        snapshot_string(snapshot_format_names[oi->fmt]);
++        printf(",\"raw\":\"");
++        for (i = 0; i < oi->size; ++i) printf("%02x", b->byte_code_buf[pos+i]);
++        printf("\"");
++        if (oi->fmt == OP_FMT_atom) atom = get_u32(b->byte_code_buf + pos + 1);
++        if (oi->fmt == OP_FMT_label8)
++            printf(",\"target\":%d", pos + 1 + (int8_t)b->byte_code_buf[pos+1]);
++        else if (oi->fmt == OP_FMT_label16)
++            printf(",\"target\":%d", pos + 1 + (int16_t)get_u16(b->byte_code_buf+pos+1));
++        else if (oi->fmt == OP_FMT_label)
++            printf(",\"target\":%d", pos + 1 + (int32_t)get_u32(b->byte_code_buf+pos+1));
++#ifdef SNAPSHOT_EVAL_COLD
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_put_field_shared) {
++            ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + get_u32(b->byte_code_buf+pos+1));
++            assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
++            atom = site->atom;
++            printf(",\"site_index\":%u,\"site_delta\":%u", (unsigned)(site-b->read_ic_sites), get_u32(b->byte_code_buf+pos+1));
++        }
++#endif
++        if (atom) { printf(",\"atom\":"); snapshot_atom(ctx, atom); }
++        printf("}");
++        pos += oi->size;
++    }
++    printf("],\"sites\":[");
++#ifdef SNAPSHOT_EVAL_COLD
++    for (uint32_t i = 0; i < b->read_ic_count; ++i) {
++        ReadICSite *site = &b->read_ic_sites[i];
++        if (i) printf(",");
++        printf("{\"index\":%u,\"atom\":", i); snapshot_atom(ctx, site->atom);
++        printf(",\"prop_offset\":%u,\"shape\":", site->prop_offset);
++        snapshot_shape(site->shape);
++        printf(",\"holder_shape\":"); snapshot_shape(site->holder_shape);
++        printf("}");
++    }
++#endif
++    printf("]}\n");
++    JS_FreeCString(ctx, label);
++    return JS_UNDEFINED;
++}

@@ -1,0 +1,50 @@
+   2c277:	49 39 51 30          	cmp    QWORD PTR [r9+0x30],rdx
+   2c27b:	0f 85 6e 7f ff ff    	jne    241ef <JS_CallInternal+0x164f>
+   2c281:	8b 52 10             	mov    edx,DWORD PTR [rdx+0x10]
+   2c284:	81 e2 08 00 ff ff    	and    edx,0xffff0008
+   2c28a:	81 fa 00 00 01 00    	cmp    edx,0x10000
+   2c290:	0f 85 59 7f ff ff    	jne    241ef <JS_CallInternal+0x164f>
+   2c296:	41 80 79 10 00       	cmp    BYTE PTR [r9+0x10],0x0
+   2c29b:	0f 84 4e 7f ff ff    	je     241ef <JS_CallInternal+0x164f>
+   2c2a1:	41 80 7d 10 00       	cmp    BYTE PTR [r13+0x10],0x0
+   2c2a6:	0f 84 43 7f ff ff    	je     241ef <JS_CallInternal+0x164f>
+   2c2ac:	83 3d 61 ad 0d 00 00 	cmp    DWORD PTR [rip+0xdad61],0x0        # 107014 <qjs_experiment_proto_ic_enabled>
+   2c2b3:	0f 84 36 7f ff ff    	je     241ef <JS_CallInternal+0x164f>
+   2c2b9:	49 8b 36             	mov    rsi,QWORD PTR [r14]
+   2c2bc:	48 c1 f9 04          	sar    rcx,0x4
+   2c2c0:	48 89 8d 40 fe ff ff 	mov    QWORD PTR [rbp-0x1c0],rcx
+   2c2c7:	4c 39 ce             	cmp    rsi,r9
+   2c2ca:	0f 84 3c 0d 00 00    	je     2d00c <JS_CallInternal+0xa46c>
+   2c2d0:	41 83 41 fc 01       	add    DWORD PTR [r9-0x4],0x1
+   2c2d5:	41 83 45 fc 01       	add    DWORD PTR [r13-0x4],0x1
+   2c2da:	48 85 f6             	test   rsi,rsi
+   2c2dd:	0f 85 f8 0c 00 00    	jne    2cfdb <JS_CallInternal+0xa43b>
+   2c2e3:	49 8b 76 08          	mov    rsi,QWORD PTR [r14+0x8]
+   2c2e7:	48 85 f6             	test   rsi,rsi
+   2c2ea:	74 2c                	je     2c318 <JS_CallInternal+0x9778>
+
+   2c3b4:	49 39 51 30          	cmp    QWORD PTR [r9+0x30],rdx
+   2c3b8:	0f 85 26 7d ff ff    	jne    240e4 <JS_CallInternal+0x1544>
+   2c3be:	8b 42 10             	mov    eax,DWORD PTR [rdx+0x10]
+   2c3c1:	25 08 00 ff ff       	and    eax,0xffff0008
+   2c3c6:	3d 00 00 01 00       	cmp    eax,0x10000
+   2c3cb:	0f 85 13 7d ff ff    	jne    240e4 <JS_CallInternal+0x1544>
+   2c3d1:	41 80 79 10 00       	cmp    BYTE PTR [r9+0x10],0x0
+   2c3d6:	0f 84 08 7d ff ff    	je     240e4 <JS_CallInternal+0x1544>
+   2c3dc:	41 80 7d 10 00       	cmp    BYTE PTR [r13+0x10],0x0
+   2c3e1:	0f 84 fd 7c ff ff    	je     240e4 <JS_CallInternal+0x1544>
+   2c3e7:	83 3d 26 ac 0d 00 00 	cmp    DWORD PTR [rip+0xdac26],0x0        # 107014 <qjs_experiment_proto_ic_enabled>
+   2c3ee:	0f 84 f0 7c ff ff    	je     240e4 <JS_CallInternal+0x1544>
+   2c3f4:	48 c1 fe 04          	sar    rsi,0x4
+   2c3f8:	48 89 b5 50 fe ff ff 	mov    QWORD PTR [rbp-0x1b0],rsi
+   2c3ff:	49 8b 36             	mov    rsi,QWORD PTR [r14]
+   2c402:	4c 39 ce             	cmp    rsi,r9
+   2c405:	0f 84 53 0c 00 00    	je     2d05e <JS_CallInternal+0xa4be>
+   2c40b:	41 83 41 fc 01       	add    DWORD PTR [r9-0x4],0x1
+   2c410:	41 83 45 fc 01       	add    DWORD PTR [r13-0x4],0x1
+   2c415:	48 85 f6             	test   rsi,rsi
+   2c418:	0f 85 0f 0c 00 00    	jne    2d02d <JS_CallInternal+0xa48d>
+   2c41e:	49 8b 76 08          	mov    rsi,QWORD PTR [r14+0x8]
+   2c422:	48 85 f6             	test   rsi,rsi
+   2c425:	74 2c                	je     2c453 <JS_CallInternal+0x98b3>
+

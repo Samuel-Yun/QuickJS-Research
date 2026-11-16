@@ -1,0 +1,29 @@
+{
+  "case": "CodeLoad.CodeLoadClosure",
+  "variant": "A",
+  "N": 2048,
+  "rep": 0,
+  "order": 0,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_hit_ablation/attempt01/raw/memory/CodeLoad.CodeLoadClosure/rep0.A.pos0.rss.txt",
+    "--",
+    "/home/mzyx/read_ic_hit_ablation_attempt01/A/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/read_ic_hit_ablation/attempt01/generated/CodeLoad.CodeLoadClosure.N2048.measure.js"
+  ],
+  "binary_sha256": "8635eea4ff40229d8f7be28afdfe53258644817d9737fb2e5fe6ca7c0e577c39",
+  "script_sha256": "c657c93915a8c765fdc088a655a8b286f8c43ed6b49683972bc146ef83d28007",
+  "mode_value": "1",
+  "timestamp": "2026-10-24T10:45:49.238278+00:00",
+  "outer_start_ns": 2208036859673,
+  "outer_stop_ns": 2209468680231,
+  "peak_rss_KiB": 61608,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"CodeLoad.CodeLoadClosure\",\"suite\":\"CodeLoad\",\"subbenchmark\":\"CodeLoadClosure\",\"mode\":\"READ_IC_HIT_ABLATION_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":2048,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":2208046.949656,\"stop_ms\":2209400.883643,\"elapsed_ms\":1353.9339870000258,\"elapsed_per_call_ms\":0.6611005795898564,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "valid": true,
+  "performance_sample": false
+}

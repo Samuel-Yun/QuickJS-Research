@@ -1,0 +1,28 @@
+0000  push_0                 
+0001  put_loc2               
+0002  push_0                 
+0003  put_loc3               
+0004  get_loc3               
+0005  get_arg1               
+0006  lt                     
+0007  if_false8              ->35
+0009  get_arg0               
+0010  get_loc3               
+0011  get_arg2               
+0012  and                    
+0013  get_array_el           
+0014  set_loc0               
+0015  dup                    
+0016  push_3                 
+0017  push_0                 
+0018  call_constructor       2
+0021  put_loc1               
+0022  get_loc2               
+0023  get_loc1               
+0024  get_field              x
+0029  add                    
+0030  put_loc2               
+0031  inc_loc                3
+0033  goto8                  ->4
+0035  get_loc2               
+0036  return                 

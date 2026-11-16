@@ -1,0 +1,67 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:580:32: function: <null>
+  locals:
+    0: var this
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.currentTcb = this.list;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field list
+        put_field currentTcb
+   14:  get_loc0 0: this
+
+;;   while (this.currentTcb != null) {
+
+        get_field currentTcb
+        null
+        neq
+        if_false8 98
+        get_loc0 0: this
+
+;;     if (this.currentTcb.isHeldOrSuspended()) {
+
+        get_field currentTcb
+        get_field2 isHeldOrSuspended
+        call_method 0
+        if_false8 59
+
+;;       this.currentTcb = this.currentTcb.link;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field currentTcb
+        get_field link
+        put_field currentTcb
+        goto8 14
+
+;;     } else {
+;;       this.currentId = this.currentTcb.id;
+
+   59:  get_loc0 0: this
+        get_loc0 0: this
+        get_field currentTcb
+        get_field id
+        put_field currentId
+
+;;       this.currentTcb = this.currentTcb.run();
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field currentTcb
+        get_field2 run
+        call_method 0
+        put_field currentTcb
+        goto8 14
+   98:  return_undef
+
+;;     }
+;;   }
+;; }
+

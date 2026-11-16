@@ -1,0 +1,128 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -365,6 +365,14 @@
+ DEF(get_field_rdi, 5, 1, 1, u32)
+ DEF(get_field2_rdi, 5, 1, 2, u32)
+ 
++DEF(rdi_get_loc0, 1, 0, 1, none)
++DEF(rdi_get_loc1, 1, 0, 1, none)
++DEF(rdi_get_loc2, 1, 0, 1, none)
++DEF(rdi_get_loc3, 1, 0, 1, none)
++DEF(rdi_get_arg0, 1, 0, 1, none)
++DEF(rdi_get_arg1, 1, 0, 1, none)
++DEF(rdi_get_arg2, 1, 0, 1, none)
++DEF(rdi_get_arg3, 1, 0, 1, none)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -18608,9 +18608,13 @@
+         CASE(OP_set_loc8): set_value(ctx, &var_buf[*pc++], JS_DupValue(ctx, sp[-1])); BREAK;
+ 
+         CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
++        CASE(OP_rdi_get_loc0): RDI_BORROW_LOAD(var_buf[0]); BREAK;
+         CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
++        CASE(OP_rdi_get_loc1): RDI_BORROW_LOAD(var_buf[1]); BREAK;
+         CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
++        CASE(OP_rdi_get_loc2): RDI_BORROW_LOAD(var_buf[2]); BREAK;
+         CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
++        CASE(OP_rdi_get_loc3): RDI_BORROW_LOAD(var_buf[3]); BREAK;
+         CASE(OP_put_loc0): set_value(ctx, &var_buf[0], *--sp); BREAK;
+         CASE(OP_put_loc1): set_value(ctx, &var_buf[1], *--sp); BREAK;
+         CASE(OP_put_loc2): set_value(ctx, &var_buf[2], *--sp); BREAK;
+@@ -18620,9 +18624,13 @@
+         CASE(OP_set_loc2): set_value(ctx, &var_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_set_loc3): set_value(ctx, &var_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
++        CASE(OP_rdi_get_arg0): RDI_BORROW_LOAD(arg_buf[0]); BREAK;
+         CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
++        CASE(OP_rdi_get_arg1): RDI_BORROW_LOAD(arg_buf[1]); BREAK;
+         CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
++        CASE(OP_rdi_get_arg2): RDI_BORROW_LOAD(arg_buf[2]); BREAK;
+         CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
++        CASE(OP_rdi_get_arg3): RDI_BORROW_LOAD(arg_buf[3]); BREAK;
+         CASE(OP_put_arg0): set_value(ctx, &arg_buf[0], *--sp); BREAK;
+         CASE(OP_put_arg1): set_value(ctx, &arg_buf[1], *--sp); BREAK;
+         CASE(OP_put_arg2): set_value(ctx, &arg_buf[2], *--sp); BREAK;
+@@ -19182,6 +19190,24 @@
+ 
+             
+ #include "read_ic_opcodes.inc"
++
++/* The slot still owns receiver. No callback/allocation or release is permitted
++   between the borrowed read and the completed normal-data exact-shape hit. */
++#define RDI_BORROW_LOAD(slot) do {                                       \
++    JSValueConst receiver = (slot);                                     \
++    if (*pc == OP_get_field_rdi && JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) { \
++        JSObject *object = JS_VALUE_GET_OBJ(receiver);                   \
++        ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
++        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
++            site->shape == object->shape) {                             \
++            *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
++            pc += 5;                                                    \
++            break;                                                      \
++        }                                                               \
++    }                                                                   \
++    *sp++ = JS_DupValue(ctx, receiver);                                  \
++} while (0)
++
+ 
+         CASE(OP_get_field):
+             GET_FIELD_INLINE(get_field, 0, 0);
+@@ -37760,6 +37786,17 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        switch (op) {
++        case OP_rdi_get_loc0: op = OP_get_loc0; bc_buf[pos] = op; break;
++        case OP_rdi_get_loc1: op = OP_get_loc1; bc_buf[pos] = op; break;
++        case OP_rdi_get_loc2: op = OP_get_loc2; bc_buf[pos] = op; break;
++        case OP_rdi_get_loc3: op = OP_get_loc3; bc_buf[pos] = op; break;
++        case OP_rdi_get_arg0: op = OP_get_arg0; bc_buf[pos] = op; break;
++        case OP_rdi_get_arg1: op = OP_get_arg1; bc_buf[pos] = op; break;
++        case OP_rdi_get_arg2: op = OP_get_arg2; bc_buf[pos] = op; break;
++        case OP_rdi_get_arg3: op = OP_get_arg3; bc_buf[pos] = op; break;
++        default: break;
++        }
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
+             uint32_t delta = get_u32(bc_buf + pos + 1);
+             ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
+@@ -38668,7 +38705,8 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++            op == OP_rdi_get_loc0 || op == OP_rdi_get_loc1 || op == OP_rdi_get_loc2 || op == OP_rdi_get_loc3 || op == OP_rdi_get_arg0 || op == OP_rdi_get_arg1 || op == OP_rdi_get_arg2 || op == OP_rdi_get_arg3) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+             return -1;
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -43,6 +43,25 @@
+             put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
+         }
+     }
++    for (pos = 0; pos < b->byte_code_len; ) {
++        uint8_t *pc = b->byte_code_buf + pos;
++        op = *pc;
++        int size = short_opcode_info(op).size;
++        if (size == 1 && pos + 1 < b->byte_code_len && pc[1] == OP_get_field_rdi) {
++            switch (op) {
++            case OP_get_loc0: *pc = OP_rdi_get_loc0; break;
++            case OP_get_loc1: *pc = OP_rdi_get_loc1; break;
++            case OP_get_loc2: *pc = OP_rdi_get_loc2; break;
++            case OP_get_loc3: *pc = OP_rdi_get_loc3; break;
++            case OP_get_arg0: *pc = OP_rdi_get_arg0; break;
++            case OP_get_arg1: *pc = OP_rdi_get_arg1; break;
++            case OP_get_arg2: *pc = OP_rdi_get_arg2; break;
++            case OP_get_arg3: *pc = OP_rdi_get_arg3; break;
++            default: break;
++            }
++        }
++        pos += size;
++    }
+     assert(index == count);
+     return 0;
+ }

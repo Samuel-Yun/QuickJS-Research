@@ -1,0 +1,52 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -367,6 +367,8 @@
+ 
+ DEF(v6_get_loc0, 1, 0, 1, none)
+ DEF(v6_get_arg0, 1, 0, 1, none)
++DEF(exp_get_loc1, 1, 0, 1, none)
++DEF(exp_get_arg1, 1, 0, 1, none)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -18630,6 +18630,7 @@
+         CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
+         CASE(OP_v6_get_loc0): V6_PREPARED_BORROW(var_buf[0]); BREAK;
+         CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
++        CASE(OP_exp_get_loc1): V6_PREPARED_BORROW(var_buf[1]); BREAK;
+         CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
+         CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
+         CASE(OP_put_loc0): set_value(ctx, &var_buf[0], *--sp); BREAK;
+@@ -18643,6 +18644,7 @@
+         CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
+         CASE(OP_v6_get_arg0): V6_PREPARED_BORROW(arg_buf[0]); BREAK;
+         CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
++        CASE(OP_exp_get_arg1): V6_PREPARED_BORROW(arg_buf[1]); BREAK;
+         CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
+         CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
+         CASE(OP_put_arg0): set_value(ctx, &arg_buf[0], *--sp); BREAK;
+@@ -37783,7 +37785,9 @@
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+         if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
++        if (op == OP_exp_get_loc1) { op = OP_get_loc1; bc_buf[pos] = op; }
+         if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
++        if (op == OP_exp_get_arg1) { op = OP_get_arg1; bc_buf[pos] = op; }
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
+             uint32_t delta = get_u32(bc_buf + pos + 1);
+             ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -43,6 +43,10 @@
+             pos + 1 < b->byte_code_len && pc[1] == OP_get_field) {
+             *pc = (op == OP_get_loc0) ? OP_v6_get_loc0 : OP_v6_get_arg0;
+         }
++        if ((op == OP_get_loc1 || op == OP_get_arg1) &&
++            pos + 1 < b->byte_code_len && pc[1] == OP_get_field) {
++            *pc = (op == OP_get_loc1) ? OP_exp_get_loc1 : OP_exp_get_arg1;
++        }
+         if (op == OP_get_field || op == OP_get_field2) {
+             b->read_ic_sites[index].atom = get_u32(pc + 1);
+             *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;

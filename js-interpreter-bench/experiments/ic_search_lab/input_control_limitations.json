@@ -1,0 +1,19 @@
+{
+  "status": "CONFIRMED_UNSEEDED_RANDOM_INPUT_IN_TWO_FROZEN_SUNSPIDER_CASES",
+  "identified_cases": ["string-base64", "string-validate-input"],
+  "evidence": [
+    "experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/string-base64.js:122 calls Math.random",
+    "experiments/ic_fast_slow_20261102/attempt01/sunspider/inputs/string-validate-input.js:67 and78 call Math.random",
+    "frozen adapter.js only captures performance.now; frozen driver.js does not seed Math.random",
+    "seed M quickjs.c js_random_init around47407 initializes ctx->random_state from gettimeofday; js_math_random around47417 consumes that state"
+  ],
+  "same_source_and_N_verified": true,
+  "pairwise_random_seed_fixed": false,
+  "generated_random_bytes_hashes": null,
+  "strict_input_equality_for_complete26": "NOT_ESTABLISHED",
+  "action": "Keep original frozen workloads and every sample; no new seed/algorithm/input patch, no deletion to improve GM",
+  "interpretation": "All26 results are exploratory comparisons of the existing source workload, not proof of byte-for-byte paired random input; do not claim a strict fixed-input overall optimization from them",
+  "selection_timing": "c004 shortlist was frozen before this finding; do not change candidate/primary case set to exploit it",
+  "formal_gate": "No strict-input final acceptance until the random-input policy is explicitly resolved in a separately documented mode; this round does not silently change the benchmark",
+  "scope": "No claim that every other dynamically generated input was exhaustively proved identical"
+}

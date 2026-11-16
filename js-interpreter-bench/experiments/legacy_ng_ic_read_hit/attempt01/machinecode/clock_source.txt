@@ -1,0 +1,30 @@
+2117:         if (!sh) {
+2118:             sh = js_mallocz(ctx, sizeof(*sh));
+2119:             if (!sh)
+2120:                 return JS_EXCEPTION;
+2121:             sh->sig_num = sig_num;
+2122:             list_add_tail(&sh->link, &ts->os_signal_handlers);
+2123:         }
+2124:         JS_FreeValue(ctx, sh->func);
+2125:         sh->func = JS_DupValue(ctx, func);
+2126:         signal(sig_num, os_signal_handler);
+2127:     }
+2128:     return JS_UNDEFINED;
+2129: }
+2130: 
+2131: #if defined(__linux__) || defined(__APPLE__)
+2132: static int64_t get_time_ms(void)
+2133: {
+2134:     struct timespec ts;
+2135:     clock_gettime(CLOCK_MONOTONIC, &ts);
+2136:     return (uint64_t)ts.tv_sec * 1000 + (ts.tv_nsec / 1000000);
+2137: }
+2138: 
+2139: static int64_t get_time_ns(void)
+2140: {
+2141:     struct timespec ts;
+2142:     clock_gettime(CLOCK_MONOTONIC, &ts);
+2143:     return (uint64_t)ts.tv_sec * 1000000000 + ts.tv_nsec;
+2144: }
+2145: #else
+2146: /* more portable, but does not work if the date is updated */

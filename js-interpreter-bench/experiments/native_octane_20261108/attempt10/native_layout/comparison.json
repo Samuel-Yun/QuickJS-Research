@@ -1,0 +1,17 @@
+{
+  "normalization": "drop instruction addresses/comments, normalize external branch addresses to symbols and RIP displacements; internal target offsets retained",
+  "identities": {
+    "READ_STORE": {
+      "binary_sha256": "3a008076e247eb19c536ce29aa27d06efc970e1bdab404b437af5a7628762e38",
+      "symbol_bytes": 43057,
+      "static_instructions": 10143
+    },
+    "COLD_ENTRY": {
+      "binary_sha256": "0f534e8c08d9c0bfe3872a95628a90280ede6909dece293e3403c293458c589d",
+      "symbol_bytes": 43089,
+      "static_instructions": 10146
+    }
+  },
+  "normalized_instructions_identical": false,
+  "not_a_runtime_cycle_measurement": true
+}

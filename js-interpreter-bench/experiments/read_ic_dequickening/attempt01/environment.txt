@@ -1,0 +1,26 @@
+Campaign: read_ic_dequickening/attempt01
+Initial HEAD: 7dca3cdc8461c5576a4d63badbcf295bf0ad4f7c / myx / initially clean
+Host: LAPTOP-QPKCPDCB
+OS: Ubuntu 24.04.2 LTS under Microsoft WSL2, NOT native Linux/old Windows cohort
+Kernel: 5.15.167.4-microsoft-standard-WSL2, x86_64
+CPU: AMD Ryzen 7 5800H with Radeon Graphics; guest-visible 8 cores / 16 threads
+Guest RAM at build snapshot: 8252641280 bytes; swap2147483648 bytes
+Source: upstream QuickJS2026-06-04 / 04be246001599f5995fa2f2d8c91a0f198d3f34c
+Compiler: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Build: official make -j2 qjs qjsc, -O2 -g -fwrapv, assertions retained
+LTO/PGO/NDEBUG: absent; all three fresh source/build directories
+A/M exact source bytes restored; R only four changed IC files, no SW mode
+Runtime flags: [] in A/M/R; QJS_READ_IC_MODE removed from common child environment
+Dependencies: actual ldd logs in raw/build/*_ldd.*; same guest toolchain/libs
+Clock: child captured native performance.now CLOCK_MONOTONIC absolute milliseconds
+Parent clock: perf_counter_ns CLOCK_MONOTONIC absolute nanoseconds; UTC date only
+CPU affinity: inherited, recorded in environment snapshots, not pinned
+Power/frequency: UNKNOWN / not controlled
+Windows-host background and scheduler: UNKNOWN / uncontrolled, not claimed idle
+Guest background: actual build/pre-formal/post-formal snapshots retained; services incl Docker present
+ASLR: kernel setting2; not modified; relative layout, not identical loaded address
+perf: capability command failed, no cycles/instructions workload evidence; no sudo/kernel changes
+Formal VM processes serial, not concurrent with builds/diagnostic/RSS/hardware profiling
+RSS: separate GNU time KiB, 3 fresh processes per Octane/condition, not formal timings
+R site: measured24bytes vs M16, streak offset16; function header component unchanged16
+R threshold: fixed32; not tuned using pilot or partial formal times

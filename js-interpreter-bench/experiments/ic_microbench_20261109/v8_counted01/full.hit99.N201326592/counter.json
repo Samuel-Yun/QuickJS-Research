@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "config": {
+    "output_json": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_counted01/full.hit99.N201326592/counter.json",
+    "gate_total": false,
+    "counter_cap": 10000,
+    "iterations": 201326592,
+    "rate": 99
+  },
+  "counts": {
+    "ic_miss": 2,
+    "no_feedback": 10,
+    "no_feedback_runtime_fallback": 0,
+    "named_load_entries": 0,
+    "generic_runtime_fallback": 0,
+    "noninlined_builtin": 1
+  },
+  "first_path_stacks": {
+    "no_feedback": "#0  0x00005973f2fb14c0 in Builtins_LoadIC_NoFeedback ()\n#1  0x00005973f31741a3 in Builtins_GetNamedPropertyHandler ()\n#2  0x0000000000000000 in ?? ()\n",
+    "noninlined_builtin": "#0  0x00005973f2feb400 in Builtins_LoadIC_Noninlined ()\n#1  0x00005973f31733a5 in Builtins_GetNamedPropertyHandler ()\n#2  0x0000000000000006 in ?? ()\n#3  0x00007fff7d7a7268 in ?? ()\n#4  0x00005973f31742c5 in Builtins_GetKeyedPropertyHandler ()\n#5  0x00005973f2fa0181 in Builtins_InterpreterEntryTrampoline ()\n",
+    "ic_miss": "#0  0x00005973f1d03094 in v8::internal::Runtime_LoadIC_Miss(int, unsigned long*, v8::internal::Isolate*) ()\n#1  0x00005973f30613f6 in Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit ()\n#2  0x00005973f31733a5 in Builtins_GetNamedPropertyHandler ()\n#3  0x000007950101f815 in ?? ()\n#4  0x0000000000000004 in ?? ()\n#5  0x000007950000351d in ?? ()\n"
+  },
+  "first_marker_stack": "#0  0x00005973f31e46fd in v8::base::OS::DebugBreak() ()\n#1  0x00005973f2030f57 in v8::internal::Runtime_SystemBreak(int, unsigned long*, v8::internal::Isolate*) ()\n#2  0x00005973f3061271 in Builtins_CEntry_Return1_ArgvInRegister_NoBuiltinExit ()\n#3  0x00005973f3180948 in Builtins_CallRuntimeHandler ()\n#4  0x00005973f2fa0181 in Builtins_InterpreterEntryTrampoline ()\n",
+  "last_marker_stack": "#0  0x00005973f31e46fd in v8::base::OS::DebugBreak() ()\n#1  0x00005973f2030f57 in v8::internal::Runtime_SystemBreak(int, unsigned long*, v8::internal::Isolate*) ()\n#2  0x00005973f3061271 in Builtins_CEntry_Return1_ArgvInRegister_NoBuiltinExit ()\n#3  0x00005973f3180948 in Builtins_CallRuntimeHandler ()\n#4  0x00005973f2fa0181 in Builtins_InterpreterEntryTrampoline ()\n",
+  "stop_events": [
+    "StopEvent",
+    "StopEvent"
+  ]
+}

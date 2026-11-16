@@ -1,0 +1,26 @@
+{
+  "status": "PASS_DIAGNOSTIC",
+  "formal_performance_samples": 0,
+  "identities": {
+    "COALLOC": {
+      "binary_sha256": "d2c74219e848224bfa227cb7f6bdec11769aebf97849f07ae15d05418297eacb",
+      "VM_object_sha256": "2d67026eaa746096f1262931cf7155ec450ffddecc79b0961d58ceb402fab37b",
+      "helper_object_sha256": "d86e2f480db5993aea981ef02da145ca9547cf443cecec73bb2ce5150989c2a3",
+      "source": "exact release VM object; diagnostic libc hooks only"
+    },
+    "FUSE_A1L1": {
+      "binary_sha256": "53187ce90f167b0b8f7e6fe97f5c7c9c59b153aabff45af3bc94a31a81f95232",
+      "VM_object_sha256": "403cf1938dbbac6503036d28d7f50ae20d57f46ccd18a664c6a87ef13bb1d364",
+      "helper_object_sha256": "d86e2f480db5993aea981ef02da145ca9547cf443cecec73bb2ce5150989c2a3",
+      "source": "exact release VM object; diagnostic libc hooks only"
+    },
+    "CALL02": {
+      "binary_sha256": "ba13a71e4ebce62a1c52061afed9c185b3335cb5c0d44ee28f96632ab8b8e315",
+      "VM_object_sha256": "6658ef75bf3804b0f101916d03ab8572faf5047717b78c351657e16268799076",
+      "helper_object_sha256": "d86e2f480db5993aea981ef02da145ca9547cf443cecec73bb2ce5150989c2a3",
+      "source": "exact release VM object; diagnostic libc hooks only"
+    }
+  },
+  "selection": "after all five performance rounds: check whether measured structural changes reduce whole-run instruction work",
+  "native_time_inference": false
+}

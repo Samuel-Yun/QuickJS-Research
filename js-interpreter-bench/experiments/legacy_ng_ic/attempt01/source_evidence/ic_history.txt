@@ -1,0 +1,113 @@
+commit 6b78c7f3e13c9add01312cca80ba4bb7a2f8adf4
+Author:     Divy Srivastava <dj.srivastava23@gmail.com>
+AuthorDate: Wed Nov 29 00:12:02 2023 -0800
+Commit:     GitHub <noreply@github.com>
+CommitDate: Wed Nov 29 09:12:02 2023 +0100
+
+    Implement polymorphic inline caches (#120)
+
+commit b478329cdd5de3f8f68726543fc542a439a89a1d
+Author:     Ben Noordhuis <info@bnoordhuis.nl>
+AuthorDate: Tue Dec 12 00:10:52 2023 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Tue Dec 12 00:10:52 2023 +0100
+
+    Remove JSFunctionBytecode.has_debug flag (#207)
+    
+    And merge the debug struct into JSFunctionBytecode because it is now
+    always present.
+    
+    Refs: https://github.com/quickjs-ng/quickjs/pull/193#pullrequestreview-1774511177
+
+commit e5812862f9dbd70179a045a31aaeb0e5f2926640
+Author:     Saúl Ibarra Corretgé <s@saghul.net>
+AuthorDate: Thu Dec 14 10:54:12 2023 +0100
+Commit:     Saúl Ibarra Corretgé <s@saghul.net>
+CommitDate: Thu Dec 14 11:49:14 2023 +0100
+
+    Fix 'return' handling with 'yield' in 'for of' or with finally blocks
+    
+    Ref: https://github.com/bellard/quickjs/commit/4bb8c35da7c83b5eb67541772b857e822da855da
+
+commit 35e6bfceb15a1e6a5c9953b985b97e056700858a
+Author:     Ben Noordhuis <info@bnoordhuis.nl>
+AuthorDate: Fri Dec 15 00:03:18 2023 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Fri Dec 15 00:03:18 2023 +0100
+
+    Partially port bellard/quickjs@58f374ef42 (#214)
+    
+    This commit merges JS_SetPropertyGeneric into JS_SetPropertyInternal2
+    and obsoletes commit b51b510 and partially obsoletes commit 8baafc4;
+    detachment and negative zero handling now fall out naturally.
+
+commit 6868fb9e2516fde4a7a3fcef113a6bb1e5ecc957
+Author:     Guilherme Bernal <guilherme@cubos.io>
+AuthorDate: Thu Jan 18 07:26:37 2024 -0800
+Commit:     Saúl Ibarra Corretgé <s@saghul.net>
+CommitDate: Thu Jan 18 18:42:37 2024 +0100
+
+    feat: Added functions to get access to module exports
+
+commit b8341ecafa41c5f31c5c515f4d2113e93dfefaec
+Author:     Saúl Ibarra Corretgé <s@saghul.net>
+AuthorDate: Sat Mar 23 21:52:32 2024 +0100
+Commit:     Saúl Ibarra Corretgé <s@saghul.net>
+CommitDate: Tue Mar 26 07:59:00 2024 +0100
+
+    Don't expose JS_{Get,Set}PropertyInternal in the public API
+
+commit c7ca3febd30cc1a12d4995c8b5544d47c8eabee4
+Author:     Ben Noordhuis <info@bnoordhuis.nl>
+AuthorDate: Wed Mar 27 12:07:11 2024 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Wed Mar 27 12:07:11 2024 +0100
+
+    Don't serialize IC opcodes (#334)
+    
+    Translate IC opcodes to their non-IC variants before writing them out.
+    Before this commit they were not byte-swapped properly, breaking the
+    ability to load serialized bytecode containing ICs on systems with
+    different endianness. Inline caches are recomputed as needed now.
+    
+    A pleasing side effect of this change is that serialized bytecode is,
+    on average, a little smaller because fewer atoms are duplicated now.
+
+commit 763076d1098fac3fc7aa2d4918399c1c1a2a9ec5
+Author:     Ben Noordhuis <info@bnoordhuis.nl>
+AuthorDate: Sun Oct 20 13:02:09 2024 +0200
+Commit:     GitHub <noreply@github.com>
+CommitDate: Sun Oct 20 13:02:09 2024 +0200
+
+    Rework inline cache handling (#609)
+    
+    Don't store the update flag in the IC because that's a) an out-of-band
+    signalling mechanism, and b) makes JSInlineCache bigger than it needs
+    to be. One is allocated per function so it adds up.
+    
+    Another reason for making this change is that it makes visible what
+    I strongly suspect are bugs in the original implementation.
+
+commit caa1bf544d7cd96997abddcf31765a51fc737f16
+Author:     Ben Noordhuis <info@bnoordhuis.nl>
+AuthorDate: Thu Oct 24 09:09:40 2024 +0200
+Commit:     Ben Noordhuis <info@bnoordhuis.nl>
+CommitDate: Thu Oct 24 09:11:34 2024 +0200
+
+    Handle bytecode without IC state
+    
+    Deserialized bytecode does not have IC state, i.e., `bc->ic == NULL`.
+    That may or may not be bug (IMO, it is and we should rebuild the
+    IC state during deserialization) but, either way, don't segfault.
+    
+    DRY add_ic_slot() and its call sites in a hopefully NFC manner.
+
+commit a7914d1711978fd97805c25ce83becf548135fb7
+Author:     Saúl Ibarra Corretgé <s@saghul.net>
+AuthorDate: Sun Jan 12 10:55:25 2025 +0100
+Commit:     Saúl Ibarra Corretgé <s@saghul.net>
+CommitDate: Wed Jan 15 14:21:37 2025 +0100
+
+    Use stdbool rather than custom booleans
+    
+    Fixes: https://github.com/quickjs-ng/quickjs/issues/817

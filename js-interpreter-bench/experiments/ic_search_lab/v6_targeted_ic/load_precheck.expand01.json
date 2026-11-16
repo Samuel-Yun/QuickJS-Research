@@ -1,0 +1,193 @@
+{
+  "status": "PASS_REAL_WORKLOAD_LOAD_PRECHECK",
+  "epoch": "expand01",
+  "started": "2026-11-06T17:08:31.002961+00:00",
+  "completed": "2026-11-06T17:08:46.670543+00:00",
+  "workloads": [
+    {
+      "case": "Richards.Richards",
+      "condition": "A",
+      "N": 256,
+      "elapsed_ms": 931.4696870000043,
+      "external_ms": 988.289245,
+      "utc_seconds": 0.988044,
+      "clock_difference_seconds": -0.00024524500000000504,
+      "checksum": null,
+      "token": "2026-11-06T17:08:34.299351+00:00:Richards.Richards/A"
+    },
+    {
+      "case": "Richards.Richards",
+      "condition": "s001",
+      "N": 256,
+      "elapsed_ms": 906.450152999998,
+      "external_ms": 968.666732,
+      "utc_seconds": 0.968412,
+      "clock_difference_seconds": -0.00025473199999992424,
+      "checksum": null,
+      "token": "2026-11-06T17:08:35.353978+00:00:Richards.Richards/s001"
+    },
+    {
+      "case": "Splay.Splay",
+      "condition": "A",
+      "N": 512,
+      "elapsed_ms": 1311.7250950000016,
+      "external_ms": 2060.457663,
+      "utc_seconds": 2.060212,
+      "clock_difference_seconds": -0.0002456630000002846,
+      "checksum": null,
+      "token": "2026-11-06T17:08:36.400566+00:00:Splay.Splay/A"
+    },
+    {
+      "case": "Splay.Splay",
+      "condition": "s001",
+      "N": 512,
+      "elapsed_ms": 1233.9015310000104,
+      "external_ms": 1916.156906,
+      "utc_seconds": 1.915907,
+      "clock_difference_seconds": -0.0002499059999998554,
+      "checksum": null,
+      "token": "2026-11-06T17:08:38.524120+00:00:Splay.Splay/s001"
+    },
+    {
+      "case": "Typescript.Typescript",
+      "condition": "A",
+      "N": 1,
+      "elapsed_ms": 2280.9140780000016,
+      "external_ms": 2582.004034,
+      "utc_seconds": 2.58171,
+      "clock_difference_seconds": -0.00029403399999994306,
+      "checksum": null,
+      "token": "2026-11-06T17:08:40.571147+00:00:Typescript.Typescript/A"
+    },
+    {
+      "case": "Typescript.Typescript",
+      "condition": "s001",
+      "N": 1,
+      "elapsed_ms": 2010.9969509999937,
+      "external_ms": 2268.53724,
+      "utc_seconds": 2.268292,
+      "clock_difference_seconds": -0.0002452399999999244,
+      "checksum": null,
+      "token": "2026-11-06T17:08:43.261359+00:00:Typescript.Typescript/s001"
+    }
+  ],
+  "clocks": [
+    {
+      "realtime_ns": 1793984914253698456,
+      "monotonic_ns": 101395767232,
+      "raw_ns": 101327285695,
+      "boot": "fae4f703-266b-4b6e-949c-fee4630235b6"
+    },
+    {
+      "realtime_ns": 1793984915330177216,
+      "monotonic_ns": 102472246112,
+      "raw_ns": 102403300093,
+      "boot": "fae4f703-266b-4b6e-949c-fee4630235b6"
+    },
+    {
+      "realtime_ns": 1793984916362608928,
+      "monotonic_ns": 103504677243,
+      "raw_ns": 103435343256,
+      "boot": "fae4f703-266b-4b6e-949c-fee4630235b6"
+    },
+    {
+      "realtime_ns": 1793984918498832732,
+      "monotonic_ns": 105640900863,
+      "raw_ns": 105574050147,
+      "boot": "fae4f703-266b-4b6e-949c-fee4630235b6"
+    },
+    {
+      "realtime_ns": 1793984920512979137,
+      "monotonic_ns": 107655047508,
+      "raw_ns": 107596585242,
+      "boot": "fae4f703-266b-4b6e-949c-fee4630235b6"
+    },
+    {
+      "realtime_ns": 1793984923224694088,
+      "monotonic_ns": 110366762290,
+      "raw_ns": 110319761792,
+      "boot": "fae4f703-266b-4b6e-949c-fee4630235b6"
+    },
+    {
+      "realtime_ns": 1793984925539877827,
+      "monotonic_ns": 112681947014,
+      "raw_ns": 112641188070,
+      "boot": "fae4f703-266b-4b6e-949c-fee4630235b6"
+    }
+  ],
+  "max_span_difference_seconds": 6.45e-07,
+  "identities": [
+    {
+      "id": "A",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/A.qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1"
+    },
+    {
+      "id": "M",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/M.qjs",
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef"
+    },
+    {
+      "id": "s001",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/s001.qjs",
+      "sha256": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b"
+    },
+    {
+      "id": "d03",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v5_structural/artifacts/d03.qjs",
+      "sha256": "0f3cb97f7b788974bb1a2665436cd308a0640dc0d4bd90d390bc89551acbe28d"
+    },
+    {
+      "id": "d04",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v5_structural/artifacts/d04.qjs",
+      "sha256": "00e94073651c1238f08bde90fde6edd78c02439a5e6118cdf61ba24a206f1fa9"
+    },
+    {
+      "id": "d05",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v5_structural/artifacts/d05.qjs",
+      "sha256": "d812177acd5a5a3e941f6fa31a43b67e6e5ae2b0ea107939823a9a2a290fd24e"
+    },
+    {
+      "id": "B2",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/B2.qjs",
+      "sha256": "b0654e5a5bec7f4305500fbce5eacfd922341e69defb360fbd33ce01481547ad"
+    },
+    {
+      "id": "ID_CTRL",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/ID_CTRL.qjs",
+      "sha256": "f2f38502b688e76dc0ed7da2e85ca8823348a9635d388cf65ef9f9100416e648"
+    },
+    {
+      "id": "ID_READ",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/ID_READ.qjs",
+      "sha256": "300dfacfac7df74536844035e87d966cbc9c7d5371df7fe649fc1fe22fda0368"
+    },
+    {
+      "id": "W1",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/W1.qjs",
+      "sha256": "3470b41603b8ec68ff122abf496b1b38a34a806dd292baabfc3494c3c56add41"
+    },
+    {
+      "id": "P1",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/P1.qjs",
+      "sha256": "da75fceeeb4b5a27301d87cf94a24e6183bce6cc69e749c750c06d2d64278251"
+    },
+    {
+      "id": "L1",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/L1.qjs",
+      "sha256": "4ac0ee156b7cbecc89b7d5f017abe45ecde642d0d36692909137628c23c17f79"
+    },
+    {
+      "id": "K1",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/K1.qjs",
+      "sha256": "89212b36860655e080a094ef1a1e1958ebe92e17d1eb4a51234a0f719ddb503b"
+    },
+    {
+      "id": "C1",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v6_targeted_ic/artifacts/C1.qjs",
+      "sha256": "a4c7909b3b7c2ce48b5ae1fd1cd66f7c08d12fd34c74253b7d915b142d5a7fb8"
+    }
+  ],
+  "no_build": true,
+  "no_diagnostic_rerun": true
+}

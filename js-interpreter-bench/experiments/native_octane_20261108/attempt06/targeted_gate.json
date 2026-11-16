@@ -1,0 +1,38 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    {
+      "name": "checks.js",
+      "token": "semantic/experiments/ic_search_lab/checks.js",
+      "stdout": "CHECKS_PASS:7020\n"
+    },
+    {
+      "name": "semantic.js",
+      "token": "semantic/experiments/ic_search_lab/v3_mass_search/semantic.js",
+      "stdout": "MASS_SEMANTIC_PASS:9013\n"
+    },
+    {
+      "name": "targeted.js",
+      "token": "semantic/experiments/ic_search_lab/v6_targeted_ic/targeted.js",
+      "stdout": "V6_TARGETED_PASS\n"
+    },
+    {
+      "name": "targeted.js",
+      "token": "semantic/experiments/native_octane_20261108/attempt06/targeted.js",
+      "stdout": "S002_TARGETED_PASS:60\n"
+    },
+    {
+      "name": "read_roundtrip",
+      "token": "native_check/read_roundtrip",
+      "stdout": "READ_METHOD_REFERENCE_ROUNDTRIP_PASS\n"
+    },
+    {
+      "name": "gc_cycles",
+      "token": "native_check/gc_cycles",
+      "stdout": "GC_CYCLES_PASS rounds=12 cyclic_function_prototypes=1800\n"
+    }
+  ],
+  "full_test262": false,
+  "source_unchanged_from_historical_S002": true,
+  "sanitizer_rerun": false
+}

@@ -1,0 +1,94 @@
+7897: static int JS_SetPrototypeInternal(JSContext *ctx, JSValueConst obj,
+7898:                                    JSValueConst proto_val,
+7899:                                    BOOL throw_flag)
+7900: {
+7901:     JSObject *proto, *p, *p1;
+7902:     JSShape *sh;
+7903: 
+7904:     if (throw_flag) {
+7905:         if (JS_VALUE_GET_TAG(obj) == JS_TAG_NULL ||
+7906:             JS_VALUE_GET_TAG(obj) == JS_TAG_UNDEFINED)
+7907:             goto not_obj;
+7908:     } else {
+7909:         if (JS_VALUE_GET_TAG(obj) != JS_TAG_OBJECT)
+7910:             goto not_obj;
+7911:     }
+7912:     p = JS_VALUE_GET_OBJ(obj);
+7913:     if (JS_VALUE_GET_TAG(proto_val) != JS_TAG_OBJECT) {
+7914:         if (JS_VALUE_GET_TAG(proto_val) != JS_TAG_NULL) {
+7915:         not_obj:
+7916:             JS_ThrowTypeErrorNotAnObject(ctx);
+7917:             return -1;
+7918:         }
+7919:         proto = NULL;
+7920:     } else {
+7921:         proto = JS_VALUE_GET_OBJ(proto_val);
+7922:     }
+7923: 
+7924:     if (throw_flag && JS_VALUE_GET_TAG(obj) != JS_TAG_OBJECT)
+7925:         return TRUE;
+7926: 
+7927:     if (unlikely(p->is_exotic)) {
+7928:         const JSClassExoticMethods *em = ctx->rt->class_array[p->class_id].exotic;
+7929:         int ret;
+7930:         if (em && em->set_prototype) {
+7931:             ret = em->set_prototype(ctx, obj, proto_val);
+7932:             if (ret == 0 && throw_flag) {
+7933:                 JS_ThrowTypeError(ctx, "proxy: bad prototype");
+7934:                 return -1;
+7935:             } else {
+7936:                 return ret;
+7937:             }
+7938:         }
+7939:     }
+7940: 
+7941:     sh = p->shape;
+7942:     if (sh->proto == proto)
+7943:         return TRUE;
+7944:     if (unlikely(p->has_immutable_prototype)) {
+7945:         if (throw_flag) {
+7946:             JS_ThrowTypeError(ctx, "prototype is immutable");
+7947:             return -1;
+7948:         } else {
+7949:             return FALSE;
+7950:         }
+7951:     }
+7952:     if (unlikely(!p->extensible)) {
+7953:         if (throw_flag) {
+7954:             JS_ThrowTypeError(ctx, "object is not extensible");
+7955:             return -1;
+7956:         } else {
+7957:             return FALSE;
+7958:         }
+7959:     }
+7960:     if (proto) {
+7961:         /* check if there is a cycle */
+7962:         p1 = proto;
+7963:         do {
+7964:             if (p1 == p) {
+7965:                 if (throw_flag) {
+7966:                     JS_ThrowTypeError(ctx, "circular prototype chain");
+7967:                     return -1;
+7968:                 } else {
+7969:                     return FALSE;
+7970:                 }
+7971:             }
+7972:             /* Note: for Proxy objects, proto is NULL */
+7973:             p1 = p1->shape->proto;
+7974:         } while (p1 != NULL);
+7975:         JS_DupValue(ctx, proto_val);
+7976:     }
+7977: 
+7978:     if (js_shape_prepare_update(ctx, p, NULL))
+7979:         return -1;
+7980:     sh = p->shape;
+7981:     if (sh->proto)
+7982:         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_OBJECT, sh->proto));
+7983:     sh->proto = proto;
+7984:     p->is_std_array_prototype = FALSE; 
+7985:     return TRUE;
+7986: }
+7987: 
+7988: /* return -1 (exception) or TRUE/FALSE */
+7989: int JS_SetPrototype(JSContext *ctx, JSValueConst obj, JSValueConst proto_val)
+7990: {

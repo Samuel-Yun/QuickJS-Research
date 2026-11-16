@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "config": {
+    "output_json": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_layout_controls01/large_pool_cycle/counter.json",
+    "gate_total": false,
+    "counter_cap": 1000000,
+    "iterations": 65536,
+    "rate": null
+  },
+  "counts": {
+    "ic_miss": 65345,
+    "no_feedback": 0,
+    "no_feedback_runtime_fallback": 0,
+    "named_load_entries": 0,
+    "generic_runtime_fallback": 0,
+    "noninlined_builtin": 65536
+  },
+  "first_path_stacks": {
+    "noninlined_builtin": "#0  0x000056e2eac77400 in Builtins_LoadIC_Noninlined ()\n#1  0x000056e2eadff3a5 in Builtins_GetNamedPropertyHandler ()\n#2  0x000003a702e17169 in ?? ()\n#3  0x0000000000000000 in ?? ()\n",
+    "ic_miss": "#0  0x000056e2e998f094 in v8::internal::Runtime_LoadIC_Miss(int, unsigned long*, v8::internal::Isolate*) ()\n#1  0x000056e2eaced3f6 in Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit ()\n#2  0x000056e2eadff3a5 in Builtins_GetNamedPropertyHandler ()\n#3  0x000003a702e17169 in ?? ()\n#4  0x0000000000000004 in ?? ()\n#5  0x000003a70000351d in ?? ()\n"
+  },
+  "first_marker_stack": "#0  0x000056e2eae706fd in v8::base::OS::DebugBreak() ()\n#1  0x000056e2e9cbcf57 in v8::internal::Runtime_SystemBreak(int, unsigned long*, v8::internal::Isolate*) ()\n#2  0x000056e2eaced271 in Builtins_CEntry_Return1_ArgvInRegister_NoBuiltinExit ()\n#3  0x000056e2eae0c948 in Builtins_CallRuntimeHandler ()\n#4  0x000056e2eac2c181 in Builtins_InterpreterEntryTrampoline ()\n",
+  "last_marker_stack": "#0  0x000056e2eae706fd in v8::base::OS::DebugBreak() ()\n#1  0x000056e2e9cbcf57 in v8::internal::Runtime_SystemBreak(int, unsigned long*, v8::internal::Isolate*) ()\n#2  0x000056e2eaced271 in Builtins_CEntry_Return1_ArgvInRegister_NoBuiltinExit ()\n#3  0x000056e2eae0c948 in Builtins_CallRuntimeHandler ()\n#4  0x000056e2eac2c181 in Builtins_InterpreterEntryTrampoline ()\n",
+  "stop_events": [
+    "StopEvent",
+    "StopEvent"
+  ]
+}

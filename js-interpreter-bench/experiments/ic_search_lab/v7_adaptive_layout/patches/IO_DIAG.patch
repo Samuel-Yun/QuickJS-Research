@@ -1,0 +1,52 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -5339,6 +5339,17 @@
+         js_free_shape(rt, sh);
+ }
+ 
++static unsigned long long v7_created[17], v7_used[17], v7_hit_offset[17];
++static unsigned long long v7_obj_requests, v7_prop_requests, v7_requested_bytes;
++static void __attribute__((destructor)) v7_report(void) {
++    fprintf(stderr,"V7_IO_HIST {\"sizeof_object\":%zu,\"sizeof_property\":%zu,\"capacity\":[",sizeof(JSObject),sizeof(JSProperty));
++    for(int i=0;i<17;i++) fprintf(stderr,"%s%llu",i?",":"",v7_created[i]);
++    fprintf(stderr,"],\"used_at_free\":[");
++    for(int i=0;i<17;i++) fprintf(stderr,"%s%llu",i?",":"",v7_used[i]);
++    fprintf(stderr,"],\"hit_offset\":[");
++    for(int i=0;i<17;i++) fprintf(stderr,"%s%llu",i?",":"",v7_hit_offset[i]);
++    fprintf(stderr,"],\"obj_requests\":%llu,\"prop_requests\":%llu,\"requested_bytes\":%llu}\n",v7_obj_requests,v7_prop_requests,v7_requested_bytes);
++}
+ /* make space to hold at least 'count' properties */
+ static no_inline int resize_properties(JSContext *ctx, JSShape **psh,
+                                        JSObject *p, uint32_t count)
+@@ -5642,6 +5653,11 @@
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
++    if (class_id == JS_CLASS_OBJECT) {
++        v7_created[sh->prop_size < 16 ? sh->prop_size : 16]++;
++        v7_obj_requests++; v7_prop_requests++;
++        v7_requested_bytes += sizeof(JSObject) + sizeof(JSProperty) * sh->prop_size;
++    }
+     p->prop = js_malloc(ctx, sizeof(JSProperty) * sh->prop_size);
+     if (unlikely(!p->prop)) {
+         js_free(ctx, p);
+@@ -6355,6 +6371,8 @@
+     JSShape *sh;
+     JSShapeProperty *pr;
+ 
++    if (p->class_id == JS_CLASS_OBJECT)
++        v7_used[p->shape->prop_count < 16 ? p->shape->prop_count : 16]++;
+     p->free_mark = 1; /* used to tell the object is invalid when
+                          freeing cycles */
+     /* free all the fields */
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -16,7 +16,7 @@
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+-                    RDI_COUNT(hits);                                   \
++                    RDI_COUNT(hits); v7_hit_offset[offset < 16 ? offset : 16]++;                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \

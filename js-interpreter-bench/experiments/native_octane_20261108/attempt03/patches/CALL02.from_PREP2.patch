@@ -1,0 +1,37 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -18235,8 +18235,14 @@
+                     goto exception;
+                 if (opcode == OP_tail_call)
+                     goto done;
+-                for(i = -1; i < call_argc; i++)
+-                    JS_FreeValue(ctx, call_argv[i]);
++                if ((unsigned)call_argc <= 2) {
++                    JS_FreeValue(ctx, call_argv[-1]);
++                    if (call_argc >= 1) JS_FreeValue(ctx, call_argv[0]);
++                    if (call_argc == 2) JS_FreeValue(ctx, call_argv[1]);
++                } else {
++                    for(i = -1; i < call_argc; i++)
++                        JS_FreeValue(ctx, call_argv[i]);
++                }
+                 sp -= call_argc + 1;
+                 *sp++ = ret_val;
+             }
+@@ -18271,8 +18277,15 @@
+                     goto exception;
+                 if (opcode == OP_tail_call_method)
+                     goto done;
+-                for(i = -2; i < call_argc; i++)
+-                    JS_FreeValue(ctx, call_argv[i]);
++                if ((unsigned)call_argc <= 2) {
++                    JS_FreeValue(ctx, call_argv[-2]);
++                    JS_FreeValue(ctx, call_argv[-1]);
++                    if (call_argc >= 1) JS_FreeValue(ctx, call_argv[0]);
++                    if (call_argc == 2) JS_FreeValue(ctx, call_argv[1]);
++                } else {
++                    for(i = -2; i < call_argc; i++)
++                        JS_FreeValue(ctx, call_argv[i]);
++                }
+                 sp -= call_argc + 2;
+                 *sp++ = ret_val;
+             }

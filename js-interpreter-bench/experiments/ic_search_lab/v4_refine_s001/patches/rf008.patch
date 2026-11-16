@@ -1,0 +1,25 @@
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -3,8 +3,8 @@
+ #define RDI_SHAPE(s, i) ((s)->shapes[i])
+ #define RDI_OFFSET(s, i) ((s)->offsets[i])
+ #else
+-#define RDI_SHAPE(s, i) ((s)->entries[i].shape)
+-#define RDI_OFFSET(s, i) ((s)->entries[i].offset)
++#define RDI_SHAPE(s, i) ((s)->shape)
++#define RDI_OFFSET(s, i) ((s)->prop_offset)
+ #endif
+ static force_inline JSAtom rdi_atom(JSFunctionBytecode *b, ReadICSite *s)
+ {
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -19,7 +19,8 @@
+     JSShape *shapes[SEARCH_SLOTS];
+     uint16_t offsets[SEARCH_SLOTS];
+ #else
+-    struct { JSShape *shape; uint32_t offset; } entries[SEARCH_SLOTS];
++    JSShape *shape;
++    uint32_t prop_offset;
+ #endif
+ #if SEARCH_LAYOUT != 2
+     JSAtom atom;

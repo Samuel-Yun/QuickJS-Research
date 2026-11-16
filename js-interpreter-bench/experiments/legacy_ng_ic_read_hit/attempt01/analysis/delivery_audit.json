@@ -1,0 +1,81 @@
+{
+  "status": "PASS_WITH_DOCUMENTED_LIMITATIONS",
+  "reference": "696cfd8530fca5d52e9358a626e03d9280ea7008",
+  "branch": "myx",
+  "tracked_changes_outside_new_attempt": [],
+  "status_at_check": "?? js-interpreter-bench/experiments/legacy_ng_ic_read_hit/\n",
+  "old_records_changed": false,
+  "new_experiment_only": true,
+  "committed": false,
+  "pushed": false,
+  "formal_records": 1890,
+  "formal_expected": 1890,
+  "diagnostic_archives": 52,
+  "RSS_processes": 144,
+  "plots_XML_valid": true,
+  "max_public_file_bytes": 5136745,
+  "public_files_over_50MiB": [],
+  "dumps": [
+    {
+      "case": "M1.own_integer",
+      "sha256": "e6c347e1073cca7b04b9b95c66b8681c831668889f660bac28e06604f579ed43",
+      "function_headings": 1
+    },
+    {
+      "case": "M2.own_reference",
+      "sha256": "780e6ecaa28f04cdaba6bc5450883952775408d30df2c1535dae607285e12808",
+      "function_headings": 1
+    },
+    {
+      "case": "M3.own_method",
+      "sha256": "4b6d83e2ea9caa79e43f85648b4e7e916e65b5bbf96532521123fef2e21ca67a",
+      "function_headings": 2
+    },
+    {
+      "case": "M4.numeric_control",
+      "sha256": "a32600de6c3f39b070853932b725a4a2e6e1afdbda56e59e5f80c32022be805a",
+      "function_headings": 1
+    },
+    {
+      "case": "M5.write_control",
+      "sha256": "75ad3613b994e2d8c2c92fa9848a218db67f2e8c0a7375fe4eebec6bcf9ba560",
+      "function_headings": 1
+    }
+  ],
+  "unknowns": [
+    "PMU counters",
+    "power/frequency/background control",
+    "calendar/monotonic metadata divergence cause",
+    "micro absolute monotonic endpoints",
+    "indirect shape retention bytes",
+    "pure call/helper self times"
+  ],
+  "tool_sha256": {
+    "aggregate_ci.py": "3429bbe312c680640d5113ff24042dfdfaaee0a6fd596bec5c232f4e6c60e6b7",
+    "analyze.py": "c8ae476af0704ba422f6bcdfe470aaddb4e35f338e86e20973d9067bfa7f01eb",
+    "archives.py": "20ff0dc5e752780ae5bb01e6326e87ee0ae2a6f952111fe894f819a3dbfb1a1d",
+    "audit.py": "9a87643af8b1cc5266bc16635b0efc2d3292e716160ea78c4fc87345610a4952",
+    "bootstrap.py": "1ef71ce34361ea528f1f6c65f72fcdf9fb38005b8f0bb9871f3c903dbbf23339",
+    "build.py": "ecfcdfec80103b39242cd002cfc55d39e5372fa7ed7103d8e7f75d8743aab887",
+    "common.py": "fefc2a18f6d2199e27a015217f50e6e14bd47f9e3c8875794d27cb3dcf1d9498",
+    "delivery_audit.py": "ecc32d0be95c55cc9fc342d7a43b3bd5b6cc85c12c28829577f15db1d3862680",
+    "diagnostic.py": "0bf098bad26a6910d002e6c6d6708e5f96d3b62a0590872833e6a0a770cab919",
+    "extra_checks.py": "a83580fba66917bb48be0ee3d9ea4b360f6018aeb8b7e73a7e9766e61075c8f0",
+    "finish.py": "b3f20e589b8224f13db2bb95ecb8fa7cf661d8483ec1cdbb585867c63b45ec8c",
+    "host.py": "4cac0a10b13603b59b5bbccdc417f75e6dfdbcee4f255a0b130159ee70954ead",
+    "identity.py": "43228ba7881200386d3f5826c6183fde7dd817659b51f9fe980772dcab04b6d4",
+    "machinecode.py": "9df3032cc9e7d64848ab3e065ab3f2298184e1e1db0d446c28dea36769a2e8bd",
+    "mechanism.py": "54bd82e4dc80a8b85090bdd0a835c994e6965cea72506c5a201cafa3443445de",
+    "memory.py": "f7e612f1860e1ca399d4798251c2ef2fe69a38a49d48c8c13a8e331bfcc0647e",
+    "micros.py": "357a42232c3cda99bf3ddcecb49605f057cfec67f637500be4227b8d20ffc13f",
+    "new_campaign.py": "1973b3238b16d0c74a3f65927659e0c2ef019809bd2f5b784a28ab2c519bac20",
+    "portable_check.py": "2b69204e10e9343aaff1dd33b3172cac5695c1730e9931c213d41d0b80628617",
+    "post_static.py": "6168efe1b6f9bb437f4f068fc33505a6dcee08d5767efa81f70bdb40af4b7407",
+    "prepare.py": "2592f74ca4c06fa44bfc5c1458a2a4aaeadd4ad948beadf4970d9165e6915911",
+    "progress.py": "dd70543184a8cc045e63dceffb49d2895f7e81f04a67cca381a368454faea307",
+    "replay_previous.py": "7e48218ff1cad89884cb146896b91e71e5d72a4eb90808224cd995e18b33e094",
+    "run.py": "a092e44635cf2acfe5174c97314a4637a51529d7bf26ea744b5a49bce27881bc",
+    "supplementary.py": "eaf15a9af117745614d8f5d75ad803ed64e38df6979b2d4884a452781b17e95c",
+    "upgrade_analysis.py": "e4c4c2d6a0c81f498a3462d124ad2c73c89bc8ef0547d00e9bea4619e2a7cda3"
+  }
+}

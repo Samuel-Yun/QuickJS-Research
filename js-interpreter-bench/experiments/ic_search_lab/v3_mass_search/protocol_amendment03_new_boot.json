@@ -1,0 +1,24 @@
+{
+  "status": "FROZEN_BEFORE_RESTART",
+  "timestamp": "2026-11-05T19:12:15.201054+00:00",
+  "old_boot": "014332e0-e75e-4979-9d20-209f2e02e51e",
+  "new_boot": "60e5fc2a-8093-43c7-92f5-9a5aaf3d53a5",
+  "old_campaign": "1793900130308983519",
+  "new_campaign": "1793905935201043337",
+  "old_status": "STOPPED_CONTROLLER_FILENAME_COLLISION_THEN_BOOT_CHANGED",
+  "preserved_old_complete_configurations": 96,
+  "old_raw_retained": true,
+  "cause": "Candidate S001 metadata collided with frozen s001 on case-insensitive NTFS. Guard stopped before writes. Later explicit resume rejected changed WSL boot.",
+  "fix": "Separate candidate_S001 artifact/metadata stem. Candidate ID and source implementation unchanged.",
+  "new_sampling": "All248 supported configurations receive fresh within-campaign block controls; old96 are not used as new denominators.",
+  "baseline_sha256": {
+    "A": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+    "M": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+    "s001": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b"
+  },
+  "old_stop_and_protocol_kept": true,
+  "controller_changed": true,
+  "generator_changed": false,
+  "templates_changed": false,
+  "benchmark_changed": false
+}

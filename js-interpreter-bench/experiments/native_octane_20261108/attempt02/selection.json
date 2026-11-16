@@ -1,0 +1,55 @@
+{
+  "parent": "PREP2",
+  "new_candidates": [
+    "COALLOC",
+    "FUSE_A1L1",
+    "CALL02"
+  ],
+  "independent": true,
+  "performance_samples_seen": 0,
+  "performance_repetitions": 5,
+  "full_octane_cases": 17,
+  "old_controls_reused": true,
+  "SunSpider": false,
+  "V8_OFF": false,
+  "COALLOC": {
+    "change": "Coallocate records after final compiled bytecode inside owning JSFunctionBytecode allocation; loaded code retains external fallback",
+    "record_bytes": 24,
+    "function_header_bytes": 144,
+    "new_runtime_hit_checks": 0
+  },
+  "FUSE_A1L1": {
+    "change": "Add prepared borrowing only for arg1/loc1 followed by get_field; preserve both entries and lengths",
+    "selection": "Bounded N1 Run-only counts on pristine frozen-parent diagnostic; choose two forms before new performance",
+    "forms": [
+      "arg1",
+      "loc1"
+    ],
+    "Richards.Richards": {
+      "arg1_adjacent": 0,
+      "arg1_own_hits": 0,
+      "loc1_adjacent": 36169,
+      "loc1_own_hits": 36148
+    },
+    "RayTrace.RayTrace": {
+      "arg1_adjacent": 86790,
+      "arg1_own_hits": 86775,
+      "loc1_adjacent": 22205,
+      "loc1_own_hits": 22057
+    },
+    "EarleyBoyer.Boyer": {
+      "arg1_adjacent": 387531,
+      "arg1_own_hits": 387518,
+      "loc1_adjacent": 170480,
+      "loc1_own_hits": 170470
+    }
+  },
+  "CALL02": {
+    "change": "Unroll post-return release loop for argc 0/1/2, plain and method calls; preserve release order and generic larger-argc path",
+    "selection": "Boyer source-line self Ir for plain cleanup loop 11712917 / timed total 1142069720, about 1.03%; separate counts show 0..2 args frequent",
+    "native_time_share": "UNKNOWN",
+    "function_frame_redesign": false
+  },
+  "count_scope": "N1 Run only, markers added around original loop; not formal per-Run timing or all-case native cost attribution",
+  "profile_VM_source_unchanged": true
+}

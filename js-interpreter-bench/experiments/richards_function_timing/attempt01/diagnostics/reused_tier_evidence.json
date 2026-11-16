@@ -1,0 +1,113 @@
+{
+  "v8": {
+    "pass": true,
+    "trace_supported": {
+      "--trace-baseline": true,
+      "--trace-opt": true,
+      "--trace-opt-status": true,
+      "--trace-deopt": true,
+      "--trace-osr": true,
+      "--print-bytecode": true
+    },
+    "effective_flags": {
+      "--max-opt=0": true,
+      "--no-sparkplug": true,
+      "--no-maglev": true,
+      "--no-turbofan": true,
+      "--no-lazy": true
+    },
+    "counts": {
+      "default": {
+        "sparkplug_compilation": 11,
+        "maglev_compilation": 7,
+        "turbofan_compilation": 6,
+        "successful_osr_entry": 2,
+        "baseline_status": 5,
+        "maglev_status": 3,
+        "turbofan_status": 3,
+        "interpreted_status": 6
+      },
+      "candidate": {
+        "sparkplug_compilation": 0,
+        "maglev_compilation": 0,
+        "turbofan_compilation": 0,
+        "successful_osr_entry": 0,
+        "baseline_status": 0,
+        "maglev_status": 0,
+        "turbofan_status": 0,
+        "interpreted_status": 333
+      }
+    },
+    "ignition_bytecode_observed": true,
+    "regexp_interpret_all": false,
+    "bytecode_flushing_enabled": true
+  },
+  "jsc": {
+    "pass": true,
+    "options": {
+      "default": {
+        "useLLInt": true,
+        "useJIT": true,
+        "useBaselineJIT": true,
+        "useDFGJIT": true,
+        "useFTLJIT": true,
+        "useRegExpJIT": true,
+        "useLLIntICs": true,
+        "reportBytecodeCompileTimes": false,
+        "reportBytecodeCacheDecodeTimes": false
+      },
+      "candidate": {
+        "useLLInt": true,
+        "useJIT": false,
+        "useBaselineJIT": false,
+        "useDFGJIT": false,
+        "useFTLJIT": false,
+        "useRegExpJIT": false,
+        "useLLIntICs": true,
+        "reportBytecodeCompileTimes": false,
+        "reportBytecodeCacheDecodeTimes": false
+      }
+    },
+    "counts": {
+      "default": {
+        "baseline_compilation": 2,
+        "dfg_code_events": 2,
+        "ftl_code_events": 1,
+        "successful_osr": 2,
+        "llint_installations": 3,
+        "osr_slowpath_entries": 376
+      },
+      "candidate": {
+        "baseline_compilation": 0,
+        "dfg_code_events": 0,
+        "ftl_code_events": 0,
+        "successful_osr": 0,
+        "llint_installations": 3,
+        "osr_slowpath_entries": 2
+      }
+    },
+    "osr_slowpath_is_successful_osr": false
+  },
+  "quickjs": {
+    "pass": true,
+    "direct_dispatch_macro": true,
+    "dispatch_table_symbols": [
+      "00000000000fed80 d dispatch_table.83"
+    ],
+    "indexed_indirect_jumps": [
+      "   22cd2:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   22f0c:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   232ea:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   23904:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   265d7:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   26676:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   266dd:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   26743:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   26783:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   267e9:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   26829:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]",
+      "   26868:\t41 ff 24 c7          \tjmp    QWORD PTR [r15+rax*8]"
+    ]
+  },
+  "all_mode_gates_pass": true
+}

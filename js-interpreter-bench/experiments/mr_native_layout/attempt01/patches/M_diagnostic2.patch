@@ -1,0 +1,391 @@
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,6 +311,8 @@
+     exit(1);
+ }
+ 
++extern void read_ic_report(void);
++extern void layout_report(void);
+ int main(int argc, char **argv)
+ {
+     JSRuntime *rt;
+@@ -559,10 +561,13 @@
+                best[1] + best[2] + best[3] + best[4],
+                best[1], best[2], best[3], best[4]);
+     }
++    read_ic_report();
++    layout_report();
+     return 0;
+  fail:
+     js_std_free_handlers(rt);
+     JS_FreeContext(ctx);
+     JS_FreeRuntime(rt);
++    read_ic_report();
+     return 1;
+ }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -29,6 +29,7 @@
+ {
+     RDI_COUNT(updates);
+ #if RDI_CAPACITY == 1
++    RDI_COUNT(update_comparisons);
+     if (s->shape == shape) {
+         s->prop_offset = offset;
+         return;
+--- /dev/null
++++ b/counter.inc
+@@ -0,0 +1,73 @@
++/* Diagnostic only: actual computed-goto dispatch, not logical/fused/CPU instructions. */
++typedef struct LayoutFunction {
++    struct LayoutFunction *next;
++    JSFunctionBytecode *key;
++    unsigned id;
++    char *name, *filename;
++    int len;
++    uint8_t *code;
++    char **atoms;
++    unsigned long long *counts;
++    uint8_t *op_at_pc;
++} LayoutFunction;
++static LayoutFunction *layout_functions;
++static unsigned layout_next_id;
++static const char *const layout_op_names[OP_COUNT]={
++#define DEF(id,size,n_pop,n_push,fmt) #id,
++#if SHORT_OPCODES
++#define def(id,size,n_pop,n_push,fmt)
++#else
++#define def(id,size,n_pop,n_push,fmt) "invalid",
++#endif
++#include "quickjs-opcode.h"
++};
++static void layout_retire(JSFunctionBytecode *b) {
++    for(LayoutFunction *f=layout_functions;f;f=f->next)if(f->key==b){f->key=NULL;return;}
++}
++static void layout_count(JSContext *ctx, JSFunctionBytecode *b, const uint8_t *pc, int op) {
++    LayoutFunction *f=layout_functions;
++    for(;f;f=f->next)if(f->key==b)break;
++    if(!f){
++        f=calloc(1,sizeof(*f));if(!f)abort();f->key=b;f->id=++layout_next_id;f->len=b->byte_code_len;
++        const char *s=JS_AtomToCString(ctx,b->func_name);if(!s)abort();f->name=strdup(s);JS_FreeCString(ctx,s);
++        s=b->has_debug?JS_AtomToCString(ctx,b->debug.filename):"";if(!s)abort();f->filename=strdup(s);if(b->has_debug)JS_FreeCString(ctx,s);
++        f->code=calloc(f->len,1);f->atoms=calloc(f->len,sizeof(char*));
++        f->counts=calloc(f->len*2,sizeof(unsigned long long));f->op_at_pc=calloc(f->len,1);
++        if(!f->code||!f->atoms||!f->counts||!f->op_at_pc)abort();
++        memcpy(f->code,b->byte_code_buf,f->len);
++        for(int pos=0,opcode;pos<f->len;pos+=short_opcode_info(opcode).size){
++            opcode=f->code[pos];JSAtom atom=JS_ATOM_NULL;
++            if(opcode==OP_get_field_rdi||opcode==OP_get_field2_rdi){atom=b->read_ic_sites[get_u32(f->code+pos+1)].atom;opcode=opcode==OP_get_field_rdi?OP_get_field:OP_get_field2;f->code[pos]=opcode;}
++            unsigned fmt=short_opcode_info(opcode).fmt;
++            if(fmt==OP_FMT_atom||fmt==OP_FMT_atom_u8||fmt==OP_FMT_atom_u16||fmt==OP_FMT_atom_label_u8||fmt==OP_FMT_atom_label_u16){
++                if(atom==JS_ATOM_NULL)atom=get_u32(f->code+pos+1);
++                s=JS_AtomToCString(ctx,atom);if(!s)abort();f->atoms[pos]=strdup(s);JS_FreeCString(ctx,s);memset(f->code+pos+1,0,4);
++            }
++        }
++        f->next=layout_functions;layout_functions=f;
++    }
++    if(pc<b->byte_code_buf||pc>=b->byte_code_buf+b->byte_code_len)abort();
++    unsigned off=pc-b->byte_code_buf;
++    /* A site may change only MIC -> ordinary, two channels keep both raw counts. */
++    unsigned base=f->code[off];
++    if(op==OP_get_field_rdi||op==OP_get_field2_rdi){f->counts[off*2+1]++;f->op_at_pc[off]=op;}
++    else {if(base!=op)abort();f->counts[off*2]++;}
++}
++static void layout_hex(FILE *o,const char *s){for(;*s;s++)fprintf(o,"%02x",(unsigned char)*s);}
++void layout_report(void){
++    const char *path=getenv("LAYOUT_REPORT");if(!path)return;FILE *o=fopen(path,"wx");if(!o)abort();
++    fprintf(o,"{\"scope\":\"whole process actual dispatch, per function lifetime and original PC; normal/IC channels\",\"opcodes\":[");
++    for(int i=0;i<OP_COUNT;i++)fprintf(o,"%s{\"id\":%d,\"name\":\"%s\",\"size\":%u}",i?",":"",i,layout_op_names[i],short_opcode_info(i).size);
++    fprintf(o,"],\"functions\":[");
++    for(LayoutFunction *f=layout_functions;f;f=f->next){
++        fprintf(o,"{\"id\":%u,\"name_hex\":\"",f->id);layout_hex(o,f->name);fprintf(o,"\",\"filename_hex\":\"");layout_hex(o,f->filename);
++        fprintf(o,"\",\"normalized_code_hex\":\"");for(int i=0;i<f->len;i++)fprintf(o,"%02x",f->code[i]);fprintf(o,"\",\"atoms\":[");int comma=0;
++        for(int i=0;i<f->len;i++)if(f->atoms[i]){fprintf(o,"%s{\"pc\":%d,\"name_hex\":\"",comma++?",":"",i);layout_hex(o,f->atoms[i]);fprintf(o,"\"}");}
++        fprintf(o,"],\"dispatch\":[");comma=0;
++        for(int i=0;i<f->len;i++)if(f->counts[i*2]||f->counts[i*2+1]){
++            fprintf(o,"%s{\"pc\":%d,\"ordinary_opcode\":%u,\"ordinary_count\":%llu,\"ic_opcode\":%u,\"ic_count\":%llu}",comma++?",":"",i,f->code[i],f->counts[i*2],f->op_at_pc[i],f->counts[i*2+1]);
++        }
++        fprintf(o,"]}%s",f->next?",":"");
++    }
++    fprintf(o,"]}\n");fclose(o);
++}
+--- /dev/null
++++ b/read_ic_diag.h
+@@ -0,0 +1,146 @@
++/* Diagnostic only, no field in formal ReadICSite. Counters identical for M/P. */
++typedef struct RDICounters {
++    unsigned long long queries,hits,fallback,comparisons,shape_misses;
++    unsigned long long updates,update_comparisons,insertions,replacements;
++    unsigned long long own_miss,descriptor,special,unhashed,inherited,missing,primitive;
++    unsigned long long post_exit_reads,exits,exit_shape_releases,streak_reads,streak_writes,streak_resets;
++    unsigned long long exit_query_index,hash_counts[3];
++    unsigned final_opcode,final_operand,final_streak,exit_atom;
++    unsigned occupied,max_occupied,pc,op;
++    char *atom;
++} RDICounters;
++typedef struct RDIAtomMap { unsigned pc; char *name; } RDIAtomMap;
++typedef struct RDISource {
++    struct RDISource *next,*hash_next;
++    uint64_t hash,id;
++    size_t length;
++    char bytes[];
++} RDISource;
++struct RDIFunctionDiag {
++    struct RDIFunctionDiag *next;
++    unsigned long long id,source_id;
++    unsigned site_count,bc_len,atom_count;
++    unsigned freed;
++    char *name,*filename;
++    uint8_t *code;
++    RDIAtomMap *atoms;
++    RDICounters sites[];
++};
++static RDIFunctionDiag *rdi_diag_head;
++static RDISource *rdi_sources,*rdi_source_hash[1024];
++static uint64_t rdi_source_id;
++static unsigned long long rdi_diag_functions,rdi_diag_functions_live,rdi_diag_sites,rdi_diag_used;
++static unsigned long long rdi_diag_requested,rdi_diag_live,rdi_diag_peak;
++static unsigned long long rdi_diag_shape_ref,rdi_diag_shape_unref,rdi_diag_shape_live,rdi_diag_shape_peak;
++static void rdi_diag_add_bytes(size_t n) {
++    rdi_diag_requested+=n;rdi_diag_live+=n;
++    if(rdi_diag_live>rdi_diag_peak)rdi_diag_peak=rdi_diag_live;
++}
++static void rdi_diag_header_init(void) {
++    rdi_diag_functions++;rdi_diag_functions_live++;
++    rdi_diag_add_bytes(16); /* audited x64 formal added function header component */
++}
++static void rdi_diag_query(RDICounters *d) {
++    if(!d->queries)rdi_diag_used++;
++    d->queries++;
++}
++static void rdi_diag_exit(RDICounters *d,uint8_t *pc,int had_shape) {
++    assert(!d->exits);d->exits++;d->exit_query_index=d->queries;d->exit_atom=get_u32(pc+1);
++    if(had_shape){assert(d->occupied==1);d->occupied=0;d->exit_shape_releases++;rdi_diag_shape_unref++;assert(rdi_diag_shape_live);rdi_diag_shape_live--;}
++}
++static RDICounters *rdi_diag_post_read(JSFunctionBytecode *b,const uint8_t *pc) {
++    if(!b->read_ic_diag)return NULL;
++    unsigned offset=pc-b->byte_code_buf;
++    for(unsigned i=0;i<b->read_ic_diag->site_count;i++) {
++        RDICounters *d=&b->read_ic_diag->sites[i];
++        if(d->pc==offset && d->exits){d->post_exit_reads++;return d;}
++    }
++    return NULL;
++}
++static force_inline JSShapeProperty *rdi_counted_find(JSProperty **pr,JSObject *p,JSAtom atom,RDICounters *d) {
++    unsigned long long *saved=rdi_hash_context;rdi_hash_context=d->hash_counts;
++    JSShapeProperty *res=find_own_property(pr,p,atom);rdi_hash_context=saved;return res;
++}
++static void rdi_diag_occupy(RDICounters *d) {
++    d->insertions++;d->occupied++;
++    if(d->occupied>d->max_occupied)d->max_occupied=d->occupied;
++    rdi_diag_shape_ref++;rdi_diag_shape_live++;
++    if(rdi_diag_shape_live>rdi_diag_shape_peak)rdi_diag_shape_peak=rdi_diag_shape_live;
++}
++static void rdi_diag_release(JSFunctionBytecode *b) {
++    if(!b->read_ic_ready)return;
++    assert(rdi_diag_functions_live && rdi_diag_live>=16);
++    rdi_diag_functions_live--;rdi_diag_live-=16;
++    if(b->read_ic_diag) {
++        RDIFunctionDiag *f=b->read_ic_diag;f->freed=1;
++        for(unsigned i=0;i<f->site_count;i++) {
++            RDICounters *d=&f->sites[i];
++            d->final_opcode=b->byte_code_buf[d->pc];d->final_operand=get_u32(b->byte_code_buf+d->pc+1);
++#if RDI_DEQUICKEN
++            d->final_streak=b->read_ic_sites[i].miss_streak;
++#endif
++            unsigned n=f->sites[i].occupied;
++            rdi_diag_shape_unref+=n;assert(rdi_diag_shape_live>=n);rdi_diag_shape_live-=n;
++            f->sites[i].occupied=0;
++        }
++        size_t bytes=b->read_ic_count*sizeof(ReadICSite);
++        assert(rdi_diag_live>=bytes);rdi_diag_live-=bytes;
++    }
++}
++static char *rdi_diag_atom(JSContext *ctx,JSAtom atom) {
++    const char *s=JS_AtomToCString(ctx,atom);if(!s)abort();
++    char *copy=strdup(s);if(!copy)abort();JS_FreeCString(ctx,s);return copy;
++}
++static uint64_t rdi_diag_source(JSFunctionBytecode *b) {
++    if(!b->has_debug || !b->debug.source || b->debug.source_len<=0)return 0;
++    const unsigned char *p=(const unsigned char*)b->debug.source;size_t n=b->debug.source_len;
++    uint64_t h=UINT64_C(14695981039346656037);
++    for(size_t i=0;i<n;i++){h^=p[i];h*=UINT64_C(1099511628211);}
++    unsigned bucket=h&1023;RDISource *s;
++    for(s=rdi_source_hash[bucket];s;s=s->hash_next)
++        if(s->hash==h && s->length==n && !memcmp(s->bytes,p,n))return s->id;
++    s=calloc(1,sizeof(*s)+n);if(!s)abort();memcpy(s->bytes,p,n);
++    s->length=n;s->hash=h;s->id=++rdi_source_id;s->hash_next=rdi_source_hash[bucket];rdi_source_hash[bucket]=s;
++    s->next=rdi_sources;rdi_sources=s;return s->id;
++}
++static void rdi_hex(FILE *out,const void *data,size_t n) {
++    const unsigned char *p=data;for(size_t i=0;i<n;i++)fprintf(out,"%02x",p[i]);
++}
++void read_ic_report(void) {
++    const char *path=getenv("READ_IC_REPORT");if(!path)return;
++    FILE *out=fopen(path,"wx");if(!out)abort();
++    fprintf(out,"{\"capacity\":%u,\"site_bytes\":%zu,\"site_alignment\":%zu,\"formal_header_extra_bytes\":16,"
++      "\"finalized_functions\":%llu,\"functions_live_after_free\":%llu,\"sites_created\":%llu,\"sites_used\":%llu,"
++      "\"requested_direct_bytes\":%llu,\"peak_live_direct_bytes\":%llu,\"live_direct_after_free\":%llu,"
++      "\"shape_ref_increments\":%llu,\"shape_ref_decrements\":%llu,\"shape_refs_peak\":%llu,\"shape_refs_after_free\":%llu,\"sources\":[",
++      RDI_CAPACITY,sizeof(ReadICSite),_Alignof(ReadICSite),rdi_diag_functions,rdi_diag_functions_live,rdi_diag_sites,rdi_diag_used,
++      rdi_diag_requested,rdi_diag_peak,rdi_diag_live,rdi_diag_shape_ref,rdi_diag_shape_unref,rdi_diag_shape_peak,rdi_diag_shape_live);
++    for(RDISource *s=rdi_sources;s;s=s->next) {
++        fprintf(out,"{\"source_id\":%llu,\"source_hex\":\"",(unsigned long long)s->id);rdi_hex(out,s->bytes,s->length);
++        fprintf(out,"\"}%s",s->next?",":"");
++    }
++    fprintf(out,"],\"functions\":[");
++    for(RDIFunctionDiag *f=rdi_diag_head;f;f=f->next) {
++        fprintf(out,"{\"instance_id\":%llu,\"source_id\":%llu,\"freed\":%u,\"function_hex\":\"",f->id,f->source_id,f->freed);
++        rdi_hex(out,f->name,strlen(f->name));fprintf(out,"\",\"filename_hex\":\"");rdi_hex(out,f->filename,strlen(f->filename));
++        fprintf(out,"\",\"bytecode_zero_atoms_hex\":\"");rdi_hex(out,f->code,f->bc_len);
++        fprintf(out,"\",\"atoms\":[");
++        for(unsigned i=0;i<f->atom_count;i++) {
++            fprintf(out,"{\"pc\":%u,\"atom_hex\":\"",f->atoms[i].pc);rdi_hex(out,f->atoms[i].name,strlen(f->atoms[i].name));
++            fprintf(out,"\"}%s",i+1<f->atom_count?",":"");
++        }
++        fprintf(out,"],\"sites\":[");
++        for(unsigned i=0;i<f->site_count;i++) {
++            RDICounters *d=&f->sites[i];
++            fprintf(out,"{\"index\":%u,\"pc\":%u,\"opcode\":\"%s\",\"atom_hex\":\"",i,d->pc,d->op==OP_get_field?"get_field":"get_field2");rdi_hex(out,d->atom,strlen(d->atom));
++            fprintf(out,"\",\"post_exit_reads\":%llu,\"exits\":%llu,\"exit_shape_releases\":%llu,\"streak_reads\":%llu,\"streak_writes\":%llu,\"streak_resets\":%llu,\"exit_query_index\":%llu,\"hash_find_calls\":%llu,\"hash_bucket_loads\":%llu,\"hash_chain_probes\":%llu,\"final_opcode_id\":%u,\"final_operand\":%u,\"final_streak\":%u,\"exit_atom_operand\":%u,\"original_opcode_id\":%u,",d->post_exit_reads,d->exits,d->exit_shape_releases,d->streak_reads,d->streak_writes,d->streak_resets,d->exit_query_index,d->hash_counts[0],d->hash_counts[1],d->hash_counts[2],d->final_opcode,d->final_operand,d->final_streak,d->exit_atom,d->op);
++            fprintf(out,"\"queries\":%llu,\"hits\":%llu,\"fallback\":%llu,\"comparisons\":%llu,\"shape_misses\":%llu,"
++              "\"updates\":%llu,\"update_comparisons\":%llu,\"insertions\":%llu,\"replacements\":%llu,\"max_occupied\":%u,"
++              "\"own_miss\":%llu,\"descriptor\":%llu,\"special\":%llu,\"unhashed\":%llu,\"inherited\":%llu,\"missing\":%llu,\"primitive\":%llu}%s",
++              d->queries,d->hits,d->fallback,d->comparisons,d->shape_misses,d->updates,d->update_comparisons,d->insertions,d->replacements,d->max_occupied,
++              d->own_miss,d->descriptor,d->special,d->unhashed,d->inherited,d->missing,d->primitive,i+1<f->site_count?",":"");
++        }
++        fprintf(out,"]}%s",f->next?",":"");
++    }
++    fprintf(out,"],\"all_find_own_property_calls\":%llu,\"all_hash_bucket_loads\":%llu,\"all_hash_chain_probes\":%llu}\n",rdi_all_hash[0],rdi_all_hash[1],rdi_all_hash[2]);fclose(out);
++}
+--- /dev/null
++++ b/read_ic_diag_prepare.inc
+@@ -0,0 +1,27 @@
++static void rdi_diag_prepare(JSContext *ctx, JSFunctionBytecode *b)
++{
++    unsigned atoms=0,j=0,index=0;int pos,op;
++    RDIFunctionDiag *f=calloc(1,sizeof(*f)+b->read_ic_count*sizeof(RDICounters));if(!f)abort();
++    f->id=rdi_diag_functions;f->site_count=b->read_ic_count;f->bc_len=b->byte_code_len;
++    f->source_id=rdi_diag_source(b);f->name=rdi_diag_atom(ctx,b->func_name);
++    f->filename=b->has_debug?rdi_diag_atom(ctx,b->debug.filename):strdup("");
++    f->code=calloc(1,f->bc_len);if(!f->code||!f->filename)abort();memcpy(f->code,b->byte_code_buf,f->bc_len);
++    for(pos=0;pos<b->byte_code_len;pos+=short_opcode_info(op).size) {
++        op=b->byte_code_buf[pos];unsigned fmt=short_opcode_info(op).fmt;
++        if(fmt==OP_FMT_atom||fmt==OP_FMT_atom_u8||fmt==OP_FMT_atom_u16||fmt==OP_FMT_atom_label_u8||fmt==OP_FMT_atom_label_u16)atoms++;
++    }
++    f->atom_count=atoms;f->atoms=calloc(atoms,sizeof(RDIAtomMap));if(atoms&&!f->atoms)abort();
++    for(pos=0;pos<b->byte_code_len;pos+=short_opcode_info(op).size) {
++        op=b->byte_code_buf[pos];unsigned fmt=short_opcode_info(op).fmt;
++        if(fmt==OP_FMT_atom||fmt==OP_FMT_atom_u8||fmt==OP_FMT_atom_u16||fmt==OP_FMT_atom_label_u8||fmt==OP_FMT_atom_label_u16) {
++            f->atoms[j].pc=pos;f->atoms[j].name=rdi_diag_atom(ctx,get_u32(b->byte_code_buf+pos+1));j++;
++            memset(f->code+pos+1,0,4);
++        }
++        if(op==OP_get_field||op==OP_get_field2) {
++            RDICounters *d=&f->sites[index++];d->pc=pos;d->op=op;
++            d->atom=rdi_diag_atom(ctx,get_u32(b->byte_code_buf+pos+1));
++        }
++    }
++    assert(index==b->read_ic_count);f->next=rdi_diag_head;rdi_diag_head=f;b->read_ic_diag=f;
++    rdi_diag_sites+=b->read_ic_count;rdi_diag_add_bytes(b->read_ic_count*sizeof(ReadICSite));
++}
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -1,3 +1,4 @@
++#include "read_ic_diag_prepare.inc"
+ /* Called only for fully built b, after all compiler passes / atom fixups. */
+ static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b)
+ {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,5 @@
++#define READ_IC_DIAGNOSTIC 1
++#define RDI_DEQUICKEN 0
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -6141,6 +6143,8 @@
+     return NULL;
+ }
+ 
++static _Thread_local unsigned long long *rdi_hash_context;
++static unsigned long long rdi_all_hash[3];
+ static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+                                                        JSObject *p,
+                                                        JSAtom atom)
+@@ -6148,11 +6152,14 @@
+     JSShape *sh;
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
++    rdi_all_hash[0]++; if(rdi_hash_context)rdi_hash_context[0]++;
+     sh = p->shape;
+     h = (uintptr_t)atom & sh->prop_hash_mask;
++    rdi_all_hash[1]++; if(rdi_hash_context)rdi_hash_context[1]++;
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+     while (h) {
++        rdi_all_hash[2]++; if(rdi_hash_context)rdi_hash_context[2]++;
+         pr = &prop[h - 1];
+         if (likely(pr->atom == atom)) {
+             *ppr = &p->prop[h - 1];
+@@ -17758,6 +17765,8 @@
+ #define FUNC_RET_YIELD_STAR    2
+ #define FUNC_RET_INITIAL_YIELD 3
+ 
++static void layout_count(JSContext*,JSFunctionBytecode*,const uint8_t*,int);
++
+ #ifdef OPCODE_ASM_LABEL
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wunused-label"
+@@ -17795,7 +17804,7 @@
+ #include "quickjs-opcode.h"
+         [ OP_COUNT ... 255 ] = &&case_default
+     };
+-#define SWITCH(pc)      goto *dispatch_table[opcode = *pc++];
++#define SWITCH(pc)      do { opcode=*pc++; layout_count(ctx,b,pc-1,opcode); goto *dispatch_table[opcode]; } while(0);
+ #ifdef OPCODE_ASM_LABEL
+ #define CASE(op)        case_ ## op: asm volatile("label_" #op ":\n.globl label_" #op); dummy_case_ ## op
+ #else
+@@ -19127,6 +19136,7 @@
+ 
+ #define GET_FIELD_INLINE(name, keep, is_length)                         \
+             {                                                           \
++                RDICounters *dn=rdi_diag_post_read(b,pc-1);             \
+                 JSValue val, obj;                                       \
+                 JSAtom atom;                                            \
+                 JSObject *p;                                            \
+@@ -19144,7 +19154,7 @@
+                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {   \
+                     p = JS_VALUE_GET_OBJ(obj);                          \
+                     for(;;) {                                           \
+-                        prs = find_own_property(&pr, p, atom);          \
++                        prs = dn ? rdi_counted_find(&pr,p,atom,dn) : find_own_property(&pr,p,atom);          \
+                         if (prs) {                                      \
+                             /* found */                                 \
+                             if (unlikely(prs->flags & JS_PROP_TMASK))   \
+@@ -32148,6 +32158,7 @@
+ }
+ 
+ #include "read_ic_prepare.inc"
++#include "counter.inc"
+ 
+ static void free_bytecode_atoms(JSRuntime *rt,
+                                 const uint8_t *bc_buf, int bc_len,
+@@ -36311,6 +36322,7 @@
+ 
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b)
+ {
++    layout_retire(b);
+     int i;
+ 
+ #if 0
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -28,7 +28,7 @@
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+             for (;;) {                                                  \
+-                prs = find_own_property(&pr, p, atom);                   \
++                prs = rdi_counted_find(&pr,p,atom,d);                   \
+                 if (prs) {                                              \
+                     if (unlikely(prs->flags & JS_PROP_TMASK)) {          \
+                         RDI_REASON(descriptor);                        \

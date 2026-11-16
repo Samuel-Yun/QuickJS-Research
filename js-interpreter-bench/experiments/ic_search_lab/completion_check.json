@@ -1,0 +1,28 @@
+{
+  "status": "FINAL_IDENTITIES_MATCH_NO_ENGINE_OR_COMPILER_ACTIVE",
+  "timestamp": "2026-11-04T16:38:16.171883+00:00",
+  "boot_id": "05b4c4ae-91e8-4b42-a8b6-a958aa7b93ef",
+  "frozen_original_and_copy_hashes": {
+    "A": {
+      "original_path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "original_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "copied_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/A.qjs",
+      "copied_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1"
+    },
+    "M": {
+      "original_path": "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+      "original_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "copied_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/M.qjs",
+      "copied_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef"
+    }
+  },
+  "active_version": "c012, not promoted; ignored active source only",
+  "active32_source_and_compat_hashes_match": true,
+  "busy_processes": [],
+  "idle_helper": {
+    "pid": 4149,
+    "action": "SIGTERM sent only to verified own idle helper",
+    "command": "python3 -u -c import time,pathlib,os; print('IC_SEARCH_IDLE_EXTENSION',os.getpid(),pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip(),flush=True); time.sleep(14400) "
+  },
+  "meaning": "Cleanup happens AFTER all measurements. No runtime or user application terminated; WSL not shut down."
+}

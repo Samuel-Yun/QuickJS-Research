@@ -1,0 +1,76 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -365,6 +365,7 @@
+ DEF(get_field_rdi, 5, 1, 1, u32)
+ DEF(get_field2_rdi, 5, 1, 2, u32)
+ 
++DEF(rdi_immediate, 5, 1, 1, u32)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -37760,11 +37760,11 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_rdi_immediate) {
+             uint32_t delta = get_u32(bc_buf + pos + 1);
+             ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
+             assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
+-            op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
++            op = (op == OP_get_field2_rdi) ? OP_get_field2 : OP_get_field;
+             bc_buf[pos] = op;
+             put_u32(bc_buf + pos + 1, site->atom);
+         }
+@@ -38668,7 +38668,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_rdi_immediate) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+             return -1;
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -18,6 +18,10 @@
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    if (!(keep)) {                                     \
++                        JSValue value = val;                            \
++                        if (!JS_VALUE_HAS_REF_COUNT(value)) ((uint8_t *)pc)[-5] = OP_rdi_immediate; \
++                    }                                                   \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+@@ -63,6 +67,27 @@
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
+     }
++        CASE(OP_rdi_immediate):
++            {
++                ReadICSite *site = (ReadICSite *)(pc + get_u32(pc));
++                JSValue receiver = sp[-1];
++                if (JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) {
++                    JSObject *object = JS_VALUE_GET_OBJ(receiver);
++                    if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic &&
++                        site->shape == object->shape) {
++                        JSValue value = object->prop[site->prop_offset].u.value;
++                        if (!JS_VALUE_HAS_REF_COUNT(value)) {
++                            pc += 4;
++                            JS_FreeValue(ctx, receiver);
++                            sp[-1] = value;
++                            BREAK;
++                        }
++                    }
++                }
++                /* No operands consumed; preserve the original exception/ownership path. */
++                ((uint8_t *)pc)[-1] = OP_get_field_rdi;
++            }
++            /* Intentional fall-through to the full original read IC. */
+         CASE(OP_get_field_rdi):
+             GET_READ_IC(get_field_rdi, 0);
+             BREAK;

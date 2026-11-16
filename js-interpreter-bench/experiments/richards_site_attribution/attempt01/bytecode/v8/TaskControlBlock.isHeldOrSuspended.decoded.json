@@ -1,0 +1,100 @@
+[
+  {
+    "address": "0x1eef01001650",
+    "offset": 0,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [0:\"state\"], FBV[0]"
+  },
+  {
+    "address": "0x1eef01001654",
+    "offset": 4,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "address": "0x1eef01001655",
+    "offset": 5,
+    "size": 3,
+    "opcode": "LdaGlobal",
+    "operands": "[1:\"STATE_HELD\"], FBV[2]"
+  },
+  {
+    "address": "0x1eef01001658",
+    "offset": 8,
+    "size": 3,
+    "opcode": "BitwiseAnd",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x1eef0100165b",
+    "offset": 11,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "address": "0x1eef0100165c",
+    "offset": 12,
+    "size": 1,
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "address": "0x1eef0100165d",
+    "offset": 13,
+    "size": 3,
+    "opcode": "TestEqual",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x1eef01001660",
+    "offset": 16,
+    "size": 1,
+    "opcode": "LogicalNot",
+    "operands": ""
+  },
+  {
+    "address": "0x1eef01001661",
+    "offset": 17,
+    "size": 2,
+    "opcode": "JumpIfTrue",
+    "operands": "[13] (0x1eef0100166e @ 30)"
+  },
+  {
+    "address": "0x1eef01001663",
+    "offset": 19,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [0:\"state\"], FBV[4]"
+  },
+  {
+    "address": "0x1eef01001667",
+    "offset": 23,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "address": "0x1eef01001668",
+    "offset": 24,
+    "size": 3,
+    "opcode": "LdaGlobal",
+    "operands": "[2:\"STATE_SUSPENDED\"], FBV[6]"
+  },
+  {
+    "address": "0x1eef0100166b",
+    "offset": 27,
+    "size": 3,
+    "opcode": "TestEqual",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x1eef0100166e",
+    "offset": 30,
+    "size": 1,
+    "opcode": "Return",
+    "operands": ""
+  }
+]

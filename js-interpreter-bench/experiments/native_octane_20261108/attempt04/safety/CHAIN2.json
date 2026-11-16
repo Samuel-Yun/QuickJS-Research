@@ -1,0 +1,90 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    {
+      "name": "checks.js",
+      "token": "semantic/CHAIN2/checks.js"
+    },
+    {
+      "name": "semantic.js",
+      "token": "semantic/CHAIN2/semantic.js"
+    },
+    {
+      "name": "targeted.js",
+      "token": "semantic/CHAIN2/targeted.js"
+    },
+    {
+      "name": "combined.js",
+      "token": "semantic/CHAIN2/combined.js"
+    },
+    {
+      "name": "old_layout.js",
+      "token": "semantic/CHAIN2/old_layout.js"
+    },
+    {
+      "name": "previous_paths.js",
+      "token": "semantic/CHAIN2/previous_paths.js"
+    },
+    {
+      "name": "extra.js",
+      "token": "semantic/CHAIN2/extra.js"
+    },
+    {
+      "name": "read_roundtrip.c",
+      "token": "safety_run/CHAIN2/read_roundtrip"
+    },
+    {
+      "name": "roundtrip_slots.c",
+      "token": "safety_run/CHAIN2/roundtrip_slots"
+    },
+    {
+      "name": "gc_cycles.c",
+      "token": "safety_run/CHAIN2/gc_cycles"
+    },
+    {
+      "name": "first_entry_roundtrip.c",
+      "token": "safety_run/CHAIN2/first_entry_roundtrip"
+    },
+    {
+      "name": "native_finalizer.c",
+      "token": "safety_run/CHAIN2/native_finalizer"
+    },
+    {
+      "name": "call_cleanup.c",
+      "token": "safety_run/CHAIN2/call_cleanup"
+    },
+    {
+      "name": "reentrant_store.c",
+      "token": "safety_run/CHAIN2/reentrant_store"
+    },
+    {
+      "name": "ASan/UBSan combined.js",
+      "token": "sanitizer/CHAIN2/combined.js"
+    },
+    {
+      "name": "ASan/UBSan old_layout.js",
+      "token": "sanitizer/CHAIN2/old_layout.js"
+    },
+    {
+      "name": "ASan/UBSan previous_paths.js",
+      "token": "sanitizer/CHAIN2/previous_paths.js"
+    },
+    {
+      "name": "ASan/UBSan extra.js",
+      "token": "sanitizer/CHAIN2/extra.js"
+    },
+    {
+      "name": "ASan/UBSan semantic.js",
+      "token": "sanitizer/CHAIN2/semantic.js"
+    }
+  ],
+  "mechanism": "REENTRANT_STORE_PASS callback_observed_published_value=71 calls=1\nSTATIC fixture=0 read_sites=1 extra_write_records=0 shared_writes=0\nSTATIC fixture=1 read_sites=1 extra_write_records=0 shared_writes=0\nSTATIC fixture=2 read_sites=2 extra_write_records=0 shared_writes=0\nSTATIC fixture=3 read_sites=2 extra_write_records=0 shared_writes=0\nSTATIC fixture=4 read_sites=2 extra_write_records=0 shared_writes=0\nTARGET_HITS chain=62 shared_store=0 mapped=2\nMECHANISM_PASS fused=251 proto=31 chain=62 shared_store=0 read_sites=8 mapped=2 record_bytes=24 function_header=144\n",
+  "read_record_count_unchanged": true,
+  "function_header_unchanged": true,
+  "hot_roundtrip": true,
+  "native_reentrant_store": true,
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "full_test262": false
+}

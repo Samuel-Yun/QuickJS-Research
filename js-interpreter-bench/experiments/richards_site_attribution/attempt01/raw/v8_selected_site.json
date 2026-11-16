@@ -1,0 +1,30 @@
+{
+  "exit_code": 0,
+  "stdout": "RICHARDS {\"N\":32,\"start_ms\":527.26,\"stop_ms\":732.833,\"elapsed_ms\":205.57299999999998,\"correctness\":\"PASS\",\"assertions_per_Run\":1,\"warmup_calls\":0}\nFEEDBACK isHeldOrSuspended\n0x107a01023869 <JSFunction (sfi = 0x107a01021781)>\nFEEDBACK schedule\n0x107a01023741 <JSFunction (sfi = 0x107a01021601)>\n",
+  "stderr": "V8 is running with developer-only features enabled. Stability and security will suffer.\n",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--allow-natives-syntax",
+    "--log-ic",
+    "--log-code",
+    "--no-logfile-per-isolate",
+    "--logfile=/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/raw/v8_selected_site.log",
+    "--print-bytecode",
+    "--print-bytecode-filter=TaskControlBlock.isHeldOrSuspended",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/DIAGNOSTIC_v8_feedback.N32.js"
+  ],
+  "timestamp_utc": "2026-10-17T09:14:52.912855+00:00",
+  "outer_wall_ns": 753041519,
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "boot_id": "add88663-068b-4f41-abfd-09203d995c6f",
+  "LD_PRELOAD": null
+}

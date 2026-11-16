@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "config": {
+    "output_json": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_gdb02/counter.json",
+    "gate_total": true,
+    "counter_cap": 10000,
+    "iterations": 16,
+    "rate": 0
+  },
+  "counts": {
+    "ic_miss": 2,
+    "no_feedback": 13,
+    "no_feedback_runtime_fallback": 1,
+    "named_load_entries": 18
+  },
+  "first_path_stacks": {
+    "no_feedback": "#0  0x00005cc1bfdff4c0 in Builtins_LoadIC_NoFeedback ()\n#1  0x00005cc1bffbc040 in Builtins_LdaGlobalHandler ()\n#2  0x00005cc1bee7ef57 in v8::internal::Runtime_SystemBreak(int, unsigned long*, v8::internal::Isolate*) ()\n#3  0x00005cc1bfdee181 in Builtins_InterpreterEntryTrampoline ()\n#4  0x00003a7800000011 in ?? ()\n#5  0x00003a7800000011 in ?? ()\n",
+    "no_feedback_runtime_fallback": "#0  0x00005cc1beb51c04 in v8::internal::Runtime_LoadNoFeedbackIC_Miss(int, unsigned long*, v8::internal::Isolate*) ()\n#1  0x00005cc1bfeaf3f6 in Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit ()\n#2  0x00005cc1bffbc040 in Builtins_LdaGlobalHandler ()\n#3  0x000000000000000c in ?? ()\n#4  0x00003a780101e3f9 in ?? ()\n#5  0x00003a7801018189 in ?? ()\n",
+    "named_load_entries": "#0  0x00005cc1bffc1140 in Builtins_GetNamedPropertyHandler ()\n#1  0x00005cc1bfdee181 in Builtins_InterpreterEntryTrampoline ()\n#2  0x00003a7800000011 in ?? ()\n#3  0x00003a7800000011 in ?? ()\n#4  0x00003a7800000020 in ?? ()\n#5  0x00003a7801046059 in ?? ()\n",
+    "ic_miss": "#0  0x00005cc1beb51094 in v8::internal::Runtime_LoadIC_Miss(int, unsigned long*, v8::internal::Isolate*) ()\n#1  0x00005cc1bfeaf3f6 in Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit ()\n#2  0x00005cc1bffc13a5 in Builtins_GetNamedPropertyHandler ()\n#3  0x00003a780101f735 in ?? ()\n#4  0x0000000000000004 in ?? ()\n#5  0x00003a780000351d in ?? ()\n"
+  },
+  "first_marker_stack": "#0  0x00005cc1c00326fd in v8::base::OS::DebugBreak() ()\n#1  0x00005cc1bee7ef57 in v8::internal::Runtime_SystemBreak(int, unsigned long*, v8::internal::Isolate*) ()\n#2  0x00005cc1bfeaf271 in Builtins_CEntry_Return1_ArgvInRegister_NoBuiltinExit ()\n#3  0x00005cc1bffce948 in Builtins_CallRuntimeHandler ()\n#4  0x00005cc1bfdee181 in Builtins_InterpreterEntryTrampoline ()\n",
+  "last_marker_stack": "#0  0x00005cc1c00326fd in v8::base::OS::DebugBreak() ()\n#1  0x00005cc1bee7ef57 in v8::internal::Runtime_SystemBreak(int, unsigned long*, v8::internal::Isolate*) ()\n#2  0x00005cc1bfeaf271 in Builtins_CEntry_Return1_ArgvInRegister_NoBuiltinExit ()\n#3  0x00005cc1bffce948 in Builtins_CallRuntimeHandler ()\n#4  0x00005cc1bfdee181 in Builtins_InterpreterEntryTrampoline ()\n",
+  "stop_events": [
+    "StopEvent",
+    "StopEvent"
+  ]
+}

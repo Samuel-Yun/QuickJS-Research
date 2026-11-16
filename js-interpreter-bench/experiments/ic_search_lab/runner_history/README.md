@@ -1,0 +1,5 @@
+# Runner版本
+
+`measure.before_matched.reconstructed.py`是按已知配置修正diff反向恢复的旧入口，不冒称当时自动快照。其SHA256实际核对为`0a675f3fbe5cd30d8b192f5e469bf78ed9386101e8011a7c17c8d5b26e6e1128`，与旧原始记录中的runner_sha256一致。原始目标JS文件和脚本hash也保持不变。
+
+本目录的其它hash命名文件（若后续生成）由复筛入口在启动时按文件原字节保存。不要在这里运行旧入口来覆盖历史数据；统计重算使用主目录audit_search.py。

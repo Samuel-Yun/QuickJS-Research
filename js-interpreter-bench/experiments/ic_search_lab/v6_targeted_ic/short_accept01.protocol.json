@@ -1,0 +1,281 @@
+{
+  "name": "short_accept01",
+  "labels": [
+    "A",
+    "s001",
+    "d03",
+    "d05",
+    "B2",
+    "ID_CTRL",
+    "ID_READ",
+    "W1",
+    "P1",
+    "L1",
+    "K1",
+    "C1"
+  ],
+  "stage": "short",
+  "rounds": 1,
+  "order": [
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "P1",
+        "W1",
+        "B2",
+        "K1",
+        "d05",
+        "s001",
+        "C1",
+        "ID_READ",
+        "A",
+        "L1",
+        "d03"
+      ],
+      "N": 256
+    },
+    {
+      "kind": "octane",
+      "case": "RayTrace.RayTrace",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "B2",
+        "K1",
+        "d05",
+        "s001",
+        "C1",
+        "ID_READ",
+        "A",
+        "L1",
+        "d03",
+        "ID_CTRL",
+        "P1"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "Gameboy.Gameboy",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "d05",
+        "K1",
+        "B2",
+        "W1",
+        "P1",
+        "ID_CTRL",
+        "d03",
+        "L1",
+        "A",
+        "ID_READ",
+        "C1"
+      ],
+      "N": 2
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "rep": 0,
+      "conditions": [
+        "K1",
+        "d05",
+        "s001",
+        "C1",
+        "ID_READ",
+        "A",
+        "L1",
+        "d03",
+        "ID_CTRL",
+        "P1",
+        "W1",
+        "B2"
+      ],
+      "N": 1024
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "rep": 0,
+      "conditions": [
+        "K1",
+        "B2",
+        "W1",
+        "P1",
+        "ID_CTRL",
+        "d03",
+        "L1",
+        "A",
+        "ID_READ",
+        "C1",
+        "s001",
+        "d05"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "rep": 0,
+      "conditions": [
+        "ID_READ",
+        "A",
+        "L1",
+        "d03",
+        "ID_CTRL",
+        "P1",
+        "W1",
+        "B2",
+        "K1",
+        "d05",
+        "s001",
+        "C1"
+      ],
+      "N": 8
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "P1",
+        "ID_CTRL",
+        "d03",
+        "L1",
+        "A",
+        "ID_READ",
+        "C1",
+        "s001",
+        "d05",
+        "K1",
+        "B2"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Typescript.Typescript",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "C1",
+        "ID_READ",
+        "A",
+        "L1",
+        "d03",
+        "ID_CTRL",
+        "P1",
+        "W1",
+        "B2",
+        "K1",
+        "d05"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "d03",
+        "L1",
+        "A",
+        "ID_READ",
+        "C1",
+        "s001",
+        "d05",
+        "K1",
+        "B2",
+        "W1",
+        "P1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bitwise-and",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "B2",
+        "K1",
+        "d05",
+        "s001",
+        "C1",
+        "ID_READ",
+        "A",
+        "L1",
+        "d03",
+        "ID_CTRL",
+        "P1"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "sunspider",
+      "case": "crypto-sha1",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "P1",
+        "W1",
+        "B2",
+        "K1",
+        "d05",
+        "s001",
+        "C1",
+        "ID_READ",
+        "A",
+        "L1",
+        "d03"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "sunspider",
+      "case": "access-nbody",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "d03",
+        "L1",
+        "A",
+        "ID_READ",
+        "C1",
+        "s001",
+        "d05",
+        "K1",
+        "B2",
+        "W1",
+        "P1"
+      ],
+      "N": 32
+    }
+  ],
+  "boot_id": "1273e914-93c0-476a-86d8-828bf27a8689",
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "seed": 2026110706,
+  "full_collection": false,
+  "N": {
+    "octane/Richards.Richards": 256,
+    "octane/DeltaBlue.DeltaBlue": 128,
+    "octane/RayTrace.RayTrace": 32,
+    "octane/Splay.Splay": 512,
+    "octane/CodeLoad.CodeLoadClosure": 1024,
+    "octane/CodeLoad.CodeLoadJQuery": 128,
+    "octane/Typescript.Typescript": 1,
+    "octane/Gameboy.Gameboy": 2,
+    "octane/NavierStokes.NavierStokes": 8,
+    "sunspider/crypto-sha1": 64,
+    "sunspider/access-nbody": 32,
+    "sunspider/bitops-bitwise-and": 64
+  },
+  "epoch": "accept01",
+  "environment_sha256": "82fd34d101d13409d5ad7c67be1f4a75cc2bc3ca84befdd6f12f44231035d8f5"
+}

@@ -1,0 +1,77 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    {
+      "name": "checks.js",
+      "token": "semantic/FUSE_A1L1/checks.js"
+    },
+    {
+      "name": "semantic.js",
+      "token": "semantic/FUSE_A1L1/semantic.js"
+    },
+    {
+      "name": "targeted.js",
+      "token": "semantic/FUSE_A1L1/targeted.js"
+    },
+    {
+      "name": "combined.js",
+      "token": "semantic/FUSE_A1L1/combined.js"
+    },
+    {
+      "name": "old_layout.js",
+      "token": "semantic/FUSE_A1L1/old_layout.js"
+    },
+    {
+      "name": "extra.js",
+      "token": "semantic/FUSE_A1L1/extra.js"
+    },
+    {
+      "name": "read_roundtrip.c",
+      "token": "safety_run/FUSE_A1L1/read_roundtrip"
+    },
+    {
+      "name": "roundtrip_slots.c",
+      "token": "safety_run/FUSE_A1L1/roundtrip_slots"
+    },
+    {
+      "name": "gc_cycles.c",
+      "token": "safety_run/FUSE_A1L1/gc_cycles"
+    },
+    {
+      "name": "first_entry_roundtrip.c",
+      "token": "safety_run/FUSE_A1L1/first_entry_roundtrip"
+    },
+    {
+      "name": "native_finalizer.c",
+      "token": "safety_run/FUSE_A1L1/native_finalizer"
+    },
+    {
+      "name": "call_cleanup.c",
+      "token": "safety_run/FUSE_A1L1/call_cleanup"
+    },
+    {
+      "name": "ASan/UBSan combined.js",
+      "token": "sanitizer/FUSE_A1L1/combined.js"
+    },
+    {
+      "name": "ASan/UBSan old_layout.js",
+      "token": "sanitizer/FUSE_A1L1/old_layout.js"
+    },
+    {
+      "name": "ASan/UBSan extra.js",
+      "token": "sanitizer/FUSE_A1L1/extra.js"
+    },
+    {
+      "name": "ASan/UBSan semantic.js",
+      "token": "sanitizer/FUSE_A1L1/semantic.js"
+    }
+  ],
+  "mechanism": "MECHANISM_PASS fused=342 proto=93 arg1=31 loc1=31 short_calls=0/0/0 function_header=144\n",
+  "preparation_equivalence": false,
+  "compiled_storage_in_function": false,
+  "targeted_cleanup_order": true,
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "full_test262": false
+}

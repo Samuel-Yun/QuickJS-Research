@@ -1,0 +1,11 @@
+--- original/richards.js
++++ DIAGNOSTIC_FUNCTION_COUNTS/richards.js
+@@ -306,7 +306,7 @@
+   this.state = this.state | STATE_HELD;
+ };
+ 
+-TaskControlBlock.prototype.isHeldOrSuspended = function () {
++TaskControlBlock.prototype.isHeldOrSuspended = function () { __rftCalls++; var __rftS=this.state; __rftStates[__rftS]=(__rftStates[__rftS]||0)+1;
+   return (this.state & STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);
+ };
+ 

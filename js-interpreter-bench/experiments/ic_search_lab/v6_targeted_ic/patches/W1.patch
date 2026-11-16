@@ -1,0 +1,116 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -365,6 +365,7 @@
+ DEF(get_field_rdi, 5, 1, 1, u32)
+ DEF(get_field2_rdi, 5, 1, 2, u32)
+ 
++DEF(v6_put_field, 5, 2, 0, u32)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -19197,6 +19197,57 @@
+             BREAK;
+ #endif
+             
++        CASE(OP_v6_put_field):
++            {
++                uint32_t delta = get_u32(pc), offset;
++                ReadICSite *site = (ReadICSite *)(pc + delta);
++                JSValue obj = sp[-2];
++                JSAtom atom = site->atom;
++                JSObject *p;
++                JSProperty *pr;
++                JSShapeProperty *prs;
++                int ret;
++                pc += 4;
++                if (JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT) {
++                    p = JS_VALUE_GET_OBJ(obj);
++                    if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {
++                        offset = rdi_probe(site, p->shape);
++                        if (offset != UINT32_MAX) {
++                            /* Publish before freeing the old value. No prop,
++                               descriptor or shape pointer is reused below. */
++                            set_value(ctx, &p->prop[offset].u.value, sp[-1]);
++                            goto v6_store_done;
++                        }
++                        prs = find_own_property(&pr, p, atom);
++                        if (prs && (prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
++                                                JS_PROP_LENGTH)) == JS_PROP_WRITABLE) {
++                            set_value(ctx, &pr->u.value, sp[-1]);
++                            /* A C finalizer may have changed/moved the target.
++                               Refresh only this eligible active store site. */
++                            p = JS_VALUE_GET_OBJ(obj);
++                            if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic && p->shape->is_hashed) {
++                                prs = find_own_property(&pr, p, atom);
++                                if (prs && (prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
++                                                        JS_PROP_LENGTH)) == JS_PROP_WRITABLE)
++                                    rdi_update(ctx, site, p->shape, pr - p->prop);
++                            }
++                            goto v6_store_done;
++                        }
++                    }
++                }
++                sf->cur_pc = pc;
++                ret = JS_SetPropertyInternal(ctx, obj, atom, sp[-1], obj, JS_PROP_THROW_STRICT);
++                JS_FreeValue(ctx, obj);
++                sp -= 2;
++                if (unlikely(ret < 0)) goto exception;
++                goto v6_store_finished;
++            v6_store_done:
++                JS_FreeValue(ctx, obj);
++                sp -= 2;
++            v6_store_finished:;
++            }
++            BREAK;
++
+         CASE(OP_put_field):
+             {
+                 int ret;
+@@ -37760,11 +37811,11 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_v6_put_field) {
+             uint32_t delta = get_u32(bc_buf + pos + 1);
+             ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
+             assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
+-            op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
++            op = (op == OP_v6_put_field) ? OP_put_field : ((op == OP_get_field_rdi) ? OP_get_field : OP_get_field2);
+             bc_buf[pos] = op;
+             put_u32(bc_buf + pos + 1, site->atom);
+         }
+@@ -38668,7 +38719,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_v6_put_field) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+             return -1;
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -12,7 +12,7 @@
+ #endif
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         op = b->byte_code_buf[pos];
+-        if (op == OP_get_field || op == OP_get_field2) count++;
++        if (op == OP_get_field || op == OP_get_field2 || op == OP_put_field) count++;
+     }
+     if (!count) return 0;
+     code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+@@ -37,9 +37,9 @@
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         uint8_t *pc = b->byte_code_buf + pos;
+         op = *pc;
+-        if (op == OP_get_field || op == OP_get_field2) {
++        if (op == OP_get_field || op == OP_get_field2 || op == OP_put_field) {
+             b->read_ic_sites[index].atom = get_u32(pc + 1);
+-            *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
++            *pc = (op == OP_put_field) ? OP_v6_put_field : ((op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi);
+             put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
+         }
+     }

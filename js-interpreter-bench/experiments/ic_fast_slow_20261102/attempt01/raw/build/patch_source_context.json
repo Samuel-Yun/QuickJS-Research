@@ -1,0 +1,13 @@
+{
+  "original_head": [
+    "/* Included after upstream find_own_property, with shape helpers available. */",
+    "#ifdef READ_IC_DIAGNOSTIC",
+    "#include \"read_ic_diag.h\"",
+    "#endif",
+    "static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)",
+    "{",
+    "#if RDI_CAPACITY == 1",
+    "    RDI_COUNT(comparisons);"
+  ],
+  "reason": "generate exact context from identity-verified M; retain hand-written patch failures unchanged"
+}

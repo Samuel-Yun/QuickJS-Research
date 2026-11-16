@@ -1,0 +1,102 @@
+{
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "experiment": "CODE_CACHE_EXECUTION_COMPARISON_V1",
+  "condition": "SOURCE_NO_LAZY",
+  "stage": "calibration",
+  "case": "controlflow-recursive",
+  "engine": "V8",
+  "shell": "d8",
+  "N": 1,
+  "rep": 0,
+  "order": 0,
+  "schedule_index": null,
+  "timestamp_utc": "2026-10-05T10:38:50.902440+00:00",
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy",
+    "--cache=none"
+  ],
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--cache=none",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/generated/controlflow-recursive.N1.measure.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+  "dependency_hashes": {
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+  },
+  "adapter_hashes": {
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js": "0ab3ed677381191d7e7839cbbc3f07895104a8b8299679ab9f37b856d76d3a22",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+  },
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/generated/controlflow-recursive.N1.measure.js",
+  "script_sha256": "3ed52bb957af410688632ea1a17c704bf76742cfa310ea1a9b9d96b30c791c62",
+  "protocol_sha256": "b49a63f00447ef7aa391e5e040f1ff933158202e5910451144d12af27721297f",
+  "cache_identity": {
+    "origin": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/generated/controlflow-recursive.N1.measure.js",
+    "source_sha256": "3ed52bb957af410688632ea1a17c704bf76742cfa310ea1a9b9d96b30c791c62",
+    "same_source_both_passes": true,
+    "version": "15.6.21",
+    "flags": [
+      "--max-opt=0",
+      "--no-lazy"
+    ]
+  },
+  "cache_serialized_sha256": null,
+  "cache_bytes_per_invocation": null,
+  "cache_rejected_field": null,
+  "cache_acceptance_this_invocation": "NOT_REQUESTED",
+  "cache_path_evidence": null,
+  "boot_id": "c2785139-8903-4d92-88d0-300aa853d4e5",
+  "load_average": [
+    0.51806640625,
+    0.1611328125,
+    0.052734375
+  ],
+  "warmup_calls": 0,
+  "diagnostic_flags": [],
+  "LD_PRELOAD": null,
+  "timeout_seconds": 120,
+  "attempt": 1,
+  "outer_start_ns": 91788191157,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"controlflow-recursive\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":1,\"checksum\":\"57775\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":31.378,\"stop_ms\":37.638,\"elapsed_ms\":6.259999999999998,\"elapsed_per_call_ms\":6.259999999999998,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "outer_stop_ns": 91834424939,
+  "external_wall_ns": 46233782,
+  "segments": [
+    {
+      "role": "source",
+      "payload": {
+        "benchmark": "SunSpider",
+        "case": "controlflow-recursive",
+        "mode": "MAIN_MONOTONIC_V1",
+        "phase": "measure",
+        "N": 1,
+        "checksum": "57775",
+        "correctness": "PASS",
+        "timer": "benchNow",
+        "start_ms": 31.378,
+        "stop_ms": 37.638,
+        "elapsed_ms": 6.259999999999998,
+        "elapsed_per_call_ms": 6.259999999999998,
+        "warmup_calls": 0
+      },
+      "valid": true,
+      "clock_consistency": true,
+      "outer_enclosure_strength": "PROCESS_ENCLOSURE"
+    }
+  ],
+  "target_role": "source",
+  "elapsed_ms": 6.259999999999998,
+  "elapsed_per_call_ms": 6.259999999999998,
+  "checksum": "57775",
+  "valid": true
+}

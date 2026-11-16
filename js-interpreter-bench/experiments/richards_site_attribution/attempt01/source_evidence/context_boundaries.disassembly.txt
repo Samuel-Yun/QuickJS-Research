@@ -1,0 +1,671 @@
+   26c44:	48 8b 78 10          	mov    rdi,QWORD PTR [rax+0x10]
+   26c48:	e8 f3 89 ff ff       	call   1f640 <__JS_FreeValueRT>
+   26c4d:	4c 8b 85 38 fe ff ff 	mov    r8,QWORD PTR [rbp-0x1c8]
+   26c54:	4c 8b 8d 50 fe ff ff 	mov    r9,QWORD PTR [rbp-0x1b0]
+   26c5b:	eb ab                	jmp    26c08 <JS_CallInternal+0x1438>
+   26c5d:	f3 0f 1e fa          	endbr64
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189
+            GET_FIELD_INLINE(get_field, 0, 0);
+   26c61:	8b bd a8 fe ff ff    	mov    edi,DWORD PTR [rbp-0x158]
+   26c67:	49 8d 74 24 ff       	lea    rsi,[r12-0x1]
+   26c6c:	4c 89 fa             	mov    rdx,r15
+   26c6f:	e8 5c f2 fe ff       	call   15ed0 <sa_begin>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 4)
+   26c74:	4c 8b 53 f0          	mov    r10,QWORD PTR [rbx-0x10]
+get_u32():
+/home/mzyx/richards_site_attribution_attempt01_diag/cutils.h:181
+    return ((const struct packed_u32 *)tab)->v;
+   26c78:	45 8b 1c 24          	mov    r11d,DWORD PTR [r12]
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189
+   26c7c:	89 85 28 fe ff ff    	mov    DWORD PTR [rbp-0x1d8],eax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 1)
+   26c82:	49 8d 44 24 04       	lea    rax,[r12+0x4]
+   26c87:	48 89 85 38 fe ff ff 	mov    QWORD PTR [rbp-0x1c8],rax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 4)
+   26c8e:	48 8b 43 f8          	mov    rax,QWORD PTR [rbx-0x8]
+   26c92:	4c 89 95 10 fe ff ff 	mov    QWORD PTR [rbp-0x1f0],r10
+   26c99:	48 89 85 40 fe ff ff 	mov    QWORD PTR [rbp-0x1c0],rax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 1)
+   26ca0:	83 f8 ff             	cmp    eax,0xffffffff
+   26ca3:	0f 85 93 5c 00 00    	jne    2c93c <JS_CallInternal+0x716c>
+   26ca9:	45 31 c0             	xor    r8d,r8d
+   26cac:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6144
+    sh = p->shape;
+   26cb0:	4d 8b 6a 18          	mov    r13,QWORD PTR [r10+0x18]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6145
+    h = (uintptr_t)atom & sh->prop_hash_mask;
+   26cb4:	41 8b 55 18          	mov    edx,DWORD PTR [r13+0x18]
+   26cb8:	89 d0                	mov    eax,edx
+   26cba:	44 21 d8             	and    eax,r11d
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6146
+    h = sh->hash_table[h];
+   26cbd:	41 8b 44 85 38       	mov    eax,DWORD PTR [r13+rax*4+0x38]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6148
+    while (h) {
+   26cc2:	48 85 c0             	test   rax,rax
+   26cc5:	0f 84 5b 55 00 00    	je     2c226 <JS_CallInternal+0x6a56>
+   26ccb:	48 8d 14 95 34 00 00 	lea    rdx,[rdx*4+0x34]
+   26cd2:	00 
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6149
+        pr = &prop[h - 1];
+   26cd3:	4c 8d 0c c2          	lea    r9,[rdx+rax*8]
+   26cd7:	4d 01 e9             	add    r9,r13
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6150 (discriminator 1)
+        if (likely(pr->atom == atom)) {
+   26cda:	45 39 59 04          	cmp    DWORD PTR [r9+0x4],r11d
+   26cde:	0f 85 34 55 00 00    	jne    2c218 <JS_CallInternal+0x6a48>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   26ce4:	49 8b 52 20          	mov    rdx,QWORD PTR [r10+0x20]
+   26ce8:	48 c1 e0 04          	shl    rax,0x4
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   26cec:	be 01 00 00 00       	mov    esi,0x1
+   26cf1:	bf f5 4a 00 00       	mov    edi,0x4af5
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   26cf6:	4c 8d 74 02 f0       	lea    r14,[rdx+rax*1-0x10]
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   26cfb:	e8 30 14 ff ff       	call   18130 <sa_probe>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 8)
+            GET_FIELD_INLINE(get_field, 0, 0);
+   26d00:	41 0f b6 41 03       	movzx  eax,BYTE PTR [r9+0x3]
+   26d05:	4d 8b 6e 08          	mov    r13,QWORD PTR [r14+0x8]
+   26d09:	44 89 c7             	mov    edi,r8d
+   26d0c:	c0 e8 02             	shr    al,0x2
+   26d0f:	4c 89 ee             	mov    rsi,r13
+   26d12:	0f b6 d0             	movzx  edx,al
+   26d15:	88 85 50 fe ff ff    	mov    BYTE PTR [rbp-0x1b0],al
+   26d1b:	e8 d0 3c ff ff       	call   1a9f0 <sa_hit.isra.0>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 2)
+   26d20:	0f b6 85 50 fe ff ff 	movzx  eax,BYTE PTR [rbp-0x1b0]
+   26d27:	3c 0f                	cmp    al,0xf
+   26d29:	0f 87 0d 5c 00 00    	ja     2c93c <JS_CallInternal+0x716c>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 11)
+   26d2f:	49 8b 06             	mov    rax,QWORD PTR [r14]
+JS_DupValue():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:709
+    if (JS_VALUE_HAS_REF_COUNT(v)) {
+   26d32:	41 83 fd f6          	cmp    r13d,0xfffffff6
+   26d36:	76 04                	jbe    26d3c <JS_CallInternal+0x156c>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:711
+        p->ref_count++;
+   26d38:	83 40 fc 01          	add    DWORD PTR [rax-0x4],0x1
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:713
+    return (JSValue)v;
+   26d3c:	48 89 c1             	mov    rcx,rax
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:18043
+            JS_FreeValue(ctx, sp[-1]);
+   26d3f:	4c 8d 73 f0          	lea    r14,[rbx-0x10]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 21)
+            GET_FIELD_INLINE(get_field, 0, 0);
+   26d43:	49 8b 56 08          	mov    rdx,QWORD PTR [r14+0x8]
+   26d47:	49 8b 36             	mov    rsi,QWORD PTR [r14]
+JS_FreeValue():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:689
+    if (JS_VALUE_HAS_REF_COUNT(v)) {
+   26d4a:	83 fa f6             	cmp    edx,0xfffffff6
+   26d4d:	76 11                	jbe    26d60 <JS_CallInternal+0x1590>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:691
+        if (--p->ref_count <= 0) {
+   26d4f:	8b 46 fc             	mov    eax,DWORD PTR [rsi-0x4]
+   26d52:	83 e8 01             	sub    eax,0x1
+   26d55:	89 46 fc             	mov    DWORD PTR [rsi-0x4],eax
+   26d58:	85 c0                	test   eax,eax
+   26d5a:	0f 8e 95 6c 00 00    	jle    2d9f5 <JS_CallInternal+0x8225>
+sa_end():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76
+        if(sid && sa_count && sa_run_depth) sa_site[sid].ops++;
+        sa_current=(sig_atomic_t)sid;
+    }
+    return s;
+}
+static void sa_end(SAScope *s) { if(sa_context) sa_current=s->previous; }
+   26d60:	8b 05 d6 63 0e 00    	mov    eax,DWORD PTR [rip+0xe63d6]        # 10d13c <sa_context>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19189 (discriminator 1)
+   26d66:	48 89 4b f0          	mov    QWORD PTR [rbx-0x10],rcx
+   26d6a:	4c 89 6b f8          	mov    QWORD PTR [rbx-0x8],r13
+sa_end():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76
+   26d6e:	85 c0                	test   eax,eax
+   26d70:	74 0c                	je     26d7e <JS_CallInternal+0x15ae>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76 (discriminator 1)
+   26d72:	8b 85 28 fe ff ff    	mov    eax,DWORD PTR [rbp-0x1d8]
+   26d78:	89 05 ce 63 0e 00    	mov    DWORD PTR [rip+0xe63ce],eax        # 10d14c <sa_current>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19190
+            BREAK;
+   26d7e:	41 0f b6 44 24 04    	movzx  eax,BYTE PTR [r12+0x4]
+   26d84:	48 8d 0d 35 df 0d 00 	lea    rcx,[rip+0xddf35]        # 104cc0 <dispatch_table.83>
+   26d8b:	49 83 c4 05          	add    r12,0x5
+   26d8f:	49 89 c5             	mov    r13,rax
+   26d92:	48 8b 04 c1          	mov    rax,QWORD PTR [rcx+rax*8]
+   26d96:	ff e0                	jmp    rax
+   26d98:	f3 0f 1e fa          	endbr64
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19117
+                if ((uint32_t)JS_VALUE_GET_TAG(op1) <= JS_TAG_UNDEFINED) {
+   26d9c:	83 7b f8 03          	cmp    DWORD PTR [rbx-0x8],0x3
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19116
+                op1 = sp[-1];
+   26da0:	48 8b 53 f0          	mov    rdx,QWORD PTR [rbx-0x10]
+   26da4:	48 8b 43 f8          	mov    rax,QWORD PTR [rbx-0x8]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19117
+                if ((uint32_t)JS_VALUE_GET_TAG(op1) <= JS_TAG_UNDEFINED) {
+   26da8:	0f 87 aa 64 00 00    	ja     2d258 <JS_CallInternal+0x7a88>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19118
+                    res = JS_VALUE_GET_INT(op1) != 0;
+
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19259
+            BREAK;
+   2b540:	41 0f b6 44 24 ff    	movzx  eax,BYTE PTR [r12-0x1]
+   2b546:	49 89 c5             	mov    r13,rax
+   2b549:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
+   2b54d:	ff e0                	jmp    rax
+   2b54f:	f3 0f 1e fa          	endbr64
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198
+            GET_FIELD_INLINE(get_length, 0, 1);
+   2b553:	8b bd a8 fe ff ff    	mov    edi,DWORD PTR [rbp-0x158]
+   2b559:	49 8d 74 24 ff       	lea    rsi,[r12-0x1]
+   2b55e:	4c 89 fa             	mov    rdx,r15
+   2b561:	e8 6a a9 fe ff       	call   15ed0 <sa_begin>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 4)
+   2b566:	4c 8b 53 f0          	mov    r10,QWORD PTR [rbx-0x10]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198
+   2b56a:	89 85 38 fe ff ff    	mov    DWORD PTR [rbp-0x1c8],eax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 4)
+   2b570:	48 8b 43 f8          	mov    rax,QWORD PTR [rbx-0x8]
+   2b574:	4c 89 95 40 fe ff ff 	mov    QWORD PTR [rbp-0x1c0],r10
+   2b57b:	48 89 85 50 fe ff ff 	mov    QWORD PTR [rbp-0x1b0],rax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 1)
+   2b582:	83 f8 ff             	cmp    eax,0xffffffff
+   2b585:	0f 85 a5 13 00 00    	jne    2c930 <JS_CallInternal+0x7160>
+   2b58b:	45 31 c0             	xor    r8d,r8d
+   2b58e:	66 90                	xchg   ax,ax
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6144
+    sh = p->shape;
+   2b590:	4d 8b 5a 18          	mov    r11,QWORD PTR [r10+0x18]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6145
+    h = (uintptr_t)atom & sh->prop_hash_mask;
+   2b594:	41 8b 53 18          	mov    edx,DWORD PTR [r11+0x18]
+   2b598:	89 d0                	mov    eax,edx
+   2b59a:	83 e0 32             	and    eax,0x32
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6146
+    h = sh->hash_table[h];
+   2b59d:	41 8b 44 83 38       	mov    eax,DWORD PTR [r11+rax*4+0x38]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6148
+    while (h) {
+   2b5a2:	48 85 c0             	test   rax,rax
+   2b5a5:	0f 84 c5 0b 00 00    	je     2c170 <JS_CallInternal+0x69a0>
+   2b5ab:	48 8d 14 95 34 00 00 	lea    rdx,[rdx*4+0x34]
+   2b5b2:	00 
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6149
+        pr = &prop[h - 1];
+   2b5b3:	4c 8d 0c c2          	lea    r9,[rdx+rax*8]
+   2b5b7:	4d 01 d9             	add    r9,r11
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6150 (discriminator 1)
+        if (likely(pr->atom == atom)) {
+   2b5ba:	41 83 79 04 32       	cmp    DWORD PTR [r9+0x4],0x32
+   2b5bf:	0f 85 9d 0b 00 00    	jne    2c162 <JS_CallInternal+0x6992>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   2b5c5:	49 8b 52 20          	mov    rdx,QWORD PTR [r10+0x20]
+   2b5c9:	48 c1 e0 04          	shl    rax,0x4
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   2b5cd:	be 01 00 00 00       	mov    esi,0x1
+   2b5d2:	bf fe 4a 00 00       	mov    edi,0x4afe
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   2b5d7:	4c 8d 5c 02 f0       	lea    r11,[rdx+rax*1-0x10]
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   2b5dc:	e8 4f cb fe ff       	call   18130 <sa_probe>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 8)
+            GET_FIELD_INLINE(get_length, 0, 1);
+   2b5e1:	41 0f b6 41 03       	movzx  eax,BYTE PTR [r9+0x3]
+   2b5e6:	4d 8b 6b 08          	mov    r13,QWORD PTR [r11+0x8]
+   2b5ea:	44 89 c7             	mov    edi,r8d
+   2b5ed:	c0 e8 02             	shr    al,0x2
+   2b5f0:	4c 89 ee             	mov    rsi,r13
+   2b5f3:	0f b6 d0             	movzx  edx,al
+   2b5f6:	41 89 d6             	mov    r14d,edx
+   2b5f9:	e8 f2 f3 fe ff       	call   1a9f0 <sa_hit.isra.0>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 2)
+   2b5fe:	41 80 fe 0f          	cmp    r14b,0xf
+   2b602:	0f 87 28 13 00 00    	ja     2c930 <JS_CallInternal+0x7160>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 11)
+   2b608:	4d 8b 33             	mov    r14,QWORD PTR [r11]
+JS_DupValue():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:709
+    if (JS_VALUE_HAS_REF_COUNT(v)) {
+   2b60b:	41 83 fd f6          	cmp    r13d,0xfffffff6
+   2b60f:	76 05                	jbe    2b616 <JS_CallInternal+0x5e46>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:711
+        p->ref_count++;
+   2b611:	41 83 46 fc 01       	add    DWORD PTR [r14-0x4],0x1
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:18043
+            JS_FreeValue(ctx, sp[-1]);
+   2b616:	4c 8d 5b f0          	lea    r11,[rbx-0x10]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 21)
+            GET_FIELD_INLINE(get_length, 0, 1);
+   2b61a:	49 8b 53 08          	mov    rdx,QWORD PTR [r11+0x8]
+   2b61e:	49 8b 33             	mov    rsi,QWORD PTR [r11]
+JS_FreeValue():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:689
+    if (JS_VALUE_HAS_REF_COUNT(v)) {
+   2b621:	83 fa f6             	cmp    edx,0xfffffff6
+   2b624:	76 11                	jbe    2b637 <JS_CallInternal+0x5e67>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:691
+        if (--p->ref_count <= 0) {
+   2b626:	8b 46 fc             	mov    eax,DWORD PTR [rsi-0x4]
+   2b629:	83 e8 01             	sub    eax,0x1
+   2b62c:	89 46 fc             	mov    DWORD PTR [rsi-0x4],eax
+   2b62f:	85 c0                	test   eax,eax
+   2b631:	0f 8e 8b 2a 00 00    	jle    2e0c2 <JS_CallInternal+0x88f2>
+sa_end():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76
+   2b637:	44 8b 1d fe 1a 0e 00 	mov    r11d,DWORD PTR [rip+0xe1afe]        # 10d13c <sa_context>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19198 (discriminator 1)
+   2b63e:	4c 89 73 f0          	mov    QWORD PTR [rbx-0x10],r14
+   2b642:	4c 89 6b f8          	mov    QWORD PTR [rbx-0x8],r13
+sa_end():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76
+   2b646:	45 85 db             	test   r11d,r11d
+   2b649:	74 0c                	je     2b657 <JS_CallInternal+0x5e87>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76 (discriminator 1)
+   2b64b:	8b 85 38 fe ff ff    	mov    eax,DWORD PTR [rbp-0x1c8]
+   2b651:	89 05 f5 1a 0e 00    	mov    DWORD PTR [rip+0xe1af5],eax        # 10d14c <sa_current>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19199
+            BREAK;
+   2b657:	41 0f b6 04 24       	movzx  eax,BYTE PTR [r12]
+   2b65c:	48 8d 3d 5d 96 0d 00 	lea    rdi,[rip+0xd965d]        # 104cc0 <dispatch_table.83>
+   2b663:	49 83 c4 01          	add    r12,0x1
+   2b667:	49 89 c5             	mov    r13,rax
+   2b66a:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
+   2b66e:	ff e0                	jmp    rax
+   2b670:	f3 0f 1e fa          	endbr64
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19581 (discriminator 1)
+                if (likely(JS_VALUE_GET_TAG(sp[-3]) == JS_TAG_OBJECT &&
+   2b674:	83 7b d8 ff          	cmp    DWORD PTR [rbx-0x28],0xffffffff
+   2b678:	0f 85 ff 19 00 00    	jne    2d07d <JS_CallInternal+0x78ad>
+   2b67e:	8b 43 e8             	mov    eax,DWORD PTR [rbx-0x18]
+   2b681:	85 c0                	test   eax,eax
+   2b683:	0f 85 f4 19 00 00    	jne    2d07d <JS_CallInternal+0x78ad>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19583
+                    p = JS_VALUE_GET_OBJ(sp[-3]);
+   2b689:	48 8b 4b d0          	mov    rcx,QWORD PTR [rbx-0x30]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19584
+                    idx = JS_VALUE_GET_INT(sp[-2]);
+   2b68d:	48 8b 43 e0          	mov    rax,QWORD PTR [rbx-0x20]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19585 (discriminator 1)
+                    if (unlikely(p->class_id != JS_CLASS_ARRAY))
+   2b691:	66 83 79 12 02       	cmp    WORD PTR [rcx+0x12],0x2
+   2b696:	0f 85 e1 19 00 00    	jne    2d07d <JS_CallInternal+0x78ad>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19587
+                    if (unlikely(idx >= (uint32_t)p->u.array.count)) {
+   2b69c:	8b 51 38             	mov    edx,DWORD PTR [rcx+0x38]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19587 (discriminator 1)
+   2b69f:	39 d0                	cmp    eax,edx
+   2b6a1:	0f 83 fd 39 00 00    	jae    2f0a4 <JS_CallInternal+0x98d4>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19609
+                        set_value(ctx, &p->u.array.u.values[idx], sp[-1]);
+   2b6a7:	89 c0                	mov    eax,eax
+set_value():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:2668
+    *pval = new_val;
+   2b6a9:	f3 0f 6f 6b f0       	movdqu xmm5,XMMWORD PTR [rbx-0x10]
+
+   2b6f7:	41 0f b6 04 24       	movzx  eax,BYTE PTR [r12]
+   2b6fc:	48 8d 3d bd 95 0d 00 	lea    rdi,[rip+0xd95bd]        # 104cc0 <dispatch_table.83>
+   2b703:	49 83 c4 01          	add    r12,0x1
+   2b707:	49 89 c5             	mov    r13,rax
+   2b70a:	48 8b 04 c7          	mov    rax,QWORD PTR [rdi+rax*8]
+   2b70e:	ff e0                	jmp    rax
+   2b710:	f3 0f 1e fa          	endbr64
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193
+            GET_FIELD_INLINE(get_field2, 1, 0);
+   2b714:	8b bd a8 fe ff ff    	mov    edi,DWORD PTR [rbp-0x158]
+   2b71a:	49 8d 74 24 ff       	lea    rsi,[r12-0x1]
+   2b71f:	4c 89 fa             	mov    rdx,r15
+   2b722:	e8 a9 a7 fe ff       	call   15ed0 <sa_begin>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 4)
+   2b727:	4c 8b 53 f0          	mov    r10,QWORD PTR [rbx-0x10]
+get_u32():
+/home/mzyx/richards_site_attribution_attempt01_diag/cutils.h:181
+    return ((const struct packed_u32 *)tab)->v;
+   2b72b:	45 8b 1c 24          	mov    r11d,DWORD PTR [r12]
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193
+   2b72f:	89 85 10 fe ff ff    	mov    DWORD PTR [rbp-0x1f0],eax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 1)
+   2b735:	49 8d 44 24 04       	lea    rax,[r12+0x4]
+   2b73a:	48 89 85 38 fe ff ff 	mov    QWORD PTR [rbp-0x1c8],rax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 4)
+   2b741:	48 8b 43 f8          	mov    rax,QWORD PTR [rbx-0x8]
+   2b745:	4c 89 95 28 fe ff ff 	mov    QWORD PTR [rbp-0x1d8],r10
+   2b74c:	48 89 85 40 fe ff ff 	mov    QWORD PTR [rbp-0x1c0],rax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 1)
+   2b753:	83 f8 ff             	cmp    eax,0xffffffff
+   2b756:	0f 85 14 11 00 00    	jne    2c870 <JS_CallInternal+0x70a0>
+   2b75c:	45 31 c0             	xor    r8d,r8d
+   2b75f:	90                   	nop
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6144
+    sh = p->shape;
+   2b760:	4d 8b 6a 18          	mov    r13,QWORD PTR [r10+0x18]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6145
+    h = (uintptr_t)atom & sh->prop_hash_mask;
+   2b764:	41 8b 55 18          	mov    edx,DWORD PTR [r13+0x18]
+   2b768:	89 d0                	mov    eax,edx
+   2b76a:	44 21 d8             	and    eax,r11d
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6146
+    h = sh->hash_table[h];
+   2b76d:	41 8b 44 85 38       	mov    eax,DWORD PTR [r13+rax*4+0x38]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6148
+    while (h) {
+   2b772:	48 85 c0             	test   rax,rax
+   2b775:	0f 84 53 0a 00 00    	je     2c1ce <JS_CallInternal+0x69fe>
+   2b77b:	48 8d 14 95 34 00 00 	lea    rdx,[rdx*4+0x34]
+   2b782:	00 
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6149
+        pr = &prop[h - 1];
+   2b783:	4c 8d 0c c2          	lea    r9,[rdx+rax*8]
+   2b787:	4d 01 e9             	add    r9,r13
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6150 (discriminator 1)
+        if (likely(pr->atom == atom)) {
+   2b78a:	45 39 59 04          	cmp    DWORD PTR [r9+0x4],r11d
+   2b78e:	0f 85 2c 0a 00 00    	jne    2c1c0 <JS_CallInternal+0x69f0>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   2b794:	49 8b 52 20          	mov    rdx,QWORD PTR [r10+0x20]
+   2b798:	48 c1 e0 04          	shl    rax,0x4
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   2b79c:	be 01 00 00 00       	mov    esi,0x1
+   2b7a1:	bf f9 4a 00 00       	mov    edi,0x4af9
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   2b7a6:	4c 8d 6c 02 f0       	lea    r13,[rdx+rax*1-0x10]
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   2b7ab:	e8 80 c9 fe ff       	call   18130 <sa_probe>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 8)
+            GET_FIELD_INLINE(get_field2, 1, 0);
+   2b7b0:	41 0f b6 41 03       	movzx  eax,BYTE PTR [r9+0x3]
+   2b7b5:	4d 8b 75 08          	mov    r14,QWORD PTR [r13+0x8]
+   2b7b9:	44 89 c7             	mov    edi,r8d
+   2b7bc:	c0 e8 02             	shr    al,0x2
+   2b7bf:	4c 89 f6             	mov    rsi,r14
+   2b7c2:	0f b6 d0             	movzx  edx,al
+   2b7c5:	88 85 50 fe ff ff    	mov    BYTE PTR [rbp-0x1b0],al
+   2b7cb:	e8 20 f2 fe ff       	call   1a9f0 <sa_hit.isra.0>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 2)
+   2b7d0:	0f b6 85 50 fe ff ff 	movzx  eax,BYTE PTR [rbp-0x1b0]
+   2b7d7:	3c 0f                	cmp    al,0xf
+   2b7d9:	0f 87 91 10 00 00    	ja     2c870 <JS_CallInternal+0x70a0>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 11)
+   2b7df:	49 8b 45 00          	mov    rax,QWORD PTR [r13+0x0]
+JS_DupValue():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:709
+    if (JS_VALUE_HAS_REF_COUNT(v)) {
+   2b7e3:	41 83 fe f6          	cmp    r14d,0xfffffff6
+   2b7e7:	76 04                	jbe    2b7ed <JS_CallInternal+0x601d>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:711
+        p->ref_count++;
+   2b7e9:	83 40 fc 01          	add    DWORD PTR [rax-0x4],0x1
+sa_end():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76
+   2b7ed:	44 8b 0d 48 19 0e 00 	mov    r9d,DWORD PTR [rip+0xe1948]        # 10d13c <sa_context>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 20)
+   2b7f4:	48 89 03             	mov    QWORD PTR [rbx],rax
+   2b7f7:	48 8d 53 10          	lea    rdx,[rbx+0x10]
+   2b7fb:	4c 89 73 08          	mov    QWORD PTR [rbx+0x8],r14
+sa_end():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76
+   2b7ff:	45 85 c9             	test   r9d,r9d
+   2b802:	74 0c                	je     2b810 <JS_CallInternal+0x6040>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:76 (discriminator 1)
+   2b804:	8b 85 10 fe ff ff    	mov    eax,DWORD PTR [rbp-0x1f0]
+   2b80a:	89 05 3c 19 0e 00    	mov    DWORD PTR [rip+0xe193c],eax        # 10d14c <sa_current>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19194
+            BREAK;
+   2b810:	41 0f b6 44 24 04    	movzx  eax,BYTE PTR [r12+0x4]
+   2b816:	48 8d 1d a3 94 0d 00 	lea    rbx,[rip+0xd94a3]        # 104cc0 <dispatch_table.83>
+   2b81d:	49 83 c4 05          	add    r12,0x5
+   2b821:	49 89 c5             	mov    r13,rax
+   2b824:	48 8b 04 c3          	mov    rax,QWORD PTR [rbx+rax*8]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19193 (discriminator 20)
+            GET_FIELD_INLINE(get_field2, 1, 0);
+   2b828:	48 89 d3             	mov    rbx,rdx
+   2b82b:	ff e0                	jmp    rax
+   2b82d:	f3 0f 1e fa          	endbr64
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19328
+                ret = JS_DefineObjectNameComputed(ctx, sp[-1], sp[-2], JS_PROP_CONFIGURABLE);
+   2b831:	48 8b 4b e0          	mov    rcx,QWORD PTR [rbx-0x20]
+   2b835:	48 8b 73 f0          	mov    rsi,QWORD PTR [rbx-0x10]
+   2b839:	48 8b 53 f8          	mov    rdx,QWORD PTR [rbx-0x8]
+   2b83d:	4c 8b 43 e8          	mov    r8,QWORD PTR [rbx-0x18]
+   2b841:	48 8b bd e8 fe ff ff 	mov    rdi,QWORD PTR [rbp-0x118]
+   2b848:	e8 93 c2 01 00       	call   47ae0 <JS_DefineObjectNameComputed.constprop.0>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19329 (discriminator 1)
+                if (unlikely(ret < 0))
+   2b84d:	85 c0                	test   eax,eax
+   2b84f:	0f 88 43 a8 ff ff    	js     26098 <JS_CallInternal+0x8c8>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19332
+            BREAK;
+   2b855:	41 0f b6 04 24       	movzx  eax,BYTE PTR [r12]
+   2b85a:	48 8d 0d 5f 94 0d 00 	lea    rcx,[rip+0xd945f]        # 104cc0 <dispatch_table.83>
+   2b861:	49 83 c4 01          	add    r12,0x1
+   2b865:	49 89 c5             	mov    r13,rax
+   2b868:	48 8b 04 c1          	mov    rax,QWORD PTR [rcx+rax*8]
+   2b86c:	ff e0                	jmp    rax
+   2b86e:	f3 0f 1e fa          	endbr64
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19320
+                ret = JS_DefineObjectName(ctx, sp[-1], atom, JS_PROP_CONFIGURABLE);
+   2b872:	41 8b 0c 24          	mov    ecx,DWORD PTR [r12]
+   2b876:	48 8b 73 f0          	mov    rsi,QWORD PTR [rbx-0x10]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19318
+                pc += 4;
+   2b87a:	4d 8d 6c 24 04       	lea    r13,[r12+0x4]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19320
+                ret = JS_DefineObjectName(ctx, sp[-1], atom, JS_PROP_CONFIGURABLE);
+   2b87f:	48 8b 53 f8          	mov    rdx,QWORD PTR [rbx-0x8]
+   2b883:	48 8b bd e8 fe ff ff 	mov    rdi,QWORD PTR [rbp-0x118]
+   2b88a:	e8 c1 c1 00 00       	call   37a50 <JS_DefineObjectName.constprop.0>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19321 (discriminator 1)
+                if (unlikely(ret < 0))
+   2b88f:	85 c0                	test   eax,eax
+   2b891:	0f 88 4e 29 00 00    	js     2e1e5 <JS_CallInternal+0x8a15>
+
+   2bd97:	49 89 c5             	mov    r13,rax
+   2bd9a:	48 8b 04 c3          	mov    rax,QWORD PTR [rbx+rax*8]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19571
+                sp -= 2;
+   2bd9e:	4c 89 f3             	mov    rbx,r14
+   2bda1:	ff e0                	jmp    rax
+   2bda3:	f3 0f 1e fa          	endbr64
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19204
+                SA_PROP_SCOPE();
+   2bda7:	8b bd a8 fe ff ff    	mov    edi,DWORD PTR [rbp-0x158]
+   2bdad:	49 8d 74 24 ff       	lea    rsi,[r12-0x1]
+   2bdb2:	4c 89 fa             	mov    rdx,r15
+   2bdb5:	e8 16 a1 fe ff       	call   15ed0 <sa_begin>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19215
+                obj = sp[-2];
+   2bdba:	4c 8b 73 e8          	mov    r14,QWORD PTR [rbx-0x18]
+get_u32():
+/home/mzyx/richards_site_attribution_attempt01_diag/cutils.h:181
+   2bdbe:	45 8b 14 24          	mov    r10d,DWORD PTR [r12]
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19204
+                SA_PROP_SCOPE();
+   2bdc2:	89 85 50 fe ff ff    	mov    DWORD PTR [rbp-0x1b0],eax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19213
+                pc += 4;
+   2bdc8:	49 8d 44 24 04       	lea    rax,[r12+0x4]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19215
+                obj = sp[-2];
+   2bdcd:	4c 8b 6b e0          	mov    r13,QWORD PTR [rbx-0x20]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19213
+                pc += 4;
+   2bdd1:	48 89 85 40 fe ff ff 	mov    QWORD PTR [rbp-0x1c0],rax
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19216 (discriminator 1)
+                if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {
+   2bdd8:	41 83 fe ff          	cmp    r14d,0xffffffff
+   2bddc:	0f 85 0e 11 00 00    	jne    2cef0 <JS_CallInternal+0x7720>
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6144
+    sh = p->shape;
+   2bde2:	49 8b 4d 18          	mov    rcx,QWORD PTR [r13+0x18]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6145
+    h = (uintptr_t)atom & sh->prop_hash_mask;
+   2bde6:	8b 51 18             	mov    edx,DWORD PTR [rcx+0x18]
+   2bde9:	89 d0                	mov    eax,edx
+   2bdeb:	44 21 d0             	and    eax,r10d
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6146
+    h = sh->hash_table[h];
+   2bdee:	8b 44 81 38          	mov    eax,DWORD PTR [rcx+rax*4+0x38]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6148
+    while (h) {
+   2bdf2:	48 85 c0             	test   rax,rax
+   2bdf5:	0f 84 e9 10 00 00    	je     2cee4 <JS_CallInternal+0x7714>
+   2bdfb:	48 8d 34 95 34 00 00 	lea    rsi,[rdx*4+0x34]
+   2be02:	00 
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6149
+        pr = &prop[h - 1];
+   2be03:	48 8d 14 c6          	lea    rdx,[rsi+rax*8]
+   2be07:	48 01 ca             	add    rdx,rcx
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6150 (discriminator 1)
+        if (likely(pr->atom == atom)) {
+   2be0a:	44 39 52 04          	cmp    DWORD PTR [rdx+0x4],r10d
+   2be0e:	0f 85 c3 10 00 00    	jne    2ced7 <JS_CallInternal+0x7707>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   2be14:	49 8b 4d 20          	mov    rcx,QWORD PTR [r13+0x20]
+   2be18:	48 c1 e0 04          	shl    rax,0x4
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   2be1c:	be 01 00 00 00       	mov    esi,0x1
+   2be21:	bf 12 4b 00 00       	mov    edi,0x4b12
+find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6151
+            *ppr = &p->prop[h - 1];
+   2be26:	48 89 95 38 fe ff ff 	mov    QWORD PTR [rbp-0x1c8],rdx
+   2be2d:	4c 8d 5c 01 f0       	lea    r11,[rcx+rax*1-0x10]
+sa_find_own_property():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:6167
+    sa_probe(origin,result!=NULL);
+   2be32:	e8 f9 c2 fe ff       	call   18130 <sa_probe>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19221
+                    if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+   2be37:	48 8b 95 38 fe ff ff 	mov    rdx,QWORD PTR [rbp-0x1c8]
+sa_flag():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:103
+            if(tag>=0 && tag<32) s->tags[tag]++;
+        }
+    }
+}
+static void sa_flag(int which) {
+    if(sa_count && sa_run_depth && sa_current>0) {
+   2be3e:	8b 05 f4 12 0e 00    	mov    eax,DWORD PTR [rip+0xe12f4]        # 10d138 <sa_count>
+JS_CallInternal():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19221
+   2be44:	0f b6 52 03          	movzx  edx,BYTE PTR [rdx+0x3]
+   2be48:	c0 ea 02             	shr    dl,0x2
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19221 (discriminator 1)
+   2be4b:	89 d1                	mov    ecx,edx
+   2be4d:	83 e1 3a             	and    ecx,0x3a
+   2be50:	80 f9 02             	cmp    cl,0x2
+   2be53:	0f 85 97 10 00 00    	jne    2cef0 <JS_CallInternal+0x7720>
+   2be59:	49 8b 4b 08          	mov    rcx,QWORD PTR [r11+0x8]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:19223
+                        sa_hit(0, pr->u.value, prs->flags);
+   2be5d:	31 ff                	xor    edi,edi
+   2be5f:	0f b6 d2             	movzx  edx,dl
+   2be62:	89 85 38 fe ff ff    	mov    DWORD PTR [rbp-0x1c8],eax
+   2be68:	48 89 ce             	mov    rsi,rcx
+   2be6b:	48 89 8d 40 fe ff ff 	mov    QWORD PTR [rbp-0x1c0],rcx
+   2be72:	e8 79 eb fe ff       	call   1a9f0 <sa_hit.isra.0>
+sa_flag():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:103
+   2be77:	8b 85 38 fe ff ff    	mov    eax,DWORD PTR [rbp-0x1c8]
+   2be7d:	48 8b 8d 40 fe ff ff 	mov    rcx,QWORD PTR [rbp-0x1c0]
+   2be84:	85 c0                	test   eax,eax
+   2be86:	74 39                	je     2bec1 <JS_CallInternal+0x66f1>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:103 (discriminator 1)
+   2be88:	44 8b 15 a5 12 0e 00 	mov    r10d,DWORD PTR [rip+0xe12a5]        # 10d134 <sa_run_depth>
+   2be8f:	45 85 d2             	test   r10d,r10d
+   2be92:	74 2d                	je     2bec1 <JS_CallInternal+0x66f1>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:103 (discriminator 2)
+   2be94:	8b 05 b2 12 0e 00    	mov    eax,DWORD PTR [rip+0xe12b2]        # 10d14c <sa_current>
+   2be9a:	85 c0                	test   eax,eax
+   2be9c:	7e 23                	jle    2bec1 <JS_CallInternal+0x66f1>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:104
+        SASite *s=&sa_site[sa_current];
+   2be9e:	48 63 05 a7 12 0e 00 	movsxd rax,DWORD PTR [rip+0xe12a7]        # 10d14c <sa_current>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:107 (discriminator 1)
+        if(which==0) s->fallback++;
+        if(which==1) s->missing++;
+        if(which==2) s->fast_write++;
+   2bea5:	48 8d 15 d4 70 6f 00 	lea    rdx,[rip+0x6f70d4]        # 722f80 <sa_site>
+   2beac:	48 8d 04 40          	lea    rax,[rax+rax*2]
+   2beb0:	48 8d 04 c0          	lea    rax,[rax+rax*8]
+   2beb4:	48 c1 e0 04          	shl    rax,0x4
+   2beb8:	48 83 84 02 a8 01 00 	add    QWORD PTR [rdx+rax*1+0x1a8],0x1
+   2bebf:	00 01 
+set_value():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:2668
+    *pval = new_val;
+   2bec1:	f3 0f 6f 73 f0       	movdqu xmm6,XMMWORD PTR [rbx-0x10]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:2667
+    old_val = *pval;
+   2bec6:	49 8b 33             	mov    rsi,QWORD PTR [r11]
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.c:2668
+    *pval = new_val;
+   2bec9:	41 0f 11 33          	movups XMMWORD PTR [r11],xmm6
+JS_FreeValue():
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:689
+    if (JS_VALUE_HAS_REF_COUNT(v)) {
+   2becd:	83 f9 f6             	cmp    ecx,0xfffffff6
+   2bed0:	76 11                	jbe    2bee3 <JS_CallInternal+0x6713>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:691
+        if (--p->ref_count <= 0) {
+   2bed2:	8b 46 fc             	mov    eax,DWORD PTR [rsi-0x4]
+   2bed5:	83 e8 01             	sub    eax,0x1
+   2bed8:	89 46 fc             	mov    DWORD PTR [rsi-0x4],eax
+   2bedb:	85 c0                	test   eax,eax
+   2bedd:	0f 8e 8e 31 00 00    	jle    2f071 <JS_CallInternal+0x98a1>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:689
+    if (JS_VALUE_HAS_REF_COUNT(v)) {
+   2bee3:	41 83 fe f6          	cmp    r14d,0xfffffff6
+   2bee7:	76 13                	jbe    2befc <JS_CallInternal+0x672c>
+/home/mzyx/richards_site_attribution_attempt01_diag/quickjs.h:691
+        if (--p->ref_count <= 0) {
+   2bee9:	41 8b 45 fc          	mov    eax,DWORD PTR [r13-0x4]

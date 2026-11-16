@@ -1,0 +1,59 @@
+{
+  "status": "BLOCKED_TIMING_DRIFT",
+  "start_commit": "dafef00c9a5231208253c76329b9d13eb26cc564",
+  "platform": {
+    "system": "Linux",
+    "node": "LAPTOP-QPKCPDCB",
+    "release": "5.15.167.4-microsoft-standard-WSL2",
+    "version": "#1 SMP Tue Nov 5 00:21:55 UTC 2024",
+    "machine": "x86_64",
+    "processor": "x86_64"
+  },
+  "os_release": "PRETTY_NAME=\"Ubuntu 24.04.2 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.2 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "boot_id": "8146ef33-86a7-4c6f-aa51-e2d524cfb6a9",
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "flags": "-O2 -g -fwrapv -DHAVE_CLOSEFROM; no new LTO/PGO/NDEBUG/padding",
+  "quickjs_version": "2026-06-04",
+  "upstream_commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "artifacts": {
+    "A": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/A.qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "size": 5090704,
+      "source": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/A.qjs"
+    },
+    "M": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/M.qjs",
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "size": 5102680,
+      "source": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/M.qjs"
+    },
+    "s001": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/artifacts/s001.qjs",
+      "sha256": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b",
+      "size": 5103992,
+      "source": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v2_20261105/artifacts/s001.matched.qjs"
+    }
+  },
+  "source_archives": {
+    "seed_A.tar.gz": "b82926964a50e575590cbfde94897bd9861a35b3e3535d761e7f0d63a4ece674",
+    "seed_M.tar.gz": "4eab4d528e4324c328d716780252ed1c41bcdfef706009f9424d39a2e777db52",
+    "build_support.tar.gz": "f43c9f51d68c5bf43caca651c1c8a9e441a0e039a8b4d1fdf8fa8bdbce664f90"
+  },
+  "candidate_identities": "identities/*.json",
+  "frozen_runtime_flags": [],
+  "V8": {
+    "status": "NOT_EXECUTED_THIS_CAMPAIGN",
+    "candidate_flags": [
+      "--jitless",
+      "--no-lazy",
+      "--use-ic"
+    ],
+    "old_elapsed_used": false
+  },
+  "privacy": {
+    "local_jwst_read": false,
+    "private_project_packaged": false
+  },
+  "formal_samples": 0
+}

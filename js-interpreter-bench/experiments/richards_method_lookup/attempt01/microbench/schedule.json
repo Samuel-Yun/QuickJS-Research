@@ -1,0 +1,902 @@
+[
+  {
+    "variant": "A",
+    "rep": 1,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 0
+  },
+  {
+    "variant": "B",
+    "rep": 1,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 1
+  },
+  {
+    "variant": "B",
+    "rep": 2,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 2
+  },
+  {
+    "variant": "A",
+    "rep": 2,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 3
+  },
+  {
+    "variant": "A",
+    "rep": 3,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 4
+  },
+  {
+    "variant": "B",
+    "rep": 3,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 5
+  },
+  {
+    "variant": "A",
+    "rep": 4,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 6
+  },
+  {
+    "variant": "B",
+    "rep": 4,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 7
+  },
+  {
+    "variant": "A",
+    "rep": 5,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 8
+  },
+  {
+    "variant": "B",
+    "rep": 5,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 9
+  },
+  {
+    "variant": "B",
+    "rep": 6,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 10
+  },
+  {
+    "variant": "A",
+    "rep": 6,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 11
+  },
+  {
+    "variant": "B",
+    "rep": 7,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 12
+  },
+  {
+    "variant": "A",
+    "rep": 7,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 13
+  },
+  {
+    "variant": "A",
+    "rep": 8,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 14
+  },
+  {
+    "variant": "B",
+    "rep": 8,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 15
+  },
+  {
+    "variant": "B",
+    "rep": 9,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 16
+  },
+  {
+    "variant": "A",
+    "rep": 9,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 17
+  },
+  {
+    "variant": "B",
+    "rep": 10,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 18
+  },
+  {
+    "variant": "A",
+    "rep": 10,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 19
+  },
+  {
+    "variant": "B",
+    "rep": 11,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 20
+  },
+  {
+    "variant": "A",
+    "rep": 11,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 21
+  },
+  {
+    "variant": "A",
+    "rep": 12,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 22
+  },
+  {
+    "variant": "B",
+    "rep": 12,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 23
+  },
+  {
+    "variant": "A",
+    "rep": 13,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 24
+  },
+  {
+    "variant": "B",
+    "rep": 13,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 25
+  },
+  {
+    "variant": "B",
+    "rep": 14,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 26
+  },
+  {
+    "variant": "A",
+    "rep": 14,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 27
+  },
+  {
+    "variant": "A",
+    "rep": 15,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 28
+  },
+  {
+    "variant": "B",
+    "rep": 15,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 29
+  },
+  {
+    "variant": "A",
+    "rep": 16,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 30
+  },
+  {
+    "variant": "B",
+    "rep": 16,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 31
+  },
+  {
+    "variant": "B",
+    "rep": 17,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 32
+  },
+  {
+    "variant": "A",
+    "rep": 17,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 33
+  },
+  {
+    "variant": "A",
+    "rep": 18,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 34
+  },
+  {
+    "variant": "B",
+    "rep": 18,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 35
+  },
+  {
+    "variant": "B",
+    "rep": 19,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 36
+  },
+  {
+    "variant": "A",
+    "rep": 19,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 37
+  },
+  {
+    "variant": "B",
+    "rep": 20,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 38
+  },
+  {
+    "variant": "A",
+    "rep": 20,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 39
+  },
+  {
+    "variant": "B",
+    "rep": 21,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 40
+  },
+  {
+    "variant": "A",
+    "rep": 21,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 41
+  },
+  {
+    "variant": "B",
+    "rep": 22,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 42
+  },
+  {
+    "variant": "A",
+    "rep": 22,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 43
+  },
+  {
+    "variant": "A",
+    "rep": 23,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 44
+  },
+  {
+    "variant": "B",
+    "rep": 23,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 45
+  },
+  {
+    "variant": "B",
+    "rep": 24,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 46
+  },
+  {
+    "variant": "A",
+    "rep": 24,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 47
+  },
+  {
+    "variant": "A",
+    "rep": 25,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 48
+  },
+  {
+    "variant": "B",
+    "rep": 25,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 49
+  },
+  {
+    "variant": "B",
+    "rep": 26,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "v8",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 50
+  },
+  {
+    "variant": "A",
+    "rep": 26,
+    "N": 512,
+    "permutation": [
+      "jsc",
+      "quickjs",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 51
+  },
+  {
+    "variant": "A",
+    "rep": 27,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 52
+  },
+  {
+    "variant": "B",
+    "rep": 27,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 53
+  },
+  {
+    "variant": "A",
+    "rep": 28,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 54
+  },
+  {
+    "variant": "B",
+    "rep": 28,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "v8",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 55
+  },
+  {
+    "variant": "B",
+    "rep": 29,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 56
+  },
+  {
+    "variant": "A",
+    "rep": 29,
+    "N": 512,
+    "permutation": [
+      "quickjs",
+      "jsc",
+      "v8"
+    ],
+    "block_variant_order": [
+      "B",
+      "A"
+    ],
+    "schedule_index": 57
+  },
+  {
+    "variant": "A",
+    "rep": 30,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "jsc",
+      "quickjs"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 58
+  },
+  {
+    "variant": "B",
+    "rep": 30,
+    "N": 512,
+    "permutation": [
+      "v8",
+      "quickjs",
+      "jsc"
+    ],
+    "block_variant_order": [
+      "A",
+      "B"
+    ],
+    "schedule_index": 59
+  }
+]

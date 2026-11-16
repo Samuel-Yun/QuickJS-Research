@@ -1,0 +1,40 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "=================================================================\n==15765==ERROR: AddressSanitizer: heap-use-after-free on address 0x504000003b18 at pc 0x5599576f334f bp 0x7fffb9a8b8a0 sp 0x7fffb9a8b890\nREAD of size 16 at 0x504000003b18 thread T0\n    #0 0x5599576f334e in set_value /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:2674\n    #1 0x559957753652 in JS_CallInternal /home/mzyx/v8_inspired_ic_attempt01/E_san/eic_opcodes.inc:78\n    #2 0x55995799eb85 in JS_Call /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:20738\n    #3 0x5599576a28cc in store /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt01/correctness/finalizer_store_v2.c:27\n    #4 0x5599576a3139 in main /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt01/correctness/finalizer_store_v2.c:60\n    #5 0x7ff34ec661c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #6 0x7ff34ec6628a in __libc_start_main_impl ../csu/libc-start.c:360\n    #7 0x5599576a22b4 in _start (/home/mzyx/v8_inspired_ic_attempt01/finalizer_store_v2_E_san+0x46c2b4) (BuildId: 6f7a489567a8d9c7c6108a8cb3e43250a359c26d)\n\n0x504000003b18 is located 8 bytes inside of 40-byte region [0x504000003b10,0x504000003b38)\nfreed by thread T0 here:\n    #0 0x7ff34f64a778 in realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:85\n    #1 0x5599576b3cc1 in js_def_realloc /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:2208\n    #2 0x5599576dd990 in __js_realloc /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:1662\n    #3 0x55995782f691 in js_realloc_rt /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:1819\n    #4 0x55995782f691 in js_realloc /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:1869\n    #5 0x55995782f691 in resize_properties /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:5356\n    #6 0x5599578310be in add_shape_property /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:5492\n    #7 0x559957831840 in add_property /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:9246\n    #8 0x55995777c844 in JS_SetPropertyInternal /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:9894\n    #9 0x55995790e8ff in JS_SetPropertyStr /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:10120\n    #10 0x5599576a24c9 in resource_finalizer /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt01/correctness/finalizer_store_v2.c:20\n    #11 0x55995770bf35 in free_object /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:6376\n    #12 0x55995770bf35 in free_gc_object /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:6407\n    #13 0x55995770eee3 in free_zero_refcount /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:6435\n    #14 0x5599576ee434 in __JS_FreeValueRT /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:6490\n    #15 0x5599576ffd39 in JS_FreeValueRT /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.h:702\n    #16 0x5599576ffd39 in js_free_shape0 /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:5316\n    #17 0x5599576ffd39 in js_free_shape /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:5330\n    #18 0x559957700411 in eic_generic /home/mzyx/v8_inspired_ic_attempt01/E_san/eic_runtime.inc:36\n    #19 0x5599577016f7 in eic_update /home/mzyx/v8_inspired_ic_attempt01/E_san/eic_runtime.inc:130\n    #20 0x5599577535d8 in JS_CallInternal /home/mzyx/v8_inspired_ic_attempt01/E_san/eic_opcodes.inc:77\n    #21 0x55995799eb85 in JS_Call /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:20738\n    #22 0x5599576a28cc in store /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt01/correctness/finalizer_store_v2.c:27\n    #23 0x5599576a3139 in main /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt01/correctness/finalizer_store_v2.c:60\n    #24 0x7ff34ec661c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #25 0x7ff34ec6628a in __libc_start_main_impl ../csu/libc-start.c:360\n    #26 0x5599576a22b4 in _start (/home/mzyx/v8_inspired_ic_attempt01/finalizer_store_v2_E_san+0x46c2b4) (BuildId: 6f7a489567a8d9c7c6108a8cb3e43250a359c26d)\n\npreviously allocated by thread T0 here:\n    #0 0x7ff34f64b9c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69\n    #1 0x5599576b3a55 in js_def_malloc /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:2170\n    #2 0x5599576a3609 in js_malloc_large /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:1545\n    #3 0x5599577a2b70 in __js_malloc /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:1597\n    #4 0x5599577a2b70 in js_malloc_rt /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:1809\n    #5 0x5599577a2b70 in js_malloc /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:1840\n    #6 0x559957833c05 in JS_NewObjectFromShape /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:5643\n    #7 0x559957838bf8 in JS_NewObjectProtoClass /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:5765\n    #8 0x5599576a3053 in main /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_inspired_ic/attempt01/correctness/finalizer_store_v2.c:57\n    #9 0x7ff34ec661c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #10 0x7ff34ec6628a in __libc_start_main_impl ../csu/libc-start.c:360\n    #11 0x5599576a22b4 in _start (/home/mzyx/v8_inspired_ic_attempt01/finalizer_store_v2_E_san+0x46c2b4) (BuildId: 6f7a489567a8d9c7c6108a8cb3e43250a359c26d)\n\nSUMMARY: AddressSanitizer: heap-use-after-free /home/mzyx/v8_inspired_ic_attempt01/E_san/quickjs.c:2674 in set_value\nShadow bytes around the buggy address:\n  0x504000003880: fa fa fd fd fd fd fd fa fa fa fd fd fd fd fd fa\n  0x504000003900: fa fa fd fd fd fd fd fa fa fa fd fd fd fd fd fa\n  0x504000003980: fa fa fd fd fd fd fd fa fa fa fd fd fd fd fd fa\n  0x504000003a00: fa fa fd fd fd fd fd fa fa fa fd fd fd fd fd fa\n  0x504000003a80: fa fa fd fd fd fd fd fa fa fa 00 00 00 00 00 fa\n=>0x504000003b00: fa fa fd[fd]fd fd fd fa fa fa 00 00 00 00 05 fa\n  0x504000003b80: fa fa 00 00 00 00 05 fa fa fa 00 00 00 00 05 fa\n  0x504000003c00: fa fa 00 00 00 00 05 fa fa fa 00 00 00 00 05 fa\n  0x504000003c80: fa fa 00 00 00 00 05 fa fa fa 00 00 00 00 05 fa\n  0x504000003d00: fa fa 00 00 00 00 05 fa fa fa 00 00 00 00 05 fa\n  0x504000003d80: fa fa 00 00 00 00 05 fa fa fa 00 00 00 00 06 fa\nShadow byte legend (one shadow byte represents 8 application bytes):\n  Addressable:           00\n  Partially addressable: 01 02 03 04 05 06 07 \n  Heap left redzone:       fa\n  Freed heap region:       fd\n  Stack left redzone:      f1\n  Stack mid redzone:       f2\n  Stack right redzone:     f3\n  Stack after return:      f5\n  Stack use after scope:   f8\n  Global redzone:          f9\n  Global init order:       f6\n  Poisoned by user:        f7\n  Container overflow:      fc\n  Array cookie:            ac\n  Intra object redzone:    bb\n  ASan internal:           fe\n  Left alloca redzone:     ca\n  Right alloca redzone:    cb\n==15765==ABORTING\n",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/v8_inspired_ic_attempt01/finalizer_store_v2_E_san"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-31T05:15:42.215255+00:00",
+  "completed_at": "2026-10-31T05:15:42.409111+00:00",
+  "outer_start_ns": 5604203912169,
+  "outer_stop_ns": 5604397644692,
+  "outer_wall_ns": 193732523,
+  "external_wall_ms": 193.732523,
+  "child_user_ms": 156.72399999999996,
+  "child_system_ms": 41.79299999999997,
+  "cpu_scope": "whole child, sequential RUSAGE_CHILDREN delta, not timed-region CPU",
+  "boot_id": "3b8c4d19-463c-43eb-bc91-eb1fcfb2c500",
+  "boot_id_after": "3b8c4d19-463c-43eb-bc91-eb1fcfb2c500",
+  "affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "environment_sha256": "7ce1ee3d9c12afc6d1fd8b0fdc9a0c5b89f91bef5f8aa3904b718fdef6230290"
+}

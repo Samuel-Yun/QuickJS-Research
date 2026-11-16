@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+Profile data file '/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/post_diagnostics/CALL02.Richards.Richards.callgrind.1' (creator: callgrind-3.26.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 5310087
+Trigger: Client Request
+Profiled target:  /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt02/diagnostics/scripts/Richards.Richards.js (PID 31, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir                  
+--------------------------------------------------------------------------------
+31,353,906 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                   file:function
+--------------------------------------------------------------------------------
+22,603,807 (72.09%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.c:JS_CallInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+ 4,034,770 (12.87%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_CallInternal'2
+ 3,989,107 (12.72%)  experiments/native_octane_20261108/attempt03/work/CALL02/read_ic_opcodes.inc:JS_CallInternal'2
+   283,392 ( 0.90%)  experiments/native_octane_20261108/attempt03/work/CALL02/read_ic_runtime.inc:JS_CallInternal'2
+   183,512 ( 0.59%)  experiments/native_octane_20261108/attempt03/work/CALL02/quickjs.h:JS_FreeValue [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt03/work/CALL02.profile]
+

@@ -1,0 +1,32 @@
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -37,23 +37,18 @@
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         uint8_t *pc = b->byte_code_buf + pos;
+         op = *pc;
++        /* The following instruction is still ordinary, not rewritten yet.
++           Both replacements preserve instruction lengths and branch entries. */
++        if ((op == OP_get_loc0 || op == OP_get_arg0) &&
++            pos + 1 < b->byte_code_len && pc[1] == OP_get_field) {
++            *pc = (op == OP_get_loc0) ? OP_v6_get_loc0 : OP_v6_get_arg0;
++        }
+         if (op == OP_get_field || op == OP_get_field2) {
+             b->read_ic_sites[index].atom = get_u32(pc + 1);
+             *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
+             put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
+         }
+     }
+-    /* Walk actual final instruction boundaries, never search operand bytes. */
+-    for (pos = 0; pos < b->byte_code_len; ) {
+-        uint8_t *pc = b->byte_code_buf + pos;
+-        op = *pc;
+-        int size = short_opcode_info(op).size;
+-        if (size == 1 && pos + 1 < b->byte_code_len && pc[1] == OP_get_field_rdi) {
+-            if (op == OP_get_loc0) *pc = OP_v6_get_loc0;
+-            if (op == OP_get_arg0) *pc = OP_v6_get_arg0;
+-        }
+-        pos += size;
+-    }
+     assert(index == count);
+     return 0;
+ }

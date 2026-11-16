@@ -1,0 +1,145 @@
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4095,6 +4095,9 @@
+     return ret;
+ }
+ 
++extern void four_begin(void);extern void four_end(void);
++static JSValue js_four_begin(JSContext*c,JSValueConst t,int n,JSValueConst*v){four_begin();return JS_UNDEFINED;}
++static JSValue js_four_end(JSContext*c,JSValueConst t,int n,JSValueConst*v){four_end();return JS_UNDEFINED;}
+ void js_std_add_helpers(JSContext *ctx, int argc, char **argv)
+ {
+     JSValue global_obj, console, args, performance;
+@@ -4111,7 +4114,9 @@
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));
+-    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx,global_obj,"__four_begin",JS_NewCFunction(ctx,js_four_begin,"__four_begin",0));
++    JS_SetPropertyStr(ctx,global_obj,"__four_end",JS_NewCFunction(ctx,js_four_end,"__four_end",0));
+ 
+     /* same methods as the mozilla JS shell */
+     if (argc >= 0) {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -690,6 +690,7 @@
+ 
+ #include "read_ic_types.h"
+ 
++typedef struct FourSite FourSite;
+ typedef struct JSFunctionBytecode {
+     JSGCObjectHeader header; /* must come first */
+     uint8_t js_mode;
+@@ -724,6 +725,8 @@
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
++    FourSite *four_sites;
++    uint32_t four_count;
+ #ifdef READ_IC_DIAGNOSTIC
+     RDIFunctionDiag *read_ic_diag;
+ #endif
+@@ -6213,6 +6216,10 @@
+ }
+ 
+ #include "read_ic_runtime.inc"
++#define FOUR_DIAG 1
++#define FOUR_PROBE 1
++#include "four_diag.inc"
++#include "four_probe.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -19560,6 +19567,7 @@
+             }
+             
+         CASE(OP_get_array_el):
++            four_index_observe(ctx,b,pc-1,sp,var_buf);
+             GET_ARRAY_EL_INLINE(get_array_el, 0);
+             BREAK;
+ 
+--- a/four_diag.inc
++++ b/four_diag.inc
+@@ -0,0 +1,54 @@
++#ifdef FOUR_DIAG
++#pragma push_macro("free")
++#undef free
++typedef struct FourDiag {
++    uint64_t q,h,eligible,fill,guard,overflow;
++    uint64_t work1,work2,work3,work4,work5,work6;
++    unsigned pc;
++    char *name,*target;
++    char bytes[257];
++    struct FourDiag *next;
++} FourDiag;
++static FourDiag *four_dlist;
++static int four_active;
++static FourDiag *four_dnew(JSContext *ctx,JSFunctionBytecode *b,unsigned pc)
++{
++    FourDiag *d=calloc(1,sizeof(*d));assert(d);d->pc=pc;
++    const char *n=JS_AtomToCString(ctx,b->func_name);assert(n);
++    d->name=strdup(n);assert(d->name);JS_FreeCString(ctx,n);
++    unsigned count=min_int(128,b->byte_code_len-pc);
++    for(unsigned i=0;i<count;i++)snprintf(d->bytes+2*i,3,"%02x",b->byte_code_buf[pc+i]);
++    d->next=four_dlist;four_dlist=d;return d;
++}
++#define FOUR_COUNT(s,k) do{if(four_active)(s)->diag->k++;}while(0)
++#define FOUR_ADD(s,k,n) do{if(four_active)(s)->diag->k+=(n);}while(0)
++static void four_json_string(const char *s)
++{
++    fputc('"',stderr);
++    for(const unsigned char *p=(const unsigned char*)s;*p;p++) {
++        if(*p=='"'||*p=='\\'){fputc('\\',stderr);fputc(*p,stderr);}
++        else if(*p<32)fprintf(stderr,"\\u%04x",*p);else fputc(*p,stderr);
++    }
++    fputc('"',stderr);
++}
++void four_begin(void){four_active=1;}
++void four_end(void)
++{
++    four_active=0;uint64_t q=0,h=0,e=0,f=0,g=0,o=0;
++    for(FourDiag*d=four_dlist;d;d=d->next){q+=d->q;h+=d->h;e+=d->eligible;f+=d->fill;g+=d->guard;o+=d->overflow;}
++    fprintf(stderr,"FOUR_COUNTS:{\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"sites\":[",
++        (unsigned long long)q,(unsigned long long)h,(unsigned long long)e,(unsigned long long)f,(unsigned long long)g,(unsigned long long)o);
++    unsigned k=0;for(FourDiag*d=four_dlist;d;d=d->next)if(d->q){
++        fprintf(stderr,"%s{\"function\":",k++?",":"");four_json_string(d->name);
++        if(d->target){fprintf(stderr,",\"target\":");four_json_string(d->target);}
++        fprintf(stderr,",\"site_id\":%u,\"work\":[%llu,%llu,%llu,%llu,%llu,%llu]",k-1,
++            (unsigned long long)d->work1,(unsigned long long)d->work2,(unsigned long long)d->work3,(unsigned long long)d->work4,(unsigned long long)d->work5,(unsigned long long)d->work6);
++        fprintf(stderr,",\"pc\":%u,\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"bytecode_hex\":\"%s\"}",d->pc,
++            (unsigned long long)d->q,(unsigned long long)d->h,(unsigned long long)d->eligible,(unsigned long long)d->fill,(unsigned long long)d->guard,(unsigned long long)d->overflow,d->bytes);
++    }fprintf(stderr,"]}\n");
++}
++#pragma pop_macro("free")
++#else
++#define FOUR_COUNT(s,k) ((void)0)
++#define FOUR_ADD(s,k,n) ((void)0)
++#endif
+--- a/four_probe.inc
++++ b/four_probe.inc
+@@ -0,0 +1,24 @@
++typedef struct FourIndexProbe {unsigned owner,pc;int cls,itag,vtag;FourDiag*diag;struct FourIndexProbe*next;} FourIndexProbe;
++static FourIndexProbe *four_index_buckets[65536];static unsigned four_index_identity;
++static void four_index_observe(JSContext*ctx,JSFunctionBytecode*b,const uint8_t*pc,JSValue*sp,JSValue*vars)
++{
++    if(!four_active)return;int cls=-1,itag=JS_VALUE_GET_TAG(sp[-1]),vtag=-999;JSValue value=JS_UNDEFINED;
++    if(JS_VALUE_GET_TAG(sp[-2])==JS_TAG_OBJECT){JSObject*o=JS_VALUE_GET_OBJ(sp[-2]);cls=o->class_id;
++        if(cls==JS_CLASS_ARRAY && o->fast_array && itag==JS_TAG_INT && (uint32_t)JS_VALUE_GET_INT(sp[-1])<o->u.array.count){
++            value=o->u.array.u.values[(uint32_t)JS_VALUE_GET_INT(sp[-1])];vtag=JS_VALUE_GET_TAG(value);
++        }
++    }
++    if(!b->four_count)b->four_count=++four_index_identity;
++    unsigned pos=pc-b->byte_code_buf,key=(b->four_count*7159u+pos*131u+cls*7u+itag*11u+vtag*17u)&65535;
++    FourIndexProbe*s;for(s=four_index_buckets[key];s;s=s->next)if(s->owner==b->four_count && s->pc==pos && s->cls==cls && s->itag==itag && s->vtag==vtag)break;
++    if(!s){s=calloc(1,sizeof(*s));assert(s);s->owner=b->four_count;s->pc=pos;s->cls=cls;s->itag=itag;s->vtag=vtag;s->diag=four_dnew(ctx,b,pos);
++        char text[96];snprintf(text,sizeof(text),"class=%d,index_tag=%d,element_tag=%d",cls,itag,vtag);s->diag->target=strdup(text);
++        s->next=four_index_buckets[key];four_index_buckets[key]=s;
++    }
++    s->diag->q++;s->diag->guard++;
++    if(pos+3<=b->byte_code_len && pc[1]==OP_add_loc && pc[2]<b->var_count &&
++       vtag==JS_TAG_INT && JS_VALUE_GET_TAG(vars[pc[2]])==JS_TAG_INT){
++        int64_t n=(int64_t)JS_VALUE_GET_INT(value)+JS_VALUE_GET_INT(vars[pc[2]]);
++        if(n>=INT32_MIN && n<=INT32_MAX)s->diag->eligible++;else s->diag->overflow++;
++    }
++}

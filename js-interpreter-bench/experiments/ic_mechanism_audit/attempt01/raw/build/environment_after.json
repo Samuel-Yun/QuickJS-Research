@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "stdout": "Linux LAPTOP-QPKCPDCB 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux\n 18:58:02 up 23 min,  1 user,  load average: 1.00, 1.00, 0.83\n    PID COMMAND         %CPU\n    513 python3          0.3\n    184 containerd       0.0\n    260 dockerd          0.0\n      1 systemd          0.0\n     55 systemd-journal  0.0\n     97 systemd-udevd    0.0\n    191 unattended-upgr  0.0\n    133 systemd-timesyn  0.0\n    154 systemd-logind   0.0\n    131 systemd-resolve  0.0\n    554 systemd          0.0\n    147 dbus-daemon      0.0\n    172 rsyslogd         0.0\n    512 Relay(513)       0.0\n",
+  "stderr": "your 131072x1 screen size is bogus. expect trouble\n",
+  "timeout": false,
+  "command": [
+    "sh",
+    "-c",
+    "uname -a; uptime; ps -eo pid,comm,pcpu --sort=-pcpu | head -15; true"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-28T10:58:02.548882+00:00",
+  "completed_at": "2026-10-28T10:58:02.565985+00:00",
+  "outer_start_ns": 1428589826496,
+  "outer_stop_ns": 1428606927509,
+  "outer_wall_ns": 17101013,
+  "boot_id": "9bfc09ed-2da5-4e90-8b22-ef2b3b502b1f"
+}

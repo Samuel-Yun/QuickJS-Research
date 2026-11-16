@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "explicit_Run_loop_counters": true,
+  "sequence_processes": 27,
+  "sequence": {
+    "count": 3365376,
+    "hash": 4133815237,
+    "receiver_ids": [
+      512000,
+      239616,
+      596480,
+      595456,
+      711680,
+      710144
+    ]
+  },
+  "selected_calls_per_Run": 6573,
+  "bytecodes": {
+    "A": {
+      "quickjs": {
+        "call_opcode": "get_field2 call -> call_method 1 -> js_function_call -> JS_CallInternal",
+        "evidence": "diagnostics/bytecode/A.quickjs.txt"
+      },
+      "v8": {
+        "schedule_length": 94,
+        "call_opcode": "CallProperty1 (same A/B)",
+        "evidence": "diagnostics/bytecode/A.v8.txt"
+      },
+      "jsc": {
+        "call_opcode": "op_call; both mlSchedule functions use jneq_ptr identity guard/direct-call fast branch plus .call fallback. Do NOT assume native .call helper actually called.",
+        "evidence": "diagnostics/bytecode/A.jsc.txt"
+      }
+    },
+    "B": {
+      "quickjs": {
+        "call_opcode": "get_field2 call -> call_method 1 -> js_function_call -> JS_CallInternal",
+        "evidence": "diagnostics/bytecode/B.quickjs.txt"
+      },
+      "v8": {
+        "schedule_length": 94,
+        "call_opcode": "CallProperty1 (same A/B)",
+        "evidence": "diagnostics/bytecode/B.v8.txt"
+      },
+      "jsc": {
+        "call_opcode": "op_call; both mlSchedule functions use jneq_ptr identity guard/direct-call fast branch plus .call fallback. Do NOT assume native .call helper actually called.",
+        "evidence": "diagnostics/bytecode/B.jsc.txt"
+      }
+    }
+  },
+  "per_engine_exact_self_time": "UNKNOWN",
+  "sequence_checksum_is_collision_free_proof": false,
+  "counter_build_overhead": "overhead_summary.csv; three paired original processes, not formal/no self-time"
+}

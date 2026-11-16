@@ -1,0 +1,27 @@
+quickjs.c; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+6135: static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+6136:                                                        JSObject *p,
+6137:                                                        JSAtom atom)
+6138: {
+6139:     JSShape *sh;
+6140:     JSShapeProperty *pr, *prop;
+6141:     intptr_t h;
+6142:     sh = p->shape;
+6143:     h = (uintptr_t)atom & sh->prop_hash_mask;
+6144:     h = sh->hash_table[h];
+6145:     prop = get_shape_prop(sh);
+6146:     while (h) {
+6147:         pr = &prop[h - 1];
+6148:         if (likely(pr->atom == atom)) {
+6149:             *ppr = &p->prop[h - 1];
+6150:             /* the compiler should be able to assume that pr != NULL here */
+6151:             return pr;
+6152:         }
+6153:         h = pr->hash_next;
+6154:     }
+6155:     *ppr = NULL;
+6156:     return NULL;
+6157: }
+6158: 
+6159: /* indicate that the object may be part of a function prototype cycle */
+6160: static void set_cycle_flag(JSContext *ctx, JSValueConst obj)

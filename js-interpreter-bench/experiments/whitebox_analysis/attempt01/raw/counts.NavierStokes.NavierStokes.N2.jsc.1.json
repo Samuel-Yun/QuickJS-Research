@@ -1,0 +1,20 @@
+{
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"NavierStokes.NavierStokes\",\"suite\":\"NavierStokes\",\"subbenchmark\":\"NavierStokes\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":2,\"correctness\":\"PASS\",\"extra_validation_calls\":13,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":0,\"stop_ms\":117.34,\"elapsed_ms\":117.34,\"elapsed_per_call_ms\":58.67,\"warmup_calls\":0}\nWB_COUNTS:{\"vel_step\":15,\"diffuse2\":15,\"lin_solve2\":15,\"set_bnd\":810,\"project\":30,\"lin_solve\":45,\"advect\":45,\"dens_step\":15,\"diffuse\":15}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/NavierStokes.NavierStokes.N2.count.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:41:49.670492+00:00",
+  "outer_start_ns": 100878110578,
+  "outer_stop_ns": 101812914841,
+  "boot_id": "441e3b90-9a71-4533-8969-b267d582448a",
+  "outer_wall_ns": 934804263
+}

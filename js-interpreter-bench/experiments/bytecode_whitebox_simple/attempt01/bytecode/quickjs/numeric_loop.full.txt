@@ -1,0 +1,287 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js:2:27: function: <null>
+  args: message
+  closure vars:
+    0: var console [global_ref0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (message) { console.log(message); }
+
+        get_var 0: console
+        get_field2 log
+        get_arg0 0: message
+        call_method 1
+        return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var console [global]
+    1: var globalThis [global]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+        get_var 1: globalThis
+        fclosure8 0: [bytecode <null>]
+        insert2
+        put_field __TEB_marker
+        set_loc0 0: "<ret>"
+        return
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:5:57: function: <null>
+  closure vars:
+    0: var __clockFunction [loc1]
+    1: var __clockObject [loc0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+;;     return __clockFunction.call(__clockObject);
+
+        get_var_ref0 0: __clockFunction
+        get_field2 call
+        get_var_ref1 1: __clockObject
+        tail_call_method 1
+
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:2:3: function: <null>
+  locals:
+    0: var __clockObject
+    1: var __clockFunction
+  closure vars:
+    0: var performance [global_ref0]
+    1: var Error [global_ref1]
+    2: var Object [global_ref2]
+    3: var globalThis [global_ref3]
+  stack_size: 6
+  var_ref_count: 2
+  opcodes:
+;; function () {
+;;   var __clockObject = performance, __clockFunction = performance.now;
+
+        get_var 0: performance
+        put_loc0 0: __clockObject
+        get_var 0: performance
+        get_field now
+
+;;   if (typeof __clockFunction !== 'function') throw new Error('native clock missing');
+
+        set_loc1 1: __clockFunction
+        typeof_is_function
+        if_true8 29
+        get_var 1: Error
+        dup
+        push_atom_value "native clock missing"
+        call_constructor 1
+        throw
+
+;;   Object.defineProperty(globalThis, 'benchNow', {value: function () {
+
+   29:  get_var 2: Object
+        get_field2 defineProperty
+        get_var 3: globalThis
+        push_atom_value benchNow
+        object
+        fclosure8 0: [bytecode <null>]
+        set_name value
+        define_field value
+        push_false
+        define_field writable
+        push_false
+        define_field configurable
+        call_method 3
+        return_undef
+
+;;     return __clockFunction.call(__clockObject);
+;;   }, writable: false, configurable: false});
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var performance [global]
+    1: var Error [global]
+    2: var Object [global]
+    3: var globalThis [global]
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/dump/numeric_loop_N1.js:2:1: function: wbNumericLoop
+  args: n
+  locals:
+    0: var sum
+    1: var i
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function wbNumericLoop(n) {
+
+        push_0 0
+
+;;     var sum = 0;
+
+        put_loc0 0: sum
+        push_0 0
+
+;;     for (var i = 0; i < n; i++) {
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        get_arg0 0: n
+        lt
+        if_false8 16
+
+;;         sum += i;
+
+        get_loc1 1: i
+        add_loc 0: sum
+        inc_loc 1: i
+        goto8 4
+
+;;     }
+;;     return sum;
+
+   16:  get_loc0 0: sum
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/dump/numeric_loop_N1.js:10:3: function: <null>
+  locals:
+    0: var __wbN
+    1: var __wbLast
+    2: var __wbChecksum
+    3: var __wbStart
+    4: var __wbRepeat
+    5: var __wbElapsed
+  closure vars:
+    0: var benchNow [global_ref1]
+    1: var wbNumericLoop [global_ref0]
+    2: var Error [global_ref2]
+    3: var console [global_ref3]
+    4: var JSON [global_ref4]
+  stack_size: 7
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_1 1
+
+;;     var __wbN = 1, __wbLast, __wbChecksum = 0;
+
+        put_loc0 0: __wbN
+        push_0 0
+        put_loc2 2: __wbChecksum
+
+;;     var __wbStart = benchNow();
+
+        get_var 0: benchNow
+        call0 0
+        put_loc3 3: __wbStart
+        push_0 0
+
+;;     for (var __wbRepeat = 0; __wbRepeat < __wbN; __wbRepeat++) {
+
+        put_loc8 4: __wbRepeat
+   12:  get_loc8 4: __wbRepeat
+        get_loc0 0: __wbN
+        lt
+        if_false8 36
+
+;;         __wbLast = wbNumericLoop(4096);
+
+        get_var 1: wbNumericLoop
+        push_i16 4096
+        call1 1
+        put_loc1 1: __wbLast
+
+;;         __wbChecksum = (__wbChecksum + __wbLast) | 0;
+
+        get_loc2 2: __wbChecksum
+        get_loc1 1: __wbLast
+        add
+        push_0 0
+        or
+        put_loc2 2: __wbChecksum
+        inc_loc 4: __wbRepeat
+        goto8 12
+
+;;     }
+;;     var __wbElapsed = benchNow() - __wbStart;
+
+   36:  get_var 0: benchNow
+        call0 0
+        get_loc3 3: __wbStart
+        sub
+        put_loc8 5: __wbElapsed
+
+;;     if (__wbLast !== 8386560 || __wbChecksum !== 8386560) throw new Error('wrong result');
+
+        get_loc1 1: __wbLast
+        push_i32 8386560
+        strict_neq
+        dup
+        if_true8 62
+        drop
+        get_loc2 2: __wbChecksum
+        push_i32 8386560
+        strict_neq
+   62:  if_false8 77
+        get_var 2: Error
+        dup
+        push_atom_value "wrong result"
+        call_constructor 1
+        throw
+
+;;     console.log('WB_RESULT ' + JSON.stringify({N:__wbN,last:__wbLast,checksum:__wbChecksum,elapsed_ms:__wbElapsed}));
+
+   77:  get_var 3: console
+        get_field2 log
+        push_atom_value "WB_RESULT "
+        get_var 4: JSON
+        get_field2 stringify
+        object
+        get_loc0 0: __wbN
+        define_field N
+        get_loc1 1: __wbLast
+        define_field last
+        get_loc2 2: __wbChecksum
+        define_field checksum
+        get_loc8 5: __wbElapsed
+        define_field elapsed_ms
+        call_method 1
+        add
+        call_method 1
+        return_undef
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/bytecode_whitebox_simple/attempt01/generated/dump/numeric_loop_N1.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var wbNumericLoop [global_decl]
+    1: var benchNow [global]
+    2: var Error [global]
+    3: var console [global]
+    4: var JSON [global]
+  stack_size: 1
+  var_ref_count: 0
+  opcodes:
+        fclosure8 0: [bytecode wbNumericLoop]
+        put_var_ref0 0: wbNumericLoop
+        fclosure8 1: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+WB_RESULT {"N":1,"last":8386560,"checksum":8386560,"elapsed_ms":0.0539520000002085}

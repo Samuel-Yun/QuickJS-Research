@@ -1,0 +1,18 @@
+{
+  "status": "PASS_TARGETED_PREFLIGHT_AFTER_SETUP_FIXES",
+  "formal_performance_samples": 0,
+  "passed": [
+    "focused JS both candidates",
+    "Run-only correctness and coverage six cases per candidate",
+    "native finalizer write reentry both",
+    "both chain entries and shared write probe",
+    "hot serialization and loaded empty caches",
+    "read record and function header sizes unchanged"
+  ],
+  "known_failures": [
+    "source anchor setup before build",
+    "relative-path native test wrapper compile",
+    "local-load fixture counter assumption"
+  ],
+  "engine_source_changed_for_fixes": false
+}

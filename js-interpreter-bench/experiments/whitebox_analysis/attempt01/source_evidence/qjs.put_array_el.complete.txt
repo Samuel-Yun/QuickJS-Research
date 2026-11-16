@@ -1,0 +1,118 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L19546
+19546:         CASE(OP_put_array_el):
+19547:             {
+19548:                 int ret;
+19549:                 JSObject *p;
+19550:                 uint32_t idx;
+19551: 
+19552:                 if (likely(JS_VALUE_GET_TAG(sp[-3]) == JS_TAG_OBJECT &&
+19553:                            JS_VALUE_GET_TAG(sp[-2]) == JS_TAG_INT)) {
+19554:                     p = JS_VALUE_GET_OBJ(sp[-3]);
+19555:                     idx = JS_VALUE_GET_INT(sp[-2]);
+19556:                     if (unlikely(p->class_id != JS_CLASS_ARRAY))
+19557:                         goto put_array_el_slow_path;
+19558:                     if (unlikely(idx >= (uint32_t)p->u.array.count)) {
+19559:                         uint32_t new_len, array_len;
+19560:                         if (unlikely(idx != (uint32_t)p->u.array.count ||
+19561:                                      !p->fast_array ||
+19562:                                      !can_extend_fast_array(p))) {
+19563:                             goto put_array_el_slow_path;
+19564:                         }
+19565:                         if (likely(JS_VALUE_GET_TAG(p->prop[0].u.value) != JS_TAG_INT))
+19566:                             goto put_array_el_slow_path;
+19567:                         /* cannot overflow otherwise the length would not be an integer */
+19568:                         new_len = idx + 1;
+19569:                         if (unlikely(new_len > p->u.array.u1.size))
+19570:                             goto put_array_el_slow_path;
+19571:                         array_len = JS_VALUE_GET_INT(p->prop[0].u.value);
+19572:                         if (new_len > array_len) {
+19573:                             if (unlikely(!(get_shape_prop(p->shape)->flags & JS_PROP_WRITABLE)))
+19574:                                 goto put_array_el_slow_path;
+19575:                             p->prop[0].u.value = JS_NewInt32(ctx, new_len);
+19576:                         }
+19577:                         p->u.array.count = new_len;
+19578:                         p->u.array.u.values[idx] = sp[-1];
+19579:                     } else {
+19580:                         set_value(ctx, &p->u.array.u.values[idx], sp[-1]);
+19581:                     }
+19582:                     JS_FreeValue(ctx, sp[-3]);
+19583:                     sp -= 3;
+19584:                 } else {
+19585:                 put_array_el_slow_path:
+19586:                     sf->cur_pc = pc;
+19587:                     ret = JS_SetPropertyValue(ctx, sp[-3], sp[-2], sp[-1], JS_PROP_THROW_STRICT);
+19588:                     JS_FreeValue(ctx, sp[-3]);
+19589:                     sp -= 3;
+19590:                     if (unlikely(ret < 0))
+19591:                         goto exception;
+19592:                 }
+19593:             }
+19594:             BREAK;
+19595: 
+19596:         CASE(OP_put_ref_value):
+19597:             {
+19598:                 int ret;
+19599:                 JSAtom atom;
+19600:                 sf->cur_pc = pc;
+19601:                 atom = JS_ValueToAtom(ctx, sp[-2]);
+19602:                 if (unlikely(atom == JS_ATOM_NULL))
+19603:                     goto exception;
+19604:                 if (unlikely(JS_IsUndefined(sp[-3]))) {
+19605:                     if (is_strict_mode(ctx)) {
+19606:                         JS_ThrowReferenceErrorNotDefined(ctx, atom);
+19607:                         JS_FreeAtom(ctx, atom);
+19608:                         goto exception;
+19609:                     } else {
+19610:                         sp[-3] = JS_DupValue(ctx, ctx->global_obj);
+19611:                     }
+19612:                 }
+19613:                 ret = JS_HasProperty(ctx, sp[-3], atom);
+19614:                 if (unlikely(ret <= 0)) {
+19615:                     if (unlikely(ret < 0)) {
+19616:                         JS_FreeAtom(ctx, atom);
+19617:                         goto exception;
+19618:                     }
+19619:                     if (is_strict_mode(ctx)) {
+19620:                         JS_ThrowReferenceErrorNotDefined(ctx, atom);
+19621:                         JS_FreeAtom(ctx, atom);
+19622:                         goto exception;
+19623:                     }
+19624:                 }
+19625:                 ret = JS_SetPropertyInternal(ctx, sp[-3], atom, sp[-1], sp[-3], JS_PROP_THROW_STRICT);
+19626:                 JS_FreeAtom(ctx, atom);
+19627:                 JS_FreeValue(ctx, sp[-2]);
+19628:                 JS_FreeValue(ctx, sp[-3]);
+19629:                 sp -= 3;
+19630:                 if (unlikely(ret < 0))
+19631:                     goto exception;
+19632:             }
+19633:             BREAK;
+19634: 
+19635:         CASE(OP_put_super_value):
+19636:             {
+19637:                 int ret;
+19638:                 JSAtom atom;
+19639:                 sf->cur_pc = pc;
+19640:                 if (JS_VALUE_GET_TAG(sp[-3]) != JS_TAG_OBJECT) {
+19641:                     JS_ThrowTypeErrorNotAnObject(ctx);
+19642:                     goto exception;
+19643:                 }
+19644:                 atom = JS_ValueToAtom(ctx, sp[-2]);
+19645:                 if (unlikely(atom == JS_ATOM_NULL))
+19646:                     goto exception;
+19647:                 ret = JS_SetPropertyInternal(ctx, sp[-3], atom, sp[-1], sp[-4],
+19648:                                              JS_PROP_THROW_STRICT);
+19649:                 JS_FreeAtom(ctx, atom);
+19650:                 JS_FreeValue(ctx, sp[-4]);
+19651:                 JS_FreeValue(ctx, sp[-3]);
+19652:                 JS_FreeValue(ctx, sp[-2]);
+19653:                 sp -= 4;
+19654:                 if (ret < 0)
+19655:                     goto exception;
+19656:             }
+19657:             BREAK;
+19658: 
+19659:         CASE(OP_define_array_el):
+19660:             {

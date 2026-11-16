@@ -1,0 +1,261 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,5 @@
++#define DUMP_BYTECODE 0
++#define AUDIT_VARIANT 1
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -6141,6 +6143,8 @@
+     return NULL;
+ }
+ 
++#include "audit_hooks.h"
++
+ static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+                                                        JSObject *p,
+                                                        JSAtom atom)
+@@ -6148,11 +6152,14 @@
+     JSShape *sh;
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
++    audit_lookup(0);
+     sh = p->shape;
+     h = (uintptr_t)atom & sh->prop_hash_mask;
++    audit_bucket();
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+     while (h) {
++        audit_chain();
+         pr = &prop[h - 1];
+         if (likely(pr->atom == atom)) {
+             *ppr = &p->prop[h - 1];
+@@ -8234,6 +8241,7 @@
+                                JSAtom prop, JSValueConst this_obj,
+                                BOOL throw_ref_error)
+ {
++    audit_generic();
+     JSObject *p;
+     JSProperty *pr;
+     JSShapeProperty *prs;
+@@ -17770,6 +17778,7 @@
+                                JSValueConst this_obj, JSValueConst new_target,
+                                int argc, JSValue *argv, int flags)
+ {
++    AuditScope audit_frame __attribute__((cleanup(audit_end)))=audit_pause();
+     JSRuntime *rt = caller_ctx->rt;
+     JSContext *ctx;
+     JSObject *p;
+@@ -19129,6 +19138,7 @@
+ 
+ #define GET_FIELD_INLINE(name, keep, is_length)                         \
+             {                                                           \
++                AUDIT_SCOPE(b,pc-1);                                    \
+                 JSValue val, obj;                                       \
+                 JSAtom atom;                                            \
+                 JSObject *p;                                            \
+@@ -19174,6 +19184,7 @@
+                     if (unlikely(JS_IsException(val)))                  \
+                         goto exception;                                 \
+                 }                                                       \
++                audit_value(val);                                       \
+                 if (keep) {                                             \
+                     *sp++ = val;                                        \
+                 } else {                                                \
+@@ -19201,6 +19212,7 @@
+             
+         CASE(OP_put_field):
+             {
++                AUDIT_SCOPE(b,pc-1);
+                 int ret;
+                 JSValue obj;
+                 JSAtom atom;
+@@ -36305,6 +36317,7 @@
+         JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
+         return JS_EXCEPTION;
+     }
++    audit_register(ctx,b);
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -36313,6 +36326,7 @@
+ 
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b)
+ {
++    audit_free(b);
+     int i;
+ 
+ #if 0
+@@ -61458,3 +61472,5 @@
+     JS_FreeValue(ctx, obj);
+     return 0;
+ }
++
++#include "audit_tail.inc"
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,6 +311,7 @@
+     exit(1);
+ }
+ 
++extern void audit_report(void);
+ int main(int argc, char **argv)
+ {
+     JSRuntime *rt;
+@@ -559,10 +560,12 @@
+                best[1] + best[2] + best[3] + best[4],
+                best[1], best[2], best[3], best[4]);
+     }
++    audit_report();
+     return 0;
+  fail:
+     js_std_free_handlers(rt);
+     JS_FreeContext(ctx);
+     JS_FreeRuntime(rt);
++    audit_report();
+     return 1;
+ }
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,6 +1,8 @@
+ /* The miss body retains upstream GET_FIELD_INLINE's normal search. */
+ #define GET_READ_IC(name, keep)                                          \
+     {                                                                   \
++        AUDIT_SCOPE(b,pc-1);                                          \
++        unsigned admission_depth = 0;                                  \
+         uint32_t index = get_u32(pc), offset;                            \
+         ReadICSite *site = &b->read_ic_sites[index];                     \
+         JSValue obj = sp[-1], val;                                      \
+@@ -21,23 +23,24 @@
+                         holder = p->shape->proto;                       \
+                         if (!holder || holder->class_id != JS_CLASS_OBJECT || holder->is_exotic || \
+                             holder->shape != site->holder_shape)       \
+-                            goto name ## _miss;                        \
++                            { hdiag_holder_miss(); goto name ## _miss; }                        \
+                     }                                                   \
+-                    RDI_COUNT(hits);                                   \
++                    hdiag_hit(site->holder_shape != NULL); audit_hit(); RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, holder->prop[offset].u.value); \
+                     goto name ## _done;                                \
+                 }                                                       \
+-                RDI_COUNT(shape_misses);                               \
++                hdiag_receiver_miss(); RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+     name ## _miss:                                                      \
+-        RDI_COUNT(fallback);                                            \
++        audit_miss(); RDI_COUNT(fallback);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+             for (;;) {                                                  \
+                 prs = find_own_property(&pr, p, atom);                   \
+                 if (prs) {                                              \
++                    admission_found(origin,p,prs,admission_depth);                                              \
+                     if (unlikely(prs->flags & JS_PROP_TMASK)) {          \
+                         RDI_REASON(descriptor);                        \
+                         goto name ## _slow;                            \
+@@ -64,6 +67,7 @@
+                     obj = JS_MKPTR(JS_TAG_OBJECT, p);                   \
+                     goto name ## _slow;                                \
+                 }                                                       \
++                admission_depth++;                                     \
+                 p = p->shape->proto;                                    \
+                 if (!p) { RDI_REASON(missing); val = JS_UNDEFINED; break; } \
+             }                                                           \
+@@ -75,6 +79,7 @@
+             if (unlikely(JS_IsException(val))) goto exception;          \
+         }                                                               \
+     name ## _done:                                                      \
++        audit_value(val);                                                      \
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
+     }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -5,17 +5,17 @@
+ static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+ {
+ #if RDI_CAPACITY == 1
+-    RDI_COUNT(comparisons);
++    audit_probe(); RDI_COUNT(comparisons);
+     if (s->shape == shape)
+         return s->prop_offset;
+ #else
+     unsigned i, first = s->recent;
+-    RDI_COUNT(comparisons);
++    audit_probe(); RDI_COUNT(comparisons);
+     if (s->shape[first] == shape)
+         return s->prop_offset[first];
+     for (unsigned k = 1; k < 4; k++) {
+         i = (first + k) & 3;
+-        RDI_COUNT(comparisons);
++        audit_probe(); RDI_COUNT(comparisons);
+         if (s->shape[i] == shape) {
+             s->recent = i;
+             return s->prop_offset[i];
+@@ -28,17 +28,24 @@
+                                     JSShape *shape, JSShape *holder_shape,
+                                     uint32_t offset RDI_DPARAM)
+ {
+-    RDI_COUNT(updates);
++    audit_change(0); RDI_COUNT(updates);
+ #if RDI_CAPACITY == 1
+     if (s->shape == shape && s->holder_shape == holder_shape) {
++        audit_change(3);
+         s->prop_offset = offset;
+         return;
+     }
++    hdiag_fill(holder_shape != NULL,s->shape != NULL);
++    audit_change(s->shape ? 2 : 1);
+     if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++    hdiag_retain(shape);
+     js_dup_shape(shape);
++    hdiag_retain(holder_shape);
+     if (holder_shape)
+         js_dup_shape(holder_shape);
++    hdiag_release(s->shape);
+     js_free_shape_null(ctx->rt, s->shape);
++    hdiag_release(s->holder_shape);
+     js_free_shape_null(ctx->rt, s->holder_shape);
+     s->shape = shape;
+     s->holder_shape = holder_shape;
+@@ -63,6 +70,7 @@
+         s->victim = (i + 1) & 3;
+         RDI_REPLACE();
+     }
++    hdiag_retain(shape);
+     js_dup_shape(shape);
+     js_free_shape_null(ctx->rt, s->shape[i]);
+     s->shape[i] = shape;
+@@ -77,8 +85,10 @@
+         ReadICSite *s = &b->read_ic_sites[i];
+         JS_FreeAtomRT(rt, s->atom);
+ #if RDI_CAPACITY == 1
+-        js_free_shape_null(rt, s->shape);
+-        js_free_shape_null(rt, s->holder_shape);
++        hdiag_release(s->shape);
++    js_free_shape_null(rt, s->shape);
++        hdiag_release(s->holder_shape);
++    js_free_shape_null(rt, s->holder_shape);
+ #else
+         for (unsigned j = 0; j < 4; j++)
+             js_free_shape_null(rt, s->shape[j]);
+@@ -87,6 +97,7 @@
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_release(b);
+ #endif
++    hdiag_free(b->read_ic_count);
+     js_free_rt(rt, b->read_ic_sites);
+     b->read_ic_sites = NULL;
+     b->read_ic_count = 0;
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -20,6 +20,7 @@
+     b->read_ic_sites = js_mallocz(ctx, count * sizeof(ReadICSite));
+     if (!b->read_ic_sites) return -1;
+     b->read_ic_count = count;
++    hdiag_alloc(count);
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_prepare(ctx, b);
+ #endif

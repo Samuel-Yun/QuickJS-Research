@@ -1,0 +1,55 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/",
+    "--exec",
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/run.py",
+    "checks"
+  ],
+  "timestamp": "2026-11-04T09:28:37.368203+00:00",
+  "host_pid": 121300,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "Exact source/opcode/site checks plus repeated configuration should preserve correctness and OFF ordinary lookups.",
+  "changed_factor": "Run independent mechanism correctness and counter gates only; no formal timing samples.",
+  "timeout_s": 160.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204319834112,
+      "free": 10428526592
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  },
+  "completed_at": "2026-11-04T09:28:57.633537+00:00",
+  "host_child_pid": 80524,
+  "wsl_exit_code": 1,
+  "wsl_exit_u32": 1,
+  "host_terminated_client": false,
+  "external_wall_ms": 20263.3417,
+  "stdout": {
+    "encoding": "utf-8",
+    "text": "mechanism correctness Splay.Splay A 1 1 True 2.4968210000006366\nmechanism correctness Splay.Splay M 1 1 True 2.3093229999994946\nmechanism correctness Splay.Splay C_ON 1 1 True 2.338729000000967\nmechanism correctness Splay.Splay C_OFF 1 1 True 2.307220000000598\nmechanism correctness Splay.Splay A 2 2 True 4.425349000001006\nmechanism correctness Splay.Splay M 2 2 True 4.6568999999999505\nmechanism correctness Splay.Splay C_ON 2 2 True 4.892227999998795\nmechanism correctness Splay.Splay C_OFF 2 2 True 4.746780999999828\nmechanism correctness M4.numeric_control A 1 1 True 0.04132899999967776\nmechanism correctness M4.numeric_control M 1 1 True 0.04029700000319281\nmechanism correctness M4.numeric_control C_ON 1 1 True 0.047400999999808846\nmechanism correctness M4.numeric_control C_OFF 1 1 True 0.03120899999703397\nmechanism correctness M4.numeric_control A 2 2 True 0.07997199999954319\nmechanism correctness M4.numeric_control M 2 2 True 0.09061199999996461\nmechanism correctness M4.numeric_control C_ON 2 2 True 0.07043399999747635\nmechanism correctness M4.numeric_control C_OFF 2 2 True 0.075183000000834\nmechanism light_diagnostic Splay.Splay M 1 0 True 2.995769000001019\n"
+  },
+  "stderr": {
+    "encoding": "UTF-16LE WSL prefix + UTF-8 child suffix",
+    "text": "wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。\r\n"
+  },
+  "stdout_sha256": "6476677a24ce9e2f5d0a73f5a2813db81c2592d01943da26a06dcec7caf59c10",
+  "stderr_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+  "linux_child_exit_code": null,
+  "linux_child_signal": null,
+  "linux_boot_before": null,
+  "linux_boot_after": null,
+  "linux_child_cpu_ms": null,
+  "linux_single_process_peak_rss_kib": null,
+  "missing_linux_evidence": "UNKNOWN unless child JSON is actually produced"
+}

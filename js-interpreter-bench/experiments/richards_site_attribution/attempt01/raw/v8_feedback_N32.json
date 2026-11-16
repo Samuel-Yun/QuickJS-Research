@@ -1,0 +1,27 @@
+{
+  "exit_code": 0,
+  "stdout": "RICHARDS {\"N\":32,\"start_ms\":501.004,\"stop_ms\":721.806,\"elapsed_ms\":220.80200000000002,\"correctness\":\"PASS\",\"assertions_per_Run\":1,\"warmup_calls\":0}\nFEEDBACK isHeldOrSuspended\n0x18bd01023869 <JSFunction (sfi = 0x18bd01021781)>\nFEEDBACK schedule\n0x18bd01023741 <JSFunction (sfi = 0x18bd01021601)>\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "--allow-natives-syntax",
+    "--log-ic",
+    "--no-logfile-per-isolate",
+    "--logfile=/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/raw/v8_ic_N32.log",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/DIAGNOSTIC_v8_feedback.N32.js"
+  ],
+  "timestamp_utc": "2026-10-17T09:12:08.074607+00:00",
+  "outer_wall_ns": 734387278,
+  "load_average": [
+    0.080078125,
+    0.0166015625,
+    0.00537109375
+  ],
+  "boot_id": "3a71d15a-ca6d-4252-bbaf-8b3dbc4b3a37",
+  "LD_PRELOAD": null
+}

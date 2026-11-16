@@ -1,0 +1,33 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_function_timing/attempt01/generated/left_true.N1.js:701:48: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_HELD [global_ref23]
+    1: var STATE_SUSPENDED [global_ref22]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+        get_loc0 0: this
+
+;;   return (this.state & STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);
+
+        get_field state
+        get_var 0: STATE_HELD
+        and
+        push_0 0
+        neq
+        dup
+        if_true8 28
+        drop
+        get_loc0 0: this
+        get_field state
+        get_var 1: STATE_SUSPENDED
+        eq
+   28:  return
+
+;; }
+

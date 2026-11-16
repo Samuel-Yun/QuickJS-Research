@@ -1,0 +1,38 @@
+{
+  "status": "COMPLETE_WITH_OBSERVABILITY_LIMITATIONS",
+  "timestamp": "2026-10-28T13:41:43.170257+00:00",
+  "task_elapsed_seconds": 4400.857341,
+  "budget_seconds": 21600,
+  "formal_valid": 240,
+  "formal_expected": 240,
+  "complete8_process_rounds": 30,
+  "N": 16384,
+  "stages": {
+    "runtime_identity": "PASS frozenA/M/d8/snapshot/ICU no rebuild",
+    "correctness_N1_N2": "16/16 PASS",
+    "selected_N_correctness": "8/8 PASS",
+    "pilots": "48 retained; 24 final-N >=1s",
+    "micro_mechanism": "PASS",
+    "Richards_sites": "PASS original source+3 sites, N1/N2 V8 and reused QJS counts",
+    "source_reference": "4 small official files downloaded/hashed; previous fixed files verified",
+    "profiling": "UNAVAILABLE perf not found after1 attempt",
+    "formal": "240/240 valid, no retries/removal",
+    "statistics": "PASS,10000 complete8-block bootstrap",
+    "independent_audit": "PASS",
+    "portable_replay": "PASS"
+  },
+  "next_priority": "b: separate stable-own function-value acquisition from calling; not a proven call-frame bottleneck",
+  "unknown": {
+    "actual_site_handler": null,
+    "V8_per_access_hit_rate": null,
+    "Richards_site_time_share": null,
+    "OFF_direct_slot_state": null,
+    "V8_exact_build_commit": null,
+    "inherited_micro_receiver_map_details": null,
+    "UTC_discrepancy_cause": "UNKNOWN; endpoints not simultaneous"
+  },
+  "IC_implemented": false,
+  "original_Richards_modified": false,
+  "old_raw_overwritten": false,
+  "commit_push": false
+}

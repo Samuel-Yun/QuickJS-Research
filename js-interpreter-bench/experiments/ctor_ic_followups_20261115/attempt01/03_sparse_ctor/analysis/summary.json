@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "round": "03_sparse_ctor",
+  "aggregates": {
+    "octane": {
+      "A": -7.859651308442506,
+      "EVAL_COLD": -2.2791728392521415,
+      "C": -1.5205791963854076,
+      "R3": -0.8861447737643968,
+      "V8_ON": 53.06014851411875,
+      "max_regression": {
+        "case": "RayTrace.RayTrace",
+        "N": 128,
+        "A_ms": 30.355685824295506,
+        "EVAL_COLD_ms": 28.297843429492787,
+        "C_ms": 27.28649887512438,
+        "R3_ms": 26.96784146875143,
+        "candidate_ms": 27.70633619534783,
+        "V8_ON_ms": 12.5061875,
+        "attempts": 8524288,
+        "hits": 0,
+        "fallbacks": 8524288,
+        "fills": 0,
+        "vs_A_pct": -8.727688263354072,
+        "vs_EVAL_COLD_pct": -2.0902908577424384,
+        "vs_C_pct": 1.5386265645322306,
+        "vs_R3_pct": 2.738427276250932,
+        "vs_V8_ON_pct": 121.54102675453915
+      },
+      "hits": 13659452,
+      "attempts": 24021438,
+      "sum_ms": {
+        "A": 8753.443533238169,
+        "EVAL_COLD": 8113.9236723789945,
+        "C": 8149.78952291813,
+        "R3": 8289.348012797964,
+        "candidate": 8210.082200228593,
+        "V8_ON": 6980.745217285156
+      }
+    },
+    "sunspider": {
+      "A": -4.446122590474255,
+      "EVAL_COLD": -3.0038206265568856,
+      "C": -2.9243123770331447,
+      "R3": -0.8355814733839617,
+      "V8_ON": 38.4759619119744,
+      "max_regression": {
+        "case": "access-binary-trees",
+        "N": 256,
+        "A_ms": 9.188603435643017,
+        "EVAL_COLD_ms": 8.550005411962047,
+        "C_ms": 8.455853988300078,
+        "R3_ms": 4.776233703130856,
+        "candidate_ms": 6.091568062431179,
+        "V8_ON_ms": 4.897763671875,
+        "attempts": 10770432,
+        "hits": 10558564,
+        "fallbacks": 211868,
+        "fills": 502,
+        "vs_A_pct": -33.705180497814226,
+        "vs_EVAL_COLD_pct": -28.75363501046847,
+        "vs_C_pct": -27.960344740344823,
+        "vs_R3_pct": 27.53915409202259,
+        "vs_V8_ON_pct": 24.374479263086958
+      },
+      "hits": 10558825,
+      "attempts": 25209600,
+      "sum_ms": {
+        "A": 401.84999168262584,
+        "EVAL_COLD": 396.6749892469961,
+        "C": 398.20031219284283,
+        "R3": 393.04693526995834,
+        "candidate": 389.57281946984585,
+        "V8_ON": 250.257126953125
+      }
+    }
+  },
+  "samples": 43,
+  "independent_counter_processes": 43,
+  "R3_formal_retests": 0,
+  "C_formal_retests": 0,
+  "unit": "ms/complete Run",
+  "comparison": "cross-batch single screening vs historical standalone R3 (not combination); A/EVAL_COLD/V8_ON historical 30 medians"
+}

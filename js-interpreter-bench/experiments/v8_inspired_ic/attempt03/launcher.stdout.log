@@ -1,0 +1,4160 @@
+STEP reuse_sources.py
+Verified 21 fixed V8 reference source records; no download
+STEP prepare.py
+ldd A 0 5.5 ms
+ldd E 0 5.7 ms
+ldd V8_ON 0 4.8 ms
+environment 0 20.4 ms
+PREPARED A/E/V8_ON
+STEP campaign.py
+clock A 0 20.5 ms
+clock E 0 11.9 ms
+clock V8_ON 0 23.3 ms
+V8 flags 0 14.5 ms
+compatibility Box2D.Box2D A N1 rep0 0 151.2 ms
+VALID True elapsed 129.5836730000001
+compatibility Box2D.Box2D E N1 rep0 0 162.3 ms
+VALID True elapsed 140.26255500000025
+compatibility Box2D.Box2D V8_ON N1 rep0 0 160.7 ms
+VALID True elapsed 112.489
+correctness Richards.Richards A N1 rep1 0 9.8 ms
+VALID True elapsed 3.3317329999999856
+correctness Richards.Richards E N1 rep1 0 9.3 ms
+VALID True elapsed 3.298860999999306
+correctness Richards.Richards V8_ON N1 rep1 0 23.8 ms
+VALID True elapsed 2.1500000000000004
+correctness Richards.Richards A N2 rep2 0 13.1 ms
+VALID True elapsed 6.611978999999337
+correctness Richards.Richards E N2 rep2 0 14.4 ms
+VALID True elapsed 7.300208999999995
+correctness Richards.Richards V8_ON N2 rep2 0 25.2 ms
+VALID True elapsed 4.1480000000000015
+correctness DeltaBlue.DeltaBlue A N1 rep1 0 13.8 ms
+VALID True elapsed 6.842104999999719
+correctness DeltaBlue.DeltaBlue E N1 rep1 0 13.3 ms
+VALID True elapsed 6.516222999999627
+correctness DeltaBlue.DeltaBlue V8_ON N1 rep1 0 24.8 ms
+VALID True elapsed 3.7139999999999986
+correctness DeltaBlue.DeltaBlue A N2 rep2 0 21.6 ms
+VALID True elapsed 14.34811499999978
+correctness DeltaBlue.DeltaBlue E N2 rep2 0 20.3 ms
+VALID True elapsed 13.335374000000229
+correctness DeltaBlue.DeltaBlue V8_ON N2 rep2 0 28.0 ms
+VALID True elapsed 7.462
+correctness Crypto.Encrypt A N1 rep1 0 107.4 ms
+VALID True elapsed 4.976604000000407
+correctness Crypto.Encrypt E N1 rep1 0 107.5 ms
+VALID True elapsed 5.0481459999991785
+correctness Crypto.Encrypt V8_ON N1 rep1 0 110.2 ms
+VALID True elapsed 4.736000000000001
+correctness Crypto.Encrypt A N2 rep2 0 112.2 ms
+VALID True elapsed 10.035098999998809
+correctness Crypto.Encrypt E N2 rep2 0 112.2 ms
+VALID True elapsed 10.306339000000662
+correctness Crypto.Encrypt V8_ON N2 rep2 0 112.3 ms
+VALID True elapsed 9.079
+CRYPTO_INPUT Crypto.Encrypt N=1 A plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=1 E plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=1 V8_ON plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=1 A observed PASS
+CRYPTO_INPUT Crypto.Encrypt N=1 E observed PASS
+CRYPTO_INPUT Crypto.Encrypt N=1 V8_ON observed PASS
+CRYPTO_INPUT Crypto.Encrypt N=2 A plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=2 E plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=2 V8_ON plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=2 A observed PASS
+CRYPTO_INPUT Crypto.Encrypt N=2 E observed PASS
+CRYPTO_INPUT Crypto.Encrypt N=2 V8_ON observed PASS
+correctness Crypto.Decrypt A N1 rep1 0 108.0 ms
+VALID True elapsed 94.61306899999909
+correctness Crypto.Decrypt E N1 rep1 0 108.4 ms
+VALID True elapsed 95.10480499999903
+correctness Crypto.Decrypt V8_ON N1 rep1 0 109.9 ms
+VALID True elapsed 81.158
+correctness Crypto.Decrypt A N2 rep2 0 203.1 ms
+VALID True elapsed 189.84161600000152
+correctness Crypto.Decrypt E N2 rep2 0 205.1 ms
+VALID True elapsed 189.92113100000097
+correctness Crypto.Decrypt V8_ON N2 rep2 0 187.9 ms
+VALID True elapsed 158.489
+CRYPTO_INPUT Crypto.Decrypt N=1 A plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=1 E plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=1 V8_ON plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=1 A observed PASS
+CRYPTO_INPUT Crypto.Decrypt N=1 E observed PASS
+CRYPTO_INPUT Crypto.Decrypt N=1 V8_ON observed PASS
+CRYPTO_INPUT Crypto.Decrypt N=2 A plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=2 E plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=2 V8_ON plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=2 A observed PASS
+CRYPTO_INPUT Crypto.Decrypt N=2 E observed PASS
+CRYPTO_INPUT Crypto.Decrypt N=2 V8_ON observed PASS
+correctness RayTrace.RayTrace A N1 rep1 0 43.7 ms
+VALID True elapsed 36.83543600000121
+correctness RayTrace.RayTrace E N1 rep1 0 45.9 ms
+VALID True elapsed 38.08494000000064
+correctness RayTrace.RayTrace V8_ON N1 rep1 0 40.8 ms
+VALID True elapsed 18.566
+correctness RayTrace.RayTrace A N2 rep2 0 84.2 ms
+VALID True elapsed 76.7316490000012
+correctness RayTrace.RayTrace E N2 rep2 0 84.1 ms
+VALID True elapsed 77.13408800000252
+correctness RayTrace.RayTrace V8_ON N2 rep2 0 61.2 ms
+VALID True elapsed 35.116
+correctness EarleyBoyer.Earley A N1 rep1 0 23.3 ms
+VALID True elapsed 6.806574000002001
+correctness EarleyBoyer.Earley E N1 rep1 0 23.9 ms
+VALID True elapsed 7.008017000000109
+correctness EarleyBoyer.Earley V8_ON N1 rep1 0 39.3 ms
+VALID True elapsed 2.724
+correctness EarleyBoyer.Earley A N2 rep2 0 30.2 ms
+VALID True elapsed 14.15516899999784
+correctness EarleyBoyer.Earley E N2 rep2 0 30.2 ms
+VALID True elapsed 13.599698999998509
+correctness EarleyBoyer.Earley V8_ON N2 rep2 0 39.3 ms
+VALID True elapsed 6.1789999999999985
+correctness EarleyBoyer.Boyer A N1 rep1 0 130.6 ms
+VALID True elapsed 114.2770219999984
+correctness EarleyBoyer.Boyer E N1 rep1 0 125.7 ms
+VALID True elapsed 109.16490600000179
+correctness EarleyBoyer.Boyer V8_ON N1 rep1 0 84.0 ms
+VALID True elapsed 50.494
+correctness EarleyBoyer.Boyer A N2 rep2 0 230.1 ms
+VALID True elapsed 213.35589600000094
+correctness EarleyBoyer.Boyer E N2 rep2 0 230.3 ms
+VALID True elapsed 212.70163899999898
+correctness EarleyBoyer.Boyer V8_ON N2 rep2 0 139.3 ms
+VALID True elapsed 102.267
+correctness RegExp.RegExp A N1 rep1 0 227.2 ms
+VALID True elapsed 201.61741499999698
+correctness RegExp.RegExp E N1 rep1 0 205.3 ms
+VALID True elapsed 179.6367160000009
+correctness RegExp.RegExp V8_ON N1 rep1 0 79.1 ms
+VALID True elapsed 35.662
+correctness RegExp.RegExp A N2 rep2 0 384.8 ms
+VALID True elapsed 360.04703000000154
+correctness RegExp.RegExp E N2 rep2 0 376.1 ms
+VALID True elapsed 350.21616500000164
+correctness RegExp.RegExp V8_ON N2 rep2 0 115.0 ms
+VALID True elapsed 70.92099999999999
+correctness Splay.Splay A N1 rep1 0 587.8 ms
+VALID True elapsed 2.1635990000031597
+correctness Splay.Splay E N1 rep1 0 495.6 ms
+VALID True elapsed 2.1709389999996347
+correctness Splay.Splay V8_ON N1 rep1 0 160.5 ms
+VALID True elapsed 0.9849999999999994
+correctness Splay.Splay A N2 rep2 0 485.9 ms
+VALID True elapsed 4.5760970000010275
+correctness Splay.Splay E N2 rep2 0 584.9 ms
+VALID True elapsed 4.634233000000677
+correctness Splay.Splay V8_ON N2 rep2 0 164.0 ms
+VALID True elapsed 1.9249999999999972
+correctness NavierStokes.NavierStokes A N1 rep1 0 879.9 ms
+VALID True elapsed 58.86514399999942
+correctness NavierStokes.NavierStokes E N1 rep1 0 859.1 ms
+VALID True elapsed 56.55981899999824
+correctness NavierStokes.NavierStokes V8_ON N1 rep1 0 1041.5 ms
+VALID True elapsed 68.881
+correctness NavierStokes.NavierStokes A N2 rep2 0 857.4 ms
+VALID True elapsed 111.43039999999746
+correctness NavierStokes.NavierStokes E N2 rep2 0 868.5 ms
+VALID True elapsed 118.6068809999997
+correctness NavierStokes.NavierStokes V8_ON N2 rep2 0 1040.9 ms
+VALID True elapsed 136.611
+correctness PdfJS.PdfJS A N1 rep1 0 386.3 ms
+VALID True elapsed 197.11744700000054
+correctness PdfJS.PdfJS E N1 rep1 0 356.3 ms
+VALID True elapsed 197.6583329999994
+correctness PdfJS.PdfJS V8_ON N1 rep1 0 306.7 ms
+VALID True elapsed 112.941
+correctness PdfJS.PdfJS A N2 rep2 0 537.8 ms
+VALID True elapsed 381.48850700000185
+correctness PdfJS.PdfJS E N2 rep2 0 531.4 ms
+VALID True elapsed 377.9209780000019
+correctness PdfJS.PdfJS V8_ON N2 rep2 0 388.3 ms
+VALID True elapsed 227.006
+correctness Mandreel.Mandreel A N1 rep1 0 3081.7 ms
+VALID True elapsed 1709.6513580000028
+correctness Mandreel.Mandreel E N1 rep1 0 3083.3 ms
+VALID True elapsed 1710.153505000002
+correctness Mandreel.Mandreel V8_ON N1 rep1 0 3018.9 ms
+VALID True elapsed 1455.5199999999998
+correctness Mandreel.Mandreel A N2 rep2 0 5012.1 ms
+VALID True elapsed 3613.4059469999993
+correctness Mandreel.Mandreel E N2 rep2 0 4984.2 ms
+VALID True elapsed 3527.748839
+correctness Mandreel.Mandreel V8_ON N2 rep2 0 4465.2 ms
+VALID True elapsed 2878.2799999999997
+correctness Gameboy.Gameboy A N1 rep1 0 445.6 ms
+VALID True elapsed 403.57671200000186
+correctness Gameboy.Gameboy E N1 rep1 0 435.3 ms
+VALID True elapsed 394.2483629999988
+correctness Gameboy.Gameboy V8_ON N1 rep1 0 421.8 ms
+VALID True elapsed 355.16
+correctness Gameboy.Gameboy A N2 rep2 0 724.3 ms
+VALID True elapsed 684.1645209999988
+correctness Gameboy.Gameboy E N2 rep2 0 777.1 ms
+VALID True elapsed 735.5559310000026
+correctness Gameboy.Gameboy V8_ON N2 rep2 0 710.6 ms
+VALID True elapsed 646.9409999999999
+correctness CodeLoad.CodeLoadClosure A N1 rep1 0 8.7 ms
+VALID True elapsed 0.7737959999940358
+correctness CodeLoad.CodeLoadClosure E N1 rep1 0 8.0 ms
+VALID True elapsed 0.7194000000017695
+correctness CodeLoad.CodeLoadClosure V8_ON N1 rep1 0 31.8 ms
+VALID True elapsed 0.6219999999999999
+correctness CodeLoad.CodeLoadClosure A N2 rep2 0 8.5 ms
+VALID True elapsed 1.199850000004517
+correctness CodeLoad.CodeLoadClosure E N2 rep2 0 8.5 ms
+VALID True elapsed 1.2539539999997942
+correctness CodeLoad.CodeLoadClosure V8_ON N2 rep2 0 26.0 ms
+VALID True elapsed 0.7309999999999981
+correctness CodeLoad.CodeLoadJQuery A N1 rep1 0 18.7 ms
+VALID True elapsed 10.778842999992776
+correctness CodeLoad.CodeLoadJQuery E N1 rep1 0 18.8 ms
+VALID True elapsed 10.986885000005714
+correctness CodeLoad.CodeLoadJQuery V8_ON N1 rep1 0 34.6 ms
+VALID True elapsed 7.045000000000002
+correctness CodeLoad.CodeLoadJQuery A N2 rep2 0 29.7 ms
+VALID True elapsed 21.375307000009343
+correctness CodeLoad.CodeLoadJQuery E N2 rep2 0 29.8 ms
+VALID True elapsed 22.041832999995677
+correctness CodeLoad.CodeLoadJQuery V8_ON N2 rep2 0 40.9 ms
+VALID True elapsed 10.596
+correctness Typescript.Typescript A N1 rep1 0 2363.2 ms
+VALID True elapsed 2153.8322389999958
+correctness Typescript.Typescript E N1 rep1 0 2316.4 ms
+VALID True elapsed 2100.339912999989
+correctness Typescript.Typescript V8_ON N1 rep1 0 1464.2 ms
+VALID True elapsed 1306.816
+correctness Typescript.Typescript A N2 rep2 0 4419.5 ms
+VALID True elapsed 4220.163428
+correctness Typescript.Typescript E N2 rep2 0 4804.4 ms
+VALID True elapsed 4598.951388000001
+correctness Typescript.Typescript V8_ON N2 rep2 0 2887.4 ms
+VALID True elapsed 2719.9080000000004
+correctness zlib.zlib A N1 rep1 0 8294.3 ms
+VALID True elapsed 8280.746209000004
+correctness zlib.zlib E N1 rep1 0 8383.5 ms
+VALID True elapsed 8371.779989000002
+correctness zlib.zlib V8_ON N1 rep1 0 7172.3 ms
+VALID True elapsed 7135.049
+correctness zlib.zlib A N2 rep2 0 16369.3 ms
+VALID True elapsed 16356.391266000006
+correctness zlib.zlib E N2 rep2 0 16419.8 ms
+VALID True elapsed 16407.36921399999
+correctness zlib.zlib V8_ON N2 rep2 0 14652.0 ms
+VALID True elapsed 14611.403
+pilot Richards.Richards A N512 rep0 0 1740.5 ms
+VALID True elapsed 1734.042879000015
+pilot Richards.Richards E N512 rep0 0 1803.3 ms
+VALID True elapsed 1796.6017430000065
+pilot Richards.Richards V8_ON N512 rep0 0 1119.0 ms
+VALID True elapsed 1093.695
+pilot Richards.Richards E N512 rep1 0 1750.1 ms
+VALID True elapsed 1743.125457999995
+pilot Richards.Richards V8_ON N512 rep1 0 1077.3 ms
+VALID True elapsed 1055.526
+pilot Richards.Richards A N512 rep1 0 1808.0 ms
+VALID True elapsed 1801.668217999977
+selected_correctness Richards.Richards A N512 rep0 0 1830.3 ms
+VALID True elapsed 1823.9315650000062
+selected_correctness Richards.Richards E N512 rep0 0 1753.0 ms
+VALID True elapsed 1746.2239870000049
+selected_correctness Richards.Richards V8_ON N512 rep0 0 1059.2 ms
+VALID True elapsed 1031.9969999999998
+pilot DeltaBlue.DeltaBlue A N256 rep0 0 1813.7 ms
+VALID True elapsed 1806.8513950000051
+pilot DeltaBlue.DeltaBlue E N256 rep0 0 1759.3 ms
+VALID True elapsed 1752.1512660000008
+pilot DeltaBlue.DeltaBlue V8_ON N256 rep0 0 930.5 ms
+VALID True elapsed 904.147
+pilot DeltaBlue.DeltaBlue E N256 rep1 0 1774.6 ms
+VALID True elapsed 1767.0830509999942
+pilot DeltaBlue.DeltaBlue V8_ON N256 rep1 0 973.5 ms
+VALID True elapsed 945.0070000000001
+pilot DeltaBlue.DeltaBlue A N256 rep1 0 1771.7 ms
+VALID True elapsed 1764.2927429999982
+pilot DeltaBlue.DeltaBlue A N512 rep0 0 3636.0 ms
+VALID True elapsed 3629.007899999997
+pilot DeltaBlue.DeltaBlue E N512 rep0 0 3456.3 ms
+VALID True elapsed 3449.1375589999952
+pilot DeltaBlue.DeltaBlue V8_ON N512 rep0 0 1914.8 ms
+VALID True elapsed 1889.094
+pilot DeltaBlue.DeltaBlue E N512 rep1 0 3391.1 ms
+VALID True elapsed 3384.0574659999984
+pilot DeltaBlue.DeltaBlue V8_ON N512 rep1 0 1927.4 ms
+VALID True elapsed 1901.97
+pilot DeltaBlue.DeltaBlue A N512 rep1 0 3457.3 ms
+VALID True elapsed 3450.2285660000052
+selected_correctness DeltaBlue.DeltaBlue A N512 rep0 0 3541.7 ms
+VALID True elapsed 3534.8810140000132
+selected_correctness DeltaBlue.DeltaBlue E N512 rep0 0 3358.7 ms
+VALID True elapsed 3351.432323999994
+selected_correctness DeltaBlue.DeltaBlue V8_ON N512 rep0 0 1918.2 ms
+VALID True elapsed 1893.6750000000002
+pilot Crypto.Encrypt A N256 rep0 0 1461.9 ms
+VALID True elapsed 1348.6459210000176
+pilot Crypto.Encrypt E N256 rep0 0 1428.0 ms
+VALID True elapsed 1325.5147840000282
+pilot Crypto.Encrypt V8_ON N256 rep0 0 1234.0 ms
+VALID True elapsed 1118.0140000000001
+pilot Crypto.Encrypt E N256 rep1 0 1439.8 ms
+VALID True elapsed 1336.6940049999976
+pilot Crypto.Encrypt V8_ON N256 rep1 0 1199.6 ms
+VALID True elapsed 1093.306
+pilot Crypto.Encrypt A N256 rep1 0 1408.3 ms
+VALID True elapsed 1301.465842000005
+CRYPTO_INPUT Crypto.Encrypt N=256 A plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=256 E plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=256 V8_ON plain PASS
+CRYPTO_INPUT Crypto.Encrypt N=256 A observed PASS
+CRYPTO_INPUT Crypto.Encrypt N=256 E observed PASS
+CRYPTO_INPUT Crypto.Encrypt N=256 V8_ON observed PASS
+selected_correctness Crypto.Encrypt A N256 rep0 0 1450.4 ms
+VALID True elapsed 1330.6770370000158
+selected_correctness Crypto.Encrypt E N256 rep0 0 1421.3 ms
+VALID True elapsed 1316.932553999999
+selected_correctness Crypto.Encrypt V8_ON N256 rep0 0 1220.3 ms
+VALID True elapsed 1103.762
+pilot Crypto.Decrypt A N16 rep0 0 1577.2 ms
+VALID True elapsed 1563.1618699999526
+pilot Crypto.Decrypt E N16 rep0 0 1615.9 ms
+VALID True elapsed 1602.1206109999912
+pilot Crypto.Decrypt V8_ON N16 rep0 0 1368.1 ms
+VALID True elapsed 1332.2540000000001
+pilot Crypto.Decrypt E N16 rep1 0 1549.2 ms
+VALID True elapsed 1535.230024999997
+pilot Crypto.Decrypt V8_ON N16 rep1 0 1328.0 ms
+VALID True elapsed 1294.188
+pilot Crypto.Decrypt A N16 rep1 0 1599.0 ms
+VALID True elapsed 1584.5479160000104
+CRYPTO_INPUT Crypto.Decrypt N=16 A plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=16 E plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=16 V8_ON plain PASS
+CRYPTO_INPUT Crypto.Decrypt N=16 A observed PASS
+CRYPTO_INPUT Crypto.Decrypt N=16 E observed PASS
+CRYPTO_INPUT Crypto.Decrypt N=16 V8_ON observed PASS
+selected_correctness Crypto.Decrypt A N16 rep0 0 1547.1 ms
+VALID True elapsed 1533.2903689999366
+selected_correctness Crypto.Decrypt E N16 rep0 0 1556.0 ms
+VALID True elapsed 1542.243184999912
+selected_correctness Crypto.Decrypt V8_ON N16 rep0 0 1361.0 ms
+VALID True elapsed 1327.187
+pilot RayTrace.RayTrace A N64 rep0 0 2420.7 ms
+VALID True elapsed 2413.3455620000605
+pilot RayTrace.RayTrace E N64 rep0 0 2594.9 ms
+VALID True elapsed 2586.9921199999517
+pilot RayTrace.RayTrace V8_ON N64 rep0 0 1169.4 ms
+VALID True elapsed 1142.261
+pilot RayTrace.RayTrace E N64 rep1 0 2536.9 ms
+VALID True elapsed 2529.399724000017
+pilot RayTrace.RayTrace V8_ON N64 rep1 0 1106.8 ms
+VALID True elapsed 1080.084
+pilot RayTrace.RayTrace A N64 rep1 0 2474.4 ms
+VALID True elapsed 2466.7313559999457
+selected_correctness RayTrace.RayTrace A N64 rep0 0 2295.2 ms
+VALID True elapsed 2287.858027999988
+selected_correctness RayTrace.RayTrace E N64 rep0 0 2487.4 ms
+VALID True elapsed 2480.356206000084
+selected_correctness RayTrace.RayTrace V8_ON N64 rep0 0 1120.1 ms
+VALID True elapsed 1093.599
+pilot EarleyBoyer.Earley A N256 rep0 0 1749.5 ms
+VALID True elapsed 1732.7208380000666
+pilot EarleyBoyer.Earley E N256 rep0 0 1735.4 ms
+VALID True elapsed 1718.5574580000248
+pilot EarleyBoyer.Earley V8_ON N256 rep0 0 645.8 ms
+VALID True elapsed 607.477
+pilot EarleyBoyer.Earley E N256 rep1 0 1804.3 ms
+VALID True elapsed 1784.1093069999479
+pilot EarleyBoyer.Earley V8_ON N256 rep1 0 595.6 ms
+VALID True elapsed 561.049
+pilot EarleyBoyer.Earley A N256 rep1 0 1752.2 ms
+VALID True elapsed 1734.8400749999564
+pilot EarleyBoyer.Earley A N512 rep0 0 3615.8 ms
+VALID True elapsed 3598.5536860000575
+pilot EarleyBoyer.Earley E N512 rep0 0 3573.6 ms
+VALID True elapsed 3555.4749380000867
+pilot EarleyBoyer.Earley V8_ON N512 rep0 0 1168.4 ms
+VALID True elapsed 1129.046
+pilot EarleyBoyer.Earley E N512 rep1 0 3533.9 ms
+VALID True elapsed 3516.4660729999887
+pilot EarleyBoyer.Earley V8_ON N512 rep1 0 1226.8 ms
+VALID True elapsed 1188.0910000000001
+pilot EarleyBoyer.Earley A N512 rep1 0 3538.3 ms
+VALID True elapsed 3521.1983089999994
+selected_correctness EarleyBoyer.Earley A N512 rep0 0 3546.9 ms
+VALID True elapsed 3530.1926959999837
+selected_correctness EarleyBoyer.Earley E N512 rep0 0 3484.5 ms
+VALID True elapsed 3466.796399000101
+selected_correctness EarleyBoyer.Earley V8_ON N512 rep0 0 1165.3 ms
+VALID True elapsed 1126.643
+pilot EarleyBoyer.Boyer A N16 rep0 0 1663.3 ms
+VALID True elapsed 1646.5818059999729
+pilot EarleyBoyer.Boyer E N16 rep0 0 1693.7 ms
+VALID True elapsed 1675.805234999978
+pilot EarleyBoyer.Boyer V8_ON N16 rep0 0 732.9 ms
+VALID True elapsed 693.861
+pilot EarleyBoyer.Boyer E N16 rep1 0 1727.2 ms
+VALID True elapsed 1709.277031000005
+pilot EarleyBoyer.Boyer V8_ON N16 rep1 0 753.8 ms
+VALID True elapsed 718.799
+pilot EarleyBoyer.Boyer A N16 rep1 0 1695.7 ms
+VALID True elapsed 1677.871618000092
+pilot EarleyBoyer.Boyer A N32 rep0 0 3437.9 ms
+VALID True elapsed 3420.8495639999164
+pilot EarleyBoyer.Boyer E N32 rep0 0 3363.4 ms
+VALID True elapsed 3343.4819650000427
+pilot EarleyBoyer.Boyer V8_ON N32 rep0 0 1519.4 ms
+VALID True elapsed 1477.129
+pilot EarleyBoyer.Boyer E N32 rep1 0 3366.3 ms
+VALID True elapsed 3346.429184000008
+pilot EarleyBoyer.Boyer V8_ON N32 rep1 0 1482.4 ms
+VALID True elapsed 1440.8980000000001
+pilot EarleyBoyer.Boyer A N32 rep1 0 3388.3 ms
+VALID True elapsed 3368.78584399994
+selected_correctness EarleyBoyer.Boyer A N32 rep0 0 3359.3 ms
+VALID True elapsed 3342.9151520000305
+selected_correctness EarleyBoyer.Boyer E N32 rep0 0 3396.8 ms
+VALID True elapsed 3376.3912080000155
+selected_correctness EarleyBoyer.Boyer V8_ON N32 rep0 0 1514.0 ms
+VALID True elapsed 1467.915
+pilot RegExp.RegExp A N16 rep0 0 2937.1 ms
+VALID True elapsed 2910.67313999997
+pilot RegExp.RegExp E N16 rep0 0 2926.7 ms
+VALID True elapsed 2900.6938210000517
+pilot RegExp.RegExp V8_ON N16 rep0 0 505.7 ms
+VALID True elapsed 456.714
+pilot RegExp.RegExp E N16 rep1 0 2916.8 ms
+VALID True elapsed 2891.009785000002
+pilot RegExp.RegExp V8_ON N16 rep1 0 504.6 ms
+VALID True elapsed 455.8
+pilot RegExp.RegExp A N16 rep1 0 2974.3 ms
+VALID True elapsed 2948.0378530001035
+pilot RegExp.RegExp A N32 rep0 0 5822.9 ms
+VALID True elapsed 5797.388520000037
+pilot RegExp.RegExp E N32 rep0 0 5745.4 ms
+VALID True elapsed 5719.852199999965
+pilot RegExp.RegExp V8_ON N32 rep0 0 950.8 ms
+VALID True elapsed 899.3629999999999
+pilot RegExp.RegExp E N32 rep1 0 5749.8 ms
+VALID True elapsed 5724.401772000012
+pilot RegExp.RegExp V8_ON N32 rep1 0 937.1 ms
+VALID True elapsed 890.1279999999999
+pilot RegExp.RegExp A N32 rep1 0 5793.7 ms
+VALID True elapsed 5768.004975000047
+pilot RegExp.RegExp A N64 rep0 0 11584.7 ms
+VALID True elapsed 11558.755859000026
+pilot RegExp.RegExp E N64 rep0 0 11434.9 ms
+VALID True elapsed 11409.063908000011
+pilot RegExp.RegExp V8_ON N64 rep0 0 1879.1 ms
+VALID True elapsed 1831.969
+pilot RegExp.RegExp E N64 rep1 0 11232.5 ms
+VALID True elapsed 11205.904891000013
+pilot RegExp.RegExp V8_ON N64 rep1 0 1884.1 ms
+VALID True elapsed 1832.67
+pilot RegExp.RegExp A N64 rep1 0 11412.6 ms
+VALID True elapsed 11386.829397999914
+selected_correctness RegExp.RegExp A N64 rep0 0 11393.6 ms
+VALID True elapsed 11368.612219000002
+selected_correctness RegExp.RegExp E N64 rep0 0 11114.3 ms
+VALID True elapsed 11088.683239000035
+selected_correctness RegExp.RegExp V8_ON N64 rep0 0 1995.5 ms
+VALID True elapsed 1948.105
+pilot Splay.Splay A N1024 rep0 0 2711.5 ms
+VALID True elapsed 2148.566871999996
+pilot Splay.Splay E N1024 rep0 0 2872.8 ms
+VALID True elapsed 2379.9524189999793
+pilot Splay.Splay V8_ON N1024 rep0 0 1981.5 ms
+VALID True elapsed 1809.6770000000001
+pilot Splay.Splay E N1024 rep1 0 2893.7 ms
+VALID True elapsed 2355.77553600003
+pilot Splay.Splay V8_ON N1024 rep1 0 2065.3 ms
+VALID True elapsed 1861.844
+pilot Splay.Splay A N1024 rep1 0 2678.6 ms
+VALID True elapsed 2207.2080549999373
+selected_correctness Splay.Splay A N1024 rep0 0 2880.3 ms
+VALID True elapsed 2354.985294000013
+selected_correctness Splay.Splay E N1024 rep0 0 2827.8 ms
+VALID True elapsed 2339.586973999976
+selected_correctness Splay.Splay V8_ON N1024 rep0 0 2154.9 ms
+VALID True elapsed 1996.06
+pilot NavierStokes.NavierStokes A N32 rep0 0 1869.4 ms
+VALID True elapsed 1856.521447999985
+pilot NavierStokes.NavierStokes E N32 rep0 0 1881.2 ms
+VALID True elapsed 1869.091890999931
+pilot NavierStokes.NavierStokes V8_ON N32 rep0 0 2285.2 ms
+VALID True elapsed 2250.714
+pilot NavierStokes.NavierStokes E N32 rep1 0 1813.3 ms
+VALID True elapsed 1801.3783099999418
+pilot NavierStokes.NavierStokes V8_ON N32 rep1 0 2196.2 ms
+VALID True elapsed 2165.552
+pilot NavierStokes.NavierStokes A N32 rep1 0 1855.7 ms
+VALID True elapsed 1844.0496290000156
+selected_correctness NavierStokes.NavierStokes A N32 rep0 0 1814.0 ms
+VALID True elapsed 1802.6719919999596
+selected_correctness NavierStokes.NavierStokes E N32 rep0 0 1824.5 ms
+VALID True elapsed 1812.7625520000001
+selected_correctness NavierStokes.NavierStokes V8_ON N32 rep0 0 2242.4 ms
+VALID True elapsed 2211.597
+pilot PdfJS.PdfJS A N16 rep0 0 3009.0 ms
+VALID True elapsed 2799.652810999891
+pilot PdfJS.PdfJS E N16 rep0 0 3088.7 ms
+VALID True elapsed 2882.2820189999184
+pilot PdfJS.PdfJS V8_ON N16 rep0 0 1785.5 ms
+VALID True elapsed 1564.189
+pilot PdfJS.PdfJS E N16 rep1 0 3077.9 ms
+VALID True elapsed 2867.7871260000393
+pilot PdfJS.PdfJS V8_ON N16 rep1 0 1766.9 ms
+VALID True elapsed 1548.036
+pilot PdfJS.PdfJS A N16 rep1 0 2972.1 ms
+VALID True elapsed 2770.4208309999667
+selected_correctness PdfJS.PdfJS A N16 rep0 0 2998.5 ms
+VALID True elapsed 2794.86368900002
+selected_correctness PdfJS.PdfJS E N16 rep0 0 3019.7 ms
+VALID True elapsed 2810.5539229999995
+selected_correctness PdfJS.PdfJS V8_ON N16 rep0 0 1827.8 ms
+VALID True elapsed 1621.42
+pilot Mandreel.Mandreel A N1 rep0 0 3192.5 ms
+VALID True elapsed 1748.7582249999978
+pilot Mandreel.Mandreel E N1 rep0 0 3189.5 ms
+VALID True elapsed 1767.5471690000268
+pilot Mandreel.Mandreel V8_ON N1 rep0 0 3106.1 ms
+VALID True elapsed 1508.5529999999999
+pilot Mandreel.Mandreel E N1 rep1 0 3182.9 ms
+VALID True elapsed 1740.5125569999218
+pilot Mandreel.Mandreel V8_ON N1 rep1 0 2965.9 ms
+VALID True elapsed 1434.158
+pilot Mandreel.Mandreel A N1 rep1 0 3150.8 ms
+VALID True elapsed 1734.6872219999786
+selected_correctness Mandreel.Mandreel A N1 rep0 0 3078.2 ms
+VALID True elapsed 1683.7611119999783
+selected_correctness Mandreel.Mandreel E N1 rep0 0 3166.9 ms
+VALID True elapsed 1766.243822999997
+selected_correctness Mandreel.Mandreel V8_ON N1 rep0 0 2960.0 ms
+VALID True elapsed 1434.0380000000002
+pilot Gameboy.Gameboy A N4 rep0 0 1354.3 ms
+VALID True elapsed 1313.4504279999528
+pilot Gameboy.Gameboy E N4 rep0 0 1373.5 ms
+VALID True elapsed 1331.6910190000199
+pilot Gameboy.Gameboy V8_ON N4 rep0 0 1249.0 ms
+VALID True elapsed 1184.5459999999998
+pilot Gameboy.Gameboy E N4 rep1 0 1390.6 ms
+VALID True elapsed 1349.4277770000044
+pilot Gameboy.Gameboy V8_ON N4 rep1 0 1279.3 ms
+VALID True elapsed 1216.672
+pilot Gameboy.Gameboy A N4 rep1 0 1318.5 ms
+VALID True elapsed 1277.3602930000052
+selected_correctness Gameboy.Gameboy A N4 rep0 0 1324.3 ms
+VALID True elapsed 1284.6768409999786
+selected_correctness Gameboy.Gameboy E N4 rep0 0 1361.1 ms
+VALID True elapsed 1319.917970999959
+selected_correctness Gameboy.Gameboy V8_ON N4 rep0 0 1322.3 ms
+VALID True elapsed 1259.097
+pilot CodeLoad.CodeLoadClosure A N4096 rep0 0 2662.4 ms
+VALID True elapsed 2520.65463200002
+pilot CodeLoad.CodeLoadClosure E N4096 rep0 0 2775.6 ms
+VALID True elapsed 2642.239852000028
+pilot CodeLoad.CodeLoadClosure V8_ON N4096 rep0 0 1385.7 ms
+VALID True elapsed 1331.878
+pilot CodeLoad.CodeLoadClosure E N4096 rep1 0 2627.1 ms
+VALID True elapsed 2499.563608000055
+pilot CodeLoad.CodeLoadClosure V8_ON N4096 rep1 0 1286.7 ms
+VALID True elapsed 1234.4470000000001
+pilot CodeLoad.CodeLoadClosure A N4096 rep1 0 3016.5 ms
+VALID True elapsed 2875.7184780000243
+selected_correctness CodeLoad.CodeLoadClosure A N4096 rep0 0 2623.2 ms
+VALID True elapsed 2467.3040579999797
+selected_correctness CodeLoad.CodeLoadClosure E N4096 rep0 0 2720.4 ms
+VALID True elapsed 2585.3812010000693
+selected_correctness CodeLoad.CodeLoadClosure V8_ON N4096 rep0 0 1329.6 ms
+VALID True elapsed 1272.619
+pilot CodeLoad.CodeLoadJQuery A N256 rep0 0 2795.7 ms
+VALID True elapsed 2786.4035569999833
+pilot CodeLoad.CodeLoadJQuery E N256 rep0 0 2733.7 ms
+VALID True elapsed 2724.965441999957
+pilot CodeLoad.CodeLoadJQuery V8_ON N256 rep0 0 1249.1 ms
+VALID True elapsed 1204.274
+pilot CodeLoad.CodeLoadJQuery E N256 rep1 0 2878.0 ms
+VALID True elapsed 2868.7964350000257
+pilot CodeLoad.CodeLoadJQuery V8_ON N256 rep1 0 1187.9 ms
+VALID True elapsed 1149.833
+pilot CodeLoad.CodeLoadJQuery A N256 rep1 0 2690.7 ms
+VALID True elapsed 2681.3082710000454
+selected_correctness CodeLoad.CodeLoadJQuery A N256 rep0 0 2726.0 ms
+VALID True elapsed 2716.152252000058
+selected_correctness CodeLoad.CodeLoadJQuery E N256 rep0 0 2725.9 ms
+VALID True elapsed 2717.519607000053
+selected_correctness CodeLoad.CodeLoadJQuery V8_ON N256 rep0 0 1201.5 ms
+VALID True elapsed 1158.948
+pilot Typescript.Typescript A N1 rep0 0 2254.1 ms
+VALID True elapsed 2044.0800919999601
+pilot Typescript.Typescript E N1 rep0 0 2334.0 ms
+VALID True elapsed 2109.8461670000106
+pilot Typescript.Typescript V8_ON N1 rep0 0 1475.9 ms
+VALID True elapsed 1318.105
+pilot Typescript.Typescript E N1 rep1 0 2361.4 ms
+VALID True elapsed 2149.259710000013
+pilot Typescript.Typescript V8_ON N1 rep1 0 1550.1 ms
+VALID True elapsed 1388.56
+pilot Typescript.Typescript A N1 rep1 0 2435.6 ms
+VALID True elapsed 2198.985982999904
+selected_correctness Typescript.Typescript A N1 rep0 0 2219.5 ms
+VALID True elapsed 2015.3013759999303
+selected_correctness Typescript.Typescript E N1 rep0 0 2446.9 ms
+VALID True elapsed 2219.051933000097
+selected_correctness Typescript.Typescript V8_ON N1 rep0 0 1546.3 ms
+VALID True elapsed 1380.29
+pilot zlib.zlib A N1 rep0 0 8287.8 ms
+VALID True elapsed 8275.902054999955
+pilot zlib.zlib E N1 rep0 0 8172.9 ms
+VALID True elapsed 8160.986550000031
+pilot zlib.zlib V8_ON N1 rep0 0 7243.7 ms
+VALID True elapsed 7205.478
+pilot zlib.zlib E N1 rep1 0 8355.1 ms
+VALID True elapsed 8343.445396000054
+pilot zlib.zlib V8_ON N1 rep1 0 7221.5 ms
+VALID True elapsed 7187.842
+pilot zlib.zlib A N1 rep1 0 8085.1 ms
+VALID True elapsed 8072.767597999889
+selected_correctness zlib.zlib A N1 rep0 0 8218.8 ms
+VALID True elapsed 8206.895280999946
+selected_correctness zlib.zlib E N1 rep0 0 8382.8 ms
+VALID True elapsed 8370.750996000017
+selected_correctness zlib.zlib V8_ON N1 rep0 0 7434.3 ms
+VALID True elapsed 7394.432000000001
+formal CodeLoad.CodeLoadJQuery E N256 rep0 0 2866.9 ms
+VALID True elapsed 2858.334496000083
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep0 0 1181.5 ms
+VALID True elapsed 1143.2450000000001
+formal CodeLoad.CodeLoadJQuery A N256 rep0 0 2721.1 ms
+VALID True elapsed 2711.8435009999666
+formal Crypto.Encrypt A N256 rep0 0 1453.4 ms
+VALID True elapsed 1347.3901570000453
+formal Crypto.Encrypt V8_ON N256 rep0 0 1250.5 ms
+VALID True elapsed 1135.3049999999998
+formal Crypto.Encrypt E N256 rep0 0 1415.1 ms
+VALID True elapsed 1309.732278999989
+formal RegExp.RegExp A N64 rep0 0 11570.7 ms
+VALID True elapsed 11543.92073100002
+formal RegExp.RegExp E N64 rep0 0 11456.7 ms
+VALID True elapsed 11431.73467299994
+formal RegExp.RegExp V8_ON N64 rep0 0 1816.8 ms
+VALID True elapsed 1771.229
+formal Crypto.Decrypt V8_ON N16 rep0 0 1309.0 ms
+VALID True elapsed 1277.228
+formal Crypto.Decrypt E N16 rep0 0 1535.5 ms
+VALID True elapsed 1522.2649309999542
+formal Crypto.Decrypt A N16 rep0 0 1513.0 ms
+VALID True elapsed 1499.168067999999
+formal Mandreel.Mandreel V8_ON N1 rep0 0 3038.1 ms
+VALID True elapsed 1459.471
+formal Mandreel.Mandreel E N1 rep0 0 3166.7 ms
+VALID True elapsed 1757.108389000059
+formal Mandreel.Mandreel A N1 rep0 0 3115.7 ms
+VALID True elapsed 1702.5975580000086
+formal Typescript.Typescript E N1 rep0 0 2400.7 ms
+VALID True elapsed 2159.8088790000184
+formal Typescript.Typescript V8_ON N1 rep0 0 1518.2 ms
+VALID True elapsed 1350.865
+formal Typescript.Typescript A N1 rep0 0 2299.9 ms
+VALID True elapsed 2092.5975320000434
+formal NavierStokes.NavierStokes V8_ON N32 rep0 0 2264.3 ms
+VALID True elapsed 2237.7990000000004
+formal NavierStokes.NavierStokes A N32 rep0 0 1828.4 ms
+VALID True elapsed 1816.6835509999655
+formal NavierStokes.NavierStokes E N32 rep0 0 1836.9 ms
+VALID True elapsed 1824.8206919999793
+formal RayTrace.RayTrace V8_ON N64 rep0 0 1131.1 ms
+VALID True elapsed 1103.993
+formal RayTrace.RayTrace E N64 rep0 0 2512.2 ms
+VALID True elapsed 2504.837286999915
+formal RayTrace.RayTrace A N64 rep0 0 2351.8 ms
+VALID True elapsed 2344.9561289998237
+formal Richards.Richards V8_ON N512 rep0 0 1095.4 ms
+VALID True elapsed 1070.234
+formal Richards.Richards E N512 rep0 0 1711.8 ms
+VALID True elapsed 1704.8629290000536
+formal Richards.Richards A N512 rep0 0 1724.0 ms
+VALID True elapsed 1717.6605720000807
+formal PdfJS.PdfJS A N16 rep0 0 3034.1 ms
+VALID True elapsed 2830.1688210000284
+formal PdfJS.PdfJS E N16 rep0 0 3013.2 ms
+VALID True elapsed 2805.5172929998953
+formal PdfJS.PdfJS V8_ON N16 rep0 0 1836.7 ms
+VALID True elapsed 1606.4070000000002
+formal zlib.zlib A N1 rep0 0 8267.3 ms
+VALID True elapsed 8256.050626000157
+formal zlib.zlib E N1 rep0 0 9456.3 ms
+VALID True elapsed 9443.362994000083
+formal zlib.zlib V8_ON N1 rep0 0 7335.0 ms
+VALID True elapsed 7293.502
+formal Gameboy.Gameboy V8_ON N4 rep0 0 1262.5 ms
+VALID True elapsed 1198.3990000000001
+formal Gameboy.Gameboy E N4 rep0 0 1404.4 ms
+VALID True elapsed 1361.0781990000978
+formal Gameboy.Gameboy A N4 rep0 0 1303.4 ms
+VALID True elapsed 1262.438463000115
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep0 0 1428.8 ms
+VALID True elapsed 1373.947
+formal CodeLoad.CodeLoadClosure A N4096 rep0 0 2695.4 ms
+VALID True elapsed 2558.477363999933
+formal CodeLoad.CodeLoadClosure E N4096 rep0 0 2648.6 ms
+VALID True elapsed 2518.951780000003
+formal DeltaBlue.DeltaBlue V8_ON N512 rep0 0 1878.1 ms
+VALID True elapsed 1855.224
+formal DeltaBlue.DeltaBlue E N512 rep0 0 3475.5 ms
+VALID True elapsed 3467.343610000098
+formal DeltaBlue.DeltaBlue A N512 rep0 0 3600.9 ms
+VALID True elapsed 3593.7875280000735
+formal EarleyBoyer.Earley A N512 rep0 0 3482.9 ms
+VALID True elapsed 3465.7350159999914
+formal EarleyBoyer.Earley E N512 rep0 0 3518.6 ms
+VALID True elapsed 3500.3922940001357
+formal EarleyBoyer.Earley V8_ON N512 rep0 0 1121.2 ms
+VALID True elapsed 1082.2259999999999
+formal EarleyBoyer.Boyer A N32 rep0 0 3427.2 ms
+VALID True elapsed 3409.7161380001344
+formal EarleyBoyer.Boyer V8_ON N32 rep0 0 1438.0 ms
+VALID True elapsed 1398.326
+formal EarleyBoyer.Boyer E N32 rep0 0 3425.5 ms
+VALID True elapsed 3405.7460930000525
+formal Splay.Splay E N1024 rep0 0 2911.2 ms
+VALID True elapsed 2318.836730999872
+formal Splay.Splay A N1024 rep0 0 2721.8 ms
+VALID True elapsed 2257.361203999957
+formal Splay.Splay V8_ON N1024 rep0 0 2000.4 ms
+VALID True elapsed 1846.9920000000002
+formal CodeLoad.CodeLoadJQuery E N256 rep1 0 2766.9 ms
+VALID True elapsed 2758.012083000038
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep1 0 1293.2 ms
+VALID True elapsed 1254.2
+formal CodeLoad.CodeLoadJQuery A N256 rep1 0 2705.6 ms
+VALID True elapsed 2694.5600110001396
+formal Crypto.Encrypt V8_ON N256 rep1 0 1231.9 ms
+VALID True elapsed 1105.3799999999999
+formal Crypto.Encrypt A N256 rep1 0 1458.7 ms
+VALID True elapsed 1351.0779560001101
+formal Crypto.Encrypt E N256 rep1 0 1366.4 ms
+VALID True elapsed 1264.52090699994
+formal Mandreel.Mandreel V8_ON N1 rep1 0 2918.9 ms
+VALID True elapsed 1404.4519999999998
+formal Mandreel.Mandreel A N1 rep1 0 3141.3 ms
+VALID True elapsed 1701.5158910001628
+formal Mandreel.Mandreel E N1 rep1 0 3209.4 ms
+VALID True elapsed 1774.3813720000908
+formal EarleyBoyer.Boyer V8_ON N32 rep1 0 1439.8 ms
+VALID True elapsed 1400.465
+formal EarleyBoyer.Boyer E N32 rep1 0 3376.7 ms
+VALID True elapsed 3357.238049000036
+formal EarleyBoyer.Boyer A N32 rep1 0 3527.0 ms
+VALID True elapsed 3509.8374409999233
+formal EarleyBoyer.Earley V8_ON N512 rep1 0 1152.7 ms
+VALID True elapsed 1109.172
+formal EarleyBoyer.Earley E N512 rep1 0 3632.0 ms
+VALID True elapsed 3614.4910829998553
+formal EarleyBoyer.Earley A N512 rep1 0 3489.3 ms
+VALID True elapsed 3472.582841999829
+formal RegExp.RegExp V8_ON N64 rep1 0 1897.2 ms
+VALID True elapsed 1841.9009999999998
+formal RegExp.RegExp A N64 rep1 0 11645.1 ms
+VALID True elapsed 11617.286599000217
+formal RegExp.RegExp E N64 rep1 0 11593.1 ms
+VALID True elapsed 11567.82613099995
+formal Crypto.Decrypt A N16 rep1 0 1653.6 ms
+VALID True elapsed 1639.6115520000458
+formal Crypto.Decrypt V8_ON N16 rep1 0 1372.4 ms
+VALID True elapsed 1333.273
+formal Crypto.Decrypt E N16 rep1 0 1584.5 ms
+VALID True elapsed 1570.567676999839
+formal Richards.Richards E N512 rep1 0 1750.1 ms
+VALID True elapsed 1742.9297479998786
+formal Richards.Richards A N512 rep1 0 1789.0 ms
+VALID True elapsed 1781.9615729998332
+formal Richards.Richards V8_ON N512 rep1 0 1078.7 ms
+VALID True elapsed 1051.563
+formal DeltaBlue.DeltaBlue A N512 rep1 0 3603.3 ms
+VALID True elapsed 3596.2686550000217
+formal DeltaBlue.DeltaBlue V8_ON N512 rep1 0 1922.6 ms
+VALID True elapsed 1894.019
+formal DeltaBlue.DeltaBlue E N512 rep1 0 3406.5 ms
+VALID True elapsed 3399.420391000109
+formal RayTrace.RayTrace E N64 rep1 0 2614.1 ms
+VALID True elapsed 2606.9943350001704
+formal RayTrace.RayTrace A N64 rep1 0 2426.4 ms
+VALID True elapsed 2418.680323000066
+formal RayTrace.RayTrace V8_ON N64 rep1 0 1145.9 ms
+VALID True elapsed 1118.2250000000001
+formal Gameboy.Gameboy E N4 rep1 0 1404.3 ms
+VALID True elapsed 1359.0004940000363
+formal Gameboy.Gameboy A N4 rep1 0 1310.1 ms
+VALID True elapsed 1269.7203760000411
+formal Gameboy.Gameboy V8_ON N4 rep1 0 1257.0 ms
+VALID True elapsed 1193.397
+formal zlib.zlib A N1 rep1 0 8269.6 ms
+VALID True elapsed 8256.527759000193
+formal zlib.zlib V8_ON N1 rep1 0 7334.2 ms
+VALID True elapsed 7294.324
+formal zlib.zlib E N1 rep1 0 8391.1 ms
+VALID True elapsed 8378.78830500017
+formal Splay.Splay A N1024 rep1 0 2824.2 ms
+VALID True elapsed 2307.685384000186
+formal Splay.Splay V8_ON N1024 rep1 0 2018.7 ms
+VALID True elapsed 1818.028
+formal Splay.Splay E N1024 rep1 0 2911.3 ms
+VALID True elapsed 2426.4701070000883
+formal PdfJS.PdfJS A N16 rep1 0 3053.7 ms
+VALID True elapsed 2840.539393000072
+formal PdfJS.PdfJS E N16 rep1 0 3083.1 ms
+VALID True elapsed 2862.2875750001986
+formal PdfJS.PdfJS V8_ON N16 rep1 0 1808.8 ms
+VALID True elapsed 1580.3990000000001
+formal Typescript.Typescript V8_ON N1 rep1 0 1553.5 ms
+VALID True elapsed 1384.942
+formal Typescript.Typescript A N1 rep1 0 2384.4 ms
+VALID True elapsed 2172.4806739999913
+formal Typescript.Typescript E N1 rep1 0 2427.8 ms
+VALID True elapsed 2213.935981000075
+formal NavierStokes.NavierStokes E N32 rep1 0 1808.5 ms
+VALID True elapsed 1797.2767149999272
+formal NavierStokes.NavierStokes V8_ON N32 rep1 0 2287.7 ms
+VALID True elapsed 2256.1969999999997
+formal NavierStokes.NavierStokes A N32 rep1 0 1835.8 ms
+VALID True elapsed 1823.944503000006
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep1 0 1475.7 ms
+VALID True elapsed 1326.314
+formal CodeLoad.CodeLoadClosure E N4096 rep1 0 2834.7 ms
+VALID True elapsed 2701.027149000205
+formal CodeLoad.CodeLoadClosure A N4096 rep1 0 2600.6 ms
+VALID True elapsed 2470.4762440000195
+formal EarleyBoyer.Boyer V8_ON N32 rep2 0 1493.4 ms
+VALID True elapsed 1454.659
+formal EarleyBoyer.Boyer E N32 rep2 0 3400.3 ms
+VALID True elapsed 3377.961843999801
+formal EarleyBoyer.Boyer A N32 rep2 0 3561.1 ms
+VALID True elapsed 3541.8083249998745
+formal Splay.Splay E N1024 rep2 0 2930.5 ms
+VALID True elapsed 2339.9221709999256
+formal Splay.Splay V8_ON N1024 rep2 0 2056.9 ms
+VALID True elapsed 1900.4270000000001
+formal Splay.Splay A N1024 rep2 0 2689.2 ms
+VALID True elapsed 2215.6280040000565
+formal Richards.Richards A N512 rep2 0 1809.2 ms
+VALID True elapsed 1801.7235099999234
+formal Richards.Richards E N512 rep2 0 1805.0 ms
+VALID True elapsed 1798.3144940000493
+formal Richards.Richards V8_ON N512 rep2 0 1101.5 ms
+VALID True elapsed 1071.506
+formal NavierStokes.NavierStokes E N32 rep2 0 1847.3 ms
+VALID True elapsed 1835.2841020000633
+formal NavierStokes.NavierStokes A N32 rep2 0 1906.5 ms
+VALID True elapsed 1894.3941320001613
+formal NavierStokes.NavierStokes V8_ON N32 rep2 0 2250.2 ms
+VALID True elapsed 2216.406
+formal DeltaBlue.DeltaBlue V8_ON N512 rep2 0 1897.2 ms
+VALID True elapsed 1874.298
+formal DeltaBlue.DeltaBlue A N512 rep2 0 3780.7 ms
+VALID True elapsed 3773.5453600001056
+formal DeltaBlue.DeltaBlue E N512 rep2 0 3488.4 ms
+VALID True elapsed 3481.063186999876
+formal Typescript.Typescript E N1 rep2 0 2444.4 ms
+VALID True elapsed 2212.0408449999522
+formal Typescript.Typescript V8_ON N1 rep2 0 1519.4 ms
+VALID True elapsed 1357.429
+formal Typescript.Typescript A N1 rep2 0 2418.0 ms
+VALID True elapsed 2204.3603080001194
+formal EarleyBoyer.Earley E N512 rep2 0 3541.9 ms
+VALID True elapsed 3524.117291999981
+formal EarleyBoyer.Earley V8_ON N512 rep2 0 1211.7 ms
+VALID True elapsed 1173.712
+formal EarleyBoyer.Earley A N512 rep2 0 3530.7 ms
+VALID True elapsed 3514.0051969999913
+formal Crypto.Decrypt V8_ON N16 rep2 0 1333.7 ms
+VALID True elapsed 1300.124
+formal Crypto.Decrypt E N16 rep2 0 1612.3 ms
+VALID True elapsed 1598.1103420001455
+formal Crypto.Decrypt A N16 rep2 0 1559.2 ms
+VALID True elapsed 1545.1943339998834
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep2 0 1204.9 ms
+VALID True elapsed 1162.73
+formal CodeLoad.CodeLoadJQuery E N256 rep2 0 2831.2 ms
+VALID True elapsed 2822.318815999897
+formal CodeLoad.CodeLoadJQuery A N256 rep2 0 2674.7 ms
+VALID True elapsed 2665.735575000057
+formal Mandreel.Mandreel E N1 rep2 0 3221.3 ms
+VALID True elapsed 1778.018672999926
+formal Mandreel.Mandreel A N1 rep2 0 3164.9 ms
+VALID True elapsed 1745.6702999998815
+formal Mandreel.Mandreel V8_ON N1 rep2 0 3076.6 ms
+VALID True elapsed 1482.0149999999999
+formal Gameboy.Gameboy V8_ON N4 rep2 0 1259.4 ms
+VALID True elapsed 1192.653
+formal Gameboy.Gameboy A N4 rep2 0 1325.4 ms
+VALID True elapsed 1284.3649579999037
+formal Gameboy.Gameboy E N4 rep2 0 1436.1 ms
+VALID True elapsed 1392.8035339999478
+formal RayTrace.RayTrace A N64 rep2 0 2448.3 ms
+VALID True elapsed 2441.0214579999447
+formal RayTrace.RayTrace V8_ON N64 rep2 0 1097.0 ms
+VALID True elapsed 1070.2250000000001
+formal RayTrace.RayTrace E N64 rep2 0 2599.0 ms
+VALID True elapsed 2591.5437790001743
+formal CodeLoad.CodeLoadClosure E N4096 rep2 0 2779.3 ms
+VALID True elapsed 2645.0167549999896
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep2 0 1380.3 ms
+VALID True elapsed 1233.203
+formal CodeLoad.CodeLoadClosure A N4096 rep2 0 2763.6 ms
+VALID True elapsed 2631.1195640000515
+formal zlib.zlib E N1 rep2 0 8458.0 ms
+VALID True elapsed 8446.106128000189
+formal zlib.zlib V8_ON N1 rep2 0 7325.8 ms
+VALID True elapsed 7294.072999999999
+formal zlib.zlib A N1 rep2 0 8303.4 ms
+VALID True elapsed 8290.626807000022
+formal RegExp.RegExp A N64 rep2 0 11587.0 ms
+VALID True elapsed 11560.269360000035
+formal RegExp.RegExp E N64 rep2 0 11489.0 ms
+VALID True elapsed 11463.428668000037
+formal RegExp.RegExp V8_ON N64 rep2 0 1895.0 ms
+VALID True elapsed 1843.9579999999999
+formal Crypto.Encrypt A N256 rep2 0 1427.6 ms
+VALID True elapsed 1321.8509430000558
+formal Crypto.Encrypt V8_ON N256 rep2 0 1211.5 ms
+VALID True elapsed 1103.925
+formal Crypto.Encrypt E N256 rep2 0 1415.0 ms
+VALID True elapsed 1310.1113050000276
+formal PdfJS.PdfJS E N16 rep2 0 3060.1 ms
+VALID True elapsed 2852.1775289999787
+formal PdfJS.PdfJS A N16 rep2 0 3009.9 ms
+VALID True elapsed 2802.577638000017
+formal PdfJS.PdfJS V8_ON N16 rep2 0 1863.7 ms
+VALID True elapsed 1642.565
+formal EarleyBoyer.Boyer A N32 rep3 0 3413.6 ms
+VALID True elapsed 3390.2456660000607
+formal EarleyBoyer.Boyer E N32 rep3 0 3537.0 ms
+VALID True elapsed 3516.237131000031
+formal EarleyBoyer.Boyer V8_ON N32 rep3 0 1430.0 ms
+VALID True elapsed 1391.555
+formal Gameboy.Gameboy A N4 rep3 0 1337.8 ms
+VALID True elapsed 1296.2018250001129
+formal Gameboy.Gameboy E N4 rep3 0 1419.6 ms
+VALID True elapsed 1377.1272549999412
+formal Gameboy.Gameboy V8_ON N4 rep3 0 1222.9 ms
+VALID True elapsed 1156.4379999999999
+formal Crypto.Decrypt V8_ON N16 rep3 0 1270.2 ms
+VALID True elapsed 1240.461
+formal Crypto.Decrypt A N16 rep3 0 1547.8 ms
+VALID True elapsed 1534.368768000044
+formal Crypto.Decrypt E N16 rep3 0 1604.6 ms
+VALID True elapsed 1590.6664249999449
+formal DeltaBlue.DeltaBlue E N512 rep3 0 3361.2 ms
+VALID True elapsed 3354.497715000063
+formal DeltaBlue.DeltaBlue A N512 rep3 0 3559.8 ms
+VALID True elapsed 3552.879300999921
+formal DeltaBlue.DeltaBlue V8_ON N512 rep3 0 1883.6 ms
+VALID True elapsed 1856.902
+formal RegExp.RegExp V8_ON N64 rep3 0 1872.5 ms
+VALID True elapsed 1829.1139999999998
+formal RegExp.RegExp E N64 rep3 0 11410.5 ms
+VALID True elapsed 11384.76524200011
+formal RegExp.RegExp A N64 rep3 0 11666.0 ms
+VALID True elapsed 11640.379915000172
+formal RayTrace.RayTrace V8_ON N64 rep3 0 1127.4 ms
+VALID True elapsed 1100.478
+formal RayTrace.RayTrace E N64 rep3 0 2528.3 ms
+VALID True elapsed 2520.553138999967
+formal RayTrace.RayTrace A N64 rep3 0 2431.5 ms
+VALID True elapsed 2423.903112999862
+formal NavierStokes.NavierStokes V8_ON N32 rep3 0 2219.2 ms
+VALID True elapsed 2189.71
+formal NavierStokes.NavierStokes E N32 rep3 0 1927.9 ms
+VALID True elapsed 1915.9500740000512
+formal NavierStokes.NavierStokes A N32 rep3 0 1842.8 ms
+VALID True elapsed 1830.6576320000459
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep3 0 1193.3 ms
+VALID True elapsed 1156.124
+formal CodeLoad.CodeLoadJQuery E N256 rep3 0 2812.8 ms
+VALID True elapsed 2803.936960999854
+formal CodeLoad.CodeLoadJQuery A N256 rep3 0 2693.3 ms
+VALID True elapsed 2684.4209229999688
+formal zlib.zlib V8_ON N1 rep3 0 7338.5 ms
+VALID True elapsed 7302.751
+formal zlib.zlib A N1 rep3 0 8478.3 ms
+VALID True elapsed 8465.859348999802
+formal zlib.zlib E N1 rep3 0 8471.8 ms
+VALID True elapsed 8459.92850899999
+formal Richards.Richards A N512 rep3 0 1932.4 ms
+VALID True elapsed 1925.288205999881
+formal Richards.Richards V8_ON N512 rep3 0 1138.7 ms
+VALID True elapsed 1109.733
+formal Richards.Richards E N512 rep3 0 1794.4 ms
+VALID True elapsed 1786.7405630000867
+formal PdfJS.PdfJS V8_ON N16 rep3 0 1808.1 ms
+VALID True elapsed 1582.9920000000002
+formal PdfJS.PdfJS E N16 rep3 0 3127.8 ms
+VALID True elapsed 2912.3202489998657
+formal PdfJS.PdfJS A N16 rep3 0 3066.1 ms
+VALID True elapsed 2852.727774000028
+formal EarleyBoyer.Earley V8_ON N512 rep3 0 1207.2 ms
+VALID True elapsed 1165.2009999999998
+formal EarleyBoyer.Earley E N512 rep3 0 3532.7 ms
+VALID True elapsed 3514.278915999923
+formal EarleyBoyer.Earley A N512 rep3 0 3614.7 ms
+VALID True elapsed 3597.62589499983
+formal Splay.Splay V8_ON N1024 rep3 0 2102.9 ms
+VALID True elapsed 1933.283
+formal Splay.Splay E N1024 rep3 0 3089.1 ms
+VALID True elapsed 2580.189149999991
+formal Splay.Splay A N1024 rep3 0 2695.4 ms
+VALID True elapsed 2208.618426000001
+formal Mandreel.Mandreel E N1 rep3 0 3285.6 ms
+VALID True elapsed 1782.5795160001144
+formal Mandreel.Mandreel V8_ON N1 rep3 0 3032.1 ms
+VALID True elapsed 1468.339
+formal Mandreel.Mandreel A N1 rep3 0 3229.5 ms
+VALID True elapsed 1718.3855569998268
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep3 0 1362.0 ms
+VALID True elapsed 1304.441
+formal CodeLoad.CodeLoadClosure A N4096 rep3 0 2729.8 ms
+VALID True elapsed 2595.55278599984
+formal CodeLoad.CodeLoadClosure E N4096 rep3 0 2616.1 ms
+VALID True elapsed 2486.387282999931
+formal Typescript.Typescript E N1 rep3 0 2622.0 ms
+VALID True elapsed 2373.5940110001247
+formal Typescript.Typescript A N1 rep3 0 2250.3 ms
+VALID True elapsed 2041.5896300000604
+formal Typescript.Typescript V8_ON N1 rep3 0 1576.2 ms
+VALID True elapsed 1407.294
+formal Crypto.Encrypt A N256 rep3 0 1468.8 ms
+VALID True elapsed 1359.649701999966
+formal Crypto.Encrypt E N256 rep3 0 1471.4 ms
+VALID True elapsed 1364.3441860000603
+formal Crypto.Encrypt V8_ON N256 rep3 0 1253.1 ms
+VALID True elapsed 1138.1390000000001
+formal Typescript.Typescript E N1 rep4 0 2519.5 ms
+VALID True elapsed 2263.0137390000746
+formal Typescript.Typescript A N1 rep4 0 2545.0 ms
+VALID True elapsed 2324.640255999984
+formal Typescript.Typescript V8_ON N1 rep4 0 1561.7 ms
+VALID True elapsed 1394.216
+formal PdfJS.PdfJS A N16 rep4 0 3118.5 ms
+VALID True elapsed 2906.3695249999873
+formal PdfJS.PdfJS E N16 rep4 0 3009.6 ms
+VALID True elapsed 2794.7216049998533
+formal PdfJS.PdfJS V8_ON N16 rep4 0 1884.3 ms
+VALID True elapsed 1652.912
+formal Gameboy.Gameboy A N4 rep4 0 1333.4 ms
+VALID True elapsed 1285.7661820000503
+formal Gameboy.Gameboy V8_ON N4 rep4 0 1246.2 ms
+VALID True elapsed 1182.251
+formal Gameboy.Gameboy E N4 rep4 0 1371.1 ms
+VALID True elapsed 1329.174498999957
+formal Crypto.Decrypt E N16 rep4 0 1620.0 ms
+VALID True elapsed 1605.912697999971
+formal Crypto.Decrypt A N16 rep4 0 1563.6 ms
+VALID True elapsed 1550.0642729999963
+formal Crypto.Decrypt V8_ON N16 rep4 0 1331.4 ms
+VALID True elapsed 1296.87
+formal EarleyBoyer.Boyer E N32 rep4 0 3475.9 ms
+VALID True elapsed 3456.1886309999973
+formal EarleyBoyer.Boyer A N32 rep4 0 3469.1 ms
+VALID True elapsed 3452.1778510001022
+formal EarleyBoyer.Boyer V8_ON N32 rep4 0 1532.8 ms
+VALID True elapsed 1489.868
+formal RayTrace.RayTrace V8_ON N64 rep4 0 1144.5 ms
+VALID True elapsed 1119.366
+formal RayTrace.RayTrace E N64 rep4 0 2512.8 ms
+VALID True elapsed 2504.890327000059
+formal RayTrace.RayTrace A N64 rep4 0 2454.7 ms
+VALID True elapsed 2447.4506979999132
+formal zlib.zlib E N1 rep4 0 8431.1 ms
+VALID True elapsed 8419.118674000027
+formal zlib.zlib V8_ON N1 rep4 0 7415.3 ms
+VALID True elapsed 7381.552
+formal zlib.zlib A N1 rep4 0 8194.0 ms
+VALID True elapsed 8182.012614999898
+formal Richards.Richards E N512 rep4 0 1798.8 ms
+VALID True elapsed 1791.8011350000743
+formal Richards.Richards A N512 rep4 0 1794.7 ms
+VALID True elapsed 1787.3615679999348
+formal Richards.Richards V8_ON N512 rep4 0 1123.0 ms
+VALID True elapsed 1092.286
+formal RegExp.RegExp A N64 rep4 0 11793.4 ms
+VALID True elapsed 11766.715893000131
+formal RegExp.RegExp V8_ON N64 rep4 0 1892.8 ms
+VALID True elapsed 1843.306
+formal RegExp.RegExp E N64 rep4 0 11638.3 ms
+VALID True elapsed 11612.215479000006
+formal CodeLoad.CodeLoadJQuery A N256 rep4 0 2805.2 ms
+VALID True elapsed 2794.043006999884
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep4 0 1190.8 ms
+VALID True elapsed 1153.819
+formal CodeLoad.CodeLoadJQuery E N256 rep4 0 2754.5 ms
+VALID True elapsed 2745.450590000022
+formal NavierStokes.NavierStokes E N32 rep4 0 1870.8 ms
+VALID True elapsed 1859.3207539999858
+formal NavierStokes.NavierStokes A N32 rep4 0 1885.8 ms
+VALID True elapsed 1873.9676099999342
+formal NavierStokes.NavierStokes V8_ON N32 rep4 0 2259.3 ms
+VALID True elapsed 2230.0550000000003
+formal DeltaBlue.DeltaBlue E N512 rep4 0 3475.4 ms
+VALID True elapsed 3467.92776199989
+formal DeltaBlue.DeltaBlue V8_ON N512 rep4 0 1895.2 ms
+VALID True elapsed 1867.622
+formal DeltaBlue.DeltaBlue A N512 rep4 0 3637.8 ms
+VALID True elapsed 3630.6179909999482
+formal Mandreel.Mandreel A N1 rep4 0 3192.0 ms
+VALID True elapsed 1761.748826000141
+formal Mandreel.Mandreel E N1 rep4 0 3199.9 ms
+VALID True elapsed 1731.0225580001716
+formal Mandreel.Mandreel V8_ON N1 rep4 0 3055.7 ms
+VALID True elapsed 1516.4829999999997
+formal CodeLoad.CodeLoadClosure A N4096 rep4 0 2652.1 ms
+VALID True elapsed 2518.1887360000983
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep4 0 1321.6 ms
+VALID True elapsed 1270.946
+formal CodeLoad.CodeLoadClosure E N4096 rep4 0 2810.3 ms
+VALID True elapsed 2675.8171670001466
+formal EarleyBoyer.Earley V8_ON N512 rep4 0 1174.9 ms
+VALID True elapsed 1140.773
+formal EarleyBoyer.Earley A N512 rep4 0 3631.2 ms
+VALID True elapsed 3614.284563999856
+formal EarleyBoyer.Earley E N512 rep4 0 3552.8 ms
+VALID True elapsed 3535.6030549998395
+formal Splay.Splay V8_ON N1024 rep4 0 2296.9 ms
+VALID True elapsed 2108.297
+formal Splay.Splay A N1024 rep4 0 2858.4 ms
+VALID True elapsed 2245.3780519999564
+formal Splay.Splay E N1024 rep4 0 2966.4 ms
+VALID True elapsed 2451.8323760000058
+formal Crypto.Encrypt E N256 rep4 0 1419.3 ms
+VALID True elapsed 1313.1304569998756
+formal Crypto.Encrypt A N256 rep4 0 1438.3 ms
+VALID True elapsed 1331.5184979999904
+formal Crypto.Encrypt V8_ON N256 rep4 0 1244.6 ms
+VALID True elapsed 1123.2710000000002
+formal Richards.Richards V8_ON N512 rep5 0 1132.7 ms
+VALID True elapsed 1108.838
+formal Richards.Richards E N512 rep5 0 1818.5 ms
+VALID True elapsed 1810.511763999937
+formal Richards.Richards A N512 rep5 0 1877.0 ms
+VALID True elapsed 1870.042919000145
+formal Mandreel.Mandreel A N1 rep5 0 3278.5 ms
+VALID True elapsed 1771.3297559998464
+formal Mandreel.Mandreel V8_ON N1 rep5 0 3069.0 ms
+VALID True elapsed 1481.393
+formal Mandreel.Mandreel E N1 rep5 0 3295.0 ms
+VALID True elapsed 1793.709535999922
+formal Gameboy.Gameboy E N4 rep5 0 1403.0 ms
+VALID True elapsed 1360.3705580001697
+formal Gameboy.Gameboy A N4 rep5 0 1386.9 ms
+VALID True elapsed 1344.6980820000172
+formal Gameboy.Gameboy V8_ON N4 rep5 0 1294.7 ms
+VALID True elapsed 1221.2839999999999
+formal Typescript.Typescript A N1 rep5 0 2352.8 ms
+VALID True elapsed 2136.4279559999704
+formal Typescript.Typescript E N1 rep5 0 2434.0 ms
+VALID True elapsed 2206.3151809999254
+formal Typescript.Typescript V8_ON N1 rep5 0 1568.7 ms
+VALID True elapsed 1383.746
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep5 0 1386.6 ms
+VALID True elapsed 1333.824
+formal CodeLoad.CodeLoadClosure E N4096 rep5 0 2866.7 ms
+VALID True elapsed 2666.933747000061
+formal CodeLoad.CodeLoadClosure A N4096 rep5 0 2674.2 ms
+VALID True elapsed 2542.3130250000395
+formal Crypto.Encrypt A N256 rep5 0 1448.6 ms
+VALID True elapsed 1341.7953019998968
+formal Crypto.Encrypt E N256 rep5 0 1509.9 ms
+VALID True elapsed 1403.1178250000812
+formal Crypto.Encrypt V8_ON N256 rep5 0 3416.1 ms
+VALID True elapsed 3157.495
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep5 0 1198.2 ms
+VALID True elapsed 1160.1319999999998
+formal CodeLoad.CodeLoadJQuery A N256 rep5 0 2779.2 ms
+VALID True elapsed 2769.9274399999995
+formal CodeLoad.CodeLoadJQuery E N256 rep5 0 2776.8 ms
+VALID True elapsed 2768.4357380000874
+formal Crypto.Decrypt A N16 rep5 0 1596.6 ms
+VALID True elapsed 1582.241362000117
+formal Crypto.Decrypt V8_ON N16 rep5 0 1334.3 ms
+VALID True elapsed 1300.044
+formal Crypto.Decrypt E N16 rep5 0 1558.3 ms
+VALID True elapsed 1544.7548670000397
+formal EarleyBoyer.Earley A N512 rep5 0 3618.4 ms
+VALID True elapsed 3601.869620000012
+formal EarleyBoyer.Earley V8_ON N512 rep5 0 1166.8 ms
+VALID True elapsed 1123.416
+formal EarleyBoyer.Earley E N512 rep5 0 3632.2 ms
+VALID True elapsed 3614.643836000003
+formal EarleyBoyer.Boyer V8_ON N32 rep5 0 1456.3 ms
+VALID True elapsed 1416.535
+formal EarleyBoyer.Boyer A N32 rep5 0 3449.2 ms
+VALID True elapsed 3431.567777000135
+formal EarleyBoyer.Boyer E N32 rep5 0 3460.2 ms
+VALID True elapsed 3440.4021400001366
+formal RayTrace.RayTrace V8_ON N64 rep5 0 1118.3 ms
+VALID True elapsed 1090.894
+formal RayTrace.RayTrace A N64 rep5 0 2468.1 ms
+VALID True elapsed 2460.6405690000392
+formal RayTrace.RayTrace E N64 rep5 0 2572.0 ms
+VALID True elapsed 2564.2609729999676
+formal NavierStokes.NavierStokes A N32 rep5 0 1834.5 ms
+VALID True elapsed 1822.8845870001242
+formal NavierStokes.NavierStokes E N32 rep5 0 1889.0 ms
+VALID True elapsed 1876.7927899998613
+formal NavierStokes.NavierStokes V8_ON N32 rep5 0 2225.0 ms
+VALID True elapsed 2195.016
+formal zlib.zlib A N1 rep5 0 8261.3 ms
+VALID True elapsed 8248.39365600003
+formal zlib.zlib V8_ON N1 rep5 0 7482.0 ms
+VALID True elapsed 7444.324
+formal zlib.zlib E N1 rep5 0 8559.1 ms
+VALID True elapsed 8547.291783999885
+formal DeltaBlue.DeltaBlue A N512 rep5 0 3653.3 ms
+VALID True elapsed 3645.973026000196
+formal DeltaBlue.DeltaBlue V8_ON N512 rep5 0 1906.7 ms
+VALID True elapsed 1877.791
+formal DeltaBlue.DeltaBlue E N512 rep5 0 3513.2 ms
+VALID True elapsed 3506.2269760000054
+formal Splay.Splay V8_ON N1024 rep5 0 2069.8 ms
+VALID True elapsed 1893.602
+formal Splay.Splay A N1024 rep5 0 2817.1 ms
+VALID True elapsed 2334.4590509999543
+formal Splay.Splay E N1024 rep5 0 2820.1 ms
+VALID True elapsed 2333.8454539999366
+formal RegExp.RegExp A N64 rep5 0 11717.8 ms
+VALID True elapsed 11691.57681400003
+formal RegExp.RegExp V8_ON N64 rep5 0 1904.7 ms
+VALID True elapsed 1855.869
+formal RegExp.RegExp E N64 rep5 0 11618.0 ms
+VALID True elapsed 11591.292302000104
+formal PdfJS.PdfJS A N16 rep5 0 3029.0 ms
+VALID True elapsed 2817.942064000061
+formal PdfJS.PdfJS E N16 rep5 0 3066.4 ms
+VALID True elapsed 2855.709880999988
+formal PdfJS.PdfJS V8_ON N16 rep5 0 1826.5 ms
+VALID True elapsed 1596.335
+formal EarleyBoyer.Earley A N512 rep6 0 3611.6 ms
+VALID True elapsed 3594.8905130000785
+formal EarleyBoyer.Earley V8_ON N512 rep6 0 1172.3 ms
+VALID True elapsed 1133.9799999999998
+formal EarleyBoyer.Earley E N512 rep6 0 3573.9 ms
+VALID True elapsed 3556.070556000108
+formal CodeLoad.CodeLoadClosure E N4096 rep6 0 2818.8 ms
+VALID True elapsed 2687.57122900011
+formal CodeLoad.CodeLoadClosure A N4096 rep6 0 2616.6 ms
+VALID True elapsed 2485.4475739998743
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep6 0 1371.7 ms
+VALID True elapsed 1319.8100000000002
+formal Richards.Richards V8_ON N512 rep6 0 1123.5 ms
+VALID True elapsed 1099.811
+formal Richards.Richards A N512 rep6 0 1756.5 ms
+VALID True elapsed 1750.0129259999376
+formal Richards.Richards E N512 rep6 0 1790.9 ms
+VALID True elapsed 1784.0784799999092
+formal Gameboy.Gameboy A N4 rep6 0 1354.8 ms
+VALID True elapsed 1313.0940980000887
+formal Gameboy.Gameboy E N4 rep6 0 1397.3 ms
+VALID True elapsed 1354.9645610000007
+formal Gameboy.Gameboy V8_ON N4 rep6 0 1257.2 ms
+VALID True elapsed 1189.128
+formal Typescript.Typescript A N1 rep6 0 2345.9 ms
+VALID True elapsed 2094.6917940001003
+formal Typescript.Typescript V8_ON N1 rep6 0 1564.8 ms
+VALID True elapsed 1397.327
+formal Typescript.Typescript E N1 rep6 0 2402.8 ms
+VALID True elapsed 2180.32091400004
+formal Splay.Splay A N1024 rep6 0 2834.6 ms
+VALID True elapsed 2319.9487439999357
+formal Splay.Splay E N1024 rep6 0 2835.6 ms
+VALID True elapsed 2347.0274950000457
+formal Splay.Splay V8_ON N1024 rep6 0 2059.1 ms
+VALID True elapsed 1903.1930000000002
+formal zlib.zlib V8_ON N1 rep6 0 7409.3 ms
+VALID True elapsed 7376.611000000001
+formal zlib.zlib E N1 rep6 0 8434.2 ms
+VALID True elapsed 8422.571278000018
+formal zlib.zlib A N1 rep6 0 8331.8 ms
+VALID True elapsed 8319.880206999835
+formal RegExp.RegExp E N64 rep6 0 11564.9 ms
+VALID True elapsed 11538.710809999844
+formal RegExp.RegExp A N64 rep6 0 11626.4 ms
+VALID True elapsed 11600.053037999896
+formal RegExp.RegExp V8_ON N64 rep6 0 1905.9 ms
+VALID True elapsed 1852.655
+formal DeltaBlue.DeltaBlue V8_ON N512 rep6 0 1914.7 ms
+VALID True elapsed 1885.3760000000002
+formal DeltaBlue.DeltaBlue A N512 rep6 0 3721.6 ms
+VALID True elapsed 3713.7743400000036
+formal DeltaBlue.DeltaBlue E N512 rep6 0 3492.0 ms
+VALID True elapsed 3484.8186230000574
+formal Crypto.Decrypt E N16 rep6 0 1553.3 ms
+VALID True elapsed 1539.6990519999526
+formal Crypto.Decrypt A N16 rep6 0 1635.7 ms
+VALID True elapsed 1622.039410999976
+formal Crypto.Decrypt V8_ON N16 rep6 0 1370.0 ms
+VALID True elapsed 1335.341
+formal Mandreel.Mandreel A N1 rep6 0 3219.8 ms
+VALID True elapsed 1769.7452399998438
+formal Mandreel.Mandreel E N1 rep6 0 3278.7 ms
+VALID True elapsed 1794.255347999977
+formal Mandreel.Mandreel V8_ON N1 rep6 0 3147.1 ms
+VALID True elapsed 1573.1109999999999
+formal RayTrace.RayTrace V8_ON N64 rep6 0 1122.8 ms
+VALID True elapsed 1099.219
+formal RayTrace.RayTrace E N64 rep6 0 2587.4 ms
+VALID True elapsed 2579.947889999952
+formal RayTrace.RayTrace A N64 rep6 0 2503.0 ms
+VALID True elapsed 2495.786392000038
+formal Crypto.Encrypt V8_ON N256 rep6 0 1250.7 ms
+VALID True elapsed 1135.8149999999998
+formal Crypto.Encrypt A N256 rep6 0 1432.0 ms
+VALID True elapsed 1326.20621199999
+formal Crypto.Encrypt E N256 rep6 0 1429.7 ms
+VALID True elapsed 1319.5527790000197
+formal NavierStokes.NavierStokes A N32 rep6 0 1885.3 ms
+VALID True elapsed 1873.5931410000194
+formal NavierStokes.NavierStokes E N32 rep6 0 1836.4 ms
+VALID True elapsed 1824.660545000108
+formal NavierStokes.NavierStokes V8_ON N32 rep6 0 2261.8 ms
+VALID True elapsed 2232.3250000000003
+formal CodeLoad.CodeLoadJQuery E N256 rep6 0 2776.3 ms
+VALID True elapsed 2767.5878169999924
+formal CodeLoad.CodeLoadJQuery A N256 rep6 0 2693.3 ms
+VALID True elapsed 2683.8213230001274
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep6 0 1255.9 ms
+VALID True elapsed 1199.86
+formal PdfJS.PdfJS E N16 rep6 0 3014.1 ms
+VALID True elapsed 2804.0021170000546
+formal PdfJS.PdfJS A N16 rep6 0 3112.0 ms
+VALID True elapsed 2900.9870520001277
+formal PdfJS.PdfJS V8_ON N16 rep6 0 1828.3 ms
+VALID True elapsed 1604.373
+formal EarleyBoyer.Boyer E N32 rep6 0 3487.7 ms
+VALID True elapsed 3467.780523000052
+formal EarleyBoyer.Boyer V8_ON N32 rep6 0 1448.2 ms
+VALID True elapsed 1406.9769999999999
+formal EarleyBoyer.Boyer A N32 rep6 0 3533.9 ms
+VALID True elapsed 3516.2119380000513
+formal Richards.Richards E N512 rep7 0 1772.0 ms
+VALID True elapsed 1764.532252999954
+formal Richards.Richards V8_ON N512 rep7 0 1087.0 ms
+VALID True elapsed 1055.602
+formal Richards.Richards A N512 rep7 0 1763.7 ms
+VALID True elapsed 1756.809786999831
+formal CodeLoad.CodeLoadJQuery E N256 rep7 0 2862.6 ms
+VALID True elapsed 2853.436250000028
+formal CodeLoad.CodeLoadJQuery A N256 rep7 0 2697.9 ms
+VALID True elapsed 2688.686689999886
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep7 0 1281.4 ms
+VALID True elapsed 1238.748
+formal EarleyBoyer.Earley A N512 rep7 0 3586.9 ms
+VALID True elapsed 3569.3406489999034
+formal EarleyBoyer.Earley E N512 rep7 0 3677.1 ms
+VALID True elapsed 3659.2402249998413
+formal EarleyBoyer.Earley V8_ON N512 rep7 0 1168.9 ms
+VALID True elapsed 1122.8999999999999
+formal PdfJS.PdfJS V8_ON N16 rep7 0 1863.6 ms
+VALID True elapsed 1638.659
+formal PdfJS.PdfJS A N16 rep7 0 3122.9 ms
+VALID True elapsed 2913.193457999965
+formal PdfJS.PdfJS E N16 rep7 0 3012.5 ms
+VALID True elapsed 2800.988285999745
+formal Crypto.Encrypt E N256 rep7 0 1470.4 ms
+VALID True elapsed 1363.9189869998954
+formal Crypto.Encrypt V8_ON N256 rep7 0 1250.2 ms
+VALID True elapsed 1131.821
+formal Crypto.Encrypt A N256 rep7 0 1421.3 ms
+VALID True elapsed 1315.520988999866
+formal EarleyBoyer.Boyer A N32 rep7 0 3462.9 ms
+VALID True elapsed 3445.7191320001148
+formal EarleyBoyer.Boyer E N32 rep7 0 3439.0 ms
+VALID True elapsed 3419.0736529999413
+formal EarleyBoyer.Boyer V8_ON N32 rep7 0 1498.3 ms
+VALID True elapsed 1457.596
+formal CodeLoad.CodeLoadClosure E N4096 rep7 0 2742.4 ms
+VALID True elapsed 2609.1358809997328
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep7 0 1417.1 ms
+VALID True elapsed 1280.429
+formal CodeLoad.CodeLoadClosure A N4096 rep7 0 2776.0 ms
+VALID True elapsed 2643.449903999921
+formal RegExp.RegExp V8_ON N64 rep7 0 1902.0 ms
+VALID True elapsed 1854.422
+formal RegExp.RegExp A N64 rep7 0 11712.7 ms
+VALID True elapsed 11686.288470999803
+formal RegExp.RegExp E N64 rep7 0 11546.1 ms
+VALID True elapsed 11519.40335899964
+formal DeltaBlue.DeltaBlue V8_ON N512 rep7 0 1989.1 ms
+VALID True elapsed 1956.835
+formal DeltaBlue.DeltaBlue A N512 rep7 0 3594.4 ms
+VALID True elapsed 3587.334019999951
+formal DeltaBlue.DeltaBlue E N512 rep7 0 3482.6 ms
+VALID True elapsed 3475.033023000229
+formal zlib.zlib V8_ON N1 rep7 0 7358.3 ms
+VALID True elapsed 7324.88
+formal zlib.zlib E N1 rep7 0 8473.6 ms
+VALID True elapsed 8461.245254999958
+formal zlib.zlib A N1 rep7 0 8274.5 ms
+VALID True elapsed 8262.636216000188
+formal Gameboy.Gameboy E N4 rep7 0 1413.2 ms
+VALID True elapsed 1370.8327429997735
+formal Gameboy.Gameboy V8_ON N4 rep7 0 1345.7 ms
+VALID True elapsed 1279.97
+formal Gameboy.Gameboy A N4 rep7 0 1324.3 ms
+VALID True elapsed 1282.4245589999482
+formal Crypto.Decrypt V8_ON N16 rep7 0 1330.6 ms
+VALID True elapsed 1300.5
+formal Crypto.Decrypt E N16 rep7 0 1565.5 ms
+VALID True elapsed 1550.920264000073
+formal Crypto.Decrypt A N16 rep7 0 1587.8 ms
+VALID True elapsed 1573.6943709999323
+formal Mandreel.Mandreel V8_ON N1 rep7 0 3060.5 ms
+VALID True elapsed 1494.136
+formal Mandreel.Mandreel A N1 rep7 0 3215.7 ms
+VALID True elapsed 1744.43363600038
+formal Mandreel.Mandreel E N1 rep7 0 3156.0 ms
+VALID True elapsed 1737.7263540001586
+formal Splay.Splay A N1024 rep7 0 2940.1 ms
+VALID True elapsed 2310.166434000246
+formal Splay.Splay V8_ON N1024 rep7 0 1969.8 ms
+VALID True elapsed 1814.923
+formal Splay.Splay E N1024 rep7 0 3209.9 ms
+VALID True elapsed 2645.5221560001373
+formal NavierStokes.NavierStokes V8_ON N32 rep7 0 2267.1 ms
+VALID True elapsed 2238.1
+formal NavierStokes.NavierStokes A N32 rep7 0 1926.1 ms
+VALID True elapsed 1914.1148199997842
+formal NavierStokes.NavierStokes E N32 rep7 0 1852.4 ms
+VALID True elapsed 1839.4181559998542
+formal RayTrace.RayTrace E N64 rep7 0 2526.4 ms
+VALID True elapsed 2518.772738999687
+formal RayTrace.RayTrace V8_ON N64 rep7 0 1149.0 ms
+VALID True elapsed 1122.284
+formal RayTrace.RayTrace A N64 rep7 0 2402.0 ms
+VALID True elapsed 2394.349427000154
+formal Typescript.Typescript V8_ON N1 rep7 0 1563.2 ms
+VALID True elapsed 1395.4060000000002
+formal Typescript.Typescript A N1 rep7 0 2410.9 ms
+VALID True elapsed 2186.552064000163
+formal Typescript.Typescript E N1 rep7 0 2466.3 ms
+VALID True elapsed 2245.050861999858
+formal Gameboy.Gameboy E N4 rep8 0 1415.6 ms
+VALID True elapsed 1371.3073670002632
+formal Gameboy.Gameboy V8_ON N4 rep8 0 1322.8 ms
+VALID True elapsed 1251.7910000000002
+formal Gameboy.Gameboy A N4 rep8 0 1364.6 ms
+VALID True elapsed 1321.4163100002334
+formal Richards.Richards E N512 rep8 0 1780.7 ms
+VALID True elapsed 1772.4354829997756
+formal Richards.Richards V8_ON N512 rep8 0 1099.3 ms
+VALID True elapsed 1071.653
+formal Richards.Richards A N512 rep8 0 1850.8 ms
+VALID True elapsed 1843.7997590000741
+formal DeltaBlue.DeltaBlue A N512 rep8 0 3655.1 ms
+VALID True elapsed 3647.9253420000896
+formal DeltaBlue.DeltaBlue E N512 rep8 0 3435.9 ms
+VALID True elapsed 3428.7586019998416
+formal DeltaBlue.DeltaBlue V8_ON N512 rep8 0 1907.5 ms
+VALID True elapsed 1880.05
+formal EarleyBoyer.Boyer A N32 rep8 0 3532.9 ms
+VALID True elapsed 3515.5817360002548
+formal EarleyBoyer.Boyer E N32 rep8 0 3370.3 ms
+VALID True elapsed 3350.613541999832
+formal EarleyBoyer.Boyer V8_ON N32 rep8 0 1533.5 ms
+VALID True elapsed 1492.008
+formal RayTrace.RayTrace E N64 rep8 0 2547.2 ms
+VALID True elapsed 2539.6523430002853
+formal RayTrace.RayTrace V8_ON N64 rep8 0 1118.2 ms
+VALID True elapsed 1090.809
+formal RayTrace.RayTrace A N64 rep8 0 2464.5 ms
+VALID True elapsed 2456.9475440001115
+formal Splay.Splay A N1024 rep8 0 2798.5 ms
+VALID True elapsed 2247.083748999983
+formal Splay.Splay E N1024 rep8 0 3021.5 ms
+VALID True elapsed 2529.3159300000407
+formal Splay.Splay V8_ON N1024 rep8 0 1995.9 ms
+VALID True elapsed 1830.0130000000001
+formal Crypto.Decrypt E N16 rep8 0 1571.5 ms
+VALID True elapsed 1557.0560530000366
+formal Crypto.Decrypt A N16 rep8 0 1625.7 ms
+VALID True elapsed 1611.486746000126
+formal Crypto.Decrypt V8_ON N16 rep8 0 1407.3 ms
+VALID True elapsed 1366.8020000000001
+formal Mandreel.Mandreel V8_ON N1 rep8 0 3050.7 ms
+VALID True elapsed 1448.422
+formal Mandreel.Mandreel A N1 rep8 0 3202.1 ms
+VALID True elapsed 1742.841526999604
+formal Mandreel.Mandreel E N1 rep8 0 3252.4 ms
+VALID True elapsed 1830.6193340001628
+formal NavierStokes.NavierStokes E N32 rep8 0 1866.8 ms
+VALID True elapsed 1854.0662430003285
+formal NavierStokes.NavierStokes A N32 rep8 0 1871.4 ms
+VALID True elapsed 1859.298609000165
+formal NavierStokes.NavierStokes V8_ON N32 rep8 0 2296.5 ms
+VALID True elapsed 2266.951
+formal PdfJS.PdfJS A N16 rep8 0 3047.5 ms
+VALID True elapsed 2836.409686999861
+formal PdfJS.PdfJS V8_ON N16 rep8 0 1804.4 ms
+VALID True elapsed 1581.1999999999998
+formal PdfJS.PdfJS E N16 rep8 0 3088.7 ms
+VALID True elapsed 2862.5123499999754
+formal CodeLoad.CodeLoadClosure A N4096 rep8 0 2698.2 ms
+VALID True elapsed 2561.9850389999337
+formal CodeLoad.CodeLoadClosure E N4096 rep8 0 2725.4 ms
+VALID True elapsed 2584.8333109999076
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep8 0 1297.2 ms
+VALID True elapsed 1244.194
+formal Typescript.Typescript A N1 rep8 0 2393.4 ms
+VALID True elapsed 2169.774515000172
+formal Typescript.Typescript V8_ON N1 rep8 0 1589.2 ms
+VALID True elapsed 1415.522
+formal Typescript.Typescript E N1 rep8 0 2422.7 ms
+VALID True elapsed 2197.906381000299
+formal RegExp.RegExp E N64 rep8 0 11675.4 ms
+VALID True elapsed 11649.699920999818
+formal RegExp.RegExp A N64 rep8 0 11620.5 ms
+VALID True elapsed 11593.294681999832
+formal RegExp.RegExp V8_ON N64 rep8 0 1905.2 ms
+VALID True elapsed 1851.726
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep8 0 1219.0 ms
+VALID True elapsed 1180.592
+formal CodeLoad.CodeLoadJQuery E N256 rep8 0 2795.8 ms
+VALID True elapsed 2786.598621999845
+formal CodeLoad.CodeLoadJQuery A N256 rep8 0 2781.5 ms
+VALID True elapsed 2771.340991000179
+formal EarleyBoyer.Earley V8_ON N512 rep8 0 1234.3 ms
+VALID True elapsed 1191.663
+formal EarleyBoyer.Earley E N512 rep8 0 3648.8 ms
+VALID True elapsed 3630.00265200017
+formal EarleyBoyer.Earley A N512 rep8 0 3538.6 ms
+VALID True elapsed 3521.4875790001824
+formal zlib.zlib A N1 rep8 0 8432.4 ms
+VALID True elapsed 8419.610402999911
+formal zlib.zlib V8_ON N1 rep8 0 7305.6 ms
+VALID True elapsed 7275.209
+formal zlib.zlib E N1 rep8 0 8487.9 ms
+VALID True elapsed 8475.90968000004
+formal Crypto.Encrypt A N256 rep8 0 1442.2 ms
+VALID True elapsed 1310.4813549998216
+formal Crypto.Encrypt V8_ON N256 rep8 0 1278.8 ms
+VALID True elapsed 1163.2939999999999
+formal Crypto.Encrypt E N256 rep8 0 1423.9 ms
+VALID True elapsed 1318.752336999867
+formal DeltaBlue.DeltaBlue A N512 rep9 0 3663.2 ms
+VALID True elapsed 3655.601553000044
+formal DeltaBlue.DeltaBlue E N512 rep9 0 3443.1 ms
+VALID True elapsed 3435.47164299991
+formal DeltaBlue.DeltaBlue V8_ON N512 rep9 0 1947.1 ms
+VALID True elapsed 1919.232
+formal CodeLoad.CodeLoadClosure E N4096 rep9 0 2772.6 ms
+VALID True elapsed 2635.730653000064
+formal CodeLoad.CodeLoadClosure A N4096 rep9 0 2606.3 ms
+VALID True elapsed 2476.8354899999686
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep9 0 1502.2 ms
+VALID True elapsed 1350.8480000000002
+formal Crypto.Encrypt A N256 rep9 0 1463.4 ms
+VALID True elapsed 1357.7345730001107
+formal Crypto.Encrypt E N256 rep9 0 1433.7 ms
+VALID True elapsed 1325.2373449997976
+formal Crypto.Encrypt V8_ON N256 rep9 0 1228.2 ms
+VALID True elapsed 1113.329
+formal NavierStokes.NavierStokes V8_ON N32 rep9 0 2281.5 ms
+VALID True elapsed 2253.968
+formal NavierStokes.NavierStokes E N32 rep9 0 1849.2 ms
+VALID True elapsed 1836.3569199997
+formal NavierStokes.NavierStokes A N32 rep9 0 1858.7 ms
+VALID True elapsed 1847.1323989997618
+formal RayTrace.RayTrace V8_ON N64 rep9 0 1171.0 ms
+VALID True elapsed 1134.583
+formal RayTrace.RayTrace A N64 rep9 0 2424.5 ms
+VALID True elapsed 2417.0570220001973
+formal RayTrace.RayTrace E N64 rep9 0 2579.1 ms
+VALID True elapsed 2571.588852999732
+formal EarleyBoyer.Boyer E N32 rep9 0 3458.7 ms
+VALID True elapsed 3436.722974999808
+formal EarleyBoyer.Boyer A N32 rep9 0 3466.9 ms
+VALID True elapsed 3449.652654999867
+formal EarleyBoyer.Boyer V8_ON N32 rep9 0 1494.0 ms
+VALID True elapsed 1439.6840000000002
+formal Richards.Richards A N512 rep9 0 1786.1 ms
+VALID True elapsed 1779.1854779999703
+formal Richards.Richards E N512 rep9 0 1815.1 ms
+VALID True elapsed 1808.4567390000448
+formal Richards.Richards V8_ON N512 rep9 0 1097.2 ms
+VALID True elapsed 1070.219
+formal Crypto.Decrypt A N16 rep9 0 1582.9 ms
+VALID True elapsed 1568.589420999866
+formal Crypto.Decrypt V8_ON N16 rep9 0 1350.8 ms
+VALID True elapsed 1320.35
+formal Crypto.Decrypt E N16 rep9 0 1624.1 ms
+VALID True elapsed 1610.3743900000118
+formal Gameboy.Gameboy V8_ON N4 rep9 0 1255.3 ms
+VALID True elapsed 1190.845
+formal Gameboy.Gameboy E N4 rep9 0 1386.9 ms
+VALID True elapsed 1343.8067290000618
+formal Gameboy.Gameboy A N4 rep9 0 1336.3 ms
+VALID True elapsed 1293.0215210001916
+formal EarleyBoyer.Earley A N512 rep9 0 3673.4 ms
+VALID True elapsed 3656.867918000091
+formal EarleyBoyer.Earley V8_ON N512 rep9 0 1180.5 ms
+VALID True elapsed 1140.7069999999999
+formal EarleyBoyer.Earley E N512 rep9 0 3626.6 ms
+VALID True elapsed 3609.33333100006
+formal RegExp.RegExp V8_ON N64 rep9 0 1853.2 ms
+VALID True elapsed 1806.103
+formal RegExp.RegExp E N64 rep9 0 11482.9 ms
+VALID True elapsed 11457.028498
+formal RegExp.RegExp A N64 rep9 0 11598.5 ms
+VALID True elapsed 11570.20727699995
+formal zlib.zlib A N1 rep9 0 8456.2 ms
+VALID True elapsed 8443.701171999797
+formal zlib.zlib E N1 rep9 0 8432.0 ms
+VALID True elapsed 8419.854948000051
+formal zlib.zlib V8_ON N1 rep9 0 7351.2 ms
+VALID True elapsed 7316.905
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep9 0 1199.1 ms
+VALID True elapsed 1163.329
+formal CodeLoad.CodeLoadJQuery E N256 rep9 0 2885.1 ms
+VALID True elapsed 2876.2230729996227
+formal CodeLoad.CodeLoadJQuery A N256 rep9 0 2685.8 ms
+VALID True elapsed 2676.7275149999186
+formal Splay.Splay V8_ON N1024 rep9 0 2175.3 ms
+VALID True elapsed 2003.446
+formal Splay.Splay E N1024 rep9 0 2939.5 ms
+VALID True elapsed 2363.5486820000224
+formal Splay.Splay A N1024 rep9 0 2821.5 ms
+VALID True elapsed 2331.0487210000865
+formal Mandreel.Mandreel V8_ON N1 rep9 0 2987.9 ms
+VALID True elapsed 1464.5280000000002
+formal Mandreel.Mandreel A N1 rep9 0 3218.4 ms
+VALID True elapsed 1753.4925919999368
+formal Mandreel.Mandreel E N1 rep9 0 3165.1 ms
+VALID True elapsed 1745.1428109998815
+formal PdfJS.PdfJS A N16 rep9 0 3127.9 ms
+VALID True elapsed 2891.52488899976
+formal PdfJS.PdfJS V8_ON N16 rep9 0 1827.0 ms
+VALID True elapsed 1600.377
+formal PdfJS.PdfJS E N16 rep9 0 3150.1 ms
+VALID True elapsed 2936.4283639998175
+formal Typescript.Typescript V8_ON N1 rep9 0 1592.8 ms
+VALID True elapsed 1415.22
+formal Typescript.Typescript E N1 rep9 0 2507.2 ms
+VALID True elapsed 2275.790937999729
+formal Typescript.Typescript A N1 rep9 0 2297.9 ms
+VALID True elapsed 2081.814537999686
+formal Richards.Richards V8_ON N512 rep10 0 1100.9 ms
+VALID True elapsed 1079.065
+formal Richards.Richards E N512 rep10 0 1785.0 ms
+VALID True elapsed 1778.0327469999902
+formal Richards.Richards A N512 rep10 0 1764.7 ms
+VALID True elapsed 1757.697000999935
+formal RegExp.RegExp V8_ON N64 rep10 0 1859.2 ms
+VALID True elapsed 1808.8990000000001
+formal RegExp.RegExp A N64 rep10 0 11688.8 ms
+VALID True elapsed 11661.926651000045
+formal RegExp.RegExp E N64 rep10 0 11671.0 ms
+VALID True elapsed 11644.583343000151
+formal Splay.Splay A N1024 rep10 0 2994.0 ms
+VALID True elapsed 2386.008869000245
+formal Splay.Splay E N1024 rep10 0 2827.8 ms
+VALID True elapsed 2346.9807549999095
+formal Splay.Splay V8_ON N1024 rep10 0 2080.1 ms
+VALID True elapsed 1880.664
+formal Mandreel.Mandreel A N1 rep10 0 3180.1 ms
+VALID True elapsed 1740.0778699996881
+formal Mandreel.Mandreel E N1 rep10 0 3240.4 ms
+VALID True elapsed 1804.2095870003104
+formal Mandreel.Mandreel V8_ON N1 rep10 0 3028.8 ms
+VALID True elapsed 1458.718
+formal PdfJS.PdfJS E N16 rep10 0 3121.1 ms
+VALID True elapsed 2911.001004999969
+formal PdfJS.PdfJS A N16 rep10 0 3031.4 ms
+VALID True elapsed 2822.2567830001935
+formal PdfJS.PdfJS V8_ON N16 rep10 0 1907.3 ms
+VALID True elapsed 1679.763
+formal CodeLoad.CodeLoadJQuery A N256 rep10 0 2711.2 ms
+VALID True elapsed 2702.1720529999584
+formal CodeLoad.CodeLoadJQuery E N256 rep10 0 2850.3 ms
+VALID True elapsed 2841.145365000237
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep10 0 1199.7 ms
+VALID True elapsed 1161.6399999999999
+formal Crypto.Encrypt E N256 rep10 0 1444.2 ms
+VALID True elapsed 1338.5678659998812
+formal Crypto.Encrypt V8_ON N256 rep10 0 1239.3 ms
+VALID True elapsed 1125.706
+formal Crypto.Encrypt A N256 rep10 0 1461.3 ms
+VALID True elapsed 1354.698924000375
+formal Typescript.Typescript A N1 rep10 0 2356.5 ms
+VALID True elapsed 2144.3993350001983
+formal Typescript.Typescript V8_ON N1 rep10 0 1552.4 ms
+VALID True elapsed 1391.006
+formal Typescript.Typescript E N1 rep10 0 2437.4 ms
+VALID True elapsed 2221.4082749998197
+formal RayTrace.RayTrace E N64 rep10 0 2505.8 ms
+VALID True elapsed 2498.102721999865
+formal RayTrace.RayTrace A N64 rep10 0 2451.0 ms
+VALID True elapsed 2443.5550699997693
+formal RayTrace.RayTrace V8_ON N64 rep10 0 1128.2 ms
+VALID True elapsed 1101.0020000000002
+formal Gameboy.Gameboy E N4 rep10 0 1390.3 ms
+VALID True elapsed 1348.077711999882
+formal Gameboy.Gameboy A N4 rep10 0 1338.9 ms
+VALID True elapsed 1296.2651349999942
+formal Gameboy.Gameboy V8_ON N4 rep10 0 1317.3 ms
+VALID True elapsed 1248.6619999999998
+formal NavierStokes.NavierStokes V8_ON N32 rep10 0 2235.0 ms
+VALID True elapsed 2209.1679999999997
+formal NavierStokes.NavierStokes E N32 rep10 0 1826.8 ms
+VALID True elapsed 1815.4358959998935
+formal NavierStokes.NavierStokes A N32 rep10 0 1918.3 ms
+VALID True elapsed 1906.4733720002696
+formal zlib.zlib V8_ON N1 rep10 0 7389.3 ms
+VALID True elapsed 7356.367
+formal zlib.zlib A N1 rep10 0 8343.0 ms
+VALID True elapsed 8330.528477999847
+formal zlib.zlib E N1 rep10 0 8504.8 ms
+VALID True elapsed 8491.904188000131
+formal EarleyBoyer.Boyer V8_ON N32 rep10 0 1467.0 ms
+VALID True elapsed 1423.121
+formal EarleyBoyer.Boyer A N32 rep10 0 3674.9 ms
+VALID True elapsed 3657.540827000048
+formal EarleyBoyer.Boyer E N32 rep10 0 3369.3 ms
+VALID True elapsed 3349.774536999874
+formal DeltaBlue.DeltaBlue V8_ON N512 rep10 0 2021.9 ms
+VALID True elapsed 1993.057
+formal DeltaBlue.DeltaBlue A N512 rep10 0 3594.2 ms
+VALID True elapsed 3586.615410000086
+formal DeltaBlue.DeltaBlue E N512 rep10 0 3484.9 ms
+VALID True elapsed 3477.537860999815
+formal Crypto.Decrypt A N16 rep10 0 1632.5 ms
+VALID True elapsed 1616.9217550000176
+formal Crypto.Decrypt E N16 rep10 0 1598.2 ms
+VALID True elapsed 1583.5348820001818
+formal Crypto.Decrypt V8_ON N16 rep10 0 1413.1 ms
+VALID True elapsed 1374.784
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep10 0 1426.2 ms
+VALID True elapsed 1372.6299999999999
+formal CodeLoad.CodeLoadClosure A N4096 rep10 0 2672.9 ms
+VALID True elapsed 2538.4831360001117
+formal CodeLoad.CodeLoadClosure E N4096 rep10 0 2745.4 ms
+VALID True elapsed 2610.62210700009
+formal EarleyBoyer.Earley E N512 rep10 0 3718.1 ms
+VALID True elapsed 3700.928712999914
+formal EarleyBoyer.Earley V8_ON N512 rep10 0 1199.7 ms
+VALID True elapsed 1159.234
+formal EarleyBoyer.Earley A N512 rep10 0 3555.2 ms
+VALID True elapsed 3537.970737999771
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep11 0 1299.8 ms
+VALID True elapsed 1259.883
+formal CodeLoad.CodeLoadJQuery A N256 rep11 0 2743.8 ms
+VALID True elapsed 2734.374602000229
+formal CodeLoad.CodeLoadJQuery E N256 rep11 0 2803.6 ms
+VALID True elapsed 2794.396248999983
+formal Gameboy.Gameboy A N4 rep11 0 1343.2 ms
+VALID True elapsed 1301.6661339998245
+formal Gameboy.Gameboy V8_ON N4 rep11 0 1263.2 ms
+VALID True elapsed 1197.641
+formal Gameboy.Gameboy E N4 rep11 0 1378.2 ms
+VALID True elapsed 1336.0251629999839
+formal zlib.zlib V8_ON N1 rep11 0 7343.5 ms
+VALID True elapsed 7313.405000000001
+formal zlib.zlib E N1 rep11 0 8535.9 ms
+VALID True elapsed 8523.095455000177
+formal zlib.zlib A N1 rep11 0 8409.1 ms
+VALID True elapsed 8396.949760999996
+formal EarleyBoyer.Earley E N512 rep11 0 3726.9 ms
+VALID True elapsed 3708.894925000146
+formal EarleyBoyer.Earley A N512 rep11 0 3538.4 ms
+VALID True elapsed 3521.6044200002216
+formal EarleyBoyer.Earley V8_ON N512 rep11 0 1206.0 ms
+VALID True elapsed 1159.405
+formal EarleyBoyer.Boyer E N32 rep11 0 3407.3 ms
+VALID True elapsed 3386.984540999867
+formal EarleyBoyer.Boyer V8_ON N32 rep11 0 1491.9 ms
+VALID True elapsed 1451.766
+formal EarleyBoyer.Boyer A N32 rep11 0 3410.5 ms
+VALID True elapsed 3393.3666300000623
+formal NavierStokes.NavierStokes V8_ON N32 rep11 0 2260.4 ms
+VALID True elapsed 2230.219
+formal NavierStokes.NavierStokes E N32 rep11 0 1835.5 ms
+VALID True elapsed 1823.3092700000852
+formal NavierStokes.NavierStokes A N32 rep11 0 1882.0 ms
+VALID True elapsed 1869.8906560000032
+formal Crypto.Encrypt E N256 rep11 0 1461.0 ms
+VALID True elapsed 1353.676870000083
+formal Crypto.Encrypt V8_ON N256 rep11 0 1292.8 ms
+VALID True elapsed 1177.188
+formal Crypto.Encrypt A N256 rep11 0 1436.9 ms
+VALID True elapsed 1325.9172760001384
+formal Mandreel.Mandreel E N1 rep11 0 3179.5 ms
+VALID True elapsed 1744.7988409996033
+formal Mandreel.Mandreel V8_ON N1 rep11 0 3082.9 ms
+VALID True elapsed 1469.167
+formal Mandreel.Mandreel A N1 rep11 0 3169.9 ms
+VALID True elapsed 1774.076100999955
+formal Crypto.Decrypt V8_ON N16 rep11 0 1350.4 ms
+VALID True elapsed 1319.874
+formal Crypto.Decrypt A N16 rep11 0 1553.3 ms
+VALID True elapsed 1539.2554649999365
+formal Crypto.Decrypt E N16 rep11 0 1548.2 ms
+VALID True elapsed 1533.4027249999344
+formal DeltaBlue.DeltaBlue A N512 rep11 0 3592.1 ms
+VALID True elapsed 3584.505634999834
+formal DeltaBlue.DeltaBlue V8_ON N512 rep11 0 1903.9 ms
+VALID True elapsed 1875.5240000000001
+formal DeltaBlue.DeltaBlue E N512 rep11 0 3504.2 ms
+VALID True elapsed 3496.782421000302
+formal Richards.Richards A N512 rep11 0 1759.6 ms
+VALID True elapsed 1752.4629849996418
+formal Richards.Richards V8_ON N512 rep11 0 1082.0 ms
+VALID True elapsed 1055.95
+formal Richards.Richards E N512 rep11 0 1819.9 ms
+VALID True elapsed 1812.9204470003024
+formal Splay.Splay E N1024 rep11 0 2924.6 ms
+VALID True elapsed 2344.382026999723
+formal Splay.Splay V8_ON N1024 rep11 0 2104.8 ms
+VALID True elapsed 1947.4409999999998
+formal Splay.Splay A N1024 rep11 0 2771.5 ms
+VALID True elapsed 2233.6129560000263
+formal RayTrace.RayTrace A N64 rep11 0 2473.1 ms
+VALID True elapsed 2465.4682120000944
+formal RayTrace.RayTrace E N64 rep11 0 2560.7 ms
+VALID True elapsed 2550.317621999886
+formal RayTrace.RayTrace V8_ON N64 rep11 0 1105.0 ms
+VALID True elapsed 1072.508
+formal RegExp.RegExp E N64 rep11 0 11613.8 ms
+VALID True elapsed 11586.916205999907
+formal RegExp.RegExp V8_ON N64 rep11 0 1904.6 ms
+VALID True elapsed 1856.9279999999999
+formal RegExp.RegExp A N64 rep11 0 11717.4 ms
+VALID True elapsed 11691.170766999945
+formal PdfJS.PdfJS E N16 rep11 0 3119.2 ms
+VALID True elapsed 2909.2992130001076
+formal PdfJS.PdfJS A N16 rep11 0 3032.8 ms
+VALID True elapsed 2822.2342500002123
+formal PdfJS.PdfJS V8_ON N16 rep11 0 1975.2 ms
+VALID True elapsed 1752.616
+formal Typescript.Typescript V8_ON N1 rep11 0 1528.2 ms
+VALID True elapsed 1360.5149999999999
+formal Typescript.Typescript A N1 rep11 0 2342.7 ms
+VALID True elapsed 2133.3626979999244
+formal Typescript.Typescript E N1 rep11 0 2430.5 ms
+VALID True elapsed 2217.9897369998507
+formal CodeLoad.CodeLoadClosure E N4096 rep11 0 2677.9 ms
+VALID True elapsed 2538.52536899969
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep11 0 1309.8 ms
+VALID True elapsed 1253.463
+formal CodeLoad.CodeLoadClosure A N4096 rep11 0 2751.2 ms
+VALID True elapsed 2618.1251719999127
+formal CodeLoad.CodeLoadClosure A N4096 rep12 0 2585.2 ms
+VALID True elapsed 2454.999542000238
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep12 0 1373.4 ms
+VALID True elapsed 1317.527
+formal CodeLoad.CodeLoadClosure E N4096 rep12 0 2754.1 ms
+VALID True elapsed 2620.768143000081
+formal Mandreel.Mandreel A N1 rep12 0 3240.7 ms
+VALID True elapsed 1810.4638510001823
+formal Mandreel.Mandreel V8_ON N1 rep12 0 3015.7 ms
+VALID True elapsed 1453.8310000000001
+formal Mandreel.Mandreel E N1 rep12 0 3233.8 ms
+VALID True elapsed 1778.3526530000381
+formal DeltaBlue.DeltaBlue A N512 rep12 0 3558.0 ms
+VALID True elapsed 3550.3314350000583
+formal DeltaBlue.DeltaBlue E N512 rep12 0 3469.4 ms
+VALID True elapsed 3461.829280999955
+formal DeltaBlue.DeltaBlue V8_ON N512 rep12 0 1902.5 ms
+VALID True elapsed 1876.213
+formal Crypto.Encrypt E N256 rep12 0 1471.4 ms
+VALID True elapsed 1363.7303229998797
+formal Crypto.Encrypt A N256 rep12 0 1464.9 ms
+VALID True elapsed 1357.3061779998243
+formal Crypto.Encrypt V8_ON N256 rep12 0 1229.1 ms
+VALID True elapsed 1116.005
+formal Richards.Richards A N512 rep12 0 1752.3 ms
+VALID True elapsed 1745.7940969998017
+formal Richards.Richards V8_ON N512 rep12 0 1141.6 ms
+VALID True elapsed 1117.592
+formal Richards.Richards E N512 rep12 0 1795.3 ms
+VALID True elapsed 1786.7213929998688
+formal CodeLoad.CodeLoadJQuery E N256 rep12 0 2760.3 ms
+VALID True elapsed 2751.318394999951
+formal CodeLoad.CodeLoadJQuery A N256 rep12 0 2795.8 ms
+VALID True elapsed 2786.543064000085
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep12 0 1214.7 ms
+VALID True elapsed 1172.594
+formal RayTrace.RayTrace E N64 rep12 0 2636.4 ms
+VALID True elapsed 2628.797030000016
+formal RayTrace.RayTrace V8_ON N64 rep12 0 1168.9 ms
+VALID True elapsed 1141.191
+formal RayTrace.RayTrace A N64 rep12 0 2449.3 ms
+VALID True elapsed 2441.4841419998556
+formal EarleyBoyer.Earley A N512 rep12 0 3649.5 ms
+VALID True elapsed 3632.531365999952
+formal EarleyBoyer.Earley E N512 rep12 0 3597.1 ms
+VALID True elapsed 3579.6590640000068
+formal EarleyBoyer.Earley V8_ON N512 rep12 0 1254.0 ms
+VALID True elapsed 1213.516
+formal NavierStokes.NavierStokes A N32 rep12 0 1860.2 ms
+VALID True elapsed 1847.178825000301
+formal NavierStokes.NavierStokes E N32 rep12 0 1830.7 ms
+VALID True elapsed 1818.3609219999053
+formal NavierStokes.NavierStokes V8_ON N32 rep12 0 2292.2 ms
+VALID True elapsed 2258.675
+formal Gameboy.Gameboy V8_ON N4 rep12 0 1279.8 ms
+VALID True elapsed 1215.116
+formal Gameboy.Gameboy A N4 rep12 0 1334.1 ms
+VALID True elapsed 1292.4557980000973
+formal Gameboy.Gameboy E N4 rep12 0 1387.8 ms
+VALID True elapsed 1345.786989999935
+formal Crypto.Decrypt E N16 rep12 0 1627.9 ms
+VALID True elapsed 1613.5248890002258
+formal Crypto.Decrypt V8_ON N16 rep12 0 1337.7 ms
+VALID True elapsed 1302.1100000000001
+formal Crypto.Decrypt A N16 rep12 0 1576.7 ms
+VALID True elapsed 1562.5293489997275
+formal Typescript.Typescript E N1 rep12 0 2493.5 ms
+VALID True elapsed 2265.7970870002173
+formal Typescript.Typescript V8_ON N1 rep12 0 1560.7 ms
+VALID True elapsed 1388.172
+formal Typescript.Typescript A N1 rep12 0 2346.4 ms
+VALID True elapsed 2128.7265940001234
+formal PdfJS.PdfJS V8_ON N16 rep12 0 1831.6 ms
+VALID True elapsed 1629.539
+formal PdfJS.PdfJS E N16 rep12 0 3064.2 ms
+VALID True elapsed 2850.7988080000505
+formal PdfJS.PdfJS A N16 rep12 0 3098.2 ms
+VALID True elapsed 2887.459106999915
+formal RegExp.RegExp E N64 rep12 0 11663.4 ms
+VALID True elapsed 11638.05902899988
+formal RegExp.RegExp A N64 rep12 0 11632.1 ms
+VALID True elapsed 11606.556838999968
+formal RegExp.RegExp V8_ON N64 rep12 0 2042.8 ms
+VALID True elapsed 1993.2
+formal Splay.Splay E N1024 rep12 0 3200.0 ms
+VALID True elapsed 2563.530565999914
+formal Splay.Splay A N1024 rep12 0 2918.3 ms
+VALID True elapsed 2404.047288000118
+formal Splay.Splay V8_ON N1024 rep12 0 2000.3 ms
+VALID True elapsed 1826.854
+formal EarleyBoyer.Boyer V8_ON N32 rep12 0 1425.2 ms
+VALID True elapsed 1388.453
+formal EarleyBoyer.Boyer E N32 rep12 0 3553.2 ms
+VALID True elapsed 3533.0680570001714
+formal EarleyBoyer.Boyer A N32 rep12 0 3393.5 ms
+VALID True elapsed 3376.1080719996244
+formal zlib.zlib V8_ON N1 rep12 0 7385.8 ms
+VALID True elapsed 7348.462
+formal zlib.zlib E N1 rep12 0 8643.0 ms
+VALID True elapsed 8630.176915999968
+formal zlib.zlib A N1 rep12 0 8447.7 ms
+VALID True elapsed 8435.670489000157
+formal DeltaBlue.DeltaBlue A N512 rep13 0 3689.2 ms
+VALID True elapsed 3681.807717999909
+formal DeltaBlue.DeltaBlue E N512 rep13 0 3405.6 ms
+VALID True elapsed 3398.4487590002827
+formal DeltaBlue.DeltaBlue V8_ON N512 rep13 0 1997.5 ms
+VALID True elapsed 1965.9779999999998
+formal PdfJS.PdfJS A N16 rep13 0 3086.2 ms
+VALID True elapsed 2873.2364980001003
+formal PdfJS.PdfJS V8_ON N16 rep13 0 1885.8 ms
+VALID True elapsed 1649.505
+formal PdfJS.PdfJS E N16 rep13 0 3049.8 ms
+VALID True elapsed 2835.611453999765
+formal EarleyBoyer.Boyer E N32 rep13 0 3460.6 ms
+VALID True elapsed 3441.304299000185
+formal EarleyBoyer.Boyer V8_ON N32 rep13 0 1455.9 ms
+VALID True elapsed 1415.207
+formal EarleyBoyer.Boyer A N32 rep13 0 3490.9 ms
+VALID True elapsed 3473.525894000195
+formal EarleyBoyer.Earley E N512 rep13 0 3599.3 ms
+VALID True elapsed 3581.375310999807
+formal EarleyBoyer.Earley A N512 rep13 0 3642.8 ms
+VALID True elapsed 3625.971684999764
+formal EarleyBoyer.Earley V8_ON N512 rep13 0 1156.7 ms
+VALID True elapsed 1116.086
+formal RayTrace.RayTrace E N64 rep13 0 2584.5 ms
+VALID True elapsed 2576.6890910002403
+formal RayTrace.RayTrace A N64 rep13 0 2431.8 ms
+VALID True elapsed 2423.3606200003996
+formal RayTrace.RayTrace V8_ON N64 rep13 0 1133.6 ms
+VALID True elapsed 1098.25
+formal Richards.Richards E N512 rep13 0 1802.3 ms
+VALID True elapsed 1794.0262710000388
+formal Richards.Richards A N512 rep13 0 1806.5 ms
+VALID True elapsed 1799.4145619999617
+formal Richards.Richards V8_ON N512 rep13 0 1086.8 ms
+VALID True elapsed 1061.1889999999999
+formal Gameboy.Gameboy V8_ON N4 rep13 0 1261.4 ms
+VALID True elapsed 1194.053
+formal Gameboy.Gameboy E N4 rep13 0 1394.3 ms
+VALID True elapsed 1352.1950759999454
+formal Gameboy.Gameboy A N4 rep13 0 1429.3 ms
+VALID True elapsed 1386.8866720004007
+formal Crypto.Encrypt E N256 rep13 0 1458.6 ms
+VALID True elapsed 1352.3299850001931
+formal Crypto.Encrypt V8_ON N256 rep13 0 1243.6 ms
+VALID True elapsed 1130.376
+formal Crypto.Encrypt A N256 rep13 0 1434.4 ms
+VALID True elapsed 1327.6560510001145
+formal Splay.Splay A N1024 rep13 0 2895.2 ms
+VALID True elapsed 2281.228174000047
+formal Splay.Splay V8_ON N1024 rep13 0 2029.0 ms
+VALID True elapsed 1874.881
+formal Splay.Splay E N1024 rep13 0 3064.0 ms
+VALID True elapsed 2548.078580999747
+formal RegExp.RegExp E N64 rep13 0 11599.3 ms
+VALID True elapsed 11573.128452999983
+formal RegExp.RegExp V8_ON N64 rep13 0 1909.3 ms
+VALID True elapsed 1859.6490000000001
+formal RegExp.RegExp A N64 rep13 0 11807.3 ms
+VALID True elapsed 11780.744326000102
+formal CodeLoad.CodeLoadClosure A N4096 rep13 0 2703.6 ms
+VALID True elapsed 2573.816957999952
+formal CodeLoad.CodeLoadClosure E N4096 rep13 0 2670.5 ms
+VALID True elapsed 2539.6059340001084
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep13 0 1399.0 ms
+VALID True elapsed 1252.542
+formal CodeLoad.CodeLoadJQuery A N256 rep13 0 2780.8 ms
+VALID True elapsed 2771.9554349998944
+formal CodeLoad.CodeLoadJQuery E N256 rep13 0 2764.9 ms
+VALID True elapsed 2755.4844889999367
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep13 0 1262.9 ms
+VALID True elapsed 1224.669
+formal Crypto.Decrypt A N16 rep13 0 1579.9 ms
+VALID True elapsed 1565.5263380003162
+formal Crypto.Decrypt E N16 rep13 0 1555.5 ms
+VALID True elapsed 1541.6238620001823
+formal Crypto.Decrypt V8_ON N16 rep13 0 1334.6 ms
+VALID True elapsed 1301.4070000000002
+formal Typescript.Typescript V8_ON N1 rep13 0 1617.6 ms
+VALID True elapsed 1446.8609999999999
+formal Typescript.Typescript E N1 rep13 0 2419.6 ms
+VALID True elapsed 2205.052633999847
+formal Typescript.Typescript A N1 rep13 0 2364.1 ms
+VALID True elapsed 2132.8565159998834
+formal zlib.zlib E N1 rep13 0 8460.7 ms
+VALID True elapsed 8447.932841000147
+formal zlib.zlib A N1 rep13 0 8477.3 ms
+VALID True elapsed 8465.396135999821
+formal zlib.zlib V8_ON N1 rep13 0 7507.6 ms
+VALID True elapsed 7471.973
+formal Mandreel.Mandreel E N1 rep13 0 3308.2 ms
+VALID True elapsed 1794.6217359998263
+formal Mandreel.Mandreel A N1 rep13 0 3194.3 ms
+VALID True elapsed 1746.055044000037
+formal Mandreel.Mandreel V8_ON N1 rep13 0 3099.5 ms
+VALID True elapsed 1458.496
+formal NavierStokes.NavierStokes A N32 rep13 0 1868.9 ms
+VALID True elapsed 1857.126823999919
+formal NavierStokes.NavierStokes E N32 rep13 0 1894.3 ms
+VALID True elapsed 1882.753168999683
+formal NavierStokes.NavierStokes V8_ON N32 rep13 0 2265.5 ms
+VALID True elapsed 2233.11
+formal RayTrace.RayTrace A N64 rep14 0 2482.7 ms
+VALID True elapsed 2475.2365790000185
+formal RayTrace.RayTrace E N64 rep14 0 2638.0 ms
+VALID True elapsed 2630.766088000033
+formal RayTrace.RayTrace V8_ON N64 rep14 0 1118.6 ms
+VALID True elapsed 1090.963
+formal DeltaBlue.DeltaBlue E N512 rep14 0 3495.3 ms
+VALID True elapsed 3486.978745999746
+formal DeltaBlue.DeltaBlue A N512 rep14 0 3656.1 ms
+VALID True elapsed 3648.6516320002265
+formal DeltaBlue.DeltaBlue V8_ON N512 rep14 0 2001.1 ms
+VALID True elapsed 1973.608
+formal Splay.Splay E N1024 rep14 0 2999.1 ms
+VALID True elapsed 2391.5851390003227
+formal Splay.Splay V8_ON N1024 rep14 0 2142.0 ms
+VALID True elapsed 1933.423
+formal Splay.Splay A N1024 rep14 0 3162.9 ms
+VALID True elapsed 2553.288610999938
+formal Richards.Richards V8_ON N512 rep14 0 1103.4 ms
+VALID True elapsed 1074.137
+formal Richards.Richards A N512 rep14 0 1822.4 ms
+VALID True elapsed 1815.2884490001015
+formal Richards.Richards E N512 rep14 0 1835.6 ms
+VALID True elapsed 1828.5407879999839
+formal Mandreel.Mandreel E N1 rep14 0 3242.1 ms
+VALID True elapsed 1758.874729000032
+formal Mandreel.Mandreel V8_ON N1 rep14 0 3160.4 ms
+VALID True elapsed 1496.7530000000002
+formal Mandreel.Mandreel A N1 rep14 0 3283.3 ms
+VALID True elapsed 1829.4315269999206
+formal CodeLoad.CodeLoadJQuery A N256 rep14 0 2753.5 ms
+VALID True elapsed 2744.2056660000235
+formal CodeLoad.CodeLoadJQuery E N256 rep14 0 2847.8 ms
+VALID True elapsed 2838.9465280002914
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep14 0 1234.8 ms
+VALID True elapsed 1192.6760000000002
+formal Typescript.Typescript A N1 rep14 0 2367.9 ms
+VALID True elapsed 2143.238661999814
+formal Typescript.Typescript E N1 rep14 0 2532.1 ms
+VALID True elapsed 2276.5243940004148
+formal Typescript.Typescript V8_ON N1 rep14 0 1582.0 ms
+VALID True elapsed 1394.4730000000002
+formal Crypto.Decrypt V8_ON N16 rep14 0 1364.9 ms
+VALID True elapsed 1328.924
+formal Crypto.Decrypt A N16 rep14 0 1605.7 ms
+VALID True elapsed 1591.4454709999263
+formal Crypto.Decrypt E N16 rep14 0 1633.1 ms
+VALID True elapsed 1618.4386160001159
+formal CodeLoad.CodeLoadClosure A N4096 rep14 0 2698.1 ms
+VALID True elapsed 2564.5025540003553
+formal CodeLoad.CodeLoadClosure E N4096 rep14 0 2758.5 ms
+VALID True elapsed 2620.8556889998727
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep14 0 1358.1 ms
+VALID True elapsed 1300.803
+formal NavierStokes.NavierStokes V8_ON N32 rep14 0 2266.9 ms
+VALID True elapsed 2239.005
+formal NavierStokes.NavierStokes A N32 rep14 0 1939.7 ms
+VALID True elapsed 1927.750839999877
+formal NavierStokes.NavierStokes E N32 rep14 0 1869.9 ms
+VALID True elapsed 1857.7810539999045
+formal PdfJS.PdfJS A N16 rep14 0 3096.4 ms
+VALID True elapsed 2881.5832030000165
+formal PdfJS.PdfJS E N16 rep14 0 3129.9 ms
+VALID True elapsed 2914.5993180000223
+formal PdfJS.PdfJS V8_ON N16 rep14 0 1878.7 ms
+VALID True elapsed 1649.775
+formal Gameboy.Gameboy A N4 rep14 0 1512.6 ms
+VALID True elapsed 1470.659908999689
+formal Gameboy.Gameboy V8_ON N4 rep14 0 1277.8 ms
+VALID True elapsed 1210.7620000000002
+formal Gameboy.Gameboy E N4 rep14 0 1394.9 ms
+VALID True elapsed 1350.2172969998792
+formal zlib.zlib V8_ON N1 rep14 0 7548.5 ms
+VALID True elapsed 7517.751
+formal zlib.zlib A N1 rep14 0 9028.7 ms
+VALID True elapsed 9015.903244000394
+formal zlib.zlib E N1 rep14 0 8621.3 ms
+VALID True elapsed 8608.541767999995
+formal EarleyBoyer.Boyer A N32 rep14 0 3674.6 ms
+VALID True elapsed 3656.518885000143
+formal EarleyBoyer.Boyer V8_ON N32 rep14 0 1551.4 ms
+VALID True elapsed 1500.6560000000002
+formal EarleyBoyer.Boyer E N32 rep14 0 3773.1 ms
+VALID True elapsed 3751.915787999984
+formal Crypto.Encrypt V8_ON N256 rep14 0 1275.9 ms
+VALID True elapsed 1157.2610000000002
+formal Crypto.Encrypt A N256 rep14 0 1542.7 ms
+VALID True elapsed 1433.4999879999086
+formal Crypto.Encrypt E N256 rep14 0 1743.5 ms
+VALID True elapsed 1605.8685869998299
+formal EarleyBoyer.Earley V8_ON N512 rep14 0 1394.7 ms
+VALID True elapsed 1337.388
+formal EarleyBoyer.Earley E N512 rep14 0 3839.7 ms
+VALID True elapsed 3821.4813759997487
+formal EarleyBoyer.Earley A N512 rep14 0 3802.5 ms
+VALID True elapsed 3784.8671980001964
+formal RegExp.RegExp E N64 rep14 0 11944.3 ms
+VALID True elapsed 11916.76142799994
+formal RegExp.RegExp V8_ON N64 rep14 0 2046.6 ms
+VALID True elapsed 1981.9460000000001
+formal RegExp.RegExp A N64 rep14 0 12008.5 ms
+VALID True elapsed 11978.744142000098
+formal CodeLoad.CodeLoadJQuery A N256 rep15 0 2857.7 ms
+VALID True elapsed 2847.3293610000983
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep15 0 1265.1 ms
+VALID True elapsed 1215.7910000000002
+formal CodeLoad.CodeLoadJQuery E N256 rep15 0 2810.5 ms
+VALID True elapsed 2801.2862619999796
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep15 0 1541.9 ms
+VALID True elapsed 1480.1280000000002
+formal CodeLoad.CodeLoadClosure E N4096 rep15 0 2888.3 ms
+VALID True elapsed 2751.573264000006
+formal CodeLoad.CodeLoadClosure A N4096 rep15 0 2758.8 ms
+VALID True elapsed 2585.8181469999254
+formal Splay.Splay V8_ON N1024 rep15 0 2219.8 ms
+VALID True elapsed 2042.546
+formal Splay.Splay A N1024 rep15 0 3100.9 ms
+VALID True elapsed 2555.9959669997916
+formal Splay.Splay E N1024 rep15 0 3168.7 ms
+VALID True elapsed 2532.3279479998164
+formal Gameboy.Gameboy E N4 rep15 0 1411.4 ms
+VALID True elapsed 1368.9215069999918
+formal Gameboy.Gameboy A N4 rep15 0 1413.2 ms
+VALID True elapsed 1371.6449049999937
+formal Gameboy.Gameboy V8_ON N4 rep15 0 1301.3 ms
+VALID True elapsed 1225.511
+formal Mandreel.Mandreel V8_ON N1 rep15 0 3075.6 ms
+VALID True elapsed 1479.1660000000002
+formal Mandreel.Mandreel E N1 rep15 0 3383.5 ms
+VALID True elapsed 1868.023038000334
+formal Mandreel.Mandreel A N1 rep15 0 3206.2 ms
+VALID True elapsed 1789.8113270001486
+formal Crypto.Encrypt A N256 rep15 0 1510.1 ms
+VALID True elapsed 1396.620365999639
+formal Crypto.Encrypt V8_ON N256 rep15 0 1253.6 ms
+VALID True elapsed 1137.753
+formal Crypto.Encrypt E N256 rep15 0 1408.3 ms
+VALID True elapsed 1304.3129610000178
+formal DeltaBlue.DeltaBlue E N512 rep15 0 3454.1 ms
+VALID True elapsed 3446.9994189999998
+formal DeltaBlue.DeltaBlue A N512 rep15 0 3531.0 ms
+VALID True elapsed 3524.0574870002456
+formal DeltaBlue.DeltaBlue V8_ON N512 rep15 0 2002.8 ms
+VALID True elapsed 1972.2949999999998
+formal EarleyBoyer.Boyer V8_ON N32 rep15 0 1495.8 ms
+VALID True elapsed 1444.513
+formal EarleyBoyer.Boyer A N32 rep15 0 3520.8 ms
+VALID True elapsed 3502.6750829997472
+formal EarleyBoyer.Boyer E N32 rep15 0 3450.4 ms
+VALID True elapsed 3430.2893079998903
+formal RegExp.RegExp A N64 rep15 0 11894.7 ms
+VALID True elapsed 11867.383264000062
+formal RegExp.RegExp V8_ON N64 rep15 0 1961.8 ms
+VALID True elapsed 1904.5089999999998
+formal RegExp.RegExp E N64 rep15 0 12043.9 ms
+VALID True elapsed 12017.438435999677
+formal RayTrace.RayTrace A N64 rep15 0 2598.5 ms
+VALID True elapsed 2591.218134999741
+formal RayTrace.RayTrace V8_ON N64 rep15 0 1105.5 ms
+VALID True elapsed 1077.376
+formal RayTrace.RayTrace E N64 rep15 0 2538.4 ms
+VALID True elapsed 2530.6801869999617
+formal NavierStokes.NavierStokes V8_ON N32 rep15 0 2328.8 ms
+VALID True elapsed 2299.125
+formal NavierStokes.NavierStokes A N32 rep15 0 1871.5 ms
+VALID True elapsed 1859.9332750001922
+formal NavierStokes.NavierStokes E N32 rep15 0 1838.4 ms
+VALID True elapsed 1825.684744999744
+formal Crypto.Decrypt A N16 rep15 0 1609.9 ms
+VALID True elapsed 1594.4315840001218
+formal Crypto.Decrypt E N16 rep15 0 1581.0 ms
+VALID True elapsed 1566.8917470001616
+formal Crypto.Decrypt V8_ON N16 rep15 0 1355.6 ms
+VALID True elapsed 1321.437
+formal Typescript.Typescript E N1 rep15 0 2575.7 ms
+VALID True elapsed 2340.298667000141
+formal Typescript.Typescript V8_ON N1 rep15 0 1544.8 ms
+VALID True elapsed 1380.011
+formal Typescript.Typescript A N1 rep15 0 2458.8 ms
+VALID True elapsed 2235.4640979999676
+formal Richards.Richards V8_ON N512 rep15 0 1128.9 ms
+VALID True elapsed 1106.267
+formal Richards.Richards A N512 rep15 0 1885.8 ms
+VALID True elapsed 1877.4655570001341
+formal Richards.Richards E N512 rep15 0 1766.2 ms
+VALID True elapsed 1758.7499080002308
+formal EarleyBoyer.Earley E N512 rep15 0 3901.2 ms
+VALID True elapsed 3882.129149999935
+formal EarleyBoyer.Earley V8_ON N512 rep15 0 1212.7 ms
+VALID True elapsed 1150.876
+formal EarleyBoyer.Earley A N512 rep15 0 3632.8 ms
+VALID True elapsed 3613.983766000252
+formal PdfJS.PdfJS E N16 rep15 0 3091.1 ms
+VALID True elapsed 2866.8490590001456
+formal PdfJS.PdfJS A N16 rep15 0 3097.7 ms
+VALID True elapsed 2887.452945999801
+formal PdfJS.PdfJS V8_ON N16 rep15 0 1807.9 ms
+VALID True elapsed 1585.6979999999999
+formal zlib.zlib E N1 rep15 0 8539.6 ms
+VALID True elapsed 8526.734077999834
+formal zlib.zlib A N1 rep15 0 8292.9 ms
+VALID True elapsed 8279.611603999976
+formal zlib.zlib V8_ON N1 rep15 0 7505.9 ms
+VALID True elapsed 7469.9310000000005
+formal Gameboy.Gameboy E N4 rep16 0 1424.3 ms
+VALID True elapsed 1381.9776629996486
+formal Gameboy.Gameboy V8_ON N4 rep16 0 1321.1 ms
+VALID True elapsed 1253.517
+formal Gameboy.Gameboy A N4 rep16 0 1327.6 ms
+VALID True elapsed 1285.3218100001104
+formal Crypto.Decrypt V8_ON N16 rep16 0 1373.9 ms
+VALID True elapsed 1342.557
+formal Crypto.Decrypt A N16 rep16 0 1611.6 ms
+VALID True elapsed 1597.6987540000118
+formal Crypto.Decrypt E N16 rep16 0 1612.7 ms
+VALID True elapsed 1598.474003000185
+formal PdfJS.PdfJS E N16 rep16 0 3078.2 ms
+VALID True elapsed 2859.987608999945
+formal PdfJS.PdfJS V8_ON N16 rep16 0 1882.0 ms
+VALID True elapsed 1653.59
+formal PdfJS.PdfJS A N16 rep16 0 3060.0 ms
+VALID True elapsed 2846.917455000337
+formal DeltaBlue.DeltaBlue E N512 rep16 0 3462.8 ms
+VALID True elapsed 3455.83352799993
+formal DeltaBlue.DeltaBlue V8_ON N512 rep16 0 1921.6 ms
+VALID True elapsed 1894.244
+formal DeltaBlue.DeltaBlue A N512 rep16 0 3694.5 ms
+VALID True elapsed 3686.528251999989
+formal EarleyBoyer.Earley V8_ON N512 rep16 0 1185.8 ms
+VALID True elapsed 1139.5430000000001
+formal EarleyBoyer.Earley A N512 rep16 0 3694.7 ms
+VALID True elapsed 3677.1861640000716
+formal EarleyBoyer.Earley E N512 rep16 0 3597.8 ms
+VALID True elapsed 3580.0650430000387
+formal CodeLoad.CodeLoadClosure E N4096 rep16 0 2808.7 ms
+VALID True elapsed 2668.2977269999683
+formal CodeLoad.CodeLoadClosure A N4096 rep16 0 2615.9 ms
+VALID True elapsed 2485.9320669998415
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep16 0 1336.0 ms
+VALID True elapsed 1283.966
+formal Richards.Richards E N512 rep16 0 1838.7 ms
+VALID True elapsed 1831.7257350003347
+formal Richards.Richards V8_ON N512 rep16 0 1086.9 ms
+VALID True elapsed 1060.4360000000001
+formal Richards.Richards A N512 rep16 0 1766.3 ms
+VALID True elapsed 1759.3744080001488
+formal Mandreel.Mandreel V8_ON N1 rep16 0 3157.4 ms
+VALID True elapsed 1565.985
+formal Mandreel.Mandreel E N1 rep16 0 3206.8 ms
+VALID True elapsed 1758.4293910004199
+formal Mandreel.Mandreel A N1 rep16 0 3215.1 ms
+VALID True elapsed 1746.5388439996168
+formal Splay.Splay V8_ON N1024 rep16 0 2109.1 ms
+VALID True elapsed 1940.0690000000002
+formal Splay.Splay E N1024 rep16 0 3004.7 ms
+VALID True elapsed 2491.9279660000466
+formal Splay.Splay A N1024 rep16 0 2916.0 ms
+VALID True elapsed 2421.7249049996026
+formal CodeLoad.CodeLoadJQuery A N256 rep16 0 2850.6 ms
+VALID True elapsed 2840.0353520000353
+formal CodeLoad.CodeLoadJQuery E N256 rep16 0 2795.3 ms
+VALID True elapsed 2785.5479829995893
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep16 0 1209.7 ms
+VALID True elapsed 1166.745
+formal Typescript.Typescript A N1 rep16 0 2421.8 ms
+VALID True elapsed 2208.9120249999687
+formal Typescript.Typescript V8_ON N1 rep16 0 1512.3 ms
+VALID True elapsed 1348.407
+formal Typescript.Typescript E N1 rep16 0 2524.2 ms
+VALID True elapsed 2243.017043999862
+formal NavierStokes.NavierStokes A N32 rep16 0 1897.2 ms
+VALID True elapsed 1884.9116420000792
+formal NavierStokes.NavierStokes V8_ON N32 rep16 0 2243.8 ms
+VALID True elapsed 2207.259
+formal NavierStokes.NavierStokes E N32 rep16 0 1895.2 ms
+VALID True elapsed 1882.8447279999964
+formal Crypto.Encrypt V8_ON N256 rep16 0 1252.0 ms
+VALID True elapsed 1141.206
+formal Crypto.Encrypt A N256 rep16 0 1444.7 ms
+VALID True elapsed 1337.8450980000198
+formal Crypto.Encrypt E N256 rep16 0 1433.3 ms
+VALID True elapsed 1327.3260090001859
+formal zlib.zlib E N1 rep16 0 8564.6 ms
+VALID True elapsed 8552.172176999971
+formal zlib.zlib A N1 rep16 0 8677.9 ms
+VALID True elapsed 8663.998802999966
+formal zlib.zlib V8_ON N1 rep16 0 7431.3 ms
+VALID True elapsed 7390.719
+formal RegExp.RegExp E N64 rep16 0 11605.4 ms
+VALID True elapsed 11578.69564699987
+formal RegExp.RegExp A N64 rep16 0 11791.2 ms
+VALID True elapsed 11764.9656179999
+formal RegExp.RegExp V8_ON N64 rep16 0 1913.5 ms
+VALID True elapsed 1860.391
+formal EarleyBoyer.Boyer E N32 rep16 0 3443.1 ms
+VALID True elapsed 3421.689247000031
+formal EarleyBoyer.Boyer A N32 rep16 0 3463.8 ms
+VALID True elapsed 3447.102653000038
+formal EarleyBoyer.Boyer V8_ON N32 rep16 0 1447.9 ms
+VALID True elapsed 1407.8220000000001
+formal RayTrace.RayTrace A N64 rep16 0 2486.7 ms
+VALID True elapsed 2478.923356999643
+formal RayTrace.RayTrace V8_ON N64 rep16 0 1195.4 ms
+VALID True elapsed 1165.748
+formal RayTrace.RayTrace E N64 rep16 0 2579.3 ms
+VALID True elapsed 2572.210655000061
+formal NavierStokes.NavierStokes E N32 rep17 0 1847.1 ms
+VALID True elapsed 1835.277546999976
+formal NavierStokes.NavierStokes V8_ON N32 rep17 0 2314.4 ms
+VALID True elapsed 2284.243
+formal NavierStokes.NavierStokes A N32 rep17 0 1847.3 ms
+VALID True elapsed 1835.483198999893
+formal DeltaBlue.DeltaBlue A N512 rep17 0 3646.3 ms
+VALID True elapsed 3638.9952290002257
+formal DeltaBlue.DeltaBlue V8_ON N512 rep17 0 1917.4 ms
+VALID True elapsed 1890.2
+formal DeltaBlue.DeltaBlue E N512 rep17 0 3484.4 ms
+VALID True elapsed 3477.15234699985
+formal Mandreel.Mandreel V8_ON N1 rep17 0 3063.7 ms
+VALID True elapsed 1482.003
+formal Mandreel.Mandreel E N1 rep17 0 3232.1 ms
+VALID True elapsed 1771.640633000061
+formal Mandreel.Mandreel A N1 rep17 0 3153.4 ms
+VALID True elapsed 1718.3859080001712
+formal EarleyBoyer.Boyer E N32 rep17 0 3445.3 ms
+VALID True elapsed 3424.8438900001347
+formal EarleyBoyer.Boyer V8_ON N32 rep17 0 1452.0 ms
+VALID True elapsed 1411.556
+formal EarleyBoyer.Boyer A N32 rep17 0 3460.6 ms
+VALID True elapsed 3443.3991139996797
+formal PdfJS.PdfJS V8_ON N16 rep17 0 1825.7 ms
+VALID True elapsed 1602.667
+formal PdfJS.PdfJS E N16 rep17 0 3165.7 ms
+VALID True elapsed 2949.9184399996884
+formal PdfJS.PdfJS A N16 rep17 0 3046.1 ms
+VALID True elapsed 2834.4714969997294
+formal Gameboy.Gameboy A N4 rep17 0 1343.1 ms
+VALID True elapsed 1301.8816289999522
+formal Gameboy.Gameboy E N4 rep17 0 1470.1 ms
+VALID True elapsed 1426.3295360002667
+formal Gameboy.Gameboy V8_ON N4 rep17 0 1273.0 ms
+VALID True elapsed 1201.963
+formal CodeLoad.CodeLoadClosure A N4096 rep17 0 2769.1 ms
+VALID True elapsed 2637.4787759999745
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep17 0 1369.0 ms
+VALID True elapsed 1317.126
+formal CodeLoad.CodeLoadClosure E N4096 rep17 0 2781.3 ms
+VALID True elapsed 2646.710543999914
+formal Crypto.Decrypt A N16 rep17 0 1588.4 ms
+VALID True elapsed 1574.5180410002358
+formal Crypto.Decrypt V8_ON N16 rep17 0 1423.0 ms
+VALID True elapsed 1392.584
+formal Crypto.Decrypt E N16 rep17 0 1613.4 ms
+VALID True elapsed 1594.484991000034
+formal Richards.Richards V8_ON N512 rep17 0 1091.9 ms
+VALID True elapsed 1069.179
+formal Richards.Richards E N512 rep17 0 1769.0 ms
+VALID True elapsed 1761.9719650000334
+formal Richards.Richards A N512 rep17 0 1827.4 ms
+VALID True elapsed 1820.507060999982
+formal RegExp.RegExp A N64 rep17 0 11652.5 ms
+VALID True elapsed 11627.16777099995
+formal RegExp.RegExp E N64 rep17 0 11620.2 ms
+VALID True elapsed 11594.140927999746
+formal RegExp.RegExp V8_ON N64 rep17 0 1932.7 ms
+VALID True elapsed 1884.585
+formal Crypto.Encrypt V8_ON N256 rep17 0 1248.8 ms
+VALID True elapsed 1139.654
+formal Crypto.Encrypt E N256 rep17 0 1421.3 ms
+VALID True elapsed 1315.768838999793
+formal Crypto.Encrypt A N256 rep17 0 1427.6 ms
+VALID True elapsed 1322.853800999932
+formal EarleyBoyer.Earley E N512 rep17 0 3672.8 ms
+VALID True elapsed 3654.979427000042
+formal EarleyBoyer.Earley A N512 rep17 0 3628.5 ms
+VALID True elapsed 3610.7216090001166
+formal EarleyBoyer.Earley V8_ON N512 rep17 0 1205.8 ms
+VALID True elapsed 1166.811
+formal zlib.zlib A N1 rep17 0 8384.9 ms
+VALID True elapsed 8372.254716000054
+formal zlib.zlib E N1 rep17 0 8532.7 ms
+VALID True elapsed 8511.722537999973
+formal zlib.zlib V8_ON N1 rep17 0 7348.8 ms
+VALID True elapsed 7312.360000000001
+formal RayTrace.RayTrace A N64 rep17 0 2506.6 ms
+VALID True elapsed 2499.117012000177
+formal RayTrace.RayTrace V8_ON N64 rep17 0 1130.9 ms
+VALID True elapsed 1102.541
+formal RayTrace.RayTrace E N64 rep17 0 2564.2 ms
+VALID True elapsed 2556.5118370000273
+formal Typescript.Typescript A N1 rep17 0 2460.5 ms
+VALID True elapsed 2248.2847040002234
+formal Typescript.Typescript E N1 rep17 0 2399.7 ms
+VALID True elapsed 2186.3341819997877
+formal Typescript.Typescript V8_ON N1 rep17 0 1530.3 ms
+VALID True elapsed 1366.481
+formal CodeLoad.CodeLoadJQuery A N256 rep17 0 2807.8 ms
+VALID True elapsed 2798.9201290002093
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep17 0 1198.2 ms
+VALID True elapsed 1159.3300000000002
+formal CodeLoad.CodeLoadJQuery E N256 rep17 0 2833.2 ms
+VALID True elapsed 2823.936282000039
+formal Splay.Splay V8_ON N1024 rep17 0 2091.3 ms
+VALID True elapsed 1905.5420000000001
+formal Splay.Splay A N1024 rep17 0 2787.5 ms
+VALID True elapsed 2295.2260699998587
+formal Splay.Splay E N1024 rep17 0 2954.7 ms
+VALID True elapsed 2371.482166999951
+formal Richards.Richards E N512 rep18 0 1759.7 ms
+VALID True elapsed 1752.4664470003918
+formal Richards.Richards A N512 rep18 0 1826.1 ms
+VALID True elapsed 1817.9359880001284
+formal Richards.Richards V8_ON N512 rep18 0 1131.2 ms
+VALID True elapsed 1102.714
+formal DeltaBlue.DeltaBlue E N512 rep18 0 3444.0 ms
+VALID True elapsed 3436.8269899999723
+formal DeltaBlue.DeltaBlue V8_ON N512 rep18 0 1965.7 ms
+VALID True elapsed 1938.894
+formal DeltaBlue.DeltaBlue A N512 rep18 0 3606.1 ms
+VALID True elapsed 3598.724932999816
+formal Typescript.Typescript V8_ON N1 rep18 0 1636.2 ms
+VALID True elapsed 1471.9720000000002
+formal Typescript.Typescript A N1 rep18 0 2353.3 ms
+VALID True elapsed 2136.2303650001995
+formal Typescript.Typescript E N1 rep18 0 2373.7 ms
+VALID True elapsed 2147.758421000093
+formal Gameboy.Gameboy A N4 rep18 0 1366.7 ms
+VALID True elapsed 1319.4679569997825
+formal Gameboy.Gameboy E N4 rep18 0 1391.8 ms
+VALID True elapsed 1349.2588730002753
+formal Gameboy.Gameboy V8_ON N4 rep18 0 1251.2 ms
+VALID True elapsed 1184.428
+formal NavierStokes.NavierStokes A N32 rep18 0 1896.1 ms
+VALID True elapsed 1883.955777999945
+formal NavierStokes.NavierStokes V8_ON N32 rep18 0 2269.4 ms
+VALID True elapsed 2236.816
+formal NavierStokes.NavierStokes E N32 rep18 0 1826.1 ms
+VALID True elapsed 1814.365112000145
+formal RayTrace.RayTrace V8_ON N64 rep18 0 1108.0 ms
+VALID True elapsed 1083.573
+formal RayTrace.RayTrace A N64 rep18 0 2516.8 ms
+VALID True elapsed 2509.0799579997547
+formal RayTrace.RayTrace E N64 rep18 0 2521.6 ms
+VALID True elapsed 2513.752663000021
+formal Mandreel.Mandreel A N1 rep18 0 3239.1 ms
+VALID True elapsed 1750.3017460000701
+formal Mandreel.Mandreel V8_ON N1 rep18 0 3027.5 ms
+VALID True elapsed 1466.2250000000001
+formal Mandreel.Mandreel E N1 rep18 0 3281.3 ms
+VALID True elapsed 1758.0134349996224
+formal Splay.Splay V8_ON N1024 rep18 0 2107.5 ms
+VALID True elapsed 1943.083
+formal Splay.Splay E N1024 rep18 0 3045.2 ms
+VALID True elapsed 2554.1690600002185
+formal Splay.Splay A N1024 rep18 0 2773.7 ms
+VALID True elapsed 2241.58473699959
+formal RegExp.RegExp V8_ON N64 rep18 0 1938.9 ms
+VALID True elapsed 1891.174
+formal RegExp.RegExp A N64 rep18 0 11822.4 ms
+VALID True elapsed 11795.995695000049
+formal RegExp.RegExp E N64 rep18 0 11521.4 ms
+VALID True elapsed 11495.663716999814
+formal EarleyBoyer.Boyer V8_ON N32 rep18 0 1554.7 ms
+VALID True elapsed 1513.398
+formal EarleyBoyer.Boyer E N32 rep18 0 3428.1 ms
+VALID True elapsed 3408.137798000127
+formal EarleyBoyer.Boyer A N32 rep18 0 3481.9 ms
+VALID True elapsed 3464.135224000085
+formal zlib.zlib E N1 rep18 0 8478.3 ms
+VALID True elapsed 8466.472648999654
+formal zlib.zlib A N1 rep18 0 8296.4 ms
+VALID True elapsed 8284.868666999973
+formal zlib.zlib V8_ON N1 rep18 0 7302.1 ms
+VALID True elapsed 7270.98
+formal Crypto.Encrypt E N256 rep18 0 1497.3 ms
+VALID True elapsed 1389.440839999821
+formal Crypto.Encrypt V8_ON N256 rep18 0 1290.4 ms
+VALID True elapsed 1171.0430000000001
+formal Crypto.Encrypt A N256 rep18 0 1456.0 ms
+VALID True elapsed 1347.3454129998572
+formal EarleyBoyer.Earley V8_ON N512 rep18 0 1212.5 ms
+VALID True elapsed 1171.77
+formal EarleyBoyer.Earley A N512 rep18 0 3670.2 ms
+VALID True elapsed 3653.2923250002787
+formal EarleyBoyer.Earley E N512 rep18 0 3727.0 ms
+VALID True elapsed 3708.5014419998042
+formal CodeLoad.CodeLoadClosure A N4096 rep18 0 2791.6 ms
+VALID True elapsed 2657.8587310002185
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep18 0 1411.1 ms
+VALID True elapsed 1266.858
+formal CodeLoad.CodeLoadClosure E N4096 rep18 0 2806.9 ms
+VALID True elapsed 2668.6918339999393
+formal CodeLoad.CodeLoadJQuery E N256 rep18 0 2816.5 ms
+VALID True elapsed 2807.8028509998694
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep18 0 1194.3 ms
+VALID True elapsed 1152.7710000000002
+formal CodeLoad.CodeLoadJQuery A N256 rep18 0 2844.7 ms
+VALID True elapsed 2835.132772000041
+formal Crypto.Decrypt V8_ON N16 rep18 0 1366.8 ms
+VALID True elapsed 1322.661
+formal Crypto.Decrypt E N16 rep18 0 1580.1 ms
+VALID True elapsed 1566.1213639997877
+formal Crypto.Decrypt A N16 rep18 0 1614.2 ms
+VALID True elapsed 1599.9869800000452
+formal PdfJS.PdfJS V8_ON N16 rep18 0 1971.7 ms
+VALID True elapsed 1694.1080000000002
+formal PdfJS.PdfJS A N16 rep18 0 3168.7 ms
+VALID True elapsed 2945.1364919999614
+formal PdfJS.PdfJS E N16 rep18 0 3088.7 ms
+VALID True elapsed 2868.297877000179
+formal Crypto.Decrypt A N16 rep19 0 1568.8 ms
+VALID True elapsed 1553.4634400000796
+formal Crypto.Decrypt E N16 rep19 0 1621.1 ms
+VALID True elapsed 1606.7019599997438
+formal Crypto.Decrypt V8_ON N16 rep19 0 1364.4 ms
+VALID True elapsed 1323.1
+formal Mandreel.Mandreel E N1 rep19 0 3187.8 ms
+VALID True elapsed 1730.0337720001116
+formal Mandreel.Mandreel A N1 rep19 0 3241.0 ms
+VALID True elapsed 1738.88233199995
+formal Mandreel.Mandreel V8_ON N1 rep19 0 3091.9 ms
+VALID True elapsed 1529.2389999999998
+formal PdfJS.PdfJS E N16 rep19 0 3074.2 ms
+VALID True elapsed 2863.8467910001054
+formal PdfJS.PdfJS V8_ON N16 rep19 0 1823.8 ms
+VALID True elapsed 1600.609
+formal PdfJS.PdfJS A N16 rep19 0 3114.9 ms
+VALID True elapsed 2905.11689400021
+formal EarleyBoyer.Earley E N512 rep19 0 3637.9 ms
+VALID True elapsed 3620.0177500001155
+formal EarleyBoyer.Earley V8_ON N512 rep19 0 1205.2 ms
+VALID True elapsed 1163.064
+formal EarleyBoyer.Earley A N512 rep19 0 3528.0 ms
+VALID True elapsed 3510.8141749999486
+formal CodeLoad.CodeLoadClosure E N4096 rep19 0 2841.8 ms
+VALID True elapsed 2704.75776399998
+formal CodeLoad.CodeLoadClosure A N4096 rep19 0 2664.1 ms
+VALID True elapsed 2531.0710349995643
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep19 0 1478.1 ms
+VALID True elapsed 1327.0629999999999
+formal Splay.Splay V8_ON N1024 rep19 0 2104.4 ms
+VALID True elapsed 1935.884
+formal Splay.Splay A N1024 rep19 0 2831.6 ms
+VALID True elapsed 2325.195495999884
+formal Splay.Splay E N1024 rep19 0 3373.5 ms
+VALID True elapsed 2728.3283210000955
+formal RayTrace.RayTrace E N64 rep19 0 2626.5 ms
+VALID True elapsed 2618.2145000002347
+formal RayTrace.RayTrace A N64 rep19 0 2655.3 ms
+VALID True elapsed 2646.72086600028
+formal RayTrace.RayTrace V8_ON N64 rep19 0 1178.2 ms
+VALID True elapsed 1137.185
+formal Richards.Richards E N512 rep19 0 1774.1 ms
+VALID True elapsed 1767.3970739999786
+formal Richards.Richards V8_ON N512 rep19 0 1112.0 ms
+VALID True elapsed 1089.562
+formal Richards.Richards A N512 rep19 0 1846.8 ms
+VALID True elapsed 1839.6344460002147
+formal Crypto.Encrypt A N256 rep19 0 1432.5 ms
+VALID True elapsed 1326.6381049999036
+formal Crypto.Encrypt E N256 rep19 0 1444.7 ms
+VALID True elapsed 1337.5194500000216
+formal Crypto.Encrypt V8_ON N256 rep19 0 1248.8 ms
+VALID True elapsed 1130.22
+formal zlib.zlib E N1 rep19 0 8587.5 ms
+VALID True elapsed 8561.66246900009
+formal zlib.zlib V8_ON N1 rep19 0 7461.4 ms
+VALID True elapsed 7423.331
+formal zlib.zlib A N1 rep19 0 8593.2 ms
+VALID True elapsed 8581.295488000382
+formal Typescript.Typescript V8_ON N1 rep19 0 1642.4 ms
+VALID True elapsed 1473.362
+formal Typescript.Typescript E N1 rep19 0 2403.6 ms
+VALID True elapsed 2168.739457000047
+formal Typescript.Typescript A N1 rep19 0 2394.8 ms
+VALID True elapsed 2184.5431130002253
+formal NavierStokes.NavierStokes V8_ON N32 rep19 0 2268.6 ms
+VALID True elapsed 2242.147
+formal NavierStokes.NavierStokes A N32 rep19 0 1887.0 ms
+VALID True elapsed 1874.9552730000578
+formal NavierStokes.NavierStokes E N32 rep19 0 1854.1 ms
+VALID True elapsed 1842.6325860000215
+formal RegExp.RegExp V8_ON N64 rep19 0 1843.2 ms
+VALID True elapsed 1796.523
+formal RegExp.RegExp E N64 rep19 0 11558.5 ms
+VALID True elapsed 11531.839233000297
+formal RegExp.RegExp A N64 rep19 0 11763.9 ms
+VALID True elapsed 11736.617258999962
+formal DeltaBlue.DeltaBlue E N512 rep19 0 3482.2 ms
+VALID True elapsed 3475.0026759998873
+formal DeltaBlue.DeltaBlue V8_ON N512 rep19 0 1909.2 ms
+VALID True elapsed 1882.662
+formal DeltaBlue.DeltaBlue A N512 rep19 0 3667.7 ms
+VALID True elapsed 3660.5574710001238
+formal Gameboy.Gameboy A N4 rep19 0 1333.2 ms
+VALID True elapsed 1284.2184150000103
+formal Gameboy.Gameboy V8_ON N4 rep19 0 1283.9 ms
+VALID True elapsed 1218.0620000000001
+formal Gameboy.Gameboy E N4 rep19 0 1449.1 ms
+VALID True elapsed 1406.185792000033
+formal CodeLoad.CodeLoadJQuery A N256 rep19 0 2740.6 ms
+VALID True elapsed 2731.705812000204
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep19 0 1189.5 ms
+VALID True elapsed 1151.9489999999998
+formal CodeLoad.CodeLoadJQuery E N256 rep19 0 2860.5 ms
+VALID True elapsed 2851.8877479997464
+formal EarleyBoyer.Boyer V8_ON N32 rep19 0 1458.8 ms
+VALID True elapsed 1417.353
+formal EarleyBoyer.Boyer A N32 rep19 0 3560.6 ms
+VALID True elapsed 3543.1107419999316
+formal EarleyBoyer.Boyer E N32 rep19 0 3473.6 ms
+VALID True elapsed 3452.587102000136
+formal Crypto.Encrypt V8_ON N256 rep20 0 1251.4 ms
+VALID True elapsed 1138.461
+formal Crypto.Encrypt E N256 rep20 0 1496.9 ms
+VALID True elapsed 1379.6728070001118
+formal Crypto.Encrypt A N256 rep20 0 1436.8 ms
+VALID True elapsed 1331.6100910003297
+formal Typescript.Typescript V8_ON N1 rep20 0 1596.3 ms
+VALID True elapsed 1428.129
+formal Typescript.Typescript E N1 rep20 0 2560.2 ms
+VALID True elapsed 2320.2764820000157
+formal Typescript.Typescript A N1 rep20 0 2426.8 ms
+VALID True elapsed 2199.6011510002427
+formal NavierStokes.NavierStokes A N32 rep20 0 1847.1 ms
+VALID True elapsed 1835.511642999947
+formal NavierStokes.NavierStokes V8_ON N32 rep20 0 2299.9 ms
+VALID True elapsed 2275.022
+formal NavierStokes.NavierStokes E N32 rep20 0 1858.4 ms
+VALID True elapsed 1846.8069930002093
+formal RegExp.RegExp A N64 rep20 0 11603.4 ms
+VALID True elapsed 11577.25424899999
+formal RegExp.RegExp V8_ON N64 rep20 0 1952.9 ms
+VALID True elapsed 1904.756
+formal RegExp.RegExp E N64 rep20 0 11812.4 ms
+VALID True elapsed 11784.515401000157
+formal EarleyBoyer.Boyer E N32 rep20 0 3496.3 ms
+VALID True elapsed 3475.9132840000093
+formal EarleyBoyer.Boyer A N32 rep20 0 3432.6 ms
+VALID True elapsed 3414.4629240003414
+formal EarleyBoyer.Boyer V8_ON N32 rep20 0 1575.1 ms
+VALID True elapsed 1531.911
+formal Richards.Richards V8_ON N512 rep20 0 1085.3 ms
+VALID True elapsed 1061.661
+formal Richards.Richards A N512 rep20 0 1771.5 ms
+VALID True elapsed 1764.708362000063
+formal Richards.Richards E N512 rep20 0 1793.5 ms
+VALID True elapsed 1785.849221999757
+formal zlib.zlib E N1 rep20 0 8473.9 ms
+VALID True elapsed 8461.458701000083
+formal zlib.zlib A N1 rep20 0 8361.2 ms
+VALID True elapsed 8349.167035000399
+formal zlib.zlib V8_ON N1 rep20 0 7381.9 ms
+VALID True elapsed 7350.314
+formal EarleyBoyer.Earley V8_ON N512 rep20 0 1169.5 ms
+VALID True elapsed 1134.2649999999999
+formal EarleyBoyer.Earley A N512 rep20 0 3645.7 ms
+VALID True elapsed 3628.0223130001687
+formal EarleyBoyer.Earley E N512 rep20 0 3689.7 ms
+VALID True elapsed 3671.1645960002206
+formal RayTrace.RayTrace E N64 rep20 0 2529.3 ms
+VALID True elapsed 2521.934328000061
+formal RayTrace.RayTrace A N64 rep20 0 2534.6 ms
+VALID True elapsed 2527.1538729998283
+formal RayTrace.RayTrace V8_ON N64 rep20 0 1124.5 ms
+VALID True elapsed 1097.026
+formal Gameboy.Gameboy A N4 rep20 0 1336.1 ms
+VALID True elapsed 1293.4749859999865
+formal Gameboy.Gameboy V8_ON N4 rep20 0 1253.4 ms
+VALID True elapsed 1187.737
+formal Gameboy.Gameboy E N4 rep20 0 1428.5 ms
+VALID True elapsed 1385.0241140001453
+formal CodeLoad.CodeLoadJQuery E N256 rep20 0 2860.8 ms
+VALID True elapsed 2851.8437510002404
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep20 0 1196.9 ms
+VALID True elapsed 1158.362
+formal CodeLoad.CodeLoadJQuery A N256 rep20 0 2783.2 ms
+VALID True elapsed 2773.809949000366
+formal PdfJS.PdfJS V8_ON N16 rep20 0 1851.9 ms
+VALID True elapsed 1626.5600000000002
+formal PdfJS.PdfJS A N16 rep20 0 3131.8 ms
+VALID True elapsed 2921.511748000048
+formal PdfJS.PdfJS E N16 rep20 0 3041.7 ms
+VALID True elapsed 2828.4952010000125
+formal Mandreel.Mandreel E N1 rep20 0 3296.1 ms
+VALID True elapsed 1778.7582339998335
+formal Mandreel.Mandreel A N1 rep20 0 3193.9 ms
+VALID True elapsed 1769.5060379998758
+formal Mandreel.Mandreel V8_ON N1 rep20 0 3051.1 ms
+VALID True elapsed 1470.5849999999998
+formal Splay.Splay A N1024 rep20 0 2861.1 ms
+VALID True elapsed 2328.604395000264
+formal Splay.Splay E N1024 rep20 0 2908.6 ms
+VALID True elapsed 2379.9312580004334
+formal Splay.Splay V8_ON N1024 rep20 0 1983.5 ms
+VALID True elapsed 1830.0149999999999
+formal Crypto.Decrypt E N16 rep20 0 1675.1 ms
+VALID True elapsed 1661.0352119999006
+formal Crypto.Decrypt V8_ON N16 rep20 0 1374.7 ms
+VALID True elapsed 1333.854
+formal Crypto.Decrypt A N16 rep20 0 1592.3 ms
+VALID True elapsed 1578.2881330000237
+formal CodeLoad.CodeLoadClosure A N4096 rep20 0 2787.5 ms
+VALID True elapsed 2655.7494290005416
+formal CodeLoad.CodeLoadClosure E N4096 rep20 0 2730.0 ms
+VALID True elapsed 2592.931754999794
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep20 0 1421.9 ms
+VALID True elapsed 1269.899
+formal DeltaBlue.DeltaBlue A N512 rep20 0 3652.7 ms
+VALID True elapsed 3645.5288450000808
+formal DeltaBlue.DeltaBlue E N512 rep20 0 3515.6 ms
+VALID True elapsed 3507.8461029995233
+formal DeltaBlue.DeltaBlue V8_ON N512 rep20 0 1921.4 ms
+VALID True elapsed 1892.861
+formal EarleyBoyer.Earley E N512 rep21 0 3672.3 ms
+VALID True elapsed 3654.564284999855
+formal EarleyBoyer.Earley A N512 rep21 0 3601.8 ms
+VALID True elapsed 3584.5213669994846
+formal EarleyBoyer.Earley V8_ON N512 rep21 0 1176.0 ms
+VALID True elapsed 1135.769
+formal Gameboy.Gameboy E N4 rep21 0 1489.6 ms
+VALID True elapsed 1446.8101519998163
+formal Gameboy.Gameboy V8_ON N4 rep21 0 1292.0 ms
+VALID True elapsed 1212.073
+formal Gameboy.Gameboy A N4 rep21 0 1332.5 ms
+VALID True elapsed 1290.7503829998896
+formal PdfJS.PdfJS A N16 rep21 0 3087.6 ms
+VALID True elapsed 2873.186137999408
+formal PdfJS.PdfJS V8_ON N16 rep21 0 1836.7 ms
+VALID True elapsed 1614.949
+formal PdfJS.PdfJS E N16 rep21 0 3154.7 ms
+VALID True elapsed 2934.1638679997995
+formal DeltaBlue.DeltaBlue V8_ON N512 rep21 0 1945.8 ms
+VALID True elapsed 1917.049
+formal DeltaBlue.DeltaBlue E N512 rep21 0 3420.1 ms
+VALID True elapsed 3412.3707299996167
+formal DeltaBlue.DeltaBlue A N512 rep21 0 4040.1 ms
+VALID True elapsed 4032.4596759993583
+formal NavierStokes.NavierStokes E N32 rep21 0 1837.5 ms
+VALID True elapsed 1825.5221920004115
+formal NavierStokes.NavierStokes A N32 rep21 0 1932.6 ms
+VALID True elapsed 1920.3160829991102
+formal NavierStokes.NavierStokes V8_ON N32 rep21 0 2230.6 ms
+VALID True elapsed 2200.8379999999997
+formal zlib.zlib A N1 rep21 0 8441.6 ms
+VALID True elapsed 8429.435588999651
+formal zlib.zlib E N1 rep21 0 8508.3 ms
+VALID True elapsed 8496.004745999351
+formal zlib.zlib V8_ON N1 rep21 0 7459.2 ms
+VALID True elapsed 7427.123
+formal Typescript.Typescript A N1 rep21 0 2443.6 ms
+VALID True elapsed 2217.609364000149
+formal Typescript.Typescript E N1 rep21 0 2393.4 ms
+VALID True elapsed 2174.6362659996375
+formal Typescript.Typescript V8_ON N1 rep21 0 1532.5 ms
+VALID True elapsed 1365.011
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep21 0 1244.0 ms
+VALID True elapsed 1207.466
+formal CodeLoad.CodeLoadJQuery A N256 rep21 0 2736.1 ms
+VALID True elapsed 2727.3074799999595
+formal CodeLoad.CodeLoadJQuery E N256 rep21 0 2862.8 ms
+VALID True elapsed 2852.9618180003017
+formal Mandreel.Mandreel A N1 rep21 0 3200.6 ms
+VALID True elapsed 1753.9702880000696
+formal Mandreel.Mandreel E N1 rep21 0 3282.1 ms
+VALID True elapsed 1825.8627829998732
+formal Mandreel.Mandreel V8_ON N1 rep21 0 3014.6 ms
+VALID True elapsed 1465.8020000000001
+formal CodeLoad.CodeLoadClosure E N4096 rep21 0 2832.2 ms
+VALID True elapsed 2698.2867970000952
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep21 0 1292.8 ms
+VALID True elapsed 1242.2920000000001
+formal CodeLoad.CodeLoadClosure A N4096 rep21 0 2702.4 ms
+VALID True elapsed 2571.5041279997677
+formal Crypto.Encrypt E N256 rep21 0 1467.7 ms
+VALID True elapsed 1360.5080900005996
+formal Crypto.Encrypt A N256 rep21 0 1450.6 ms
+VALID True elapsed 1344.0550760002807
+formal Crypto.Encrypt V8_ON N256 rep21 0 1243.3 ms
+VALID True elapsed 1121.623
+formal RayTrace.RayTrace A N64 rep21 0 2492.7 ms
+VALID True elapsed 2484.8771040001884
+formal RayTrace.RayTrace E N64 rep21 0 2570.6 ms
+VALID True elapsed 2562.916066000238
+formal RayTrace.RayTrace V8_ON N64 rep21 0 1123.0 ms
+VALID True elapsed 1087.4969999999998
+formal Crypto.Decrypt E N16 rep21 0 1616.5 ms
+VALID True elapsed 1602.1485479995608
+formal Crypto.Decrypt A N16 rep21 0 1684.7 ms
+VALID True elapsed 1670.7431279998273
+formal Crypto.Decrypt V8_ON N16 rep21 0 1343.1 ms
+VALID True elapsed 1307.473
+formal Richards.Richards A N512 rep21 0 1768.1 ms
+VALID True elapsed 1761.356398999691
+formal Richards.Richards E N512 rep21 0 1809.8 ms
+VALID True elapsed 1802.5674499999732
+formal Richards.Richards V8_ON N512 rep21 0 1101.7 ms
+VALID True elapsed 1074.9099999999999
+formal RegExp.RegExp E N64 rep21 0 11596.7 ms
+VALID True elapsed 11564.92843000032
+formal RegExp.RegExp V8_ON N64 rep21 0 1910.1 ms
+VALID True elapsed 1861.053
+formal RegExp.RegExp A N64 rep21 0 11749.6 ms
+VALID True elapsed 11722.837460000068
+formal EarleyBoyer.Boyer V8_ON N32 rep21 0 1492.0 ms
+VALID True elapsed 1449.093
+formal EarleyBoyer.Boyer A N32 rep21 0 3430.9 ms
+VALID True elapsed 3413.146999999881
+formal EarleyBoyer.Boyer E N32 rep21 0 3444.4 ms
+VALID True elapsed 3423.9344170000404
+formal Splay.Splay A N1024 rep21 0 2821.4 ms
+VALID True elapsed 2252.581349999644
+formal Splay.Splay V8_ON N1024 rep21 0 2071.9 ms
+VALID True elapsed 1913.5970000000002
+formal Splay.Splay E N1024 rep21 0 3049.6 ms
+VALID True elapsed 2473.842639000155
+formal Crypto.Decrypt E N16 rep22 0 1581.0 ms
+VALID True elapsed 1566.9826570004225
+formal Crypto.Decrypt V8_ON N16 rep22 0 1411.9 ms
+VALID True elapsed 1379.5739999999998
+formal Crypto.Decrypt A N16 rep22 0 1575.0 ms
+VALID True elapsed 1561.0917519992217
+formal Gameboy.Gameboy V8_ON N4 rep22 0 1256.2 ms
+VALID True elapsed 1187.9089999999999
+formal Gameboy.Gameboy E N4 rep22 0 1383.9 ms
+VALID True elapsed 1341.700027000159
+formal Gameboy.Gameboy A N4 rep22 0 1378.1 ms
+VALID True elapsed 1335.0411449996755
+formal NavierStokes.NavierStokes E N32 rep22 0 1861.9 ms
+VALID True elapsed 1849.9095299998298
+formal NavierStokes.NavierStokes V8_ON N32 rep22 0 2223.1 ms
+VALID True elapsed 2191.076
+formal NavierStokes.NavierStokes A N32 rep22 0 1922.4 ms
+VALID True elapsed 1910.3886349992827
+formal EarleyBoyer.Earley A N512 rep22 0 3648.7 ms
+VALID True elapsed 3629.452390000224
+formal EarleyBoyer.Earley V8_ON N512 rep22 0 1182.3 ms
+VALID True elapsed 1143.528
+formal EarleyBoyer.Earley E N512 rep22 0 3676.1 ms
+VALID True elapsed 3658.7865010006353
+formal Typescript.Typescript E N1 rep22 0 2475.5 ms
+VALID True elapsed 2248.9401650000364
+formal Typescript.Typescript A N1 rep22 0 2362.9 ms
+VALID True elapsed 2145.0087729999796
+formal Typescript.Typescript V8_ON N1 rep22 0 1519.1 ms
+VALID True elapsed 1354.057
+formal Mandreel.Mandreel V8_ON N1 rep22 0 3130.8 ms
+VALID True elapsed 1557.112
+formal Mandreel.Mandreel A N1 rep22 0 3205.5 ms
+VALID True elapsed 1770.6489869998768
+formal Mandreel.Mandreel E N1 rep22 0 3225.1 ms
+VALID True elapsed 1744.402209999971
+formal RegExp.RegExp E N64 rep22 0 11530.9 ms
+VALID True elapsed 11504.945573000237
+formal RegExp.RegExp V8_ON N64 rep22 0 1940.8 ms
+VALID True elapsed 1894.079
+formal RegExp.RegExp A N64 rep22 0 11670.1 ms
+VALID True elapsed 11643.90847099945
+formal RayTrace.RayTrace A N64 rep22 0 2597.5 ms
+VALID True elapsed 2590.05574300047
+formal RayTrace.RayTrace E N64 rep22 0 2528.8 ms
+VALID True elapsed 2521.210617000237
+formal RayTrace.RayTrace V8_ON N64 rep22 0 1175.6 ms
+VALID True elapsed 1148.23
+formal CodeLoad.CodeLoadJQuery E N256 rep22 0 2857.7 ms
+VALID True elapsed 2847.917867999524
+formal CodeLoad.CodeLoadJQuery A N256 rep22 0 2708.8 ms
+VALID True elapsed 2699.6000049998984
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep22 0 1227.8 ms
+VALID True elapsed 1189.0649999999998
+formal Crypto.Encrypt E N256 rep22 0 1464.4 ms
+VALID True elapsed 1358.2951130000874
+formal Crypto.Encrypt A N256 rep22 0 1428.0 ms
+VALID True elapsed 1322.5994529994205
+formal Crypto.Encrypt V8_ON N256 rep22 0 1234.4 ms
+VALID True elapsed 1122.0539999999999
+formal Splay.Splay A N1024 rep22 0 2975.5 ms
+VALID True elapsed 2394.140033000149
+formal Splay.Splay V8_ON N1024 rep22 0 2023.2 ms
+VALID True elapsed 1867.659
+formal Splay.Splay E N1024 rep22 0 3014.9 ms
+VALID True elapsed 2516.2483019996434
+formal Richards.Richards A N512 rep22 0 1775.1 ms
+VALID True elapsed 1768.2653700001538
+formal Richards.Richards V8_ON N512 rep22 0 1092.3 ms
+VALID True elapsed 1069.616
+formal Richards.Richards E N512 rep22 0 1753.4 ms
+VALID True elapsed 1746.7883330006152
+formal zlib.zlib E N1 rep22 0 8578.3 ms
+VALID True elapsed 8566.358443000354
+formal zlib.zlib V8_ON N1 rep22 0 7399.3 ms
+VALID True elapsed 7366.099
+formal zlib.zlib A N1 rep22 0 8401.9 ms
+VALID True elapsed 8389.379360000603
+formal EarleyBoyer.Boyer A N32 rep22 0 3550.4 ms
+VALID True elapsed 3533.1058229999617
+formal EarleyBoyer.Boyer V8_ON N32 rep22 0 1482.3 ms
+VALID True elapsed 1440.159
+formal EarleyBoyer.Boyer E N32 rep22 0 3497.1 ms
+VALID True elapsed 3476.7727370001376
+formal CodeLoad.CodeLoadClosure E N4096 rep22 0 2759.2 ms
+VALID True elapsed 2619.9338060002774
+formal CodeLoad.CodeLoadClosure A N4096 rep22 0 2822.0 ms
+VALID True elapsed 2678.911561000161
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep22 0 1345.1 ms
+VALID True elapsed 1292.0819999999999
+formal PdfJS.PdfJS V8_ON N16 rep22 0 1865.5 ms
+VALID True elapsed 1629.5520000000001
+formal PdfJS.PdfJS A N16 rep22 0 3138.6 ms
+VALID True elapsed 2924.7145340004936
+formal PdfJS.PdfJS E N16 rep22 0 3033.9 ms
+VALID True elapsed 2822.730221999809
+formal DeltaBlue.DeltaBlue E N512 rep22 0 3461.6 ms
+VALID True elapsed 3454.0867590000853
+formal DeltaBlue.DeltaBlue A N512 rep22 0 3600.3 ms
+VALID True elapsed 3592.5225630002096
+formal DeltaBlue.DeltaBlue V8_ON N512 rep22 0 1982.0 ms
+VALID True elapsed 1936.942
+formal Richards.Richards V8_ON N512 rep23 0 1080.9 ms
+VALID True elapsed 1058.549
+formal Richards.Richards A N512 rep23 0 1805.8 ms
+VALID True elapsed 1798.7013059994206
+formal Richards.Richards E N512 rep23 0 1802.7 ms
+VALID True elapsed 1796.0620629992336
+formal Crypto.Decrypt A N16 rep23 0 1623.9 ms
+VALID True elapsed 1610.0256939996034
+formal Crypto.Decrypt E N16 rep23 0 1585.3 ms
+VALID True elapsed 1571.3783789994195
+formal Crypto.Decrypt V8_ON N16 rep23 0 1355.1 ms
+VALID True elapsed 1313.779
+formal NavierStokes.NavierStokes E N32 rep23 0 1955.3 ms
+VALID True elapsed 1943.3696230007336
+formal NavierStokes.NavierStokes V8_ON N32 rep23 0 2255.5 ms
+VALID True elapsed 2217.854
+formal NavierStokes.NavierStokes A N32 rep23 0 1868.8 ms
+VALID True elapsed 1856.586393000558
+formal CodeLoad.CodeLoadJQuery E N256 rep23 0 2837.8 ms
+VALID True elapsed 2828.9716380005702
+formal CodeLoad.CodeLoadJQuery A N256 rep23 0 2716.3 ms
+VALID True elapsed 2707.6904919994995
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep23 0 1247.3 ms
+VALID True elapsed 1210.212
+formal Crypto.Encrypt A N256 rep23 0 1448.5 ms
+VALID True elapsed 1341.427460999228
+formal Crypto.Encrypt E N256 rep23 0 1457.4 ms
+VALID True elapsed 1345.3776670005172
+formal Crypto.Encrypt V8_ON N256 rep23 0 1238.5 ms
+VALID True elapsed 1123.217
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep23 0 1491.9 ms
+VALID True elapsed 1432.567
+formal CodeLoad.CodeLoadClosure A N4096 rep23 0 2793.4 ms
+VALID True elapsed 2658.1069170003757
+formal CodeLoad.CodeLoadClosure E N4096 rep23 0 2746.1 ms
+VALID True elapsed 2603.274830999784
+formal DeltaBlue.DeltaBlue V8_ON N512 rep23 0 1955.0 ms
+VALID True elapsed 1929.971
+formal DeltaBlue.DeltaBlue A N512 rep23 0 3677.7 ms
+VALID True elapsed 3670.0523319998756
+formal DeltaBlue.DeltaBlue E N512 rep23 0 3464.7 ms
+VALID True elapsed 3457.3269439991564
+formal EarleyBoyer.Boyer A N32 rep23 0 3515.4 ms
+VALID True elapsed 3497.714720000513
+formal EarleyBoyer.Boyer E N32 rep23 0 3385.1 ms
+VALID True elapsed 3365.380474999547
+formal EarleyBoyer.Boyer V8_ON N32 rep23 0 1495.9 ms
+VALID True elapsed 1453.004
+formal Typescript.Typescript E N1 rep23 0 2472.6 ms
+VALID True elapsed 2256.2609560005367
+formal Typescript.Typescript A N1 rep23 0 2283.3 ms
+VALID True elapsed 2074.1221960000694
+formal Typescript.Typescript V8_ON N1 rep23 0 1611.7 ms
+VALID True elapsed 1445.4199999999998
+formal EarleyBoyer.Earley V8_ON N512 rep23 0 1184.9 ms
+VALID True elapsed 1143.921
+formal EarleyBoyer.Earley A N512 rep23 0 3568.0 ms
+VALID True elapsed 3550.0427139997482
+formal EarleyBoyer.Earley E N512 rep23 0 3625.3 ms
+VALID True elapsed 3600.683370999992
+formal RegExp.RegExp V8_ON N64 rep23 0 1872.9 ms
+VALID True elapsed 1825.699
+formal RegExp.RegExp E N64 rep23 0 12137.4 ms
+VALID True elapsed 12112.043728000484
+formal RegExp.RegExp A N64 rep23 0 11756.6 ms
+VALID True elapsed 11730.45379499998
+formal zlib.zlib V8_ON N1 rep23 0 7391.6 ms
+VALID True elapsed 7356.884
+formal zlib.zlib E N1 rep23 0 8483.3 ms
+VALID True elapsed 8470.653528000228
+formal zlib.zlib A N1 rep23 0 8325.8 ms
+VALID True elapsed 8313.61534500029
+formal Splay.Splay E N1024 rep23 0 3064.7 ms
+VALID True elapsed 2527.9847769998014
+formal Splay.Splay V8_ON N1024 rep23 0 2029.7 ms
+VALID True elapsed 1826.166
+formal Splay.Splay A N1024 rep23 0 2801.8 ms
+VALID True elapsed 2332.691902999766
+formal PdfJS.PdfJS V8_ON N16 rep23 0 1789.5 ms
+VALID True elapsed 1590.405
+formal PdfJS.PdfJS A N16 rep23 0 3046.9 ms
+VALID True elapsed 2835.426821999252
+formal PdfJS.PdfJS E N16 rep23 0 3129.1 ms
+VALID True elapsed 2915.8786930004135
+formal Gameboy.Gameboy E N4 rep23 0 1390.3 ms
+VALID True elapsed 1348.0786049999297
+formal Gameboy.Gameboy V8_ON N4 rep23 0 1267.1 ms
+VALID True elapsed 1199.0130000000001
+formal Gameboy.Gameboy A N4 rep23 0 1387.0 ms
+VALID True elapsed 1342.7999529996887
+formal RayTrace.RayTrace E N64 rep23 0 2551.1 ms
+VALID True elapsed 2543.5783890001476
+formal RayTrace.RayTrace V8_ON N64 rep23 0 1118.2 ms
+VALID True elapsed 1091.377
+formal RayTrace.RayTrace A N64 rep23 0 2512.5 ms
+VALID True elapsed 2504.5505379997194
+formal Mandreel.Mandreel A N1 rep23 0 3236.0 ms
+VALID True elapsed 1771.0321410000324
+formal Mandreel.Mandreel E N1 rep23 0 3617.0 ms
+VALID True elapsed 1767.9082880001515
+formal Mandreel.Mandreel V8_ON N1 rep23 0 3083.0 ms
+VALID True elapsed 1512.6200000000001
+formal zlib.zlib A N1 rep24 0 8494.8 ms
+VALID True elapsed 8482.487960000522
+formal zlib.zlib V8_ON N1 rep24 0 7460.2 ms
+VALID True elapsed 7428.939
+formal zlib.zlib E N1 rep24 0 8575.5 ms
+VALID True elapsed 8563.532757000066
+formal NavierStokes.NavierStokes A N32 rep24 0 1904.2 ms
+VALID True elapsed 1891.3896169997752
+formal NavierStokes.NavierStokes V8_ON N32 rep24 0 2296.8 ms
+VALID True elapsed 2241.748
+formal NavierStokes.NavierStokes E N32 rep24 0 1860.8 ms
+VALID True elapsed 1848.574004999362
+formal RayTrace.RayTrace V8_ON N64 rep24 0 1162.5 ms
+VALID True elapsed 1138.583
+formal RayTrace.RayTrace E N64 rep24 0 2597.1 ms
+VALID True elapsed 2589.0028170002624
+formal RayTrace.RayTrace A N64 rep24 0 2461.7 ms
+VALID True elapsed 2454.357272000052
+formal RegExp.RegExp E N64 rep24 0 11702.0 ms
+VALID True elapsed 11676.953978000209
+formal RegExp.RegExp A N64 rep24 0 11715.2 ms
+VALID True elapsed 11689.377474000677
+formal RegExp.RegExp V8_ON N64 rep24 0 1923.3 ms
+VALID True elapsed 1876.6999999999998
+formal Mandreel.Mandreel E N1 rep24 0 3213.3 ms
+VALID True elapsed 1747.7345129996538
+formal Mandreel.Mandreel V8_ON N1 rep24 0 3103.5 ms
+VALID True elapsed 1536.313
+formal Mandreel.Mandreel A N1 rep24 0 3192.3 ms
+VALID True elapsed 1770.5664959996939
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep24 0 1419.8 ms
+VALID True elapsed 1366.566
+formal CodeLoad.CodeLoadClosure E N4096 rep24 0 2846.0 ms
+VALID True elapsed 2713.202597000636
+formal CodeLoad.CodeLoadClosure A N4096 rep24 0 2631.5 ms
+VALID True elapsed 2495.385346000083
+formal Typescript.Typescript V8_ON N1 rep24 0 1590.1 ms
+VALID True elapsed 1393.4379999999999
+formal Typescript.Typescript A N1 rep24 0 2339.6 ms
+VALID True elapsed 2128.8660140000284
+formal Typescript.Typescript E N1 rep24 0 2445.3 ms
+VALID True elapsed 2224.3630639994517
+formal Gameboy.Gameboy V8_ON N4 rep24 0 1268.9 ms
+VALID True elapsed 1200.078
+formal Gameboy.Gameboy A N4 rep24 0 1355.7 ms
+VALID True elapsed 1314.4133789995685
+formal Gameboy.Gameboy E N4 rep24 0 1389.6 ms
+VALID True elapsed 1347.4180190004408
+formal Splay.Splay A N1024 rep24 0 2927.5 ms
+VALID True elapsed 2365.362980999984
+formal Splay.Splay E N1024 rep24 0 2940.4 ms
+VALID True elapsed 2436.394507999532
+formal Splay.Splay V8_ON N1024 rep24 0 2237.0 ms
+VALID True elapsed 2079.637
+formal EarleyBoyer.Earley E N512 rep24 0 3642.7 ms
+VALID True elapsed 3625.0552439996973
+formal EarleyBoyer.Earley A N512 rep24 0 3659.0 ms
+VALID True elapsed 3641.746849999763
+formal EarleyBoyer.Earley V8_ON N512 rep24 0 1160.4 ms
+VALID True elapsed 1121.267
+formal EarleyBoyer.Boyer A N32 rep24 0 3515.5 ms
+VALID True elapsed 3497.3586220005527
+formal EarleyBoyer.Boyer E N32 rep24 0 3380.1 ms
+VALID True elapsed 3360.4813529998064
+formal EarleyBoyer.Boyer V8_ON N32 rep24 0 1535.0 ms
+VALID True elapsed 1493.239
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep24 0 1209.5 ms
+VALID True elapsed 1172.6850000000002
+formal CodeLoad.CodeLoadJQuery A N256 rep24 0 2737.6 ms
+VALID True elapsed 2728.351587999612
+formal CodeLoad.CodeLoadJQuery E N256 rep24 0 2890.2 ms
+VALID True elapsed 2880.8990529999137
+formal Crypto.Encrypt V8_ON N256 rep24 0 1240.3 ms
+VALID True elapsed 1124.9579999999999
+formal Crypto.Encrypt E N256 rep24 0 1424.1 ms
+VALID True elapsed 1318.0796689996496
+formal Crypto.Encrypt A N256 rep24 0 1440.5 ms
+VALID True elapsed 1335.231567000039
+formal DeltaBlue.DeltaBlue V8_ON N512 rep24 0 2034.9 ms
+VALID True elapsed 2007.698
+formal DeltaBlue.DeltaBlue E N512 rep24 0 3443.7 ms
+VALID True elapsed 3436.5420730002224
+formal DeltaBlue.DeltaBlue A N512 rep24 0 3796.1 ms
+VALID True elapsed 3788.64766999986
+formal PdfJS.PdfJS E N16 rep24 0 3087.3 ms
+VALID True elapsed 2865.7516019996256
+formal PdfJS.PdfJS V8_ON N16 rep24 0 1849.8 ms
+VALID True elapsed 1611.057
+formal PdfJS.PdfJS A N16 rep24 0 3022.9 ms
+VALID True elapsed 2815.609040000476
+formal Crypto.Decrypt E N16 rep24 0 1651.7 ms
+VALID True elapsed 1637.4864590000361
+formal Crypto.Decrypt V8_ON N16 rep24 0 1360.6 ms
+VALID True elapsed 1325.4470000000001
+formal Crypto.Decrypt A N16 rep24 0 1577.3 ms
+VALID True elapsed 1563.319461000152
+formal Richards.Richards E N512 rep24 0 1765.5 ms
+VALID True elapsed 1758.2385579999536
+formal Richards.Richards A N512 rep24 0 1878.4 ms
+VALID True elapsed 1871.037592000328
+formal Richards.Richards V8_ON N512 rep24 0 1096.9 ms
+VALID True elapsed 1063.99
+formal NavierStokes.NavierStokes E N32 rep25 0 1857.2 ms
+VALID True elapsed 1845.1543470006436
+formal NavierStokes.NavierStokes A N32 rep25 0 1939.4 ms
+VALID True elapsed 1927.2776220003143
+formal NavierStokes.NavierStokes V8_ON N32 rep25 0 2261.4 ms
+VALID True elapsed 2230.481
+formal CodeLoad.CodeLoadJQuery E N256 rep25 0 2760.1 ms
+VALID True elapsed 2746.3797900006175
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep25 0 1238.2 ms
+VALID True elapsed 1199.233
+formal CodeLoad.CodeLoadJQuery A N256 rep25 0 2708.8 ms
+VALID True elapsed 2699.618428999558
+formal Splay.Splay V8_ON N1024 rep25 0 2151.0 ms
+VALID True elapsed 1926.389
+formal Splay.Splay E N1024 rep25 0 3058.5 ms
+VALID True elapsed 2468.2747820001096
+formal Splay.Splay A N1024 rep25 0 2819.2 ms
+VALID True elapsed 2289.173151999712
+formal Mandreel.Mandreel V8_ON N1 rep25 0 3035.3 ms
+VALID True elapsed 1471.108
+formal Mandreel.Mandreel E N1 rep25 0 3263.1 ms
+VALID True elapsed 1807.694008000195
+formal Mandreel.Mandreel A N1 rep25 0 3157.6 ms
+VALID True elapsed 1737.192173000425
+formal Gameboy.Gameboy V8_ON N4 rep25 0 1250.6 ms
+VALID True elapsed 1186.579
+formal Gameboy.Gameboy E N4 rep25 0 1515.0 ms
+VALID True elapsed 1471.7290399996564
+formal Gameboy.Gameboy A N4 rep25 0 1342.1 ms
+VALID True elapsed 1300.7189830001444
+formal RayTrace.RayTrace E N64 rep25 0 2637.3 ms
+VALID True elapsed 2629.942405999638
+formal RayTrace.RayTrace V8_ON N64 rep25 0 1221.6 ms
+VALID True elapsed 1186.858
+formal RayTrace.RayTrace A N64 rep25 0 2492.7 ms
+VALID True elapsed 2485.046556999907
+formal EarleyBoyer.Earley E N512 rep25 0 3683.4 ms
+VALID True elapsed 3665.4159399997443
+formal EarleyBoyer.Earley V8_ON N512 rep25 0 1182.0 ms
+VALID True elapsed 1143.382
+formal EarleyBoyer.Earley A N512 rep25 0 3587.4 ms
+VALID True elapsed 3569.998386000283
+formal DeltaBlue.DeltaBlue E N512 rep25 0 3477.9 ms
+VALID True elapsed 3468.462549000047
+formal DeltaBlue.DeltaBlue V8_ON N512 rep25 0 1928.6 ms
+VALID True elapsed 1900.918
+formal DeltaBlue.DeltaBlue A N512 rep25 0 3719.3 ms
+VALID True elapsed 3711.7763069998473
+formal Typescript.Typescript A N1 rep25 0 2372.5 ms
+VALID True elapsed 2160.9204949997365
+formal Typescript.Typescript E N1 rep25 0 2450.9 ms
+VALID True elapsed 2229.6856030002236
+formal Typescript.Typescript V8_ON N1 rep25 0 1531.0 ms
+VALID True elapsed 1361.384
+formal EarleyBoyer.Boyer V8_ON N32 rep25 0 1450.1 ms
+VALID True elapsed 1412.942
+formal EarleyBoyer.Boyer E N32 rep25 0 3502.1 ms
+VALID True elapsed 3481.5506520001218
+formal EarleyBoyer.Boyer A N32 rep25 0 3510.8 ms
+VALID True elapsed 3493.171087999828
+formal Richards.Richards A N512 rep25 0 1804.6 ms
+VALID True elapsed 1797.9799680002034
+formal Richards.Richards E N512 rep25 0 1746.6 ms
+VALID True elapsed 1739.9664799999446
+formal Richards.Richards V8_ON N512 rep25 0 1079.2 ms
+VALID True elapsed 1050.3680000000002
+formal RegExp.RegExp A N64 rep25 0 11768.8 ms
+VALID True elapsed 11742.924270000309
+formal RegExp.RegExp E N64 rep25 0 11669.0 ms
+VALID True elapsed 11641.909495000727
+formal RegExp.RegExp V8_ON N64 rep25 0 1905.9 ms
+VALID True elapsed 1858.458
+formal PdfJS.PdfJS A N16 rep25 0 3097.8 ms
+VALID True elapsed 2880.3657320002094
+formal PdfJS.PdfJS V8_ON N16 rep25 0 1839.8 ms
+VALID True elapsed 1614.595
+formal PdfJS.PdfJS E N16 rep25 0 3133.2 ms
+VALID True elapsed 2908.940626000054
+formal Crypto.Decrypt V8_ON N16 rep25 0 1368.2 ms
+VALID True elapsed 1334.923
+formal Crypto.Decrypt A N16 rep25 0 1649.2 ms
+VALID True elapsed 1634.9856590004638
+formal Crypto.Decrypt E N16 rep25 0 1609.4 ms
+VALID True elapsed 1594.6062429994345
+formal CodeLoad.CodeLoadClosure E N4096 rep25 0 2757.1 ms
+VALID True elapsed 2623.4578459998593
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep25 0 1463.7 ms
+VALID True elapsed 1317.146
+formal CodeLoad.CodeLoadClosure A N4096 rep25 0 2723.1 ms
+VALID True elapsed 2587.8409829996526
+formal Crypto.Encrypt V8_ON N256 rep25 0 1244.2 ms
+VALID True elapsed 1130.7250000000001
+formal Crypto.Encrypt E N256 rep25 0 1441.4 ms
+VALID True elapsed 1337.0946709997952
+formal Crypto.Encrypt A N256 rep25 0 1490.3 ms
+VALID True elapsed 1379.5412010001019
+formal zlib.zlib V8_ON N1 rep25 0 7496.2 ms
+VALID True elapsed 7461.151
+formal zlib.zlib A N1 rep25 0 8477.6 ms
+VALID True elapsed 8464.71006499976
+formal zlib.zlib E N1 rep25 0 8434.3 ms
+VALID True elapsed 8420.910562000237
+formal EarleyBoyer.Boyer A N32 rep26 0 3557.6 ms
+VALID True elapsed 3540.1139660002664
+formal EarleyBoyer.Boyer V8_ON N32 rep26 0 1469.0 ms
+VALID True elapsed 1425.048
+formal EarleyBoyer.Boyer E N32 rep26 0 3452.8 ms
+VALID True elapsed 3433.000276000239
+formal RayTrace.RayTrace A N64 rep26 0 2427.2 ms
+VALID True elapsed 2419.769341000356
+formal RayTrace.RayTrace E N64 rep26 0 2564.3 ms
+VALID True elapsed 2556.9480479992926
+formal RayTrace.RayTrace V8_ON N64 rep26 0 1153.0 ms
+VALID True elapsed 1125.256
+formal Gameboy.Gameboy E N4 rep26 0 1431.4 ms
+VALID True elapsed 1389.0379309998825
+formal Gameboy.Gameboy A N4 rep26 0 1322.5 ms
+VALID True elapsed 1281.2153099998832
+formal Gameboy.Gameboy V8_ON N4 rep26 0 1259.6 ms
+VALID True elapsed 1194.971
+formal NavierStokes.NavierStokes A N32 rep26 0 1920.1 ms
+VALID True elapsed 1908.0623469995335
+formal NavierStokes.NavierStokes E N32 rep26 0 1886.5 ms
+VALID True elapsed 1874.617875000462
+formal NavierStokes.NavierStokes V8_ON N32 rep26 0 2283.6 ms
+VALID True elapsed 2253.633
+formal Crypto.Decrypt E N16 rep26 0 1611.0 ms
+VALID True elapsed 1597.0280780000612
+formal Crypto.Decrypt V8_ON N16 rep26 0 1343.8 ms
+VALID True elapsed 1312.8990000000001
+formal Crypto.Decrypt A N16 rep26 0 1579.7 ms
+VALID True elapsed 1565.1158579997718
+formal RegExp.RegExp V8_ON N64 rep26 0 1907.7 ms
+VALID True elapsed 1863.642
+formal RegExp.RegExp A N64 rep26 0 11701.8 ms
+VALID True elapsed 11675.656845000573
+formal RegExp.RegExp E N64 rep26 0 11658.3 ms
+VALID True elapsed 11632.720170999877
+formal Crypto.Encrypt A N256 rep26 0 1456.9 ms
+VALID True elapsed 1324.5608160002157
+formal Crypto.Encrypt V8_ON N256 rep26 0 1272.1 ms
+VALID True elapsed 1156.56
+formal Crypto.Encrypt E N256 rep26 0 1448.9 ms
+VALID True elapsed 1341.6199449999258
+formal Typescript.Typescript E N1 rep26 0 2451.7 ms
+VALID True elapsed 2236.2483569998294
+formal Typescript.Typescript A N1 rep26 0 2414.5 ms
+VALID True elapsed 2200.2874020002782
+formal Typescript.Typescript V8_ON N1 rep26 0 1582.4 ms
+VALID True elapsed 1419.983
+formal Splay.Splay E N1024 rep26 0 3055.1 ms
+VALID True elapsed 2475.7507980000228
+formal Splay.Splay V8_ON N1024 rep26 0 2011.8 ms
+VALID True elapsed 1854.2089999999998
+formal Splay.Splay A N1024 rep26 0 2742.4 ms
+VALID True elapsed 2246.9882060000673
+formal PdfJS.PdfJS V8_ON N16 rep26 0 1899.5 ms
+VALID True elapsed 1654.357
+formal PdfJS.PdfJS E N16 rep26 0 3061.0 ms
+VALID True elapsed 2846.8623000001535
+formal PdfJS.PdfJS A N16 rep26 0 3111.7 ms
+VALID True elapsed 2899.903997999616
+formal DeltaBlue.DeltaBlue V8_ON N512 rep26 0 1952.7 ms
+VALID True elapsed 1923.994
+formal DeltaBlue.DeltaBlue E N512 rep26 0 3505.1 ms
+VALID True elapsed 3497.4379320004955
+formal DeltaBlue.DeltaBlue A N512 rep26 0 3631.7 ms
+VALID True elapsed 3624.1747520007193
+formal Richards.Richards V8_ON N512 rep26 0 1130.2 ms
+VALID True elapsed 1100.308
+formal Richards.Richards E N512 rep26 0 1779.4 ms
+VALID True elapsed 1771.9818249996752
+formal Richards.Richards A N512 rep26 0 1777.6 ms
+VALID True elapsed 1770.7070599999279
+formal Mandreel.Mandreel A N1 rep26 0 3219.8 ms
+VALID True elapsed 1782.621857999824
+formal Mandreel.Mandreel V8_ON N1 rep26 0 3037.0 ms
+VALID True elapsed 1464.673
+formal Mandreel.Mandreel E N1 rep26 0 3269.6 ms
+VALID True elapsed 1767.8702699998394
+formal EarleyBoyer.Earley V8_ON N512 rep26 0 1167.8 ms
+VALID True elapsed 1130.872
+formal EarleyBoyer.Earley E N512 rep26 0 3789.8 ms
+VALID True elapsed 3771.6401750007644
+formal EarleyBoyer.Earley A N512 rep26 0 3645.8 ms
+VALID True elapsed 3628.4217139994726
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep26 0 1292.4 ms
+VALID True elapsed 1249.217
+formal CodeLoad.CodeLoadJQuery A N256 rep26 0 2726.6 ms
+VALID True elapsed 2717.5417830003425
+formal CodeLoad.CodeLoadJQuery E N256 rep26 0 2817.3 ms
+VALID True elapsed 2808.2547379992902
+formal zlib.zlib A N1 rep26 0 8389.9 ms
+VALID True elapsed 8375.599651999772
+formal zlib.zlib V8_ON N1 rep26 0 7539.0 ms
+VALID True elapsed 7493.801
+formal zlib.zlib E N1 rep26 0 8616.2 ms
+VALID True elapsed 8603.996377999894
+formal CodeLoad.CodeLoadClosure A N4096 rep26 0 2818.4 ms
+VALID True elapsed 2687.74778399989
+formal CodeLoad.CodeLoadClosure E N4096 rep26 0 2696.0 ms
+VALID True elapsed 2564.156307999976
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep26 0 1411.0 ms
+VALID True elapsed 1263.6200000000001
+formal RayTrace.RayTrace V8_ON N64 rep27 0 1195.9 ms
+VALID True elapsed 1171.945
+formal RayTrace.RayTrace A N64 rep27 0 2448.5 ms
+VALID True elapsed 2440.964789999649
+formal RayTrace.RayTrace E N64 rep27 0 2609.9 ms
+VALID True elapsed 2602.52401799988
+formal Typescript.Typescript A N1 rep27 0 2384.7 ms
+VALID True elapsed 2167.199733999558
+formal Typescript.Typescript V8_ON N1 rep27 0 1543.5 ms
+VALID True elapsed 1375.373
+formal Typescript.Typescript E N1 rep27 0 2495.2 ms
+VALID True elapsed 2266.6091970000416
+formal RegExp.RegExp A N64 rep27 0 11776.1 ms
+VALID True elapsed 11749.456080000848
+formal RegExp.RegExp E N64 rep27 0 11647.0 ms
+VALID True elapsed 11620.403514999896
+formal RegExp.RegExp V8_ON N64 rep27 0 1963.7 ms
+VALID True elapsed 1907.324
+formal CodeLoad.CodeLoadClosure A N4096 rep27 0 2721.6 ms
+VALID True elapsed 2587.622886000201
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep27 0 1332.6 ms
+VALID True elapsed 1280.833
+formal CodeLoad.CodeLoadClosure E N4096 rep27 0 2854.1 ms
+VALID True elapsed 2717.558702999726
+formal zlib.zlib A N1 rep27 0 8411.8 ms
+VALID True elapsed 8398.957828999497
+formal zlib.zlib E N1 rep27 0 8478.7 ms
+VALID True elapsed 8465.950965999626
+formal zlib.zlib V8_ON N1 rep27 0 7375.1 ms
+VALID True elapsed 7339.715
+formal Crypto.Encrypt V8_ON N256 rep27 0 1239.5 ms
+VALID True elapsed 1126.207
+formal Crypto.Encrypt A N256 rep27 0 1495.3 ms
+VALID True elapsed 1387.7520160004497
+formal Crypto.Encrypt E N256 rep27 0 1462.7 ms
+VALID True elapsed 1354.836749999784
+formal CodeLoad.CodeLoadJQuery A N256 rep27 0 2712.7 ms
+VALID True elapsed 2704.1030310001224
+formal CodeLoad.CodeLoadJQuery E N256 rep27 0 2903.1 ms
+VALID True elapsed 2892.8594650002196
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep27 0 1214.4 ms
+VALID True elapsed 1175.214
+formal PdfJS.PdfJS V8_ON N16 rep27 0 1820.8 ms
+VALID True elapsed 1594.001
+formal PdfJS.PdfJS E N16 rep27 0 3144.2 ms
+VALID True elapsed 2929.8648560000584
+formal PdfJS.PdfJS A N16 rep27 0 3096.2 ms
+VALID True elapsed 2877.079717000015
+formal NavierStokes.NavierStokes A N32 rep27 0 1879.9 ms
+VALID True elapsed 1867.9437910001725
+formal NavierStokes.NavierStokes V8_ON N32 rep27 0 2225.3 ms
+VALID True elapsed 2194.747
+formal NavierStokes.NavierStokes E N32 rep27 0 1897.4 ms
+VALID True elapsed 1885.8285800004378
+formal Splay.Splay E N1024 rep27 0 2991.4 ms
+VALID True elapsed 2372.078788000159
+formal Splay.Splay A N1024 rep27 0 2798.7 ms
+VALID True elapsed 2306.972768999636
+formal Splay.Splay V8_ON N1024 rep27 0 2014.3 ms
+VALID True elapsed 1856.667
+formal DeltaBlue.DeltaBlue E N512 rep27 0 3482.8 ms
+VALID True elapsed 3475.7505939994007
+formal DeltaBlue.DeltaBlue A N512 rep27 0 3632.6 ms
+VALID True elapsed 3624.735577000305
+formal DeltaBlue.DeltaBlue V8_ON N512 rep27 0 1928.4 ms
+VALID True elapsed 1896.544
+formal Gameboy.Gameboy V8_ON N4 rep27 0 1329.5 ms
+VALID True elapsed 1256.087
+formal Gameboy.Gameboy A N4 rep27 0 1345.5 ms
+VALID True elapsed 1302.8909109998494
+formal Gameboy.Gameboy E N4 rep27 0 1412.9 ms
+VALID True elapsed 1370.820193999447
+formal Crypto.Decrypt V8_ON N16 rep27 0 1356.8 ms
+VALID True elapsed 1322.762
+formal Crypto.Decrypt E N16 rep27 0 1656.5 ms
+VALID True elapsed 1642.6310980003327
+formal Crypto.Decrypt A N16 rep27 0 1586.1 ms
+VALID True elapsed 1571.889256999828
+formal EarleyBoyer.Boyer E N32 rep27 0 3456.7 ms
+VALID True elapsed 3436.75481900014
+formal EarleyBoyer.Boyer A N32 rep27 0 3429.4 ms
+VALID True elapsed 3412.4613929996267
+formal EarleyBoyer.Boyer V8_ON N32 rep27 0 1467.9 ms
+VALID True elapsed 1427.391
+formal Mandreel.Mandreel E N1 rep27 0 3329.5 ms
+VALID True elapsed 1781.2617100002244
+formal Mandreel.Mandreel V8_ON N1 rep27 0 3076.9 ms
+VALID True elapsed 1515.5170000000003
+formal Mandreel.Mandreel A N1 rep27 0 3170.2 ms
+VALID True elapsed 1749.7152900006622
+formal EarleyBoyer.Earley A N512 rep27 0 3720.0 ms
+VALID True elapsed 3702.9665549993515
+formal EarleyBoyer.Earley E N512 rep27 0 3570.5 ms
+VALID True elapsed 3552.902242999524
+formal EarleyBoyer.Earley V8_ON N512 rep27 0 1210.7 ms
+VALID True elapsed 1169.802
+formal Richards.Richards A N512 rep27 0 1781.4 ms
+VALID True elapsed 1774.1251679994166
+formal Richards.Richards E N512 rep27 0 1766.8 ms
+VALID True elapsed 1759.7205109996721
+formal Richards.Richards V8_ON N512 rep27 0 1081.8 ms
+VALID True elapsed 1055.178
+formal EarleyBoyer.Earley A N512 rep28 0 3692.4 ms
+VALID True elapsed 3675.0271869990975
+formal EarleyBoyer.Earley V8_ON N512 rep28 0 1171.6 ms
+VALID True elapsed 1133.204
+formal EarleyBoyer.Earley E N512 rep28 0 4599.6 ms
+VALID True elapsed 4581.910698999651
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep28 0 1310.0 ms
+VALID True elapsed 1271.2740000000001
+formal CodeLoad.CodeLoadJQuery E N256 rep28 0 2948.3 ms
+VALID True elapsed 2939.3119259998202
+formal CodeLoad.CodeLoadJQuery A N256 rep28 0 2775.3 ms
+VALID True elapsed 2765.230925999582
+formal Gameboy.Gameboy A N4 rep28 0 1339.9 ms
+VALID True elapsed 1299.3221539994702
+formal Gameboy.Gameboy E N4 rep28 0 1432.2 ms
+VALID True elapsed 1388.8234259998426
+formal Gameboy.Gameboy V8_ON N4 rep28 0 1349.7 ms
+VALID True elapsed 1280.135
+formal Typescript.Typescript E N1 rep28 0 2482.5 ms
+VALID True elapsed 2257.124936000444
+formal Typescript.Typescript V8_ON N1 rep28 0 1560.2 ms
+VALID True elapsed 1390.203
+formal Typescript.Typescript A N1 rep28 0 2400.8 ms
+VALID True elapsed 2179.9353980002925
+formal NavierStokes.NavierStokes V8_ON N32 rep28 0 2263.4 ms
+VALID True elapsed 2237.033
+formal NavierStokes.NavierStokes E N32 rep28 0 1886.5 ms
+VALID True elapsed 1874.6250840006396
+formal NavierStokes.NavierStokes A N32 rep28 0 1859.8 ms
+VALID True elapsed 1848.2237639995292
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep28 0 1492.8 ms
+VALID True elapsed 1342.9650000000001
+formal CodeLoad.CodeLoadClosure E N4096 rep28 0 2802.7 ms
+VALID True elapsed 2644.212247000076
+formal CodeLoad.CodeLoadClosure A N4096 rep28 0 2613.2 ms
+VALID True elapsed 2481.833265999332
+formal RegExp.RegExp A N64 rep28 0 11729.8 ms
+VALID True elapsed 11703.970216000453
+formal RegExp.RegExp V8_ON N64 rep28 0 1933.0 ms
+VALID True elapsed 1880.261
+formal RegExp.RegExp E N64 rep28 0 11733.5 ms
+VALID True elapsed 11707.002178000286
+formal Splay.Splay E N1024 rep28 0 2996.3 ms
+VALID True elapsed 2374.6980969998986
+formal Splay.Splay A N1024 rep28 0 2769.5 ms
+VALID True elapsed 2276.151306000538
+formal Splay.Splay V8_ON N1024 rep28 0 2078.7 ms
+VALID True elapsed 1863.621
+formal Crypto.Decrypt E N16 rep28 0 1570.9 ms
+VALID True elapsed 1555.865286999382
+formal Crypto.Decrypt A N16 rep28 0 1595.9 ms
+VALID True elapsed 1581.7759199999273
+formal Crypto.Decrypt V8_ON N16 rep28 0 1403.3 ms
+VALID True elapsed 1366.557
+formal EarleyBoyer.Boyer E N32 rep28 0 3397.3 ms
+VALID True elapsed 3377.1296380003914
+formal EarleyBoyer.Boyer V8_ON N32 rep28 0 1504.0 ms
+VALID True elapsed 1462.389
+formal EarleyBoyer.Boyer A N32 rep28 0 3481.2 ms
+VALID True elapsed 3463.758353999816
+formal Richards.Richards A N512 rep28 0 1766.7 ms
+VALID True elapsed 1759.7758149998263
+formal Richards.Richards V8_ON N512 rep28 0 1160.9 ms
+VALID True elapsed 1134.102
+formal Richards.Richards E N512 rep28 0 1769.4 ms
+VALID True elapsed 1762.2363760005683
+formal RayTrace.RayTrace A N64 rep28 0 2448.3 ms
+VALID True elapsed 2440.9736069999635
+formal RayTrace.RayTrace V8_ON N64 rep28 0 1162.7 ms
+VALID True elapsed 1133.046
+formal RayTrace.RayTrace E N64 rep28 0 2528.6 ms
+VALID True elapsed 2520.897818000056
+formal PdfJS.PdfJS E N16 rep28 0 3071.2 ms
+VALID True elapsed 2829.583514000289
+formal PdfJS.PdfJS V8_ON N16 rep28 0 1860.4 ms
+VALID True elapsed 1628.116
+formal PdfJS.PdfJS A N16 rep28 0 3045.4 ms
+VALID True elapsed 2835.352471999824
+formal Crypto.Encrypt V8_ON N256 rep28 0 1285.6 ms
+VALID True elapsed 1169.165
+formal Crypto.Encrypt E N256 rep28 0 1470.9 ms
+VALID True elapsed 1362.2707270001993
+formal Crypto.Encrypt A N256 rep28 0 1425.2 ms
+VALID True elapsed 1318.1177790006623
+formal DeltaBlue.DeltaBlue V8_ON N512 rep28 0 1983.1 ms
+VALID True elapsed 1952.86
+formal DeltaBlue.DeltaBlue E N512 rep28 0 3472.1 ms
+VALID True elapsed 3465.1160899996758
+formal DeltaBlue.DeltaBlue A N512 rep28 0 3844.9 ms
+VALID True elapsed 3837.583519999869
+formal zlib.zlib E N1 rep28 0 8733.6 ms
+VALID True elapsed 8721.216108000837
+formal zlib.zlib V8_ON N1 rep28 0 7430.8 ms
+VALID True elapsed 7388.2789999999995
+formal zlib.zlib A N1 rep28 0 8379.2 ms
+VALID True elapsed 8366.59673400037
+formal Mandreel.Mandreel E N1 rep28 0 3300.1 ms
+VALID True elapsed 1830.5299400007352
+formal Mandreel.Mandreel A N1 rep28 0 3207.8 ms
+VALID True elapsed 1767.3760159993544
+formal Mandreel.Mandreel V8_ON N1 rep28 0 3122.6 ms
+VALID True elapsed 1496.6850000000002
+formal CodeLoad.CodeLoadJQuery A N256 rep29 0 2729.2 ms
+VALID True elapsed 2719.407700000331
+formal CodeLoad.CodeLoadJQuery V8_ON N256 rep29 0 1257.0 ms
+VALID True elapsed 1218.224
+formal CodeLoad.CodeLoadJQuery E N256 rep29 0 2832.5 ms
+VALID True elapsed 2823.3879290008917
+formal Gameboy.Gameboy V8_ON N4 rep29 0 1271.2 ms
+VALID True elapsed 1202.327
+formal Gameboy.Gameboy A N4 rep29 0 1387.0 ms
+VALID True elapsed 1345.5752860000357
+formal Gameboy.Gameboy E N4 rep29 0 1405.7 ms
+VALID True elapsed 1361.7302209995687
+formal RegExp.RegExp V8_ON N64 rep29 0 1882.6 ms
+VALID True elapsed 1838.637
+formal RegExp.RegExp E N64 rep29 0 11749.8 ms
+VALID True elapsed 11723.85648300033
+formal RegExp.RegExp A N64 rep29 0 11723.8 ms
+VALID True elapsed 11697.844986999407
+formal Crypto.Decrypt A N16 rep29 0 1643.1 ms
+VALID True elapsed 1628.9424669994041
+formal Crypto.Decrypt V8_ON N16 rep29 0 1381.8 ms
+VALID True elapsed 1342.355
+formal Crypto.Decrypt E N16 rep29 0 1633.0 ms
+VALID True elapsed 1618.809689999558
+formal Mandreel.Mandreel A N1 rep29 0 3272.8 ms
+VALID True elapsed 1801.389535999857
+formal Mandreel.Mandreel V8_ON N1 rep29 0 3049.7 ms
+VALID True elapsed 1472.7870000000003
+formal Mandreel.Mandreel E N1 rep29 0 3268.8 ms
+VALID True elapsed 1810.5165780000389
+formal CodeLoad.CodeLoadClosure V8_ON N4096 rep29 0 1363.0 ms
+VALID True elapsed 1311.493
+formal CodeLoad.CodeLoadClosure A N4096 rep29 0 2695.9 ms
+VALID True elapsed 2560.181646999903
+formal CodeLoad.CodeLoadClosure E N4096 rep29 0 2851.4 ms
+VALID True elapsed 2715.14323099982
+formal NavierStokes.NavierStokes E N32 rep29 0 1831.8 ms
+VALID True elapsed 1820.3510190006346
+formal NavierStokes.NavierStokes V8_ON N32 rep29 0 2293.5 ms
+VALID True elapsed 2265.132
+formal NavierStokes.NavierStokes A N32 rep29 0 1867.8 ms
+VALID True elapsed 1855.4080539997667
+formal Crypto.Encrypt E N256 rep29 0 1422.1 ms
+VALID True elapsed 1314.704772000201
+formal Crypto.Encrypt A N256 rep29 0 1456.2 ms
+VALID True elapsed 1323.6898369994015
+formal Crypto.Encrypt V8_ON N256 rep29 0 1275.3 ms
+VALID True elapsed 1158.1070000000002
+formal EarleyBoyer.Boyer A N32 rep29 0 3416.9 ms
+VALID True elapsed 3399.083344999701
+formal EarleyBoyer.Boyer V8_ON N32 rep29 0 1509.0 ms
+VALID True elapsed 1467.629
+formal EarleyBoyer.Boyer E N32 rep29 0 3430.4 ms
+VALID True elapsed 3411.093810999766
+formal zlib.zlib V8_ON N1 rep29 0 7416.5 ms
+VALID True elapsed 7381.557000000001
+formal zlib.zlib A N1 rep29 0 8507.1 ms
+VALID True elapsed 8494.294583000243
+formal zlib.zlib E N1 rep29 0 8484.2 ms
+VALID True elapsed 8472.177257000469
+formal PdfJS.PdfJS E N16 rep29 0 3218.2 ms
+VALID True elapsed 3006.02189799957
+formal PdfJS.PdfJS V8_ON N16 rep29 0 1816.9 ms
+VALID True elapsed 1595.263
+formal PdfJS.PdfJS A N16 rep29 0 3084.1 ms
+VALID True elapsed 2872.9037969997153
+formal DeltaBlue.DeltaBlue A N512 rep29 0 3631.4 ms
+VALID True elapsed 3624.042315000668
+formal DeltaBlue.DeltaBlue V8_ON N512 rep29 0 1960.9 ms
+VALID True elapsed 1933.696
+formal DeltaBlue.DeltaBlue E N512 rep29 0 3407.0 ms
+VALID True elapsed 3399.7224850002676
+formal Typescript.Typescript V8_ON N1 rep29 0 1585.2 ms
+VALID True elapsed 1416.2340000000002
+formal Typescript.Typescript E N1 rep29 0 2447.0 ms
+VALID True elapsed 2202.4794740006328
+formal Typescript.Typescript A N1 rep29 0 2307.4 ms
+VALID True elapsed 2096.2931509995833
+formal EarleyBoyer.Earley A N512 rep29 0 3647.4 ms
+VALID True elapsed 3630.662684000097
+formal EarleyBoyer.Earley E N512 rep29 0 3622.4 ms
+VALID True elapsed 3604.6343310000375
+formal EarleyBoyer.Earley V8_ON N512 rep29 0 1205.5 ms
+VALID True elapsed 1162.736
+formal Richards.Richards E N512 rep29 0 1760.9 ms
+VALID True elapsed 1753.5681130001321
+formal Richards.Richards V8_ON N512 rep29 0 1107.3 ms
+VALID True elapsed 1081.484
+formal Richards.Richards A N512 rep29 0 1808.0 ms
+VALID True elapsed 1800.7372160004452
+formal Splay.Splay E N1024 rep29 0 3250.0 ms
+VALID True elapsed 2615.21691800002
+formal Splay.Splay A N1024 rep29 0 2813.0 ms
+VALID True elapsed 2317.6435920000076
+formal Splay.Splay V8_ON N1024 rep29 0 2030.7 ms
+VALID True elapsed 1870.296
+formal RayTrace.RayTrace V8_ON N64 rep29 0 1105.1 ms
+VALID True elapsed 1080.5410000000002
+formal RayTrace.RayTrace A N64 rep29 0 2548.0 ms
+VALID True elapsed 2540.376586000435
+formal RayTrace.RayTrace E N64 rep29 0 2563.5 ms
+VALID True elapsed 2555.732487999834
+STEP diagnostics.py build
+diagnostic site build 0 26631.9 ms
+STEP diagnostics.py collect
+diagnostic Richards.Richards 0 13.6 ms
+diagnostic DeltaBlue.DeltaBlue 0 17.2 ms
+diagnostic Crypto.Encrypt 0 114.8 ms
+diagnostic Crypto.Decrypt 0 115.6 ms
+diagnostic RayTrace.RayTrace 0 52.1 ms
+diagnostic EarleyBoyer.Earley 0 34.6 ms
+diagnostic EarleyBoyer.Boyer 0 151.2 ms
+diagnostic RegExp.RegExp 0 209.6 ms
+diagnostic Splay.Splay 0 591.6 ms
+diagnostic NavierStokes.NavierStokes 0 873.4 ms
+diagnostic PdfJS.PdfJS 0 329.4 ms
+diagnostic Mandreel.Mandreel 0 3133.1 ms
+diagnostic Gameboy.Gameboy 0 559.5 ms
+diagnostic CodeLoad.CodeLoadClosure 0 7.1 ms
+diagnostic CodeLoad.CodeLoadJQuery 0 18.0 ms
+diagnostic Typescript.Typescript 0 2710.3 ms
+diagnostic zlib.zlib 0 8236.4 ms
+STEP host_diagnostic.py
+zlib host read diagnostic A 0 8379.8 ms
+zlib host read diagnostic E 0 8461.2 ms
+zlib host read diagnostic V8_ON 0 7458.7 ms
+STEP post_identity.py
+release symbols 0 5.7 ms
+A bytecode header sizeof 0 282.8 ms
+E bytecode header sizeof 0 170.4 ms
+STEP analyze.py --output summary
+{
+  "status": "COMPLETE",
+  "expected": 1530,
+  "actual": 1530,
+  "valid": 1530,
+  "duplicates": [],
+  "failures": 0,
+  "missing": 0,
+  "identity_and_boot": true,
+  "script_hash": true,
+  "schedule_positions": true,
+  "actual_permutations": [
+    {
+      "case": "Richards.Richards",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "DeltaBlue.DeltaBlue",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "Crypto.Encrypt",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "Crypto.Decrypt",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "RayTrace.RayTrace",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "EarleyBoyer.Earley",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "EarleyBoyer.Boyer",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "RegExp.RegExp",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "Splay.Splay",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "NavierStokes.NavierStokes",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "PdfJS.PdfJS",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "Mandreel.Mandreel",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "Gameboy.Gameboy",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "CodeLoad.CodeLoadClosure",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "CodeLoad.CodeLoadJQuery",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "Typescript.Typescript",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    },
+    {
+      "case": "zlib.zlib",
+      "complete_triples": 30,
+      "counts": {
+        "A,E,V8_ON": 5,
+        "A,V8_ON,E": 5,
+        "E,A,V8_ON": 5,
+        "E,V8_ON,A": 5,
+        "V8_ON,A,E": 5,
+        "V8_ON,E,A": 5
+      },
+      "each5": true
+    }
+  ],
+  "below_pilot_threshold_retained": 0,
+  "full_n30": true,
+  "bootstrap": 10000,
+  "seed": 20261031,
+  "intervals": "exploratory unadjusted percentile, no equivalence claim",
+  "not_official_score": true,
+  "analysis_raw_only": true
+}
+STEP audit.py
+{
+  "status": "PASS_COMPLETE",
+  "planned": 1530,
+  "actual": 1530,
+  "valid": 1530,
+  "serial": true,
+  "errors": [],
+  "median_replay": true,
+  "suite_equal_weight_GM_replay": true,
+  "groups": [
+    {
+      "case": "Richards.Richards",
+      "n": {
+        "V8_ON": 30,
+        "E": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "DeltaBlue.DeltaBlue",
+      "n": {
+        "V8_ON": 30,
+        "E": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "Crypto.Encrypt",
+      "n": {
+        "A": 30,
+        "V8_ON": 30,
+        "E": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "Crypto.Decrypt",
+      "n": {
+        "V8_ON": 30,
+        "E": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "RayTrace.RayTrace",
+      "n": {
+        "V8_ON": 30,
+        "E": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "EarleyBoyer.Earley",
+      "n": {
+        "A": 30,
+        "E": 30,
+        "V8_ON": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "EarleyBoyer.Boyer",
+      "n": {
+        "A": 30,
+        "V8_ON": 30,
+        "E": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "RegExp.RegExp",
+      "n": {
+        "A": 30,
+        "E": 30,
+        "V8_ON": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "Splay.Splay",
+      "n": {
+        "E": 30,
+        "A": 30,
+        "V8_ON": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "NavierStokes.NavierStokes",
+      "n": {
+        "V8_ON": 30,
+        "A": 30,
+        "E": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "PdfJS.PdfJS",
+      "n": {
+        "A": 30,
+        "E": 30,
+        "V8_ON": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "Mandreel.Mandreel",
+      "n": {
+        "V8_ON": 30,
+        "E": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "Gameboy.Gameboy",
+      "n": {
+        "V8_ON": 30,
+        "E": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "CodeLoad.CodeLoadClosure",
+      "n": {
+        "V8_ON": 30,
+        "A": 30,
+        "E": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "CodeLoad.CodeLoadJQuery",
+      "n": {
+        "E": 30,
+        "V8_ON": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "Typescript.Typescript",
+      "n": {
+        "E": 30,
+        "V8_ON": 30,
+        "A": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    },
+    {
+      "case": "zlib.zlib",
+      "n": {
+        "A": 30,
+        "E": 30,
+        "V8_ON": 30
+      },
+      "complete_triples": 30,
+      "six_permutations_each5": true,
+      "every_condition_every_position10": true
+    }
+  ],
+  "raw_only_no_runtime_required": true
+}
+STEP plot.py
+STEP report.py
+Wrote results.md from finished same-campaign records

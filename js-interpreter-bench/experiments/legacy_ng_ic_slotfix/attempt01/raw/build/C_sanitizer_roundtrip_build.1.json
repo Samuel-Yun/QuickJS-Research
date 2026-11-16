@@ -1,0 +1,28 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-I/home/mzyx/legacy_ng_ic_slotfix_attempt01/C_sanitizer",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/correctness/roundtrip_slots.c",
+    "-fsanitize=address",
+    "-fsanitize=undefined",
+    "-fno-omit-frame-pointer",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C_sanitizer/.obj/asan/ubsan/quickjs.o",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C_sanitizer/.obj/asan/ubsan/dtoa.o",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C_sanitizer/.obj/asan/ubsan/libregexp.o",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C_sanitizer/.obj/asan/ubsan/libunicode.o",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C_sanitizer/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/C_sanitizer/roundtrip_slots"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-23T09:08:25.630796+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "wall_ns": 440808947
+}

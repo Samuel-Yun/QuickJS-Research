@@ -1,0 +1,255 @@
+{
+  "boot_id": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+  "timestamp": "2026-11-04T07:43:17.847056+00:00",
+  "records": [
+    {
+      "label": "A",
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "exists": true,
+      "expected": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "size": 5090704,
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "first_64_bytes": "7f454c4602010100000000000000000003003e0001000000502b010000000000400000000000000090a34d000000000000000000400038000d00400028002700",
+      "process": {
+        "exit_code": 0,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "command": [
+          "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "bounded artifact smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T07:43:17.678986+00:00",
+        "completed_at": "2026-11-04T07:43:17.681627+00:00",
+        "outer_start_ns": 4132092158,
+        "outer_stop_ns": 4134807576,
+        "external_wall_ms": 2.715418,
+        "child_user_ms": 1.299,
+        "child_system_ms": 0.0,
+        "boot_id": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "boot_id_after": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+      "exists": true,
+      "expected": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "size": 5102680,
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "first_64_bytes": "7f454c4602010100000000000000000003003e0001000000502b010000000000400000000000000058d24d000000000000000000400038000d00400028002700",
+      "process": {
+        "exit_code": 0,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "command": [
+          "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "bounded artifact smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T07:43:17.690231+00:00",
+        "completed_at": "2026-11-04T07:43:17.691976+00:00",
+        "outer_start_ns": 4143347232,
+        "outer_stop_ns": 4145157793,
+        "external_wall_ms": 1.810561,
+        "child_user_ms": 0.9760000000000001,
+        "child_system_ms": 0.0,
+        "boot_id": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "boot_id_after": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "label": "V8_ON",
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "exists": true,
+      "expected": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "size": 53498016,
+      "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "first_64_bytes": "7f454c4602010100000000000000000003003e000100000000e05d00000000004000000000000000604730030000000000000000400038000c00400025002300",
+      "process": {
+        "exit_code": 0,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "command": [
+          "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+          "--jitless",
+          "--no-lazy",
+          "--use-ic",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "bounded artifact smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T07:43:17.771795+00:00",
+        "completed_at": "2026-11-04T07:43:17.802569+00:00",
+        "outer_start_ns": 4224895856,
+        "outer_stop_ns": 4255749499,
+        "external_wall_ms": 30.853643,
+        "child_user_ms": 0.0,
+        "child_system_ms": 30.011999999999997,
+        "boot_id": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "boot_id_after": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "label": "diagnostic_v2/A.build.json",
+      "path": "/home/mzyx/splay_ic_20261104_attempt01/A_diag5/qjs",
+      "exists": true,
+      "expected": "8dce64ddaffd5c0ac7ea8ba1f4abbad03fc0b9804013b9667416c8980bcc8df3",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "first_64_bytes": "",
+      "process_error": "OSError(8, 'Exec format error')"
+    },
+    {
+      "label": "diagnostic_v2/M.build.json",
+      "path": "/home/mzyx/splay_ic_20261104_attempt01/M_diag3/qjs",
+      "exists": true,
+      "expected": "d739aac9a733eab80dac827c4abed22e24e0f42e7b816052f61e2a8ded1bde0e",
+      "size": 5162216,
+      "sha256": "d739aac9a733eab80dac827c4abed22e24e0f42e7b816052f61e2a8ded1bde0e",
+      "first_64_bytes": "7f454c4602010100000000000000000003003e0001000000b04b0100000000004000000000000000a8ba4e000000000000000000400038000e00400029002800",
+      "process": {
+        "exit_code": 0,
+        "stdout": "123\n",
+        "stderr": "",
+        "timeout": false,
+        "command": [
+          "/home/mzyx/splay_ic_20261104_attempt01/M_diag3/qjs",
+          "-e",
+          "console.log(123)"
+        ],
+        "label": "bounded artifact smoke",
+        "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+        "timestamp": "2026-11-04T07:43:17.819875+00:00",
+        "completed_at": "2026-11-04T07:43:17.821821+00:00",
+        "outer_start_ns": 4272973118,
+        "outer_stop_ns": 4275003537,
+        "external_wall_ms": 2.030419,
+        "child_user_ms": 1.0700000000000003,
+        "child_system_ms": 0.0,
+        "boot_id": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "boot_id_after": "f4f23405-6b45-42ff-abbe-da80cb44faec",
+        "load_average": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  ],
+  "source_checks": [
+    {
+      "condition": "A",
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c",
+      "expected_sha256": "b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17",
+      "actual_sha256": "b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17"
+    },
+    {
+      "condition": "A",
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.h",
+      "expected_sha256": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+      "actual_sha256": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8"
+    },
+    {
+      "condition": "A",
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/quickjs-opcode.h",
+      "expected_sha256": "edf63cfcd3684e4f21c702e7005f7c013abcd90d5019fb3baa83ca2739d1dec1",
+      "actual_sha256": "edf63cfcd3684e4f21c702e7005f7c013abcd90d5019fb3baa83ca2739d1dec1"
+    },
+    {
+      "condition": "A",
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/LICENSE",
+      "expected_sha256": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+      "actual_sha256": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/quickjs.c",
+      "expected_sha256": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd",
+      "actual_sha256": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/quickjs.h",
+      "expected_sha256": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+      "actual_sha256": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/quickjs-opcode.h",
+      "expected_sha256": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+      "actual_sha256": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/LICENSE",
+      "expected_sha256": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+      "actual_sha256": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/read_ic_config.h",
+      "expected_sha256": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+      "actual_sha256": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/read_ic_types.h",
+      "expected_sha256": "f7cbb27c6d5882d2553222dd5709280b85ff21623a88b531709933c86cc0046c",
+      "actual_sha256": "f7cbb27c6d5882d2553222dd5709280b85ff21623a88b531709933c86cc0046c"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/read_ic_prepare.inc",
+      "expected_sha256": "6c0918de10801c641279e20af9e5295e726675dbe821c3c86e71c0ee8e273b19",
+      "actual_sha256": "6c0918de10801c641279e20af9e5295e726675dbe821c3c86e71c0ee8e273b19"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/read_ic_runtime.inc",
+      "expected_sha256": "8d12bb9c2ea08f87291f7d5339eb8a41d641ed38adf916b3ff9be6dfa44f201b",
+      "actual_sha256": "8d12bb9c2ea08f87291f7d5339eb8a41d641ed38adf916b3ff9be6dfa44f201b"
+    },
+    {
+      "condition": "M",
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/read_ic_opcodes.inc",
+      "expected_sha256": "5f160fc754c496603a5baa3fbbff3796c132c2eda7845ceb197af8ce9d3aa624",
+      "actual_sha256": "5f160fc754c496603a5baa3fbbff3796c132c2eda7845ceb197af8ce9d3aa624"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+      "expected_sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+      "actual_sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749"
+    },
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat",
+      "expected_sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+      "actual_sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+    }
+  ]
+}

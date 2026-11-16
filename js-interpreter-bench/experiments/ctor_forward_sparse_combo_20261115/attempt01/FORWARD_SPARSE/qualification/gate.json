@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "differential_builds": [
+    "R3",
+    "FORWARD",
+    "SPARSE",
+    "release",
+    "counts",
+    "san"
+  ],
+  "both_paths_hit_in_one_process": true,
+  "forward_hits": 499998,
+  "constructor_plan_hits": 499996,
+  "negative_cache_hits": 499999,
+  "prepared_normal_ROM": true,
+  "ASan_UBSan_GC_two_realms": true,
+  "micro": {
+    "forward": {
+      "R3": {
+        "elapsed_ms": 138.74667197465897,
+        "sum": 124999750000,
+        "N": 500000
+      },
+      "FORWARD": {
+        "elapsed_ms": 105.98404496908188,
+        "sum": 124999750000,
+        "N": 500000
+      },
+      "SPARSE": {
+        "elapsed_ms": 135.768099963665,
+        "sum": 124999750000,
+        "N": 500000
+      },
+      "release": {
+        "elapsed_ms": 103.7576749920845,
+        "sum": 124999750000,
+        "N": 500000
+      }
+    },
+    "sparse": {
+      "R3": {
+        "elapsed_ms": 63.9867479801178,
+        "sum": 500001500000,
+        "N": 1000000
+      },
+      "FORWARD": {
+        "elapsed_ms": 63.98325598239899,
+        "sum": 500001500000,
+        "N": 1000000
+      },
+      "SPARSE": {
+        "elapsed_ms": 64.04818296432495,
+        "sum": 500001500000,
+        "N": 1000000
+      },
+      "release": {
+        "elapsed_ms": 67.005136013031,
+        "sum": 500001500000,
+        "N": 1000000
+      }
+    },
+    "interaction": {
+      "R3": {
+        "elapsed_ms": 145.63432502746582,
+        "sum": 125000750000,
+        "N": 500000
+      },
+      "FORWARD": {
+        "elapsed_ms": 114.19319301843643,
+        "sum": 125000750000,
+        "N": 500000
+      },
+      "SPARSE": {
+        "elapsed_ms": 143.93481200933456,
+        "sum": 125000750000,
+        "N": 500000
+      },
+      "release": {
+        "elapsed_ms": 113.00839298963547,
+        "sum": 125000750000,
+        "N": 500000
+      }
+    }
+  },
+  "frozen_files": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/qualify.py": "c7b652c85b4aa8fa6dee7b6de76ceb6a37d485c08abc9e562699859ecf2a62e1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/ownership_realms.c": "fdb73eb458c74489c7c097e39b717cb557b57651ce831934d392ec45bb4dceac",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/FORWARD_SPARSE/serialization.c": "eaf8f6a4f9c4944eb11f797eece6b0b7de76febeaee310615fef241b31f9a009",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/FORWARD_SPARSE/forward.safety.js": "feb49e6033bcbeb01ca685f86d0cbe1fa40dd5bafdefe6c8475d6a4f063708ec",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/FORWARD_SPARSE/forward.micro.js": "e47353d94444fcbc378c049fd4d30ccc036ffd51de33ecd85df1bda5f49114a1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/FORWARD_SPARSE/sparse.safety.js": "3c6ab6066d40c36cc610549110854ff18c1dcdeebd015b5b0f0b18b7dd6309aa",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/FORWARD_SPARSE/sparse.micro.js": "5d161ca5e9b3cc5c548aedb530906b7a2427891a93f355c200c4ee52c10759c1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/FORWARD_SPARSE/interaction.safety.js": "54887f7abe324394e33723ecf59643145411fbf84ac10621b2ca0fe4378172eb",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_forward_sparse_combo_20261115/attempt01/FORWARD_SPARSE/interaction.micro.js": "d738a4a0eb3f8dc8ce6b19554ebc77babfae0dc50cfa392d99e7dc57bd6621a0"
+  }
+}

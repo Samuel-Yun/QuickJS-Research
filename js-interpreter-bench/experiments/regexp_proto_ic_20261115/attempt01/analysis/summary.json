@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "fresh_release_processes": 43,
+  "independent_count_processes": 43,
+  "C_formal_retests": 0,
+  "aggregates": {
+    "octane": {
+      "A": -6.185897472405588,
+      "EVAL_COLD": -0.5040481339123937,
+      "C": 0.26832556337970104
+    },
+    "sunspider": {
+      "A": -1.5028449168962732,
+      "EVAL_COLD": -0.016116758207529447,
+      "C": 0.06584052700198129,
+      "sum_ms": {
+        "A": 401.84999168262584,
+        "EVAL_COLD": 396.6749892469961,
+        "C": 398.20031219284283,
+        "B3": 397.089025311172
+      }
+    }
+  },
+  "counts_total": {
+    "regexp_named_queries": 6507565,
+    "new_hits": 6483229,
+    "fallbacks": 24336,
+    "normal_lookup_calls": 48672,
+    "normal_lookup_calls_skipped": 12966458,
+    "exec_queries": 5434748,
+    "exec_new_hits": 5432181,
+    "promotions": 11
+  },
+  "parent_comparison": "historical cross-batch single C vs fresh single 3B",
+  "unit": "milliseconds / complete Run; smaller is faster",
+  "octane_aggregation": "equal 14 suites; geometric mean within split suites",
+  "reference_sha256": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/runs/TRANSITION_EDGE_STRONG/octane/comparison.csv": "fec2c2f5e2b454ae5275a58664d0b979aababddc67abef68f297adbcba9eebca",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/sunspider_timing01/comparison.csv": "99f7524e2b2bce7ea1591e6165e5cc4c920d0fcf494a26d75d772236e8127e2f"
+  }
+}

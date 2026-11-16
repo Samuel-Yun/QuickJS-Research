@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "conditions": [
+    "A",
+    "M",
+    "ON",
+    "LOOKUP"
+  ],
+  "shared_switch_ELF": true,
+  "same_sanitizer_ELF_both_modes": "de6aab66219647b1a4ec4d1bc0166932c8739eed13620d9f65bced18be30b33a",
+  "legacy_assertions": 952,
+  "multislot_scenarios": 9,
+  "multislot_assertions": 28151,
+  "read_scenarios": 7,
+  "read_assertions": 287,
+  "site_scenarios": 15,
+  "site_assertions": 23211,
+  "smoke_cases_each": 12,
+  "upstream_entries_each": 11,
+  "GC_cycle_functions_each": 1800,
+  "OOM_budgets_each": 192,
+  "warmed_serialization": true,
+  "qjsc_embedding": true,
+  "full_test262": false,
+  "invalid_modes": [
+    {
+      "value": null,
+      "exit_code": 2
+    },
+    {
+      "value": "",
+      "exit_code": 2
+    },
+    {
+      "value": "2",
+      "exit_code": 2
+    },
+    {
+      "value": "01",
+      "exit_code": 2
+    },
+    {
+      "value": "on",
+      "exit_code": 2
+    },
+    {
+      "value": "1x",
+      "exit_code": 2
+    }
+  ]
+}

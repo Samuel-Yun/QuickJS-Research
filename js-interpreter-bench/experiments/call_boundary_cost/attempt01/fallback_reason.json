@@ -1,0 +1,9 @@
+{
+  "initial_period_us": 7000,
+  "relink": "all three cases pass unchanged engineering thresholds",
+  "sampling": "Richards upper95 bound=1.0590282069366723 exceeds1.05; local and number pass",
+  "action": "exactly one full fresh108-record validation batch at23000us; do not replace individual first-batch positions or combine batches",
+  "thresholds_changed": false,
+  "missing_first_batch_position_retried": false,
+  "final_policy": "after fallback use second batch gate uniformly; only accepted workloads receive long windows"
+}

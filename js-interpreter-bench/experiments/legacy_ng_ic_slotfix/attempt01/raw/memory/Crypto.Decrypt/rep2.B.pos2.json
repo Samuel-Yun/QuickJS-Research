@@ -1,0 +1,30 @@
+{
+  "campaign": "legacy_ng_ic_slotfix/attempt01",
+  "case": "Crypto.Decrypt",
+  "variant": "B",
+  "rep": 2,
+  "order": 2,
+  "N": 16,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/raw/memory/Crypto.Decrypt/rep2.B.pos2.rss.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_slotfix_attempt01/B/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_slotfix/attempt01/generated/Crypto.Decrypt.N16.measure.js"
+  ],
+  "binary_sha256": "6e880ec2bbe43249a57342e82396cd02e99f01e0b8db7e69fa6ebc861d91ea1d",
+  "script_sha256": "c59cd4bfba2f6f42be3142d33d160ec16e10cdfd05735dc9c736e695e0dbb315",
+  "peak_rss_KiB": 3852,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Crypto.Decrypt\",\"suite\":\"Crypto\",\"subbenchmark\":\"Decrypt\",\"mode\":\"LEGACY_NG_IC_SLOTFIX_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":16,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":3015940.420818,\"stop_ms\":3017579.041196,\"elapsed_ms\":1638.6203779997304,\"elapsed_per_call_ms\":102.41377362498315,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timestamp": "2026-10-23T11:05:40.147673+00:00",
+  "outer_wall_ns": 1674370935,
+  "method": "GNU time small launcher, ru_maxrss KiB",
+  "performance_sample": false,
+  "instrumented": false,
+  "valid": true
+}

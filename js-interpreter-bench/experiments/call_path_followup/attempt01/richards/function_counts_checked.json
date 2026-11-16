@@ -1,0 +1,38 @@
+{
+  "both_engines_equal": true,
+  "counts": {
+    "counts": {
+      "Scheduler.prototype.addIdleTask": 1,
+      "Scheduler.prototype.addRunningTask": 1,
+      "Scheduler.prototype.addTask": 6,
+      "TaskControlBlock.prototype.setRunning": 1,
+      "Scheduler.prototype.addWorkerTask": 1,
+      "Scheduler.prototype.addHandlerTask": 2,
+      "Scheduler.prototype.addDeviceTask": 2,
+      "Scheduler.prototype.schedule": 1,
+      "TaskControlBlock.prototype.isHeldOrSuspended": 10671,
+      "TaskControlBlock.prototype.run": 6573,
+      "HandlerTask.prototype.run": 2328,
+      "Packet.prototype.addTo": 2008,
+      "Scheduler.prototype.suspendCurrent": 2324,
+      "TaskControlBlock.prototype.markAsSuspended": 2324,
+      "WorkerTask.prototype.run": 468,
+      "Scheduler.prototype.queue": 2322,
+      "TaskControlBlock.prototype.checkPriorityAdd": 2322,
+      "TaskControlBlock.prototype.markAsRunnable": 1479,
+      "DeviceTask.prototype.run": 2777,
+      "Scheduler.prototype.holdCurrent": 928,
+      "TaskControlBlock.prototype.markAsHeld": 928,
+      "IdleTask.prototype.run": 1000,
+      "Scheduler.prototype.release": 999,
+      "TaskControlBlock.prototype.markAsNotHeld": 999
+    },
+    "shapes": {
+      "HandlerTask:TCBownRun=false:taskOwnRun=false:TCBproto=true:taskOwn=true": 2328,
+      "WorkerTask:TCBownRun=false:taskOwnRun=false:TCBproto=true:taskOwn=true": 468,
+      "DeviceTask:TCBownRun=false:taskOwnRun=false:TCBproto=true:taskOwn=true": 2777,
+      "IdleTask:TCBownRun=false:taskOwnRun=false:TCBproto=true:taskOwn=true": 1000
+    }
+  },
+  "scope": "DIAGNOSTIC_JS_COUNTS, one Run; frequencies/shapes not times"
+}

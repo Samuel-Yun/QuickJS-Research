@@ -1,0 +1,83 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -31,8 +31,18 @@
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+-                RDI_COUNT(shape_misses);                               \
+-            }                                                           \
++                RDI_COUNT(shape_misses);                                      \
++            } else if (keep && p->class_id == JS_CLASS_REGEXP && !p->is_exotic) {\
++                if (site->shape == p->shape && site->holder_shape) {          \
++                    JSObject *holder = p->shape->proto;                       \
++                    if (holder && holder->class_id == JS_CLASS_OBJECT &&      \
++                        !holder->is_exotic && site->holder_shape == holder->shape) {\
++                        /* B3_NEW_HIT */                                      \
++                        val = JS_DupValue(ctx, holder->prop[site->prop_offset].u.value);\
++                        goto name ## _done;                                   \
++                    }                                                         \
++                }                                                             \
++            }                                                                 \
+         }                                                               \
+         RDI_COUNT(fallback);                                            \
+         atom = site->atom;                                              \
+@@ -52,7 +62,12 @@
+                             origin->class_id == JS_CLASS_OBJECT && !origin->is_exotic && \
+                             p->class_id == JS_CLASS_OBJECT && !p->is_exotic && \
+                             origin->shape->is_hashed && p->shape->is_hashed) \
+-                            v6_proto_update(ctx, site, origin->shape, p->shape, pr - p->prop); \
++                            v6_proto_update(ctx, site, origin->shape, p->shape, pr - p->prop);\
++                        else if (keep && p == origin->shape->proto &&         \
++                                 origin->class_id == JS_CLASS_REGEXP && !origin->is_exotic &&\
++                                 p->class_id == JS_CLASS_OBJECT && !p->is_exotic &&\
++                                 origin->shape->is_hashed && rdi_regexp_holder_admit(ctx,p))\
++                            v6_proto_update(ctx, site, origin->shape, p->shape, pr - p->prop);\
+                     }                                                  \
+                     else if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) { RDI_REASON(special); } \
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -74,3 +74,43 @@
+     b->read_ic_sites = NULL;
+     b->read_ic_count = 0;
+ }
++
++/* Admission-only normalization for a RegExp receiver's direct ordinary
++ * prototype. Native prototype construction deliberately starts with an
++ * unhashed/private shape. Merely holding that pointer would NOT freeze it.
++ *
++ * Rebuild its exact existing layout hash and link it into the original shape
++ * table BEFORE rdi_proto_update takes references. From that point the existing
++ * hashed-shape COW rules protect both cached pointers and the property index.
++ * No property value, descriptor, prototype link or regular-expression code is
++ * changed. This is not an atom/descriptor recheck on every cache hit.
++ */
++_Static_assert(sizeof(ReadICSite)==24,"3B reuses the original IC record");
++static BOOL rdi_regexp_holder_admit(JSContext *ctx,JSObject *holder)
++{
++    JSShape *shape=holder->shape;
++    JSShapeProperty *properties;
++    uint32_t hash;
++    if(shape->is_hashed) return TRUE;
++    /* Stay with the original lookup for layouts that do not satisfy the
++     * original append-only hashed-shape construction invariants. */
++    if(js_rc(shape)->ref_count!=1 || shape->deleted_prop_count || !shape->prop_count)
++        return FALSE;
++    properties=get_shape_prop(shape);
++    hash=shape_initial_hash(shape->proto);
++    for(int i=0;i<shape->prop_count;i++) {
++        if(properties[i].atom==JS_ATOM_NULL) return FALSE;
++        hash=shape_hash(shape_hash(hash,properties[i].atom),properties[i].flags);
++    }
++    if(ctx->rt->shape_hash_count>=ctx->rt->shape_hash_size/2) {
++        /* RT allocation has no pending JS exception. Optional admission may
++         * fail without changing this successful property read's result. */
++        if(ctx->rt->shape_hash_bits>=30 || resize_shape_hash(ctx->rt,ctx->rt->shape_hash_bits+1)<0)
++            return FALSE;
++    }
++    shape->hash=hash;
++    shape->is_hashed=TRUE;
++    js_shape_hash_link(ctx->rt,shape);
++    /* B3_PROMOTED */
++    return TRUE;
++}

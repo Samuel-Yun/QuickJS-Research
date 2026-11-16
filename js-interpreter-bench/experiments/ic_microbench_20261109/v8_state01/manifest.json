@@ -1,0 +1,92 @@
+{
+  "purpose": "IC states only, not per-access hit rates or performance",
+  "runtime": {
+    "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+    "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+    "dependencies": [
+      {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749"
+      },
+      {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/icudtl.dat",
+        "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+      }
+    ],
+    "system_libraries": [
+      {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "sha256": "bda779ea9e9ad234f60315477d7cfd0bdde861cd8ddd9df8cdaf62f18c4cec14"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "85e64f97e348786a8fb4d9f3d52fec289e2fb86bba20f0731dfe61990525e0f7"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "sha256": "9d339ecb409578d6a5d587e6c537a8f9589b8a13fefba30d167433a4b5758bee"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+        "sha256": "1c488db6f4fe8cecb72456bc018de000b7a9b539c2994864b0416b5e8371b3d8"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+        "sha256": "1327fc40710691dbd94e88b6cf4efce27fefe8fbb93f7d1164a75b4dccaea696"
+      }
+    ],
+    "ldd": "\tlinux-vdso.so.1 (0x000071398281d000)\n\tlibpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00007139827fb000)\n\tlibm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007139804da000)\n\tlibgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007139827cd000)\n\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x0000713980200000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000071398281f000)\n"
+  },
+  "tool_sha256": "248c355566497a03a613d8b7912b3f882a17ef8022d082826ec5bd41b3ed7bcf",
+  "cases": [
+    {
+      "EVAL_COLD_input_rate": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+        "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "--jitless",
+        "--no-lazy",
+        "--use-ic",
+        "--allow-natives-syntax",
+        "--print-bytecode",
+        "--print-bytecode-filter=readLoop",
+        "--log-ic",
+        "--no-logfile-per-isolate",
+        "--logfile=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_state01/v8.hit0.log",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_state01/state.hit0.js"
+      ],
+      "formal_script_sha256": "cbea6d9ead5b41f30b45858eeb2e34974c7ad657a5810f46d96f12bbcf780da9",
+      "diagnostic_script_sha256": "af5adb56aae39b889af270eb01b415e3ccb4962946dd67e3fcf0b1d2c3efcb02",
+      "log_sha256": "97ef5b4d36768ff408a68816ddd7be07953bf28202fbfd05068dde0ac69a9b44",
+      "x_LoadIC_events": [
+        "LoadIC,0x50e010009ec,14500,97,20,0,1,0x28a50101f6a5,x,,",
+        "LoadIC,0x50e010009ec,14503,97,20,1,P,0x28a50101f6cd,x,,"
+      ],
+      "actual_hit_rate": null
+    },
+    {
+      "EVAL_COLD_input_rate": 100,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+        "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "--jitless",
+        "--no-lazy",
+        "--use-ic",
+        "--allow-natives-syntax",
+        "--print-bytecode",
+        "--print-bytecode-filter=readLoop",
+        "--log-ic",
+        "--no-logfile-per-isolate",
+        "--logfile=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_state01/v8.hit100.log",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_state01/state.hit100.js"
+      ],
+      "formal_script_sha256": "06949edaff404983098581c58f137ae799a50f8d728feda7e3e56f8a94c06dd9",
+      "diagnostic_script_sha256": "530202803f5503c5f02763664558ff44111419153be906bd5382425c2b0645db",
+      "log_sha256": "d58499b9c92d102b7ece222322d97c7ec98b50b6189bae3d4e2ae250a64c15ed",
+      "x_LoadIC_events": [
+        "LoadIC,0x2ace010009ec,10833,97,20,0,1,0x101f0101f6b5,x,,"
+      ],
+      "actual_hit_rate": null
+    }
+  ]
+}

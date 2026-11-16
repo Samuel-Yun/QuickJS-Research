@@ -1,0 +1,64 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    {
+      "name": "checks.js",
+      "token": "semantic/PREP2/checks.js"
+    },
+    {
+      "name": "semantic.js",
+      "token": "semantic/PREP2/semantic.js"
+    },
+    {
+      "name": "targeted.js",
+      "token": "semantic/PREP2/targeted.js"
+    },
+    {
+      "name": "combined.js",
+      "token": "semantic/PREP2/combined.js"
+    },
+    {
+      "name": "extra.js",
+      "token": "semantic/PREP2/extra.js"
+    },
+    {
+      "name": "read_roundtrip.c",
+      "token": "safety_run/PREP2/read_roundtrip"
+    },
+    {
+      "name": "roundtrip_slots.c",
+      "token": "safety_run/PREP2/roundtrip_slots"
+    },
+    {
+      "name": "gc_cycles.c",
+      "token": "safety_run/PREP2/gc_cycles"
+    },
+    {
+      "name": "first_entry_roundtrip.c",
+      "token": "safety_run/PREP2/first_entry_roundtrip"
+    },
+    {
+      "name": "native_finalizer.c",
+      "token": "safety_run/PREP2/native_finalizer"
+    },
+    {
+      "name": "ASan/UBSan combined.js",
+      "token": "sanitizer/PREP2/combined.js"
+    },
+    {
+      "name": "ASan/UBSan extra.js",
+      "token": "sanitizer/PREP2/extra.js"
+    },
+    {
+      "name": "ASan/UBSan semantic.js",
+      "token": "sanitizer/PREP2/semantic.js"
+    }
+  ],
+  "mechanism": "MECHANISM_PASS fused_hits=342 proto_hits=93 function_header=144\n",
+  "preparation_equivalence": true,
+  "split_record_sizes_verified": false,
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "full_test262": false
+}

@@ -1,0 +1,70 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:652:1: function: TaskControlBlock
+  args: link id priority queue task
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_SUSPENDED [global_ref22]
+    1: var STATE_SUSPENDED_RUNNABLE [global_ref24]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function TaskControlBlock(link, id, priority, queue, task) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.link = link;
+
+        get_loc0 0: this
+        get_arg0 0: link
+        put_field link
+
+;;   this.id = id;
+
+        get_loc0 0: this
+        get_arg1 1: id
+        put_field id
+
+;;   this.priority = priority;
+
+        get_loc0 0: this
+        get_arg2 2: priority
+        put_field priority
+
+;;   this.queue = queue;
+
+        get_loc0 0: this
+        get_arg3 3: queue
+        put_field queue
+
+;;   this.task = task;
+
+        get_loc0 0: this
+        get_arg 4: task
+        put_field task
+
+;;   if (queue == null) {
+
+        get_arg3 3: queue
+        null
+        eq
+        if_false8 54
+
+;;     this.state = STATE_SUSPENDED;
+
+        get_loc0 0: this
+        get_var 0: STATE_SUSPENDED
+        put_field state
+        return_undef
+
+;;   } else {
+;;     this.state = STATE_SUSPENDED_RUNNABLE;
+
+   54:  get_loc0 0: this
+        get_var 1: STATE_SUSPENDED_RUNNABLE
+        put_field state
+        return_undef
+
+;;   }
+;; }
+

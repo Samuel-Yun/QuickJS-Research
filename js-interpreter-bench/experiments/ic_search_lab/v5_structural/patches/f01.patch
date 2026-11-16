@@ -1,0 +1,32 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -715,6 +715,7 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    size_t rdi_call_frame_bytes;
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
+@@ -17852,9 +17853,7 @@
+         arg_allocated_size = 0;
+     }
+ 
+-    alloca_size = sizeof(JSValue) * (arg_allocated_size + b->var_count +
+-                                     b->stack_size) +
+-        sizeof(JSVarRef *) * b->var_ref_count;
++    alloca_size = sizeof(JSValue) * arg_allocated_size + b->rdi_call_frame_bytes;
+     if (js_check_stack_overflow(rt, alloca_size))
+         return JS_ThrowStackOverflow(caller_ctx);
+ 
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -6,6 +6,8 @@
+     uint8_t *linked;
+     int pos, op;
+     assert(!b->read_ic_ready && !b->read_ic_sites);
++    b->rdi_call_frame_bytes = sizeof(JSValue) * ((size_t)b->var_count + b->stack_size) +
++        sizeof(JSVarRef *) * b->var_ref_count;
+     b->read_ic_ready = 1;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_header_init();

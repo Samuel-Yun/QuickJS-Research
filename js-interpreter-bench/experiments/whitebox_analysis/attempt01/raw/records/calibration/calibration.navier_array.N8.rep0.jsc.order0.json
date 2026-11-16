@@ -1,0 +1,66 @@
+{
+  "exit_code": 0,
+  "stdout": "WB_RESULT:{\"mode\":\"MAIN_MONOTONIC_V1_DERIVED\",\"variant\":\"navier_array\",\"N\":8,\"checksum\":93654550,\"correctness\":\"PASS\",\"warmup_calls\":0,\"start_ms\":0,\"stop_ms\":36.68,\"elapsed_ms\":36.68}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/jsc_build_fd3406f/JSCOnly/Release/bin/jsc",
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/microbench/generated/navier_array.N8.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T09:01:10.685946+00:00",
+  "outer_start_ns": 311718357748,
+  "outer_stop_ns": 311781453669,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 63095921,
+  "stage": "calibration",
+  "case": "navier",
+  "variant": "navier_array",
+  "engine": "jsc",
+  "N": 8,
+  "rep": 0,
+  "order": 0,
+  "permutation": [],
+  "schedule_index": 0,
+  "mode": "MAIN_MONOTONIC_V1_DERIVED",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "flags": [
+    "--useJIT=false",
+    "--useLLInt=true",
+    "--validateOptions=true"
+  ],
+  "binary_sha256": "65c824a055405bf62b05e21d54515a72a1f0187a4d91225d00a6da969d35879f",
+  "script_sha256": "c1ab912e47ac802ffd3dd3fac32459822f6cb89ddb4c6b1ff08de38fce20605b",
+  "adapters": [
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/jsc.js",
+      "sha256": "f9ddbb9556352e283b9c9feebc8bdd0ef1abac5bcdf1ab7a5d83945fa3c9437b"
+    },
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/jsc.js",
+      "sha256": "0c485996a598b7e36f2f292b66397adc0390cbe6b69b55199e47e1c6c1e37010"
+    }
+  ],
+  "design_sha256": "7354c1868ce2f8a6cc0d43c8be772c69eece3966b70d20df8f98270cddf07e2b",
+  "checksum": 93654550,
+  "expected_checksum": 93654550,
+  "payload": {
+    "mode": "MAIN_MONOTONIC_V1_DERIVED",
+    "variant": "navier_array",
+    "N": 8,
+    "checksum": 93654550,
+    "correctness": "PASS",
+    "warmup_calls": 0,
+    "start_ms": 0,
+    "stop_ms": 36.68,
+    "elapsed_ms": 36.68
+  },
+  "elapsed_ms": 36.68,
+  "elapsed_per_call_ms": 4.585,
+  "errors": [],
+  "valid": true
+}

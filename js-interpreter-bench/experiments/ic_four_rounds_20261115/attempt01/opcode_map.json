@@ -1,0 +1,1496 @@
+[
+  {
+    "op": 0,
+    "name": "invalid",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 1,
+    "name": "push_i32",
+    "size": 5,
+    "fmt": "i32"
+  },
+  {
+    "op": 2,
+    "name": "push_const",
+    "size": 5,
+    "fmt": "const"
+  },
+  {
+    "op": 3,
+    "name": "fclosure",
+    "size": 5,
+    "fmt": "const"
+  },
+  {
+    "op": 4,
+    "name": "push_atom_value",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 5,
+    "name": "private_symbol",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 6,
+    "name": "undefined",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 7,
+    "name": "null",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 8,
+    "name": "push_this",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 9,
+    "name": "push_false",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 10,
+    "name": "push_true",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 11,
+    "name": "object",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 12,
+    "name": "special_object",
+    "size": 2,
+    "fmt": "u8"
+  },
+  {
+    "op": 13,
+    "name": "rest",
+    "size": 3,
+    "fmt": "u16"
+  },
+  {
+    "op": 14,
+    "name": "drop",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 15,
+    "name": "nip",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 16,
+    "name": "nip1",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 17,
+    "name": "dup",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 18,
+    "name": "dup1",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 19,
+    "name": "dup2",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 20,
+    "name": "dup3",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 21,
+    "name": "insert2",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 22,
+    "name": "insert3",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 23,
+    "name": "insert4",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 24,
+    "name": "perm3",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 25,
+    "name": "perm4",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 26,
+    "name": "perm5",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 27,
+    "name": "swap",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 28,
+    "name": "swap2",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 29,
+    "name": "rot3l",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 30,
+    "name": "rot3r",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 31,
+    "name": "rot4l",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 32,
+    "name": "rot5l",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 33,
+    "name": "call_constructor",
+    "size": 3,
+    "fmt": "npop"
+  },
+  {
+    "op": 34,
+    "name": "call",
+    "size": 3,
+    "fmt": "npop"
+  },
+  {
+    "op": 35,
+    "name": "tail_call",
+    "size": 3,
+    "fmt": "npop"
+  },
+  {
+    "op": 36,
+    "name": "call_method",
+    "size": 3,
+    "fmt": "npop"
+  },
+  {
+    "op": 37,
+    "name": "tail_call_method",
+    "size": 3,
+    "fmt": "npop"
+  },
+  {
+    "op": 38,
+    "name": "array_from",
+    "size": 3,
+    "fmt": "npop"
+  },
+  {
+    "op": 39,
+    "name": "apply",
+    "size": 3,
+    "fmt": "u16"
+  },
+  {
+    "op": 40,
+    "name": "return",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 41,
+    "name": "return_undef",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 42,
+    "name": "check_ctor_return",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 43,
+    "name": "check_ctor",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 44,
+    "name": "init_ctor",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 45,
+    "name": "check_brand",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 46,
+    "name": "add_brand",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 47,
+    "name": "return_async",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 48,
+    "name": "throw",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 49,
+    "name": "throw_error",
+    "size": 6,
+    "fmt": "atom_u8"
+  },
+  {
+    "op": 50,
+    "name": "eval",
+    "size": 5,
+    "fmt": "npop_u16"
+  },
+  {
+    "op": 51,
+    "name": "apply_eval",
+    "size": 3,
+    "fmt": "u16"
+  },
+  {
+    "op": 52,
+    "name": "regexp",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 53,
+    "name": "get_super",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 54,
+    "name": "import",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 55,
+    "name": "get_var_undef",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 56,
+    "name": "get_var",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 57,
+    "name": "put_var",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 58,
+    "name": "put_var_init",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 59,
+    "name": "get_ref_value",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 60,
+    "name": "put_ref_value",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 61,
+    "name": "get_field",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 62,
+    "name": "get_field2",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 63,
+    "name": "put_field",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 64,
+    "name": "get_private_field",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 65,
+    "name": "put_private_field",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 66,
+    "name": "define_private_field",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 67,
+    "name": "get_array_el",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 68,
+    "name": "get_array_el2",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 69,
+    "name": "get_array_el3",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 70,
+    "name": "put_array_el",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 71,
+    "name": "get_super_value",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 72,
+    "name": "put_super_value",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 73,
+    "name": "define_field",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 74,
+    "name": "set_name",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 75,
+    "name": "set_name_computed",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 76,
+    "name": "set_proto",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 77,
+    "name": "set_home_object",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 78,
+    "name": "define_array_el",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 79,
+    "name": "append",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 80,
+    "name": "copy_data_properties",
+    "size": 2,
+    "fmt": "u8"
+  },
+  {
+    "op": 81,
+    "name": "define_method",
+    "size": 6,
+    "fmt": "atom_u8"
+  },
+  {
+    "op": 82,
+    "name": "define_method_computed",
+    "size": 2,
+    "fmt": "u8"
+  },
+  {
+    "op": 83,
+    "name": "define_class",
+    "size": 6,
+    "fmt": "atom_u8"
+  },
+  {
+    "op": 84,
+    "name": "define_class_computed",
+    "size": 6,
+    "fmt": "atom_u8"
+  },
+  {
+    "op": 85,
+    "name": "get_loc",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 86,
+    "name": "put_loc",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 87,
+    "name": "set_loc",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 88,
+    "name": "get_arg",
+    "size": 3,
+    "fmt": "arg"
+  },
+  {
+    "op": 89,
+    "name": "put_arg",
+    "size": 3,
+    "fmt": "arg"
+  },
+  {
+    "op": 90,
+    "name": "set_arg",
+    "size": 3,
+    "fmt": "arg"
+  },
+  {
+    "op": 91,
+    "name": "get_var_ref",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 92,
+    "name": "put_var_ref",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 93,
+    "name": "set_var_ref",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 94,
+    "name": "set_loc_uninitialized",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 95,
+    "name": "get_loc_check",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 96,
+    "name": "put_loc_check",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 97,
+    "name": "set_loc_check",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 98,
+    "name": "put_loc_check_init",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 99,
+    "name": "get_loc_checkthis",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 100,
+    "name": "get_var_ref_check",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 101,
+    "name": "put_var_ref_check",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 102,
+    "name": "put_var_ref_check_init",
+    "size": 3,
+    "fmt": "var_ref"
+  },
+  {
+    "op": 103,
+    "name": "close_loc",
+    "size": 3,
+    "fmt": "loc"
+  },
+  {
+    "op": 104,
+    "name": "if_false",
+    "size": 5,
+    "fmt": "label"
+  },
+  {
+    "op": 105,
+    "name": "if_true",
+    "size": 5,
+    "fmt": "label"
+  },
+  {
+    "op": 106,
+    "name": "goto",
+    "size": 5,
+    "fmt": "label"
+  },
+  {
+    "op": 107,
+    "name": "catch",
+    "size": 5,
+    "fmt": "label"
+  },
+  {
+    "op": 108,
+    "name": "gosub",
+    "size": 5,
+    "fmt": "label"
+  },
+  {
+    "op": 109,
+    "name": "ret",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 110,
+    "name": "nip_catch",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 111,
+    "name": "to_object",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 112,
+    "name": "to_propkey",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 113,
+    "name": "with_get_var",
+    "size": 10,
+    "fmt": "atom_label_u8"
+  },
+  {
+    "op": 114,
+    "name": "with_put_var",
+    "size": 10,
+    "fmt": "atom_label_u8"
+  },
+  {
+    "op": 115,
+    "name": "with_delete_var",
+    "size": 10,
+    "fmt": "atom_label_u8"
+  },
+  {
+    "op": 116,
+    "name": "with_make_ref",
+    "size": 10,
+    "fmt": "atom_label_u8"
+  },
+  {
+    "op": 117,
+    "name": "with_get_ref",
+    "size": 10,
+    "fmt": "atom_label_u8"
+  },
+  {
+    "op": 118,
+    "name": "make_loc_ref",
+    "size": 7,
+    "fmt": "atom_u16"
+  },
+  {
+    "op": 119,
+    "name": "make_arg_ref",
+    "size": 7,
+    "fmt": "atom_u16"
+  },
+  {
+    "op": 120,
+    "name": "make_var_ref_ref",
+    "size": 7,
+    "fmt": "atom_u16"
+  },
+  {
+    "op": 121,
+    "name": "make_var_ref",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 122,
+    "name": "for_in_start",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 123,
+    "name": "for_of_start",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 124,
+    "name": "for_await_of_start",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 125,
+    "name": "for_in_next",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 126,
+    "name": "for_of_next",
+    "size": 2,
+    "fmt": "u8"
+  },
+  {
+    "op": 127,
+    "name": "for_await_of_next",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 128,
+    "name": "iterator_check_object",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 129,
+    "name": "iterator_get_value_done",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 130,
+    "name": "iterator_close",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 131,
+    "name": "iterator_next",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 132,
+    "name": "iterator_call",
+    "size": 2,
+    "fmt": "u8"
+  },
+  {
+    "op": 133,
+    "name": "initial_yield",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 134,
+    "name": "yield",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 135,
+    "name": "yield_star",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 136,
+    "name": "async_yield_star",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 137,
+    "name": "await",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 138,
+    "name": "neg",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 139,
+    "name": "plus",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 140,
+    "name": "dec",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 141,
+    "name": "inc",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 142,
+    "name": "post_dec",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 143,
+    "name": "post_inc",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 144,
+    "name": "dec_loc",
+    "size": 2,
+    "fmt": "loc8"
+  },
+  {
+    "op": 145,
+    "name": "inc_loc",
+    "size": 2,
+    "fmt": "loc8"
+  },
+  {
+    "op": 146,
+    "name": "add_loc",
+    "size": 2,
+    "fmt": "loc8"
+  },
+  {
+    "op": 147,
+    "name": "not",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 148,
+    "name": "lnot",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 149,
+    "name": "typeof",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 150,
+    "name": "delete",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 151,
+    "name": "delete_var",
+    "size": 5,
+    "fmt": "atom"
+  },
+  {
+    "op": 152,
+    "name": "mul",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 153,
+    "name": "div",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 154,
+    "name": "mod",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 155,
+    "name": "add",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 156,
+    "name": "sub",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 157,
+    "name": "pow",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 158,
+    "name": "shl",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 159,
+    "name": "sar",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 160,
+    "name": "shr",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 161,
+    "name": "lt",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 162,
+    "name": "lte",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 163,
+    "name": "gt",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 164,
+    "name": "gte",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 165,
+    "name": "instanceof",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 166,
+    "name": "in",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 167,
+    "name": "eq",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 168,
+    "name": "neq",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 169,
+    "name": "strict_eq",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 170,
+    "name": "strict_neq",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 171,
+    "name": "and",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 172,
+    "name": "xor",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 173,
+    "name": "or",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 174,
+    "name": "is_undefined_or_null",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 175,
+    "name": "private_in",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 176,
+    "name": "push_bigint_i32",
+    "size": 5,
+    "fmt": "i32"
+  },
+  {
+    "op": 177,
+    "name": "nop",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 178,
+    "name": "push_minus1",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 179,
+    "name": "push_0",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 180,
+    "name": "push_1",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 181,
+    "name": "push_2",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 182,
+    "name": "push_3",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 183,
+    "name": "push_4",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 184,
+    "name": "push_5",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 185,
+    "name": "push_6",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 186,
+    "name": "push_7",
+    "size": 1,
+    "fmt": "none_int"
+  },
+  {
+    "op": 187,
+    "name": "push_i8",
+    "size": 2,
+    "fmt": "i8"
+  },
+  {
+    "op": 188,
+    "name": "push_i16",
+    "size": 3,
+    "fmt": "i16"
+  },
+  {
+    "op": 189,
+    "name": "push_const8",
+    "size": 2,
+    "fmt": "const8"
+  },
+  {
+    "op": 190,
+    "name": "fclosure8",
+    "size": 2,
+    "fmt": "const8"
+  },
+  {
+    "op": 191,
+    "name": "push_empty_string",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 192,
+    "name": "get_loc8",
+    "size": 2,
+    "fmt": "loc8"
+  },
+  {
+    "op": 193,
+    "name": "put_loc8",
+    "size": 2,
+    "fmt": "loc8"
+  },
+  {
+    "op": 194,
+    "name": "set_loc8",
+    "size": 2,
+    "fmt": "loc8"
+  },
+  {
+    "op": 195,
+    "name": "get_loc0",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 196,
+    "name": "get_loc1",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 197,
+    "name": "get_loc2",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 198,
+    "name": "get_loc3",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 199,
+    "name": "put_loc0",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 200,
+    "name": "put_loc1",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 201,
+    "name": "put_loc2",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 202,
+    "name": "put_loc3",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 203,
+    "name": "set_loc0",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 204,
+    "name": "set_loc1",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 205,
+    "name": "set_loc2",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 206,
+    "name": "set_loc3",
+    "size": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "op": 207,
+    "name": "get_arg0",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 208,
+    "name": "get_arg1",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 209,
+    "name": "get_arg2",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 210,
+    "name": "get_arg3",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 211,
+    "name": "put_arg0",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 212,
+    "name": "put_arg1",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 213,
+    "name": "put_arg2",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 214,
+    "name": "put_arg3",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 215,
+    "name": "set_arg0",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 216,
+    "name": "set_arg1",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 217,
+    "name": "set_arg2",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 218,
+    "name": "set_arg3",
+    "size": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "op": 219,
+    "name": "get_var_ref0",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 220,
+    "name": "get_var_ref1",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 221,
+    "name": "get_var_ref2",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 222,
+    "name": "get_var_ref3",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 223,
+    "name": "put_var_ref0",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 224,
+    "name": "put_var_ref1",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 225,
+    "name": "put_var_ref2",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 226,
+    "name": "put_var_ref3",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 227,
+    "name": "set_var_ref0",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 228,
+    "name": "set_var_ref1",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 229,
+    "name": "set_var_ref2",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 230,
+    "name": "set_var_ref3",
+    "size": 1,
+    "fmt": "none_var_ref"
+  },
+  {
+    "op": 231,
+    "name": "get_length",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 232,
+    "name": "if_false8",
+    "size": 2,
+    "fmt": "label8"
+  },
+  {
+    "op": 233,
+    "name": "if_true8",
+    "size": 2,
+    "fmt": "label8"
+  },
+  {
+    "op": 234,
+    "name": "goto8",
+    "size": 2,
+    "fmt": "label8"
+  },
+  {
+    "op": 235,
+    "name": "goto16",
+    "size": 3,
+    "fmt": "label16"
+  },
+  {
+    "op": 236,
+    "name": "call0",
+    "size": 1,
+    "fmt": "npopx"
+  },
+  {
+    "op": 237,
+    "name": "call1",
+    "size": 1,
+    "fmt": "npopx"
+  },
+  {
+    "op": 238,
+    "name": "call2",
+    "size": 1,
+    "fmt": "npopx"
+  },
+  {
+    "op": 239,
+    "name": "call3",
+    "size": 1,
+    "fmt": "npopx"
+  },
+  {
+    "op": 240,
+    "name": "is_undefined",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 241,
+    "name": "is_null",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 242,
+    "name": "typeof_is_undefined",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 243,
+    "name": "typeof_is_function",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 244,
+    "name": "get_field_rdi",
+    "size": 5,
+    "fmt": "u32"
+  },
+  {
+    "op": 245,
+    "name": "get_field2_rdi",
+    "size": 5,
+    "fmt": "u32"
+  },
+  {
+    "op": 246,
+    "name": "v6_get_loc0",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 247,
+    "name": "v6_get_arg0",
+    "size": 1,
+    "fmt": "none"
+  },
+  {
+    "op": 248,
+    "name": "put_field_shared",
+    "size": 5,
+    "fmt": "u32"
+  }
+]

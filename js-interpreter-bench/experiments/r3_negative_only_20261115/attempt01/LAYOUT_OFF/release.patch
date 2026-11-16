@@ -1,0 +1,168 @@
+--- a/four_diag.inc
++++ b/four_diag.inc
+@@ -52,3 +52,5 @@
+ #define FOUR_COUNT(s,k) ((void)0)
+ #define FOUR_ADD(s,k,n) ((void)0)
+ #endif
++
++#define NEGSTAT(i) ((void)0)
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -5,6 +5,7 @@
+     FourRecipe recipe;
+     uint32_t pc;
+     uint16_t argc;
++    uint32_t negative_index; /* old padding at +92, sizeof stays 96 */
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+@@ -76,12 +77,18 @@
+            ctx->rt->malloc_ctx.malloc_state.malloc_size+sizeof(JSObject)<=ctx->rt->malloc_gc_threshold;
+ #endif
+ }
+-static int four_ctor_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc)
++#include "negative_runtime.inc"
++static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst callee,JSValueConst target,unsigned argc,int*template_reject)
+ {
++    *template_reject=0;
++    if(negative_match(ctx,s,callee)){NEGSTAT(1);return 0;}
+     JSObject*f,*proto;FourRecipe r;
+-    if(!four_ctor_base(ctx,callee,target,argc,&f) || !four_ctor_recipe(f->u.func.function_bytecode,&r) ||
+-       !(proto=four_ctor_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
+-    return four_ctor_chain(proto,&r);
++    if(!four_ctor_base(ctx,callee,target,argc,&f)){NEGSTAT(3);return 0;}
++    if(!four_ctor_recipe(f->u.func.function_bytecode,&r)){*template_reject=1;NEGSTAT(4);return 0;}
++    if(!(proto=four_ctor_proto(f))){NEGSTAT(5);return 0;}
++    if(!find_hashed_shape_proto(ctx->rt,proto)){NEGSTAT(6);return 0;}
++    if(!four_ctor_chain(proto,&r)){NEGSTAT(7);return 0;}
++    NEGSTAT(8);return 1;
+ }
+ static void four_ctor_learn(JSContext*ctx,FourSite*s,JSValueConst callee,JSValueConst result)
+ {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,4 @@
++#define NEGATIVE_DISABLED 1
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -318,6 +319,8 @@
+ 
+ /* end JS Malloc */
+ 
++typedef struct R3NegativeEntry {struct JSObject*object;uint32_t next;} R3NegativeEntry;
++static void negative_destroy(JSRuntime*rt);
+ struct JSRuntime {
+     JSMallocContext malloc_ctx;
+     const char *rt_info;
+@@ -390,6 +393,8 @@
+     int shape_hash_count; /* number of hashed shapes */
+     JSShape **shape_hash;
+     void *user_opaque;
++    R3NegativeEntry *negative_entries;
++    uint32_t negative_used,negative_capacity,negative_free,negative_live;
+     ExEdge transition_edges[32];
+     uint8_t transition_edges_disabled;
+ };
+@@ -2576,6 +2581,7 @@
+     js_free_rt(rt, rt->atom_array);
+     js_free_rt(rt, rt->atom_hash);
+     js_free_rt(rt, rt->shape_hash);
++    negative_destroy(rt);
+ #ifdef DUMP_LEAKS
+     if (!list_empty(&rt->string_list)) {
+         if (rt->rt_info) {
+@@ -6705,7 +6711,7 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
+-            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}
++            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];JS_MarkValue(rt,negative_value(rt,fs),mark_func);JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -18332,7 +18338,8 @@
+                 call_argv=sp-call_argc;sf->cur_pc=pc;
+                 int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+                 if(!fast){
+-                    int eligible=four_ctor_slow_eligible(ctx,call_argv[-2],call_argv[-1],call_argc);
++                    int template_reject=0;
++                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc,&template_reject);
+ #ifdef FOUR_DIAG
+                     FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+ #endif
+@@ -18341,6 +18348,7 @@
+                     four_ctor_observer=oldscope;
+ #endif
+                     if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
++                    else if(template_reject && !JS_IsException(ret_val))negative_remember(ctx,s,call_argv[-2]);
+                 }
+                 if(unlikely(JS_IsException(ret_val))){
+                     if(fast){
+@@ -36525,7 +36533,7 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+-    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);}
++    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*fs=&b->four_sites[fi];negative_release(rt,fs);JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);}
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+--- a/negative_runtime.inc
++++ b/negative_runtime.inc
+@@ -0,0 +1,55 @@
++/* Index occupies old FourSite tail padding; target is owned by that site.
++ * Runtime storage is not a root: function-bytecode mark/free follows the index.
++ * Indices survive realloc; no entry address escapes a callback or allocation. */
++static JSValue negative_value(JSRuntime*rt,const FourSite*s)
++{
++    if(!s->negative_index)return JS_UNDEFINED;
++    assert(s->negative_index<=rt->negative_used);
++    return JS_MKPTR(JS_TAG_OBJECT,rt->negative_entries[s->negative_index].object);
++}
++static int negative_match(JSContext*ctx,FourSite*s,JSValueConst callee)
++{
++#ifdef NEGATIVE_DISABLED
++    return 0;
++#else
++    if(!s->negative_index || JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT)return 0;
++    return JS_VALUE_GET_OBJ(callee)==ctx->rt->negative_entries[s->negative_index].object;
++#endif
++}
++static void negative_remember(JSContext*ctx,FourSite*s,JSValueConst callee)
++{
++#ifndef NEGATIVE_DISABLED
++    JSRuntime*rt=ctx->rt;uint32_t index=s->negative_index;
++    if(!index){
++        if(rt->negative_free){index=rt->negative_free;rt->negative_free=rt->negative_entries[index].next;}
++        else{
++            if(rt->negative_used==UINT32_MAX-1)return;
++            if(rt->negative_used+1>=rt->negative_capacity){
++                uint32_t cap=rt->negative_capacity?rt->negative_capacity*2:32;
++                if(cap<=rt->negative_capacity || (size_t)cap>SIZE_MAX/sizeof(R3NegativeEntry))return;
++                R3NegativeEntry*p=js_realloc_rt(rt,rt->negative_entries,(size_t)cap*sizeof(*p));
++                if(!p){NEGSTAT(11);return;} /* optional: no pending exception */
++                memset(p+rt->negative_capacity,0,(cap-rt->negative_capacity)*sizeof(*p));
++                rt->negative_entries=p;rt->negative_capacity=cap;NEGSTAT(10);
++            }
++            index=++rt->negative_used;
++        }
++        s->negative_index=index;rt->negative_live++;NEGSTAT(9);
++    }
++    JSObject*old=rt->negative_entries[index].object;
++    JS_DupValue(ctx,callee);rt->negative_entries[index].object=JS_VALUE_GET_OBJ(callee);
++    NEGSTAT(2);
++    if(old)JS_FreeValue(ctx,JS_MKPTR(JS_TAG_OBJECT,old)); /* publish first; no entry use after callback */
++#endif
++}
++static void negative_release(JSRuntime*rt,FourSite*s)
++{
++    uint32_t i=s->negative_index;if(!i)return;s->negative_index=0;
++    JSObject*old=rt->negative_entries[i].object;rt->negative_entries[i].object=NULL;
++    rt->negative_entries[i].next=rt->negative_free;rt->negative_free=i;rt->negative_live--;
++    JS_FreeValueRT(rt,JS_MKPTR(JS_TAG_OBJECT,old));
++}
++static void negative_destroy(JSRuntime*rt)
++{
++    assert(!rt->negative_live);js_free_rt(rt,rt->negative_entries);
++}

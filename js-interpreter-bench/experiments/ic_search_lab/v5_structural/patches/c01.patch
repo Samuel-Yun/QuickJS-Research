@@ -1,0 +1,124 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -317,6 +317,7 @@
+ /* end JS Malloc */
+ 
+ struct JSRuntime {
++    uint64_t rdi_proto_epoch;
+     JSMallocContext malloc_ctx;
+     const char *rt_info;
+ 
+@@ -715,6 +716,7 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    ReadICSide *read_ic_side;
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
+@@ -6165,6 +6167,7 @@
+     return NULL;
+ }
+ 
++#define RDI_EPOCH_BUMP(rt) do { if ((rt)->rdi_proto_epoch != UINT64_MAX) ++(rt)->rdi_proto_epoch; } while (0)
+ #include "read_ic_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+@@ -6639,6 +6642,10 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
++            if (b->read_ic_side)
++                for (uint32_t i = 0; i < b->read_ic_count; i++)
++                    if (b->read_ic_side[i].shape)
++                        mark_func(rt, &b->read_ic_side[i].shape->header);
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -9223,6 +9230,7 @@
+             }
+         }
+     }
++    RDI_EPOCH_BUMP(ctx->rt);
+     sh = p->shape;
+     if (sh->is_hashed) {
+         /* try to find an existing shape */
+@@ -10326,6 +10334,7 @@
+     JSShape *sh;
+     uint32_t idx = 0;    /* prevent warning */
+ 
++    RDI_EPOCH_BUMP(ctx->rt);
+     sh = p->shape;
+     if (sh->is_hashed) {
+         if (js_rc(sh)->ref_count != 1) {
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -20,6 +20,14 @@
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
++                if (b->read_ic_side && ctx->rt->rdi_proto_epoch != UINT64_MAX) { \
++                    ReadICSide *side = &b->read_ic_side[site - b->read_ic_sites]; \
++                    if (side->shape == p->shape && side->epoch == ctx->rt->rdi_proto_epoch) { \
++                        JSObject *holder = p->shape->proto;             \
++                        val = JS_DupValue(ctx, holder->prop[side->offset].u.value); \
++                        goto name ## _done;                            \
++                    }                                                   \
++                }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+@@ -35,7 +43,7 @@
+                         goto name ## _slow;                            \
+                     }                                                   \
+                     val = JS_DupValue(ctx, pr->u.value);                \
+-                    if (p != origin) { RDI_REASON(inherited); }         \
++                    if (p != origin) { RDI_REASON(inherited); rdi_proto_update(ctx, b, site, origin, p, pr - p->prop); }         \
+                     else if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) { RDI_REASON(special); } \
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -85,6 +85,34 @@
+         js_free_rt(rt, b->byte_code_buf);
+         b->byte_code_buf = NULL;
+     }
++    if (b->read_ic_side) {
++        for (uint32_t i = 0; i < b->read_ic_count; i++)
++            js_free_shape_null(rt, b->read_ic_side[i].shape);
++        js_free_rt(rt, b->read_ic_side);
++        b->read_ic_side = NULL;
++    }
+     b->read_ic_sites = NULL;
+     b->read_ic_count = 0;
+ }
++
++/* Only a single ordinary, non-exotic prototype with an own normal data field.
++   The retained receiver shape owns its prototype object. Values are always loaded afresh. */
++static void rdi_proto_update(JSContext *ctx, JSFunctionBytecode *b, ReadICSite *site,
++                             JSObject *receiver, JSObject *holder, uint32_t offset)
++{
++    if (ctx->rt->rdi_proto_epoch == UINT64_MAX || receiver->class_id != JS_CLASS_OBJECT ||
++        receiver->is_exotic || !receiver->shape->is_hashed || receiver->shape->proto != holder ||
++        holder->class_id != JS_CLASS_OBJECT || holder->is_exotic || !holder->shape->is_hashed) return;
++    if (!b->read_ic_side) {
++        b->read_ic_side = js_mallocz_rt(ctx->rt, sizeof(ReadICSide) * b->read_ic_count);
++        if (!b->read_ic_side) return;
++    }
++    ReadICSide *side = &b->read_ic_side[site - b->read_ic_sites];
++    JSShape *old = side->shape;
++    js_dup_shape(receiver->shape);
++    
++    side->shape = receiver->shape;
++    side->epoch = ctx->rt->rdi_proto_epoch;
++    side->offset = offset;
++    js_free_shape_null(ctx->rt, old);
++}
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -36,3 +36,5 @@
+ #define RDI_OCCUPY() ((void)0)
+ #define RDI_REPLACE() ((void)0)
+ #endif
++
++typedef struct ReadICSide { JSShape *shape; uint64_t epoch; uint32_t offset; } ReadICSide;

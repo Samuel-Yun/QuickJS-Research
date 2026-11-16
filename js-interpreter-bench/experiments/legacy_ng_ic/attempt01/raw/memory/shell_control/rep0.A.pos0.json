@@ -1,0 +1,30 @@
+{
+  "case": "shell_control",
+  "variant": "A",
+  "rep": 0,
+  "order": 0,
+  "N": 1,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/raw/memory/shell_control/rep0.A.pos0.time.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_attempt01/A/qjs",
+    "-e",
+    "console.log('RSS_CONTROL_PASS')"
+  ],
+  "binary_sha256": "0505d8d3af32cc768a10c9eddd5a8c0b30b946ff39d083e512852c27f0912d9d",
+  "script_sha256": null,
+  "valid": true,
+  "exit_code": 0,
+  "stdout": "RSS_CONTROL_PASS\n",
+  "stderr": "",
+  "peak_rss_kib": 2940,
+  "outer_wall_ns": 14889268,
+  "timestamp": "2026-10-22T17:10:01.653049+00:00",
+  "method": "GNU time 1 fresh small launcher -> qjs; KiB",
+  "performance_sample": false,
+  "instrumented_binary": false
+}

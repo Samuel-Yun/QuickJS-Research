@@ -1,0 +1,52 @@
+{
+  "case": "NavierStokes.NavierStokes",
+  "N": 1,
+  "script_path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/generated/NavierStokes.NavierStokes.N1.measure.js",
+  "script_sha256": "60ea010fbd2d4b05aef33d7848d0ae26b03950096fb810fb3df2622592209a2a",
+  "evidence_level": "PROVEN_TARGET_SERIALIZATION_DESERIALIZATION",
+  "basis": "explicit target origin in serialization; ordered three-script byte sizes match actual consumer deserialization; no consumer generated-bytecode event; payloads valid",
+  "cache_rejected_field": null,
+  "per_formal_invocation_acceptance_observation": null,
+  "target_cache_size_bytes": 21984,
+  "serialization_events": [
+    {
+      "origin": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+      "size_bytes": 560,
+      "diagnostic_serialization_ms": 0.33
+    },
+    {
+      "origin": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+      "size_bytes": 952,
+      "diagnostic_serialization_ms": 0.094
+    },
+    {
+      "origin": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/code_cache_validation/attempt01/generated/NavierStokes.NavierStokes.N1.measure.js",
+      "size_bytes": 21984,
+      "diagnostic_serialization_ms": 1.654
+    }
+  ],
+  "deserialization_events": [
+    {
+      "size_bytes": 560,
+      "diagnostic_deserialization_ms": 0.014
+    },
+    {
+      "size_bytes": 952,
+      "diagnostic_deserialization_ms": 0.014
+    },
+    {
+      "size_bytes": 21984,
+      "diagnostic_deserialization_ms": 0.081
+    }
+  ],
+  "source_target_deserialization_observed": false,
+  "diagnostic_log_code": "probes/logs/workload.NavierStokes.NavierStokes.N1.code.stdout.txt",
+  "diagnostic_log_source": "probes/logs/workload.NavierStokes.NavierStokes.N1.none.stdout.txt",
+  "diagnostic_flags": [
+    "--trace-serializer",
+    "--profile-deserialization",
+    "--print-bytecode"
+  ],
+  "timing_scope_of_profile_deserialization": "UNKNOWN; diagnostic only, not primary stage metric",
+  "function_coverage": "named static functions and bytecode observed in log; exhaustive dynamic/runtime coverage UNKNOWN"
+}

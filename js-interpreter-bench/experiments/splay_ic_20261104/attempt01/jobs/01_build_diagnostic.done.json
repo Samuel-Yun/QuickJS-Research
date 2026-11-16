@@ -1,0 +1,27 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 128, in <module>\n    if __name__=='__main__':globals()[sys.argv[1]]()\n                            ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 63, in build\n    s=one(s,'    JS_FreeContext(ctx);\\n    JS_FreeRuntime(rt);','    sp_destroy();\\n    JS_FreeContext(ctx);\\n    JS_FreeRuntime(rt);');p.write_text(s)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/common.py\", line 41, in one\n    def one(s,a,b):assert s.count(a)==1,(a[:90],s.count(a));return s.replace(a,b,1)\n                          ^^^^^^^^^^^^^\nAssertionError: ('    JS_FreeContext(ctx);\\n    JS_FreeRuntime(rt);', 2)\n",
+  "timeout": false,
+  "command": [
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py",
+    "build"
+  ],
+  "label": "01_build_diagnostic",
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01",
+  "timestamp": "2026-11-04T06:32:39.592054+00:00",
+  "completed_at": "2026-11-04T06:32:39.965015+00:00",
+  "outer_start_ns": 250001607482,
+  "outer_stop_ns": 250374647449,
+  "external_wall_ms": 373.039967,
+  "child_user_ms": 195.58399999999997,
+  "child_system_ms": 54.327999999999996,
+  "boot_id": "be123b17-9f61-40b6-bf1e-cd3b501aa382",
+  "boot_id_after": "be123b17-9f61-40b6-bf1e-cd3b501aa382",
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ]
+}

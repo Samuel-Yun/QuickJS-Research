@@ -1,0 +1,362 @@
+[
+  {
+    "offset": 0,
+    "opcode": "push_this",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 1,
+    "opcode": "put_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 2,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 3,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 4,
+    "opcode": "eq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 5,
+    "opcode": "if_false8",
+    "operands": "21",
+    "size": 2
+  },
+  {
+    "offset": 7,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 8,
+    "opcode": "get_field",
+    "operands": "scheduler",
+    "size": 5
+  },
+  {
+    "offset": 13,
+    "opcode": "get_field2",
+    "operands": "suspendCurrent",
+    "size": 5
+  },
+  {
+    "offset": 18,
+    "opcode": "tail_call_method",
+    "operands": "0",
+    "size": 3
+  },
+  {
+    "offset": 21,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 22,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 27,
+    "opcode": "get_var",
+    "operands": "0: ID_HANDLER_A",
+    "size": 3
+  },
+  {
+    "offset": 30,
+    "opcode": "eq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 31,
+    "opcode": "if_false8",
+    "operands": "44",
+    "size": 2
+  },
+  {
+    "offset": 33,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 34,
+    "opcode": "get_var",
+    "operands": "1: ID_HANDLER_B",
+    "size": 3
+  },
+  {
+    "offset": 37,
+    "opcode": "put_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 42,
+    "opcode": "goto8",
+    "operands": "53",
+    "size": 2
+  },
+  {
+    "offset": 44,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 45,
+    "opcode": "get_var",
+    "operands": "0: ID_HANDLER_A",
+    "size": 3
+  },
+  {
+    "offset": 48,
+    "opcode": "put_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 53,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 54,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 55,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 60,
+    "opcode": "put_field",
+    "operands": "id",
+    "size": 5
+  },
+  {
+    "offset": 65,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 66,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1
+  },
+  {
+    "offset": 67,
+    "opcode": "put_field",
+    "operands": "a1",
+    "size": 5
+  },
+  {
+    "offset": 72,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1
+  },
+  {
+    "offset": 73,
+    "opcode": "put_loc0",
+    "operands": "0: i",
+    "size": 1
+  },
+  {
+    "offset": 74,
+    "opcode": "get_loc0",
+    "operands": "0: i",
+    "size": 1
+  },
+  {
+    "offset": 75,
+    "opcode": "get_var",
+    "operands": "2: DATA_SIZE",
+    "size": 3
+  },
+  {
+    "offset": 78,
+    "opcode": "lt",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 79,
+    "opcode": "if_false8",
+    "operands": "129",
+    "size": 2
+  },
+  {
+    "offset": 81,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 82,
+    "opcode": "get_field2",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 87,
+    "opcode": "inc",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 88,
+    "opcode": "put_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 93,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 94,
+    "opcode": "get_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 99,
+    "opcode": "push_i8",
+    "operands": "26",
+    "size": 2
+  },
+  {
+    "offset": 101,
+    "opcode": "gt",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 102,
+    "opcode": "if_false8",
+    "operands": "111",
+    "size": 2
+  },
+  {
+    "offset": 104,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 105,
+    "opcode": "push_1",
+    "operands": "1",
+    "size": 1
+  },
+  {
+    "offset": 106,
+    "opcode": "put_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 111,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 112,
+    "opcode": "get_field",
+    "operands": "a2",
+    "size": 5
+  },
+  {
+    "offset": 117,
+    "opcode": "get_loc0",
+    "operands": "0: i",
+    "size": 1
+  },
+  {
+    "offset": 118,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 119,
+    "opcode": "get_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 124,
+    "opcode": "put_array_el",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 125,
+    "opcode": "inc_loc",
+    "operands": "0: i",
+    "size": 2
+  },
+  {
+    "offset": 127,
+    "opcode": "goto8",
+    "operands": "74",
+    "size": 2
+  },
+  {
+    "offset": 129,
+    "opcode": "get_loc1",
+    "operands": "1: this",
+    "size": 1
+  },
+  {
+    "offset": 130,
+    "opcode": "get_field",
+    "operands": "scheduler",
+    "size": 5
+  },
+  {
+    "offset": 135,
+    "opcode": "get_field2",
+    "operands": "queue",
+    "size": 5
+  },
+  {
+    "offset": 140,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 141,
+    "opcode": "tail_call_method",
+    "operands": "1",
+    "size": 3
+  }
+]

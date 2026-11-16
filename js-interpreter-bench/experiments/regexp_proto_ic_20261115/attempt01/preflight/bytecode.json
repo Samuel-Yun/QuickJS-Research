@@ -1,0 +1,162 @@
+[
+  {
+    "label": "before",
+    "function": "invoke",
+    "function_class": 13,
+    "byte_code_len": 10,
+    "arg_count": 2,
+    "var_count": 0,
+    "stack_size": 3,
+    "ic_ready": true,
+    "ic_count": 1,
+    "site_size": 24,
+    "receiver": {
+      "class": 18,
+      "is_exotic": false,
+      "shape": {
+        "address": "0x606915309a20",
+        "is_hashed": true,
+        "prop_count": 1
+      },
+      "prototype_shape": {
+        "address": "0x60691530ca40",
+        "is_hashed": false,
+        "prop_count": 20
+      }
+    },
+    "opcodes": [
+      {
+        "pc": 0,
+        "op": 207,
+        "name": "get_arg0",
+        "size": 1,
+        "pop": 0,
+        "push": 1,
+        "format": "none_arg",
+        "raw": "cf"
+      },
+      {
+        "pc": 1,
+        "op": 245,
+        "name": "get_field2_rdi",
+        "size": 5,
+        "pop": 1,
+        "push": 2,
+        "format": "u32",
+        "raw": "f50e000000",
+        "site_index": 0,
+        "site_delta": 14,
+        "atom": "exec"
+      },
+      {
+        "pc": 6,
+        "op": 208,
+        "name": "get_arg1",
+        "size": 1,
+        "pop": 0,
+        "push": 1,
+        "format": "none_arg",
+        "raw": "d0"
+      },
+      {
+        "pc": 7,
+        "op": 37,
+        "name": "tail_call_method",
+        "size": 3,
+        "pop": 2,
+        "push": 0,
+        "format": "npop",
+        "raw": "250100"
+      }
+    ],
+    "sites": [
+      {
+        "index": 0,
+        "atom": "exec",
+        "prop_offset": 0,
+        "shape": null,
+        "holder_shape": null
+      }
+    ]
+  },
+  {
+    "label": "after",
+    "function": "invoke",
+    "function_class": 13,
+    "byte_code_len": 10,
+    "arg_count": 2,
+    "var_count": 0,
+    "stack_size": 3,
+    "ic_ready": true,
+    "ic_count": 1,
+    "site_size": 24,
+    "receiver": {
+      "class": 18,
+      "is_exotic": false,
+      "shape": {
+        "address": "0x606915309a20",
+        "is_hashed": true,
+        "prop_count": 1
+      },
+      "prototype_shape": {
+        "address": "0x60691530ca40",
+        "is_hashed": false,
+        "prop_count": 20
+      }
+    },
+    "opcodes": [
+      {
+        "pc": 0,
+        "op": 207,
+        "name": "get_arg0",
+        "size": 1,
+        "pop": 0,
+        "push": 1,
+        "format": "none_arg",
+        "raw": "cf"
+      },
+      {
+        "pc": 1,
+        "op": 245,
+        "name": "get_field2_rdi",
+        "size": 5,
+        "pop": 1,
+        "push": 2,
+        "format": "u32",
+        "raw": "f50e000000",
+        "site_index": 0,
+        "site_delta": 14,
+        "atom": "exec"
+      },
+      {
+        "pc": 6,
+        "op": 208,
+        "name": "get_arg1",
+        "size": 1,
+        "pop": 0,
+        "push": 1,
+        "format": "none_arg",
+        "raw": "d0"
+      },
+      {
+        "pc": 7,
+        "op": 37,
+        "name": "tail_call_method",
+        "size": 3,
+        "pop": 2,
+        "push": 0,
+        "format": "npop",
+        "raw": "250100"
+      }
+    ],
+    "sites": [
+      {
+        "index": 0,
+        "atom": "exec",
+        "prop_offset": 0,
+        "shape": null,
+        "holder_shape": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "status": "FROZEN_BEFORE_RECOVERY",
+  "cases": [
+    "Richards.Richards",
+    "RayTrace.RayTrace",
+    "RegExp.RegExp",
+    "CodeLoad.CodeLoadClosure"
+  ],
+  "conditions": [
+    "s001",
+    "null_s001"
+  ],
+  "recovery_limit": 1,
+  "drift_max_ratio": 1.15,
+  "cutoff_action": "Stop, preserve new raw; no repeated retry",
+  "candidate_code_changes": false,
+  "new_campaign": "recovery.v5.octane",
+  "wall_monotonic_guard_seconds": 1,
+  "launcher": "Detached owned process, file output and exit record",
+  "motivation": "Prior campaign incomplete after a2923s UTC/monotonic discrepancy; no performance inference from its retained rows"
+}

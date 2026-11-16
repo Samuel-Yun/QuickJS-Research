@@ -1,0 +1,33 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:816:1: function: WorkerTask
+  args: scheduler v1 v2
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function WorkerTask(scheduler, v1, v2) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.scheduler = scheduler;
+
+        get_loc0 0: this
+        get_arg0 0: scheduler
+        put_field scheduler
+
+;;   this.v1 = v1;
+
+        get_loc0 0: this
+        get_arg1 1: v1
+        put_field v1
+
+;;   this.v2 = v2;
+
+        get_loc0 0: this
+        get_arg2 2: v2
+        put_field v2
+        return_undef
+
+;; }
+

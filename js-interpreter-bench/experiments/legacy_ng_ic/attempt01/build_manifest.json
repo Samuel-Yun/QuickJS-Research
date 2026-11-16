@@ -1,0 +1,36 @@
+{
+  "base_commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "platform": "WSL2 Ubuntu x86_64",
+  "artifacts": {
+    "A": {
+      "path": "/home/mzyx/legacy_ng_ic_attempt01/A/qjs",
+      "sha256": "0505d8d3af32cc768a10c9eddd5a8c0b30b946ff39d083e512852c27f0912d9d",
+      "size_bytes": 5090696,
+      "qjsc_sha256": "71c614451d2fc89ae8be7472a159598062be3a7408ca5f37320146263e85ccb1",
+      "flags": [],
+      "source": "/home/mzyx/legacy_ng_ic_attempt01/A"
+    },
+    "B": {
+      "path": "/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs",
+      "sha256": "aedb704e6d38aa48414357911446e47b0b05ef9f35b9c244589b7d36e5318802",
+      "size_bytes": 5127624,
+      "qjsc_sha256": "85e28b536fc8fa73041644a788f8c965e61c46cf6d81807a7642175bb3ffcd25",
+      "flags": [],
+      "source": "/home/mzyx/legacy_ng_ic_attempt01/B_port2"
+    }
+  },
+  "build_command": [
+    "make",
+    "-j2",
+    "qjs",
+    "qjsc"
+  ],
+  "optimization": "-O2",
+  "lto": false,
+  "pgo": false,
+  "compiler_path": "/usr/bin/gcc",
+  "kernel": "5.15.167.4-microsoft-standard-WSL2",
+  "host": "LAPTOP-QPKCPDCB",
+  "runtime_diagnostics": false,
+  "boot_id": "8582affe-c369-4762-8d11-a4d3fba6cdc2"
+}

@@ -1,0 +1,31 @@
+{
+  "method_name": "按需构造缓存",
+  "fixed_source_commit": "06aada4",
+  "read_iterations": 201326592,
+  "ctor_iterations": 67108864,
+  "read_rates": [
+    0,
+    25,
+    50,
+    75,
+    90,
+    99,
+    100
+  ],
+  "constructor_rates": [
+    0,
+    50,
+    100
+  ],
+  "sequence_length": 65536,
+  "independent_processes": 5,
+  "CPU": 2,
+  "TZ": "Asia/Shanghai",
+  "locale": "C",
+  "setup_timed": false,
+  "warmup_calls": 0,
+  "min_duration_ms": 3000,
+  "read_checksum": 603979776,
+  "ctor_checksum": 201326592,
+  "selection": "Short measurements only; smallest predicted kernel is positive high-hit SPARSE ~3.69 s. Same N for all rates and both engines within each experiment."
+}

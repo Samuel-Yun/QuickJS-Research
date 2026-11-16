@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "round": "02_call_recipe",
+  "aggregates": {
+    "octane": {
+      "A": -4.401391108872543,
+      "EVAL_COLD": 1.3885368236486118,
+      "C": 2.175602403511734,
+      "V8_ON": 58.80488279462996,
+      "hits": 374624,
+      "attempts": 142957084
+    },
+    "sunspider": {
+      "A": 0.4622370934903808,
+      "EVAL_COLD": 1.9786264414440202,
+      "C": 2.0622188275521314,
+      "V8_ON": 45.58911992369941,
+      "hits": 0,
+      "attempts": 194661884,
+      "sum_ms": {
+        "A": 401.84999168262584,
+        "EVAL_COLD": 396.6749892469961,
+        "C": 398.20031219284283,
+        "candidate": 403.53968463797355,
+        "V8_ON": 250.257126953125
+      }
+    }
+  },
+  "samples": 43,
+  "independent_counter_processes": 43,
+  "C_formal_retests": 0,
+  "unit": "ms/complete Run",
+  "comparison": "cross-batch single screening vs historical C; A/EVAL_COLD/V8_ON historical 30 medians"
+}

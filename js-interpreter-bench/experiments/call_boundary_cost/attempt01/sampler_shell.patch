@@ -1,0 +1,18 @@
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,6 +311,7 @@
+     exit(1);
+ }
+ 
++extern void call_boundary_register(JSContext *ctx);
+ int main(int argc, char **argv)
+ {
+     JSRuntime *rt;
+@@ -483,6 +484,7 @@
+ 
+     if (!empty_run) {
+         js_std_add_helpers(ctx, argc - optind, argv + optind);
++    call_boundary_register(ctx);
+ 
+         /* make 'std' and 'os' visible to non module code */
+         if (load_std) {

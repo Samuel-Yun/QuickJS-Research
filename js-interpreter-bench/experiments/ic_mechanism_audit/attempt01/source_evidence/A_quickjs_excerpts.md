@@ -1,0 +1,163 @@
+## static force_inline JSShapeProperty *find_own_property, original line 6115
+```c
+ 6115: static force_inline JSShapeProperty *find_own_property1(JSObject *p,
+ 6116:                                                         JSAtom atom)
+ 6117: {
+ 6118:     JSShape *sh;
+ 6119:     JSShapeProperty *pr, *prop;
+ 6120:     intptr_t h;
+ 6121:     sh = p->shape;
+ 6122:     h = (uintptr_t)atom & sh->prop_hash_mask;
+ 6123:     h = sh->hash_table[h];
+ 6124:     prop = get_shape_prop(sh);
+ 6125:     while (h) {
+ 6126:         pr = &prop[h - 1];
+ 6127:         if (likely(pr->atom == atom)) {
+ 6128:             return pr;
+ 6129:         }
+ 6130:         h = pr->hash_next;
+ 6131:     }
+ 6132:     return NULL;
+ 6133: }
+ 6134: 
+ 6135: static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+ 6136:                                                        JSObject *p,
+ 6137:                                                        JSAtom atom)
+ 6138: {
+ 6139:     JSShape *sh;
+ 6140:     JSShapeProperty *pr, *prop;
+ 6141:     intptr_t h;
+ 6142:     sh = p->shape;
+ 6143:     h = (uintptr_t)atom & sh->prop_hash_mask;
+ 6144:     h = sh->hash_table[h];
+ 6145:     prop = get_shape_prop(sh);
+ 6146:     while (h) {
+```
+## static force_inline JSShapeProperty *find_own_property, original line 6135
+```c
+ 6135: static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+ 6136:                                                        JSObject *p,
+ 6137:                                                        JSAtom atom)
+ 6138: {
+ 6139:     JSShape *sh;
+ 6140:     JSShapeProperty *pr, *prop;
+ 6141:     intptr_t h;
+ 6142:     sh = p->shape;
+ 6143:     h = (uintptr_t)atom & sh->prop_hash_mask;
+ 6144:     h = sh->hash_table[h];
+ 6145:     prop = get_shape_prop(sh);
+ 6146:     while (h) {
+ 6147:         pr = &prop[h - 1];
+ 6148:         if (likely(pr->atom == atom)) {
+ 6149:             *ppr = &p->prop[h - 1];
+ 6150:             /* the compiler should be able to assume that pr != NULL here */
+ 6151:             return pr;
+ 6152:         }
+ 6153:         h = pr->hash_next;
+ 6154:     }
+ 6155:     *ppr = NULL;
+ 6156:     return NULL;
+ 6157: }
+ 6158: 
+ 6159: /* indicate that the object may be part of a function prototype cycle */
+ 6160: static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+ 6161: {
+ 6162: }
+ 6163: 
+ 6164: static void free_var_ref(JSRuntime *rt, JSVarRef *var_ref)
+ 6165: {
+ 6166:     if (var_ref) {
+```
+## #define GET_FIELD_INLINE, original line 19107
+```c
+19107: #define GET_FIELD_INLINE(name, keep, is_length)                         \
+19108:             {                                                           \
+19109:                 JSValue val, obj;                                       \
+19110:                 JSAtom atom;                                            \
+19111:                 JSObject *p;                                            \
+19112:                 JSProperty *pr;                                         \
+19113:                 JSShapeProperty *prs;                                   \
+19114:                                                                         \
+19115:                 if (is_length) {                                        \
+19116:                     atom = JS_ATOM_length;                              \
+19117:                 } else {                                                \
+19118:                     atom = get_u32(pc);                                 \
+19119:                     pc += 4;                                            \
+19120:                 }                                                       \
+19121:                                                                         \
+19122:                 obj = sp[-1];                                           \
+19123:                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {   \
+19124:                     p = JS_VALUE_GET_OBJ(obj);                          \
+19125:                     for(;;) {                                           \
+19126:                         prs = find_own_property(&pr, p, atom);          \
+19127:                         if (prs) {                                      \
+19128:                             /* found */                                 \
+19129:                             if (unlikely(prs->flags & JS_PROP_TMASK))   \
+19130:                                     goto name ## _slow_path;            \
+19131:                             val = JS_DupValue(ctx, pr->u.value);        \
+19132:                             break;                                      \
+19133:                         }                                               \
+19134:                         if (unlikely(p->is_exotic)) {                   \
+19135:                             /* XXX: should avoid the slow path for arrays \
+19136:                                and typed arrays by ensuring that 'prop' is \
+19137:                                not numeric */                           \
+19138:                             obj = JS_MKPTR(JS_TAG_OBJECT, p);           \
+19139:                             goto name ## _slow_path;                    \
+19140:                         }                                               \
+19141:                         p = p->shape->proto;                            \
+19142:                         if (!p) {                                       \
+19143:                             val = JS_UNDEFINED;                         \
+19144:                             break;                                      \
+19145:                         }                                               \
+19146:                     }                                                   \
+19147:                 } else {                                                \
+19148:                 name ## _slow_path:                                     \
+19149:                     sf->cur_pc = pc;                                    \
+19150:                     val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0); \
+19151:                     if (unlikely(JS_IsException(val)))                  \
+19152:                         goto exception;                                 \
+19153:                 }                                                       \
+19154:                 if (keep) {                                             \
+19155:                     *sp++ = val;                                        \
+19156:                 } else {                                                \
+19157:                     JS_FreeValue(ctx, sp[-1]);                          \
+19158:                     sp[-1] = val;                                       \
+19159:                 }                                                       \
+19160:             }
+19161: 
+19162:             
+19163:         CASE(OP_get_field):
+19164:             GET_FIELD_INLINE(get_field, 0, 0);
+19165:             BREAK;
+19166: 
+19167:         CASE(OP_get_field2):
+19168:             GET_FIELD_INLINE(get_field2, 1, 0);
+19169:             BREAK;
+19170: 
+19171: #if SHORT_OPCODES
+19172:         CASE(OP_get_length):
+19173:             GET_FIELD_INLINE(get_length, 0, 1);
+19174:             BREAK;
+19175: #endif
+19176:             
+19177:         CASE(OP_put_field):
+19178:             {
+19179:                 int ret;
+19180:                 JSValue obj;
+19181:                 JSAtom atom;
+19182:                 JSObject *p;
+19183:                 JSProperty *pr;
+19184:                 JSShapeProperty *prs;
+19185: 
+19186:                 atom = get_u32(pc);
+19187:                 pc += 4;
+19188: 
+19189:                 obj = sp[-2];
+19190:                 if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {
+19191:                     p = JS_VALUE_GET_OBJ(obj);
+19192:                     prs = find_own_property(&pr, p, atom);
+19193:                     if (!prs)
+19194:                         goto put_field_slow_path;
+19195:                     if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+19196:                                               JS_PROP_LENGTH)) == JS_PROP_WRITABLE)) {
+```

@@ -1,0 +1,8 @@
+{
+  "failure": "First helper invocation assumed optional /proc/pressure/cpu exists; WSL kernel does not expose it",
+  "exit_code": 1,
+  "health_measurements_before_failure": 0,
+  "fix": "Record UNKNOWN_NOT_AVAILABLE instead of reading absent optional proc file",
+  "same_four_process_health_check_still_not_run": true,
+  "candidate_failure": false
+}

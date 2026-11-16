@@ -1,0 +1,53 @@
+{
+  "status": "PASS_PORT_BUILD_AND_TARGETED",
+  "checks": [
+    {
+      "kind": "ported_semantic",
+      "test": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/ports/eval_cold/targeted.js",
+      "exit_code": 0,
+      "stdout": "S002_TARGETED_PASS:60\nCOLD_ENTRY_FUNCTION_CONSTRUCTOR_BIND_PROXY_PASS\nENTRY_OWN_SEMANTICS_PASS:1010\nS002_TARGETED_PASS:60\nCOLD_ENTRY_FUNCTION_CONSTRUCTOR_BIND_PROXY_PASS\nENTRY_OWN_SEMANTICS_PASS:1010\nEVAL_COLD_STATIC_AND_INDIRECT_SEMANTICS_PASS\nENTRY_OWN_ASYNC_PASS\nENTRY_OWN_ASYNC_PASS\n",
+      "stderr": ""
+    },
+    {
+      "kind": "ported_semantic",
+      "test": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_search_lab/v3_mass_search/semantic.js",
+      "exit_code": 0,
+      "stdout": "MASS_SEMANTIC_PASS:9013\n",
+      "stderr": ""
+    },
+    {
+      "kind": "ported_semantic",
+      "test": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt02/combined.js",
+      "exit_code": 0,
+      "stdout": "COMBINED_SEMANTICS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "kind": "wrong_source_rejected_before_output",
+      "exit_code": 1,
+      "output_created": false,
+      "stderr": "BASELINE_MISMATCH; source unchanged. Expected upstream commit 04be246001599f5995fa2f2d8c91a0f198d3f34c\nDifferent/missing files: quickjs.c\nExisting optimization files: \nUse a clean matching tree, or port the implementation manually; no force mode.\n"
+    },
+    {
+      "kind": "ported_source_identity",
+      "changed": 7,
+      "normalization": "CRLF to LF",
+      "verified_by": "apply.py after patch"
+    }
+  ],
+  "full_test262": false,
+  "performance_remeasured": false,
+  "build": {
+    "command": [
+      "make",
+      "-j2",
+      "qjs",
+      "qjsc"
+    ],
+    "exit_code": 0,
+    "log_sha256": "88ccd8791a37bfbf278a547594eb43eaf2ddeca56dce31387df1dce5040d7e5a",
+    "qjs_sha256": "4fe2994ad718a83f42d9b51683c8a62c2c8dd1d161acbc9b0f18ad694534a639",
+    "qjsc_sha256": "dc8148057300708f2439a5df6a09ec41f172f2199284d2d60038b2eac798cbbc"
+  },
+  "scope": "fresh application to upstream archived source, normal build and three targeted suites; engine sanitizer evidence is from original frozen attempt11, not rerun for this port"
+}

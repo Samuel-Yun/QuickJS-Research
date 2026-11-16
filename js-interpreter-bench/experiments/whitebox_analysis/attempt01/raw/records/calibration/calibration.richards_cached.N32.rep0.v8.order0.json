@@ -1,0 +1,65 @@
+{
+  "exit_code": 0,
+  "stdout": "WB_RESULT:{\"mode\":\"MAIN_MONOTONIC_V1_DERIVED\",\"variant\":\"richards_cached\",\"N\":32,\"checksum\":5242880,\"correctness\":\"PASS\",\"warmup_calls\":0,\"start_ms\":27.196,\"stop_ms\":226.122,\"elapsed_ms\":198.92600000000002}\n",
+  "stderr": "",
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/microbench/generated/richards_cached.N32.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T09:00:47.644004+00:00",
+  "outer_start_ns": 286559100636,
+  "outer_stop_ns": 286793425544,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 234324908,
+  "stage": "calibration",
+  "case": "richards",
+  "variant": "richards_cached",
+  "engine": "v8",
+  "N": 32,
+  "rep": 0,
+  "order": 0,
+  "permutation": [],
+  "schedule_index": 0,
+  "mode": "MAIN_MONOTONIC_V1_DERIVED",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "flags": [
+    "--max-opt=0",
+    "--no-lazy"
+  ],
+  "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+  "script_sha256": "79236d315e90dfe81ba7d93ec686a9dc8a549f4ca49eb979f977ce328a4ec8ec",
+  "adapters": [
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+      "sha256": "0ab3ed677381191d7e7839cbbc3f07895104a8b8299679ab9f37b856d76d3a22"
+    },
+    {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+      "sha256": "e610d3aa3d2672a5e6d5eccd9aaf05c6ae6758d1b9c4468289f017a231ab7d9f"
+    }
+  ],
+  "design_sha256": "7354c1868ce2f8a6cc0d43c8be772c69eece3966b70d20df8f98270cddf07e2b",
+  "checksum": 5242880,
+  "expected_checksum": 5242880,
+  "payload": {
+    "mode": "MAIN_MONOTONIC_V1_DERIVED",
+    "variant": "richards_cached",
+    "N": 32,
+    "checksum": 5242880,
+    "correctness": "PASS",
+    "warmup_calls": 0,
+    "start_ms": 27.196,
+    "stop_ms": 226.122,
+    "elapsed_ms": 198.92600000000002
+  },
+  "elapsed_ms": 198.92600000000002,
+  "elapsed_per_call_ms": 6.2164375000000005,
+  "errors": [],
+  "valid": true
+}

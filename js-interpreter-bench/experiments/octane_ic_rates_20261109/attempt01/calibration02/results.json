@@ -1,0 +1,193 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": "length",
+      "label": "EVAL_COLD",
+      "returncode": 0,
+      "wall_ms": 1.5178340254351497,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/eval_diagnostic/work/EVAL_COLD_DIAG/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/length.EVAL_COLD.js"
+      ],
+      "counts": {
+        "queries": 16,
+        "hits": 15,
+        "misses": 1,
+        "fused_hits": 15,
+        "proto_hits": 0,
+        "regular_queries": 1,
+        "own_fills": 1
+      }
+    },
+    {
+      "case": "length",
+      "label": "V8_ON",
+      "returncode": 0,
+      "wall_ms": 15.543619985692203,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+        "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "--jitless",
+        "--no-lazy",
+        "--use-ic",
+        "--allow-natives-syntax",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/length.V8_ON.js"
+      ],
+      "counts": {
+        "queries_all": 32,
+        "length_queries": 16,
+        "misses_all": 2,
+        "length_misses": 1,
+        "no_feedback_all": 20,
+        "length_no_feedback": 10,
+        "generic_runtime_all": 0,
+        "length_generic_runtime": 0,
+        "no_feedback_runtime_all": 0,
+        "length_no_feedback_runtime": 0,
+        "bad_frame": 0
+      }
+    },
+    {
+      "case": "nested_getter",
+      "label": "EVAL_COLD",
+      "returncode": 0,
+      "wall_ms": 1.3845140347257257,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/eval_diagnostic/work/EVAL_COLD_DIAG/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/nested_getter.EVAL_COLD.js"
+      ],
+      "counts": {
+        "queries": 32,
+        "hits": 15,
+        "misses": 17,
+        "fused_hits": 0,
+        "proto_hits": 0,
+        "regular_queries": 32,
+        "own_fills": 1
+      }
+    },
+    {
+      "case": "nested_getter",
+      "label": "V8_ON",
+      "returncode": 0,
+      "wall_ms": 17.195077030919492,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+        "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "--jitless",
+        "--no-lazy",
+        "--use-ic",
+        "--allow-natives-syntax",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/nested_getter.V8_ON.js"
+      ],
+      "counts": {
+        "queries_all": 32,
+        "length_queries": 0,
+        "misses_all": 2,
+        "length_misses": 0,
+        "no_feedback_all": 19,
+        "length_no_feedback": 0,
+        "generic_runtime_all": 0,
+        "length_generic_runtime": 0,
+        "no_feedback_runtime_all": 0,
+        "length_no_feedback_runtime": 0,
+        "bad_frame": 0
+      }
+    },
+    {
+      "case": "wide",
+      "label": "EVAL_COLD",
+      "returncode": 0,
+      "wall_ms": 2.5074699660763144,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/eval_diagnostic/work/EVAL_COLD_DIAG/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/wide.EVAL_COLD.js"
+      ],
+      "counts": {
+        "queries": 600,
+        "hits": 0,
+        "misses": 600,
+        "fused_hits": 0,
+        "proto_hits": 0,
+        "regular_queries": 600,
+        "own_fills": 0
+      }
+    },
+    {
+      "case": "wide",
+      "label": "V8_ON",
+      "returncode": 0,
+      "wall_ms": 17.659968929365277,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+        "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "--jitless",
+        "--no-lazy",
+        "--use-ic",
+        "--allow-natives-syntax",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/wide.V8_ON.js"
+      ],
+      "counts": {
+        "queries_all": 601,
+        "length_queries": 1,
+        "misses_all": 0,
+        "length_misses": 0,
+        "no_feedback_all": 601,
+        "length_no_feedback": 1,
+        "generic_runtime_all": 0,
+        "length_generic_runtime": 0,
+        "no_feedback_runtime_all": 0,
+        "length_no_feedback_runtime": 0,
+        "bad_frame": 0
+      }
+    },
+    {
+      "case": "extra",
+      "label": "EVAL_COLD",
+      "returncode": 0,
+      "wall_ms": 32.35430200584233,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/eval_diagnostic/work/EVAL_COLD_DIAG/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/extra.EVAL_COLD.js"
+      ],
+      "counts": {
+        "queries": 65540,
+        "hits": 0,
+        "misses": 65540,
+        "fused_hits": 0,
+        "proto_hits": 0,
+        "regular_queries": 65540,
+        "own_fills": 0
+      }
+    },
+    {
+      "case": "extra",
+      "label": "V8_ON",
+      "returncode": 0,
+      "wall_ms": 52.29918798431754,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+        "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+        "--jitless",
+        "--no-lazy",
+        "--use-ic",
+        "--allow-natives-syntax",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/calibration02/extra.V8_ON.js"
+      ],
+      "counts": {
+        "queries_all": 65541,
+        "length_queries": 1,
+        "misses_all": 0,
+        "length_misses": 0,
+        "no_feedback_all": 65541,
+        "length_no_feedback": 1,
+        "generic_runtime_all": 0,
+        "length_generic_runtime": 0,
+        "no_feedback_runtime_all": 0,
+        "length_no_feedback_runtime": 0,
+        "bad_frame": 0
+      }
+    }
+  ]
+}

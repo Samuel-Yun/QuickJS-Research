@@ -1,0 +1,18 @@
+{
+  "command": [
+    "objdump",
+    "-d",
+    "-l",
+    "-M",
+    "intel",
+    "--start-address=0x2a170",
+    "--stop-address=0x2a240",
+    "/home/mzyx/legacy_ng_ic_read_hit_attempt01/D/qjs"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-23T14:58:00.651340+00:00",
+  "exit_code": 0,
+  "stdout": "\n/home/mzyx/legacy_ng_ic_read_hit_attempt01/D/qjs:     file format elf64-x86-64\n\n\nDisassembly of section .text:\n\n000000000002a170 <JS_CallInternal+0x7ed0>:\nJS_CallInternal():\n/home/mzyx/legacy_ng_ic_read_hit_attempt01/D/quickjs.c:19250\n   2a170:\t48 8b bd c8 fe ff ff \tmov    rdi,QWORD PTR [rbp-0x138]\n   2a177:\t41 b9 01 00 00 00    \tmov    r9d,0x1\n   2a17d:\t52                   \tpush   rdx\n   2a17e:\t48 89 c2             \tmov    rdx,rax\n   2a181:\te8 fa 28 00 00       \tcall   2ca80 <JS_CallFree>\n   2a186:\t49 89 c7             \tmov    r15,rax\n   2a189:\t49 89 d6             \tmov    r14,rdx\n   2a18c:\t58                   \tpop    rax\n   2a18d:\t5a                   \tpop    rdx\n   2a18e:\te9 2f f4 ff ff       \tjmp    295c2 <JS_CallInternal+0x7322>\nJS_GetPropertyInternalWithIC():\n/home/mzyx/legacy_ng_ic_read_hit_attempt01/D/quickjs.c:8497\n   2a193:\t48 8d 85 d0 fe ff ff \tlea    rax,[rbp-0x130]\n   2a19a:\t8b 8d 20 fe ff ff    \tmov    ecx,DWORD PTR [rbp-0x1e0]\n   2a1a0:\t4c 89 f6             \tmov    rsi,r14\n   2a1a3:\t4c 89 95 30 fe ff ff \tmov    QWORD PTR [rbp-0x1d0],r10\n   2a1aa:\t50                   \tpush   rax\n   2a1ab:\t4c 8b 85 00 fe ff ff \tmov    r8,QWORD PTR [rbp-0x200]\n   2a1b2:\t4c 89 fa             \tmov    rdx,r15\n   2a1b5:\t4c 8b 8d 08 fe ff ff \tmov    r9,QWORD PTR [rbp-0x1f8]\n   2a1bc:\t48 8b bd c8 fe ff ff \tmov    rdi,QWORD PTR [rbp-0x138]\n   2a1c3:\t6a 00                \tpush   0x0\n   2a1c5:\te8 26 29 00 00       \tcall   2caf0 <JS_GetPropertyInternalIC>\n   2a1ca:\t4c 8b 95 30 fe ff ff \tmov    r10,QWORD PTR [rbp-0x1d0]\n   2a1d1:\t49 89 c7             \tmov    r15,rax\n   2a1d4:\t49 89 d6             \tmov    r14,rdx\n   2a1d7:\t58                   \tpop    rax\n   2a1d8:\t5a                   \tpop    rdx\n   2a1d9:\te9 92 ca ff ff       \tjmp    26c70 <JS_CallInternal+0x49d0>\n   2a1de:\t48 8d 85 e0 fe ff ff \tlea    rax,[rbp-0x120]\n   2a1e5:\t4c 89 95 30 fe ff ff \tmov    QWORD PTR [rbp-0x1d0],r10\n   2a1ec:\t4c 89 f6             \tmov    rsi,r14\n   2a1ef:\t4c 8b 8d 08 fe ff ff \tmov    r9,QWORD PTR [rbp-0x1f8]\n   2a1f6:\t50                   \tpush   rax\n   2a1f7:\t8b 8d 20 fe ff ff    \tmov    ecx,DWORD PTR [rbp-0x1e0]\n   2a1fd:\t4c 89 fa             \tmov    rdx,r15\n   2a200:\t4c 8b 85 00 fe ff ff \tmov    r8,QWORD PTR [rbp-0x200]\n   2a207:\t48 8b bd c8 fe ff ff \tmov    rdi,QWORD PTR [rbp-0x138]\n   2a20e:\t6a 00                \tpush   0x0\n   2a210:\te8 db 28 00 00       \tcall   2caf0 <JS_GetPropertyInternalIC>\n   2a215:\t41 59                \tpop    r9\n   2a217:\t41 5a                \tpop    r10\n   2a219:\t48 89 c1             \tmov    rcx,rax\n   2a21c:\t4c 8b 95 30 fe ff ff \tmov    r10,QWORD PTR [rbp-0x1d0]\n   2a223:\t48 89 d0             \tmov    rax,rdx\n   2a226:\te9 53 c9 ff ff       \tjmp    26b7e <JS_CallInternal+0x48de>\nJS_CallInternal():\n/home/mzyx/legacy_ng_ic_read_hit_attempt01/D/quickjs.c:18396\n   2a22b:\t4d 89 dc             \tmov    r12,r11\n   2a22e:\te9 fd 87 ff ff       \tjmp    22a30 <JS_CallInternal+0x790>\n   2a233:\t48 8b 8d c8 fe ff ff \tmov    rcx,QWORD PTR [rbp-0x138]\n   2a23a:\t48 8b 79 10          \tmov    rdi,QWORD PTR [rcx+0x10]\n__JS_FreeAtom():\n/home/mzyx/legacy_ng_ic_read_hit_attempt01/D/quickjs.c:3501\n   2a23e:\t48                   \trex.W\n   2a23f:\t8b                   \t.byte 0x8b\n",
+  "stderr": "",
+  "wall_ns": 45769456
+}

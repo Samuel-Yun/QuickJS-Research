@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "candidate": "P012",
+      "status": "PASS",
+      "token": "2026-11-05T15:32:30.121571+00:00:P012",
+      "stdout": "OCCUPANCY shapes=1 distinct_verified=1 local=1 capacity=3 shared=0\nOCCUPANCY shapes=2 distinct_verified=1 local=2 capacity=3 shared=0\nOCCUPANCY shapes=3 distinct_verified=1 local=3 capacity=3 shared=0\nOCCUPANCY shapes=4 distinct_verified=1 local=3 capacity=3 shared=0\nOCCUPANCY shapes=8 distinct_verified=1 local=3 capacity=3 shared=0\nOCCUPANCY shapes=17 distinct_verified=1 local=3 capacity=3 shared=0\nLAYOUT_PROBE_PASS\nDELETE_REENTRY_PASS deleted=1 finalized=1 saw_undefined=1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "candidate": "H014",
+      "status": "PASS",
+      "token": "2026-11-05T15:32:52.679431+00:00:H014",
+      "stdout": "OCCUPANCY shapes=1 distinct_verified=1 local=1 capacity=1 shared=0\nOCCUPANCY shapes=2 distinct_verified=1 local=1 capacity=1 shared=0\nOCCUPANCY shapes=3 distinct_verified=1 local=1 capacity=1 shared=0\nOCCUPANCY shapes=4 distinct_verified=1 local=1 capacity=1 shared=0\nOCCUPANCY shapes=8 distinct_verified=1 local=1 capacity=1 shared=0\nOCCUPANCY shapes=17 distinct_verified=1 local=1 capacity=1 shared=0\nLAYOUT_PROBE_PASS\nDELETE_REENTRY_PASS deleted=1 finalized=1 saw_undefined=1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "candidate": "S005",
+      "status": "PASS",
+      "token": "2026-11-05T15:33:14.928941+00:00:S005",
+      "stdout": "DELETE_REENTRY_PASS deleted=1 finalized=1 saw_undefined=1\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  ],
+  "counts_are_timings": false,
+  "scope": "Three selected template/GC invariants; does not validate all unbuilt configurations",
+  "active_restored_to": "F016"
+}

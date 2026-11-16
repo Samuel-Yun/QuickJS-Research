@@ -1,0 +1,31 @@
+quickjs.h; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+687: static inline void JS_FreeValue(JSContext *ctx, JSValue v)
+688: {
+689:     if (JS_VALUE_HAS_REF_COUNT(v)) {
+690:         JSRefCountHeader *p = __js_rc(JS_VALUE_GET_PTR(v));
+691:         if (--p->ref_count <= 0) {
+692:             __JS_FreeValue(ctx, v);
+693:         }
+694:     }
+695: }
+696: void __JS_FreeValueRT(JSRuntime *rt, JSValue v);
+697: static inline void JS_FreeValueRT(JSRuntime *rt, JSValue v)
+698: {
+699:     if (JS_VALUE_HAS_REF_COUNT(v)) {
+700:         JSRefCountHeader *p = __js_rc(JS_VALUE_GET_PTR(v));
+701:         if (--p->ref_count <= 0) {
+702:             __JS_FreeValueRT(rt, v);
+703:         }
+704:     }
+705: }
+706: 
+707: static inline JSValue JS_DupValue(JSContext *ctx, JSValueConst v)
+708: {
+709:     if (JS_VALUE_HAS_REF_COUNT(v)) {
+710:         JSRefCountHeader *p = __js_rc(JS_VALUE_GET_PTR(v));
+711:         p->ref_count++;
+712:     }
+713:     return (JSValue)v;
+714: }
+715: 
+716: static inline JSValue JS_DupValueRT(JSRuntime *rt, JSValueConst v)

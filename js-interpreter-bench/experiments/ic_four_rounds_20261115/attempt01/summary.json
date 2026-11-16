@@ -1,0 +1,146 @@
+{
+  "rounds": {
+    "GROUP_LOAD_IC": {
+      "status": "PASS",
+      "round": "01_group_load",
+      "aggregates": {
+        "octane": {
+          "A": -6.305234799861181,
+          "EVAL_COLD": -0.630613124339674,
+          "C": 0.1407780659481439,
+          "V8_ON": 55.642287881234665,
+          "hits": 24381259,
+          "attempts": 24454544
+        },
+        "sunspider": {
+          "A": -1.0059656291098285,
+          "EVAL_COLD": 0.48826248658779825,
+          "C": 0.5706332139669756,
+          "V8_ON": 43.46141155847534,
+          "hits": 5281536,
+          "attempts": 5281792,
+          "sum_ms": {
+            "A": 401.84999168262584,
+            "EVAL_COLD": 396.6749892469961,
+            "C": 398.20031219284283,
+            "candidate": 398.7646850948804,
+            "V8_ON": 250.257126953125
+          }
+        }
+      },
+      "samples": 43,
+      "independent_counter_processes": 43,
+      "C_formal_retests": 0,
+      "unit": "ms/complete Run",
+      "comparison": "cross-batch single screening vs historical C; A/EVAL_COLD/V8_ON historical 30 medians"
+    },
+    "CALL_RECIPE_IC": {
+      "status": "PASS",
+      "round": "02_call_recipe",
+      "aggregates": {
+        "octane": {
+          "A": -4.401391108872543,
+          "EVAL_COLD": 1.3885368236486118,
+          "C": 2.175602403511734,
+          "V8_ON": 58.80488279462996,
+          "hits": 374624,
+          "attempts": 142957084
+        },
+        "sunspider": {
+          "A": 0.4622370934903808,
+          "EVAL_COLD": 1.9786264414440202,
+          "C": 2.0622188275521314,
+          "V8_ON": 45.58911992369941,
+          "hits": 0,
+          "attempts": 194661884,
+          "sum_ms": {
+            "A": 401.84999168262584,
+            "EVAL_COLD": 396.6749892469961,
+            "C": 398.20031219284283,
+            "candidate": 403.53968463797355,
+            "V8_ON": 250.257126953125
+          }
+        }
+      },
+      "samples": 43,
+      "independent_counter_processes": 43,
+      "C_formal_retests": 0,
+      "unit": "ms/complete Run",
+      "comparison": "cross-batch single screening vs historical C; A/EVAL_COLD/V8_ON historical 30 medians"
+    },
+    "CONSTRUCTOR_PLAN_IC": {
+      "status": "PASS",
+      "round": "03_constructor_plan",
+      "aggregates": {
+        "octane": {
+          "A": -7.035854390650531,
+          "EVAL_COLD": -1.4054826767741502,
+          "C": -0.6401066946421063,
+          "V8_ON": 54.428609566993714,
+          "hits": 13660046,
+          "attempts": 24021438
+        },
+        "sunspider": {
+          "A": -3.640964340572639,
+          "EVAL_COLD": -2.186509219121746,
+          "C": -2.106331015381846,
+          "V8_ON": 39.642791204192875,
+          "hits": 3870486,
+          "attempts": 25209600,
+          "sum_ms": {
+            "A": 401.84999168262584,
+            "EVAL_COLD": 396.6749892469961,
+            "C": 398.20031219284283,
+            "candidate": 393.04693526995834,
+            "V8_ON": 250.257126953125
+          }
+        }
+      },
+      "samples": 43,
+      "independent_counter_processes": 43,
+      "C_formal_retests": 0,
+      "unit": "ms/complete Run",
+      "comparison": "cross-batch single screening vs historical C; A/EVAL_COLD/V8_ON historical 30 medians"
+    },
+    "INDEX_CONSUME_IC": {
+      "status": "PASS",
+      "round": "04_index_consume",
+      "aggregates": {
+        "octane": {
+          "A": -6.70298845893853,
+          "EVAL_COLD": -1.0524567262275686,
+          "C": -0.2843402511051196,
+          "V8_ON": 54.98155417450417,
+          "hits": 1310735,
+          "attempts": 2199488
+        },
+        "sunspider": {
+          "A": -2.401633388108848,
+          "EVAL_COLD": -0.928471653016083,
+          "C": -0.8472622296409216,
+          "V8_ON": 41.43882031805277,
+          "hits": 3200382,
+          "attempts": 34501376,
+          "sum_ms": {
+            "A": 401.84999168262584,
+            "EVAL_COLD": 396.6749892469961,
+            "C": 398.20031219284283,
+            "candidate": 395.4155729099293,
+            "V8_ON": 250.257126953125
+          }
+        }
+      },
+      "samples": 43,
+      "independent_counter_processes": 43,
+      "C_formal_retests": 0,
+      "unit": "ms/complete Run",
+      "comparison": "cross-batch single screening vs historical C; A/EVAL_COLD/V8_ON historical 30 medians"
+    }
+  },
+  "hot_site_counts": {
+    "GROUP_LOAD_IC": 245,
+    "CALL_RECIPE_IC": 60,
+    "CONSTRUCTOR_PLAN_IC": 67,
+    "INDEX_CONSUME_IC": 3
+  }
+}

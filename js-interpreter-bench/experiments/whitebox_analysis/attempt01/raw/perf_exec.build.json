@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/perf_exec.c: In function ‘main’:\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/perf_exec.c:27:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   27 |   if(write(barrier[1],\"x\",1)!=1)return 6;close(barrier[1]);int status;waitpid(child,&status,0);\n      |   ^~\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/perf_exec.c:27:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   27 |   if(write(barrier[1],\"x\",1)!=1)return 6;close(barrier[1]);int status;waitpid(child,&status,0);\n      |                                          ^~~~~\n",
+  "command": [
+    "gcc",
+    "-O2",
+    "-Wall",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/tooling/perf_exec.c",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/whitebox_analysis/attempt01/profiles/perf_exec"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-05T08:57:43.427400+00:00",
+  "outer_start_ns": 91890433394,
+  "outer_stop_ns": 92184798430,
+  "boot_id": "f6560751-86c2-43ce-9404-f3eca71582fd",
+  "outer_wall_ns": 294365036
+}

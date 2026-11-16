@@ -1,0 +1,102 @@
+{
+  "stage": "pilot_p7000",
+  "case": "local_function_call",
+  "condition": "SHIM_ON",
+  "N": 32768,
+  "rep": 0,
+  "order": 2,
+  "period_us": 7000,
+  "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+  "cohort": "WSL2-call-boundary-20261029-attempt01",
+  "command": [
+    "/home/mzyx/call_boundary_cost_attempt01/shim/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_boundary_cost/attempt01/scripts/local_function_call/N32768.measure.shim.js"
+  ],
+  "script_relative": "scripts/local_function_call/N32768.measure.shim.js",
+  "script_sha256": "627a2d07fa45fed9432d6be7ffd8cdbd7cb80186d739665b624b5180110f7556",
+  "binary_sha256": "dfc547ff0db4a4318c812a65f4d2d485a9a2bb169aee405152bf4a596268c437",
+  "input_sha256": "a8a637d5233364a3e2baa25699217c5e2b4c91260d1092901bf5d57d34e0508e",
+  "sample_prefix": "/home/mzyx/call_boundary_cost_attempt01/reports/pilot_p7000/local_function_call/rep0.SHIM_ON.N32768.p7000",
+  "boot_id": "46544d7b-a2ba-4f7f-a97f-f0692a95b1e4",
+  "valid": true,
+  "timestamp": "2026-10-29T03:11:11.805877+00:00",
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"case\":\"local_function_call\",\"N\":32768,\"mode\":\"CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"correctness\":\"PASS\",\"checksum\":274945015808,\"last\":8390656,\"start_ms\":42800.588967,\"stop_ms\":48048.538718,\"elapsed_ms\":5247.949751,\"warmup_calls\":0,\"inner_iterations\":4096,\"first_Run_included\":true}\n",
+  "stderr": "",
+  "timeout": false,
+  "completed_at": "2026-10-29T03:11:17.064474+00:00",
+  "outer_start_ns": 42791338616,
+  "outer_stop_ns": 48049896865,
+  "outer_wall_ns": 5258558249,
+  "child_user_seconds": 5.241020000000006,
+  "child_system_seconds": 0.010059000000000005,
+  "child_voluntary_switches": 28,
+  "child_involuntary_switches": 3,
+  "payload": {
+    "case": "local_function_call",
+    "N": 32768,
+    "mode": "CALL_BOUNDARY_FIRST_CALL_INCLUSIVE_V1",
+    "phase": "measure",
+    "correctness": "PASS",
+    "checksum": 274945015808,
+    "last": 8390656,
+    "start_ms": 42800.588967,
+    "stop_ms": 48048.538718,
+    "elapsed_ms": 5247.949751,
+    "warmup_calls": 0,
+    "inner_iterations": 4096,
+    "first_Run_included": true
+  },
+  "elapsed_ms": 5247.949751,
+  "elapsed_per_Run_ms": 0.1601547165222168,
+  "sampler": {
+    "schema": "little-endian uint64 rip,uint64 CLOCK_MONOTONIC_ns",
+    "sample_bytes": 16,
+    "pid": 620,
+    "enabled": true,
+    "period_us": 7000,
+    "capacity": 131072,
+    "delivered": 520,
+    "retained": 520,
+    "overflow": 0,
+    "clock_errors": 0,
+    "drained_pending": 0,
+    "threads_before": 1,
+    "threads_after": 1,
+    "atomics_lock_free": true,
+    "old_handler_default": true,
+    "old_timer_zero": true,
+    "window_start_ns": 42800570698,
+    "window_stop_ns": 48048539700,
+    "window_cpu_start_ns": 3504400,
+    "window_cpu_stop_ns": 5241734600,
+    "voluntary_switches": 0,
+    "involuntary_switches": 3
+  },
+  "sampler_archives": {
+    "meta.json": {
+      "path": "raw/samples/pilot_p7000/local_function_call/rep0.SHIM_ON.N32768.p7000.meta.json.gz",
+      "sha256": "259f30637f27648858561885f01729ac7769d5044217d458980666fce677b652",
+      "uncompressed_sha256": "0239c25f199f0098be6ba02d86a0e915f8e08c941a23454fc1cdeb5d77e9fd33",
+      "bytes": 503
+    },
+    "samples.bin": {
+      "path": "raw/samples/pilot_p7000/local_function_call/rep0.SHIM_ON.N32768.p7000.samples.bin.gz",
+      "sha256": "348b6fe713292c80728f405fc3c092eed8505b1bf69481a68ce35e5ec5858bf9",
+      "uncompressed_sha256": "2741d82883956875bd4e7657bbc72daf73b39a28e8f05acab1c2f1c6ab69c685",
+      "bytes": 8320
+    },
+    "begin.maps": {
+      "path": "raw/samples/pilot_p7000/local_function_call/rep0.SHIM_ON.N32768.p7000.begin.maps.gz",
+      "sha256": "b5b396873dfccb9ee6bc1d5953542e324d2191ed1f0f7bd3f217d4d28a091fdd",
+      "uncompressed_sha256": "a8037d5559edf1f4de73c13f923e9bb4b68632660721d6a089be85400f0f767b",
+      "bytes": 2768
+    },
+    "end.maps": {
+      "path": "raw/samples/pilot_p7000/local_function_call/rep0.SHIM_ON.N32768.p7000.end.maps.gz",
+      "sha256": "b5b396873dfccb9ee6bc1d5953542e324d2191ed1f0f7bd3f217d4d28a091fdd",
+      "uncompressed_sha256": "a8037d5559edf1f4de73c13f923e9bb4b68632660721d6a089be85400f0f767b",
+      "bytes": 2768
+    }
+  }
+}

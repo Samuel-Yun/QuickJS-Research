@@ -1,0 +1,54 @@
+{
+  "selected": [
+    "s001",
+    "s004"
+  ],
+  "all_complete_screen_points": [
+    {
+      "id": "s001",
+      "parent": "M",
+      "sunspider": 0.9977457596701113,
+      "octane_core": 0.9826452194246473,
+      "octane_expanded": 0.9807314596279945,
+      "sunspider_source": "s001.matched.sunspider.screen.json",
+      "source_and_binary_manifest": "s001.matched.json"
+    },
+    {
+      "id": "s002",
+      "parent": "M",
+      "sunspider": 1.0032253473162698,
+      "octane_core": 1.0249352739973083,
+      "octane_expanded": 1.0237979837661264,
+      "sunspider_source": "s002.matched.sunspider.screen.json",
+      "source_and_binary_manifest": "s002.matched.json"
+    },
+    {
+      "id": "s003",
+      "parent": "M",
+      "sunspider": 1.0033325802158242,
+      "octane_core": 1.0040849799382052,
+      "octane_expanded": 0.9991163798050781,
+      "sunspider_source": "s003.matched.recovery01.sunspider.screen.json",
+      "source_and_binary_manifest": "s003.matched.json"
+    },
+    {
+      "id": "s004",
+      "parent": "M",
+      "sunspider": 0.9969921990496105,
+      "octane_core": 0.9842072264739858,
+      "octane_expanded": 0.9797092729780227,
+      "sunspider_source": "s004.matched.sunspider.screen.json",
+      "source_and_binary_manifest": "s004.matched.json"
+    }
+  ],
+  "rule": "recheck_policy.json, core point ordering; exploratory selection, not confirmed ranking",
+  "recheck_rounds": 3,
+  "seed": 20261105,
+  "new_candidates_allowed": false,
+  "frozen_artifacts": {
+    "s001": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b",
+    "s004": "124caeb9ff5797d05860d21dd7a0f5fa8e6f2aa3f3e4d6ec8e296d90d1177219"
+  },
+  "source_of_s003": "one complete new recovery campaign only; original12 partial not merged",
+  "next": "bounded coarse regressions + selected narrow mechanisms; then exactly3 rounds of26+17 per selected candidate"
+}

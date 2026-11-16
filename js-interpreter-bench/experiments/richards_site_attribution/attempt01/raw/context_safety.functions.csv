@@ -1,0 +1,24 @@
+id,filename,name,line,col,byte_length,bytecode_hex,source
+1,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js","",2,27,13,"3800003e63020000cf24010029","function (message) { console.log(message); }"
+2,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/quickjs.js","<eval>",1,1,13,"380100be00153f6a020000cb28",""
+3,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js","",5,57,10,"db3e2b010000dc250100","function () {
+    return __clockFunction.call(__clockObject);
+  }"
+4,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js","",2,3,74,"380000c73800003dab010000ccf3e90e38010011046e020000210100303802003e69000000380300046f0200000bbe004a44000000494400000009494200000009494100000024030029","function () {
+  var __clockObject = performance, __clockFunction = performance.now;
+  if (typeof __clockFunction !== 'function') throw new Error('native clock missing');
+  Object.defineProperty(globalThis, 'benchNow', {value: function () {
+    return __clockFunction.call(__clockObject);
+  }, writable: false, configurable: false});
+}"
+5,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/quickjs.js","<eval>",1,1,5,"be00eccb28",""
+6,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/probes/context_safety.js","saInner",2,1,7,"cf3d7202000028","function saInner(o) { return o.inner; }"
+7,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/probes/context_safety.js","",4,5,13,"3800000bba4972020000230100","get first() { return saInner({inner: 7}); }"
+8,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/probes/context_safety.js","",5,5,3,"bb0b30","get second() { throw 11; }"
+9,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/probes/context_safety.js","runRichards",8,1,53,"3800003d74020000c76b12000000c33800003d750200009bc70eea0ec86b0a000000c492000eea0230c33800003d9e0000009bcb28","function runRichards() {
+    var value = saOuter.first;
+    try { value += saOuter.second; } catch (e) { value += e; }
+    value += saOuter.ok;
+    return value;
+}"
+10,"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/probes/context_safety.js","<eval>",1,1,72,"be00dfbe03e10bbe01517402000005be02517502000005bb0d499e00000039010006c7380200ecbb1faae80b3803000478020000ed303804003e630200000479020000240100cb28",""

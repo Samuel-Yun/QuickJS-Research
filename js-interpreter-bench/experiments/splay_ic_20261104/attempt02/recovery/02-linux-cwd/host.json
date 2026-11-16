@@ -1,0 +1,53 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/",
+    "--exec",
+    "/bin/true"
+  ],
+  "timestamp": "2026-11-04T08:44:28.187723+00:00",
+  "host_pid": 123612,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "The inherited Windows working directory may prevent startup; use a known Linux root directory.",
+  "changed_factor": "Only add --cd /; keep distro, default user and /bin/true unchanged.",
+  "timeout_s": 30.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204050161664,
+      "free": 10698199040
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  },
+  "completed_at": "2026-11-04T08:44:32.803800+00:00",
+  "host_child_pid": 28264,
+  "wsl_exit_code": 0,
+  "wsl_exit_u32": 0,
+  "host_terminated_client": false,
+  "external_wall_ms": 4612.6156,
+  "stdout": {
+    "encoding": "utf-8",
+    "text": ""
+  },
+  "stderr": {
+    "encoding": "utf-16-le",
+    "text": "wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。\r\n"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+  "linux_child_exit_code": null,
+  "linux_child_signal": null,
+  "linux_boot_before": null,
+  "linux_boot_after": null,
+  "linux_child_cpu_ms": null,
+  "linux_single_process_peak_rss_kib": null,
+  "missing_linux_evidence": "UNKNOWN unless child JSON is actually produced"
+}
