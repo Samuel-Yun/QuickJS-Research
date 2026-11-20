@@ -13,6 +13,7 @@
 | [完整补丁](patches/A-to-on-demand-ctor.patch) | **从原版 A 到当前方法**，包含当前版本依赖的全部优化 |
 | [本轮增量补丁](patches/R3-to-on-demand-ctor.patch) | 只看“按需分配＋负缓存”相对构造计划父版 R3 的变化 |
 | [设计说明](docs/design.md) | 缓存什么、命中怎么执行、哪些开销还在 |
+| [构造 IC 源码导读](docs/构造IC源码导读.md) | 跟着 Pair 例子读识别、学习、命中执行，并对照运行结果 |
 | [改动清单](docs/changes.md) | 每个文件和 `quickjs.c` 中各处接入位置 |
 | [历史数据](results/README.md) | 已有 Octane/SunSpider 数据及比较口径 |
 | [manifest.json](manifest.json) | 两套源码逐文件 SHA-256、原始来源、补丁哈希 |
