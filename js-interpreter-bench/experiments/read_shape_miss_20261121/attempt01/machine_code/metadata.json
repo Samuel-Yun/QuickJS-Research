@@ -1,0 +1,52 @@
+{
+  "SPARSE": {
+    "binary_sha256": "cbc786e0293ff6891ea1c16eb7e21edf02db336f7043b368be56ed31b34cd232",
+    "commands": [
+      [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=168382",
+        "--stop-address=168450",
+        "js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SPARSE.release/qjs"
+      ],
+      [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=184176",
+        "--stop-address=184283",
+        "js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SPARSE.release/qjs"
+      ]
+    ]
+  },
+  "SKIP_REPROBE": {
+    "binary_sha256": "0a3fb25a3b162b7653ea07271569f353ea0d91c993a73000641a875b6cb1273f",
+    "commands": [
+      [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=168382",
+        "--stop-address=168451",
+        "js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs"
+      ],
+      [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=184517",
+        "--stop-address=184590",
+        "js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs"
+      ],
+      [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=197932",
+        "--stop-address=197993",
+        "js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs"
+      ]
+    ]
+  }
+}
