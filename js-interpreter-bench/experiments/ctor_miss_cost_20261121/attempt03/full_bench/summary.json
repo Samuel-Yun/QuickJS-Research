@@ -1,0 +1,89 @@
+{
+  "comparison": "跨批次单轮筛选",
+  "new_samples": 43,
+  "controls_new_samples": 0,
+  "aggregates": {
+    "octane": {
+      "cases": 17,
+      "SPARSE_vs_A_pct": -7.859651308442506,
+      "TWICE_vs_A_pct": -6.914678155686193,
+      "TWICE_vs_SPARSE_pct": 1.0255801786898333,
+      "V8_ON_vs_A_pct": -39.80121567498796,
+      "sum_ms": {
+        "A": 8753.443533238169,
+        "SPARSE": 8210.082200228593,
+        "TWICE": 8453.706697661808,
+        "V8_ON": 6980.745217285156
+      },
+      "largest_improvement": {
+        "suite": "octane",
+        "name": "Richards",
+        "case": "Richards.Richards",
+        "N": 1024,
+        "A_ms": 2.6391230224689934,
+        "SPARSE_ms": 2.237544731440721,
+        "TWICE_ms": 2.199119259719737,
+        "V8_ON_ms": 1.8661293945312498,
+        "SPARSE_vs_A_pct": -15.21635359963559,
+        "TWICE_vs_A_pct": -16.672347556485544,
+        "V8_ON_vs_A_pct": -29.289791394968034,
+        "TWICE_vs_SPARSE_pct": -1.717305186396989
+      },
+      "largest_regression": {
+        "suite": "octane",
+        "name": "NavierStokes",
+        "case": "NavierStokes.NavierStokes",
+        "N": 32,
+        "A_ms": 43.94403971731663,
+        "SPARSE_ms": 40.36629043798894,
+        "TWICE_ms": 42.586768344044685,
+        "V8_ON_ms": 54.812859375,
+        "SPARSE_vs_A_pct": -8.141603053207325,
+        "TWICE_vs_A_pct": -3.088635869626466,
+        "V8_ON_vs_A_pct": 24.733319302459122,
+        "TWICE_vs_SPARSE_pct": 5.50082229990112
+      }
+    },
+    "sunspider": {
+      "cases": 26,
+      "SPARSE_vs_A_pct": -4.446122590474255,
+      "TWICE_vs_A_pct": -1.9028877557258461,
+      "TWICE_vs_SPARSE_pct": 2.661571569564458,
+      "V8_ON_vs_A_pct": -30.996054412485762,
+      "sum_ms": {
+        "A": 401.84999168262584,
+        "SPARSE": 389.57281946984585,
+        "TWICE": 395.6959423623048,
+        "V8_ON": 250.257126953125
+      },
+      "largest_improvement": {
+        "suite": "sunspider",
+        "name": "bitops-bits-in-byte",
+        "case": "bitops-bits-in-byte",
+        "N": 128,
+        "A_ms": 16.729813343612477,
+        "SPARSE_ms": 16.984898757655174,
+        "TWICE_ms": 15.721703484654427,
+        "V8_ON_ms": 16.85812109375,
+        "SPARSE_vs_A_pct": 1.5247355652063366,
+        "TWICE_vs_A_pct": -6.025828491045015,
+        "V8_ON_vs_A_pct": 0.766940715369735,
+        "TWICE_vs_SPARSE_pct": -7.437166927070549
+      },
+      "largest_regression": {
+        "suite": "sunspider",
+        "name": "access-binary-trees",
+        "case": "access-binary-trees",
+        "N": 256,
+        "A_ms": 9.188603435643017,
+        "SPARSE_ms": 6.091568062431179,
+        "TWICE_ms": 7.76273062126711,
+        "V8_ON_ms": 4.897763671875,
+        "SPARSE_vs_A_pct": -33.705180497814226,
+        "TWICE_vs_A_pct": -15.517840380888359,
+        "V8_ON_vs_A_pct": -46.69740939220046,
+        "TWICE_vs_SPARSE_pct": 27.4340291647166
+      }
+    }
+  }
+}

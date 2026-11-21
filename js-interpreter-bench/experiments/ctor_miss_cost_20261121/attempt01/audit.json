@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "normal_sources_identical_to_frozen_SPARSE": true,
+  "Release_source_change": "only OP_four_ctor handler in quickjs.c",
+  "record_and_opcode_preparation_unchanged": true,
+  "other_optimizations_unchanged": true,
+  "cache_policy_unchanged_in_normal": true,
+  "JS_bytes_identical_between_all_conditions": true,
+  "fresh_Release_processes": 10,
+  "processes_per_condition": 5,
+  "all_samples_retained": true,
+  "timing_has_no_counters": true,
+  "independent_counter_processes": 1,
+  "single_new_site": {
+    "function": "ctorLoop",
+    "pc": 18,
+    "argc": 2
+  },
+  "measured_diagnostic_hit_percent": 0.0,
+  "full_benchmarks_run": false,
+  "artifacts": {
+    "ctor.js": "a3a4530a041865de459e856654fcaeea9555dcae716f8abc162203aa12882e19",
+    "BYPASS.patch": "abc21f7da61276ac3bf480cc438217614d8e585b307b8bc8bb486976bae63fb8",
+    "COUNTS.patch": "6264f2da2405b9fd9cecb8db255694d41da571a571cfe2adbf7697ede8cb1bb7",
+    "results.md": "5297c189029438898e0af1b3a98294042bca8fcf88be17ae5209fb7026043376",
+    "analysis/samples.csv": "8607d72e37b31255d194f8046b3bc930a167a2d34185c8a6d1935a1c299ce7f7",
+    "analysis/summary.csv": "939fb7f90ee199c3f9e941efb9db5ed24dee37139755d9482fe00f5ad4dcff85",
+    "analysis/work_counts.csv": "89eb46cc13ef8d7e635ef9793250821e33130762f6723cccab3a0f8ffaa4b086",
+    "analysis/data.json": "95967f0202e74525a56e37538d623ab5497132e10e59813840bed6ad8c000a4b"
+  }
+}

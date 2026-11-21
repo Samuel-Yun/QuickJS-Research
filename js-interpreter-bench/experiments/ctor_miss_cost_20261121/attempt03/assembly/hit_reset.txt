@@ -1,0 +1,25 @@
+                    if(s->identity_misses){s->identity_misses=0;}
+   2f5e8:	48 8b 85 20 fe ff ff 	mov    -0x1e0(%rbp),%rax
+   2f5ef:	80 78 1e 00          	cmpb   $0x0,0x1e(%rax)
+   2f5f3:	0f 84 50 7c ff ff    	je     27249 <JS_CallInternal+0x1839>
+   2f5f9:	48 8b 85 20 fe ff ff 	mov    -0x1e0(%rbp),%rax
+   2f600:	c6 40 1e 00          	movb   $0x0,0x1e(%rax)
+    return js_unlikely(JS_VALUE_GET_TAG(v) == JS_TAG_EXCEPTION);
+   2f604:	e9 40 7c ff ff       	jmp    27249 <JS_CallInternal+0x1839>
+            GET_READ_IC(get_field_rdi, 0);
+   2f609:	66 83 78 12 01       	cmpw   $0x1,0x12(%rax)
+   2f60e:	0f 85 bd c2 ff ff    	jne    2b8d1 <JS_CallInternal+0x5ec1>
+   2f614:	f6 40 10 08          	testb  $0x8,0x10(%rax)
+
+                    if(s->identity_misses){s->identity_misses=0;}
+   30600:	48 8b 85 20 fe ff ff 	mov    -0x1e0(%rbp),%rax
+   30607:	80 78 1e 00          	cmpb   $0x0,0x1e(%rax)
+   3060b:	74 04                	je     30611 <JS_CallInternal+0xac01>
+   3060d:	c6 40 1e 00          	movb   $0x0,0x1e(%rax)
+    JSRuntime *rt = ctx->rt;
+   30611:	49 8b 44 24 10       	mov    0x10(%r12),%rax
+    rt->current_exception = JS_UNINITIALIZED;
+   30616:	45 31 d2             	xor    %r10d,%r10d
+    val = rt->current_exception;
+   30619:	48 8b 88 d8 04 00 00 	mov    0x4d8(%rax),%rcx
+   30620:	48 8b 90 e0 04 00 00 	mov    0x4e0(%rax),%rdx

@@ -1,0 +1,14 @@
+{
+  "binary_sha256": "93de8caa5421c23b3a7dc51c86c9bee8fb6034b31f8a7025dd17af6fdafd8dca",
+  "command": [
+    "objdump",
+    "-d",
+    "-S",
+    "--disassemble=JS_CallInternal",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_miss_cost_20261121/attempt03/work/TWICE.release/qjs"
+  ],
+  "field_offset": 30,
+  "conditional_store": true,
+  "matching_blocks": 2,
+  "explanation": "cmpb zero; je skips the movb store when the byte is already zero"
+}

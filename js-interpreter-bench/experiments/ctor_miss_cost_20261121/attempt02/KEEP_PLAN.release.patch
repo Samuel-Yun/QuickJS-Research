@@ -1,0 +1,31 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -18330,9 +18330,13 @@
+             {
+                 FourSite*s=&b->four_sites[get_u16(pc)];call_argc=s->argc;pc+=2;
+                 call_argv=sp-call_argc;sf->cur_pc=pc;
+-                int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
++                int different=s->plan && s->plan->final &&
++                    JS_VALUE_GET_TAG(s->plan->callee)==JS_TAG_OBJECT &&
++                    (JS_VALUE_GET_TAG(call_argv[-2])!=JS_TAG_OBJECT ||
++                     JS_VALUE_GET_OBJ(s->plan->callee)!=JS_VALUE_GET_OBJ(call_argv[-2]));
++                int fast=different?0:four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+                 if(!fast){
+-                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
++                    int eligible=different?0:four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
+ #ifdef FOUR_DIAG
+                     FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+ #endif
+@@ -18340,8 +18344,10 @@
+ #ifdef FOUR_DIAG
+                     four_ctor_observer=oldscope;
+ #endif
+-                    if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
+-                    else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
++                    if(!different){
++                        if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
++                        else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
++                    }
+                 }
+                 if(unlikely(JS_IsException(ret_val))){
+                     if(fast){

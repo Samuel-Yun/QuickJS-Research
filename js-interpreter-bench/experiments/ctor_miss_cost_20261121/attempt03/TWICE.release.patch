@@ -1,0 +1,58 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -5,10 +5,12 @@
+     JSValue negative;
+     uint32_t pc;
+     uint16_t argc;
++    uint8_t identity_misses; /* existing tail padding: offset 30, still 32 B */
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+ };
++_Static_assert(sizeof(FourSite)==32 && offsetof(FourSite,identity_misses)==30,"site layout unchanged");
+ struct FullPlan {
+     JSValue callee;
+     JSShape *initial,*final;
+@@ -118,6 +120,7 @@
+     }
+     JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
+     s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
++    if(slot->identity_misses){slot->identity_misses=0;}
+     JSValue negative=slot->negative;slot->negative=JS_UNDEFINED;
+     FOUR_COUNT(s,fill);
+     JS_FreeValue(ctx,negative);
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -18331,8 +18331,17 @@
+                 FourSite*s=&b->four_sites[get_u16(pc)];call_argc=s->argc;pc+=2;
+                 call_argv=sp-call_argc;sf->cur_pc=pc;
+                 int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+-                if(!fast){
+-                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
++                if(fast){
++                    if(s->identity_misses){s->identity_misses=0;}
++                }else{
++                    int skip_learning=0;
++                    if(s->plan && s->plan->final && JS_VALUE_GET_TAG(s->plan->callee)==JS_TAG_OBJECT &&
++                       (JS_VALUE_GET_TAG(call_argv[-2])!=JS_TAG_OBJECT ||
++                        JS_VALUE_GET_OBJ(s->plan->callee)!=JS_VALUE_GET_OBJ(call_argv[-2]))){
++                        if(s->identity_misses<2){s->identity_misses++;}
++                        skip_learning=s->identity_misses<2;
++                    }else if(s->identity_misses){s->identity_misses=0;}
++                    int eligible=skip_learning?0:four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
+ #ifdef FOUR_DIAG
+                     FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+ #endif
+@@ -18340,8 +18349,10 @@
+ #ifdef FOUR_DIAG
+                     four_ctor_observer=oldscope;
+ #endif
+-                    if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
+-                    else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
++                    if(!skip_learning){
++                        if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
++                        else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
++                    }
+                 }
+                 if(unlikely(JS_IsException(ret_val))){
+                     if(fast){

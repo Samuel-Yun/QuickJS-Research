@@ -1,0 +1,186 @@
+--- a/four_diag.inc
++++ b/four_diag.inc
+@@ -1,59 +1 @@
+-#ifdef FOUR_DIAG
+-#pragma push_macro("free")
+-#undef free
+-typedef struct FourDiag {
+-    uint64_t q,h,eligible,fill,guard,overflow;
+-    uint64_t work1,work2,work3,work4,work5,work6;
+-    unsigned pc;
+-    char *name,*target;
+-    char bytes[257];
+-    struct FourDiag *next;
+-} FourDiag;
+-static FourDiag *four_dlist;
+-static int four_active;
+-static uint64_t follow_stats[24];
+-#define FOLLOW(i) do{if(four_active)follow_stats[i]++;}while(0)
+-#define FOLLOW_ADD(i,n) do{if(four_active)follow_stats[i]+=(n);}while(0)
+-static FourDiag *four_dnew(JSContext *ctx,JSFunctionBytecode *b,unsigned pc)
+-{
+-    FourDiag *d=calloc(1,sizeof(*d));assert(d);d->pc=pc;
+-    const char *n=JS_AtomToCString(ctx,b->func_name);assert(n);
+-    d->name=strdup(n);assert(d->name);JS_FreeCString(ctx,n);
+-    unsigned count=min_int(128,b->byte_code_len-pc);
+-    for(unsigned i=0;i<count;i++)snprintf(d->bytes+2*i,3,"%02x",b->byte_code_buf[pc+i]);
+-    d->next=four_dlist;four_dlist=d;return d;
+-}
+-#define FOUR_COUNT(s,k) do{if(four_active)(s)->diag->k++;}while(0)
+-#define FOUR_ADD(s,k,n) do{if(four_active)(s)->diag->k+=(n);}while(0)
+-static void four_json_string(const char *s)
+-{
+-    fputc('"',stderr);
+-    for(const unsigned char *p=(const unsigned char*)s;*p;p++) {
+-        if(*p=='"'||*p=='\\'){fputc('\\',stderr);fputc(*p,stderr);}
+-        else if(*p<32)fprintf(stderr,"\\u%04x",*p);else fputc(*p,stderr);
+-    }
+-    fputc('"',stderr);
+-}
+-void four_begin(void){four_active=1;}
+-void four_end(void)
+-{
+-    four_active=0;uint64_t q=0,h=0,e=0,f=0,g=0,o=0;
+-    for(FourDiag*d=four_dlist;d;d=d->next){q+=d->q;h+=d->h;e+=d->eligible;f+=d->fill;g+=d->guard;o+=d->overflow;}
+-    fprintf(stderr,"FOUR_COUNTS:{\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"sites\":[",
+-        (unsigned long long)q,(unsigned long long)h,(unsigned long long)e,(unsigned long long)f,(unsigned long long)g,(unsigned long long)o);
+-    unsigned k=0;for(FourDiag*d=four_dlist;d;d=d->next)if(d->q){
+-        fprintf(stderr,"%s{\"function\":",k++?",":"");four_json_string(d->name);
+-        if(d->target){fprintf(stderr,",\"target\":");four_json_string(d->target);}
+-        fprintf(stderr,",\"site_id\":%u,\"work\":[%llu,%llu,%llu,%llu,%llu,%llu]",k-1,
+-            (unsigned long long)d->work1,(unsigned long long)d->work2,(unsigned long long)d->work3,(unsigned long long)d->work4,(unsigned long long)d->work5,(unsigned long long)d->work6);
+-        fprintf(stderr,",\"pc\":%u,\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"bytecode_hex\":\"%s\"}",d->pc,
+-            (unsigned long long)d->q,(unsigned long long)d->h,(unsigned long long)d->eligible,(unsigned long long)d->fill,(unsigned long long)d->guard,(unsigned long long)d->overflow,d->bytes);
+-    }fprintf(stderr,"],\"follow\":[");for(int i=0;i<24;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)follow_stats[i]);fprintf(stderr,"]}\n");
+-}
+-#pragma pop_macro("free")
+-#else
+-#define FOLLOW(i) ((void)0)
+-#define FOLLOW_ADD(i,n) ((void)0)
+-#define FOUR_COUNT(s,k) ((void)0)
+-#define FOUR_ADD(s,k,n) ((void)0)
+-#endif
++#include "probe.inc"
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6230,6 +6230,7 @@
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
++#include "probe_site.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -18330,32 +18331,13 @@
+             {
+                 FourSite*s=&b->four_sites[get_u16(pc)];call_argc=s->argc;pc+=2;
+                 call_argv=sp-call_argc;sf->cur_pc=pc;
+-                int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+-                if(!fast){
+-                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
+-#ifdef FOUR_DIAG
+-                    FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+-#endif
+-                    ret_val=JS_CallConstructorInternal(ctx,call_argv[-2],call_argv[-1],call_argc,call_argv,0);
+-#ifdef FOUR_DIAG
+-                    four_ctor_observer=oldscope;
+-#endif
+-                    if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
+-                    else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
+-                }
+-                if(unlikely(JS_IsException(ret_val))){
+-                    if(fast){
+-                        /* Own the original OOM value while formatting a trace:
+-                         * formatting may itself replace current_exception. */
+-                        JSValue error=JS_GetException(ctx);
+-                        if(is_backtrace_needed(ctx,error))build_backtrace(ctx,error,NULL,0,0,0);
+-                        JS_Throw(ctx,error);
+-                        goto four_ctor_exception_cleanup;
+-                    }
+-                    goto exception;
+-                }
++                mc_enter(ctx,b,s,call_argv[-2]);
++                if(mc_active){mc_normal++;mc_phase_normal[mc_phase]++;}
++                ret_val=JS_CallConstructorInternal(ctx,call_argv[-2],call_argv[-1],call_argc,call_argv,0);
++                if(unlikely(JS_IsException(ret_val)))goto exception;
+                 for(i=-2;i<call_argc;i++)JS_FreeValue(ctx,call_argv[i]);
+                 sp-=call_argc+2;*sp++=ret_val;
++                mc_active=0;
+             }
+             BREAK;
+         CASE(OP_call_constructor):
+--- /dev/null
++++ b/probe.inc
+@@ -0,0 +1,47 @@
++/* Count build only: no FOUR_DIAG, no extra fields or per-site allocation. */
++enum {MC_q,MC_h,MC_eligible,MC_fill,MC_guard,MC_overflow,
++      MC_work1,MC_work2,MC_work3,MC_work4,MC_work5,MC_work6,MC_COUNT};
++static uint64_t mc_four[MC_COUNT],mc_recipe[5],mc_base[5],mc_proto[5],mc_chain[5];
++static uint64_t mc_descriptors[5],mc_empty[5];
++static uint64_t mc_no_plan,mc_identity_mismatch,mc_normal,mc_negative_queries,mc_negative_hits;
++static uint64_t mc_initial_unchanged,mc_final_unchanged;
++static uint64_t mc_calls,mc_skips,mc_phase_calls[2],mc_phase_skips[2],mc_phase_normal[2],mc_phase_four[2][MC_COUNT];
++static void *mc_first_target;
++static int mc_phase;
++static int mc_active,mc_stage;
++static void *mc_site;
++static JSFunctionBytecode *mc_function;
++static unsigned mc_pc,mc_argc;
++#define FOUR_COUNT(s,k) do{if(mc_active){mc_four[MC_##k]++;mc_phase_four[mc_phase][MC_##k]++;}}while(0)
++#define FOUR_ADD(s,k,n) do{if(mc_active)mc_four[MC_##k]+=(n);}while(0)
++#define FOLLOW(i) do{if(mc_active){if((i)==0)mc_recipe[mc_stage]++;else if((i)==2)mc_negative_hits++;}}while(0)
++#define FOLLOW_ADD(i,n) ((void)0)
++#define MC_STAGE(field) do{if(mc_active)mc_##field[mc_stage]++;}while(0)
++static JSShape *mc_find_empty(JSRuntime*rt,JSObject*proto)
++{
++    MC_STAGE(empty);
++    return find_hashed_shape_proto(rt,proto);
++}
++static void mc_array(const char *name,const uint64_t *v,unsigned n)
++{
++    fprintf(stderr,",\"%s\":[",name);
++    for(unsigned i=0;i<n;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)v[i]);
++    fputc(']',stderr);
++}
++static void mc_report(void)
++{
++    fprintf(stderr,"CTOR_MISS_COUNTS:{\"pc\":%u,\"argc\":%u,\"site_count\":1",mc_pc,mc_argc);
++    fprintf(stderr,",\"total_calls\":%llu,\"identity_bypasses\":%llu",(unsigned long long)mc_calls,(unsigned long long)mc_skips);
++    mc_array("phase_calls",mc_phase_calls,2);mc_array("phase_skips",mc_phase_skips,2);
++    mc_array("phase_normal",mc_phase_normal,2);mc_array("phase_C_four",mc_phase_four[0],MC_COUNT);
++    mc_array("phase_D_four",mc_phase_four[1],MC_COUNT);
++    mc_array("four",mc_four,MC_COUNT);mc_array("recipe",mc_recipe,5);
++    mc_array("base",mc_base,5);mc_array("prototype",mc_proto,5);
++    mc_array("chain",mc_chain,5);mc_array("chain_descriptors",mc_descriptors,5);
++    mc_array("empty_shape_search",mc_empty,5);
++    fprintf(stderr,",\"no_plan\":%llu,\"identity_mismatch\":%llu,\"normal_constructions\":%llu,"
++        "\"negative_queries\":%llu,\"negative_hits\":%llu,\"initial_unchanged\":%llu,\"final_unchanged\":%llu}\n",
++        (unsigned long long)mc_no_plan,(unsigned long long)mc_identity_mismatch,
++        (unsigned long long)mc_normal,(unsigned long long)mc_negative_queries,(unsigned long long)mc_negative_hits,
++        (unsigned long long)mc_initial_unchanged,(unsigned long long)mc_final_unchanged);
++}
+--- /dev/null
++++ b/probe_site.inc
+@@ -0,0 +1,22 @@
++static void mc_enter(JSContext*ctx,JSFunctionBytecode*b,FourSite*s,JSValueConst callee)
++{
++    if(!mc_site){
++        const char*wanted=getenv("CTOR_PROBE_FUNCTION");
++        const char*name=JS_AtomToCString(ctx,b->func_name);
++        int same=name && wanted && !strcmp(name,wanted);
++        if(name)JS_FreeCString(ctx,name);
++        if(same){
++            assert(b->four_count==1);
++            mc_site=s;mc_function=b;mc_pc=s->pc;mc_argc=s->argc;
++            if(atexit(mc_report))abort();
++        }
++    }
++    mc_active=mc_site==s && mc_function==b;
++    mc_stage=0;
++    if(mc_active){
++        assert(JS_VALUE_GET_TAG(callee)==JS_TAG_OBJECT);
++        if(!mc_first_target)mc_first_target=JS_VALUE_GET_OBJ(callee);
++        mc_phase=mc_first_target!=JS_VALUE_GET_OBJ(callee);
++        mc_calls++;mc_phase_calls[mc_phase]++;
++    }
++}
