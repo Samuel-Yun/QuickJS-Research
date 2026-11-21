@@ -1,0 +1,68 @@
+--- A.txt
++++ method.txt
+@@ -8,9 +8,9 @@
+ 000006  fclosure8                  2
+ 000008  put_var_ref2                (construct)
+ 000009  get_var                    7 (Object)
+-000012  get_field2                 create
++000012  get_field2_rdi             create  IC[0] delta=147
+ 000017  get_var                    1 (Pair)
+-000020  get_field                  prototype
++000020  get_field_rdi              prototype  IC[1] delta=163
+ 000025  call_method                1
+ 000028  put_var                    3 (empty)
+ 000031  push_0                     0
+@@ -33,7 +33,7 @@
+ 000064  get_var                    6 (obj)
+ 000067  call1                      argc=1
+ 000068  get_var                    6 (obj)
+-000071  get_field                  y
++000071  get_field_rdi              y  IC[2] delta=136
+ 000076  add                        
+ 000077  add                        
+ 000078  dup                        
+@@ -53,11 +53,11 @@
+ 000103  if_true8                   ->129
+ 000105  drop                       
+ 000106  get_var                    7 (Object)
+-000109  get_field2                 getPrototypeOf
++000109  get_field2_rdi             getPrototypeOf  IC[3] delta=122
+ 000114  get_var                    3 (empty)
+ 000117  call_method                1
+ 000120  get_var                    1 (Pair)
+-000123  get_field                  prototype
++000123  get_field_rdi              prototype  IC[4] delta=132
+ 000128  strict_neq                 
+ 000129  if_false8                  ->141
+ 000131  get_var                    8 (Error)
+@@ -71,13 +71,19 @@
+ 000153  call1                      argc=1
+ 000154  set_loc0                    (<ret>)
+ 000155  return                     
++  IC[0] create: 未填充, offset=0
++  IC[1] prototype: 未填充, offset=0
++  IC[2] y: 自有字段, offset=1
++  IC[3] getPrototypeOf: 未填充, offset=0
++  IC[4] prototype: 未填充, offset=0
+ 
+ 函数 [1] ownRead  parent=0  args=1 locals=0 bytes=7
+ offset  opcode                     操作数
+ ------------------------------------------------------------------------
+-000000  get_arg0                    (o)
+-000001  get_field                  x
++000000  v6_get_arg0                
++000001  get_field_rdi              x  IC[0] delta=6
+ 000006  return                     
++  IC[0] x: 自有字段, offset=0
+ 
+ 函数 [2] Pair  parent=0  args=2 locals=1 bytes=17
+ offset  opcode                     操作数
+@@ -99,6 +105,7 @@
+ 000003  dup                        
+ 000004  get_arg0                    (x)
+ 000005  get_arg1                    (y)
+-000006  call_constructor           2
++000006  four_ctor                  record[0] argc=2
+ 000009  return                     
++  record[0] pc=6, argc=2, 正计划=True, 负目标=False
+ 
