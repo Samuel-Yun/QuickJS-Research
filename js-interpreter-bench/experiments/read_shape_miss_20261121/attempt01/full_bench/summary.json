@@ -1,0 +1,67 @@
+{
+  "comparison": "跨批次单轮筛选",
+  "new_samples": 43,
+  "SPARSE_new_samples": 0,
+  "aggregates": {
+    "octane": {
+      "cases": 17,
+      "SKIP_REPROBE_vs_SPARSE_pct": 0.28322824313737893,
+      "SPARSE_vs_historical_A_pct": -7.859651308442506,
+      "SKIP_REPROBE_vs_historical_A_pct": -7.598683817622753,
+      "SPARSE_sum_ms": 8210.082200228593,
+      "SKIP_REPROBE_sum_ms": 8214.347906601033,
+      "faster_cases": 6,
+      "slower_cases": 11,
+      "largest_improvement": {
+        "suite": "octane",
+        "case": "Typescript.Typescript",
+        "name": "Typescript",
+        "N": 1,
+        "SPARSE_ms": 1488.6636230051517,
+        "SKIP_REPROBE_ms": 1438.9073150157928,
+        "change_pct": -3.342347271770929,
+        "historical_A_ms": 1540.6783684790134
+      },
+      "largest_regression": {
+        "suite": "octane",
+        "case": "NavierStokes.NavierStokes",
+        "name": "NavierStokes",
+        "N": 32,
+        "SPARSE_ms": 40.36629043798894,
+        "SKIP_REPROBE_ms": 42.98450371995568,
+        "change_pct": 6.4861379471786496,
+        "historical_A_ms": 43.94403971731663
+      }
+    },
+    "sunspider": {
+      "cases": 26,
+      "SKIP_REPROBE_vs_SPARSE_pct": 2.958573649920604,
+      "SPARSE_vs_historical_A_pct": -4.446122590474255,
+      "SKIP_REPROBE_vs_historical_A_pct": -1.619090751958574,
+      "SPARSE_sum_ms": 389.57281946984585,
+      "SKIP_REPROBE_sum_ms": 396.8143011967186,
+      "faster_cases": 3,
+      "slower_cases": 23,
+      "largest_improvement": {
+        "suite": "sunspider",
+        "case": "access-nbody",
+        "name": "access-nbody",
+        "N": 128,
+        "SPARSE_ms": 10.452364859171212,
+        "SKIP_REPROBE_ms": 10.19495127350092,
+        "change_pct": -2.462730579524597,
+        "historical_A_ms": 10.499549538828433
+      },
+      "largest_regression": {
+        "suite": "sunspider",
+        "case": "access-binary-trees",
+        "name": "access-binary-trees",
+        "N": 256,
+        "SPARSE_ms": 6.091568062431179,
+        "SKIP_REPROBE_ms": 7.747831156477332,
+        "change_pct": 27.189437548287508,
+        "historical_A_ms": 9.188603435643017
+      }
+    }
+  }
+}

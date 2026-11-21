@@ -1,0 +1,134 @@
+[
+  {
+    "label": "SPARSE",
+    "mode": "counts",
+    "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+    "iterations": 65536,
+    "rep": 0,
+    "phase": "counts",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SPARSE.counts/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+      "65536"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":6}\n",
+    "stderr": "READ_SHAPE_COUNTS:{\"fused_entries\":65536,\"fused_shape_checks\":65536,\"fused_hits\":65535,\"field_entries\":1,\"field_cache_probes\":1,\"field_hits\":0,\"direct_lookup_entries\":0,\"lookups\":1,\"own_searches\":1,\"updates\":1}\n",
+    "counts": {
+      "fused_entries": 65536,
+      "fused_shape_checks": 65536,
+      "fused_hits": 65535,
+      "field_entries": 1,
+      "field_cache_probes": 1,
+      "field_hits": 0,
+      "direct_lookup_entries": 0,
+      "lookups": 1,
+      "own_searches": 1,
+      "updates": 1
+    },
+    "payload": {
+      "iterations": 65536,
+      "checksum": 196608,
+      "elapsed_ms": 6
+    }
+  },
+  {
+    "label": "SKIP_REPROBE",
+    "mode": "counts",
+    "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+    "iterations": 65536,
+    "rep": 0,
+    "phase": "counts",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.counts/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+      "65536"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":7}\n",
+    "stderr": "READ_SHAPE_COUNTS:{\"fused_entries\":65536,\"fused_shape_checks\":65536,\"fused_hits\":65535,\"field_entries\":0,\"field_cache_probes\":0,\"field_hits\":0,\"direct_lookup_entries\":1,\"lookups\":1,\"own_searches\":1,\"updates\":1}\n",
+    "counts": {
+      "fused_entries": 65536,
+      "fused_shape_checks": 65536,
+      "fused_hits": 65535,
+      "field_entries": 0,
+      "field_cache_probes": 0,
+      "field_hits": 0,
+      "direct_lookup_entries": 1,
+      "lookups": 1,
+      "own_searches": 1,
+      "updates": 1
+    },
+    "payload": {
+      "iterations": 65536,
+      "checksum": 196608,
+      "elapsed_ms": 7
+    }
+  },
+  {
+    "label": "SPARSE",
+    "mode": "counts",
+    "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+    "iterations": 65536,
+    "rep": 0,
+    "phase": "counts",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SPARSE.counts/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+      "65536"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":9}\n",
+    "stderr": "READ_SHAPE_COUNTS:{\"fused_entries\":65536,\"fused_shape_checks\":65536,\"fused_hits\":0,\"field_entries\":65536,\"field_cache_probes\":65536,\"field_hits\":0,\"direct_lookup_entries\":0,\"lookups\":65536,\"own_searches\":65536,\"updates\":65536}\n",
+    "counts": {
+      "fused_entries": 65536,
+      "fused_shape_checks": 65536,
+      "fused_hits": 0,
+      "field_entries": 65536,
+      "field_cache_probes": 65536,
+      "field_hits": 0,
+      "direct_lookup_entries": 0,
+      "lookups": 65536,
+      "own_searches": 65536,
+      "updates": 65536
+    },
+    "payload": {
+      "iterations": 65536,
+      "checksum": 196608,
+      "elapsed_ms": 9
+    }
+  },
+  {
+    "label": "SKIP_REPROBE",
+    "mode": "counts",
+    "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+    "iterations": 65536,
+    "rep": 0,
+    "phase": "counts",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.counts/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+      "65536"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":14}\n",
+    "stderr": "READ_SHAPE_COUNTS:{\"fused_entries\":65536,\"fused_shape_checks\":65536,\"fused_hits\":0,\"field_entries\":0,\"field_cache_probes\":0,\"field_hits\":0,\"direct_lookup_entries\":65536,\"lookups\":65536,\"own_searches\":65536,\"updates\":65536}\n",
+    "counts": {
+      "fused_entries": 65536,
+      "fused_shape_checks": 65536,
+      "fused_hits": 0,
+      "field_entries": 0,
+      "field_cache_probes": 0,
+      "field_hits": 0,
+      "direct_lookup_entries": 65536,
+      "lookups": 65536,
+      "own_searches": 65536,
+      "updates": 65536
+    },
+    "payload": {
+      "iterations": 65536,
+      "checksum": 196608,
+      "elapsed_ms": 14
+    }
+  }
+]
