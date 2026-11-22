@@ -1,0 +1,52 @@
+   2b64e:	endbr64
+   2b652:	mov    -0x178(%rbp),%rax
+   2b659:	mov    0x8(%rax),%rsi
+   2b65d:	mov    (%rax),%rcx
+   2b660:	cmp    $0xffffffff,%esi
+   2b663:	je     2da01 <JS_CallInternal+0x7ab1>
+   2b669:	lea    0x10(%rbx),%rax
+   2b66d:	cmp    $0xfffffff6,%esi
+   2b670:	jbe    2b676 <JS_CallInternal+0x5726>
+   2b672:	addl   $0x1,-0x4(%rcx)
+   2b676:	mov    %rcx,(%rbx)
+   2b679:	mov    %rsi,0x8(%rbx)
+   2b67d:	mov    %rax,%rbx
+   2b680:	mov    %r12,%rax
+   2b683:	lea    0x1(%r12),%r12
+   2b688:	movzbl (%rax),%eax
+   2b68b:	mov    %rax,%r10
+   2b68e:	jmp    *(%r14,%rax,8)
+   2da01:	cmpb   $0xf5,(%r12)
+   2da06:	je     2ec5c <JS_CallInternal+0x8d0c>
+   2da0c:	mov    0x1(%r12),%edx
+   2da11:	mov    $0x5,%eax
+   2da16:	add    $0x1,%rdx
+   2da1a:	add    %r12,%rdx
+   2da1d:	cmpw   $0x1,0x12(%rcx)
+   2da22:	jne    2b669 <JS_CallInternal+0x5719>
+   2da28:	testb  $0x8,0x10(%rcx)
+   2da2c:	jne    2b669 <JS_CallInternal+0x5719>
+   2da32:	mov    0x18(%rcx),%rdi
+   2da36:	cmp    %rdi,(%rdx)
+   2da39:	jne    2b669 <JS_CallInternal+0x5719>
+   2da3f:	mov    0x10(%rdx),%edx
+   2da42:	lea    0x10(%rbx),%rsi
+   2da46:	shl    $0x4,%rdx
+   2da4a:	add    0x20(%rcx),%rdx
+   2da4e:	mov    (%rdx),%rcx
+   2da51:	mov    0x8(%rdx),%rdx
+   2da55:	cmp    $0xfffffff6,%edx
+   2da58:	jbe    2da5e <JS_CallInternal+0x7b0e>
+   2da5a:	addl   $0x1,-0x4(%rcx)
+   2da5e:	add    %r12,%rax
+   2da61:	mov    %rcx,(%rbx)
+   2da64:	mov    %rdx,0x8(%rbx)
+   2da68:	lea    0x1(%rax),%r12
+   2da6c:	movzbl (%rax),%eax
+   2da6f:	mov    %rsi,%rbx
+   2da72:	mov    %rax,%r10
+   2da75:	jmp    *(%r14,%rax,8)
+   2ec5c:	movzwl 0x1(%r12),%edx
+   2ec62:	mov    $0x3,%eax
+   2ec67:	add    $0x1,%rdx
+   2ec6b:	jmp    2da1a <JS_CallInternal+0x7aca>

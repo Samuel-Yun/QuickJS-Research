@@ -1,0 +1,338 @@
+{
+  "status": "PASS",
+  "same_cohort": true,
+  "new_processes": 215,
+  "aggregates": {
+    "octane": {
+      "SPARSE": {
+        "GM_pct": 0.0,
+        "sum_ms": 8214.619044024352,
+        "faster": 0,
+        "slower": 0,
+        "maximum_regression": "Richards.Richards",
+        "maximum_regression_pct": 0.0
+      },
+      "NEG_DIRECT": {
+        "GM_pct": 0.9443417089343376,
+        "sum_ms": 8119.270198636485,
+        "faster": 8,
+        "slower": 9,
+        "maximum_regression": "NavierStokes.NavierStokes",
+        "maximum_regression_pct": 9.215800783364458
+      },
+      "P2_COLD": {
+        "GM_pct": -0.40112541785771727,
+        "sum_ms": 8089.4270054385415,
+        "faster": 12,
+        "slower": 5,
+        "maximum_regression": "NavierStokes.NavierStokes",
+        "maximum_regression_pct": 6.411215086387778
+      },
+      "PROTO_SMALL": {
+        "GM_pct": 0.1605129266548877,
+        "sum_ms": 8204.89490461981,
+        "faster": 4,
+        "slower": 13,
+        "maximum_regression": "Typescript.Typescript",
+        "maximum_regression_pct": 1.7713257090562484
+      },
+      "D16_STATIC": {
+        "GM_pct": 1.243802420345741,
+        "sum_ms": 8222.01451974333,
+        "faster": 3,
+        "slower": 14,
+        "maximum_regression": "NavierStokes.NavierStokes",
+        "maximum_regression_pct": 7.491766281497436
+      }
+    },
+    "sunspider": {
+      "SPARSE": {
+        "GM_pct": 0.0,
+        "sum_ms": 389.72354799951427,
+        "faster": 0,
+        "slower": 0,
+        "maximum_regression": "3d-cube",
+        "maximum_regression_pct": 0.0
+      },
+      "NEG_DIRECT": {
+        "GM_pct": 3.3095034560942427,
+        "sum_ms": 399.9812134709209,
+        "faster": 3,
+        "slower": 23,
+        "maximum_regression": "access-nbody",
+        "maximum_regression_pct": 14.490273800896647
+      },
+      "P2_COLD": {
+        "GM_pct": 2.3121120450985355,
+        "sum_ms": 396.89831760618836,
+        "faster": 5,
+        "slower": 21,
+        "maximum_regression": "access-binary-trees",
+        "maximum_regression_pct": 12.307008475079462
+      },
+      "PROTO_SMALL": {
+        "GM_pct": 0.6175951279354663,
+        "sum_ms": 391.6399414835032,
+        "faster": 5,
+        "slower": 21,
+        "maximum_regression": "math-partial-sums",
+        "maximum_regression_pct": 3.1257906413178382
+      },
+      "D16_STATIC": {
+        "GM_pct": 3.6871995662577817,
+        "sum_ms": 401.5704359689262,
+        "faster": 1,
+        "slower": 25,
+        "maximum_regression": "bitops-nsieve-bits",
+        "maximum_regression_pct": 16.21398945146686
+      }
+    }
+  },
+  "filter": "either suite <= -2%; other suite <= +1%",
+  "qualifying_versions": [],
+  "next_versions": [
+    "P2_COLD",
+    "PROTO_SMALL"
+  ],
+  "summary": [
+    {
+      "label": "SPARSE",
+      "Octane_GM_pct": 0.0,
+      "SunSpider_GM_pct": 0.0,
+      "qualifies": false,
+      "work_saved": "现场重测的冻结基线",
+      "worst_case": "Richards.Richards",
+      "worst_pct": 0.0
+    },
+    {
+      "label": "NEG_DIRECT",
+      "Octane_GM_pct": 0.9443417089343376,
+      "SunSpider_GM_pct": 3.3095034560942427,
+      "qualifies": false,
+      "work_saved": "无正计划的负命中跳过资格检查和重复记负缓存",
+      "worst_case": "access-nbody",
+      "worst_pct": 14.490273800896647
+    },
+    {
+      "label": "P2_COLD",
+      "Octane_GM_pct": -0.40112541785771727,
+      "SunSpider_GM_pct": 2.3121120450985355,
+      "qualifies": false,
+      "work_saved": "FourSite 保持 32B，第二目标学习成功才升级双计划记录",
+      "worst_case": "access-binary-trees",
+      "worst_pct": 12.307008475079462
+    },
+    {
+      "label": "PROTO_SMALL",
+      "Octane_GM_pct": 0.1605129266548877,
+      "SunSpider_GM_pct": 0.6175951279354663,
+      "qualifies": false,
+      "work_saved": "0～2 项原型表直接看描述符，减少按 atom 查找",
+      "worst_case": "math-partial-sums",
+      "worst_pct": 3.1257906413178382
+    },
+    {
+      "label": "D16_STATIC",
+      "Octane_GM_pct": 1.243802420345741,
+      "SunSpider_GM_pct": 3.6871995662577817,
+      "qualifies": false,
+      "work_saved": "准备时选择融合前缀，取指时不再判断宽窄",
+      "worst_case": "bitops-nsieve-bits",
+      "worst_pct": 16.21398945146686
+    }
+  ],
+  "regressions_over_5pct": [
+    {
+      "label": "NEG_DIRECT",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.288136564195156,
+      "candidate_ms": 44.0010109692812,
+      "change_pct": 9.215800783364458
+    },
+    {
+      "label": "NEG_DIRECT",
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "SPARSE_ms": 13.758288296870887,
+      "candidate_ms": 14.453678305260837,
+      "change_pct": 5.05433520060854
+    },
+    {
+      "label": "NEG_DIRECT",
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "SPARSE_ms": 10.563255843706429,
+      "candidate_ms": 11.135004718787968,
+      "change_pct": 5.4126197787984776
+    },
+    {
+      "label": "NEG_DIRECT",
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "SPARSE_ms": 10.516866921447217,
+      "candidate_ms": 12.04078973364085,
+      "change_pct": 14.490273800896647
+    },
+    {
+      "label": "NEG_DIRECT",
+      "suite": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "SPARSE_ms": 6.616875667590648,
+      "candidate_ms": 6.959821316413581,
+      "change_pct": 5.182893952544343
+    },
+    {
+      "label": "NEG_DIRECT",
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "SPARSE_ms": 10.200984046794474,
+      "candidate_ms": 11.092514991760254,
+      "change_pct": 8.739656300569676
+    },
+    {
+      "label": "NEG_DIRECT",
+      "suite": "sunspider",
+      "case": "math-cordic",
+      "SPARSE_ms": 16.380188937298954,
+      "candidate_ms": 17.655863468535244,
+      "change_pct": 7.787910970498535
+    },
+    {
+      "label": "NEG_DIRECT",
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "SPARSE_ms": 5.858816570136696,
+      "candidate_ms": 6.1822638949379325,
+      "change_pct": 5.520693828338952
+    },
+    {
+      "label": "P2_COLD",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.288136564195156,
+      "candidate_ms": 42.87109565362334,
+      "change_pct": 6.411215086387778
+    },
+    {
+      "label": "P2_COLD",
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "SPARSE_ms": 10.563255843706429,
+      "candidate_ms": 11.704407781362534,
+      "change_pct": 10.803032270926206
+    },
+    {
+      "label": "P2_COLD",
+      "suite": "sunspider",
+      "case": "3d-raytrace",
+      "SPARSE_ms": 10.811968328431249,
+      "candidate_ms": 11.361047350801528,
+      "change_pct": 5.078437206724096
+    },
+    {
+      "label": "P2_COLD",
+      "suite": "sunspider",
+      "case": "access-binary-trees",
+      "SPARSE_ms": 7.7106581795960665,
+      "candidate_ms": 8.659609535243362,
+      "change_pct": 12.307008475079462
+    },
+    {
+      "label": "P2_COLD",
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "SPARSE_ms": 10.516866921447217,
+      "candidate_ms": 11.420726413838565,
+      "change_pct": 8.594379858017342
+    },
+    {
+      "label": "P2_COLD",
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "SPARSE_ms": 10.200984046794474,
+      "candidate_ms": 11.067451491951942,
+      "change_pct": 8.49395941786366
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "octane",
+      "case": "RayTrace.RayTrace",
+      "SPARSE_ms": 27.694684335961938,
+      "candidate_ms": 29.267971734516323,
+      "change_pct": 5.6808280588035
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "SPARSE_ms": 54.838939033448696,
+      "candidate_ms": 57.75649240612984,
+      "change_pct": 5.320222134315178
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.288136564195156,
+      "candidate_ms": 43.30642959475517,
+      "change_pct": 7.491766281497436
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "SPARSE_ms": 10.563255843706429,
+      "candidate_ms": 11.225327210500836,
+      "change_pct": 6.267682773099437
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "sunspider",
+      "case": "3d-raytrace",
+      "SPARSE_ms": 10.811968328431249,
+      "candidate_ms": 11.438134882599115,
+      "change_pct": 5.791420536455827
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "SPARSE_ms": 6.616875667590648,
+      "candidate_ms": 7.04610908171162,
+      "change_pct": 6.486949969807521
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "SPARSE_ms": 10.200984046794474,
+      "candidate_ms": 11.854970524087548,
+      "change_pct": 16.21398945146686
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "sunspider",
+      "case": "crypto-aes",
+      "SPARSE_ms": 9.50503775011748,
+      "candidate_ms": 10.062944726087153,
+      "change_pct": 5.869592427055603
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "sunspider",
+      "case": "math-cordic",
+      "SPARSE_ms": 16.380188937298954,
+      "candidate_ms": 17.543269297108054,
+      "change_pct": 7.100530795225923
+    },
+    {
+      "label": "D16_STATIC",
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "SPARSE_ms": 5.858816570136696,
+      "candidate_ms": 6.406037699431181,
+      "change_pct": 9.340130771182631
+    }
+  ]
+}
