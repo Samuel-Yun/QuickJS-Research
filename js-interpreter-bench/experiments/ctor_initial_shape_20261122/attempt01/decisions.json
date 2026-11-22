@@ -1,0 +1,18 @@
+{
+  "diagnostic_first_divergence": "before-construction initial shape lookup",
+  "try": [
+    "INIT_FREE",
+    "P2_COLD_INIT",
+    "P2_KEEP_PRIMARY"
+  ],
+  "P2_KEEP_PRIMARY_reason": "342 target replacements among 346 publications; not negligible among learning events; no unused eviction observed",
+  "P2_COLD_INIT_reason": "8,372,555 pre-construction initial misses; other failure categories near zero",
+  "P2_SIDE": "SKIPPED: INIT_FREE restores 512 publications and 10,769,918 hits in both single-slot and P2_COLD; pre-initial misses zero. No need to move to another side-table design.",
+  "screening": {
+    "tree_median_change_pct_max": -5,
+    "tree_pairs_at_least_5pct_faster_min": 5,
+    "repetitions": 7,
+    "stable_median_regression_pct_max": 2,
+    "stable_limit_note": "Engineering interpretation of no obvious regression, declared before candidate timing"
+  }
+}

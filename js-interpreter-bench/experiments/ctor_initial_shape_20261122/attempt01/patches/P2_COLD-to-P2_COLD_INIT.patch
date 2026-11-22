@@ -1,0 +1,79 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -11,7 +11,7 @@
+ };
+ struct FullPlan {
+     JSValue callee;
+-    JSShape *initial,*final;
++    JSShape *reserved_initial,*final; /* reserved: no reference owned */
+     FourRecipe recipe;
+     uint32_t pc;
+     uint16_t argc;
+@@ -24,7 +24,7 @@
+ #ifndef FOUR_DIAG
+ _Static_assert(sizeof(FourSite)==32,"frozen FourSite size");
+ _Static_assert(sizeof(FullPlan)==96 && offsetof(FullPlan,callee)==0 &&
+-    offsetof(FullPlan,initial)==16 && offsetof(FullPlan,final)==24 &&
++    offsetof(FullPlan,reserved_initial)==16 && offsetof(FullPlan,final)==24 &&
+     offsetof(FullPlan,recipe)==32 && offsetof(FullPlan,pc)==84 &&
+     offsetof(FullPlan,argc)==88 && offsetof(FullPlan,dual)==90,"frozen FullPlan layout");
+ _Static_assert(sizeof(DualPlan)==192,"two embedded plans");
+@@ -65,7 +65,7 @@
+     for(unsigned i=0;i<n;i++){
+         FullPlan*f=i?&((DualPlan*)p)->secondary:p;
+         JS_MarkValue(rt,f->callee,mark_func);
+-        if(f->initial)mark_func(rt,&f->initial->header);
++
+         if(f->final)mark_func(rt,&f->final->header);
+     }
+ }
+@@ -76,10 +76,14 @@
+     unsigned n=p->dual?2:1;
+     for(unsigned i=0;i<n;i++){
+         FullPlan*f=i?&((DualPlan*)p)->secondary:p;
+-        JS_FreeValueRT(rt,f->callee);js_free_shape_null(rt,f->initial);js_free_shape_null(rt,f->final);
++        JS_FreeValueRT(rt,f->callee);js_free_shape_null(rt,f->final);
+     }
+     js_free_rt(rt,p); /* one allocation, including an embedded secondary */
+ }
++#ifndef FOUR_DIAG
++_Static_assert(sizeof(FullPlan)==96 && offsetof(FullPlan,reserved_initial)==16 &&
++               offsetof(FullPlan,final)==24 && offsetof(FullPlan,recipe)==32,"original hot layout");
++#endif
+ static inline __exception int js_poll_interrupts(JSContext*ctx);
+ #ifdef FOUR_DIAG
+ static FourSite *four_ctor_observer;
+@@ -152,7 +156,7 @@
+ {
+     JSObject*f,*proto;FourRecipe r;
+     if(!plan_base(ctx,callee,target,argc,&f) || !plan_recipe(f->u.func.function_bytecode,&r) ||
+-       !(proto=plan_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
++       !(proto=plan_proto(f)))return 0;
+     return plan_chain(proto,&r);
+ }
+ static void plan_learn(JSContext*ctx,FourSite*slot,JSValueConst callee,JSValueConst result)
+@@ -164,7 +168,7 @@
+        !o->shape->is_hashed || o->shape->proto!=proto || o->shape->prop_count!=r.n || o->shape->deleted_prop_count)return;
+     JSShapeProperty*d=get_shape_prop(o->shape);
+     for(unsigned i=0;i<r.n;i++)if(d[i].atom!=r.atom[i] || d[i].flags!=JS_PROP_C_W_E)return;
+-    JSShape*initial=find_hashed_shape_proto(ctx->rt,proto);if(!initial)return;
++
+     FOUR_COUNT(slot,eligible);
+ #ifndef FOUR_PROBE
+     FullPlan*s=cold_destination(ctx,slot,callee);
+@@ -178,12 +182,12 @@
+ #endif
+         slot->plan=s;FOLLOW(1);
+     }
+-    JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
+-    s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
++    JSValue old=s->callee;JSShape*oldfinal=s->final;
++    s->callee=JS_DupValue(ctx,callee);s->final=js_dup_shape(o->shape);s->recipe=r;
+     JSValue negative=slot->negative;slot->negative=JS_UNDEFINED;
+     FOUR_COUNT(s,fill);
+     JS_FreeValue(ctx,negative);
+-    JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldinitial);js_free_shape_null(ctx->rt,oldfinal);
++    JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldfinal);
+ #endif
+ }
+ static int plan_try(JSContext*ctx,FullPlan*s,JSValueConst callee,JSValueConst target,JSValue*args,JSValue*out)

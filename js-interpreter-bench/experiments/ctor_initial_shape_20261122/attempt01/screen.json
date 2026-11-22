@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "criteria": {
+    "tree_median_change_pct_max": -5,
+    "tree_pairs_at_least_5pct_faster_min": 5,
+    "repetitions": 7,
+    "stable_median_regression_pct_max": 2,
+    "stable_limit_note": "Engineering interpretation of no obvious regression, declared before candidate timing"
+  },
+  "results": [
+    {
+      "label": "INIT_FREE",
+      "parent": "SPARSE",
+      "Tree_change_pct": -41.78159931777109,
+      "paired_changes_pct": [
+        -41.778452089154285,
+        -42.04907630191007,
+        -42.58017906129524,
+        -42.102072076055094,
+        -39.063658794681814,
+        -41.62449646186855,
+        -40.53862197722049
+      ],
+      "pairs_at_least_5pct_faster": 7,
+      "stable_change_pct": 0.23490942651553937,
+      "pass_full_gate": true
+    },
+    {
+      "label": "P2_COLD_INIT",
+      "parent": "P2_COLD",
+      "Tree_change_pct": -47.333489033711096,
+      "paired_changes_pct": [
+        -47.173995327881826,
+        -47.84710689427818,
+        -47.58854562665943,
+        -47.51056218943479,
+        -47.52147322558628,
+        -47.20419276533805,
+        -47.26266532776335
+      ],
+      "pairs_at_least_5pct_faster": 7,
+      "stable_change_pct": 1.6866425656310469,
+      "pass_full_gate": true
+    },
+    {
+      "label": "P2_KEEP_PRIMARY",
+      "parent": "P2",
+      "Tree_change_pct": 0.04604706443593898,
+      "paired_changes_pct": [
+        0.7130200188882885,
+        0.11770588028492401,
+        -0.1759309834259426,
+        0.7088745583637479,
+        0.050050654579991694,
+        1.0246061902043024,
+        -0.22654362886749269
+      ],
+      "pairs_at_least_5pct_faster": 0,
+      "stable_change_pct": 0.31521409611645623,
+      "pass_full_gate": false
+    }
+  ],
+  "selected": [
+    "INIT_FREE",
+    "P2_COLD_INIT"
+  ]
+}
