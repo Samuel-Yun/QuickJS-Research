@@ -1,0 +1,411 @@
+{
+  "status": "PASS",
+  "same_cohort": true,
+  "new_processes": 301,
+  "aggregates": {
+    "octane": {
+      "SPARSE": {
+        "GM_pct": 0.0,
+        "sum_ms": 8156.68160579502,
+        "faster": 0,
+        "slower": 0,
+        "maximum_regression": "Richards.Richards",
+        "maximum_regression_pct": 0.0
+      },
+      "M1": {
+        "GM_pct": 0.669275791324675,
+        "sum_ms": 8140.552631285187,
+        "faster": 9,
+        "slower": 8,
+        "maximum_regression": "NavierStokes.NavierStokes",
+        "maximum_regression_pct": 10.77206174467773
+      },
+      "M2": {
+        "GM_pct": 0.22899748060967173,
+        "sum_ms": 8159.394073577598,
+        "faster": 7,
+        "slower": 10,
+        "maximum_regression": "PdfJS.PdfJS",
+        "maximum_regression_pct": 2.585048918002486
+      },
+      "P2": {
+        "GM_pct": 2.1165678245940622,
+        "sum_ms": 8444.89842376078,
+        "faster": 3,
+        "slower": 14,
+        "maximum_regression": "Mandreel.Mandreel",
+        "maximum_regression_pct": 7.067888252466137
+      },
+      "P3": {
+        "GM_pct": 2.1269672501525783,
+        "sum_ms": 8357.059332468576,
+        "faster": 1,
+        "slower": 16,
+        "maximum_regression": "NavierStokes.NavierStokes",
+        "maximum_regression_pct": 8.394441932191077
+      },
+      "P4": {
+        "GM_pct": 1.550279106109942,
+        "sum_ms": 8250.851854675915,
+        "faster": 4,
+        "slower": 13,
+        "maximum_regression": "NavierStokes.NavierStokes",
+        "maximum_regression_pct": 7.106771258953626
+      },
+      "D16": {
+        "GM_pct": 1.4440346665465231,
+        "sum_ms": 8173.397560438956,
+        "faster": 5,
+        "slower": 12,
+        "maximum_regression": "NavierStokes.NavierStokes",
+        "maximum_regression_pct": 10.490661609055184
+      }
+    },
+    "sunspider": {
+      "SPARSE": {
+        "GM_pct": 0.0,
+        "sum_ms": 390.45032280217856,
+        "faster": 0,
+        "slower": 0,
+        "maximum_regression": "3d-cube",
+        "maximum_regression_pct": 0.0
+      },
+      "M1": {
+        "GM_pct": 1.9163704007125082,
+        "sum_ms": 396.38644985691644,
+        "faster": 4,
+        "slower": 22,
+        "maximum_regression": "math-partial-sums",
+        "maximum_regression_pct": 6.8111464238608255
+      },
+      "M2": {
+        "GM_pct": 0.18235329804192624,
+        "sum_ms": 391.55288690538146,
+        "faster": 10,
+        "slower": 16,
+        "maximum_regression": "access-fannkuch",
+        "maximum_regression_pct": 2.521365036432055
+      },
+      "P2": {
+        "GM_pct": 1.7698434807671415,
+        "sum_ms": 396.2598807446193,
+        "faster": 6,
+        "slower": 20,
+        "maximum_regression": "bitops-nsieve-bits",
+        "maximum_regression_pct": 10.593721476730721
+      },
+      "P3": {
+        "GM_pct": 2.975658812409243,
+        "sum_ms": 398.72441873443313,
+        "faster": 6,
+        "slower": 20,
+        "maximum_regression": "access-binary-trees",
+        "maximum_regression_pct": 28.203350235940448
+      },
+      "P4": {
+        "GM_pct": 2.3248451289779704,
+        "sum_ms": 397.009803093737,
+        "faster": 7,
+        "slower": 19,
+        "maximum_regression": "access-binary-trees",
+        "maximum_regression_pct": 11.967815953116357
+      },
+      "D16": {
+        "GM_pct": 1.4380481830341019,
+        "sum_ms": 395.489349958254,
+        "faster": 6,
+        "slower": 20,
+        "maximum_regression": "3d-cube",
+        "maximum_regression_pct": 6.8871249124802025
+      }
+    }
+  },
+  "filter": "either suite <= -2%; other suite <= +1%",
+  "qualifying_versions": [],
+  "next_versions": [
+    "M2"
+  ],
+  "summary": [
+    {
+      "label": "SPARSE",
+      "Octane_GM_pct": 0.0,
+      "SunSpider_GM_pct": 0.0,
+      "qualifies": false,
+      "work_saved": "现场重测的冻结基线",
+      "worst_case": "Richards.Richards",
+      "worst_pct": 0.0
+    },
+    {
+      "label": "M1",
+      "Octane_GM_pct": 0.669275791324675,
+      "SunSpider_GM_pct": 1.9163704007125082,
+      "qualifies": false,
+      "work_saved": "同次构造复用已验证的模板，少一次模板解析",
+      "worst_case": "NavierStokes.NavierStokes",
+      "worst_pct": 10.77206174467773
+    },
+    {
+      "label": "M2",
+      "Octane_GM_pct": 0.22899748060967173,
+      "SunSpider_GM_pct": 0.18235329804192624,
+      "qualifies": false,
+      "work_saved": "原型链按层走一趟；描述符仍逐字段检查",
+      "worst_case": "PdfJS.PdfJS",
+      "worst_pct": 2.585048918002486
+    },
+    {
+      "label": "P2",
+      "Octane_GM_pct": 2.1165678245940622,
+      "SunSpider_GM_pct": 1.7698434807671415,
+      "qualifies": false,
+      "work_saved": "同点保留 2 个正计划，减少目标交替时重学",
+      "worst_case": "bitops-nsieve-bits",
+      "worst_pct": 10.593721476730721
+    },
+    {
+      "label": "P3",
+      "Octane_GM_pct": 2.1269672501525783,
+      "SunSpider_GM_pct": 2.975658812409243,
+      "qualifies": false,
+      "work_saved": "同点保留 3 个正计划，减少目标交替时重学",
+      "worst_case": "access-binary-trees",
+      "worst_pct": 28.203350235940448
+    },
+    {
+      "label": "P4",
+      "Octane_GM_pct": 1.550279106109942,
+      "SunSpider_GM_pct": 2.3248451289779704,
+      "qualifies": false,
+      "work_saved": "同点保留 4 个正计划，减少目标交替时重学",
+      "worst_case": "access-binary-trees",
+      "worst_pct": 11.967815953116357
+    },
+    {
+      "label": "D16",
+      "Octane_GM_pct": 1.4440346665465231,
+      "SunSpider_GM_pct": 1.4380481830341019,
+      "qualifies": false,
+      "work_saved": "可重定位函数的字段读从 5 字节缩为 3 字节，融合保留",
+      "worst_case": "NavierStokes.NavierStokes",
+      "worst_pct": 10.490661609055184
+    }
+  ],
+  "regressions_over_5pct": [
+    {
+      "label": "M1",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.3759701885283,
+      "candidate_ms": 44.72529462724924,
+      "change_pct": 10.77206174467773
+    },
+    {
+      "label": "M1",
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "SPARSE_ms": 10.54849639069289,
+      "candidate_ms": 11.115558125078678,
+      "change_pct": 5.375758908028971
+    },
+    {
+      "label": "M1",
+      "suite": "sunspider",
+      "case": "math-partial-sums",
+      "SPARSE_ms": 8.092744077555835,
+      "candidate_ms": 8.643952726386487,
+      "change_pct": 6.8111464238608255
+    },
+    {
+      "label": "M1",
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "SPARSE_ms": 5.845655117183924,
+      "candidate_ms": 6.178351855371147,
+      "change_pct": 5.691350781355986
+    },
+    {
+      "label": "P2",
+      "suite": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "SPARSE_ms": 55.03978540375829,
+      "candidate_ms": 58.585503593087196,
+      "change_pct": 6.442100315832255
+    },
+    {
+      "label": "P2",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.3759701885283,
+      "candidate_ms": 42.6906799711287,
+      "change_pct": 5.7328895672160485
+    },
+    {
+      "label": "P2",
+      "suite": "octane",
+      "case": "Mandreel.Mandreel",
+      "SPARSE_ms": 1168.117563009262,
+      "candidate_ms": 1250.6788070201874,
+      "change_pct": 7.067888252466137
+    },
+    {
+      "label": "P2",
+      "suite": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "SPARSE_ms": 6.721343058627099,
+      "candidate_ms": 7.157675097696483,
+      "change_pct": 6.491738857300788
+    },
+    {
+      "label": "P2",
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "SPARSE_ms": 10.220421249978244,
+      "candidate_ms": 11.30314421094954,
+      "change_pct": 10.593721476730721
+    },
+    {
+      "label": "P2",
+      "suite": "sunspider",
+      "case": "math-cordic",
+      "SPARSE_ms": 16.34488165564835,
+      "candidate_ms": 17.228473539464176,
+      "change_pct": 5.405924022156983
+    },
+    {
+      "label": "P2",
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "SPARSE_ms": 5.845655117183924,
+      "candidate_ms": 6.165470523294061,
+      "change_pct": 5.470993407907465
+    },
+    {
+      "label": "P3",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.3759701885283,
+      "candidate_ms": 43.76530756056309,
+      "change_pct": 8.394441932191077
+    },
+    {
+      "label": "P3",
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "SPARSE_ms": 10.54849639069289,
+      "candidate_ms": 11.342383500188589,
+      "change_pct": 7.526068930508045
+    },
+    {
+      "label": "P3",
+      "suite": "sunspider",
+      "case": "access-binary-trees",
+      "SPARSE_ms": 7.727889155969024,
+      "candidate_ms": 9.90741280047223,
+      "change_pct": 28.203350235940448
+    },
+    {
+      "label": "P3",
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "SPARSE_ms": 10.47186053916812,
+      "candidate_ms": 11.045557367615402,
+      "change_pct": 5.478461313550453
+    },
+    {
+      "label": "P3",
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "SPARSE_ms": 10.220421249978244,
+      "candidate_ms": 10.957333992235363,
+      "change_pct": 7.210199308161469
+    },
+    {
+      "label": "P3",
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "SPARSE_ms": 5.845655117183924,
+      "candidate_ms": 6.197961230762303,
+      "change_pct": 6.026802924837926
+    },
+    {
+      "label": "P4",
+      "suite": "octane",
+      "case": "Richards.Richards",
+      "SPARSE_ms": 2.25076996977441,
+      "candidate_ms": 2.405471845646389,
+      "change_pct": 6.873286828484049
+    },
+    {
+      "label": "P4",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.3759701885283,
+      "candidate_ms": 43.24539803341031,
+      "change_pct": 7.106771258953626
+    },
+    {
+      "label": "P4",
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "SPARSE_ms": 13.769248601980507,
+      "candidate_ms": 14.701223687268794,
+      "change_pct": 6.768525372940348
+    },
+    {
+      "label": "P4",
+      "suite": "sunspider",
+      "case": "access-binary-trees",
+      "SPARSE_ms": 7.727889155969024,
+      "candidate_ms": 8.652748707216233,
+      "change_pct": 11.967815953116357
+    },
+    {
+      "label": "P4",
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "SPARSE_ms": 10.220421249978244,
+      "candidate_ms": 11.268910516053438,
+      "change_pct": 10.258767622493314
+    },
+    {
+      "label": "P4",
+      "suite": "sunspider",
+      "case": "math-partial-sums",
+      "SPARSE_ms": 8.092744077555835,
+      "candidate_ms": 8.580438726581633,
+      "change_pct": 6.02631992748115
+    },
+    {
+      "label": "D16",
+      "suite": "octane",
+      "case": "Crypto.Decrypt",
+      "SPARSE_ms": 70.61334097012877,
+      "candidate_ms": 74.23901096731424,
+      "change_pct": 5.134539659749593
+    },
+    {
+      "label": "D16",
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "SPARSE_ms": 40.3759701885283,
+      "candidate_ms": 44.61167659237981,
+      "change_pct": 10.490661609055184
+    },
+    {
+      "label": "D16",
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "SPARSE_ms": 13.769248601980507,
+      "candidate_ms": 14.71755395270884,
+      "change_pct": 6.8871249124802025
+    },
+    {
+      "label": "D16",
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "SPARSE_ms": 10.47186053916812,
+      "candidate_ms": 11.120234914124012,
+      "change_pct": 6.191587182915237
+    }
+  ]
+}

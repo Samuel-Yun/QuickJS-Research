@@ -1,0 +1,134 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -1,10 +1,16 @@
+ typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
+ typedef struct FullPlan FullPlan;
++#define CTOR_CAPACITY 4
++typedef struct ExtraPlans {
++    FullPlan *plan[CTOR_CAPACITY-1];
++    uint8_t next;
++} ExtraPlans;
+ struct FourSite {
+     FullPlan *plan;
+     JSValue negative;
+     uint32_t pc;
+     uint16_t argc;
++    ExtraPlans *extra;
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+@@ -19,6 +25,45 @@
+     FourDiag *diag;
+ #endif
+ };
++static FullPlan*multi_at(FourSite*s,unsigned i)
++{return i==0?s->plan:(s->extra?s->extra->plan[i-1]:NULL);}
++static int multi_same(FullPlan*p,JSValueConst c)
++{return p && JS_VALUE_GET_TAG(c)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(p->callee)==JS_TAG_OBJECT &&
++    JS_VALUE_GET_OBJ(c)==JS_VALUE_GET_OBJ(p->callee);}
++static FullPlan**multi_destination(JSContext*ctx,FourSite*s,JSValueConst c)
++{
++    if(!s->plan || multi_same(s->plan,c))return &s->plan;
++    if(!s->extra){
++        s->extra=js_mallocz_rt(ctx->rt,sizeof(*s->extra));
++        if(!s->extra)return NULL;
++        SCREEN(extra_allocations);SCREEN_ADD(extra_bytes,sizeof(*s->extra));
++    }
++    for(unsigned i=0;i<CTOR_CAPACITY-1;i++)if(multi_same(s->extra->plan[i],c))return &s->extra->plan[i];
++    for(unsigned i=0;i<CTOR_CAPACITY-1;i++)if(!s->extra->plan[i])return &s->extra->plan[i];
++    unsigned victim=s->extra->next;
++    s->extra->next=(victim+1)%CTOR_CAPACITY;
++    SCREEN(replacements);
++    return victim==0?&s->plan:&s->extra->plan[victim-1];
++}
++static void multi_mark(JSRuntime*rt,FourSite*s,JS_MarkFunc*mark_func)
++{
++    JS_MarkValue(rt,s->negative,mark_func);
++    for(unsigned i=0;i<CTOR_CAPACITY;i++){
++        FullPlan*p=multi_at(s,i);if(!p)continue;
++        JS_MarkValue(rt,p->callee,mark_func);
++        if(p->initial)mark_func(rt,&p->initial->header);
++        if(p->final)mark_func(rt,&p->final->header);
++    }
++}
++static void multi_free(JSRuntime*rt,FourSite*s)
++{
++    JS_FreeValueRT(rt,s->negative);
++    for(unsigned i=0;i<CTOR_CAPACITY;i++){
++        FullPlan*p=multi_at(s,i);if(!p)continue;
++        JS_FreeValueRT(rt,p->callee);js_free_shape_null(rt,p->initial);js_free_shape_null(rt,p->final);js_free_rt(rt,p);
++    }
++    js_free_rt(rt,s->extra);
++}
+ static inline __exception int js_poll_interrupts(JSContext*ctx);
+ #ifdef FOUR_DIAG
+ static FourSite *four_ctor_observer;
+@@ -106,7 +151,9 @@
+     JSShape*initial=find_hashed_shape_proto(ctx->rt,proto);if(!initial)return;
+     FOUR_COUNT(slot,eligible);
+ #ifndef FOUR_PROBE
+-    FullPlan*s=slot->plan;
++    FullPlan**destination=multi_destination(ctx,slot,callee);
++    if(!destination)return;
++    FullPlan*s=*destination;
+     if(!s){
+         s=js_mallocz_rt(ctx->rt,sizeof(*s));
+         if(!s){FOLLOW(4);return;}
+@@ -114,7 +161,7 @@
+ #ifdef FOUR_DIAG
+         s->diag=slot->diag;follow_stats[9]++;follow_stats[10]+=sizeof(*s);
+ #endif
+-        slot->plan=s;FOLLOW(1);
++        *destination=s;FOLLOW(1);
+     }
+     JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
+     s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <inttypes.h>
++#include "screen_diag.h"
+ #include <string.h>
+ #include <assert.h>
+ #include <sys/time.h>
+@@ -6705,7 +6706,7 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
+-            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}}
++            for(uint32_t fi=0;fi<b->four_count;fi++)multi_mark(rt,&b->four_sites[fi],mark_func);
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -36526,7 +36527,7 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+-    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
++    for(uint32_t fi=0;fi<b->four_count;fi++)multi_free(rt,&b->four_sites[fi]);
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+--- a/sparse_runtime.inc
++++ b/sparse_runtime.inc
+@@ -8,7 +8,12 @@
+ static int four_ctor_try(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,JSValue*a,JSValue*out)
+ {
+     if(!s->plan){FOUR_COUNT(s,q);FOUR_COUNT(s,guard);return 0;}
+-    return plan_try(ctx,s->plan,c,t,a,out);
++    if(plan_try(ctx,s->plan,c,t,a,out))return 1;
++    if(s->extra)for(unsigned i=0;i<CTOR_CAPACITY-1;i++){
++        FullPlan*p=s->extra->plan[i];
++        if(multi_same(p,c) && plan_try(ctx,p,c,t,a,out))return 1;
++    }
++    return 0;
+ }
+ static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,unsigned n)
+ {
+--- /dev/null
++++ b/screen_diag.h
+@@ -0,0 +1,2 @@
++#define SCREEN(k) ((void)0)
++#define SCREEN_ADD(k,n) ((void)0)

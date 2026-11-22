@@ -1,0 +1,45 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -58,15 +58,20 @@
+  * descriptors along the current entire chain before performing any write. */
+ static int plan_chain(JSObject*proto,const FourRecipe*r)
+ {
+-    for(unsigned i=0;i<r->n;i++){
+-        JSObject*p=proto;unsigned depth=0;
+-        while(p){
+-            if(++depth>32 || p->class_id!=JS_CLASS_OBJECT || p->is_exotic)return 0;
++    unsigned pending=(1U<<r->n)-1,depth=0;
++    for(JSObject*p=proto;p && pending;p=p->shape->proto){
++        SCREEN(chain_layers);
++        if(++depth>32 || p->class_id!=JS_CLASS_OBJECT || p->is_exotic)return 0;
++        for(unsigned i=0;i<r->n;i++)if(pending&(1U<<i)){
++            SCREEN(descriptor_queries);
+             JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,p,r->atom[i]);
+-            if(d){if((d->flags&JS_PROP_TMASK) || !(d->flags&JS_PROP_WRITABLE))return 0;break;}
+-            p=p->shape->proto;
++            if(d){
++                if((d->flags&JS_PROP_TMASK) || !(d->flags&JS_PROP_WRITABLE))return 0;
++                pending&=~(1U<<i);
++            }
+         }
+-    }return 1;
++    }
++    return 1;
+ }
+ static int plan_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
+ {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <inttypes.h>
++#include "screen_diag.h"
+ #include <string.h>
+ #include <assert.h>
+ #include <sys/time.h>
+--- /dev/null
++++ b/screen_diag.h
+@@ -0,0 +1,2 @@
++#define SCREEN(k) ((void)0)
++#define SCREEN_ADD(k,n) ((void)0)
