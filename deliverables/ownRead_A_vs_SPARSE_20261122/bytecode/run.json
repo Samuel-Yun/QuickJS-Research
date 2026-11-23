@@ -1,0 +1,33 @@
+{
+  "script": "/home/wssy/workspace/QuickJS-Research/deliverables/ownRead_A_vs_SPARSE_20261122/own_read.js",
+  "script_sha256": "bfa04bab5401320a9a9a284d3e95c3179100c308dd103802bab153c70171322c",
+  "functions": [
+    "ownRead"
+  ],
+  "engines": {
+    "A": {
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/bytecode/A-52e7f9f9d35fdda5/qjs",
+        "/home/wssy/workspace/QuickJS-Research/deliverables/ownRead_A_vs_SPARSE_20261122/own_read.js"
+      ],
+      "source_signature": "52e7f9f9d35fdda523c755eac62d62991e6ae458d88797a2f1eab954820c16e3",
+      "binary_sha256": "779f6aea2844d169d7ede704aa7f5ab81dcd29fd43af54cf38d0851c4b3fb443",
+      "exit_code": 0
+    },
+    "method": {
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/bytecode/method-7f9f29ec4ef4986f/qjs",
+        "/home/wssy/workspace/QuickJS-Research/deliverables/ownRead_A_vs_SPARSE_20261122/own_read.js"
+      ],
+      "source_signature": "7f9f29ec4ef4986fac790b61b53df784e3d6a6ebbb440d539417b006a97d3533",
+      "binary_sha256": "95e08b5df5b0bd20b64aaa58bba907676dbb8670ecb80c541f4eddd7e577e57d",
+      "exit_code": 0
+    }
+  }
+}

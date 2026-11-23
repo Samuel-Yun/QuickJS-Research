@@ -1,0 +1,30 @@
+函数 [1] ownRead  parent=0  args=1 locals=0 bytes=7
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_arg0                    (o)
+000001  get_field                  x
+000006  return                     
+
+函数 [2] Pair  parent=0  args=2 locals=1 bytes=17
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_arg0                    (x)
+000004  put_field                  x
+000009  get_loc0                    (this)
+000010  get_arg1                    (y)
+000011  put_field                  y
+000016  return_undef               
+
+函数 [3] construct  parent=0  args=2 locals=0 bytes=10
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (Pair)
+000003  dup                        
+000004  get_arg0                    (x)
+000005  get_arg1                    (y)
+000006  call_constructor           2
+000009  return                     
+

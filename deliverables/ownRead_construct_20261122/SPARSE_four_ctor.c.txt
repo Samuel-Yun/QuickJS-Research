@@ -1,0 +1,32 @@
+        CASE(OP_four_ctor):
+            {
+                FourSite*s=&b->four_sites[get_u16(pc)];call_argc=s->argc;pc+=2;
+                call_argv=sp-call_argc;sf->cur_pc=pc;
+                int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+                if(!fast){
+                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
+#ifdef FOUR_DIAG
+                    FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+#endif
+                    ret_val=JS_CallConstructorInternal(ctx,call_argv[-2],call_argv[-1],call_argc,call_argv,0);
+#ifdef FOUR_DIAG
+                    four_ctor_observer=oldscope;
+#endif
+                    if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
+                    else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
+                }
+                if(unlikely(JS_IsException(ret_val))){
+                    if(fast){
+                        /* Own the original OOM value while formatting a trace:
+                         * formatting may itself replace current_exception. */
+                        JSValue error=JS_GetException(ctx);
+                        if(is_backtrace_needed(ctx,error))build_backtrace(ctx,error,NULL,0,0,0);
+                        JS_Throw(ctx,error);
+                        goto four_ctor_exception_cleanup;
+                    }
+                    goto exception;
+                }
+                for(i=-2;i<call_argc;i++)JS_FreeValue(ctx,call_argv[i]);
+                sp-=call_argc+2;*sp++=ret_val;
+            }
+            BREAK;

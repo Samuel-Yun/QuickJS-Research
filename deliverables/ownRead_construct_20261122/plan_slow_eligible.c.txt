@@ -1,0 +1,7 @@
+static int plan_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc)
+{
+    JSObject*f,*proto;FourRecipe r;
+    if(!plan_base(ctx,callee,target,argc,&f) || !plan_recipe(f->u.func.function_bytecode,&r) ||
+       !(proto=plan_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
+    return plan_chain(proto,&r);
+}

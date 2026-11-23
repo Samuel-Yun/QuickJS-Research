@@ -1,0 +1,5 @@
+static int sparse_same(FourSite*s,JSValueConst c)
+{
+    return JS_VALUE_GET_TAG(c)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(s->negative)==JS_TAG_OBJECT &&
+        JS_VALUE_GET_OBJ(c)==JS_VALUE_GET_OBJ(s->negative);
+}

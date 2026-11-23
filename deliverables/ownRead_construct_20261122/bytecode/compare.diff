@@ -1,0 +1,24 @@
+--- A.txt
++++ method.txt
+@@ -1,9 +1,10 @@
+ 函数 [1] ownRead  parent=0  args=1 locals=0 bytes=7
+ offset  opcode                     操作数
+ ------------------------------------------------------------------------
+-000000  get_arg0                    (o)
+-000001  get_field                  x
++000000  v6_get_arg0                
++000001  get_field_rdi              x  IC[0] delta=6
+ 000006  return                     
++  IC[0] x: 自有字段, offset=0
+ 
+ 函数 [2] Pair  parent=0  args=2 locals=1 bytes=17
+ offset  opcode                     操作数
+@@ -25,6 +26,7 @@
+ 000003  dup                        
+ 000004  get_arg0                    (x)
+ 000005  get_arg1                    (y)
+-000006  call_constructor           2
++000006  four_ctor                  record[0] argc=2
+ 000009  return                     
++  record[0] pc=6, argc=2, 正计划=True, 负目标=False
+ 

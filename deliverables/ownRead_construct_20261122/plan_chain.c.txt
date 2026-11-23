@@ -1,0 +1,12 @@
+static int plan_chain(JSObject*proto,const FourRecipe*r)
+{
+    for(unsigned i=0;i<r->n;i++){
+        JSObject*p=proto;unsigned depth=0;
+        while(p){
+            if(++depth>32 || p->class_id!=JS_CLASS_OBJECT || p->is_exotic)return 0;
+            JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,p,r->atom[i]);
+            if(d){if((d->flags&JS_PROP_TMASK) || !(d->flags&JS_PROP_WRITABLE))return 0;break;}
+            p=p->shape->proto;
+        }
+    }return 1;
+}

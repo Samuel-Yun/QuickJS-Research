@@ -1,0 +1,19 @@
+static int plan_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
+{
+    if(ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT ||
+       JS_VALUE_GET_TAG(target)!=JS_TAG_OBJECT || JS_VALUE_GET_OBJ(callee)!=JS_VALUE_GET_OBJ(target))return 0;
+    *f=JS_VALUE_GET_OBJ(callee);
+    if((*f)->class_id!=JS_CLASS_BYTECODE_FUNCTION || !(*f)->is_constructor || (*f)->is_exotic)return 0;
+    JSFunctionBytecode*b=(*f)->u.func.function_bytecode;
+    if(argc<b->arg_count)return 0;
+    size_t size=sizeof(JSValue)*(b->var_count+b->stack_size)+sizeof(JSVarRef*)*b->var_ref_count;
+    if(js_check_stack_overflow(ctx->rt,size+sizeof(JSStackFrame)+512))return 0;
+#ifdef FORCE_GC_AT_MALLOC
+    return 0;
+#else
+    /* JS_NewObjectFromShape's GC could run a native finalizer after guards.
+     * Leave that construction to the original path; never redo it afterward. */
+    return ctx->rt->malloc_ctx.malloc_state.malloc_size<=SIZE_MAX-sizeof(JSObject) &&
+           ctx->rt->malloc_ctx.malloc_state.malloc_size+sizeof(JSObject)<=ctx->rt->malloc_gc_threshold;
+#endif
+}
