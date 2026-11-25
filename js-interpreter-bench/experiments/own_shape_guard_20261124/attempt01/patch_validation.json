@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "label": "RELAX_CLASS",
+      "patch_command": [
+        "patch",
+        "-p1",
+        "-i",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/SPARSE-to-RELAX_CLASS.patch"
+      ],
+      "exit_code": 0,
+      "exact_release_source_reconstructed": true
+    },
+    {
+      "label": "SHAPE_ONLY",
+      "patch_command": [
+        "patch",
+        "-p1",
+        "-i",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/SPARSE-to-SHAPE_ONLY.patch"
+      ],
+      "exit_code": 0,
+      "exact_release_source_reconstructed": true
+    }
+  ]
+}

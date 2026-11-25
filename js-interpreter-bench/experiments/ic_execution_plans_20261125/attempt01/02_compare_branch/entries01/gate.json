@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "loop_back_entries": true,
+  "getter_exception": true,
+  "checks": [
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "matches_A": true
+    },
+    {
+      "label": "SPARSE",
+      "mode": "counts",
+      "matches_A": true
+    },
+    {
+      "label": "SPARSE",
+      "mode": "sanitize",
+      "matches_A": true
+    },
+    {
+      "label": "COMPARE_FIRST",
+      "mode": "release",
+      "matches_A": true
+    },
+    {
+      "label": "COMPARE_FIRST",
+      "mode": "counts",
+      "matches_A": true
+    },
+    {
+      "label": "COMPARE_FIRST",
+      "mode": "sanitize",
+      "matches_A": true
+    },
+    {
+      "label": "COMPARE_FULL",
+      "mode": "release",
+      "matches_A": true
+    },
+    {
+      "label": "COMPARE_FULL",
+      "mode": "counts",
+      "matches_A": true
+    },
+    {
+      "label": "COMPARE_FULL",
+      "mode": "sanitize",
+      "matches_A": true
+    }
+  ]
+}

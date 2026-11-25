@@ -1,0 +1,17 @@
+{
+  "label": "COMPARE_FULL",
+  "case": "CodeLoad.CodeLoadClosure",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/work/COMPARE_FULL.counts.rev02/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/CodeLoad.CodeLoadClosure.js"
+  ],
+  "script_sha256": "1676dcb6fec2136229ce7fc065726ebc963f940fffba4f0b2deae31633989a61",
+  "binary_sha256": "5318f476d285c110254917f6e1f07ec97a8eed93c0a342cb4e430a7786d2fe76",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1149045893.173537,\"stop_ms\":1149047966.685495,\"elapsed_ms\":2073.511957883835,\"elapsed_per_Run_ms\":0.5062285053427331,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "FOUR_COUNTS:{\"attempts\":4096,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":4096,\"overflow\":0,\"sites\":[{\"function\":\"cacheBust\",\"source_line\":1914,\"source_column\":32,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/CodeLoad.CodeLoadClosure.js\",\"site_id\":0,\"work\":[0,0,0,0,0,0],\"pc\":81,\"attempts\":4096,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":4096,\"overflow\":0,\"bytecode_hex\":\"210200c5250200\"}],\"follow\":[0,0,4095,1,0,0,0,0,12,0,0,480,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 2170.3481290023774
+}

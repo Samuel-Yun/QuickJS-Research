@@ -1,0 +1,6 @@
+.obj/quickjs.o: quickjs.c cutils.h list.h quickjs.h libregexp.h \
+ libunicode.h dtoa.h read_ic_types.h read_ic_config.h quickjs-atom.h \
+ quickjs-opcode.h edge_strong_helpers.inc read_ic_runtime.inc \
+ four_diag.inc four_runtime.inc sparse_runtime.inc follow_runtime.inc \
+ read_ic_opcodes.inc four_prepare.inc follow_prepare.inc \
+ read_ic_prepare.inc

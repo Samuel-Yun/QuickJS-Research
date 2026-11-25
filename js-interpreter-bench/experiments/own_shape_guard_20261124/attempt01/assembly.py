@@ -1,5 +1,5 @@
 """Read the real Release computed-goto table; no label/instrumentation rebuild."""
-import json,struct,subprocess
+import json,struct,subprocess,re
 from pathlib import Path
 from build import HERE,LABELS,save,sha
 
@@ -20,6 +20,24 @@ def main():
    index=op[name];address=struct.unpack_from('<Q',data,offset(table)+index*8)[0]
    text=subprocess.check_output(['objdump','-d','--no-show-raw-insn',f'--start-address={address}',f'--stop-address={address+280}',str(p)],text=True)
    (out/f'{l}.{name}.asm').write_text(text)
+   # Follow actual direct branches too: the object hit block is often cold-split
+   # away from the handler entry by GCC. Raw blocks retain real addresses.
+   targets=[]
+   for target in re.findall(r'\b(?:j[a-z]+)\s+([0-9a-f]+)\s+<',text):
+    addr=int(target,16)
+    if addr not in targets:targets.append(addr)
+   blocks=[]
+   for addr in targets[:10]:
+    block=subprocess.check_output(['objdump','-d','--no-show-raw-insn',f'--start-address={addr}',f'--stop-address={addr+200}',str(p)],text=True)
+    blocks.append(block)
+   (out/f'{l}.{name}.branches.asm').write_text('\n'.join(blocks))
+   if name=='v6_get_arg0':
+    target=re.search(r'\bje\s+([0-9a-f]+)\s+<',text);assert target
+    addr=int(target[1],16)
+    block=subprocess.check_output(['objdump','-d','--no-show-raw-insn',f'--start-address={addr}',f'--stop-address={addr+200}',str(p)],text=True)
+    end=re.search(r'^.*\bjmp\s+\*.*$',block,re.M);assert end
+    block=block[:end.end()]+'\n'
+    (out/f'{l}.{name}.object.asm').write_text(block)
    rows.append(dict(label=l,opcode=name,index=index,dispatch_table=tables[0][-1],table_address=table,handler_address=address,binary_sha256=sha(p),extraction='ELF PT_LOAD -> actual 256-entry computed-goto table -> Release objdump'))
  save(HERE/'assembly.json',dict(status='PASS',rows=rows))
  print('ASSEMBLY_PASS',len(rows))

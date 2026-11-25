@@ -1,0 +1,81 @@
+mkdir -p .obj .obj/examples .obj/tests
+gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c
+gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c
+gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c
+In file included from quickjs.c:6233:
+four_diag.inc: In function ‘four_end’:
+four_diag.inc:57:9: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   57 |         for(unsigned ni=0;ni<32;ni++)fprintf(stderr,"%s%"PRIu64,ni?",":"",d->np[ni]);fprintf(stderr,"]}");
+      |         ^~~
+four_diag.inc:57:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   57 |         for(unsigned ni=0;ni<32;ni++)fprintf(stderr,"%s%"PRIu64,ni?",":"",d->np[ni]);fprintf(stderr,"]}");
+      |                                                                                      ^~~~~~~
+In file included from quickjs.c:6234:
+four_runtime.inc: In function ‘plan_recipe’:
+four_runtime.inc:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |         ^~
+four_runtime.inc:39:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |                                        ^
+In file included from quickjs.c:6236:
+numeric_runtime.inc: In function ‘np_zero’:
+numeric_runtime.inc:30:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   30 |  if(n!=0)return 0;*out=v;*pp=p;return 1;
+      |  ^~
+numeric_runtime.inc:30:19: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   30 |  if(n!=0)return 0;*out=v;*pp=p;return 1;
+      |                   ^
+numeric_runtime.inc: In function ‘np_recipe’:
+numeric_runtime.inc:41:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   41 |    if(!np_zero(b,&p,end,&zeros[a])||np_slot(&p,end,1)!=a||p!=t)return 0;seen|=1u<<a;
+      |    ^~
+numeric_runtime.inc:41:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   41 |    if(!np_zero(b,&p,end,&zeros[a])||np_slot(&p,end,1)!=a||p!=t)return 0;seen|=1u<<a;
+      |                                                                         ^~~~
+numeric_runtime.inc:55:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   55 |   if(end-p<5||*p!=OP_put_field)return 0;r->fields.atom[i]=get_u32(p+1);p+=5;
+      |   ^~
+numeric_runtime.inc:55:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   55 |   if(end-p<5||*p!=OP_put_field)return 0;r->fields.atom[i]=get_u32(p+1);p+=5;
+      |                                         ^
+numeric_runtime.inc: In function ‘np_data’:
+numeric_runtime.inc:74:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   74 |   if(o->is_exotic)return 0;JSProperty*p;JSShapeProperty*d=find_own_property(&p,o,atom);
+      |   ^~
+numeric_runtime.inc:74:28: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   74 |   if(o->is_exotic)return 0;JSProperty*p;JSShapeProperty*d=find_own_property(&p,o,atom);
+      |                            ^~~~~~~~~~
+quickjs.c: In function ‘js_default_module_normalize_name’:
+quickjs.c:30175:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+30175 |     p = strrchr(base_name, '/');
+      |       ^
+In file included from quickjs.c:32350:
+four_prepare.inc: In function ‘four_prepare’:
+four_prepare.inc:8:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |     ^~
+four_prepare.inc:8:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |                                   ^
+gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c
+numeric_runtime.inc: At top level:
+numeric_runtime.inc:87:13: warning: ‘np_release’ defined but not used [-Wunused-function]
+   87 | static void np_release(JSRuntime*rt,NumericPlan*p){if(!p)return;JS_FreeValueRT(rt,p->wrapper);JS_FreeValueRT(rt,p->initializer);JS_FreeValueRT(rt,p->apply);js_free_shape_null(rt,p->final);js_free_rt(rt,p);}
+      |             ^~~~~~~~~~
+numeric_runtime.inc:86:16: warning: ‘np_value’ defined but not used [-Wunused-function]
+   86 | static JSValue np_value(JSValue v,JSValue zero){double n=JS_VALUE_GET_TAG(v)==JS_TAG_INT?JS_VALUE_GET_INT(v):JS_VALUE_GET_FLOAT64(v);return n!=0&&!isnan(n)?v:zero;}
+      |                ^~~~~~~~
+numeric_runtime.inc:85:12: warning: ‘np_numbers’ defined but not used [-Wunused-function]
+   85 | static int np_numbers(const NumericRecipe*r,JSValue*args){for(unsigned i=0;i<3;i++)if(!JS_IsNumber(args[r->fields.arg[i]]))return 0;return 1;}
+      |            ^~~~~~~~~~
+numeric_runtime.inc:78:12: warning: ‘np_resolve’ defined but not used [-Wunused-function]
+   78 | static int np_resolve(JSContext*ctx,JSObject*proto,JSAtom init,JSAtom atom,JSValue*i,JSValue*a){
+      |            ^~~~~~~~~~
+gcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libregexp.o libregexp.c
+gcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libunicode.o libunicode.c
+gcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/cutils.o cutils.c
+gcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c
+gcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -DCONFIG_CC=\"gcc\" -DCONFIG_PREFIX=\"/usr/local\" -O2 -c -o .obj/qjsc.o qjsc.c
+gcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl 
+gcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl 

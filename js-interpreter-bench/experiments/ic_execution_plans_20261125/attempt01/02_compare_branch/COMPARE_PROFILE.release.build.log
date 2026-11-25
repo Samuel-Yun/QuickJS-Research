@@ -1,0 +1,102 @@
+mkdir -p .obj .obj/examples .obj/tests
+gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c
+gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c
+gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c
+In file included from quickjs.c:6236:
+four_runtime.inc: In function ‘plan_recipe’:
+four_runtime.inc:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |         ^~
+four_runtime.inc:39:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |                                        ^
+quickjs.c: In function ‘js_default_module_normalize_name’:
+quickjs.c:30193:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+30193 |     p = strrchr(base_name, '/');
+      |       ^
+In file included from quickjs.c:32368:
+four_prepare.inc: In function ‘four_prepare’:
+four_prepare.inc:8:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |     ^~
+four_prepare.inc:8:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |                                   ^
+In file included from quickjs.c:32369:
+compare_prepare.inc: In function ‘cmp_binding’:
+compare_prepare.inc:2:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    2 |  if(p>=(unsigned)b->byte_code_len)return 0;const uint8_t*c=b->byte_code_buf+p;unsigned op=*c;
+      |  ^~
+compare_prepare.inc:2:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    2 |  if(p>=(unsigned)b->byte_code_len)return 0;const uint8_t*c=b->byte_code_buf+p;unsigned op=*c;
+      |                                            ^~~~~
+compare_prepare.inc: In function ‘cmp_false’:
+compare_prepare.inc:22:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |  if(p>=(unsigned)b->byte_code_len)return 0;uint8_t*c=b->byte_code_buf+p;int64_t t;
+      |  ^~
+compare_prepare.inc:22:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |  if(p>=(unsigned)b->byte_code_len)return 0;uint8_t*c=b->byte_code_buf+p;int64_t t;
+      |                                            ^~~~~~~
+compare_prepare.inc:26:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   26 |  if(t<0||t>=b->byte_code_len)return 0;*target=t;return 1;
+      |  ^~
+compare_prepare.inc:26:39: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   26 |  if(t<0||t>=b->byte_code_len)return 0;*target=t;return 1;
+      |                                       ^
+compare_prepare.inc: In function ‘cmp_match’:
+compare_prepare.inc:30:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   30 |  if(!cmp_binding(b,p,&a,&aa,&az)||aa>1)return 0;p+=az;
+      |  ^~
+compare_prepare.inc:30:49: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   30 |  if(!cmp_binding(b,p,&a,&aa,&az)||aa>1)return 0;p+=az;
+      |                                                 ^
+compare_prepare.inc:31:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   31 |  if(!cmp_binding(b,p,&o,&oa,&oz))return 0;p+=oz;
+      |  ^~
+compare_prepare.inc:31:43: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   31 |  if(!cmp_binding(b,p,&o,&oa,&oz))return 0;p+=oz;
+      |                                           ^
+compare_prepare.inc:32:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   32 |  if(!cmp_field(b,p,&k,&ic))return 0;p+=5;
+      |  ^~
+compare_prepare.inc:32:37: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   32 |  if(!cmp_field(b,p,&k,&ic))return 0;p+=5;
+      |                                     ^
+compare_prepare.inc:35:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   35 |  if(!cmp_false(b,p,&t,&tz))return 0;p+=tz;
+      |  ^~
+compare_prepare.inc:35:37: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   35 |  if(!cmp_false(b,p,&t,&tz))return 0;p+=tz;
+      |                                     ^
+compare_prepare.inc:37:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   37 |  if(!cmp_binding(b,t,&a2,&aa2,&az2)||aa2!=aa||a2!=a)return 0;t+=az2;
+      |  ^~
+compare_prepare.inc:37:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   37 |  if(!cmp_binding(b,t,&a2,&aa2,&az2)||aa2!=aa||a2!=a)return 0;t+=az2;
+      |                                                              ^
+compare_prepare.inc:38:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   38 |  if(!cmp_binding(b,t,&o2,&oa2,&oz2)||(oa2&1)!=(oa&1)||o2!=o)return 0;t+=oz2;
+      |  ^~
+compare_prepare.inc:38:70: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   38 |  if(!cmp_binding(b,t,&o2,&oa2,&oz2)||(oa2&1)!=(oa&1)||o2!=o)return 0;t+=oz2;
+      |                                                                      ^
+compare_prepare.inc:40:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |  if(!cmp_field(b,t,&k2,&ic2)||k!=k2)return 0;t+=5;
+      |  ^~
+compare_prepare.inc:40:46: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |  if(!cmp_field(b,t,&k2,&ic2)||k!=k2)return 0;t+=5;
+      |                                              ^
+compare_prepare.inc:42:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   42 |  if(!cmp_false(b,t,&e,&ez))return 0;t+=ez;
+      |  ^~
+compare_prepare.inc:42:37: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   42 |  if(!cmp_false(b,t,&e,&ez))return 0;t+=ez;
+      |                                     ^
+gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c
+gcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libregexp.o libregexp.c
+gcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libunicode.o libunicode.c
+gcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/cutils.o cutils.c
+gcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c
+gcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -DCONFIG_CC=\"gcc\" -DCONFIG_PREFIX=\"/usr/local\" -O2 -c -o .obj/qjsc.o qjsc.c
+gcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl 
+gcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl 

@@ -1,0 +1,1422 @@
+[
+  {
+    "label": "SPARSE",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148017911.93831,\"stop_ms\":1148019690.188833,\"elapsed_ms\":1778.2505230903625,\"elapsed_per_Run_ms\":55.57032884657383,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1794.5680879056454,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 55.57032884657383,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148019712.953466,\"stop_ms\":1148021488.804475,\"elapsed_ms\":1775.851009130478,\"elapsed_per_Run_ms\":55.495344035327435,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1791.9763450045139,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 55.495344035327435,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148021511.610189,\"stop_ms\":1148023333.541405,\"elapsed_ms\":1821.9312160015106,\"elapsed_per_Run_ms\":56.93535050004721,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1838.139686966315,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 56.93535050004721,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC",
+    "case": "Splay.Splay",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148023580.586095,\"stop_ms\":1148026389.533136,\"elapsed_ms\":2808.94704079628,\"elapsed_per_Run_ms\":1.3715561722638085,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3106.2685791403055,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3715561722638085,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "Splay.Splay",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148026696.129841,\"stop_ms\":1148029483.848125,\"elapsed_ms\":2787.718283891678,\"elapsed_per_Run_ms\":1.3611905683064833,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3085.8812460210174,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3611905683064833,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Splay.Splay",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148029783.557858,\"stop_ms\":1148032529.065102,\"elapsed_ms\":2745.5072441101074,\"elapsed_per_Run_ms\":1.3405797090381384,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3037.937853951007,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3405797090381384,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "access-binary-trees",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148032600.023563,\"stop_ms\":1148034587.341805,\"elapsed_ms\":1987.318242073059,\"elapsed_per_call_ms\":7.762961883097887,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1993.5219909530133,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.762961883097887,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "SPARSE",
+    "case": "access-binary-trees",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148034599.941897,\"stop_ms\":1148036575.159697,\"elapsed_ms\":1975.2178001403809,\"elapsed_per_call_ms\":7.715694531798363,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1980.9859318193048,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.715694531798363,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC",
+    "case": "access-binary-trees",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148036587.362258,\"stop_ms\":1148038570.043178,\"elapsed_ms\":1982.680920124054,\"elapsed_per_call_ms\":7.744847344234586,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1988.5075020138174,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.744847344234586,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "SPARSE",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148038583.366449,\"stop_ms\":1148040600.596916,\"elapsed_ms\":2017.2304668426514,\"elapsed_per_Run_ms\":0.4924879069440067,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2109.9776008632034,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4924879069440067,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148040700.983438,\"stop_ms\":1148042746.906625,\"elapsed_ms\":2045.9231870174408,\"elapsed_per_Run_ms\":0.4994929655804299,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2134.959743823856,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4994929655804299,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148042843.162981,\"stop_ms\":1148044854.768712,\"elapsed_ms\":2011.605731010437,\"elapsed_per_Run_ms\":0.49111468042247,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2102.5033320765942,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.49111468042247,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148044960.276637,\"stop_ms\":1148046728.500266,\"elapsed_ms\":1768.2236289978027,\"elapsed_per_Run_ms\":55.256988406181335,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1784.3982910271734,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 55.256988406181335,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148046751.091452,\"stop_ms\":1148048576.829267,\"elapsed_ms\":1825.7378151416779,\"elapsed_per_Run_ms\":57.05430672317743,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1841.8126341421157,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 57.05430672317743,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148048599.800067,\"stop_ms\":1148050350.693015,\"elapsed_ms\":1750.8929481506348,\"elapsed_per_Run_ms\":54.715404629707336,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1767.3717059660703,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 54.715404629707336,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "Splay.Splay",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148050598.684362,\"stop_ms\":1148053364.046138,\"elapsed_ms\":2765.36177611351,\"elapsed_per_Run_ms\":1.3502743047429249,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3062.24226905033,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3502743047429249,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Splay.Splay",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148053671.106719,\"stop_ms\":1148056413.23693,\"elapsed_ms\":2742.130210876465,\"elapsed_per_Run_ms\":1.3389307670295238,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3041.831979062408,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3389307670295238,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC",
+    "case": "Splay.Splay",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148056717.805995,\"stop_ms\":1148059559.067708,\"elapsed_ms\":2841.261713027954,\"elapsed_per_Run_ms\":1.3873348208144307,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3139.3597240094095,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3873348208144307,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "SPARSE",
+    "case": "access-binary-trees",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148059631.486827,\"stop_ms\":1148061604.723559,\"elapsed_ms\":1973.236732006073,\"elapsed_per_call_ms\":7.707955984398723,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1979.3161638081074,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.707955984398723,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC",
+    "case": "access-binary-trees",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148061617.266913,\"stop_ms\":1148063617.036931,\"elapsed_ms\":1999.7700181007385,\"elapsed_per_call_ms\":7.81160163320601,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2005.6530020665377,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.81160163320601,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "access-binary-trees",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148063629.330176,\"stop_ms\":1148065650.795164,\"elapsed_ms\":2021.4649879932404,\"elapsed_per_call_ms\":7.896347609348595,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2027.290757978335,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.896347609348595,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148065664.157167,\"stop_ms\":1148067678.505029,\"elapsed_ms\":2014.3478620052338,\"elapsed_per_Run_ms\":0.4917841459973715,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2105.5622999556363,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4917841459973715,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148067777.238855,\"stop_ms\":1148069790.364474,\"elapsed_ms\":2013.12561917305,\"elapsed_per_Run_ms\":0.4914857468684204,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2103.9788329508156,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4914857468684204,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "SPARSE",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148069888.798738,\"stop_ms\":1148071897.442035,\"elapsed_ms\":2008.643296957016,\"elapsed_per_Run_ms\":0.4903914299211465,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2100.9473050944507,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4903914299211465,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148072004.851893,\"stop_ms\":1148073829.830258,\"elapsed_ms\":1824.978364944458,\"elapsed_per_Run_ms\":57.03057390451431,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1841.466732788831,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 57.03057390451431,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148073853.3676,\"stop_ms\":1148075612.187844,\"elapsed_ms\":1758.8202440738678,\"elapsed_per_Run_ms\":54.96313262730837,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1775.643683038652,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 54.96313262730837,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148075635.731818,\"stop_ms\":1148077402.952373,\"elapsed_ms\":1767.2205550670624,\"elapsed_per_Run_ms\":55.2256423458457,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1783.3036161027849,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 55.2256423458457,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Splay.Splay",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148077654.269362,\"stop_ms\":1148080393.829626,\"elapsed_ms\":2739.560264110565,\"elapsed_per_Run_ms\":1.337675910210237,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3039.265955099836,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.337675910210237,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC",
+    "case": "Splay.Splay",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148080697.188495,\"stop_ms\":1148083510.007923,\"elapsed_ms\":2812.8194279670715,\"elapsed_per_Run_ms\":1.3734469863120466,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3110.4551490861923,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3734469863120466,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "Splay.Splay",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148083813.690594,\"stop_ms\":1148086592.549487,\"elapsed_ms\":2778.8588931560516,\"elapsed_per_Run_ms\":1.3568646939238533,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3073.7033260520548,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3568646939238533,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC",
+    "case": "access-binary-trees",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148086663.417601,\"stop_ms\":1148088692.555556,\"elapsed_ms\":2029.1379549503326,\"elapsed_per_call_ms\":7.926320136524737,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2035.3484600782394,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.926320136524737,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "access-binary-trees",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148088705.340337,\"stop_ms\":1148090690.420698,\"elapsed_ms\":1985.0803608894348,\"elapsed_per_call_ms\":7.754220159724355,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1990.7787749543786,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.754220159724355,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "SPARSE",
+    "case": "access-binary-trees",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148090702.629769,\"stop_ms\":1148092674.851471,\"elapsed_ms\":1972.2217018604279,\"elapsed_per_call_ms\":7.703991022892296,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1978.1547740567476,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.703991022892296,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148092688.457726,\"stop_ms\":1148094701.732042,\"elapsed_ms\":2013.274316072464,\"elapsed_per_Run_ms\":0.4915220498223789,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2104.1044029407203,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4915220498223789,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "SPARSE",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148094800.338871,\"stop_ms\":1148096810.676909,\"elapsed_ms\":2010.3380379676819,\"elapsed_per_Run_ms\":0.4908051850507036,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2101.756662130356,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4908051850507036,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148096909.942976,\"stop_ms\":1148098938.650515,\"elapsed_ms\":2028.7075390815735,\"elapsed_per_Run_ms\":0.4952899265335873,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2120.735673001036,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4952899265335873,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "SPARSE",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148099045.868197,\"stop_ms\":1148100795.189194,\"elapsed_ms\":1749.3209969997406,\"elapsed_per_Run_ms\":54.666281156241894,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1765.9370282199234,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 54.666281156241894,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148100818.312877,\"stop_ms\":1148102587.314149,\"elapsed_ms\":1769.0012719631195,\"elapsed_per_Run_ms\":55.281289748847485,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1784.9181671626866,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 55.281289748847485,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148102610.106364,\"stop_ms\":1148104429.947156,\"elapsed_ms\":1819.840791940689,\"elapsed_per_Run_ms\":56.870024748146534,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1836.192673072219,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 56.870024748146534,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC",
+    "case": "Splay.Splay",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148104678.174199,\"stop_ms\":1148107484.750126,\"elapsed_ms\":2806.5759267807007,\"elapsed_per_Run_ms\":1.370398401748389,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3104.4221699703485,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.370398401748389,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "Splay.Splay",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148107790.046565,\"stop_ms\":1148110551.942908,\"elapsed_ms\":2761.8963429927826,\"elapsed_per_Run_ms\":1.3485821987269446,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3058.9851059485227,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3485821987269446,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Splay.Splay",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148110855.140089,\"stop_ms\":1148113607.587381,\"elapsed_ms\":2752.4472918510437,\"elapsed_per_Run_ms\":1.3439684042241424,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3048.4567421954125,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3439684042241424,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "access-binary-trees",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148113679.062423,\"stop_ms\":1148115665.927081,\"elapsed_ms\":1986.8646581172943,\"elapsed_per_call_ms\":7.761190070770681,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1992.7627709694207,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.761190070770681,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "SPARSE",
+    "case": "access-binary-trees",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148115678.337147,\"stop_ms\":1148117650.166708,\"elapsed_ms\":1971.829560995102,\"elapsed_per_call_ms\":7.702459222637117,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1977.7092521544546,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.702459222637117,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC",
+    "case": "access-binary-trees",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148117662.836247,\"stop_ms\":1148119653.356266,\"elapsed_ms\":1990.5200190544128,\"elapsed_per_call_ms\":7.7754688244313,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1996.3904228061438,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.7754688244313,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "SPARSE",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148119666.914265,\"stop_ms\":1148121678.973973,\"elapsed_ms\":2012.0597081184387,\"elapsed_per_Run_ms\":0.4912255146773532,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2102.5340519845486,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4912255146773532,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148121777.786964,\"stop_ms\":1148123792.389445,\"elapsed_ms\":2014.6024811267853,\"elapsed_per_Run_ms\":0.49184630886884406,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2106.0478379949927,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.49184630886884406,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148123891.273702,\"stop_ms\":1148125907.936231,\"elapsed_ms\":2016.6625289916992,\"elapsed_per_Run_ms\":0.49234925024211407,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2108.3572427742183,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.49234925024211407,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148126015.095176,\"stop_ms\":1148127798.170848,\"elapsed_ms\":1783.0756719112396,\"elapsed_per_Run_ms\":55.72111474722624,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1799.43738412112,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 55.72111474722624,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148127821.106291,\"stop_ms\":1148129642.180401,\"elapsed_ms\":1821.074110031128,\"elapsed_per_Run_ms\":56.90856593847275,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1837.2828899882734,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 56.90856593847275,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "script_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148129665.261195,\"stop_ms\":1148131411.299945,\"elapsed_ms\":1746.0387501716614,\"elapsed_per_Run_ms\":54.56371094286442,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1762.2788900043815,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "N": 32,
+    "group": "EarleyBoyer",
+    "ms": 54.56371094286442,
+    "original_sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "Splay.Splay",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148131660.073716,\"stop_ms\":1148134459.382608,\"elapsed_ms\":2799.3088920116425,\"elapsed_per_Run_ms\":1.3668500449275598,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3096.71391104348,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3668500449275598,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Splay.Splay",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148134764.953936,\"stop_ms\":1148137489.641863,\"elapsed_ms\":2724.687927007675,\"elapsed_per_Run_ms\":1.3304140268592164,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3021.963710198179,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3304140268592164,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "COALLOC",
+    "case": "Splay.Splay",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js"
+    ],
+    "script_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148137795.924175,\"stop_ms\":1148140617.228714,\"elapsed_ms\":2821.304538965225,\"elapsed_per_Run_ms\":1.3775901069166139,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3121.5173311065882,
+    "suite": "octane",
+    "name": "Splay",
+    "N": 2048,
+    "group": "Splay",
+    "ms": 1.3775901069166139,
+    "original_sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9"
+  },
+  {
+    "label": "SPARSE",
+    "case": "access-binary-trees",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148140689.667163,\"stop_ms\":1148142672.159174,\"elapsed_ms\":1982.4920110702515,\"elapsed_per_call_ms\":7.74410941824317,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1988.544172141701,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.74410941824317,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC",
+    "case": "access-binary-trees",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148142684.840727,\"stop_ms\":1148144675.262139,\"elapsed_ms\":1990.4214119911194,\"elapsed_per_call_ms\":7.77508364059031,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1996.1182039696723,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.77508364059031,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "access-binary-trees",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1148144687.466299,\"stop_ms\":1148146680.908238,\"elapsed_ms\":1993.4419388771057,\"elapsed_per_call_ms\":7.786882573738694,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1999.373901868239,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "N": 256,
+    "group": "access-binary-trees",
+    "ms": 7.786882573738694,
+    "original_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161"
+  },
+  {
+    "label": "COALLOC",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148146694.780301,\"stop_ms\":1148148706.518615,\"elapsed_ms\":2011.7383139133453,\"elapsed_per_Run_ms\":0.4911470492952503,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2101.740228012204,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.4911470492952503,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "COALLOC_OFF",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "control": {
+      "QJS_CTOR_COALLOC_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148148804.183459,\"stop_ms\":1148150813.775281,\"elapsed_ms\":2009.5918219089508,\"elapsed_per_Run_ms\":0.49062300339573994,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2100.7887690793723,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.49062300339573994,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  },
+  {
+    "label": "SPARSE",
+    "case": "CodeLoad.CodeLoadClosure",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+    ],
+    "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148150912.641993,\"stop_ms\":1148152923.047331,\"elapsed_ms\":2010.405338048935,\"elapsed_per_Run_ms\":0.49082161573460326,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2102.2773750592023,
+    "suite": "octane",
+    "name": "CodeLoad.Closure",
+    "N": 4096,
+    "group": "CodeLoad",
+    "ms": 0.49082161573460326,
+    "original_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99"
+  }
+]

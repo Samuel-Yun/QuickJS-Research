@@ -1,0 +1,20 @@
+{
+  "label": "COMPARE_FIRST",
+  "case": "zlib.zlib",
+  "rep": 1,
+  "mode": "release",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/work/COMPARE_FIRST.release.rev02/qjs",
+    "--std",
+    "-I",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/support/zlib_read.js",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/zlib.js"
+  ],
+  "script_sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+  "binary_sha256": "f321a368e9e71423e862ad8117852186c52fc0ccaf201ca921ba71caf6a69a16",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"zlib.zlib\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1148532904.369377,\"stop_ms\":1148537744.545398,\"elapsed_ms\":4840.176021099091,\"elapsed_per_Run_ms\":4840.176021099091,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "",
+  "wall_ms": 4854.784209979698
+}

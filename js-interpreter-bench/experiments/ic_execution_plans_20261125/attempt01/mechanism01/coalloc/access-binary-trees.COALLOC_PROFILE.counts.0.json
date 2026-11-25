@@ -1,0 +1,17 @@
+{
+  "label": "COALLOC_PROFILE",
+  "case": "access-binary-trees",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC_PROFILE.counts/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/coalloc/access-binary-trees.js"
+  ],
+  "script_sha256": "cdfe0f650f1886f8994a500f5b756acfa7c349b78659f7fa43f49aaa19eae0f9",
+  "binary_sha256": "934c79eaea30b2ab3773446b3c07d943197e2aafdb41eb0028953587eeeb87e0",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1149159999.89298,\"stop_ms\":1149161199.016263,\"elapsed_ms\":1199.1232829093933,\"elapsed_per_call_ms\":4.684075323864818,\"warmup_calls\":0}\n",
+  "stderr": "CO_WORK:{\"hits\":10558564,\"combined_requests\":0,\"ordinary_requests\":21117128,\"requested_bytes\":1182559168,\"resizes\":0,\"migrations\":0,\"migration_bytes\":0,\"gc\":2,\"capacity_histogram\":[0,0,0,10558564,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}\nFOUR_COUNTS:{\"attempts\":10770432,\"hits\":10558564,\"eligible\":502,\"fills\":502,\"fallbacks\":211868,\"overflow\":0,\"sites\":[{\"function\":\"bottomUpTree\",\"site_id\":0,\"work\":[0,753,5380687,251,16141308,5380436],\"pc\":35,\"attempts\":5488640,\"hits\":5380436,\"eligible\":251,\"fills\":251,\"fallbacks\":108204,\"overflow\":0,\"bytecode_hex\":\"21030028\"},{\"function\":\"bottomUpTree\",\"site_id\":1,\"work\":[0,753,5178379,251,15534384,5178128],\"pc\":26,\"attempts\":5281792,\"hits\":5178128,\"eligible\":251,\"fills\":251,\"fallbacks\":103664,\"overflow\":0,\"bytecode_hex\":\"21030028db110707cf21030028\"}],\"follow\":[423734,2,0,0,0,0,0,0,6,2,208,240,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 1205.3011830430478
+}

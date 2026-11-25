@@ -1,0 +1,17 @@
+{
+  "label": "COALLOC",
+  "case": "semantics",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.counts.rev03/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/semantics.js"
+  ],
+  "script_sha256": "70cc0f94aed053c2dd25cfdabc25d0d3d978f6bffe0e6908cc01c1f35a6a8655",
+  "binary_sha256": "fa71255c623e26e6d36d87eed009db832e59aa4a8cc32a58e6416b67151e8351",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "{\"last\":1999,\"sum\":2000,\"pass\":true}\n",
+  "stderr": "CO_WORK:{\"hits\":2000,\"combined_requests\":2000,\"ordinary_requests\":0,\"requested_bytes\":192000,\"resizes\":17991,\"migrations\":1999,\"migration_bytes\":95952,\"gc\":14,\"capacity_histogram\":[0,0,2000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}\nFOUR_COUNTS:{\"attempts\":2002,\"hits\":2000,\"eligible\":1,\"fills\":1,\"fallbacks\":2,\"overflow\":0,\"sites\":[{\"function\":\"create\",\"source_line\":4,\"source_column\":37,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/semantics.js\",\"site_id\":0,\"work\":[2,1,2001,0,4000,2000],\"pc\":6,\"attempts\":2002,\"hits\":2000,\"eligible\":1,\"fills\":1,\"fallbacks\":2,\"overflow\":0,\"bytecode_hex\":\"21020028\"}],\"follow\":[4,1,0,0,0,0,0,0,1,1,104,40,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 22.71912689320743
+}

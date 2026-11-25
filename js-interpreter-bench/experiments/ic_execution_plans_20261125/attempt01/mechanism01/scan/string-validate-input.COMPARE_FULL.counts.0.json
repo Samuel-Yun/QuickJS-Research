@@ -1,0 +1,17 @@
+{
+  "label": "COMPARE_FULL",
+  "case": "string-validate-input",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/work/COMPARE_FULL.counts.rev02/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/string-validate-input.js"
+  ],
+  "script_sha256": "06d463130ef8a540cf7380e8162f9ab3f13667acb7564ec5232369862c6a242b",
+  "binary_sha256": "5318f476d285c110254917f6e1f07ec97a8eed93c0a342cb4e430a7786d2fe76",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"string-validate-input\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"462000\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1149144747.361014,\"stop_ms\":1149147139.890745,\"elapsed_ms\":2392.5297310352325,\"elapsed_per_call_ms\":9.345819261856377,\"warmup_calls\":0}\n",
+  "stderr": "FOUR_COUNTS:{\"attempts\":768,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":768,\"overflow\":0,\"sites\":[{\"function\":\"__tebSunSpiderWorkload\",\"source_line\":14,\"source_column\":20,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/string-validate-input.js\",\"site_id\":0,\"work\":[0,0,0,0,0,0],\"pc\":237,\"attempts\":256,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":256,\"overflow\":0,\"bytecode_hex\":\"210600113906000ec4ec0e380700c3e7230100\"},{\"function\":\"__tebSunSpiderWorkload\",\"source_line\":13,\"source_column\":20,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/string-validate-input.js\",\"site_id\":1,\"work\":[0,0,0,0,0,0],\"pc\":204,\"attempts\":256,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":256,\"overflow\":0,\"bytecode_hex\":\"211a00113905000e38040011048e020000048f020000bd00bd01bd020490020000210600113906000ec4ec0e380700c3e7230100\"},{\"function\":\"__tebSunSpiderWorkload\",\"source_line\":12,\"source_column\":20,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/string-validate-input.js\",\"site_id\":2,\"work\":[0,0,0,0,0,0],\"pc\":147,\"attempts\":256,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":256,\"overflow\":0,\"bytecode_hex\":\"211a00113903000e38040011b4b5b6b7b8b9babb08bb09bb0abb0bbb0cbb0dbb0ebb0fbb10bb11bb12bb13bb14bb15bb16bb17bb18bb19bb1a211a00113905000e38040011048e020000048f020000bd00bd01bd020490020000210600113906000ec4ec0e380700c3e7230100\"}],\"follow\":[0,0,765,3,0,0,0,0,7,0,0,280,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 2399.1004878189415
+}

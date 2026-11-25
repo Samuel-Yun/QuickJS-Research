@@ -1,0 +1,57 @@
+{
+  "iterations": 268435456,
+  "repeats": 5,
+  "pilot": [
+    {
+      "label": "SPARSE",
+      "kind": "object",
+      "mode": "fused",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 22.20172095298767
+    },
+    {
+      "label": "RELAX_CLASS",
+      "kind": "object",
+      "mode": "fused",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 21.70967698097229
+    },
+    {
+      "label": "SHAPE_ONLY",
+      "kind": "object",
+      "mode": "fused",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 22.28884220123291
+    },
+    {
+      "label": "SPARSE",
+      "kind": "object",
+      "mode": "plain",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 23.700849056243896
+    },
+    {
+      "label": "RELAX_CLASS",
+      "kind": "object",
+      "mode": "plain",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 23.847481966018677
+    },
+    {
+      "label": "SHAPE_ONLY",
+      "kind": "object",
+      "mode": "plain",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 42.95144081115723
+    }
+  ],
+  "CPU": 2,
+  "first_call_included": true,
+  "extra_warmup": 0
+}
