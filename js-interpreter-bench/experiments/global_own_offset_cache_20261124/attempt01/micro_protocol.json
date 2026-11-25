@@ -1,0 +1,257 @@
+{
+  "iterations": 134217728,
+  "repeats": 5,
+  "labels": [
+    "A",
+    "SPARSE",
+    "GLOBAL_OWN_OFFSET_CACHE"
+  ],
+  "CPU": 2,
+  "locale": "C",
+  "TZ": "Asia/Shanghai",
+  "timer": "performance.now around run(sequence,n); setup excluded",
+  "first_call_included": true,
+  "extra_warmup": 0,
+  "pilot": [
+    {
+      "label": "A",
+      "mode": "release",
+      "case": "stable",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "stable",
+        "1048576"
+      ],
+      "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"stable\",\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":28.182130098342896,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 35.35481193102896,
+      "ms": 28.182130098342896,
+      "iterations": 1048576
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "case": "stable",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "stable",
+        "1048576"
+      ],
+      "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"stable\",\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":25.345965027809143,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 31.78634401410818,
+      "ms": 25.345965027809143,
+      "iterations": 1048576
+    },
+    {
+      "label": "GLOBAL_OWN_OFFSET_CACHE",
+      "mode": "release",
+      "case": "stable",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "stable",
+        "1048576"
+      ],
+      "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"stable\",\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":25.643263936042786,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 30.94863099977374,
+      "ms": 25.643263936042786,
+      "iterations": 1048576
+    },
+    {
+      "label": "A",
+      "mode": "release",
+      "case": "same_slot",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "same_slot",
+        "1048576"
+      ],
+      "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"same_slot\",\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":27.926414012908936,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 33.28143199905753,
+      "ms": 27.926414012908936,
+      "iterations": 1048576
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "case": "same_slot",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "same_slot",
+        "1048576"
+      ],
+      "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"same_slot\",\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":29.96447193622589,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 35.141819855198264,
+      "ms": 29.96447193622589,
+      "iterations": 1048576
+    },
+    {
+      "label": "GLOBAL_OWN_OFFSET_CACHE",
+      "mode": "release",
+      "case": "same_slot",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "same_slot",
+        "1048576"
+      ],
+      "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"same_slot\",\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":27.77529799938202,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 33.06444687768817,
+      "ms": 27.77529799938202,
+      "iterations": 1048576
+    },
+    {
+      "label": "A",
+      "mode": "release",
+      "case": "different_slot",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "different_slot",
+        "1048576"
+      ],
+      "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"different_slot\",\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":27.888736963272095,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 33.17591198720038,
+      "ms": 27.888736963272095,
+      "iterations": 1048576
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "case": "different_slot",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "different_slot",
+        "1048576"
+      ],
+      "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"different_slot\",\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":30.16771399974823,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 35.39808792993426,
+      "ms": 30.16771399974823,
+      "iterations": 1048576
+    },
+    {
+      "label": "GLOBAL_OWN_OFFSET_CACHE",
+      "mode": "release",
+      "case": "different_slot",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "different_slot",
+        "1048576"
+      ],
+      "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"different_slot\",\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":28.042250990867615,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 33.37286994792521,
+      "ms": 28.042250990867615,
+      "iterations": 1048576
+    },
+    {
+      "label": "A",
+      "mode": "release",
+      "case": "multi",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "multi",
+        "1048576"
+      ],
+      "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"multi\",\"iterations\":1048576,\"checksum\":6291456,\"elapsed_ms\":27.323971033096313,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 32.51173812896013,
+      "ms": 27.323971033096313,
+      "iterations": 1048576
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "case": "multi",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "multi",
+        "1048576"
+      ],
+      "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"multi\",\"iterations\":1048576,\"checksum\":6291456,\"elapsed_ms\":29.918022990226746,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 35.07804102264345,
+      "ms": 29.918022990226746,
+      "iterations": 1048576
+    },
+    {
+      "label": "GLOBAL_OWN_OFFSET_CACHE",
+      "mode": "release",
+      "case": "multi",
+      "phase": "pilot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+        "multi",
+        "1048576"
+      ],
+      "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"multi\",\"iterations\":1048576,\"checksum\":6291456,\"elapsed_ms\":28.18878698348999,\"warmup_calls\":0}\n",
+      "stderr": "",
+      "external_wall_ms": 34.00646708905697,
+      "ms": 28.18878698348999,
+      "iterations": 1048576
+    }
+  ]
+}

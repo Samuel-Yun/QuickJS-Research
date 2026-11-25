@@ -1,0 +1,1480 @@
+{
+  "engines": {
+    "SPARSE": {
+      "label": "SPARSE",
+      "mode": "release",
+      "instrumented": false,
+      "sanitized": false,
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+      "command": [
+        "make",
+        "-j2",
+        "-o",
+        "repl.c",
+        "qjs",
+        "qjsc"
+      ],
+      "sources": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "compat/test-closefrom.c": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "edge_strong_helpers.inc": "5e0645061dc10be615d09f019a532759115c60c6b43d451cd5d9b2566efceac5",
+        "four_diag.inc": "cdad40ec5e26449b18b75abaf5eec6134c9badf4abfbdeb5a46744070aba7f66",
+        "four_prepare.inc": "cd7cae6564d0c4a0150e060f6e4816e34dc120f8028d2ac60007daab56f45957",
+        "four_runtime.inc": "9f39660e8e8f0faae9333f3c03f7b3bfdf005fa6e146bd36794a5ea130663226",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "e097d89e6cf7e44b39b4d674b6e5cd2fb0d05dabe0289156208e6bd01fbe6429",
+        "quickjs.c": "e9a738ac5020a8b80144a932f0ffcc9266d3920b1bb19d13bcbe1c3dfd81a41d",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "da4f5b00c674d7401e96e26c248b289a274e33e1492f3724e332a7d65fa4f65f",
+        "read_ic_prepare.inc": "c71509eed85700e54282eb9d339717b6b9254150ee60db999677420db6dc1c87",
+        "read_ic_runtime.inc": "57681086bf909536fb9c0bb41cb8129da6afe7473681fe4006e46975b400440e",
+        "read_ic_types.h": "9309672f2a8eb861e057696dae6d6f91f7d067d1fc08d223a5efd2346e3ff769",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "sparse_runtime.inc": "de41064d8d55bb5b7940d783b25c6e7ff16678fe2fd1739123b5e745ec2e804f",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "parent": "frozen 06aada4 SPARSE_CTOR_IC"
+    },
+    "STORE_TRANSITION_IC": {
+      "label": "STORE_TRANSITION_IC",
+      "mode": "release",
+      "instrumented": false,
+      "sanitized": false,
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+      "command": [
+        "make",
+        "-j2",
+        "-o",
+        "repl.c",
+        "qjs",
+        "qjsc"
+      ],
+      "sources": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "compat/test-closefrom.c": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "edge_strong_helpers.inc": "5e0645061dc10be615d09f019a532759115c60c6b43d451cd5d9b2566efceac5",
+        "four_diag.inc": "cdad40ec5e26449b18b75abaf5eec6134c9badf4abfbdeb5a46744070aba7f66",
+        "four_prepare.inc": "cd7cae6564d0c4a0150e060f6e4816e34dc120f8028d2ac60007daab56f45957",
+        "four_runtime.inc": "9f39660e8e8f0faae9333f3c03f7b3bfdf005fa6e146bd36794a5ea130663226",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "bd46f2ec1bf5d09d725152a42a192c24c0b5f0020693b14562c5829229fa8f3e",
+        "quickjs.c": "9c27a612563240d5efef56b211f2aac842c45552126d69ed2d1b511638427f37",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "da4f5b00c674d7401e96e26c248b289a274e33e1492f3724e332a7d65fa4f65f",
+        "read_ic_prepare.inc": "c71509eed85700e54282eb9d339717b6b9254150ee60db999677420db6dc1c87",
+        "read_ic_runtime.inc": "57681086bf909536fb9c0bb41cb8129da6afe7473681fe4006e46975b400440e",
+        "read_ic_types.h": "9309672f2a8eb861e057696dae6d6f91f7d067d1fc08d223a5efd2346e3ff769",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "sparse_runtime.inc": "de41064d8d55bb5b7940d783b25c6e7ff16678fe2fd1739123b5e745ec2e804f",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3",
+        "store_transition_types.h": "4a6f996d57dc22e89a2d78c794e3598094e68ce2e7eb75686c122902b98dad71",
+        "store_transition_runtime.inc": "2a9ee0ebc86a2dfb4b1454683d094cce50f222acebdbfe6a802285a20a3eef00",
+        "store_transition_prepare.inc": "1da744fb1e5bc7db652117e5b3b4b74b01b349e389f0b826412a68c442fb4c36"
+      },
+      "parent": "frozen 06aada4 SPARSE_CTOR_IC"
+    }
+  },
+  "inputs": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/benchmarks.json": "4cc6ba78c70415dfcc99e39449f1d44345981fa50e9a5290bcd1e179c5cbf276",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Richards.js": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/3d-cube.js": "94d22c3cab591f6e71e8b77d69eec847110746f9c9698e3d1ae84d03c3753c06",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/3d-morph.js": "f22c926e455d032f5f565970a891d1586abd6939420a94829a77245a0abc3f20",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Crypto.Encrypt.js": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/3d-raytrace.js": "3832c5fe8a2454743ba8002b688e4e73f72a3a982972517a57483606a567f8be",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Crypto.Decrypt.js": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-fannkuch.js": "4393deb28d20af33e2543a97b3c88732f657fa2d6f765987343f059ef6fc03ae",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Earley.js": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-nbody.js": "7afed6005dbdc6f7d3d3033133e90b05f5dcdf73a3b96edd6a6e3c9a731bc227",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-nsieve.js": "2a80f5339244e8561d554ca47a694a183883791fd7ee7132578ba8e088a0c27d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RegExp.js": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/bitops-3bit-bits-in-byte.js": "0376a464e63d328ff9f85b0068988f4a88709f115cedb07e5602be265c7430f3",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/bitops-bits-in-byte.js": "7cb5e1ada3b1fe40118893fff79b609e2857d1214f2f3a7bb518856e10fc28cb",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/NavierStokes.js": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/bitops-bitwise-and.js": "dd9898bbdaa48e66476dec6aa983f21b344d78bbd2dce319cc55ccf7b4b0c224",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/PdfJS.js": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/bitops-nsieve-bits.js": "15eaf59604de57fb9375999ba854a23af04f8e6c0a38cf2a6d99820b576971f1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Mandreel.js": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/controlflow-recursive.js": "e8bb8140d7d9a9ac871ff0ce41d7ed5d371f3333a4c0738a49b155e4d3cf3238",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Gameboy.js": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/crypto-aes.js": "21e1ec9a5de1c535cbc57b2579d83eb1ddf0200501db8bd379f717b86d7a0472",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/crypto-md5.js": "040430f7140576332b95c38b830e69d2a0c8b3900d36890903d9f5ad2ff16871",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.JQuery.js": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/crypto-sha1.js": "1011259725234d70ce8fc1ee5a234283c83351e5a3d2de6edf43490ad6975904",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/date-format-tofte.js": "2f15f33c3ae201280886b8fe5f3da020e8764d67bff4a362d55a82dc4608b2b1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/zlib.js": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/date-format-xparb.js": "4019e2520d00a2ec363507434c14ad220c192d536a0edbe0288b081cc90e5bf5",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/math-cordic.js": "421218c399d28bd70f4fd36c6d71a1eeba837559311c811046d3f162841f3028",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/math-partial-sums.js": "89e7fa42b95d06e0d6e5a6c8b6525d5db51eadc9341ee1a4bf63b72638731b72",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/math-spectral-norm.js": "326e3761b41239cec8df427078f51cb71c5ff1b80d594e816f23950f1bcda2f9",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/regexp-dna.js": "055a87870ee9ba0622caad39ceca4ef7423cdcac1301964834135fd94367f781",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/string-base64.js": "39fd44db2df34d53515e36df261478ebd91eafdc571523b52c6f9fded4943de9",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/string-fasta.js": "d5067abc2c80c83c83520c754b976624fe9d2258c8a5728638cccdead7e7f5b8",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/string-tagcloud.js": "29522d0f43825a2924f9e9e08ea9e36eed19f03f902fceca8fcc1fa354277ca4",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/string-unpack-code.js": "dd603329e57ef8a391fb23980198a04475ddac8f387dee542404149e5001b3bf",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/string-validate-input.js": "41db368409e557a84cdfe6e8352d60a76c73d2f4ca53838953dbb8ac55a42cfd",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/support/zlib_read.js": "8240f6d0f5d2a8037f87b08c1f2dcf2518d100d0f5e57b6277ae7a885b771caa",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/LICENSE": "cf853177951c6de1b17c029b66edf71f8b194cca1722339a7b5def4e8165aaaa"
+  },
+  "schedule": [
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "Richards",
+        "case": "Richards.Richards",
+        "group": "Richards",
+        "path": "octane/Richards.js",
+        "N": 1024,
+        "sha256": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Richards.Richards.N1024.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "Richards",
+        "case": "Richards.Richards",
+        "group": "Richards",
+        "path": "octane/Richards.js",
+        "N": 1024,
+        "sha256": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Richards.Richards.N1024.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "3d-cube",
+        "case": "3d-cube",
+        "group": "3d-cube",
+        "path": "sunspider/3d-cube.js",
+        "N": 128,
+        "sha256": "94d22c3cab591f6e71e8b77d69eec847110746f9c9698e3d1ae84d03c3753c06",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-cube.N128.measure.js",
+        "checksums": [
+          "320"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "3d-cube",
+        "case": "3d-cube",
+        "group": "3d-cube",
+        "path": "sunspider/3d-cube.js",
+        "N": 128,
+        "sha256": "94d22c3cab591f6e71e8b77d69eec847110746f9c9698e3d1ae84d03c3753c06",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-cube.N128.measure.js",
+        "checksums": [
+          "320"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "DeltaBlue",
+        "case": "DeltaBlue.DeltaBlue",
+        "group": "DeltaBlue",
+        "path": "octane/DeltaBlue.js",
+        "N": 512,
+        "sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.DeltaBlue.DeltaBlue.N512.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "DeltaBlue",
+        "case": "DeltaBlue.DeltaBlue",
+        "group": "DeltaBlue",
+        "path": "octane/DeltaBlue.js",
+        "N": 512,
+        "sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.DeltaBlue.DeltaBlue.N512.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "3d-morph",
+        "case": "3d-morph",
+        "group": "3d-morph",
+        "path": "sunspider/3d-morph.js",
+        "N": 128,
+        "sha256": "f22c926e455d032f5f565970a891d1586abd6939420a94829a77245a0abc3f20",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-morph.N128.measure.js",
+        "checksums": [
+          "0"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "3d-morph",
+        "case": "3d-morph",
+        "group": "3d-morph",
+        "path": "sunspider/3d-morph.js",
+        "N": 128,
+        "sha256": "f22c926e455d032f5f565970a891d1586abd6939420a94829a77245a0abc3f20",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-morph.N128.measure.js",
+        "checksums": [
+          "0"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "Crypto.Encrypt",
+        "case": "Crypto.Encrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Encrypt.js",
+        "N": 512,
+        "sha256": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Encrypt.N512.measure.js",
+        "checksums": [
+          "53565803e0a843e95749c36d0e184169c0ee6da889bfc1afbb85810b8c5f2e667a7ae97fb0148bf505f9b1b101c08610e1ca13e24269f0da75b557e15d47f79c6f463cba71ffbaaf01c08050cdf9b973d400602580c0437774884e8a710aee87d4044d143e30ccf76728f74aedda0ddaaa21294db42d2fca3ec045fba93d9f80"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "Crypto.Encrypt",
+        "case": "Crypto.Encrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Encrypt.js",
+        "N": 512,
+        "sha256": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Encrypt.N512.measure.js",
+        "checksums": [
+          "53565803e0a843e95749c36d0e184169c0ee6da889bfc1afbb85810b8c5f2e667a7ae97fb0148bf505f9b1b101c08610e1ca13e24269f0da75b557e15d47f79c6f463cba71ffbaaf01c08050cdf9b973d400602580c0437774884e8a710aee87d4044d143e30ccf76728f74aedda0ddaaa21294db42d2fca3ec045fba93d9f80"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "3d-raytrace",
+        "case": "3d-raytrace",
+        "group": "3d-raytrace",
+        "path": "sunspider/3d-raytrace.js",
+        "N": 128,
+        "sha256": "3832c5fe8a2454743ba8002b688e4e73f72a3a982972517a57483606a567f8be",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-raytrace.N128.measure.js",
+        "checksums": [
+          "20969",
+          "20970"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "3d-raytrace",
+        "case": "3d-raytrace",
+        "group": "3d-raytrace",
+        "path": "sunspider/3d-raytrace.js",
+        "N": 128,
+        "sha256": "3832c5fe8a2454743ba8002b688e4e73f72a3a982972517a57483606a567f8be",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-raytrace.N128.measure.js",
+        "checksums": [
+          "20969",
+          "20970"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "Crypto.Decrypt",
+        "case": "Crypto.Decrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Decrypt.js",
+        "N": 32,
+        "sha256": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Decrypt.N32.measure.js",
+        "checksums": [
+          "73be293fe54b9fc1af0cab261d4307883f70dfb21390d3de779e061f39e084fee1072606b0979db989ab21a288e16c2644af3842ccbd8f540eb66d61c44253d9b5ebe30dbd5dfe9ee81038baf4912ab3de44cfe2a401ff0363c720713889b1d31f21f32a1d68bee95b19f767d52c0ed1fd8ff2ab66d88e68dffaadb9826aed24"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "Crypto.Decrypt",
+        "case": "Crypto.Decrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Decrypt.js",
+        "N": 32,
+        "sha256": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Decrypt.N32.measure.js",
+        "checksums": [
+          "73be293fe54b9fc1af0cab261d4307883f70dfb21390d3de779e061f39e084fee1072606b0979db989ab21a288e16c2644af3842ccbd8f540eb66d61c44253d9b5ebe30dbd5dfe9ee81038baf4912ab3de44cfe2a401ff0363c720713889b1d31f21f32a1d68bee95b19f767d52c0ed1fd8ff2ab66d88e68dffaadb9826aed24"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-binary-trees",
+        "case": "access-binary-trees",
+        "group": "access-binary-trees",
+        "path": "sunspider/access-binary-trees.js",
+        "N": 256,
+        "sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-binary-trees.N256.measure.js",
+        "checksums": [
+          "-4"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-binary-trees",
+        "case": "access-binary-trees",
+        "group": "access-binary-trees",
+        "path": "sunspider/access-binary-trees.js",
+        "N": 256,
+        "sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-binary-trees.N256.measure.js",
+        "checksums": [
+          "-4"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "RayTrace",
+        "case": "RayTrace.RayTrace",
+        "group": "RayTrace",
+        "path": "octane/RayTrace.js",
+        "N": 128,
+        "sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RayTrace.RayTrace.N128.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "RayTrace",
+        "case": "RayTrace.RayTrace",
+        "group": "RayTrace",
+        "path": "octane/RayTrace.js",
+        "N": 128,
+        "sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RayTrace.RayTrace.N128.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-fannkuch",
+        "case": "access-fannkuch",
+        "group": "access-fannkuch",
+        "path": "sunspider/access-fannkuch.js",
+        "N": 64,
+        "sha256": "4393deb28d20af33e2543a97b3c88732f657fa2d6f765987343f059ef6fc03ae",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-fannkuch.N64.measure.js",
+        "checksums": [
+          "22"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-fannkuch",
+        "case": "access-fannkuch",
+        "group": "access-fannkuch",
+        "path": "sunspider/access-fannkuch.js",
+        "N": 64,
+        "sha256": "4393deb28d20af33e2543a97b3c88732f657fa2d6f765987343f059ef6fc03ae",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-fannkuch.N64.measure.js",
+        "checksums": [
+          "22"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "EarleyBoyer.Earley",
+        "case": "EarleyBoyer.Earley",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Earley.js",
+        "N": 512,
+        "sha256": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Earley.N512.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "EarleyBoyer.Earley",
+        "case": "EarleyBoyer.Earley",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Earley.js",
+        "N": 512,
+        "sha256": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Earley.N512.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-nbody",
+        "case": "access-nbody",
+        "group": "access-nbody",
+        "path": "sunspider/access-nbody.js",
+        "N": 128,
+        "sha256": "7afed6005dbdc6f7d3d3033133e90b05f5dcdf73a3b96edd6a6e3c9a731bc227",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nbody.N128.measure.js",
+        "checksums": [
+          "-1.3524862408537381"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-nbody",
+        "case": "access-nbody",
+        "group": "access-nbody",
+        "path": "sunspider/access-nbody.js",
+        "N": 128,
+        "sha256": "7afed6005dbdc6f7d3d3033133e90b05f5dcdf73a3b96edd6a6e3c9a731bc227",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nbody.N128.measure.js",
+        "checksums": [
+          "-1.3524862408537381"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "EarleyBoyer.Boyer",
+        "case": "EarleyBoyer.Boyer",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Boyer.js",
+        "N": 32,
+        "sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Boyer.N32.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "EarleyBoyer.Boyer",
+        "case": "EarleyBoyer.Boyer",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Boyer.js",
+        "N": 32,
+        "sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Boyer.N32.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-nsieve",
+        "case": "access-nsieve",
+        "group": "access-nsieve",
+        "path": "sunspider/access-nsieve.js",
+        "N": 256,
+        "sha256": "2a80f5339244e8561d554ca47a694a183883791fd7ee7132578ba8e088a0c27d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nsieve.N256.measure.js",
+        "checksums": [
+          "14302"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "access-nsieve",
+        "case": "access-nsieve",
+        "group": "access-nsieve",
+        "path": "sunspider/access-nsieve.js",
+        "N": 256,
+        "sha256": "2a80f5339244e8561d554ca47a694a183883791fd7ee7132578ba8e088a0c27d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nsieve.N256.measure.js",
+        "checksums": [
+          "14302"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "RegExp",
+        "case": "RegExp.RegExp",
+        "group": "RegExp",
+        "path": "octane/RegExp.js",
+        "N": 64,
+        "sha256": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RegExp.RegExp.N64.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "RegExp",
+        "case": "RegExp.RegExp",
+        "group": "RegExp",
+        "path": "octane/RegExp.js",
+        "N": 64,
+        "sha256": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RegExp.RegExp.N64.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-3bit-bits-in-byte",
+        "case": "bitops-3bit-bits-in-byte",
+        "group": "bitops-3bit-bits-in-byte",
+        "path": "sunspider/bitops-3bit-bits-in-byte.js",
+        "N": 256,
+        "sha256": "0376a464e63d328ff9f85b0068988f4a88709f115cedb07e5602be265c7430f3",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-3bit-bits-in-byte.N256.measure.js",
+        "checksums": [
+          "512000"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-3bit-bits-in-byte",
+        "case": "bitops-3bit-bits-in-byte",
+        "group": "bitops-3bit-bits-in-byte",
+        "path": "sunspider/bitops-3bit-bits-in-byte.js",
+        "N": 256,
+        "sha256": "0376a464e63d328ff9f85b0068988f4a88709f115cedb07e5602be265c7430f3",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-3bit-bits-in-byte.N256.measure.js",
+        "checksums": [
+          "512000"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "Splay",
+        "case": "Splay.Splay",
+        "group": "Splay",
+        "path": "octane/Splay.js",
+        "N": 2048,
+        "sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Splay.Splay.N2048.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "Splay",
+        "case": "Splay.Splay",
+        "group": "Splay",
+        "path": "octane/Splay.js",
+        "N": 2048,
+        "sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Splay.Splay.N2048.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-bits-in-byte",
+        "case": "bitops-bits-in-byte",
+        "group": "bitops-bits-in-byte",
+        "path": "sunspider/bitops-bits-in-byte.js",
+        "N": 128,
+        "sha256": "7cb5e1ada3b1fe40118893fff79b609e2857d1214f2f3a7bb518856e10fc28cb",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bits-in-byte.N128.measure.js",
+        "checksums": [
+          "358400"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-bits-in-byte",
+        "case": "bitops-bits-in-byte",
+        "group": "bitops-bits-in-byte",
+        "path": "sunspider/bitops-bits-in-byte.js",
+        "N": 128,
+        "sha256": "7cb5e1ada3b1fe40118893fff79b609e2857d1214f2f3a7bb518856e10fc28cb",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bits-in-byte.N128.measure.js",
+        "checksums": [
+          "358400"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "NavierStokes",
+        "case": "NavierStokes.NavierStokes",
+        "group": "NavierStokes",
+        "path": "octane/NavierStokes.js",
+        "N": 32,
+        "sha256": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.NavierStokes.NavierStokes.N32.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "NavierStokes",
+        "case": "NavierStokes.NavierStokes",
+        "group": "NavierStokes",
+        "path": "octane/NavierStokes.js",
+        "N": 32,
+        "sha256": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.NavierStokes.NavierStokes.N32.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-bitwise-and",
+        "case": "bitops-bitwise-and",
+        "group": "bitops-bitwise-and",
+        "path": "sunspider/bitops-bitwise-and.js",
+        "N": 256,
+        "sha256": "dd9898bbdaa48e66476dec6aa983f21b344d78bbd2dce319cc55ccf7b4b0c224",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bitwise-and.N256.measure.js",
+        "checksums": [
+          "0"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-bitwise-and",
+        "case": "bitops-bitwise-and",
+        "group": "bitops-bitwise-and",
+        "path": "sunspider/bitops-bitwise-and.js",
+        "N": 256,
+        "sha256": "dd9898bbdaa48e66476dec6aa983f21b344d78bbd2dce319cc55ccf7b4b0c224",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bitwise-and.N256.measure.js",
+        "checksums": [
+          "0"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "PdfJS",
+        "case": "PdfJS.PdfJS",
+        "group": "PdfJS",
+        "path": "octane/PdfJS.js",
+        "N": 16,
+        "sha256": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.PdfJS.PdfJS.N16.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "PdfJS",
+        "case": "PdfJS.PdfJS",
+        "group": "PdfJS",
+        "path": "octane/PdfJS.js",
+        "N": 16,
+        "sha256": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.PdfJS.PdfJS.N16.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-nsieve-bits",
+        "case": "bitops-nsieve-bits",
+        "group": "bitops-nsieve-bits",
+        "path": "sunspider/bitops-nsieve-bits.js",
+        "N": 128,
+        "sha256": "15eaf59604de57fb9375999ba854a23af04f8e6c0a38cf2a6d99820b576971f1",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-nsieve-bits.N128.measure.js",
+        "checksums": [
+          "-1286749544853"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "bitops-nsieve-bits",
+        "case": "bitops-nsieve-bits",
+        "group": "bitops-nsieve-bits",
+        "path": "sunspider/bitops-nsieve-bits.js",
+        "N": 128,
+        "sha256": "15eaf59604de57fb9375999ba854a23af04f8e6c0a38cf2a6d99820b576971f1",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-nsieve-bits.N128.measure.js",
+        "checksums": [
+          "-1286749544853"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "Mandreel",
+        "case": "Mandreel.Mandreel",
+        "group": "Mandreel",
+        "path": "octane/Mandreel.js",
+        "N": 1,
+        "sha256": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Mandreel.Mandreel.N1.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "Mandreel",
+        "case": "Mandreel.Mandreel",
+        "group": "Mandreel",
+        "path": "octane/Mandreel.js",
+        "N": 1,
+        "sha256": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Mandreel.Mandreel.N1.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "controlflow-recursive",
+        "case": "controlflow-recursive",
+        "group": "controlflow-recursive",
+        "path": "sunspider/controlflow-recursive.js",
+        "N": 256,
+        "sha256": "e8bb8140d7d9a9ac871ff0ce41d7ed5d371f3333a4c0738a49b155e4d3cf3238",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.controlflow-recursive.N256.measure.js",
+        "checksums": [
+          "57775"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "controlflow-recursive",
+        "case": "controlflow-recursive",
+        "group": "controlflow-recursive",
+        "path": "sunspider/controlflow-recursive.js",
+        "N": 256,
+        "sha256": "e8bb8140d7d9a9ac871ff0ce41d7ed5d371f3333a4c0738a49b155e4d3cf3238",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.controlflow-recursive.N256.measure.js",
+        "checksums": [
+          "57775"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "Gameboy",
+        "case": "Gameboy.Gameboy",
+        "group": "Gameboy",
+        "path": "octane/Gameboy.js",
+        "N": 8,
+        "sha256": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Gameboy.Gameboy.N8.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "Gameboy",
+        "case": "Gameboy.Gameboy",
+        "group": "Gameboy",
+        "path": "octane/Gameboy.js",
+        "N": 8,
+        "sha256": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Gameboy.Gameboy.N8.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "crypto-aes",
+        "case": "crypto-aes",
+        "group": "crypto-aes",
+        "path": "sunspider/crypto-aes.js",
+        "N": 128,
+        "sha256": "21e1ec9a5de1c535cbc57b2579d83eb1ddf0200501db8bd379f717b86d7a0472",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-aes.N128.measure.js",
+        "checksums": [
+          "1343"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "crypto-aes",
+        "case": "crypto-aes",
+        "group": "crypto-aes",
+        "path": "sunspider/crypto-aes.js",
+        "N": 128,
+        "sha256": "21e1ec9a5de1c535cbc57b2579d83eb1ddf0200501db8bd379f717b86d7a0472",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-aes.N128.measure.js",
+        "checksums": [
+          "1343"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "CodeLoad.Closure",
+        "case": "CodeLoad.CodeLoadClosure",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.Closure.js",
+        "N": 4096,
+        "sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadClosure.N4096.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "CodeLoad.Closure",
+        "case": "CodeLoad.CodeLoadClosure",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.Closure.js",
+        "N": 4096,
+        "sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadClosure.N4096.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "crypto-md5",
+        "case": "crypto-md5",
+        "group": "crypto-md5",
+        "path": "sunspider/crypto-md5.js",
+        "N": 256,
+        "sha256": "040430f7140576332b95c38b830e69d2a0c8b3900d36890903d9f5ad2ff16871",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-md5.N256.measure.js",
+        "checksums": [
+          "a831e91e0f70eddcb70dc61c6f82f6cd"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "crypto-md5",
+        "case": "crypto-md5",
+        "group": "crypto-md5",
+        "path": "sunspider/crypto-md5.js",
+        "N": 256,
+        "sha256": "040430f7140576332b95c38b830e69d2a0c8b3900d36890903d9f5ad2ff16871",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-md5.N256.measure.js",
+        "checksums": [
+          "a831e91e0f70eddcb70dc61c6f82f6cd"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "CodeLoad.JQuery",
+        "case": "CodeLoad.CodeLoadJQuery",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.JQuery.js",
+        "N": 512,
+        "sha256": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadJQuery.N512.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "CodeLoad.JQuery",
+        "case": "CodeLoad.CodeLoadJQuery",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.JQuery.js",
+        "N": 512,
+        "sha256": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadJQuery.N512.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "crypto-sha1",
+        "case": "crypto-sha1",
+        "group": "crypto-sha1",
+        "path": "sunspider/crypto-sha1.js",
+        "N": 256,
+        "sha256": "1011259725234d70ce8fc1ee5a234283c83351e5a3d2de6edf43490ad6975904",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-sha1.N256.measure.js",
+        "checksums": [
+          "2524d264def74cce2498bf112bedf00e6c0b796d"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "crypto-sha1",
+        "case": "crypto-sha1",
+        "group": "crypto-sha1",
+        "path": "sunspider/crypto-sha1.js",
+        "N": 256,
+        "sha256": "1011259725234d70ce8fc1ee5a234283c83351e5a3d2de6edf43490ad6975904",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-sha1.N256.measure.js",
+        "checksums": [
+          "2524d264def74cce2498bf112bedf00e6c0b796d"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "Typescript",
+        "case": "Typescript.Typescript",
+        "group": "Typescript",
+        "path": "octane/Typescript.js",
+        "N": 1,
+        "sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Typescript.Typescript.N1.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "Typescript",
+        "case": "Typescript.Typescript",
+        "group": "Typescript",
+        "path": "octane/Typescript.js",
+        "N": 1,
+        "sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Typescript.Typescript.N1.measure.js"
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "date-format-tofte",
+        "case": "date-format-tofte",
+        "group": "date-format-tofte",
+        "path": "sunspider/date-format-tofte.js",
+        "N": 256,
+        "sha256": "2f15f33c3ae201280886b8fe5f3da020e8764d67bff4a362d55a82dc4608b2b1",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-tofte.N256.measure.js",
+        "checksums": [
+          "2008-05-01|Thursday, May 01, 2008 5:31:22 PM|1209718549000"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "date-format-tofte",
+        "case": "date-format-tofte",
+        "group": "date-format-tofte",
+        "path": "sunspider/date-format-tofte.js",
+        "N": 256,
+        "sha256": "2f15f33c3ae201280886b8fe5f3da020e8764d67bff4a362d55a82dc4608b2b1",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-tofte.N256.measure.js",
+        "checksums": [
+          "2008-05-01|Thursday, May 01, 2008 5:31:22 PM|1209718549000"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "octane",
+      "case": {
+        "name": "zlib",
+        "case": "zlib.zlib",
+        "group": "zlib",
+        "path": "octane/zlib.js",
+        "N": 1,
+        "sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.zlib.zlib.N1.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "octane",
+      "case": {
+        "name": "zlib",
+        "case": "zlib.zlib",
+        "group": "zlib",
+        "path": "octane/zlib.js",
+        "N": 1,
+        "sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.zlib.zlib.N1.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "date-format-xparb",
+        "case": "date-format-xparb",
+        "group": "date-format-xparb",
+        "path": "sunspider/date-format-xparb.js",
+        "N": 512,
+        "sha256": "4019e2520d00a2ec363507434c14ad220c192d536a0edbe0288b081cc90e5bf5",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-xparb.N512.measure.js",
+        "checksums": [
+          "2017-09-05|Tuesday, September 05, 2017 7:43:48 AM|1504652895000"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "date-format-xparb",
+        "case": "date-format-xparb",
+        "group": "date-format-xparb",
+        "path": "sunspider/date-format-xparb.js",
+        "N": 512,
+        "sha256": "4019e2520d00a2ec363507434c14ad220c192d536a0edbe0288b081cc90e5bf5",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-xparb.N512.measure.js",
+        "checksums": [
+          "2017-09-05|Tuesday, September 05, 2017 7:43:48 AM|1504652895000"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "math-cordic",
+        "case": "math-cordic",
+        "group": "math-cordic",
+        "path": "sunspider/math-cordic.js",
+        "N": 128,
+        "sha256": "421218c399d28bd70f4fd36c6d71a1eeba837559311c811046d3f162841f3028",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-cordic.N128.measure.js",
+        "checksums": [
+          "10362.570468755888"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "math-cordic",
+        "case": "math-cordic",
+        "group": "math-cordic",
+        "path": "sunspider/math-cordic.js",
+        "N": 128,
+        "sha256": "421218c399d28bd70f4fd36c6d71a1eeba837559311c811046d3f162841f3028",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-cordic.N128.measure.js",
+        "checksums": [
+          "10362.570468755888"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "math-partial-sums",
+        "case": "math-partial-sums",
+        "group": "math-partial-sums",
+        "path": "sunspider/math-partial-sums.js",
+        "N": 128,
+        "sha256": "89e7fa42b95d06e0d6e5a6c8b6525d5db51eadc9341ee1a4bf63b72638731b72",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-partial-sums.N128.measure.js",
+        "checksums": [
+          "60.08994194659945"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "math-partial-sums",
+        "case": "math-partial-sums",
+        "group": "math-partial-sums",
+        "path": "sunspider/math-partial-sums.js",
+        "N": 128,
+        "sha256": "89e7fa42b95d06e0d6e5a6c8b6525d5db51eadc9341ee1a4bf63b72638731b72",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-partial-sums.N128.measure.js",
+        "checksums": [
+          "60.08994194659945"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "math-spectral-norm",
+        "case": "math-spectral-norm",
+        "group": "math-spectral-norm",
+        "path": "sunspider/math-spectral-norm.js",
+        "N": 256,
+        "sha256": "326e3761b41239cec8df427078f51cb71c5ff1b80d594e816f23950f1bcda2f9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-spectral-norm.N256.measure.js",
+        "checksums": [
+          "5.086694231303284"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "math-spectral-norm",
+        "case": "math-spectral-norm",
+        "group": "math-spectral-norm",
+        "path": "sunspider/math-spectral-norm.js",
+        "N": 256,
+        "sha256": "326e3761b41239cec8df427078f51cb71c5ff1b80d594e816f23950f1bcda2f9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-spectral-norm.N256.measure.js",
+        "checksums": [
+          "5.086694231303284"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "regexp-dna",
+        "case": "regexp-dna",
+        "group": "regexp-dna",
+        "path": "sunspider/regexp-dna.js",
+        "N": 256,
+        "sha256": "055a87870ee9ba0622caad39ceca4ef7423cdcac1301964834135fd94367f781",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.regexp-dna.N256.measure.js",
+        "checksums": [
+          "249:300056"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "regexp-dna",
+        "case": "regexp-dna",
+        "group": "regexp-dna",
+        "path": "sunspider/regexp-dna.js",
+        "N": 256,
+        "sha256": "055a87870ee9ba0622caad39ceca4ef7423cdcac1301964834135fd94367f781",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.regexp-dna.N256.measure.js",
+        "checksums": [
+          "249:300056"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-base64",
+        "case": "string-base64",
+        "group": "string-base64",
+        "path": "sunspider/string-base64.js",
+        "N": 256,
+        "sha256": "39fd44db2df34d53515e36df261478ebd91eafdc571523b52c6f9fded4943de9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-base64.N256.measure.js",
+        "checksums": [
+          "32768"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-base64",
+        "case": "string-base64",
+        "group": "string-base64",
+        "path": "sunspider/string-base64.js",
+        "N": 256,
+        "sha256": "39fd44db2df34d53515e36df261478ebd91eafdc571523b52c6f9fded4943de9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-base64.N256.measure.js",
+        "checksums": [
+          "32768"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-fasta",
+        "case": "string-fasta",
+        "group": "string-fasta",
+        "path": "sunspider/string-fasta.js",
+        "N": 128,
+        "sha256": "d5067abc2c80c83c83520c754b976624fe9d2258c8a5728638cccdead7e7f5b8",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-fasta.N128.measure.js",
+        "checksums": [
+          "1456000"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-fasta",
+        "case": "string-fasta",
+        "group": "string-fasta",
+        "path": "sunspider/string-fasta.js",
+        "N": 128,
+        "sha256": "d5067abc2c80c83c83520c754b976624fe9d2258c8a5728638cccdead7e7f5b8",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-fasta.N128.measure.js",
+        "checksums": [
+          "1456000"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-tagcloud",
+        "case": "string-tagcloud",
+        "group": "string-tagcloud",
+        "path": "sunspider/string-tagcloud.js",
+        "N": 256,
+        "sha256": "29522d0f43825a2924f9e9e08ea9e36eed19f03f902fceca8fcc1fa354277ca4",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-tagcloud.N256.measure.js",
+        "checksums": [
+          "315241"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-tagcloud",
+        "case": "string-tagcloud",
+        "group": "string-tagcloud",
+        "path": "sunspider/string-tagcloud.js",
+        "N": 256,
+        "sha256": "29522d0f43825a2924f9e9e08ea9e36eed19f03f902fceca8fcc1fa354277ca4",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-tagcloud.N256.measure.js",
+        "checksums": [
+          "315241"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-unpack-code",
+        "case": "string-unpack-code",
+        "group": "string-unpack-code",
+        "path": "sunspider/string-unpack-code.js",
+        "N": 256,
+        "sha256": "dd603329e57ef8a391fb23980198a04475ddac8f387dee542404149e5001b3bf",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-unpack-code.N256.measure.js",
+        "checksums": [
+          "511508"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-unpack-code",
+        "case": "string-unpack-code",
+        "group": "string-unpack-code",
+        "path": "sunspider/string-unpack-code.js",
+        "N": 256,
+        "sha256": "dd603329e57ef8a391fb23980198a04475ddac8f387dee542404149e5001b3bf",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-unpack-code.N256.measure.js",
+        "checksums": [
+          "511508"
+        ]
+      }
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-validate-input",
+        "case": "string-validate-input",
+        "group": "string-validate-input",
+        "path": "sunspider/string-validate-input.js",
+        "N": 256,
+        "sha256": "41db368409e557a84cdfe6e8352d60a76c73d2f4ca53838953dbb8ac55a42cfd",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-validate-input.N256.measure.js",
+        "checksums": [
+          "462000"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "suite": "sunspider",
+      "case": {
+        "name": "string-validate-input",
+        "case": "string-validate-input",
+        "group": "string-validate-input",
+        "path": "sunspider/string-validate-input.js",
+        "N": 256,
+        "sha256": "41db368409e557a84cdfe6e8352d60a76c73d2f4ca53838953dbb8ac55a42cfd",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-validate-input.N256.measure.js",
+        "checksums": [
+          "462000"
+        ]
+      }
+    }
+  ],
+  "CPU": 2,
+  "TZ": "Asia/Shanghai",
+  "locale": "C",
+  "fresh_processes": 86,
+  "first_Run_included": true,
+  "extra_warmup": 0,
+  "repeats_per_case": 1,
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.43",
+  "authorization": "explicit user request for full Octane and SunSpider despite earlier nonpositive targeted timing",
+  "prior_files": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/micro_protocol.json": "a6b017307756e0f2f56203ecb3d1e37e306cbe0e82cd21c8532a86c4cad9f4c4",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/micro_time.json": "fb1aad673109806b41ddc6cd353b09c2f6b3a3183c0fb3416b1c007b6723d3fd",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/target_time.json": "2d648b9f4e2ca1a9bb3c81b16ce3ed7c4a0def0e46134d06a0ef2fdab35a4ea7",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/baseline_counts.json": "46a793f6e48c62b24e4110cd49dc817e9fa11aded4b645aa6fb39d74eeba4cc5",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/target_counts.json": "d5ba009b051e70dfbb7970d423fe647de4fffaa84b0299d73606a2f16609ea4b",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/micro_counts.json": "6081c32c76f87df137ecfbec3722f8114c4953704e8d77a65d629ba2951aa669",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/gate.json": "69f3f5b7b4eea742b130b790ef110d6317813c6f487272fd7c7def71b2120fb3",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/ownership_gate.json": "9d835040bd4ce2124e896c3d0cbb0e54ca63a3ef127b08e5e79f7644983dc4c7"
+  },
+  "driver_sha256": "5824df9e4aa574bdc3328acecdcba66da566cdd73f9c0f0c832ca1acefa5a376",
+  "failure_policy": "no automatic retries"
+}

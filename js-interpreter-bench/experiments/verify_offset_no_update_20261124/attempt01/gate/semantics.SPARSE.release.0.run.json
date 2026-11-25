@@ -1,0 +1,16 @@
+{
+  "label": "SPARSE",
+  "mode": "release",
+  "phase": "gate",
+  "case": "semantics",
+  "rep": 0,
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/SPARSE.release/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/semantics.js"
+  ],
+  "binary_sha256": "c127efeb122fb40afdb398648384e95346e2bb413e15458b20b6789d3b252d3d",
+  "exit_code": 0,
+  "stdout": "[[\"stable\",[3,3,3,3,3,3,3,3]],[\"same_slot_current_value\",[3,5,3,5,3,5,3,5]],[\"different_slot_no_99\",[3,5,3,5,3,5,3,5]],[\"old_slot_reused\",[3,null,3,null,3,null,3,null]],[\"deleted\",[3,null,3,null,3,null,3,null]],[\"getter_this\",[3,8,3,8,3,8,3,8]],[\"prototype\",[3,11,3,11,3,11,3,11]],[\"getter_throw\",\"TypeError\",\"getter\"],[\"proxy\",[3,13,3,13,3,13,3,13]],[\"mutate_hot\",[3,3,3,3,6,null,8,17,19]],[\"null\",\"TypeError\",\"cannot read property 'x' of null\"]]\n",
+  "stderr": "",
+  "external_wall_ms": 6.749714957550168
+}

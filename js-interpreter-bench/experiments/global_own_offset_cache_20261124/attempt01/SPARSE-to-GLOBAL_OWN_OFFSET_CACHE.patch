@@ -1,0 +1,254 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -224,6 +224,14 @@
+ 
+ typedef struct JSShape JSShape;
+ typedef struct ExEdge { JSShape *from,*to; JSAtom atom; int flags; } ExEdge;
++#define GLOBAL_OWN_CACHE 1
++#define GO_CAPACITY 1024
++typedef struct GlobalOwnEntry {
++    JSShape *shape;
++    JSAtom atom;
++    uint32_t prop_offset;
++    uint16_t next, prev;
++} GlobalOwnEntry;
+ typedef struct JSString JSString;
+ typedef struct JSString JSAtomStruct;
+ typedef struct JSObject JSObject;
+@@ -392,9 +400,12 @@
+     void *user_opaque;
+     ExEdge transition_edges[32];
+     uint8_t transition_edges_disabled;
++    uint8_t global_own_disabled;
++    GlobalOwnEntry global_own_offsets[GO_CAPACITY];
+ };
+ 
+ static void ex_edge_clear(JSRuntime *rt);
++static void global_own_shutdown(JSRuntime *rt);
+ 
+ struct JSClass {
+     uint32_t class_id; /* 0 means free entry */
+@@ -993,6 +1004,7 @@
+     /* true if the shape is inserted in the shape hash table. If not,
+        JSShape.hash is not valid */
+     uint8_t is_hashed;
++    uint16_t own_cache_head; /* bucket+1, in existing alignment padding */
+     uint32_t hash; /* current hash value */
+     uint32_t prop_hash_mask; /* >= 2 */
+     int prop_size; /* allocated properties */
+@@ -2438,6 +2450,7 @@
+     struct list_head *el, *el1;
+     int i;
+ 
++    global_own_shutdown(rt);
+     ex_edge_clear(rt);
+     JS_FreeValueRT(rt, rt->current_exception);
+ 
+@@ -5229,8 +5242,11 @@
+     rt->shape_hash_count++;
+ }
+ 
++#include "global_own_offset.inc"
++
+ static void js_shape_hash_unlink(JSRuntime *rt, JSShape *sh)
+ {
++    global_own_invalidate(rt, sh);
+     uint32_t h;
+     JSShape **psh;
+ 
+@@ -5263,6 +5279,7 @@
+     sh->prop_count = 0;
+     sh->deleted_prop_count = 0;
+     sh->is_hashed = FALSE;
++    sh->own_cache_head = 0;
+     return sh;
+ }
+ 
+@@ -5314,6 +5331,7 @@
+     js_rc(sh)->ref_count = 1;
+     add_gc_object(ctx->rt, &sh->header, JS_GC_OBJ_TYPE_SHAPE);
+     sh->is_hashed = FALSE;
++    sh->own_cache_head = 0; /* cloned links belong only to the old shape */
+     if (sh->proto) {
+         JS_DupValue(ctx, JS_MKPTR(JS_TAG_OBJECT, sh->proto));
+     }
+@@ -5337,6 +5355,8 @@
+     assert(js_rc(sh)->ref_count == 0);
+     if (sh->is_hashed)
+         js_shape_hash_unlink(rt, sh);
++    else
++        global_own_invalidate(rt, sh);
+     if (sh->proto != NULL) {
+         JS_FreeValueRT(rt, JS_MKPTR(JS_TAG_OBJECT, sh->proto));
+     }
+@@ -5424,6 +5444,7 @@
+     sh = js_malloc(ctx, get_shape_size(new_hash_size, new_size));
+     if (!sh)
+         return -1;
++    global_own_invalidate(ctx->rt, old_sh);
+     remove_gc_object(&old_sh->header);
+ 
+     js_rc(sh)->ref_count = 1;
+@@ -5431,6 +5452,7 @@
+ 
+     memcpy(&sh->header + 1, &old_sh->header + 1,
+            sizeof(JSShape) - sizeof(JSGCObjectHeader));
++    sh->own_cache_head = 0; /* a relocated shape starts with no weak links */
+     
+     if (new_hash_size != (sh->prop_hash_mask + 1)) {
+         /* resize the hash table and the properties */
+@@ -5490,6 +5512,7 @@
+     sh = js_malloc(ctx, get_shape_size(new_hash_size, new_size));
+     if (!sh)
+         return -1;
++    global_own_invalidate(ctx->rt, old_sh);
+     remove_gc_object(&old_sh->header);
+ 
+     js_rc(sh)->ref_count = 1;
+@@ -5497,6 +5520,7 @@
+ 
+     memcpy(&sh->header + 1, &old_sh->header + 1,
+            sizeof(JSShape) - sizeof(JSGCObjectHeader));
++    sh->own_cache_head = 0; /* a relocated shape starts with no weak links */
+ 
+     memset(sh->hash_table, 0, sizeof(sh->hash_table[0]) * new_hash_size);
+     sh->prop_hash_mask = new_hash_mask;
+@@ -17289,6 +17313,7 @@
+             }
+             if (cv->var_kind == JS_VAR_GLOBAL_FUNCTION_DECL &&
+                 (prs->flags & JS_PROP_CONFIGURABLE)) {
++                global_own_invalidate(ctx->rt, p->shape);
+                 /* update the property flags if possible when
+                    declaring a global function */
+                 if ((prs->flags & JS_PROP_TMASK) == JS_PROP_GETSET) {
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -32,6 +32,14 @@
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
++                if (!keep && site->shape && !site->holder_shape &&          \
++                    site->shape != p->shape && p->shape->is_hashed) {       \
++                    offset = global_own_probe(ctx->rt, p->shape, site->atom);\
++                    if (offset != UINT32_MAX) {                             \
++                        val = JS_DupValue(ctx, p->prop[offset].u.value);    \
++                        goto name ## _done;                                 \
++                    }                                                       \
++                }                                                           \
+             }                                                           \
+         }                                                               \
+         RDI_COUNT(fallback);                                            \
+@@ -58,6 +66,8 @@
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+                         RDI_REASON(own_miss);                           \
++                        if (!keep)                                      \
++                            global_own_register(ctx->rt, p->shape, atom, pr - p->prop); \
+                         rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
+                     }                                                   \
+                     break;                                              \
+--- /dev/null
++++ b/global_own_offset.inc
+@@ -0,0 +1,102 @@
++/* New research implementation. Only the shared-cache idea is inspired by V8;
++ * see README.md for the fixed source reference. No V8 implementation copied. */
++#ifndef GO_COUNT
++#define GO_COUNT(k) ((void)0)
++#define GO_ADD(k,n) ((void)0)
++#endif
++_Static_assert(GO_CAPACITY == 1024, "fixed first experiment capacity");
++_Static_assert(sizeof(GlobalOwnEntry) == 24, "weak entry with two index links");
++_Static_assert(sizeof(JSShape) == 56, "shape allocation size unchanged");
++_Static_assert(offsetof(JSShape, is_hashed) == 16, "original field offset");
++_Static_assert(offsetof(JSShape, own_cache_head) == 18, "use original padding");
++_Static_assert(offsetof(JSShape, hash) == 20, "original field offset");
++_Static_assert(offsetof(JSShape, hash_table) == 56, "descriptor base unchanged");
++_Static_assert(offsetof(JSRuntime, global_own_offsets) ==
++               ((offsetof(JSRuntime, transition_edges_disabled) + 8) & ~(size_t)7),
++               "disabled bit fits the previous runtime tail padding");
++_Static_assert(sizeof(JSRuntime) == offsetof(JSRuntime, global_own_offsets) +
++               sizeof(((JSRuntime *)0)->global_own_offsets), "only table grows runtime");
++
++static force_inline uint16_t global_own_bucket(JSShape *shape, JSAtom atom)
++{
++    uint64_t key = (uintptr_t)shape;
++    uint64_t h = (key >> 3) ^ (key >> 17) ^ (key >> 32) ^
++                 ((uint64_t)atom * UINT32_C(0x9e3779b1));
++    h ^= h >> 16;
++    return (uint16_t)(h & (GO_CAPACITY - 1));
++}
++
++/* Indices are bucket+1; zero is the list terminator. No references released. */
++static void global_own_unlink(JSRuntime *rt, uint16_t index)
++{
++    GlobalOwnEntry *e = &rt->global_own_offsets[index - 1];
++    JSShape *shape = e->shape;
++    if (!shape) return;
++    if (e->prev)
++        rt->global_own_offsets[e->prev - 1].next = e->next;
++    else
++        shape->own_cache_head = e->next;
++    if (e->next)
++        rt->global_own_offsets[e->next - 1].prev = e->prev;
++    e->shape = NULL;
++    e->atom = JS_ATOM_NULL; /* borrowed from shape; never FreeAtom here */
++    e->prev = e->next = 0;
++}
++
++static void global_own_invalidate(JSRuntime *rt, JSShape *shape)
++{
++    if (!shape->own_cache_head) return;
++    GO_COUNT(invalidations);
++    while (shape->own_cache_head) {
++        global_own_unlink(rt, shape->own_cache_head);
++        GO_COUNT(cleared_entries);
++        if (rt->global_own_disabled) GO_COUNT(shutdown_entries);
++    }
++}
++
++static force_inline uint32_t global_own_probe(JSRuntime *rt, JSShape *shape,
++                                              JSAtom atom)
++{
++    GlobalOwnEntry *e = &rt->global_own_offsets[global_own_bucket(shape, atom)];
++    if (!rt->global_own_disabled && e->shape == shape && e->atom == atom)
++        return e->prop_offset;
++    return UINT32_MAX;
++}
++
++/* Caller already found an own ordinary data property in a hashed shape.
++ * Must run BEFORE rdi_update: that function can release old shape roots and
++ * enter a native finalizer. This routine allocates/calls/frees no JS values. */
++static void global_own_register(JSRuntime *rt, JSShape *shape, JSAtom atom,
++                                 uint32_t offset)
++{
++    if (rt->global_own_disabled) return;
++    uint16_t index = global_own_bucket(shape, atom) + 1;
++    GlobalOwnEntry *e = &rt->global_own_offsets[index - 1];
++    GO_COUNT(registrations);
++    if (e->shape == shape && e->atom == atom) {
++        e->prop_offset = offset;
++        GO_COUNT(same_key_refreshes);
++        return;
++    }
++    if (e->shape) {
++        GO_COUNT(conflict_replacements);
++        global_own_unlink(rt, index);
++    }
++    e->shape = shape;
++    e->atom = atom;
++    e->prop_offset = offset;
++    e->prev = 0;
++    e->next = shape->own_cache_head;
++    if (e->next) rt->global_own_offsets[e->next - 1].prev = index;
++    shape->own_cache_head = index;
++}
++
++static void global_own_shutdown(JSRuntime *rt)
++{
++    rt->global_own_disabled = 1;
++    GO_COUNT(runtime_shutdowns);
++    /* Only teardown scans the table. Probe and fill select exactly one bucket. */
++    for (unsigned i = 0; i < GO_CAPACITY; i++)
++        if (rt->global_own_offsets[i].shape)
++            global_own_invalidate(rt, rt->global_own_offsets[i].shape);
++}

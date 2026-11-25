@@ -1,0 +1,18 @@
+{
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.43",
+  "gcc": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "branch": "myx",
+  "head": "9eda9ecbf48481bb8336d804444e1f2ebb691ddc",
+  "cpu2_governor": "powersave",
+  "cpu2_siblings": "2-3",
+  "cpu_model": "model name\t: Intel(R) Core(TM) i9-14900",
+  "environment": "TZ=Asia/Shanghai; LANG=C; LC_ALL=C; runner and fresh children pinned CPU 2",
+  "timed_build": "same Makefile, gcc -O2 -g -fwrapv; no LTO; no counters",
+  "build_command": [
+    "make",
+    "-j2",
+    "-o",
+    "repl.c",
+    "qjs"
+  ]
+}

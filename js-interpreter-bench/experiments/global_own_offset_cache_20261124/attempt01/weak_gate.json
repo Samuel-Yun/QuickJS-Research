@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "label": "A",
+      "mode": "release",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/validation/A.release.weak_fixture"
+      ],
+      "binary_sha256": "2499dfe16e6d3d43d584ef69239a926f4731654fea3ca094ed8fe9dc98b499cc",
+      "exit_code": 0,
+      "stdout": "LAYOUT:{\"JSRuntime\":1440,\"JSShape\":56,\"JSObject\":64}\nWEAK_CACHE_FIXTURE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/validation/SPARSE.release.weak_fixture"
+      ],
+      "binary_sha256": "cb0714532cce855f0ca9e00ff35b748aa55ed40ee24d1579a7f34fe623bebca2",
+      "exit_code": 0,
+      "stdout": "LAYOUT:{\"JSRuntime\":2216,\"JSShape\":56,\"JSObject\":64}\nRDI_UPDATE_NATIVE_REENTRY_PASS\nWEAK_CACHE_FIXTURE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "label": "GLOBAL_OWN_OFFSET_CACHE",
+      "mode": "counts",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/validation/GLOBAL_OWN_OFFSET_CACHE.counts.weak_fixture"
+      ],
+      "binary_sha256": "90bca5ac313c44e1f6ac061f9ea33037f4d9b9c70377430896ca1996e281b404",
+      "exit_code": 0,
+      "stdout": "LAYOUT:{\"JSRuntime\":26792,\"JSShape\":56,\"JSObject\":64,\"entry\":24,\"table\":24576,\"head_offset\":18,\"runtime_table_offset\":2216}\nMULTI_ATOM_DELETE_GETTER_MOVE_FREE_GC_PASS\nSHAPE_COLLISION_PASS bucket=528 offsets=0,1 searched=74\nATOM_COLLISION_PASS bucket=974 offsets=1,85\nRDI_UPDATE_NATIVE_REENTRY_PASS\nWEAK_CACHE_FIXTURE_PASS\n",
+      "stderr": "GO_LAYOUT id=1 read=1 shape=0x565f4377edc0 hashed=1 class=1 exotic=0 cached=(nil) off=0 props=0:x(flags=7)\nGO_LAYOUT id=1 read=2 shape=0x565f4377ed00 hashed=1 class=1 exotic=0 cached=0x565f4377edc0 off=0 props=0:x(flags=7),1:y(flags=7)\nGO_LAYOUT id=1 read=3 shape=0x565f43782b80 hashed=1 class=1 exotic=0 cached=0x565f4377eca0 off=1 props=0:x(flags=7),1:y(flags=7),2:reenter_0(flags=7),3:reenter_1(flags=7),4:reenter_2(flags=7),5:reenter_3(flags=7),6:reenter_4(flags=7),7:reenter_5(flags=7),8:reenter_6(flags=7),9:reenter_7(flags=7),10:reenter_8(flags=7),11:reenter_9(flags=7),12:reenter_10(flags=7),13:reenter_11(flags=7),14:reenter_12(flags=7),15:reenter_13(flags=7),16:reenter_14(flags=7),17:reenter_15(flags=7),18:reenter_16(flags=7),19:reenter_17(flags=7),20:reenter_18(flags=7),21:reenter_19(flags=7),22:reenter_20(flags=7),23:reenter_21(flags=7),24:reenter_22(flags=7),25:reenter_23(flags=7)\n"
+    },
+    {
+      "label": "GLOBAL_OWN_OFFSET_CACHE",
+      "mode": "sanitize",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/validation/GLOBAL_OWN_OFFSET_CACHE.sanitize.weak_fixture"
+      ],
+      "binary_sha256": "f3b9450ae7142d090da9466b858a6cbd5a0a27c4d317304ea736cc362856208f",
+      "exit_code": 0,
+      "stdout": "LAYOUT:{\"JSRuntime\":26792,\"JSShape\":56,\"JSObject\":64,\"entry\":24,\"table\":24576,\"head_offset\":18,\"runtime_table_offset\":2216}\nMULTI_ATOM_DELETE_GETTER_MOVE_FREE_GC_PASS\nSHAPE_COLLISION_PASS bucket=1013 offsets=0,1 searched=38\nATOM_COLLISION_PASS bucket=935 offsets=7,91\nRDI_UPDATE_NATIVE_REENTRY_PASS\nWEAK_CACHE_FIXTURE_PASS\n",
+      "stderr": ""
+    }
+  ],
+  "counts": {
+    "logical_named": 3,
+    "rdi0_named": 3,
+    "rdi1_named": 0,
+    "legacy_named": 0,
+    "legacy_length": 0,
+    "fused_entries": 3,
+    "primary_hits": 0,
+    "fused_hits": 0,
+    "field_primary_hits": 0,
+    "prototype_primary_hits": 0,
+    "secondary_probes": 2,
+    "secondary_hits": 0,
+    "normal_lookups": 3,
+    "rdi_normal_lookups": 3,
+    "own_searches": 3,
+    "primary_updates": 3,
+    "registrations": 35,
+    "same_key_refreshes": 8,
+    "conflict_replacements": 2,
+    "invalidations": 15,
+    "cleared_entries": 25,
+    "runtime_shutdowns": 1,
+    "shutdown_entries": 2
+  },
+  "layout": {
+    "JSRuntime": 26792,
+    "JSShape": 56,
+    "JSObject": 64,
+    "ReadICSite": 24,
+    "entry": 24,
+    "table": 24576,
+    "head_offset": 18,
+    "hash_offset": 20,
+    "runtime_table_offset": 2216
+  },
+  "multiple_atoms_per_shape": true,
+  "full_keys_on_collisions": true,
+  "clone_links_reset": true,
+  "deletion_getter_resize_compaction_free_GC_runtime": true,
+  "native_reentry_checked": true,
+  "no_shape_or_atom_strong_references_from_cache": true,
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "LSan_note": "detect_leaks=0 under ptrace; QuickJS FreeRuntime assertions enabled"
+}

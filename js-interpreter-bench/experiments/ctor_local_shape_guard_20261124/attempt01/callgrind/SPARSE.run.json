@@ -1,0 +1,21 @@
+{
+  "label": "SPARSE",
+  "command": [
+    "valgrind",
+    "--tool=callgrind",
+    "--collect-atstart=yes",
+    "--error-exitcode=97",
+    "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/callgrind/SPARSE.out",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+    "positive",
+    "100",
+    "65536"
+  ],
+  "binary_sha256": "859b34fbbb0ffa48160bb4d5623e99bb1e96c256d678f0daf30622781c98bffe",
+  "exit_code": 0,
+  "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":266.068480014801,\"warmup_calls\":0}\n",
+  "stderr": "==5== Callgrind, a call-graph generating cache profiler\n==5== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==5== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==5== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js positive 100 65536\n==5== \n==5== For interactive control, run 'callgrind_control -h'.\n==5== \n==5== Events    : Ir\n==5== Collected : 93351382\n==5== \n==5== I   refs:      93,351,382\n",
+  "external_wall_ms": 663.3914159610868,
+  "wall_time_not_a_performance_result": true
+}

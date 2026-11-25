@@ -1,0 +1,523 @@
+{
+  "status": "PASS",
+  "new_release_processes": 86,
+  "aggregates": {
+    "octane": {
+      "GM_percent": 3.2511824837632597,
+      "GM_ms": {
+        "SPARSE": 47.4833054724353,
+        "STORE_TRANSITION_IC": 49.02707438266692
+      },
+      "sum_ms": {
+        "SPARSE": 8190.064598435187,
+        "STORE_TRANSITION_IC": 8486.89153269952
+      },
+      "faster": 0,
+      "slower": 17,
+      "worst": {
+        "suite": "octane",
+        "case": "Richards.Richards",
+        "name": "Richards",
+        "N": 1024,
+        "SPARSE_ms": 2.2967918809736148,
+        "STORE_TRANSITION_IC_ms": 2.4416864414233714,
+        "change_percent": 6.308562898103576
+      },
+      "best": {
+        "suite": "octane",
+        "case": "CodeLoad.CodeLoadJQuery",
+        "name": "CodeLoad.JQuery",
+        "N": 512,
+        "SPARSE_ms": 8.865914730355144,
+        "STORE_TRANSITION_IC_ms": 8.887440419755876,
+        "change_percent": 0.242791522988961
+      }
+    },
+    "sunspider": {
+      "GM_percent": 2.6214508954012894,
+      "GM_ms": {
+        "SPARSE": 11.894788971892385,
+        "STORE_TRANSITION_IC": 12.206605023902151
+      },
+      "sum_ms": {
+        "SPARSE": 391.11925117718056,
+        "STORE_TRANSITION_IC": 398.973785325652
+      },
+      "faster": 5,
+      "slower": 21,
+      "worst": {
+        "suite": "sunspider",
+        "case": "access-nbody",
+        "name": "access-nbody",
+        "N": 128,
+        "SPARSE_ms": 10.71378718689084,
+        "STORE_TRANSITION_IC_ms": 12.575616062618792,
+        "change_percent": 17.377878085968
+      },
+      "best": {
+        "suite": "sunspider",
+        "case": "access-binary-trees",
+        "name": "access-binary-trees",
+        "N": 256,
+        "SPARSE_ms": 7.71034719562158,
+        "STORE_TRANSITION_IC_ms": 6.34325365209952,
+        "change_percent": -17.730635324676193
+      }
+    }
+  },
+  "rows": [
+    {
+      "suite": "octane",
+      "case": "Richards.Richards",
+      "name": "Richards",
+      "N": 1024,
+      "SPARSE_ms": 2.2967918809736148,
+      "STORE_TRANSITION_IC_ms": 2.4416864414233714,
+      "change_percent": 6.308562898103576
+    },
+    {
+      "suite": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "name": "DeltaBlue",
+      "N": 512,
+      "SPARSE_ms": 4.7868591661099344,
+      "STORE_TRANSITION_IC_ms": 4.984926347620785,
+      "change_percent": 4.1377273622990485
+    },
+    {
+      "suite": "octane",
+      "case": "Crypto.Encrypt",
+      "name": "Crypto.Encrypt",
+      "N": 512,
+      "SPARSE_ms": 3.7548587657511234,
+      "STORE_TRANSITION_IC_ms": 3.766070205019787,
+      "change_percent": 0.29858484614455616
+    },
+    {
+      "suite": "octane",
+      "case": "Crypto.Decrypt",
+      "name": "Crypto.Decrypt",
+      "N": 32,
+      "SPARSE_ms": 70.69473177939653,
+      "STORE_TRANSITION_IC_ms": 71.77919237315655,
+      "change_percent": 1.5340048211005097
+    },
+    {
+      "suite": "octane",
+      "case": "RayTrace.RayTrace",
+      "name": "RayTrace",
+      "N": 128,
+      "SPARSE_ms": 28.2138810781762,
+      "STORE_TRANSITION_IC_ms": 28.51465649995953,
+      "change_percent": 1.0660547584712798
+    },
+    {
+      "suite": "octane",
+      "case": "EarleyBoyer.Earley",
+      "name": "EarleyBoyer.Earley",
+      "N": 512,
+      "SPARSE_ms": 4.578333562472835,
+      "STORE_TRANSITION_IC_ms": 4.614000427769497,
+      "change_percent": 0.7790359704022531
+    },
+    {
+      "suite": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "name": "EarleyBoyer.Boyer",
+      "N": 32,
+      "SPARSE_ms": 54.63388668745756,
+      "STORE_TRANSITION_IC_ms": 55.67223331332207,
+      "change_percent": 1.900554195978299
+    },
+    {
+      "suite": "octane",
+      "case": "RegExp.RegExp",
+      "name": "RegExp",
+      "N": 64,
+      "SPARSE_ms": 154.05917429737747,
+      "STORE_TRANSITION_IC_ms": 156.37671035900712,
+      "change_percent": 1.5043155152552945
+    },
+    {
+      "suite": "octane",
+      "case": "Splay.Splay",
+      "name": "Splay",
+      "N": 2048,
+      "SPARSE_ms": 1.3332928886520676,
+      "STORE_TRANSITION_IC_ms": 1.4152693603537045,
+      "change_percent": 6.148421880845212
+    },
+    {
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "name": "NavierStokes",
+      "N": 32,
+      "SPARSE_ms": 40.32949656248093,
+      "STORE_TRANSITION_IC_ms": 42.71208059415221,
+      "change_percent": 5.9077951245437355
+    },
+    {
+      "suite": "octane",
+      "case": "PdfJS.PdfJS",
+      "name": "PdfJS",
+      "N": 16,
+      "SPARSE_ms": 119.23287019133568,
+      "STORE_TRANSITION_IC_ms": 122.9270408153534,
+      "change_percent": 3.09828205769902
+    },
+    {
+      "suite": "octane",
+      "case": "Mandreel.Mandreel",
+      "name": "Mandreel",
+      "N": 1,
+      "SPARSE_ms": 1169.110319018364,
+      "STORE_TRANSITION_IC_ms": 1222.6318299770355,
+      "change_percent": 4.577969254741543
+    },
+    {
+      "suite": "octane",
+      "case": "Gameboy.Gameboy",
+      "name": "Gameboy",
+      "N": 8,
+      "SPARSE_ms": 217.7593994885683,
+      "STORE_TRANSITION_IC_ms": 221.36963286995888,
+      "change_percent": 1.6579001365128576
+    },
+    {
+      "suite": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "name": "CodeLoad.Closure",
+      "N": 4096,
+      "SPARSE_ms": 0.49021622753934935,
+      "STORE_TRANSITION_IC_ms": 0.4999077485408634,
+      "change_percent": 1.9769890217957276
+    },
+    {
+      "suite": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "name": "CodeLoad.JQuery",
+      "N": 512,
+      "SPARSE_ms": 8.865914730355144,
+      "STORE_TRANSITION_IC_ms": 8.887440419755876,
+      "change_percent": 0.242791522988961
+    },
+    {
+      "suite": "octane",
+      "case": "Typescript.Typescript",
+      "name": "Typescript",
+      "N": 1,
+      "SPARSE_ms": 1456.424656033516,
+      "STORE_TRANSITION_IC_ms": 1525.1791050434113,
+      "change_percent": 4.720769366617561
+    },
+    {
+      "suite": "octane",
+      "case": "zlib.zlib",
+      "name": "zlib",
+      "N": 1,
+      "SPARSE_ms": 4853.49991607666,
+      "STORE_TRANSITION_IC_ms": 5013.119749903679,
+      "change_percent": 3.2887573212538213
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "name": "3d-cube",
+      "N": 128,
+      "SPARSE_ms": 13.773271813057363,
+      "STORE_TRANSITION_IC_ms": 15.06049644574523,
+      "change_percent": 9.345815940897563
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "name": "3d-morph",
+      "N": 128,
+      "SPARSE_ms": 10.549227469600737,
+      "STORE_TRANSITION_IC_ms": 10.995842077769339,
+      "change_percent": 4.233623831276678
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-raytrace",
+      "name": "3d-raytrace",
+      "N": 128,
+      "SPARSE_ms": 10.829348648898304,
+      "STORE_TRANSITION_IC_ms": 11.303112171590328,
+      "change_percent": 4.374810877847413
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-binary-trees",
+      "name": "access-binary-trees",
+      "N": 256,
+      "SPARSE_ms": 7.71034719562158,
+      "STORE_TRANSITION_IC_ms": 6.34325365209952,
+      "change_percent": -17.730635324676193
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-fannkuch",
+      "name": "access-fannkuch",
+      "N": 64,
+      "SPARSE_ms": 25.567045468837023,
+      "STORE_TRANSITION_IC_ms": 26.43499282747507,
+      "change_percent": 3.394789435861756
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "name": "access-nbody",
+      "N": 128,
+      "SPARSE_ms": 10.71378718689084,
+      "STORE_TRANSITION_IC_ms": 12.575616062618792,
+      "change_percent": 17.377878085968
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nsieve",
+      "name": "access-nsieve",
+      "N": 256,
+      "SPARSE_ms": 14.53791916789487,
+      "STORE_TRANSITION_IC_ms": 14.704022508114576,
+      "change_percent": 1.142552371501182
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "name": "bitops-3bit-bits-in-byte",
+      "N": 256,
+      "SPARSE_ms": 6.612878253683448,
+      "STORE_TRANSITION_IC_ms": 7.438635077793151,
+      "change_percent": 12.487101568061497
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bits-in-byte",
+      "name": "bitops-bits-in-byte",
+      "N": 128,
+      "SPARSE_ms": 16.649157195352018,
+      "STORE_TRANSITION_IC_ms": 16.85332791414112,
+      "change_percent": 1.2263126378919686
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bitwise-and",
+      "name": "bitops-bitwise-and",
+      "N": 256,
+      "SPARSE_ms": 6.342498921789229,
+      "STORE_TRANSITION_IC_ms": 6.4873819295316935,
+      "change_percent": 2.2843205734687455
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "name": "bitops-nsieve-bits",
+      "N": 128,
+      "SPARSE_ms": 10.205931367352605,
+      "STORE_TRANSITION_IC_ms": 11.416868577711284,
+      "change_percent": 11.86503383936428
+    },
+    {
+      "suite": "sunspider",
+      "case": "controlflow-recursive",
+      "name": "controlflow-recursive",
+      "N": 256,
+      "SPARSE_ms": 4.943967801053077,
+      "STORE_TRANSITION_IC_ms": 4.988702597562224,
+      "change_percent": 0.9048359194333333
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-aes",
+      "name": "crypto-aes",
+      "N": 128,
+      "SPARSE_ms": 9.503552179783583,
+      "STORE_TRANSITION_IC_ms": 9.953501562587917,
+      "change_percent": 4.734538983870551
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-md5",
+      "name": "crypto-md5",
+      "N": 256,
+      "SPARSE_ms": 4.962226265575737,
+      "STORE_TRANSITION_IC_ms": 5.140503570437431,
+      "change_percent": 3.5926879452968796
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-sha1",
+      "name": "crypto-sha1",
+      "N": 256,
+      "SPARSE_ms": 4.525318207219243,
+      "STORE_TRANSITION_IC_ms": 4.672570964787155,
+      "change_percent": 3.253975760931027
+    },
+    {
+      "suite": "sunspider",
+      "case": "date-format-tofte",
+      "name": "date-format-tofte",
+      "N": 256,
+      "SPARSE_ms": 21.20532562909648,
+      "STORE_TRANSITION_IC_ms": 21.78153291810304,
+      "change_percent": 2.7172763063630034
+    },
+    {
+      "suite": "sunspider",
+      "case": "date-format-xparb",
+      "name": "date-format-xparb",
+      "N": 512,
+      "SPARSE_ms": 18.104101300705224,
+      "STORE_TRANSITION_IC_ms": 17.079029445303604,
+      "change_percent": -5.6620974351358155
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-cordic",
+      "name": "math-cordic",
+      "N": 128,
+      "SPARSE_ms": 16.389917687512934,
+      "STORE_TRANSITION_IC_ms": 17.02144921850413,
+      "change_percent": 3.8531708519338403
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-partial-sums",
+      "name": "math-partial-sums",
+      "N": 128,
+      "SPARSE_ms": 8.084452155977488,
+      "STORE_TRANSITION_IC_ms": 8.353073343634605,
+      "change_percent": 3.3226888164401336
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "name": "math-spectral-norm",
+      "N": 256,
+      "SPARSE_ms": 5.902149242348969,
+      "STORE_TRANSITION_IC_ms": 6.179130363278091,
+      "change_percent": 4.692885753239406
+    },
+    {
+      "suite": "sunspider",
+      "case": "regexp-dna",
+      "name": "regexp-dna",
+      "N": 256,
+      "SPARSE_ms": 72.9141745348461,
+      "STORE_TRANSITION_IC_ms": 72.97331891395152,
+      "change_percent": 0.08111506367962651
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-base64",
+      "name": "string-base64",
+      "N": 256,
+      "SPARSE_ms": 10.630820570513606,
+      "STORE_TRANSITION_IC_ms": 10.522198441438377,
+      "change_percent": -1.0217661783937126
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-fasta",
+      "name": "string-fasta",
+      "N": 128,
+      "SPARSE_ms": 18.11400267109275,
+      "STORE_TRANSITION_IC_ms": 18.235808242112398,
+      "change_percent": 0.6724387383139296
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-tagcloud",
+      "name": "string-tagcloud",
+      "N": 256,
+      "SPARSE_ms": 19.19845242984593,
+      "STORE_TRANSITION_IC_ms": 19.126757046673447,
+      "change_percent": -0.3734435545493464
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-unpack-code",
+      "name": "string-unpack-code",
+      "N": 256,
+      "SPARSE_ms": 34.05615512514487,
+      "STORE_TRANSITION_IC_ms": 34.00648011313751,
+      "change_percent": -0.14586206759047426
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-validate-input",
+      "name": "string-validate-input",
+      "N": 256,
+      "SPARSE_ms": 9.09322268748656,
+      "STORE_TRANSITION_IC_ms": 9.326179339550436,
+      "change_percent": 2.561871187697351
+    }
+  ],
+  "regressions_over_5pct": [
+    {
+      "suite": "octane",
+      "case": "Richards.Richards",
+      "name": "Richards",
+      "N": 1024,
+      "SPARSE_ms": 2.2967918809736148,
+      "STORE_TRANSITION_IC_ms": 2.4416864414233714,
+      "change_percent": 6.308562898103576
+    },
+    {
+      "suite": "octane",
+      "case": "Splay.Splay",
+      "name": "Splay",
+      "N": 2048,
+      "SPARSE_ms": 1.3332928886520676,
+      "STORE_TRANSITION_IC_ms": 1.4152693603537045,
+      "change_percent": 6.148421880845212
+    },
+    {
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "name": "NavierStokes",
+      "N": 32,
+      "SPARSE_ms": 40.32949656248093,
+      "STORE_TRANSITION_IC_ms": 42.71208059415221,
+      "change_percent": 5.9077951245437355
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "name": "3d-cube",
+      "N": 128,
+      "SPARSE_ms": 13.773271813057363,
+      "STORE_TRANSITION_IC_ms": 15.06049644574523,
+      "change_percent": 9.345815940897563
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "name": "access-nbody",
+      "N": 128,
+      "SPARSE_ms": 10.71378718689084,
+      "STORE_TRANSITION_IC_ms": 12.575616062618792,
+      "change_percent": 17.377878085968
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "name": "bitops-3bit-bits-in-byte",
+      "N": 256,
+      "SPARSE_ms": 6.612878253683448,
+      "STORE_TRANSITION_IC_ms": 7.438635077793151,
+      "change_percent": 12.487101568061497
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "name": "bitops-nsieve-bits",
+      "N": 128,
+      "SPARSE_ms": 10.205931367352605,
+      "STORE_TRANSITION_IC_ms": 11.416868577711284,
+      "change_percent": 11.86503383936428
+    }
+  ],
+  "previous_screening_unchanged": true
+}

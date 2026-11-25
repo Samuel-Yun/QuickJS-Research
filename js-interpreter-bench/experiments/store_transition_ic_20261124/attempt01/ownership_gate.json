@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "label": "A",
+      "mode": "release",
+      "case": "ownership",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/ownership.js"
+      ],
+      "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+      "script_sha256": "24ef056672ed25a0a52d3a8dbb964199f80018ddabeb8fe09e5ff6e08340e68f",
+      "exit_code": 0,
+      "stdout": "OWNERSHIP_AND_RHS_AND_LARGE_INDEX_PASS\n",
+      "stderr": "",
+      "external_wall_ms": 8.469275897368789
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "case": "ownership",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/ownership.js"
+      ],
+      "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+      "script_sha256": "24ef056672ed25a0a52d3a8dbb964199f80018ddabeb8fe09e5ff6e08340e68f",
+      "exit_code": 0,
+      "stdout": "OWNERSHIP_AND_RHS_AND_LARGE_INDEX_PASS\n",
+      "stderr": "",
+      "external_wall_ms": 6.806095130741596
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "mode": "release",
+      "case": "ownership",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/ownership.js"
+      ],
+      "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+      "script_sha256": "24ef056672ed25a0a52d3a8dbb964199f80018ddabeb8fe09e5ff6e08340e68f",
+      "exit_code": 0,
+      "stdout": "OWNERSHIP_AND_RHS_AND_LARGE_INDEX_PASS\n",
+      "stderr": "",
+      "external_wall_ms": 5.959186935797334
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "mode": "counts",
+      "case": "ownership",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.counts.rev04/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/ownership.js"
+      ],
+      "binary_sha256": "7e56939b068c09f9900d4569e34d673f5242b7284237989e0bfa31085da7c4a5",
+      "script_sha256": "24ef056672ed25a0a52d3a8dbb964199f80018ddabeb8fe09e5ff6e08340e68f",
+      "exit_code": 0,
+      "stdout": "OWNERSHIP_AND_RHS_AND_LARGE_INDEX_PASS\n",
+      "stderr": "",
+      "external_wall_ms": 6.045896094292402
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "mode": "sanitize",
+      "case": "ownership",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.sanitize.rev02/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/ownership.js"
+      ],
+      "binary_sha256": "4f7d7f2599eb6eddd90a7db17d97f74e7255459f388efef7d341ce35ba057e0a",
+      "script_sha256": "24ef056672ed25a0a52d3a8dbb964199f80018ddabeb8fe09e5ff6e08340e68f",
+      "exit_code": 0,
+      "stdout": "OWNERSHIP_AND_RHS_AND_LARGE_INDEX_PASS\n",
+      "stderr": "",
+      "external_wall_ms": 40.18774791620672
+    }
+  ]
+}

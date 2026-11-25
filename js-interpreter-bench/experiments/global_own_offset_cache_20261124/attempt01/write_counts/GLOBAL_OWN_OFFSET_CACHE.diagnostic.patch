@@ -1,0 +1,45 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -19369,6 +19369,7 @@
+             
+         CASE(OP_put_field_shared):
+             {
++                go_shared_writes[0]++;
+                 ReadICSite *site = (ReadICSite *)(pc + get_u32(pc));
+                 JSValue obj = sp[-2];
+                 pc += 4;
+@@ -19379,6 +19380,7 @@
+                         uint32_t offset = site->prop_offset;
+                         JSShapeProperty *prs = &get_shape_prop(p->shape)[offset];
+                         if ((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE | JS_PROP_LENGTH)) == JS_PROP_WRITABLE) {
++                            go_shared_writes[1]++;
+                             set_value(ctx, &p->prop[offset].u.value, sp[-1]);
+                             JS_FreeValue(ctx, obj);
+                             sp -= 2;
+@@ -19386,6 +19388,7 @@
+                         }
+                     }
+                 }
++                go_shared_writes[2]++;
+                 sf->cur_pc = pc;
+                 int ret = JS_SetPropertyInternal(ctx, obj, site->atom, sp[-1], obj,
+                                                 JS_PROP_THROW_STRICT);
+--- a/global_own_diag.inc
++++ b/global_own_diag.inc
+@@ -13,6 +13,7 @@
+     "primary_updates","registrations","same_key_refreshes","conflict_replacements",
+     "invalidations","cleared_entries","runtime_shutdowns","shutdown_entries"
+ };
++static uint64_t go_shared_writes[3];
+ static uint64_t go_totals[GO_EVENT_END];
+ #define GO_COUNT(k) (++go_totals[GO_##k])
+ #define GO_ADD(k,n) (go_totals[GO_##k]+=(n))
+@@ -92,6 +93,8 @@
+     const char *path=getenv("GO_OUTPUT");if(!path)return;
+     FILE *out=fopen(path,"w");if(!out)return;
+     fputs("{\"totals\":",out);go_diag_numbers(out,go_totals);
++    fprintf(out,",\"shared_write\":{\"attempts\":%" PRIu64 ",\"hits\":%" PRIu64 ",\"fallbacks\":%" PRIu64 "}",
++        go_shared_writes[0],go_shared_writes[1],go_shared_writes[2]);
+     fprintf(out,",\"layout\":{\"JSRuntime\":%zu,\"JSShape\":%zu,\"JSObject\":%zu,\"ReadICSite\":%zu",
+         sizeof(JSRuntime),sizeof(JSShape),sizeof(JSObject),sizeof(ReadICSite));
+ #ifdef GLOBAL_OWN_CACHE

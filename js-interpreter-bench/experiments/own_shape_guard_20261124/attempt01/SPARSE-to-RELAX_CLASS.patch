@@ -1,0 +1,31 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -17874,7 +17874,7 @@
+     if (JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) {                   \
+         JSObject *object = JS_VALUE_GET_OBJ(receiver);                  \
+         ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
+-        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
++        if (!object->is_exotic && \
+             site->shape == object->shape) {                            \
+             *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
+             pc += 5;                                                   \
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -13,7 +13,7 @@
+         RDI_QUERY();                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+-            if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
++            if ((!keep || p->class_id == JS_CLASS_OBJECT) && !p->is_exotic) {        \
+                 if (keep && site->holder_shape) {                       \
+                     JSObject *holder = p->shape->proto;                 \
+                     if (site->shape == p->shape && holder &&            \
+@@ -54,7 +54,7 @@
+                             origin->shape->is_hashed && p->shape->is_hashed) \
+                             v6_proto_update(ctx, site, origin->shape, p->shape, pr - p->prop); \
+                     }                                                  \
+-                    else if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) { RDI_REASON(special); } \
++                    else if ((keep && p->class_id != JS_CLASS_OBJECT) || p->is_exotic) { RDI_REASON(special); } \
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+                         RDI_REASON(own_miss);                           \

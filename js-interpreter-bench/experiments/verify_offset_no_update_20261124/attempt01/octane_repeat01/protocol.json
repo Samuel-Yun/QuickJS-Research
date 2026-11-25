@@ -1,0 +1,573 @@
+{
+  "engines": {
+    "SPARSE": {
+      "label": "SPARSE",
+      "mode": "release",
+      "instrumented": false,
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/SPARSE.release/qjs",
+      "binary_sha256": "c127efeb122fb40afdb398648384e95346e2bb413e15458b20b6789d3b252d3d",
+      "command": [
+        "make",
+        "-j2",
+        "-o",
+        "repl.c",
+        "qjs"
+      ],
+      "sources": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "compat/test-closefrom.c": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "edge_strong_helpers.inc": "5e0645061dc10be615d09f019a532759115c60c6b43d451cd5d9b2566efceac5",
+        "four_diag.inc": "cdad40ec5e26449b18b75abaf5eec6134c9badf4abfbdeb5a46744070aba7f66",
+        "four_prepare.inc": "cd7cae6564d0c4a0150e060f6e4816e34dc120f8028d2ac60007daab56f45957",
+        "four_runtime.inc": "9f39660e8e8f0faae9333f3c03f7b3bfdf005fa6e146bd36794a5ea130663226",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "e097d89e6cf7e44b39b4d674b6e5cd2fb0d05dabe0289156208e6bd01fbe6429",
+        "quickjs.c": "e9a738ac5020a8b80144a932f0ffcc9266d3920b1bb19d13bcbe1c3dfd81a41d",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "da4f5b00c674d7401e96e26c248b289a274e33e1492f3724e332a7d65fa4f65f",
+        "read_ic_prepare.inc": "c71509eed85700e54282eb9d339717b6b9254150ee60db999677420db6dc1c87",
+        "read_ic_runtime.inc": "57681086bf909536fb9c0bb41cb8129da6afe7473681fe4006e46975b400440e",
+        "read_ic_types.h": "9309672f2a8eb861e057696dae6d6f91f7d067d1fc08d223a5efd2346e3ff769",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "sparse_runtime.inc": "de41064d8d55bb5b7940d783b25c6e7ff16678fe2fd1739123b5e745ec2e804f",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "parent": "06aada4 frozen SPARSE_CTOR_IC; on_demand_ctor_cache/modified"
+    },
+    "VERIFY_OFFSET_NO_UPDATE": {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "mode": "release",
+      "instrumented": false,
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/VERIFY_OFFSET_NO_UPDATE.release/qjs",
+      "binary_sha256": "06eeffe6e778aedd4699613ccdcdd80b32fee7636866916c436e13ee2558f7c4",
+      "command": [
+        "make",
+        "-j2",
+        "-o",
+        "repl.c",
+        "qjs"
+      ],
+      "sources": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "compat/test-closefrom.c": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "edge_strong_helpers.inc": "5e0645061dc10be615d09f019a532759115c60c6b43d451cd5d9b2566efceac5",
+        "four_diag.inc": "cdad40ec5e26449b18b75abaf5eec6134c9badf4abfbdeb5a46744070aba7f66",
+        "four_prepare.inc": "cd7cae6564d0c4a0150e060f6e4816e34dc120f8028d2ac60007daab56f45957",
+        "four_runtime.inc": "9f39660e8e8f0faae9333f3c03f7b3bfdf005fa6e146bd36794a5ea130663226",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "e097d89e6cf7e44b39b4d674b6e5cd2fb0d05dabe0289156208e6bd01fbe6429",
+        "quickjs.c": "e9a738ac5020a8b80144a932f0ffcc9266d3920b1bb19d13bcbe1c3dfd81a41d",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "a569d646b4433a9ac367d2d05640efbc3f7897fa27a2bb07326eef61a343bb29",
+        "read_ic_prepare.inc": "c71509eed85700e54282eb9d339717b6b9254150ee60db999677420db6dc1c87",
+        "read_ic_runtime.inc": "57681086bf909536fb9c0bb41cb8129da6afe7473681fe4006e46975b400440e",
+        "read_ic_types.h": "9309672f2a8eb861e057696dae6d6f91f7d067d1fc08d223a5efd2346e3ff769",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "sparse_runtime.inc": "de41064d8d55bb5b7940d783b25c6e7ff16678fe2fd1739123b5e745ec2e804f",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "parent": "06aada4 frozen SPARSE_CTOR_IC; on_demand_ctor_cache/modified"
+    }
+  },
+  "inputs": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/benchmarks.json": "4cc6ba78c70415dfcc99e39449f1d44345981fa50e9a5290bcd1e179c5cbf276",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Richards.js": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Crypto.Encrypt.js": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Crypto.Decrypt.js": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Earley.js": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RegExp.js": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Splay.js": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/NavierStokes.js": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/PdfJS.js": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Mandreel.js": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Gameboy.js": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.JQuery.js": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/zlib.js": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/support/zlib_read.js": "8240f6d0f5d2a8037f87b08c1f2dcf2518d100d0f5e57b6277ae7a885b771caa",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/LICENSE": "cf853177951c6de1b17c029b66edf71f8b194cca1722339a7b5def4e8165aaaa"
+  },
+  "schedule": [
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "Richards",
+        "case": "Richards.Richards",
+        "group": "Richards",
+        "path": "octane/Richards.js",
+        "N": 1024,
+        "sha256": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Richards.Richards.N1024.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "Richards",
+        "case": "Richards.Richards",
+        "group": "Richards",
+        "path": "octane/Richards.js",
+        "N": 1024,
+        "sha256": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Richards.Richards.N1024.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "DeltaBlue",
+        "case": "DeltaBlue.DeltaBlue",
+        "group": "DeltaBlue",
+        "path": "octane/DeltaBlue.js",
+        "N": 512,
+        "sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.DeltaBlue.DeltaBlue.N512.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "DeltaBlue",
+        "case": "DeltaBlue.DeltaBlue",
+        "group": "DeltaBlue",
+        "path": "octane/DeltaBlue.js",
+        "N": 512,
+        "sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.DeltaBlue.DeltaBlue.N512.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "Crypto.Encrypt",
+        "case": "Crypto.Encrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Encrypt.js",
+        "N": 512,
+        "sha256": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Encrypt.N512.measure.js",
+        "checksums": [
+          "53565803e0a843e95749c36d0e184169c0ee6da889bfc1afbb85810b8c5f2e667a7ae97fb0148bf505f9b1b101c08610e1ca13e24269f0da75b557e15d47f79c6f463cba71ffbaaf01c08050cdf9b973d400602580c0437774884e8a710aee87d4044d143e30ccf76728f74aedda0ddaaa21294db42d2fca3ec045fba93d9f80"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "Crypto.Encrypt",
+        "case": "Crypto.Encrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Encrypt.js",
+        "N": 512,
+        "sha256": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Encrypt.N512.measure.js",
+        "checksums": [
+          "53565803e0a843e95749c36d0e184169c0ee6da889bfc1afbb85810b8c5f2e667a7ae97fb0148bf505f9b1b101c08610e1ca13e24269f0da75b557e15d47f79c6f463cba71ffbaaf01c08050cdf9b973d400602580c0437774884e8a710aee87d4044d143e30ccf76728f74aedda0ddaaa21294db42d2fca3ec045fba93d9f80"
+        ]
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "Crypto.Decrypt",
+        "case": "Crypto.Decrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Decrypt.js",
+        "N": 32,
+        "sha256": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Decrypt.N32.measure.js",
+        "checksums": [
+          "73be293fe54b9fc1af0cab261d4307883f70dfb21390d3de779e061f39e084fee1072606b0979db989ab21a288e16c2644af3842ccbd8f540eb66d61c44253d9b5ebe30dbd5dfe9ee81038baf4912ab3de44cfe2a401ff0363c720713889b1d31f21f32a1d68bee95b19f767d52c0ed1fd8ff2ab66d88e68dffaadb9826aed24"
+        ]
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "Crypto.Decrypt",
+        "case": "Crypto.Decrypt",
+        "group": "Crypto",
+        "path": "octane/Crypto.Decrypt.js",
+        "N": 32,
+        "sha256": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Decrypt.N32.measure.js",
+        "checksums": [
+          "73be293fe54b9fc1af0cab261d4307883f70dfb21390d3de779e061f39e084fee1072606b0979db989ab21a288e16c2644af3842ccbd8f540eb66d61c44253d9b5ebe30dbd5dfe9ee81038baf4912ab3de44cfe2a401ff0363c720713889b1d31f21f32a1d68bee95b19f767d52c0ed1fd8ff2ab66d88e68dffaadb9826aed24"
+        ]
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "RayTrace",
+        "case": "RayTrace.RayTrace",
+        "group": "RayTrace",
+        "path": "octane/RayTrace.js",
+        "N": 128,
+        "sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RayTrace.RayTrace.N128.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "RayTrace",
+        "case": "RayTrace.RayTrace",
+        "group": "RayTrace",
+        "path": "octane/RayTrace.js",
+        "N": 128,
+        "sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RayTrace.RayTrace.N128.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "EarleyBoyer.Earley",
+        "case": "EarleyBoyer.Earley",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Earley.js",
+        "N": 512,
+        "sha256": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Earley.N512.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "EarleyBoyer.Earley",
+        "case": "EarleyBoyer.Earley",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Earley.js",
+        "N": 512,
+        "sha256": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Earley.N512.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "EarleyBoyer.Boyer",
+        "case": "EarleyBoyer.Boyer",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Boyer.js",
+        "N": 32,
+        "sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Boyer.N32.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "EarleyBoyer.Boyer",
+        "case": "EarleyBoyer.Boyer",
+        "group": "EarleyBoyer",
+        "path": "octane/EarleyBoyer.Boyer.js",
+        "N": 32,
+        "sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Boyer.N32.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "RegExp",
+        "case": "RegExp.RegExp",
+        "group": "RegExp",
+        "path": "octane/RegExp.js",
+        "N": 64,
+        "sha256": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RegExp.RegExp.N64.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "RegExp",
+        "case": "RegExp.RegExp",
+        "group": "RegExp",
+        "path": "octane/RegExp.js",
+        "N": 64,
+        "sha256": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.RegExp.RegExp.N64.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "Splay",
+        "case": "Splay.Splay",
+        "group": "Splay",
+        "path": "octane/Splay.js",
+        "N": 2048,
+        "sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Splay.Splay.N2048.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "Splay",
+        "case": "Splay.Splay",
+        "group": "Splay",
+        "path": "octane/Splay.js",
+        "N": 2048,
+        "sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Splay.Splay.N2048.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "NavierStokes",
+        "case": "NavierStokes.NavierStokes",
+        "group": "NavierStokes",
+        "path": "octane/NavierStokes.js",
+        "N": 32,
+        "sha256": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.NavierStokes.NavierStokes.N32.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "NavierStokes",
+        "case": "NavierStokes.NavierStokes",
+        "group": "NavierStokes",
+        "path": "octane/NavierStokes.js",
+        "N": 32,
+        "sha256": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.NavierStokes.NavierStokes.N32.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "PdfJS",
+        "case": "PdfJS.PdfJS",
+        "group": "PdfJS",
+        "path": "octane/PdfJS.js",
+        "N": 16,
+        "sha256": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.PdfJS.PdfJS.N16.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "PdfJS",
+        "case": "PdfJS.PdfJS",
+        "group": "PdfJS",
+        "path": "octane/PdfJS.js",
+        "N": 16,
+        "sha256": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.PdfJS.PdfJS.N16.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "Mandreel",
+        "case": "Mandreel.Mandreel",
+        "group": "Mandreel",
+        "path": "octane/Mandreel.js",
+        "N": 1,
+        "sha256": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Mandreel.Mandreel.N1.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "Mandreel",
+        "case": "Mandreel.Mandreel",
+        "group": "Mandreel",
+        "path": "octane/Mandreel.js",
+        "N": 1,
+        "sha256": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Mandreel.Mandreel.N1.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "Gameboy",
+        "case": "Gameboy.Gameboy",
+        "group": "Gameboy",
+        "path": "octane/Gameboy.js",
+        "N": 8,
+        "sha256": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Gameboy.Gameboy.N8.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "Gameboy",
+        "case": "Gameboy.Gameboy",
+        "group": "Gameboy",
+        "path": "octane/Gameboy.js",
+        "N": 8,
+        "sha256": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Gameboy.Gameboy.N8.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "CodeLoad.Closure",
+        "case": "CodeLoad.CodeLoadClosure",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.Closure.js",
+        "N": 4096,
+        "sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadClosure.N4096.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "CodeLoad.Closure",
+        "case": "CodeLoad.CodeLoadClosure",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.Closure.js",
+        "N": 4096,
+        "sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadClosure.N4096.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "CodeLoad.JQuery",
+        "case": "CodeLoad.CodeLoadJQuery",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.JQuery.js",
+        "N": 512,
+        "sha256": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadJQuery.N512.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "CodeLoad.JQuery",
+        "case": "CodeLoad.CodeLoadJQuery",
+        "group": "CodeLoad",
+        "path": "octane/CodeLoad.JQuery.js",
+        "N": 512,
+        "sha256": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadJQuery.N512.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "Typescript",
+        "case": "Typescript.Typescript",
+        "group": "Typescript",
+        "path": "octane/Typescript.js",
+        "N": 1,
+        "sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Typescript.Typescript.N1.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "Typescript",
+        "case": "Typescript.Typescript",
+        "group": "Typescript",
+        "path": "octane/Typescript.js",
+        "N": 1,
+        "sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.Typescript.Typescript.N1.measure.js"
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "case": {
+        "name": "zlib",
+        "case": "zlib.zlib",
+        "group": "zlib",
+        "path": "octane/zlib.js",
+        "N": 1,
+        "sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.zlib.zlib.N1.measure.js"
+      }
+    },
+    {
+      "label": "SPARSE",
+      "case": {
+        "name": "zlib",
+        "case": "zlib.zlib",
+        "group": "zlib",
+        "path": "octane/zlib.js",
+        "N": 1,
+        "sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+        "source_path": "experiments/native_confirmation_20261108/attempt02/scripts/octane.zlib.zlib.N1.measure.js"
+      }
+    }
+  ],
+  "CPU": 2,
+  "TZ": "Asia/Shanghai",
+  "locale": "C",
+  "fresh_processes": 34,
+  "processes_per_engine_per_case": 1,
+  "extra_warmup": 0,
+  "first_Run_included": true,
+  "timer": "original native monotonic Run interval; load/Setup excluded",
+  "order": "candidate first on first case; alternate engine order per Octane case",
+  "compiler": "reuse exact previous uninstrumented Release binaries; no rebuild",
+  "previous_single_pass": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/full_samples.json",
+  "previous_sha256": "aef5766fd8dd446422eeb421222dbe6045459ad340dfb966886d2f977aa16613",
+  "driver_sha256": "84679cc2ee5fc46b2f35622d4ce3c2a98afebac246d2def12256c8d02e6cc186",
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.43",
+  "failure_policy": "preserve failed sample, no automatic retry"
+}

@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "case": "Splay",
+  "rows": [
+    {
+      "label": "SPARSE",
+      "shared_write": {
+        "attempts": 6932676,
+        "hits": 4591973,
+        "fallbacks": 2340703
+      },
+      "read_totals": {
+        "logical_named": 47086700,
+        "rdi0_named": 43561136,
+        "rdi1_named": 3525562,
+        "legacy_named": 2,
+        "legacy_length": 2,
+        "fused_entries": 4189561,
+        "primary_hits": 27179367,
+        "fused_hits": 2922729,
+        "field_primary_hits": 20915486,
+        "prototype_primary_hits": 3341152,
+        "secondary_probes": 0,
+        "secondary_hits": 0,
+        "normal_lookups": 19907333,
+        "rdi_normal_lookups": 19907331,
+        "own_searches": 19909445,
+        "primary_updates": 18718725,
+        "registrations": 0,
+        "same_key_refreshes": 0,
+        "conflict_replacements": 0,
+        "invalidations": 0,
+        "cleared_entries": 0,
+        "runtime_shutdowns": 0,
+        "shutdown_entries": 0
+      },
+      "binary_sha256": "c4d8987574c119386200c3e08a1203540630c3daf1ba85949264b09bc4bc9d2b"
+    },
+    {
+      "label": "GLOBAL_OWN_OFFSET_CACHE",
+      "shared_write": {
+        "attempts": 6932676,
+        "hits": 3051256,
+        "fallbacks": 3881420
+      },
+      "read_totals": {
+        "logical_named": 47086700,
+        "rdi0_named": 43561136,
+        "rdi1_named": 3525562,
+        "legacy_named": 2,
+        "legacy_length": 2,
+        "fused_entries": 4189561,
+        "primary_hits": 27327223,
+        "fused_hits": 3421214,
+        "field_primary_hits": 20564857,
+        "prototype_primary_hits": 3341152,
+        "secondary_probes": 18570783,
+        "secondary_hits": 18570782,
+        "normal_lookups": 1188695,
+        "rdi_normal_lookups": 1188693,
+        "own_searches": 1190807,
+        "primary_updates": 87,
+        "registrations": 81,
+        "same_key_refreshes": 65,
+        "conflict_replacements": 0,
+        "invalidations": 8,
+        "cleared_entries": 16,
+        "runtime_shutdowns": 1,
+        "shutdown_entries": 13
+      },
+      "binary_sha256": "2b5b7fc992475dabb85fae155f3ee35778e2a36340cd0466bc258b901a144472"
+    }
+  ],
+  "not_a_performance_measurement": true,
+  "Release_files_unchanged": true,
+  "VM_and_diagnostic_record_sizes_unchanged": true
+}

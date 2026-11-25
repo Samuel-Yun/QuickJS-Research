@@ -1,0 +1,25 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DHAVE_CLOSEFROM",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/weak_fixture.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/validation/A.release.weak_fixture"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "In file included from /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/weak_fixture.c:2:\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/quickjs.c: In function ‘js_default_module_normalize_name’:\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/quickjs.c:29952:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]\n29952 |     p = strrchr(base_name, '/');\n      |       ^\n"
+}

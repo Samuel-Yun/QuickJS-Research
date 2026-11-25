@@ -1,0 +1,22 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -32,6 +32,19 @@
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
++                if (!keep && site->shape && !site->holder_shape &&      \
++                    site->shape != p->shape && p->shape->is_hashed) {   \
++                    JSShape *sh = p->shape;                             \
++                    uint32_t off = site->prop_offset;                   \
++                    if (off < sh->prop_count) {                         \
++                        JSShapeProperty *desc = &get_shape_prop(sh)[off];\
++                        if (desc->atom == site->atom &&                 \
++                            !(desc->flags & JS_PROP_TMASK)) {           \
++                            val = JS_DupValue(ctx, p->prop[off].u.value);\
++                            goto name ## _done;                         \
++                        }                                               \
++                    }                                                   \
++                }                                                       \
+             }                                                           \
+         }                                                               \
+         RDI_COUNT(fallback);                                            \

@@ -1,0 +1,14 @@
+{
+  "reference": "V8 src/ic/stub-cache.h",
+  "commit": "aa8cf1f0c2c182ad3bee43a3c90f4567a1aa8b42",
+  "git_blob": "41f2f6ca68ed8afd213ce76c7a4aa8dea2f4654f",
+  "url": "https://chromium.googlesource.com/v8/v8/+/aa8cf1f0c2c182ad3bee43a3c90f4567a1aa8b42/src/ic/stub-cache.h",
+  "checked_date": "2026-11-24",
+  "use": "shared cache idea only; no V8 implementation copied",
+  "new_implementation": [
+    "direct-mapped 1024 shape/atom/offset entries",
+    "weak reverse index links",
+    "QuickJS lifecycle invalidation",
+    "get_field_rdi secondary path"
+  ]
+}

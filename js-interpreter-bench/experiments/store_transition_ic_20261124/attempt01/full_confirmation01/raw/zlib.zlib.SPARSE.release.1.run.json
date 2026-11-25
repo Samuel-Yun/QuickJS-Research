@@ -1,0 +1,19 @@
+{
+  "label": "SPARSE",
+  "mode": "release",
+  "case": "zlib.zlib",
+  "rep": 1,
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+    "--std",
+    "-I",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/support/zlib_read.js",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/zlib.js"
+  ],
+  "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+  "script_sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"zlib.zlib\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072649169.33662,\"stop_ms\":1072654022.836536,\"elapsed_ms\":4853.49991607666,\"elapsed_per_Run_ms\":4853.49991607666,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "",
+  "external_wall_ms": 4867.042995989323
+}

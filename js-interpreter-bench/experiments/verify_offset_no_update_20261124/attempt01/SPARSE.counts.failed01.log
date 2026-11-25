@@ -1,0 +1,43 @@
+mkdir -p .obj .obj/examples .obj/tests
+gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c
+gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c
+gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c
+In file included from read_ic_runtime.inc:2,
+                 from quickjs.c:6230:
+verify_diag.inc: In function ‘von_prepare’:
+verify_diag.inc:30:17: error: implicit declaration of function ‘short_opcode_info’ [-Wimplicit-function-declaration]
+   30 |             pc+=short_opcode_info(op).size;
+      |                 ^~~~~~~~~~~~~~~~~
+verify_diag.inc:30:38: error: request for member ‘size’ in something not a structure or union
+   30 |             pc+=short_opcode_info(op).size;
+      |                                      ^
+verify_diag.inc: In function ‘von_report’:
+quickjs.c:2264:17: error: implicit declaration of function ‘free_is_forbidden’ [-Wimplicit-function-declaration]
+ 2264 | #define free(p) free_is_forbidden(p)
+      |                 ^~~~~~~~~~~~~~~~~
+verify_diag.inc:89:57: note: in expansion of macro ‘free’
+   89 |         fputs("}\n",out);VonRecord *old=r;r=r->all_next;free(old);
+      |                                                         ^~~~
+In file included from quickjs.c:6232:
+four_runtime.inc: In function ‘plan_recipe’:
+four_runtime.inc:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |         ^~
+four_runtime.inc:39:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   39 |         if(r->n==8 || end-p<7)return 0;p++;
+      |                                        ^
+quickjs.c: In function ‘js_default_module_normalize_name’:
+quickjs.c:30170:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+30170 |     p = strrchr(base_name, '/');
+      |       ^
+In file included from quickjs.c:32345:
+four_prepare.inc: In function ‘four_prepare’:
+four_prepare.inc:8:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |     ^~
+four_prepare.inc:8:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |                                   ^
+gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c
+make: *** [Makefile:339: .obj/quickjs.o] Error 1
+make: *** Waiting for unfinished jobs....

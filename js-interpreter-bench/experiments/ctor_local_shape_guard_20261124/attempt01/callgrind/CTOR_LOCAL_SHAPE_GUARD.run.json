@@ -1,0 +1,21 @@
+{
+  "label": "CTOR_LOCAL_SHAPE_GUARD",
+  "command": [
+    "valgrind",
+    "--tool=callgrind",
+    "--collect-atstart=yes",
+    "--error-exitcode=97",
+    "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/callgrind/CTOR_LOCAL_SHAPE_GUARD.out",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+    "positive",
+    "100",
+    "65536"
+  ],
+  "binary_sha256": "fff668fb397b30405c628e2c14f948065f4a52c6d92638432b1f8a137ade7363",
+  "exit_code": 0,
+  "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":290.48049902915955,\"warmup_calls\":0}\n",
+  "stderr": "==9== Callgrind, a call-graph generating cache profiler\n==9== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==9== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==9== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js positive 100 65536\n==9== \n==9== For interactive control, run 'callgrind_control -h'.\n==9== \n==9== Events    : Ir\n==9== Collected : 94925909\n==9== \n==9== I   refs:      94,925,909\n",
+  "external_wall_ms": 690.1644309982657,
+  "wall_time_not_a_performance_result": true
+}

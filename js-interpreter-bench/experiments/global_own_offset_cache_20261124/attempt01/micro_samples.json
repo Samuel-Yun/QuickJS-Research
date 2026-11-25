@@ -1,0 +1,1202 @@
+[
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3625.358340024948,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3633.4384330548346,
+    "ms": 3625.358340024948,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3183.8379720449448,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3191.424312070012,
+    "ms": 3183.8379720449448,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3271.525861978531,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3277.458565076813,
+    "ms": 3271.525861978531,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3815.2391979694366,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3821.189336013049,
+    "ms": 3815.2391979694366,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3519.1291249990463,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3524.966754950583,
+    "ms": 3519.1291249990463,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3565.2870470285416,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3571.2232950609177,
+    "ms": 3565.2870470285416,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3602.710788011551,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3608.8028820231557,
+    "ms": 3602.710788011551,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3574.087350964546,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3580.1277139689773,
+    "ms": 3574.087350964546,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3817.0559190511703,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3823.1051359325647,
+    "ms": 3817.0559190511703,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3483.697865009308,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3489.7054431494325,
+    "ms": 3483.697865009308,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3778.838126897812,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3784.9767790175974,
+    "ms": 3778.838126897812,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3597.044420003891,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3603.0498519539833,
+    "ms": 3597.044420003891,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3200.075049996376,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3206.1031069606543,
+    "ms": 3200.075049996376,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3300.1877979040146,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3306.1587151605636,
+    "ms": 3300.1877979040146,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3586.9313809871674,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3593.073490075767,
+    "ms": 3586.9313809871674,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3517.371654033661,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3523.430963046849,
+    "ms": 3517.371654033661,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3570.724310040474,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3576.7640359699726,
+    "ms": 3570.724310040474,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3809.9193609952927,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3815.9689649473876,
+    "ms": 3809.9193609952927,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3570.326810002327,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3577.1648320369422,
+    "ms": 3570.326810002327,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3814.6169830560684,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3820.5197548959404,
+    "ms": 3814.6169830560684,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3517.4600409269333,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3523.547476856038,
+    "ms": 3517.4600409269333,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3769.1686959266663,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3775.227524107322,
+    "ms": 3769.1686959266663,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3597.4311900138855,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3603.368442039937,
+    "ms": 3597.4311900138855,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3484.1179460287094,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3490.141030168161,
+    "ms": 3484.1179460287094,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3291.1572860479355,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3297.1282061189413,
+    "ms": 3291.1572860479355,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3594.6648119688034,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3600.7761280052364,
+    "ms": 3594.6648119688034,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3227.181957960129,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3233.1200630869716,
+    "ms": 3227.181957960129,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3569.1776489019394,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3575.2632229123265,
+    "ms": 3569.1776489019394,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3811.29582798481,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3817.153075011447,
+    "ms": 3811.29582798481,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3515.8093950748444,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3521.8954428564757,
+    "ms": 3515.8093950748444,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3804.125102043152,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3810.2109571918845,
+    "ms": 3804.125102043152,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3520.2223510742188,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3526.2766708619893,
+    "ms": 3520.2223510742188,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3603.79093003273,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3609.898682916537,
+    "ms": 3603.79093003273,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3636.226084947586,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3642.176671884954,
+    "ms": 3636.226084947586,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3483.1476989984512,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3489.2810019664466,
+    "ms": 3483.1476989984512,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3787.60932803154,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3793.640939053148,
+    "ms": 3787.60932803154,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":4218.175861954689,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 4224.1743369959295,
+    "ms": 4218.175861954689,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3226.434921979904,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3232.18022310175,
+    "ms": 3226.434921979904,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3300.8057349920273,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3309.0002299286425,
+    "ms": 3300.8057349920273,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3811.6946589946747,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3819.786862935871,
+    "ms": 3811.6946589946747,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3518.2873010635376,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3524.351404979825,
+    "ms": 3518.2873010635376,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3567.2249640226364,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3573.4006678685546,
+    "ms": 3567.2249640226364,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3518.889834046364,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3524.944809032604,
+    "ms": 3518.889834046364,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3565.158663034439,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3571.24457298778,
+    "ms": 3565.158663034439,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3804.490534067154,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3810.4174570180476,
+    "ms": 3804.490534067154,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3513.190397977829,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3519.3667311687022,
+    "ms": 3513.190397977829,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3774.395719051361,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3780.5181220173836,
+    "ms": 3774.395719051361,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3600.5871309041977,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3606.6199329216033,
+    "ms": 3600.5871309041977,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3196.862993001938,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3202.799995895475,
+    "ms": 3196.862993001938,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3271.7714309692383,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3277.821362949908,
+    "ms": 3271.7714309692383,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "stable",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "stable",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"stable\",\"iterations\":134217728,\"checksum\":402653184,\"elapsed_ms\":3593.7304340600967,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3599.722616141662,
+    "ms": 3593.7304340600967,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3548.9880170822144,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3555.0475060008466,
+    "ms": 3548.9880170822144,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3569.6891939640045,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3575.5857138428837,
+    "ms": 3569.6891939640045,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "same_slot",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "same_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"same_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3817.030372977257,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3822.904221015051,
+    "ms": 3817.030372977257,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3568.2156410217285,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3574.2172431200743,
+    "ms": 3568.2156410217285,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3811.0681170225143,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3816.9829200487584,
+    "ms": 3811.0681170225143,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "different_slot",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "different_slot",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"different_slot\",\"iterations\":134217728,\"checksum\":536870912,\"elapsed_ms\":3542.130964040756,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3548.0534478556365,
+    "ms": 3542.130964040756,
+    "iterations": 134217728
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "0e9793108c220afdc85bc8e0f310c7553b05a09e28147953c72f4d1ad8b36816",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3788.3248740434647,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3794.4099840242416,
+    "ms": 3788.3248740434647,
+    "iterations": 134217728
+  },
+  {
+    "label": "GLOBAL_OWN_OFFSET_CACHE",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "eb9195b7455c044b174d59495d71e58eae5f0e5ac796ac9619d02717ead106b0",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3616.19449198246,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3622.2805469296873,
+    "ms": 3616.19449198246,
+    "iterations": 134217728
+  },
+  {
+    "label": "A",
+    "mode": "release",
+    "case": "multi",
+    "phase": "micro_time",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+      "multi",
+      "134217728"
+    ],
+    "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"multi\",\"iterations\":134217728,\"checksum\":805306368,\"elapsed_ms\":3486.582563996315,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3492.5005540717393,
+    "ms": 3486.582563996315,
+    "iterations": 134217728
+  }
+]

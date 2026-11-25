@@ -1,0 +1,422 @@
+[
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072390066.764293,\"stop_ms\":1072393586.126665,\"elapsed_ms\":3519.3623720407486,\"elapsed_per_Run_ms\":27.49501853156835,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3528.29077700153,
+    "ms": 27.49501853156835,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072393601.306125,\"stop_ms\":1072397255.618763,\"elapsed_ms\":3654.312637925148,\"elapsed_per_Run_ms\":28.54931748379022,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3662.0421141851693,
+    "ms": 28.54931748379022,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072397268.61124,\"stop_ms\":1072398902.61881,\"elapsed_ms\":1634.007570028305,\"elapsed_per_call_ms\":6.382842070423067,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1639.957340899855,
+    "ms": 6.382842070423067,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072398914.904459,\"stop_ms\":1072400924.96976,\"elapsed_ms\":2010.0653009414673,\"elapsed_per_call_ms\":7.851817581802607,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 2016.133779892698,
+    "ms": 7.851817581802607,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072400939.00645,\"stop_ms\":1072404585.032151,\"elapsed_ms\":3646.0257009267807,\"elapsed_per_Run_ms\":28.484575788490474,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3653.487581992522,
+    "ms": 28.484575788490474,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072404598.985576,\"stop_ms\":1072408119.749143,\"elapsed_ms\":3520.763566970825,\"elapsed_per_Run_ms\":27.505965366959572,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3528.204734902829,
+    "ms": 27.505965366959572,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072408132.3278,\"stop_ms\":1072410100.83742,\"elapsed_ms\":1968.5096199512482,\"elapsed_per_call_ms\":7.689490702934563,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1974.3277998641133,
+    "ms": 7.689490702934563,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072410113.113716,\"stop_ms\":1072411749.076769,\"elapsed_ms\":1635.9630529880524,\"elapsed_per_call_ms\":6.39048067573458,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1642.1053300146013,
+    "ms": 6.39048067573458,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072411762.999343,\"stop_ms\":1072415313.231916,\"elapsed_ms\":3550.23257291317,\"elapsed_per_Run_ms\":27.73619197588414,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3557.706867111847,
+    "ms": 27.73619197588414,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072415327.299541,\"stop_ms\":1072418970.01648,\"elapsed_ms\":3642.716938972473,\"elapsed_per_Run_ms\":28.458726085722446,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3650.217220187187,
+    "ms": 28.458726085722446,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072418982.897825,\"stop_ms\":1072420611.562303,\"elapsed_ms\":1628.664477944374,\"elapsed_per_call_ms\":6.361970616970211,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1635.068777948618,
+    "ms": 6.361970616970211,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072420624.531751,\"stop_ms\":1072422598.700165,\"elapsed_ms\":1974.1684139966965,\"elapsed_per_call_ms\":7.711595367174596,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1980.3447190206498,
+    "ms": 7.711595367174596,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072422612.747404,\"stop_ms\":1072426377.544035,\"elapsed_ms\":3764.7966309785843,\"elapsed_per_Run_ms\":29.41247367952019,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3772.388400975615,
+    "ms": 29.41247367952019,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072426391.633618,\"stop_ms\":1072429916.034857,\"elapsed_ms\":3524.4012390375137,\"elapsed_per_Run_ms\":27.534384679980576,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3531.9326939061284,
+    "ms": 27.534384679980576,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072429928.912701,\"stop_ms\":1072431904.446951,\"elapsed_ms\":1975.5342500209808,\"elapsed_per_call_ms\":7.716930664144456,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1981.820847839117,
+    "ms": 7.716930664144456,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072431917.317958,\"stop_ms\":1072433560.173441,\"elapsed_ms\":1642.8554830551147,\"elapsed_per_call_ms\":6.417404230684042,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1649.071483174339,
+    "ms": 6.417404230684042,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072433574.369171,\"stop_ms\":1072437101.449572,\"elapsed_ms\":3527.080400943756,\"elapsed_per_Run_ms\":27.555315632373095,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3534.7525300458074,
+    "ms": 27.555315632373095,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "RayTrace.RayTrace",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1072437115.897788,\"stop_ms\":1072440773.722199,\"elapsed_ms\":3657.8244109153748,\"elapsed_per_Run_ms\":28.576753210276365,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3665.426824009046,
+    "ms": 28.576753210276365,
+    "suite": "octane",
+    "name": "RayTrace",
+    "group": "RayTrace",
+    "N": 128
+  },
+  {
+    "label": "STORE_TRANSITION_IC",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/STORE_TRANSITION_IC.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "aadf5648ea27bbf7f01ed323cc721f90890bb00496b3e9c79fa93020147088af",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072440786.650079,\"stop_ms\":1072442421.19521,\"elapsed_ms\":1634.5451309680939,\"elapsed_per_call_ms\":6.384941917844117,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1640.786647098139,
+    "ms": 6.384941917844117,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "case": "access-binary-trees",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/store_transition_ic_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/access-binary-trees.js"
+    ],
+    "binary_sha256": "0fd096f707c0e810bdc7fb0b2f0e23b73d8cf2c8b27bbff26d938826c5eb3edf",
+    "script_sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+    "exit_code": 0,
+    "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1072442433.974553,\"stop_ms\":1072444413.919581,\"elapsed_ms\":1979.9450280666351,\"elapsed_per_call_ms\":7.7341602658852935,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1986.1260009929538,
+    "ms": 7.7341602658852935,
+    "suite": "sunspider",
+    "name": "access-binary-trees",
+    "group": "access-binary-trees",
+    "N": 256
+  }
+]

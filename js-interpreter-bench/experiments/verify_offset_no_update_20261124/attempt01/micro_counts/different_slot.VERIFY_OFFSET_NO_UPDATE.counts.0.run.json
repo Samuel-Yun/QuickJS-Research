@@ -1,0 +1,19 @@
+{
+  "label": "VERIFY_OFFSET_NO_UPDATE",
+  "mode": "counts",
+  "phase": "micro_counts",
+  "case": "different_slot",
+  "rep": 0,
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/VERIFY_OFFSET_NO_UPDATE.counts/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/micro.js",
+    "different_slot",
+    "65536",
+    "fused"
+  ],
+  "binary_sha256": "d20cc545fc7aa881651064799f7d0d5ae9d64ffa51a924612152e5946df82496",
+  "exit_code": 0,
+  "stdout": "{\"case\":\"different_slot\",\"plain\":false,\"iterations\":65536,\"checksum\":262144,\"elapsed_ms\":3}\n",
+  "stderr": "VON_LAYOUT function=readX read=1 object=0x653dc55346a0 shape=0x653dc55248a0 hashed=1 class=1 exotic=0 cached=(nil) holder=(nil) off=0 props=0:x(flags=7),1:a(flags=7)\nVON_LAYOUT function=readX read=2 object=0x653dc55346e8 shape=0x653dc5524900 hashed=1 class=1 exotic=0 cached=0x653dc55248a0 holder=(nil) off=0 props=0:pad(flags=7),1:x(flags=7)\nVON_LAYOUT function=readX read=3 object=0x653dc55346a0 shape=0x653dc55248a0 hashed=1 class=1 exotic=0 cached=0x653dc5524900 holder=(nil) off=1 props=0:x(flags=7),1:a(flags=7)\nVON_LAYOUT function=readX read=4 object=0x653dc55346e8 shape=0x653dc5524900 hashed=1 class=1 exotic=0 cached=0x653dc55248a0 holder=(nil) off=0 props=0:pad(flags=7),1:x(flags=7)\nVON_LAYOUT function=readX read=5 object=0x653dc55346a0 shape=0x653dc55248a0 hashed=1 class=1 exotic=0 cached=0x653dc5524900 holder=(nil) off=1 props=0:x(flags=7),1:a(flags=7)\nVON_LAYOUT function=readX read=6 object=0x653dc55346e8 shape=0x653dc5524900 hashed=1 class=1 exotic=0 cached=0x653dc55248a0 holder=(nil) off=0 props=0:pad(flags=7),1:x(flags=7)\nVON_LAYOUT function=readX read=7 object=0x653dc55346a0 shape=0x653dc55248a0 hashed=1 class=1 exotic=0 cached=0x653dc5524900 holder=(nil) off=1 props=0:x(flags=7),1:a(flags=7)\nVON_LAYOUT function=readX read=8 object=0x653dc55346e8 shape=0x653dc5524900 hashed=1 class=1 exotic=0 cached=0x653dc55248a0 holder=(nil) off=0 props=0:pad(flags=7),1:x(flags=7)\n",
+  "external_wall_ms": 7.959795882925391
+}

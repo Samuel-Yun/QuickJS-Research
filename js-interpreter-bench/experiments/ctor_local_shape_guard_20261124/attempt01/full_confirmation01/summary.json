@@ -1,0 +1,514 @@
+{
+  "status": "PASS",
+  "new_release_processes": 86,
+  "aggregates": {
+    "octane": {
+      "GM_percent": 1.1875507897053161,
+      "GM_ms": {
+        "SPARSE": 47.553336283690214,
+        "CTOR_LOCAL_SHAPE_GUARD": 48.118056304258424
+      },
+      "sum_ms": {
+        "SPARSE": 8181.169278342946,
+        "CTOR_LOCAL_SHAPE_GUARD": 8398.626016862283
+      },
+      "faster": 3,
+      "slower": 14,
+      "worst": {
+        "suite": "octane",
+        "case": "EarleyBoyer.Boyer",
+        "name": "EarleyBoyer.Boyer",
+        "N": 32,
+        "SPARSE_ms": 54.529991906136274,
+        "CTOR_LOCAL_SHAPE_GUARD_ms": 57.26929837465286,
+        "change_percent": 5.023485925381799
+      },
+      "best": {
+        "suite": "octane",
+        "case": "Gameboy.Gameboy",
+        "name": "Gameboy",
+        "N": 8,
+        "SPARSE_ms": 218.85494562983513,
+        "CTOR_LOCAL_SHAPE_GUARD_ms": 210.96199586987495,
+        "change_percent": -3.606475392751729
+      }
+    },
+    "sunspider": {
+      "GM_percent": 2.0372248683395267,
+      "GM_ms": {
+        "SPARSE": 11.931700353237336,
+        "CTOR_LOCAL_SHAPE_GUARD": 12.174775920049242
+      },
+      "sum_ms": {
+        "SPARSE": 391.41387540497817,
+        "CTOR_LOCAL_SHAPE_GUARD": 397.7711431211792
+      },
+      "faster": 4,
+      "slower": 22,
+      "worst": {
+        "suite": "sunspider",
+        "case": "bitops-nsieve-bits",
+        "name": "bitops-nsieve-bits",
+        "N": 128,
+        "SPARSE_ms": 10.261277195066214,
+        "CTOR_LOCAL_SHAPE_GUARD_ms": 11.300046132877469,
+        "change_percent": 10.12319341992547
+      },
+      "best": {
+        "suite": "sunspider",
+        "case": "3d-raytrace",
+        "name": "3d-raytrace",
+        "N": 128,
+        "SPARSE_ms": 12.17065517231822,
+        "CTOR_LOCAL_SHAPE_GUARD_ms": 11.075759500265121,
+        "change_percent": -8.996193356487536
+      }
+    }
+  },
+  "rows": [
+    {
+      "suite": "octane",
+      "case": "Richards.Richards",
+      "name": "Richards",
+      "N": 1024,
+      "SPARSE_ms": 2.2815013407962397,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 2.2375721923308447,
+      "change_percent": -1.9254491627896164
+    },
+    {
+      "suite": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "name": "DeltaBlue",
+      "N": 512,
+      "SPARSE_ms": 4.8110426992643625,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 4.912096064537764,
+      "change_percent": 2.1004462356747133
+    },
+    {
+      "suite": "octane",
+      "case": "Crypto.Encrypt",
+      "name": "Crypto.Encrypt",
+      "N": 512,
+      "SPARSE_ms": 3.7419714648276567,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 3.7762003378011286,
+      "change_percent": 0.914728326904779
+    },
+    {
+      "suite": "octane",
+      "case": "Crypto.Decrypt",
+      "name": "Crypto.Decrypt",
+      "N": 32,
+      "SPARSE_ms": 70.43984396755695,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 70.79745075106621,
+      "change_percent": 0.5076768535630993
+    },
+    {
+      "suite": "octane",
+      "case": "RayTrace.RayTrace",
+      "name": "RayTrace",
+      "N": 128,
+      "SPARSE_ms": 27.82884079683572,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 28.437035218812525,
+      "change_percent": 2.185482415228601
+    },
+    {
+      "suite": "octane",
+      "case": "EarleyBoyer.Earley",
+      "name": "EarleyBoyer.Earley",
+      "N": 512,
+      "SPARSE_ms": 4.583530062576756,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 4.676338078221306,
+      "change_percent": 2.0248152488908433
+    },
+    {
+      "suite": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "name": "EarleyBoyer.Boyer",
+      "N": 32,
+      "SPARSE_ms": 54.529991906136274,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 57.26929837465286,
+      "change_percent": 5.023485925381799
+    },
+    {
+      "suite": "octane",
+      "case": "RegExp.RegExp",
+      "name": "RegExp",
+      "N": 64,
+      "SPARSE_ms": 153.9753134213388,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 154.24099464155734,
+      "change_percent": 0.17254793272707403
+    },
+    {
+      "suite": "octane",
+      "case": "Splay.Splay",
+      "name": "Splay",
+      "N": 2048,
+      "SPARSE_ms": 1.3390494702616706,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 1.3400731655419804,
+      "change_percent": 0.07644939959610131
+    },
+    {
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "name": "NavierStokes",
+      "N": 32,
+      "SPARSE_ms": 41.30012609437108,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 42.607944153249264,
+      "change_percent": 3.1666200144033763
+    },
+    {
+      "suite": "octane",
+      "case": "PdfJS.PdfJS",
+      "name": "PdfJS",
+      "N": 16,
+      "SPARSE_ms": 119.40766587853432,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 121.37774937599897,
+      "change_percent": 1.6498802509620214
+    },
+    {
+      "suite": "octane",
+      "case": "Mandreel.Mandreel",
+      "name": "Mandreel",
+      "N": 1,
+      "SPARSE_ms": 1172.9291589260101,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 1213.6320170164108,
+      "change_percent": 3.470188952218578
+    },
+    {
+      "suite": "octane",
+      "case": "Gameboy.Gameboy",
+      "name": "Gameboy",
+      "N": 8,
+      "SPARSE_ms": 218.85494562983513,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 210.96199586987495,
+      "change_percent": -3.606475392751729
+    },
+    {
+      "suite": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "name": "CodeLoad.Closure",
+      "N": 4096,
+      "SPARSE_ms": 0.4922504943970125,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 0.49078463891055435,
+      "change_percent": -0.29778649349124775
+    },
+    {
+      "suite": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "name": "CodeLoad.JQuery",
+      "N": 512,
+      "SPARSE_ms": 8.874124181689695,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 8.89927793550305,
+      "change_percent": 0.2834505501428275
+    },
+    {
+      "suite": "octane",
+      "case": "Typescript.Typescript",
+      "name": "Typescript",
+      "N": 1,
+      "SPARSE_ms": 1462.7343900203705,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 1499.2856360673904,
+      "change_percent": 2.4988300197488877
+    },
+    {
+      "suite": "octane",
+      "case": "zlib.zlib",
+      "name": "zlib",
+      "N": 1,
+      "SPARSE_ms": 4833.045531988144,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 4973.683552980423,
+      "change_percent": 2.909925430278859
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "name": "3d-cube",
+      "N": 128,
+      "SPARSE_ms": 13.962398289702833,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 14.537953406572342,
+      "change_percent": 4.122179477532706
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "name": "3d-morph",
+      "N": 128,
+      "SPARSE_ms": 10.570290429517627,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 11.082692336291075,
+      "change_percent": 4.847566963179761
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-raytrace",
+      "name": "3d-raytrace",
+      "N": 128,
+      "SPARSE_ms": 12.17065517231822,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 11.075759500265121,
+      "change_percent": -8.996193356487536
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-binary-trees",
+      "name": "access-binary-trees",
+      "N": 256,
+      "SPARSE_ms": 7.726434336043894,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 7.821875078137964,
+      "change_percent": 1.2352495076394687
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-fannkuch",
+      "name": "access-fannkuch",
+      "N": 64,
+      "SPARSE_ms": 25.420613545924425,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 26.224159717559814,
+      "change_percent": 3.1610022715766295
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "name": "access-nbody",
+      "N": 128,
+      "SPARSE_ms": 10.670100398361683,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 10.823392890393734,
+      "change_percent": 1.4366546359356525
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nsieve",
+      "name": "access-nsieve",
+      "N": 256,
+      "SPARSE_ms": 14.531072210986167,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 14.803849132731557,
+      "change_percent": 1.8771974826410798
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "name": "bitops-3bit-bits-in-byte",
+      "N": 256,
+      "SPARSE_ms": 6.678259796928614,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 6.71852366020903,
+      "change_percent": 0.6029095079369773
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bits-in-byte",
+      "name": "bitops-bits-in-byte",
+      "N": 128,
+      "SPARSE_ms": 16.594094117172062,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 16.815909336321056,
+      "change_percent": 1.3367118300206204
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bitwise-and",
+      "name": "bitops-bitwise-and",
+      "N": 256,
+      "SPARSE_ms": 6.338528683874756,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 6.781084144487977,
+      "change_percent": 6.981990343265054
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "name": "bitops-nsieve-bits",
+      "N": 128,
+      "SPARSE_ms": 10.261277195066214,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 11.300046132877469,
+      "change_percent": 10.12319341992547
+    },
+    {
+      "suite": "sunspider",
+      "case": "controlflow-recursive",
+      "name": "controlflow-recursive",
+      "N": 256,
+      "SPARSE_ms": 4.9466507229954,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 5.015214121434838,
+      "change_percent": 1.3860569965190361
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-aes",
+      "name": "crypto-aes",
+      "N": 128,
+      "SPARSE_ms": 9.517683109268546,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 9.999758968129754,
+      "change_percent": 5.065054733664653
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-md5",
+      "name": "crypto-md5",
+      "N": 256,
+      "SPARSE_ms": 4.950477152597159,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 4.976833078078926,
+      "change_percent": 0.5323916194207579
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-sha1",
+      "name": "crypto-sha1",
+      "N": 256,
+      "SPARSE_ms": 4.521260222420096,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 4.589345226529986,
+      "change_percent": 1.5058855443061736
+    },
+    {
+      "suite": "sunspider",
+      "case": "date-format-tofte",
+      "name": "date-format-tofte",
+      "N": 256,
+      "SPARSE_ms": 21.246044636704028,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 21.638312968425453,
+      "change_percent": 1.8463122827284018
+    },
+    {
+      "suite": "sunspider",
+      "case": "date-format-xparb",
+      "name": "date-format-xparb",
+      "N": 512,
+      "SPARSE_ms": 17.298939080210403,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 17.050154908094555,
+      "change_percent": -1.438146992496503
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-cordic",
+      "name": "math-cordic",
+      "N": 128,
+      "SPARSE_ms": 16.362720234319568,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 17.47124168742448,
+      "change_percent": 6.774677053879308
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-partial-sums",
+      "name": "math-partial-sums",
+      "N": 128,
+      "SPARSE_ms": 8.11081216391176,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 8.747593898326159,
+      "change_percent": 7.851023073221874
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "name": "math-spectral-norm",
+      "N": 256,
+      "SPARSE_ms": 5.922757527325302,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 5.8145728087984025,
+      "change_percent": -1.8265937450212655
+    },
+    {
+      "suite": "sunspider",
+      "case": "regexp-dna",
+      "name": "regexp-dna",
+      "N": 256,
+      "SPARSE_ms": 72.72634234791622,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 72.87794634746388,
+      "change_percent": 0.20845816612418133
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-base64",
+      "name": "string-base64",
+      "N": 256,
+      "SPARSE_ms": 10.619158898480237,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 10.806372546590865,
+      "change_percent": 1.7629800052942235
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-fasta",
+      "name": "string-fasta",
+      "N": 128,
+      "SPARSE_ms": 17.948251406662166,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 18.17708955425769,
+      "change_percent": 1.2749885345966439
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-tagcloud",
+      "name": "string-tagcloud",
+      "N": 256,
+      "SPARSE_ms": 19.129868503659964,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 19.2576022031717,
+      "change_percent": 0.6677186489143949
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-unpack-code",
+      "name": "string-unpack-code",
+      "N": 256,
+      "SPARSE_ms": 34.09497306263074,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 34.04925953876227,
+      "change_percent": -0.13407702004778477
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-validate-input",
+      "name": "string-validate-input",
+      "N": 256,
+      "SPARSE_ms": 9.094212159980088,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 9.314599929843098,
+      "change_percent": 2.4233849616225767
+    }
+  ],
+  "regressions_over_5pct": [
+    {
+      "suite": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "name": "EarleyBoyer.Boyer",
+      "N": 32,
+      "SPARSE_ms": 54.529991906136274,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 57.26929837465286,
+      "change_percent": 5.023485925381799
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bitwise-and",
+      "name": "bitops-bitwise-and",
+      "N": 256,
+      "SPARSE_ms": 6.338528683874756,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 6.781084144487977,
+      "change_percent": 6.981990343265054
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "name": "bitops-nsieve-bits",
+      "N": 128,
+      "SPARSE_ms": 10.261277195066214,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 11.300046132877469,
+      "change_percent": 10.12319341992547
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-aes",
+      "name": "crypto-aes",
+      "N": 128,
+      "SPARSE_ms": 9.517683109268546,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 9.999758968129754,
+      "change_percent": 5.065054733664653
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-cordic",
+      "name": "math-cordic",
+      "N": 128,
+      "SPARSE_ms": 16.362720234319568,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 17.47124168742448,
+      "change_percent": 6.774677053879308
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-partial-sums",
+      "name": "math-partial-sums",
+      "N": 128,
+      "SPARSE_ms": 8.11081216391176,
+      "CTOR_LOCAL_SHAPE_GUARD_ms": 8.747593898326159,
+      "change_percent": 7.851023073221874
+    }
+  ],
+  "previous_screening_unchanged": true
+}

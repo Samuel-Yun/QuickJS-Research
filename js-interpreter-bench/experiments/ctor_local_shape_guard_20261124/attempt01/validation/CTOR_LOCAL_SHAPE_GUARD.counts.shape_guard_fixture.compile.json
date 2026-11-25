@@ -1,0 +1,27 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DHAVE_CLOSEFROM",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.counts",
+    "-DLSG_TEST_LOCAL=1",
+    "-DLSG_TEST_SPARSE=1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/shape_guard_fixture.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.counts/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.counts/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.counts/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.counts/.obj/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/CTOR_LOCAL_SHAPE_GUARD.counts.shape_guard_fixture"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "In file included from /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/shape_guard_fixture.c:6:\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.counts/quickjs.c: In function ‘js_default_module_normalize_name’:\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.counts/quickjs.c:30168:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]\n30168 |     p = strrchr(base_name, '/');\n      |       ^\n"
+}

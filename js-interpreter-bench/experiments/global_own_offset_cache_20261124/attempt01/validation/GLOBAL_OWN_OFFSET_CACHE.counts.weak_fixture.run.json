@@ -1,0 +1,11 @@
+{
+  "label": "GLOBAL_OWN_OFFSET_CACHE",
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/validation/GLOBAL_OWN_OFFSET_CACHE.counts.weak_fixture"
+  ],
+  "binary_sha256": "90bca5ac313c44e1f6ac061f9ea33037f4d9b9c70377430896ca1996e281b404",
+  "exit_code": 0,
+  "stdout": "LAYOUT:{\"JSRuntime\":26792,\"JSShape\":56,\"JSObject\":64,\"entry\":24,\"table\":24576,\"head_offset\":18,\"runtime_table_offset\":2216}\nMULTI_ATOM_DELETE_GETTER_MOVE_FREE_GC_PASS\nSHAPE_COLLISION_PASS bucket=528 offsets=0,1 searched=74\nATOM_COLLISION_PASS bucket=974 offsets=1,85\nRDI_UPDATE_NATIVE_REENTRY_PASS\nWEAK_CACHE_FIXTURE_PASS\n",
+  "stderr": "GO_LAYOUT id=1 read=1 shape=0x565f4377edc0 hashed=1 class=1 exotic=0 cached=(nil) off=0 props=0:x(flags=7)\nGO_LAYOUT id=1 read=2 shape=0x565f4377ed00 hashed=1 class=1 exotic=0 cached=0x565f4377edc0 off=0 props=0:x(flags=7),1:y(flags=7)\nGO_LAYOUT id=1 read=3 shape=0x565f43782b80 hashed=1 class=1 exotic=0 cached=0x565f4377eca0 off=1 props=0:x(flags=7),1:y(flags=7),2:reenter_0(flags=7),3:reenter_1(flags=7),4:reenter_2(flags=7),5:reenter_3(flags=7),6:reenter_4(flags=7),7:reenter_5(flags=7),8:reenter_6(flags=7),9:reenter_7(flags=7),10:reenter_8(flags=7),11:reenter_9(flags=7),12:reenter_10(flags=7),13:reenter_11(flags=7),14:reenter_12(flags=7),15:reenter_13(flags=7),16:reenter_14(flags=7),17:reenter_15(flags=7),18:reenter_16(flags=7),19:reenter_17(flags=7),20:reenter_18(flags=7),21:reenter_19(flags=7),22:reenter_20(flags=7),23:reenter_21(flags=7),24:reenter_22(flags=7),25:reenter_23(flags=7)\n"
+}

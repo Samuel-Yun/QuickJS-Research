@@ -1,0 +1,523 @@
+{
+  "status": "PASS",
+  "new_release_processes": 86,
+  "aggregates": {
+    "octane": {
+      "GM_percent": 1.4031057558686166,
+      "GM_ms": {
+        "SPARSE": 47.434555295347245,
+        "GLOBAL_OWN_OFFSET_CACHE": 48.10011227096696
+      },
+      "sum_ms": {
+        "SPARSE": 8177.838332224172,
+        "GLOBAL_OWN_OFFSET_CACHE": 8184.221596802614
+      },
+      "faster": 4,
+      "slower": 13,
+      "worst": {
+        "suite": "octane",
+        "case": "Gameboy.Gameboy",
+        "name": "Gameboy",
+        "N": 8,
+        "SPARSE_ms": 213.93297700583935,
+        "GLOBAL_OWN_OFFSET_CACHE_ms": 227.01893812417984,
+        "change_percent": 6.116850848096833
+      },
+      "best": {
+        "suite": "octane",
+        "case": "CodeLoad.CodeLoadClosure",
+        "name": "CodeLoad.Closure",
+        "N": 4096,
+        "SPARSE_ms": 0.509722382586915,
+        "GLOBAL_OWN_OFFSET_CACHE_ms": 0.4919704499479849,
+        "change_percent": -3.4826668879707645
+      }
+    },
+    "sunspider": {
+      "GM_percent": 2.671137682078606,
+      "GM_ms": {
+        "SPARSE": 11.876316739486699,
+        "GLOBAL_OWN_OFFSET_CACHE": 12.19354951115814
+      },
+      "sum_ms": {
+        "SPARSE": 390.42465951340273,
+        "GLOBAL_OWN_OFFSET_CACHE": 398.58645471255295
+      },
+      "faster": 5,
+      "slower": 21,
+      "worst": {
+        "suite": "sunspider",
+        "case": "access-nbody",
+        "name": "access-nbody",
+        "N": 128,
+        "SPARSE_ms": 10.441511273384094,
+        "GLOBAL_OWN_OFFSET_CACHE_ms": 11.87595338281244,
+        "change_percent": 13.737878280942017
+      },
+      "best": {
+        "suite": "sunspider",
+        "case": "bitops-3bit-bits-in-byte",
+        "name": "bitops-3bit-bits-in-byte",
+        "N": 256,
+        "SPARSE_ms": 6.677155445329845,
+        "GLOBAL_OWN_OFFSET_CACHE_ms": 6.619996699038893,
+        "change_percent": -0.8560343810915749
+      }
+    }
+  },
+  "rows": [
+    {
+      "suite": "octane",
+      "case": "Richards.Richards",
+      "name": "Richards",
+      "N": 1024,
+      "SPARSE_ms": 2.239433153299615,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 2.3130702401977032,
+      "change_percent": 3.288202051916156
+    },
+    {
+      "suite": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "name": "DeltaBlue",
+      "N": 512,
+      "SPARSE_ms": 4.803496365202591,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 4.78234410751611,
+      "change_percent": -0.44035127911643546
+    },
+    {
+      "suite": "octane",
+      "case": "Crypto.Encrypt",
+      "name": "Crypto.Encrypt",
+      "N": 512,
+      "SPARSE_ms": 3.738644589902833,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 3.8642083262093365,
+      "change_percent": 3.3585363167609072
+    },
+    {
+      "suite": "octane",
+      "case": "Crypto.Decrypt",
+      "name": "Crypto.Decrypt",
+      "N": 32,
+      "SPARSE_ms": 70.49553315714002,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 72.73205281049013,
+      "change_percent": 3.17256931494474
+    },
+    {
+      "suite": "octane",
+      "case": "RayTrace.RayTrace",
+      "name": "RayTrace",
+      "N": 128,
+      "SPARSE_ms": 28.001723273657262,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 27.940118703059852,
+      "change_percent": -0.22000278338356605
+    },
+    {
+      "suite": "octane",
+      "case": "EarleyBoyer.Earley",
+      "name": "EarleyBoyer.Earley",
+      "N": 512,
+      "SPARSE_ms": 4.57338941982016,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 4.6686658437829465,
+      "change_percent": 2.0832781820388613
+    },
+    {
+      "suite": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "name": "EarleyBoyer.Boyer",
+      "N": 32,
+      "SPARSE_ms": 54.656817216426134,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 57.28558962419629,
+      "change_percent": 4.809596573033037
+    },
+    {
+      "suite": "octane",
+      "case": "RegExp.RegExp",
+      "name": "RegExp",
+      "N": 64,
+      "SPARSE_ms": 154.2192051410675,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 154.86348648555577,
+      "change_percent": 0.4177698516205641
+    },
+    {
+      "suite": "octane",
+      "case": "Splay.Splay",
+      "name": "Splay",
+      "N": 2048,
+      "SPARSE_ms": 1.3309574594604783,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 1.3327827202156186,
+      "change_percent": 0.13713892522757565
+    },
+    {
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "name": "NavierStokes",
+      "N": 32,
+      "SPARSE_ms": 40.31833678111434,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 42.50381803140044,
+      "change_percent": 5.4205640032994
+    },
+    {
+      "suite": "octane",
+      "case": "PdfJS.PdfJS",
+      "name": "PdfJS",
+      "N": 16,
+      "SPARSE_ms": 119.35383743792772,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 121.68183931708336,
+      "change_percent": 1.950504423761279
+    },
+    {
+      "suite": "octane",
+      "case": "Mandreel.Mandreel",
+      "name": "Mandreel",
+      "N": 1,
+      "SPARSE_ms": 1199.984118938446,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 1173.1895090341568,
+      "change_percent": -2.2329137095574936
+    },
+    {
+      "suite": "octane",
+      "case": "Gameboy.Gameboy",
+      "name": "Gameboy",
+      "N": 8,
+      "SPARSE_ms": 213.93297700583935,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 227.01893812417984,
+      "change_percent": 6.116850848096833
+    },
+    {
+      "suite": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "name": "CodeLoad.Closure",
+      "N": 4096,
+      "SPARSE_ms": 0.509722382586915,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 0.4919704499479849,
+      "change_percent": -3.4826668879707645
+    },
+    {
+      "suite": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "name": "CodeLoad.JQuery",
+      "N": 512,
+      "SPARSE_ms": 8.885024908231571,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 8.923780916025862,
+      "change_percent": 0.43619470057292276
+    },
+    {
+      "suite": "octane",
+      "case": "Typescript.Typescript",
+      "name": "Typescript",
+      "N": 1,
+      "SPARSE_ms": 1452.3449320793152,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 1457.5062589645386,
+      "change_percent": 0.3553788615376696
+    },
+    {
+      "suite": "octane",
+      "case": "zlib.zlib",
+      "name": "zlib",
+      "N": 1,
+      "SPARSE_ms": 4818.450182914734,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 4823.123163104057,
+      "change_percent": 0.09698097960819663
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "name": "3d-cube",
+      "N": 128,
+      "SPARSE_ms": 13.764550929889083,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 14.885860281065106,
+      "change_percent": 8.146356222498707
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-morph",
+      "name": "3d-morph",
+      "N": 128,
+      "SPARSE_ms": 10.844600203447044,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 10.911693922244012,
+      "change_percent": 0.6186831929096082
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-raytrace",
+      "name": "3d-raytrace",
+      "N": 128,
+      "SPARSE_ms": 10.822565929032862,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 11.876458335667849,
+      "change_percent": 9.737916253370106
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-binary-trees",
+      "name": "access-binary-trees",
+      "N": 256,
+      "SPARSE_ms": 7.71221615979448,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 7.993669492192566,
+      "change_percent": 3.649448181514492
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-fannkuch",
+      "name": "access-fannkuch",
+      "N": 64,
+      "SPARSE_ms": 25.405962640419602,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 26.54494764097035,
+      "change_percent": 4.483140500012706
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "name": "access-nbody",
+      "N": 128,
+      "SPARSE_ms": 10.441511273384094,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 11.87595338281244,
+      "change_percent": 13.737878280942017
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nsieve",
+      "name": "access-nsieve",
+      "N": 256,
+      "SPARSE_ms": 14.503913226537406,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 14.714160312432796,
+      "change_percent": 1.4495886910761868
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-3bit-bits-in-byte",
+      "name": "bitops-3bit-bits-in-byte",
+      "N": 256,
+      "SPARSE_ms": 6.677155445329845,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 6.619996699038893,
+      "change_percent": -0.8560343810915749
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bits-in-byte",
+      "name": "bitops-bits-in-byte",
+      "N": 128,
+      "SPARSE_ms": 16.6276719532907,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 16.78779656253755,
+      "change_percent": 0.9630007718257838
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bitwise-and",
+      "name": "bitops-bitwise-and",
+      "N": 256,
+      "SPARSE_ms": 6.345234226901084,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 6.783063781447709,
+      "change_percent": 6.900132270774395
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "name": "bitops-nsieve-bits",
+      "N": 128,
+      "SPARSE_ms": 10.200026320293546,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 11.235397547483444,
+      "change_percent": 10.150672112776494
+    },
+    {
+      "suite": "sunspider",
+      "case": "controlflow-recursive",
+      "name": "controlflow-recursive",
+      "N": 256,
+      "SPARSE_ms": 4.963324214797467,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 4.9930671798065305,
+      "change_percent": 0.5992549291942151
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-aes",
+      "name": "crypto-aes",
+      "N": 128,
+      "SPARSE_ms": 9.518179242499173,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 9.748165093362331,
+      "change_percent": 2.4162798892908066
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-md5",
+      "name": "crypto-md5",
+      "N": 256,
+      "SPARSE_ms": 4.956243550404906,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 4.96763601154089,
+      "change_percent": 0.22986080123226227
+    },
+    {
+      "suite": "sunspider",
+      "case": "crypto-sha1",
+      "name": "crypto-sha1",
+      "N": 256,
+      "SPARSE_ms": 4.518060101661831,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 4.548903988208622,
+      "change_percent": 0.6826798637637799
+    },
+    {
+      "suite": "sunspider",
+      "case": "date-format-tofte",
+      "name": "date-format-tofte",
+      "N": 256,
+      "SPARSE_ms": 21.539188344031572,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 21.715591203421354,
+      "change_percent": 0.8189856394410722
+    },
+    {
+      "suite": "sunspider",
+      "case": "date-format-xparb",
+      "name": "date-format-xparb",
+      "N": 512,
+      "SPARSE_ms": 17.27701593749225,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 17.500675996067002,
+      "change_percent": 1.2945525974158212
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-cordic",
+      "name": "math-cordic",
+      "N": 128,
+      "SPARSE_ms": 16.381605758331716,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 16.571692124940455,
+      "change_percent": 1.1603646761677133
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-partial-sums",
+      "name": "math-partial-sums",
+      "N": 128,
+      "SPARSE_ms": 8.058721070177853,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 8.253221438266337,
+      "change_percent": 2.4135389026957776
+    },
+    {
+      "suite": "sunspider",
+      "case": "math-spectral-norm",
+      "name": "math-spectral-norm",
+      "N": 256,
+      "SPARSE_ms": 5.856189273763448,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 5.817304784897715,
+      "change_percent": -0.663989619323635
+    },
+    {
+      "suite": "sunspider",
+      "case": "regexp-dna",
+      "name": "regexp-dna",
+      "N": 256,
+      "SPARSE_ms": 72.92287707841024,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 72.77491312101483,
+      "change_percent": -0.20290471704278445
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-base64",
+      "name": "string-base64",
+      "N": 256,
+      "SPARSE_ms": 10.528760113287717,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 10.575286906212568,
+      "change_percent": 0.44190191840474125
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-fasta",
+      "name": "string-fasta",
+      "N": 128,
+      "SPARSE_ms": 17.852726492099464,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 18.34268814139068,
+      "change_percent": 2.7444639871004872
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-tagcloud",
+      "name": "string-tagcloud",
+      "N": 256,
+      "SPARSE_ms": 19.34625732060522,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 19.239040601532906,
+      "change_percent": -0.5541987646267788
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-unpack-code",
+      "name": "string-unpack-code",
+      "N": 256,
+      "SPARSE_ms": 34.14941082056612,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 33.9753753435798,
+      "change_percent": -0.5096295157206887
+    },
+    {
+      "suite": "sunspider",
+      "case": "string-validate-input",
+      "name": "string-validate-input",
+      "N": 256,
+      "SPARSE_ms": 9.21069188695401,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 9.333894820418209,
+      "change_percent": 1.3376078038035644
+    }
+  ],
+  "regressions_over_5pct": [
+    {
+      "suite": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "name": "NavierStokes",
+      "N": 32,
+      "SPARSE_ms": 40.31833678111434,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 42.50381803140044,
+      "change_percent": 5.4205640032994
+    },
+    {
+      "suite": "octane",
+      "case": "Gameboy.Gameboy",
+      "name": "Gameboy",
+      "N": 8,
+      "SPARSE_ms": 213.93297700583935,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 227.01893812417984,
+      "change_percent": 6.116850848096833
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-cube",
+      "name": "3d-cube",
+      "N": 128,
+      "SPARSE_ms": 13.764550929889083,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 14.885860281065106,
+      "change_percent": 8.146356222498707
+    },
+    {
+      "suite": "sunspider",
+      "case": "3d-raytrace",
+      "name": "3d-raytrace",
+      "N": 128,
+      "SPARSE_ms": 10.822565929032862,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 11.876458335667849,
+      "change_percent": 9.737916253370106
+    },
+    {
+      "suite": "sunspider",
+      "case": "access-nbody",
+      "name": "access-nbody",
+      "N": 128,
+      "SPARSE_ms": 10.441511273384094,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 11.87595338281244,
+      "change_percent": 13.737878280942017
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-bitwise-and",
+      "name": "bitops-bitwise-and",
+      "N": 256,
+      "SPARSE_ms": 6.345234226901084,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 6.783063781447709,
+      "change_percent": 6.900132270774395
+    },
+    {
+      "suite": "sunspider",
+      "case": "bitops-nsieve-bits",
+      "name": "bitops-nsieve-bits",
+      "N": 128,
+      "SPARSE_ms": 10.200026320293546,
+      "GLOBAL_OWN_OFFSET_CACHE_ms": 11.235397547483444,
+      "change_percent": 10.150672112776494
+    }
+  ],
+  "previous_screening_unchanged": true
+}

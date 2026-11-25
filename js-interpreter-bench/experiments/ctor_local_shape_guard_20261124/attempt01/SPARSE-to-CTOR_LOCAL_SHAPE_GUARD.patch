@@ -1,0 +1,198 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -1,5 +1,11 @@
+ typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
+ typedef struct FullPlan FullPlan;
++typedef struct LocalShapeGuard {
++    JSShape *callee_shape;
++    JSShape *chain[4];
++    uint32_t prototype_offset;
++    uint8_t depth;
++} LocalShapeGuard;
+ struct FourSite {
+     FullPlan *plan;
+     JSValue negative;
+@@ -15,10 +21,12 @@
+     FourRecipe recipe;
+     uint32_t pc;
+     uint16_t argc;
++    LocalShapeGuard *local;
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+ };
++#include "local_shape_guard.inc"
+ static inline __exception int js_poll_interrupts(JSContext*ctx);
+ #ifdef FOUR_DIAG
+ static FourSite *four_ctor_observer;
+@@ -68,6 +76,27 @@
+         }
+     }return 1;
+ }
++/* A failed optional guard falls back to the complete old check. */
++static force_inline int plan_validate_proto(JSObject *f, FullPlan *s)
++{
++    if (s->local) {
++        LSG_COUNT(local_attempts);
++        if (local_shape_guard_matches(f, s)) {
++            LSG_COUNT(local_successes);
++#ifdef CTOR_LOCAL_DIAG
++            lsg_this_local = 1;
++#endif
++            return 1;
++        }
++        LSG_COUNT(local_failures);
++    } else {
++        LSG_COUNT(no_local_record);
++    }
++    LSG_FULL_BEGIN();
++    int ok = plan_proto(f) == s->final->proto && plan_chain(s->final->proto, &s->recipe);
++    LSG_FULL_END(ok);
++    return ok;
++}
+ static int plan_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
+ {
+     if(ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT ||
+@@ -116,12 +145,15 @@
+ #endif
+         slot->plan=s;FOLLOW(1);
+     }
++    LocalShapeGuard *local=local_shape_guard_build(ctx,f,proto), *oldlocal=s->local;
+     JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
+     s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
++    s->local=local;
+     JSValue negative=slot->negative;slot->negative=JS_UNDEFINED;
+     FOUR_COUNT(s,fill);
+     JS_FreeValue(ctx,negative);
+     JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldinitial);js_free_shape_null(ctx->rt,oldfinal);
++    local_shape_guard_free(ctx->rt,oldlocal);
+ #endif
+ }
+ static int plan_try(JSContext*ctx,FullPlan*s,JSValueConst callee,JSValueConst target,JSValue*args,JSValue*out)
+@@ -131,7 +163,7 @@
+     JSObject*f;
+     if(s->final && JS_VALUE_GET_TAG(s->callee)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(callee)==JS_TAG_OBJECT &&
+        JS_VALUE_GET_OBJ(s->callee)==JS_VALUE_GET_OBJ(callee) && plan_base(ctx,callee,target,s->argc,&f) &&
+-       plan_proto(f)==s->final->proto && plan_chain(s->final->proto,&s->recipe)){
++       plan_validate_proto(f,s)){
+         /* The two old entries each poll once. Hooks were excluded above. */
+         if(js_poll_interrupts(ctx) || js_poll_interrupts(ctx))return 0;
+         *out=JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6705,7 +6705,7 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
+-            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}}
++            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);if(fs->local){mark_func(rt,&fs->local->callee_shape->header);for(unsigned li=0;li<fs->local->depth;li++)mark_func(rt,&fs->local->chain[li]->header);}}}
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -36526,7 +36526,7 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+-    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
++    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);local_shape_guard_free(rt,fs->local);js_free_rt(rt,fs);}}
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+--- /dev/null
++++ b/local_shape_guard.inc
+@@ -0,0 +1,95 @@
++/* Optional local dependency record; never created for an unhashed shape. */
++#ifndef LSG_COUNT
++#define LSG_COUNT(k) ((void)0)
++#define LSG_ADD(k,n) ((void)0)
++#define LSG_FULL_BEGIN() ((void)0)
++#define LSG_FULL_END(ok) ((void)0)
++#endif
++
++static void local_shape_guard_free(JSRuntime *rt, LocalShapeGuard *g)
++{
++    if (!g) return;
++    LSG_COUNT(records_freed);
++    LSG_ADD(shape_refs_released, 1 + g->depth);
++    js_free_shape_null(rt, g->callee_shape);
++    for (unsigned i = 0; i < g->depth; i++)
++        js_free_shape_null(rt, g->chain[i]);
++    js_free_rt(rt, g);
++}
++
++static LocalShapeGuard *local_shape_guard_build(JSContext *ctx,
++                                               JSObject *f, JSObject *proto)
++{
++    JSShape *chain[4];
++    JSObject *p = proto;
++    JSProperty *pr;
++    JSShapeProperty *desc;
++    unsigned depth = 0;
++    LSG_COUNT(build_attempts);
++    if (!f->shape->is_hashed) {
++        LSG_COUNT(build_callee_unhashed);
++        return NULL;
++    }
++    LSG_COUNT(build_proto_lookups);
++    desc = find_own_property(&pr, f, JS_ATOM_prototype);
++    if (!desc || (desc->flags & JS_PROP_TMASK) ||
++        JS_VALUE_GET_TAG(pr->u.value) != JS_TAG_OBJECT ||
++        JS_VALUE_GET_OBJ(pr->u.value) != proto) {
++        LSG_COUNT(build_prototype_descriptor);
++        return NULL;
++    }
++    while (p) {
++        if (depth == 4) {
++            LSG_COUNT(build_deep);
++            return NULL;
++        }
++        if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) {
++            LSG_COUNT(build_special);
++            return NULL;
++        }
++        if (!p->shape->is_hashed) {
++            LSG_COUNT(build_chain_unhashed);
++            return NULL;
++        }
++        chain[depth++] = p->shape;
++        p = p->shape->proto;
++    }
++#ifdef CTOR_LOCAL_DIAG
++    /* Fault injection is diagnostic-only and never enters the Release build. */
++    if (getenv("LSG_FAIL_RECORD_ALLOC")) {
++        LSG_COUNT(record_allocation_failures);
++        return NULL;
++    }
++#endif
++    LocalShapeGuard *g = js_mallocz_rt(ctx->rt, sizeof(*g));
++    if (!g) {
++        LSG_COUNT(record_allocation_failures);
++        return NULL;
++    }
++    g->prototype_offset = pr - f->prop;
++    g->depth = depth;
++    g->callee_shape = js_dup_shape(f->shape);
++    for (unsigned i = 0; i < depth; i++)
++        g->chain[i] = js_dup_shape(chain[i]);
++    LSG_COUNT(records_built);
++    LSG_ADD(record_requested_bytes, sizeof(*g));
++    LSG_ADD(record_usable_bytes, js_malloc_usable_size_rt(ctx->rt, g));
++    LSG_ADD(shape_refs_held, 1 + depth);
++    return g;
++}
++
++static force_inline int local_shape_guard_matches(JSObject *f, FullPlan *s)
++{
++    LocalShapeGuard *g = s->local;
++    if (f->shape != g->callee_shape || !f->shape->is_hashed) return 0;
++    JSValueConst value = f->prop[g->prototype_offset].u.value;
++    if (JS_VALUE_GET_TAG(value) != JS_TAG_OBJECT ||
++        JS_VALUE_GET_OBJ(value) != s->final->proto) return 0;
++    JSObject *p = JS_VALUE_GET_OBJ(value);
++    for (unsigned i = 0; i < g->depth; i++) {
++        if (!p || p->class_id != JS_CLASS_OBJECT || p->is_exotic ||
++            p->shape != g->chain[i] || !p->shape->is_hashed) return 0;
++        p = p->shape->proto;
++    }
++    return p == NULL;
++}
