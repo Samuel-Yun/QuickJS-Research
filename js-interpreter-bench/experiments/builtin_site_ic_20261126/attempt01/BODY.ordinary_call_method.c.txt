@@ -1,0 +1,19 @@
+        CASE(OP_call_method):
+        CASE(OP_tail_call_method):
+            {
+                call_argc = get_u16(pc);
+                pc += 2;
+                call_argv = sp - call_argc;
+                sf->cur_pc = pc;
+                ret_val = JS_CallInternal(ctx, call_argv[-1], call_argv[-2],
+                                          JS_UNDEFINED, call_argc, call_argv, 0);
+                if (unlikely(JS_IsException(ret_val)))
+                    goto exception;
+                if (opcode == OP_tail_call_method)
+                    goto done;
+                for(i = -2; i < call_argc; i++)
+                    JS_FreeValue(ctx, call_argv[i]);
+                sp -= call_argc + 2;
+                *sp++ = ret_val;
+            }
+            BREAK;

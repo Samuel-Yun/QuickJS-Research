@@ -1,0 +1,38 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-DHAVE_CLOSEFROM",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02",
+    "-c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind01/BODY.loader.c",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind01/BODY.loader.o"
+  ],
+  "link": [
+    "gcc",
+    "-g",
+    "-rdynamic",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind01/BODY.qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind01/BODY.loader.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/repl.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/cutils.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/quickjs-libc.o",
+    "-lm",
+    "-lpthread",
+    "-ldl"
+  ],
+  "interpreter_object": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/.obj/quickjs.o",
+  "interpreter_object_sha256": "0759e595310d8d3bf245a54bf13c93dece1b15208fa7bd893c21d50b497eeeb8",
+  "binary_sha256": "d62a3a7d1b6731ac3e5733dd4490f6736f300799919268ea21cb02ac04f8f8a6",
+  "not_a_timing_build": true
+}

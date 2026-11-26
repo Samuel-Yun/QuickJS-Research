@@ -1,0 +1,12 @@
+BUILD_PASS SPARSE release
+Traceback (most recent call last):
+  File "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/build.py", line 48, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/build.py", line 47, in main
+    build(l,d,mode,HERE/'candidate')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/common.py", line 56, in build
+    assert r.returncode==0,(label,mode,folder/f'{label}.{mode}.build.log')
+           ^^^^^^^^^^^^^^^
+AssertionError: ('BODY', 'release', PosixPath('/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/BODY.release.build.log'))

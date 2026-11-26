@@ -1,0 +1,19 @@
+{
+  "label": "SHAM",
+  "case": "string-tagcloud",
+  "rep": 1,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.counts.rev02/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/counts01/raw/string-tagcloud.js"
+  ],
+  "script_sha256": "d258b7c941fb45280184a491f5ed9572dea182db0367e6b09ba83459cf867bc4",
+  "binary_sha256": "9d5da7d3e2e27174948fb26d3d391be04b7ecf342ed878520231652173396d86",
+  "control": {
+    "QJS_BUILTIN_MODE": "sham"
+  },
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"string-tagcloud\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"315241\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1222179124.171552,\"stop_ms\":1222184129.329818,\"elapsed_ms\":5005.158266067505,\"elapsed_per_call_ms\":19.55139947682619,\"warmup_calls\":0}\n",
+  "stderr": "BIC_COUNTS:{\"global\":[6934784,6934784,0,0,0,0,0,0,1,1,0,0,0,0,0,0],\"lifetime\":[1,1,1,1,0,0,0,0],\"sites\":[{\"function\":\"makeTagCloud\",\"file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/counts01/raw/string-tagcloud.js\",\"line\":253,\"pc\":58,\"c\":[8,8,1,6934776,6934776,0,0,1,6934776,0,0,0,0,0,0,0]}]}\nFOUR_COUNTS:{\"attempts\":0,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":0,\"overflow\":0,\"sites\":[],\"follow\":[0,0,0,0,0,0,0,0,5,0,0,200,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 5014.437491074204
+}
