@@ -1,0 +1,92 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -8218,6 +8218,25 @@
+     return ret;
+ }
+ 
++static int census_run;
++static uint64_t census_instance_op, census_helper, census_default, census_primitive, census_direct;
++static uint64_t census_call, census_call_js, census_method_sites_call;
++static JSValue js_function_hasInstance(JSContext *, JSValueConst, int, JSValueConst *);
++static JSValue js_function_call(JSContext *, JSValueConst, int, JSValueConst *);
++static int census_builtin(JSValueConst v, JSCFunction *fn) {
++    if (JS_VALUE_GET_TAG(v) != JS_TAG_OBJECT) return 0;
++    JSObject *p = JS_VALUE_GET_OBJ(v);
++    return p->class_id == JS_CLASS_C_FUNCTION && p->u.cfunc.cproto == JS_CFUNC_generic &&
++           p->u.cfunc.c_function.generic == fn;
++}
++JSValue round_census_toggle(JSContext *ctx, JSValueConst self, int argc, JSValueConst *argv) {
++    census_run = argc && JS_ToBool(ctx, argv[0]);
++    if (!census_run) fprintf(stderr,"ROUND,%llu,%llu,%llu,%llu,%llu,%llu,%llu,%llu\n",
++      (unsigned long long)census_instance_op,(unsigned long long)census_helper,(unsigned long long)census_default,
++      (unsigned long long)census_primitive,(unsigned long long)census_direct,(unsigned long long)census_call,
++      (unsigned long long)census_call_js,(unsigned long long)census_method_sites_call);
++    return JS_UNDEFINED;
++}
+ /* return TRUE, FALSE or (-1) in case of exception */
+ int JS_IsInstanceOf(JSContext *ctx, JSValueConst val, JSValueConst obj)
+ {
+@@ -8226,6 +8245,21 @@
+     if (!JS_IsObject(obj))
+         goto fail;
+     method = JS_GetProperty(ctx, obj, JS_ATOM_Symbol_hasInstance);
++    if (census_run) {
++        census_helper++;
++        if (census_builtin(method, js_function_hasInstance)) {
++            census_default++;
++            JSObject *ctor = JS_VALUE_GET_OBJ(obj);
++            if (JS_VALUE_GET_TAG(val) != JS_TAG_OBJECT) census_primitive++;
++            else if ((ctor->class_id == JS_CLASS_BYTECODE_FUNCTION || ctor->class_id == JS_CLASS_C_FUNCTION) &&
++                     !JS_VALUE_GET_OBJ(val)->is_exotic) {
++                JSProperty *pr;
++                JSShapeProperty *d = find_own_property(&pr, ctor, JS_ATOM_prototype);
++                if (d && !(d->flags & JS_PROP_TMASK) && JS_IsObject(pr->u.value) &&
++                    JS_VALUE_GET_OBJ(val)->shape->proto == JS_VALUE_GET_OBJ(pr->u.value)) census_direct++;
++            }
++        }
++    }
+     if (JS_IsException(method))
+         return -1;
+     if (!JS_IsNull(method) && !JS_IsUndefined(method)) {
+@@ -18382,6 +18416,13 @@
+                 pc += 2;
+                 call_argv = sp - call_argc;
+                 sf->cur_pc = pc;
++                if (census_run && census_builtin(call_argv[-1], js_function_call)) {
++                    census_method_sites_call++;
++                    if (JS_IsObject(call_argv[-2])) {
++                        JSClassID k = JS_VALUE_GET_OBJ(call_argv[-2])->class_id;
++                        if (k == JS_CLASS_BYTECODE_FUNCTION || k == JS_CLASS_COLD_BYTECODE_FUNCTION) census_call_js++;
++                    }
++                }
+                 ret_val = JS_CallInternal(ctx, call_argv[-1], call_argv[-2],
+                                           JS_UNDEFINED, call_argc, call_argv, 0);
+                 if (unlikely(JS_IsException(ret_val)))
+@@ -20600,6 +20641,7 @@
+             sp--;
+             BREAK;
+         CASE(OP_instanceof):
++            if(census_run) census_instance_op++;
+             sf->cur_pc = pc;
+             if (js_operator_instanceof(ctx, sp))
+                 goto exception;
+@@ -41484,6 +41526,7 @@
+ static JSValue js_function_call(JSContext *ctx, JSValueConst this_val,
+                                 int argc, JSValueConst *argv)
+ {
++    if (census_run) census_call++;
+     if (argc <= 0) {
+         return JS_Call(ctx, this_val, JS_UNDEFINED, 0, NULL);
+     } else {
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4108,6 +4108,9 @@
+                       JS_NewCFunction(ctx, js_console_log, "log", 1));
+     JS_SetPropertyStr(ctx, global_obj, "console", console);
+ 
++    extern JSValue round_census_toggle(JSContext *, JSValueConst, int, JSValueConst *);
++    JS_SetPropertyStr(ctx, global_obj, "__roundCensus",
++                      JS_NewCFunction(ctx, round_census_toggle, "__roundCensus", 1));
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));

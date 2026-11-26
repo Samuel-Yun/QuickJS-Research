@@ -1,0 +1,29 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/serialization.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/.obj/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/.obj/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/c_validation01/CALL_FIELD.release.serialization"
+  ],
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+    "QJS_CALL_MODE": "field"
+  },
+  "source_sha256": "8e4fd73690bbfa38d2b68959e1d94db1c8a5a9b152f86be1c440fd5b4687255c",
+  "binary_sha256": "c14dfbb384a12ef2a8f84ee6d3adacdfafda05c8f7670560d7bb6933dd57193a",
+  "exit_code": 0,
+  "stdout": "PREPARED_NORMAL_AND_ROM_PASS\n",
+  "stderr": ""
+}

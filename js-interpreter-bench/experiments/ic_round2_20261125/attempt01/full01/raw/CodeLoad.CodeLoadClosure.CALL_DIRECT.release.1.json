@@ -1,0 +1,19 @@
+{
+  "label": "CALL_DIRECT",
+  "case": "CodeLoad.CodeLoadClosure",
+  "rep": 1,
+  "mode": "release",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/CodeLoad.Closure.js"
+  ],
+  "script_sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+  "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+  "control": {
+    "QJS_CALL_MODE": "direct"
+  },
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"CodeLoad.CodeLoadClosure\",\"N\":4096,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159937451.660307,\"stop_ms\":1159939477.450466,\"elapsed_ms\":2025.7901589870453,\"elapsed_per_Run_ms\":0.4945776755339466,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "",
+  "wall_ms": 2119.7385259438306
+}

@@ -1,0 +1,1232 @@
+[
+  {
+    "label": "SPARSE",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159129157.319922,\"stop_ms\":1159131613.427843,\"elapsed_ms\":2456.1079211235046,\"elapsed_per_Run_ms\":4.797085783444345,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2463.263504905626,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 4.797085783444345,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159131626.870722,\"stop_ms\":1159134288.182428,\"elapsed_ms\":2661.311705827713,\"elapsed_per_Run_ms\":5.197874425444752,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2668.299767188728,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.197874425444752,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159134301.341998,\"stop_ms\":1159136983.504498,\"elapsed_ms\":2682.1624999046326,\"elapsed_per_Run_ms\":5.2385986326262355,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2688.964731991291,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.2385986326262355,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159136996.451747,\"stop_ms\":1159139652.35017,\"elapsed_ms\":2655.8984229564667,\"elapsed_per_Run_ms\":5.187301607336849,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2662.7520830370486,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.187301607336849,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159139665.525908,\"stop_ms\":1159142309.762524,\"elapsed_ms\":2644.236615896225,\"elapsed_per_Run_ms\":5.164524640422314,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2651.0251509025693,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.164524640422314,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "Typescript.Typescript",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159142371.176214,\"stop_ms\":1159143859.58794,\"elapsed_ms\":1488.4117259979248,\"elapsed_per_Run_ms\":1488.4117259979248,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1627.2068640682846,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1488.4117259979248,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "Typescript.Typescript",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159144007.222427,\"stop_ms\":1159145506.344765,\"elapsed_ms\":1499.1223380565643,\"elapsed_per_Run_ms\":1499.1223380565643,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1639.0648358501494,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1499.1223380565643,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "Typescript.Typescript",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159145654.486523,\"stop_ms\":1159147147.630133,\"elapsed_ms\":1493.1436100006104,\"elapsed_per_Run_ms\":1493.1436100006104,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1632.1275250520557,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1493.1436100006104,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "Typescript.Typescript",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159147295.293693,\"stop_ms\":1159148786.173635,\"elapsed_ms\":1490.8799419403076,\"elapsed_per_Run_ms\":1490.8799419403076,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1630.519081139937,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1490.8799419403076,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Typescript.Typescript",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159148934.780368,\"stop_ms\":1159150391.125202,\"elapsed_ms\":1456.3448338508606,\"elapsed_per_Run_ms\":1456.3448338508606,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1596.5730478055775,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1456.3448338508606,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159150491.760679,\"stop_ms\":1159153144.41871,\"elapsed_ms\":2652.658030986786,\"elapsed_per_Run_ms\":5.180972716771066,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2660.2572498377413,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.180972716771066,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159153158.782774,\"stop_ms\":1159155822.371014,\"elapsed_ms\":2663.588240146637,\"elapsed_per_Run_ms\":5.2023207815364,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2671.030935132876,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.2023207815364,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159155836.296119,\"stop_ms\":1159158484.978118,\"elapsed_ms\":2648.6819989681244,\"elapsed_per_Run_ms\":5.173207029234618,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2655.727325938642,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.173207029234618,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159158498.676395,\"stop_ms\":1159161176.751838,\"elapsed_ms\":2678.0754430294037,\"elapsed_per_Run_ms\":5.230616099666804,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2685.3348850272596,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.230616099666804,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159161190.785864,\"stop_ms\":1159163650.28077,\"elapsed_ms\":2459.494905948639,\"elapsed_per_Run_ms\":4.803700988180935,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2466.885000001639,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 4.803700988180935,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "Typescript.Typescript",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159163712.137215,\"stop_ms\":1159165210.166533,\"elapsed_ms\":1498.0293180942535,\"elapsed_per_Run_ms\":1498.0293180942535,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1636.7675210349262,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1498.0293180942535,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "Typescript.Typescript",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159165357.886489,\"stop_ms\":1159166850.783551,\"elapsed_ms\":1492.8970620632172,\"elapsed_per_Run_ms\":1492.8970620632172,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1632.2125240694731,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1492.8970620632172,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "Typescript.Typescript",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159166998.455787,\"stop_ms\":1159168488.181716,\"elapsed_ms\":1489.7259290218353,\"elapsed_per_Run_ms\":1489.7259290218353,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1629.1599250398576,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1489.7259290218353,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Typescript.Typescript",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159168636.752991,\"stop_ms\":1159170088.526309,\"elapsed_ms\":1451.7733180522919,\"elapsed_per_Run_ms\":1451.7733180522919,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1591.565834125504,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1451.7733180522919,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "Typescript.Typescript",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159170237.096617,\"stop_ms\":1159171730.951819,\"elapsed_ms\":1493.85520195961,\"elapsed_per_Run_ms\":1493.85520195961,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1632.6963221654296,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1493.85520195961,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159171830.456452,\"stop_ms\":1159174492.549445,\"elapsed_ms\":2662.0929930210114,\"elapsed_per_Run_ms\":5.199400376994163,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2669.1111598629504,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.199400376994163,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159174505.81711,\"stop_ms\":1159177158.902714,\"elapsed_ms\":2653.085603952408,\"elapsed_per_Run_ms\":5.181807820219547,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2660.1364170201123,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.181807820219547,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159177172.502041,\"stop_ms\":1159179821.588683,\"elapsed_ms\":2649.0866417884827,\"elapsed_per_Run_ms\":5.17399734724313,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2656.1074098572135,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.17399734724313,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159179835.256744,\"stop_ms\":1159182328.113068,\"elapsed_ms\":2492.856324195862,\"elapsed_per_Run_ms\":4.868860008195043,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2499.8160991817713,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 4.868860008195043,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159182341.660964,\"stop_ms\":1159184997.163194,\"elapsed_ms\":2655.5022299289703,\"elapsed_per_Run_ms\":5.18652779283002,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2662.359487032518,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.18652779283002,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "Typescript.Typescript",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159185058.173226,\"stop_ms\":1159186554.23646,\"elapsed_ms\":1496.0632338523865,\"elapsed_per_Run_ms\":1496.0632338523865,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1634.7752949222922,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1496.0632338523865,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "Typescript.Typescript",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159186702.232863,\"stop_ms\":1159188192.339949,\"elapsed_ms\":1490.107085943222,\"elapsed_per_Run_ms\":1490.107085943222,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1629.7499497886747,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1490.107085943222,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Typescript.Typescript",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159188341.115845,\"stop_ms\":1159189803.213074,\"elapsed_ms\":1462.0972290039062,\"elapsed_per_Run_ms\":1462.0972290039062,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1602.1598689258099,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1462.0972290039062,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "Typescript.Typescript",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159189952.13034,\"stop_ms\":1159191434.549104,\"elapsed_ms\":1482.4187638759613,\"elapsed_per_Run_ms\":1482.4187638759613,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1621.4925679378211,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1482.4187638759613,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "Typescript.Typescript",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159191582.01962,\"stop_ms\":1159193078.752849,\"elapsed_ms\":1496.7332291603088,\"elapsed_per_Run_ms\":1496.7332291603088,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1635.7314239721745,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1496.7332291603088,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159193178.595689,\"stop_ms\":1159195836.941714,\"elapsed_ms\":2658.346024990082,\"elapsed_per_Run_ms\":5.1920820800587535,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2665.146532934159,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.1920820800587535,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159195850.032061,\"stop_ms\":1159198499.528923,\"elapsed_ms\":2649.496861934662,\"elapsed_per_Run_ms\":5.1747985584661365,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2656.3822319731116,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.1747985584661365,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159198513.024639,\"stop_ms\":1159200972.524714,\"elapsed_ms\":2459.5000751018524,\"elapsed_per_Run_ms\":4.8037110841833055,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2466.507833916694,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 4.8037110841833055,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159200986.046108,\"stop_ms\":1159203646.182699,\"elapsed_ms\":2660.1365909576416,\"elapsed_per_Run_ms\":5.195579279214144,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2667.0176768675447,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.195579279214144,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159203659.489858,\"stop_ms\":1159206348.421154,\"elapsed_ms\":2688.931296110153,\"elapsed_per_Run_ms\":5.251818937715143,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2696.2425771635026,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.251818937715143,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "Typescript.Typescript",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159206410.81523,\"stop_ms\":1159207909.899346,\"elapsed_ms\":1499.0841162204742,\"elapsed_per_Run_ms\":1499.0841162204742,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1637.7000990323722,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1499.0841162204742,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Typescript.Typescript",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159208057.649586,\"stop_ms\":1159209517.821262,\"elapsed_ms\":1460.1716759204865,\"elapsed_per_Run_ms\":1460.1716759204865,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1599.2951209191233,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1460.1716759204865,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "Typescript.Typescript",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159209665.80851,\"stop_ms\":1159211152.184881,\"elapsed_ms\":1486.3763709068298,\"elapsed_per_Run_ms\":1486.3763709068298,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1626.1177519336343,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1486.3763709068298,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "Typescript.Typescript",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159211300.934995,\"stop_ms\":1159212799.09004,\"elapsed_ms\":1498.1550450325012,\"elapsed_per_Run_ms\":1498.1550450325012,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1639.0519130509347,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1498.1550450325012,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "Typescript.Typescript",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159212948.973202,\"stop_ms\":1159214447.102929,\"elapsed_ms\":1498.1297271251678,\"elapsed_per_Run_ms\":1498.1297271251678,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1637.1638039126992,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1498.1297271251678,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159214547.255512,\"stop_ms\":1159217199.120261,\"elapsed_ms\":2651.864748954773,\"elapsed_per_Run_ms\":5.179423337802291,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2659.087772015482,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.179423337802291,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159217212.943729,\"stop_ms\":1159219679.942602,\"elapsed_ms\":2466.9988729953766,\"elapsed_per_Run_ms\":4.818357173819095,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2474.163675913587,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 4.818357173819095,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159219694.014202,\"stop_ms\":1159222348.429607,\"elapsed_ms\":2654.4154047966003,\"elapsed_per_Run_ms\":5.18440508749336,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2661.862995941192,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.18440508749336,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159222362.673258,\"stop_ms\":1159225020.631205,\"elapsed_ms\":2657.9579470157623,\"elapsed_per_Run_ms\":5.191324115265161,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2665.130764944479,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.191324115265161,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "DeltaBlue.DeltaBlue",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/DeltaBlue.js"
+    ],
+    "script_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"DeltaBlue.DeltaBlue\",\"N\":512,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159225034.546433,\"stop_ms\":1159227687.422301,\"elapsed_ms\":2652.8758680820465,\"elapsed_per_Run_ms\":5.181398179847747,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 2660.1126610767096,
+    "suite": "octane",
+    "name": "DeltaBlue",
+    "N": 512,
+    "group": "DeltaBlue",
+    "ms": 5.181398179847747,
+    "original_sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0"
+  },
+  {
+    "label": "SPARSE",
+    "case": "Typescript.Typescript",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159227749.816624,\"stop_ms\":1159229258.746789,\"elapsed_ms\":1508.930165052414,\"elapsed_per_Run_ms\":1508.930165052414,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1649.4141099974513,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1508.930165052414,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_OFF",
+    "case": "Typescript.Typescript",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "off"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159229408.356204,\"stop_ms\":1159230898.461023,\"elapsed_ms\":1490.104819059372,\"elapsed_per_Run_ms\":1490.104819059372,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1628.4890179522336,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1490.104819059372,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_DIRECT",
+    "case": "Typescript.Typescript",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "direct"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159231046.290068,\"stop_ms\":1159232544.683772,\"elapsed_ms\":1498.393704175949,\"elapsed_per_Run_ms\":1498.393704175949,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1638.001007027924,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1498.393704175949,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_IC",
+    "case": "Typescript.Typescript",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "ic"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159232693.213242,\"stop_ms\":1159234184.865809,\"elapsed_ms\":1491.65256690979,\"elapsed_per_Run_ms\":1491.65256690979,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1630.350256105885,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1491.65256690979,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  },
+  {
+    "label": "CALL_FIELD",
+    "case": "Typescript.Typescript",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/Typescript.js"
+    ],
+    "script_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+    "control": {
+      "QJS_CALL_MODE": "field"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"Typescript.Typescript\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1159234332.63261,\"stop_ms\":1159235819.554457,\"elapsed_ms\":1486.9218468666077,\"elapsed_per_Run_ms\":1486.9218468666077,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1625.9227800182998,
+    "suite": "octane",
+    "name": "Typescript",
+    "N": 1,
+    "group": "Typescript",
+    "ms": 1486.9218468666077,
+    "original_sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690"
+  }
+]

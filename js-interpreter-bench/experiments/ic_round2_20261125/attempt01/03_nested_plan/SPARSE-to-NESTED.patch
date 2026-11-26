@@ -1,0 +1,369 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -1,10 +1,14 @@
+ typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
+ typedef struct FullPlan FullPlan;
++typedef struct NumericPlan NumericPlan;
++typedef struct NestedPlan NestedPlan;
+ struct FourSite {
++    NumericPlan *numeric;
+     FullPlan *plan;
+     JSValue negative;
+     uint32_t pc;
+     uint16_t argc;
++    NestedPlan *nested;
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+--- a/qjs.c
++++ b/qjs.c
+@@ -42,6 +42,7 @@
+ 
+ #include "cutils.h"
+ #include "quickjs-libc.h"
++extern void numeric_entry_mode(int);
+ 
+ extern const uint8_t qjsc_repl[];
+ extern const uint32_t qjsc_repl_size;
+@@ -482,7 +483,8 @@
+     }
+ 
+     if (!empty_run) {
+-        js_std_add_helpers(ctx, argc - optind, argv + optind);
++        numeric_entry_mode(getenv("QJS_NUMERIC_ENTRY_OFF")!=NULL);
++    js_std_add_helpers(ctx, argc - optind, argv + optind);
+ 
+         /* make 'std' and 'os' visible to non module code */
+         if (load_std) {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -390,6 +390,7 @@
+     int shape_hash_count; /* number of hashed shapes */
+     JSShape **shape_hash;
+     void *user_opaque;
++    uint8_t r2_nested_mode;
+     ExEdge transition_edges[32];
+     uint8_t transition_edges_disabled;
+ };
+@@ -2108,6 +2109,7 @@
+     js_malloc_init(&rt->malloc_ctx);
+     rt->malloc_ctx.mf = *mf;
+     rt->malloc_ctx.malloc_state = ms;
++    const char*nm=getenv("QJS_NEST_MODE");rt->r2_nested_mode=nm&&!strcmp(nm,"parent")?1:2;
+     rt->malloc_gc_threshold = 256 * 1024;
+ 
+     init_list_head(&rt->context_list);
+@@ -6230,6 +6232,9 @@
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
++#include "r2_counts.inc"
++#include "numeric_runtime.inc"
++#include "nested_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -6705,6 +6710,8 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
++            for(uint32_t fi=0;fi<b->four_count;fi++)nest_mark(rt,b->four_sites[fi].nested,mark_func);
++            for(uint32_t fi=0;fi<b->four_count;fi++){NumericPlan*n=b->four_sites[fi].numeric;if(n){JS_MarkValue(rt,n->wrapper,mark_func);JS_MarkValue(rt,n->initializer,mark_func);JS_MarkValue(rt,n->apply,mark_func);if(n->final)mark_func(rt,&n->final->header);}}
+             for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}}
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+@@ -18330,8 +18337,15 @@
+             {
+                 FourSite*s=&b->four_sites[get_u16(pc)];call_argc=s->argc;pc+=2;
+                 call_argv=sp-call_argc;sf->cur_pc=pc;
+-                int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
++                int fast=np_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
++                if(!fast)fast=nest_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
++                if(!fast)fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+                 if(!fast){
++                    NestedSeed nz={0};
++                    if(!s->nested)nest_seed(ctx,s,call_argv[-2],call_argv[-1],&nz);
++                    NumericSeed seed={0};
++                    if(!s->numeric || JS_VALUE_GET_TAG(call_argv[-2])!=JS_TAG_OBJECT || JS_VALUE_GET_OBJ(call_argv[-2])!=JS_VALUE_GET_OBJ(s->numeric->wrapper))
++                        np_seed(ctx,s,call_argv[-2],call_argv[-1],call_argv,&seed);
+                     int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
+ #ifdef FOUR_DIAG
+                     FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+@@ -18340,6 +18354,10 @@
+ #ifdef FOUR_DIAG
+                     four_ctor_observer=oldscope;
+ #endif
++                    if(!JS_IsException(ret_val))np_learn(ctx,s,call_argv[-2],ret_val,&seed);
++                    np_seed_free(ctx,&seed);
++                    if(!JS_IsException(ret_val))nest_learn(ctx,s,call_argv[-2],ret_val,&nz);
++                    nest_seed_free(ctx,&nz);
+                     if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
+                     else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
+                 }
+@@ -36526,6 +36544,8 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
++    for(uint32_t fi=0;fi<b->four_count;fi++)nest_release(rt,b->four_sites[fi].nested);
++    for(uint32_t fi=0;fi<b->four_count;fi++)np_release(rt,b->four_sites[fi].numeric);
+     for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
+     rdi_free(rt, b);
+ 
+--- a/numeric_runtime.inc
++++ b/numeric_runtime.inc
+@@ -0,0 +1,150 @@
++/* A new-site plan, not a special case for a JS name or benchmark. */
++typedef struct NumericRecipe {FourRecipe fields;JSValue zero[3];} NumericRecipe;
++typedef struct NumericPlan {JSValue wrapper,initializer,apply;JSShape*final;NumericRecipe recipe;JSAtom init_atom,apply_atom;} NumericPlan;
++typedef struct NumericSeed {JSValue initializer,apply,proto;NumericRecipe recipe;JSAtom init_atom,apply_atom;int valid;} NumericSeed;
++static int np_entry_off;
++void numeric_entry_mode(int off){np_entry_off=off;}
++static int np_slot(const uint8_t**pp,const uint8_t*end,int put){
++ const uint8_t*p=*pp;unsigned i;
++ if(p>=end)return -1;
++ if(*p>=(put?OP_put_arg0:OP_get_arg0) && *p<=(put?OP_put_arg3:OP_get_arg3)){i=*p-(put?OP_put_arg0:OP_get_arg0);p++;}
++ else if(*p==(put?OP_put_arg:OP_get_arg)&&end-p>=3){i=get_u16(p+1);p+=3;}else return -1;
++ *pp=p;return i;
++}
++static const uint8_t*np_jump(const uint8_t*p,const uint8_t*end,int conditional){
++ if(p>=end)return NULL;
++ if(*p==(conditional?OP_if_false8:OP_goto8)&&end-p>=2)return p+1+(int8_t)p[1];
++ if(!conditional&&*p==OP_goto16&&end-p>=3)return p+1+(int16_t)get_u16(p+1);
++ if(*p==(conditional?OP_if_false:OP_goto)&&end-p>=5)return p+1+(int32_t)get_u32(p+1);
++ return NULL;
++}
++static int np_zero(JSFunctionBytecode*b,const uint8_t**pp,const uint8_t*end,JSValue*out){
++ const uint8_t*p=*pp;JSValue v;
++ if(p>=end)return 0;
++ if(*p==OP_push_0){v=JS_NewInt32(NULL,0);p++;}
++ else if(*p==OP_push_const8&&end-p>=2&&p[1]<b->cpool_count){v=b->cpool[p[1]];p+=2;}
++ else if(*p==OP_push_const&&end-p>=5&&get_u32(p+1)<b->cpool_count){v=b->cpool[get_u32(p+1)];p+=5;}
++ else return 0;
++ if(!JS_IsNumber(v))return 0;
++ double n=JS_VALUE_GET_TAG(v)==JS_TAG_INT?JS_VALUE_GET_INT(v):JS_VALUE_GET_FLOAT64(v);
++ if(n!=0)return 0;*out=v;*pp=p;return 1;
++}
++static int np_recipe(JSFunctionBytecode*b,NumericRecipe*r){
++ const uint8_t*p=b->byte_code_buf,*end=p+b->byte_code_len;JSValue zeros[3];
++ if(b->func_kind!=JS_FUNC_NORMAL||b->arg_count!=3||b->var_count!=1||b->var_ref_count||b->closure_var_count||b->need_home_object||b->is_derived_class_constructor||!b->has_simple_parameter_list||end-p<3||p[0]!=OP_push_this||p[1]!=OP_put_loc0)return 0;
++ p+=2;int normalized=*p!=OP_get_loc0;
++ if(normalized){
++  unsigned seen=0;
++  for(unsigned i=0;i<3;i++){
++   int a=np_slot(&p,end,0);if(a<0||a>=3||(seen&(1u<<a))||p>=end||*p++!=OP_lnot)return 0;
++   const uint8_t*t=np_jump(p,end,1);if(!t)return 0;p+=(*p==OP_if_false8||*p==OP_goto8)?2:*p==OP_goto16?3:5;
++   if(!np_zero(b,&p,end,&zeros[a])||np_slot(&p,end,1)!=a||p!=t)return 0;seen|=1u<<a;
++  }
++ }
++ r->fields.n=3;
++ for(unsigned i=0;i<3;i++){
++  if(p>=end||*p++!=OP_get_loc0)return 0;
++  int a=np_slot(&p,end,0);if(a<0||a>=3)return 0;r->fields.arg[i]=a;
++  if(normalized)r->zero[i]=zeros[a];
++  else{
++   const uint8_t*f=np_jump(p,end,1);if(!f)return 0;p+=(*p==OP_if_false8||*p==OP_goto8)?2:*p==OP_goto16?3:5;
++   if(np_slot(&p,end,0)!=a)return 0;
++   const uint8_t*t=np_jump(p,end,0);if(!t)return 0;p+=(*p==OP_if_false8||*p==OP_goto8)?2:*p==OP_goto16?3:5;
++   if(p!=f||!np_zero(b,&p,end,&r->zero[i])||p!=t)return 0;
++  }
++  if(end-p<5||*p!=OP_put_field)return 0;r->fields.atom[i]=get_u32(p+1);p+=5;
++  for(unsigned j=0;j<i;j++)if(r->fields.atom[i]==r->fields.atom[j])return 0;
++ }
++ return p+1==end&&*p==OP_return_undef;
++}
++static int np_wrapper(JSFunctionBytecode*b,JSAtom*init,JSAtom*apply){
++ const uint8_t*p=b->byte_code_buf;
++ if(b->func_kind!=JS_FUNC_NORMAL||b->arg_count||b->var_count!=2||b->var_ref_count||b->closure_var_count||b->need_home_object||b->is_derived_class_constructor||!b->has_simple_parameter_list||b->byte_code_len!=22)return 0;
++ int special=p[2]==OP_special_object;
++#ifdef NP_OLD_FORWARD
++ special|=p[2]==OP_forward_ctor;
++#endif
++ if(p[0]!=OP_push_this||p[1]!=OP_put_loc0||!special||p[3]!=1 /* OP_SPECIAL_OBJECT_ARGUMENTS, declared later */||p[4]!=OP_put_loc1||(p[5]!=OP_get_loc0&&p[5]!=OP_v6_get_loc0)||(p[6]!=OP_get_field&&p[6]!=OP_get_field_rdi)||(p[11]!=OP_get_field2&&p[11]!=OP_get_field2_rdi)||p[16]!=OP_get_loc0||p[17]!=OP_get_loc1||p[18]!=OP_call_method||get_u16(p+19)!=2||p[21]!=OP_return_undef)return 0;
++ *init=p[6]==OP_get_field?get_u32(p+7):((ReadICSite*)(p+7+get_u32(p+7)))->atom;
++ *apply=p[11]==OP_get_field2?get_u32(p+12):((ReadICSite*)(p+12+get_u32(p+12)))->atom;
++ return 1;
++}
++static int np_data(JSObject*o,JSAtom atom,JSValue*out){
++ for(unsigned depth=0;o&&depth<32;depth++,o=o->shape->proto){
++  if(o->is_exotic)return 0;JSProperty*p;JSShapeProperty*d=find_own_property(&p,o,atom);
++  if(d){if(d->flags&JS_PROP_TMASK)return 0;*out=p->u.value;return 1;}
++ }return 0;
++}
++static int np_resolve(JSContext*ctx,JSObject*proto,JSAtom init,JSAtom atom,JSValue*i,JSValue*a){
++ if(!np_data(proto,init,i)||JS_VALUE_GET_TAG(*i)!=JS_TAG_OBJECT)return 0;
++ JSObject*f=JS_VALUE_GET_OBJ(*i);
++ if((f->class_id!=JS_CLASS_BYTECODE_FUNCTION&&f->class_id!=JS_CLASS_COLD_BYTECODE_FUNCTION)||f->is_exotic||!np_data(f,atom,a)||JS_VALUE_GET_TAG(*a)!=JS_TAG_OBJECT)return 0;
++ JSObject*p=JS_VALUE_GET_OBJ(*a);
++ return p->class_id==JS_CLASS_C_FUNCTION&&p->u.cfunc.cproto==JS_CFUNC_generic_magic&&!p->u.cfunc.magic&&p->u.cfunc.c_function.generic_magic==js_function_apply;
++}
++static int np_numbers(const NumericRecipe*r,JSValue*args){for(unsigned i=0;i<3;i++)if(!JS_IsNumber(args[r->fields.arg[i]]))return 0;return 1;}
++static JSValue np_value(JSValue v,JSValue zero){double n=JS_VALUE_GET_TAG(v)==JS_TAG_INT?JS_VALUE_GET_INT(v):JS_VALUE_GET_FLOAT64(v);return n!=0&&!isnan(n)?v:zero;}
++static void np_release(JSRuntime*rt,NumericPlan*p){if(!p)return;JS_FreeValueRT(rt,p->wrapper);JS_FreeValueRT(rt,p->initializer);JS_FreeValueRT(rt,p->apply);js_free_shape_null(rt,p->final);js_free_rt(rt,p);}
++#ifdef FOUR_DIAG
++static uint64_t np_work[8];
++static void np_report(void){fprintf(stderr,"NP_WORK:[");for(unsigned n=0;n<8;n++)fprintf(stderr,"%s%"PRIu64,n?",":"",np_work[n]);fprintf(stderr,"]\n");}
++#define NP_COUNT(s,k) do{if(four_active)(s)->diag->np[k]++;}while(0)
++#define NP_WORK(k,n) do{if(four_active)np_work[k]+=(n);}while(0)
++static void np_frame(JSFunctionBytecode*b){JSAtom a,c;NumericRecipe r;if(np_wrapper(b,&a,&c))NP_WORK(0,1);if(np_recipe(b,&r))NP_WORK(1,1);}
++static void np_arguments(JSFunctionBytecode*b){JSAtom a,c;if(np_wrapper(b,&a,&c))NP_WORK(2,1);}
++static void np_write(JSFunctionBytecode*b){NumericRecipe r;if(np_recipe(b,&r))NP_WORK(3,1);}
++static void np_apply(JSValueConst v,int list){if(JS_VALUE_GET_TAG(v)==JS_TAG_OBJECT){JSObject*f=JS_VALUE_GET_OBJ(v);NumericRecipe r;if((f->class_id==JS_CLASS_BYTECODE_FUNCTION||f->class_id==JS_CLASS_COLD_BYTECODE_FUNCTION)&&np_recipe(f->u.func.function_bytecode,&r))NP_WORK(list?7:6,1);}}
++#else
++#define NP_COUNT(s,k) ((void)0)
++#define NP_WORK(k,n) ((void)0)
++#endif
++#ifndef NUMERIC_OBSERVE_ONLY
++/* Rejection stages: identity, wrapper, prototype, resolve/apply, recipe,
++ * numbers, inherited write eligibility, budget. First failure only. */
++static int np_seed(JSContext*ctx,FourSite*s,JSValue c,JSValue t,JSValue*args,NumericSeed*z){
++ JSObject*f,*proto;JSAtom init,apply;JSValue i,a;NumericRecipe r;int reason=0;
++ NP_COUNT(s,0);
++ if(s->argc<3||!plan_base(ctx,c,t,s->argc,&f))goto no;
++ reason=1;if(!np_wrapper(f->u.func.function_bytecode,&init,&apply))goto no;NP_COUNT(s,1);
++ reason=2;if(!(proto=plan_proto(f)))goto no;
++ reason=3;if(!np_resolve(ctx,proto,init,apply,&i,&a))goto no;
++ reason=4;if(!np_recipe(JS_VALUE_GET_OBJ(i)->u.func.function_bytecode,&r))goto no;NP_COUNT(s,2);
++ reason=5;if(!np_numbers(&r,args))goto no;NP_COUNT(s,3);
++ reason=6;if(!plan_chain(proto,&r.fields))goto no;
++ reason=7;if(js_check_stack_overflow(ctx->rt,4096+sizeof(JSValue)*(size_t)s->argc*2))goto no;
++ z->initializer=JS_DupValue(ctx,i);z->apply=JS_DupValue(ctx,a);z->proto=JS_DupValue(ctx,JS_MKPTR(JS_TAG_OBJECT,proto));z->recipe=r;z->init_atom=init;z->apply_atom=apply;z->valid=1;return 1;
++ no:NP_COUNT(s,8+reason);return 0;
++}
++static void np_learn(JSContext*ctx,FourSite*s,JSValue c,JSValue result,NumericSeed*z){
++ if(!z->valid||JS_VALUE_GET_TAG(result)!=JS_TAG_OBJECT)return;
++ JSObject*f=JS_VALUE_GET_OBJ(c),*o=JS_VALUE_GET_OBJ(result),*proto=plan_proto(f);JSValue i,a;
++ if(proto!=JS_VALUE_GET_OBJ(z->proto)||!np_resolve(ctx,proto,z->init_atom,z->apply_atom,&i,&a)||JS_VALUE_GET_OBJ(i)!=JS_VALUE_GET_OBJ(z->initializer)||JS_VALUE_GET_OBJ(a)!=JS_VALUE_GET_OBJ(z->apply)||!plan_chain(proto,&z->recipe.fields)||o->class_id!=JS_CLASS_OBJECT||o->is_exotic||!o->shape->is_hashed||o->shape->proto!=proto||o->shape->prop_count!=3||o->shape->deleted_prop_count)return;
++ JSShapeProperty*d=get_shape_prop(o->shape);for(unsigned j=0;j<3;j++)if(d[j].atom!=z->recipe.fields.atom[j]||d[j].flags!=JS_PROP_C_W_E)return;
++ NumericPlan*p=js_mallocz_rt(ctx->rt,sizeof(*p));if(!p){NP_COUNT(s,17);return;}
++ p->wrapper=JS_DupValue(ctx,c);p->initializer=JS_DupValue(ctx,z->initializer);p->apply=JS_DupValue(ctx,z->apply);p->final=js_dup_shape(o->shape);p->recipe=z->recipe;p->init_atom=z->init_atom;p->apply_atom=z->apply_atom;
++ NumericPlan*old=s->numeric;s->numeric=p;NP_COUNT(s,4);np_release(ctx->rt,old);
++}
++static void np_seed_free(JSContext*ctx,NumericSeed*z){if(z->valid){z->valid=0;JS_FreeValue(ctx,z->initializer);JS_FreeValue(ctx,z->apply);JS_FreeValue(ctx,z->proto);}}
++static int np_try(JSContext*ctx,FourSite*s,JSValue c,JSValue t,JSValue*args,JSValue*out){
++ NumericPlan*p=s->numeric;if(!p)return 0;NP_COUNT(s,5);
++ JSObject*f;JSValue i,a;
++ int reason=20;
++ if(JS_VALUE_GET_TAG(c)!=JS_TAG_OBJECT||JS_VALUE_GET_OBJ(c)!=JS_VALUE_GET_OBJ(p->wrapper)||!plan_base(ctx,c,t,s->argc,&f))goto reject;
++ reason=21;if(plan_proto(f)!=p->final->proto)goto reject;
++ reason=22;if(!np_numbers(&p->recipe,args))goto reject;
++ reason=23;if(!np_resolve(ctx,p->final->proto,p->init_atom,p->apply_atom,&i,&a))goto reject;
++ reason=24;if(JS_VALUE_GET_OBJ(i)!=JS_VALUE_GET_OBJ(p->initializer))goto reject;
++ reason=25;if(JS_VALUE_GET_OBJ(a)!=JS_VALUE_GET_OBJ(p->apply))goto reject;
++ reason=26;if(!plan_chain(p->final->proto,&p->recipe.fields))goto reject;
++ reason=27;if(js_check_stack_overflow(ctx->rt,4096+sizeof(JSValue)*(size_t)s->argc*2))goto reject;
++ if(np_entry_off)return 0; /* same ELF: learn and guard, but run ordinary ctor */
++ /* ctor, wrapper call, native apply call, initializer call. No hooks accepted. */
++ for(unsigned n=0;n<4;n++)if(js_poll_interrupts(ctx))return 0;
++ *out=JS_NewObjectFromShape(ctx,js_dup_shape(p->final),JS_CLASS_OBJECT,NULL);
++ if(JS_IsException(*out)){NP_COUNT(s,18);return 1;}
++ JSObject*o=JS_VALUE_GET_OBJ(*out);
++ for(unsigned n=0;n<3;n++)o->prop[n].u.value=np_value(args[p->recipe.fields.arg[n]],p->recipe.zero[n]);
++ NP_COUNT(s,7);NP_WORK(4,1);NP_WORK(5,3);return 1;
++ reject:NP_COUNT(s,6);NP_COUNT(s,reason);return 0;
++}
++#endif
+--- a/nested_runtime.inc
++++ b/nested_runtime.inc
+@@ -0,0 +1,77 @@
++/* Parent plans preserve two physical objects. The child binding is resolved
++ * currently through ordinary data slots, never a saved constructor result. */
++typedef struct NestedRecipe {FourRecipe fields;uint16_t var;uint8_t kind,path_n;JSAtom path[4];JSValue constants[3];FourSite*child;} NestedRecipe;
++struct NestedPlan {JSValue wrapper,initializer,apply;JSShape*final;JSAtom init_atom,apply_atom;NestedRecipe r;};
++typedef struct NestedSeed {JSValue initializer,apply,proto;JSAtom init_atom,apply_atom;NestedRecipe r;int valid;} NestedSeed;
++static int nest_recipe(JSFunctionBytecode*b,NestedRecipe*r){
++ memset(r,0,sizeof(*r));
++ if(b->arg_count==2&&plan_recipe(b,&r->fields)&&r->fields.n==2){r->kind=2;return 1;}
++ const uint8_t*p=b->byte_code_buf,*end=p+b->byte_code_len;
++ if(b->arg_count||b->var_count!=1||b->var_ref_count||b->func_kind!=JS_FUNC_NORMAL||b->need_home_object||b->is_derived_class_constructor||!b->has_simple_parameter_list||end-p<10||p[0]!=OP_push_this||p[1]!=OP_put_loc0||p[2]!=OP_get_loc0)return 0;p+=3;
++ if(end-p<3||*p!=OP_get_var)return 0;r->var=get_u16(p+1);p+=3;if(r->var>=b->closure_var_count)return 0;
++ while(end-p>=5&&(*p==OP_get_field||*p==OP_get_field_rdi)){
++  if(r->path_n==4)return 0;r->path[r->path_n++]=*p==OP_get_field?get_u32(p+1):((ReadICSite*)(p+1+get_u32(p+1)))->atom;p+=5;
++ }
++ if(!r->path_n||p>=end||*p++!=OP_dup)return 0;
++ for(unsigned n=0;n<3;n++)if(!np_zero(b,&p,end,&r->constants[n]))return 0;
++ if(end-p<3||*p!=OP_four_ctor||get_u16(p+1)>=b->four_count)return 0;
++ r->child=&b->four_sites[get_u16(p+1)];if(r->child->argc!=3)return 0;p+=3;
++ if(end-p!=6||*p!=OP_put_field||p[5]!=OP_return_undef)return 0;
++ r->fields.n=1;r->fields.atom[0]=get_u32(p+1);r->kind=1;return 1;
++}
++static int nest_binding(JSObject*initializer,const NestedRecipe*r,JSValue*out){
++ JSVarRef*v=initializer->u.func.var_refs[r->var];JSValue x=*v->pvalue;if(JS_IsUninitialized(x))return 0;
++ for(unsigned n=0;n<r->path_n;n++){if(JS_VALUE_GET_TAG(x)!=JS_TAG_OBJECT||!np_data(JS_VALUE_GET_OBJ(x),r->path[n],&x))return 0;}
++ *out=x;return JS_VALUE_GET_TAG(x)==JS_TAG_OBJECT;
++}
++static int nest_child_ready(JSContext*ctx,const NestedRecipe*r,JSValue child){
++ NumericPlan*p=r->child->numeric;JSObject*f;JSValue i,a;
++ return p&&JS_VALUE_GET_TAG(child)==JS_TAG_OBJECT&&JS_VALUE_GET_OBJ(child)==JS_VALUE_GET_OBJ(p->wrapper)&&plan_base(ctx,child,child,3,&f)&&plan_proto(f)==p->final->proto&&np_numbers(&p->recipe,(JSValue*)r->constants)&&np_resolve(ctx,p->final->proto,p->init_atom,p->apply_atom,&i,&a)&&JS_VALUE_GET_OBJ(i)==JS_VALUE_GET_OBJ(p->initializer)&&JS_VALUE_GET_OBJ(a)==JS_VALUE_GET_OBJ(p->apply)&&plan_chain(p->final->proto,&p->recipe.fields)&&!np_entry_off;
++}
++static void nest_release(JSRuntime*rt,NestedPlan*p){if(!p)return;JS_FreeValueRT(rt,p->wrapper);JS_FreeValueRT(rt,p->initializer);JS_FreeValueRT(rt,p->apply);js_free_shape_null(rt,p->final);js_free_rt(rt,p);}
++static void nest_mark(JSRuntime*rt,NestedPlan*p,JS_MarkFunc*mark){if(!p)return;JS_MarkValue(rt,p->wrapper,mark);JS_MarkValue(rt,p->initializer,mark);JS_MarkValue(rt,p->apply,mark);mark(rt,&p->final->header);}
++static void nest_seed_free(JSContext*ctx,NestedSeed*z){if(!z->valid)return;z->valid=0;JS_FreeValue(ctx,z->initializer);JS_FreeValue(ctx,z->apply);JS_FreeValue(ctx,z->proto);}
++static int nest_seed(JSContext*ctx,FourSite*s,JSValue c,JSValue target,NestedSeed*z){
++ uintptr_t pc=(uintptr_t)(ctx->rt->current_stack_frame->cur_pc-3);R2C(ctx,pc,0);R2C(ctx,pc,s->argc==0?1:s->argc==2?2:3);
++ JSObject*f,*proto;JSAtom init,apply;JSValue i,a,child;NestedRecipe r;
++ if((s->argc!=0&&s->argc!=2)||!plan_base(ctx,c,target,s->argc,&f)){R2C(ctx,pc,4);return 0;}
++ if(!np_wrapper(f->u.func.function_bytecode,&init,&apply)){R2C(ctx,pc,5);return 0;}
++ if(!(proto=plan_proto(f))||!np_resolve(ctx,proto,init,apply,&i,&a)){R2C(ctx,pc,6);return 0;}
++ if(JS_VALUE_GET_OBJ(i)->class_id!=JS_CLASS_BYTECODE_FUNCTION||!nest_recipe(JS_VALUE_GET_OBJ(i)->u.func.function_bytecode,&r)||r.kind!=(s->argc==2?2:1)){R2C(ctx,pc,7);return 0;}
++ if(!plan_chain(proto,&r.fields)){R2C(ctx,pc,8);return 0;}
++ if(r.kind==1&&(!nest_binding(JS_VALUE_GET_OBJ(i),&r,&child)||!nest_child_ready(ctx,&r,child))){R2C(ctx,pc,9);return 0;}
++ z->initializer=JS_DupValue(ctx,i);z->apply=JS_DupValue(ctx,a);z->proto=JS_DupValue(ctx,JS_MKPTR(JS_TAG_OBJECT,proto));z->init_atom=init;z->apply_atom=apply;z->r=r;z->valid=1;return 1;
++}
++static void nest_learn(JSContext*ctx,FourSite*s,JSValue c,JSValue result,NestedSeed*z){
++ if(!z->valid||JS_VALUE_GET_TAG(result)!=JS_TAG_OBJECT)return;
++ JSObject*f=JS_VALUE_GET_OBJ(c),*o=JS_VALUE_GET_OBJ(result),*proto=plan_proto(f);JSValue i,a,child;
++ if(proto!=JS_VALUE_GET_OBJ(z->proto)||!np_resolve(ctx,proto,z->init_atom,z->apply_atom,&i,&a)||JS_VALUE_GET_OBJ(i)!=JS_VALUE_GET_OBJ(z->initializer)||JS_VALUE_GET_OBJ(a)!=JS_VALUE_GET_OBJ(z->apply)||!plan_chain(proto,&z->r.fields)||o->class_id!=JS_CLASS_OBJECT||o->is_exotic||!o->shape->is_hashed||o->shape->proto!=proto||o->shape->prop_count!=z->r.fields.n||o->shape->deleted_prop_count)return;
++ JSShapeProperty*d=get_shape_prop(o->shape);for(unsigned j=0;j<z->r.fields.n;j++)if(d[j].atom!=z->r.fields.atom[j]||d[j].flags!=JS_PROP_C_W_E)return;
++ if(z->r.kind==1&&(!nest_binding(JS_VALUE_GET_OBJ(i),&z->r,&child)||!nest_child_ready(ctx,&z->r,child)))return;
++ NestedPlan*p=js_mallocz_rt(ctx->rt,sizeof(*p));if(!p)return;
++ p->wrapper=JS_DupValue(ctx,c);p->initializer=JS_DupValue(ctx,i);p->apply=JS_DupValue(ctx,a);p->final=js_dup_shape(o->shape);p->r=z->r;p->init_atom=z->init_atom;p->apply_atom=z->apply_atom;NestedPlan*old=s->nested;s->nested=p;nest_release(ctx->rt,old);
++ R2C(ctx,ctx->rt->current_stack_frame->cur_pc-3,10);
++}
++static int nest_try(JSContext*ctx,FourSite*s,JSValue c,JSValue t,JSValue*args,JSValue*out){
++ NestedPlan*p=s->nested;if(!p)return 0;
++ uintptr_t pc=(uintptr_t)(ctx->rt->current_stack_frame->cur_pc-3);R2C(ctx,pc,11);
++ JSObject*f;JSValue i,a,child=JS_UNDEFINED;
++ if(JS_VALUE_GET_TAG(c)!=JS_TAG_OBJECT||JS_VALUE_GET_OBJ(c)!=JS_VALUE_GET_OBJ(p->wrapper)||!plan_base(ctx,c,t,s->argc,&f)||plan_proto(f)!=p->final->proto||!np_resolve(ctx,p->final->proto,p->init_atom,p->apply_atom,&i,&a)||JS_VALUE_GET_OBJ(i)!=JS_VALUE_GET_OBJ(p->initializer)||JS_VALUE_GET_OBJ(a)!=JS_VALUE_GET_OBJ(p->apply)||!plan_chain(p->final->proto,&p->r.fields)){R2C(ctx,pc,12);return 0;}
++ if(p->r.kind==1&&(!nest_binding(JS_VALUE_GET_OBJ(i),&p->r,&child)||!nest_child_ready(ctx,&p->r,child))){R2C(ctx,pc,13);return 0;}
++ /* Includes arena rounding and all temporary allocations in the original
++    pure child's wrapper/apply path; no GC or user callback between guards
++    and the last store. FORCE_GC is already excluded by plan_base. */
++ size_t budget=16*JS_MALLOC_ARENA_SIZE;if(ctx->rt->malloc_ctx.malloc_state.malloc_size>SIZE_MAX-budget||ctx->rt->malloc_ctx.malloc_state.malloc_size+budget>ctx->rt->malloc_gc_threshold){R2C(ctx,pc,14);return 0;}
++ if(js_check_stack_overflow(ctx->rt,8192+sizeof(JSValue)*s->argc*2)){R2C(ctx,pc,15);return 0;}
++ for(unsigned j=0;j<4;j++)if(js_poll_interrupts(ctx))return 0;
++ *out=JS_NewObjectFromShape(ctx,js_dup_shape(p->final),JS_CLASS_OBJECT,NULL);if(JS_IsException(*out))return 1;
++ JSObject*o=JS_VALUE_GET_OBJ(*out);for(unsigned j=0;j<p->r.fields.n;j++)o->prop[j].u.value=JS_UNDEFINED;
++ R2C(ctx,pc,16);
++ if(p->r.kind==2){for(unsigned j=0;j<2;j++)o->prop[j].u.value=JS_DupValue(ctx,args[p->r.fields.arg[j]]);R2C(ctx,pc,17);return 1;}
++ JSValue result;int handled=0;JSValue owned=JS_DupValue(ctx,child);
++ if(ctx->rt->r2_nested_mode==2){handled=np_try(ctx,p->r.child,owned,owned,p->r.constants,&result);if(handled)R2C(ctx,pc,18);}
++ if(!handled){R2C(ctx,pc,19);result=JS_CallConstructorInternal(ctx,owned,owned,3,p->r.constants,0);}
++ JS_FreeValue(ctx,owned);
++ if(JS_IsException(result)){JS_FreeValue(ctx,*out);*out=JS_EXCEPTION;R2C(ctx,pc,20);return 1;}
++ o->prop[0].u.value=result;R2C(ctx,pc,21);return 1;
++}
+--- a/r2_counts.inc
++++ b/r2_counts.inc
+@@ -0,0 +1,22 @@
++#ifdef FOUR_DIAG
++/* Diagnostics have no ownership of VM values; names/locations are copied. */
++typedef struct R2Count {uintptr_t pc;unsigned offset;int line;char name[96];uint64_t c[32];} R2Count;
++static R2Count r2_counts[1024];
++static int find_line_num(JSContext*,JSFunctionBytecode*,uint32_t,int*);
++static R2Count*r2_count(JSContext*ctx,uintptr_t pc){
++ if(!four_active)return NULL;
++ unsigned h=(pc^(pc>>12))&1023;
++ for(unsigned n=0;n<1024;n++,h=(h+1)&1023){
++  R2Count*r=&r2_counts[h];if(r->pc==pc)return r;
++  if(!r->pc){r->pc=pc;JSStackFrame*sf=ctx->rt->current_stack_frame;
++   if(sf&&JS_VALUE_GET_TAG(sf->cur_func)==JS_TAG_OBJECT){JSObject*f=JS_VALUE_GET_OBJ(sf->cur_func);
++    if(f->class_id==JS_CLASS_BYTECODE_FUNCTION){JSFunctionBytecode*b=f->u.func.function_bytecode;int col;
++     r->offset=pc-(uintptr_t)b->byte_code_buf;r->line=find_line_num(ctx,b,r->offset,&col);char tmp[96];snprintf(r->name,sizeof(r->name),"%s",JS_AtomGetStr(ctx,tmp,sizeof(tmp),b->func_name));}}
++   return r;}
++ }abort();
++}
++#define R2C(ctx,pc,k) do{R2Count*rr=r2_count(ctx,(uintptr_t)(pc));if(rr)rr->c[k]++;}while(0)
++static void r2_report(void){fprintf(stderr,"R2_COUNTS:[");unsigned j=0;for(unsigned n=0;n<1024;n++){R2Count*r=&r2_counts[n];if(!r->pc)continue;fprintf(stderr,"%s{\"pc\":%u,\"line\":%d,\"function\":",j++?",":"",r->offset,r->line);four_json_string(r->name);fprintf(stderr,",\"c\":[");for(unsigned k=0;k<32;k++)fprintf(stderr,"%s%"PRIu64,k?",":"",r->c[k]);fprintf(stderr,"]}");}fprintf(stderr,"]\n");}
++#else
++#define R2C(ctx,pc,k) ((void)0)
++#endif
