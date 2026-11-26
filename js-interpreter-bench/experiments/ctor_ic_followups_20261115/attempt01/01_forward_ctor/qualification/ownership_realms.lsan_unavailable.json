@@ -1,0 +1,50 @@
+[
+  {
+    "mode": "release",
+    "command": [
+      "gcc",
+      "-O2",
+      "-g",
+      "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/release",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/ownership_realms.c",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/release/.obj/quickjs.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/release/.obj/dtoa.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/release/.obj/libregexp.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/release/.obj/libunicode.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/release/.obj/cutils.o",
+      "-lm",
+      "-lpthread",
+      "-ldl",
+      "-o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/qualification/release.ownership.elf"
+    ],
+    "exit_code": 0,
+    "stdout": "OWNERSHIP_GC_TWO_REALMS_PASS\n",
+    "stderr": ""
+  },
+  {
+    "mode": "san",
+    "command": [
+      "gcc",
+      "-O2",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/san",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/ownership_realms.c",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/san/.obj/asan/ubsan/quickjs.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/san/.obj/asan/ubsan/dtoa.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/san/.obj/asan/ubsan/libregexp.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/san/.obj/asan/ubsan/libunicode.o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/work/san/.obj/asan/ubsan/cutils.o",
+      "-lm",
+      "-lpthread",
+      "-ldl",
+      "-o",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/qualification/san.ownership.elf"
+    ],
+    "exit_code": -6,
+    "stdout": "",
+    "stderr": "==17==LeakSanitizer has encountered a fatal error.\n==17==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==17==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n"
+  }
+]

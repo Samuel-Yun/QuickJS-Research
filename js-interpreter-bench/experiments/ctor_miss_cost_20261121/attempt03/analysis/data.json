@@ -1,0 +1,2069 @@
+{
+  "summary": [
+    {
+      "pattern": "alternating",
+      "label": "NORMAL",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 10469.392462968826,
+      "min_ms": 10379.372701048851,
+      "max_ms": 10526.57411301136,
+      "calls": 67108864,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 67108863,
+      "ordinary": 67108864,
+      "identity_bypasses": 0,
+      "recipe_entries": 134217727
+    },
+    {
+      "pattern": "alternating",
+      "label": "KEEP_PLAN",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 5406.731688976288,
+      "min_ms": 5388.664451956749,
+      "max_ms": 5480.743443012238,
+      "calls": 67108864,
+      "hits": 33554431,
+      "hit_pct": 49.99999850988388,
+      "updates": 1,
+      "ordinary": 33554433,
+      "identity_bypasses": 33554431,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "alternating",
+      "label": "TWICE",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 5470.199481964111,
+      "min_ms": 5440.397826075554,
+      "max_ms": 5509.769321918488,
+      "calls": 67108864,
+      "hits": 33554431,
+      "hit_pct": 49.99999850988388,
+      "updates": 1,
+      "ordinary": 33554433,
+      "identity_bypasses": 33554431,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "all_c",
+      "label": "NORMAL",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3685.7721469402313,
+      "min_ms": 3678.8195630311966,
+      "max_ms": 3710.787089943886,
+      "calls": 67108864,
+      "hits": 67108862,
+      "hit_pct": 99.99999701976776,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "all_c",
+      "label": "KEEP_PLAN",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3846.7390019893646,
+      "min_ms": 3818.074231028557,
+      "max_ms": 3886.3471039533615,
+      "calls": 67108864,
+      "hits": 67108862,
+      "hit_pct": 99.99999701976776,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "all_c",
+      "label": "TWICE",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3745.635777950287,
+      "min_ms": 3712.2583689689636,
+      "max_ms": 3786.8172659873962,
+      "calls": 67108864,
+      "hits": 67108862,
+      "hit_pct": 99.99999701976776,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "c_then_d",
+      "label": "NORMAL",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3602.5115579366684,
+      "min_ms": 3591.5946630239487,
+      "max_ms": 3635.480085015297,
+      "calls": 67108864,
+      "hits": 67108861,
+      "hit_pct": 99.99999552965164,
+      "updates": 2,
+      "ordinary": 3,
+      "identity_bypasses": 0,
+      "recipe_entries": 5
+    },
+    {
+      "pattern": "c_then_d",
+      "label": "KEEP_PLAN",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 5275.1399030685425,
+      "min_ms": 5246.396977066994,
+      "max_ms": 5414.028882026672,
+      "calls": 67108864,
+      "hits": 33554430,
+      "hit_pct": 49.99999701976776,
+      "updates": 1,
+      "ordinary": 33554434,
+      "identity_bypasses": 33554432,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "c_then_d",
+      "label": "TWICE",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3655.6821900606155,
+      "min_ms": 3629.512969017029,
+      "max_ms": 3688.9150589704514,
+      "calls": 67108864,
+      "hits": 67108860,
+      "hit_pct": 99.99999403953552,
+      "updates": 2,
+      "ordinary": 4,
+      "identity_bypasses": 1,
+      "recipe_entries": 5
+    }
+  ],
+  "switch_phases": [
+    {
+      "label": "NORMAL",
+      "phase": "C",
+      "iterations": 33554432,
+      "median_ms": 1795.8374009132385,
+      "min_ms": 1788.6764279603958,
+      "max_ms": 1828.8288609981537,
+      "hits": 33554430,
+      "hit_pct": 99.99999403953552,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "NORMAL",
+      "phase": "D",
+      "iterations": 33554432,
+      "median_ms": 1804.4065779447556,
+      "min_ms": 1800.1415759325027,
+      "max_ms": 1807.9645960330963,
+      "hits": 33554431,
+      "hit_pct": 99.99999701976776,
+      "updates": 1,
+      "ordinary": 1,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "KEEP_PLAN",
+      "phase": "C",
+      "iterations": 33554432,
+      "median_ms": 1889.2941160202026,
+      "min_ms": 1858.738265991211,
+      "max_ms": 1903.7230590581894,
+      "hits": 33554430,
+      "hit_pct": 99.99999403953552,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "KEEP_PLAN",
+      "phase": "D",
+      "iterations": 33554432,
+      "median_ms": 3387.658711075783,
+      "min_ms": 3382.3597460985184,
+      "max_ms": 3510.305822968483,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 0,
+      "ordinary": 33554432,
+      "identity_bypasses": 33554432
+    },
+    {
+      "label": "TWICE",
+      "phase": "C",
+      "iterations": 33554432,
+      "median_ms": 1835.9334189891815,
+      "min_ms": 1824.4124480485916,
+      "max_ms": 1868.523069024086,
+      "hits": 33554430,
+      "hit_pct": 99.99999403953552,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "TWICE",
+      "phase": "D",
+      "iterations": 33554432,
+      "median_ms": 1814.3391790390015,
+      "min_ms": 1805.1005209684372,
+      "max_ms": 1820.3919899463654,
+      "hits": 33554430,
+      "hit_pct": 99.99999403953552,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 1
+    }
+  ],
+  "comparisons": {
+    "alternating": {
+      "vs_SPARSE_pct": -47.750554759383654,
+      "vs_KEEP_pct": 1.1738661475883205,
+      "KEEP_vs_SPARSE_pct": -48.35677707087227
+    },
+    "all_c": {
+      "vs_SPARSE_pct": 1.624181545236092,
+      "vs_KEEP_pct": -2.6282839565354377,
+      "KEEP_vs_SPARSE_pct": 4.367249212156565
+    },
+    "c_then_d": {
+      "vs_SPARSE_pct": 1.4759323119118761,
+      "vs_KEEP_pct": -30.69980593435807,
+      "KEEP_vs_SPARSE_pct": 46.42950669920596
+    }
+  },
+  "switch_D_vs_SPARSE_pct": 0.5504635826344195,
+  "counts": [
+    {
+      "event": "sample",
+      "label": "NORMAL",
+      "mode": "counts",
+      "pattern": "alternating",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 0,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 11538.783210992813,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 11538.783210992813,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          33554432,
+          33554432
+        ],
+        "phase_C_four": [
+          33554432,
+          0,
+          33554431,
+          33554431,
+          33554432,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          33554432,
+          0,
+          33554432,
+          33554432,
+          33554432,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_hit": [
+          0,
+          0
+        ],
+        "first_update": [
+          2,
+          1
+        ],
+        "trace_C_flags": [
+          2,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "trace_D_flags": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 0,
+        "threshold_allows": 0,
+        "four": [
+          67108864,
+          0,
+          67108863,
+          67108863,
+          67108864,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "recipe": [
+          0,
+          67108863,
+          67108863,
+          1,
+          0
+        ],
+        "base": [
+          0,
+          67108864,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          0,
+          67108863,
+          67108863,
+          0,
+          0
+        ],
+        "chain": [
+          0,
+          67108863,
+          67108863,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          0,
+          268435452,
+          268435452,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          67108863,
+          67108863,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 67108862,
+        "normal_constructions": 67108864,
+        "negative_queries": 67108864,
+        "negative_hits": 0,
+        "initial_unchanged": 67108862,
+        "final_unchanged": 67108862
+      }
+    },
+    {
+      "event": "sample",
+      "label": "KEEP_PLAN",
+      "mode": "counts",
+      "pattern": "alternating",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 0,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 5923.560816049576,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 5923.560816049576,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 33554431,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          33554431,
+          0
+        ],
+        "phase_normal": [
+          33554432,
+          1
+        ],
+        "phase_C_four": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          33554432,
+          33554431,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          0,
+          33554431
+        ],
+        "first_hit": [
+          0,
+          2
+        ],
+        "first_update": [
+          0,
+          1
+        ],
+        "trace_C_flags": [
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "trace_D_flags": [
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 0,
+        "threshold_allows": 0,
+        "four": [
+          33554433,
+          33554431,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          67108862,
+          33554431
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          33554431,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          33554431,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          33554431,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          134217724,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 33554433,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "TWICE",
+      "mode": "counts",
+      "pattern": "alternating",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 0,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 6066.146826028824,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 6066.146826028824,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 33554431,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          33554431,
+          0
+        ],
+        "phase_normal": [
+          33554432,
+          1
+        ],
+        "phase_C_four": [
+          33554432,
+          0,
+          0,
+          0,
+          33554432,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          33554432,
+          33554431,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          0,
+          33554431
+        ],
+        "first_hit": [
+          0,
+          2
+        ],
+        "first_update": [
+          0,
+          1
+        ],
+        "trace_C_flags": [
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "trace_D_flags": [
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_C_after": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 33554431,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 33554431,
+        "threshold_allows": 0,
+        "four": [
+          67108864,
+          33554431,
+          1,
+          1,
+          33554433,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          67108862,
+          33554431
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          33554431,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          33554431,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          33554431,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          134217724,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 33554431,
+        "normal_constructions": 33554433,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "NORMAL",
+      "mode": "counts",
+      "pattern": "all_c",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 100,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 4017.877025961876,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 4017.877025961876,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          67108864,
+          0
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          2,
+          0
+        ],
+        "phase_C_four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          0,
+          67108862
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_hit": [
+          3,
+          0
+        ],
+        "first_update": [
+          2,
+          0
+        ],
+        "trace_C_flags": [
+          2,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_D_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 0,
+        "threshold_allows": 0,
+        "four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          134217724,
+          67108862
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          67108862,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435448,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 2,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "KEEP_PLAN",
+      "mode": "counts",
+      "pattern": "all_c",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 100,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 4188.002956986427,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 4188.002956986427,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          67108864,
+          0
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          2,
+          0
+        ],
+        "phase_C_four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          0,
+          67108862
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_hit": [
+          3,
+          0
+        ],
+        "first_update": [
+          2,
+          0
+        ],
+        "trace_C_flags": [
+          2,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_D_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 0,
+        "threshold_allows": 0,
+        "four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          134217724,
+          67108862
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          67108862,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435448,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 2,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "TWICE",
+      "mode": "counts",
+      "pattern": "all_c",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 100,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 4084.2138180732727,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 4084.2138180732727,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          67108864,
+          0
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          2,
+          0
+        ],
+        "phase_C_four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          0,
+          67108862
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_hit": [
+          3,
+          0
+        ],
+        "first_update": [
+          2,
+          0
+        ],
+        "trace_C_flags": [
+          2,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_D_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 0,
+        "threshold_allows": 0,
+        "four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          134217724,
+          67108862
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          67108862,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435448,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 2,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "NORMAL",
+      "mode": "counts",
+      "pattern": "c_then_d",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "pattern": "c_then_d",
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 4012.02811896801,
+        "C_ms": 1994.653237938881,
+        "D_ms": 2017.374881029129,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 4012.02811896801,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          2,
+          1
+        ],
+        "phase_C_four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          0,
+          33554430
+        ],
+        "phase_D_four": [
+          33554432,
+          33554431,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          0,
+          33554431
+        ],
+        "first_hit": [
+          3,
+          2
+        ],
+        "first_update": [
+          2,
+          1
+        ],
+        "trace_C_flags": [
+          2,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_D_flags": [
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 0,
+        "threshold_allows": 0,
+        "four": [
+          67108864,
+          67108861,
+          2,
+          2,
+          3,
+          0,
+          0,
+          0,
+          67108861,
+          0,
+          134217722,
+          67108861
+        ],
+        "recipe": [
+          0,
+          2,
+          2,
+          1,
+          0
+        ],
+        "base": [
+          67108861,
+          3,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108861,
+          2,
+          2,
+          0,
+          0
+        ],
+        "chain": [
+          67108861,
+          2,
+          2,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435444,
+          8,
+          8,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 1,
+        "normal_constructions": 3,
+        "negative_queries": 3,
+        "negative_hits": 0,
+        "initial_unchanged": 1,
+        "final_unchanged": 1
+      }
+    },
+    {
+      "event": "sample",
+      "label": "KEEP_PLAN",
+      "mode": "counts",
+      "pattern": "c_then_d",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "pattern": "c_then_d",
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 5722.607576012611,
+        "C_ms": 2074.5802360773087,
+        "D_ms": 3648.0273399353027,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 5722.607576012611,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 33554432,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          33554432
+        ],
+        "phase_normal": [
+          2,
+          33554432
+        ],
+        "phase_C_four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          0,
+          33554430
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_hit": [
+          3,
+          0
+        ],
+        "first_update": [
+          2,
+          0
+        ],
+        "trace_C_flags": [
+          2,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_D_flags": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 0,
+        "increment_writes": 0,
+        "threshold_allows": 0,
+        "four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          67108860,
+          33554430
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          33554430,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          33554430,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          33554430,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          134217720,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 33554434,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "TWICE",
+      "mode": "counts",
+      "pattern": "c_then_d",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "pattern": "c_then_d",
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 3999.777932047844,
+        "C_ms": 2004.3766860961914,
+        "D_ms": 1995.4012459516525,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 3999.777932047844,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 1,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          1
+        ],
+        "phase_normal": [
+          2,
+          2
+        ],
+        "phase_C_four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          0,
+          33554430
+        ],
+        "phase_D_four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          0,
+          33554430
+        ],
+        "first_hit": [
+          3,
+          3
+        ],
+        "first_update": [
+          2,
+          2
+        ],
+        "trace_C_flags": [
+          2,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_D_flags": [
+          10,
+          22,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "trace_C_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_before": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_C_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trace_D_after": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit_reset_writes": 0,
+        "other_reset_writes": 0,
+        "learning_reset_writes": 1,
+        "increment_writes": 2,
+        "threshold_allows": 1,
+        "four": [
+          67108864,
+          67108860,
+          2,
+          2,
+          4,
+          0,
+          0,
+          0,
+          67108860,
+          0,
+          134217720,
+          67108860
+        ],
+        "recipe": [
+          0,
+          2,
+          2,
+          1,
+          0
+        ],
+        "base": [
+          67108860,
+          3,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108860,
+          2,
+          2,
+          0,
+          0
+        ],
+        "chain": [
+          67108860,
+          2,
+          2,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435440,
+          8,
+          8,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 2,
+        "normal_constructions": 4,
+        "negative_queries": 3,
+        "negative_hits": 0,
+        "initial_unchanged": 1,
+        "final_unchanged": 1
+      }
+    }
+  ]
+}

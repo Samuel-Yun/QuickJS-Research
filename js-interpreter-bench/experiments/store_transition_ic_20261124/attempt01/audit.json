@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "branch": "myx",
+  "frozen_sources_unchanged": true,
+  "changed_release_files": [
+    "quickjs-opcode.h",
+    "quickjs.c",
+    "store_transition_types.h",
+    "store_transition_runtime.inc",
+    "store_transition_prepare.inc"
+  ],
+  "patch_reconstructs": true,
+  "ctor_read_shared_write_global_transition_files_unchanged": true,
+  "semantic_ASan_UBSan": true,
+  "formal_targeted_release_processes": 40,
+  "counters_not_in_release": true,
+  "new_real_transition_hits": 0,
+  "full_user_requested": true,
+  "full_validation": {
+    "status": "PASS",
+    "fresh_release_processes": 86,
+    "unique_case_engine_pairs": 86,
+    "source_binary_input_hashes_verified": true,
+    "all_outputs_and_checksums_validated": true,
+    "previous_artifacts_unchanged": true
+  },
+  "formal_release_processes_total": 126
+}

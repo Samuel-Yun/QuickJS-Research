@@ -1,0 +1,261 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -318,7 +318,16 @@
+ 
+ /* end JS Malloc */
+ 
++typedef struct R2Hook R2Hook;
++typedef struct InstancePrototypeSlot {
++    uintptr_t site;
++    uint32_t offset;
++} InstancePrototypeSlot;
++
+ struct JSRuntime {
++    InstancePrototypeSlot instance_slots[64];
++    uint8_t instance_mode;
++    R2Hook *r2_hooks;uint64_t r2_epoch;
+     JSMallocContext malloc_ctx;
+     const char *rt_info;
+ 
+@@ -395,6 +404,7 @@
+ };
+ 
+ static void ex_edge_clear(JSRuntime *rt);
++static void r2_hook_free(JSRuntime*);
+ 
+ struct JSClass {
+     uint32_t class_id; /* 0 means free entry */
+@@ -1021,6 +1031,7 @@
+     uint8_t is_constructor : 1; /* TRUE if object is a constructor function */
+     uint8_t has_immutable_prototype : 1; /* cannot modify the prototype */
+     uint8_t tmp_mark : 1; /* used in JS_WriteObjectRec() */
++    uint8_t r2_hook_watch : 1;
+     uint8_t is_HTMLDDA : 1; /* specific annex B IsHtmlDDA behavior */
+     uint16_t class_id; /* see JS_CLASS_x */
+     /* count the number of weak references to this object. The object
+@@ -2108,6 +2119,9 @@
+     js_malloc_init(&rt->malloc_ctx);
+     rt->malloc_ctx.mf = *mf;
+     rt->malloc_ctx.malloc_state = ms;
++    const char *instance_setting = getenv("QJS_INSTANCE_MODE");
++    rt->instance_mode = instance_setting && !strcmp(instance_setting,"hook") ? 3 : instance_setting && !strcmp(instance_setting, "cached") ? 2 :
++                        instance_setting && !strcmp(instance_setting, "direct") ? 1 : 0;
+     rt->malloc_gc_threshold = 256 * 1024;
+ 
+     init_list_head(&rt->context_list);
+@@ -2438,6 +2452,7 @@
+     struct list_head *el, *el1;
+     int i;
+ 
++    r2_hook_free(rt);
+     ex_edge_clear(rt);
+     JS_FreeValueRT(rt, rt->current_exception);
+ 
+@@ -5697,6 +5712,7 @@
+     p->has_immutable_prototype = 0;
+     p->tmp_mark = 0;
+     p->is_HTMLDDA = 0;
++    p->r2_hook_watch = 0;
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
+@@ -6230,6 +6246,7 @@
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
++#include "r2_counts.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -8219,15 +8236,80 @@
+ }
+ 
+ /* return TRUE, FALSE or (-1) in case of exception */
+-int JS_IsInstanceOf(JSContext *ctx, JSValueConst val, JSValueConst obj)
++static JSValue js_function_hasInstance(JSContext *, JSValueConst, int, JSValueConst *);
++
++#include "instance_hook.inc"
++
++/* Always validate the current descriptor. A recycled PC can at most suggest
++   the wrong offset. No entry owns or dereferences an old function or shape. */
++static JSProperty *instance_proto_property(JSContext *ctx, JSObject *ctor, uintptr_t site)
++{
++    JSShape *shape = ctor->shape;
++    InstancePrototypeSlot *entry = NULL;
++    JSShapeProperty *desc;
++    JSProperty *prop;
++
++    if (ctx->rt->instance_mode >= 2) {
++        entry = &ctx->rt->instance_slots[(site ^ (site >> 9)) & 63];
++        if (entry->site == site && entry->offset < (uint32_t)shape->prop_count) {
++            desc = &get_shape_prop(shape)[entry->offset];
++            if (desc->atom == JS_ATOM_prototype && !(desc->flags & JS_PROP_TMASK))
++                {R2C(ctx,site,5);return &ctor->prop[entry->offset];}
++        }
++    }
++    desc = find_own_property(&prop, ctor, JS_ATOM_prototype);
++    if (!desc || (desc->flags & JS_PROP_TMASK))
++        return NULL;
++    if (entry) {
++        entry->offset = (uint32_t)(prop - ctor->prop);
++        entry->site = site;R2C(ctx,site,6);
++    }
++    return prop;
++}
++
++static int instance_fast_result(JSContext *ctx, JSValueConst val, JSObject *ctor,
++                                JSValueConst method, uintptr_t site)
++{
++    if (!JS_IsObject(method) || ctor->class_id != JS_CLASS_BYTECODE_FUNCTION ||
++        ctx->rt->interrupt_handler || js_check_stack_overflow(ctx->rt, 4096))
++        return -1;
++    JSObject *hook = JS_VALUE_GET_OBJ(method);
++    if (hook->class_id != JS_CLASS_C_FUNCTION || hook->u.cfunc.realm != ctx ||
++        hook->u.cfunc.cproto != JS_CFUNC_generic || hook->u.cfunc.c_function.generic != js_function_hasInstance)
++        return -1;
++    if (!JS_IsObject(val))
++        {R2C(ctx,site,7);return FALSE;}
++    JSObject *lhs = JS_VALUE_GET_OBJ(val);
++    if (lhs->is_exotic)
++        return -1;
++    JSProperty *proto = instance_proto_property(ctx, ctor, site);
++    if (proto && JS_IsObject(proto->u.value) && lhs->shape->proto == JS_VALUE_GET_OBJ(proto->u.value))
++        {R2C(ctx,site,8);return TRUE;}
++    return -1;
++}
++
++static int js_instanceof_at(JSContext *ctx, JSValueConst val, JSValueConst obj, uintptr_t site)
+ {
+     JSValue method;
+ 
+     if (!JS_IsObject(obj))
+         goto fail;
+-    method = JS_GetProperty(ctx, obj, JS_ATOM_Symbol_hasInstance);
++    if(site)R2C(ctx,site,0);
++    if(!(site && ctx->rt->instance_mode==3 && r2_hook_load(ctx,obj,site,&method))){
++        if(site)R2C(ctx,site,9);
++        method = JS_GetProperty(ctx, obj, JS_ATOM_Symbol_hasInstance);
++        if(site && ctx->rt->instance_mode==3 && !JS_IsException(method))r2_hook_learn(ctx,obj,site);
++    }
+     if (JS_IsException(method))
+         return -1;
++    if (site && ctx->rt->instance_mode) {
++        int answer = instance_fast_result(ctx, val, JS_VALUE_GET_OBJ(obj), method, site);
++        if (answer >= 0) {
++            int interrupted = js_poll_interrupts(ctx);
++            JS_FreeValue(ctx, method);
++            return interrupted ? -1 : answer;
++        }
++    }
+     if (!JS_IsNull(method) && !JS_IsUndefined(method)) {
+         JSValue ret;
+         ret = JS_CallFree(ctx, method, obj, 1, &val);
+@@ -8241,6 +8323,11 @@
+         return -1;
+     }
+     return JS_OrdinaryIsInstanceOf(ctx, val, obj);
++}
++
++int JS_IsInstanceOf(JSContext *ctx, JSValueConst val, JSValueConst obj)
++{
++    return js_instanceof_at(ctx, val, obj, 0);
+ }
+ 
+ /* return the value associated to the autoinit property or an exception */
+@@ -9269,6 +9356,7 @@
+                                 JSObject *p, JSAtom prop, int prop_flags)
+ {
+     JSShape *sh, *new_sh;
++    if(unlikely(p->r2_hook_watch)){if(++ctx->rt->r2_epoch==0){ctx->rt->r2_epoch=1;if(ctx->rt->r2_hooks)for(unsigned n=0;n<64;n++)ctx->rt->r2_hooks[n].epoch=0;}}
+ 
+     if (unlikely(__JS_AtomIsTaggedInt(prop))) {
+         /* update is_std_array_prototype */
+@@ -10410,6 +10498,9 @@
+     JSShape *sh;
+     uint32_t idx = 0;    /* prevent warning */
+ 
++    if(unlikely(p->r2_hook_watch)){
++        if(++ctx->rt->r2_epoch==0){ctx->rt->r2_epoch=1;if(ctx->rt->r2_hooks)for(unsigned n=0;n<64;n++)ctx->rt->r2_hooks[n].epoch=0;}
++    }
+     sh = p->shape;
+     if (sh->is_hashed) {
+         if (js_rc(sh)->ref_count != 1) {
+@@ -16108,14 +16199,14 @@
+     return ret;
+ }
+ 
+-static __exception int js_operator_instanceof(JSContext *ctx, JSValue *sp)
++static __exception int js_operator_instanceof(JSContext *ctx, JSValue *sp, const uint8_t *site)
+ {
+     JSValue op1, op2;
+     BOOL ret;
+ 
+     op1 = sp[-2];
+     op2 = sp[-1];
+-    ret = JS_IsInstanceOf(ctx, op1, op2);
++    ret = js_instanceof_at(ctx, op1, op2, (uintptr_t)site);
+     if (ret < 0)
+         return ret;
+     JS_FreeValue(ctx, op1);
+@@ -20601,7 +20692,7 @@
+             BREAK;
+         CASE(OP_instanceof):
+             sf->cur_pc = pc;
+-            if (js_operator_instanceof(ctx, sp))
++            if (js_operator_instanceof(ctx, sp, pc - 1))
+                 goto exception;
+             sp--;
+             BREAK;
+--- a/instance_hook.inc
++++ b/instance_hook.inc
+@@ -0,0 +1,25 @@
++/* Path records are bounded runtime roots, allocated only on a qualifying
++ * instanceof. Structural mutations of registered objects invalidate them.
++ * Values are NOT cached: a same-layout hook replacement is read currently. */
++typedef struct R2Hook {uintptr_t pc;JSValue rhs,holder;uint64_t epoch;uint32_t off;} R2Hook;
++static int r2_plain_hook_object(JSObject*o){return !o->is_exotic&&(o->class_id==JS_CLASS_OBJECT||o->class_id==JS_CLASS_BYTECODE_FUNCTION||o->class_id==JS_CLASS_COLD_BYTECODE_FUNCTION||o->class_id==JS_CLASS_C_FUNCTION);}
++static int r2_hook_load(JSContext*ctx,JSValueConst rhs,uintptr_t pc,JSValue*out){
++ JSRuntime*rt=ctx->rt;R2C(ctx,pc,1);
++ if(!rt->r2_hooks||!r2_plain_hook_object(JS_VALUE_GET_OBJ(rhs)))return 0;
++ R2Hook*h=&rt->r2_hooks[(pc^(pc>>9))&63];
++ if(h->pc!=pc||h->epoch!=rt->r2_epoch||JS_VALUE_GET_OBJ(h->rhs)!=JS_VALUE_GET_OBJ(rhs))return 0;
++ /* All descriptors and links remain unchanged under this epoch; ordinary
++    data value writes need not invalidate and are deliberately read now. */
++ JSObject*holder=JS_VALUE_GET_OBJ(h->holder);*out=JS_DupValue(ctx,holder->prop[h->off].u.value);R2C(ctx,pc,2);return 1;
++}
++static void r2_hook_learn(JSContext*ctx,JSValueConst rhs,uintptr_t pc){
++ JSObject*o=JS_VALUE_GET_OBJ(rhs);JSObject*path[8];unsigned depth=0;JSProperty*p=NULL;JSShapeProperty*d=NULL;
++ while(o&&depth<8){if(!r2_plain_hook_object(o))return;path[depth++]=o;d=find_own_property(&p,o,JS_ATOM_Symbol_hasInstance);if(d)break;o=o->shape->proto;}
++ if(!d||(d->flags&JS_PROP_TMASK))return;
++ JSRuntime*rt=ctx->rt;if(!rt->r2_hooks){rt->r2_hooks=js_mallocz_rt(rt,64*sizeof(R2Hook));if(!rt->r2_hooks)return;}
++ R2Hook*h=&rt->r2_hooks[(pc^(pc>>9))&63],old=*h;
++ for(unsigned n=0;n<depth;n++)path[n]->r2_hook_watch=1;
++ h->rhs=JS_DupValue(ctx,rhs);h->holder=JS_DupValue(ctx,JS_MKPTR(JS_TAG_OBJECT,o));h->off=p-o->prop;h->epoch=rt->r2_epoch;h->pc=pc;R2C(ctx,pc,3);
++ if(old.pc){R2C(ctx,pc,4);JS_FreeValue(ctx,old.rhs);JS_FreeValue(ctx,old.holder);}
++}
++static void r2_hook_free(JSRuntime*rt){R2Hook*t=rt->r2_hooks;rt->r2_hooks=NULL;if(!t)return;for(unsigned n=0;n<64;n++)if(t[n].pc){JS_FreeValueRT(rt,t[n].rhs);JS_FreeValueRT(rt,t[n].holder);}js_free_rt(rt,t);}
+--- a/r2_counts.inc
++++ b/r2_counts.inc
+@@ -0,0 +1,22 @@
++#ifdef FOUR_DIAG
++/* Diagnostics have no ownership of VM values; names/locations are copied. */
++typedef struct R2Count {uintptr_t pc;unsigned offset;int line;char name[96];uint64_t c[32];} R2Count;
++static R2Count r2_counts[1024];
++static int find_line_num(JSContext*,JSFunctionBytecode*,uint32_t,int*);
++static R2Count*r2_count(JSContext*ctx,uintptr_t pc){
++ if(!four_active)return NULL;
++ unsigned h=(pc^(pc>>12))&1023;
++ for(unsigned n=0;n<1024;n++,h=(h+1)&1023){
++  R2Count*r=&r2_counts[h];if(r->pc==pc)return r;
++  if(!r->pc){r->pc=pc;JSStackFrame*sf=ctx->rt->current_stack_frame;
++   if(sf&&JS_VALUE_GET_TAG(sf->cur_func)==JS_TAG_OBJECT){JSObject*f=JS_VALUE_GET_OBJ(sf->cur_func);
++    if(f->class_id==JS_CLASS_BYTECODE_FUNCTION){JSFunctionBytecode*b=f->u.func.function_bytecode;int col;
++     r->offset=pc-(uintptr_t)b->byte_code_buf;r->line=find_line_num(ctx,b,r->offset,&col);char tmp[96];snprintf(r->name,sizeof(r->name),"%s",JS_AtomGetStr(ctx,tmp,sizeof(tmp),b->func_name));}}
++   return r;}
++ }abort();
++}
++#define R2C(ctx,pc,k) do{R2Count*rr=r2_count(ctx,(uintptr_t)(pc));if(rr)rr->c[k]++;}while(0)
++static void r2_report(void){fprintf(stderr,"R2_COUNTS:[");unsigned j=0;for(unsigned n=0;n<1024;n++){R2Count*r=&r2_counts[n];if(!r->pc)continue;fprintf(stderr,"%s{\"pc\":%u,\"line\":%d,\"function\":",j++?",":"",r->offset,r->line);four_json_string(r->name);fprintf(stderr,",\"c\":[");for(unsigned k=0;k<32;k++)fprintf(stderr,"%s%"PRIu64,k?",":"",r->c[k]);fprintf(stderr,"]}");}fprintf(stderr,"]\n");}
++#else
++#define R2C(ctx,pc,k) ((void)0)
++#endif

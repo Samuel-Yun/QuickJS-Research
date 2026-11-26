@@ -1,0 +1,49 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -989,6 +989,7 @@
+     int prop_size; /* allocated properties */
+     int prop_count; /* include deleted properties */
+     int deleted_prop_count;
++    uint32_t lookup_hint; /* s004: positive descriptor index, revalidated on use */
+     JSShape *shape_hash_next; /* in JSRuntime.shape_hash[h] list */
+     JSObject *proto;
+     uint32_t hash_table[]; /* prop_hash_mask + 1 elements */
+@@ -5239,6 +5240,7 @@
+     sh->prop_size = prop_size;
+     sh->prop_count = 0;
+     sh->deleted_prop_count = 0;
++    sh->lookup_hint = UINT32_MAX;
+     sh->is_hashed = FALSE;
+     return sh;
+ }
+@@ -6149,12 +6151,20 @@
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
+     sh = p->shape;
++    prop = get_shape_prop(sh);
++    if (sh->lookup_hint < (uint32_t)sh->prop_count && atom != JS_ATOM_NULL) {
++        pr = &prop[sh->lookup_hint];
++        if (pr->atom == atom) {
++            *ppr = &p->prop[sh->lookup_hint];
++            return pr;
++        }
++    }
+     h = (uintptr_t)atom & sh->prop_hash_mask;
+     h = sh->hash_table[h];
+-    prop = get_shape_prop(sh);
+     while (h) {
+         pr = &prop[h - 1];
+         if (likely(pr->atom == atom)) {
++            sh->lookup_hint = h - 1;
+             *ppr = &p->prop[h - 1];
+             /* the compiler should be able to assume that pr != NULL here */
+             return pr;
+@@ -9357,6 +9367,8 @@
+                 return -1;
+             sh = p->shape;
+             /* remove property */
++            /* Unlink precedes value release: a finalizer may reenter lookup. */
++            sh->lookup_hint = UINT32_MAX;
+             if (lpr) {
+                 lpr = get_shape_prop(sh) + lpr_idx;
+                 lpr->hash_next = pr->hash_next;

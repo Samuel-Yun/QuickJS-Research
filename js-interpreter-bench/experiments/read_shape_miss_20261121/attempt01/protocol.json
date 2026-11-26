@@ -1,0 +1,98 @@
+{
+  "iterations": 67108864,
+  "repeats": 3,
+  "CPU": 2,
+  "TZ": "Asia/Shanghai",
+  "locale": "C",
+  "timed": "run(sequence,n) only",
+  "sequence_generation_timed": false,
+  "warmup_calls": 0,
+  "first_call_included": true,
+  "counts_iterations": 65536,
+  "pilot": [
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+      "iterations": 1048576,
+      "rep": 0,
+      "phase": "pilot",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":53}\n",
+      "stderr": "",
+      "payload": {
+        "iterations": 1048576,
+        "checksum": 3145728,
+        "elapsed_ms": 53
+      }
+    },
+    {
+      "label": "SKIP_REPROBE",
+      "mode": "release",
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+      "iterations": 1048576,
+      "rep": 0,
+      "phase": "pilot",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/stable.js",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":34}\n",
+      "stderr": "",
+      "payload": {
+        "iterations": 1048576,
+        "checksum": 3145728,
+        "elapsed_ms": 34
+      }
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+      "iterations": 1048576,
+      "rep": 0,
+      "phase": "pilot",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":29}\n",
+      "stderr": "",
+      "payload": {
+        "iterations": 1048576,
+        "checksum": 3145728,
+        "elapsed_ms": 29
+      }
+    },
+    {
+      "label": "SKIP_REPROBE",
+      "mode": "release",
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+      "iterations": 1048576,
+      "rep": 0,
+      "phase": "pilot",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/alternating.js",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":28}\n",
+      "stderr": "",
+      "payload": {
+        "iterations": 1048576,
+        "checksum": 3145728,
+        "elapsed_ms": 28
+      }
+    }
+  ]
+}

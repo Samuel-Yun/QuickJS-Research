@@ -1,0 +1,1223 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivdi3.o)
+                              .obj/quickjs.o (__udivti3)
+/usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivmoddi4.o)
+                              .obj/quickjs.o (__udivmodti4)
+/usr/lib/x86_64-linux-gnu/libc_nonshared.a(atexit.oS)
+                              .obj/quickjs-libc.o (atexit)
+
+Merging program properties
+
+
+As-needed library included to satisfy reference by file (symbol)
+
+libm.so.6                     .obj/quickjs.o (exp@@GLIBC_2.29)
+libc.so.6                     .obj/quickjs-libc.o (fgetc@@GLIBC_2.2.5)
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/qjs.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/qjs.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/repl.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/repl.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/quickjs.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/quickjs.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/dtoa.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/dtoa.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/libregexp.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/libregexp.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/libunicode.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/libunicode.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/cutils.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/cutils.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/quickjs-libc.o
+ .note.gnu.property
+                0x0000000000000000       0x20 .obj/quickjs-libc.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivdi3.o)
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivdi3.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivmoddi4.o)
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivmoddi4.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(atexit.oS)
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(atexit.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+LOAD .obj/qjs.o
+LOAD .obj/repl.o
+LOAD .obj/quickjs.o
+LOAD .obj/dtoa.o
+LOAD .obj/libregexp.o
+LOAD .obj/libunicode.o
+LOAD .obj/cutils.o
+LOAD .obj/quickjs-libc.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libm.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libm.so.6
+LOAD /lib/x86_64-linux-gnu/libmvec.so.1
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libpthread.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libdl.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libc.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libc.so.6
+LOAD /usr/lib/x86_64-linux-gnu/libc_nonshared.a
+LOAD /lib64/ld-linux-x86-64.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x0))
+                0x0000000000000318                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.interp         0x0000000000000318       0x1c
+ *(.interp)
+ .interp        0x0000000000000318       0x1c /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.note.gnu.property
+                0x0000000000000338       0x30
+ .note.gnu.property
+                0x0000000000000338       0x30 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.note.gnu.build-id
+                0x0000000000000368       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x0000000000000368       0x24 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.note.ABI-tag   0x000000000000038c       0x20
+ .note.ABI-tag  0x000000000000038c       0x20 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000000003b0      0x9b4
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000003b0      0x9b4 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.dynsym         0x0000000000000d68     0x2970
+ *(.dynsym)
+ .dynsym        0x0000000000000d68     0x2970 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.dynstr         0x00000000000036d8     0x17bb
+ *(.dynstr)
+ .dynstr        0x00000000000036d8     0x17bb /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.gnu.version    0x0000000000004e94      0x374
+ *(.gnu.version)
+ .gnu.version   0x0000000000004e94      0x374 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.gnu.version_d  0x0000000000005208        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000005208        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.gnu.version_r  0x0000000000005208       0xf0
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000005208       0xf0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.rela.dyn       0x00000000000052f8     0xac68
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ .rela.text     0x00000000000052f8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.text.startup
+                0x00000000000052f8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.ro
+                0x00000000000052f8      0x7e0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.local
+                0x0000000000005ad8       0xc0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro.local
+                0x0000000000005b98     0xa2c0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x000000000000fe58       0x78 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ .rela.bss      0x000000000000fed0       0x60 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+ *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+ *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x000000000000ff30        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.fini_array
+                0x000000000000ff30       0x18 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.init_array
+                0x000000000000ff48       0x18 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+
+.rela.plt       0x000000000000ff60      0xb70
+ *(.rela.plt)
+ .rela.plt      0x000000000000ff60      0xb70 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.iplt)
+
+.relr.dyn
+ *(.relr.dyn)
+                0x0000000000011000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+
+.init           0x0000000000011000       0x1b
+ *(SORT_NONE(.init))
+ .init          0x0000000000011000       0x16 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+                0x0000000000011000                _init
+ .init          0x0000000000011016        0x5 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+
+.plt            0x0000000000011020      0x7b0
+ *(.plt)
+ .plt           0x0000000000011020      0x7b0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.iplt)
+
+.plt.got        0x00000000000117d0       0x10
+ *(.plt.got)
+ .plt.got       0x00000000000117d0       0x10 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x00000000000117d0                __cxa_finalize@@GLIBC_2.2.5
+
+.plt.sec        0x00000000000117e0      0x7a0
+ *(.plt.sec)
+ .plt.sec       0x00000000000117e0      0x7a0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x00000000000117e0                getenv@@GLIBC_2.2.5
+                0x00000000000117f0                __snprintf_chk@@GLIBC_2.3.4
+                0x0000000000011800                free@@GLIBC_2.2.5
+                0x0000000000011810                abort@@GLIBC_2.2.5
+                0x0000000000011820                __errno_location@@GLIBC_2.2.5
+                0x0000000000011830                round@@GLIBC_2.2.5
+                0x0000000000011840                remove@@GLIBC_2.2.5
+                0x0000000000011850                fmax@@GLIBC_2.2.5
+                0x0000000000011860                localtime_r@@GLIBC_2.2.5
+                0x0000000000011870                _exit@@GLIBC_2.2.5
+                0x0000000000011880                strcpy@@GLIBC_2.2.5
+                0x0000000000011890                ftello@@GLIBC_2.2.5
+                0x00000000000118a0                mkdir@@GLIBC_2.2.5
+                0x00000000000118b0                puts@@GLIBC_2.2.5
+                0x00000000000118c0                ferror@@GLIBC_2.2.5
+                0x00000000000118d0                isatty@@GLIBC_2.2.5
+                0x00000000000118e0                fread@@GLIBC_2.2.5
+                0x00000000000118f0                strtod@@GLIBC_2.2.5
+                0x0000000000011900                readlink@@GLIBC_2.2.5
+                0x0000000000011910                clock_gettime@@GLIBC_2.17
+                0x0000000000011920                setenv@@GLIBC_2.2.5
+                0x0000000000011930                write@@GLIBC_2.2.5
+                0x0000000000011940                getpid@@GLIBC_2.2.5
+                0x0000000000011950                closefrom@@GLIBC_2.34
+                0x0000000000011960                pthread_cond_wait@@GLIBC_2.3.2
+                0x0000000000011970                pow@@GLIBC_2.29
+                0x0000000000011980                clock@@GLIBC_2.2.5
+                0x0000000000011990                fclose@@GLIBC_2.2.5
+                0x00000000000119a0                opendir@@GLIBC_2.2.5
+                0x00000000000119b0                strlen@@GLIBC_2.2.5
+                0x00000000000119c0                chdir@@GLIBC_2.2.5
+                0x00000000000119d0                __stack_chk_fail@@GLIBC_2.4
+                0x00000000000119e0                dup2@@GLIBC_2.2.5
+                0x00000000000119f0                strchr@@GLIBC_2.2.5
+                0x0000000000011a00                lrint@@GLIBC_2.2.5
+                0x0000000000011a10                pthread_mutex_destroy@@GLIBC_2.2.5
+                0x0000000000011a20                symlink@@GLIBC_2.2.5
+                0x0000000000011a30                pclose@@GLIBC_2.2.5
+                0x0000000000011a40                modf@@GLIBC_2.2.5
+                0x0000000000011a50                nanosleep@@GLIBC_2.2.5
+                0x0000000000011a60                strrchr@@GLIBC_2.2.5
+                0x0000000000011a70                dup@@GLIBC_2.2.5
+                0x0000000000011a80                lseek@@GLIBC_2.2.5
+                0x0000000000011a90                gettimeofday@@GLIBC_2.2.5
+                0x0000000000011aa0                __assert_fail@@GLIBC_2.2.5
+                0x0000000000011ab0                memset@@GLIBC_2.2.5
+                0x0000000000011ac0                ioctl@@GLIBC_2.2.5
+                0x0000000000011ad0                getcwd@@GLIBC_2.2.5
+                0x0000000000011ae0                fgetc@@GLIBC_2.2.5
+                0x0000000000011af0                close@@GLIBC_2.2.5
+                0x0000000000011b00                __realpath_chk@@GLIBC_2.4
+                0x0000000000011b10                pipe@@GLIBC_2.2.5
+                0x0000000000011b20                strspn@@GLIBC_2.2.5
+                0x0000000000011b30                closedir@@GLIBC_2.2.5
+                0x0000000000011b40                fputc@@GLIBC_2.2.5
+                0x0000000000011b50                malloc_usable_size@@GLIBC_2.2.5
+                0x0000000000011b60                memchr@@GLIBC_2.2.5
+                0x0000000000011b70                read@@GLIBC_2.2.5
+                0x0000000000011b80                lstat@@GLIBC_2.33
+                0x0000000000011b90                memcmp@@GLIBC_2.2.5
+                0x0000000000011ba0                pthread_attr_init@@GLIBC_2.2.5
+                0x0000000000011bb0                pthread_cond_signal@@GLIBC_2.3.2
+                0x0000000000011bc0                execve@@GLIBC_2.2.5
+                0x0000000000011bd0                utimes@@GLIBC_2.2.5
+                0x0000000000011be0                calloc@@GLIBC_2.2.5
+                0x0000000000011bf0                tmpfile@@GLIBC_2.2.5
+                0x0000000000011c00                strcmp@@GLIBC_2.2.5
+                0x0000000000011c10                putc@@GLIBC_2.2.5
+                0x0000000000011c20                signal@@GLIBC_2.2.5
+                0x0000000000011c30                dlopen@@GLIBC_2.34
+                0x0000000000011c40                __memcpy_chk@@GLIBC_2.3.4
+                0x0000000000011c50                ftell@@GLIBC_2.2.5
+                0x0000000000011c60                feof@@GLIBC_2.2.5
+                0x0000000000011c70                stat@@GLIBC_2.33
+                0x0000000000011c80                clearerr@@GLIBC_2.2.5
+                0x0000000000011c90                memcpy@@GLIBC_2.14
+                0x0000000000011ca0                fmin@@GLIBC_2.2.5
+                0x0000000000011cb0                kill@@GLIBC_2.2.5
+                0x0000000000011cc0                __isoc23_strtol@@GLIBC_2.38
+                0x0000000000011cd0                fileno@@GLIBC_2.2.5
+                0x0000000000011ce0                pthread_cond_init@@GLIBC_2.3.2
+                0x0000000000011cf0                readdir@@GLIBC_2.2.5
+                0x0000000000011d00                pthread_attr_setdetachstate@@GLIBC_2.2.5
+                0x0000000000011d10                pthread_mutex_unlock@@GLIBC_2.2.5
+                0x0000000000011d20                malloc@@GLIBC_2.2.5
+                0x0000000000011d30                fflush@@GLIBC_2.2.5
+                0x0000000000011d40                fmod@@GLIBC_2.38
+                0x0000000000011d50                hypot@@GLIBC_2.35
+                0x0000000000011d60                fseek@@GLIBC_2.2.5
+                0x0000000000011d70                __vsnprintf_chk@@GLIBC_2.3.4
+                0x0000000000011d80                realloc@@GLIBC_2.2.5
+                0x0000000000011d90                fdopen@@GLIBC_2.2.5
+                0x0000000000011da0                __printf_chk@@GLIBC_2.3.4
+                0x0000000000011db0                poll@@GLIBC_2.2.5
+                0x0000000000011dc0                pthread_create@@GLIBC_2.34
+                0x0000000000011dd0                memmove@@GLIBC_2.2.5
+                0x0000000000011de0                setgid@@GLIBC_2.2.5
+                0x0000000000011df0                pthread_cond_timedwait@@GLIBC_2.3.2
+                0x0000000000011e00                waitpid@@GLIBC_2.2.5
+                0x0000000000011e10                tcgetattr@@GLIBC_2.2.5
+                0x0000000000011e20                tcsetattr@@GLIBC_2.2.5
+                0x0000000000011e30                pthread_cond_destroy@@GLIBC_2.3.2
+                0x0000000000011e40                open@@GLIBC_2.2.5
+                0x0000000000011e50                fseeko@@GLIBC_2.2.5
+                0x0000000000011e60                popen@@GLIBC_2.2.5
+                0x0000000000011e70                fopen@@GLIBC_2.2.5
+                0x0000000000011e80                perror@@GLIBC_2.2.5
+                0x0000000000011e90                rename@@GLIBC_2.2.5
+                0x0000000000011ea0                unsetenv@@GLIBC_2.2.5
+                0x0000000000011eb0                dlsym@@GLIBC_2.34
+                0x0000000000011ec0                pthread_attr_destroy@@GLIBC_2.2.5
+                0x0000000000011ed0                __cxa_atexit@@GLIBC_2.2.5
+                0x0000000000011ee0                exit@@GLIBC_2.2.5
+                0x0000000000011ef0                fwrite@@GLIBC_2.2.5
+                0x0000000000011f00                __fprintf_chk@@GLIBC_2.3.4
+                0x0000000000011f10                setuid@@GLIBC_2.2.5
+                0x0000000000011f20                strdup@@GLIBC_2.2.5
+                0x0000000000011f30                strerror@@GLIBC_2.2.5
+                0x0000000000011f40                dlclose@@GLIBC_2.34
+                0x0000000000011f50                pthread_mutex_init@@GLIBC_2.2.5
+                0x0000000000011f60                fork@@GLIBC_2.2.5
+                0x0000000000011f70                pthread_mutex_lock@@GLIBC_2.2.5
+
+.text           0x0000000000011f80    0xba532
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ .text.unlikely
+                0x0000000000011f80       0x12 .obj/qjs.o
+ .text.unlikely
+                0x0000000000011f92       0xd8 .obj/quickjs.o
+ .text.unlikely
+                0x000000000001206a        0xa .obj/libregexp.o
+ .text.unlikely
+                0x0000000000012074       0x14 .obj/libunicode.o
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *fill*         0x0000000000012088        0x8 
+ .text.startup  0x0000000000012090      0xab4 .obj/qjs.o
+                0x0000000000012090                main
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *fill*         0x0000000000012b44        0xc 
+ .text          0x0000000000012b50       0x26 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000012b50                _start
+ .text          0x0000000000012b76        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+ *fill*         0x0000000000012b76        0xa 
+ .text          0x0000000000012b80       0xb9 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+ *fill*         0x0000000000012c39        0x7 
+ .text          0x0000000000012c40      0x6a0 .obj/qjs.o
+                0x00000000000132c0                help
+ .text          0x00000000000132e0        0x0 .obj/repl.o
+ .text          0x00000000000132e0    0xa1d9f .obj/quickjs.o
+                0x0000000000014e00                js_realloc_rt
+                0x000000000001c370                js_malloc_rt
+                0x000000000001c380                js_free_rt
+                0x000000000001c390                js_malloc_usable_size_rt
+                0x000000000001c410                js_mallocz_rt
+                0x000000000001c440                js_free
+                0x000000000001c450                js_malloc_usable_size
+                0x000000000001c4d0                JS_GetRuntimeOpaque
+                0x000000000001c4e0                JS_SetRuntimeOpaque
+                0x000000000001c4f0                JS_SetMemoryLimit
+                0x000000000001c500                JS_SetGCThreshold
+                0x000000000001c510                JS_SetInterruptHandler
+                0x000000000001c530                JS_SetCanBlock
+                0x000000000001c540                JS_SetSharedArrayBufferFunctions
+                0x000000000001c560                JS_SetStripInfo
+                0x000000000001c570                JS_GetStripInfo
+                0x000000000001c580                JS_IsJobPending
+                0x000000000001c5a0                JS_SetRuntimeInfo
+                0x000000000001c5c0                JS_GetContextOpaque
+                0x000000000001c5d0                JS_SetContextOpaque
+                0x000000000001c5e0                JS_GetClassProto
+                0x000000000001c630                JS_DupContext
+                0x000000000001c640                JS_GetRuntime
+                0x000000000001c650                JS_SetMaxStackSize
+                0x000000000001c680                JS_UpdateStackTop
+                0x000000000001c6b0                JS_DupAtom
+                0x000000000001c6e0                JS_FreeAtom
+                0x000000000001c720                JS_FreeAtomRT
+                0x000000000001c750                JS_NewClassID
+                0x000000000001c7a0                JS_GetClassID
+                0x000000000001c7b0                JS_IsRegisteredClass
+                0x000000000001c7e0                JS_NewClass
+                0x000000000001c8a0                __JS_FreeValueRT
+                0x000000000001d190                JS_FreeCString
+                0x000000000001d740                JS_SetClassProto
+                0x000000000001e4f0                JS_FreeContext
+                0x000000000001e940                JS_ExecutePendingJob
+                0x000000000001f990                JS_FreeRuntime
+                0x000000000001fc70                JS_NewRuntime2
+                0x0000000000020030                JS_NewRuntime
+                0x0000000000020d70                __JS_FreeValue
+                0x0000000000020d80                JS_MarkValue
+                0x0000000000020da0                JS_RunGC
+                0x0000000000020dd0                JS_IsLiveObject
+                0x0000000000020df0                JS_ComputeMemoryUsage
+                0x0000000000021c70                JS_DumpMemoryUsage
+                0x00000000000223b0                JS_GetGlobalObject
+                0x00000000000223d0                JS_Throw
+                0x0000000000022440                JS_GetException
+                0x0000000000022480                JS_HasException
+                0x00000000000224a0                JS_GetPrototype
+                0x00000000000225a0                JS_FreePropertyEnum
+                0x00000000000225c0                JS_IsExtensible
+                0x0000000000022620                JS_PreventExtensions
+                0x00000000000226b0                JS_IsFunction
+                0x0000000000022700                JS_IsCFunction
+                0x0000000000022730                JS_IsConstructor
+                0x0000000000022750                JS_SetConstructorBit
+                0x0000000000022780                JS_IsError
+                0x00000000000227a0                JS_SetUncatchableException
+                0x00000000000227b0                JS_SetOpaque
+                0x00000000000227d0                JS_GetOpaque
+                0x00000000000227f0                JS_GetAnyOpaque
+                0x0000000000022820                JS_SetIsHTMLDDA
+                0x0000000000022830                JS_ToBool
+                0x0000000000022850                JS_PrintValueSetDefaultOptions
+                0x0000000000022870                JS_NewBigInt64
+                0x0000000000022880                JS_StrictEq
+                0x00000000000228a0                JS_SameValue
+                0x00000000000228c0                JS_SameValueZero
+                0x00000000000228e0                JS_DetectModule
+                0x0000000000022970                JS_SetModulePrivateValue
+                0x00000000000229d0                JS_GetModulePrivateValue
+                0x00000000000229f0                JS_SetModuleLoaderFunc
+                0x0000000000022a20                JS_SetModuleLoaderFunc2
+                0x0000000000022a50                JS_GetScriptOrModuleName
+                0x0000000000022af0                JS_GetModuleName
+                0x0000000000022b20                JS_GetImportMeta
+                0x000000000002d040                JS_GetPropertyInternal
+                0x000000000002daa0                JS_GetPropertyUint32
+                0x000000000002dd70                JS_SetPropertyInternal
+                0x000000000002f150                JS_SetPropertyUint32
+                0x000000000002f1a0                JS_DefineProperty
+                0x0000000000030030                JS_DefinePropertyValue
+                0x0000000000030140                JS_DefinePropertyGetSet
+                0x0000000000030a90                JS_ThrowSyntaxError
+                0x0000000000030eb0                JS_ThrowTypeError
+                0x00000000000323d0                JS_GetOpaque2
+                0x0000000000032fa0                JS_ThrowReferenceError
+                0x00000000000331d0                JS_ThrowRangeError
+                0x0000000000033290                JS_ThrowInternalError
+                0x00000000000336a0                JS_IsInstanceOf
+                0x0000000000033820                JS_ThrowOutOfMemory
+                0x0000000000033870                JS_IsArray
+                0x0000000000033c90                js_strndup
+                0x0000000000033d10                js_strdup
+                0x0000000000033e80                js_malloc
+                0x0000000000034000                js_realloc
+                0x0000000000034260                JS_NewAtomUInt32
+                0x0000000000034360                JS_AtomToValue
+                0x0000000000034370                JS_AtomToString
+                0x0000000000035430                js_mallocz
+                0x00000000000357a0                js_realloc2
+                0x000000000003b420                JS_NewStringLen
+                0x000000000003b6b0                JS_NewAtomLen
+                0x000000000003b750                JS_NewAtom
+                0x000000000003b780                JS_NewCModule
+                0x000000000003b7d0                JS_DefinePropertyValueStr
+                0x000000000003b8c0                JS_NewAtomString
+                0x000000000003b960                JS_SetModuleExport
+                0x000000000003c8d0                JS_SetPrototype
+                0x000000000003d360                JS_EnqueueJob
+                0x000000000003e640                JS_NewBigUint64
+                0x0000000000040570                JS_ToString
+                0x0000000000041f80                JS_ToCStringLen2
+                0x0000000000042d40                JS_AtomToCStringLen
+                0x0000000000043cf0                JS_ToPropertyKey
+                0x0000000000043d00                JS_ValueToAtom
+                0x0000000000043e90                JS_DefinePropertyValueValue
+                0x0000000000043fe0                JS_DefinePropertyValueUint32
+                0x0000000000044030                JS_DefinePropertyValueInt64
+                0x0000000000046c10                JS_NewObjectProtoClass
+                0x0000000000047e40                JS_NewObjectClass
+                0x0000000000047e60                JS_NewError
+                0x0000000000048150                JS_NewObjectProto
+                0x0000000000048160                JS_NewObject
+                0x0000000000048540                JS_NewCFunctionData
+                0x0000000000048fb0                JS_NewCFunction2
+                0x0000000000049d90                JS_NewArray
+                0x000000000004a690                JS_GetModuleNamespace
+                0x000000000004b390                JS_DeleteProperty
+                0x000000000004b450                JS_DeletePropertyInt64
+                0x000000000004e4c0                JS_ToFloat64
+                0x0000000000051ad0                JS_PrintValue
+                0x0000000000051bd0                JS_PrintValueRT
+                0x0000000000053200                JS_ToInt32Clamp
+                0x0000000000054200                JS_ToInt64Clamp
+                0x00000000000573f0                JS_ToInt32Sat
+                0x0000000000058640                JS_ToInt64Sat
+                0x0000000000058940                JS_ToIndex
+                0x0000000000059740                JS_ToInt64
+                0x00000000000599f0                JS_ToInt32
+                0x000000000005bbb0                JS_ToBigInt64
+                0x000000000005bc30                JS_ToInt64Ext
+                0x00000000000679e0                JS_AddModuleExport
+                0x000000000006cc60                JS_SetPropertyStr
+                0x000000000006cd50                JS_SetPropertyInt64
+                0x000000000006dbd0                JS_GetOwnPropertyNames
+                0x000000000006e260                JS_GetOwnProperty
+                0x000000000006e430                JS_HasProperty
+                0x000000000008a390                JS_GetPropertyStr
+                0x000000000008c2f0                JS_Invoke
+                0x0000000000091400                JS_CallConstructor2
+                0x00000000000915b0                JS_CallConstructor
+                0x00000000000949e0                JS_Call
+                0x00000000000ad800                JS_EvalThis
+                0x00000000000ad8b0                JS_Eval
+                0x00000000000ad990                JS_ResolveModule
+                0x00000000000ad9d0                JS_WriteObject2
+                0x00000000000add20                JS_WriteObject
+                0x00000000000add40                JS_ReadObject
+                0x00000000000adfd0                JS_SetPropertyFunctionList
+                0x00000000000aed60                JS_NewContextRaw
+                0x00000000000af440                JS_AddModuleExportList
+                0x00000000000af4b0                JS_SetModuleExportList
+                0x00000000000af630                JS_SetConstructor
+                0x00000000000af6c0                js_string_codePointRange
+                0x00000000000af8e0                JS_AddIntrinsicStringNormalize
+                0x00000000000af910                lre_check_stack_overflow
+                0x00000000000af940                lre_check_timeout
+                0x00000000000af980                lre_realloc
+                0x00000000000af990                JS_AddIntrinsicRegExpCompiler
+                0x00000000000af9b0                JS_AddIntrinsicRegExp
+                0x00000000000afb70                JS_ParseJSON3
+                0x00000000000b0340                JS_ParseJSON2
+                0x00000000000b0350                JS_ParseJSON
+                0x00000000000b0360                JS_JSONStringify
+                0x00000000000b0bf0                JS_AddIntrinsicJSON
+                0x00000000000b0c20                JS_AddIntrinsicProxy
+                0x00000000000b0df0                JS_AddIntrinsicMapSet
+                0x00000000000b0f80                JS_PromiseState
+                0x00000000000b0fb0                JS_PromiseResult
+                0x00000000000b1ba0                JS_EvalFunction
+                0x00000000000b20f0                JS_LoadModule
+                0x00000000000b3170                JS_SetHostPromiseRejectionTracker
+                0x00000000000b3190                JS_NewPromiseCapability
+                0x00000000000b31a0                JS_AddIntrinsicPromise
+                0x00000000000b3530                JS_NewDate
+                0x00000000000b3620                JS_AddIntrinsicDate
+                0x00000000000b36b0                JS_AddIntrinsicEval
+                0x00000000000b36d0                JS_AddIntrinsicBaseObjects
+                0x00000000000b4190                JS_NewArrayBuffer
+                0x00000000000b41d0                JS_NewArrayBufferCopy
+                0x00000000000b4210                JS_DetachArrayBuffer
+                0x00000000000b46d0                JS_GetArrayBuffer
+                0x00000000000b4790                JS_NewTypedArray
+                0x00000000000b47c0                JS_GetTypedArrayBuffer
+                0x00000000000b48b0                JS_AddIntrinsicTypedArrays
+                0x00000000000b4d60                JS_AddIntrinsicWeakRef
+                0x00000000000b4f90                JS_NewContext
+ *fill*         0x00000000000b507f        0x1 
+ .text          0x00000000000b5080     0x298a .obj/dtoa.o
+                0x00000000000b5ee0                u32toa
+                0x00000000000b5f70                i32toa
+                0x00000000000b6060                u64toa
+                0x00000000000b6110                i64toa
+                0x00000000000b6250                u64toa_radix
+                0x00000000000b63e0                i64toa_radix
+                0x00000000000b6410                js_dtoa_max_len
+                0x00000000000b6570                js_dtoa
+                0x00000000000b6fc0                js_atod
+ *fill*         0x00000000000b7a0a        0x6 
+ .text          0x00000000000b7a10     0x6b0b .obj/libregexp.o
+                0x00000000000b8d30                lre_parse_escape
+                0x00000000000bc440                lre_compile
+                0x00000000000bcb60                lre_exec
+                0x00000000000be4d0                lre_get_alloc_count
+                0x00000000000be4e0                lre_get_capture_count
+                0x00000000000be4f0                lre_get_flags
+                0x00000000000be500                lre_get_groupnames
+ *fill*         0x00000000000be51b        0x5 
+ .text          0x00000000000be520     0x3f4a .obj/libunicode.o
+                0x00000000000bff50                lre_case_conv
+                0x00000000000c0440                lre_canonicalize
+                0x00000000000c04e0                lre_is_cased
+                0x00000000000c0560                lre_is_case_ignorable
+                0x00000000000c0580                cr_init
+                0x00000000000c05b0                cr_free
+                0x00000000000c05d0                cr_realloc
+                0x00000000000c0630                cr_copy
+                0x00000000000c06b0                cr_op
+                0x00000000000c0860                cr_op1
+                0x00000000000c08c0                cr_invert
+                0x00000000000c0ec0                cr_regexp_canonicalize
+                0x00000000000c1570                lre_is_id_start
+                0x00000000000c1590                lre_is_id_continue
+                0x00000000000c15f0                unicode_normalize
+                0x00000000000c1aa0                unicode_script
+                0x00000000000c1f50                unicode_general_category
+                0x00000000000c1fb0                unicode_prop
+                0x00000000000c23e0                lre_is_space_non_ascii
+                0x00000000000c2420                unicode_sequence_prop
+ *fill*         0x00000000000c246a        0x6 
+ .text          0x00000000000c2470     0x12d6 .obj/cutils.o
+                0x00000000000c2600                pstrcpy
+                0x00000000000c2650                pstrcat
+                0x00000000000c26c0                strstart
+                0x00000000000c2700                has_suffix
+                0x00000000000c2750                dbuf_init2
+                0x00000000000c2780                dbuf_init
+                0x00000000000c27a0                dbuf_claim
+                0x00000000000c2810                dbuf_put
+                0x00000000000c2880                dbuf_put_self
+                0x00000000000c28e0                __dbuf_putc
+                0x00000000000c2940                __dbuf_put_u16
+                0x00000000000c29a0                __dbuf_put_u32
+                0x00000000000c2a00                __dbuf_put_u64
+                0x00000000000c2a60                dbuf_putstr
+                0x00000000000c2ae0                dbuf_printf
+                0x00000000000c2ca0                dbuf_free
+                0x00000000000c2cd0                unicode_to_utf8
+                0x00000000000c2dc0                unicode_from_utf8
+                0x00000000000c2e70                rqsort
+ *fill*         0x00000000000c3746        0xa 
+ .text          0x00000000000c3750     0x8aa0 .obj/quickjs-libc.o
+                0x00000000000c37c0                js_module_check_attributes
+                0x00000000000ca3b0                js_load_file
+                0x00000000000ca690                js_module_set_import_meta
+                0x00000000000ca8a0                js_module_test_json
+                0x00000000000ca9b0                js_module_loader
+                0x00000000000cace0                js_init_module_std
+                0x00000000000cad60                js_std_set_worker_new_context_func
+                0x00000000000cad70                js_init_module_os
+                0x00000000000cadd0                js_std_add_helpers
+                0x00000000000cb030                js_std_init_handlers
+                0x00000000000cb150                js_std_free_handlers
+                0x00000000000cb3d0                js_std_dump_error
+                0x00000000000cbb40                js_std_promise_rejection_tracker
+                0x00000000000cbcf0                js_std_loop
+                0x00000000000cbd50                js_std_await
+                0x00000000000cc000                js_std_eval_binary
+                0x00000000000cc140                js_std_eval_binary_json_module
+ .text          0x00000000000cc1f0       0xff /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivdi3.o)
+                0x00000000000cc1f0                __udivti3
+ *fill*         0x00000000000cc2ef        0x1 
+ .text          0x00000000000cc2f0      0x1ae /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivmoddi4.o)
+                0x00000000000cc2f0                __udivmodti4
+ *fill*         0x00000000000cc49e        0x2 
+ .text          0x00000000000cc4a0       0x12 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(atexit.oS)
+                0x00000000000cc4a0                atexit
+ .text          0x00000000000cc4b2        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+ .text          0x00000000000cc4b2        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+ *(.gnu.warning)
+
+.fini           0x00000000000cc4b4        0xd
+ *(SORT_NONE(.fini))
+ .fini          0x00000000000cc4b4        0x8 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+                0x00000000000cc4b4                _fini
+ .fini          0x00000000000cc4bc        0x5 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+                0x00000000000cd000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+                0x00000000000cd000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
+
+.rodata         0x00000000000cd000    0x18fea
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x00000000000cd000        0x4 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x00000000000cd000                _IO_stdin_used
+ .rodata.str1.1
+                0x00000000000cd004     0x337e .obj/qjs.o
+                                        0x199 (size before relaxing)
+ *fill*         0x00000000000d0382        0x6 
+ .rodata.str1.8
+                0x00000000000d0388     0x3001 .obj/qjs.o
+                                        0x49f (size before relaxing)
+ *fill*         0x00000000000d3389        0x7 
+ .rodata        0x00000000000d3390       0x10 .obj/qjs.o
+ .rodata.cst8   0x00000000000d33a0      0x158 .obj/qjs.o
+                                         0x18 (size before relaxing)
+ *fill*         0x00000000000d34f8        0x8 
+ .rodata        0x00000000000d3500     0x3810 .obj/repl.o
+                0x00000000000d3500                qjsc_repl
+                0x00000000000d6d0c                qjsc_repl_size
+ .rodata.str1.1
+                0x00000000000d6d10     0x2c94 .obj/quickjs.o
+ .rodata.str1.8
+                0x00000000000d6d10     0x2664 .obj/quickjs.o
+ *fill*         0x00000000000d6d10       0x10 
+ .rodata        0x00000000000d6d20     0x3dc4 .obj/quickjs.o
+ .rodata.cst8   0x00000000000daae4      0x140 .obj/quickjs.o
+ *fill*         0x00000000000daae4        0xc 
+ .rodata.cst16  0x00000000000daaf0       0x90 .obj/quickjs.o
+ .rodata.str1.1
+                0x00000000000dab80       0x10 .obj/dtoa.o
+ .rodata.str1.8
+                0x00000000000dab80       0x80 .obj/dtoa.o
+ .rodata        0x00000000000dab80      0x364 .obj/dtoa.o
+ .rodata.cst8   0x00000000000daee4        0x8 .obj/dtoa.o
+ .rodata.str1.1
+                0x00000000000daee4      0x28d .obj/libregexp.o
+ *fill*         0x00000000000daee4       0x1c 
+ .rodata        0x00000000000daf00      0x62d .obj/libregexp.o
+ .rodata.str1.8
+                0x00000000000db52d      0x210 .obj/libregexp.o
+ .rodata.cst8   0x00000000000db52d        0x8 .obj/libregexp.o
+ *fill*         0x00000000000db52d       0x13 
+ .rodata        0x00000000000db540     0xa948 .obj/libunicode.o
+                0x00000000000db760                lre_ctype_bits
+ .rodata.str1.1
+                0x00000000000e5e88       0x66 .obj/libunicode.o
+ .rodata.str1.8
+                0x00000000000e5e88       0x20 .obj/libunicode.o
+ .rodata.cst8   0x00000000000e5e88        0x8 .obj/libunicode.o
+ *fill*         0x00000000000e5e88       0x18 
+ .rodata        0x00000000000e5ea0       0x64 .obj/cutils.o
+ .rodata.str1.8
+                0x00000000000e5f04      0x2a9 .obj/quickjs-libc.o
+ .rodata.str1.1
+                0x00000000000e5f04      0x655 .obj/quickjs-libc.o
+ *fill*         0x00000000000e5f04        0xc 
+ .rodata        0x00000000000e5f10       0xda .obj/quickjs-libc.o
+ .rodata.cst8   0x00000000000e5fea       0x20 .obj/quickjs-libc.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x00000000000e5fec     0x2a5c
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x00000000000e5fec     0x2a5c /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x00000000000e5fec                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00000000000e8a48    0x15ed0
+ *(.eh_frame)
+ .eh_frame      0x00000000000e8a48       0x30 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                                         0x2c (size before relaxing)
+ *fill*         0x00000000000e8a78        0x0 
+ .eh_frame      0x00000000000e8a78       0x28 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x00000000000e8aa0       0x18 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                                         0x30 (size before relaxing)
+ .eh_frame      0x00000000000e8ab8       0x18 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                                         0x30 (size before relaxing)
+ .eh_frame      0x00000000000e8ad0      0x248 .obj/qjs.o
+                                        0x260 (size before relaxing)
+ .eh_frame      0x00000000000e8d18    0x129c0 .obj/quickjs.o
+                                      0x129d8 (size before relaxing)
+ .eh_frame      0x00000000000fb6d8      0x368 .obj/dtoa.o
+                                        0x380 (size before relaxing)
+ .eh_frame      0x00000000000fba40      0x6f0 .obj/libregexp.o
+                                        0x708 (size before relaxing)
+ .eh_frame      0x00000000000fc130      0x820 .obj/libunicode.o
+                                        0x838 (size before relaxing)
+ .eh_frame      0x00000000000fc950      0x3a0 .obj/cutils.o
+                                        0x3b8 (size before relaxing)
+ .eh_frame      0x00000000000fccf0     0x1bc0 .obj/quickjs-libc.o
+                                       0x1bd8 (size before relaxing)
+ .eh_frame      0x00000000000fe8b0       0x18 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivdi3.o)
+                                         0x30 (size before relaxing)
+ .eh_frame      0x00000000000fe8c8       0x38 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivmoddi4.o)
+                                         0x50 (size before relaxing)
+ .eh_frame      0x00000000000fe900       0x14 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(atexit.oS)
+                                         0x30 (size before relaxing)
+ .eh_frame      0x00000000000fe914        0x4 /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+ *(.eh_frame.*)
+
+.sframe         0x00000000000fe918        0x0
+ *(.sframe)
+ .sframe        0x00000000000fe918        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .sframe        0x00000000000fe918        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x00000000000ffc10                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x00000000000ffc10        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x00000000000ffc10        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x00000000000ffc10        0x8
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x00000000000ffc10        0x8 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x00000000000ffc18        0x8
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x00000000000ffc18        0x8 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x00000000000ffc20     0x6dc0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x00000000000ffc20       0x20 .obj/qjs.o
+ .data.rel.ro.local
+                0x00000000000ffc40     0x5618 .obj/quickjs.o
+ *fill*         0x0000000000105258        0x8 
+ .data.rel.ro.local
+                0x0000000000105260       0x18 .obj/libregexp.o
+ *fill*         0x0000000000105278        0x8 
+ .data.rel.ro.local
+                0x0000000000105280      0x1c8 .obj/libunicode.o
+ *fill*         0x0000000000105448       0x18 
+ .data.rel.ro.local
+                0x0000000000105460      0xfc0 .obj/quickjs-libc.o
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000106420        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .data.rel.ro   0x0000000000106420      0x5c0 .obj/quickjs.o
+
+.dynamic        0x00000000001069e0      0x200
+ *(.dynamic)
+ .dynamic       0x00000000001069e0      0x200 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x00000000001069e0                _DYNAMIC
+
+.got            0x0000000000106be0      0x410
+ *(.got.plt)
+ .got.plt       0x0000000000106be0      0x3e8 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000106be0                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+ *(.got)
+ .got           0x0000000000106fc8       0x28 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ *(.igot)
+                0x0000000000107000                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.data           0x0000000000107000       0xa8
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000107000        0x4 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000107000                data_start
+                0x0000000000107000                __data_start
+ .data          0x0000000000107004        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000107004        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+ *fill*         0x0000000000107004        0x4 
+ .data.rel.local
+                0x0000000000107008        0x8 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+                0x0000000000107008                __dso_handle
+ .data          0x0000000000107010        0x0 .obj/qjs.o
+ .data          0x0000000000107010        0x0 .obj/repl.o
+ .data          0x0000000000107010        0x4 .obj/quickjs.o
+ *fill*         0x0000000000107014        0xc 
+ .data.rel.local
+                0x0000000000107020       0x10 .obj/quickjs.o
+ .data          0x0000000000107030        0x0 .obj/dtoa.o
+ .data          0x0000000000107030        0x0 .obj/libregexp.o
+ .data          0x0000000000107030        0x0 .obj/libunicode.o
+ .data          0x0000000000107030        0x0 .obj/cutils.o
+ .data          0x0000000000107030        0x0 .obj/quickjs-libc.o
+ *fill*         0x0000000000107030       0x10 
+ .data.rel.local
+                0x0000000000107040       0x68 .obj/quickjs-libc.o
+ .data          0x00000000001070a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivdi3.o)
+ .data          0x00000000001070a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivmoddi4.o)
+ .data          0x00000000001070a8        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(atexit.oS)
+ .data          0x00000000001070a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+ .data          0x00000000001070a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+
+.tm_clone_table
+                0x00000000001070a8        0x0
+ .tm_clone_table
+                0x00000000001070a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+ .tm_clone_table
+                0x00000000001070a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+
+.data1
+ *(.data1)
+                0x00000000001070a8                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x00000000001070a8                . = ALIGN (ALIGNOF (NEXT_SECTION))
+                0x00000000001070c0                __bss_start = .
+
+.bss            0x00000000001070c0      0x130
+ *(.dynbss)
+ .dynbss        0x00000000001070c0       0x28 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+                0x00000000001070c0                stdout@@GLIBC_2.2.5
+                0x00000000001070d0                stdin@@GLIBC_2.2.5
+                0x00000000001070d8                _environ@@GLIBC_2.2.5
+                0x00000000001070d8                environ@@GLIBC_2.2.5
+                0x00000000001070d8                __environ@@GLIBC_2.2.5
+                0x00000000001070e0                stderr@@GLIBC_2.2.5
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00000000001070e8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o
+ .bss           0x00000000001070e8        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o
+ .bss           0x00000000001070e8        0x1 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+ .bss           0x00000000001070e9        0x0 .obj/qjs.o
+ .bss           0x00000000001070e9        0x0 .obj/repl.o
+ *fill*         0x00000000001070e9       0x17 
+ .bss           0x0000000000107100       0x68 .obj/quickjs.o
+ .bss           0x0000000000107168        0x0 .obj/dtoa.o
+ .bss           0x0000000000107168        0x0 .obj/libregexp.o
+ .bss           0x0000000000107168        0x0 .obj/libunicode.o
+ .bss           0x0000000000107168        0x0 .obj/cutils.o
+ *fill*         0x0000000000107168       0x18 
+ .bss           0x0000000000107180       0x70 .obj/quickjs-libc.o
+ .bss           0x00000000001071f0        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivdi3.o)
+ .bss           0x00000000001071f0        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a(_udivmoddi4.o)
+ .bss           0x00000000001071f0        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(atexit.oS)
+ .bss           0x00000000001071f0        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+ .bss           0x00000000001071f0        0x0 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+ *(COMMON)
+                0x00000000001071f0                . = ALIGN ((. != 0x0)?0x8:0x1)
+
+.lbss
+ *(.dynlbss)
+ *(.lbss .lbss.* .gnu.linkonce.lb.*)
+ *(LARGE_COMMON)
+                0x00000000001071f0                . = ALIGN (0x8)
+                0x00000000001071f0                . = SEGMENT_START ("ldata-segment", .)
+
+.lrodata
+ *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+
+.ldata          0x00000000001091f0        0x0
+ *(.ldata .ldata.* .gnu.linkonce.l.*)
+                0x00000000001091f0                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x00000000001091f0                . = ALIGN (0x8)
+                0x00000000001071f0                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x00000000001091f0                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x2d
+ *(.comment)
+ .comment       0x0000000000000000       0x2d /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o
+                                         0x2e (size before relaxing)
+ .comment       0x000000000000002d       0x2e .obj/qjs.o
+ .comment       0x000000000000002d       0x2e .obj/repl.o
+ .comment       0x000000000000002d       0x2e .obj/quickjs.o
+ .comment       0x000000000000002d       0x2e .obj/dtoa.o
+ .comment       0x000000000000002d       0x2e .obj/libregexp.o
+ .comment       0x000000000000002d       0x2e .obj/libunicode.o
+ .comment       0x000000000000002d       0x2e .obj/cutils.o
+ .comment       0x000000000000002d       0x2e .obj/quickjs-libc.o
+ .comment       0x000000000000002d       0x2e /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x1c0
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x50 .obj/qjs.o
+ .debug_aranges
+                0x0000000000000050       0x20 .obj/repl.o
+ .debug_aranges
+                0x0000000000000070       0x40 .obj/quickjs.o
+ .debug_aranges
+                0x00000000000000b0       0x30 .obj/dtoa.o
+ .debug_aranges
+                0x00000000000000e0       0x40 .obj/libregexp.o
+ .debug_aranges
+                0x0000000000000120       0x40 .obj/libunicode.o
+ .debug_aranges
+                0x0000000000000160       0x30 .obj/cutils.o
+ .debug_aranges
+                0x0000000000000190       0x30 .obj/quickjs-libc.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000   0x172243
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000     0x2d66 .obj/qjs.o
+ .debug_info    0x0000000000002d66       0xd8 .obj/repl.o
+ .debug_info    0x0000000000002e3e   0x140740 .obj/quickjs.o
+ .debug_info    0x000000000014357e     0x4852 .obj/dtoa.o
+ .debug_info    0x0000000000147dd0     0xaf79 .obj/libregexp.o
+ .debug_info    0x0000000000152d49     0x6c2c .obj/libunicode.o
+ .debug_info    0x0000000000159975     0x22fb .obj/cutils.o
+ .debug_info    0x000000000015bc70    0x165d3 .obj/quickjs-libc.o
+
+.debug_abbrev   0x0000000000000000     0x330f
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x609 .obj/qjs.o
+ .debug_abbrev  0x0000000000000609       0x62 .obj/repl.o
+ .debug_abbrev  0x000000000000066b      0xb59 .obj/quickjs.o
+ .debug_abbrev  0x00000000000011c4      0x4fe .obj/dtoa.o
+ .debug_abbrev  0x00000000000016c2      0x75e .obj/libregexp.o
+ .debug_abbrev  0x0000000000001e20      0x71d .obj/libunicode.o
+ .debug_abbrev  0x000000000000253d      0x575 .obj/cutils.o
+ .debug_abbrev  0x0000000000002ab2      0x85d .obj/quickjs-libc.o
+
+.debug_line     0x0000000000000000    0xca6dd
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0xe31 .obj/qjs.o
+ .debug_line    0x0000000000000e31       0x44 .obj/repl.o
+ .debug_line    0x0000000000000e75    0xb152c .obj/quickjs.o
+ .debug_line    0x00000000000b23a1     0x30df .obj/dtoa.o
+ .debug_line    0x00000000000b5480     0x76d8 .obj/libregexp.o
+ .debug_line    0x00000000000bcb58     0x401c .obj/libunicode.o
+ .debug_line    0x00000000000c0b74     0x1318 .obj/cutils.o
+ .debug_line    0x00000000000c1e8c     0x8851 .obj/quickjs-libc.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000    0x1694f
+ *(.debug_str)
+ .debug_str     0x0000000000000000    0x1694f .obj/qjs.o
+                                        0xd06 (size before relaxing)
+ .debug_str     0x000000000001694f      0x13d .obj/repl.o
+ .debug_str     0x000000000001694f    0x13003 .obj/quickjs.o
+ .debug_str     0x000000000001694f      0x79e .obj/dtoa.o
+ .debug_str     0x000000000001694f     0x160e .obj/libregexp.o
+ .debug_str     0x000000000001694f     0x3583 .obj/libunicode.o
+ .debug_str     0x000000000001694f      0x570 .obj/cutils.o
+ .debug_str     0x000000000001694f     0x2c4b .obj/quickjs-libc.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x0000000000000000      0x3cc
+ *(.debug_line_str)
+ .debug_line_str
+                0x0000000000000000      0x3cc .obj/qjs.o
+                                        0x1bb (size before relaxing)
+ .debug_line_str
+                0x00000000000003cc       0xa9 .obj/repl.o
+ .debug_line_str
+                0x00000000000003cc      0x31b .obj/quickjs.o
+ .debug_line_str
+                0x00000000000003cc      0x136 .obj/dtoa.o
+ .debug_line_str
+                0x00000000000003cc      0x175 .obj/libregexp.o
+ .debug_line_str
+                0x00000000000003cc      0x16d .obj/libunicode.o
+ .debug_line_str
+                0x00000000000003cc      0x14a .obj/cutils.o
+ .debug_line_str
+                0x00000000000003cc      0x32e .obj/quickjs-libc.o
+
+.debug_loclists
+                0x0000000000000000   0x13f81d
+ *(.debug_loclists)
+ .debug_loclists
+                0x0000000000000000     0x1186 .obj/qjs.o
+ .debug_loclists
+                0x0000000000001186   0x11aad6 .obj/quickjs.o
+ .debug_loclists
+                0x000000000011bc5c     0x54c9 .obj/dtoa.o
+ .debug_loclists
+                0x0000000000121125     0x9fe5 .obj/libregexp.o
+ .debug_loclists
+                0x000000000012b10a     0x6a22 .obj/libunicode.o
+ .debug_loclists
+                0x0000000000131b2c     0x1aa5 .obj/cutils.o
+ .debug_loclists
+                0x00000000001335d1     0xc24c .obj/quickjs-libc.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x0000000000000000    0x2d879
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x0000000000000000      0x1d9 .obj/qjs.o
+ .debug_rnglists
+                0x00000000000001d9    0x29bd5 .obj/quickjs.o
+ .debug_rnglists
+                0x0000000000029dae      0x673 .obj/dtoa.o
+ .debug_rnglists
+                0x000000000002a421     0x16d6 .obj/libregexp.o
+ .debug_rnglists
+                0x000000000002baf7      0x966 .obj/libunicode.o
+ .debug_rnglists
+                0x000000000002c45d      0x1ad .obj/cutils.o
+ .debug_rnglists
+                0x000000000002c60a     0x126f .obj/quickjs-libc.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(qjs elf64-x86-64)

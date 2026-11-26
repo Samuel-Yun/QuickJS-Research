@@ -1,0 +1,225 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -682,6 +682,8 @@
+     JS_FUNC_ASYNC_GENERATOR = (JS_FUNC_GENERATOR | JS_FUNC_ASYNC),
+ } JSFunctionKindEnum;
+ 
++#include "eic_types.h"
++
+ typedef struct JSFunctionBytecode {
+     JSGCObjectHeader header; /* must come first */
+     uint8_t js_mode;
+@@ -713,6 +715,10 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    EICMeta *eic_meta;
++    EICSite *eic_sites;
++    uint32_t eic_count;
++    uint8_t eic_heat;
+     struct {
+         /* debug info, move to separate structure to save memory? */
+         JSAtom filename;
+@@ -1148,6 +1154,7 @@
+                                int atom_type);
+ static void JS_FreeAtomStruct(JSRuntime *rt, JSAtomStruct *p);
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b);
++static int eic_prepare(JSContext *ctx, JSFunctionBytecode *b);
+ static JSValue js_call_c_function(JSContext *ctx, JSValueConst func_obj,
+                                   JSValueConst this_obj,
+                                   int argc, JSValueConst *argv, int flags);
+@@ -6156,6 +6163,8 @@
+     return NULL;
+ }
+ 
++#include "eic_runtime.inc"
++
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+ {
+@@ -6618,6 +6627,7 @@
+             for(i = 0; i < b->cpool_count; i++) {
+                 JS_MarkValue(rt, b->cpool[i], mark_func);
+             }
++            eic_mark(rt,b,mark_func);
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -18459,7 +18469,9 @@
+             BREAK;
+ 
+         CASE(OP_get_var_undef):
++            EIC_COUNT(global_read);
+         CASE(OP_get_var):
++            EIC_COUNT(global_read);
+             {
+                 int idx;
+                 JSValue val;
+@@ -18488,6 +18500,7 @@
+             BREAK;
+ 
+         CASE(OP_put_var):
++            EIC_COUNT(global_store);
+         CASE(OP_put_var_init):
+             {
+                 int idx, ret;
+@@ -19160,6 +19173,8 @@
+             }
+ 
+             
++#include "eic_opcodes.inc"
++
+         CASE(OP_get_field):
+             GET_FIELD_INLINE(get_field, 0, 0);
+             BREAK;
+@@ -19432,10 +19447,12 @@
+             }
+             
+         CASE(OP_get_array_el):
++            EIC_COUNT(keyed_read);
+             GET_ARRAY_EL_INLINE(get_array_el, 0);
+             BREAK;
+ 
+         CASE(OP_get_array_el2):
++            EIC_COUNT(keyed_read);
+             GET_ARRAY_EL_INLINE(get_array_el2, 1);
+             BREAK;
+ 
+@@ -19544,6 +19561,7 @@
+             BREAK;
+ 
+         CASE(OP_put_array_el):
++            EIC_COUNT(keyed_store);
+             {
+                 int ret;
+                 JSObject *p;
+@@ -32124,6 +32142,8 @@
+     return fd;
+ }
+ 
++#include "eic_prepare.inc"
++
+ static void free_bytecode_atoms(JSRuntime *rt,
+                                 const uint8_t *bc_buf, int bc_len,
+                                 BOOL use_short_opcodes)
+@@ -36274,6 +36294,10 @@
+     }
+ 
+     js_free(ctx, fd);
++    if(eic_prepare(ctx,b)<0) {
++        JS_FreeValue(ctx,JS_MKPTR(JS_TAG_FUNCTION_BYTECODE,b));
++        return JS_EXCEPTION;
++    }
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -36291,6 +36315,7 @@
+                JS_AtomGetStrRT(rt, buf, sizeof(buf), b->func_name));
+     }
+ #endif
++    eic_free(rt,b);
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+ 
+@@ -37715,7 +37740,7 @@
+ }
+ 
+ static int JS_WriteFunctionBytecode(BCWriterState *s,
+-                                    const uint8_t *bc_buf1, int bc_len)
++                                    const uint8_t *bc_buf1, int bc_len, JSFunctionBytecode *b)
+ {
+     int pos, len, op;
+     JSAtom atom;
+@@ -37730,6 +37755,13 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if(op==OP_get_field_eic || op==OP_get_field2_eic || op==OP_put_field_eic) {
++            uint32_t index=get_u32(bc_buf+pos+1);
++            assert(index<b->eic_count);
++            op=op==OP_get_field_eic?OP_get_field:op==OP_get_field2_eic?OP_get_field2:OP_put_field;
++            bc_buf[pos]=op;
++            put_u32(bc_buf+pos+1,b->eic_meta[index].atom);
++        }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+         case OP_FMT_atom:
+@@ -37888,7 +37920,7 @@
+         bc_put_u16(s, flags);
+     }
+ 
+-    if (JS_WriteFunctionBytecode(s, b->byte_code_buf, b->byte_code_len))
++    if (JS_WriteFunctionBytecode(s, b->byte_code_buf, b->byte_code_len,b))
+         goto fail;
+ 
+     if (b->has_debug) {
+@@ -38620,17 +38652,9 @@
+     JSAtom atom;
+     uint32_t idx;
+ 
+-    if (s->is_rom_data) {
+-        /* directly use the input buffer */
+-        if (unlikely(s->buf_end - s->ptr < bc_len))
+-            return bc_read_error_end(s);
+-        bc_buf = (uint8_t *)s->ptr;
+-        s->ptr += bc_len;
+-    } else {
+-        bc_buf = (void *)((uint8_t*)b + byte_code_offset);
+-        if (bc_get_buf(s, bc_buf, bc_len))
+-            return -1;
+-    }
++    /* Runtime operands are writable even when the caller supplies ROM input. */
++    bc_buf=(uint8_t*)b+byte_code_offset;
++    if(bc_get_buf(s,bc_buf,bc_len)) return -1;
+     b->byte_code_buf = bc_buf;
+ 
+     if (is_be())
+@@ -38639,6 +38663,11 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if(op==OP_get_field_eic || op==OP_get_field2_eic || op==OP_put_field_eic) {
++            b->byte_code_len=pos;
++            JS_ThrowSyntaxError(s->ctx,"runtime IC opcode in serialized bytecode");
++            return -1;
++        }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+         case OP_FMT_atom:
+@@ -38769,7 +38798,7 @@
+     bc.arguments_allowed = bc_get_flags(v16, &idx, 1);
+     bc.has_debug = bc_get_flags(v16, &idx, 1);
+     bc.is_direct_or_indirect_eval = bc_get_flags(v16, &idx, 1);
+-    bc.read_only_bytecode = s->is_rom_data;
++    bc.read_only_bytecode = FALSE; /* own mutable copy */
+     if (bc_get_u8(s, &v8))
+         goto fail;
+     bc.js_mode = v8;
+@@ -38937,6 +38966,7 @@
+         bc_read_trace(s, "}\n");
+     }
+     b->realm = JS_DupContext(ctx);
++    if(eic_prepare(ctx,b)<0) goto fail;
+     return obj;
+  fail:
+     JS_FreeValue(ctx, obj);
+@@ -61422,3 +61452,5 @@
+     JS_FreeValue(ctx, obj);
+     return 0;
+ }
++
++#include "eic_diag.inc"
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -361,6 +361,11 @@
+ DEF( typeof_is_function, 1, 1, 1, none)
+ #endif
+ 
++/* E runtime-only opcodes. Disk writer restores original atoms/opcodes. */
++DEF(get_field_eic,5,1,1,u32)
++DEF(get_field2_eic,5,1,2,u32)
++DEF(put_field_eic,5,2,0,u32)
++
+ #undef DEF
+ #undef def
+ #endif  /* DEF */

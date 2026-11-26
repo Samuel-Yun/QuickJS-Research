@@ -1,0 +1,20 @@
+{
+  "label": "SHAPE_ONLY",
+  "mode": "plain",
+  "command": [
+    "valgrind",
+    "--tool=callgrind",
+    "--cache-sim=no",
+    "--branch-sim=no",
+    "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/SHAPE_ONLY.plain.out",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SHAPE_ONLY.release/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+    "object",
+    "plain",
+    "65536"
+  ],
+  "binary_sha256": "8909b5447dfaf118c5b7435bba5a52e29689b4518b1c714f2d38a0d432517971",
+  "exit_code": 0,
+  "stdout": "{\"kind\":\"object\",\"mode\":\"plain\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":64.17993998527527}\n",
+  "stderr": "==18== Callgrind, a call-graph generating cache profiler\n==18== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==18== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==18== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SHAPE_ONLY.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object plain 65536\n==18== \n==18== For interactive control, run 'callgrind_control -h'.\n==18== \n==18== Events    : Ir\n==18== Collected : 34910923\n==18== \n==18== I   refs:      34,910,923\n"
+}

@@ -1,0 +1,147 @@
+[
+  {
+    "label": "SPARSE",
+    "sizes": {
+      "JSObject": 64,
+      "JSRuntime": 2216,
+      "JSFunctionBytecode": 160,
+      "FourSite": 32,
+      "FullPlan": 96
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/SPARSE.release/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSRuntime)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(FullPlan)"
+    ],
+    "binary_sha256": "c8554d2eb4dabef400dbf228a63f4df78f4948d51156f57765897ba8ba3a1b79"
+  },
+  {
+    "label": "INSTANCE_HOOK",
+    "sizes": {
+      "JSObject": 64,
+      "JSRuntime": 3264,
+      "JSFunctionBytecode": 160,
+      "InstancePrototypeSlot": 16,
+      "R2Hook": 56
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.release/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSRuntime)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(InstancePrototypeSlot)",
+      "-ex",
+      "p/d sizeof(R2Hook)"
+    ],
+    "binary_sha256": "4a8c6d62db996962e421592f2ba9b85f37b0773df417a11e65e32a08c844ad81"
+  },
+  {
+    "label": "CALL_IC",
+    "sizes": {
+      "JSObject": 64,
+      "JSRuntime": 2224,
+      "JSFunctionBytecode": 168,
+      "FourSite": 32,
+      "R2CallSite": 232,
+      "R2CallRecipe": 184
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSRuntime)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(R2CallSite)",
+      "-ex",
+      "p/d sizeof(R2CallRecipe)"
+    ],
+    "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290"
+  },
+  {
+    "label": "NUMERIC_PLAN",
+    "sizes": {
+      "FourSite": 40,
+      "NumericPlan": 168
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(NumericPlan)"
+    ],
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396"
+  },
+  {
+    "label": "NEST_COMBINED",
+    "sizes": {
+      "JSObject": 64,
+      "JSRuntime": 2224,
+      "JSFunctionBytecode": 160,
+      "FourSite": 48,
+      "NumericPlan": 168,
+      "NestedPlan": 192,
+      "NestedRecipe": 128
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSRuntime)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(NumericPlan)",
+      "-ex",
+      "p/d sizeof(NestedPlan)",
+      "-ex",
+      "p/d sizeof(NestedRecipe)"
+    ],
+    "binary_sha256": "fc9febfa7ba9127edad0759c5a4a7a086d4d8c8005fb2f444f3b4d56f67927f0"
+  }
+]

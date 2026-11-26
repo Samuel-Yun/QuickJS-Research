@@ -1,0 +1,21 @@
+typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
+typedef struct FullPlan FullPlan;
+struct FourSite {
+    FullPlan *plan;
+    JSValue negative;
+    uint32_t pc;
+    uint16_t argc;
+#ifdef FOUR_DIAG
+    FourDiag *diag;
+#endif
+};
+struct FullPlan {
+    JSValue callee;
+    JSShape *initial,*final;
+    FourRecipe recipe;
+    uint32_t pc;
+    uint16_t argc;
+#ifdef FOUR_DIAG
+    FourDiag *diag;
+#endif
+};

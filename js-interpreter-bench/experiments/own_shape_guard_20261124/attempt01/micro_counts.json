@@ -1,0 +1,797 @@
+[
+  {
+    "case": "object.fused",
+    "label": "SPARSE",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 1,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Object",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 0,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "object.fused",
+    "label": "RELAX_CLASS",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 1,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Object",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 0,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "object.fused",
+    "label": "SHAPE_ONLY",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 1,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Object",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 0,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "object.plain",
+    "label": "SPARSE",
+    "site": {
+      "id": 2,
+      "index": 0,
+      "pc": 1,
+      "function": "readPlain",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 0,
+        "hits": 65535,
+        "fused_hits": 0,
+        "field_hits": 65535,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 1,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Object",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 0,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "object.plain",
+    "label": "RELAX_CLASS",
+    "site": {
+      "id": 2,
+      "index": 0,
+      "pc": 1,
+      "function": "readPlain",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 0,
+        "hits": 65535,
+        "fused_hits": 0,
+        "field_hits": 65535,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 1,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Object",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 0,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "object.plain",
+    "label": "SHAPE_ONLY",
+    "site": {
+      "id": 2,
+      "index": 0,
+      "pc": 1,
+      "function": "readPlain",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 0,
+        "hits": 65535,
+        "fused_hits": 0,
+        "field_hits": 65535,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 1,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Object",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 0,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "function.fused",
+    "label": "SPARSE",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 0,
+        "fused_hits": 0,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 65536,
+        "own_searches": 65536,
+        "updates": 0
+      },
+      "classes": [
+        {
+          "class": 13,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Function",
+          "counts": {
+            "query": 65536,
+            "hit": 0,
+            "nonbaseline_hit": 0,
+            "lookup": 65536,
+            "own_data_miss": 65536,
+            "fill": 0,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "function.fused",
+    "label": "RELAX_CLASS",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 13,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Function",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 65535,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "function.fused",
+    "label": "SHAPE_ONLY",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 13,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "Function",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 65535,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "regexp.fused",
+    "label": "SPARSE",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 0,
+        "fused_hits": 0,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 65536,
+        "own_searches": 65536,
+        "updates": 0
+      },
+      "classes": [
+        {
+          "class": 18,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "RegExp",
+          "counts": {
+            "query": 65536,
+            "hit": 0,
+            "nonbaseline_hit": 0,
+            "lookup": 65536,
+            "own_data_miss": 65536,
+            "fill": 0,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "regexp.fused",
+    "label": "RELAX_CLASS",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 18,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "RegExp",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 65535,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "regexp.fused",
+    "label": "SHAPE_ONLY",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 18,
+          "exotic": 0,
+          "hashed": 1,
+          "name": "RegExp",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 65535,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "array.fused",
+    "label": "SPARSE",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 0,
+        "fused_hits": 0,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 65536,
+        "own_searches": 65536,
+        "updates": 0
+      },
+      "classes": [
+        {
+          "class": 2,
+          "exotic": 1,
+          "hashed": 1,
+          "name": "Array",
+          "counts": {
+            "query": 65536,
+            "hit": 0,
+            "nonbaseline_hit": 0,
+            "lookup": 65536,
+            "own_data_miss": 65536,
+            "fill": 0,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "array.fused",
+    "label": "RELAX_CLASS",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 0,
+        "fused_hits": 0,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 65536,
+        "own_searches": 65536,
+        "updates": 0
+      },
+      "classes": [
+        {
+          "class": 2,
+          "exotic": 1,
+          "hashed": 1,
+          "name": "Array",
+          "counts": {
+            "query": 65536,
+            "hit": 0,
+            "nonbaseline_hit": 0,
+            "lookup": 65536,
+            "own_data_miss": 65536,
+            "fill": 0,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  },
+  {
+    "case": "array.fused",
+    "label": "SHAPE_ONLY",
+    "site": {
+      "id": 1,
+      "index": 0,
+      "pc": 1,
+      "function": "readX",
+      "filename": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+      "atom": "x",
+      "counts": {
+        "logical_named": 65536,
+        "rdi0_named": 65536,
+        "rdi1_named": 0,
+        "fused_entries": 65536,
+        "hits": 65535,
+        "fused_hits": 65535,
+        "field_hits": 0,
+        "prototype_hits": 0,
+        "normal_lookups": 1,
+        "own_searches": 1,
+        "updates": 1
+      },
+      "classes": [
+        {
+          "class": 2,
+          "exotic": 1,
+          "hashed": 1,
+          "name": "Array",
+          "counts": {
+            "query": 65536,
+            "hit": 65535,
+            "nonbaseline_hit": 65535,
+            "lookup": 1,
+            "own_data_miss": 1,
+            "fill": 1,
+            "inherited": 0,
+            "descriptor": 0,
+            "exotic_dispatch": 0,
+            "missing": 0,
+            "primitive": 0
+          }
+        }
+      ]
+    },
+    "layout": {
+      "JSRuntime": 2216,
+      "JSObject": 64,
+      "JSShape": 56,
+      "ReadICSite": 24,
+      "function": 160
+    }
+  }
+]

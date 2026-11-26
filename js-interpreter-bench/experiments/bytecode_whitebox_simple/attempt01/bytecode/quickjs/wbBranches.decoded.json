@@ -1,0 +1,281 @@
+[
+  {
+    "offset": 0,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_int"
+  },
+  {
+    "offset": 1,
+    "opcode": "put_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 2,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_int"
+  },
+  {
+    "offset": 3,
+    "opcode": "put_loc1",
+    "operands": "1: i",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 4,
+    "opcode": "get_loc1",
+    "operands": "1: i",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 5,
+    "opcode": "get_arg0",
+    "operands": "0: values",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "offset": 6,
+    "opcode": "get_length",
+    "operands": "",
+    "size": 1,
+    "pop": 1,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 7,
+    "opcode": "lt",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 8,
+    "opcode": "if_false8",
+    "operands": "34",
+    "size": 2,
+    "pop": 1,
+    "push": 0,
+    "fmt": "label8"
+  },
+  {
+    "offset": 10,
+    "opcode": "get_arg0",
+    "operands": "0: values",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_arg"
+  },
+  {
+    "offset": 11,
+    "opcode": "get_loc1",
+    "operands": "1: i",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 12,
+    "opcode": "get_array_el",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 13,
+    "opcode": "set_loc2",
+    "operands": "2: x",
+    "size": 1,
+    "pop": 1,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 14,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_int"
+  },
+  {
+    "offset": 15,
+    "opcode": "gte",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 16,
+    "opcode": "if_false8",
+    "operands": "26",
+    "size": 2,
+    "pop": 1,
+    "push": 0,
+    "fmt": "label8"
+  },
+  {
+    "offset": 18,
+    "opcode": "get_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 19,
+    "opcode": "get_loc2",
+    "operands": "2: x",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 20,
+    "opcode": "push_2",
+    "operands": "2",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_int"
+  },
+  {
+    "offset": 21,
+    "opcode": "mul",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 22,
+    "opcode": "add",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 23,
+    "opcode": "put_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 24,
+    "opcode": "goto8",
+    "operands": "30",
+    "size": 2,
+    "pop": 0,
+    "push": 0,
+    "fmt": "label8"
+  },
+  {
+    "offset": 26,
+    "opcode": "get_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 27,
+    "opcode": "get_loc2",
+    "operands": "2: x",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 28,
+    "opcode": "sub",
+    "operands": "",
+    "size": 1,
+    "pop": 2,
+    "push": 1,
+    "fmt": "none"
+  },
+  {
+    "offset": 29,
+    "opcode": "put_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 30,
+    "opcode": "inc_loc",
+    "operands": "1: i",
+    "size": 2,
+    "pop": 0,
+    "push": 0,
+    "fmt": "loc8"
+  },
+  {
+    "offset": 32,
+    "opcode": "goto8",
+    "operands": "4",
+    "size": 2,
+    "pop": 0,
+    "push": 0,
+    "fmt": "label8"
+  },
+  {
+    "offset": 34,
+    "opcode": "get_loc0",
+    "operands": "0: sum",
+    "size": 1,
+    "pop": 0,
+    "push": 1,
+    "fmt": "none_loc"
+  },
+  {
+    "offset": 35,
+    "opcode": "return",
+    "operands": "",
+    "size": 1,
+    "pop": 1,
+    "push": 0,
+    "fmt": "none"
+  }
+]

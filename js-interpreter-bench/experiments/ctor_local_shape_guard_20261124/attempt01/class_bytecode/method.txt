@@ -1,0 +1,146 @@
+函数 [0] <eval>  parent=-1  args=0 locals=3 bytes=224
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  fclosure8                  1
+000002  put_var_ref1                (loop)
+000003  push_atom_value            use strict
+000008  put_loc0                    (<ret>)
+000009  set_loc_uninitialized      1 (C)
+000012  undefined                  
+000013  set_loc_uninitialized      2 (<class_fields_init>)
+000016  push_const8                0
+000018  define_class               C, 0
+000024  undefined                  
+000025  put_loc2                    (<class_fields_init>)
+000026  drop                       
+000027  set_loc1                    (C)
+000028  close_loc                  2 (<class_fields_init>)
+000031  put_var_init               0 (C)
+000034  get_var                    7 (scriptArgs)
+000037  get_length                 
+000038  push_1                     1
+000039  gt                         
+000040  if_false8                  ->50
+000042  get_var                    7 (scriptArgs)
+000045  push_1                     1
+000046  get_array_el               
+000047  plus                       
+000048  goto8                      ->55
+000050  push_i32                   8388608
+000055  put_var                    2 (n)
+000058  get_var                    8 (Object)
+000061  get_field2_rdi             create  IC[0] delta=162
+000066  get_var                    0 (C)
+000069  get_field_rdi              prototype  IC[1] delta=178
+000074  call_method                1
+000077  put_var                    3 (empty)
+000080  get_var                    9 (performance)
+000083  get_field2_rdi             now  IC[2] delta=188
+000088  call_method                0
+000091  put_var                    4 (start)
+000094  get_var                    1 (loop)
+000097  get_var                    2 (n)
+000100  call1                      argc=1
+000101  put_var                    5 (checksum)
+000104  get_var                    9 (performance)
+000107  get_field2_rdi             now  IC[3] delta=188
+000112  call_method                0
+000115  get_var                    4 (start)
+000118  sub                        
+000119  put_var                    6 (elapsed)
+000122  undefined                  
+000123  put_loc0                    (<ret>)
+000124  get_var                    5 (checksum)
+000127  push_3                     3
+000128  get_var                    2 (n)
+000131  mul                        
+000132  strict_neq                 
+000133  dup                        
+000134  if_true8                   ->160
+000136  drop                       
+000137  get_var                    8 (Object)
+000140  get_field2_rdi             getPrototypeOf  IC[4] delta=179
+000145  get_var                    3 (empty)
+000148  call_method                1
+000151  get_var                    0 (C)
+000154  get_field_rdi              prototype  IC[5] delta=189
+000159  strict_neq                 
+000160  if_false8                  ->172
+000162  get_var                    10 (Error)
+000165  push_atom_value            checksum
+000170  call1                      argc=1
+000171  throw                      
+000172  get_var                    11 (print)
+000175  get_var                    12 (JSON)
+000178  get_field2_rdi             stringify  IC[6] delta=189
+000183  object                     
+000184  push_atom_value            class_guard_fixture
+000189  define_field               kind
+000194  get_var                    2 (n)
+000197  define_field               iterations
+000202  get_var                    5 (checksum)
+000205  define_field               checksum
+000210  get_var                    6 (elapsed)
+000213  define_field               elapsed_ms
+000218  call_method                1
+000221  call1                      argc=1
+000222  set_loc0                    (<ret>)
+000223  return                     
+  IC[0] create: 未填充, offset=0
+  IC[1] prototype: 未填充, offset=0
+  IC[2] now: 自有字段, offset=0
+  IC[3] now: 自有字段, offset=0
+  IC[4] getPrototypeOf: 未填充, offset=0
+  IC[5] prototype: 未填充, offset=0
+  IC[6] stringify: 未填充, offset=0
+
+函数 [1] <anonymous>  parent=0  args=2 locals=1 bytes=30
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  check_ctor                 
+000003  get_var_ref_check          0 (<class_fields_init>)
+000006  dup                        
+000007  if_false8                  ->14
+000009  get_loc0                    (this)
+000010  swap                       
+000011  call_method                0
+000014  drop                       
+000015  get_loc0                    (this)
+000016  get_arg0                    (x)
+000017  put_field                  x
+000022  get_loc0                    (this)
+000023  get_arg1                    (a)
+000024  put_field                  a
+000029  return_undef               
+
+函数 [2] loop  parent=0  args=1 locals=3 bytes=34
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_0                     0
+000001  put_loc0                    (sum)
+000002  push_0                     0
+000003  put_loc1                    (i)
+000004  get_loc1                    (i)
+000005  get_arg0                    (n)
+000006  lt                         
+000007  if_false8                  ->32
+000009  get_var                    0 (C)
+000012  dup                        
+000013  push_3                     3
+000014  push_0                     0
+000015  four_ctor                  record[0] argc=2
+000018  put_loc2                    (o)
+000019  get_loc0                    (sum)
+000020  get_loc2                    (o)
+000021  get_field_rdi              x  IC[0] delta=18
+000026  add                        
+000027  put_loc0                    (sum)
+000028  inc_loc                    1 (i)
+000030  goto8                      ->4
+000032  get_loc0                    (sum)
+000033  return                     
+  IC[0] x: 自有字段, offset=0
+  record[0] pc=15, argc=2, 正计划=False, 负目标=True
+

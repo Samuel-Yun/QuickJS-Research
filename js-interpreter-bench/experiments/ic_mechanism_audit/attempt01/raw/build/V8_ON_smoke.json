@@ -1,0 +1,22 @@
+{
+  "exit_code": 0,
+  "stdout": "PASS\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--jitless",
+    "--no-lazy",
+    "--use-ic",
+    "-e",
+    "var o={x:3};function f(p){return p.x}if(f(o)!==3)throw Error();console.log(\"PASS\")"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-28T09:55:55.830902+00:00",
+  "completed_at": "2026-10-28T09:55:55.849344+00:00",
+  "outer_start_ns": 31107507349,
+  "outer_stop_ns": 31125945810,
+  "outer_wall_ns": 18438461,
+  "boot_id": "5cf1eb67-a007-453e-afd2-3a02c65a6015"
+}

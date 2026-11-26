@@ -1,0 +1,129 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1012,6 +1012,8 @@
+     uint8_t is_constructor : 1; /* TRUE if object is a constructor function */
+     uint8_t has_immutable_prototype : 1; /* cannot modify the prototype */
+     uint8_t tmp_mark : 1; /* used in JS_WriteObjectRec() */
++    uint8_t v7_prop_inline : 1;
++    uint8_t v7_has_inline_tail : 1;
+     uint8_t is_HTMLDDA : 1; /* specific annex B IsHtmlDDA behavior */
+     uint16_t class_id; /* see JS_CLASS_x */
+     /* count the number of weak references to this object. The object
+@@ -5339,6 +5341,25 @@
+         js_free_shape(rt, sh);
+ }
+ 
++/* v7: inline storage is an allocation property, not a shape property. */
++#define V7_INLINE_CAP 2
++static JSProperty *v7_resize_prop(JSContext *ctx, JSObject *p, uint32_t count)
++{
++    JSProperty *next;
++    if (!p->v7_prop_inline)
++        return js_realloc(ctx, p->prop, sizeof(*p->prop) * count);
++    if (count <= V7_INLINE_CAP)
++        return p->prop;
++    next = js_malloc(ctx, sizeof(*next) * count);
++    if (!next)
++        return NULL;
++    memcpy(next, p->prop, sizeof(*next) * p->shape->prop_count);
++    /* No VM callback occurs between publishing the storage flag and pointer. */
++    p->v7_prop_inline = 0;
++    p->prop = next;
++    return next;
++}
++
+ /* make space to hold at least 'count' properties */
+ static no_inline int resize_properties(JSContext *ctx, JSShape **psh,
+                                        JSObject *p, uint32_t count)
+@@ -5355,7 +5376,7 @@
+        in case of memory allocation failure */
+     if (p) {
+         JSProperty *new_prop;
+-        new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
++        new_prop = v7_resize_prop(ctx, p, new_size);
+         if (unlikely(!new_prop))
+             return -1;
+         p->prop = new_prop;
+@@ -5469,7 +5490,7 @@
+     js_free(ctx, old_sh);
+ 
+     /* reduce the size of the object properties */
+-    new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
++    new_prop = v7_resize_prop(ctx, p, new_size);
+     if (new_prop)
+         p->prop = new_prop;
+     return 0;
+@@ -5625,8 +5646,10 @@
+     JSObject *p;
+     int i;
+     
+-    js_trigger_gc(ctx->rt, sizeof(JSObject));
+-    p = js_malloc(ctx, sizeof(JSObject));
++    size_t tail = (class_id == JS_CLASS_OBJECT && sh->prop_size <= V7_INLINE_CAP)
++        ? V7_INLINE_CAP * sizeof(JSProperty) : 0;
++    js_trigger_gc(ctx->rt, sizeof(JSObject) + tail);
++    p = js_malloc(ctx, sizeof(JSObject) + tail);
+     if (unlikely(!p))
+         goto fail;
+     p->class_id = class_id;
+@@ -5638,11 +5661,12 @@
+     p->is_constructor = 0;
+     p->has_immutable_prototype = 0;
+     p->tmp_mark = 0;
++    p->v7_prop_inline = p->v7_has_inline_tail = (tail != 0);
+     p->is_HTMLDDA = 0;
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
+-    p->prop = js_malloc(ctx, sizeof(JSProperty) * sh->prop_size);
++    p->prop = tail ? (JSProperty *)(p + 1) : js_malloc(ctx, sizeof(JSProperty) * sh->prop_size);
+     if (unlikely(!p->prop)) {
+         js_free(ctx, p);
+     fail:
+@@ -6364,7 +6388,8 @@
+         free_property(rt, &p->prop[i], pr->flags);
+         pr++;
+     }
+-    js_free_rt(rt, p->prop);
++    if (!p->v7_prop_inline)
++        js_free_rt(rt, p->prop);
+     /* as an optimization we destroy the shape immediately without
+        putting it in gc_zero_ref_count_list */
+     js_free_shape(rt, sh);
+@@ -7024,9 +7049,13 @@
+         p = (JSObject *)gp;
+         sh = p->shape;
+         s->obj_count++;
++        if (p->v7_has_inline_tail)
++            s->obj_size += V7_INLINE_CAP * sizeof(JSProperty);
+         if (p->prop) {
+-            s->memory_used_count++;
+-            s->prop_size += sh->prop_size * sizeof(*p->prop);
++            if (!p->v7_prop_inline) {
++                s->memory_used_count++;
++                s->prop_size += sh->prop_size * sizeof(*p->prop);
++            }
+             s->prop_count += sh->prop_count;
+             prs = get_shape_prop(sh);
+             for(i = 0; i < sh->prop_count; i++) {
+@@ -9232,8 +9261,7 @@
+             /*  the property array may need to be resized */
+             if (new_sh->prop_size != sh->prop_size) {
+                 JSProperty *new_prop;
+-                new_prop = js_realloc(ctx, p->prop, sizeof(p->prop[0]) *
+-                                      new_sh->prop_size);
++                new_prop = v7_resize_prop(ctx, p, new_sh->prop_size);
+                 if (!new_prop)
+                     return NULL;
+                 p->prop = new_prop;
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -17,7 +17,7 @@
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+-                    val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    val = JS_DupValue(ctx, (p->v7_prop_inline ? (JSProperty *)(p + 1) : p->prop)[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \

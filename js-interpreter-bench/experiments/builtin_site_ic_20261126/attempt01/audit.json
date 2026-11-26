@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "sources": [
+    {
+      "label": "SPARSE",
+      "source_archive": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/SPARSE-source.tar.gz",
+      "source_archive_sha256": "212050fa4de325fbe4f89d267d291200061b91cba14fea277ee9350a09520db2",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/SPARSE-to-SPARSE.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SPARSE.release/qjs",
+      "binary_sha256": "1973423771789e85e7a64f58be9147a8064b3ed795a603388d2a594a9c9eab7a",
+      "patch_reconstructs_actual_source": true
+    },
+    {
+      "label": "BODY",
+      "source_archive": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/BODY-source.tar.gz",
+      "source_archive_sha256": "58bb3835df38de2647dce03cd4bcd203369207f7be03bb654bfbd70dac601f5f",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/SPARSE-to-BODY.patch",
+      "patch_sha256": "7c3450aede9a30e81688d43b0fae7b1db5134df7bcb63b1db5c9fc764fd538a6",
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/qjs",
+      "binary_sha256": "545520468623c95c07beb43568084cf81d624a6620df56589cb3359b9a5e5a14",
+      "patch_reconstructs_actual_source": true
+    },
+    {
+      "label": "SITE",
+      "source_archive": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/SITE-source.tar.gz",
+      "source_archive_sha256": "c0c0cf18bbf3c54a58b0c12d5446d8e03f3a8e9172457f21ad78a545df90afd4",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/SPARSE-to-SITE.patch",
+      "patch_sha256": "b551edfcf2fe81e234a1c6a3f64c1ed42e01e906755426496e9a9f9f51b297e1",
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.release/qjs",
+      "binary_sha256": "3e14f186e064a67ecc3b47521f730b2bbbc1b405c6865d59afe6be21cd5a313e",
+      "patch_reconstructs_actual_source": true
+    }
+  ],
+  "full_Release_processes": 172,
+  "paired_Release_processes": 520,
+  "SHAM_SITE_same_ELF": true,
+  "all_formal_inputs_N_checksums_valid": true,
+  "GM_recomputed": true,
+  "external_tarball_hashes_valid": true,
+  "source_patches_and_archives_verified": true
+}

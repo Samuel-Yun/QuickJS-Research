@@ -1,0 +1,22 @@
+{
+  "exit_code": 2,
+  "stdout": "make: Entering directory '/home/mzyx/richards_site_attribution_attempt01_diag'\nmkdir -p .obj .obj/examples .obj/tests\ngcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c\ngcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -DCONFIG_CC=\\\"gcc\\\" -DCONFIG_PREFIX=\\\"/usr/local\\\" -O2 -c -o .obj/qjsc.o qjsc.c\ngcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c\ngcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c\ngcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libregexp.o libregexp.c\ngcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libunicode.o libunicode.c\ngcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/cutils.o cutils.c\ngcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c\ngcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl \nmake: Leaving directory '/home/mzyx/richards_site_attribution_attempt01_diag'\n",
+  "stderr": "make: Warning: File 'quickjs.c' has modification time 0.2 s in the future\nsite_metadata.h: In function ‘sa_register’:\nquickjs.c:2232:19: warning: implicit declaration of function ‘malloc_is_forbidden’ [-Wimplicit-function-declaration]\n 2232 | #define malloc(s) malloc_is_forbidden(s)\n      |                   ^~~~~~~~~~~~~~~~~~~\nsite_metadata.h:19:12: note: in expansion of macro ‘malloc’\n   19 |     f->hex=malloc(2*f->len+1);f->sites=calloc(f->len+1,sizeof(unsigned));\n      |            ^~~~~~\nIn file included from quickjs.c:22217:\nsite_metadata.h:19:11: warning: assignment to ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]\n   19 |     f->hex=malloc(2*f->len+1);f->sites=calloc(f->len+1,sizeof(unsigned));\n      |           ^\n/usr/bin/ld: .obj/quickjs.o: in function `sa_register':\n/home/mzyx/richards_site_attribution_attempt01_diag/site_metadata.h:19:(.text+0x5349a): undefined reference to `malloc_is_forbidden'\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile:273: qjsc] Error 1\n",
+  "command": [
+    "make",
+    "-C",
+    "/home/mzyx/richards_site_attribution_attempt01_diag",
+    "-j2",
+    "qjs",
+    "qjsc"
+  ],
+  "timestamp_utc": "2026-10-17T09:03:10.727598+00:00",
+  "outer_wall_ns": 27464514960,
+  "load_average": [
+    1.0,
+    0.31103515625,
+    0.10498046875
+  ],
+  "boot_id": "12606155-9460-4325-afa7-9ca18a7ed118",
+  "LD_PRELOAD": null
+}

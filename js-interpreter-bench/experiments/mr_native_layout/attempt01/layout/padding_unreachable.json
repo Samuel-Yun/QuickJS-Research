@@ -1,0 +1,190 @@
+{
+  "status": "STATIC_EVIDENCE_PASS",
+  "checks": [
+    {
+      "condition": "M_p000",
+      "padding_start": "0x132e0",
+      "requested_bytes": 0,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d 93 d0 0b 00 \tlea    rdi,[rip+0xbd093]        # d0360 <_IO_stdin_used+0x3360>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    },
+    {
+      "condition": "M_p016",
+      "padding_start": "0x132e0",
+      "requested_bytes": 16,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d 93 d0 0b 00 \tlea    rdi,[rip+0xbd093]        # d0360 <_IO_stdin_used+0x3360>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    },
+    {
+      "condition": "M_p032",
+      "padding_start": "0x132e0",
+      "requested_bytes": 32,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d 93 d0 0b 00 \tlea    rdi,[rip+0xbd093]        # d0360 <_IO_stdin_used+0x3360>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    },
+    {
+      "condition": "M_p048",
+      "padding_start": "0x132e0",
+      "requested_bytes": 48,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d 93 d0 0b 00 \tlea    rdi,[rip+0xbd093]        # d0360 <_IO_stdin_used+0x3360>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    },
+    {
+      "condition": "R_p000",
+      "padding_start": "0x132e0",
+      "requested_bytes": 0,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d bb d0 0b 00 \tlea    rdi,[rip+0xbd0bb]        # d0388 <_IO_stdin_used+0x3388>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    },
+    {
+      "condition": "R_p016",
+      "padding_start": "0x132e0",
+      "requested_bytes": 16,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d bb d0 0b 00 \tlea    rdi,[rip+0xbd0bb]        # d0388 <_IO_stdin_used+0x3388>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    },
+    {
+      "condition": "R_p032",
+      "padding_start": "0x132e0",
+      "requested_bytes": 32,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d bb d0 0b 00 \tlea    rdi,[rip+0xbd0bb]        # d0388 <_IO_stdin_used+0x3388>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    },
+    {
+      "condition": "R_p048",
+      "padding_start": "0x132e0",
+      "requested_bytes": 48,
+      "local_symbol_type": "OBJECT",
+      "constructors": false,
+      "direct_edges_into_padding": [],
+      "relative_relocations_into_padding": [],
+      "dispatch_entries_into_padding": 0,
+      "ELF_entry_outside": true,
+      "preceding_epilogue": [
+        "   132c0:\tf3 0f 1e fa          \tendbr64",
+        "   132c4:\t50                   \tpush   rax",
+        "   132c5:\t58                   \tpop    rax",
+        "   132c6:\t48 8d 3d bb d0 0b 00 \tlea    rdi,[rip+0xbd0bb]        # d0388 <_IO_stdin_used+0x3388>",
+        "   132cd:\t48 83 ec 08          \tsub    rsp,0x8",
+        "   132d1:\te8 da e5 ff ff       \tcall   118b0 <puts@plt>",
+        "   132d6:\tbf 01 00 00 00       \tmov    edi,0x1",
+        "   132db:\te8 00 ec ff ff       \tcall   11ee0 <exit@plt>"
+      ],
+      "no_fallthrough_reason": "preceding qjs help calls noreturn exit@plt; padding has no callable/exported entry",
+      "dynamic_native_coverage": null
+    }
+  ],
+  "scope": "static direct edges, relative data relocations, entry/dispatch and noreturn boundary; no formal native coverage trace"
+}

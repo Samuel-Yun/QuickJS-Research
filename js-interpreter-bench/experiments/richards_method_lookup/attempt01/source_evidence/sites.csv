@@ -1,0 +1,5 @@
+site,definition_line,receiver,target,method_storage,input_mutation,note
+Scheduler.schedule -> predicate,188,TaskControlBlock,TaskControlBlock.prototype.isHeldOrSuspended,prototype,data/state changes; no method/prototype replacement after definitions,state is own
+Scheduler.schedule -> run,188,TaskControlBlock,TaskControlBlock.prototype.run,prototype,data/state changes; no method/prototype replacement after definitions,selected inherited method; currentTcb is own scheduler property
+TCB.run -> task.run,324,IdleTask/WorkerTask/HandlerTask/DeviceTask,four task prototype run methods,prototype,data/state changes; no method/prototype replacement after definitions,task is own TCB field; four function targets
+Task/queue -> Packet.addTo,527,Packet,Packet.prototype.addTo,prototype,data/state changes; no method/prototype replacement after definitions,link/id/kind/a1/a2 are own

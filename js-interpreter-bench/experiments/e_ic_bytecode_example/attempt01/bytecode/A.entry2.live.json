@@ -1,0 +1,120 @@
+{
+  "variant": "A",
+  "source": "/home/mzyx/read_ic_dequickening_attempt01/A/quickjs.c",
+  "opcode_header": "/home/mzyx/read_ic_dequickening_attempt01/A/quickjs-opcode.h",
+  "breakpoint_source_line": 17868,
+  "target": "readPlusOne",
+  "interpretation": "nested compiled target from root constant pool at exact first JS_CallInternal instruction; before script execution",
+  "target_frame_entries": 1,
+  "snapshots": [
+    {
+      "entry_number": 0,
+      "bytes": 9,
+      "instruction_count": 5,
+      "raw_hex": "cf3d6c020000b49b28",
+      "instructions": [
+        {
+          "pc": 0,
+          "opcode": "get_arg0",
+          "opcode_number": 207,
+          "raw_hex": "cf",
+          "size": 1,
+          "pop": 0,
+          "push": 1,
+          "fmt": "none_arg"
+        },
+        {
+          "pc": 1,
+          "opcode": "get_field",
+          "opcode_number": 61,
+          "raw_hex": "3d6c020000",
+          "size": 5,
+          "pop": 1,
+          "push": 1,
+          "fmt": "atom",
+          "atom": 620,
+          "property": "x"
+        },
+        {
+          "pc": 6,
+          "opcode": "push_1",
+          "opcode_number": 180,
+          "raw_hex": "b4",
+          "size": 1,
+          "pop": 0,
+          "push": 1,
+          "fmt": "none_int"
+        },
+        {
+          "pc": 7,
+          "opcode": "add",
+          "opcode_number": 155,
+          "raw_hex": "9b",
+          "size": 1,
+          "pop": 2,
+          "push": 1,
+          "fmt": "none"
+        },
+        {
+          "pc": 8,
+          "opcode": "return",
+          "opcode_number": 40,
+          "raw_hex": "28",
+          "size": 1,
+          "pop": 1,
+          "push": 0,
+          "fmt": "none"
+        }
+      ],
+      "arg_count": 1,
+      "local_count": 0,
+      "stack_size": 2
+    }
+  ],
+  "errors": [],
+  "inferior_function_calls": false,
+  "counter_meaning": "target bytecode snapshots found in compiled root, NOT a dynamic call counter",
+  "ABI": "Linux x86_64 SysV: caller_ctx=rdi, func_obj.u=rsi, func_obj.tag=rdx",
+  "entry_register_observations": [
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361648",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361720",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361720",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361720",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361720",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361720",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361720",
+      "rdx": "-1"
+    },
+    {
+      "rdi": "94371670249760",
+      "rsi": "94371670361720",
+      "rdx": "-1"
+    }
+  ]
+}

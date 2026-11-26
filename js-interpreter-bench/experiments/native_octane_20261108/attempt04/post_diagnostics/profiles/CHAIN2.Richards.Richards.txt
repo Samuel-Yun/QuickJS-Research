@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+Profile data file '/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/post_diagnostics/CHAIN2.Richards.Richards.callgrind.1' (creator: callgrind-3.26.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 5265473
+Trigger: Client Request
+Profiled target:  /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/work/CHAIN2.profile /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt02/diagnostics/scripts/Richards.Richards.js (PID 17, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir                  
+--------------------------------------------------------------------------------
+31,281,156 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                   file:function
+--------------------------------------------------------------------------------
+23,132,377 (73.95%)  experiments/native_octane_20261108/attempt04/work/CHAIN2/quickjs.c:JS_CallInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/work/CHAIN2.profile]
+ 3,895,618 (12.45%)  experiments/native_octane_20261108/attempt04/work/CHAIN2/quickjs.h:JS_CallInternal'2
+ 3,602,136 (11.52%)  experiments/native_octane_20261108/attempt04/work/CHAIN2/read_ic_opcodes.inc:JS_CallInternal'2
+   248,604 ( 0.79%)  experiments/native_octane_20261108/attempt04/work/CHAIN2/read_ic_runtime.inc:JS_CallInternal'2
+   183,512 ( 0.59%)  experiments/native_octane_20261108/attempt04/work/CHAIN2/quickjs.h:JS_FreeValue [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt04/work/CHAIN2.profile]
+

@@ -1,0 +1,14 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -40,10 +40,8 @@
+     }
+     for(unsigned i=0;i<CTOR_CAPACITY-1;i++)if(multi_same(s->extra->plan[i],c))return &s->extra->plan[i];
+     for(unsigned i=0;i<CTOR_CAPACITY-1;i++)if(!s->extra->plan[i])return &s->extra->plan[i];
+-    unsigned victim=s->extra->next;
+-    s->extra->next=(victim+1)%CTOR_CAPACITY;
+     SCREEN(replacements);
+-    return victim==0?&s->plan:&s->extra->plan[victim-1];
++    return &s->extra->plan[0]; /* primary is retained, own-target updates stay above */
+ }
+ static void multi_mark(JSRuntime*rt,FourSite*s,JS_MarkFunc*mark_func)
+ {

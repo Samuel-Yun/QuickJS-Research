@@ -1,0 +1,27 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    "semantic/COLD_ENTRY/experiments/ic_search_lab/checks.js",
+    "semantic/COLD_ENTRY/experiments/ic_search_lab/v3_mass_search/semantic.js",
+    "semantic/COLD_ENTRY/experiments/ic_search_lab/v6_targeted_ic/targeted.js",
+    "semantic/COLD_ENTRY/experiments/native_octane_20261107/attempt02/combined.js",
+    "semantic/COLD_ENTRY/experiments/native_octane_20261108/attempt04/extra.js",
+    "semantic/COLD_ENTRY/experiments/native_octane_20261108/attempt04/old_layout.js",
+    "semantic/COLD_ENTRY/experiments/native_octane_20261108/attempt10/targeted.js",
+    "native_check/COLD_ENTRY/read_roundtrip",
+    "native_check/COLD_ENTRY/gc_cycles",
+    "native_check/COLD_ENTRY/reentrant_store",
+    "sanitizer/COLD_ENTRY/experiments/native_octane_20261107/attempt02/combined.js",
+    "sanitizer/COLD_ENTRY/experiments/native_octane_20261108/attempt04/extra.js",
+    "sanitizer/COLD_ENTRY/experiments/native_octane_20261108/attempt10/targeted.js",
+    "sanitizer/COLD_ENTRY/experiments/ic_search_lab/v3_mass_search/semantic.js",
+    "sanitizer_native/COLD_ENTRY/read_roundtrip",
+    "sanitizer_native/COLD_ENTRY/gc_cycles",
+    "sanitizer_native/COLD_ENTRY/reentrant_store",
+    "mechanism_probe/COLD_ENTRY"
+  ],
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "full_test262": false
+}

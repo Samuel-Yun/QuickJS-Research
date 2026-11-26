@@ -1,0 +1,25 @@
+{
+  "cases": [
+    "RegExp.RegExp",
+    "Mandreel.Mandreel",
+    "CodeLoad.CodeLoadClosure",
+    "CodeLoad.CodeLoadJQuery",
+    "zlib.zlib"
+  ],
+  "processes_per_case": 1,
+  "scope": "same Run-only non-length named reads and same N as previous IC-rate diagnostic",
+  "method": "first failed admission guard or read-only descriptor inspection; per-live-site queries with unlink at function-bytecode free",
+  "diagnostic_atom_lifetime": "touched atom names retained until report; no objects/functions/shapes retained by diagnostics",
+  "frozen_files": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/eval_miss_reasons.h": "841afd28a9b8275031f339c8ac23d8565c75968276655f2f558f2a1e4310d25c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/build_eval_miss_reasons.py": "75d6b5431a969cb5e37bd15e627310e44d18d01b1bc3c58ccd7c71e0444d444a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/benchmarks/ic_hit_rate/run_eval_miss_reasons.py": "48ecc883d9a58dc01ab481fd4da4a45ef492d7a716407b627357a075bd18642d",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_reasons_20261110/attempt02/diagnostic/work/EVAL_COLD_DIAG/qjs": "dc9748545df4542f90d7b766ed1627cc2d5e0e8e94c86fdd3d6c92e82e9f628a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/scripts/RegExp.RegExp.EVAL_COLD.js": "a818cf184507cd8367a9dcf598dab4f8a6c4210d93e97c612ec8730025c9cebc",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/scripts/Mandreel.Mandreel.EVAL_COLD.js": "eb837330795f6eb144751288e681d58f9086c973fe3fb6d86d31657992e099e7",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/scripts/CodeLoad.CodeLoadClosure.EVAL_COLD.js": "1ac00cea18e17a89a0344e68b83ce8389c17d80469e1e4710a9b19693ee9426f",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/scripts/CodeLoad.CodeLoadJQuery.EVAL_COLD.js": "06cf27a6f5e870a0734d17e1910e13ad93cf13beccc4f1f8210433ce1e3d1c4c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/scripts/zlib.zlib.EVAL_COLD.js": "1562241686acd52c7ddec267678a73f524b1a8eceb6825b146b74518a6370075"
+  },
+  "build_manifest_sha256": "f50419aba7d8d1b5c27696c7c517dca36b54a99539db69af569a6099c1cab773"
+}

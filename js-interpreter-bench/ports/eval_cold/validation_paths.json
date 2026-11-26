@@ -1,0 +1,45 @@
+{
+  "tmp": "/tmp/qjs-eval-cold-port-2vpt6bet",
+  "results": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/ports/eval_cold/apply.py",
+        "--source",
+        "/tmp/qjs-eval-cold-port-2vpt6bet/baseline",
+        "--check"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "BASELINE_MISMATCH; source unchanged. Expected upstream commit 04be246001599f5995fa2f2d8c91a0f198d3f34c\nDifferent/missing files: repl.c\nExisting optimization files: \nUse a clean matching tree, or port the implementation manually; no force mode.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/ports/eval_cold/apply.py",
+        "--source",
+        "/tmp/qjs-eval-cold-port-2vpt6bet/baseline",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "BASELINE_MATCH 04be246001599f5995fa2f2d8c91a0f198d3f34c\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/ports/eval_cold/apply.py",
+        "--source",
+        "/tmp/qjs-eval-cold-port-2vpt6bet/baseline",
+        "--output",
+        "/tmp/qjs-eval-cold-port-2vpt6bet/ported"
+      ],
+      "exit_code": 0,
+      "stdout": "BASELINE_MATCH 04be246001599f5995fa2f2d8c91a0f198d3f34c\nchecking file quickjs-opcode.h\nchecking file quickjs.c\nchecking file read_ic_config.h\nchecking file read_ic_opcodes.inc\nchecking file read_ic_prepare.inc\nchecking file read_ic_runtime.inc\nchecking file read_ic_types.h\npatching file quickjs-opcode.h\npatching file quickjs.c\npatching file read_ic_config.h\npatching file read_ic_opcodes.inc\npatching file read_ic_prepare.inc\npatching file read_ic_runtime.inc\npatching file read_ic_types.h\nAPPLIED_AND_SOURCE_HASHES_VERIFIED /tmp/qjs-eval-cold-port-2vpt6bet/ported\n",
+      "stderr": ""
+    }
+  ]
+}

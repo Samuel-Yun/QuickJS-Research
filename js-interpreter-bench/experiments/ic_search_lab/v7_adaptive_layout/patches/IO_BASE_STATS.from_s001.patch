@@ -1,0 +1,137 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -5339,6 +5339,14 @@
+         js_free_shape(rt, sh);
+ }
+ 
++static uint64_t io_obj_allocs,io_arrays,io_obj_bytes,io_array_bytes,io_tail_allocs,io_spills,io_waste_slots;
++static uint64_t io_hits,io_inline_hits;
++static void __attribute__((destructor)) v7_io_stats_report(void) {
++ fprintf(stderr,"V7_IO_COVERAGE %llu %llu\n",(unsigned long long)io_hits,(unsigned long long)io_inline_hits);
++ fprintf(stderr,"V7_IO_STATS {\"object_requests\":%llu,\"array_requests\":%llu,\"object_requested_bytes\":%llu,\"array_requested_bytes\":%llu,\"tail_allocations\":%llu,\"spills\":%llu,\"unused_tail_slots_at_free\":%llu}\n",
++ (unsigned long long)io_obj_allocs,(unsigned long long)io_arrays,(unsigned long long)io_obj_bytes,(unsigned long long)io_array_bytes,
++ (unsigned long long)io_tail_allocs,(unsigned long long)io_spills,(unsigned long long)io_waste_slots);
++}
+ /* make space to hold at least 'count' properties */
+ static no_inline int resize_properties(JSContext *ctx, JSShape **psh,
+                                        JSObject *p, uint32_t count)
+@@ -5355,7 +5363,8 @@
+        in case of memory allocation failure */
+     if (p) {
+         JSProperty *new_prop;
+-        new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
++        if(p->class_id==JS_CLASS_OBJECT) {io_arrays++;io_array_bytes+=sizeof(*p->prop)*new_size;}
++    new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
+         if (unlikely(!new_prop))
+             return -1;
+         p->prop = new_prop;
+@@ -5469,6 +5478,7 @@
+     js_free(ctx, old_sh);
+ 
+     /* reduce the size of the object properties */
++    if(p->class_id==JS_CLASS_OBJECT) {io_arrays++;io_array_bytes+=sizeof(*p->prop)*new_size;}
+     new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
+     if (new_prop)
+         p->prop = new_prop;
+@@ -5626,6 +5636,7 @@
+     int i;
+     
+     js_trigger_gc(ctx->rt, sizeof(JSObject));
++    if(class_id==JS_CLASS_OBJECT) {io_obj_allocs++;io_obj_bytes+=sizeof(JSObject);}
+     p = js_malloc(ctx, sizeof(JSObject));
+     if (unlikely(!p))
+         goto fail;
+@@ -5642,6 +5653,7 @@
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
++    if(class_id==JS_CLASS_OBJECT) {io_arrays++;io_array_bytes+=sizeof(JSProperty)*sh->prop_size;}
+     p->prop = js_malloc(ctx, sizeof(JSProperty) * sh->prop_size);
+     if (unlikely(!p->prop)) {
+         js_free(ctx, p);
+@@ -9232,6 +9244,7 @@
+             /*  the property array may need to be resized */
+             if (new_sh->prop_size != sh->prop_size) {
+                 JSProperty *new_prop;
++                if(p->class_id==JS_CLASS_OBJECT) {io_arrays++;io_array_bytes+=sizeof(*p->prop)*new_sh->prop_size;}
+                 new_prop = js_realloc(ctx, p->prop, sizeof(p->prop[0]) *
+                                       new_sh->prop_size);
+                 if (!new_prop)
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -10,20 +10,20 @@
+         JSShapeProperty *prs;                                           \
+         RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+-        RDI_QUERY();                                                    \
++        RDI_QUERY();v7_stat_read_queries++;                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+-                    RDI_COUNT(hits);                                   \
++                    RDI_COUNT(hits);v7_stat_read_hits++;io_hits++;                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+-        RDI_COUNT(fallback);                                            \
++        RDI_COUNT(fallback);v7_stat_read_fallback++;                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -30,7 +30,7 @@
+     memcpy(linked, b->byte_code_buf, b->byte_code_len);
+     b->byte_code_buf = linked;
+     b->read_ic_sites = (ReadICSite *)(linked + code_size);
+-    b->read_ic_count = count;
++    b->read_ic_count = count;v7_stat_sites_total+=count;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_prepare(ctx, b);
+ #endif
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -1,21 +1,26 @@
++static uint64_t v7_stat_read_queries,v7_stat_read_hits,v7_stat_read_fallback,v7_stat_updates,v7_stat_comparisons,v7_stat_sites_total,v7_stat_mono_probes,v7_stat_poly_probes,v7_stat_mono_installed,v7_stat_mono_active,v7_stat_mono_peak,v7_stat_alloc2,v7_stat_alloc4,v7_stat_requested_bytes,v7_stat_live_bytes,v7_stat_peak_bytes,v7_stat_blocks_live,v7_stat_blocks_peak,v7_stat_entry_checks,v7_stat_pending_entries,v7_stat_specializations,v7_stat_exits,v7_stat_reentries,v7_stat_store_queries,v7_stat_transition_hits,v7_stat_transition_oom,v7_stat_existing_own_fast,v7_stat_generic_set,v7_stat_eligible_snapshot,v7_stat_transition_fills,v7_stat_hash_shape_searches;
++static void __attribute__((destructor)) v7_policy_report(void) {
++fprintf(stderr,"V7_POLICY BASE read_queries=%llu read_hits=%llu read_fallback=%llu updates=%llu comparisons=%llu sites_total=%llu mono_probes=%llu poly_probes=%llu mono_installed=%llu mono_active=%llu mono_peak=%llu alloc2=%llu alloc4=%llu requested_bytes=%llu live_bytes=%llu peak_bytes=%llu blocks_live=%llu blocks_peak=%llu entry_checks=%llu pending_entries=%llu specializations=%llu exits=%llu reentries=%llu store_queries=%llu transition_hits=%llu transition_oom=%llu existing_own_fast=%llu generic_set=%llu eligible_snapshot=%llu transition_fills=%llu hash_shape_searches=%llu\n",(unsigned long long)v7_stat_read_queries,(unsigned long long)v7_stat_read_hits,(unsigned long long)v7_stat_read_fallback,(unsigned long long)v7_stat_updates,(unsigned long long)v7_stat_comparisons,(unsigned long long)v7_stat_sites_total,(unsigned long long)v7_stat_mono_probes,(unsigned long long)v7_stat_poly_probes,(unsigned long long)v7_stat_mono_installed,(unsigned long long)v7_stat_mono_active,(unsigned long long)v7_stat_mono_peak,(unsigned long long)v7_stat_alloc2,(unsigned long long)v7_stat_alloc4,(unsigned long long)v7_stat_requested_bytes,(unsigned long long)v7_stat_live_bytes,(unsigned long long)v7_stat_peak_bytes,(unsigned long long)v7_stat_blocks_live,(unsigned long long)v7_stat_blocks_peak,(unsigned long long)v7_stat_entry_checks,(unsigned long long)v7_stat_pending_entries,(unsigned long long)v7_stat_specializations,(unsigned long long)v7_stat_exits,(unsigned long long)v7_stat_reentries,(unsigned long long)v7_stat_store_queries,(unsigned long long)v7_stat_transition_hits,(unsigned long long)v7_stat_transition_oom,(unsigned long long)v7_stat_existing_own_fast,(unsigned long long)v7_stat_generic_set,(unsigned long long)v7_stat_eligible_snapshot,(unsigned long long)v7_stat_transition_fills,(unsigned long long)v7_stat_hash_shape_searches);
++}
+ /* Included after upstream find_own_property, with shape helpers available. */
+ #ifdef READ_IC_DIAGNOSTIC
+ #include "read_ic_diag.h"
+ #endif
+ static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+ {
++    v7_stat_mono_probes++;
+ #if RDI_CAPACITY == 1
+-    RDI_COUNT(comparisons);
++    RDI_COUNT(comparisons);v7_stat_comparisons++;
+     if (s->shape == shape)
+         return s->prop_offset;
+ #else
+     unsigned i, first = s->recent;
+-    RDI_COUNT(comparisons);
++    RDI_COUNT(comparisons);v7_stat_comparisons++;
+     if (s->shape[first] == shape)
+         return s->prop_offset[first];
+     for (unsigned k = 1; k < 4; k++) {
+         i = (first + k) & 3;
+-        RDI_COUNT(comparisons);
++        RDI_COUNT(comparisons);v7_stat_comparisons++;
+         if (s->shape[i] == shape) {
+             s->recent = i;
+             return s->prop_offset[i];
+@@ -27,7 +32,7 @@
+ static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+-    RDI_COUNT(updates);
++    RDI_COUNT(updates);v7_stat_updates++;
+ #if RDI_CAPACITY == 1
+     if (s->shape == shape) {
+         s->prop_offset = offset;

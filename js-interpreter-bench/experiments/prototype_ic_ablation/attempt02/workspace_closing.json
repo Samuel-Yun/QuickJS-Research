@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-10-30T08:39:18.370124+00:00",
+  "git": {
+    "HEAD": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "6e4e3b2925cbd9925b7bed8e3e725785ba9238e4\n",
+      "stderr": ""
+    },
+    "branch": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "myx\n",
+      "stderr": ""
+    },
+    "status": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "status",
+        "--short"
+      ],
+      "exit_code": 0,
+      "stdout": "?? js-interpreter-bench/experiments/prototype_ic_ablation/attempt02/\n",
+      "stderr": ""
+    },
+    "old_diff": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "diff",
+        "--exit-code",
+        "HEAD",
+        "--",
+        "js-interpreter-bench/experiments/prototype_ic_ablation/attempt01"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "tracked_diff": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "diff",
+        "--name-only"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "old_attempt_status": "PERFORMANCE_ENV_UNSTABLE / formal0 unchanged",
+  "file_count_before_closure": 1008,
+  "bytes_before_closure": 2127879,
+  "max_file_bytes": 113342,
+  "engine_artifacts_added_to_repository": 0,
+  "commit": false,
+  "push": false
+}

@@ -1,0 +1,4 @@
+var now=performance.now.bind(performance);var N=Number(scriptArgs[1]||1);
+std.loadScript("/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/external/markdown-it-14.1.0/dist/markdown-it.js");
+var input=std.loadFile("/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/external/markdown-it-14.1.0/README.md");var md=markdownit();
+var result;if(typeof __ep_begin==='function')__ep_begin();var t=now();for(var n=0;n<N;n++)result=md.render(input);var stop=now();if(typeof __ep_end==='function')__ep_end();var hash=2166136261;for(var i=0;i<result.length;i++)hash=Math.imul(hash^result.charCodeAt(i),16777619)>>>0;if(result.length!==12329||hash!==3322973581)throw Error('HTML validation');print('EXTERNAL_RESULT:'+JSON.stringify({case:'MarkdownIt',N:N,elapsed_ms:stop-t,ms:(stop-t)/N,validation:{length:result.length,hash:hash}}));

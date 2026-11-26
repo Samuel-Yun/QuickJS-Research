@@ -1,0 +1,29 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/lifetime.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release/.obj/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release/.obj/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/c_validation01/NEST_COMBINED.release.lifetime"
+  ],
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+    "QJS_NEST_MODE": "combined"
+  },
+  "source_sha256": "25d63d880416154b9c2be1a00c8943fbb197db7560e665b4cb771690764bb91b",
+  "binary_sha256": "4e6692c5c07ab91f11fadf710f65511c6f6aee2747fe88fee46b68c7d83e081f",
+  "exit_code": 0,
+  "stdout": "LIFETIME_REALMS_INTERRUPT_PASS\n",
+  "stderr": ""
+}

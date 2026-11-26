@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\mzyx\Desktop\0921\js-interpreter-bench\experiments\legacy_ng_ic_slotfix\attempt01\recover.py", line 53, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\mzyx\Desktop\0921\js-interpreter-bench\experiments\legacy_ng_ic_slotfix\attempt01\recover.py", line 48, in main
+    save(HERE/'recovery/old_diagnostic_units_rebuilt.csv.gz',z)
+  File "C:\Users\mzyx\Desktop\0921\js-interpreter-bench\experiments\legacy_ng_ic_slotfix\attempt01\common.py", line 34, in save
+    if p.exists():assert p.read_bytes()==data,str(p)
+                         ^^^^^^^^^^^^^^^^^^^^
+AssertionError: C:\Users\mzyx\Desktop\0921\js-interpreter-bench\experiments\legacy_ng_ic_slotfix\attempt01\recovery\old_diagnostic_units_rebuilt.csv.gz

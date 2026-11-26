@@ -1,0 +1,15 @@
+gcc -g -Wall -MMD -MF .obj/bjson.pic.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -fPIC -DJS_SHARED_LIBRARY -c -o .obj/tests/bjson.pic.o tests/bjson.c
+gcc -g -Wall -MMD -MF .obj/point.pic.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -O2 -fPIC -DJS_SHARED_LIBRARY -c -o .obj/examples/point.pic.o examples/point.c
+gcc -g -shared -o tests/bjson.so .obj/tests/bjson.pic.o -lm -lpthread -ldl 
+gcc -g -shared -o examples/point.so .obj/examples/point.pic.o
+./qjs tests/test_closure.js
+./qjs tests/test_language.js
+./qjs --std tests/test_builtin.js
+./qjs tests/test_loop.js
+./qjs tests/test_bigint.js
+./qjs tests/test_cyclic_import.js
+./qjs tests/test_worker.js
+./qjs tests/test_std.js
+./qjs tests/test_rw_handler.js
+./qjs tests/test_bjson.js
+./qjs examples/test_point.js

@@ -1,0 +1,472 @@
+[
+  {
+    "label": "SPARSE",
+    "case": "RayTrace.RayTrace",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147907077.645807,\"stop_ms\":1147910615.862072,\"elapsed_ms\":3538.21626496315,\"elapsed_per_Run_ms\":27.64231457002461,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3545.9116771817207,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 27.64231457002461,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "OLD_FORWARD",
+    "case": "RayTrace.RayTrace",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/OLD_FORWARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "26acc4a1f408340f708ac713432c81693221c36ca5c1de2dcc1ab0119aa3c148",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147910629.996181,\"stop_ms\":1147914008.052613,\"elapsed_ms\":3378.0564320087433,\"elapsed_per_Run_ms\":26.391065875068307,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3385.403668973595,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 26.391065875068307,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_PLAN",
+    "case": "RayTrace.RayTrace",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147914021.91368,\"stop_ms\":1147915926.901035,\"elapsed_ms\":1904.9873549938202,\"elapsed_per_Run_ms\":14.88271371088922,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1912.3306039255112,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 14.88271371088922,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_OFF",
+    "case": "RayTrace.RayTrace",
+    "rep": 1,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {
+      "QJS_NUMERIC_ENTRY_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147915940.55176,\"stop_ms\":1147919897.903786,\"elapsed_ms\":3957.352025985718,\"elapsed_per_Run_ms\":30.91681270301342,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3964.553556172177,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 30.91681270301342,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "OLD_FORWARD",
+    "case": "RayTrace.RayTrace",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/OLD_FORWARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "26acc4a1f408340f708ac713432c81693221c36ca5c1de2dcc1ab0119aa3c148",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147919911.619028,\"stop_ms\":1147923285.385736,\"elapsed_ms\":3373.7667078971863,\"elapsed_per_Run_ms\":26.357552405446768,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3381.2876550946385,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 26.357552405446768,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_PLAN",
+    "case": "RayTrace.RayTrace",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147923299.515972,\"stop_ms\":1147925224.843873,\"elapsed_ms\":1925.3279011249542,\"elapsed_per_Run_ms\":15.041624227538705,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1932.744390098378,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 15.041624227538705,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_OFF",
+    "case": "RayTrace.RayTrace",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {
+      "QJS_NUMERIC_ENTRY_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147925238.840109,\"stop_ms\":1147929195.705656,\"elapsed_ms\":3956.865546941757,\"elapsed_per_Run_ms\":30.913012085482478,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3964.2841501627117,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 30.913012085482478,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "SPARSE",
+    "case": "RayTrace.RayTrace",
+    "rep": 2,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147929209.812229,\"stop_ms\":1147932770.037845,\"elapsed_ms\":3560.225615978241,\"elapsed_per_Run_ms\":27.814262624830008,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3567.622003145516,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 27.814262624830008,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_PLAN",
+    "case": "RayTrace.RayTrace",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147932784.095085,\"stop_ms\":1147934694.106904,\"elapsed_ms\":1910.0118191242218,\"elapsed_per_Run_ms\":14.921967336907983,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1917.1527940779924,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 14.921967336907983,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_OFF",
+    "case": "RayTrace.RayTrace",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {
+      "QJS_NUMERIC_ENTRY_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147934707.50157,\"stop_ms\":1147938694.144281,\"elapsed_ms\":3986.6427109241486,\"elapsed_per_Run_ms\":31.14564617909491,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3993.929271120578,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 31.14564617909491,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "SPARSE",
+    "case": "RayTrace.RayTrace",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147938708.062914,\"stop_ms\":1147942232.512102,\"elapsed_ms\":3524.4491879940033,\"elapsed_per_Run_ms\":27.53475928120315,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3531.7885850090533,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 27.53475928120315,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "OLD_FORWARD",
+    "case": "RayTrace.RayTrace",
+    "rep": 3,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/OLD_FORWARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "26acc4a1f408340f708ac713432c81693221c36ca5c1de2dcc1ab0119aa3c148",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147942246.318148,\"stop_ms\":1147945636.796567,\"elapsed_ms\":3390.4784190654755,\"elapsed_per_Run_ms\":26.488112648949027,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3397.6614188868552,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 26.488112648949027,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_OFF",
+    "case": "RayTrace.RayTrace",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {
+      "QJS_NUMERIC_ENTRY_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147945650.49326,\"stop_ms\":1147949598.123325,\"elapsed_ms\":3947.630065202713,\"elapsed_per_Run_ms\":30.840859884396195,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3954.941524891183,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 30.840859884396195,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "SPARSE",
+    "case": "RayTrace.RayTrace",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147949612.030255,\"stop_ms\":1147953194.607475,\"elapsed_ms\":3582.5772199630737,\"elapsed_per_Run_ms\":27.988884530961514,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3590.0204610079527,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 27.988884530961514,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "OLD_FORWARD",
+    "case": "RayTrace.RayTrace",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/OLD_FORWARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "26acc4a1f408340f708ac713432c81693221c36ca5c1de2dcc1ab0119aa3c148",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147953208.666881,\"stop_ms\":1147956592.343961,\"elapsed_ms\":3383.6770799160004,\"elapsed_per_Run_ms\":26.434977186843753,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3390.8912921324372,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 26.434977186843753,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_PLAN",
+    "case": "RayTrace.RayTrace",
+    "rep": 4,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147956606.082795,\"stop_ms\":1147958519.549681,\"elapsed_ms\":1913.4668860435486,\"elapsed_per_Run_ms\":14.948960047215223,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1920.81528599374,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 14.948960047215223,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "SPARSE",
+    "case": "RayTrace.RayTrace",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147958533.411915,\"stop_ms\":1147962057.601196,\"elapsed_ms\":3524.189280986786,\"elapsed_per_Run_ms\":27.532728757709265,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3531.5393400378525,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 27.532728757709265,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "OLD_FORWARD",
+    "case": "RayTrace.RayTrace",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/OLD_FORWARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "26acc4a1f408340f708ac713432c81693221c36ca5c1de2dcc1ab0119aa3c148",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147962071.519232,\"stop_ms\":1147965476.137593,\"elapsed_ms\":3404.6183609962463,\"elapsed_per_Run_ms\":26.598580945283175,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3411.823983071372,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 26.598580945283175,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_PLAN",
+    "case": "RayTrace.RayTrace",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {},
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147965490.041688,\"stop_ms\":1147967395.622579,\"elapsed_ms\":1905.5808911323547,\"elapsed_per_Run_ms\":14.887350711971521,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 1913.250533863902,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 14.887350711971521,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  },
+  {
+    "label": "NUMERIC_OFF",
+    "case": "RayTrace.RayTrace",
+    "rep": 5,
+    "mode": "release",
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/RayTrace.js"
+    ],
+    "script_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "control": {
+      "QJS_NUMERIC_ENTRY_OFF": "1"
+    },
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"RayTrace.RayTrace\",\"N\":128,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1147967409.942506,\"stop_ms\":1147971393.881131,\"elapsed_ms\":3983.938624858856,\"elapsed_per_Run_ms\":31.124520506709814,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "wall_ms": 3991.346954135224,
+    "suite": "octane",
+    "name": "RayTrace",
+    "N": 128,
+    "group": "RayTrace",
+    "ms": 31.124520506709814,
+    "original_sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d"
+  }
+]

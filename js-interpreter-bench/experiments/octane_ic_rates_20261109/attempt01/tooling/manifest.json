@@ -1,0 +1,26 @@
+{
+  "sources_sha256": {
+    "v8_octane_native_counts.c": "389723b95da71a4992b804aab8bb8f9d9045d8a6f26c83e621e7cc6719ed18fc",
+    "run_octane_ic_counts.py": "f5e0dfe73ba2cb432436effeeb64559aff54f1404f2c500d13c85f66113bb65b",
+    "analyze_octane_ic_counts.py": "6e23c4ae1cfef42b6fd2fc9a3dd14d5cda002fdebd09bf7b931d3286a5fc06a0",
+    "build_octane_eval_counts.py": "9c47a2436885a8447b9889e8803aafa88c19e9e6f0d91f5a9d07b7f9495ad6f0",
+    "build_diagnostic.py": "92b68dfaaf9f2ecd26a8dd61e5f0d1dbaed6b6406a2972c180273cd8ddce507d"
+  },
+  "native_counter_library_sha256": "9deed832f8ac4f462186da08ad418e84a9635023846558f0064ee2512317665f",
+  "native_build_command": [
+    "gcc",
+    "-shared",
+    "-fPIC",
+    "-O2",
+    "-g",
+    "-fno-omit-frame-pointer",
+    "-fno-optimize-sibling-calls",
+    "-mgeneral-regs-only",
+    "-Wall",
+    "-o",
+    "v8_native_counts.so",
+    "v8_octane_native_counts.c",
+    "-ldl"
+  ],
+  "gcc_version": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0"
+}

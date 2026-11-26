@@ -1,0 +1,222 @@
+{
+  "name": "restore_d05_01",
+  "labels": [
+    "s001",
+    "d03",
+    "d05"
+  ],
+  "stage": "restore",
+  "rounds": 1,
+  "order": [
+    {
+      "kind": "octane",
+      "case": "zlib.zlib",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "d03",
+        "d05"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "Mandreel.Mandreel",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "d05",
+        "d03"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "RegExp.RegExp",
+      "rep": 0,
+      "conditions": [
+        "d03",
+        "s001",
+        "d05"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "rep": 0,
+      "conditions": [
+        "d03",
+        "d05",
+        "s001"
+      ],
+      "N": 2048
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Earley",
+      "rep": 0,
+      "conditions": [
+        "d05",
+        "s001",
+        "d03"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Decrypt",
+      "rep": 0,
+      "conditions": [
+        "d05",
+        "d03",
+        "s001"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "d03",
+        "d05"
+      ],
+      "N": 4096
+    },
+    {
+      "kind": "octane",
+      "case": "PdfJS.PdfJS",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "d05",
+        "d03"
+      ],
+      "N": 16
+    },
+    {
+      "kind": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "rep": 0,
+      "conditions": [
+        "d03",
+        "s001",
+        "d05"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Typescript.Typescript",
+      "rep": 0,
+      "conditions": [
+        "d03",
+        "d05",
+        "s001"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "rep": 0,
+      "conditions": [
+        "d05",
+        "s001",
+        "d03"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Gameboy.Gameboy",
+      "rep": 0,
+      "conditions": [
+        "d05",
+        "d03",
+        "s001"
+      ],
+      "N": 8
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Encrypt",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "d03",
+        "d05"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "rep": 0,
+      "conditions": [
+        "s001",
+        "d05",
+        "d03"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "rep": 0,
+      "conditions": [
+        "d03",
+        "s001",
+        "d05"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "rep": 0,
+      "conditions": [
+        "d03",
+        "d05",
+        "s001"
+      ],
+      "N": 1024
+    },
+    {
+      "kind": "octane",
+      "case": "RayTrace.RayTrace",
+      "rep": 0,
+      "conditions": [
+        "d05",
+        "s001",
+        "d03"
+      ],
+      "N": 128
+    }
+  ],
+  "boot_id": "938d2879-a0f3-4ce7-9431-640baba47fd7",
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "seed": 2026110706,
+  "full_collection": true,
+  "N": {
+    "octane/Richards.Richards": 1024,
+    "octane/DeltaBlue.DeltaBlue": 512,
+    "octane/Crypto.Encrypt": 512,
+    "octane/Crypto.Decrypt": 32,
+    "octane/RayTrace.RayTrace": 128,
+    "octane/EarleyBoyer.Earley": 512,
+    "octane/EarleyBoyer.Boyer": 32,
+    "octane/RegExp.RegExp": 64,
+    "octane/Splay.Splay": 2048,
+    "octane/NavierStokes.NavierStokes": 32,
+    "octane/PdfJS.PdfJS": 16,
+    "octane/Mandreel.Mandreel": 1,
+    "octane/Gameboy.Gameboy": 8,
+    "octane/CodeLoad.CodeLoadClosure": 4096,
+    "octane/CodeLoad.CodeLoadJQuery": 512,
+    "octane/Typescript.Typescript": 1,
+    "octane/zlib.zlib": 1
+  }
+}

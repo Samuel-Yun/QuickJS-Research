@@ -1,0 +1,10 @@
+{
+  "file": "runs.jsonl.gz",
+  "compressed_sha256": "b743e40cdefc482f7cd4830022002f64d5016f52e507770eece441007156db20",
+  "uncompressed_sha256": "021a2819a8962055906bde6913da52d33a6c940022dedff1b7a134dd32331eea",
+  "compressed_bytes": 1220411,
+  "uncompressed_bytes": 38533753,
+  "encoding": "UTF-8/LF",
+  "restore": "python -c \"import gzip,pathlib;pathlib.Path('runs.restored.jsonl').write_bytes(gzip.decompress(pathlib.Path('runs.jsonl.gz').read_bytes()))\"",
+  "license": "Project research records; benchmark licenses remain with frozen upstream inputs"
+}

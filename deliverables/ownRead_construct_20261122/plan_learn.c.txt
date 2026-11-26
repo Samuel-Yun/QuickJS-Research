@@ -1,0 +1,30 @@
+static void plan_learn(JSContext*ctx,FourSite*slot,JSValueConst callee,JSValueConst result)
+{
+    if(JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT || JS_VALUE_GET_TAG(result)!=JS_TAG_OBJECT)return;
+    JSObject*f=JS_VALUE_GET_OBJ(callee),*o=JS_VALUE_GET_OBJ(result),*proto;FourRecipe r;
+    if(f->class_id!=JS_CLASS_BYTECODE_FUNCTION || !plan_recipe(f->u.func.function_bytecode,&r) ||
+       !(proto=plan_proto(f)) || !plan_chain(proto,&r) || o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
+       !o->shape->is_hashed || o->shape->proto!=proto || o->shape->prop_count!=r.n || o->shape->deleted_prop_count)return;
+    JSShapeProperty*d=get_shape_prop(o->shape);
+    for(unsigned i=0;i<r.n;i++)if(d[i].atom!=r.atom[i] || d[i].flags!=JS_PROP_C_W_E)return;
+    JSShape*initial=find_hashed_shape_proto(ctx->rt,proto);if(!initial)return;
+    FOUR_COUNT(slot,eligible);
+#ifndef FOUR_PROBE
+    FullPlan*s=slot->plan;
+    if(!s){
+        s=js_mallocz_rt(ctx->rt,sizeof(*s));
+        if(!s){FOLLOW(4);return;}
+        s->pc=slot->pc;s->argc=slot->argc;
+#ifdef FOUR_DIAG
+        s->diag=slot->diag;follow_stats[9]++;follow_stats[10]+=sizeof(*s);
+#endif
+        slot->plan=s;FOLLOW(1);
+    }
+    JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
+    s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
+    JSValue negative=slot->negative;slot->negative=JS_UNDEFINED;
+    FOUR_COUNT(s,fill);
+    JS_FreeValue(ctx,negative);
+    JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldinitial);js_free_shape_null(ctx->rt,oldfinal);
+#endif
+}

@@ -1,0 +1,8 @@
+stage,A_normal,M_hit,M_normal_fallback,requirement,evidence_class
+receiver_and_property,"obj=sp[-1]; atom=get_u32(pc)","site=b->read_ic_sites[index]; obj=sp[-1]","atom=site->atom only on fallback",preserve original named property and receiver,source
+admission,"OBJECT tag; supports original class/exotic semantics","OBJECT tag + JS_CLASS_OBJECT + !is_exotic + exact shape","ordinary traversal retains special/generic semantics",do not remove without complete invariant proof,source
+hash_bucket_chain,"atom & shape mask; bucket load; chain atom comparisons",none,"same find_own_property for each traversed object",candidate match removes hash location work not arbitrary helper calls,source_and_prior_dynamic_counts
+current_value,"JS_DupValue(pr->u.value)","JS_DupValue(p->prop[offset].u.value)","JS_DupValue(pr->u.value)",use current prop array and current JSValue never cache stale value or old prop pointer,source
+feedback,none,no update on hit,"eligible own hashed data only: rdi_update retains new shape then releases old",shape references protect COW layout and require mark/free,source
+result_receiver,"get_field consumes receiver; get_field2 retains receiver",same,same,receiver this error handling and reference ownership stay unchanged,source
+generic_slowpath,"JS_GetPropertyInternal on accessor/exotic/primitive cases",not taken by an eligible hit,same original generic semantic fallback,ordinary hash miss is not synonymous with generic slowpath,source

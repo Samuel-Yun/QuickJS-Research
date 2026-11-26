@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ps",
+    "-eo",
+    "pid,ppid,etime,comm,args"
+  ],
+  "label": "inventory; never terminate unrelated processes",
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-11-04T09:05:28.508176+00:00",
+  "completed_at": "2026-11-04T09:05:28.524453+00:00",
+  "child_pid": 542,
+  "exit_code": 0,
+  "signal": null,
+  "stdout": "    PID    PPID     ELAPSED COMMAND         COMMAND\n      1       0       00:03 systemd         /sbin/init\n      2       1       00:03 init-systemd(Ub /init\n      9       2       00:02 init            plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     55       1       00:02 systemd-journal /usr/lib/systemd/systemd-journald\n     97       1       00:02 systemd-udevd   /usr/lib/systemd/systemd-udevd\n    104      97       00:02 (udev-worker)   (udev-worker)\n    105      97       00:02 (udev-worker)   (udev-worker)\n    107      97       00:02 (udev-worker)   (udev-worker)\n    108      97       00:02 (udev-worker)   (udev-worker)\n    109      97       00:02 (udev-worker)   (udev-worker)\n    110      97       00:02 (udev-worker)   (udev-worker)\n    115      97       00:02 (udev-worker)   (udev-worker)\n    116      97       00:02 (udev-worker)   (udev-worker)\n    117      97       00:02 (udev-worker)   (udev-worker)\n    118      97       00:02 (udev-worker)   (udev-worker)\n    119      97       00:02 (udev-worker)   (udev-worker)\n    120      97       00:02 (udev-worker)   (udev-worker)\n    121      97       00:02 (udev-worker)   (udev-worker)\n    126      97       00:02 (udev-worker)   (udev-worker)\n    127      97       00:02 (udev-worker)   (udev-worker)\n    128      97       00:02 (udev-worker)   (udev-worker)\n    129      97       00:02 (udev-worker)   (udev-worker)\n    130      97       00:02 (udev-worker)   (udev-worker)\n    131      97       00:02 (udev-worker)   (udev-worker)\n    132      97       00:02 (udev-worker)   (udev-worker)\n    133      97       00:02 (udev-worker)   (udev-worker)\n    134      97       00:02 (udev-worker)   (udev-worker)\n    135      97       00:02 (udev-worker)   (udev-worker)\n    136      97       00:02 (udev-worker)   (udev-worker)\n    137      97       00:02 (udev-worker)   (udev-worker)\n    138      97       00:02 (udev-worker)   (udev-worker)\n    139      97       00:02 (udev-worker)   (udev-worker)\n    147       1       00:02 systemd-resolve /usr/lib/systemd/systemd-resolved\n    148       1       00:02 systemd-timesyn /usr/lib/systemd/systemd-timesyncd\n    157       1       00:02 cron            /usr/sbin/cron -f -P\n    158       1       00:02 dbus-daemon     @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    164       1       00:02 snapd           /usr/lib/snapd/snapd\n    165       1       00:02 systemd-logind  /usr/lib/systemd/systemd-logind\n    173       1       00:02 agetty          /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    189       1       00:02 agetty          /sbin/agetty -o -p -- \\u --noclear - linux\n    192       1       00:02 rsyslogd        /usr/sbin/rsyslogd -n -iNONE\n    193       1       00:02 containerd      /usr/bin/containerd\n    205       1       00:02 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    266       1       00:01 systemd-timedat /usr/lib/systemd/systemd-timedated\n    268       1       00:01 dockerd         /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    520       2       00:00 SessionLeader   /init\n    521     520       00:00 Relay(522)      /init\n    522     521       00:00 python3         python3 /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/preflight.py check02\n    523       2       00:00 login           /bin/login -f\n    524     523       00:00 sh              sh -c -- /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new\n    525     524       00:00 run-parts       run-parts --lsbsysinit /etc/update-motd.d\n    531     525       00:00 50-landscape-sy /bin/sh /etc/update-motd.d/50-landscape-sysinfo\n    538     531       00:00 50-landscape-sy /bin/sh /etc/update-motd.d/50-landscape-sysinfo\n    540     538       00:00 landscape-sysin /usr/bin/python3 /usr/bin/landscape-sysinfo\n    542     522       00:00 ps              ps -eo pid,ppid,etime,comm,args\n",
+  "stderr": "",
+  "timeout": false,
+  "host_timeout": false,
+  "outer_start_ns": 4571493477,
+  "outer_stop_ns": 4587867761,
+  "external_wall_ms": 16.374284,
+  "child_user_ms": 3.1159999999999997,
+  "child_system_ms": 3.469,
+  "single_child_peak_rss_kib": 17812,
+  "peak_rss_method": "wait4(this child).ru_maxrss; Linux KiB",
+  "boot_id": "99b425bb-edc6-401e-92ac-634ace13a13a",
+  "boot_id_after": "99b425bb-edc6-401e-92ac-634ace13a13a",
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ]
+}

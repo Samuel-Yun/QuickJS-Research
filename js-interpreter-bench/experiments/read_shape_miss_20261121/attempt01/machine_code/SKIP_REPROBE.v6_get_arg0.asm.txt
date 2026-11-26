@@ -1,0 +1,73 @@
+
+js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000000291be <JS_CallInternal+0x37ae>:
+   291be:	endbr64
+   291c2:	mov    -0x190(%rbp),%rax
+   291c9:	mov    (%rax),%r9
+   291cc:	mov    0x8(%rax),%rax
+   291d0:	cmp    $0xffffffff,%eax
+   291d3:	je     2d0c5 <JS_CallInternal+0x76b5>
+   291d9:	lea    0x10(%rbx),%rdx
+   291dd:	cmp    $0xfffffff6,%eax
+   291e0:	jbe    291e7 <JS_CallInternal+0x37d7>
+   291e2:	addl   $0x1,-0x4(%r9)
+   291e7:	mov    %rax,0x8(%rbx)
+   291eb:	mov    %r12,%rax
+   291ee:	lea    0x1(%r12),%r12
+   291f3:	mov    %r9,(%rbx)
+   291f6:	movzbl (%rax),%eax
+   291f9:	mov    %rdx,%rbx
+   291fc:	mov    %rax,%r10
+   291ff:	jmp    *(%r14,%rax,8)
+
+
+js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+000000000002d0c5 <JS_CallInternal+0x76b5>:
+   2d0c5:	mov    0x1(%r12),%edx
+   2d0ca:	lea    0x1(%r12,%rdx,1),%r11
+   2d0cf:	cmpw   $0x1,0x12(%r9)
+   2d0d5:	jne    291d9 <JS_CallInternal+0x37c9>
+   2d0db:	testb  $0x8,0x10(%r9)
+   2d0e0:	jne    291d9 <JS_CallInternal+0x37c9>
+   2d0e6:	mov    0x18(%r9),%rcx
+   2d0ea:	cmp    %rcx,(%r11)
+   2d0ed:	je     3052c <JS_CallInternal+0xab1c>
+   2d0f3:	addl   $0x1,-0x4(%r9)
+   2d0f8:	lea    0x5(%r12),%r10
+   2d0fd:	add    $0x10,%rbx
+   2d101:	mov    %r9,-0x10(%rbx)
+   2d105:	mov    %rax,-0x8(%rbx)
+   2d109:	jmp    2ab83 <JS_CallInternal+0x5173>
+
+
+js-interpreter-bench/experiments/read_shape_miss_20261121/attempt01/work/SKIP_REPROBE.release/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+000000000003052c <JS_CallInternal+0xab1c>:
+   3052c:	mov    0x10(%r11),%eax
+   30530:	lea    0x10(%rbx),%rcx
+   30534:	shl    $0x4,%rax
+   30538:	add    0x20(%r9),%rax
+   3053c:	mov    (%rax),%rdx
+   3053f:	mov    0x8(%rax),%rax
+   30543:	cmp    $0xfffffff6,%eax
+   30546:	jbe    3054c <JS_CallInternal+0xab3c>
+   30548:	addl   $0x1,-0x4(%rdx)
+   3054c:	mov    %rax,0x8(%rbx)
+   30550:	lea    0x5(%r12),%rax
+   30555:	mov    %rdx,(%rbx)
+   30558:	lea    0x1(%rax),%r12
+   3055c:	movzbl (%rax),%eax
+   3055f:	mov    %rcx,%rbx
+   30562:	mov    %rax,%r10
+   30565:	jmp    *(%r14,%rax,8)

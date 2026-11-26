@@ -1,0 +1,1398 @@
+[
+  {
+    "id": "rf000",
+    "parent": "s001",
+    "kind": "CONTROL",
+    "title": "Exact-source rebuild",
+    "before": "Frozen s001 is built in an earlier directory.",
+    "change": "Rebuild exact source and matched flags in this workspace.",
+    "tradeoff": "Check loaded native sections and measurement reproducibility; no optimization claim.",
+    "status": "SCREENED",
+    "binary_sha256": "e89eeb45a8121c67200f0820cd15a059889e406d0f748eed57e7f565537ff061",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 0.986421149358731,
+    "screen_expanded": 0.9843598388164857,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf001",
+    "parent": "s001",
+    "kind": "CONTROL",
+    "title": "Publish new shape before releasing old",
+    "before": "The update releases the old shape before publishing the replacement.",
+    "change": "Preserve16B record and publish the new strong reference before release.",
+    "tradeoff": "Safety adaptation and compiler decisions may change miss work; hit logic stays in the original source form.",
+    "status": "SCREENED",
+    "binary_sha256": "b01c35a8dfc9b51a92da81415964c2aed9b7ec2882c21d4925a74baf142928bd",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.013805888680888,
+    "screen_expanded": 1.0120520645404287,
+    "screen_regressions10": [
+      "RegExp.RegExp",
+      "CodeLoad.CodeLoadClosure"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf008",
+    "parent": "CTRL000",
+    "kind": "CONTROL",
+    "title": "Common template with flat16B single slot",
+    "before": "The common AoS inner entry is padded and the outer atom makes a24B record.",
+    "change": "Flatten the single shape/offset/atom fields while retaining the common functions.",
+    "tradeoff": "Tests the template implementation with a compact record; compiler and preparation differences remain.",
+    "status": "SCREENED",
+    "binary_sha256": "0c1da802346ed28842edd8623b0f1610dc81c6b262f3b8f585e055339428134c",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0324048106653076,
+    "screen_expanded": 1.0347190116444245,
+    "screen_regressions10": [
+      "RegExp.RegExp"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf005",
+    "parent": "rf001",
+    "kind": "EXPLORATORY",
+    "title": "Reuse cached offset after a shape mismatch",
+    "before": "An alternating shape triggers ordinary lookup and shape replacement even if the field stays at the cached offset.",
+    "change": "On mismatch verify current hashed shape, range, atom and ordinary descriptor at the existing offset; read current value without promotion.",
+    "tradeoff": "Adds descriptor guards on misses and can retain the initial shape; successful stable shape hits use the original path.",
+    "status": "SCREENED",
+    "binary_sha256": "2d01dcb4754f55c5f0cb27f5032fb650be1a0231d85c27d5fe6a10dc6616edd5",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 0.9997429503089051,
+    "screen_expanded": 0.9986127421477227,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf006",
+    "parent": "rf001",
+    "kind": "EXPLORATORY",
+    "title": "Promote a verified offset prediction",
+    "before": "A verified offset prediction may repeatedly miss the primary shape.",
+    "change": "Use the same prediction as rf005 and promote the verified current shape after preserving the returned value.",
+    "tradeoff": "Can improve a later stable phase while adding replacement/refcount work to alternating shapes.",
+    "status": "SCREENED",
+    "binary_sha256": "b6fc8a2bc154345eb6fcfb76c14ec5e6c39826a0a26b686e9c461138a3dc905e",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.015729478307187,
+    "screen_expanded": 1.0136724898799496,
+    "screen_regressions10": [
+      "RegExp.RegExp"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf002",
+    "parent": "rf001",
+    "kind": "EXPLORATORY",
+    "title": "Likely annotation for the existing hit",
+    "before": "The final hit condition has no explicit likely hint.",
+    "change": "Annotate only that condition; keep guards and storage identical.",
+    "tradeoff": "May change emitted branch layout or do nothing; it is a compiler-guidance experiment.",
+    "status": "SCREENED",
+    "binary_sha256": "e451d679245988a51fdb89b02621e5ec411a3c8981bbb5e096825dace53a6dcb",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0132520895260881,
+    "screen_expanded": 1.0115739493586196,
+    "screen_regressions10": [
+      "Splay.Splay"
+    ],
+    "screen_quality": {
+      "OK": 16,
+      "RETRY_RECOVERED": 1
+    }
+  },
+  {
+    "id": "rf003",
+    "parent": "rf001",
+    "kind": "EXPLORATORY",
+    "title": "Defer site decode until receiver guard",
+    "before": "The site is decoded before receiver class is known.",
+    "change": "Decode it inside the eligible ordinary-object branch or the fallback that needs its atom.",
+    "tradeoff": "Can move loads or duplicate cold decoding; compiler hoisting may erase the intended difference.",
+    "status": "SCREENED",
+    "binary_sha256": "a7b03163d5c3a7aad4117cfa89e0569d9a14eaf9dca92943ceff0fa2e5e811c3",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0075583539043138,
+    "screen_expanded": 1.0055518759526691,
+    "screen_regressions10": [
+      "RegExp.RegExp"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf004",
+    "parent": "rf001",
+    "kind": "EXPLORATORY",
+    "title": "Out-of-line unchanged miss body",
+    "before": "The full miss/property-chain body is embedded in both read handlers.",
+    "change": "Move it to one noinline helper and set cur_pc before invoking it.",
+    "tradeoff": "Reduces caller code and live values but adds a native call and a PC store on misses.",
+    "status": "SCREENED",
+    "binary_sha256": "d270d5a5aecc730d3284b179748dd7386414e268a0d2a3dc2cd41eee845e6d38",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0117066038886597,
+    "screen_expanded": 1.013613932323104,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf007",
+    "parent": "rf001",
+    "kind": "EXPLORATORY",
+    "title": "Compare shape before class guards",
+    "before": "The class guards precede the cached shape comparison.",
+    "change": "Test the same shape and ordinary/exotic guards in a different source order.",
+    "tradeoff": "All guards remain; special objects do a shape comparison and generated branch layout may change.",
+    "status": "SCREENED",
+    "binary_sha256": "b43a994a99650f33b06f82de893d7cff9b81d4496ea2ec2801ebc30a60f5893c",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0230984130046747,
+    "screen_expanded": 1.0222540147465604,
+    "screen_regressions10": [
+      "RegExp.RegExp"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf012",
+    "parent": "s001",
+    "kind": "EXPLORATORY",
+    "title": "Likely annotation for the existing hit on exact s001",
+    "before": "The final hit condition has no explicit likely hint.",
+    "change": "Annotate only that condition; keep guards and storage identical.",
+    "tradeoff": "May change emitted branch layout or do nothing; it is a compiler-guidance experiment. Original replacement order is retained; rf001 is not bundled.",
+    "status": "SCREENED",
+    "binary_sha256": "fa8816e62926451928ccd67fe9a0b7e0cf68301415243e19b7c17eebfc93e798",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.017156541416331,
+    "screen_expanded": 1.0156108185887844,
+    "screen_regressions10": [
+      "RegExp.RegExp"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf013",
+    "parent": "s001",
+    "kind": "EXPLORATORY",
+    "title": "Defer site decode until receiver guard on exact s001",
+    "before": "The site is decoded before receiver class is known.",
+    "change": "Decode it inside the eligible ordinary-object branch or the fallback that needs its atom.",
+    "tradeoff": "Can move loads or duplicate cold decoding; compiler hoisting may erase the intended difference. Original replacement order is retained; rf001 is not bundled.",
+    "status": "SCREENED",
+    "binary_sha256": "d383aa9998c902ef79cf6cadf2d4eb8a2baa0aff2b178011431192034515a846",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 0.9996949479291353,
+    "screen_expanded": 0.9989228034377401,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf014",
+    "parent": "s001",
+    "kind": "EXPLORATORY",
+    "title": "Out-of-line unchanged miss body on exact s001",
+    "before": "The full miss/property-chain body is embedded in both read handlers.",
+    "change": "Move it to one noinline helper and set cur_pc before invoking it.",
+    "tradeoff": "Reduces caller code and live values but adds a native call and a PC store on misses. Original replacement order is retained; rf001 is not bundled.",
+    "status": "SCREENED",
+    "binary_sha256": "0bb0ba135022d0ac2f28e88baf9005285c15bb8ffd193f8cce509769e52b01e5",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0150817422922305,
+    "screen_expanded": 1.0153725172963919,
+    "screen_regressions10": [
+      "Crypto.Decrypt"
+    ],
+    "screen_quality": {
+      "UNSTABLE": 1,
+      "OK": 15,
+      "RETRY_RECOVERED": 1
+    }
+  },
+  {
+    "id": "rf015",
+    "parent": "s001",
+    "kind": "EXPLORATORY",
+    "title": "Reuse cached offset after a shape mismatch on exact s001",
+    "before": "An alternating shape triggers ordinary lookup and shape replacement even if the field stays at the cached offset.",
+    "change": "On mismatch verify current hashed shape, range, atom and ordinary descriptor at the existing offset; read current value without promotion.",
+    "tradeoff": "Adds descriptor guards on misses and can retain the initial shape; successful stable shape hits use the original path. Original replacement order is retained; rf001 is not bundled.",
+    "status": "SCREENED",
+    "binary_sha256": "05bcdd95ea6f2b628ad6270f8b1654afbabde74a3136684489274d227ba73911",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0060936299294634,
+    "screen_expanded": 1.0040272503911583,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf016",
+    "parent": "s001",
+    "kind": "EXPLORATORY",
+    "title": "Promote a verified offset prediction on exact s001",
+    "before": "A verified offset prediction may repeatedly miss the primary shape.",
+    "change": "Use the same prediction as rf005 and promote the verified current shape after preserving the returned value.",
+    "tradeoff": "Can improve a later stable phase while adding replacement/refcount work to alternating shapes. Original replacement order is retained; rf001 is not bundled.",
+    "status": "SCREENED",
+    "binary_sha256": "e141d62c0036558de42211da947868de6712e3e841be051f401cf2555fb4b2e5",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0152158370611482,
+    "screen_expanded": 1.0136795222457295,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 14,
+      "RETRY_RECOVERED": 2,
+      "UNSTABLE": 1
+    }
+  },
+  {
+    "id": "rf017",
+    "parent": "s001",
+    "kind": "EXPLORATORY",
+    "title": "Compare shape before class guards on exact s001",
+    "before": "The class guards precede the cached shape comparison.",
+    "change": "Test the same shape and ordinary/exotic guards in a different source order.",
+    "tradeoff": "All guards remain; special objects do a shape comparison and generated branch layout may change. Original replacement order is retained; rf001 is not bundled.",
+    "status": "SCREENED",
+    "binary_sha256": "b6b9b0c65269252d6ba8501fcf8c43a5aae0e56f1b6357d24f2c40c2560d907b",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.0072889084298957,
+    "screen_expanded": 1.0077990420437606,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "RETRY_RECOVERED": 2,
+      "OK": 15
+    }
+  },
+  {
+    "id": "rf018",
+    "parent": "s001",
+    "kind": "EXPLORATORY",
+    "title": "Known-object release on an exact hit",
+    "before": "The shared result join also accepts primitives, so object release may recheck the receiver tag.",
+    "change": "On an exact ordinary-object hit release the same receiver through a known object-tag value and join after normal cleanup.",
+    "tradeoff": "Preserves the decrement/finalizer order, may remove tag discrimination, and duplicates a small cleanup path.",
+    "status": "SCREENED",
+    "binary_sha256": "689fb8fa4d4cebb4c87cc8242599af90c143e3aa6c853e25474d0dc6573a8457",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 0.9982905793854923,
+    "screen_expanded": 0.9973529759941803,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "rf019",
+    "parent": "rf001",
+    "kind": "EXPLORATORY",
+    "title": "Update specialized for a proved shape miss",
+    "before": "The update checks for a same shape although this caller has just failed its exact-shape probe.",
+    "change": "Use a separate update helper at this caller; preserve the generic updater and all eligibility guards.",
+    "tradeoff": "The no-callback interval and non-sentinel stored offsets establish the precondition; code generation may already remove the check.",
+    "status": "SCREENED",
+    "binary_sha256": "3d13aac3f553ac7978b56bc8b1267d3d4520f7ff0909d5bf54aaf2cdef5e3d84",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "screen_core": 1.02338919868974,
+    "screen_expanded": 1.0217873994039917,
+    "screen_regressions10": [
+      "NavierStokes.NavierStokes"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "mx001",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "DUPLICATE",
+    "duplicate_of": "rf000",
+    "reason": "Exact source already screened in this cohort"
+  },
+  {
+    "id": "mx002",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "DUPLICATE",
+    "duplicate_of": "rf012",
+    "reason": "Exact source already screened in this cohort"
+  },
+  {
+    "id": "mx003",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "DUPLICATE",
+    "duplicate_of": "rf018",
+    "reason": "Exact source already screened in this cohort"
+  },
+  {
+    "id": "mx004",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "21f1cb170258a2e0c27ce3f68030cae26fc904573422cf18b33a931582305522",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9978730816106212,
+    "screen_sun4": 0.9841483830047126
+  },
+  {
+    "id": "mx005",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "52811f2fac86106d800b07baf34342e31d55dffee2abb19b59022235ac5a04ba",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0334390167603753,
+    "screen_sun4": 1.0225348168588064
+  },
+  {
+    "id": "mx006",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "a95c2c5b1fe2d93199d66ac15f9343e28ba2c0f4d9f2a5ce6c5913240cb1cfde",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0372203542596894,
+    "screen_sun4": 1.0380600837801761
+  },
+  {
+    "id": "mx007",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "7c0a495d36aac465de1365634e9ce7242e4e96b921e5a1b273ec613a31051273",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0003829379152152,
+    "screen_sun4": 0.9693231797046953
+  },
+  {
+    "id": "mx008",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "f17732f0b5354f2af48648479485d4f6a9f5179fd4154bad2548bea39d825314",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9963709063213758,
+    "screen_sun4": 1.0047208307477036
+  },
+  {
+    "id": "mx009",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "DUPLICATE",
+    "duplicate_of": "rf014",
+    "reason": "Exact source already screened in this cohort"
+  },
+  {
+    "id": "mx010",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "927768f3e46b1bb5a8c4ca8e70704b7133fe290fdc6ff5672ec4ebe4af6b0a70",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0323283070724578,
+    "screen_sun4": 1.0533424032659995
+  },
+  {
+    "id": "mx011",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED",
+    "binary_sha256": "5ea9183782d47b2c322b92097fc8fa7b1b20a4fdcadeb6be00c95ac07888f7fb",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9863997492169201,
+    "screen_sun4": 0.9794107308546899,
+    "screen_core": 1.0186593382468985,
+    "screen_expanded": 1.0199218698006984,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "mx012",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "b1954835e354c372c3644d5886b7d155cc70e4a51130fbed42ead6568e66fc0b",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0198844023855795,
+    "screen_sun4": 1.0438745920130166
+  },
+  {
+    "id": "mx013",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "7a4dc06678b10aee2a598b97d76094227596949bd54f70d4a53ac8a533656307",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0149674687482733,
+    "screen_sun4": 1.0672871327722435
+  },
+  {
+    "id": "mx014",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "6b0600f8179c954ce2eb58b6900e7b4d0d8319c4d2b246631d86cc6698753eb5",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.034508697444568,
+    "screen_sun4": 1.0593084852312313
+  },
+  {
+    "id": "mx015",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "0b37f4941340547760803832620dbc74744c66bb13703ce49e7619ac220ec6f8",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.013337488526968,
+    "screen_sun4": 1.0393540279264366
+  },
+  {
+    "id": "mx016",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'none', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "none",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "8e791b2967dd43424b0132b5ebaec2501163d0dbb023098b2c8f746552c3c947",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0260256290831355,
+    "screen_sun4": 1.1076231995210082
+  },
+  {
+    "id": "mx017",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "DUPLICATE",
+    "duplicate_of": "rf015",
+    "reason": "Exact source already screened in this cohort"
+  },
+  {
+    "id": "mx018",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "0b29bc787159023ebe3ac7621131970c28feb2a2a39612dd19b04c6a3a1a6a9e",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0076162267214144,
+    "screen_sun4": 1.0203100810155596
+  },
+  {
+    "id": "mx019",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "RECHECKED",
+    "binary_sha256": "c33f19ccb1ed3fb3a122a30ed93b2179b978084ac90f56207988d8826a26d76f",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9807226235156355,
+    "screen_sun4": 0.9970543633923745,
+    "screen_core": 0.995512260683853,
+    "screen_expanded": 0.9959475704465592,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    },
+    "octane_recheck_rounds": 5
+  },
+  {
+    "id": "mx020",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "89a89860d33de68d0c71e2249134f56817831ffbb84b6a746cac4e6e718a7d55",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0119474563123283,
+    "screen_sun4": 0.9868813209678328
+  },
+  {
+    "id": "mx021",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "ccb3179b21a3917567f6e5894e6d1b461b7e37ca492209c89593d52c40fac455",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0027233704570206,
+    "screen_sun4": 0.9805407974060774
+  },
+  {
+    "id": "mx022",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "38db95279bf3243f4ea90e5c3bc86d4d0051185b78e8b01551dcb851e1bcbcbb",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9959890567764679,
+    "screen_sun4": 0.9843729234780806
+  },
+  {
+    "id": "mx023",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "f708c30a24b3e803dcd998515cc9d1ce4c294d41b57901fecdb0f56b7a82500c",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0123914134822738,
+    "screen_sun4": 0.9767105079030963
+  },
+  {
+    "id": "mx024",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "02b77bca475f0c09c89adbd636b9e7276fb23fe86993be734c39608c9bf2b01a",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9996325330134054,
+    "screen_sun4": 1.0319172870798674
+  },
+  {
+    "id": "mx025",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "a33adf039a17d811acae7229525074dface29e753a88ba2ff0141092061e00b0",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0257532189055463,
+    "screen_sun4": 1.030236220568801
+  },
+  {
+    "id": "mx026",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "73b22945e233fd64a1cb0479bc360da5aa89b18fe0d168fdab6f7a0122182025",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.026154009049901,
+    "screen_sun4": 0.9941571569880792
+  },
+  {
+    "id": "mx027",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "b4bde88ab9ed37cb37089d0c83acf226e519d3f64b34c8b48e57e3d9fe0e4c17",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.018716345086209,
+    "screen_sun4": 1.0298270214234753
+  },
+  {
+    "id": "mx028",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "2c8cec503005f2ee6c6eae8b3395d5f20170bcde61025f01e8afa3d479c53e05",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0035668147578622,
+    "screen_sun4": 1.0071113422078193
+  },
+  {
+    "id": "mx029",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "45acdc3fb73f06ecd9ea5ddbef4085ea1367e64bbfda0d932e199f1895f82c20",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.009385240143818,
+    "screen_sun4": 1.0399502957870135
+  },
+  {
+    "id": "mx030",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "a4705c3f5a131c7d4315b39a0020ee5125cefa7dae5e3abbdfb4883dd1368a26",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0043922842625805,
+    "screen_sun4": 0.9872988778887792
+  },
+  {
+    "id": "mx031",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "817e22d71b07d589881a23a03d2c201f955ac29c79aa9761deb91c9ce735c0ab",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9941855272151021,
+    "screen_sun4": 0.9721168906095439
+  },
+  {
+    "id": "mx032",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'reuse', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "reuse",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "20833ba1fc4add9bf3acd060380fa00d33695d0668cea0f1aadb38974bfb0a12",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0051139020763695,
+    "screen_sun4": 0.9803961424829023
+  },
+  {
+    "id": "mx033",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "DUPLICATE",
+    "duplicate_of": "rf016",
+    "reason": "Exact source already screened in this cohort"
+  },
+  {
+    "id": "mx034",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "400594500fedfd4c46b5c72046c17918babdae9a84a8ec978bdb37caaf908a6e",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9996410539614488,
+    "screen_sun4": 0.9832203246932156
+  },
+  {
+    "id": "mx035",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "ce9fa006f0e3fa78faf62e777652f1448dd12f0790044f4ba424af3cd6cd2e57",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0209194416110707,
+    "screen_sun4": 1.058193521424443
+  },
+  {
+    "id": "mx036",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'late', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED",
+    "binary_sha256": "2d2cc0cb6856482327a71d7d6b7808950bae3defe50fa0bc408cf23525cfdd61",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9936497374123486,
+    "screen_sun4": 1.0270172273400162,
+    "screen_core": 1.0247252883813227,
+    "screen_expanded": 1.023350839829008,
+    "screen_regressions10": [
+      "RegExp.RegExp"
+    ],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "mx037",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "3d69b3492a8ade431d36e6ca320154f20eb50ffb3bbe949860dd2ad07f37da14",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0074798089306451,
+    "screen_sun4": 1.0393962564834167
+  },
+  {
+    "id": "mx038",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "a8619d82d00713231337a9d47c511f96fe06fa06991689eb68a9137421d4426f",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.008484649330116,
+    "screen_sun4": 1.0365678732278398
+  },
+  {
+    "id": "mx039",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED",
+    "binary_sha256": "99ac71b44e91640bf8bb708348326c49e103f09e92ba743016f43bd48fc3da6c",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.989636838637887,
+    "screen_sun4": 0.9813356757944859,
+    "screen_core": 0.9995698515428022,
+    "screen_expanded": 1.0013242185350242,
+    "screen_regressions10": [],
+    "screen_quality": {
+      "OK": 17
+    }
+  },
+  {
+    "id": "mx040",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'inline', 'shape_read': 'early', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "inline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "b481ca0763a2121f79760502a14d647abe16a27d9449a0bd33202ad5ca75471f",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 0.9951699011445507,
+    "screen_sun4": 1.0279917116738346
+  },
+  {
+    "id": "mx041",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "a650c59ca3ece1ae25a672528bd27c375f34e0e93a476dfc624421322698b403",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0305972878441767,
+    "screen_sun4": 1.061510332485942
+  },
+  {
+    "id": "mx042",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "f5cd2c50e661103c6e3313db8d9b679ad64c4055f9bc353c588ffbdfa3c1d25b",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0238875576489475,
+    "screen_sun4": 1.0178584455100645
+  },
+  {
+    "id": "mx043",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "a3ff6db63cff2f183cada0afa75faf0531e6e482bf1c6e62c1315a2acfa2c3a7",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.028134326820678,
+    "screen_sun4": 1.0409685110028182
+  },
+  {
+    "id": "mx044",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'late', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "late",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "96378c40eb477292a92caa1a6a105609bee7c2bee75667225267b7505495f1cb",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0057436758326996,
+    "screen_sun4": 0.9965574851624079
+  },
+  {
+    "id": "mx045",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': False, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "6529c2da9b91f737c941c08107f6be038c711421daebe292fc9aba03412ca22c",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0207784914907514,
+    "screen_sun4": 0.9853839754180156
+  },
+  {
+    "id": "mx046",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': False, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": false,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "453a66af3d8627b2e6725544821b7d8ed17d27aca8eed06dc56c990beebe56af",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0136597676338142,
+    "screen_sun4": 1.0182166192902797
+  },
+  {
+    "id": "mx047",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': True, 'likely_hit': False}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": false
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "c8d4b3568c4d935a6022a53cb85ce88c714ab95f2faf41f4a383bc4a4ed910ea",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0145202961539,
+    "screen_sun4": 0.9844039628949329
+  },
+  {
+    "id": "mx048",
+    "parent": "s001",
+    "kind": "INTERACTION_CONFIGURATION",
+    "title": "Bounded interaction {'prediction': 'promote', 'miss_body': 'outline', 'shape_read': 'early', 'known_release': True, 'likely_hit': True}",
+    "config": {
+      "prediction": "promote",
+      "miss_body": "outline",
+      "shape_read": "early",
+      "known_release": true,
+      "likely_hit": true
+    },
+    "before": "The isolated corrections have not produced a clear complete-suite improvement.",
+    "change": "Compose the listed guard order, miss organization, existing-offset prediction and cleanup choices on16B s001.",
+    "tradeoff": "Interactions can alter native code and register pressure. No new ownership, capacity or benchmark specialization is introduced.",
+    "status": "SCREENED_SHORT_ONLY",
+    "binary_sha256": "72abc3eae14317c6d8844ba6ee4503ac412a7b34f8a058599ae31069f68b21a1",
+    "correctness": "7020 +9013 reused assertions and targeted JS; not full test262",
+    "broad_quality": "OK",
+    "screen_octane4": 1.0004069950261523,
+    "screen_sun4": 1.0380046896598425
+  }
+]

@@ -1,0 +1,441 @@
+{
+  "campaign": "postreboot.s002.matched.octane.screen01",
+  "boot_id": "3232ff5b-05a5-4446-ad1c-25dbd2e8e6e7",
+  "seed": 20261105,
+  "stage": "exploratory_single_candidate_sample",
+  "info": {
+    "kind": "octane",
+    "cases": [
+      "Richards.Richards",
+      "DeltaBlue.DeltaBlue",
+      "Crypto.Encrypt",
+      "Crypto.Decrypt",
+      "RayTrace.RayTrace",
+      "EarleyBoyer.Earley",
+      "EarleyBoyer.Boyer",
+      "RegExp.RegExp",
+      "Splay.Splay",
+      "NavierStokes.NavierStokes",
+      "PdfJS.PdfJS",
+      "Mandreel.Mandreel",
+      "Gameboy.Gameboy",
+      "CodeLoad.CodeLoadClosure",
+      "CodeLoad.CodeLoadJQuery",
+      "Typescript.Typescript",
+      "zlib.zlib"
+    ],
+    "N": {
+      "Richards.Richards": 1024,
+      "DeltaBlue.DeltaBlue": 512,
+      "Crypto.Encrypt": 512,
+      "Crypto.Decrypt": 32,
+      "RayTrace.RayTrace": 128,
+      "EarleyBoyer.Earley": 512,
+      "EarleyBoyer.Boyer": 32,
+      "RegExp.RegExp": 64,
+      "Splay.Splay": 2048,
+      "NavierStokes.NavierStokes": 32,
+      "PdfJS.PdfJS": 16,
+      "Mandreel.Mandreel": 1,
+      "Gameboy.Gameboy": 8,
+      "CodeLoad.CodeLoadClosure": 4096,
+      "CodeLoad.CodeLoadJQuery": 512,
+      "Typescript.Typescript": 1,
+      "zlib.zlib": 1
+    },
+    "files": {
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/base.js": "216612c2e7096a02b3e52b57e9cf9351bbaf180d60938d5c60b85fd756232733",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/LICENSE": "cf853177951c6de1b17c029b66edf71f8b194cca1722339a7b5def4e8165aaaa",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/richards.js": "1246a64a24b931158bf01c24640343259fa74b0226e73bad630bd1f686aa0fa7",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/deltablue.js": "6c4784e82f3e8f5c18306d289653d08b17b38838f1bac16b38611d7318fa5a36",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/crypto.js": "b01b6b3fe534327fdef05131162927bc5508f100a3208e185d0c5a4efb200a39",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/raytrace.js": "64b8ff90969966dd69659100e28754976dfc3e9a4f8ee55b9232f974c66ed08c",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/earley-boyer.js": "8dd28a505f7e705642f86816232b012fd3c770ec8afc9f719ce89ce772dab347",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/regexp.js": "a292d6047900c5296ea9e2628453832cc3bfe397e49fddade8aff7b5876c8263",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/splay.js": "f9a6a60d8f205908f5542ad1180abc1902dcdab3dcb4278017c5ce179ee123f7",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/navier-stokes.js": "27926de809451c60b0c49a4185c08f97081310d0db166a30c1d202fb656556a2",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/pdfjs.js": "ced89e66a178a4b63a69ea33fc6f47d405bf9bd379817be25f060a4b2dcce351",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/mandreel.js": "fc4a9516e8899bb33df63a69db30797959a138d33233e9fb1ccc57cb91dcd164",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/gbemu-part1.js": "67ae8c639b7acc5ebbcf0995c8b68821251a629f72c604e74cae8526c8e85965",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/gbemu-part2.js": "acd923e085cf70fce8a15b1420d1fa489bd8315e4a8c066775aeaa7104e609d3",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/code-load.js": "32fd38d49bb8794b40e947c70c0c51276bfc2588833a8451a25b1b2bfccad96c",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/typescript.js": "fbc5ec16d9c60b1bdcca7e7b9f66fba2fe46c0e04da64088203052e47922ff21",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/typescript-input.js": "e23d2fe7b3df9dc069c720ab3fb112006c235d0eb416556ecde7c3a2766a0396",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/typescript-compiler.js": "9e99fe0ddfe48a2462eca622ade1e1ddd13bf49f8e461a6c53463bbbc1d5363a",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/box2d.js": "83b10c280f004e7b156a9e04d09ce4109892ea92788f7c6c963f7fadf29c7bd4",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/zlib.js": "d8c4bca32e84b38f573d3ee50a38b194afc9fb4e2f79754d952524bff01a898c",
+      "experiments/v8_inspired_ic/attempt03/inputs/octane/zlib-data.js": "b8d093321289574f36116e933e2b3b211bb98df9fe3e761ffb1be550d0e82aed",
+      "experiments/v8_inspired_ic/attempt03/inputs/adapter.js": "6195a404ab66ae760b011d5b59592d310a56bf6817f3822ddb89e6f806580fc0",
+      "experiments/v8_inspired_ic/attempt03/inputs/driver.js": "2b6fabc10aab3254350549d6cdd8d55657ab533ec3b3e03b5a19634735ff91dd",
+      "experiments/v8_inspired_ic/attempt03/inputs/crypto_preload.js": "9a2d7e66510589c7621417fffd75225e7a41eb6fd2cdcccff3033f16cb69362e",
+      "experiments/v8_inspired_ic/attempt03/inputs/zlib_read.js": "8240f6d0f5d2a8037f87b08c1f2dcf2518d100d0f5e57b6277ae7a885b771caa"
+    },
+    "source": "Existing frozen workload, adapter, driver and prior selected repetitions; old times NOT reused",
+    "metric": "internal native CLOCK_MONOTONIC ms per complete Run, first Run included, no workload warmup",
+    "N_note": "Existing N reused for exploratory screen; below-1000ms samples retained and flagged, not silently recalibrated",
+    "catalog": [
+      {
+        "case": "Richards.Richards",
+        "suite": "Richards",
+        "benchmark": "Richards",
+        "index": 0,
+        "files": [
+          "base.js",
+          "richards.js"
+        ],
+        "old_N_reference": 512,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "DeltaBlue.DeltaBlue",
+        "suite": "DeltaBlue",
+        "benchmark": "DeltaBlue",
+        "index": 0,
+        "files": [
+          "base.js",
+          "deltablue.js"
+        ],
+        "old_N_reference": 256,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "Crypto.Encrypt",
+        "suite": "Crypto",
+        "benchmark": "Encrypt",
+        "index": 0,
+        "files": [
+          "base.js",
+          "crypto.js"
+        ],
+        "old_N_reference": 256,
+        "input_mode": "BENCH_ONLY_XORSHIFT32_PRELOAD_V1",
+        "seed": 305419896
+      },
+      {
+        "case": "Crypto.Decrypt",
+        "suite": "Crypto",
+        "benchmark": "Decrypt",
+        "index": 1,
+        "files": [
+          "base.js",
+          "crypto.js"
+        ],
+        "old_N_reference": 16,
+        "input_mode": "BENCH_ONLY_XORSHIFT32_PRELOAD_V1",
+        "seed": 305419896
+      },
+      {
+        "case": "RayTrace.RayTrace",
+        "suite": "RayTrace",
+        "benchmark": "RayTrace",
+        "index": 0,
+        "files": [
+          "base.js",
+          "raytrace.js"
+        ],
+        "old_N_reference": 32,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "EarleyBoyer.Earley",
+        "suite": "EarleyBoyer",
+        "benchmark": "Earley",
+        "index": 0,
+        "files": [
+          "base.js",
+          "earley-boyer.js"
+        ],
+        "old_N_reference": 256,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "EarleyBoyer.Boyer",
+        "suite": "EarleyBoyer",
+        "benchmark": "Boyer",
+        "index": 1,
+        "files": [
+          "base.js",
+          "earley-boyer.js"
+        ],
+        "old_N_reference": 16,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "RegExp.RegExp",
+        "suite": "RegExp",
+        "benchmark": "RegExp",
+        "index": 0,
+        "files": [
+          "base.js",
+          "regexp.js"
+        ],
+        "old_N_reference": 8,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "Splay.Splay",
+        "suite": "Splay",
+        "benchmark": "Splay",
+        "index": 0,
+        "files": [
+          "base.js",
+          "splay.js"
+        ],
+        "old_N_reference": 1024,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "NavierStokes.NavierStokes",
+        "suite": "NavierStokes",
+        "benchmark": "NavierStokes",
+        "index": 0,
+        "files": [
+          "base.js",
+          "navier-stokes.js"
+        ],
+        "old_N_reference": 32,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "PdfJS.PdfJS",
+        "suite": "PdfJS",
+        "benchmark": "PdfJS",
+        "index": 0,
+        "files": [
+          "base.js",
+          "pdfjs.js"
+        ],
+        "old_N_reference": 8,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "Mandreel.Mandreel",
+        "suite": "Mandreel",
+        "benchmark": "Mandreel",
+        "index": 0,
+        "files": [
+          "base.js",
+          "mandreel.js"
+        ],
+        "old_N_reference": 1,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "Gameboy.Gameboy",
+        "suite": "Gameboy",
+        "benchmark": "Gameboy",
+        "index": 0,
+        "files": [
+          "base.js",
+          "gbemu-part1.js",
+          "gbemu-part2.js"
+        ],
+        "old_N_reference": 4,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "CodeLoad.CodeLoadClosure",
+        "suite": "CodeLoad",
+        "benchmark": "CodeLoadClosure",
+        "index": 0,
+        "files": [
+          "base.js",
+          "code-load.js"
+        ],
+        "old_N_reference": 2048,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "CodeLoad.CodeLoadJQuery",
+        "suite": "CodeLoad",
+        "benchmark": "CodeLoadJQuery",
+        "index": 1,
+        "files": [
+          "base.js",
+          "code-load.js"
+        ],
+        "old_N_reference": 128,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "Typescript.Typescript",
+        "suite": "Typescript",
+        "benchmark": "Typescript",
+        "index": 0,
+        "files": [
+          "base.js",
+          "typescript.js",
+          "typescript-input.js",
+          "typescript-compiler.js"
+        ],
+        "old_N_reference": 1,
+        "input_mode": "FROZEN_ORIGINAL_STRICT",
+        "seed": null
+      },
+      {
+        "case": "Box2D.Box2D",
+        "suite": "Box2D",
+        "benchmark": "Box2D",
+        "index": 0,
+        "files": [
+          "base.js",
+          "box2d.js"
+        ],
+        "old_N_reference": 1,
+        "input_mode": "FROZEN_ORIGINAL_COMPATIBILITY",
+        "seed": null
+      },
+      {
+        "case": "zlib.zlib",
+        "suite": "zlib",
+        "benchmark": "zlib",
+        "index": 0,
+        "files": [
+          "base.js",
+          "zlib.js",
+          "zlib-data.js"
+        ],
+        "old_N_reference": 1,
+        "input_mode": "FROZEN_ORIGINAL_WITH_SHARED_READ_HOST_ADAPTER",
+        "seed": null
+      }
+    ]
+  },
+  "conditions": [
+    "A_before",
+    "s002",
+    "A_after"
+  ],
+  "drift_threshold_max_over_min": 1.1,
+  "drift_rule": "one bounded complete triple diagnostic only; original remains primary even if retest looks better; repeat unstable stops search",
+  "aggregate": "core16/13suite and expanded17/14suite; within-suite GM then equal suites",
+  "primary_ratio": "candidate / sqrt(A_before*A_after)",
+  "confidence_interval": null,
+  "incomplete": "PARTIAL, no complete GM; failures not deleted",
+  "artifacts": {
+    "A": {
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/artifacts/A.qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "size": 5090704,
+      "source": "byte-identical copy of frozen /home/mzyx/read_ic_dequickening_attempt01/A/qjs"
+    },
+    "s002": {
+      "id": "s002",
+      "parent": "M",
+      "path": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_search_lab/v2_20261105/artifacts/s002.matched.qjs",
+      "sha256": "a6caa5782256db7de0bcdeb2074624b984f6480195e1810ec7595e69cf7b2a97",
+      "size": 5104224,
+      "ELF": true,
+      "source_sha256_before_build": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+        "quickjs.c": "21ceb486175c34c7580d132e991210194a8bf805815bf6054e7c15707ef2031b",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "69b552bd5210b0b27d57002dadfbdbdb1d680c838f53045f6102e826db48aa47",
+        "read_ic_prepare.inc": "358f8c9dfeb48de63a7ec87b24710d74f6df8aa6746a572a8ef1a17eb98f32c0",
+        "read_ic_runtime.inc": "8b05697bf33db20e8199b882ac9f32359786da2e59e0fccaf9f40217d3aa1a94",
+        "read_ic_types.h": "d06c242d17db7a0760fc716eef0a1d5bdb850582484b6cd0988c70d73ac3cac0",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "source_sha256_after_build": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+        "quickjs.c": "21ceb486175c34c7580d132e991210194a8bf805815bf6054e7c15707ef2031b",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "69b552bd5210b0b27d57002dadfbdbdb1d680c838f53045f6102e826db48aa47",
+        "read_ic_prepare.inc": "358f8c9dfeb48de63a7ec87b24710d74f6df8aa6746a572a8ef1a17eb98f32c0",
+        "read_ic_runtime.inc": "8b05697bf33db20e8199b882ac9f32359786da2e59e0fccaf9f40217d3aa1a94",
+        "read_ic_types.h": "d06c242d17db7a0760fc716eef0a1d5bdb850582484b6cd0988c70d73ac3cac0",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "patch_sha256": "b010ba60e3fb0198676256e0a10e609da3dddee26b6966b6932485369f64f7a9",
+      "seed_archive_sha256": "4eab4d528e4324c328d716780252ed1c41bcdfef706009f9424d39a2e777db52",
+      "build_profile": "matched",
+      "build_support_files": {
+        "compat/test-closefrom.c": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813"
+      },
+      "boot_id": "3232ff5b-05a5-4446-ad1c-25dbd2e8e6e7",
+      "build_command": [
+        "make",
+        "-B",
+        "-j1",
+        "qjs",
+        "qjsc"
+      ],
+      "compile_link_commands": [
+        "gcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/cutils.o cutils.c",
+        "gcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c",
+        "gcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libregexp.o libregexp.c",
+        "gcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libunicode.o libunicode.c",
+        "gcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c",
+        "gcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -DCONFIG_CC=\\\"gcc\\\" -DCONFIG_PREFIX=\\\"/usr/local\\\" -O2 -c -o .obj/qjsc.o qjsc.c",
+        "gcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c",
+        "gcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c",
+        "gcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c",
+        "gcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl",
+        "gcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl"
+      ]
+    }
+  },
+  "timestamp": "2026-11-05T03:57:22.073137+00:00",
+  "build_profile": "matched"
+}

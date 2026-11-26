@@ -1,0 +1,30 @@
+diff --git a/quickjs.c b/quickjs.c
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -93,1 +93,1 @@
+-//#define DUMP_BYTECODE  (1)
++#define DUMP_BYTECODE  (1)
+@@ -17746,3 +17746,5 @@
++#include "whitebox-counters.h"
++
+ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,
+                                JSValueConst this_obj, JSValueConst new_target,
+                                int argc, JSValue *argv, int flags)
+@@ -17762,1 +17764,1 @@
+-#define SWITCH(pc)      switch (opcode = *pc++)
++#define SWITCH(pc)      switch (opcode = wb_count(*pc++))
+@@ -17777,1 +17779,1 @@
+-#define SWITCH(pc)      goto *dispatch_table[opcode = *pc++];
++#define SWITCH(pc)      goto *dispatch_table[opcode = wb_count(*pc++)];
+@@ -19412,2 +19414,3 @@
++                    if (wb_enabled) wb_array_fast++;                    \
+                     val = JS_DupValue(ctx, p->u.array.u.values[idx]);   \
+                 } else {                                                \
+@@ -19415,2 +19418,3 @@
+                     name ## _slow_path:                                 \
++                    if (wb_enabled) wb_array_slow++;                    \
+                     sf->cur_pc = pc;                                    \
+@@ -36266,2 +36270,2 @@
+-    if (!fd->strip_debug) {
++    if (!fd->strip_debug && getenv("WB_DUMP")) {
+         js_dump_function_bytecode(ctx, b);

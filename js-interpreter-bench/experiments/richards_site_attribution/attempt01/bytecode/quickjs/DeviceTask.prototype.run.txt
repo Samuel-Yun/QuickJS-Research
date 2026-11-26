@@ -1,0 +1,69 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:793:28: function: <null>
+  args: packet
+  locals:
+    0: var v
+    1: var this
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function (packet) {
+
+        push_this
+        put_loc1 1: this
+
+;;   if (packet == null) {
+
+        get_arg0 0: packet
+        null
+        eq
+        if_false8 60
+        get_loc1 1: this
+
+;;     if (this.v1 == null) return this.scheduler.suspendCurrent();
+
+        get_field v1
+        null
+        eq
+        if_false8 31
+        get_loc1 1: this
+        get_field scheduler
+        get_field2 suspendCurrent
+        tail_call_method 0
+   31:  get_loc1 1: this
+
+;;     var v = this.v1;
+
+        get_field v1
+        put_loc0 0: v
+
+;;     this.v1 = null;
+
+        get_loc1 1: this
+        null
+        put_field v1
+        get_loc1 1: this
+
+;;     return this.scheduler.queue(v);
+
+        get_field scheduler
+        get_field2 queue
+        get_loc0 0: v
+        tail_call_method 1
+
+;;   } else {
+;;     this.v1 = packet;
+
+   60:  get_loc1 1: this
+        get_arg0 0: packet
+        put_field v1
+        get_loc1 1: this
+
+;;     return this.scheduler.holdCurrent();
+
+        get_field scheduler
+        get_field2 holdCurrent
+        tail_call_method 0
+
+;;   }
+;; }
+

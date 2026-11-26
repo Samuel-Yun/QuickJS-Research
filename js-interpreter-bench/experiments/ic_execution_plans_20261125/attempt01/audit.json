@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "branch": "myx",
+  "head": "b01fb46f0bce3b33e15f6e66cfdb3c72797591f7",
+  "frozen_original_modified_unchanged": true,
+  "independent_release_patches": [
+    {
+      "label": "NUMERIC_PLAN",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/SPARSE-to-NUMERIC_PLAN.patch",
+      "patch_sha256": "7b2cdadc32686a3ff7d4c6849040fb89372e013f26b652e85f75d8269512e449",
+      "reconstructs_exact_normalized_release_sources": true
+    },
+    {
+      "label": "OLD_FORWARD",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/SPARSE-to-OLD_FORWARD.patch",
+      "patch_sha256": "2c4b5354f209c3cbf1f2d4d26e471b74a80774d1be1d1a5b8316b269756e1745",
+      "reconstructs_exact_normalized_release_sources": true
+    },
+    {
+      "label": "COMPARE_FIRST",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/SPARSE-to-COMPARE_FIRST.patch",
+      "patch_sha256": "3647d7a4101541a3c4af195721945c153e188b70c737ae81232fba0b3b984871",
+      "reconstructs_exact_normalized_release_sources": true
+    },
+    {
+      "label": "COMPARE_FULL",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/SPARSE-to-COMPARE_FULL.patch",
+      "patch_sha256": "30283627a758104347908de1d6c79771d8744e4c3c1bdd173675a1bcefdbc914",
+      "reconstructs_exact_normalized_release_sources": true
+    },
+    {
+      "label": "COALLOC",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/SPARSE-to-COALLOC.patch",
+      "patch_sha256": "0e72bb3fb26ccfd00bf0ec30d07898b98d9205a76239026f663cc682ff8a5ca8",
+      "reconstructs_exact_normalized_release_sources": true
+    }
+  ],
+  "full_release_processes": 172,
+  "targeted_release_processes": 95,
+  "total_formal_release_processes": 267,
+  "only_candidates_in_full_pass": true,
+  "reference_A_SPARSE_V8_not_remeasured": true,
+  "same_ELF_controls": true,
+  "all_original_benchmark_inputs_and_checksums_valid": true,
+  "comparison_scan_all_43": true,
+  "all_three_semantic_ASan_UBSan_gates": true,
+  "counter_conservation_validated": true,
+  "extra_loop_entries_and_getter_exception": "PASS",
+  "gates": [
+    "01_forward_numeric/validation01/gate.json",
+    "02_compare_branch/validation01/gate.json",
+    "03_ctor_coalloc/validation03/gate.json"
+  ],
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "CPU": 2,
+  "TZ": "Asia/Shanghai",
+  "locale": "C",
+  "governor": "powersave",
+  "siblings": "2-3"
+}

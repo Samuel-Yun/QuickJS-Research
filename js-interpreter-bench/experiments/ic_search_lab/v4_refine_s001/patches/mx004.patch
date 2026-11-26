@@ -1,0 +1,26 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -15,9 +15,14 @@
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+-                if (offset != UINT32_MAX) {                             \
++                if (likely(offset != UINT32_MAX)) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    if (!(keep)) {                                     \
++                        JS_FreeValue(ctx, JS_MKPTR(JS_TAG_OBJECT, p));   \
++                        sp[-1] = val;                                  \
++                        goto name ## _finished;                        \
++                    }                                                   \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+@@ -62,6 +67,7 @@
+     name ## _done:                                                      \
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
++    name ## _finished:;                                                \
+     }
+         CASE(OP_get_field_rdi):
+             GET_READ_IC(get_field_rdi, 0);

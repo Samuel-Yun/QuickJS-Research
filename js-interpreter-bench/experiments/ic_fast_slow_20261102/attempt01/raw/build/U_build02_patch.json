@@ -1,0 +1,29 @@
+{
+  "exit_code": 1,
+  "stdout": "patching file read_ic_runtime.inc\nHunk #1 FAILED at 1.\nHunk #2 succeeded at 27 (offset -1 lines).\n1 out of 2 hunks FAILED -- saving rejects to file read_ic_runtime.inc.rej\npatching file read_ic_types.h\nHunk #1 succeeded at 3 (offset -1 lines).\npatching file read_ic_opcodes.inc\nHunk #1 succeeded at 17 (offset -1 lines).\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "patch",
+    "--fuzz=0",
+    "-p1",
+    "-i",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/patches/M_to_U.patch"
+  ],
+  "cwd": "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build02",
+  "label": "U apply",
+  "timestamp": "2026-11-02T13:33:21.826949+00:00",
+  "completed_at": "2026-11-02T13:33:21.839503+00:00",
+  "outer_start_ns": 16120521421059,
+  "outer_stop_ns": 16120534202846,
+  "external_wall_ms": 12.781787,
+  "child_user_ms": 0.0,
+  "child_system_ms": 6.365,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    0.0068359375,
+    0.00439453125,
+    0.0
+  ]
+}

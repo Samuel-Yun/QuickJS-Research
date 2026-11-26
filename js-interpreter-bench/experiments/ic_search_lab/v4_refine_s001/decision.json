@@ -1,0 +1,24 @@
+{
+  "status": "COMPLETE_EXPLORATORY_REFINEMENT_NO_CONFIRMED_ADVANTAGE",
+  "candidate": "mx019",
+  "core_ratio": 0.9963596973829613,
+  "core_low95": 0.9935382188220191,
+  "core_high95": 1.0277986355791353,
+  "over_same_text_control": 0.9987015914723548,
+  "over_same_text_control_high95": 1.0008840456306474,
+  "promoted_to_baseline": false,
+  "more_search_scheduled": false,
+  "full_sunspider_not_run": true,
+  "reasons": [
+    "No clear first-stage overall gain",
+    "One predeclared small-signal reserve rechecked",
+    "Independent interval crosses1 against both frozen s001 and identical-text rebuild control"
+  ],
+  "limitations": [
+    "Exploratory5-round intervals",
+    "Power/frequency/background load UNKNOWN",
+    "No complete test262 or final ASan/UBSan",
+    "Machine-code contribution of individual changes UNKNOWN"
+  ],
+  "field_note": "In frozen *.screen.json, source_sha256 is a mislabeled binary hash. True source-file hashes are identities/*.json source_sha256. No original field/hash was rewritten."
+}

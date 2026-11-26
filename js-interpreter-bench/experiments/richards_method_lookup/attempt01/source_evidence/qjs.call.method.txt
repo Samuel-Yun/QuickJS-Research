@@ -1,0 +1,23 @@
+Upstream revision04be246001599f5995fa2f2d8c91a0f198d3f34c
+/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256=b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+18220:         CASE(OP_call_method):
+18221:         CASE(OP_tail_call_method):
+18222:             {
+18223:                 call_argc = get_u16(pc);
+18224:                 pc += 2;
+18225:                 call_argv = sp - call_argc;
+18226:                 sf->cur_pc = pc;
+18227:                 ret_val = JS_CallInternal(ctx, call_argv[-1], call_argv[-2],
+18228:                                           JS_UNDEFINED, call_argc, call_argv, 0);
+18229:                 if (unlikely(JS_IsException(ret_val)))
+18230:                     goto exception;
+18231:                 if (opcode == OP_tail_call_method)
+18232:                     goto done;
+18233:                 for(i = -2; i < call_argc; i++)
+18234:                     JS_FreeValue(ctx, call_argv[i]);
+18235:                 sp -= call_argc + 2;
+18236:                 *sp++ = ret_val;
+18237:             }
+18238:             BREAK;
+18239:         CASE(OP_array_from):

@@ -1,0 +1,19 @@
+{
+  "label": "COALLOC_OFF",
+  "case": "access-binary-trees",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.counts.rev03/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/coalloc/access-binary-trees.js"
+  ],
+  "script_sha256": "cdfe0f650f1886f8994a500f5b756acfa7c349b78659f7fa43f49aaa19eae0f9",
+  "binary_sha256": "fa71255c623e26e6d36d87eed009db832e59aa4a8cc32a58e6416b67151e8351",
+  "control": {
+    "QJS_CTOR_COALLOC_OFF": "1"
+  },
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1149162393.432707,\"stop_ms\":1149163558.595378,\"elapsed_ms\":1165.1626708507538,\"elapsed_per_call_ms\":4.551416683010757,\"warmup_calls\":0}\n",
+  "stderr": "CO_WORK:{\"hits\":10600630,\"combined_requests\":0,\"ordinary_requests\":21201260,\"requested_bytes\":1187270560,\"resizes\":0,\"migrations\":0,\"migration_bytes\":0,\"gc\":2,\"capacity_histogram\":[0,0,0,10600630,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}\nFOUR_COUNTS:{\"attempts\":10770432,\"hits\":10600630,\"eligible\":504,\"fills\":504,\"fallbacks\":169802,\"overflow\":0,\"sites\":[{\"function\":\"bottomUpTree\",\"source_line\":36,\"source_column\":26,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/coalloc/access-binary-trees.js\",\"site_id\":0,\"work\":[0,756,5402124,252,16205616,5401872],\"pc\":35,\"attempts\":5488640,\"hits\":5401872,\"eligible\":252,\"fills\":252,\"fallbacks\":86768,\"overflow\":0,\"bytecode_hex\":\"21030028\"},{\"function\":\"bottomUpTree\",\"source_line\":29,\"source_column\":26,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/coalloc/access-binary-trees.js\",\"site_id\":1,\"work\":[0,756,5199010,252,15596274,5198758],\"pc\":26,\"attempts\":5281792,\"hits\":5198758,\"eligible\":252,\"fills\":252,\"fallbacks\":83034,\"overflow\":0,\"bytecode_hex\":\"21030028db110707cf21030028\"}],\"follow\":[339602,2,0,0,0,0,0,0,6,2,208,240,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 1171.1738198064268
+}

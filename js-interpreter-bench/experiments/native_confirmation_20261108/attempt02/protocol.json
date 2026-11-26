@@ -1,0 +1,1012 @@
+{
+  "cohort_id": "native-ubuntu-a-eval-cold-v8-on-30-20261108-attempt02",
+  "labels": [
+    "A",
+    "EVAL_COLD",
+    "V8_ON"
+  ],
+  "repetitions": 30,
+  "seed": 2026110830,
+  "affinity": [
+    2
+  ],
+  "benchmarks": [
+    "octane",
+    "sunspider"
+  ],
+  "samples": {
+    "octane": 1530,
+    "sunspider": 2340,
+    "total": 3870
+  },
+  "old_performance_samples_reused": 0,
+  "N_policy": "fixed prior N, common across all three labels; retain and flag all short samples; no outcome-dependent calibration",
+  "metric": "native monotonic elapsed ms / complete Run; first Run included; no workload warmup; load and Setup outside timed Run",
+  "estimator": "per-case median of 30 fresh processes; Octane within-suite GM then 14 suites equal; SunSpider 26 cases equal GM; also report SunSpider sum of per-case medians as total ms",
+  "bootstrap": "10000 paired whole-round draws across three labels and both benchmarks; fixed seed; percentile 95%; no multiple-testing correction",
+  "stop_rule": "exactly 30 complete rounds; no optional stopping or extra rounds based on significance",
+  "schedule": "all 43 case blocks shuffled each round; three adjacent fresh processes per block; all 6 label permutations repeated 5 times per case",
+  "flags": {
+    "V8_ON": [
+      "--jitless",
+      "--no-lazy",
+      "--use-ic"
+    ]
+  },
+  "environment": {
+    "TZ": "Asia/Shanghai",
+    "LC_ALL": "C",
+    "LANG": "C",
+    "system_settings_changed": false
+  },
+  "scripts": {
+    "octane": {
+      "Richards.Richards": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Richards.Richards.N1.correctness1.js",
+          "sha256": "a3c1395c7e28710a1099074548000e822f8da2846edcff001e62d8ef05889cb8",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Richards.Richards.N2.correctness2.js",
+          "sha256": "dde22425cc42d79f635a9a965187883e7c27b64b135983436c3d7d29116d7ae4",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Richards.Richards.N1024.measure.js",
+          "sha256": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+          "N": 1024,
+          "payload_phase": "measure"
+        }
+      },
+      "DeltaBlue.DeltaBlue": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.DeltaBlue.DeltaBlue.N1.correctness1.js",
+          "sha256": "324087e54b48dc8ee8caa17b41246c0b2533216dcba95a24866e545078c329bd",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.DeltaBlue.DeltaBlue.N2.correctness2.js",
+          "sha256": "26268948527078d5d6ad1dadf77d3cf7e9cef470bc0ec4bf997370ab9ebd7b3d",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.DeltaBlue.DeltaBlue.N512.measure.js",
+          "sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+          "N": 512,
+          "payload_phase": "measure"
+        }
+      },
+      "Crypto.Encrypt": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Encrypt.N1.correctness1.js",
+          "sha256": "478e142f3253c66d1528650a148a78fcce4de7e82db9dafcc8170eecefbe876d",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Encrypt.N2.correctness2.js",
+          "sha256": "8bf502d63a1695d03981852e7934da913e52f203cf28a2b4954a9a83d121b35e",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Encrypt.N512.measure.js",
+          "sha256": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+          "N": 512,
+          "payload_phase": "measure"
+        }
+      },
+      "Crypto.Decrypt": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Decrypt.N1.correctness1.js",
+          "sha256": "6306c0fd1d825d305acdd9e4d9d81e333fb977a4ad1ec06011ad06580deaed18",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Decrypt.N2.correctness2.js",
+          "sha256": "9f8885f05b8cd6e03fdcc7ee76f5902cb46da66c32f85ad0e51a2900a541b65c",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Crypto.Decrypt.N32.measure.js",
+          "sha256": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+          "N": 32,
+          "payload_phase": "measure"
+        }
+      },
+      "RayTrace.RayTrace": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.RayTrace.RayTrace.N1.correctness1.js",
+          "sha256": "c89d6fef6c64fd403a0c883e00e3057493ba2c625453df1244ebe45c8bcea933",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.RayTrace.RayTrace.N2.correctness2.js",
+          "sha256": "08c1c9cd349d814c0e71fc83e320c241410664743bbce43ae8d5b40cac5804b2",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.RayTrace.RayTrace.N128.measure.js",
+          "sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "EarleyBoyer.Earley": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Earley.N1.correctness1.js",
+          "sha256": "861ad1b10ccee0d98d69ed30a14efab8091269de64c708d3a4f852a3d12929d5",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Earley.N2.correctness2.js",
+          "sha256": "cb790b318693f5a65698c7542398b64223e050aac5d2fd252adc44e81136489c",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Earley.N512.measure.js",
+          "sha256": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+          "N": 512,
+          "payload_phase": "measure"
+        }
+      },
+      "EarleyBoyer.Boyer": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Boyer.N1.correctness1.js",
+          "sha256": "965f24e05c40f6cf884a485e64e17b34ba182324f8fdf2707229e8e222b1b66e",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Boyer.N2.correctness2.js",
+          "sha256": "e65cd8b6cc7425117e4845124bd82dc46d757904632651e18dd2c74e976cd024",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.EarleyBoyer.Boyer.N32.measure.js",
+          "sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+          "N": 32,
+          "payload_phase": "measure"
+        }
+      },
+      "RegExp.RegExp": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.RegExp.RegExp.N1.correctness1.js",
+          "sha256": "00fd2f3229281154fe650d5ff572c257f3ed5a42fbc2610fcd54281fa0b27c2e",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.RegExp.RegExp.N2.correctness2.js",
+          "sha256": "0fb9c1e65cdc0e8ebc948ed8012f89e448c5661fd40793762e07f73bb0955ce7",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.RegExp.RegExp.N64.measure.js",
+          "sha256": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+          "N": 64,
+          "payload_phase": "measure"
+        }
+      },
+      "Splay.Splay": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Splay.Splay.N1.correctness1.js",
+          "sha256": "3319715201b9758dc9d507e99f7c0875029ad1122fec18ef40b9669cfd6f1155",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Splay.Splay.N2.correctness2.js",
+          "sha256": "ea8cffecbc72542b6275895cd3b0cf3e20c42bd36b824ed5f90fbe73ce1b61a4",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Splay.Splay.N2048.measure.js",
+          "sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+          "N": 2048,
+          "payload_phase": "measure"
+        }
+      },
+      "NavierStokes.NavierStokes": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.NavierStokes.NavierStokes.N1.correctness1.js",
+          "sha256": "413db48309c33b6e65ef73f924347c3f855a733c055707c7d39a25051f8414f3",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.NavierStokes.NavierStokes.N2.correctness2.js",
+          "sha256": "29ccb68cd080e7db19f382c485bd069c81a3cec13824655916912954a3b7ce61",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.NavierStokes.NavierStokes.N32.measure.js",
+          "sha256": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+          "N": 32,
+          "payload_phase": "measure"
+        }
+      },
+      "PdfJS.PdfJS": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.PdfJS.PdfJS.N1.correctness1.js",
+          "sha256": "1afccf77417bde732b48d0d37fc955253db0bba2704ad737e1a5d782c5d71f6b",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.PdfJS.PdfJS.N2.correctness2.js",
+          "sha256": "d8f4d6c72816a5e3a27ee75d23aab8cb5dd875e06b56e59325b179657c63e9c5",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.PdfJS.PdfJS.N16.measure.js",
+          "sha256": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+          "N": 16,
+          "payload_phase": "measure"
+        }
+      },
+      "Mandreel.Mandreel": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Mandreel.Mandreel.N1.correctness1.js",
+          "sha256": "3233e65563bac81c1ab92fac092631f6364204b6e8fa04c526429358130b4cda",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Mandreel.Mandreel.N2.correctness2.js",
+          "sha256": "9beef1daf6147dd7577be76e162e077a94aee1d6fafbeea1bfc15d60fc282a48",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Mandreel.Mandreel.N1.measure.js",
+          "sha256": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+          "N": 1,
+          "payload_phase": "measure"
+        }
+      },
+      "Gameboy.Gameboy": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Gameboy.Gameboy.N1.correctness1.js",
+          "sha256": "41141a9acf97022cf76b739f0b2a25b31fd2a2cc6b01131cc3732a953424b99b",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Gameboy.Gameboy.N2.correctness2.js",
+          "sha256": "d11d1604161628acf789e022a6fc19487ba51d43f47321a14f0ff09d04e87b09",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Gameboy.Gameboy.N8.measure.js",
+          "sha256": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+          "N": 8,
+          "payload_phase": "measure"
+        }
+      },
+      "CodeLoad.CodeLoadClosure": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadClosure.N1.correctness1.js",
+          "sha256": "a7686d55e54e81fa6414335b6c5b18f2c72d056937ff5338bb2a9838adc59f64",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadClosure.N2.correctness2.js",
+          "sha256": "0ac2e74aed3dffe5b61245acbbd4b6f378c20b453c642863e3eadc85c6cc4f81",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadClosure.N4096.measure.js",
+          "sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+          "N": 4096,
+          "payload_phase": "measure"
+        }
+      },
+      "CodeLoad.CodeLoadJQuery": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadJQuery.N1.correctness1.js",
+          "sha256": "d3528c0778be857c66ffbfd30197f45ce47a45b1a3fd31a61db09d545426b22b",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadJQuery.N2.correctness2.js",
+          "sha256": "10bda148f7ed5b2256fcb2ff2113411a526ced0f30bb6fa8f436393a5f86d619",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.CodeLoad.CodeLoadJQuery.N512.measure.js",
+          "sha256": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+          "N": 512,
+          "payload_phase": "measure"
+        }
+      },
+      "Typescript.Typescript": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Typescript.Typescript.N1.correctness1.js",
+          "sha256": "2406ae2a0d5d38b30ff0692ddcd4e4d076aa6be246916777238506389e15e978",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Typescript.Typescript.N2.correctness2.js",
+          "sha256": "034e4fc2a125fab656a48d03997f35e13adb37f32655d3efe9b6ee148dfa8f58",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.Typescript.Typescript.N1.measure.js",
+          "sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+          "N": 1,
+          "payload_phase": "measure"
+        }
+      },
+      "zlib.zlib": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.zlib.zlib.N1.correctness1.js",
+          "sha256": "426cace255f13e426cbfb959aeee0caff819334d6aca85163a662628d93d1ffc",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.zlib.zlib.N2.correctness2.js",
+          "sha256": "21bd5b6159fd5739a42c41e8dc9148917f8356739bc4a4a660828e28342fb673",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/octane.zlib.zlib.N1.measure.js",
+          "sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+          "N": 1,
+          "payload_phase": "measure"
+        }
+      }
+    },
+    "sunspider": {
+      "3d-cube": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-cube.N1.correctness1.js",
+          "sha256": "18a049966c1f5a1e70de83ddb899421c79ab17e1f00696ba86777d0533cb0e6e",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-cube.N2.correctness2.js",
+          "sha256": "7fa28b74179d7ee69f81b416f65387f18f8271540152e285752e62fb48e24f79",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-cube.N128.measure.js",
+          "sha256": "94d22c3cab591f6e71e8b77d69eec847110746f9c9698e3d1ae84d03c3753c06",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "3d-morph": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-morph.N1.correctness1.js",
+          "sha256": "2c620555f85f43afa5bf5f958794d7781ceda871ecf29b31cc5e498ceb422f8d",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-morph.N2.correctness2.js",
+          "sha256": "278ce4a36512dd5770075c7f2273bec085fe3122bb2c105494a87938dc942a23",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-morph.N128.measure.js",
+          "sha256": "f22c926e455d032f5f565970a891d1586abd6939420a94829a77245a0abc3f20",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "3d-raytrace": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-raytrace.N1.correctness1.js",
+          "sha256": "6f9bb4cc4b7c8babf59cb11b59fea382099005e7caaf01d2f5eae76c8af272d2",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-raytrace.N2.correctness2.js",
+          "sha256": "70a5449e7d24d3f7ba5e27fe00ee34dc2fb4b3b4fdb64b66f4487f87323a03bc",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.3d-raytrace.N128.measure.js",
+          "sha256": "3832c5fe8a2454743ba8002b688e4e73f72a3a982972517a57483606a567f8be",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "access-binary-trees": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-binary-trees.N1.correctness1.js",
+          "sha256": "5917974ab1789e7def0c4a1faa77a3583549ce8ca1d02bfc759babcf883806dc",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-binary-trees.N2.correctness2.js",
+          "sha256": "6766c84b236bba996f75a38f961b0f0a7978f978e7a30f810ae54143f24cc56b",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-binary-trees.N256.measure.js",
+          "sha256": "29aca0f1bf3d22734b47f1a66781d087cd74dff36939d41f930f3e0b734a9161",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "access-fannkuch": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-fannkuch.N1.correctness1.js",
+          "sha256": "2543052cac8a598be4d6729428107adbce5cd94fd071d837ae6f6e761a6ac02b",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-fannkuch.N2.correctness2.js",
+          "sha256": "f82b0ad45a1aa89e14e6852c6b4b9579a83ed98190110b89b6f3eecc8ed7d283",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-fannkuch.N64.measure.js",
+          "sha256": "4393deb28d20af33e2543a97b3c88732f657fa2d6f765987343f059ef6fc03ae",
+          "N": 64,
+          "payload_phase": "measure"
+        }
+      },
+      "access-nbody": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nbody.N1.correctness1.js",
+          "sha256": "060da3a639d04a062836cce462ed44350992fdc4eee82815b9eb526f0ffe1b06",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nbody.N2.correctness2.js",
+          "sha256": "57b8dfca772734d28e89117695c930731ef1f469c09bb64f8d04b0176dad960c",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nbody.N128.measure.js",
+          "sha256": "7afed6005dbdc6f7d3d3033133e90b05f5dcdf73a3b96edd6a6e3c9a731bc227",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "access-nsieve": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nsieve.N1.correctness1.js",
+          "sha256": "8aee283a45e5e569ccbd9acafc0e5da15f44ea6bd6d4af2bb97a3a87cb063a5a",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nsieve.N2.correctness2.js",
+          "sha256": "e5e747b58bf16fd6c7483568025c56916fb89960a9b406d59087d4b9fd1a4927",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.access-nsieve.N256.measure.js",
+          "sha256": "2a80f5339244e8561d554ca47a694a183883791fd7ee7132578ba8e088a0c27d",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "bitops-3bit-bits-in-byte": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-3bit-bits-in-byte.N1.correctness1.js",
+          "sha256": "8e70d556d3d4d9364978ea093f1c35e2f4e411e9fe8b332df5375af3410c1e7c",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-3bit-bits-in-byte.N2.correctness2.js",
+          "sha256": "bc8c2aa206297f7eae4f8d97eb6da654444dc97133caf3365b7bc9e3c97c7248",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-3bit-bits-in-byte.N256.measure.js",
+          "sha256": "0376a464e63d328ff9f85b0068988f4a88709f115cedb07e5602be265c7430f3",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "bitops-bits-in-byte": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bits-in-byte.N1.correctness1.js",
+          "sha256": "f4a09474ec69297a92abe62ea83031a964aa799627e5f05be4e78c8c7e26e43d",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bits-in-byte.N2.correctness2.js",
+          "sha256": "ddb2dad62d314cff0b3db066efd293a3ef8084c5079690b8d8f2e68d295ed475",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bits-in-byte.N128.measure.js",
+          "sha256": "7cb5e1ada3b1fe40118893fff79b609e2857d1214f2f3a7bb518856e10fc28cb",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "bitops-bitwise-and": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bitwise-and.N1.correctness1.js",
+          "sha256": "27690069a9d1305f1d16720613a942cd05549ab0f784a1c52cf64b58ec12667c",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bitwise-and.N2.correctness2.js",
+          "sha256": "775dea2a0970644786f77e1cf740689da122f768bd88a0892f33d658a4f02a5b",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-bitwise-and.N256.measure.js",
+          "sha256": "dd9898bbdaa48e66476dec6aa983f21b344d78bbd2dce319cc55ccf7b4b0c224",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "bitops-nsieve-bits": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-nsieve-bits.N1.correctness1.js",
+          "sha256": "4cfa63f2734eac27061547796506a06edf6b08632c5cf663d25a4c027486a362",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-nsieve-bits.N2.correctness2.js",
+          "sha256": "fba286fe0bc1965577457082ea3742374b78bb5080de3c5636b4f11b6d8e93b1",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.bitops-nsieve-bits.N128.measure.js",
+          "sha256": "15eaf59604de57fb9375999ba854a23af04f8e6c0a38cf2a6d99820b576971f1",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "controlflow-recursive": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.controlflow-recursive.N1.correctness1.js",
+          "sha256": "9cb1e76f13a99467ee6fec99731cda53546dc4f830b32b000b69873bb9a946b3",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.controlflow-recursive.N2.correctness2.js",
+          "sha256": "b6c26b827ac449f45accc750b9ff436b2407d0b2ea8fbb374a31f4a16abf6c63",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.controlflow-recursive.N256.measure.js",
+          "sha256": "e8bb8140d7d9a9ac871ff0ce41d7ed5d371f3333a4c0738a49b155e4d3cf3238",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "crypto-aes": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-aes.N1.correctness1.js",
+          "sha256": "7f28606227c1aa92aab9fa3e64ea9d3b04bfd298596e1fc96a91c19a82d7e643",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-aes.N2.correctness2.js",
+          "sha256": "4b2dfb6ea808814c963fb9db5721e54c8c0e64ca44830fa1a51d2e68b56155e9",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-aes.N128.measure.js",
+          "sha256": "21e1ec9a5de1c535cbc57b2579d83eb1ddf0200501db8bd379f717b86d7a0472",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "crypto-md5": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-md5.N1.correctness1.js",
+          "sha256": "14e3d35cfc9f09006ac2e0da0ecb6053444ede4e420547aae54a18c1f6f05177",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-md5.N2.correctness2.js",
+          "sha256": "bb2cdd3fafa4db4cae4f54cbeb89a04d8ef7ddb95818b85628ae07dd2145c6c3",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-md5.N256.measure.js",
+          "sha256": "040430f7140576332b95c38b830e69d2a0c8b3900d36890903d9f5ad2ff16871",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "crypto-sha1": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-sha1.N1.correctness1.js",
+          "sha256": "559eb8a1bae5a48b9758fd9a90b9c428bc4add5acef3a9dd869ed4434338ce89",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-sha1.N2.correctness2.js",
+          "sha256": "bd8a4d696f25677faaea9eeef75eea239a43f0dc7cd69b129d228b93d9983b2b",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.crypto-sha1.N256.measure.js",
+          "sha256": "1011259725234d70ce8fc1ee5a234283c83351e5a3d2de6edf43490ad6975904",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "date-format-tofte": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-tofte.N1.correctness1.js",
+          "sha256": "693a81a64b71fd7495c52d75d93e36234a1c1fb19c85232f2615e5c7ae0daf5c",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-tofte.N2.correctness2.js",
+          "sha256": "a91bfdb9c93e9462aaf19fa42fd0118c72cd8795dfd8a8cfea238e5842f8eb4b",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-tofte.N256.measure.js",
+          "sha256": "2f15f33c3ae201280886b8fe5f3da020e8764d67bff4a362d55a82dc4608b2b1",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "date-format-xparb": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-xparb.N1.correctness1.js",
+          "sha256": "33d00b268ef56cab3929ee4a77758ec275236fb1278ca5ba8a2271788eef4267",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-xparb.N2.correctness2.js",
+          "sha256": "30312459eaea0608ac54d8d6aa5f48d4bec449b0d855839499ba9a10f03c1673",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.date-format-xparb.N512.measure.js",
+          "sha256": "4019e2520d00a2ec363507434c14ad220c192d536a0edbe0288b081cc90e5bf5",
+          "N": 512,
+          "payload_phase": "measure"
+        }
+      },
+      "math-cordic": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-cordic.N1.correctness1.js",
+          "sha256": "c23e18530ca21461c0b43de8100b8c6cafb42cdfda2299de2227a07981af9544",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-cordic.N2.correctness2.js",
+          "sha256": "bf9938f85776a37f818cd687dd11f3e26ac701b7536e3cfa2b3a954090d30737",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-cordic.N128.measure.js",
+          "sha256": "421218c399d28bd70f4fd36c6d71a1eeba837559311c811046d3f162841f3028",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "math-partial-sums": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-partial-sums.N1.correctness1.js",
+          "sha256": "6dd61e7ec7b2b2a7e208b7678b0d60fba91187f18663ad1068028e6700b545cf",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-partial-sums.N2.correctness2.js",
+          "sha256": "2339ffdbd2a3896b160362d03fc7f4532f913460f63b3b98900d4d695217631d",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-partial-sums.N128.measure.js",
+          "sha256": "89e7fa42b95d06e0d6e5a6c8b6525d5db51eadc9341ee1a4bf63b72638731b72",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "math-spectral-norm": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-spectral-norm.N1.correctness1.js",
+          "sha256": "0e1796a697d0de6e070deb659bc639c3c299d91aa21c1f587813f0d2e2e51f73",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-spectral-norm.N2.correctness2.js",
+          "sha256": "eed8e9c16346ab9d829a87f6549eefb48a01818822bcfe39c9f66e22630d9dd0",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.math-spectral-norm.N256.measure.js",
+          "sha256": "326e3761b41239cec8df427078f51cb71c5ff1b80d594e816f23950f1bcda2f9",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "regexp-dna": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.regexp-dna.N1.correctness1.js",
+          "sha256": "41fff2e9e23348677a035ba38c7db1c72b88bc8db22827d76f7896c783af8ea2",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.regexp-dna.N2.correctness2.js",
+          "sha256": "ce2b46c5a72907a37968cc36259bedfddfea7f590e92ac0880002414ad2c548d",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.regexp-dna.N256.measure.js",
+          "sha256": "055a87870ee9ba0622caad39ceca4ef7423cdcac1301964834135fd94367f781",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "string-base64": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-base64.N1.correctness1.js",
+          "sha256": "6d32c79431f2f428090a63c1a895138ee009b0bffdaf8acbd3e0f6cdfb79fce1",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-base64.N2.correctness2.js",
+          "sha256": "62cb708118453cb41372ae16517075b0fd5e6761bebd4d51de6dfacc7a5f512b",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-base64.N256.measure.js",
+          "sha256": "39fd44db2df34d53515e36df261478ebd91eafdc571523b52c6f9fded4943de9",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "string-fasta": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-fasta.N1.correctness1.js",
+          "sha256": "e37a5bb62f63356cedb7ef9fcd3d84a2ed82d2f6d56ff7c74df26cce565075b0",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-fasta.N2.correctness2.js",
+          "sha256": "42675d8def87f6d5d6ebf6ba17e17783292a7ffd45e21b884e6998bcef94edfc",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-fasta.N128.measure.js",
+          "sha256": "d5067abc2c80c83c83520c754b976624fe9d2258c8a5728638cccdead7e7f5b8",
+          "N": 128,
+          "payload_phase": "measure"
+        }
+      },
+      "string-tagcloud": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-tagcloud.N1.correctness1.js",
+          "sha256": "4b38840d40616a2c858905b93bec10f48e986e22e21a8786d86011428c0d95dd",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-tagcloud.N2.correctness2.js",
+          "sha256": "2f96b03a2f42ce7e70beb400ae3b8a6b8561caf3b0736e81e96f25aea47fd693",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-tagcloud.N256.measure.js",
+          "sha256": "29522d0f43825a2924f9e9e08ea9e36eed19f03f902fceca8fcc1fa354277ca4",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "string-unpack-code": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-unpack-code.N1.correctness1.js",
+          "sha256": "6fec0bbcd7d0db9143945eea0d31fa596d30912dbdec1ae40f9e50cfa4075151",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-unpack-code.N2.correctness2.js",
+          "sha256": "06aa7c48a03a7162e836cb1ed66319260bb205bcb5b0765e418a020cf3e152da",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-unpack-code.N256.measure.js",
+          "sha256": "dd603329e57ef8a391fb23980198a04475ddac8f387dee542404149e5001b3bf",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      },
+      "string-validate-input": {
+        "correctness1": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-validate-input.N1.correctness1.js",
+          "sha256": "c6518ffb52a684392cc0114367512f94ac1289c17282a5fed1382b8b3cf83ee3",
+          "N": 1,
+          "payload_phase": "correctness"
+        },
+        "correctness2": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-validate-input.N2.correctness2.js",
+          "sha256": "22cf7d6bd268160e71c3e9101b1fbbb161b0344ed4d9dc3e1f227d8778f29374",
+          "N": 2,
+          "payload_phase": "correctness"
+        },
+        "measure": {
+          "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_confirmation_20261108/attempt02/scripts/sunspider.string-validate-input.N256.measure.js",
+          "sha256": "41db368409e557a84cdfe6e8352d60a76c73d2f4ca53838953dbb8ac55a42cfd",
+          "N": 256,
+          "payload_phase": "measure"
+        }
+      }
+    }
+  },
+  "schedule_sha256": "493a341d7f502ce3d6b8589d44e944269b84e7892fa1a7787ab203f876e0e1a2",
+  "source_trees": {
+    "A": {
+      "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/A",
+      "files": {
+        "qjs.c": "dc855952aaf58e9db1d091225d28439b1f832412e156a1968a9504935cd4e448",
+        "cutils.h": "d2da6d06a75b9e6c116c82b7a41df6bcc170c8b1779f374fa953ecf688eda647",
+        "libregexp.h": "f5c5ef1899f224dcc718422a22c789ef9d8b5b837b622818fcfaf681ae793446",
+        "libunicode-table.h": "cf782bc7a07549e976f606bd3cb8555858482b279574554dcb8d46412986006c",
+        "dtoa.c": "af5abd68fa9806d1a19bdd5f2daef00d5fd0990ae56311382dfed4700343f074",
+        "quickjs.h": "2165f47772af9faee1798999a599fa9de850d1bf0259502dade1c25d4a588316",
+        "libregexp-opcode.h": "2a98d646089f3a72f25480116297c5fdb5b28fd9f815447273951f4ade4a115e",
+        "unicode_gen.c": "a86452d73a5dca52a1561cc7cb40ded704fcc2cba1f74676cc7102b428396ca8",
+        "unicode_gen_def.h": "0c30cfd5dd29d7708f6e0045cb2e3ed92207697bb2b5eece39f336db007a055f",
+        "list.h": "181c6b25d9d0e4853315d36a6e6fab3b2c3554271693d898a439384ba0f67c2b",
+        "quickjs-atom.h": "342194359417664e652f54e7d682ee2ef91dd982e91f74decbde992a2c848236",
+        "repl.js": "7be3d5a70a6538ec9f44eff06f57572c75ce1e323e3f236d1d535ac26fbde60d",
+        "libunicode.c": "26203ae888c0582e7d0e2113f13db0c9b39dc7b0b3836d68fa308c54f7a0898c",
+        "qjsc.c": "e3e44bef9930982232d8c7dba71df7bd370b0a00ef1738fa9ab39b477e23bb0c",
+        "Makefile": "eb55139e6f7f62709a7953ebee7468c65e62f4af1267d58f2f9f5fa5ce425102",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "cutils.c": "b73a403a59da30726257ddbdf5e399298941c1def997782ee0d4d33f796a80a2",
+        "quickjs-libc.c": "8c6c42619ab4edf1548b051c73bb2bee670003415b1de30d2910d71917859bce",
+        "run-test262.c": "e4a87a297dd037ae2c3886556bfca88c0c2ec4e4f38c8d2dc3318defa250b222",
+        "libregexp.c": "fdfcf86167029ab2c39c35730d4ae6875b7bbeb9406a0fcc886de4e9b1f5e2ac",
+        "quickjs-opcode.h": "a9c60a8c9366820733d9d2acbb805f48b2e9e2778df526e6bcb845fdb6b47834",
+        "VERSION": "234057c4079458cba9862d4bbb6f8a059ac2e4a194947673da0ad38ca16a37fd",
+        "libunicode.h": "ce310152bc80d7415dcb657e23abd9a40bf83e393c0d05d325dae384bb01d259",
+        "quickjs.c": "a68622cecb806f39bf24738c376a0a73032ea8913478cad702e0265c46f7999f",
+        "dtoa.h": "462070f7678a894b9f3612422f280f4dce412eb360a5cc585a513f407fc23114",
+        "quickjs-libc.h": "cfb4a6ab9533461a8abf8083f7d9f9a84d6bb26c92a7dd718984a7a1ddd754eb",
+        "LICENSE": "598fd7fc928e4350abce36e337ba5a1346923c5c692f5be92c3d8e29ddd7c18d"
+      }
+    },
+    "EVAL_COLD": {
+      "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261108/attempt11/work/EVAL_COLD",
+      "files": {
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "a2b7410c98b84dc1372345bd548b41a4ba859176180e65124ae8fb70a5e178d6",
+        "quickjs.c": "990f68d6914a9d7df20ab6688accb7cedd31ff032cc31568711950638c3bd402",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "da4f5b00c674d7401e96e26c248b289a274e33e1492f3724e332a7d65fa4f65f",
+        "read_ic_prepare.inc": "5d78500bc2f4847d9257ee3a3457c5c4b5410daeca3c2afcb9a5d8527ecfcc6a",
+        "read_ic_runtime.inc": "57681086bf909536fb9c0bb41cb8129da6afe7473681fe4006e46975b400440e",
+        "read_ic_types.h": "9309672f2a8eb861e057696dae6d6f91f7d067d1fc08d223a5efd2346e3ff769",
+        "repl.c": "c946c81a2be8632467459be1fe094982c28dc6eac296b24b0b7c3cdf2f2782b1",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      }
+    }
+  },
+  "frozen_files": {
+    "experiments/native_confirmation_20261108/attempt02/run.py": "899dc0b2c044ecf4c68aa505754bd50c288ce7e436635927ea99bee09a0cbc17",
+    "experiments/native_confirmation_20261108/attempt02/analyze.py": "c50a2d20967c902793030bb99b90ba7ef37fcb3ee96f307bb0f582cc286268ca",
+    "experiments/native_confirmation_20261108/attempt02/audit.py": "8eb67998adf797ab04bb7c7a2fe68d053d37caeda11c8e4fbca0c579c7923d0d",
+    "experiments/native_confirmation_20261108/attempt02/runtime_manifest.json": "070b143dc18976685adb7265d4f25e14fdf4533901c87c27ae88ed5d60d537e6",
+    "experiments/native_confirmation_20261108/attempt02/octane.inputs.json": "85e3b78789e12c55eb66897c3dbed6ed6466ac5f23c5201ab01deb4eab3c8ea7",
+    "experiments/native_confirmation_20261108/attempt02/sunspider.inputs.json": "0359a71e5a10ff1e71a9f86595a95fa2a510871677b167af802c248dc0639011",
+    "experiments/native_octane_20261107/attempt01/run.py": "f7efbdeacd99e849730f90044d8d92067bba712320f906c0bb55eb3d0bd4aa5f",
+    "experiments/native_octane_20261107/attempt01/protocol.json": "2a8d384bc55fc8dc0abce07aa449dcd146b7c6bc4ae689aace1623860ec3a7d2",
+    "experiments/native_octane_20261107/attempt01/source_manifest.json": "7aaf26d12b234a80843b30c1dd62ff640a965f0ef4210809075221eec1b72b0a",
+    "experiments/native_octane_20261107/attempt01/runtime_manifest.json": "d4d22ca890b037e88add591b00c25bdb04df44d5eaf9de67e1f354fe68b2dab5",
+    "experiments/native_octane_20261108/attempt11/protocol.json": "35608c1caffe952e911c305202a922dc52179d0dca3699df071ed62eced4da62",
+    "experiments/native_octane_20261108/attempt11/source_manifest.json": "3ed3d366116a813fd9c9616a116bea2dda8126034cb2de3a9eb6a141d3ca9d32",
+    "experiments/native_octane_20261108/attempt11/runtime_manifest.json": "fc0e87a4e5d0af427750bc2d09467f7c214c723a2a75283773a4d27a08eb5625",
+    "experiments/native_octane_20261108/attempt11/targeted.js": "b43c8b23ac566e775b81986670a20e29cfe1d3b32c5773588133569a6948b6b1",
+    "experiments/native_octane_20261108/attempt11/targeted_gate.json": "042b0d409337ae3bfadb7e690d2bb3006b07745acae7bc31709cd82bb60dd83e",
+    "experiments/native_octane_20261108/attempt11/audit.json": "a68ee6ce8238ed263805c6aae5041be61994ae826b44210322c95c2180cc4391",
+    "experiments/ic_fast_slow_20261102/attempt01/sunspider/checksum_contract.json": "fa179c3ccfbbea16e5fb4e64b1dce822a63721099db5b4cc03e626ad67194cba",
+    "experiments/v8_inspired_ic/attempt03/inputs/zlib_read.js": "8240f6d0f5d2a8037f87b08c1f2dcf2518d100d0f5e57b6277ae7a885b771caa",
+    "experiments/ic_fast_slow_20261102/attempt01/octane/crypto/Crypto.Encrypt.N2.json": "c0995cdda6dd338b94eb52df5ce5108a16ecddb85727071b5746f7887e0d4554",
+    "experiments/ic_fast_slow_20261102/attempt01/octane/crypto/Crypto.Decrypt.N2.json": "fe17a7c166d309b0b9ebd8ed359cf61ada2ce648d8c81e6c74ad2ce4a6a03855",
+    "experiments/ic_fast_slow_20261102/attempt01/octane/crypto/Crypto.Decrypt.N1.json": "1364030f9c5ca69f6ecc309a7dbb481e09979a47fde4524f206eb1386869b98c",
+    "experiments/ic_fast_slow_20261102/attempt01/octane/crypto/Crypto.Encrypt.N512.json": "f7adc804676162d3b83f047f004ccd14abf10753ecf95bd203195dd8fcf20031",
+    "experiments/ic_fast_slow_20261102/attempt01/octane/crypto/Crypto.Encrypt.N1.json": "d6fa99c7fc2001e862b519dff6dfb9c117e16d5f7b14a55e968942b550bdab26",
+    "experiments/ic_fast_slow_20261102/attempt01/octane/crypto/Crypto.Decrypt.N32.json": "e7700155354f6e50ad8d585985c0a91e74d45a8b1ac5009a2a0d9eb7ba26ebbd"
+  },
+  "engine_policy": "reuse the exact frozen local A/EVAL_COLD Release ELF and V8 official 15.6.21 ELF; source and prior qualification hashes retained; no engine edits or rebuild",
+  "failures": "preserve invalid/outlier/process_start records; stop on process/identity/correctness failure; never automatically retry failed token",
+  "correctness": "N1 and N2 for every case/label before formal; SunSpider exact existing checksum contract, Octane original validation and Crypto ciphertext",
+  "safety": "existing EVAL_COLD targeted/native/ASan/UBSan evidence reused for unchanged source/ELF; not full test262; no new sanitizer performance binary",
+  "only_requested_versions": true,
+  "V8_OFF": false
+}

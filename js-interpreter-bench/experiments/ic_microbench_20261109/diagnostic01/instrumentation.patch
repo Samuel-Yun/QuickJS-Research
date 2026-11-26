@@ -1,0 +1,138 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6176,6 +6176,8 @@
+     *ppr = NULL;
+     return NULL;
+ }
++
++#include "micro_ic_diag.h"
+ 
+ #include "read_ic_runtime.inc"
+ 
+@@ -17807,6 +17809,7 @@
+         ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
+         if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
+             site->shape == object->shape) {                            \
++            micro_ic_hit(site, 1); \
+             *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
+             pc += 5;                                                   \
+             break;                                                     \
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -10,7 +10,8 @@
+         JSShapeProperty *prs;                                           \
+         RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+-        RDI_QUERY();                                                    \
++        RDI_QUERY();                                                     \
++        micro_ic_regular_query(site);                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+@@ -19,6 +20,7 @@
+                     if (site->shape == p->shape && holder &&            \
+                         holder->class_id == JS_CLASS_OBJECT && !holder->is_exotic && \
+                         site->holder_shape == holder->shape) {          \
++                        micro_ic_hit(site, 0); \
+                         val = JS_DupValue(ctx, holder->prop[site->prop_offset].u.value); \
+                         goto name ## _done;                            \
+                     }                                                  \
+@@ -28,13 +30,15 @@
+                 }                                                      \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
++                    micro_ic_hit(site, 0); \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+-        RDI_COUNT(fallback);                                            \
++        RDI_COUNT(fallback);                                               \
++        micro_ic_miss(site);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -56,5 +56,6 @@
+         }
+     }
+     assert(index == count);
++    micro_ic_watch(ctx, b);
+     return 0;
+ }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -28,6 +28,7 @@
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+     RDI_COUNT(updates);
++    micro_ic_fill(s);
+     JSShape *old = s->shape, *old_holder = s->holder_shape;
+     js_dup_shape(shape);
+     s->shape = shape;
+--- a/micro_ic_diag.h
++++ b/micro_ic_diag.h
+@@ -0,0 +1,60 @@
++/* Diagnostic-only counters for readLoop's sole x read site.
++   The original cache decisions, layout and replacement logic are unchanged. */
++static ReadICSite *micro_ic_site;
++static unsigned long long micro_ic_queries, micro_ic_hits, micro_ic_misses;
++static unsigned long long micro_ic_fused_hits, micro_ic_regular_hits;
++static unsigned long long micro_ic_regular_queries, micro_ic_cold_misses;
++static unsigned long long micro_ic_fills, micro_ic_watch_count;
++static void micro_ic_report(void)
++{
++    fprintf(stderr, "IC_MICRO_COUNTS:{\"function\":\"readLoop\",\"atom\":\"x\","
++        "\"capacity\":%d,\"watched_sites\":%llu,\"queries\":%llu,\"hits\":%llu,"
++        "\"misses\":%llu,\"fused_hits\":%llu,\"regular_hits\":%llu,"
++        "\"regular_queries\":%llu,\"cold_misses\":%llu,\"fills\":%llu}\n",
++        RDI_CAPACITY, micro_ic_watch_count, micro_ic_queries, micro_ic_hits,
++        micro_ic_misses, micro_ic_fused_hits, micro_ic_regular_hits,
++        micro_ic_regular_queries, micro_ic_cold_misses, micro_ic_fills);
++}
++static void micro_ic_watch(JSContext *ctx, JSFunctionBytecode *b)
++{
++    const char *name = JS_AtomToCString(ctx, b->func_name);
++    if (!name) abort();
++    int match = !strcmp(name, "readLoop");
++    JS_FreeCString(ctx, name);
++    if (!match) return;
++    assert(b->read_ic_count == 1 && micro_ic_watch_count == 0);
++    name = JS_AtomToCString(ctx, b->read_ic_sites[0].atom);
++    if (!name) abort();
++    assert(!strcmp(name, "x"));
++    JS_FreeCString(ctx, name);
++    micro_ic_site = &b->read_ic_sites[0];
++    micro_ic_watch_count++;
++    if (atexit(micro_ic_report)) abort();
++}
++static force_inline void micro_ic_regular_query(ReadICSite *site)
++{
++    if (site == micro_ic_site) {
++        micro_ic_queries++;
++        micro_ic_regular_queries++;
++    }
++}
++static force_inline void micro_ic_hit(ReadICSite *site, int fused)
++{
++    if (site == micro_ic_site) {
++        micro_ic_hits++;
++        if (fused) { micro_ic_queries++; micro_ic_fused_hits++; }
++        else micro_ic_regular_hits++;
++    }
++}
++static force_inline void micro_ic_miss(ReadICSite *site)
++{
++    if (site == micro_ic_site) {
++        micro_ic_misses++;
++        if (!site->shape) micro_ic_cold_misses++;
++    }
++}
++static force_inline void micro_ic_fill(ReadICSite *site)
++{
++    if (site == micro_ic_site) micro_ic_fills++;
++}
++

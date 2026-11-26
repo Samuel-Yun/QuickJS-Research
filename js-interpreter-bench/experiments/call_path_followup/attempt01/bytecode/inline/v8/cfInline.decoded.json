@@ -1,0 +1,183 @@
+[
+  {
+    "offset": 0,
+    "size": 1,
+    "hex": [
+      "0c"
+    ],
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 1,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 2,
+    "size": 1,
+    "hex": [
+      "0c"
+    ],
+    "opcode": "LdaZero",
+    "operands": ""
+  },
+  {
+    "offset": 3,
+    "size": 1,
+    "hex": [
+      "d4"
+    ],
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 4,
+    "size": 2,
+    "hex": [
+      "0b",
+      "04"
+    ],
+    "opcode": "Ldar",
+    "operands": "a1"
+  },
+  {
+    "offset": 6,
+    "size": 3,
+    "hex": [
+      "79",
+      "f8",
+      "00"
+    ],
+    "opcode": "TestLessThan",
+    "operands": "r1, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 9,
+    "size": 2,
+    "hex": [
+      "a8",
+      "19"
+    ],
+    "opcode": "JumpIfFalse",
+    "operands": "[25] (0x1bf801000406 @ 34)"
+  },
+  {
+    "offset": 11,
+    "size": 4,
+    "hex": [
+      "33",
+      "03",
+      "00",
+      "00"
+    ],
+    "opcode": "GetNamedProperty",
+    "operands": "a0, [0:\"bias\"], FBV[0]"
+  },
+  {
+    "offset": 15,
+    "size": 3,
+    "hex": [
+      "42",
+      "f8",
+      "00"
+    ],
+    "opcode": "Add",
+    "operands": "r1, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 18,
+    "size": 3,
+    "hex": [
+      "42",
+      "f9",
+      "00"
+    ],
+    "opcode": "Add",
+    "operands": "r0, EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 21,
+    "size": 3,
+    "hex": [
+      "1b",
+      "f9",
+      "f7"
+    ],
+    "opcode": "Mov",
+    "operands": "r0, r2"
+  },
+  {
+    "offset": 24,
+    "size": 1,
+    "hex": [
+      "d5"
+    ],
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 25,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f8"
+    ],
+    "opcode": "Ldar",
+    "operands": "r1"
+  },
+  {
+    "offset": 27,
+    "size": 2,
+    "hex": [
+      "5b",
+      "00"
+    ],
+    "opcode": "Inc",
+    "operands": "EmbeddedFeedback[None]"
+  },
+  {
+    "offset": 29,
+    "size": 1,
+    "hex": [
+      "d4"
+    ],
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 30,
+    "size": 4,
+    "hex": [
+      "97",
+      "1a",
+      "00",
+      "02"
+    ],
+    "opcode": "JumpLoop",
+    "operands": "[26], [0], FBV[2] (0x1bf8010003e8 @ 4)"
+  },
+  {
+    "offset": 34,
+    "size": 2,
+    "hex": [
+      "0b",
+      "f9"
+    ],
+    "opcode": "Ldar",
+    "operands": "r0"
+  },
+  {
+    "offset": 36,
+    "size": 1,
+    "hex": [
+      "b9"
+    ],
+    "opcode": "Return",
+    "operands": ""
+  }
+]

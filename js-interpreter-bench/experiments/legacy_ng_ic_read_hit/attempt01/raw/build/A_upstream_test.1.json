@@ -1,0 +1,13 @@
+{
+  "command": [
+    "make",
+    "-j2",
+    "test"
+  ],
+  "cwd": "/home/mzyx/legacy_ng_ic_read_hit_attempt01/A",
+  "timestamp": "2026-10-23T14:36:43.707603+00:00",
+  "exit_code": 0,
+  "stdout": "gcc -g -Wall -MMD -MF .obj/bjson.pic.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -fPIC -DJS_SHARED_LIBRARY -c -o .obj/tests/bjson.pic.o tests/bjson.c\ngcc -g -Wall -MMD -MF .obj/point.pic.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -fPIC -DJS_SHARED_LIBRARY -c -o .obj/examples/point.pic.o examples/point.c\ngcc -g -shared -o tests/bjson.so .obj/tests/bjson.pic.o -lm -lpthread -ldl \ngcc -g -shared -o examples/point.so .obj/examples/point.pic.o\n./qjs tests/test_closure.js\n./qjs tests/test_language.js\n./qjs --std tests/test_builtin.js\n./qjs tests/test_loop.js\n./qjs tests/test_bigint.js\n./qjs tests/test_cyclic_import.js\n./qjs tests/test_worker.js\n./qjs tests/test_std.js\n./qjs tests/test_rw_handler.js\n./qjs tests/test_bjson.js\n./qjs examples/test_point.js\n",
+  "stderr": "",
+  "wall_ns": 697797742
+}

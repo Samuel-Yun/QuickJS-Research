@@ -1,0 +1,242 @@
+{
+  "status": "LIMITED_OOM_FAILURES",
+  "original_failures_preserved": true,
+  "checks": [
+    {
+      "label": "A_OOM_STATS",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:48:46.861956+00:00:A_OOM_STATS/524288",
+      "exit_code": -6,
+      "pass_": false,
+      "asan_error": true,
+      "backtrace_region": true
+    },
+    {
+      "label": "A_OOM_STATS",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:48:48.793103+00:00:A_OOM_STATS/1048576",
+      "exit_code": -6,
+      "pass_": false,
+      "asan_error": true,
+      "backtrace_region": true
+    },
+    {
+      "label": "S001_OOM_STATS",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:48:50.564420+00:00:S001_OOM_STATS/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "S001_OOM_STATS",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:48:51.391202+00:00:S001_OOM_STATS/1048576",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "IO2_LAYOUT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:48:52.255888+00:00:IO2_LAYOUT/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "IO2_LAYOUT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:48:53.108028+00:00:IO2_LAYOUT/1048576",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "IO2_DIRECT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:48:54.016159+00:00:IO2_DIRECT/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "IO2_DIRECT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:48:54.851612+00:00:IO2_DIRECT/1048576",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "IO4_LAYOUT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:48:55.736676+00:00:IO4_LAYOUT/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "IO4_LAYOUT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:48:54.721204+00:00:IO4_LAYOUT/1048576",
+      "exit_code": -6,
+      "pass_": false,
+      "asan_error": true,
+      "backtrace_region": true
+    },
+    {
+      "label": "IO4_DIRECT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:48:56.684247+00:00:IO4_DIRECT/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "IO4_DIRECT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:48:57.489535+00:00:IO4_DIRECT/1048576",
+      "exit_code": -6,
+      "pass_": false,
+      "asan_error": true,
+      "backtrace_region": true
+    },
+    {
+      "label": "AQ1",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:48:59.588456+00:00:AQ1/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "AQ1",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:49:00.433420+00:00:AQ1/1048576",
+      "exit_code": -6,
+      "pass_": false,
+      "asan_error": true,
+      "backtrace_region": true
+    },
+    {
+      "label": "AP1",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:49:02.400095+00:00:AP1/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "AP1",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:49:03.227407+00:00:AP1/1048576",
+      "exit_code": -6,
+      "pass_": false,
+      "asan_error": true,
+      "backtrace_region": true
+    },
+    {
+      "label": "ST1",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:49:05.043352+00:00:ST1/524288",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "label": "ST1",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:49:05.866181+00:00:ST1/1048576",
+      "exit_code": 0,
+      "pass_": true,
+      "asan_error": false,
+      "backtrace_region": false
+    }
+  ],
+  "helper_source_equivalence": {
+    "build_backtrace": {
+      "sha256": {
+        "A": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "s001": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "IO2_LAYOUT": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "IO2_DIRECT": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "IO4_LAYOUT": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "IO4_DIRECT": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "AQ1": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "AP1": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a",
+        "ST1": "c6c736ad6160215b792f4aeb319592494c42f1a42a70f06ea67c5d1c9960214a"
+      },
+      "all_identical": true
+    },
+    "JS_ThrowError2": {
+      "sha256": {
+        "A": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "s001": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "IO2_LAYOUT": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "IO2_DIRECT": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "IO4_LAYOUT": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "IO4_DIRECT": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "AQ1": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "AP1": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb",
+        "ST1": "f061922a64687ffcab8c3a3317f709a1ce1fe6872d1096dbb804d4224a2482bb"
+      },
+      "all_identical": true
+    }
+  },
+  "original_baseline_controls": [
+    {
+      "parent": "A",
+      "label": "A_OOM_STATS",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:45:37.704073+00:00:A_OOM_STATS/524288",
+      "exit_code": 0,
+      "null_catch_error": false,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "parent": "A",
+      "label": "A_OOM_STATS",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:45:38.543730+00:00:A_OOM_STATS/1048576",
+      "exit_code": 0,
+      "null_catch_error": false,
+      "asan_error": false,
+      "backtrace_region": false
+    },
+    {
+      "parent": "s001",
+      "label": "S001_OOM_STATS",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:47:59.363495+00:00:S001_OOM_STATS/524288",
+      "exit_code": -6,
+      "null_catch_error": false,
+      "asan_error": true,
+      "backtrace_region": true
+    },
+    {
+      "parent": "s001",
+      "label": "S001_OOM_STATS",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:48:01.226376+00:00:S001_OOM_STATS/1048576",
+      "exit_code": 0,
+      "null_catch_error": false,
+      "asan_error": false,
+      "backtrace_region": false
+    }
+  ],
+  "performance_remeasured": false,
+  "complete_oom_safety_proven": false
+}

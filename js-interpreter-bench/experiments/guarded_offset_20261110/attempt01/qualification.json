@@ -1,0 +1,41 @@
+{
+  "release": {
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01/work/GUARDED_OFFSET/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01/safety.js"
+    ],
+    "cwd": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01",
+    "returncode": 0,
+    "stdout": "SAFETY_PASS 194\n",
+    "stderr": ""
+  },
+  "diagnostic": {
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01/diagnostic/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01/safety.js"
+    ],
+    "cwd": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01",
+    "returncode": 0,
+    "stdout": "SAFETY_PASS 194\n",
+    "stderr": "OFFSET_COUNTS:{\"fills\":29,\"hits\":164,\"rejects\":10}\n"
+  },
+  "sanitizer": {
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01/sanitizer/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01/safety.js"
+    ],
+    "cwd": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/guarded_offset_20261110/attempt01",
+    "returncode": 0,
+    "stdout": "SAFETY_PASS 194\n",
+    "stderr": ""
+  },
+  "math_probe": {
+    "fills": 1,
+    "hits": 14,
+    "rejects": 0
+  },
+  "status": "PASS",
+  "sanitizer_leak_detection": false,
+  "sanitizer_scope": "targeted mutation/receiver/read-store tests, not all Octane or test262",
+  "release_elf_sha256": "e9f6cf291afb3acdbeba3ce6d1533370ade6032d29d6c8b4eb51cca76d79974a"
+}

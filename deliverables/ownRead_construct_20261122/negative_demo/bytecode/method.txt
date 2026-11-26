@@ -1,0 +1,33 @@
+函数 [3] construct  parent=0  args=2 locals=0 bytes=10
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (Pair)
+000003  dup                        
+000004  get_arg0                    (x)
+000005  get_arg1                    (y)
+000006  four_ctor                  record[0] argc=2
+000009  return                     
+  record[0] pc=6, argc=2, 正计划=True, 负目标=False
+
+函数 [4] Unsupported  parent=0  args=1 locals=1 bytes=12
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_arg0                    (x)
+000004  push_1                     1
+000005  add                        
+000006  put_field                  x
+000011  return_undef               
+
+函数 [5] constructUnsupported  parent=0  args=1 locals=0 bytes=9
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (Unsupported)
+000003  dup                        
+000004  get_arg0                    (x)
+000005  four_ctor                  record[0] argc=1
+000008  return                     
+  record[0] pc=5, argc=1, 正计划=False, 负目标=True
+

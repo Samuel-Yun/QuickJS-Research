@@ -1,0 +1,14 @@
+{
+  "command": [
+    "D:\\python3\\python.exe",
+    "-B",
+    "C:\\Users\\mzyx\\Desktop\\0921\\js-interpreter-bench\\experiments\\legacy_ng_ic_slotfix\\attempt01\\recover.py",
+    "old-diagnostics"
+  ],
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921\\js-interpreter-bench",
+  "timestamp": "2026-10-23T11:20:09.607536+00:00",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"C:\\Users\\mzyx\\Desktop\\0921\\js-interpreter-bench\\experiments\\legacy_ng_ic_slotfix\\attempt01\\recover.py\", line 53, in <module>\r\n    if __name__=='__main__':main()\r\n                            ^^^^^^\r\n  File \"C:\\Users\\mzyx\\Desktop\\0921\\js-interpreter-bench\\experiments\\legacy_ng_ic_slotfix\\attempt01\\recover.py\", line 48, in main\r\n    save(HERE/'recovery/old_diagnostic_units_rebuilt.csv.gz',z)\r\n  File \"C:\\Users\\mzyx\\Desktop\\0921\\js-interpreter-bench\\experiments\\legacy_ng_ic_slotfix\\attempt01\\common.py\", line 34, in save\r\n    if p.exists():assert p.read_bytes()==data,str(p)\r\n                         ^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: C:\\Users\\mzyx\\Desktop\\0921\\js-interpreter-bench\\experiments\\legacy_ng_ic_slotfix\\attempt01\\recovery\\old_diagnostic_units_rebuilt.csv.gz\r\n",
+  "wall_ns": 13417660000
+}

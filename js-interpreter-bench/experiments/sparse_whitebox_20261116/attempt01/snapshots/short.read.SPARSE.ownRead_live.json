@@ -1,0 +1,75 @@
+{
+  "label": "ownRead_live",
+  "function": "ownRead",
+  "function_class": 13,
+  "byte_code_len": 7,
+  "arg_count": 1,
+  "var_count": 0,
+  "stack_size": 1,
+  "ic_ready": true,
+  "ic_count": 1,
+  "site_size": 24,
+  "receiver": {
+    "class": 1,
+    "is_exotic": false,
+    "shape": {
+      "address": "0x62754bb6f8a0",
+      "is_hashed": true,
+      "prop_count": 2
+    },
+    "prototype_shape": {
+      "address": "0x62754bb654f0",
+      "is_hashed": false,
+      "prop_count": 12
+    }
+  },
+  "opcodes": [
+    {
+      "pc": 0,
+      "op": 247,
+      "name": "v6_get_arg0",
+      "size": 1,
+      "pop": 0,
+      "push": 1,
+      "format": "none",
+      "raw": "f7"
+    },
+    {
+      "pc": 1,
+      "op": 244,
+      "name": "get_field_rdi",
+      "size": 5,
+      "pop": 1,
+      "push": 1,
+      "format": "u32",
+      "raw": "f406000000",
+      "site_index": 0,
+      "site_delta": 6,
+      "atom": "x"
+    },
+    {
+      "pc": 6,
+      "op": 40,
+      "name": "return",
+      "size": 1,
+      "pop": 1,
+      "push": 0,
+      "format": "none",
+      "raw": "28"
+    }
+  ],
+  "sites": [
+    {
+      "index": 0,
+      "atom": "x",
+      "prop_offset": 0,
+      "shape": {
+        "address": "0x62754bb6f8a0",
+        "is_hashed": true,
+        "prop_count": 2
+      },
+      "holder_shape": null
+    }
+  ],
+  "construct_sites": []
+}

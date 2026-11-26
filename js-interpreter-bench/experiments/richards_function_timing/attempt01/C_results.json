@@ -1,0 +1,98 @@
+{
+  "formal_A_B_status": "COMPLETE_240_OF_240_AUDIT_PASS",
+  "quickjs": {
+    "status": "UNAVAILABLE",
+    "calls_per_Run": 10671,
+    "cumulative_ms_per_Run": null,
+    "share": null,
+    "reasons": [
+      "no JS-function profiler exposed by frozen qjs help",
+      "existing safe samplers retain native PC/property site, not full current JS function",
+      "perf command unavailable; no root/sysctl changes or new profiler build"
+    ],
+    "command_evidence": [
+      "raw/C/qjs_help.json",
+      "raw/C/platform_capabilities.json"
+    ],
+    "source_schema": "diagnostics/C_source_notes.json"
+  },
+  "v8": {
+    "status": "DIAGNOSTIC_ONLY_COARSE_JS_FRAME_SAMPLING_ESTIMATE",
+    "calls_per_Run": 10671,
+    "exact_function_key": {
+      "script_sha256": "642764e1e3bf1ab3b46d105a7d9382f239fb522dee4f052bddd0de7a40197984",
+      "line_zero_based": 700,
+      "column_zero_based": 56,
+      "original_function_sha256": "d75a4572f184bf1403229f373888ea8fc0d6ad2c48e9de35793cc5ab3eceb485"
+    },
+    "independent_processes_1000us": 3,
+    "independent_processes_2000us": 1,
+    "diagnostic_ms_per_Run_range": [
+      0.1938447265625,
+      0.2457978515625
+    ],
+    "diagnostic_interval_share_range": [
+      0.09447073694951522,
+      0.11321238460194262
+    ],
+    "confidence_interval": null,
+    "range_is_not_CI": true,
+    "uninstrumented_true_cumulative_ms_per_Run": null,
+    "sample_loss_or_throttling_count": null,
+    "time_basis": "elapsed profile intervals labelled by endpoint JS stack; not CPU fraction times formal A wall time",
+    "denominator": "same diagnostic profile conservative interior window; no startup/frontend or other benchmark",
+    "boundaries": "start/end bracketed against benchNow; distinct absolute origins; rate fully attested UNKNOWN",
+    "caller_lookup_and_dispatch_included": false,
+    "GC_special": "outside target ancestry, not charged to target; counts retained per run",
+    "helper": "charged only if profiler stack retains target; exact attribution coverage UNKNOWN",
+    "perturbation_on_over_off_minus_1": [
+      0.0035175502645325984,
+      0.08363815853260825
+    ],
+    "alternate_2000us": {
+      "run": "interval2000",
+      "N": 2048,
+      "requested_interval_us": 2000,
+      "batch_ms": 4176.070000000001,
+      "profile_ms": 4178.597,
+      "profile_excess_ms": 2.5269999999995343,
+      "before_bound_ms": 2.3189999999999955,
+      "after_bound_ms": 0.5199999999995271,
+      "samples": 1981,
+      "target_samples": 209,
+      "self_samples": 209,
+      "target_sample_fraction": 0.10550227158001009,
+      "special_samples": 2,
+      "missing_function_identity_nodes": [],
+      "median_delta_us": 2097,
+      "q1_delta_us": 2089.0,
+      "q3_delta_us": 2108.0,
+      "min_delta_us": 1403,
+      "max_delta_us": 3287,
+      "max_5ms_deltas": 0,
+      "profile_tail_without_sample_us": 1451,
+      "target_weighted_full_ms": 440.592,
+      "target_weighted_interior_ms": 440.592,
+      "interior_denominator_ms": 4174.827,
+      "target_weighted_interior_fraction": 0.10553539104734161,
+      "diagnostic_interval_assigned_ms_per_Run": 0.2151328125,
+      "adjacent_unprofiled_batch_ms": null,
+      "profile_on_over_off_minus_1": null,
+      "boot_id": "591775e0-10c9-44b8-8617-bc2dae779282",
+      "target_callFrame": {
+        "functionName": "",
+        "lineNumber": 700,
+        "columnNumber": 56,
+        "scriptId": 5,
+        "url": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_function_timing/attempt01/diagnostics/original.cpu_profile.N2048.v2.js"
+      },
+      "target_children": [],
+      "profile_sha256": "4f7cfe65a70d1fdfab6958cf89966cf22c9c0c5b61e847402e2c659d33587b0f"
+    },
+    "evidence": "diagnostics/C_profile_analysis.json"
+  },
+  "no_B_times_calls": true,
+  "no_claim_of_cross_engine_gap_contribution": true,
+  "C_disjoint_from_formal": true,
+  "C_tooling_investigation": "bounded existing-capability attempt; stopped, no new VM build"
+}

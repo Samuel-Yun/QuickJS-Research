@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-10-29T10:04:15.934899+00:00",
+  "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "host": "LAPTOP-QPKCPDCB",
+  "kernel": "5.15.167.4-microsoft-standard-WSL2",
+  "architecture": "x86_64",
+  "WSL": true,
+  "provenance_manifest": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/function_value_call_path/attempt01/manifest.json",
+  "provenance_manifest_sha256": "0336088c6b6299da59bf888acc1892efc398968acfa430a4554bd7423eab20a1",
+  "commands": {
+    "QJS_A": [
+      "/home/mzyx/read_ic_dequickening_attempt01/A/qjs"
+    ],
+    "QJS_M": [
+      "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs"
+    ],
+    "V8_ON": [
+      "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+      "--jitless",
+      "--no-lazy",
+      "--use-ic"
+    ]
+  },
+  "artifacts": {
+    "QJS_A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "expected_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "matches": true,
+      "size_bytes": 5090704
+    },
+    "QJS_M": {
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "expected_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "matches": true,
+      "size_bytes": 5102680
+    },
+    "V8_ON": {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "expected_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "matches": true,
+      "size_bytes": 53498016
+    }
+  },
+  "dependencies": [
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+      "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+      "size_bytes": 374368,
+      "actual_sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749"
+    },
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat",
+      "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+      "size_bytes": 10819840,
+      "actual_sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+    }
+  ],
+  "sources": {
+    "A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A",
+      "files": {
+        "quickjs.c": "b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "quickjs-opcode.h": "edf63cfcd3684e4f21c702e7005f7c013abcd90d5019fb3baa83ca2739d1dec1",
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f"
+      }
+    },
+    "M": {
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M",
+      "files": {
+        "quickjs.c": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "quickjs-opcode.h": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_types.h": "f7cbb27c6d5882d2553222dd5709280b85ff21623a88b531709933c86cc0046c",
+        "read_ic_prepare.inc": "6c0918de10801c641279e20af9e5295e726675dbe821c3c86e71c0ee8e273b19",
+        "read_ic_runtime.inc": "8d12bb9c2ea08f87291f7d5339eb8a41d641ed38adf916b3ff9be6dfa44f201b",
+        "read_ic_opcodes.inc": "5f160fc754c496603a5baa3fbbff3796c132c2eda7845ceb197af8ce9d3aa624"
+      }
+    }
+  }
+}

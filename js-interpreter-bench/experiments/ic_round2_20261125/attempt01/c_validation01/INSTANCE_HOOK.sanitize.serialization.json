@@ -1,0 +1,31 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.sanitize",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/serialization.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.sanitize/.obj/asan/ubsan/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.sanitize/.obj/asan/ubsan/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.sanitize/.obj/asan/ubsan/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.sanitize/.obj/asan/ubsan/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.sanitize/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/c_validation01/INSTANCE_HOOK.sanitize.serialization"
+  ],
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+    "QJS_INSTANCE_MODE": "hook"
+  },
+  "source_sha256": "8e4fd73690bbfa38d2b68959e1d94db1c8a5a9b152f86be1c440fd5b4687255c",
+  "binary_sha256": "6666945109537a44ca47442b771a8aa9e2d6b7870f004c4772f02b0be9befd99",
+  "exit_code": 0,
+  "stdout": "PREPARED_NORMAL_AND_ROM_PASS\n",
+  "stderr": ""
+}

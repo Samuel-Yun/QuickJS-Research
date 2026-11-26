@@ -1,0 +1,17 @@
+{
+  "label": "COMPARE_FULL",
+  "case": "access-binary-trees",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/work/COMPARE_FULL.counts.rev02/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/access-binary-trees.js"
+  ],
+  "script_sha256": "cdfe0f650f1886f8994a500f5b756acfa7c349b78659f7fa43f49aaa19eae0f9",
+  "binary_sha256": "5318f476d285c110254917f6e1f07ec97a8eed93c0a342cb4e430a7786d2fe76",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"access-binary-trees\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":256,\"checksum\":\"-4\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1149064688.198287,\"stop_ms\":1149066526.129885,\"elapsed_ms\":1837.9315979480743,\"elapsed_per_call_ms\":7.179420304484665,\"warmup_calls\":0}\n",
+  "stderr": "FOUR_COUNTS:{\"attempts\":10770432,\"hits\":5763040,\"eligible\":274,\"fills\":274,\"fallbacks\":5007392,\"overflow\":0,\"sites\":[{\"function\":\"bottomUpTree\",\"source_line\":36,\"source_column\":26,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/access-binary-trees.js\",\"site_id\":0,\"work\":[0,411,2936869,137,8810196,2936732],\"pc\":35,\"attempts\":5488640,\"hits\":2936732,\"eligible\":137,\"fills\":137,\"fallbacks\":2551908,\"overflow\":0,\"bytecode_hex\":\"21030028\"},{\"function\":\"bottomUpTree\",\"source_line\":29,\"source_column\":26,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/access-binary-trees.js\",\"site_id\":1,\"work\":[0,411,2826445,137,8478924,2826308],\"pc\":26,\"attempts\":5281792,\"hits\":2826308,\"eligible\":137,\"fills\":137,\"fallbacks\":2455484,\"overflow\":0,\"bytecode_hex\":\"21030028db110707cf21030028\"}],\"follow\":[10014782,2,0,0,0,0,0,0,6,2,208,240,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 1844.1769459750503
+}

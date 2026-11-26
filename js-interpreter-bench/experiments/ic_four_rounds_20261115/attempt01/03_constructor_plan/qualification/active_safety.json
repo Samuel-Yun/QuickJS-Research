@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "source_sha256": "f458877e78f5abbb79210b6dae091e67f92b9714ccbd663df234f626970d7783",
+  "binary_sha256": "6b99febe8725b4da975c60932b87cdbbce3b0332f259c0771e7626e7609dc7a6",
+  "counts": {
+    "attempts": 1049,
+    "hits": 1028,
+    "eligible": 3,
+    "fills": 3,
+    "fallbacks": 21,
+    "overflow": 0,
+    "sites": [
+      {
+        "function": "<eval>",
+        "site_id": 0,
+        "work": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "pc": 722,
+        "attempts": 1,
+        "hits": 0,
+        "eligible": 0,
+        "fills": 0,
+        "fallbacks": 1,
+        "overflow": 0,
+        "bytecode_hex": "210200390c00380000f544030000380500380400380c00bb15bb16efed240100c7380d00f541030000380200f451030000046f0200000b0a4941000000be0a4a450000004945000000240300c706c76b11000000380400380200b6b7efc70eea1cc96b18000000380000f52b030000c5381000a5240100c70eea0230380200f4"
+      },
+      {
+        "function": "<eval>",
+        "site_id": 1,
+        "work": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "pc": 465,
+        "attempts": 1,
+        "hits": 0,
+        "eligible": 0,
+        "fills": 0,
+        "fallbacks": 1,
+        "overflow": 0,
+        "bytecode_hex": "210200390700380200380700153f3f000000c7380000f530030000380500380400380200bb11bb12efed380100f531030000240000240200c7380200b6153f3f000000c7380000f52f030000380500380400380200bb13bb14efed240100c73802000b153f3f000000c7380000f5210300003805003804003802003812003812"
+      },
+      {
+        "function": "missing",
+        "site_id": 2,
+        "work": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "pc": 5,
+        "attempts": 1,
+        "hits": 0,
+        "eligible": 0,
+        "fills": 0,
+        "fallbacks": 1,
+        "overflow": 0,
+        "bytecode_hex": "21010028"
+      },
+      {
+        "function": "make",
+        "site_id": 3,
+        "work": [
+          0,
+          6,
+          1031,
+          0,
+          2056,
+          1028
+        ],
+        "pc": 4,
+        "attempts": 1046,
+        "hits": 1028,
+        "eligible": 3,
+        "fills": 3,
+        "fallbacks": 18,
+        "overflow": 0,
+        "bytecode_hex": "21020028"
+      }
+    ]
+  },
+  "returncode": 0,
+  "stdout": "[[0,2,true],[1,2,true],[2,2,true],[3,2,true],[4,2,true],[5,2,true],[6,2,true],[7,2,true],[8,2,true],[9,2,true],[10,2,true],[11,2,true],[12,2,true],[13,2,true],[14,2,true],[15,2,true],[16,2,true],[17,2,true],[18,2,true],[19,2,true],[20,2,true],[21,2,true],[22,2,true],[23,2,true],[24,2,true],[25,2,true],[26,2,true],[27,2,true],[28,2,true],[29,2,true],[30,2,true],[31,2,true],[4,3,false],[5,6,true],[7,8,true],[null,10,true],[\"x=9\"],[11,12,true],[15,16,true],[17,18,true],[\"x=9\",true,\"x\",\"y\"],[19,20,false],[null,null,true],[1,null,true],5,true,7,8,[21,22,true],true,[\"x=9\",true,\"x\",\"y\",\"construct\"]]\n",
+  "stderr": "FOUR_COUNTS:{\"attempts\":1049,\"hits\":1028,\"eligible\":3,\"fills\":3,\"fallbacks\":21,\"overflow\":0,\"sites\":[{\"function\":\"<eval>\",\"site_id\":0,\"work\":[0,0,0,0,0,0],\"pc\":722,\"attempts\":1,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":1,\"overflow\":0,\"bytecode_hex\":\"210200390c00380000f544030000380500380400380c00bb15bb16efed240100c7380d00f541030000380200f451030000046f0200000b0a4941000000be0a4a450000004945000000240300c706c76b11000000380400380200b6b7efc70eea1cc96b18000000380000f52b030000c5381000a5240100c70eea0230380200f4\"},{\"function\":\"<eval>\",\"site_id\":1,\"work\":[0,0,0,0,0,0],\"pc\":465,\"attempts\":1,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":1,\"overflow\":0,\"bytecode_hex\":\"210200390700380200380700153f3f000000c7380000f530030000380500380400380200bb11bb12efed380100f531030000240000240200c7380200b6153f3f000000c7380000f52f030000380500380400380200bb13bb14efed240100c73802000b153f3f000000c7380000f5210300003805003804003802003812003812\"},{\"function\":\"missing\",\"site_id\":2,\"work\":[0,0,0,0,0,0],\"pc\":5,\"attempts\":1,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":1,\"overflow\":0,\"bytecode_hex\":\"21010028\"},{\"function\":\"make\",\"site_id\":3,\"work\":[0,6,1031,0,2056,1028],\"pc\":4,\"attempts\":1046,\"hits\":1028,\"eligible\":3,\"fills\":3,\"fallbacks\":18,\"overflow\":0,\"bytecode_hex\":\"21020028\"}]}\n",
+  "output_equal_to_parent_C": true
+}

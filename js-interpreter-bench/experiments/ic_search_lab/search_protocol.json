@@ -1,0 +1,33 @@
+{
+  "version": "IC_SEARCH_20261104_POST_REBOOT_V1",
+  "branch": "myx",
+  "start_commit": "f191a09a21be9a672f2c4ac06ddbe9d11b483a77",
+  "max_actual_candidates": 12,
+  "max_shortlist": 3,
+  "max_final_candidate": 1,
+  "seed": "M; not asserted superior to A; U excluded as parent",
+  "A": "frozen original upstream, never modified",
+  "build": "same existing GCC13.3.0 Makefile -O2 -g -fwrapv; assertions retained; no new LTO/PGO/padding",
+  "light_correctness": "console smoke plus checks.js current value, layout, descriptor, prototype, proxy, exception, method receiver and temporary object cases; candidate-specific checks if lifecycle/storage changes",
+  "first_screen": {
+    "suite": "all26 frozen SunSpider 1.0.2, existing inputs/adapter/driver/repetitions",
+    "order": "A_before -> candidate -> A_after per case; seeded case order",
+    "candidate_samples_per_case": 1,
+    "ratio": "candidate / sqrt(A_before*A_after)",
+    "GM": "all26 equal case geometric mean, no missing-case GM",
+    "drift": "max(A_before,A_after)/min(...) >1.10 = UNSTABLE; one full triple diagnostic; original stays primary; repeated drift triggers environment stop",
+    "CI": null
+  },
+  "priority": "about >=5% whole-suite or larger mechanism-related per-case point estimate; 1-5% = tentative; any >10% regression prominent",
+  "octane_coarse": "about every4 candidates or substantial coverage change; best current candidate plus A, all17 fixed cases, one fresh process each condition/case with A sandwich preferred",
+  "recheck": "at most3 candidates; 3-5 interleaved full SunSpider rounds including same-batch A and parent; retain all rounds",
+  "metric": "first-call-inclusive interpreter-mode execution; capture native monotonic performance.now before workload; no workload pre-run; Setup/static load outside; GC/builtins/dynamic frontend within original Run remain included",
+  "final_gate": "only if correctness/recheck/complete Octane coarse acceptable; freeze one candidate and new data, all17 Octane A/candidate/V8_ON each30 fresh children and all26 SunSpider A/candidate each30; independent batch if clear benefit",
+  "V8_ON_final": ["--jitless", "--no-lazy", "--use-ic"],
+  "aggregate": "SunSpider equal cases; Octane core16/13suite and expanded17/14suite, within-suite GM then equal suites, Crypto fixed input, Box2D/official latency coverage limits retained",
+  "final_bootstrap": "10000 fixed-seed complete-round/paired groups; recompute medians and ratios; exploratory percentile95 unadjusted",
+  "raw": "append-only runs.jsonl, process_start/result and linked measurement; boot/command/input/binary/script hash, N, stdout/stderr, exit, internal/outer monotonic intervals; no deleted outliers",
+  "environment": "each performance campaign one boot and same identities; no compiler/diagnostic/other benchmark concurrency; host power/frequency/background UNKNOWN",
+  "search_stop": "12 actual candidates or one credible candidate fully explained and confirmed; environment failure saves partial records and recovery needs explicit checks, not an engine regression",
+  "never": ["modify private JWST", "overwrite old experiment records", "automatic commit/push", "invent improvement or CI for a single sample"]
+}

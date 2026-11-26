@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "stdout": "\tlinux-vdso.so.1 (0x00007ffcd9f3b000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f655852e000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f655831b000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f6558728000)\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "ldd",
+    "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01",
+  "label": "M final dependencies",
+  "timestamp": "2026-11-02T20:11:42.792473+00:00",
+  "completed_at": "2026-11-02T20:11:42.801552+00:00",
+  "outer_start_ns": 40536841114649,
+  "outer_stop_ns": 40536850273252,
+  "external_wall_ms": 9.158603,
+  "child_user_ms": 5.308,
+  "child_system_ms": 0.0,
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "boot_id_after": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "load_average": [
+    0.841796875,
+    0.82568359375,
+    0.91845703125
+  ]
+}

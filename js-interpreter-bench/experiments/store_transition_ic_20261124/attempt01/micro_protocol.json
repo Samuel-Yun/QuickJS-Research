@@ -1,0 +1,37 @@
+{
+  "iterations": 67108864,
+  "repeats": 5,
+  "pilot": [
+    {
+      "label": "SPARSE",
+      "case": "plain",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 134.36654806137085
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "case": "plain",
+      "iterations": 1048576,
+      "checksum": 3145728,
+      "elapsed_ms": 120.46289503574371
+    },
+    {
+      "label": "SPARSE",
+      "case": "plus_one",
+      "iterations": 1048576,
+      "checksum": 4194304,
+      "elapsed_ms": 115.03152000904083
+    },
+    {
+      "label": "STORE_TRANSITION_IC",
+      "case": "plus_one",
+      "iterations": 1048576,
+      "checksum": 4194304,
+      "elapsed_ms": 87.52697193622589
+    }
+  ],
+  "CPU": 2,
+  "extra_warmup": 0,
+  "first_call_included": true
+}

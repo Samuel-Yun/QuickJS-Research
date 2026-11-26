@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "independent_from_original_SPARSE": true,
+  "source_changes": [
+    "quickjs.c: OP_four_ctor",
+    "four_runtime.inc: one padding byte and learning reset"
+  ],
+  "extra_slots": 0,
+  "site_bytes": 32,
+  "full_plan_bytes": 96,
+  "counter_offset": 30,
+  "same_target_other_guard_failure_keeps_original_behavior": true,
+  "hit_zero_does_not_store_verified_in_Release_assembly": true,
+  "alternating_positive_updates": 1,
+  "D_first_learn_call": 2,
+  "D_first_hit_call": 3,
+  "fresh_Release_processes": 45,
+  "independent_diagnostic_processes": 9,
+  "all_samples_retained": true,
+  "no_benchmark_algorithm_changes": true,
+  "full_benchmarks_run": false,
+  "artifacts": {
+    "TWICE.release.patch": "973aec759e4bbf66e70265813697c7f111f60ee0fef0c4c30746cbb87596fdd4",
+    "ctor.js": "a3a4530a041865de459e856654fcaeea9555dcae716f8abc162203aa12882e19",
+    "switch.js": "44b8a11a9061997d5fc6fc0997aa2c5439b497e9b58d3c09450e73c8ead1a8cd",
+    "policy_probe.js": "8870e50cfd1fbe9b10e347988c9d45a94bfcff246e1f1eedd380a3aef95f865e",
+    "results.md": "9a79e7c3073b2428c528301206df4f1876ab3f1253d9c0d638f5b5c65137fea5",
+    "analysis/summary.csv": "c5ca7e23d2f986336fb0a962a00cc0268741ba17271753b302aef05cb3d9eacd",
+    "analysis/samples.csv": "21a747151e04d03bcd4f327f3d9ad2dd0ff001ecbd975b6195cc0a60863c7e50",
+    "analysis/counts.csv": "d859f1fd8aad5c67b4e3007d72130f01b2e08b6c6dcef90b423f45ef5ad59e8a",
+    "analysis/switch_phases.csv": "85f01faab6cb66cefed25461ed837ca4c3468f8e1ecb8c3910e08f249f666db3",
+    "analysis/switch_trace.csv": "48e57ea256145a46151dc66d752ff33190d0cada1bfde3a9ce61ba9a552fdb33",
+    "assembly/hit_reset.txt": "98aede4976f79d73f006365f50c2f54401cde5f80c2069694c222f8ae89c86b2"
+  }
+}

@@ -1,0 +1,222 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -369,6 +369,7 @@
+ DEF(v6_get_arg0, 1, 0, 1, none)
+ DEF(put_field_shared, 5, 2, 0, u32)
+ DEF(four_ctor,3,0,0,u16)
++DEF(forward_ctor,2,0,1,u8)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -318,6 +318,7 @@
+ 
+ /* end JS Malloc */
+ 
++typedef struct FwdCall FwdCall;
+ struct JSRuntime {
+     JSMallocContext malloc_ctx;
+     const char *rt_info;
+@@ -390,6 +391,7 @@
+     int shape_hash_count; /* number of hashed shapes */
+     JSShape **shape_hash;
+     void *user_opaque;
++    FwdCall *forward_call;
+     ExEdge transition_edges[32];
+     uint8_t transition_edges_disabled;
+ };
+@@ -691,6 +693,7 @@
+ #include "read_ic_types.h"
+ 
+ typedef struct FourSite FourSite;
++typedef struct FwdSite FwdSite;
+ typedef struct JSFunctionBytecode {
+     JSGCObjectHeader header; /* must come first */
+     uint8_t js_mode;
+@@ -727,6 +730,7 @@
+     uint8_t read_ic_ready;
+     FourSite *four_sites;
+     uint32_t four_count;
++    FwdSite *forward_site;
+ #ifdef READ_IC_DIAGNOSTIC
+     RDIFunctionDiag *read_ic_diag;
+ #endif
+@@ -6230,6 +6234,7 @@
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
++#include "follow_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -6706,6 +6711,7 @@
+ #endif
+             }
+             for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}}
++            if(b->forward_site){JS_MarkValue(rt,b->forward_site->target,mark_func);JS_MarkValue(rt,b->forward_site->apply,mark_func);}
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -18089,8 +18095,23 @@
+             if (unlikely(JS_IsException(sp[-1])))
+                 goto exception;
+             BREAK;
++        CASE(OP_forward_ctor):
++            {
++                FwdSite*s=b->forward_site;JSValue target,apply;
++                if(fwd_resolve(ctx,s,var_buf[0],flags&JS_CALL_FLAG_CONSTRUCTOR,&target,&apply)){
++                    FwdCall call={.target=target,.receiver=var_buf[0],.apply=apply,.argc=argc,.argv=argv,.previous=rt->forward_call};
++                    JSValue args[2]={var_buf[0],JS_UNDEFINED};
++                    pc=b->byte_code_buf+s->call_end;sf->cur_pc=pc;rt->forward_call=&call;
++                    JSValue result=JS_CallInternal(ctx,apply,target,JS_UNDEFINED,2,args,0);
++                    rt->forward_call=call.previous;JS_FreeValue(ctx,target);JS_FreeValue(ctx,apply);
++                    if(JS_IsException(result))goto exception;
++                    JS_FreeValue(ctx,result);ret_val=JS_UNDEFINED;goto done;
++                }
++                goto follow_original_arguments;
++            }
+         CASE(OP_special_object):
+             {
++            follow_original_arguments:
+                 int arg = *pc++;
+                 switch(arg) {
+                 case OP_SPECIAL_OBJECT_ARGUMENTS:
+@@ -32340,6 +32361,7 @@
+ }
+ 
+ #include "four_prepare.inc"
++#include "follow_prepare.inc"
+ #include "read_ic_prepare.inc"
+ 
+ static void free_bytecode_atoms(JSRuntime *rt,
+@@ -36527,6 +36549,7 @@
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+     for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
++    if(b->forward_site){JS_FreeValueRT(rt,b->forward_site->target);JS_FreeValueRT(rt,b->forward_site->apply);}
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+@@ -37966,6 +37989,7 @@
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+         if(op==OP_four_ctor){FourSite*fs=&b->four_sites[get_u16(bc_buf+pos+1)];op=OP_call_constructor;bc_buf[pos]=op;put_u16(bc_buf+pos+1,fs->argc);}
++        if(op==OP_forward_ctor){op=OP_special_object;bc_buf[pos]=op;}
+         if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
+         if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_put_field_shared) {
+@@ -38876,7 +38900,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++        if (op == OP_forward_ctor || op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
+             op == OP_v6_get_loc0 || op == OP_v6_get_arg0) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+@@ -41463,6 +41487,15 @@
+ 
+     if (check_function(ctx, this_val))
+         return JS_EXCEPTION;
++    FwdCall*fwd=ctx->rt->forward_call;
++    if(fwd && !fwd->consumed && argc==2 && JS_IsUndefined(argv[1]) &&
++       JS_VALUE_GET_TAG(this_val)==JS_TAG_OBJECT && JS_VALUE_GET_OBJ(this_val)==JS_VALUE_GET_OBJ(fwd->target) &&
++       JS_VALUE_GET_TAG(argv[0])==JS_TAG_OBJECT && JS_VALUE_GET_OBJ(argv[0])==JS_VALUE_GET_OBJ(fwd->receiver) &&
++       JS_VALUE_GET_TAG(ctx->rt->current_stack_frame->cur_func)==JS_TAG_OBJECT &&
++       JS_VALUE_GET_OBJ(ctx->rt->current_stack_frame->cur_func)==JS_VALUE_GET_OBJ(fwd->apply)){
++        fwd->consumed=1;FOLLOW(4);FOLLOW(5);FOLLOW_ADD(6,fwd->argc);FOLLOW_ADD(7,2*(uint64_t)fwd->argc);
++        return JS_Call(ctx,this_val,argv[0],fwd->argc,(JSValueConst*)fwd->argv);
++    }
+     this_arg = argv[0];
+     array_arg = argv[1];
+     if ((JS_VALUE_GET_TAG(array_arg) == JS_TAG_UNDEFINED ||
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -20,7 +20,7 @@
+     if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+         return 0; /* optional optimization, retain ordinary image */
+     }
+-    total = code_size + count * sizeof(ReadICSite) + four_extra_size(b);
++    total = code_size + count * sizeof(ReadICSite) + four_extra_size(b) + follow_extra_size(b);
+     if (total > UINT32_MAX) {
+         return 0; /* optional optimization, retain ordinary image */
+     }
+@@ -57,5 +57,6 @@
+     }
+     assert(index == count);
+     four_prepare(ctx,b);
++    follow_prepare(ctx,b);
+     return 0;
+ }
+--- a/follow_runtime.inc
++++ b/follow_runtime.inc
+@@ -0,0 +1,43 @@
++typedef struct FwdCall {JSValue target,receiver,apply;int argc,consumed;JSValue*argv;struct FwdCall*previous;} FwdCall;
++typedef struct FwdSite {JSValue target,apply;JSAtom init_atom,apply_atom;uint32_t call_end;
++#ifdef FOUR_DIAG
++ FourDiag*diag;
++#endif
++} FwdSite;
++static int follow_forward_match(JSFunctionBytecode*b);
++static size_t follow_extra_size(JSFunctionBytecode*b);
++static void follow_prepare(JSContext*ctx,JSFunctionBytecode*b);
++/* A raw descriptor inspection, never a second observable JS property read. */
++static int fwd_data(JSObject*o,JSAtom atom,JSValue*out)
++{
++ for(unsigned depth=0;o && depth<32;depth++,o=o->shape->proto){
++  if(o->is_exotic)return 0;
++  JSProperty*p;JSShapeProperty*d=find_own_property(&p,o,atom);
++  if(d){if(d->flags&JS_PROP_TMASK)return 0;*out=p->u.value;return 1;}
++ }return 0;
++}
++static int fwd_resolve(JSContext*ctx,FwdSite*s,JSValueConst receiver,int construct,JSValue*target,JSValue*apply)
++{
++ FOUR_COUNT(s,q);FOLLOW(0);
++ if(!construct || ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(receiver)!=JS_TAG_OBJECT)goto fail;
++ JSObject*o=JS_VALUE_GET_OBJ(receiver);
++ if(o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
++    ctx->rt->malloc_ctx.malloc_state.malloc_size+sizeof(JSObject)>ctx->rt->malloc_gc_threshold)goto fail;
++ JSValue t,a;if(!fwd_data(o,s->init_atom,&t) || JS_VALUE_GET_TAG(t)!=JS_TAG_OBJECT)goto fail;
++ JSObject*f=JS_VALUE_GET_OBJ(t);
++ if((f->class_id!=JS_CLASS_BYTECODE_FUNCTION && f->class_id!=JS_CLASS_COLD_BYTECODE_FUNCTION) || f->is_exotic ||
++    !fwd_data(f,s->apply_atom,&a) || JS_VALUE_GET_TAG(a)!=JS_TAG_OBJECT)goto fail;
++ JSObject*p=JS_VALUE_GET_OBJ(a);
++ if(p->class_id!=JS_CLASS_C_FUNCTION || p->u.cfunc.cproto!=JS_CFUNC_generic_magic ||
++    p->u.cfunc.magic || p->u.cfunc.c_function.generic_magic!=js_function_apply)goto fail;
++ FOUR_COUNT(s,eligible);FOLLOW(1);
++#ifndef FOLLOW_PROBE
++ if(JS_VALUE_GET_TAG(s->target)==JS_TAG_OBJECT && JS_VALUE_GET_OBJ(s->target)==f &&
++    JS_VALUE_GET_TAG(s->apply)==JS_TAG_OBJECT && JS_VALUE_GET_OBJ(s->apply)==p){
++  *target=JS_DupValue(ctx,t);*apply=JS_DupValue(ctx,a);FOUR_COUNT(s,h);FOLLOW(2);return 1;
++ }
++ JSValue oldt=s->target,olda=s->apply;s->target=JS_DupValue(ctx,t);s->apply=JS_DupValue(ctx,a);
++ FOUR_COUNT(s,fill);JS_FreeValue(ctx,oldt);JS_FreeValue(ctx,olda);
++#endif
++fail:FOUR_COUNT(s,guard);FOLLOW(3);return 0;
++}
+--- a/follow_prepare.inc
++++ b/follow_prepare.inc
+@@ -0,0 +1,22 @@
++static int follow_forward_match(JSFunctionBytecode*b)
++{
++ const uint8_t*p=b->byte_code_buf;
++ return b->func_kind==JS_FUNC_NORMAL && !b->arg_count && b->var_count==2 && !b->var_ref_count &&
++  !b->closure_var_count && !b->need_home_object && !b->is_derived_class_constructor && b->has_simple_parameter_list &&
++  b->byte_code_len==22 && p[0]==OP_push_this && p[1]==OP_put_loc0 && p[2]==OP_special_object && p[3]==1 && p[4]==OP_put_loc1 &&
++  (p[5]==OP_get_loc0 || p[5]==OP_v6_get_loc0) && (p[6]==OP_get_field || p[6]==OP_get_field_rdi) &&
++  (p[11]==OP_get_field2 || p[11]==OP_get_field2_rdi) && p[16]==OP_get_loc0 && p[17]==OP_get_loc1 &&
++  p[18]==OP_call_method && get_u16(p+19)==2 && p[21]==OP_return_undef;
++}
++static size_t follow_extra_size(JSFunctionBytecode*b){return follow_forward_match(b)?sizeof(FwdSite):0;}
++static void follow_prepare(JSContext*ctx,JSFunctionBytecode*b)
++{
++ if(!follow_forward_match(b))return;
++ FwdSite*s=(FwdSite*)((uint8_t*)(b->read_ic_sites+b->read_ic_count)+b->four_count*sizeof(FourSite));b->forward_site=s;
++ uint8_t*p=b->byte_code_buf;s->init_atom=((ReadICSite*)(p+7+get_u32(p+7)))->atom;
++ s->apply_atom=((ReadICSite*)(p+12+get_u32(p+12)))->atom;s->call_end=21;
++#ifdef FOUR_DIAG
++ s->diag=four_dnew(ctx,b,2);
++#endif
++ p[2]=OP_forward_ctor;
++}

@@ -1,0 +1,240 @@
+{
+  "status": "PASS_SELECTED_NARROW_SAFETY_AND_UPSTREAM",
+  "candidate": "s001",
+  "frozen_binary_sha256": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b",
+  "release_rebuild": {
+    "rebuilt_sha256": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b",
+    "frozen_sha256": "111ebef5895836953beec2653158648435041839f05a0f02d70053a6edc48c0b",
+    "same_bytes": true,
+    "semantics": "same32source and compiler/link commands; tests below launch frozen artifact"
+  },
+  "sanitizer_binary_sha256": "dcf02582f528d8793d9c2a727dbff127ec924d0ce7fe889bda942148e6f1faea",
+  "upstream_commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "upstream_test_sha256": {
+    "tests/assert.js": "eb855c61c6c63fb025c24c1b54966955c0944aac70799119580b24143dbcd537",
+    "tests/bjson.c": "8866739b84ab1dfc2929fb5e90c1105aef10ff127b47ddcf903e9cc754b9b8f4",
+    "tests/fixture_cyclic_import.js": "327dd0593d0acd15e7e07ed4a34e900f8f97fa18d01ead6fa3a9ad01b83fb995",
+    "tests/microbench.js": "1ddbec9a4a04f25418dac2ef62b96a8aedfcea5d72d9b9c61bde8025470fd9c3",
+    "tests/test262.patch": "7aa1deb7d2caa001dec08c5b64e484cbc384f9a87c66670443d37473f8d94ab2",
+    "tests/test_bigint.js": "0a369c708d5d0042f1162b00243a8506e4538e0d90f7b0dc57b7017a187ef8c6",
+    "tests/test_bjson.js": "eef0d44d6b2a6e3c10ce13971e5e01889c5e8840a93baa2bfcc2bbac87e4b8f8",
+    "tests/test_builtin.js": "8c7b2ff258313dd4cf401dcbc4dd383a802dc90644fd5d4d918c688810299893",
+    "tests/test_closure.js": "5eebef577be5aacc54467ce2424dbaf02216112874b17836b481db37d866dab8",
+    "tests/test_cyclic_import.js": "c0c5729db8564cd3f2e752dc67d169e452ffcaa6470dcac2ae4c3f9b3a3d8390",
+    "tests/test_language.js": "47006ce2089c3152bf7a7ba79b026f6b134275405196450f6948b3ba578ac3dd",
+    "tests/test_loop.js": "6d27e2f39dfd72a6770241ac9cd49c7b1042915cc9dceaa087c6154b45d895aa",
+    "tests/test_rw_handler.js": "a488cccdbc726d6bff5ccb0b6e59865925bd168d15083b3c7d972bcbf249165b",
+    "tests/test_std.js": "645efbf4e1eb16b2d4769994ca7af56d0d3b82c498784cdeb456fea815375b26",
+    "tests/test_worker.js": "4655fec5e74cc5ee34b4d24401d9c3bf27cc6591bb85970d6db46f41cda4aeda",
+    "tests/test_worker_module.js": "40dbd9ad905c08aac732d9899c55b78004f8647cfa454a7d5f74d9050d2f49e3"
+  },
+  "results": [
+    {
+      "name": "upstream_release/test_closure.js",
+      "token": "2026-11-05T05:40:59.712485+00:00:upstream_release/test_closure.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_language.js",
+      "token": "2026-11-05T05:40:59.783809+00:00:upstream_release/test_language.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_builtin.js",
+      "token": "2026-11-05T05:40:59.853516+00:00:upstream_release/test_builtin.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_loop.js",
+      "token": "2026-11-05T05:40:59.963836+00:00:upstream_release/test_loop.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_bigint.js",
+      "token": "2026-11-05T05:41:00.033948+00:00:upstream_release/test_bigint.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_cyclic_import.js",
+      "token": "2026-11-05T05:41:00.103612+00:00:upstream_release/test_cyclic_import.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_worker.js",
+      "token": "2026-11-05T05:41:00.184865+00:00:upstream_release/test_worker.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_std.js",
+      "token": "2026-11-05T05:41:00.253885+00:00:upstream_release/test_std.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_release/test_rw_handler.js",
+      "token": "2026-11-05T05:41:00.366391+00:00:upstream_release/test_rw_handler.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "release7020",
+      "token": "2026-11-05T05:41:00.436796+00:00:release7020",
+      "exit_code": 0,
+      "stdout": "CHECKS_PASS:7020\n",
+      "stderr": ""
+    },
+    {
+      "name": "release_semantic_extra",
+      "token": "2026-11-05T05:41:00.506957+00:00:release_semantic_extra",
+      "exit_code": 0,
+      "stdout": "V2_SEMANTIC_PASS:5302\nV2_ASYNC_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "asan_ubsan7020",
+      "token": "2026-11-05T05:42:44.174018+00:00:asan_ubsan7020",
+      "exit_code": 0,
+      "stdout": "CHECKS_PASS:7020\n",
+      "stderr": ""
+    },
+    {
+      "name": "asan_ubsan_semantics",
+      "token": "2026-11-05T05:42:44.801253+00:00:asan_ubsan_semantics",
+      "exit_code": 0,
+      "stdout": "V2_SEMANTIC_PASS:5302\nV2_ASYNC_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_asan_ubsan/test_closure.js",
+      "token": "2026-11-05T05:42:45.438990+00:00:upstream_asan_ubsan/test_closure.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_asan_ubsan/test_language.js",
+      "token": "2026-11-05T05:42:46.032838+00:00:upstream_asan_ubsan/test_language.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_asan_ubsan/test_builtin.js",
+      "token": "2026-11-05T05:42:46.661661+00:00:upstream_asan_ubsan/test_builtin.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_asan_ubsan/test_loop.js",
+      "token": "2026-11-05T05:42:47.813118+00:00:upstream_asan_ubsan/test_loop.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "upstream_asan_ubsan/test_bigint.js",
+      "token": "2026-11-05T05:42:48.468176+00:00:upstream_asan_ubsan/test_bigint.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "san_build/read_roundtrip",
+      "token": "2026-11-05T05:42:49.148000+00:00:san_build/read_roundtrip",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "san_run/read_roundtrip",
+      "token": "2026-11-05T05:43:01.555041+00:00:san_run/read_roundtrip",
+      "exit_code": 0,
+      "stdout": "READ_METHOD_REFERENCE_ROUNDTRIP_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "san_build/roundtrip_slots",
+      "token": "2026-11-05T05:43:02.138402+00:00:san_build/roundtrip_slots",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "san_run/roundtrip_slots",
+      "token": "2026-11-05T05:43:14.610960+00:00:san_run/roundtrip_slots",
+      "exit_code": 0,
+      "stdout": "MULTI_ROUNDTRIP_OOM PASS failed_limits=20 successful_limits=172\n",
+      "stderr": ""
+    },
+    {
+      "name": "san_build/gc_cycles",
+      "token": "2026-11-05T05:43:15.209965+00:00:san_build/gc_cycles",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "san_run/gc_cycles",
+      "token": "2026-11-05T05:43:27.133497+00:00:san_run/gc_cycles",
+      "exit_code": 0,
+      "stdout": "GC_CYCLES_PASS rounds=12 cyclic_function_prototypes=1800\n",
+      "stderr": ""
+    },
+    {
+      "name": "san_build/first_entry_roundtrip",
+      "token": "2026-11-05T05:43:27.778324+00:00:san_build/first_entry_roundtrip",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "san_run/first_entry_roundtrip",
+      "token": "2026-11-05T05:43:40.151533+00:00:san_run/first_entry_roundtrip",
+      "exit_code": 0,
+      "stdout": "FIRST_ENTRY_ROM_RETRY_PASS limited_fail=1 limited_success=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "san_qjsc_compile",
+      "token": "2026-11-05T05:43:40.736951+00:00:san_qjsc_compile",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "san_embedding_build",
+      "token": "2026-11-05T05:43:41.316256+00:00:san_embedding_build",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "san_embedding_run",
+      "token": "2026-11-05T05:43:53.321996+00:00:san_embedding_run",
+      "exit_code": 0,
+      "stdout": "CHECKS_PASS:7020\n",
+      "stderr": ""
+    }
+  ],
+  "full_test262": false,
+  "ASan_UBSan": true,
+  "boot_id": "3232ff5b-05a5-4446-ad1c-25dbd2e8e6e7",
+  "limitations": "targeted plus9 upstream Release/5 sanitizer entries; not all test262 or all native paths; OOM limits are scenarios not192independent semantic features"
+}

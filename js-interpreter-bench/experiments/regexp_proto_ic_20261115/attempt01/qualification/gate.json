@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "safety_assertions": 194,
+  "all_outputs_equal": true,
+  "two_realm_calls_per_build": 96,
+  "realms_outputs_equal": true,
+  "builds": [
+    "C",
+    "release",
+    "counts",
+    "san"
+  ],
+  "counter_probe": "16 exec reads: 14 hits / 2 fallbacks",
+  "arbitrary_name": "32 ping reads: 31 hits / 1 fallback",
+  "invalidation_fast_hits": 95,
+  "invalidation_fallbacks": 18,
+  "bytecode_representation_changed": false,
+  "qjsc_roundtrip_not_added": true,
+  "sanitizer_leak_detection": false,
+  "frozen_files": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/regexp_proto_ic_20261115/attempt01/safety.js": "c398c3f2a63766d9c8b63f6c79e0a2f08296703d707da701f601da7deec0490c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/regexp_proto_ic_20261115/attempt01/realms.c": "f76e55f06a4629fda0e4f3d4661de3b70cf564d1a048f901de86b5aa895c3a5a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/regexp_proto_ic_20261115/attempt01/qualify.py": "e5fb6403400f3e1475888ef60180cd59f149cfbb6e34cae9b07c1eab92085a17"
+  }
+}

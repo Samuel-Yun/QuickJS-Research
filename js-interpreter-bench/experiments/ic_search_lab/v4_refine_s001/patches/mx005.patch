@@ -1,0 +1,13 @@
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -13,8 +13,9 @@
+         RDI_QUERY();                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
++            uint32_t earlier_offset = (site->shape == p->shape) ? site->prop_offset : UINT32_MAX;                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+-                offset = rdi_probe(site, p->shape RDI_DARG(d));           \
++                offset = earlier_offset; RDI_COUNT(comparisons);           \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \

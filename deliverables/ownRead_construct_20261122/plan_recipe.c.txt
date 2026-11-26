@@ -1,0 +1,20 @@
+static int plan_recipe(JSFunctionBytecode*b,FourRecipe*r)
+{
+    FOLLOW(0);
+    const uint8_t*p=b->byte_code_buf,*end=p+b->byte_code_len;
+    if(b->func_kind!=JS_FUNC_NORMAL || b->var_count!=1 || b->var_ref_count || b->closure_var_count ||
+       b->need_home_object || b->is_derived_class_constructor || !b->has_simple_parameter_list ||
+       end-p<10 || p[0]!=OP_push_this || p[1]!=OP_put_loc0)return 0;
+    p+=2;r->n=0;
+    while(p<end && *p==OP_get_loc0){
+        if(r->n==8 || end-p<7)return 0;p++;
+        unsigned index;
+        if(*p>=OP_get_arg0 && *p<=OP_get_arg3){index=*p-OP_get_arg0;p++;}
+        else if(*p==OP_get_arg && end-p>=3){index=get_u16(p+1);p+=3;}
+        else return 0;
+        if(end-p<5 || *p!=OP_put_field || index>=b->arg_count)return 0;
+        JSAtom atom=get_u32(p+1);for(unsigned i=0;i<r->n;i++)if(r->atom[i]==atom)return 0;
+        r->atom[r->n]=atom;r->arg[r->n++]=index;p+=5;
+    }
+    return r->n && p+1==end && *p==OP_return_undef;
+}

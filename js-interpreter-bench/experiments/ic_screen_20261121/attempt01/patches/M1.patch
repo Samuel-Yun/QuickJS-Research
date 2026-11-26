@@ -1,0 +1,121 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -1,4 +1,10 @@
+ typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
++typedef struct RecipeMemo {
++    FourRecipe recipe;
++    JSFunctionBytecode *bytecode;
++    const uint8_t *image;
++    int length;
++} RecipeMemo;
+ typedef struct FullPlan FullPlan;
+ struct FourSite {
+     FullPlan *plan;
+@@ -87,18 +93,28 @@
+            ctx->rt->malloc_ctx.malloc_state.malloc_size+sizeof(JSObject)<=ctx->rt->malloc_gc_threshold;
+ #endif
+ }
+-static int plan_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc)
++static int plan_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,RecipeMemo*m)
+ {
+     JSObject*f,*proto;FourRecipe r;
+     if(!plan_base(ctx,callee,target,argc,&f) || !plan_recipe(f->u.func.function_bytecode,&r) ||
+        !(proto=plan_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
+-    return plan_chain(proto,&r);
++    if(!plan_chain(proto,&r))return 0;
++    JSFunctionBytecode*b=f->u.func.function_bytecode;
++    if(m && b->read_ic_ready){
++        m->recipe=r;m->bytecode=b;m->image=b->byte_code_buf;m->length=b->byte_code_len;
++    }
++    return 1;
+ }
+-static void plan_learn(JSContext*ctx,FourSite*slot,JSValueConst callee,JSValueConst result)
++static void plan_learn(JSContext*ctx,FourSite*slot,JSValueConst callee,JSValueConst result,const RecipeMemo*m)
+ {
+     if(JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT || JS_VALUE_GET_TAG(result)!=JS_TAG_OBJECT)return;
+     JSObject*f=JS_VALUE_GET_OBJ(callee),*o=JS_VALUE_GET_OBJ(result),*proto;FourRecipe r;
+-    if(f->class_id!=JS_CLASS_BYTECODE_FUNCTION || !plan_recipe(f->u.func.function_bytecode,&r) ||
++    if(f->class_id!=JS_CLASS_BYTECODE_FUNCTION)return;
++    JSFunctionBytecode*b=f->u.func.function_bytecode;
++    if(m && m->bytecode==b && b->read_ic_ready && m->image==b->byte_code_buf && m->length==b->byte_code_len){
++        r=m->recipe;SCREEN(recipe_reused);
++    }else if(!plan_recipe(b,&r))return;
++    if(
+        !(proto=plan_proto(f)) || !plan_chain(proto,&r) || o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
+        !o->shape->is_hashed || o->shape->proto!=proto || o->shape->prop_count!=r.n || o->shape->deleted_prop_count)return;
+     JSShapeProperty*d=get_shape_prop(o->shape);
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <inttypes.h>
++#include "screen_diag.h"
+ #include <string.h>
+ #include <assert.h>
+ #include <sys/time.h>
+@@ -18332,16 +18333,7 @@
+                 call_argv=sp-call_argc;sf->cur_pc=pc;
+                 int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
+                 if(!fast){
+-                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
+-#ifdef FOUR_DIAG
+-                    FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
+-#endif
+-                    ret_val=JS_CallConstructorInternal(ctx,call_argv[-2],call_argv[-1],call_argc,call_argv,0);
+-#ifdef FOUR_DIAG
+-                    four_ctor_observer=oldscope;
+-#endif
+-                    if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
+-                    else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
++                    ret_val=recipe_slow_construct(ctx,s,call_argv[-2],call_argv[-1],call_argc,call_argv);
+                 }
+                 if(unlikely(JS_IsException(ret_val))){
+                     if(fast){
+--- a/sparse_runtime.inc
++++ b/sparse_runtime.inc
+@@ -10,14 +10,14 @@
+     if(!s->plan){FOUR_COUNT(s,q);FOUR_COUNT(s,guard);return 0;}
+     return plan_try(ctx,s->plan,c,t,a,out);
+ }
+-static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,unsigned n)
++static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,unsigned n,RecipeMemo*m)
+ {
+     if(sparse_same(s,c)){FOLLOW(2);return 0;}
+-    return plan_slow_eligible(ctx,c,t,n);
++    return plan_slow_eligible(ctx,c,t,n,m);
+ }
+-static void four_ctor_learn(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst result)
++static void four_ctor_learn(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst result,const RecipeMemo*m)
+ {
+-    plan_learn(ctx,s,c,result);
++    plan_learn(ctx,s,c,result,m);
+ }
+ static void sparse_remember(JSContext*ctx,FourSite*s,JSValueConst c)
+ {
+@@ -27,3 +27,20 @@
+     if(f->class_id==JS_CLASS_BYTECODE_FUNCTION && plan_recipe(f->u.func.function_bytecode,&r))return;
+     JSValue old=s->negative;s->negative=JS_DupValue(ctx,c);FOLLOW(3);JS_FreeValue(ctx,old);
+ }
++
++static JSValue __attribute__((noinline)) recipe_slow_construct(JSContext*ctx,FourSite*s,
++    JSValueConst callee,JSValueConst target,int argc,JSValue*argv)
++{
++    RecipeMemo memo={0};
++    int eligible=four_ctor_slow_eligible(ctx,s,callee,target,argc,&memo);
++#ifdef FOUR_DIAG
++    FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
++#endif
++    JSValue value=JS_CallConstructorInternal(ctx,callee,target,argc,argv,0);
++#ifdef FOUR_DIAG
++    four_ctor_observer=oldscope;
++#endif
++    if(eligible && !JS_IsException(value))four_ctor_learn(ctx,s,callee,value,&memo);
++    else if(!JS_IsException(value))sparse_remember(ctx,s,callee);
++    return value;
++}
+--- /dev/null
++++ b/screen_diag.h
+@@ -0,0 +1,2 @@
++#define SCREEN(k) ((void)0)
++#define SCREEN_ADD(k,n) ((void)0)

@@ -1,0 +1,47 @@
+{
+  "status": "PASS_NARROW_LAYOUT_LIFECYCLE",
+  "candidate": "s001",
+  "results": [
+    {
+      "name": "M DWARF sizeof",
+      "exit_code": 0,
+      "stdout": "$1 = 16\n$2 = 144\n",
+      "stderr": "",
+      "token": "2026-11-05T03:07:46.946356+00:00:M"
+    },
+    {
+      "name": "s001 DWARF sizeof",
+      "exit_code": 0,
+      "stdout": "$1 = 16\n$2 = 144\n",
+      "stderr": "",
+      "token": "2026-11-05T03:07:47.368723+00:00:s001"
+    },
+    {
+      "name": "read_roundtrip",
+      "stdout": "READ_METHOD_REFERENCE_ROUNDTRIP_PASS\n",
+      "valid": true,
+      "token": "2026-11-05T03:07:48.571831+00:00:s001.read_roundtrip"
+    },
+    {
+      "name": "roundtrip_slots",
+      "stdout": "MULTI_ROUNDTRIP_OOM PASS failed_limits=47 successful_limits=145\n",
+      "valid": true,
+      "token": "2026-11-05T03:07:49.458153+00:00:s001.roundtrip_slots"
+    },
+    {
+      "name": "gc_cycles",
+      "stdout": "GC_CYCLES_PASS rounds=12 cyclic_function_prototypes=1800\n",
+      "valid": true,
+      "token": "2026-11-05T03:07:50.323530+00:00:s001.gc_cycles"
+    },
+    {
+      "name": "qjsc embedding",
+      "valid": true,
+      "stdout": "CHECKS_PASS:7020\n",
+      "token": "2026-11-05T03:07:51.283129+00:00:s001"
+    }
+  ],
+  "sanitizer": false,
+  "full_test262": false,
+  "meaning": "Extra prerequisites for layout candidate; not final full safety gate"
+}

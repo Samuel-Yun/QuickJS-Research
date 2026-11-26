@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "R3_archive_sha256": "b7efa495f5521d4a52c3494c80b64833c0aef049b62d2d7cf6319df1d507a25e",
+  "composition": [
+    "FORWARD_CTOR_IC",
+    "SPARSE_CTOR_IC"
+  ],
+  "new_baseline_full_runs": 0,
+  "formal_samples_per_case": 1,
+  "automatic_extra_rounds": 0,
+  "checks": {
+    "release": {
+      "source_and_ELF_frozen": true,
+      "original_standalone_sources_exact": true,
+      "patch_from_R3_exact": true
+    },
+    "counts": {
+      "source_and_ELF_frozen": true,
+      "original_standalone_sources_exact": true,
+      "patch_from_R3_exact": true
+    },
+    "san": {
+      "source_and_ELF_frozen": true,
+      "original_standalone_sources_exact": true,
+      "patch_from_R3_exact": true
+    }
+  },
+  "formal_processes": 43,
+  "independent_count_processes": 43,
+  "normal_and_ROM_prepared_bytecode": true,
+  "ASan_UBSan": true,
+  "patches_from_both_standalones_exact": true,
+  "source_archive_exact": true,
+  "all_original_inputs_and_Run_boundaries_preserved": true
+}

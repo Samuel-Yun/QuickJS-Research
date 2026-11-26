@@ -1,0 +1,174 @@
+{
+  "MAIN_no_Crypto": {
+    "cases": [
+      "Richards.Richards",
+      "DeltaBlue.DeltaBlue",
+      "RayTrace.RayTrace",
+      "EarleyBoyer.Earley",
+      "EarleyBoyer.Boyer",
+      "RegExp.RegExp",
+      "Splay.Splay",
+      "NavierStokes.NavierStokes",
+      "PdfJS.PdfJS",
+      "Mandreel.Mandreel",
+      "Gameboy.Gameboy",
+      "CodeLoad.CodeLoadClosure",
+      "CodeLoad.CodeLoadJQuery",
+      "Typescript.Typescript"
+    ],
+    "unit_count": 14,
+    "suite_count": 12,
+    "comparisons": {
+      "AR": {
+        "suite_geomean": 0.9852024025984701,
+        "by_suite": {
+          "Richards": 1.01456951551205,
+          "DeltaBlue": 1.0233835012400463,
+          "RayTrace": 0.8979292829353799,
+          "EarleyBoyer": 1.0048260449501991,
+          "RegExp": 1.004116783138002,
+          "Splay": 0.9242107965787759,
+          "NavierStokes": 0.995893946841477,
+          "PdfJS": 0.9974949653594515,
+          "Mandreel": 1.010485862388797,
+          "Gameboy": 0.9791281809692726,
+          "CodeLoad": 0.9519718658556503,
+          "Typescript": 1.0279673817610928
+        },
+        "CI_low": 0.9814970593441402,
+        "CI_high": 0.9907507516689532,
+        "direction": "right_slower"
+      },
+      "MR": {
+        "suite_geomean": 1.005120867621614,
+        "by_suite": {
+          "Richards": 0.9660564590315628,
+          "DeltaBlue": 1.0005085484248777,
+          "RayTrace": 1.0146952325759815,
+          "EarleyBoyer": 0.9994802956703633,
+          "RegExp": 1.139624031245831,
+          "Splay": 0.9894916643179955,
+          "NavierStokes": 0.9390901753387848,
+          "PdfJS": 1.0169695545493325,
+          "Mandreel": 1.0066077841249685,
+          "Gameboy": 0.9702205145484563,
+          "CodeLoad": 1.0418158949931144,
+          "Typescript": 0.9898641658120627
+        },
+        "CI_low": 1.0010479641793788,
+        "CI_high": 1.010667398645418,
+        "direction": "right_faster"
+      },
+      "AM": {
+        "suite_geomean": 0.9801830151330194,
+        "by_suite": {
+          "Richards": 1.0502176203336189,
+          "DeltaBlue": 1.022863325706893,
+          "RayTrace": 0.884925102738316,
+          "EarleyBoyer": 1.0053485289334798,
+          "RegExp": 0.8810947782842967,
+          "Splay": 0.9340258537860304,
+          "NavierStokes": 1.0604880904884344,
+          "PdfJS": 0.9808503714759572,
+          "Mandreel": 1.0038526209761027,
+          "Gameboy": 1.0091810740828975,
+          "CodeLoad": 0.9137620864019761,
+          "Typescript": 1.0384933784503363
+        },
+        "CI_low": 0.9763792971041694,
+        "CI_high": 0.9845169199025636,
+        "direction": "right_slower"
+      }
+    },
+    "interval_method": "10000 complete-rep-round blocks across all cases, paired versions; seed 20261024; percentile interpolated"
+  },
+  "sensitivity_with_Crypto": {
+    "cases": [
+      "Richards.Richards",
+      "DeltaBlue.DeltaBlue",
+      "Crypto.Encrypt",
+      "Crypto.Decrypt",
+      "RayTrace.RayTrace",
+      "EarleyBoyer.Earley",
+      "EarleyBoyer.Boyer",
+      "RegExp.RegExp",
+      "Splay.Splay",
+      "NavierStokes.NavierStokes",
+      "PdfJS.PdfJS",
+      "Mandreel.Mandreel",
+      "Gameboy.Gameboy",
+      "CodeLoad.CodeLoadClosure",
+      "CodeLoad.CodeLoadJQuery",
+      "Typescript.Typescript"
+    ],
+    "unit_count": 16,
+    "suite_count": 13,
+    "comparisons": {
+      "AR": {
+        "suite_geomean": 0.9868154039939909,
+        "by_suite": {
+          "Richards": 1.01456951551205,
+          "DeltaBlue": 1.0233835012400463,
+          "Crypto": 1.0063786488258906,
+          "RayTrace": 0.8979292829353799,
+          "EarleyBoyer": 1.0048260449501991,
+          "RegExp": 1.004116783138002,
+          "Splay": 0.9242107965787759,
+          "NavierStokes": 0.995893946841477,
+          "PdfJS": 0.9974949653594515,
+          "Mandreel": 1.010485862388797,
+          "Gameboy": 0.9791281809692726,
+          "CodeLoad": 0.9519718658556503,
+          "Typescript": 1.0279673817610928
+        },
+        "CI_low": 0.9834550253151065,
+        "CI_high": 0.9918404593315714,
+        "direction": "right_slower"
+      },
+      "MR": {
+        "suite_geomean": 1.0028730452679946,
+        "by_suite": {
+          "Richards": 0.9660564590315628,
+          "DeltaBlue": 1.0005085484248777,
+          "Crypto": 0.9762880827816445,
+          "RayTrace": 1.0146952325759815,
+          "EarleyBoyer": 0.9994802956703633,
+          "RegExp": 1.139624031245831,
+          "Splay": 0.9894916643179955,
+          "NavierStokes": 0.9390901753387848,
+          "PdfJS": 1.0169695545493325,
+          "Mandreel": 1.0066077841249685,
+          "Gameboy": 0.9702205145484563,
+          "CodeLoad": 1.0418158949931144,
+          "Typescript": 0.9898641658120627
+        },
+        "CI_low": 0.9993761432342702,
+        "CI_high": 1.0078253049705845,
+        "direction": "unclear"
+      },
+      "AM": {
+        "suite_geomean": 0.9839883608899743,
+        "by_suite": {
+          "Richards": 1.0502176203336189,
+          "DeltaBlue": 1.022863325706893,
+          "Crypto": 1.0308214005424625,
+          "RayTrace": 0.884925102738316,
+          "EarleyBoyer": 1.0053485289334798,
+          "RegExp": 0.8810947782842967,
+          "Splay": 0.9340258537860304,
+          "NavierStokes": 1.0604880904884344,
+          "PdfJS": 0.9808503714759572,
+          "Mandreel": 1.0038526209761027,
+          "Gameboy": 1.0091810740828975,
+          "CodeLoad": 0.9137620864019761,
+          "Typescript": 1.0384933784503363
+        },
+        "CI_low": 0.9804439945528555,
+        "CI_high": 0.9879066488236458,
+        "direction": "right_slower"
+      }
+    },
+    "interval_method": "10000 complete-rep-round blocks across all cases, paired versions; seed 20261024; percentile interpolated"
+  },
+  "official_Octane_score": false
+}

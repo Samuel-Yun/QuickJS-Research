@@ -1,0 +1,27 @@
+quickjs.c; revision 04be246001599f5995fa2f2d8c91a0f198d3f34c
+18583: 
+18584: #if SHORT_OPCODES
+18585:         CASE(OP_get_loc8): *sp++ = JS_DupValue(ctx, var_buf[*pc++]); BREAK;
+18586:         CASE(OP_put_loc8): set_value(ctx, &var_buf[*pc++], *--sp); BREAK;
+18587:         CASE(OP_set_loc8): set_value(ctx, &var_buf[*pc++], JS_DupValue(ctx, sp[-1])); BREAK;
+18588: 
+18589:         CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
+18590:         CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
+18591:         CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
+18592:         CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
+18593:         CASE(OP_put_loc0): set_value(ctx, &var_buf[0], *--sp); BREAK;
+18594:         CASE(OP_put_loc1): set_value(ctx, &var_buf[1], *--sp); BREAK;
+18595:         CASE(OP_put_loc2): set_value(ctx, &var_buf[2], *--sp); BREAK;
+18596:         CASE(OP_put_loc3): set_value(ctx, &var_buf[3], *--sp); BREAK;
+18597:         CASE(OP_set_loc0): set_value(ctx, &var_buf[0], JS_DupValue(ctx, sp[-1])); BREAK;
+18598:         CASE(OP_set_loc1): set_value(ctx, &var_buf[1], JS_DupValue(ctx, sp[-1])); BREAK;
+18599:         CASE(OP_set_loc2): set_value(ctx, &var_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+18600:         CASE(OP_set_loc3): set_value(ctx, &var_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+18601:         CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
+18602:         CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
+18603:         CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
+18604:         CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
+18605:         CASE(OP_put_arg0): set_value(ctx, &arg_buf[0], *--sp); BREAK;
+18606:         CASE(OP_put_arg1): set_value(ctx, &arg_buf[1], *--sp); BREAK;
+18607:         CASE(OP_put_arg2): set_value(ctx, &arg_buf[2], *--sp); BREAK;
+18608:         CASE(OP_put_arg3): set_value(ctx, &arg_buf[3], *--sp); BREAK;

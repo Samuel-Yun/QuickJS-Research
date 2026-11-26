@@ -1,0 +1,106 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -17861,6 +17861,7 @@
+     JSFunctionBytecode *b;
+     JSStackFrame sf_s, *sf = &sf_s;
+     const uint8_t *pc;
++    ReadICSite *borrow_miss_site; /* assigned only on the arg0 shape miss */
+     int opcode, arg_allocated_size, i;
+     JSValue *local_buf, *stack_buf, *var_buf, *arg_buf, *sp, ret_val, *pval;
+     JSVarRef **var_refs;
+@@ -17869,16 +17870,23 @@
+ /* Prepared-only borrowed load. Preparation proved the next instruction;
+    the execution image is not rewritten after prepare. The original owning
+    argument/local slot is untouched and no callback/allocation occurs here. */
+-#define V6_PREPARED_BORROW(slot) do {                                    \
++#define V6_PREPARED_BORROW(slot, skip_shape_miss) do {                                    \
+     JSValueConst receiver = (slot);                                    \
+     if (JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) {                   \
+         JSObject *object = JS_VALUE_GET_OBJ(receiver);                  \
+         ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
+-        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
+-            site->shape == object->shape) {                            \
+-            *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
+-            pc += 5;                                                   \
+-            break;                                                     \
++        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic) { \
++            if (site->shape == object->shape) {                         \
++                *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
++                pc += 5;                                               \
++                break;                                                 \
++            }                                                          \
++            if (skip_shape_miss) {                                     \
++                *sp++ = JS_DupValue(ctx, receiver);                     \
++                borrow_miss_site = site;                               \
++                pc += 5; /* now past get_field_rdi and its operand */   \
++                goto get_field_rdi_borrow_miss;                         \
++            }                                                          \
+         }                                                              \
+     }                                                                  \
+     *sp++ = JS_DupValue(ctx, receiver);                                 \
+@@ -18745,7 +18753,7 @@
+         CASE(OP_set_loc8): set_value(ctx, &var_buf[*pc++], JS_DupValue(ctx, sp[-1])); BREAK;
+ 
+         CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
+-        CASE(OP_v6_get_loc0): V6_PREPARED_BORROW(var_buf[0]); BREAK;
++        CASE(OP_v6_get_loc0): V6_PREPARED_BORROW(var_buf[0], 0); BREAK;
+         CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
+         CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
+         CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
+@@ -18758,7 +18766,7 @@
+         CASE(OP_set_loc2): set_value(ctx, &var_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_set_loc3): set_value(ctx, &var_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
+-        CASE(OP_v6_get_arg0): V6_PREPARED_BORROW(arg_buf[0]); BREAK;
++        CASE(OP_v6_get_arg0): V6_PREPARED_BORROW(arg_buf[0], 1); BREAK;
+         CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
+         CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
+         CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,5 +1,20 @@
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+-#define GET_READ_IC(name, keep)                                          \
++/* Only arg0's proven ordinary-object shape miss enters here. */
++#ifdef READ_IC_DIAGNOSTIC
++#define RDI_BORROW_DIAG() do {                                         \
++    d = &b->read_ic_diag->sites[site - b->read_ic_sites];                 \
++    RDI_QUERY(); RDI_COUNT(shape_misses);                               \
++} while (0)
++#else
++#define RDI_BORROW_DIAG() ((void)0)
++#endif
++#define RDI_BORROW_MISS_ENTRY                                          \
++    get_field_rdi_borrow_miss:                                         \
++        site = borrow_miss_site;                                      \
++        obj = sp[-1];                                                 \
++        RDI_BORROW_DIAG();
++
++#define GET_READ_IC(name, keep, borrow_entry)                                          \
+     {                                                                   \
+         uint32_t delta = get_u32(pc), offset;                            \
+         ReadICSite *site = (ReadICSite *)(pc + delta);                   \
+@@ -34,6 +49,9 @@
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
++        goto name ## _lookup;                                          \
++        borrow_entry                                                   \
++    name ## _lookup:                                                    \
+         RDI_COUNT(fallback);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+@@ -82,9 +100,11 @@
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
+     }
+         CASE(OP_get_field_rdi):
+-            GET_READ_IC(get_field_rdi, 0);
++            GET_READ_IC(get_field_rdi, 0, RDI_BORROW_MISS_ENTRY);
+             BREAK;
+         CASE(OP_get_field2_rdi):
+-            GET_READ_IC(get_field2_rdi, 1);
++            GET_READ_IC(get_field2_rdi, 1, );
+             BREAK;
+ #undef GET_READ_IC
++#undef RDI_BORROW_MISS_ENTRY
++#undef RDI_BORROW_DIAG

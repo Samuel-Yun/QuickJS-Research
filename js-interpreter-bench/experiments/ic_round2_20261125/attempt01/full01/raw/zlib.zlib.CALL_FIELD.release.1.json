@@ -1,0 +1,22 @@
+{
+  "label": "CALL_FIELD",
+  "case": "zlib.zlib",
+  "rep": 1,
+  "mode": "release",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+    "--std",
+    "-I",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/support/zlib_read.js",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/zlib.js"
+  ],
+  "script_sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+  "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+  "control": {
+    "QJS_CALL_MODE": "field"
+  },
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"zlib.zlib\",\"N\":1,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1160080889.152958,\"stop_ms\":1160085943.82381,\"elapsed_ms\":5054.670852184296,\"elapsed_per_Run_ms\":5054.670852184296,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "",
+  "wall_ms": 5069.158266996965
+}

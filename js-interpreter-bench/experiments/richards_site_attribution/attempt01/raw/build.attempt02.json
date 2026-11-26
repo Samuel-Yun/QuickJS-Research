@@ -1,0 +1,22 @@
+{
+  "exit_code": 0,
+  "stdout": "make: Entering directory '/home/mzyx/richards_site_attribution_attempt01_diag'\ngcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c\ngcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl \n./qjsc -s -c -o repl.c -m repl.js\nmake: 'qjsc' is up to date.\ngcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c\ngcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl \nmake: Leaving directory '/home/mzyx/richards_site_attribution_attempt01_diag'\n",
+  "stderr": "",
+  "command": [
+    "make",
+    "-C",
+    "/home/mzyx/richards_site_attribution_attempt01_diag",
+    "-j2",
+    "qjs",
+    "qjsc"
+  ],
+  "timestamp_utc": "2026-10-17T09:04:41.625895+00:00",
+  "outer_wall_ns": 28224401472,
+  "load_average": [
+    0.89404296875,
+    0.41162109375,
+    0.15478515625
+  ],
+  "boot_id": "12606155-9460-4325-afa7-9ca18a7ed118",
+  "LD_PRELOAD": null
+}

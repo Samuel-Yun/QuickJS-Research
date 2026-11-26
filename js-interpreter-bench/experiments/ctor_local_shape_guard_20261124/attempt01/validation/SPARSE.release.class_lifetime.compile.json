@@ -1,0 +1,27 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DHAVE_CLOSEFROM",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release",
+    "-DLSG_TEST_SPARSE=1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/class_lifetime.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/.obj/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/.obj/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/SPARSE.release.class_lifetime"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

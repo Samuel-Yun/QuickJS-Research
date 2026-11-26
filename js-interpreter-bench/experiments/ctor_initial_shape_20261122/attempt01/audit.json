@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "requested_anchor": "7c941da",
+  "frozen_source_untouched": true,
+  "independent_parent_and_SPARSE_patches_apply": true,
+  "initial_removed_without_changing_plan_try": true,
+  "original_hot_layout_asserted": true,
+  "trace_no_VM_record_or_reference_changes": true,
+  "detailed_vs_light_distribution_identical": true,
+  "correctness_and_ASan_UBSan_pass": true,
+  "Tree_original_N": 256,
+  "initial_fresh_processes": 21,
+  "candidate_fresh_processes": 84,
+  "same_cohort_full_processes": 172,
+  "fresh_SPARSE_and_P2_cases_each": 43,
+  "GM_verified": true,
+  "no_instrumentation_in_timing": true,
+  "rotating_schedule_verified": true,
+  "artifacts": {
+    "runs.jsonl": "cae3cc9d6849f21a7097d6f9dc64ea05efd4afafef8ff9b20ccd7848d67ab443",
+    "comparison.csv": "b460633d44eee8928fb16902e63b6978c1567feed8ed696747fea582a04addf9",
+    "summary.json": "fc4a0a04043b8bdbe304f26ed7a90a8c12e98fe825acd718cf5f5ffc59f86f24",
+    "protocol.json": "507261c132b4c7df3d927010ee1f9698b11ae073a059fd10a6b22df08f4d764d"
+  },
+  "patches": {
+    "OLD_P2-to-P2_KEEP_PRIMARY.patch": "81e7bc067f171874c132edc3611a81638fd994b3fa95288c213699c3c730cd7a",
+    "P2_COLD-to-P2_COLD_INIT.patch": "8b6af8c4ab9bc0ac5639a09dbe2ce70877430cdb19cfb5189cbbdbed37741874",
+    "SPARSE-to-INIT_FREE.patch": "bb9b1cf594d0be67d92efb784edda75662b6b3001193f62d04b3c9b0eed24dcb",
+    "SPARSE-to-P2_COLD_INIT.patch": "15d6812a123f5873c689cef440e71a392b568c5ccde8437dec33af8402a32618",
+    "SPARSE-to-P2_KEEP_PRIMARY.patch": "07b5b81cebe57fdfae7d00c0734a6452a0b6f2190337ab844c30586968aa8267"
+  }
+}

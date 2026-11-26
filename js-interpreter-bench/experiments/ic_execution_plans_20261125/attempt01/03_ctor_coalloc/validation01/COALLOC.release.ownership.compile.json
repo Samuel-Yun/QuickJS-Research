@@ -1,0 +1,23 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/ownership.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/.obj/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/.obj/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/validation01/COALLOC.release.ownership"
+  ],
+  "source_sha256": "e0b00e83499c5e56310149cd2a05625c4ed24d9582a6e714e7ba68e5b479d238",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "In file included from /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/ownership.c:2:\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/ownership.c: In function 'main':\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/ownership.c:25:47: error: implicit declaration of function 'JS_DeletePropertyInt64'; did you mean 'JS_SetPropertyInt64'? [-Wimplicit-function-declaration]\n   25 |    if(i%4==2)for(unsigned j=0;j<23;j++)assert(JS_DeletePropertyInt64(ctx,p,j,0)>=0);\n      |                                               ^~~~~~~~~~~~~~~~~~~~~~\n"
+}

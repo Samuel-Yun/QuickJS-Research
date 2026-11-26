@@ -1,0 +1,35 @@
+{
+  "results": {
+    "INIT_FREE": {
+      "status": "PASS",
+      "checks": [
+        "semantics.js",
+        "d16_cases.js",
+        "property_reads.js",
+        "GC lifetime"
+      ]
+    },
+    "P2_COLD_INIT": {
+      "status": "PASS",
+      "checks": [
+        "semantics.js",
+        "d16_cases.js",
+        "property_reads.js",
+        "GC lifetime"
+      ]
+    },
+    "P2_KEEP_PRIMARY": {
+      "status": "PASS",
+      "checks": [
+        "semantics.js",
+        "d16_cases.js",
+        "property_reads.js",
+        "GC lifetime"
+      ]
+    }
+  },
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "LSan_reason": "LeakSanitizer reported ptrace supervisor unsupported"
+}

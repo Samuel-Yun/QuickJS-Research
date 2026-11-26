@@ -1,0 +1,20 @@
+{
+  "label": "SPARSE",
+  "mode": "fused",
+  "command": [
+    "valgrind",
+    "--tool=callgrind",
+    "--cache-sim=no",
+    "--branch-sim=no",
+    "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/SPARSE.fused.out",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+    "object",
+    "fused",
+    "65536"
+  ],
+  "binary_sha256": "08f6b1f64982e6b19664cd9dc2399357f6ca89e262bf5f1dd63ccac95e81ff27",
+  "exit_code": 0,
+  "stdout": "{\"kind\":\"object\",\"mode\":\"fused\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":57.6711061000824}\n",
+  "stderr": "==3== Callgrind, a call-graph generating cache profiler\n==3== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==3== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==3== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SPARSE.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object fused 65536\n==3== \n==3== For interactive control, run 'callgrind_control -h'.\n==3== \n==3== Events    : Ir\n==3== Collected : 32158110\n==3== \n==3== I   refs:      32,158,110\n"
+}

@@ -1,0 +1,262 @@
+{
+  "status": "PASS",
+  "differentials": [
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/semantics.js",
+      "label": "SPARSE",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/semantics.js",
+      "label": "SPARSE",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/semantics.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/semantics.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/guard_cases.js",
+      "label": "SPARSE",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/guard_cases.js",
+      "label": "SPARSE",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/guard_cases.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/guard_cases.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/safety.js",
+      "label": "SPARSE",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/safety.js",
+      "label": "SPARSE",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/safety.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/safety.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/property_reads.js",
+      "label": "SPARSE",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/property_reads.js",
+      "label": "SPARSE",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/property_reads.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/property_reads.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/02_proto_ticket/safety.js",
+      "label": "SPARSE",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/02_proto_ticket/safety.js",
+      "label": "SPARSE",
+      "mode": "counts",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/02_proto_ticket/safety.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "equal_to_A": true
+    },
+    {
+      "script": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/02_proto_ticket/safety.js",
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "counts",
+      "equal_to_A": true
+    }
+  ],
+  "class_template_not_supported": {
+    "calls": 645,
+    "positive_hits": 0,
+    "positive_hits_with_record": 0,
+    "positive_hits_local": 0,
+    "plan_publications": 0,
+    "plan_allocations": 0,
+    "local_attempts": 0,
+    "local_successes": 0,
+    "local_failures": 0,
+    "no_local_record": 0,
+    "full_checks": 0,
+    "full_check_accepts": 0,
+    "full_check_rejects": 0,
+    "proto_lookups_all": 0,
+    "chain_lookups_all": 0,
+    "proto_lookups_hot": 0,
+    "chain_lookups_hot": 0,
+    "build_attempts": 0,
+    "build_callee_unhashed": 0,
+    "build_proto_lookups": 0,
+    "build_prototype_descriptor": 0,
+    "build_deep": 0,
+    "build_special": 0,
+    "build_chain_unhashed": 0,
+    "records_built": 0,
+    "records_freed": 0,
+    "record_allocation_failures": 0,
+    "record_requested_bytes": 0,
+    "record_usable_bytes": 0,
+    "shape_refs_held": 0,
+    "shape_refs_released": 0,
+    "before_initial_missing": 0,
+    "after_initial_missing": 0,
+    "other_pre_failure": 5,
+    "other_post_failure": 0,
+    "plan_allocation_failures": 0,
+    "FourSite_bytes": 32,
+    "FullPlan_bytes": 104,
+    "LocalShapeGuard_bytes": 48,
+    "FullPlan_callee_offset": 0,
+    "FullPlan_initial_offset": 16,
+    "FullPlan_final_offset": 24,
+    "FullPlan_recipe_offset": 32
+  },
+  "internal_guard_fixture": {
+    "calls": 1820,
+    "positive_hits": 1798,
+    "positive_hits_with_record": 1798,
+    "positive_hits_local": 1778,
+    "plan_publications": 16,
+    "plan_allocations": 2,
+    "local_attempts": 1806,
+    "local_successes": 1778,
+    "local_failures": 28,
+    "no_local_record": 0,
+    "full_checks": 28,
+    "full_check_accepts": 20,
+    "full_check_rejects": 8,
+    "proto_lookups_all": 66,
+    "chain_lookups_all": 224,
+    "proto_lookups_hot": 28,
+    "chain_lookups_hot": 92,
+    "build_attempts": 16,
+    "build_callee_unhashed": 0,
+    "build_proto_lookups": 16,
+    "build_prototype_descriptor": 0,
+    "build_deep": 0,
+    "build_special": 0,
+    "build_chain_unhashed": 0,
+    "records_built": 16,
+    "records_freed": 16,
+    "record_allocation_failures": 0,
+    "record_requested_bytes": 768,
+    "record_usable_bytes": 768,
+    "shape_refs_held": 48,
+    "shape_refs_released": 48,
+    "before_initial_missing": 0,
+    "after_initial_missing": 0,
+    "other_pre_failure": 0,
+    "other_post_failure": 0,
+    "plan_allocation_failures": 0,
+    "FourSite_bytes": 32,
+    "FullPlan_bytes": 104,
+    "LocalShapeGuard_bytes": 48,
+    "FullPlan_callee_offset": 0,
+    "FullPlan_initial_offset": 16,
+    "FullPlan_final_offset": 24,
+    "FullPlan_recipe_offset": 32
+  },
+  "optional_record_OOM": {
+    "calls": 128,
+    "positive_hits": 127,
+    "positive_hits_with_record": 0,
+    "positive_hits_local": 0,
+    "plan_publications": 1,
+    "plan_allocations": 1,
+    "local_attempts": 0,
+    "local_successes": 0,
+    "local_failures": 0,
+    "no_local_record": 127,
+    "full_checks": 127,
+    "full_check_accepts": 127,
+    "full_check_rejects": 0,
+    "proto_lookups_all": 129,
+    "chain_lookups_all": 516,
+    "proto_lookups_hot": 127,
+    "chain_lookups_hot": 508,
+    "build_attempts": 1,
+    "build_callee_unhashed": 0,
+    "build_proto_lookups": 1,
+    "build_prototype_descriptor": 0,
+    "build_deep": 0,
+    "build_special": 0,
+    "build_chain_unhashed": 0,
+    "records_built": 0,
+    "records_freed": 0,
+    "record_allocation_failures": 1,
+    "record_requested_bytes": 0,
+    "record_usable_bytes": 0,
+    "shape_refs_held": 0,
+    "shape_refs_released": 0,
+    "before_initial_missing": 0,
+    "after_initial_missing": 0,
+    "other_pre_failure": 0,
+    "other_post_failure": 0,
+    "plan_allocation_failures": 0,
+    "FourSite_bytes": 32,
+    "FullPlan_bytes": 104,
+    "LocalShapeGuard_bytes": 48,
+    "FullPlan_callee_offset": 0,
+    "FullPlan_initial_offset": 16,
+    "FullPlan_final_offset": 24,
+    "FullPlan_recipe_offset": 32
+  },
+  "failed_guard_uses_original_checks": true,
+  "optional_allocation_failure_preserves_positive_plan": true
+}

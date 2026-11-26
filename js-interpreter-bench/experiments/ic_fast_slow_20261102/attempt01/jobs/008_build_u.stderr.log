@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/build_u.py", line 23, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/build_u.py", line 14, in main
+    save(HERE/'raw/build'/(label+'_patch.json'),r);assert r['exit_code']==0,r['stdout']+r['stderr']
+                                                          ^^^^^^^^^^^^^^^^^
+AssertionError: patching file read_ic_runtime.inc
+patch: **** malformed patch at line 21: @@ -28,6 +39,9 @@
+
+

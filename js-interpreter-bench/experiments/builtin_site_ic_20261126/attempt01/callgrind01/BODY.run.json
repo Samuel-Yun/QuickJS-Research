@@ -1,0 +1,18 @@
+{
+  "command": [
+    "valgrind",
+    "--tool=callgrind",
+    "--instr-atstart=no",
+    "--dump-instr=no",
+    "--compress-strings=no",
+    "--compress-pos=no",
+    "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind01/BODY.callgrind",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind01/BODY.qjs",
+    "--std",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/external/scripts/Acorn.js",
+    "1"
+  ],
+  "exit_code": 0,
+  "stdout": "EXTERNAL_RESULT:{\"case\":\"Acorn\",\"N\":1,\"elapsed_ms\":81213.77640604973,\"ms\":81213.77640604973,\"validation\":{\"root\":\"Program\",\"end\":544096,\"nodes\":29507,\"jsonLength\":2279819,\"hash\":1052523795}}\n",
+  "stderr": "==13== Callgrind, a call-graph generating cache profiler\n==13== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==13== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==13== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind01/BODY.qjs --std /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/external/scripts/Acorn.js 1\n==13== \n==13== For interactive control, run 'callgrind_control -h'.\n==13== \n==13== Events    : Ir\n==13== Collected : 30260443817\n==13== \n==13== I   refs:      30,260,443,817\n"
+}

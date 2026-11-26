@@ -1,0 +1,145 @@
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4095,6 +4095,9 @@
+     return ret;
+ }
+ 
++extern void ex_begin(void);extern void ex_end(void);
++static JSValue js_ex_begin(JSContext *ctx, JSValueConst t, int n, JSValueConst *v) { ex_begin();return JS_UNDEFINED; }
++static JSValue js_ex_end(JSContext *ctx, JSValueConst t, int n, JSValueConst *v) { ex_end();return JS_UNDEFINED; }
+ void js_std_add_helpers(JSContext *ctx, int argc, char **argv)
+ {
+     JSValue global_obj, console, args, performance;
+@@ -4111,7 +4114,9 @@
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));
+-    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx,global_obj,"__ex_begin",JS_NewCFunction(ctx,js_ex_begin,"__ex_begin",0));
++    JS_SetPropertyStr(ctx,global_obj,"__ex_end",JS_NewCFunction(ctx,js_ex_end,"__ex_end",0));
+ 
+     /* same methods as the mozilla JS shell */
+     if (argc >= 0) {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -223,6 +223,7 @@
+ #define __exception __attribute__((warn_unused_result))
+ 
+ typedef struct JSShape JSShape;
++typedef struct ExEdge { JSShape *from,*to; JSAtom atom; int flags; } ExEdge;
+ typedef struct JSString JSString;
+ typedef struct JSString JSAtomStruct;
+ typedef struct JSObject JSObject;
+@@ -389,7 +390,11 @@
+     int shape_hash_count; /* number of hashed shapes */
+     JSShape **shape_hash;
+     void *user_opaque;
++    ExEdge transition_edges[32];
++    uint8_t transition_edges_disabled;
+ };
++
++static void ex_edge_clear(JSRuntime *rt);
+ 
+ struct JSClass {
+     uint32_t class_id; /* 0 means free entry */
+@@ -2427,6 +2432,7 @@
+     struct list_head *el, *el1;
+     int i;
+ 
++    ex_edge_clear(rt);
+     JS_FreeValueRT(rt, rt->current_exception);
+ 
+     list_for_each_safe(el, el1, &rt->job_list) {
+@@ -5349,6 +5355,36 @@
+     if (sh)
+         js_free_shape(rt, sh);
+ }
++
++#define EX_DIAGNOSTIC 1
++#ifdef EX_DIAGNOSTIC
++static int ex_active;
++static uint64_t ex_rmw_attempts,ex_rmw_hits,ex_rmw_guard,ex_rmw_type,ex_rmw_overflow;
++static uint64_t ex_rmw_const_other,ex_loop_entries,ex_loop_iters,ex_loop_guard;
++static uint64_t ex_loop_overflow,ex_loop_checkpoints,ex_edge_queries,ex_edge_hits;
++static uint64_t ex_rmw_constants[33];
++#define EX_COUNT(x) do { if(ex_active) ++ex_##x; } while(0)
++void ex_begin(void) { ex_active=1; }
++void ex_end(void)
++{
++    ex_active=0;
++    fprintf(stderr,"EXECUTION_COUNTS:{\"rmw_attempts\":%llu,\"rmw_hits\":%llu,\"rmw_guard\":%llu,"
++        "\"rmw_type\":%llu,\"rmw_overflow\":%llu,\"rmw_const_other\":%llu,"
++        "\"loop_entries\":%llu,\"loop_iters\":%llu,\"loop_guard\":%llu,\"loop_overflow\":%llu,"
++        "\"loop_checkpoints\":%llu,\"edge_queries\":%llu,\"edge_hits\":%llu,\"constants\":[",
++        (unsigned long long)ex_rmw_attempts,(unsigned long long)ex_rmw_hits,
++        (unsigned long long)ex_rmw_guard,(unsigned long long)ex_rmw_type,(unsigned long long)ex_rmw_overflow,
++        (unsigned long long)ex_rmw_const_other,(unsigned long long)ex_loop_entries,
++        (unsigned long long)ex_loop_iters,(unsigned long long)ex_loop_guard,(unsigned long long)ex_loop_overflow,
++        (unsigned long long)ex_loop_checkpoints,(unsigned long long)ex_edge_queries,(unsigned long long)ex_edge_hits);
++    for(int i=0;i<33;i++) fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)ex_rmw_constants[i]);
++    fprintf(stderr,"]}\n");
++}
++#else
++#define EX_COUNT(x) ((void)0)
++#endif
++
++#include "edge_strong_helpers.inc"
+ 
+ /* make space to hold at least 'count' properties */
+ static no_inline int resize_properties(JSContext *ctx, JSShape **psh,
+@@ -9241,7 +9277,11 @@
+     sh = p->shape;
+     if (sh->is_hashed) {
+         /* try to find an existing shape */
+-        new_sh = find_hashed_shape_prop(ctx->rt, sh, prop, prop_flags);
++        new_sh = ex_edge_lookup(ctx->rt,sh,prop,prop_flags);
++        if (!new_sh) {
++            new_sh = find_hashed_shape_prop(ctx->rt, sh, prop, prop_flags);
++            if (new_sh) ex_edge_fill(ctx->rt,sh,prop,prop_flags,new_sh);
++        }
+         if (new_sh) {
+             /* matching shape found: use it */
+             /*  the property array may need to be resized */
+--- a/edge_strong_helpers.inc
++++ b/edge_strong_helpers.inc
+@@ -0,0 +1,39 @@
++/* Bounded strong references keep intermediate transition layouts available.
++ * Shape RC forces the original COW paths on mutation; cached shapes therefore
++ * stay immutable and hashed. Entries are external GC roots through their RC,
++ * not GC objects, and are cleared before runtime's final cycle collection.
++ */
++_Static_assert(sizeof(JSShape)==56,"shape layout unchanged");
++_Static_assert(sizeof(ExEdge)==24,"entry size");
++static JSShape *ex_edge_lookup(JSRuntime *rt,JSShape *from,JSAtom atom,int flags)
++{
++    uint32_t i=(((uintptr_t)from>>4)^atom^((uint32_t)flags<<3))&31;
++    ExEdge *e=&rt->transition_edges[i];
++    EX_COUNT(edge_queries);
++    if(!rt->transition_edges_disabled && e->from==from && e->atom==atom && e->flags==flags) {
++        assert(from->is_hashed && e->to && e->to->is_hashed);
++        EX_COUNT(edge_hits);return e->to;
++    }
++    return NULL;
++}
++static void ex_edge_fill(JSRuntime *rt,JSShape *from,JSAtom atom,int flags,JSShape *to)
++{
++    JSShape *old_from,*old_to;
++    uint32_t i=(((uintptr_t)from>>4)^atom^((uint32_t)flags<<3))&31;
++    ExEdge *e=&rt->transition_edges[i];
++    if(rt->transition_edges_disabled) return;
++    old_from=e->from;old_to=e->to;
++    js_dup_shape(from);js_dup_shape(to);
++    e->from=from;e->to=to;e->atom=atom;e->flags=flags;
++    /* Publish before releasing any root that might run a native finalizer. */
++    js_free_shape_null(rt,old_from);js_free_shape_null(rt,old_to);
++}
++static void ex_edge_clear(JSRuntime *rt)
++{
++    rt->transition_edges_disabled=1;
++    for(int i=0;i<32;i++) {
++        ExEdge *e=&rt->transition_edges[i];JSShape *a=e->from,*b=e->to;
++        e->from=NULL;e->to=NULL;
++        js_free_shape_null(rt,a);js_free_shape_null(rt,b);
++    }
++}

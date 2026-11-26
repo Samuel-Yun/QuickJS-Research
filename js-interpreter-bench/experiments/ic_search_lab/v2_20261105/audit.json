@@ -1,0 +1,177 @@
+{
+  "status": "PASS_COMPLETE_BOUNDED_SEARCH",
+  "built": [
+    "s001",
+    "s002",
+    "s003",
+    "s004"
+  ],
+  "screens": [
+    {
+      "candidate": "s001",
+      "kind": "octane",
+      "cases": 17
+    },
+    {
+      "candidate": "s001",
+      "kind": "sunspider",
+      "cases": 26
+    },
+    {
+      "candidate": "s002",
+      "kind": "octane",
+      "cases": 17
+    },
+    {
+      "candidate": "s002",
+      "kind": "sunspider",
+      "cases": 26
+    },
+    {
+      "candidate": "s003",
+      "kind": "octane",
+      "cases": 17
+    },
+    {
+      "candidate": "s003",
+      "kind": "sunspider",
+      "cases": 26
+    },
+    {
+      "candidate": "s004",
+      "kind": "octane",
+      "cases": 17
+    },
+    {
+      "candidate": "s004",
+      "kind": "sunspider",
+      "cases": 26
+    }
+  ],
+  "rechecks": [
+    {
+      "candidate": "s001",
+      "kind": "octane",
+      "count": 153
+    },
+    {
+      "candidate": "s001",
+      "kind": "sunspider",
+      "count": 234
+    },
+    {
+      "candidate": "s004",
+      "kind": "octane",
+      "count": 153
+    },
+    {
+      "candidate": "s004",
+      "kind": "sunspider",
+      "count": 234
+    }
+  ],
+  "formal": [
+    {
+      "kind": "octane",
+      "count": 2040,
+      "groups_30": true,
+      "balanced": true
+    },
+    {
+      "kind": "sunspider",
+      "count": 2340,
+      "groups_30": true,
+      "balanced": true
+    }
+  ],
+  "independent": [
+    {
+      "kind": "octane",
+      "count": 200,
+      "groups_10": true,
+      "balanced": true
+    },
+    {
+      "kind": "sunspider",
+      "count": 30,
+      "groups_10": true,
+      "balanced": true
+    }
+  ],
+  "measurements": 6097,
+  "valid": 6097,
+  "stage_counts": {
+    "runtime_gate": 2,
+    "screen": 552,
+    "drift_check": 3,
+    "environment_stability": 4,
+    "regression_check": 6,
+    "recheck": 774,
+    "final_pilot": 146,
+    "formal": 4380,
+    "independent": 230
+  },
+  "campaign_counts": {
+    "v2.runtime_gate": 2,
+    "postreboot.s001.matched.sunspider.screen01": 78,
+    "postreboot.s002.matched.sunspider.screen01": 78,
+    "postreboot.s001.matched.octane.screen01": 51,
+    "postreboot.s003.matched.sunspider.screen01": 39,
+    "v2.health_once": 4,
+    "postreboot.s003.matched.recovery01.sunspider.screen01": 78,
+    "postreboot.s003.matched.octane.screen01": 51,
+    "postreboot.s002.matched.octane.screen01": 51,
+    "postreboot.s004.matched.sunspider.screen01": 78,
+    "postreboot.s004.matched.octane.screen01": 51,
+    "postreboot.s002.matched.octane.regression_check01": 6,
+    "v2.s001.sunspider.recheck01": 234,
+    "v2.s001.octane.recheck01": 153,
+    "v2.s004.sunspider.recheck01": 234,
+    "v2.s004.octane.recheck01": 153,
+    "v2.final.octane.pilot01": 68,
+    "v2.final.sunspider.pilot01": 78,
+    "v2.final.octane.confirm01": 2040,
+    "v2.final.sunspider.confirm01": 2340,
+    "v2.independent.octane.repeat01": 200,
+    "v2.independent.sunspider.repeat01": 30
+  },
+  "invalid_measurements": [],
+  "below_1000ms": 0,
+  "measurement_boot_ids": [
+    "3232ff5b-05a5-4446-ad1c-25dbd2e8e6e7"
+  ],
+  "exact_byte_runner_archives": [
+    "final_collect.71fcc8eaf52e27da549c065980a0e59cc44aecfe5e8fd9a36386648bf9254d83.py",
+    "final_safety.060a9f1f8e488712533459e56f83e080c7e5d607d8e19755593a36e82519d7cb.py",
+    "independent.904abe5e82dacda02c160f01174f46016942387710a988e9a376b1e1f9b09cae.py",
+    "run.1278271cc305e02427763c6fff228cdfe828a866d924e554bed8e7b8a34fc21f.py",
+    "run.1959bb7da1a279f520dd3b51c87b636a3840a7810e7d36c4abc1fdafe34a554b.py",
+    "run.34da4e78da85f11a37a0b423be216d3ebeefc47a6761a3f88150d56ef314f8dd.py",
+    "run.4493101a54b4f46d69f31eb01d4da7a68eae6447fa0ef9203ab15c4852451537.py",
+    "run.450428ab6e0ed0fd831a7f35b53054987dc5ae6756d4bd934301ce89de9b7ea6.py",
+    "run.7699c297cee44cc6b58c6eb24272b8e8d90b6539f51a24b58e54e92474a16c54.py",
+    "run.f5a3ad77b3bbc71700280beb74acd090a7813b4f4421926705986b1a98903689.py",
+    "v1_capture.cdbc0ea687b815ec5c4c1bbfc21594fc21448993553c95941c2bd42f7bc7d96c.py",
+    "v1_measure.3e6a626e7991d93403f5feb814f25b58049825ec695a603907000e58c7799b92.py",
+    "v2_recheck.cefb0578170afed650d75b33ebded39e5a627415ca7f60d9e434d137e0bd47bb.py",
+    "v2_run.f5a3ad77b3bbc71700280beb74acd090a7813b4f4421926705986b1a98903689.py"
+  ],
+  "independent_descriptive_stat_groups_checked": 146,
+  "uncompleted": [],
+  "new_raw_LF": true,
+  "old_host_newline_identity": {
+    "old_manifest": "db358569cbff0b6cb69b38e50c7df5e04f4de17fb268582b5ead534fb42b3d06",
+    "actual": "db358569cbff0b6cb69b38e50c7df5e04f4de17fb268582b5ead534fb42b3d06",
+    "LF": "2eefdc2c4d2e9d11af69e15513fb597159b7d1dc0b2836da03ff6193d204738f",
+    "restored_CRLF": "db358569cbff0b6cb69b38e50c7df5e04f4de17fb268582b5ead534fb42b3d06",
+    "relation": "EXACT",
+    "old_files_modified": false
+  },
+  "optional_artifact_check": true,
+  "explicit_path_maps": [],
+  "formal_samples": 4380,
+  "random_input": "two frozen SunSpider cases unseeded; not removed, not bytewise paired; exploratory",
+  "independent_checks": "patch/source/compile/link/clock/payload/input/script/order/seriality; no runtime launch",
+  "decision": "decision.json",
+  "completion": "completion.json"
+}

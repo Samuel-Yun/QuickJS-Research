@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "semantic_stdout": "V2_SEMANTIC_PASS:5302\nV2_ASYNC_PASS\n",
+  "first_entry_stdout": "FIRST_ENTRY_ROM_RETRY_PASS limited_fail=1 limited_success=0\n",
+  "tokens": [
+    "2026-11-05T04:06:21.435511+00:00:A",
+    "2026-11-05T04:06:21.506382+00:00:s004",
+    "2026-11-05T04:06:22.394462+00:00:s004"
+  ],
+  "limitation": "First-entry low budget may fail at surrounding JS allocation, not proof of a specific metadata allocation site.",
+  "delete_reentry_stdout": "DELETE_REENTRY_PASS deleted=1 finalized=1 saw_undefined=1\n",
+  "delete_reentry_token": "2026-11-05T04:06:23.278551+00:00:s004",
+  "shape_size_observations": [
+    {
+      "label": "M",
+      "stdout": "$1 = 56\n",
+      "token": "2026-11-05T04:06:23.337629+00:00:M"
+    },
+    {
+      "label": "s004",
+      "stdout": "$1 = 64\n",
+      "token": "2026-11-05T04:06:23.665162+00:00:s004"
+    }
+  ]
+}

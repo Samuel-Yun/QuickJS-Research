@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "parent_clock": {
+    "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+    "resolution_seconds": 1e-09,
+    "monotonic": true
+  },
+  "child_clock": "native performance.now captured before base.js; quickjs-libc.c js_os_now CLOCK_MONOTONIC, ms",
+  "bracket_tolerance_ms": 1,
+  "rows": [
+    {
+      "variant": "A",
+      "rep": 0,
+      "outer_start_ns": 4337975599,
+      "outer_stop_ns": 4372339139,
+      "start_ms": 4356.001541,
+      "stop_ms": 4371.885932,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    },
+    {
+      "variant": "A",
+      "rep": 1,
+      "outer_start_ns": 4372372683,
+      "outer_stop_ns": 4394031160,
+      "start_ms": 4377.241897,
+      "stop_ms": 4393.626329,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    },
+    {
+      "variant": "A",
+      "rep": 2,
+      "outer_start_ns": 4394060786,
+      "outer_stop_ns": 4415858217,
+      "start_ms": 4398.779569,
+      "stop_ms": 4415.464153,
+      "min_delta_ms": 0.00014000000010128133,
+      "backwards": 0
+    },
+    {
+      "variant": "P",
+      "rep": 0,
+      "outer_start_ns": 4415887934,
+      "outer_stop_ns": 4438543748,
+      "start_ms": 4421.234266,
+      "stop_ms": 4438.151131,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    },
+    {
+      "variant": "P",
+      "rep": 1,
+      "outer_start_ns": 4438572292,
+      "outer_stop_ns": 4460554656,
+      "start_ms": 4443.636002,
+      "stop_ms": 4460.058998,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    },
+    {
+      "variant": "P",
+      "rep": 2,
+      "outer_start_ns": 4460583280,
+      "outer_stop_ns": 4481926307,
+      "start_ms": 4465.375327,
+      "stop_ms": 4481.555982,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 0,
+      "outer_start_ns": 4481954791,
+      "outer_stop_ns": 4502651647,
+      "start_ms": 4486.796762,
+      "stop_ms": 4502.270632,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 1,
+      "outer_start_ns": 4502679550,
+      "outer_stop_ns": 4524443058,
+      "start_ms": 4508.367082,
+      "stop_ms": 4524.042837,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    },
+    {
+      "variant": "M",
+      "rep": 2,
+      "outer_start_ns": 4524471082,
+      "outer_stop_ns": 4545580900,
+      "start_ms": 4529.709273,
+      "stop_ms": 4545.232296,
+      "min_delta_ms": 0.00013999999919178663,
+      "backwards": 0
+    }
+  ],
+  "UTC_role": "date label only; not used to infer interval endpoints or overlap"
+}

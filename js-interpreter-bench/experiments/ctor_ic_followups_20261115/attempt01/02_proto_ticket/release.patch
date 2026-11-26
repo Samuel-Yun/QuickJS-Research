@@ -1,0 +1,162 @@
+--- a/four_diag.inc
++++ b/four_diag.inc
+@@ -11,6 +11,9 @@
+ } FourDiag;
+ static FourDiag *four_dlist;
+ static int four_active;
++static uint64_t follow_stats[24];
++#define FOLLOW(i) do{if(four_active)follow_stats[i]++;}while(0)
++#define FOLLOW_ADD(i,n) do{if(four_active)follow_stats[i]+=(n);}while(0)
+ static FourDiag *four_dnew(JSContext *ctx,JSFunctionBytecode *b,unsigned pc)
+ {
+     FourDiag *d=calloc(1,sizeof(*d));assert(d);d->pc=pc;
+@@ -45,10 +48,12 @@
+             (unsigned long long)d->work1,(unsigned long long)d->work2,(unsigned long long)d->work3,(unsigned long long)d->work4,(unsigned long long)d->work5,(unsigned long long)d->work6);
+         fprintf(stderr,",\"pc\":%u,\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"bytecode_hex\":\"%s\"}",d->pc,
+             (unsigned long long)d->q,(unsigned long long)d->h,(unsigned long long)d->eligible,(unsigned long long)d->fill,(unsigned long long)d->guard,(unsigned long long)d->overflow,d->bytes);
+-    }fprintf(stderr,"]}\n");
++    }fprintf(stderr,"],\"follow\":[");for(int i=0;i<24;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)follow_stats[i]);fprintf(stderr,"]}\n");
+ }
+ #pragma pop_macro("free")
+ #else
++#define FOLLOW(i) ((void)0)
++#define FOLLOW_ADD(i,n) ((void)0)
+ #define FOUR_COUNT(s,k) ((void)0)
+ #define FOUR_ADD(s,k,n) ((void)0)
+ #endif
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -5,6 +5,9 @@
+     FourRecipe recipe;
+     uint32_t pc;
+     uint16_t argc;
++    uint8_t ticket_valid;
++    uint16_t ticket_queries;
++    uint64_t ticket_epoch;
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+@@ -47,16 +50,18 @@
+  * descriptors along the current entire chain before performing any write. */
+ static int four_ctor_chain(JSObject*proto,const FourRecipe*r)
+ {
++    FOLLOW(0);
+     for(unsigned i=0;i<r->n;i++){
+         JSObject*p=proto;unsigned depth=0;
+         while(p){
+             if(++depth>32 || p->class_id!=JS_CLASS_OBJECT || p->is_exotic)return 0;
+-            JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,p,r->atom[i]);
++            FOLLOW(1);JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,p,r->atom[i]);
+             if(d){if((d->flags&JS_PROP_TMASK) || !(d->flags&JS_PROP_WRITABLE))return 0;break;}
+             p=p->shape->proto;
+         }
+     }return 1;
+ }
++#include "ticket_runtime.inc"
+ static int four_ctor_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
+ {
+     if(ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT ||
+@@ -97,6 +102,7 @@
+ #ifndef FOUR_PROBE
+     JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
+     s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
++    ticket_issue(ctx,s);
+     FOUR_COUNT(s,fill);
+     JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldinitial);js_free_shape_null(ctx->rt,oldfinal);
+ #endif
+@@ -108,7 +114,7 @@
+     JSObject*f;
+     if(s->final && JS_VALUE_GET_TAG(s->callee)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(callee)==JS_TAG_OBJECT &&
+        JS_VALUE_GET_OBJ(s->callee)==JS_VALUE_GET_OBJ(callee) && four_ctor_base(ctx,callee,target,s->argc,&f) &&
+-       four_ctor_proto(f)==s->final->proto && four_ctor_chain(s->final->proto,&s->recipe)){
++       four_ctor_proto(f)==s->final->proto && ticket_check(ctx,s)){
+         /* The two old entries each poll once. Hooks were excluded above. */
+         if(js_poll_interrupts(ctx) || js_poll_interrupts(ctx))return 0;
+         *out=JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -390,6 +390,8 @@
+     int shape_hash_count; /* number of hashed shapes */
+     JSShape **shape_hash;
+     void *user_opaque;
++    uint64_t ctor_ticket_epoch;
++    uint8_t ctor_ticket_disabled;
+     ExEdge transition_edges[32];
+     uint8_t transition_edges_disabled;
+ };
+@@ -1021,6 +1023,7 @@
+     uint8_t is_constructor : 1; /* TRUE if object is a constructor function */
+     uint8_t has_immutable_prototype : 1; /* cannot modify the prototype */
+     uint8_t tmp_mark : 1; /* used in JS_WriteObjectRec() */
++    uint8_t ctor_ticket_watched : 1;
+     uint8_t is_HTMLDDA : 1; /* specific annex B IsHtmlDDA behavior */
+     uint16_t class_id; /* see JS_CLASS_x */
+     /* count the number of weak references to this object. The object
+@@ -5697,6 +5700,7 @@
+     p->has_immutable_prototype = 0;
+     p->tmp_mark = 0;
+     p->is_HTMLDDA = 0;
++    p->ctor_ticket_watched = 0;
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
+@@ -9269,6 +9273,7 @@
+                                 JSObject *p, JSAtom prop, int prop_flags)
+ {
+     JSShape *sh, *new_sh;
++    ticket_mutate(ctx,p);
+ 
+     if (unlikely(__JS_AtomIsTaggedInt(prop))) {
+         /* update is_std_array_prototype */
+@@ -10409,6 +10414,7 @@
+ {
+     JSShape *sh;
+     uint32_t idx = 0;    /* prevent warning */
++    ticket_mutate(ctx,p);
+ 
+     sh = p->shape;
+     if (sh->is_hashed) {
+--- a/ticket_runtime.inc
++++ b/ticket_runtime.inc
+@@ -0,0 +1,41 @@
++/* Watch bits are object-local, never a weak raw pointer registry. Strong
++ * plan->final->proto and the existing chain own all referenced prototypes. */
++static void ticket_mutate(JSContext*ctx,JSObject*p)
++{
++    JSRuntime*rt=ctx->rt;
++    if(p->ctor_ticket_watched){
++        FOLLOW(6);
++        if(rt->ctor_ticket_epoch==UINT64_MAX)rt->ctor_ticket_disabled=1;
++        else rt->ctor_ticket_epoch++;
++    }
++}
++static void ticket_issue(JSContext*ctx,FourSite*s)
++{
++#ifdef FOLLOW_PROBE
++    return;
++#endif
++    uint16_t queries=0;
++    for(unsigned i=0;i<s->recipe.n;i++){
++        JSObject*p=s->final->proto;
++        while(p){
++            p->ctor_ticket_watched=1;queries++;
++            JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,p,s->recipe.atom[i]);
++            if(d)break;
++            p=p->shape->proto;
++        }
++    }
++    s->ticket_queries=queries;s->ticket_epoch=ctx->rt->ctor_ticket_epoch;
++    s->ticket_valid=!ctx->rt->ctor_ticket_disabled;FOLLOW(5);
++}
++static int ticket_check(JSContext*ctx,FourSite*s)
++{
++#ifdef FOLLOW_PROBE
++    return four_ctor_chain(s->final->proto,&s->recipe);
++#endif
++    if(!ctx->rt->ctor_ticket_disabled && s->ticket_valid && s->ticket_epoch==ctx->rt->ctor_ticket_epoch){
++        FOLLOW(2);FOLLOW_ADD(3,s->ticket_queries);return 1;
++    }
++    FOLLOW(4);
++    if(!four_ctor_chain(s->final->proto,&s->recipe))return 0;
++    ticket_issue(ctx,s);return 1;
++}

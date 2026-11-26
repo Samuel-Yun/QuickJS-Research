@@ -1,0 +1,1212 @@
+
+/home/mzyx/read_ic_mic_attempt01/P/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+000000000006e6e0 <js_regexp_exec>:
+   6e6e0:	f3 0f 1e fa          	endbr64
+   6e6e4:	41 57                	push   r15
+   6e6e6:	41 56                	push   r14
+   6e6e8:	41 55                	push   r13
+   6e6ea:	41 54                	push   r12
+   6e6ec:	55                   	push   rbp
+   6e6ed:	53                   	push   rbx
+   6e6ee:	48 89 fb             	mov    rbx,rdi
+   6e6f1:	48 81 ec 98 01 00 00 	sub    rsp,0x198
+   6e6f8:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+   6e6ff:	00 00 
+   6e701:	48 89 84 24 88 01 00 	mov    QWORD PTR [rsp+0x188],rax
+   6e708:	00 
+   6e709:	31 c0                	xor    eax,eax
+   6e70b:	83 fa ff             	cmp    edx,0xffffffff
+   6e70e:	75 0a                	jne    6e71a <js_regexp_exec+0x3a>
+   6e710:	66 83 7e 12 12       	cmp    WORD PTR [rsi+0x12],0x12
+   6e715:	49 89 f5             	mov    r13,rsi
+   6e718:	74 6e                	je     6e788 <js_regexp_exec+0xa8>
+   6e71a:	48 8b 7b 10          	mov    rdi,QWORD PTR [rbx+0x10]
+   6e71e:	48 8d b4 24 40 01 00 	lea    rsi,[rsp+0x140]
+   6e725:	00 
+   6e726:	48 8b 87 58 04 00 00 	mov    rax,QWORD PTR [rdi+0x458]
+   6e72d:	8b 90 d4 02 00 00    	mov    edx,DWORD PTR [rax+0x2d4]
+   6e733:	e8 d8 8b fa ff       	call   17310 <JS_AtomGetStrRT.constprop.0>
+   6e738:	48 8d 35 86 f0 05 00 	lea    rsi,[rip+0x5f086]        # cd7c5 <_IO_stdin_used+0x7c5>
+   6e73f:	48 89 df             	mov    rdi,rbx
+   6e742:	48 89 c2             	mov    rdx,rax
+   6e745:	31 c0                	xor    eax,eax
+   6e747:	e8 04 26 fc ff       	call   30d50 <JS_ThrowTypeError>
+   6e74c:	45 31 f6             	xor    r14d,r14d
+   6e74f:	bd 06 00 00 00       	mov    ebp,0x6
+   6e754:	48 8b 84 24 88 01 00 	mov    rax,QWORD PTR [rsp+0x188]
+   6e75b:	00 
+   6e75c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+   6e763:	00 00 
+   6e765:	0f 85 9b 11 00 00    	jne    6f906 <js_regexp_exec+0x1226>
+   6e76b:	48 81 c4 98 01 00 00 	add    rsp,0x198
+   6e772:	4c 89 f0             	mov    rax,r14
+   6e775:	48 89 ea             	mov    rdx,rbp
+   6e778:	5b                   	pop    rbx
+   6e779:	5d                   	pop    rbp
+   6e77a:	41 5c                	pop    r12
+   6e77c:	41 5d                	pop    r13
+   6e77e:	41 5e                	pop    r14
+   6e780:	41 5f                	pop    r15
+   6e782:	c3                   	ret
+   6e783:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+   6e788:	49 8b 30             	mov    rsi,QWORD PTR [r8]
+   6e78b:	49 89 d6             	mov    r14,rdx
+   6e78e:	41 89 d7             	mov    r15d,edx
+   6e791:	49 8b 50 08          	mov    rdx,QWORD PTR [r8+0x8]
+   6e795:	31 c9                	xor    ecx,ecx
+   6e797:	e8 34 18 fd ff       	call   3ffd0 <JS_ToStringInternal>
+   6e79c:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+   6e7a1:	48 89 c5             	mov    rbp,rax
+   6e7a4:	49 89 d4             	mov    r12,rdx
+   6e7a7:	83 fa 06             	cmp    edx,0x6
+   6e7aa:	74 a0                	je     6e74c <js_regexp_exec+0x6c>
+   6e7ac:	49 8b 45 20          	mov    rax,QWORD PTR [r13+0x20]
+   6e7b0:	48 8b 48 08          	mov    rcx,QWORD PTR [rax+0x8]
+   6e7b4:	48 8b 10             	mov    rdx,QWORD PTR [rax]
+   6e7b7:	85 c9                	test   ecx,ecx
+   6e7b9:	0f 85 81 09 00 00    	jne    6f140 <js_regexp_exec+0xa60>
+   6e7bf:	31 c0                	xor    eax,eax
+   6e7c1:	85 d2                	test   edx,edx
+   6e7c3:	0f 48 d0             	cmovs  edx,eax
+   6e7c6:	48 63 d2             	movsxd rdx,edx
+   6e7c9:	48 89 94 24 f8 00 00 	mov    QWORD PTR [rsp+0xf8],rdx
+   6e7d0:	00 
+   6e7d1:	49 8b 45 30          	mov    rax,QWORD PTR [r13+0x30]
+   6e7d5:	48 83 c0 0c          	add    rax,0xc
+   6e7d9:	48 89 c7             	mov    rdi,rax
+   6e7dc:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+   6e7e0:	e8 cb fb 04 00       	call   be3b0 <lre_get_flags>
+   6e7e5:	89 44 24 30          	mov    DWORD PTR [rsp+0x30],eax
+   6e7e9:	83 e0 21             	and    eax,0x21
+   6e7ec:	89 44 24 18          	mov    DWORD PTR [rsp+0x18],eax
+   6e7f0:	75 0c                	jne    6e7fe <js_regexp_exec+0x11e>
+   6e7f2:	48 c7 84 24 f8 00 00 	mov    QWORD PTR [rsp+0xf8],0x0
+   6e7f9:	00 00 00 00 00 
+   6e7fe:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
+   6e802:	48 89 6c 24 10       	mov    QWORD PTR [rsp+0x10],rbp
+   6e807:	e8 84 fb 04 00       	call   be390 <lre_get_alloc_count>
+   6e80c:	85 c0                	test   eax,eax
+   6e80e:	0f 8e 7c 01 00 00    	jle    6e990 <js_regexp_exec+0x2b0>
+   6e814:	48 98                	cdqe
+   6e816:	48 8b 7b 10          	mov    rdi,QWORD PTR [rbx+0x10]
+   6e81a:	48 8d 34 c5 00 00 00 	lea    rsi,[rax*8+0x0]
+   6e821:	00 
+   6e822:	e8 29 61 fa ff       	call   14950 <__js_malloc>
+   6e827:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
+   6e82c:	48 85 c0             	test   rax,rax
+   6e82f:	0f 84 5b 0b 00 00    	je     6f390 <js_regexp_exec+0xcb0>
+   6e835:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
+   6e839:	e8 62 fb 04 00       	call   be3a0 <lre_get_capture_count>
+   6e83e:	44 8b 45 00          	mov    r8d,DWORD PTR [rbp+0x0]
+   6e842:	48 8b 8c 24 f8 00 00 	mov    rcx,QWORD PTR [rsp+0xf8]
+   6e849:	00 
+   6e84a:	89 44 24 50          	mov    DWORD PTR [rsp+0x50],eax
+   6e84e:	0f b6 45 03          	movzx  eax,BYTE PTR [rbp+0x3]
+   6e852:	41 81 e0 ff ff ff 7f 	and    r8d,0x7fffffff
+   6e859:	c0 e8 07             	shr    al,0x7
+   6e85c:	88 44 24 28          	mov    BYTE PTR [rsp+0x28],al
+   6e860:	44 89 c0             	mov    eax,r8d
+   6e863:	48 39 c8             	cmp    rax,rcx
+   6e866:	0f 8d 34 01 00 00    	jge    6e9a0 <js_regexp_exec+0x2c0>
+   6e86c:	49 8b 45 20          	mov    rax,QWORD PTR [r13+0x20]
+   6e870:	8b 68 08             	mov    ebp,DWORD PTR [rax+0x8]
+   6e873:	85 ed                	test   ebp,ebp
+   6e875:	0f 85 65 09 00 00    	jne    6f1e0 <js_regexp_exec+0xb00>
+   6e87b:	49 8b 55 18          	mov    rdx,QWORD PTR [r13+0x18]
+   6e87f:	8b 4a 18             	mov    ecx,DWORD PTR [rdx+0x18]
+   6e882:	f6 44 8a 3f 08       	test   BYTE PTR [rdx+rcx*4+0x3f],0x8
+   6e887:	0f 84 53 09 00 00    	je     6f1e0 <js_regexp_exec+0xb00>
+   6e88d:	48 c7 00 00 00 00 00 	mov    QWORD PTR [rax],0x0
+   6e894:	48 c7 40 08 00 00 00 	mov    QWORD PTR [rax+0x8],0x0
+   6e89b:	00 
+   6e89c:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6e8a0:	44 89 e1             	mov    ecx,r12d
+   6e8a3:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6e8aa:	45 31 d2             	xor    r10d,r10d
+   6e8ad:	45 31 c0             	xor    r8d,r8d
+   6e8b0:	31 c0                	xor    eax,eax
+   6e8b2:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6e8b9:	00 00 
+   6e8bb:	41 bf 03 00 00 00    	mov    r15d,0x3
+   6e8c1:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6e8c7:	ba 03 00 00 00       	mov    edx,0x3
+   6e8cc:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6e8d3:	00 00 
+   6e8d5:	bd 02 00 00 00       	mov    ebp,0x2
+   6e8da:	45 31 f6             	xor    r14d,r14d
+   6e8dd:	48 c7 44 24 38 03 00 	mov    QWORD PTR [rsp+0x38],0x3
+   6e8e4:	00 00 
+   6e8e6:	48 c7 44 24 28 03 00 	mov    QWORD PTR [rsp+0x28],0x3
+   6e8ed:	00 00 
+   6e8ef:	45 31 e4             	xor    r12d,r12d
+   6e8f2:	83 fa f6             	cmp    edx,0xfffffff6
+   6e8f5:	76 11                	jbe    6e908 <js_regexp_exec+0x228>
+   6e8f7:	8b 78 fc             	mov    edi,DWORD PTR [rax-0x4]
+   6e8fa:	8d 57 ff             	lea    edx,[rdi-0x1]
+   6e8fd:	89 50 fc             	mov    DWORD PTR [rax-0x4],edx
+   6e900:	85 d2                	test   edx,edx
+   6e902:	0f 8e d0 07 00 00    	jle    6f0d8 <js_regexp_exec+0x9f8>
+   6e908:	41 83 f9 f6          	cmp    r9d,0xfffffff6
+   6e90c:	76 13                	jbe    6e921 <js_regexp_exec+0x241>
+   6e90e:	41 8b 40 fc          	mov    eax,DWORD PTR [r8-0x4]
+   6e912:	83 e8 01             	sub    eax,0x1
+   6e915:	41 89 40 fc          	mov    DWORD PTR [r8-0x4],eax
+   6e919:	85 c0                	test   eax,eax
+   6e91b:	0f 8e 87 07 00 00    	jle    6f0a8 <js_regexp_exec+0x9c8>
+   6e921:	83 f9 f6             	cmp    ecx,0xfffffff6
+   6e924:	76 1a                	jbe    6e940 <js_regexp_exec+0x260>
+   6e926:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
+   6e92b:	8b 41 fc             	mov    eax,DWORD PTR [rcx-0x4]
+   6e92e:	89 44 24 18          	mov    DWORD PTR [rsp+0x18],eax
+   6e932:	83 e8 01             	sub    eax,0x1
+   6e935:	89 41 fc             	mov    DWORD PTR [rcx-0x4],eax
+   6e938:	85 c0                	test   eax,eax
+   6e93a:	0f 8e 40 07 00 00    	jle    6f080 <js_regexp_exec+0x9a0>
+   6e940:	83 3c 24 f6          	cmp    DWORD PTR [rsp],0xfffffff6
+   6e944:	76 13                	jbe    6e959 <js_regexp_exec+0x279>
+   6e946:	41 8b 42 fc          	mov    eax,DWORD PTR [r10-0x4]
+   6e94a:	83 e8 01             	sub    eax,0x1
+   6e94d:	41 89 42 fc          	mov    DWORD PTR [r10-0x4],eax
+   6e951:	85 c0                	test   eax,eax
+   6e953:	0f 8e c7 07 00 00    	jle    6f120 <js_regexp_exec+0xa40>
+   6e959:	41 83 ff f6          	cmp    r15d,0xfffffff6
+   6e95d:	76 15                	jbe    6e974 <js_regexp_exec+0x294>
+   6e95f:	41 8b 44 24 fc       	mov    eax,DWORD PTR [r12-0x4]
+   6e964:	83 e8 01             	sub    eax,0x1
+   6e967:	41 89 44 24 fc       	mov    DWORD PTR [r12-0x4],eax
+   6e96c:	85 c0                	test   eax,eax
+   6e96e:	0f 8e ec 06 00 00    	jle    6f060 <js_regexp_exec+0x980>
+   6e974:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
+   6e979:	4c 89 ef             	mov    rdi,r13
+   6e97c:	e8 1f 61 fa ff       	call   14aa0 <__js_free>
+   6e981:	e9 ce fd ff ff       	jmp    6e754 <js_regexp_exec+0x74>
+   6e986:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+   6e98d:	00 00 00 
+   6e990:	48 c7 44 24 08 00 00 	mov    QWORD PTR [rsp+0x8],0x0
+   6e997:	00 00 
+   6e999:	e9 97 fe ff ff       	jmp    6e835 <js_regexp_exec+0x155>
+   6e99e:	66 90                	xchg   ax,ax
+   6e9a0:	44 0f b6 4c 24 28    	movzx  r9d,BYTE PTR [rsp+0x28]
+   6e9a6:	48 8d 55 0c          	lea    rdx,[rbp+0xc]
+   6e9aa:	48 83 ec 08          	sub    rsp,0x8
+   6e9ae:	48 89 54 24 60       	mov    QWORD PTR [rsp+0x60],rdx
+   6e9b3:	44 89 4c 24 78       	mov    DWORD PTR [rsp+0x78],r9d
+   6e9b8:	53                   	push   rbx
+   6e9b9:	48 8b 74 24 10       	mov    rsi,QWORD PTR [rsp+0x10]
+   6e9be:	48 8b 7c 24 18       	mov    rdi,QWORD PTR [rsp+0x18]
+   6e9c3:	e8 58 e0 04 00       	call   bca20 <lre_exec>
+   6e9c8:	5a                   	pop    rdx
+   6e9c9:	59                   	pop    rcx
+   6e9ca:	83 f8 01             	cmp    eax,0x1
+   6e9cd:	74 31                	je     6ea00 <js_regexp_exec+0x320>
+   6e9cf:	44 89 e1             	mov    ecx,r12d
+   6e9d2:	85 c0                	test   eax,eax
+   6e9d4:	0f 88 6e 05 00 00    	js     6ef48 <js_regexp_exec+0x868>
+   6e9da:	44 8b 7c 24 18       	mov    r15d,DWORD PTR [rsp+0x18]
+   6e9df:	45 85 ff             	test   r15d,r15d
+   6e9e2:	0f 85 84 fe ff ff    	jne    6e86c <js_regexp_exec+0x18c>
+   6e9e8:	83 f8 02             	cmp    eax,0x2
+   6e9eb:	0f 84 7b fe ff ff    	je     6e86c <js_regexp_exec+0x18c>
+   6e9f1:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6e9f5:	e9 a9 fe ff ff       	jmp    6e8a3 <js_regexp_exec+0x1c3>
+   6e9fa:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   6ea00:	44 8b 5c 24 18       	mov    r11d,DWORD PTR [rsp+0x18]
+   6ea05:	45 85 db             	test   r11d,r11d
+   6ea08:	74 4f                	je     6ea59 <js_regexp_exec+0x379>
+   6ea0a:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+   6ea0f:	48 8b 4c 24 58       	mov    rcx,QWORD PTR [rsp+0x58]
+   6ea14:	49 8b 55 20          	mov    rdx,QWORD PTR [r13+0x20]
+   6ea18:	48 8b 40 08          	mov    rax,QWORD PTR [rax+0x8]
+   6ea1c:	44 8b 52 08          	mov    r10d,DWORD PTR [rdx+0x8]
+   6ea20:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
+   6ea25:	48 29 c8             	sub    rax,rcx
+   6ea28:	0f b6 4c 24 28       	movzx  ecx,BYTE PTR [rsp+0x28]
+   6ea2d:	48 d3 f8             	sar    rax,cl
+   6ea30:	41 89 c0             	mov    r8d,eax
+   6ea33:	45 85 d2             	test   r10d,r10d
+   6ea36:	0f 85 67 0b 00 00    	jne    6f5a3 <js_regexp_exec+0xec3>
+   6ea3c:	49 8b 45 18          	mov    rax,QWORD PTR [r13+0x18]
+   6ea40:	8b 48 18             	mov    ecx,DWORD PTR [rax+0x18]
+   6ea43:	f6 44 88 3f 08       	test   BYTE PTR [rax+rcx*4+0x3f],0x8
+   6ea48:	0f 84 55 0b 00 00    	je     6f5a3 <js_regexp_exec+0xec3>
+   6ea4e:	4c 89 02             	mov    QWORD PTR [rdx],r8
+   6ea51:	48 c7 42 08 00 00 00 	mov    QWORD PTR [rdx+0x8],0x0
+   6ea58:	00 
+   6ea59:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
+   6ea5d:	e8 5e f9 04 00       	call   be3c0 <lre_get_groupnames>
+   6ea62:	48 89 84 24 a0 00 00 	mov    QWORD PTR [rsp+0xa0],rax
+   6ea69:	00 
+   6ea6a:	48 85 c0             	test   rax,rax
+   6ea6d:	0f 84 87 09 00 00    	je     6f3fa <js_regexp_exec+0xd1a>
+   6ea73:	b9 01 00 00 00       	mov    ecx,0x1
+   6ea78:	31 f6                	xor    esi,esi
+   6ea7a:	ba 02 00 00 00       	mov    edx,0x2
+   6ea7f:	48 89 df             	mov    rdi,rbx
+   6ea82:	e8 39 80 fd ff       	call   46ac0 <JS_NewObjectProtoClass>
+   6ea87:	48 89 84 24 a8 00 00 	mov    QWORD PTR [rsp+0xa8],rax
+   6ea8e:	00 
+   6ea8f:	49 89 c2             	mov    r10,rax
+   6ea92:	48 89 54 24 38       	mov    QWORD PTR [rsp+0x38],rdx
+   6ea97:	89 14 24             	mov    DWORD PTR [rsp],edx
+   6ea9a:	83 fa 06             	cmp    edx,0x6
+   6ea9d:	0f 84 eb 0c 00 00    	je     6f78e <js_regexp_exec+0x10ae>
+   6eaa3:	f6 44 24 30 40       	test   BYTE PTR [rsp+0x30],0x40
+   6eaa8:	0f 85 7b 09 00 00    	jne    6f429 <js_regexp_exec+0xd49>
+   6eaae:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6eab5:	00 00 
+   6eab7:	48 c7 84 24 98 00 00 	mov    QWORD PTR [rsp+0x98],0x0
+   6eabe:	00 00 00 00 00 
+   6eac3:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6eaca:	00 00 
+   6eacc:	48 c7 44 24 78 00 00 	mov    QWORD PTR [rsp+0x78],0x0
+   6ead3:	00 00 
+   6ead5:	8b 44 24 50          	mov    eax,DWORD PTR [rsp+0x50]
+   6ead9:	48 8b 4c 24 58       	mov    rcx,QWORD PTR [rsp+0x58]
+   6eade:	48 c7 84 24 08 01 00 	mov    QWORD PTR [rsp+0x108],0x0
+   6eae5:	00 00 00 00 00 
+   6eaea:	48 c7 84 24 18 01 00 	mov    QWORD PTR [rsp+0x118],0x0
+   6eaf1:	00 00 00 00 00 
+   6eaf6:	48 89 84 24 00 01 00 	mov    QWORD PTR [rsp+0x100],rax
+   6eafd:	00 
+   6eafe:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+   6eb03:	48 89 ac 24 20 01 00 	mov    QWORD PTR [rsp+0x120],rbp
+   6eb0a:	00 
+   6eb0b:	48 8b 00             	mov    rax,QWORD PTR [rax]
+   6eb0e:	4c 89 a4 24 28 01 00 	mov    QWORD PTR [rsp+0x128],r12
+   6eb15:	00 
+   6eb16:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+   6eb1b:	48 29 c8             	sub    rax,rcx
+   6eb1e:	0f b6 4c 24 28       	movzx  ecx,BYTE PTR [rsp+0x28]
+   6eb23:	48 d3 f8             	sar    rax,cl
+   6eb26:	83 3c 24 f6          	cmp    DWORD PTR [rsp],0xfffffff6
+   6eb2a:	89 c0                	mov    eax,eax
+   6eb2c:	48 89 84 24 10 01 00 	mov    QWORD PTR [rsp+0x110],rax
+   6eb33:	00 
+   6eb34:	76 05                	jbe    6eb3b <js_regexp_exec+0x45b>
+   6eb36:	41 83 42 fc 01       	add    DWORD PTR [r10-0x4],0x1
+   6eb3b:	48 8b 73 50          	mov    rsi,QWORD PTR [rbx+0x50]
+   6eb3f:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
+   6eb44:	ba 02 00 00 00       	mov    edx,0x2
+   6eb49:	48 89 df             	mov    rdi,rbx
+   6eb4c:	48 8d 8c 24 00 01 00 	lea    rcx,[rsp+0x100]
+   6eb53:	00 
+   6eb54:	4c 89 94 24 30 01 00 	mov    QWORD PTR [rsp+0x130],r10
+   6eb5b:	00 
+   6eb5c:	83 46 fc 01          	add    DWORD PTR [rsi-0x4],0x1
+   6eb60:	4c 89 54 24 10       	mov    QWORD PTR [rsp+0x10],r10
+   6eb65:	48 89 84 24 38 01 00 	mov    QWORD PTR [rsp+0x138],rax
+   6eb6c:	00 
+   6eb6d:	e8 ce 79 fd ff       	call   46540 <JS_NewObjectFromShape>
+   6eb72:	4c 8b 54 24 10       	mov    r10,QWORD PTR [rsp+0x10]
+   6eb77:	83 fa 06             	cmp    edx,0x6
+   6eb7a:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
+   6eb7f:	49 89 c6             	mov    r14,rax
+   6eb82:	48 89 94 24 c8 00 00 	mov    QWORD PTR [rsp+0xc8],rdx
+   6eb89:	00 
+   6eb8a:	48 89 54 24 28       	mov    QWORD PTR [rsp+0x28],rdx
+   6eb8f:	0f 84 9b 0a 00 00    	je     6f630 <js_regexp_exec+0xf50>
+   6eb95:	4c 8b 64 24 20       	mov    r12,QWORD PTR [rsp+0x20]
+   6eb9a:	8b 54 24 50          	mov    edx,DWORD PTR [rsp+0x50]
+   6eb9e:	48 89 df             	mov    rdi,rbx
+   6eba1:	4c 89 54 24 10       	mov    QWORD PTR [rsp+0x10],r10
+   6eba6:	4c 89 e6             	mov    rsi,r12
+   6eba9:	e8 c2 d2 fc ff       	call   3be70 <expand_fast_array>
+   6ebae:	4c 8b 54 24 10       	mov    r10,QWORD PTR [rsp+0x10]
+   6ebb3:	85 c0                	test   eax,eax
+   6ebb5:	41 89 c3             	mov    r11d,eax
+   6ebb8:	0f 85 12 09 00 00    	jne    6f4d0 <js_regexp_exec+0xdf0>
+   6ebbe:	44 8b 4c 24 50       	mov    r9d,DWORD PTR [rsp+0x50]
+   6ebc3:	45 85 c9             	test   r9d,r9d
+   6ebc6:	0f 8e a8 0a 00 00    	jle    6f674 <js_regexp_exec+0xf94>
+   6ebcc:	48 63 44 24 50       	movsxd rax,DWORD PTR [rsp+0x50]
+   6ebd1:	44 89 bc 24 e0 00 00 	mov    DWORD PTR [rsp+0xe0],r15d
+   6ebd8:	00 
+   6ebd9:	48 89 ac 24 b8 00 00 	mov    QWORD PTR [rsp+0xb8],rbp
+   6ebe0:	00 
+   6ebe1:	4c 8b bc 24 a0 00 00 	mov    r15,QWORD PTR [rsp+0xa0]
+   6ebe8:	00 
+   6ebe9:	48 89 84 24 90 00 00 	mov    QWORD PTR [rsp+0x90],rax
+   6ebf0:	00 
+   6ebf1:	31 c0                	xor    eax,eax
+   6ebf3:	44 89 9c 24 e4 00 00 	mov    DWORD PTR [rsp+0xe4],r11d
+   6ebfa:	00 
+   6ebfb:	48 89 c5             	mov    rbp,rax
+   6ebfe:	4c 89 b4 24 e8 00 00 	mov    QWORD PTR [rsp+0xe8],r14
+   6ec05:	00 
+   6ec06:	4c 89 a4 24 d0 00 00 	mov    QWORD PTR [rsp+0xd0],r12
+   6ec0d:	00 
+   6ec0e:	4c 89 94 24 d8 00 00 	mov    QWORD PTR [rsp+0xd8],r10
+   6ec15:	00 
+   6ec16:	e9 b9 00 00 00       	jmp    6ecd4 <js_regexp_exec+0x5f4>
+   6ec1b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+   6ec20:	48 8b b4 24 b8 00 00 	mov    rsi,QWORD PTR [rsp+0xb8]
+   6ec27:	00 
+   6ec28:	44 89 f1             	mov    ecx,r14d
+   6ec2b:	44 89 ea             	mov    edx,r13d
+   6ec2e:	48 89 df             	mov    rdi,rbx
+   6ec31:	e8 ea 60 fc ff       	call   34d20 <js_sub_string>
+   6ec36:	49 89 c2             	mov    r10,rax
+   6ec39:	49 89 d1             	mov    r9,rdx
+   6ec3c:	49 89 c5             	mov    r13,rax
+   6ec3f:	49 89 d6             	mov    r14,rdx
+   6ec42:	83 fa 06             	cmp    edx,0x6
+   6ec45:	0f 84 d3 07 00 00    	je     6f41e <js_regexp_exec+0xd3e>
+   6ec4b:	45 85 e4             	test   r12d,r12d
+   6ec4e:	74 52                	je     6eca2 <js_regexp_exec+0x5c2>
+   6ec50:	83 fa 03             	cmp    edx,0x3
+   6ec53:	0f 84 32 0d 00 00    	je     6f98b <js_regexp_exec+0x12ab>
+   6ec59:	4d 89 d0             	mov    r8,r10
+   6ec5c:	41 83 f9 f6          	cmp    r9d,0xfffffff6
+   6ec60:	76 05                	jbe    6ec67 <js_regexp_exec+0x587>
+   6ec62:	41 83 42 fc 01       	add    DWORD PTR [r10-0x4],0x1
+   6ec67:	48 83 ec 08          	sub    rsp,0x8
+   6ec6b:	48 89 df             	mov    rdi,rbx
+   6ec6e:	4d 89 f1             	mov    r9,r14
+   6ec71:	44 89 e1             	mov    ecx,r12d
+   6ec74:	68 07 40 00 00       	push   0x4007
+   6ec79:	48 8b b4 24 b8 00 00 	mov    rsi,QWORD PTR [rsp+0xb8]
+   6ec80:	00 
+   6ec81:	48 8b 54 24 48       	mov    rdx,QWORD PTR [rsp+0x48]
+   6ec86:	e8 45 12 fc ff       	call   2fed0 <JS_DefinePropertyValue>
+   6ec8b:	5e                   	pop    rsi
+   6ec8c:	5f                   	pop    rdi
+   6ec8d:	85 c0                	test   eax,eax
+   6ec8f:	0f 88 dd 0b 00 00    	js     6f872 <js_regexp_exec+0x1192>
+   6ec95:	41 81 fc f2 00 00 00 	cmp    r12d,0xf2
+   6ec9c:	0f 8f 2e 07 00 00    	jg     6f3d0 <js_regexp_exec+0xcf0>
+   6eca2:	48 8b 4c 24 20       	mov    rcx,QWORD PTR [rsp+0x20]
+   6eca7:	48 83 c5 01          	add    rbp,0x1
+   6ecab:	8b 41 38             	mov    eax,DWORD PTR [rcx+0x38]
+   6ecae:	8d 50 01             	lea    edx,[rax+0x1]
+   6ecb1:	48 c1 e0 04          	shl    rax,0x4
+   6ecb5:	48 03 41 30          	add    rax,QWORD PTR [rcx+0x30]
+   6ecb9:	89 51 38             	mov    DWORD PTR [rcx+0x38],edx
+   6ecbc:	4c 89 28             	mov    QWORD PTR [rax],r13
+   6ecbf:	4c 89 70 08          	mov    QWORD PTR [rax+0x8],r14
+   6ecc3:	48 8b 84 24 90 00 00 	mov    rax,QWORD PTR [rsp+0x90]
+   6ecca:	00 
+   6eccb:	48 39 c5             	cmp    rbp,rax
+   6ecce:	0f 84 80 09 00 00    	je     6f654 <js_regexp_exec+0xf74>
+   6ecd4:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+   6ecd9:	8d 44 2d 00          	lea    eax,[rbp+rbp*1+0x0]
+   6ecdd:	48 98                	cdqe
+   6ecdf:	4c 8d 2c c1          	lea    r13,[rcx+rax*8]
+   6ece3:	4d 85 ff             	test   r15,r15
+   6ece6:	0f 84 d4 02 00 00    	je     6efc0 <js_regexp_exec+0x8e0>
+   6ecec:	85 ed                	test   ebp,ebp
+   6ecee:	0f 8e cc 02 00 00    	jle    6efc0 <js_regexp_exec+0x8e0>
+   6ecf4:	4c 89 ff             	mov    rdi,r15
+   6ecf7:	45 31 e4             	xor    r12d,r12d
+   6ecfa:	e8 b1 2c fa ff       	call   119b0 <strlen@plt>
+   6ecff:	41 80 3f 00          	cmp    BYTE PTR [r15],0x0
+   6ed03:	0f 85 8f 05 00 00    	jne    6f298 <js_regexp_exec+0xbb8>
+   6ed09:	4c 89 ff             	mov    rdi,r15
+   6ed0c:	e8 9f 2c fa ff       	call   119b0 <strlen@plt>
+   6ed11:	4d 8d 7c 07 02       	lea    r15,[r15+rax*1+0x2]
+   6ed16:	49 8b 45 00          	mov    rax,QWORD PTR [r13+0x0]
+   6ed1a:	48 85 c0             	test   rax,rax
+   6ed1d:	0f 84 dd 02 00 00    	je     6f000 <js_regexp_exec+0x920>
+   6ed23:	4d 8b 75 08          	mov    r14,QWORD PTR [r13+0x8]
+   6ed27:	4d 85 f6             	test   r14,r14
+   6ed2a:	0f 84 d0 02 00 00    	je     6f000 <js_regexp_exec+0x920>
+   6ed30:	48 8b 7c 24 58       	mov    rdi,QWORD PTR [rsp+0x58]
+   6ed35:	8b 74 24 70          	mov    esi,DWORD PTR [rsp+0x70]
+   6ed39:	48 29 f8             	sub    rax,rdi
+   6ed3c:	89 f1                	mov    ecx,esi
+   6ed3e:	49 29 fe             	sub    r14,rdi
+   6ed41:	48 d3 f8             	sar    rax,cl
+   6ed44:	49 d3 fe             	sar    r14,cl
+   6ed47:	83 7c 24 18 03       	cmp    DWORD PTR [rsp+0x18],0x3
+   6ed4c:	4c 89 b4 24 a0 00 00 	mov    QWORD PTR [rsp+0xa0],r14
+   6ed53:	00 
+   6ed54:	41 89 c5             	mov    r13d,eax
+   6ed57:	0f 84 a6 01 00 00    	je     6ef03 <js_regexp_exec+0x823>
+   6ed5d:	83 f8 ff             	cmp    eax,0xffffffff
+   6ed60:	48 89 84 24 b0 00 00 	mov    QWORD PTR [rsp+0xb0],rax
+   6ed67:	00 
+   6ed68:	0f 84 a5 02 00 00    	je     6f013 <js_regexp_exec+0x933>
+   6ed6e:	48 8b 73 30          	mov    rsi,QWORD PTR [rbx+0x30]
+   6ed72:	31 c9                	xor    ecx,ecx
+   6ed74:	ba 02 00 00 00       	mov    edx,0x2
+   6ed79:	48 89 df             	mov    rdi,rbx
+   6ed7c:	83 46 fc 01          	add    DWORD PTR [rsi-0x4],0x1
+   6ed80:	e8 bb 77 fd ff       	call   46540 <JS_NewObjectFromShape>
+   6ed85:	4c 8b 84 24 b0 00 00 	mov    r8,QWORD PTR [rsp+0xb0]
+   6ed8c:	00 
+   6ed8d:	83 fa 06             	cmp    edx,0x6
+   6ed90:	48 89 44 24 50       	mov    QWORD PTR [rsp+0x50],rax
+   6ed95:	49 89 c3             	mov    r11,rax
+   6ed98:	48 89 54 24 10       	mov    QWORD PTR [rsp+0x10],rdx
+   6ed9d:	0f 84 7b 06 00 00    	je     6f41e <js_regexp_exec+0xd3e>
+   6eda3:	44 89 c0             	mov    eax,r8d
+   6eda6:	31 c9                	xor    ecx,ecx
+   6eda8:	45 31 c0             	xor    r8d,r8d
+   6edab:	4c 89 de             	mov    rsi,r11
+   6edae:	48 89 44 24 60       	mov    QWORD PTR [rsp+0x60],rax
+   6edb3:	48 89 df             	mov    rdi,rbx
+   6edb6:	41 b9 07 40 00 00    	mov    r9d,0x4007
+   6edbc:	48 c7 44 24 68 00 00 	mov    QWORD PTR [rsp+0x68],0x0
+   6edc3:	00 00 
+   6edc5:	ff 74 24 68          	push   QWORD PTR [rsp+0x68]
+   6edc9:	ff 74 24 68          	push   QWORD PTR [rsp+0x68]
+   6edcd:	4c 89 9c 24 d0 00 00 	mov    QWORD PTR [rsp+0xd0],r11
+   6edd4:	00 
+   6edd5:	48 89 94 24 c0 00 00 	mov    QWORD PTR [rsp+0xc0],rdx
+   6eddc:	00 
+   6eddd:	e8 5e 4f fd ff       	call   43d40 <JS_DefinePropertyValueValue>
+   6ede2:	5f                   	pop    rdi
+   6ede3:	41 58                	pop    r8
+   6ede5:	85 c0                	test   eax,eax
+   6ede7:	4c 8b 94 24 b0 00 00 	mov    r10,QWORD PTR [rsp+0xb0]
+   6edee:	00 
+   6edef:	4c 8b 9c 24 c0 00 00 	mov    r11,QWORD PTR [rsp+0xc0]
+   6edf6:	00 
+   6edf7:	0f 88 d2 09 00 00    	js     6f7cf <js_regexp_exec+0x10ef>
+   6edfd:	8b 84 24 a0 00 00 00 	mov    eax,DWORD PTR [rsp+0xa0]
+   6ee04:	4c 89 de             	mov    rsi,r11
+   6ee07:	45 31 c0             	xor    r8d,r8d
+   6ee0a:	4c 89 d2             	mov    rdx,r10
+   6ee0d:	b9 01 00 00 00       	mov    ecx,0x1
+   6ee12:	41 b9 07 40 00 00    	mov    r9d,0x4007
+   6ee18:	48 89 df             	mov    rdi,rbx
+   6ee1b:	48 c7 84 24 88 00 00 	mov    QWORD PTR [rsp+0x88],0x0
+   6ee22:	00 00 00 00 00 
+   6ee27:	48 89 84 24 80 00 00 	mov    QWORD PTR [rsp+0x80],rax
+   6ee2e:	00 
+   6ee2f:	ff b4 24 88 00 00 00 	push   QWORD PTR [rsp+0x88]
+   6ee36:	ff b4 24 88 00 00 00 	push   QWORD PTR [rsp+0x88]
+   6ee3d:	4c 89 9c 24 c0 00 00 	mov    QWORD PTR [rsp+0xc0],r11
+   6ee44:	00 
+   6ee45:	4c 89 94 24 b0 00 00 	mov    QWORD PTR [rsp+0xb0],r10
+   6ee4c:	00 
+   6ee4d:	e8 ee 4e fd ff       	call   43d40 <JS_DefinePropertyValueValue>
+   6ee52:	59                   	pop    rcx
+   6ee53:	5e                   	pop    rsi
+   6ee54:	85 c0                	test   eax,eax
+   6ee56:	4c 8b 94 24 a0 00 00 	mov    r10,QWORD PTR [rsp+0xa0]
+   6ee5d:	00 
+   6ee5e:	4c 8b 9c 24 b0 00 00 	mov    r11,QWORD PTR [rsp+0xb0]
+   6ee65:	00 
+   6ee66:	0f 88 63 09 00 00    	js     6f7cf <js_regexp_exec+0x10ef>
+   6ee6c:	45 85 e4             	test   r12d,r12d
+   6ee6f:	74 49                	je     6eeba <js_regexp_exec+0x7da>
+   6ee71:	41 83 fa 03          	cmp    r10d,0x3
+   6ee75:	0f 84 56 0b 00 00    	je     6f9d1 <js_regexp_exec+0x12f1>
+   6ee7b:	4d 89 d8             	mov    r8,r11
+   6ee7e:	41 83 fa f6          	cmp    r10d,0xfffffff6
+   6ee82:	76 05                	jbe    6ee89 <js_regexp_exec+0x7a9>
+   6ee84:	41 83 43 fc 01       	add    DWORD PTR [r11-0x4],0x1
+   6ee89:	48 83 ec 08          	sub    rsp,0x8
+   6ee8d:	44 89 e1             	mov    ecx,r12d
+   6ee90:	48 89 df             	mov    rdi,rbx
+   6ee93:	68 07 40 00 00       	push   0x4007
+   6ee98:	4c 8b 4c 24 20       	mov    r9,QWORD PTR [rsp+0x20]
+   6ee9d:	48 8b b4 24 a8 00 00 	mov    rsi,QWORD PTR [rsp+0xa8]
+   6eea4:	00 
+   6eea5:	48 8b 54 24 40       	mov    rdx,QWORD PTR [rsp+0x40]
+   6eeaa:	e8 21 10 fc ff       	call   2fed0 <JS_DefinePropertyValue>
+   6eeaf:	41 5b                	pop    r11
+   6eeb1:	5a                   	pop    rdx
+   6eeb2:	85 c0                	test   eax,eax
+   6eeb4:	0f 88 de 09 00 00    	js     6f898 <js_regexp_exec+0x11b8>
+   6eeba:	48 8b 44 24 50       	mov    rax,QWORD PTR [rsp+0x50]
+   6eebf:	45 31 c0             	xor    r8d,r8d
+   6eec2:	48 89 e9             	mov    rcx,rbp
+   6eec5:	48 89 df             	mov    rdi,rbx
+   6eec8:	41 b9 07 40 00 00    	mov    r9d,0x4007
+   6eece:	48 89 44 24 40       	mov    QWORD PTR [rsp+0x40],rax
+   6eed3:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+   6eed8:	48 89 44 24 48       	mov    QWORD PTR [rsp+0x48],rax
+   6eedd:	ff 74 24 48          	push   QWORD PTR [rsp+0x48]
+   6eee1:	ff 74 24 48          	push   QWORD PTR [rsp+0x48]
+   6eee5:	48 8b b4 24 88 00 00 	mov    rsi,QWORD PTR [rsp+0x88]
+   6eeec:	00 
+   6eeed:	48 8b 54 24 28       	mov    rdx,QWORD PTR [rsp+0x28]
+   6eef2:	e8 49 4e fd ff       	call   43d40 <JS_DefinePropertyValueValue>
+   6eef7:	41 58                	pop    r8
+   6eef9:	41 59                	pop    r9
+   6eefb:	85 c0                	test   eax,eax
+   6eefd:	0f 88 1b 05 00 00    	js     6f41e <js_regexp_exec+0xd3e>
+   6ef03:	41 83 fd ff          	cmp    r13d,0xffffffff
+   6ef07:	0f 85 13 fd ff ff    	jne    6ec20 <js_regexp_exec+0x540>
+   6ef0d:	45 85 e4             	test   r12d,r12d
+   6ef10:	0f 84 ba 02 00 00    	je     6f1d0 <js_regexp_exec+0xaf0>
+   6ef16:	48 8b b4 24 a8 00 00 	mov    rsi,QWORD PTR [rsp+0xa8]
+   6ef1d:	00 
+   6ef1e:	48 8b 54 24 38       	mov    rdx,QWORD PTR [rsp+0x38]
+   6ef23:	44 89 e1             	mov    ecx,r12d
+   6ef26:	48 89 df             	mov    rdi,rbx
+   6ef29:	e8 c2 f3 ff ff       	call   6e2f0 <JS_HasProperty>
+   6ef2e:	85 c0                	test   eax,eax
+   6ef30:	0f 84 42 06 00 00    	je     6f578 <js_regexp_exec+0xe98>
+   6ef36:	41 be 03 00 00 00    	mov    r14d,0x3
+   6ef3c:	45 31 ed             	xor    r13d,r13d
+   6ef3f:	e9 51 fd ff ff       	jmp    6ec95 <js_regexp_exec+0x5b5>
+   6ef44:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+   6ef48:	44 89 64 24 50       	mov    DWORD PTR [rsp+0x50],r12d
+   6ef4d:	83 f8 fe             	cmp    eax,0xfffffffe
+   6ef50:	0f 84 1a 03 00 00    	je     6f270 <js_regexp_exec+0xb90>
+   6ef56:	48 8d 35 a3 2c 06 00 	lea    rsi,[rip+0x62ca3]        # d1c00 <_IO_stdin_used+0x4c00>
+   6ef5d:	48 89 df             	mov    rdi,rbx
+   6ef60:	31 c0                	xor    eax,eax
+   6ef62:	e8 c9 41 fc ff       	call   33130 <JS_ThrowInternalError>
+   6ef67:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6ef6b:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6ef72:	45 31 d2             	xor    r10d,r10d
+   6ef75:	45 31 c0             	xor    r8d,r8d
+   6ef78:	31 c0                	xor    eax,eax
+   6ef7a:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6ef80:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6ef86:	ba 03 00 00 00       	mov    edx,0x3
+   6ef8b:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6ef92:	00 00 
+   6ef94:	8b 4c 24 50          	mov    ecx,DWORD PTR [rsp+0x50]
+   6ef98:	45 31 f6             	xor    r14d,r14d
+   6ef9b:	bd 06 00 00 00       	mov    ebp,0x6
+   6efa0:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6efa7:	00 00 
+   6efa9:	48 c7 44 24 38 03 00 	mov    QWORD PTR [rsp+0x38],0x3
+   6efb0:	00 00 
+   6efb2:	48 c7 44 24 28 02 00 	mov    QWORD PTR [rsp+0x28],0x2
+   6efb9:	00 00 
+   6efbb:	e9 2f f9 ff ff       	jmp    6e8ef <js_regexp_exec+0x20f>
+   6efc0:	49 8b 45 00          	mov    rax,QWORD PTR [r13+0x0]
+   6efc4:	45 31 e4             	xor    r12d,r12d
+   6efc7:	48 85 c0             	test   rax,rax
+   6efca:	0f 85 53 fd ff ff    	jne    6ed23 <js_regexp_exec+0x643>
+   6efd0:	83 7c 24 18 03       	cmp    DWORD PTR [rsp+0x18],0x3
+   6efd5:	0f 84 f5 01 00 00    	je     6f1d0 <js_regexp_exec+0xaf0>
+   6efdb:	44 8b ac 24 e0 00 00 	mov    r13d,DWORD PTR [rsp+0xe0]
+   6efe2:	00 
+   6efe3:	48 c7 44 24 10 03 00 	mov    QWORD PTR [rsp+0x10],0x3
+   6efea:	00 00 
+   6efec:	48 c7 44 24 50 00 00 	mov    QWORD PTR [rsp+0x50],0x0
+   6eff3:	00 00 
+   6eff5:	45 89 ee             	mov    r14d,r13d
+   6eff8:	e9 bd fe ff ff       	jmp    6eeba <js_regexp_exec+0x7da>
+   6effd:	0f 1f 00             	nop    DWORD PTR [rax]
+   6f000:	83 7c 24 18 03       	cmp    DWORD PTR [rsp+0x18],0x3
+   6f005:	44 8b b4 24 e0 00 00 	mov    r14d,DWORD PTR [rsp+0xe0]
+   6f00c:	00 
+   6f00d:	0f 84 fa fe ff ff    	je     6ef0d <js_regexp_exec+0x82d>
+   6f013:	45 85 e4             	test   r12d,r12d
+   6f016:	0f 84 f0 04 00 00    	je     6f50c <js_regexp_exec+0xe2c>
+   6f01c:	48 8b b4 24 98 00 00 	mov    rsi,QWORD PTR [rsp+0x98]
+   6f023:	00 
+   6f024:	48 8b 54 24 30       	mov    rdx,QWORD PTR [rsp+0x30]
+   6f029:	44 89 e1             	mov    ecx,r12d
+   6f02c:	48 89 df             	mov    rdi,rbx
+   6f02f:	e8 bc f2 ff ff       	call   6e2f0 <JS_HasProperty>
+   6f034:	85 c0                	test   eax,eax
+   6f036:	0f 85 d0 04 00 00    	jne    6f50c <js_regexp_exec+0xe2c>
+   6f03c:	48 c7 44 24 10 03 00 	mov    QWORD PTR [rsp+0x10],0x3
+   6f043:	00 00 
+   6f045:	44 8b ac 24 e0 00 00 	mov    r13d,DWORD PTR [rsp+0xe0]
+   6f04c:	00 
+   6f04d:	45 31 c0             	xor    r8d,r8d
+   6f050:	48 c7 44 24 50 00 00 	mov    QWORD PTR [rsp+0x50],0x0
+   6f057:	00 00 
+   6f059:	e9 2b fe ff ff       	jmp    6ee89 <js_regexp_exec+0x7a9>
+   6f05e:	66 90                	xchg   ax,ax
+   6f060:	48 8b 54 24 28       	mov    rdx,QWORD PTR [rsp+0x28]
+   6f065:	4c 89 ef             	mov    rdi,r13
+   6f068:	4c 89 e6             	mov    rsi,r12
+   6f06b:	e8 30 d8 fa ff       	call   1c8a0 <__JS_FreeValueRT>
+   6f070:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f074:	e9 fb f8 ff ff       	jmp    6e974 <js_regexp_exec+0x294>
+   6f079:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+   6f080:	48 8b 54 24 20       	mov    rdx,QWORD PTR [rsp+0x20]
+   6f085:	4c 89 ef             	mov    rdi,r13
+   6f088:	48 89 ce             	mov    rsi,rcx
+   6f08b:	4c 89 54 24 18       	mov    QWORD PTR [rsp+0x18],r10
+   6f090:	e8 0b d8 fa ff       	call   1c8a0 <__JS_FreeValueRT>
+   6f095:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f099:	4c 8b 54 24 18       	mov    r10,QWORD PTR [rsp+0x18]
+   6f09e:	e9 9d f8 ff ff       	jmp    6e940 <js_regexp_exec+0x260>
+   6f0a3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+   6f0a8:	48 8b 54 24 18       	mov    rdx,QWORD PTR [rsp+0x18]
+   6f0ad:	4c 89 ef             	mov    rdi,r13
+   6f0b0:	4c 89 c6             	mov    rsi,r8
+   6f0b3:	4c 89 54 24 50       	mov    QWORD PTR [rsp+0x50],r10
+   6f0b8:	89 4c 24 30          	mov    DWORD PTR [rsp+0x30],ecx
+   6f0bc:	e8 df d7 fa ff       	call   1c8a0 <__JS_FreeValueRT>
+   6f0c1:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f0c5:	4c 8b 54 24 50       	mov    r10,QWORD PTR [rsp+0x50]
+   6f0ca:	8b 4c 24 30          	mov    ecx,DWORD PTR [rsp+0x30]
+   6f0ce:	e9 4e f8 ff ff       	jmp    6e921 <js_regexp_exec+0x241>
+   6f0d3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+   6f0d8:	48 8b 54 24 30       	mov    rdx,QWORD PTR [rsp+0x30]
+   6f0dd:	4c 89 ef             	mov    rdi,r13
+   6f0e0:	48 89 c6             	mov    rsi,rax
+   6f0e3:	4c 89 54 24 70       	mov    QWORD PTR [rsp+0x70],r10
+   6f0e8:	89 4c 24 58          	mov    DWORD PTR [rsp+0x58],ecx
+   6f0ec:	44 89 4c 24 40       	mov    DWORD PTR [rsp+0x40],r9d
+   6f0f1:	4c 89 44 24 50       	mov    QWORD PTR [rsp+0x50],r8
+   6f0f6:	e8 a5 d7 fa ff       	call   1c8a0 <__JS_FreeValueRT>
+   6f0fb:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f0ff:	4c 8b 54 24 70       	mov    r10,QWORD PTR [rsp+0x70]
+   6f104:	8b 4c 24 58          	mov    ecx,DWORD PTR [rsp+0x58]
+   6f108:	44 8b 4c 24 40       	mov    r9d,DWORD PTR [rsp+0x40]
+   6f10d:	4c 8b 44 24 50       	mov    r8,QWORD PTR [rsp+0x50]
+   6f112:	e9 f1 f7 ff ff       	jmp    6e908 <js_regexp_exec+0x228>
+   6f117:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+   6f11e:	00 00 
+   6f120:	48 8b 54 24 38       	mov    rdx,QWORD PTR [rsp+0x38]
+   6f125:	4c 89 ef             	mov    rdi,r13
+   6f128:	4c 89 d6             	mov    rsi,r10
+   6f12b:	e8 70 d7 fa ff       	call   1c8a0 <__JS_FreeValueRT>
+   6f130:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f134:	e9 20 f8 ff ff       	jmp    6e959 <js_regexp_exec+0x279>
+   6f139:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+   6f140:	83 f9 f6             	cmp    ecx,0xfffffff6
+   6f143:	76 04                	jbe    6f149 <js_regexp_exec+0xa69>
+   6f145:	83 42 fc 01          	add    DWORD PTR [rdx-0x4],0x1
+   6f149:	48 8d b4 24 f8 00 00 	lea    rsi,[rsp+0xf8]
+   6f150:	00 
+   6f151:	48 89 df             	mov    rdi,rbx
+   6f154:	e8 77 50 fe ff       	call   541d0 <JS_ToLengthFree>
+   6f159:	85 c0                	test   eax,eax
+   6f15b:	0f 84 70 f6 ff ff    	je     6e7d1 <js_regexp_exec+0xf1>
+   6f161:	48 89 6c 24 10       	mov    QWORD PTR [rsp+0x10],rbp
+   6f166:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f16a:	44 89 e1             	mov    ecx,r12d
+   6f16d:	45 31 d2             	xor    r10d,r10d
+   6f170:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6f177:	45 31 c0             	xor    r8d,r8d
+   6f17a:	31 c0                	xor    eax,eax
+   6f17c:	45 31 f6             	xor    r14d,r14d
+   6f17f:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f186:	00 00 
+   6f188:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f18e:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6f194:	ba 03 00 00 00       	mov    edx,0x3
+   6f199:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6f1a0:	00 00 
+   6f1a2:	bd 06 00 00 00       	mov    ebp,0x6
+   6f1a7:	48 c7 44 24 38 03 00 	mov    QWORD PTR [rsp+0x38],0x3
+   6f1ae:	00 00 
+   6f1b0:	48 c7 44 24 28 02 00 	mov    QWORD PTR [rsp+0x28],0x2
+   6f1b7:	00 00 
+   6f1b9:	48 c7 44 24 08 00 00 	mov    QWORD PTR [rsp+0x8],0x0
+   6f1c0:	00 00 
+   6f1c2:	e9 28 f7 ff ff       	jmp    6e8ef <js_regexp_exec+0x20f>
+   6f1c7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+   6f1ce:	00 00 
+   6f1d0:	41 be 03 00 00 00    	mov    r14d,0x3
+   6f1d6:	45 31 ed             	xor    r13d,r13d
+   6f1d9:	e9 c4 fa ff ff       	jmp    6eca2 <js_regexp_exec+0x5c2>
+   6f1de:	66 90                	xchg   ax,ax
+   6f1e0:	48 83 ec 08          	sub    rsp,0x8
+   6f1e4:	4c 89 f2             	mov    rdx,r14
+   6f1e7:	4c 89 ee             	mov    rsi,r13
+   6f1ea:	45 31 c0             	xor    r8d,r8d
+   6f1ed:	68 00 40 00 00       	push   0x4000
+   6f1f2:	45 31 c9             	xor    r9d,r9d
+   6f1f5:	b9 59 00 00 00       	mov    ecx,0x59
+   6f1fa:	48 89 df             	mov    rdi,rbx
+   6f1fd:	41 56                	push   r14
+   6f1ff:	41 55                	push   r13
+   6f201:	e8 0a ea fb ff       	call   2dc10 <JS_SetPropertyInternal>
+   6f206:	48 83 c4 20          	add    rsp,0x20
+   6f20a:	85 c0                	test   eax,eax
+   6f20c:	0f 89 8a f6 ff ff    	jns    6e89c <js_regexp_exec+0x1bc>
+   6f212:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6f219:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f21d:	44 89 e1             	mov    ecx,r12d
+   6f220:	31 c0                	xor    eax,eax
+   6f222:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f228:	45 31 d2             	xor    r10d,r10d
+   6f22b:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6f231:	45 31 c0             	xor    r8d,r8d
+   6f234:	ba 03 00 00 00       	mov    edx,0x3
+   6f239:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f240:	00 00 
+   6f242:	bd 06 00 00 00       	mov    ebp,0x6
+   6f247:	45 31 f6             	xor    r14d,r14d
+   6f24a:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6f251:	00 00 
+   6f253:	48 c7 44 24 38 03 00 	mov    QWORD PTR [rsp+0x38],0x3
+   6f25a:	00 00 
+   6f25c:	48 c7 44 24 28 02 00 	mov    QWORD PTR [rsp+0x28],0x2
+   6f263:	00 00 
+   6f265:	e9 85 f6 ff ff       	jmp    6e8ef <js_regexp_exec+0x20f>
+   6f26a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   6f270:	48 8d 35 7a e5 05 00 	lea    rsi,[rip+0x5e57a]        # cd7f1 <_IO_stdin_used+0x7f1>
+   6f277:	48 89 df             	mov    rdi,rbx
+   6f27a:	31 c0                	xor    eax,eax
+   6f27c:	e8 af 3e fc ff       	call   33130 <JS_ThrowInternalError>
+   6f281:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f285:	41 c6 85 e8 04 00 00 	mov    BYTE PTR [r13+0x4e8],0x1
+   6f28c:	01 
+   6f28d:	e9 d9 fc ff ff       	jmp    6ef6b <js_regexp_exec+0x88b>
+   6f292:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   6f298:	48 89 c2             	mov    rdx,rax
+   6f29b:	4c 89 fe             	mov    rsi,r15
+   6f29e:	48 89 df             	mov    rdi,rbx
+   6f2a1:	e8 fa c1 fc ff       	call   3b4a0 <JS_NewAtomLen>
+   6f2a6:	41 89 c4             	mov    r12d,eax
+   6f2a9:	45 85 e4             	test   r12d,r12d
+   6f2ac:	0f 85 57 fa ff ff    	jne    6ed09 <js_regexp_exec+0x629>
+   6f2b2:	44 8b 9c 24 e4 00 00 	mov    r11d,DWORD PTR [rsp+0xe4]
+   6f2b9:	00 
+   6f2ba:	44 89 e5             	mov    ebp,r12d
+   6f2bd:	48 c7 44 24 10 00 00 	mov    QWORD PTR [rsp+0x10],0x0
+   6f2c4:	00 00 
+   6f2c6:	4c 8b a4 24 d0 00 00 	mov    r12,QWORD PTR [rsp+0xd0]
+   6f2cd:	00 
+   6f2ce:	b9 03 00 00 00       	mov    ecx,0x3
+   6f2d3:	48 c7 44 24 20 03 00 	mov    QWORD PTR [rsp+0x20],0x3
+   6f2da:	00 00 
+   6f2dc:	4c 8b 94 24 d8 00 00 	mov    r10,QWORD PTR [rsp+0xd8]
+   6f2e3:	00 
+   6f2e4:	48 8b 84 24 98 00 00 	mov    rax,QWORD PTR [rsp+0x98]
+   6f2eb:	00 
+   6f2ec:	8b 54 24 30          	mov    edx,DWORD PTR [rsp+0x30]
+   6f2f0:	4c 8b 44 24 78       	mov    r8,QWORD PTR [rsp+0x78]
+   6f2f5:	44 8b 4c 24 18       	mov    r9d,DWORD PTR [rsp+0x18]
+   6f2fa:	44 8b bc 24 c8 00 00 	mov    r15d,DWORD PTR [rsp+0xc8]
+   6f301:	00 
+   6f302:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f306:	41 81 fb f2 00 00 00 	cmp    r11d,0xf2
+   6f30d:	0f 8e b1 06 00 00    	jle    6f9c4 <js_regexp_exec+0x12e4>
+   6f313:	49 8b b5 48 04 00 00 	mov    rsi,QWORD PTR [r13+0x448]
+   6f31a:	41 89 eb             	mov    r11d,ebp
+   6f31d:	45 31 f6             	xor    r14d,r14d
+   6f320:	bd 06 00 00 00       	mov    ebp,0x6
+   6f325:	4a 8b 3c de          	mov    rdi,QWORD PTR [rsi+r11*8]
+   6f329:	8b 77 fc             	mov    esi,DWORD PTR [rdi-0x4]
+   6f32c:	83 ee 01             	sub    esi,0x1
+   6f32f:	89 77 fc             	mov    DWORD PTR [rdi-0x4],esi
+   6f332:	85 f6                	test   esi,esi
+   6f334:	0f 8f b8 f5 ff ff    	jg     6e8f2 <js_regexp_exec+0x212>
+   6f33a:	48 89 fe             	mov    rsi,rdi
+   6f33d:	4c 89 ef             	mov    rdi,r13
+   6f340:	4c 89 54 24 78       	mov    QWORD PTR [rsp+0x78],r10
+   6f345:	89 4c 24 60          	mov    DWORD PTR [rsp+0x60],ecx
+   6f349:	44 89 4c 24 70       	mov    DWORD PTR [rsp+0x70],r9d
+   6f34e:	4c 89 44 24 58       	mov    QWORD PTR [rsp+0x58],r8
+   6f353:	89 54 24 40          	mov    DWORD PTR [rsp+0x40],edx
+   6f357:	48 89 44 24 50       	mov    QWORD PTR [rsp+0x50],rax
+   6f35c:	e8 9f 60 fa ff       	call   15400 <JS_FreeAtomStruct>
+   6f361:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f365:	48 8b 44 24 50       	mov    rax,QWORD PTR [rsp+0x50]
+   6f36a:	8b 54 24 40          	mov    edx,DWORD PTR [rsp+0x40]
+   6f36e:	4c 8b 44 24 58       	mov    r8,QWORD PTR [rsp+0x58]
+   6f373:	44 8b 4c 24 70       	mov    r9d,DWORD PTR [rsp+0x70]
+   6f378:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
+   6f37c:	4c 8b 54 24 78       	mov    r10,QWORD PTR [rsp+0x78]
+   6f381:	e9 6c f5 ff ff       	jmp    6e8f2 <js_regexp_exec+0x212>
+   6f386:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+   6f38d:	00 00 00 
+   6f390:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f394:	44 89 e1             	mov    ecx,r12d
+   6f397:	41 80 bd e9 04 00 00 	cmp    BYTE PTR [r13+0x4e9],0x0
+   6f39e:	00 
+   6f39f:	0f 84 86 01 00 00    	je     6f52b <js_regexp_exec+0xe4b>
+   6f3a5:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6f3ac:	45 31 d2             	xor    r10d,r10d
+   6f3af:	45 31 c0             	xor    r8d,r8d
+   6f3b2:	31 c0                	xor    eax,eax
+   6f3b4:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f3ba:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6f3c0:	ba 03 00 00 00       	mov    edx,0x3
+   6f3c5:	e9 6f fe ff ff       	jmp    6f239 <js_regexp_exec+0xb59>
+   6f3ca:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   6f3d0:	48 8b 7b 10          	mov    rdi,QWORD PTR [rbx+0x10]
+   6f3d4:	48 8b 87 48 04 00 00 	mov    rax,QWORD PTR [rdi+0x448]
+   6f3db:	4a 8b 34 e0          	mov    rsi,QWORD PTR [rax+r12*8]
+   6f3df:	8b 46 fc             	mov    eax,DWORD PTR [rsi-0x4]
+   6f3e2:	83 e8 01             	sub    eax,0x1
+   6f3e5:	89 46 fc             	mov    DWORD PTR [rsi-0x4],eax
+   6f3e8:	85 c0                	test   eax,eax
+   6f3ea:	0f 8f b2 f8 ff ff    	jg     6eca2 <js_regexp_exec+0x5c2>
+   6f3f0:	e8 0b 60 fa ff       	call   15400 <JS_FreeAtomStruct>
+   6f3f5:	e9 a8 f8 ff ff       	jmp    6eca2 <js_regexp_exec+0x5c2>
+   6f3fa:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6f401:	45 31 d2             	xor    r10d,r10d
+   6f404:	48 c7 44 24 38 03 00 	mov    QWORD PTR [rsp+0x38],0x3
+   6f40b:	00 00 
+   6f40d:	48 c7 84 24 a8 00 00 	mov    QWORD PTR [rsp+0xa8],0x0
+   6f414:	00 00 00 00 00 
+   6f419:	e9 85 f6 ff ff       	jmp    6eaa3 <js_regexp_exec+0x3c3>
+   6f41e:	45 89 e3             	mov    r11d,r12d
+   6f421:	44 89 e5             	mov    ebp,r12d
+   6f424:	e9 94 fe ff ff       	jmp    6f2bd <js_regexp_exec+0xbdd>
+   6f429:	48 8b 73 30          	mov    rsi,QWORD PTR [rbx+0x30]
+   6f42d:	31 c9                	xor    ecx,ecx
+   6f42f:	ba 02 00 00 00       	mov    edx,0x2
+   6f434:	48 89 df             	mov    rdi,rbx
+   6f437:	4c 89 54 24 30       	mov    QWORD PTR [rsp+0x30],r10
+   6f43c:	83 46 fc 01          	add    DWORD PTR [rsi-0x4],0x1
+   6f440:	e8 fb 70 fd ff       	call   46540 <JS_NewObjectFromShape>
+   6f445:	4c 8b 54 24 30       	mov    r10,QWORD PTR [rsp+0x30]
+   6f44a:	83 fa 06             	cmp    edx,0x6
+   6f44d:	48 89 44 24 78       	mov    QWORD PTR [rsp+0x78],rax
+   6f452:	49 89 c5             	mov    r13,rax
+   6f455:	48 89 54 24 18       	mov    QWORD PTR [rsp+0x18],rdx
+   6f45a:	0f 84 da 03 00 00    	je     6f83a <js_regexp_exec+0x115a>
+   6f460:	48 83 bc 24 a0 00 00 	cmp    QWORD PTR [rsp+0xa0],0x0
+   6f467:	00 00 
+   6f469:	0f 84 1a 01 00 00    	je     6f589 <js_regexp_exec+0xea9>
+   6f46f:	31 f6                	xor    esi,esi
+   6f471:	b9 01 00 00 00       	mov    ecx,0x1
+   6f476:	ba 02 00 00 00       	mov    edx,0x2
+   6f47b:	48 89 df             	mov    rdi,rbx
+   6f47e:	4c 89 94 24 90 00 00 	mov    QWORD PTR [rsp+0x90],r10
+   6f485:	00 
+   6f486:	e8 35 76 fd ff       	call   46ac0 <JS_NewObjectProtoClass>
+   6f48b:	4c 8b 94 24 90 00 00 	mov    r10,QWORD PTR [rsp+0x90]
+   6f492:	00 
+   6f493:	83 fa 06             	cmp    edx,0x6
+   6f496:	48 89 84 24 98 00 00 	mov    QWORD PTR [rsp+0x98],rax
+   6f49d:	00 
+   6f49e:	48 89 54 24 30       	mov    QWORD PTR [rsp+0x30],rdx
+   6f4a3:	0f 85 2c f6 ff ff    	jne    6ead5 <js_regexp_exec+0x3f5>
+   6f4a9:	44 89 e1             	mov    ecx,r12d
+   6f4ac:	44 8b 4c 24 18       	mov    r9d,DWORD PTR [rsp+0x18]
+   6f4b1:	4d 89 e8             	mov    r8,r13
+   6f4b4:	45 31 e4             	xor    r12d,r12d
+   6f4b7:	48 c7 44 24 28 02 00 	mov    QWORD PTR [rsp+0x28],0x2
+   6f4be:	00 00 
+   6f4c0:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f4c6:	45 31 db             	xor    r11d,r11d
+   6f4c9:	31 ed                	xor    ebp,ebp
+   6f4cb:	e9 32 fe ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f4d0:	48 8b 84 24 98 00 00 	mov    rax,QWORD PTR [rsp+0x98]
+   6f4d7:	00 
+   6f4d8:	8b 54 24 30          	mov    edx,DWORD PTR [rsp+0x30]
+   6f4dc:	4c 8b 44 24 78       	mov    r8,QWORD PTR [rsp+0x78]
+   6f4e1:	44 8b 4c 24 18       	mov    r9d,DWORD PTR [rsp+0x18]
+   6f4e6:	44 8b 7c 24 28       	mov    r15d,DWORD PTR [rsp+0x28]
+   6f4eb:	48 c7 44 24 10 00 00 	mov    QWORD PTR [rsp+0x10],0x0
+   6f4f2:	00 00 
+   6f4f4:	b9 03 00 00 00       	mov    ecx,0x3
+   6f4f9:	45 31 db             	xor    r11d,r11d
+   6f4fc:	31 ed                	xor    ebp,ebp
+   6f4fe:	48 c7 44 24 20 03 00 	mov    QWORD PTR [rsp+0x20],0x3
+   6f505:	00 00 
+   6f507:	e9 f6 fd ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f50c:	48 c7 44 24 10 03 00 	mov    QWORD PTR [rsp+0x10],0x3
+   6f513:	00 00 
+   6f515:	44 8b ac 24 e0 00 00 	mov    r13d,DWORD PTR [rsp+0xe0]
+   6f51c:	00 
+   6f51d:	48 c7 44 24 50 00 00 	mov    QWORD PTR [rsp+0x50],0x0
+   6f524:	00 00 
+   6f526:	e9 8f f9 ff ff       	jmp    6eeba <js_regexp_exec+0x7da>
+   6f52b:	48 8d 35 88 df 05 00 	lea    rsi,[rip+0x5df88]        # cd4ba <_IO_stdin_used+0x4ba>
+   6f532:	41 c6 85 e9 04 00 00 	mov    BYTE PTR [r13+0x4e9],0x1
+   6f539:	01 
+   6f53a:	48 89 df             	mov    rdi,rbx
+   6f53d:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f543:	44 89 64 24 50       	mov    DWORD PTR [rsp+0x50],r12d
+   6f548:	e8 e3 3b fc ff       	call   33130 <JS_ThrowInternalError>
+   6f54d:	45 31 d2             	xor    r10d,r10d
+   6f550:	45 31 c0             	xor    r8d,r8d
+   6f553:	31 c0                	xor    eax,eax
+   6f555:	41 c6 85 e9 04 00 00 	mov    BYTE PTR [r13+0x4e9],0x0
+   6f55c:	00 
+   6f55d:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6f563:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f567:	ba 03 00 00 00       	mov    edx,0x3
+   6f56c:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6f573:	e9 13 fa ff ff       	jmp    6ef8b <js_regexp_exec+0x8ab>
+   6f578:	45 31 c0             	xor    r8d,r8d
+   6f57b:	41 be 03 00 00 00    	mov    r14d,0x3
+   6f581:	45 31 ed             	xor    r13d,r13d
+   6f584:	e9 de f6 ff ff       	jmp    6ec67 <js_regexp_exec+0x587>
+   6f589:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f590:	00 00 
+   6f592:	48 c7 84 24 98 00 00 	mov    QWORD PTR [rsp+0x98],0x0
+   6f599:	00 00 00 00 00 
+   6f59e:	e9 32 f5 ff ff       	jmp    6ead5 <js_regexp_exec+0x3f5>
+   6f5a3:	48 83 ec 08          	sub    rsp,0x8
+   6f5a7:	4c 89 f2             	mov    rdx,r14
+   6f5aa:	4c 89 ee             	mov    rsi,r13
+   6f5ad:	45 31 c9             	xor    r9d,r9d
+   6f5b0:	68 00 40 00 00       	push   0x4000
+   6f5b5:	b9 59 00 00 00       	mov    ecx,0x59
+   6f5ba:	48 89 df             	mov    rdi,rbx
+   6f5bd:	41 56                	push   r14
+   6f5bf:	41 55                	push   r13
+   6f5c1:	e8 4a e6 fb ff       	call   2dc10 <JS_SetPropertyInternal>
+   6f5c6:	48 83 c4 20          	add    rsp,0x20
+   6f5ca:	85 c0                	test   eax,eax
+   6f5cc:	0f 89 87 f4 ff ff    	jns    6ea59 <js_regexp_exec+0x379>
+   6f5d2:	44 89 e1             	mov    ecx,r12d
+   6f5d5:	c7 04 24 03 00 00 00 	mov    DWORD PTR [rsp],0x3
+   6f5dc:	45 31 e4             	xor    r12d,r12d
+   6f5df:	45 31 d2             	xor    r10d,r10d
+   6f5e2:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f5e9:	00 00 
+   6f5eb:	45 31 c0             	xor    r8d,r8d
+   6f5ee:	31 c0                	xor    eax,eax
+   6f5f0:	31 ed                	xor    ebp,ebp
+   6f5f2:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f5f8:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6f5fe:	ba 03 00 00 00       	mov    edx,0x3
+   6f603:	45 31 db             	xor    r11d,r11d
+   6f606:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6f60d:	00 00 
+   6f60f:	48 c7 44 24 38 03 00 	mov    QWORD PTR [rsp+0x38],0x3
+   6f616:	00 00 
+   6f618:	48 c7 44 24 28 02 00 	mov    QWORD PTR [rsp+0x28],0x2
+   6f61f:	00 00 
+   6f621:	e9 dc fc ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f626:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+   6f62d:	00 00 00 
+   6f630:	48 8b 84 24 98 00 00 	mov    rax,QWORD PTR [rsp+0x98]
+   6f637:	00 
+   6f638:	8b 54 24 30          	mov    edx,DWORD PTR [rsp+0x30]
+   6f63c:	4d 89 f4             	mov    r12,r14
+   6f63f:	41 bf 06 00 00 00    	mov    r15d,0x6
+   6f645:	4c 8b 44 24 78       	mov    r8,QWORD PTR [rsp+0x78]
+   6f64a:	44 8b 4c 24 18       	mov    r9d,DWORD PTR [rsp+0x18]
+   6f64f:	e9 97 fe ff ff       	jmp    6f4eb <js_regexp_exec+0xe0b>
+   6f654:	44 8b 9c 24 e4 00 00 	mov    r11d,DWORD PTR [rsp+0xe4]
+   6f65b:	00 
+   6f65c:	4c 8b b4 24 e8 00 00 	mov    r14,QWORD PTR [rsp+0xe8]
+   6f663:	00 
+   6f664:	4c 8b a4 24 d0 00 00 	mov    r12,QWORD PTR [rsp+0xd0]
+   6f66b:	00 
+   6f66c:	4c 8b 94 24 d8 00 00 	mov    r10,QWORD PTR [rsp+0xd8]
+   6f673:	00 
+   6f674:	83 7c 24 18 03       	cmp    DWORD PTR [rsp+0x18],0x3
+   6f679:	0f 84 c2 00 00 00    	je     6f741 <js_regexp_exec+0x1061>
+   6f67f:	4c 89 54 24 50       	mov    QWORD PTR [rsp+0x50],r10
+   6f684:	b9 8c 00 00 00       	mov    ecx,0x8c
+   6f689:	48 89 df             	mov    rdi,rbx
+   6f68c:	44 89 5c 24 10       	mov    DWORD PTR [rsp+0x10],r11d
+   6f691:	41 55                	push   r13
+   6f693:	68 07 40 00 00       	push   0x4007
+   6f698:	48 8b ac 24 88 00 00 	mov    rbp,QWORD PTR [rsp+0x88]
+   6f69f:	00 
+   6f6a0:	4c 8b 7c 24 28       	mov    r15,QWORD PTR [rsp+0x28]
+   6f6a5:	4c 8b 84 24 a8 00 00 	mov    r8,QWORD PTR [rsp+0xa8]
+   6f6ac:	00 
+   6f6ad:	4c 8b 4c 24 40       	mov    r9,QWORD PTR [rsp+0x40]
+   6f6b2:	48 89 ee             	mov    rsi,rbp
+   6f6b5:	4c 89 fa             	mov    rdx,r15
+   6f6b8:	e8 13 08 fc ff       	call   2fed0 <JS_DefinePropertyValue>
+   6f6bd:	5a                   	pop    rdx
+   6f6be:	59                   	pop    rcx
+   6f6bf:	85 c0                	test   eax,eax
+   6f6c1:	44 8b 5c 24 10       	mov    r11d,DWORD PTR [rsp+0x10]
+   6f6c6:	4c 8b 54 24 50       	mov    r10,QWORD PTR [rsp+0x50]
+   6f6cb:	0f 88 3a 02 00 00    	js     6f90b <js_regexp_exec+0x122b>
+   6f6d1:	4c 89 54 24 30       	mov    QWORD PTR [rsp+0x30],r10
+   6f6d6:	b9 8d 00 00 00       	mov    ecx,0x8d
+   6f6db:	44 89 5c 24 10       	mov    DWORD PTR [rsp+0x10],r11d
+   6f6e0:	57                   	push   rdi
+   6f6e1:	48 89 df             	mov    rdi,rbx
+   6f6e4:	68 07 40 00 00       	push   0x4007
+   6f6e9:	4c 8b 84 24 88 00 00 	mov    r8,QWORD PTR [rsp+0x88]
+   6f6f0:	00 
+   6f6f1:	4c 8b 4c 24 28       	mov    r9,QWORD PTR [rsp+0x28]
+   6f6f6:	48 8b 74 24 30       	mov    rsi,QWORD PTR [rsp+0x30]
+   6f6fb:	48 8b 94 24 d8 00 00 	mov    rdx,QWORD PTR [rsp+0xd8]
+   6f702:	00 
+   6f703:	e8 c8 07 fc ff       	call   2fed0 <JS_DefinePropertyValue>
+   6f708:	41 58                	pop    r8
+   6f70a:	41 59                	pop    r9
+   6f70c:	85 c0                	test   eax,eax
+   6f70e:	44 8b 5c 24 10       	mov    r11d,DWORD PTR [rsp+0x10]
+   6f713:	4c 8b 54 24 30       	mov    r10,QWORD PTR [rsp+0x30]
+   6f718:	0f 88 27 02 00 00    	js     6f945 <js_regexp_exec+0x1265>
+   6f71e:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f725:	00 00 
+   6f727:	31 c0                	xor    eax,eax
+   6f729:	31 d2                	xor    edx,edx
+   6f72b:	48 89 84 24 98 00 00 	mov    QWORD PTR [rsp+0x98],rax
+   6f732:	00 
+   6f733:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6f73a:	00 00 
+   6f73c:	48 89 54 24 78       	mov    QWORD PTR [rsp+0x78],rdx
+   6f741:	48 c7 44 24 10 00 00 	mov    QWORD PTR [rsp+0x10],0x0
+   6f748:	00 00 
+   6f74a:	48 8b 84 24 98 00 00 	mov    rax,QWORD PTR [rsp+0x98]
+   6f751:	00 
+   6f752:	41 bf 03 00 00 00    	mov    r15d,0x3
+   6f758:	b9 03 00 00 00       	mov    ecx,0x3
+   6f75d:	48 c7 44 24 28 03 00 	mov    QWORD PTR [rsp+0x28],0x3
+   6f764:	00 00 
+   6f766:	8b 54 24 30          	mov    edx,DWORD PTR [rsp+0x30]
+   6f76a:	48 c7 44 24 20 03 00 	mov    QWORD PTR [rsp+0x20],0x3
+   6f771:	00 00 
+   6f773:	4c 8b 6b 10          	mov    r13,QWORD PTR [rbx+0x10]
+   6f777:	4c 8b 44 24 78       	mov    r8,QWORD PTR [rsp+0x78]
+   6f77c:	44 8b 4c 24 18       	mov    r9d,DWORD PTR [rsp+0x18]
+   6f781:	48 8b ac 24 c8 00 00 	mov    rbp,QWORD PTR [rsp+0xc8]
+   6f788:	00 
+   6f789:	e9 61 f1 ff ff       	jmp    6e8ef <js_regexp_exec+0x20f>
+   6f78e:	44 89 e1             	mov    ecx,r12d
+   6f791:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f797:	45 31 e4             	xor    r12d,r12d
+   6f79a:	45 31 c0             	xor    r8d,r8d
+   6f79d:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f7a4:	00 00 
+   6f7a6:	31 c0                	xor    eax,eax
+   6f7a8:	45 31 db             	xor    r11d,r11d
+   6f7ab:	31 ed                	xor    ebp,ebp
+   6f7ad:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6f7b4:	00 00 
+   6f7b6:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6f7bc:	ba 03 00 00 00       	mov    edx,0x3
+   6f7c1:	48 c7 44 24 28 02 00 	mov    QWORD PTR [rsp+0x28],0x2
+   6f7c8:	00 00 
+   6f7ca:	e9 33 fb ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f7cf:	4c 89 d2             	mov    rdx,r10
+   6f7d2:	45 89 e7             	mov    r15d,r12d
+   6f7d5:	44 89 e5             	mov    ebp,r12d
+   6f7d8:	4c 89 de             	mov    rsi,r11
+   6f7db:	4c 8b 94 24 d8 00 00 	mov    r10,QWORD PTR [rsp+0xd8]
+   6f7e2:	00 
+   6f7e3:	4c 8b a4 24 d0 00 00 	mov    r12,QWORD PTR [rsp+0xd0]
+   6f7ea:	00 
+   6f7eb:	4c 89 54 24 50       	mov    QWORD PTR [rsp+0x50],r10
+   6f7f0:	48 89 df             	mov    rdi,rbx
+   6f7f3:	e8 08 d2 fa ff       	call   1ca00 <JS_FreeValue>
+   6f7f8:	45 89 fb             	mov    r11d,r15d
+   6f7fb:	8b 54 24 30          	mov    edx,DWORD PTR [rsp+0x30]
+   6f7ff:	48 c7 44 24 10 00 00 	mov    QWORD PTR [rsp+0x10],0x0
+   6f806:	00 00 
+   6f808:	4c 8b 44 24 78       	mov    r8,QWORD PTR [rsp+0x78]
+   6f80d:	44 8b 4c 24 18       	mov    r9d,DWORD PTR [rsp+0x18]
+   6f812:	b9 03 00 00 00       	mov    ecx,0x3
+   6f817:	48 c7 44 24 20 03 00 	mov    QWORD PTR [rsp+0x20],0x3
+   6f81e:	00 00 
+   6f820:	48 8b 84 24 98 00 00 	mov    rax,QWORD PTR [rsp+0x98]
+   6f827:	00 
+   6f828:	44 8b bc 24 c8 00 00 	mov    r15d,DWORD PTR [rsp+0xc8]
+   6f82f:	00 
+   6f830:	4c 8b 54 24 50       	mov    r10,QWORD PTR [rsp+0x50]
+   6f835:	e9 c8 fa ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f83a:	49 89 c0             	mov    r8,rax
+   6f83d:	44 89 e1             	mov    ecx,r12d
+   6f840:	41 b9 06 00 00 00    	mov    r9d,0x6
+   6f846:	45 31 e4             	xor    r12d,r12d
+   6f849:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f850:	00 00 
+   6f852:	31 c0                	xor    eax,eax
+   6f854:	45 31 db             	xor    r11d,r11d
+   6f857:	31 ed                	xor    ebp,ebp
+   6f859:	48 c7 44 24 28 02 00 	mov    QWORD PTR [rsp+0x28],0x2
+   6f860:	00 00 
+   6f862:	41 bf 02 00 00 00    	mov    r15d,0x2
+   6f868:	ba 03 00 00 00       	mov    edx,0x3
+   6f86d:	e9 90 fa ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f872:	45 89 e7             	mov    r15d,r12d
+   6f875:	44 89 e5             	mov    ebp,r12d
+   6f878:	4c 89 ee             	mov    rsi,r13
+   6f87b:	4c 89 f2             	mov    rdx,r14
+   6f87e:	4c 8b 94 24 d8 00 00 	mov    r10,QWORD PTR [rsp+0xd8]
+   6f885:	00 
+   6f886:	4c 8b a4 24 d0 00 00 	mov    r12,QWORD PTR [rsp+0xd0]
+   6f88d:	00 
+   6f88e:	4c 89 54 24 50       	mov    QWORD PTR [rsp+0x50],r10
+   6f893:	e9 58 ff ff ff       	jmp    6f7f0 <js_regexp_exec+0x1110>
+   6f898:	48 8b 54 24 10       	mov    rdx,QWORD PTR [rsp+0x10]
+   6f89d:	48 8b 74 24 50       	mov    rsi,QWORD PTR [rsp+0x50]
+   6f8a2:	48 89 df             	mov    rdi,rbx
+   6f8a5:	45 89 e7             	mov    r15d,r12d
+   6f8a8:	4c 8b 94 24 d8 00 00 	mov    r10,QWORD PTR [rsp+0xd8]
+   6f8af:	00 
+   6f8b0:	44 89 e5             	mov    ebp,r12d
+   6f8b3:	4c 8b a4 24 d0 00 00 	mov    r12,QWORD PTR [rsp+0xd0]
+   6f8ba:	00 
+   6f8bb:	4c 89 54 24 40       	mov    QWORD PTR [rsp+0x40],r10
+   6f8c0:	e8 3b d1 fa ff       	call   1ca00 <JS_FreeValue>
+   6f8c5:	45 31 d2             	xor    r10d,r10d
+   6f8c8:	45 89 fb             	mov    r11d,r15d
+   6f8cb:	8b 54 24 30          	mov    edx,DWORD PTR [rsp+0x30]
+   6f8cf:	4c 89 54 24 10       	mov    QWORD PTR [rsp+0x10],r10
+   6f8d4:	4c 8b 44 24 78       	mov    r8,QWORD PTR [rsp+0x78]
+   6f8d9:	b9 03 00 00 00       	mov    ecx,0x3
+   6f8de:	48 c7 44 24 20 03 00 	mov    QWORD PTR [rsp+0x20],0x3
+   6f8e5:	00 00 
+   6f8e7:	48 8b 84 24 98 00 00 	mov    rax,QWORD PTR [rsp+0x98]
+   6f8ee:	00 
+   6f8ef:	44 8b 4c 24 18       	mov    r9d,DWORD PTR [rsp+0x18]
+   6f8f4:	44 8b bc 24 c8 00 00 	mov    r15d,DWORD PTR [rsp+0xc8]
+   6f8fb:	00 
+   6f8fc:	4c 8b 54 24 40       	mov    r10,QWORD PTR [rsp+0x40]
+   6f901:	e9 fc f9 ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f906:	e8 c5 20 fa ff       	call   119d0 <__stack_chk_fail@plt>
+   6f90b:	49 89 e8             	mov    r8,rbp
+   6f90e:	31 ed                	xor    ebp,ebp
+   6f910:	45 89 f9             	mov    r9d,r15d
+   6f913:	b9 03 00 00 00       	mov    ecx,0x3
+   6f918:	48 89 6c 24 10       	mov    QWORD PTR [rsp+0x10],rbp
+   6f91d:	ba 03 00 00 00       	mov    edx,0x3
+   6f922:	31 c0                	xor    eax,eax
+   6f924:	31 ed                	xor    ebp,ebp
+   6f926:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f92d:	00 00 
+   6f92f:	44 8b bc 24 c8 00 00 	mov    r15d,DWORD PTR [rsp+0xc8]
+   6f936:	00 
+   6f937:	48 c7 44 24 20 03 00 	mov    QWORD PTR [rsp+0x20],0x3
+   6f93e:	00 00 
+   6f940:	e9 bd f9 ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f945:	31 f6                	xor    esi,esi
+   6f947:	44 8b bc 24 c8 00 00 	mov    r15d,DWORD PTR [rsp+0xc8]
+   6f94e:	00 
+   6f94f:	45 31 c0             	xor    r8d,r8d
+   6f952:	31 c0                	xor    eax,eax
+   6f954:	48 89 74 24 10       	mov    QWORD PTR [rsp+0x10],rsi
+   6f959:	b9 03 00 00 00       	mov    ecx,0x3
+   6f95e:	ba 03 00 00 00       	mov    edx,0x3
+   6f963:	31 ed                	xor    ebp,ebp
+   6f965:	48 c7 44 24 30 03 00 	mov    QWORD PTR [rsp+0x30],0x3
+   6f96c:	00 00 
+   6f96e:	41 b9 03 00 00 00    	mov    r9d,0x3
+   6f974:	48 c7 44 24 18 03 00 	mov    QWORD PTR [rsp+0x18],0x3
+   6f97b:	00 00 
+   6f97d:	48 c7 44 24 20 03 00 	mov    QWORD PTR [rsp+0x20],0x3
+   6f984:	00 00 
+   6f986:	e9 77 f9 ff ff       	jmp    6f302 <js_regexp_exec+0xc22>
+   6f98b:	48 89 54 24 50       	mov    QWORD PTR [rsp+0x50],rdx
+   6f990:	48 8b 54 24 38       	mov    rdx,QWORD PTR [rsp+0x38]
+   6f995:	44 89 e1             	mov    ecx,r12d
+   6f998:	48 89 df             	mov    rdi,rbx
+   6f99b:	48 8b b4 24 a8 00 00 	mov    rsi,QWORD PTR [rsp+0xa8]
+   6f9a2:	00 
+   6f9a3:	4c 89 54 24 10       	mov    QWORD PTR [rsp+0x10],r10
+   6f9a8:	e8 43 e9 ff ff       	call   6e2f0 <JS_HasProperty>
+   6f9ad:	4c 8b 54 24 10       	mov    r10,QWORD PTR [rsp+0x10]
+   6f9b2:	4c 8b 4c 24 50       	mov    r9,QWORD PTR [rsp+0x50]
+   6f9b7:	85 c0                	test   eax,eax
+   6f9b9:	0f 84 9a f2 ff ff    	je     6ec59 <js_regexp_exec+0x579>
+   6f9bf:	e9 d1 f2 ff ff       	jmp    6ec95 <js_regexp_exec+0x5b5>
+   6f9c4:	45 31 f6             	xor    r14d,r14d
+   6f9c7:	bd 06 00 00 00       	mov    ebp,0x6
+   6f9cc:	e9 21 ef ff ff       	jmp    6e8f2 <js_regexp_exec+0x212>
+   6f9d1:	48 8b b4 24 98 00 00 	mov    rsi,QWORD PTR [rsp+0x98]
+   6f9d8:	00 
+   6f9d9:	48 8b 54 24 30       	mov    rdx,QWORD PTR [rsp+0x30]
+   6f9de:	44 89 e1             	mov    ecx,r12d
+   6f9e1:	48 89 df             	mov    rdi,rbx
+   6f9e4:	4c 89 94 24 b0 00 00 	mov    QWORD PTR [rsp+0xb0],r10
+   6f9eb:	00 
+   6f9ec:	4c 89 9c 24 a0 00 00 	mov    QWORD PTR [rsp+0xa0],r11
+   6f9f3:	00 
+   6f9f4:	e8 f7 e8 ff ff       	call   6e2f0 <JS_HasProperty>
+   6f9f9:	4c 8b 9c 24 a0 00 00 	mov    r11,QWORD PTR [rsp+0xa0]
+   6fa00:	00 
+   6fa01:	4c 8b 94 24 b0 00 00 	mov    r10,QWORD PTR [rsp+0xb0]
+   6fa08:	00 
+   6fa09:	85 c0                	test   eax,eax
+   6fa0b:	0f 84 6a f4 ff ff    	je     6ee7b <js_regexp_exec+0x79b>
+   6fa11:	e9 a4 f4 ff ff       	jmp    6eeba <js_regexp_exec+0x7da>
+
+Disassembly of section .fini:

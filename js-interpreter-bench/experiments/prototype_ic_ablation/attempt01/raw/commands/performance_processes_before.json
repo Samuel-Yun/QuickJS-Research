@@ -1,0 +1,24 @@
+{
+  "exit_code": 0,
+  "stdout": "    PID    PPID STAT COMMAND         %CPU COMMAND\n      1       0 Ss   systemd         11.8 /sbin/init\n      2       1 Sl   init-systemd(Ub  0.0 /init\n      9       2 Sl   init             0.1 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate\n     55       1 S<s  systemd-journal  7.7 /usr/lib/systemd/systemd-journald\n     82       1 Ss   systemd-udevd    5.0 /usr/lib/systemd/systemd-udevd\n    105      82 S    (udev-worker)    0.7 (udev-worker)\n    106      82 S    (udev-worker)    0.9 (udev-worker)\n    107      82 S    (udev-worker)    0.9 (udev-worker)\n    108      82 S    (udev-worker)    1.1 (udev-worker)\n    109      82 S    (udev-worker)    0.4 (udev-worker)\n    110      82 S    (udev-worker)    0.4 (udev-worker)\n    113      82 S    (udev-worker)    0.9 (udev-worker)\n    115      82 S    (udev-worker)    1.6 (udev-worker)\n    116      82 S    (udev-worker)    0.2 (udev-worker)\n    117      82 S    (udev-worker)    0.2 (udev-worker)\n    119      82 S    (udev-worker)    0.9 (udev-worker)\n    121      82 S    (udev-worker)    1.1 (udev-worker)\n    122      82 S    (udev-worker)    0.2 (udev-worker)\n    123      82 S    (udev-worker)    0.0 (udev-worker)\n    128      82 S    (udev-worker)    0.2 (udev-worker)\n    139       1 Ss   systemd-resolve  2.9 /usr/lib/systemd/systemd-resolved\n    140       1 Ssl  systemd-timesyn  2.4 /usr/lib/systemd/systemd-timesyncd\n    149       1 Ss   cron             0.2 /usr/sbin/cron -f -P\n    150       1 Ss   dbus-daemon      1.2 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    156       1 Ssl  snapd            9.2 /usr/lib/snapd/snapd\n    160       1 Ss   systemd-logind   4.1 /usr/lib/systemd/systemd-logind\n    168       1 Ss+  agetty           0.2 /sbin/agetty -o -p -- \\u --noclear --keep-baud - 115200,38400,9600 vt220\n    183       1 Ss+  agetty           0.2 /sbin/agetty -o -p -- \\u --noclear - linux\n    187       1 Ssl  containerd       8.3 /usr/bin/containerd\n    188       1 Ssl  rsyslogd         3.4 /usr/sbin/rsyslogd -n -iNONE\n    195       1 Ssl  unattended-upgr  6.9 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    260       1 Ss   systemd-timedat  2.6 /usr/lib/systemd/systemd-timedated\n    261       1 Ssl  dockerd         13.6 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n    527       2 Ss   SessionLeader    0.0 /init\n    528     527 S    Relay(529)       0.0 /init\n    529     528 Ss+  python3         30.0 /usr/bin/python3 -B /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_ablation/attempt01/performance.py\n    530       2 Ss+  login            2.0 /bin/login -f\n    568       1 Rs   systemd-user-ru  0.0 /usr/lib/systemd/systemd-user-runtime-dir start 1000\n    569     529 R+   ps               0.0 ps -eo pid,ppid,stat,comm,pcpu,args\n",
+  "stderr": "your 131072x1 screen size is bogus. expect trouble\n",
+  "timeout": false,
+  "command": [
+    "ps",
+    "-eo",
+    "pid,ppid,stat,comm,pcpu,args"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-29T15:46:12.755098+00:00",
+  "completed_at": "2026-10-29T15:46:12.763680+00:00",
+  "outer_start_ns": 70470479138,
+  "outer_stop_ns": 70479036729,
+  "outer_wall_ns": 8557591,
+  "boot_id": "3cf9e053-1520-4bc8-92a7-841e83af6563",
+  "parent_affinity": [
+    15
+  ],
+  "option": null,
+  "environment_sha256": "30541322e809d907b3cb8b25a6a40ef668c39d79e3178d6b00ec59ae0c93ff01",
+  "environment_excluding_option_sha256": "30541322e809d907b3cb8b25a6a40ef668c39d79e3178d6b00ec59ae0c93ff01"
+}

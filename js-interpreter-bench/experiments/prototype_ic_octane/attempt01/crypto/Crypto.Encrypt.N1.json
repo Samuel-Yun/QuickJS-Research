@@ -1,0 +1,48 @@
+{
+  "status": "PASS_BOUNDED_INPUT_IDENTITY",
+  "case": "Crypto.Encrypt",
+  "N": 1,
+  "seed": 305419896,
+  "scope": "only current frozen source/keys/seed/N/five conditions; not security RNG",
+  "processes": 10,
+  "core_sha256": "dc1c78da5a06c98f25147c9f02d03f4d1bc0841225537d48bc989ac6ae407304",
+  "observed_event_counts": [
+    {
+      "core": 5,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    },
+    {
+      "core": 5,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    },
+    {
+      "core": 5,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    },
+    {
+      "core": 5,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    },
+    {
+      "core": 5,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    }
+  ],
+  "final_ciphertext": "73be293fe54b9fc1af0cab261d4307883f70dfb21390d3de779e061f39e084fee1072606b0979db989ab21a288e16c2644af3842ccbd8f540eb66d61c44253d9b5ebe30dbd5dfe9ee81038baf4912ab3de44cfe2a401ff0363c720713889b1d31f21f32a1d68bee95b19f767d52c0ed1fd8ff2ab66d88e68dffaadb9826aed24",
+  "plain_observed_and_conditions_match": true
+}

@@ -1,0 +1,51 @@
+{
+  "conditions": [
+    "A",
+    "E",
+    "V8_ON"
+  ],
+  "core16": [
+    "Richards.Richards",
+    "DeltaBlue.DeltaBlue",
+    "Crypto.Encrypt",
+    "Crypto.Decrypt",
+    "RayTrace.RayTrace",
+    "EarleyBoyer.Earley",
+    "EarleyBoyer.Boyer",
+    "RegExp.RegExp",
+    "Splay.Splay",
+    "NavierStokes.NavierStokes",
+    "PdfJS.PdfJS",
+    "Mandreel.Mandreel",
+    "Gameboy.Gameboy",
+    "CodeLoad.CodeLoadClosure",
+    "CodeLoad.CodeLoadJQuery",
+    "Typescript.Typescript"
+  ],
+  "mandatory_extension": "zlib.zlib",
+  "Box2D": "attempt gate; otherwise RUNS_NO_TRUSTED_OUTPUT_GATE",
+  "mode": "USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1",
+  "clock": "captured native monotonic performance.now; elapsed/N",
+  "first_Run_included": true,
+  "warmup_calls": 0,
+  "inside": "N original Run including dynamic compilation/I-O/GC/helpers/builtin/RegExp/assertions",
+  "outside": "static loading/compilation, required Setup, final validation/TearDown/output",
+  "timeout_seconds": 300,
+  "max_N": 131072,
+  "pilot_per_condition": 2,
+  "pilot_min_ms": 1000,
+  "repetitions": 30,
+  "seed": 20261031,
+  "schedule": "six ABC permutations each5, case order shuffled every rep, three adjacent fresh processes",
+  "failure": "record, do not automatically retry; case-specific continue; global identity/timer/boot stop",
+  "bootstrap": "10000 complete triplet rep resamples, ratio of medians, seed20261031; overall common rep blocks; linear percentile95%, exploratory",
+  "aggregate": "case GM within suite, suite equal-weight GM; fixed16/13 main,17/14 expanded; includes Crypto, not official score",
+  "ratios": [
+    "E/A",
+    "E/V8_ON",
+    "A/V8_ON"
+  ],
+  "no_outlier_deletion": true,
+  "no_historical_times": true,
+  "source_research_limitations": "actual d8 commit/toolchain UNKNOWN; reference commit only"
+}

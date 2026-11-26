@@ -1,0 +1,13 @@
+{
+  "raw_modified": false,
+  "runtime_access_required": false,
+  "host": "Windows Python",
+  "actual_commands": [
+    "IC_SEARCH_V3_ARCHIVE_ONLY=1 python search.py analyze",
+    "IC_SEARCH_V3_ARCHIVE_ONLY=1 python search.py audit",
+    "python recover.py <each of14 representative IDs> --verify-only"
+  ],
+  "reconstructed": 14,
+  "archive_sha256": "5d379424bd1c7fb386467c4c214c790fb835fd954e961f0a2825e2ee0f26d66b",
+  "status": "PASS_ARCHIVE_ONLY_AND_SOURCE_RECONSTRUCTION"
+}

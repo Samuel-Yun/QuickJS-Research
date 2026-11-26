@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "actual_images": true,
+  "actual_Release_assembly": true,
+  "versions": {
+    "OLD_D16": {
+      "binary_sha256": "1275054cad55f4b2c71c7f2ee7989b001925190a1ded8a41b6df2d8dd73ca376",
+      "paths": {
+        "short": {
+          "prefix": "v6_get_arg0",
+          "entry": "0x2a9eb",
+          "bytecode_length": 5,
+          "field_instruction_bytes": 3,
+          "next_opcode_format_checks": [
+            "   2d780:\tcmpb   $0xf5,(%r12)"
+          ],
+          "reachable_instruction_count": 52
+        },
+        "wide": {
+          "prefix": "v6_get_arg0",
+          "entry": "0x2a9eb",
+          "bytecode_length": 17,
+          "field_instruction_bytes": 5,
+          "next_opcode_format_checks": [
+            "   2d780:\tcmpb   $0xf5,(%r12)"
+          ],
+          "reachable_instruction_count": 52
+        },
+        "short_loc0": {
+          "prefix": "v6_get_loc0",
+          "entry": "0x2b64e",
+          "field_instruction_bytes": 3,
+          "next_opcode_format_checks": [
+            "   2da01:\tcmpb   $0xf5,(%r12)"
+          ],
+          "reachable_instruction_count": 52
+        },
+        "wide_loc0": {
+          "prefix": "v6_get_loc0",
+          "entry": "0x2b64e",
+          "field_instruction_bytes": 5,
+          "next_opcode_format_checks": [
+            "   2da01:\tcmpb   $0xf5,(%r12)"
+          ],
+          "reachable_instruction_count": 52
+        }
+      }
+    },
+    "D16_STATIC": {
+      "binary_sha256": "ca845f98fe33621ca61716a0948c4c3ae8e2184bee2de7433279de3bf20b37a2",
+      "paths": {
+        "short": {
+          "prefix": "v6s_get_arg0",
+          "entry": "0x286da",
+          "bytecode_length": 5,
+          "field_instruction_bytes": 3,
+          "next_opcode_format_checks": [],
+          "reachable_instruction_count": 44
+        },
+        "wide": {
+          "prefix": "v6_get_arg0",
+          "entry": "0x2871e",
+          "bytecode_length": 17,
+          "field_instruction_bytes": 5,
+          "next_opcode_format_checks": [],
+          "reachable_instruction_count": 44
+        },
+        "short_loc0": {
+          "prefix": "v6s_get_loc0",
+          "entry": "0x28696",
+          "field_instruction_bytes": 3,
+          "next_opcode_format_checks": [],
+          "reachable_instruction_count": 44
+        },
+        "wide_loc0": {
+          "prefix": "v6_get_loc0",
+          "entry": "0x28ac1",
+          "field_instruction_bytes": 5,
+          "next_opcode_format_checks": [],
+          "reachable_instruction_count": 44
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "label": "IO2_LAYOUT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:31:41.470363+00:00:IO2_LAYOUT/524288",
+      "pass_": false
+    },
+    {
+      "label": "IO2_LAYOUT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:31:42.190571+00:00:IO2_LAYOUT/1048576",
+      "pass_": false
+    },
+    {
+      "label": "IO2_DIRECT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:31:42.916779+00:00:IO2_DIRECT/524288",
+      "pass_": false
+    },
+    {
+      "label": "IO2_DIRECT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:31:43.612331+00:00:IO2_DIRECT/1048576",
+      "pass_": false
+    },
+    {
+      "label": "IO4_LAYOUT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:31:44.334641+00:00:IO4_LAYOUT/524288",
+      "pass_": false
+    },
+    {
+      "label": "IO4_LAYOUT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:31:46.102792+00:00:IO4_LAYOUT/1048576",
+      "pass_": false
+    },
+    {
+      "label": "IO4_DIRECT",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:31:46.532487+00:00:IO4_DIRECT/524288",
+      "pass_": false
+    },
+    {
+      "label": "IO4_DIRECT",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:31:48.171526+00:00:IO4_DIRECT/1048576",
+      "pass_": false
+    },
+    {
+      "label": "AQ1",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:31:49.805043+00:00:AQ1/524288",
+      "pass_": false
+    },
+    {
+      "label": "AQ1",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:31:50.532043+00:00:AQ1/1048576",
+      "pass_": true
+    },
+    {
+      "label": "AP1",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:31:51.245396+00:00:AP1/524288",
+      "pass_": true
+    },
+    {
+      "label": "AP1",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:31:51.912319+00:00:AP1/1048576",
+      "pass_": false
+    },
+    {
+      "label": "ST1",
+      "limit_bytes": 524288,
+      "token": "2026-11-07T08:31:53.531066+00:00:ST1/524288",
+      "pass_": false
+    },
+    {
+      "label": "ST1",
+      "limit_bytes": 1048576,
+      "token": "2026-11-07T08:31:55.046911+00:00:ST1/1048576",
+      "pass_": false
+    }
+  ],
+  "scope": "bounded memory pressure and recovery; not exhaustive per-allocation fault injection",
+  "added_after_initial_screens": true,
+  "performance_result": false
+}

@@ -1,0 +1,139 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -318,7 +318,14 @@
+ 
+ /* end JS Malloc */
+ 
++typedef struct InstancePrototypeSlot {
++    uintptr_t site;
++    uint32_t offset;
++} InstancePrototypeSlot;
++
+ struct JSRuntime {
++    InstancePrototypeSlot instance_slots[64];
++    uint8_t instance_mode;
+     JSMallocContext malloc_ctx;
+     const char *rt_info;
+ 
+@@ -2108,6 +2115,9 @@
+     js_malloc_init(&rt->malloc_ctx);
+     rt->malloc_ctx.mf = *mf;
+     rt->malloc_ctx.malloc_state = ms;
++    const char *instance_setting = getenv("QJS_INSTANCE_MODE");
++    rt->instance_mode = instance_setting && !strcmp(instance_setting, "cached") ? 2 :
++                        instance_setting && !strcmp(instance_setting, "direct") ? 1 : 0;
+     rt->malloc_gc_threshold = 256 * 1024;
+ 
+     init_list_head(&rt->context_list);
+@@ -8219,7 +8229,57 @@
+ }
+ 
+ /* return TRUE, FALSE or (-1) in case of exception */
+-int JS_IsInstanceOf(JSContext *ctx, JSValueConst val, JSValueConst obj)
++static JSValue js_function_hasInstance(JSContext *, JSValueConst, int, JSValueConst *);
++
++/* Always validate the current descriptor. A recycled PC can at most suggest
++   the wrong offset. No entry owns or dereferences an old function or shape. */
++static JSProperty *instance_proto_property(JSContext *ctx, JSObject *ctor, uintptr_t site)
++{
++    JSShape *shape = ctor->shape;
++    InstancePrototypeSlot *entry = NULL;
++    JSShapeProperty *desc;
++    JSProperty *prop;
++
++    if (ctx->rt->instance_mode == 2) {
++        entry = &ctx->rt->instance_slots[(site ^ (site >> 9)) & 63];
++        if (entry->site == site && entry->offset < (uint32_t)shape->prop_count) {
++            desc = &get_shape_prop(shape)[entry->offset];
++            if (desc->atom == JS_ATOM_prototype && !(desc->flags & JS_PROP_TMASK))
++                return &ctor->prop[entry->offset];
++        }
++    }
++    desc = find_own_property(&prop, ctor, JS_ATOM_prototype);
++    if (!desc || (desc->flags & JS_PROP_TMASK))
++        return NULL;
++    if (entry) {
++        entry->offset = (uint32_t)(prop - ctor->prop);
++        entry->site = site;
++    }
++    return prop;
++}
++
++static int instance_fast_result(JSContext *ctx, JSValueConst val, JSObject *ctor,
++                                JSValueConst method, uintptr_t site)
++{
++    if (!JS_IsObject(method) || ctor->class_id != JS_CLASS_BYTECODE_FUNCTION ||
++        ctx->rt->interrupt_handler || js_check_stack_overflow(ctx->rt, 4096))
++        return -1;
++    JSObject *hook = JS_VALUE_GET_OBJ(method);
++    if (hook->class_id != JS_CLASS_C_FUNCTION || hook->u.cfunc.realm != ctx ||
++        hook->u.cfunc.cproto != JS_CFUNC_generic || hook->u.cfunc.c_function.generic != js_function_hasInstance)
++        return -1;
++    if (!JS_IsObject(val))
++        return FALSE;
++    JSObject *lhs = JS_VALUE_GET_OBJ(val);
++    if (lhs->is_exotic)
++        return -1;
++    JSProperty *proto = instance_proto_property(ctx, ctor, site);
++    if (proto && JS_IsObject(proto->u.value) && lhs->shape->proto == JS_VALUE_GET_OBJ(proto->u.value))
++        return TRUE;
++    return -1;
++}
++
++static int js_instanceof_at(JSContext *ctx, JSValueConst val, JSValueConst obj, uintptr_t site)
+ {
+     JSValue method;
+ 
+@@ -8228,6 +8288,14 @@
+     method = JS_GetProperty(ctx, obj, JS_ATOM_Symbol_hasInstance);
+     if (JS_IsException(method))
+         return -1;
++    if (site && ctx->rt->instance_mode) {
++        int answer = instance_fast_result(ctx, val, JS_VALUE_GET_OBJ(obj), method, site);
++        if (answer >= 0) {
++            int interrupted = js_poll_interrupts(ctx);
++            JS_FreeValue(ctx, method);
++            return interrupted ? -1 : answer;
++        }
++    }
+     if (!JS_IsNull(method) && !JS_IsUndefined(method)) {
+         JSValue ret;
+         ret = JS_CallFree(ctx, method, obj, 1, &val);
+@@ -8241,6 +8309,11 @@
+         return -1;
+     }
+     return JS_OrdinaryIsInstanceOf(ctx, val, obj);
++}
++
++int JS_IsInstanceOf(JSContext *ctx, JSValueConst val, JSValueConst obj)
++{
++    return js_instanceof_at(ctx, val, obj, 0);
+ }
+ 
+ /* return the value associated to the autoinit property or an exception */
+@@ -16108,14 +16181,14 @@
+     return ret;
+ }
+ 
+-static __exception int js_operator_instanceof(JSContext *ctx, JSValue *sp)
++static __exception int js_operator_instanceof(JSContext *ctx, JSValue *sp, const uint8_t *site)
+ {
+     JSValue op1, op2;
+     BOOL ret;
+ 
+     op1 = sp[-2];
+     op2 = sp[-1];
+-    ret = JS_IsInstanceOf(ctx, op1, op2);
++    ret = js_instanceof_at(ctx, op1, op2, (uintptr_t)site);
+     if (ret < 0)
+         return ret;
+     JS_FreeValue(ctx, op1);
+@@ -20601,7 +20674,7 @@
+             BREAK;
+         CASE(OP_instanceof):
+             sf->cur_pc = pc;
+-            if (js_operator_instanceof(ctx, sp))
++            if (js_operator_instanceof(ctx, sp, pc - 1))
+                 goto exception;
+             sp--;
+             BREAK;

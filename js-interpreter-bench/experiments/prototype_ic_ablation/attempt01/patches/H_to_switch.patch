@@ -1,0 +1,53 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -43,6 +43,23 @@
+ #include "cutils.h"
+ #include "list.h"
+ #include "quickjs.h"
++
++/* Single-threaded, experimental CLI only; not a production API or JS option. */
++static int qjs_experiment_proto_ic_enabled = 1;
++static int qjs_experiment_proto_ic_initialized;
++int qjs_experiment_proto_ic_init(void)
++{
++    const char *option;
++    if (qjs_experiment_proto_ic_initialized)
++        return 0;
++    option = getenv("QJS_EXPERIMENT_PROTO_IC");
++    if (!option || (option[0] != '0' && option[0] != '1') || option[1] != '\0')
++        return -1;
++    qjs_experiment_proto_ic_enabled = option[0] == '1';
++    qjs_experiment_proto_ic_initialized = 1;
++    return 0;
++}
++
+ #include "libregexp.h"
+ #include "libunicode.h"
+ #include "dtoa.h"
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,8 +311,13 @@
+     exit(1);
+ }
+ 
++extern int qjs_experiment_proto_ic_init(void);
+ int main(int argc, char **argv)
+ {
++    if (qjs_experiment_proto_ic_init() < 0) {
++        fputs("QJS_EXPERIMENT_PROTO_IC must be 0 or 1\n", stderr);
++        return 2;
++    }
+     JSRuntime *rt;
+     JSContext *ctx;
+     struct trace_malloc_data trace_data = { NULL };
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -48,7 +48,7 @@
+                         if (origin->class_id == JS_CLASS_OBJECT && !origin->is_exotic && \
+                             origin->shape->proto == p &&               \
+                             p->class_id == JS_CLASS_OBJECT && !p->is_exotic && \
+-                            origin->shape->is_hashed && p->shape->is_hashed) \
++                            origin->shape->is_hashed && p->shape->is_hashed && qjs_experiment_proto_ic_enabled) \
+                             rdi_update(ctx, site, origin->shape, p->shape, pr - p->prop RDI_DARG(d)); \
+                     }                                                   \
+                     else if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) { RDI_REASON(special); } \

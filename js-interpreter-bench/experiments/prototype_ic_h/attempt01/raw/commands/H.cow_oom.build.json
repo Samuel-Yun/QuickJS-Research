@@ -1,0 +1,32 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "gcc",
+    "-O2",
+    "-g",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-I/home/mzyx/prototype_ic_h_attempt01/H_mechanism",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/cow_oom.c",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/dtoa.o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/libregexp.o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/libunicode.o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/cow_oom_check"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-29T13:14:23.127058+00:00",
+  "completed_at": "2026-10-29T13:14:46.552011+00:00",
+  "outer_start_ns": 6109240285,
+  "outer_stop_ns": 29534101555,
+  "outer_wall_ns": 23424861270,
+  "boot_id": "fcb52f96-0a0b-47f7-82e0-524f6fe83fb8"
+}

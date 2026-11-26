@@ -1,0 +1,77 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    {
+      "name": "checks.js",
+      "token": "semantic/COALLOC/checks.js"
+    },
+    {
+      "name": "semantic.js",
+      "token": "semantic/COALLOC/semantic.js"
+    },
+    {
+      "name": "targeted.js",
+      "token": "semantic/COALLOC/targeted.js"
+    },
+    {
+      "name": "combined.js",
+      "token": "semantic/COALLOC/combined.js"
+    },
+    {
+      "name": "old_layout.js",
+      "token": "semantic/COALLOC/old_layout.js"
+    },
+    {
+      "name": "extra.js",
+      "token": "semantic/COALLOC/extra.js"
+    },
+    {
+      "name": "read_roundtrip.c",
+      "token": "safety_run/COALLOC/read_roundtrip"
+    },
+    {
+      "name": "roundtrip_slots.c",
+      "token": "safety_run/COALLOC/roundtrip_slots"
+    },
+    {
+      "name": "gc_cycles.c",
+      "token": "safety_run/COALLOC/gc_cycles"
+    },
+    {
+      "name": "first_entry_roundtrip.c",
+      "token": "safety_run/COALLOC/first_entry_roundtrip"
+    },
+    {
+      "name": "native_finalizer.c",
+      "token": "safety_run/COALLOC/native_finalizer"
+    },
+    {
+      "name": "call_cleanup.c",
+      "token": "safety_run/COALLOC/call_cleanup"
+    },
+    {
+      "name": "ASan/UBSan combined.js",
+      "token": "sanitizer/COALLOC/combined.js"
+    },
+    {
+      "name": "ASan/UBSan old_layout.js",
+      "token": "sanitizer/COALLOC/old_layout.js"
+    },
+    {
+      "name": "ASan/UBSan extra.js",
+      "token": "sanitizer/COALLOC/extra.js"
+    },
+    {
+      "name": "ASan/UBSan semantic.js",
+      "token": "sanitizer/COALLOC/semantic.js"
+    }
+  ],
+  "mechanism": "COALLOC fixture=0 count=1 copied_bytecode_bytes_avoided=7 external_IC_allocations_avoided=1\nCOALLOC fixture=1 count=1 copied_bytecode_bytes_avoided=9 external_IC_allocations_avoided=1\nCOALLOC fixture=2 count=6 copied_bytecode_bytes_avoided=48 external_IC_allocations_avoided=1\nCOALLOC fixture=3 count=2 copied_bytecode_bytes_avoided=18 external_IC_allocations_avoided=1\nCOALLOC fixture=4 count=1 copied_bytecode_bytes_avoided=7 external_IC_allocations_avoided=1\nCOALLOC fixture=5 count=0 copied_bytecode_bytes_avoided=0 external_IC_allocations_avoided=0\nCOALLOC fixture=6 count=2 copied_bytecode_bytes_avoided=20 external_IC_allocations_avoided=1\nMECHANISM_PASS fused=280 proto=93 arg1=0 loc1=0 short_calls=0/0/0 function_header=144\n",
+  "preparation_equivalence": true,
+  "compiled_storage_in_function": true,
+  "targeted_cleanup_order": true,
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "full_test262": false
+}

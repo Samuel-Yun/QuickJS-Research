@@ -1,0 +1,59 @@
+{
+  "condition": "ID_READ",
+  "status": "PASS_TARGETED_ASAN_UBSAN",
+  "tests": [
+    {
+      "test": "checks.js",
+      "pass_": true,
+      "token": "2026-11-06T14:04:48.005412+00:00:ID_READ/checks.js"
+    },
+    {
+      "test": "semantic.js",
+      "pass_": true,
+      "token": "2026-11-06T14:04:48.742745+00:00:ID_READ/semantic.js"
+    },
+    {
+      "test": "targeted.js",
+      "pass_": true,
+      "token": "2026-11-06T14:04:49.469375+00:00:ID_READ/targeted.js"
+    },
+    {
+      "test": "targeted.js",
+      "pass_": true,
+      "token": "2026-11-06T14:04:50.188402+00:00:ID_READ/targeted.js"
+    },
+    {
+      "test": "targeted.js",
+      "pass_": true,
+      "token": "2026-11-06T14:04:50.906773+00:00:ID_READ/targeted.js"
+    },
+    {
+      "test": "call_targeted.js",
+      "pass_": true,
+      "token": "2026-11-06T14:04:51.601529+00:00:ID_READ/call_targeted.js"
+    },
+    {
+      "test": "read_roundtrip.c",
+      "pass_": true,
+      "token": "2026-11-06T14:04:53.544132+00:00:ID_READ/read_roundtrip.c"
+    },
+    {
+      "test": "roundtrip_slots.c",
+      "pass_": true,
+      "token": "2026-11-06T14:04:55.467980+00:00:ID_READ/roundtrip_slots.c"
+    },
+    {
+      "test": "gc_cycles.c",
+      "pass_": true,
+      "token": "2026-11-06T14:04:57.387372+00:00:ID_READ/gc_cycles.c"
+    },
+    {
+      "test": "native_finalizer.c",
+      "pass_": true,
+      "token": "2026-11-06T14:04:59.415137+00:00:ID_READ/native_finalizer.c"
+    }
+  ],
+  "parent_sha256": "300dfacfac7df74536844035e87d966cbc9c7d5371df7fe649fc1fe22fda0368",
+  "binary_sha256": "cb6159f5aa3ecc9ae8cd578b9cd4d6efb282d894e987c83aaf0d0e0695d56d89",
+  "full_test262": false
+}

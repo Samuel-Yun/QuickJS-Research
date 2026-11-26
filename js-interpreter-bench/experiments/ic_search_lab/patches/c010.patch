@@ -1,0 +1,12 @@
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -33,6 +33,9 @@
+         s->prop_offset = offset;
+         return;
+     }
++    /* c010: no replacement after the initial exact-shape anchor. */
++    if (s->shape)
++        return;
+     if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
+     js_dup_shape(shape);
+     js_free_shape_null(ctx->rt, s->shape);

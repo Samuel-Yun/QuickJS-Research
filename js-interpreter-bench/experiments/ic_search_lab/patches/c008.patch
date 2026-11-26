@@ -1,0 +1,12 @@
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -8,6 +8,9 @@
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_header_init();
+ #endif
++    /* c008: static admission only; ordinary bytecode keeps its atom ownership. */
++    if (b->byte_code_len <= 16)
++        return 0;
+     for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
+         op = b->byte_code_buf[pos];
+         if (op == OP_get_field || op == OP_get_field2) count++;

@@ -1,0 +1,20 @@
+已保存的运行后字节码：Pair / construct 示例
+
+版本：A = 原版 QuickJS；method = 原 SPARSE_CTOR_IC（按需构造缓存）。
+这里不是“两次失配版”；当前查看命令读取的是 original/modified 冻结源码。
+
+A.txt：原版 A 的完整可读字节码。
+method.txt：原 SPARSE 的完整可读字节码。
+comparison.csv：按函数、offset 并排对照，方便用 Excel 打开。
+compare.diff：两版文本差异。
+A.snapshots.jsonl / method.snapshots.jsonl：包含原始指令字节和 IC 状态的完整快照。
+input.js：本次输入脚本的副本。
+console.txt：本次命令终端输出。
+A.stdout / method.stdout：原 JS 输出，两版均为 sum=700。
+run.json：实际执行命令、输入和二进制哈希。
+
+本次执行命令（在 on_demand_ctor_cache 目录下）：
+python3 tools/bytecode.py tests/bytecode_demo.js --engine both --output docs/bytecode_demo_20261121
+
+该目录已经存在，不重复覆盖。再次保存请换一个新的 --output 目录。
+快照包含脚本主体、ownRead、Pair、construct 四个静态函数/主体；不是逐条执行日志。

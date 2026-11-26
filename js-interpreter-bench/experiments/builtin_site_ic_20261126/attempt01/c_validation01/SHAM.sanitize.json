@@ -1,0 +1,26 @@
+{
+  "label": "SHAM",
+  "mode": "sanitize",
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.sanitize",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/lifecycle.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.sanitize/.obj/asan/ubsan/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.sanitize/.obj/asan/ubsan/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.sanitize/.obj/asan/ubsan/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.sanitize/.obj/asan/ubsan/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.sanitize/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/c_validation01/SHAM.sanitize"
+  ],
+  "exit_code": 0,
+  "stdout": "INTERRUPT_STEPS:9998\nPRIVATE_PATCH_SERIALIZATION_GC_REALM_INTERRUPT_PASS\n",
+  "stderr": ""
+}

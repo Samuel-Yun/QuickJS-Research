@@ -1,0 +1,29 @@
+pc,opcode,operand,raw
+0,push_0,,b3
+1,put_loc2,,c9
+2,push_0,,b3
+3,put_loc3,,ca
+4,get_loc3,,c6
+5,get_arg1,,d0
+6,lt,,a1
+7,if_false8,->35,e81b
+9,get_arg0,,cf
+10,get_loc3,,c6
+11,get_arg2,,d1
+12,and,,ab
+13,get_array_el,,43
+14,set_loc0,,cb
+15,dup,,11
+16,push_3,,b6
+17,push_0,,b3
+18,four_ctor,record[0] argc=2,f90000
+21,put_loc1,,c8
+22,get_loc2,,c5
+23,get_loc1,,c4
+24,get_field_rdi,x IC[0] delta=15,f40f000000
+29,add,,9b
+30,put_loc2,,c9
+31,inc_loc,3,9103
+33,goto8,->4,eae2
+35,get_loc2,,c5
+36,return,,28

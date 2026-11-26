@@ -1,0 +1,22 @@
+static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+{
+#if RDI_CAPACITY == 1
+    RDI_COUNT(comparisons);
+    if (s->shape == shape)
+        return s->prop_offset;
+#else
+    unsigned i, first = s->recent;
+    RDI_COUNT(comparisons);
+    if (s->shape[first] == shape)
+        return s->prop_offset[first];
+    for (unsigned k = 1; k < 4; k++) {
+        i = (first + k) & 3;
+        RDI_COUNT(comparisons);
+        if (s->shape[i] == shape) {
+            s->recent = i;
+            return s->prop_offset[i];
+        }
+    }
+#endif
+    return UINT32_MAX;
+}

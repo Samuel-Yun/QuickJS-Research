@@ -1,0 +1,27 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 151, in <module>\n    if __name__=='__main__':globals()[sys.argv[1]]()\n                            ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 117, in collect\n    cmd.append(str(p));r=capture(cmd,name,env=dict(os.environ,IC_MECHANISM_REPORT=str(report)),timeout=600)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/common.py\", line 32, in capture\n    p=subprocess.run(cmd,cwd=cwd or ROOT,env=env,capture_output=True,text=True,timeout=timeout)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\", line 548, in run\n    with Popen(*popenargs, **kwargs) as process:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\", line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/usr/lib/python3.12/subprocess.py\", line 1955, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nOSError: [Errno 8] Exec format error: '/home/mzyx/splay_ic_20261104_attempt01/A_diag5/qjs'\n",
+  "timeout": false,
+  "command": [
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py",
+    "collect"
+  ],
+  "label": "13_collect_sparse_retry",
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01",
+  "timestamp": "2026-11-04T07:06:59.824092+00:00",
+  "completed_at": "2026-11-04T07:07:00.104504+00:00",
+  "outer_start_ns": 33831861718,
+  "outer_stop_ns": 34112352091,
+  "external_wall_ms": 280.490373,
+  "child_user_ms": 109.42199999999858,
+  "child_system_ms": 10.924999999999962,
+  "boot_id": "1190f023-a252-444d-a6c9-6384ea9e37b4",
+  "boot_id_after": "1190f023-a252-444d-a6c9-6384ea9e37b4",
+  "load_average": [
+    0.4521484375,
+    0.1123046875,
+    0.03759765625
+  ]
+}

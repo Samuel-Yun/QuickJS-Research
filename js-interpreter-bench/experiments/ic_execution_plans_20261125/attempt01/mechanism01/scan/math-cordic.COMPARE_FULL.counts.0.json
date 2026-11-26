@@ -1,0 +1,17 @@
+{
+  "label": "COMPARE_FULL",
+  "case": "math-cordic",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/work/COMPARE_FULL.counts.rev02/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/math-cordic.js"
+  ],
+  "script_sha256": "1fef0d0b9f137d4032c0ad962a18d45fd84dd7e62e0dd59109c4a1ff774f9382",
+  "binary_sha256": "5318f476d285c110254917f6e1f07ec97a8eed93c0a342cb4e430a7786d2fe76",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"math-cordic\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":128,\"checksum\":\"10362.570468755888\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1149101761.941608,\"stop_ms\":1149104104.314783,\"elapsed_ms\":2342.3731751441956,\"elapsed_per_call_ms\":18.299790430814028,\"warmup_calls\":0}\n",
+  "stderr": "FOUR_COUNTS:{\"attempts\":256,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":256,\"overflow\":0,\"sites\":[{\"function\":\"cordic\",\"source_line\":106,\"source_column\":21,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/math-cordic.js\",\"site_id\":0,\"work\":[0,0,0,0,0,0],\"pc\":29,\"attempts\":128,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":128,\"overflow\":0,\"bytecode_hex\":\"210000cdf516000000240000c3f5250000002400009c28\"},{\"function\":\"cordic\",\"source_line\":100,\"source_column\":23,\"source_file\":\"/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/scan/math-cordic.js\",\"site_id\":1,\"work\":[0,0,0,0,0,0],\"pc\":4,\"attempts\":128,\"hits\":0,\"eligible\":0,\"fills\":0,\"fallbacks\":128,\"overflow\":0,\"bytecode_hex\":\"210000c7b3c8c4cfa1e80bdcdddeed9be09101eaf238000011210000cdf516000000240000c3f5250000002400009c28\"}],\"follow\":[0,0,254,2,0,0,0,0,6,0,0,240,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 2348.650568164885
+}

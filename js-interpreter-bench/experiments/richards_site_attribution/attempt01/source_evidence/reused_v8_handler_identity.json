@@ -1,0 +1,91 @@
+{
+  "original_path": "experiments/bytecode_whitebox_simple/attempt01/bytecode/v8_native/GetNamedProperty.disassembly.txt",
+  "sha256": "98a3664d5c76fbb5ed17b16396c0e635e59eb9adca296089de78743938e2f982",
+  "mapping": {
+    "binary_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+    "mapping": [
+      "shared-library",
+      "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "0x55fb7205b000",
+      "0x55fb740cf000",
+      "0"
+    ],
+    "actual_proc_map": "55fb72638000-55fb740cf000 r-xp 005dd000 08:20 44051                      /home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "executable_PT_LOAD": [
+      {
+        "offset": 6148096,
+        "vaddr": 6152192,
+        "filesz": 27881312,
+        "memsz": 27881312
+      }
+    ],
+    "load_bias": "0x55fb7205a000",
+    "handlers": [
+      {
+        "handler": "Ldar",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73db6040",
+        "elf_vaddr": "0x1d5c040",
+        "size_bytes": 36
+      },
+      {
+        "handler": "Star0",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73dd4c00",
+        "elf_vaddr": "0x1d7ac00",
+        "size_bytes": 36
+      },
+      {
+        "handler": "Mov",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73db6a00",
+        "elf_vaddr": "0x1d5ca00",
+        "size_bytes": 44
+      },
+      {
+        "handler": "TestLessThan",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73dcc880",
+        "elf_vaddr": "0x1d72880",
+        "size_bytes": 2008
+      },
+      {
+        "handler": "GetNamedProperty",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73dbd140",
+        "elf_vaddr": "0x1d63140",
+        "size_bytes": 4216
+      },
+      {
+        "handler": "CallProperty1",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73dc8dc0",
+        "elf_vaddr": "0x1d6edc0",
+        "size_bytes": 932
+      },
+      {
+        "handler": "Add",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73dbed80",
+        "elf_vaddr": "0x1d64d80",
+        "size_bytes": 2052
+      },
+      {
+        "handler": "Inc",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73dc6f00",
+        "elf_vaddr": "0x1d6cf00",
+        "size_bytes": 720
+      },
+      {
+        "handler": "JumpLoop",
+        "kind": "BytecodeHandler",
+        "log_address": "0x55fb73dd2100",
+        "elf_vaddr": "0x1d78100",
+        "size_bytes": 1460
+      }
+    ],
+    "limitation": "code creation identifies available embedded code; not a dynamic branch/hit profile"
+  },
+  "evidence": "same frozen binary ELF bytes and previous actual loaded code map; existence is not selected-site branch execution proof"
+}

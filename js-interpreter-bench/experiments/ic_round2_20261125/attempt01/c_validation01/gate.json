@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": [
+    "INSTANCE_HOOK.release.lifetime",
+    "INSTANCE_HOOK.release.serialization",
+    "INSTANCE_HOOK.sanitize.lifetime",
+    "INSTANCE_HOOK.sanitize.serialization",
+    "CALL_FIELD.release.lifetime",
+    "CALL_FIELD.release.serialization",
+    "CALL_FIELD.sanitize.lifetime",
+    "CALL_FIELD.sanitize.serialization",
+    "NEST_COMBINED.release.lifetime",
+    "NEST_COMBINED.release.serialization",
+    "NEST_COMBINED.sanitize.lifetime",
+    "NEST_COMBINED.sanitize.serialization"
+  ],
+  "LSan": false,
+  "ASan_UBSan": true
+}

@@ -1,0 +1,1409 @@
+{
+  "summary": [
+    {
+      "pattern": "alternating",
+      "label": "NORMAL",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 10462.215304970741,
+      "min_ms": 10436.00997197628,
+      "max_ms": 10514.453809976578,
+      "calls": 67108864,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 67108863,
+      "ordinary": 67108864,
+      "identity_bypasses": 0,
+      "recipe_entries": 134217727
+    },
+    {
+      "pattern": "alternating",
+      "label": "BYPASS",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 6747.989277005196,
+      "min_ms": 6732.517726898193,
+      "max_ms": 6857.2543350458145,
+      "calls": 67108864,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 0,
+      "ordinary": 67108864,
+      "identity_bypasses": 0,
+      "recipe_entries": 0
+    },
+    {
+      "pattern": "alternating",
+      "label": "KEEP_PLAN",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 5418.367781043053,
+      "min_ms": 5406.732108950615,
+      "max_ms": 5444.7305809259415,
+      "calls": 67108864,
+      "hits": 33554431,
+      "hit_pct": 49.99999850988388,
+      "updates": 1,
+      "ordinary": 33554433,
+      "identity_bypasses": 33554431,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "all_c",
+      "label": "NORMAL",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3688.8633610010147,
+      "min_ms": 3686.5344380140305,
+      "max_ms": 4377.444985032082,
+      "calls": 67108864,
+      "hits": 67108862,
+      "hit_pct": 99.99999701976776,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "all_c",
+      "label": "BYPASS",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 6737.4328789711,
+      "min_ms": 6735.3162660598755,
+      "max_ms": 6755.956972002983,
+      "calls": 67108864,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 0,
+      "ordinary": 67108864,
+      "identity_bypasses": 0,
+      "recipe_entries": 0
+    },
+    {
+      "pattern": "all_c",
+      "label": "KEEP_PLAN",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3874.2148559093475,
+      "min_ms": 3855.684298992157,
+      "max_ms": 3899.575474023819,
+      "calls": 67108864,
+      "hits": 67108862,
+      "hit_pct": 99.99999701976776,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0,
+      "recipe_entries": 3
+    },
+    {
+      "pattern": "c_then_d",
+      "label": "NORMAL",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 3596.8154150247574,
+      "min_ms": 3587.4710949659348,
+      "max_ms": 3606.4823789596558,
+      "calls": 67108864,
+      "hits": 67108861,
+      "hit_pct": 99.99999552965164,
+      "updates": 2,
+      "ordinary": 3,
+      "identity_bypasses": 0,
+      "recipe_entries": 5
+    },
+    {
+      "pattern": "c_then_d",
+      "label": "BYPASS",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 6733.484246015549,
+      "min_ms": 6702.996052026749,
+      "max_ms": 6798.382415056229,
+      "calls": 67108864,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 0,
+      "ordinary": 67108864,
+      "identity_bypasses": 0,
+      "recipe_entries": 0
+    },
+    {
+      "pattern": "c_then_d",
+      "label": "KEEP_PLAN",
+      "iterations": 67108864,
+      "processes": 5,
+      "median_ms": 5352.129837036133,
+      "min_ms": 5242.419069886208,
+      "max_ms": 5373.6731860637665,
+      "calls": 67108864,
+      "hits": 33554430,
+      "hit_pct": 49.99999701976776,
+      "updates": 1,
+      "ordinary": 33554434,
+      "identity_bypasses": 33554432,
+      "recipe_entries": 3
+    }
+  ],
+  "switch_phases": [
+    {
+      "label": "NORMAL",
+      "phase": "C",
+      "iterations": 33554432,
+      "median_ms": 1792.692685008049,
+      "min_ms": 1789.9313439130783,
+      "max_ms": 1796.3458979129791,
+      "hits": 33554430,
+      "hit_pct": 99.99999403953552,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "NORMAL",
+      "phase": "D",
+      "iterations": 33554432,
+      "median_ms": 1803.7432519197464,
+      "min_ms": 1797.5397510528564,
+      "max_ms": 1810.1364810466766,
+      "hits": 33554431,
+      "hit_pct": 99.99999701976776,
+      "updates": 1,
+      "ordinary": 1,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "BYPASS",
+      "phase": "C",
+      "iterations": 33554432,
+      "median_ms": 3360.569339990616,
+      "min_ms": 3349.3736350536346,
+      "max_ms": 3379.9191950559616,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 0,
+      "ordinary": 33554432,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "BYPASS",
+      "phase": "D",
+      "iterations": 33554432,
+      "median_ms": 3366.3139460086823,
+      "min_ms": 3351.5665290355682,
+      "max_ms": 3449.008780002594,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 0,
+      "ordinary": 33554432,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "KEEP_PLAN",
+      "phase": "C",
+      "iterations": 33554432,
+      "median_ms": 1874.2272140979767,
+      "min_ms": 1860.7576559782028,
+      "max_ms": 1887.9602850675583,
+      "hits": 33554430,
+      "hit_pct": 99.99999403953552,
+      "updates": 1,
+      "ordinary": 2,
+      "identity_bypasses": 0
+    },
+    {
+      "label": "KEEP_PLAN",
+      "phase": "D",
+      "iterations": 33554432,
+      "median_ms": 3477.902622938156,
+      "min_ms": 3381.6614139080048,
+      "max_ms": 3488.014438033104,
+      "hits": 0,
+      "hit_pct": 0.0,
+      "updates": 0,
+      "ordinary": 33554432,
+      "identity_bypasses": 33554432
+    }
+  ],
+  "comparisons": {
+    "alternating": {
+      "vs_SPARSE_pct": -48.21012927856003,
+      "vs_BYPASS_pct": -19.703965750109166
+    },
+    "all_c": {
+      "vs_SPARSE_pct": 5.024623488847135,
+      "vs_BYPASS_pct": -42.49716582703835
+    },
+    "c_then_d": {
+      "vs_SPARSE_pct": 48.80190444800163,
+      "vs_BYPASS_pct": -20.51470469834119
+    }
+  },
+  "switch_D_vs_SPARSE_pct": 92.81583558173155,
+  "counts": [
+    {
+      "event": "sample",
+      "label": "NORMAL",
+      "mode": "counts",
+      "pattern": "alternating",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 0,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 11603.897011995316,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 11603.897011995316,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          33554432,
+          33554432
+        ],
+        "phase_C_four": [
+          33554432,
+          0,
+          33554431,
+          33554431,
+          33554432,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          33554432,
+          0,
+          33554432,
+          33554432,
+          33554432,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "four": [
+          67108864,
+          0,
+          67108863,
+          67108863,
+          67108864,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "recipe": [
+          0,
+          67108863,
+          67108863,
+          1,
+          0
+        ],
+        "base": [
+          0,
+          67108864,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          0,
+          67108863,
+          67108863,
+          0,
+          0
+        ],
+        "chain": [
+          0,
+          67108863,
+          67108863,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          0,
+          268435452,
+          268435452,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          67108863,
+          67108863,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 67108862,
+        "normal_constructions": 67108864,
+        "negative_queries": 67108864,
+        "negative_hits": 0,
+        "initial_unchanged": 67108862,
+        "final_unchanged": 67108862
+      }
+    },
+    {
+      "event": "sample",
+      "label": "BYPASS",
+      "mode": "counts",
+      "pattern": "alternating",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 0,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 6918.131878018379,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 6918.131878018379,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          33554432,
+          33554432
+        ],
+        "phase_C_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "recipe": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "base": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "chain": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "no_plan": 0,
+        "identity_mismatch": 0,
+        "normal_constructions": 67108864,
+        "negative_queries": 0,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "KEEP_PLAN",
+      "mode": "counts",
+      "pattern": "alternating",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 0,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 5797.932422041893,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 5797.932422041893,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 33554431,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          33554431,
+          0
+        ],
+        "phase_normal": [
+          33554432,
+          1
+        ],
+        "phase_C_four": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          33554432,
+          33554431,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          0,
+          33554431
+        ],
+        "four": [
+          33554433,
+          33554431,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          67108862,
+          33554431
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          33554431,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          33554431,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          33554431,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          134217724,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 33554433,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "NORMAL",
+      "mode": "counts",
+      "pattern": "all_c",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 100,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 3989.5130599737167,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 3989.5130599737167,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          67108864,
+          0
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          2,
+          0
+        ],
+        "phase_C_four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          0,
+          67108862
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          134217724,
+          67108862
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          67108862,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435448,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 2,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "BYPASS",
+      "mode": "counts",
+      "pattern": "all_c",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 100,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 6895.050069928169,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 6895.050069928169,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          67108864,
+          0
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          67108864,
+          0
+        ],
+        "phase_C_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "recipe": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "base": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "chain": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "no_plan": 0,
+        "identity_mismatch": 0,
+        "normal_constructions": 67108864,
+        "negative_queries": 0,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "KEEP_PLAN",
+      "mode": "counts",
+      "pattern": "all_c",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "mode": "positive",
+        "target": 100,
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 3999.8507109880447,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 3999.8507109880447,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          67108864,
+          0
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          2,
+          0
+        ],
+        "phase_C_four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          0,
+          67108862
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "four": [
+          67108864,
+          67108862,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          67108862,
+          0,
+          134217724,
+          67108862
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          67108862,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          67108862,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435448,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 2,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "NORMAL",
+      "mode": "counts",
+      "pattern": "c_then_d",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "pattern": "c_then_d",
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 3937.5660890340805,
+        "C_ms": 1985.5309389829636,
+        "D_ms": 1952.035150051117,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 3937.5660890340805,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          2,
+          1
+        ],
+        "phase_C_four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          0,
+          33554430
+        ],
+        "phase_D_four": [
+          33554432,
+          33554431,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          33554431,
+          0,
+          0,
+          33554431
+        ],
+        "four": [
+          67108864,
+          67108861,
+          2,
+          2,
+          3,
+          0,
+          0,
+          0,
+          67108861,
+          0,
+          134217722,
+          67108861
+        ],
+        "recipe": [
+          0,
+          2,
+          2,
+          1,
+          0
+        ],
+        "base": [
+          67108861,
+          3,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          67108861,
+          2,
+          2,
+          0,
+          0
+        ],
+        "chain": [
+          67108861,
+          2,
+          2,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          268435444,
+          8,
+          8,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 1,
+        "normal_constructions": 3,
+        "negative_queries": 3,
+        "negative_hits": 0,
+        "initial_unchanged": 1,
+        "final_unchanged": 1
+      }
+    },
+    {
+      "event": "sample",
+      "label": "BYPASS",
+      "mode": "counts",
+      "pattern": "c_then_d",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "pattern": "c_then_d",
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 7219.309852004051,
+        "C_ms": 3612.476511001587,
+        "D_ms": 3606.8333410024643,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 7219.309852004051,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 0,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          0
+        ],
+        "phase_normal": [
+          33554432,
+          33554432
+        ],
+        "phase_C_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "recipe": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "base": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "chain": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "no_plan": 0,
+        "identity_mismatch": 0,
+        "normal_constructions": 67108864,
+        "negative_queries": 0,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    },
+    {
+      "event": "sample",
+      "label": "KEEP_PLAN",
+      "mode": "counts",
+      "pattern": "c_then_d",
+      "rep": 0,
+      "iterations": 67108864,
+      "valid": true,
+      "payload": {
+        "kind": "ctor",
+        "pattern": "c_then_d",
+        "iterations": 67108864,
+        "checksum": 201326592,
+        "elapsed_ms": 5502.745328068733,
+        "C_ms": 1969.7123470306396,
+        "D_ms": 3533.0329810380936,
+        "warmup_calls": 0
+      },
+      "elapsed_ms": 5502.745328068733,
+      "counts": {
+        "pc": 18,
+        "argc": 2,
+        "site_count": 1,
+        "total_calls": 67108864,
+        "identity_bypasses": 33554432,
+        "phase_calls": [
+          33554432,
+          33554432
+        ],
+        "phase_skips": [
+          0,
+          33554432
+        ],
+        "phase_normal": [
+          2,
+          33554432
+        ],
+        "phase_C_four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          0,
+          33554430
+        ],
+        "phase_D_four": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "four": [
+          33554432,
+          33554430,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          33554430,
+          0,
+          67108860,
+          33554430
+        ],
+        "recipe": [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        "base": [
+          33554430,
+          2,
+          0,
+          0,
+          0
+        ],
+        "prototype": [
+          33554430,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain": [
+          33554430,
+          1,
+          1,
+          0,
+          0
+        ],
+        "chain_descriptors": [
+          134217720,
+          4,
+          4,
+          0,
+          0
+        ],
+        "empty_shape_search": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "no_plan": 2,
+        "identity_mismatch": 0,
+        "normal_constructions": 33554434,
+        "negative_queries": 2,
+        "negative_hits": 0,
+        "initial_unchanged": 0,
+        "final_unchanged": 0
+      }
+    }
+  ]
+}

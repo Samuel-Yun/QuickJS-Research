@@ -1,0 +1,24 @@
+{
+  "purpose": "mechanism counts only; instrumented times are not performance results",
+  "started_at": "2026-11-09T21:00:44.766053+08:00",
+  "qjs": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/diagnostic01/work/EVAL_COLD_DIAG/qjs",
+  "qjs_sha256": "d065beed854c5182464718d11eb50ce0f593477313fb1c8427f4ae5dae220acf",
+  "script_sha256": "d3cdd9fce6f6778d04369dedaff81b88ffaddcd8db55f1e30b34ee3f0397d42a",
+  "build_manifest_sha256": "8f3cb0e3a2754490d45da39e3dd1ed1d53d60b66627faa6feca3cc9ba9926a63",
+  "runner_sha256": "7617fab7c11854484a0d361f39fd2b2c03c59b5ba135e3d82f3f3396d21306b8",
+  "rates": [
+    0,
+    25,
+    50,
+    75,
+    90,
+    99,
+    100
+  ],
+  "iterations": 201326592,
+  "cpu": 2,
+  "sequence_length": 65536,
+  "warmup_calls": 0,
+  "formal_performance_samples": 0,
+  "denominator": "queries at readLoop's sole x-read site, including fused successful reads"
+}

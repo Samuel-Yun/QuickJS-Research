@@ -1,0 +1,266 @@
+[
+  {
+    "address": "0x27be01000520",
+    "pc": 0,
+    "bytes": [
+      "0c"
+    ],
+    "instruction": "LdaZero"
+  },
+  {
+    "address": "0x27be01000521",
+    "pc": 1,
+    "bytes": [
+      "d5"
+    ],
+    "instruction": "Star0"
+  },
+  {
+    "address": "0x27be01000522",
+    "pc": 2,
+    "bytes": [
+      "0c"
+    ],
+    "instruction": "LdaZero"
+  },
+  {
+    "address": "0x27be01000523",
+    "pc": 3,
+    "bytes": [
+      "d3"
+    ],
+    "instruction": "Star2"
+  },
+  {
+    "address": "0x27be01000524",
+    "pc": 4,
+    "bytes": [
+      "00",
+      "0d",
+      "00",
+      "10"
+    ],
+    "instruction": "LdaSmi.Wide [4096]"
+  },
+  {
+    "address": "0x27be01000528",
+    "pc": 8,
+    "bytes": [
+      "79",
+      "f7",
+      "00"
+    ],
+    "instruction": "TestLessThan r2, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be0100052b",
+    "pc": 11,
+    "bytes": [
+      "a8",
+      "1c"
+    ],
+    "instruction": "JumpIfFalse [28] (ADDR @ 39)"
+  },
+  {
+    "address": "0x27be0100052d",
+    "pc": 13,
+    "bytes": [
+      "33",
+      "03",
+      "00",
+      "00"
+    ],
+    "instruction": "GetNamedProperty a0, [0:\"slot\"], FBV[0]"
+  },
+  {
+    "address": "0x27be01000531",
+    "pc": 17,
+    "bytes": [
+      "d4"
+    ],
+    "instruction": "Star1"
+  },
+  {
+    "address": "0x27be01000532",
+    "pc": 18,
+    "bytes": [
+      "0b",
+      "f7"
+    ],
+    "instruction": "Ldar r2"
+  },
+  {
+    "address": "0x27be01000534",
+    "pc": 20,
+    "bytes": [
+      "4f",
+      "01",
+      "00"
+    ],
+    "instruction": "AddSmi [1], EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be01000537",
+    "pc": 23,
+    "bytes": [
+      "42",
+      "f9",
+      "00"
+    ],
+    "instruction": "Add r0, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be0100053a",
+    "pc": 26,
+    "bytes": [
+      "1b",
+      "f9",
+      "f6"
+    ],
+    "instruction": "Mov r0, r3"
+  },
+  {
+    "address": "0x27be0100053d",
+    "pc": 29,
+    "bytes": [
+      "d5"
+    ],
+    "instruction": "Star0"
+  },
+  {
+    "address": "0x27be0100053e",
+    "pc": 30,
+    "bytes": [
+      "0b",
+      "f7"
+    ],
+    "instruction": "Ldar r2"
+  },
+  {
+    "address": "0x27be01000540",
+    "pc": 32,
+    "bytes": [
+      "5b",
+      "00"
+    ],
+    "instruction": "Inc EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be01000542",
+    "pc": 34,
+    "bytes": [
+      "d3"
+    ],
+    "instruction": "Star2"
+  },
+  {
+    "address": "0x27be01000543",
+    "pc": 35,
+    "bytes": [
+      "97",
+      "1f",
+      "00",
+      "02"
+    ],
+    "instruction": "JumpLoop [31], [0], FBV[2] (ADDR @ 4)"
+  },
+  {
+    "address": "0x27be01000547",
+    "pc": 39,
+    "bytes": [
+      "0b",
+      "04"
+    ],
+    "instruction": "Ldar a1"
+  },
+  {
+    "address": "0x27be01000549",
+    "pc": 41,
+    "bytes": [
+      "78",
+      "f8",
+      "00"
+    ],
+    "instruction": "TestEqualStrict r1, EmbeddedFeedback[None]"
+  },
+  {
+    "address": "0x27be0100054c",
+    "pc": 44,
+    "bytes": [
+      "a7",
+      "0e"
+    ],
+    "instruction": "JumpIfTrue [14] (ADDR @ 58)"
+  },
+  {
+    "address": "0x27be0100054e",
+    "pc": 46,
+    "bytes": [
+      "23",
+      "01",
+      "04"
+    ],
+    "instruction": "LdaGlobal [1:\"Error\"], FBV[4]"
+  },
+  {
+    "address": "0x27be01000551",
+    "pc": 49,
+    "bytes": [
+      "d2"
+    ],
+    "instruction": "Star3"
+  },
+  {
+    "address": "0x27be01000552",
+    "pc": 50,
+    "bytes": [
+      "13",
+      "02"
+    ],
+    "instruction": "LdaConstant [2:\"value identity\"]"
+  },
+  {
+    "address": "0x27be01000554",
+    "pc": 52,
+    "bytes": [
+      "d1"
+    ],
+    "instruction": "Star4"
+  },
+  {
+    "address": "0x27be01000555",
+    "pc": 53,
+    "bytes": [
+      "6d",
+      "f6",
+      "f5",
+      "06"
+    ],
+    "instruction": "CallUndefinedReceiver1 r3, r4, FBV[6]"
+  },
+  {
+    "address": "0x27be01000559",
+    "pc": 57,
+    "bytes": [
+      "b7"
+    ],
+    "instruction": "Throw"
+  },
+  {
+    "address": "0x27be0100055a",
+    "pc": 58,
+    "bytes": [
+      "0b",
+      "f9"
+    ],
+    "instruction": "Ldar r0"
+  },
+  {
+    "address": "0x27be0100055c",
+    "pc": 60,
+    "bytes": [
+      "b9"
+    ],
+    "instruction": "Return"
+  }
+]

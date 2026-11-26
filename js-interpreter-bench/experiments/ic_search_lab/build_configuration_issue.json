@@ -1,0 +1,17 @@
+{
+  "status": "CONFIRMED_COPY_OMISSION",
+  "cause": "Lab prepare copied top-level sources but omitted compat/test-closefrom.c; official Makefile auto-detection therefore did not set HAVE_CLOSEFROM",
+  "responsibility": "experiment runner/source preparation, not IC semantics or user environment",
+  "fixed_reference": "experiments/ic_mechanism_audit/attempt01/raw/build/M_clean_release.json",
+  "reference_macro": "-DHAVE_CLOSEFROM",
+  "candidate_compile_log": "successful build process_result entries in runs.jsonl omit -DHAVE_CLOSEFROM",
+  "ELF_check": "Frozen A and M import closefrom@GLIBC_2.34; original c001 ELF does not",
+  "support_sha256": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+  "support_source": "/home/mzyx/ic_mechanism_audit_attempt01/M/compat/test-closefrom.c, matches frozen M manifest",
+  "affected_build_ids": ["c001", "c002", "c003", "c004", "c005", "c006"],
+  "performance_eligibility": "EXCLUDED_FROM_SINGLE_FACTOR_IC_INFERENCE; preserve original point estimates as confounded observations, not optimization evidence",
+  "correctness": "Existing PASS observations remain observations of those exact binaries; not final safety gates",
+  "repair": "Restore exact verified compatibility probe into the one active build tree and require matching compile macro; rebuild into new artifacts and new metadata without overwriting originals; new performance campaigns, never relabel old samples",
+  "runtime_logic_changed_by_repair": false,
+  "effect_on_timed_region": "UNKNOWN; even if closefrom branch is not exercised, linked code/layout differs, so do not assume negligible"
+}

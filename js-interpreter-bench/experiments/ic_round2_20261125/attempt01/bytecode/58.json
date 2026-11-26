@@ -1,0 +1,104 @@
+{
+  "id": 58,
+  "parent": 0,
+  "function": "",
+  "byte_code_len": 17,
+  "arg_count": 2,
+  "var_count": 1,
+  "stack_size": 2,
+  "ic_ready": true,
+  "ic_count": 0,
+  "ctor_count": 0,
+  "opcodes": [
+    {
+      "pc": 0,
+      "name": "push_this",
+      "size": 1,
+      "pop": 0,
+      "push": 1,
+      "format": "none",
+      "raw": "08"
+    },
+    {
+      "pc": 1,
+      "name": "put_loc0",
+      "size": 1,
+      "pop": 1,
+      "push": 0,
+      "format": "none_loc",
+      "raw": "c7",
+      "binding": "this"
+    },
+    {
+      "pc": 2,
+      "name": "get_loc0",
+      "size": 1,
+      "pop": 0,
+      "push": 1,
+      "format": "none_loc",
+      "raw": "c3",
+      "binding": "this"
+    },
+    {
+      "pc": 3,
+      "name": "get_arg0",
+      "size": 1,
+      "pop": 0,
+      "push": 1,
+      "format": "none_arg",
+      "raw": "cf",
+      "binding": "pos"
+    },
+    {
+      "pc": 4,
+      "name": "put_field",
+      "size": 5,
+      "pop": 2,
+      "push": 0,
+      "format": "atom",
+      "raw": "3fe4020000",
+      "atom": "position"
+    },
+    {
+      "pc": 9,
+      "name": "get_loc0",
+      "size": 1,
+      "pop": 0,
+      "push": 1,
+      "format": "none_loc",
+      "raw": "c3",
+      "binding": "this"
+    },
+    {
+      "pc": 10,
+      "name": "get_arg1",
+      "size": 1,
+      "pop": 0,
+      "push": 1,
+      "format": "none_arg",
+      "raw": "d0",
+      "binding": "dir"
+    },
+    {
+      "pc": 11,
+      "name": "put_field",
+      "size": 5,
+      "pop": 2,
+      "push": 0,
+      "format": "atom",
+      "raw": "3ff9020000",
+      "atom": "direction"
+    },
+    {
+      "pc": 16,
+      "name": "return_undef",
+      "size": 1,
+      "pop": 0,
+      "push": 0,
+      "format": "none",
+      "raw": "29"
+    }
+  ],
+  "read_sites": [],
+  "constructor_sites": []
+}

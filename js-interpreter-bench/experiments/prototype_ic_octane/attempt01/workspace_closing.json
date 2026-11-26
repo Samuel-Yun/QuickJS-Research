@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-10-30T15:13:00.025845+00:00",
+  "git": {
+    "HEAD": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout": "f87dbff4536f6eb471f8d4e4a656b1e052604b17\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "branch": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "branch",
+        "--show-current"
+      ],
+      "stdout": "myx\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "tracked_diff": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "diff",
+        "--name-only"
+      ],
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "status": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=C:/Users/mzyx/Desktop/0921",
+        "-C",
+        "C:\\Users\\mzyx\\Desktop\\0921",
+        "status",
+        "--short"
+      ],
+      "stdout": "?? js-interpreter-bench/experiments/prototype_ic_octane/\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  },
+  "file_count_before_closure": 5530,
+  "bytes_before_closure": 63315572,
+  "max_file_bytes": 5015057,
+  "engine_objects_or_binaries_added": 0
+}

@@ -1,0 +1,967 @@
+{
+  "name": "full_expand01_octane",
+  "labels": [
+    "A",
+    "s001",
+    "B2",
+    "K1",
+    "L1",
+    "W1",
+    "P1",
+    "C1",
+    "ID_CTRL",
+    "ID_READ"
+  ],
+  "stage": "octane",
+  "rounds": 3,
+  "order": [
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Mandreel.Mandreel",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "zlib.zlib",
+      "rep": 0,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 1024
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Earley",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "PdfJS.PdfJS",
+      "rep": 0,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 16
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "rep": 0,
+      "conditions": [
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1"
+      ],
+      "N": 2048
+    },
+    {
+      "kind": "octane",
+      "case": "RayTrace.RayTrace",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "octane",
+      "case": "Gameboy.Gameboy",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 8
+    },
+    {
+      "kind": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "rep": 0,
+      "conditions": [
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Decrypt",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "Typescript.Typescript",
+      "rep": 0,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "RegExp.RegExp",
+      "rep": 0,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "rep": 0,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Encrypt",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "rep": 0,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 4096
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Earley",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Decrypt",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1"
+      ],
+      "N": 4096
+    },
+    {
+      "kind": "octane",
+      "case": "Gameboy.Gameboy",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL"
+      ],
+      "N": 8
+    },
+    {
+      "kind": "octane",
+      "case": "Typescript.Typescript",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "Mandreel.Mandreel",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "zlib.zlib",
+      "rep": 1,
+      "conditions": [
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "rep": 1,
+      "conditions": [
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "RegExp.RegExp",
+      "rep": 1,
+      "conditions": [
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "octane",
+      "case": "PdfJS.PdfJS",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1"
+      ],
+      "N": 16
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Encrypt",
+      "rep": 1,
+      "conditions": [
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "RayTrace.RayTrace",
+      "rep": 1,
+      "conditions": [
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1"
+      ],
+      "N": 1024
+    },
+    {
+      "kind": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "rep": 1,
+      "conditions": [
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "rep": 1,
+      "conditions": [
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "rep": 1,
+      "conditions": [
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A"
+      ],
+      "N": 2048
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "rep": 2,
+      "conditions": [
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2"
+      ],
+      "N": 2048
+    },
+    {
+      "kind": "octane",
+      "case": "NavierStokes.NavierStokes",
+      "rep": 2,
+      "conditions": [
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "Typescript.Typescript",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "RayTrace.RayTrace",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 128
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Earley",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "EarleyBoyer.Boyer",
+      "rep": 2,
+      "conditions": [
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "zlib.zlib",
+      "rep": 2,
+      "conditions": [
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "Mandreel.Mandreel",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 1
+    },
+    {
+      "kind": "octane",
+      "case": "Gameboy.Gameboy",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 8
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Decrypt",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 32
+    },
+    {
+      "kind": "octane",
+      "case": "DeltaBlue.DeltaBlue",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadClosure",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2",
+        "A",
+        "P1",
+        "L1",
+        "s001"
+      ],
+      "N": 4096
+    },
+    {
+      "kind": "octane",
+      "case": "Crypto.Encrypt",
+      "rep": 2,
+      "conditions": [
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1"
+      ],
+      "N": 512
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 1024
+    },
+    {
+      "kind": "octane",
+      "case": "RegExp.RegExp",
+      "rep": 2,
+      "conditions": [
+        "A",
+        "P1",
+        "L1",
+        "s001",
+        "W1",
+        "K1",
+        "ID_CTRL",
+        "ID_READ",
+        "C1",
+        "B2"
+      ],
+      "N": 64
+    },
+    {
+      "kind": "octane",
+      "case": "PdfJS.PdfJS",
+      "rep": 2,
+      "conditions": [
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001",
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ"
+      ],
+      "N": 16
+    },
+    {
+      "kind": "octane",
+      "case": "CodeLoad.CodeLoadJQuery",
+      "rep": 2,
+      "conditions": [
+        "L1",
+        "P1",
+        "A",
+        "B2",
+        "C1",
+        "ID_READ",
+        "ID_CTRL",
+        "K1",
+        "W1",
+        "s001"
+      ],
+      "N": 512
+    }
+  ],
+  "boot_id": "fae4f703-266b-4b6e-949c-fee4630235b6",
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "seed": 2026110706,
+  "full_collection": true,
+  "N": {
+    "octane/Richards.Richards": 1024,
+    "octane/DeltaBlue.DeltaBlue": 512,
+    "octane/Crypto.Encrypt": 512,
+    "octane/Crypto.Decrypt": 32,
+    "octane/RayTrace.RayTrace": 128,
+    "octane/EarleyBoyer.Earley": 512,
+    "octane/EarleyBoyer.Boyer": 32,
+    "octane/RegExp.RegExp": 64,
+    "octane/Splay.Splay": 2048,
+    "octane/NavierStokes.NavierStokes": 32,
+    "octane/PdfJS.PdfJS": 16,
+    "octane/Mandreel.Mandreel": 1,
+    "octane/Gameboy.Gameboy": 8,
+    "octane/CodeLoad.CodeLoadClosure": 4096,
+    "octane/CodeLoad.CodeLoadJQuery": 512,
+    "octane/Typescript.Typescript": 1,
+    "octane/zlib.zlib": 1
+  },
+  "epoch": "expand01",
+  "environment_sha256": "7f5883501d102a6e8079b3d156dab8bdc3e0bf9991520f57a861931dd6e373da",
+  "selection": "selection.expand01.json",
+  "extra_warmup": 0,
+  "wrapper_sha256": "902aab4ddd0314081db0bbacd5a7d899ccb4001109fb2eceaf0f4216e6a4ca89",
+  "experiment_sha256": "5c8d9b8b9343520bbcdc9c05f1d951dc090edb0d5067b128390e87341b787ac9",
+  "measure_sha256": "3e6a626e7991d93403f5feb814f25b58049825ec695a603907000e58c7799b92"
+}

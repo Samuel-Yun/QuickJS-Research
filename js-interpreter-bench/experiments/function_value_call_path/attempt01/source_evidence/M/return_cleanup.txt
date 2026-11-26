@@ -1,0 +1,70 @@
+7515:  done:
+7516:     *pcol_num = col_num;
+7517:     return line_num;
+7518:  fail:
+7519:     *pcol_num = 0;
+7520:     return 0;
+7521: }
+7522: 
+7523: /* return a string property without executing arbitrary JS code (used
+7524:    when dumping the stack trace or in debug print). */
+7525: static const char *get_prop_string(JSContext *ctx, JSValueConst obj, JSAtom prop)
+7526: {
+7527:     JSObject *p;
+7528:     JSProperty *pr;
+7529:     JSShapeProperty *prs;
+7530:     JSValueConst val;
+7531: 
+7532:     if (JS_VALUE_GET_TAG(obj) != JS_TAG_OBJECT)
+7533:         return NULL;
+7534:     p = JS_VALUE_GET_OBJ(obj);
+7535:     prs = find_own_property(&pr, p, prop);
+7536:     if (!prs) {
+7537:         /* we look at one level in the prototype to handle the 'name'
+7538:            field of the Error objects */
+7539:         p = p->shape->proto;
+7540:         if (!p)
+7541:             return NULL;
+7542:         prs = find_own_property(&pr, p, prop);
+7543:         if (!prs)
+7544:             return NULL;
+7545:     }
+7546:     
+7547:     if ((prs->flags & JS_PROP_TMASK) != JS_PROP_NORMAL)
+7548:         return NULL;
+7549:     val = pr->u.value;
+7550:     if (JS_VALUE_GET_TAG(val) != JS_TAG_STRING)
+7551:         return NULL;
+7552:     return JS_ToCString(ctx, val);
+7553: }
+7554: 
+7555: #define JS_BACKTRACE_FLAG_SKIP_FIRST_LEVEL (1 << 0)
+7556: 
+7557: /* if filename != NULL, an additional level is added with the filename
+7558:    and line number information (used for parse error). */
+7559: static void build_backtrace(JSContext *ctx, JSValueConst error_obj,
+7560:                             const char *filename, int line_num, int col_num,
+7561:                             int backtrace_flags)
+7562: {
+7563:     JSStackFrame *sf;
+7564:     JSValue str;
+7565:     DynBuf dbuf;
+7566:     const char *func_name_str;
+7567:     const char *str1;
+7568:     JSObject *p;
+7569: 
+7570:     if (!JS_IsObject(error_obj))
+7571:         return; /* protection in the out of memory case */
+7572:     
+7573:     js_dbuf_init(ctx, &dbuf);
+7574:     if (filename) {
+7575:         dbuf_printf(&dbuf, "    at %s", filename);
+7576:         if (line_num != -1)
+7577:             dbuf_printf(&dbuf, ":%d:%d", line_num, col_num);
+7578:         dbuf_putc(&dbuf, '\n');
+7579:         str = JS_NewString(ctx, filename);
+7580:         if (JS_IsException(str))
+7581:             return;
+7582:         /* Note: SpiderMonkey does that, could update once there is a standard */
+7583:         if (JS_DefinePropertyValue(ctx, error_obj, JS_ATOM_fileName, str,
+7584:                                    JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE) < 0 ||

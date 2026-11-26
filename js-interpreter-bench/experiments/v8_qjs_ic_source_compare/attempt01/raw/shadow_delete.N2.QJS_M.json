@@ -1,0 +1,66 @@
+{
+  "engine": "QJS_M",
+  "case": "shadow_delete",
+  "n": 2,
+  "command": [
+    "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_qjs_ic_source_compare/attempt01/scripts/shadow_delete.N2.js"
+  ],
+  "cwd": "/home/mzyx/ic_mechanism_audit_attempt01/M",
+  "binary_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+  "dependencies": [],
+  "script_sha256": "9ea0cc194385bb26fc33fd297fece46c8d782876b8a70b7273dd4ce8d012e203",
+  "common_js_sha256": "c5dc2fc74ba59a369b6b3b8dd667b9d70290450916fc350ec5c9a7c6a11b0e36",
+  "expected": {
+    "case": "shadow_delete",
+    "n": 2,
+    "rounds": [
+      [
+        3,
+        3,
+        11,
+        11,
+        3,
+        3
+      ],
+      [
+        3,
+        3,
+        11,
+        11,
+        3,
+        3
+      ]
+    ]
+  },
+  "actual": {
+    "case": "shadow_delete",
+    "n": 2,
+    "rounds": [
+      [
+        3,
+        3,
+        11,
+        11,
+        3,
+        3
+      ],
+      [
+        3,
+        3,
+        11,
+        11,
+        3,
+        3
+      ]
+    ]
+  },
+  "stdout": "IC_CORRECTNESS={\"case\":\"shadow_delete\",\"n\":2,\"rounds\":[[3,3,11,11,3,3],[3,3,11,11,3,3]]}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timed_out": false,
+  "valid": true,
+  "status": "PASS",
+  "timestamp": "2026-10-29T10:04:17.713329+00:00",
+  "wall_time_ns_diagnostic_only": 22680507
+}

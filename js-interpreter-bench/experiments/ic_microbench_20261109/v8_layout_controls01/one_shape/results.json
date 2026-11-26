@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "settings": {
+    "output": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_layout_controls01/one_shape",
+    "shapes": 1,
+    "run_length": 1,
+    "iterations": 4096,
+    "phase": 0,
+    "gate_total": true
+  },
+  "payload": {
+    "kind": "layout_read",
+    "shapes": 1,
+    "run_length": 1,
+    "sequence_length": 1048576,
+    "iterations": 4096,
+    "warmup_iterations": 2097152,
+    "phase": 0,
+    "within_run_repeat_percent": 100,
+    "actual_ic_hit_percent": null,
+    "checksum": 12288,
+    "elapsed_ms": 217.75300000000001,
+    "duration_pass": true
+  },
+  "validation": {
+    "fast_objects": 1,
+    "adjacent_distinct_maps": 0,
+    "same_order_distinct_maps": 0
+  },
+  "counts": {
+    "ic_miss": 0,
+    "no_feedback": 0,
+    "no_feedback_runtime_fallback": 0,
+    "named_load_entries": 4096,
+    "generic_runtime_fallback": 0,
+    "noninlined_builtin": 0
+  },
+  "hits": 4096,
+  "actual_hit_percent": 100.0
+}

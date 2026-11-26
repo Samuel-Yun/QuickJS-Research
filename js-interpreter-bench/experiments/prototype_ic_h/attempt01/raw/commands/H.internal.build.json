@@ -1,0 +1,32 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/internal.c: In function ‘main’:\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/internal.c:40:11: error: too few arguments to function ‘js_shape_prepare_update’\n   40 |     CHECK(js_shape_prepare_update(ctx,p)==0 && !p->shape->is_hashed);\n      |           ^~~~~~~~~~~~~~~~~~~~~~~\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/internal.c:4:42: note: in definition of macro ‘CHECK’\n    4 | #define CHECK(c) do { assertions++; if(!(c)){fprintf(stderr,\"INTERNAL_FAIL line=%d\\n\",__LINE__);return 1;} } while(0)\n      |                                          ^\nIn file included from /mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/internal.c:2:\n/home/mzyx/prototype_ic_h_attempt01/H_mechanism/quickjs.c:10333:12: note: declared here\n10333 | static int js_shape_prepare_update(JSContext *ctx, JSObject *p,\n      |            ^~~~~~~~~~~~~~~~~~~~~~~\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/internal.c:44:11: error: too few arguments to function ‘js_shape_prepare_update’\n   44 |     CHECK(js_shape_prepare_update(ctx,o)==0 && !o->shape->is_hashed);\n      |           ^~~~~~~~~~~~~~~~~~~~~~~\n/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/internal.c:4:42: note: in definition of macro ‘CHECK’\n    4 | #define CHECK(c) do { assertions++; if(!(c)){fprintf(stderr,\"INTERNAL_FAIL line=%d\\n\",__LINE__);return 1;} } while(0)\n      |                                          ^\n/home/mzyx/prototype_ic_h_attempt01/H_mechanism/quickjs.c:10333:12: note: declared here\n10333 | static int js_shape_prepare_update(JSContext *ctx, JSObject *p,\n      |            ^~~~~~~~~~~~~~~~~~~~~~~\n",
+  "timeout": false,
+  "command": [
+    "gcc",
+    "-O2",
+    "-g",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-I/home/mzyx/prototype_ic_h_attempt01/H_mechanism",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/prototype_ic_h/attempt01/correctness/internal.c",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/dtoa.o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/libregexp.o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/libunicode.o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/.obj/cutils.o",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-o",
+    "/home/mzyx/prototype_ic_h_attempt01/H_mechanism/internal_check"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-29T13:09:53.301207+00:00",
+  "completed_at": "2026-10-29T13:09:54.002353+00:00",
+  "outer_start_ns": 61401651403,
+  "outer_stop_ns": 62102762175,
+  "outer_wall_ns": 701110772,
+  "boot_id": "170baf16-8289-40fd-b362-874ac113999e"
+}

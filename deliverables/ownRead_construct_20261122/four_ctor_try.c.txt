@@ -1,0 +1,5 @@
+static int four_ctor_try(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,JSValue*a,JSValue*out)
+{
+    if(!s->plan){FOUR_COUNT(s,q);FOUR_COUNT(s,guard);return 0;}
+    return plan_try(ctx,s->plan,c,t,a,out);
+}

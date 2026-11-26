@@ -1,0 +1,146 @@
+880:     JS_MODULE_STATUS_UNLINKED,
+881:     JS_MODULE_STATUS_LINKING,
+882:     JS_MODULE_STATUS_LINKED,
+883:     JS_MODULE_STATUS_EVALUATING,
+884:     JS_MODULE_STATUS_EVALUATING_ASYNC,
+885:     JS_MODULE_STATUS_EVALUATED,
+886: } JSModuleStatus;
+887: 
+888: struct JSModuleDef {
+889:     JSGCObjectHeader header; /* must come first */
+890:     JSAtom module_name;
+891:     struct list_head link;
+892: 
+893:     JSReqModuleEntry *req_module_entries;
+894:     int req_module_entries_count;
+895:     int req_module_entries_size;
+896: 
+897:     JSExportEntry *export_entries;
+898:     int export_entries_count;
+899:     int export_entries_size;
+900: 
+901:     JSStarExportEntry *star_export_entries;
+902:     int star_export_entries_count;
+903:     int star_export_entries_size;
+904: 
+905:     JSImportEntry *import_entries;
+906:     int import_entries_count;
+907:     int import_entries_size;
+908: 
+909:     JSValue module_ns;
+910:     JSValue func_obj; /* only used for JS modules */
+911:     JSModuleInitFunc *init_func; /* only used for C modules */
+912:     BOOL has_tla : 8; /* true if func_obj contains await */
+913:     BOOL resolved : 8;
+914:     BOOL func_created : 8;
+915:     JSModuleStatus status : 8;
+916:     /* temp use during js_module_link() & js_module_evaluate() */
+917:     int dfs_index, dfs_ancestor_index;
+918:     JSModuleDef *stack_prev;
+919:     /* temp use during js_module_evaluate() */
+920:     JSModuleDef **async_parent_modules;
+921:     int async_parent_modules_count;
+922:     int async_parent_modules_size;
+923:     int pending_async_dependencies;
+924:     BOOL async_evaluation; /* true: async_evaluation_timestamp corresponds to [[AsyncEvaluationOrder]] 
+925:                               false: [[AsyncEvaluationOrder]] is UNSET or DONE */
+926:     int64_t async_evaluation_timestamp;
+927:     JSModuleDef *cycle_root;
+928:     JSValue promise; /* corresponds to spec field: capability */
+929:     JSValue resolving_funcs[2]; /* corresponds to spec field: capability */
+930: 
+931:     /* true if evaluation yielded an exception. It is saved in
+932:        eval_exception */
+933:     BOOL eval_has_exception : 8;
+934:     JSValue eval_exception;
+935:     JSValue meta_obj; /* for import.meta */
+936:     JSValue private_value; /* private value for C modules */
+937: };
+938: 
+939: typedef struct JSJobEntry {
+940:     struct list_head link;
+941:     JSContext *realm;
+942:     JSJobFunc *job_func;
+943:     int argc;
+944:     JSValue argv[0];
+945: } JSJobEntry;
+946: 
+947: typedef struct JSProperty {
+948:     union {
+949:         JSValue value;      /* JS_PROP_NORMAL */
+950:         struct {            /* JS_PROP_GETSET */
+951:             JSObject *getter; /* NULL if undefined */
+952:             JSObject *setter; /* NULL if undefined */
+953:         } getset;
+954:         JSVarRef *var_ref;  /* JS_PROP_VARREF */
+955:         struct {            /* JS_PROP_AUTOINIT */
+956:             /* in order to use only 2 pointers, we compress the realm
+957:                and the init function pointer */
+958:             uintptr_t realm_and_id; /* realm and init_id (JS_AUTOINIT_ID_x)
+959:                                        in the 2 low bits */
+960:             void *opaque;
+961:         } init;
+962:     } u;
+963: } JSProperty;
+964: 
+965: #define JS_PROP_INITIAL_SIZE 2
+966: #define JS_PROP_INITIAL_HASH_SIZE 4 /* must be a power of two */
+967: 
+968: typedef struct JSShapeProperty {
+969:     uint32_t hash_next : 26; /* 0 if last in list */
+970:     uint32_t flags : 6;   /* JS_PROP_XXX */
+971:     JSAtom atom; /* JS_ATOM_NULL = free property entry */
+972: } JSShapeProperty;
+973: 
+974: struct JSShape {
+975:     JSGCObjectHeader header;
+976:     /* true if the shape is inserted in the shape hash table. If not,
+977:        JSShape.hash is not valid */
+978:     uint8_t is_hashed;
+979:     uint32_t hash; /* current hash value */
+980:     uint32_t prop_hash_mask; /* >= 2 */
+981:     int prop_size; /* allocated properties */
+982:     int prop_count; /* include deleted properties */
+983:     int deleted_prop_count;
+984:     JSShape *shape_hash_next; /* in JSRuntime.shape_hash[h] list */
+985:     JSObject *proto;
+986:     uint32_t hash_table[]; /* prop_hash_mask + 1 elements */
+987:     /* followed by JSShapeProperty prop[prop_size]; */
+988: };
+989: 
+990: struct JSObject {
+991:     JSGCObjectHeader header;
+992:     /* TRUE if the array prototype is "normal":
+993:        - no small index properties which are get/set or non writable
+994:        - its prototype is Object.prototype
+995:        - Object.prototype has no small index properties which are get/set or non writable
+996:        - the prototype of Object.prototype is null (always true as it is immutable)
+997:     */
+998:     uint8_t is_std_array_prototype : 1;
+999:     
+1000:     uint8_t extensible : 1;
+1001:     uint8_t free_mark : 1; /* only used when freeing objects with cycles */
+1002:     uint8_t is_exotic : 1; /* TRUE if object has exotic property handlers */
+1003:     uint8_t fast_array : 1; /* TRUE if u.array is used for get/put (for JS_CLASS_ARRAY, JS_CLASS_ARGUMENTS, JS_CLASS_MAPPED_ARGUMENTS and typed arrays) */
+1004:     uint8_t is_constructor : 1; /* TRUE if object is a constructor function */
+1005:     uint8_t has_immutable_prototype : 1; /* cannot modify the prototype */
+1006:     uint8_t tmp_mark : 1; /* used in JS_WriteObjectRec() */
+1007:     uint8_t is_HTMLDDA : 1; /* specific annex B IsHtmlDDA behavior */
+1008:     uint16_t class_id; /* see JS_CLASS_x */
+1009:     /* count the number of weak references to this object. The object
+1010:        structure is freed only if header.ref_count = 0 and
+1011:        weakref_count = 0 */
+1012:     uint32_t weakref_count; 
+1013:     JSShape *shape; /* prototype and property names + flag */
+1014:     JSProperty *prop; /* array of properties */
+1015:     union {
+1016:         void *opaque;
+1017:         struct JSBoundFunction *bound_function; /* JS_CLASS_BOUND_FUNCTION */
+1018:         struct JSCFunctionDataRecord *c_function_data_record; /* JS_CLASS_C_FUNCTION_DATA */
+1019:         struct JSForInIterator *for_in_iterator; /* JS_CLASS_FOR_IN_ITERATOR */
+1020:         struct JSArrayBuffer *array_buffer; /* JS_CLASS_ARRAY_BUFFER, JS_CLASS_SHARED_ARRAY_BUFFER */
+1021:         struct JSTypedArray *typed_array; /* JS_CLASS_UINT8C_ARRAY..JS_CLASS_DATAVIEW */
+1022:         struct JSMapState *map_state;   /* JS_CLASS_MAP..JS_CLASS_WEAKSET */
+1023:         struct JSMapIteratorData *map_iterator_data; /* JS_CLASS_MAP_ITERATOR, JS_CLASS_SET_ITERATOR */
+1024:         struct JSArrayIteratorData *array_iterator_data; /* JS_CLASS_ARRAY_ITERATOR, JS_CLASS_STRING_ITERATOR */
+1025:         struct JSRegExpStringIteratorData *regexp_string_iterator_data; /* JS_CLASS_REGEXP_STRING_ITERATOR */

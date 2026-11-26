@@ -1,0 +1,16 @@
+{
+  "label": "A",
+  "mode": "release",
+  "phase": "gate",
+  "case": "semantics",
+  "rep": 0,
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/semantics.js"
+  ],
+  "binary_sha256": "2898af66a4d9d151b01ba90e6897c77b99ac8cf005e535d572776988fdbb5540",
+  "exit_code": 0,
+  "stdout": "[[\"stable\",[3,3,3,3,3,3,3,3]],[\"same_slot_current_value\",[3,5,3,5,3,5,3,5]],[\"different_slot_no_99\",[3,5,3,5,3,5,3,5]],[\"old_slot_reused\",[3,null,3,null,3,null,3,null]],[\"deleted\",[3,null,3,null,3,null,3,null]],[\"getter_this\",[3,8,3,8,3,8,3,8]],[\"prototype\",[3,11,3,11,3,11,3,11]],[\"getter_throw\",\"TypeError\",\"getter\"],[\"proxy\",[3,13,3,13,3,13,3,13]],[\"mutate_hot\",[3,3,3,3,6,null,8,17,19]],[\"null\",\"TypeError\",\"cannot read property 'x' of null\"]]\n",
+  "stderr": "",
+  "external_wall_ms": 8.02767206914723
+}

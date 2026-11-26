@@ -1,0 +1,137 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -15,10 +15,71 @@
+     FourRecipe recipe;
+     uint32_t pc;
+     uint16_t argc;
++    uint8_t dual,next; /* old tail padding: offsets 90,91 */
+ #ifdef FOUR_DIAG
+     FourDiag *diag;
+ #endif
+ };
++typedef struct DualPlan {FullPlan primary,secondary;} DualPlan;
++#ifndef FOUR_DIAG
++_Static_assert(sizeof(FourSite)==32,"frozen FourSite size");
++_Static_assert(sizeof(FullPlan)==96 && offsetof(FullPlan,callee)==0 &&
++    offsetof(FullPlan,initial)==16 && offsetof(FullPlan,final)==24 &&
++    offsetof(FullPlan,recipe)==32 && offsetof(FullPlan,pc)==84 &&
++    offsetof(FullPlan,argc)==88 && offsetof(FullPlan,dual)==90,"frozen FullPlan layout");
++_Static_assert(sizeof(DualPlan)==192,"two embedded plans");
++#endif
++static int cold_same(FullPlan*p,JSValueConst c)
++{return p && JS_VALUE_GET_TAG(c)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(p->callee)==JS_TAG_OBJECT &&
++    JS_VALUE_GET_OBJ(c)==JS_VALUE_GET_OBJ(p->callee);}
++static FullPlan*cold_destination(JSContext*ctx,FourSite*slot,JSValueConst callee)
++{
++    FullPlan*p=slot->plan;
++    if(!p || cold_same(p,callee))return p;
++    if(!p->dual){
++        DualPlan*pair;
++#ifdef SCREEN_DIAGNOSTIC
++        if(getenv("SCREEN_FAIL_UPGRADE")){SCREEN(upgrade_failures);return NULL;}
++#endif
++        pair=js_mallocz_rt(ctx->rt,sizeof(*pair));
++        if(!pair){SCREEN(upgrade_failures);return NULL;}
++        pair->primary=*p; /* move its owned references, do not duplicate/free them */
++        pair->primary.dual=1;pair->primary.next=0;
++        pair->secondary.pc=slot->pc;pair->secondary.argc=slot->argc;
++#ifdef FOUR_DIAG
++        pair->secondary.diag=slot->diag;
++#endif
++        slot->plan=&pair->primary;js_free_rt(ctx->rt,p);p=slot->plan;
++        SCREEN(upgrades);SCREEN_ADD(upgrade_bytes,sizeof(*pair));
++    }
++    FullPlan*second=&((DualPlan*)p)->secondary;
++    if(!second->final || cold_same(second,callee))return second;
++    unsigned victim=p->next;p->next^=1;SCREEN(replacements);
++    return victim?second:p;
++}
++static void cold_mark(JSRuntime*rt,FourSite*s,JS_MarkFunc*mark_func)
++{
++    JS_MarkValue(rt,s->negative,mark_func);
++    FullPlan*p=s->plan;if(!p)return;
++    unsigned n=p->dual?2:1;
++    for(unsigned i=0;i<n;i++){
++        FullPlan*f=i?&((DualPlan*)p)->secondary:p;
++        JS_MarkValue(rt,f->callee,mark_func);
++        if(f->initial)mark_func(rt,&f->initial->header);
++        if(f->final)mark_func(rt,&f->final->header);
++    }
++}
++static void cold_free(JSRuntime*rt,FourSite*s)
++{
++    JS_FreeValueRT(rt,s->negative);
++    FullPlan*p=s->plan;if(!p)return;
++    unsigned n=p->dual?2:1;
++    for(unsigned i=0;i<n;i++){
++        FullPlan*f=i?&((DualPlan*)p)->secondary:p;
++        JS_FreeValueRT(rt,f->callee);js_free_shape_null(rt,f->initial);js_free_shape_null(rt,f->final);
++    }
++    js_free_rt(rt,p); /* one allocation, including an embedded secondary */
++}
+ static inline __exception int js_poll_interrupts(JSContext*ctx);
+ #ifdef FOUR_DIAG
+ static FourSite *four_ctor_observer;
+@@ -106,7 +167,8 @@
+     JSShape*initial=find_hashed_shape_proto(ctx->rt,proto);if(!initial)return;
+     FOUR_COUNT(slot,eligible);
+ #ifndef FOUR_PROBE
+-    FullPlan*s=slot->plan;
++    FullPlan*s=cold_destination(ctx,slot,callee);
++    if(slot->plan && !s)return; /* upgrade failed: preserve the old plan */
+     if(!s){
+         s=js_mallocz_rt(ctx->rt,sizeof(*s));
+         if(!s){FOLLOW(4);return;}
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <inttypes.h>
++#include "screen_diag.h"
+ #include <string.h>
+ #include <assert.h>
+ #include <sys/time.h>
+@@ -6705,7 +6706,7 @@
+                         mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
+ #endif
+             }
+-            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}}
++            for(uint32_t fi=0;fi<b->four_count;fi++)cold_mark(rt,&b->four_sites[fi],mark_func);
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -36526,7 +36527,7 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+-    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
++    for(uint32_t fi=0;fi<b->four_count;fi++)cold_free(rt,&b->four_sites[fi]);
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+--- a/sparse_runtime.inc
++++ b/sparse_runtime.inc
+@@ -8,7 +8,15 @@
+ static int four_ctor_try(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,JSValue*a,JSValue*out)
+ {
+     if(!s->plan){FOUR_COUNT(s,q);FOUR_COUNT(s,guard);return 0;}
+-    return plan_try(ctx,s->plan,c,t,a,out);
++    if(plan_try(ctx,s->plan,c,t,a,out))return 1;
++    if(s->plan->dual){
++        FullPlan*second=&((DualPlan*)s->plan)->secondary;
++        SCREEN(second_tests);
++        if(cold_same(second,c) && plan_try(ctx,second,c,t,a,out)){
++            SCREEN(second_hits);return 1;
++        }
++    }
++    return 0;
+ }
+ static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,unsigned n)
+ {
+--- /dev/null
++++ b/screen_diag.h
+@@ -0,0 +1,3 @@
++#define SCREEN(k) ((void)0)
++#define SCREEN_ADD(k,n) ((void)0)
++#define PROTO_HIST(p) ((void)0)

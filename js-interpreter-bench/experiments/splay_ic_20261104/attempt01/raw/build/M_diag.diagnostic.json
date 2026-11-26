@@ -1,0 +1,27 @@
+{
+  "exit_code": 0,
+  "stdout": "mkdir -p .obj .obj/examples .obj/tests\ngcc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/qjs.o qjs.c\ngcc -g -Wall -MMD -MF .obj/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -DCONFIG_CC=\\\"gcc\\\" -DCONFIG_PREFIX=\\\"/usr/local\\\" -O2 -c -o .obj/qjsc.o qjsc.c\ngcc -g -Wall -MMD -MF .obj/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs.o quickjs.c\ngcc -g -Wall -MMD -MF .obj/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/dtoa.o dtoa.c\ngcc -g -Wall -MMD -MF .obj/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libregexp.o libregexp.c\ngcc -g -Wall -MMD -MF .obj/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/libunicode.o libunicode.c\ngcc -g -Wall -MMD -MF .obj/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/cutils.o cutils.c\ngcc -g -Wall -MMD -MF .obj/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/quickjs-libc.o quickjs-libc.c\ngcc -g -o qjsc .obj/qjsc.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl \n./qjsc -s -c -o repl.c -m repl.js\ngcc -g -Wall -MMD -MF .obj/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\\\"2026-06-04\\\" -DHAVE_CLOSEFROM -O2 -c -o .obj/repl.o repl.c\ngcc -g -rdynamic -o qjs .obj/qjs.o .obj/repl.o .obj/quickjs.o .obj/dtoa.o .obj/libregexp.o .obj/libunicode.o .obj/cutils.o .obj/quickjs-libc.o -lm -lpthread -ldl \n",
+  "stderr": "In file included from quickjs.c:61477:\naudit_tail.inc: In function ‘audit_report’:\naudit_tail.inc:72:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   72 |             if(!first)fprintf(out,\",\");first=0;\n      |             ^~\naudit_tail.inc:72:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   72 |             if(!first)fprintf(out,\",\");first=0;\n      |                                        ^~~~~\naudit_tail.inc:77:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   77 |                 if(!f->phases[phase])continue;AuditSite *s=&f->phases[phase][pc];if(!s->operations)continue;\n      |                 ^~\naudit_tail.inc:77:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   77 |                 if(!f->phases[phase])continue;AuditSite *s=&f->phases[phase][pc];if(!s->operations)continue;\n      |                                               ^~~~~~~~~\naudit_tail.inc:78:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n   78 |                 if(!first_phase)fprintf(out,\",\");first_phase=0;\n      |                 ^~\naudit_tail.inc:78:50: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n   78 |                 if(!first_phase)fprintf(out,\",\");first_phase=0;\n      |                                                  ^~~~~~~~~~~\naudit_tail.inc: In function ‘sp_stage’:\naudit_tail.inc:114:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]\n  114 |     if(audit_active)abort();sp_phase=n;return JS_UNDEFINED;\n      |     ^~\naudit_tail.inc:114:29: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’\n  114 |     if(audit_active)abort();sp_phase=n;return JS_UNDEFINED;\n      |                             ^~~~~~~~\n",
+  "timeout": false,
+  "command": [
+    "make",
+    "-j2",
+    "qjs"
+  ],
+  "label": "M independent diagnostic build",
+  "cwd": "/home/mzyx/splay_ic_20261104_attempt01/M_diag",
+  "timestamp": "2026-11-04T06:41:41.402150+00:00",
+  "completed_at": "2026-11-04T06:42:10.901321+00:00",
+  "outer_start_ns": 449281833794,
+  "outer_stop_ns": 478781013345,
+  "external_wall_ms": 29499.179551,
+  "child_user_ms": 27915.286,
+  "child_system_ms": 964.831,
+  "boot_id": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "boot_id_after": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "load_average": [
+    0.755859375,
+    0.244140625,
+    0.08056640625
+  ]
+}

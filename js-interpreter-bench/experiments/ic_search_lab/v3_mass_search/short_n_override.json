@@ -1,0 +1,18 @@
+{
+  "status": "ONE_BOUNDED_LONGER_N_RETRY",
+  "N": {
+    "sunspider/3d-raytrace": 64,
+    "sunspider/access-binary-trees": 64,
+    "sunspider/bitops-bitwise-and": 128,
+    "sunspider/regexp-dna": 8,
+    "octane/Richards.Richards": 256,
+    "octane/Splay.Splay": 256,
+    "octane/RayTrace.RayTrace": 16,
+    "octane/CodeLoad.CodeLoadClosure": 1024
+  },
+  "factor": 4,
+  "trigger": "pilot endpoint drift exceeds15%; original samples retained",
+  "drift_limit": 1.15,
+  "maximum_retries": 1,
+  "adopted_before_any_longer_N_samples": true
+}

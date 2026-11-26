@@ -1,0 +1,13 @@
+{
+  "status": "DIAGNOSIS_BEFORE_OPT_SELECTION",
+  "reference_head": "894e0a35ff331d4235370dc26112e5916c27c567",
+  "new_directory_only": true,
+  "conditions": {"A":"frozen upstream","M":"frozen per-read-site own mono IC","OPT":"one candidate only after Run evidence and control","V8_ON":["--jitless","--no-lazy","--use-ic"]},
+  "diagnostic": {"cases":17,"conditions":["A","M"],"repetitions":[1,2],"expected":68,"performance_samples":false,"stages":["load_compile","setup","run","validation","teardown","destroy"],"load_and_compile_separate_counter_boundary":null},
+  "mechanism": {"cases":["Splay.Splay","Richards.Richards","M4.numeric_control"],"conditions":["A","M","C_ON","C_OFF"],"repetitions":30,"expected":360,"treatment":"restore three selected Splay read sites before timed first Run; no workload warmup","bridge":"C_ON/M and numeric control"},
+  "formal": {"octane_cases":17,"processes_per_case_condition":30,"expected_with_OPT":2040,"expected_without_OPT":1530,"first_Run_included":true,"workload_prewarm_calls":0,"pilot_per_condition":3,"min_pilot_ms":1050,"keep_short_formal_samples":true,"delete_outliers":false,"serial":true},
+  "supplement": {"sunspider_cases":26,"micro_cases":3,"independent_replication_cases":["Richards.Richards","Splay.Splay","M4.numeric_control"],"independent_replication_processes_per_condition_case":30},
+  "statistics": {"paired_rounds":30,"bootstrap":10000,"seed":20261104,"interval":"exploratory percentile 95%, no multiple-comparison correction","Q1_Q3":"Tukey halves","stddev":"sample n-1","octane_aggregation":"within-suite geometric mean then equal suite weights; core16/13suite, expanded17/14suite","SunSpider_aggregation":"equal cases","micro_aggregation":null},
+  "failures": "retain raw; no automatic formal retry or replacement; new attempt/campaign required after global boot/identity/timer contradiction",
+  "privacy": "no private JWST source dependency or copied private materials"
+}

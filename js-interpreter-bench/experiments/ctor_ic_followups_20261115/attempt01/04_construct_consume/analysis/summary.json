@@ -1,0 +1,23 @@
+{
+  "status": "NO_REAL_COVERAGE",
+  "independent_probe_processes": 43,
+  "formal_timing_samples": 0,
+  "consumers": [
+    "new;get_field",
+    "new;put_loc;get_loc;get_field (sole use, noncaptured)"
+  ],
+  "counts": {
+    "construct_attempts": 49231038,
+    "successful_constructs_observed": 49230525,
+    "exception_fallbacks": 513,
+    "immediate_plain_read": 2,
+    "sole_use_local_bridge": 0,
+    "R3_recipe_eligible": 0,
+    "ordinary_own_mapped_field": 0,
+    "non_bytecode_target": 2
+  },
+  "objects_eliminated": 0,
+  "property_arrays_eliminated": 0,
+  "reason": "The two immediate plain reads are native zlib constructors outside R3; no eligible local bridge; method get_field2 retains object identity and is not a single field consume.",
+  "comparison": "No fake timings, no microbenchmark-only optimizer, no full candidate Release run per user no-coverage exception"
+}

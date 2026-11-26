@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind_run.py", line 68, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind_run.py", line 67, in main
+    files=list(out.glob(label+'.callgrind*'));parsed=[(p,parse(p))for p in files];p,d=max(parsed,key=lambda x:x[1]['summary']);save(out/(label+'.decoded.json'),d);a=accounting(label,d);a['file']=str(p);result.append(a);save(out/'summary.json',result);print('CALLGRIND',a,flush=True)
+                                                         ~~~~~^^^
+  File "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/callgrind_run.py", line 41, in parse
+    assert sum(r['Ir']for r in rows)==summary,(sum(r['Ir']for r in rows),summary)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (30260443817, 0)

@@ -1,0 +1,46 @@
+{
+  "engine": "QJS_M",
+  "case": "own_update",
+  "n": 1,
+  "command": [
+    "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/v8_qjs_ic_source_compare/attempt01/scripts/own_update.N1.js"
+  ],
+  "cwd": "/home/mzyx/ic_mechanism_audit_attempt01/M",
+  "binary_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+  "dependencies": [],
+  "script_sha256": "a5fe777116c53e143cdcead5226c1293d978ba8a737524afb8badb40e00579fe",
+  "common_js_sha256": "c5dc2fc74ba59a369b6b3b8dd667b9d70290450916fc350ec5c9a7c6a11b0e36",
+  "expected": {
+    "case": "own_update",
+    "n": 1,
+    "rounds": [
+      [
+        1,
+        1,
+        7,
+        7
+      ]
+    ]
+  },
+  "actual": {
+    "case": "own_update",
+    "n": 1,
+    "rounds": [
+      [
+        1,
+        1,
+        7,
+        7
+      ]
+    ]
+  },
+  "stdout": "IC_CORRECTNESS={\"case\":\"own_update\",\"n\":1,\"rounds\":[[1,1,7,7]]}\n",
+  "stderr": "",
+  "exit_code": 0,
+  "timed_out": false,
+  "valid": true,
+  "status": "PASS",
+  "timestamp": "2026-10-29T10:04:16.290350+00:00",
+  "wall_time_ns_diagnostic_only": 21490754
+}

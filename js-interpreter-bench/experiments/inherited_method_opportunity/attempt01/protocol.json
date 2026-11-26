@@ -1,0 +1,32 @@
+{
+  "mode": "INHERITED_METHOD_FIRST_CALL_INCLUSIVE_V1",
+  "cases": [
+    "own_method_control",
+    "inherited_method"
+  ],
+  "conditions": [
+    "QJS_A",
+    "QJS_M",
+    "V8_ON",
+    "V8_OFF"
+  ],
+  "seed": 20261028,
+  "expected_result": 8390656,
+  "micro_inner_iterations": 4096,
+  "N_start": 8192,
+  "N_max": 131072,
+  "timeout_seconds": 180,
+  "reps": 30,
+  "formal_target": 240,
+  "warmup_calls": 0,
+  "first_Run_included": true,
+  "pilot": "3 independent per condition at common N, all>=1000ms, powers of2",
+  "timing": "native monotonic duration, duration enclosure only; UTC metadata with signed discrepancy preserved",
+  "outside": "object/prototype setup, static load/compile, adapter, output, final check",
+  "inside": "N microRun including first, methods/load/call/accumulation/driver/checksum,GC/helpers",
+  "balance": "2 cases first15/second15; condition positions7/8; same round8 serial processes",
+  "statistics": "all valid descriptive; common complete8-process round bootstrap10000, seed20261028, percentile linear95 exploratory; noGM",
+  "failures": "no retries; retain invalid/short/outlier; a semantic failure stops that case; bad timer or identity stops campaign",
+  "scope": "two NEW x+1 method controls; do not merge earlier x+this.bias or Windows results",
+  "budget_seconds": 21600
+}

@@ -1,0 +1,5 @@
+label,Octane_GM_pct,SunSpider_GM_pct,qualifies,work_saved,worst_case,worst_pct
+SPARSE,0.0,0.0,False,冻结单槽主基线,Richards.Richards,0.0
+P2,1.8720259030715836,1.8697853656307606,False,旧双槽对照，仍依赖 initial shape,bitops-nsieve-bits,10.559495582256705
+INIT_FREE,1.6526058038514257,0.42062549811385797,True,单槽去掉 initial 硬依赖和持有，保留热布局,bitops-nsieve-bits,14.281198060704646
+P2_COLD_INIT,0.7920234382348346,0.05915688531672458,True,从 P2_COLD 独立去掉 initial 依赖和持有,bitops-nsieve-bits,14.128143397940086

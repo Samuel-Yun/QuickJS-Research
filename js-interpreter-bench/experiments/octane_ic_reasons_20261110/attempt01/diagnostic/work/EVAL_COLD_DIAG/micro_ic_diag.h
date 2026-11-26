@@ -1,0 +1,164 @@
+/* Diagnostic only. No IC policy changes; inspect descriptors without invoking
+ * getters. Atom references are retained only until the Run report is emitted. */
+#include "reason_class_names.h"
+enum {
+    RR_STRING, RR_PRIMITIVE, RR_CLASS, RR_EXOTIC,
+    RR_GETTER, RR_VARREF, RR_AUTOINIT, RR_OWN_UNHASHED,
+    RR_OWN_COLD, RR_OWN_REPLACE, RR_PROTO_VALUE, RR_PROTO_DEEP,
+    RR_PROTO_CLASS, RR_PROTO_UNHASHED, RR_PROTO_COLD, RR_PROTO_REPLACE,
+    RR_MISSING, RR_CHAIN_EXOTIC, RR_COUNT
+};
+static const char *reason_names[RR_COUNT]={
+    "primitive_string","primitive_other","unsupported_receiver_class","receiver_exotic",
+    "accessor_descriptor","varref_descriptor","autoinit_descriptor","own_unhashed",
+    "own_first_fill","own_guard_or_shape_change","prototype_value_read_not_cached","deep_prototype",
+    "unsupported_holder_class","prototype_unhashed","prototype_first_fill","prototype_guard_change",
+    "missing_property","exotic_on_chain"
+};
+typedef struct ReasonAtom {
+    JSAtom atom;
+    char *name;
+    struct ReasonAtom *next,*all;
+} ReasonAtom;
+typedef struct ReasonSite {
+    ReadICSite *site;
+    ReasonAtom *atom;
+    uint64_t queries,hits,misses,fills;
+    struct ReasonSite *next,*all;
+} ReasonSite;
+typedef struct ReasonGroup {
+    int reason, class_id;
+    ReasonAtom *atom;
+    uint64_t count;
+    struct ReasonGroup *next,*all;
+} ReasonGroup;
+static ReasonAtom *reason_atoms[4096], *reason_atom_list;
+static ReasonSite *reason_sites[65536], *reason_site_list;
+static ReasonGroup *reason_groups[4096], *reason_group_list;
+static JSRuntime *reason_runtime;
+static int oct_count_active;
+static unsigned long long oct_queries,oct_hits,oct_misses,oct_fused_hits,oct_proto_hits,oct_regular_queries,oct_own_fills;
+
+static ReasonAtom *reason_atom(JSContext *ctx, JSAtom atom)
+{
+    unsigned hash=atom&4095;
+    for(ReasonAtom *a=reason_atoms[hash];a;a=a->next) if(a->atom==atom)return a;
+    ReasonAtom *a=calloc(1,sizeof(*a)); if(!a)abort();
+    const char *s=JS_AtomToCString(ctx,atom);if(!s)abort();
+    a->name=strdup(s);JS_FreeCString(ctx,s);if(!a->name)abort();
+    a->atom=JS_DupAtom(ctx,atom);reason_runtime=ctx->rt;
+    a->next=reason_atoms[hash];reason_atoms[hash]=a;a->all=reason_atom_list;reason_atom_list=a;
+    return a;
+}
+static ReasonSite *reason_site(JSContext *ctx,ReadICSite *site)
+{
+    unsigned hash=((uintptr_t)site>>3)&65535;
+    for(ReasonSite *s=reason_sites[hash];s;s=s->next)if(s->site==site)return s;
+    if(!ctx)return NULL;
+    ReasonSite *s=calloc(1,sizeof(*s));if(!s)abort();s->site=site;s->atom=reason_atom(ctx,site->atom);
+    s->next=reason_sites[hash];reason_sites[hash]=s;s->all=reason_site_list;reason_site_list=s;
+    return s;
+}
+static void reason_forget(JSFunctionBytecode *b)
+{
+    for(uint32_t i=0;b->read_ic_sites&&i<b->read_ic_count;i++){
+        ReadICSite *site=&b->read_ic_sites[i];unsigned hash=((uintptr_t)site>>3)&65535;
+        ReasonSite **p=&reason_sites[hash];
+        while(*p){if((*p)->site==site){*p=(*p)->next;break;}p=&(*p)->next;}
+    }
+}
+static void reason_add(ReasonSite *s,int reason,int class_id)
+{
+    unsigned hash=(s->atom->atom*131u+reason*31u+(unsigned)class_id)&4095;
+    ReasonGroup *g;
+    for(g=reason_groups[hash];g;g=g->next)
+        if(g->reason==reason&&g->class_id==class_id&&g->atom==s->atom){g->count++;return;}
+    g=calloc(1,sizeof(*g));if(!g)abort();g->reason=reason;g->class_id=class_id;g->atom=s->atom;g->count=1;
+    g->next=reason_groups[hash];reason_groups[hash]=g;g->all=reason_group_list;reason_group_list=g;
+}
+static void reason_classify(ReasonSite *s,ReadICSite *site,JSValueConst obj,int keep)
+{
+    if(JS_VALUE_GET_TAG(obj)!=JS_TAG_OBJECT){reason_add(s,JS_IsString(obj)?RR_STRING:RR_PRIMITIVE,0);return;}
+    JSObject *origin=JS_VALUE_GET_OBJ(obj),*p=origin;
+    int cls=origin->class_id;
+    if(cls!=JS_CLASS_OBJECT){reason_add(s,RR_CLASS,cls);return;}
+    if(origin->is_exotic){reason_add(s,RR_EXOTIC,cls);return;}
+    for(;;){
+        JSProperty *pr;JSShapeProperty *prs=find_own_property(&pr,p,site->atom);
+        if(prs){
+            int type=prs->flags&JS_PROP_TMASK;
+            if(type){reason_add(s,type==JS_PROP_GETSET?RR_GETTER:type==JS_PROP_VARREF?RR_VARREF:RR_AUTOINIT,cls);return;}
+            if(p==origin){
+                reason_add(s,!p->shape->is_hashed?RR_OWN_UNHASHED:!site->shape?RR_OWN_COLD:RR_OWN_REPLACE,cls);return;
+            }
+            if(!keep){reason_add(s,RR_PROTO_VALUE,cls);return;}
+            if(p!=origin->shape->proto){reason_add(s,RR_PROTO_DEEP,cls);return;}
+            if(p->class_id!=JS_CLASS_OBJECT||p->is_exotic){reason_add(s,RR_PROTO_CLASS,p->class_id);return;}
+            if(!origin->shape->is_hashed||!p->shape->is_hashed){reason_add(s,RR_PROTO_UNHASHED,cls);return;}
+            reason_add(s,!site->shape?RR_PROTO_COLD:RR_PROTO_REPLACE,cls);return;
+        }
+        if(p->is_exotic){reason_add(s,RR_CHAIN_EXOTIC,p->class_id);return;}
+        p=p->shape->proto;if(!p){reason_add(s,RR_MISSING,cls);return;}
+    }
+}
+static void micro_ic_watch(JSContext *ctx,JSFunctionBytecode *b) { }
+static force_inline void micro_ic_regular_query(JSContext *ctx,ReadICSite *site)
+{
+    if(oct_count_active&&site->atom!=JS_ATOM_length){
+        oct_queries++;oct_regular_queries++;reason_site(ctx,site)->queries++;
+    }
+}
+static force_inline void micro_ic_hit(JSContext *ctx,ReadICSite *site,int fused)
+{
+    if(oct_count_active&&site->atom!=JS_ATOM_length){
+        ReasonSite *s=reason_site(ctx,site);oct_hits++;s->hits++;
+        if(fused){oct_queries++;oct_fused_hits++;s->queries++;}
+        else if(site->holder_shape)oct_proto_hits++;
+    }
+}
+static force_inline void micro_ic_miss(JSContext *ctx,ReadICSite *site,JSValueConst obj,int keep)
+{
+    if(oct_count_active&&site->atom!=JS_ATOM_length){
+        ReasonSite *s=reason_site(ctx,site);oct_misses++;s->misses++;reason_classify(s,site,obj,keep);
+    }
+}
+static force_inline void micro_ic_fill(ReadICSite *site)
+{
+    if(oct_count_active&&site->atom!=JS_ATOM_length){oct_own_fills++;ReasonSite *s=reason_site(NULL,site);if(!s)abort();s->fills++;}
+}
+static void reason_hex(const char *s)
+{for(const unsigned char *p=(const unsigned char *)s;*p;p++)fprintf(stderr,"%02x",*p);}
+void oct_count_begin(void)
+{
+    if(reason_site_list||reason_atom_list||reason_group_list)abort();
+    oct_queries=oct_hits=oct_misses=oct_fused_hits=oct_proto_hits=oct_regular_queries=oct_own_fills=0;oct_count_active=1;
+}
+void oct_count_end(void)
+{
+    oct_count_active=0;
+    uint64_t sites=0,single=0,single_filled=0,site_q=0,site_h=0,site_m=0,group_m=0;
+    for(ReasonSite *s=reason_site_list;s;s=s->all){
+        sites++;single+=s->queries==1;single_filled+=(s->queries==1&&s->fills!=0);
+        site_q+=s->queries;site_h+=s->hits;site_m+=s->misses;
+    }
+    for(ReasonGroup *g=reason_group_list;g;g=g->all)group_m+=g->count;
+    if(site_q!=oct_queries||site_h!=oct_hits||site_m!=oct_misses||group_m!=oct_misses)abort();
+    fprintf(stderr,"OCTANE_IC_COUNTS:{\"queries\":%llu,\"hits\":%llu,\"misses\":%llu,"
+        "\"fused_hits\":%llu,\"proto_hits\":%llu,\"regular_queries\":%llu,\"own_fills\":%llu,"
+        "\"compiled_instance_sites\":%llu,\"single_read_sites\":%llu,\"single_read_filled_sites\":%llu,\"groups\":[",
+        oct_queries,oct_hits,oct_misses,oct_fused_hits,oct_proto_hits,oct_regular_queries,oct_own_fills,
+        (unsigned long long)sites,(unsigned long long)single,(unsigned long long)single_filled);
+    int first=1;
+    for(ReasonGroup *g=reason_group_list;g;g=g->all){
+        if(!first)fputc(',',stderr);first=0;
+        fprintf(stderr,"{\"reason\":\"%s\",\"class_id\":%d,\"class_name\":\"%s\",\"atom_hex\":\"",
+            reason_names[g->reason],g->class_id,
+            g->class_id>=0&&g->class_id<(int)(sizeof(reason_class_names)/sizeof(*reason_class_names))?reason_class_names[g->class_id]:"OTHER");
+        reason_hex(g->atom->name);fprintf(stderr,"\",\"count\":%llu}",(unsigned long long)g->count);
+    }
+    fprintf(stderr,"]}\n");
+    while(reason_site_list){ReasonSite *s=reason_site_list;reason_site_list=s->all;free(s);}
+    while(reason_group_list){ReasonGroup *g=reason_group_list;reason_group_list=g->all;free(g);}
+    while(reason_atom_list){ReasonAtom *a=reason_atom_list;reason_atom_list=a->all;JS_FreeAtomRT(reason_runtime,a->atom);free(a->name);free(a);}
+    memset(reason_sites,0,sizeof(reason_sites));memset(reason_groups,0,sizeof(reason_groups));memset(reason_atoms,0,sizeof(reason_atoms));
+}

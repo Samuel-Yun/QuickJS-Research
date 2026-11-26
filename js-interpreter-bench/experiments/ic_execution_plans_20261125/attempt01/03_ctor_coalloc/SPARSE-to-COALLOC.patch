@@ -1,0 +1,155 @@
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -134,7 +134,7 @@
+        plan_proto(f)==s->final->proto && plan_chain(s->final->proto,&s->recipe)){
+         /* The two old entries each poll once. Hooks were excluded above. */
+         if(js_poll_interrupts(ctx) || js_poll_interrupts(ctx))return 0;
+-        *out=JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
++        *out=co_enabled&&s->final->prop_size<=2?co_new(ctx,js_dup_shape(s->final)):JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
+         if(JS_IsException(*out)){FOUR_COUNT(s,h);FOUR_COUNT(s,overflow);return 1;} /* no retry after allocation */
+         JSObject*o=JS_VALUE_GET_OBJ(*out);
+         for(unsigned i=0;i<s->recipe.n;i++)o->prop[i].u.value=JS_DupValue(ctx,args[s->recipe.arg[i]]);
+--- a/qjs.c
++++ b/qjs.c
+@@ -42,6 +42,7 @@
+ 
+ #include "cutils.h"
+ #include "quickjs-libc.h"
++extern void coalloc_entry_mode(int);
+ 
+ extern const uint8_t qjsc_repl[];
+ extern const uint32_t qjsc_repl_size;
+@@ -482,7 +483,8 @@
+     }
+ 
+     if (!empty_run) {
+-        js_std_add_helpers(ctx, argc - optind, argv + optind);
++        coalloc_entry_mode(getenv("QJS_CTOR_COALLOC_OFF")!=NULL);
++    js_std_add_helpers(ctx, argc - optind, argv + optind);
+ 
+         /* make 'std' and 'os' visible to non module code */
+         if (load_std) {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1022,6 +1022,11 @@
+     uint8_t has_immutable_prototype : 1; /* cannot modify the prototype */
+     uint8_t tmp_mark : 1; /* used in JS_WriteObjectRec() */
+     uint8_t is_HTMLDDA : 1; /* specific annex B IsHtmlDDA behavior */
++    uint8_t co_props : 1;
++    uint8_t co_capacity : 4;
++#ifdef FOUR_DIAG
++    uint8_t ep_plan : 1;
++#endif
+     uint16_t class_id; /* see JS_CLASS_x */
+     /* count the number of weak references to this object. The object
+        structure is freed only if header.ref_count = 0 and
+@@ -5390,6 +5395,7 @@
+ #endif
+ 
+ #include "edge_strong_helpers.inc"
++#include "coalloc_storage.inc"
+ 
+ /* make space to hold at least 'count' properties */
+ static no_inline int resize_properties(JSContext *ctx, JSShape **psh,
+@@ -5410,7 +5416,7 @@
+ #ifdef FOUR_DIAG
+     four_ctor_resize();
+ #endif
+-        new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
++        new_prop = co_realloc(ctx, p, sizeof(new_prop[0]) * new_size);
+         if (unlikely(!new_prop))
+             return -1;
+         p->prop = new_prop;
+@@ -5527,7 +5533,7 @@
+     js_free(ctx, old_sh);
+ 
+     /* reduce the size of the object properties */
+-    new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
++    new_prop = co_realloc(ctx, p, sizeof(new_prop[0]) * new_size);
+     if (new_prop)
+         p->prop = new_prop;
+     return 0;
+@@ -5697,6 +5703,10 @@
+     p->has_immutable_prototype = 0;
+     p->tmp_mark = 0;
+     p->is_HTMLDDA = 0;
++    p->co_props=0;p->co_capacity=0;
++#ifdef FOUR_DIAG
++    p->ep_plan=0;
++#endif
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
+@@ -6229,6 +6239,7 @@
+ 
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
++#include "coalloc_runtime.inc"
+ #include "four_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+@@ -6428,7 +6439,7 @@
+         free_property(rt, &p->prop[i], pr->flags);
+         pr++;
+     }
+-    js_free_rt(rt, p->prop);
++    if(!p->co_props)js_free_rt(rt, p->prop);
+     /* as an optimization we destroy the shape immediately without
+        putting it in gc_zero_ref_count_list */
+     js_free_shape(rt, sh);
+@@ -7092,7 +7103,9 @@
+         sh = p->shape;
+         s->obj_count++;
+         if (p->prop) {
+-            s->memory_used_count++;
++            if(!p->co_props)s->memory_used_count++;
++            /* A migrated combined object still owns its unused tail. */
++            if(p->co_capacity&&!p->co_props)s->obj_size+=(size_t)p->co_capacity*sizeof(*p->prop);
+             s->prop_size += sh->prop_size * sizeof(*p->prop);
+             s->prop_count += sh->prop_count;
+             prs = get_shape_prop(sh);
+@@ -9310,7 +9323,7 @@
+ #ifdef FOUR_DIAG
+     four_ctor_resize();
+ #endif
+-                new_prop = js_realloc(ctx, p->prop, sizeof(p->prop[0]) *
++                new_prop = co_realloc(ctx, p, sizeof(p->prop[0]) *
+                                       new_sh->prop_size);
+                 if (!new_prop)
+                     return NULL;
+--- a/coalloc_runtime.inc
++++ b/coalloc_runtime.inc
+@@ -0,0 +1,20 @@
++/* Only plan_try's ordinary-object allocation calls this narrow allocator. */
++_Static_assert(sizeof(JSObject)==64,"preserve object header size");
++_Static_assert(sizeof(JSObject)%_Alignof(JSProperty)==0,"aligned property tail");
++_Static_assert(offsetof(JSObject,shape)==24&&offsetof(JSObject,prop)==32,"preserve hot fields");
++static int co_enabled=1;
++void coalloc_entry_mode(int off){co_enabled=!off;}
++static JSValue co_new(JSContext*ctx,JSShape*sh){
++ JSObject*p;size_t bytes=sizeof(*p)+sizeof(JSProperty)*(size_t)sh->prop_size;
++ js_trigger_gc(ctx->rt,sizeof(JSObject));
++ p=js_malloc(ctx,bytes);
++ if(!p){js_free_shape(ctx->rt,sh);return JS_EXCEPTION;}
++ p->class_id=JS_CLASS_OBJECT;p->is_std_array_prototype=0;p->extensible=TRUE;p->free_mark=0;p->is_exotic=0;p->fast_array=0;p->is_constructor=0;p->has_immutable_prototype=0;p->tmp_mark=0;p->is_HTMLDDA=0;p->weakref_count=0;
++ p->co_props=1;p->co_capacity=sh->prop_size;
++#ifdef FOUR_DIAG
++ p->ep_plan=0;
++#endif
++ p->u.opaque=NULL;p->shape=sh;p->prop=(JSProperty*)(p+1);
++ js_rc(p)->ref_count=1;add_gc_object(ctx->rt,&p->header,JS_GC_OBJ_TYPE_JS_OBJECT);
++ return JS_MKPTR(JS_TAG_OBJECT,p);
++}
+--- a/coalloc_storage.inc
++++ b/coalloc_storage.inc
+@@ -0,0 +1,10 @@
++/* Included before all three property-array resize sites. No read handler
++ * tests this representation. Transfers values; it does not duplicate refs. */
++static JSProperty*co_realloc(JSContext*ctx,JSObject*p,size_t bytes){
++ if(!p->co_props)return js_realloc(ctx,p->prop,bytes);
++ JSProperty*n=js_malloc(ctx,bytes);if(!n)return NULL;
++ size_t old_bytes=sizeof(JSProperty)*(size_t)p->co_capacity;
++ memcpy(n,p->prop,bytes<old_bytes?bytes:old_bytes);
++ p->prop=n;p->co_props=0;
++ return n;
++}

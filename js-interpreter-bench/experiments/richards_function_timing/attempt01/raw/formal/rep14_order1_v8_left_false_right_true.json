@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "stdout": "RFT {\"N\":8388608,\"start_ms\":27.457,\"stop_ms\":425.059,\"elapsed_ms\":397.60200000000003,\"checksum\":8388608,\"last\":true,\"state\":2,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "",
+  "timeout": false,
+  "command": [
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+    "--snapshot_blob=/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+    "--max-opt=0",
+    "--no-lazy",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/three_engine_baseline/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/timer_recovery/adapters/v8.js",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_function_timing/attempt01/generated/left_false_right_true.N8388608.js"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp_utc": "2026-10-18T15:47:42.703803+00:00",
+  "outer_wall_ns": 433463670,
+  "load_average": [
+    1.0693359375,
+    0.51025390625,
+    0.20263671875
+  ],
+  "boot_id": "b9a65e0f-e9bb-4a65-a6c5-ae5f90fe3235",
+  "LD_PRELOAD": null
+}

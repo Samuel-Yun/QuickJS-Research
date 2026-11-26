@@ -1,0 +1,26 @@
+{
+  "results": {
+    "P2_COLD": {
+      "status": "PASS",
+      "checks": [
+        "semantics.js",
+        "d16_cases.js",
+        "property_reads.js",
+        "GC lifetime"
+      ]
+    },
+    "D16_STATIC": {
+      "status": "PASS",
+      "checks": [
+        "semantics.js",
+        "d16_cases.js",
+        "property_reads.js",
+        "GC lifetime"
+      ]
+    }
+  },
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "LSan_reason": "LeakSanitizer reported ptrace supervisor unsupported"
+}

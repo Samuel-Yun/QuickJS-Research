@@ -1,0 +1,182 @@
+
+js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+000000000004b830 <plan_try>:
+   4b830:	41 57                	push   %r15
+   4b832:	49 89 f2             	mov    %rsi,%r10
+   4b835:	41 56                	push   %r14
+   4b837:	55                   	push   %rbp
+   4b838:	53                   	push   %rbx
+   4b839:	48 83 ec 28          	sub    $0x28,%rsp
+   4b83d:	4c 8b 5e 18          	mov    0x18(%rsi),%r11
+   4b841:	64 4c 8b 3c 25 28 00 	mov    %fs:0x28,%r15
+   4b848:	00 00 
+   4b84a:	4c 89 7c 24 18       	mov    %r15,0x18(%rsp)
+   4b84f:	4c 8b 7c 24 58       	mov    0x58(%rsp),%r15
+   4b854:	48 8b 6c 24 50       	mov    0x50(%rsp),%rbp
+   4b859:	4d 85 db             	test   %r11,%r11
+   4b85c:	74 0d                	je     4b86b <plan_try+0x3b>
+   4b85e:	8b 46 08             	mov    0x8(%rsi),%eax
+   4b861:	48 89 cb             	mov    %rcx,%rbx
+   4b864:	21 c8                	and    %ecx,%eax
+   4b866:	83 f8 ff             	cmp    $0xffffffff,%eax
+   4b869:	74 25                	je     4b890 <plan_try+0x60>
+   4b86b:	31 db                	xor    %ebx,%ebx
+   4b86d:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+   4b872:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+   4b879:	00 00 
+   4b87b:	0f 85 df 01 00 00    	jne    4ba60 <plan_try+0x230>
+   4b881:	48 83 c4 28          	add    $0x28,%rsp
+   4b885:	89 d8                	mov    %ebx,%eax
+   4b887:	5b                   	pop    %rbx
+   4b888:	5d                   	pop    %rbp
+   4b889:	41 5e                	pop    %r14
+   4b88b:	41 5f                	pop    %r15
+   4b88d:	c3                   	ret
+   4b88e:	66 90                	xchg   %ax,%ax
+   4b890:	48 89 d6             	mov    %rdx,%rsi
+   4b893:	49 39 12             	cmp    %rdx,(%r10)
+   4b896:	75 d3                	jne    4b86b <plan_try+0x3b>
+   4b898:	48 8d 44 24 10       	lea    0x10(%rsp),%rax
+   4b89d:	49 89 fe             	mov    %rdi,%r14
+   4b8a0:	48 8b 7f 10          	mov    0x10(%rdi),%rdi
+   4b8a4:	4c 89 ca             	mov    %r9,%rdx
+   4b8a7:	50                   	push   %rax
+   4b8a8:	45 0f b7 4a 58       	movzwl 0x58(%r10),%r9d
+   4b8ad:	4c 89 c1             	mov    %r8,%rcx
+   4b8b0:	49 89 d0             	mov    %rdx,%r8
+   4b8b3:	48 89 da             	mov    %rbx,%rdx
+   4b8b6:	e8 c5 de fc ff       	call   19780 <plan_base.isra.0>
+   4b8bb:	89 c3                	mov    %eax,%ebx
+   4b8bd:	58                   	pop    %rax
+   4b8be:	85 db                	test   %ebx,%ebx
+   4b8c0:	74 a9                	je     4b86b <plan_try+0x3b>
+   4b8c2:	49 8b 42 60          	mov    0x60(%r10),%rax
+   4b8c6:	48 8b 7c 24 10       	mov    0x10(%rsp),%rdi
+   4b8cb:	48 85 c0             	test   %rax,%rax
+   4b8ce:	74 0d                	je     4b8dd <plan_try+0xad>
+   4b8d0:	48 8b 57 18          	mov    0x18(%rdi),%rdx
+   4b8d4:	48 3b 10             	cmp    (%rax),%rdx
+   4b8d7:	0f 84 fb 00 00 00    	je     4b9d8 <plan_try+0x1a8>
+   4b8dd:	e8 fe aa fc ff       	call   163e0 <plan_proto>
+   4b8e2:	49 3b 43 30          	cmp    0x30(%r11),%rax
+   4b8e6:	75 83                	jne    4b86b <plan_try+0x3b>
+   4b8e8:	49 8d 72 20          	lea    0x20(%r10),%rsi
+   4b8ec:	48 89 c7             	mov    %rax,%rdi
+   4b8ef:	4c 89 54 24 08       	mov    %r10,0x8(%rsp)
+   4b8f4:	e8 57 ab fc ff       	call   16450 <plan_chain>
+   4b8f9:	4c 8b 54 24 08       	mov    0x8(%rsp),%r10
+   4b8fe:	85 c0                	test   %eax,%eax
+   4b900:	0f 84 65 ff ff ff    	je     4b86b <plan_try+0x3b>
+   4b906:	41 8b 86 a8 01 00 00 	mov    0x1a8(%r14),%eax
+   4b90d:	89 44 24 08          	mov    %eax,0x8(%rsp)
+   4b911:	83 e8 01             	sub    $0x1,%eax
+   4b914:	41 89 86 a8 01 00 00 	mov    %eax,0x1a8(%r14)
+   4b91b:	85 c0                	test   %eax,%eax
+   4b91d:	0f 8e 42 01 00 00    	jle    4ba65 <plan_try+0x235>
+   4b923:	41 8b 86 a8 01 00 00 	mov    0x1a8(%r14),%eax
+   4b92a:	89 44 24 08          	mov    %eax,0x8(%rsp)
+   4b92e:	83 e8 01             	sub    $0x1,%eax
+   4b931:	41 89 86 a8 01 00 00 	mov    %eax,0x1a8(%r14)
+   4b938:	85 c0                	test   %eax,%eax
+   4b93a:	0f 8e 44 01 00 00    	jle    4ba84 <plan_try+0x254>
+   4b940:	49 8b 72 18          	mov    0x18(%r10),%rsi
+   4b944:	31 c9                	xor    %ecx,%ecx
+   4b946:	ba 01 00 00 00       	mov    $0x1,%edx
+   4b94b:	4c 89 f7             	mov    %r14,%rdi
+   4b94e:	4c 89 54 24 08       	mov    %r10,0x8(%rsp)
+   4b953:	83 46 fc 01          	addl   $0x1,-0x4(%rsi)
+   4b957:	e8 24 f6 ff ff       	call   4af80 <JS_NewObjectFromShape>
+   4b95c:	4c 8b 54 24 08       	mov    0x8(%rsp),%r10
+   4b961:	49 89 57 08          	mov    %rdx,0x8(%r15)
+   4b965:	41 83 7f 08 06       	cmpl   $0x6,0x8(%r15)
+   4b96a:	49 89 07             	mov    %rax,(%r15)
+   4b96d:	0f 84 fa fe ff ff    	je     4b86d <plan_try+0x3d>
+   4b973:	41 0f b7 42 50       	movzwl 0x50(%r10),%eax
+   4b978:	66 85 c0             	test   %ax,%ax
+   4b97b:	0f 84 ec fe ff ff    	je     4b86d <plan_try+0x3d>
+   4b981:	49 8b 17             	mov    (%r15),%rdx
+   4b984:	49 83 c2 40          	add    $0x40,%r10
+   4b988:	48 8b 72 20          	mov    0x20(%rdx),%rsi
+   4b98c:	8d 50 ff             	lea    -0x1(%rax),%edx
+   4b98f:	48 c1 e2 04          	shl    $0x4,%rdx
+   4b993:	48 8d 4e 10          	lea    0x10(%rsi),%rcx
+   4b997:	48 01 ca             	add    %rcx,%rdx
+   4b99a:	eb 04                	jmp    4b9a0 <plan_try+0x170>
+   4b99c:	48 83 c1 10          	add    $0x10,%rcx
+   4b9a0:	41 0f b7 02          	movzwl (%r10),%eax
+   4b9a4:	48 c1 e0 04          	shl    $0x4,%rax
+   4b9a8:	48 01 e8             	add    %rbp,%rax
+   4b9ab:	48 8b 38             	mov    (%rax),%rdi
+   4b9ae:	48 8b 40 08          	mov    0x8(%rax),%rax
+   4b9b2:	83 f8 f6             	cmp    $0xfffffff6,%eax
+   4b9b5:	76 04                	jbe    4b9bb <plan_try+0x18b>
+   4b9b7:	83 47 fc 01          	addl   $0x1,-0x4(%rdi)
+   4b9bb:	48 89 3e             	mov    %rdi,(%rsi)
+   4b9be:	49 83 c2 02          	add    $0x2,%r10
+   4b9c2:	48 89 46 08          	mov    %rax,0x8(%rsi)
+   4b9c6:	48 89 ce             	mov    %rcx,%rsi
+   4b9c9:	48 39 ca             	cmp    %rcx,%rdx
+   4b9cc:	75 ce                	jne    4b99c <plan_try+0x16c>
+   4b9ce:	e9 9a fe ff ff       	jmp    4b86d <plan_try+0x3d>
+   4b9d3:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+   4b9d8:	80 7a 10 00          	cmpb   $0x0,0x10(%rdx)
+   4b9dc:	0f 84 fb fe ff ff    	je     4b8dd <plan_try+0xad>
+   4b9e2:	8b 50 28             	mov    0x28(%rax),%edx
+   4b9e5:	48 c1 e2 04          	shl    $0x4,%rdx
+   4b9e9:	48 03 57 20          	add    0x20(%rdi),%rdx
+   4b9ed:	83 7a 08 ff          	cmpl   $0xffffffff,0x8(%rdx)
+   4b9f1:	0f 85 e6 fe ff ff    	jne    4b8dd <plan_try+0xad>
+   4b9f7:	48 8b 12             	mov    (%rdx),%rdx
+   4b9fa:	49 3b 53 30          	cmp    0x30(%r11),%rdx
+   4b9fe:	0f 85 d9 fe ff ff    	jne    4b8dd <plan_try+0xad>
+   4ba04:	0f b6 70 2c          	movzbl 0x2c(%rax),%esi
+   4ba08:	40 84 f6             	test   %sil,%sil
+   4ba0b:	74 45                	je     4ba52 <plan_try+0x222>
+   4ba0d:	31 c9                	xor    %ecx,%ecx
+   4ba0f:	48 85 d2             	test   %rdx,%rdx
+   4ba12:	0f 84 c5 fe ff ff    	je     4b8dd <plan_try+0xad>
+   4ba18:	66 83 7a 12 01       	cmpw   $0x1,0x12(%rdx)
+   4ba1d:	0f 85 ba fe ff ff    	jne    4b8dd <plan_try+0xad>
+   4ba23:	f6 42 10 08          	testb  $0x8,0x10(%rdx)
+   4ba27:	0f 85 b0 fe ff ff    	jne    4b8dd <plan_try+0xad>
+   4ba2d:	48 8b 52 18          	mov    0x18(%rdx),%rdx
+   4ba31:	48 3b 54 c8 08       	cmp    0x8(%rax,%rcx,8),%rdx
+   4ba36:	0f 85 a1 fe ff ff    	jne    4b8dd <plan_try+0xad>
+   4ba3c:	80 7a 10 00          	cmpb   $0x0,0x10(%rdx)
+   4ba40:	0f 84 97 fe ff ff    	je     4b8dd <plan_try+0xad>
+   4ba46:	48 83 c1 01          	add    $0x1,%rcx
+   4ba4a:	48 8b 52 30          	mov    0x30(%rdx),%rdx
+   4ba4e:	39 f1                	cmp    %esi,%ecx
+   4ba50:	72 bd                	jb     4ba0f <plan_try+0x1df>
+   4ba52:	48 85 d2             	test   %rdx,%rdx
+   4ba55:	0f 85 82 fe ff ff    	jne    4b8dd <plan_try+0xad>
+   4ba5b:	e9 a6 fe ff ff       	jmp    4b906 <plan_try+0xd6>
+   4ba60:	e8 6b 62 fc ff       	call   11cd0 <__stack_chk_fail@plt>
+   4ba65:	4c 89 f7             	mov    %r14,%rdi
+   4ba68:	4c 89 54 24 08       	mov    %r10,0x8(%rsp)
+   4ba6d:	e8 0e b2 fe ff       	call   36c80 <__js_poll_interrupts>
+   4ba72:	4c 8b 54 24 08       	mov    0x8(%rsp),%r10
+   4ba77:	85 c0                	test   %eax,%eax
+   4ba79:	0f 85 ec fd ff ff    	jne    4b86b <plan_try+0x3b>
+   4ba7f:	e9 9f fe ff ff       	jmp    4b923 <plan_try+0xf3>
+   4ba84:	4c 89 f7             	mov    %r14,%rdi
+   4ba87:	4c 89 54 24 08       	mov    %r10,0x8(%rsp)
+   4ba8c:	e8 ef b1 fe ff       	call   36c80 <__js_poll_interrupts>
+   4ba91:	4c 8b 54 24 08       	mov    0x8(%rsp),%r10
+   4ba96:	85 c0                	test   %eax,%eax
+   4ba98:	0f 85 cd fd ff ff    	jne    4b86b <plan_try+0x3b>
+   4ba9e:	e9 9d fe ff ff       	jmp    4b940 <plan_try+0x110>
+
+Disassembly of section .fini:

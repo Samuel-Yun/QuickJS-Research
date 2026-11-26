@@ -1,0 +1,27 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 131, in <module>\n    if __name__=='__main__':globals()[sys.argv[1]]()\n                            ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py\", line 70, in build\n    save(HERE/'raw/build'/f'{label}.diagnostic.json',r);assert r['exit_code']==0,r['stderr'][-4000:]\n                                                               ^^^^^^^^^^^^^^^^^\nAssertionError: make: *** No rule to make target 'repl.js', needed by 'repl.c'.  Stop.\nmake: *** Waiting for unfinished jobs....\n\n",
+  "timeout": false,
+  "command": [
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py",
+    "build"
+  ],
+  "label": "02_build_diagnostic",
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01",
+  "timestamp": "2026-11-04T06:34:16.403650+00:00",
+  "completed_at": "2026-11-04T06:34:17.110470+00:00",
+  "outer_start_ns": 4283360850,
+  "outer_stop_ns": 4990260410,
+  "external_wall_ms": 706.89956,
+  "child_user_ms": 551.59,
+  "child_system_ms": 50.884,
+  "boot_id": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "boot_id_after": "850a9d49-d6da-4ef3-96f8-b73e52050f04",
+  "load_average": [
+    0.0,
+    0.0,
+    0.0
+  ]
+}

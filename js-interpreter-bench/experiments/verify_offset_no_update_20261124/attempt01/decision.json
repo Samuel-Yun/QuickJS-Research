@@ -1,0 +1,40 @@
+{
+  "run_full": true,
+  "reason": "至少一个真实用例有第二层成功，且 3 对 Release 新进程中新版均更快，继续同批单轮全集。",
+  "evidence": [
+    {
+      "case": "RayTrace.RayTrace",
+      "paired_change_percent": [
+        -2.4035142381286456,
+        -1.594657374395314,
+        -3.4305102033705848
+      ],
+      "median_change_percent": -3.0677155777207976,
+      "rescued_reads": 1507584,
+      "repeatable_direction": true
+    },
+    {
+      "case": "Splay.Splay",
+      "paired_change_percent": [
+        -1.6152068018058907,
+        -2.9714458877172834,
+        -0.10352817588239471
+      ],
+      "median_change_percent": -1.6152068018058907,
+      "rescued_reads": 8644924,
+      "repeatable_direction": true
+    },
+    {
+      "case": "PdfJS.PdfJS",
+      "paired_change_percent": [
+        0.8079379211652915,
+        0.7843111993840468,
+        0.9158715159614861
+      ],
+      "median_change_percent": 0.8775313855347688,
+      "rescued_reads": 184702,
+      "repeatable_direction": false
+    }
+  ],
+  "criterion": "at least one real case: verify_successes>0, all 3 paired changes<0, median change<0; direction screening, not significance"
+}

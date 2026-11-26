@@ -1,0 +1,18 @@
+{
+  "command": [
+    "gdb",
+    "--batch",
+    "--nx",
+    "--nh",
+    "-ex",
+    "file /home/mzyx/read_ic_mic_attempt01/A/qjs",
+    "-ex",
+    "p sizeof(JSFunctionBytecode)"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T07:21:07.069108+00:00",
+  "exit_code": 0,
+  "stdout": "$1 = 128\n",
+  "stderr": "",
+  "wall_ns": 309235471
+}

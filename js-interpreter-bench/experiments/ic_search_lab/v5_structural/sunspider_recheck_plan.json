@@ -1,0 +1,18 @@
+{
+  "status": "FROZEN_BEFORE_SUNSPIDER",
+  "conditions": [
+    "s001",
+    "A",
+    "d03",
+    "d04"
+  ],
+  "rounds": 4,
+  "expected": 416,
+  "N": "full previously validated common N",
+  "source": "unchanged frozen26 cases/adapter/checksums",
+  "mode": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "warmup": 0,
+  "purpose": "All entrants sensitivity check including numeric/no-IC-heavy cases; independent from Octane aggregation",
+  "rule": "Keep all regressions, no aggregate across suites",
+  "formal_candidate_gate": "Octane exploratory high95<1 vs s001, no unexplained >10% regression across either suite; then full safety and fresh confirmation"
+}

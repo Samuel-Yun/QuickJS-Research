@@ -1,0 +1,96 @@
+mkdir -p .obj/asan/ubsan .obj/asan/ubsan/examples .obj/asan/ubsan/tests
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/qjs.o qjs.c
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/repl.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/repl.o repl.c
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/quickjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/quickjs.o quickjs.c
+In file included from quickjs.c:6234:
+four_runtime.inc: In function ‘plan_recipe’:
+four_runtime.inc:43:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   43 |         if(r->n==8 || end-p<7)return 0;p++;
+      |         ^~
+four_runtime.inc:43:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   43 |         if(r->n==8 || end-p<7)return 0;p++;
+      |                                        ^
+In file included from quickjs.c:6236:
+numeric_runtime.inc: In function ‘np_zero’:
+numeric_runtime.inc:30:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   30 |  if(n!=0)return 0;*out=v;*pp=p;return 1;
+      |  ^~
+numeric_runtime.inc:30:19: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   30 |  if(n!=0)return 0;*out=v;*pp=p;return 1;
+      |                   ^
+numeric_runtime.inc: In function ‘np_recipe’:
+numeric_runtime.inc:41:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   41 |    if(!np_zero(b,&p,end,&zeros[a])||np_slot(&p,end,1)!=a||p!=t)return 0;seen|=1u<<a;
+      |    ^~
+numeric_runtime.inc:41:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   41 |    if(!np_zero(b,&p,end,&zeros[a])||np_slot(&p,end,1)!=a||p!=t)return 0;seen|=1u<<a;
+      |                                                                         ^~~~
+numeric_runtime.inc:55:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   55 |   if(end-p<5||*p!=OP_put_field)return 0;r->fields.atom[i]=get_u32(p+1);p+=5;
+      |   ^~
+numeric_runtime.inc:55:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   55 |   if(end-p<5||*p!=OP_put_field)return 0;r->fields.atom[i]=get_u32(p+1);p+=5;
+      |                                         ^
+numeric_runtime.inc: In function ‘np_data’:
+numeric_runtime.inc:74:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   74 |   if(o->is_exotic)return 0;JSProperty*p;JSShapeProperty*d=find_own_property(&p,o,atom);
+      |   ^~
+numeric_runtime.inc:74:28: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   74 |   if(o->is_exotic)return 0;JSProperty*p;JSShapeProperty*d=find_own_property(&p,o,atom);
+      |                            ^~~~~~~~~~
+numeric_runtime.inc: In function ‘np_seed’:
+numeric_runtime.inc:105:70: warning: variable ‘reason’ set but not used [-Wunused-but-set-variable]
+  105 |  JSObject*f,*proto;JSAtom init,apply;JSValue i,a;NumericRecipe r;int reason=0;
+      |                                                                      ^~~~~~
+numeric_runtime.inc: In function ‘np_try’:
+numeric_runtime.inc:131:6: warning: variable ‘reason’ set but not used [-Wunused-but-set-variable]
+  131 |  int reason=20;
+      |      ^~~~~~
+In file included from quickjs.c:6237:
+nested_runtime.inc: In function ‘nest_recipe’:
+nested_runtime.inc:10:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   10 |  if(b->arg_count||b->var_count!=1||b->var_ref_count||b->func_kind!=JS_FUNC_NORMAL||b->need_home_object||b->is_derived_class_constructor||!b->has_simple_parameter_list||end-p<10||p[0]!=OP_push_this||p[1]!=OP_put_loc0||p[2]!=OP_get_loc0)return 0;p+=3;
+      |  ^~
+nested_runtime.inc:10:245: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   10 |  if(b->arg_count||b->var_count!=1||b->var_ref_count||b->func_kind!=JS_FUNC_NORMAL||b->need_home_object||b->is_derived_class_constructor||!b->has_simple_parameter_list||end-p<10||p[0]!=OP_push_this||p[1]!=OP_put_loc0||p[2]!=OP_get_loc0)return 0;p+=3;
+      |                                                                                                                                                                                                                                                     ^
+nested_runtime.inc:11:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   11 |  if(end-p<3||*p!=OP_get_var)return 0;r->var=get_u16(p+1);p+=3;if(r->var>=b->closure_var_count)return 0;
+      |  ^~
+nested_runtime.inc:11:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   11 |  if(end-p<3||*p!=OP_get_var)return 0;r->var=get_u16(p+1);p+=3;if(r->var>=b->closure_var_count)return 0;
+      |                                      ^
+nested_runtime.inc:13:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   13 |   if(r->path_n==4)return 0;r->path[r->path_n++]=*p==OP_get_field?get_u32(p+1):((ReadICSite*)(p+1+get_u32(p+1)))->atom;p+=5;
+      |   ^~
+nested_runtime.inc:13:28: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   13 |   if(r->path_n==4)return 0;r->path[r->path_n++]=*p==OP_get_field?get_u32(p+1):((ReadICSite*)(p+1+get_u32(p+1)))->atom;p+=5;
+      |                            ^
+nested_runtime.inc: In function ‘nest_seed’:
+nested_runtime.inc:35:12: warning: unused variable ‘pc’ [-Wunused-variable]
+   35 |  uintptr_t pc=(uintptr_t)(ctx->rt->current_stack_frame->cur_pc-3);R2C(ctx,pc,0);R2C(ctx,pc,s->argc==0?1:s->argc==2?2:3);
+      |            ^~
+nested_runtime.inc: In function ‘nest_try’:
+nested_runtime.inc:57:12: warning: unused variable ‘pc’ [-Wunused-variable]
+   57 |  uintptr_t pc=(uintptr_t)(ctx->rt->current_stack_frame->cur_pc-3);R2C(ctx,pc,11);
+      |            ^~
+quickjs.c: In function ‘js_default_module_normalize_name’:
+quickjs.c:30185:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+30185 |     p = strrchr(base_name, '/');
+      |       ^
+In file included from quickjs.c:32360:
+four_prepare.inc: In function ‘four_prepare’:
+four_prepare.inc:8:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |     ^~
+four_prepare.inc:8:35: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    8 |     if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
+      |                                   ^
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/dtoa.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/dtoa.o dtoa.c
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/libregexp.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/libregexp.o libregexp.c
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/libunicode.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/libunicode.o libunicode.c
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/cutils.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/cutils.o cutils.c
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/quickjs-libc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -O2 -c -o .obj/asan/ubsan/quickjs-libc.o quickjs-libc.c
+gcc -g -Wall -MMD -MF .obj/asan/ubsan/qjsc.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2026-06-04\" -DHAVE_CLOSEFROM -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -DCONFIG_CC=\"gcc\" -DCONFIG_PREFIX=\"/usr/local\" -O2 -c -o .obj/asan/ubsan/qjsc.o qjsc.c
+gcc -g -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -rdynamic -o qjs .obj/asan/ubsan/qjs.o .obj/asan/ubsan/repl.o .obj/asan/ubsan/quickjs.o .obj/asan/ubsan/dtoa.o .obj/asan/ubsan/libregexp.o .obj/asan/ubsan/libunicode.o .obj/asan/ubsan/cutils.o .obj/asan/ubsan/quickjs-libc.o -lm -lpthread -ldl 
+gcc -g -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -fno-omit-frame-pointer -o qjsc .obj/asan/ubsan/qjsc.o .obj/asan/ubsan/quickjs.o .obj/asan/ubsan/dtoa.o .obj/asan/ubsan/libregexp.o .obj/asan/ubsan/libunicode.o .obj/asan/ubsan/cutils.o .obj/asan/ubsan/quickjs-libc.o -lm -lpthread -ldl 

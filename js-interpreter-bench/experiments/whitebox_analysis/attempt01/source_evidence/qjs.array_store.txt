@@ -1,0 +1,43 @@
+Source: /home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c
+SHA256: b4ad0506b6c11931c5aacc7378942654e42e9875b03cf57f6dcc274287fbcb17
+URL: https://github.com/bellard/quickjs/blob/04be246001599f5995fa2f2d8c91a0f198d3f34c/quickjs.c#L19494
+19494:                 sf->cur_pc = pc;
+19495:                 atom = JS_ValueToAtom(ctx, sp[-1]);
+19496:                 if (atom == JS_ATOM_NULL)
+19497:                     goto exception;
+19498:                 if (unlikely(JS_IsUndefined(sp[-2]))) {
+19499:                     JS_ThrowReferenceErrorNotDefined(ctx, atom);
+19500:                     JS_FreeAtom(ctx, atom);
+19501:                     goto exception;
+19502:                 }
+19503:                 ret = JS_HasProperty(ctx, sp[-2], atom);
+19504:                 if (unlikely(ret <= 0)) {
+19505:                     if (ret < 0) {
+19506:                         JS_FreeAtom(ctx, atom);
+19507:                         goto exception;
+19508:                     }
+19509:                     if (is_strict_mode(ctx)) {
+19510:                         JS_ThrowReferenceErrorNotDefined(ctx, atom);
+19511:                         JS_FreeAtom(ctx, atom);
+19512:                         goto exception;
+19513:                     } 
+19514:                     val = JS_UNDEFINED;
+19515:                 } else {
+19516:                     val = JS_GetProperty(ctx, sp[-2], atom);
+19517:                 }
+19518:                 JS_FreeAtom(ctx, atom);
+19519:                 if (unlikely(JS_IsException(val)))
+19520:                     goto exception;
+19521:                 sp[0] = val;
+19522:                 sp++;
+19523:             }
+19524:             BREAK;
+19525: 
+19526:         CASE(OP_get_super_value):
+19527:             {
+19528:                 JSValue val;
+19529:                 JSAtom atom;
+19530:                 sf->cur_pc = pc;
+19531:                 atom = JS_ValueToAtom(ctx, sp[-1]);
+19532:                 if (unlikely(atom == JS_ATOM_NULL))
+19533:                     goto exception;

@@ -1,0 +1,399 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -369,6 +369,7 @@
+ DEF(v6_get_arg0, 1, 0, 1, none)
+ DEF(put_field_shared, 5, 2, 0, u32)
+ DEF(four_ctor,3,0,0,u16)
++DEF(put_field_sti,5,2,0,u32)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -689,6 +689,8 @@
+ } JSFunctionKindEnum;
+ 
+ #include "read_ic_types.h"
++#define STORE_TRANSITION_ENABLED 1
++#include "store_transition_types.h"
+ 
+ typedef struct FourSite FourSite;
+ typedef struct JSFunctionBytecode {
+@@ -722,6 +724,8 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    StoreSite *store_sites;
++    uint32_t store_count;
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
+@@ -1293,6 +1297,10 @@
+ static BOOL js_same_value_zero(JSContext *ctx, JSValueConst op1, JSValueConst op2);
+ static JSValue JS_ToObject(JSContext *ctx, JSValueConst val);
+ static JSValue JS_ToObjectFree(JSContext *ctx, JSValue val);
++static JSProperty *add_property_observed(JSContext *ctx, JSObject *p,
++    JSAtom prop, int prop_flags, StoreObservation *observation);
++static void st_capture(JSContext *ctx, StoreObservation *o, JSObject *p,
++    JSShape *from, JSShape *to, JSAtom atom, int flags);
+ static JSProperty *add_property(JSContext *ctx,
+                                 JSObject *p, JSAtom prop, int prop_flags);
+ static void free_property(JSRuntime *rt, JSProperty *pr, int prop_flags);
+@@ -6230,6 +6238,7 @@
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
++#include "store_transition_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -6692,6 +6701,12 @@
+             int i;
+             for(i = 0; i < b->cpool_count; i++) {
+                 JS_MarkValue(rt, b->cpool[i], mark_func);
++            }
++            for (uint32_t si = 0; si < b->store_count; si++) {
++                StoreSite *s = &b->store_sites[si];
++                if (s->from) mark_func(rt, &s->from->header);
++                if (s->to) mark_func(rt, &s->to->header);
++                for (int j = 0; j < s->depth; j++) mark_func(rt, &s->chain[j]->header);
+             }
+             for (uint32_t ri = 0; ri < b->read_ic_count; ri++) {
+ #if RDI_CAPACITY == 1
+@@ -9265,9 +9280,12 @@
+ 
+ /* Note: the property value is not initialized. Return NULL if memory
+    error. */
+-static JSProperty *add_property(JSContext *ctx,
+-                                JSObject *p, JSAtom prop, int prop_flags)
+-{
++static JSProperty *add_property(JSContext *ctx, JSObject *p, JSAtom prop, int flags)
++{ return add_property_observed(ctx, p, prop, flags, NULL); }
++static JSProperty *add_property_observed(JSContext *ctx,
++    JSObject *p, JSAtom prop, int prop_flags, StoreObservation *observation)
++{
++    if (observation) ST_EVENT(observation->diag, add_calls);
+     JSShape *sh, *new_sh;
+ 
+     if (unlikely(__JS_AtomIsTaggedInt(prop))) {
+@@ -9303,6 +9321,7 @@
+             if (new_sh) ex_edge_fill(ctx->rt,sh,prop,prop_flags,new_sh);
+         }
+         if (new_sh) {
++            st_capture(ctx, observation, p, sh, new_sh, prop, prop_flags);
+             /* matching shape found: use it */
+             /*  the property array may need to be resized */
+             if (new_sh->prop_size != sh->prop_size) {
+@@ -9766,7 +9785,10 @@
+    JS_PROP_THROW_STRICT. 'this_obj' is the receiver. If obj !=
+    this_obj, then obj must be an object (Reflect.set case). */
+ int JS_SetPropertyInternal(JSContext *ctx, JSValueConst obj,
+-                           JSAtom prop, JSValue val, JSValueConst this_obj, int flags)
++    JSAtom prop, JSValue val, JSValueConst this_obj, int flags)
++{ return js_set_property_observed(ctx, obj, prop, val, this_obj, flags, NULL); }
++static int js_set_property_observed(JSContext *ctx, JSValueConst obj,
++    JSAtom prop, JSValue val, JSValueConst this_obj, int flags, StoreObservation *observation)
+ {
+     JSObject *p, *p1;
+     JSShapeProperty *prs;
+@@ -9811,6 +9833,7 @@
+  retry:
+     prs = find_own_property(&pr, p1, prop);
+     if (prs) {
++        if (observation) ST_EVENT(observation->diag, own_existing_slow);
+         if (likely((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE |
+                                   JS_PROP_LENGTH)) == JS_PROP_WRITABLE)) {
+             /* fast case */
+@@ -9986,7 +10009,8 @@
+         } else {
+             if (unlikely(p->class_id == JS_CLASS_GLOBAL_OBJECT))
+                 goto generic_create_prop;
+-            pr = add_property(ctx, p, prop, JS_PROP_C_W_E);
++            if (observation) ST_EVENT(observation->diag, new_own);
++            pr = add_property_observed(ctx, p, prop, JS_PROP_C_W_E, observation);
+             if (unlikely(!pr)) {
+                 JS_FreeValue(ctx, val);
+                 return -1;
+@@ -19360,6 +19384,24 @@
+                                                 JS_PROP_THROW_STRICT);
+                 JS_FreeValue(ctx, obj);
+                 sp -= 2;
++                if (unlikely(ret < 0)) goto exception;
++            }
++            BREAK;
++
++        CASE(OP_put_field_sti):
++            {
++                StoreSite *site = &b->store_sites[get_u32(pc)];
++                JSValue obj = sp[-2];
++                pc += 4;
++                StDiag *d = ST_POINT(b, site->pc, site->atom, 0);
++                ST_EVENT(d, writes); ST_EVENT(d, ordinary_writes);
++                if (st_try(ctx, site, obj, sp[-1], d)) {
++                    JS_FreeValue(ctx, obj); sp -= 2; BREAK;
++                }
++                sf->cur_pc = pc;
++                ST_EVENT(d, slow_calls);
++                int ret = st_slow(ctx, site, d, obj, site->atom, sp[-1]);
++                JS_FreeValue(ctx, obj); sp -= 2;
+                 if (unlikely(ret < 0)) goto exception;
+             }
+             BREAK;
+@@ -32340,7 +32382,10 @@
+ }
+ 
+ #include "four_prepare.inc"
++#define rdi_prepare rdi_prepare_inner
+ #include "read_ic_prepare.inc"
++#undef rdi_prepare
++#include "store_transition_prepare.inc"
+ 
+ static void free_bytecode_atoms(JSRuntime *rt,
+                                 const uint8_t *bc_buf, int bc_len,
+@@ -36527,6 +36572,7 @@
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
+     for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
++    st_free(rt, b);
+     rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+@@ -37965,6 +38011,10 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if (op == OP_put_field_sti) {
++            StoreSite *site = &b->store_sites[get_u32(bc_buf+pos+1)];
++            op = OP_put_field; bc_buf[pos] = op; put_u32(bc_buf+pos+1, site->atom);
++        }
+         if(op==OP_four_ctor){FourSite*fs=&b->four_sites[get_u16(bc_buf+pos+1)];op=OP_call_constructor;bc_buf[pos]=op;put_u16(bc_buf+pos+1,fs->argc);}
+         if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
+         if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
+@@ -38876,7 +38926,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++        if (op == OP_put_field_sti || op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
+             op == OP_v6_get_loc0 || op == OP_v6_get_arg0) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+--- /dev/null
++++ b/store_transition_types.h
+@@ -0,0 +1,16 @@
++/* Original experiment code. Not imported from V8. */
++#define ST_CHAIN_MAX 4
++typedef struct StoreSite {
++    JSShape *from, *to;
++    JSShape *chain[ST_CHAIN_MAX];
++    JSAtom atom;
++    uint32_t offset, pc;
++    uint8_t depth;
++} StoreSite;
++typedef struct StDiag StDiag;
++typedef struct StoreObservation {
++    StoreSite learned;
++    StoreSite *target;
++    StDiag *diag;
++} StoreObservation;
++_Static_assert(sizeof(StoreSite) == 64, "store record size");
+--- /dev/null
++++ b/store_transition_runtime.inc
+@@ -0,0 +1,153 @@
++#ifdef STORE_DIAGNOSTIC
++#include "store_transition_diag.h"
++#else
++#define ST_EVENT(d, event) ((void)0)
++#define ST_POINT(b, pc, atom, shared) NULL
++#define ST_PREPARE(n) ((void)0)
++#define ST_RELEASE(n) ((void)0)
++#define ST_CODE_COPY(n) ((void)0)
++#define ST_SKIP_CTOR() ((void)0)
++#endif
++
++/* Strong hashed shape references imply COW on descriptor/prototype mutation.
++ * JS_CLASS_OBJECT excludes the global object's direct descriptor flag updates.
++ * No value is cached; the RHS belongs to this invocation. */
++static void st_drop(JSRuntime *rt, StoreSite *s)
++{
++    JSShape *from = s->from, *to = s->to, *chain[ST_CHAIN_MAX];
++    int depth = s->depth;
++    memcpy(chain, s->chain, sizeof(chain));
++    s->from = s->to = NULL; s->depth = 0;
++    memset(s->chain, 0, sizeof(s->chain));
++    js_free_shape_null(rt, from); js_free_shape_null(rt, to);
++    for (int i = 0; i < depth; i++) js_free_shape(rt, chain[i]);
++}
++
++/* Validate the nearest inherited descriptor exactly once, without JS reads.
++ * Keep the entire short chain, even after a writable descriptor is found:
++ * the guard then also certifies object conditions and the null endpoint. */
++static int st_chain(StoreSite *s, JSShape *from, JSAtom atom, StDiag *d)
++{
++    JSObject *p = from->proto;
++    int found = 0;
++    while (p) {
++        JSProperty *pr;
++        JSShapeProperty *desc;
++        if (s->depth == ST_CHAIN_MAX) { ST_EVENT(d, reject_deep); return 0; }
++        if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) {
++            ST_EVENT(d, reject_proto_class); return 0;
++        }
++        if (!p->shape->is_hashed) { ST_EVENT(d, reject_proto_unhashed); return 0; }
++        s->chain[s->depth++] = p->shape;
++        if (!found && (desc = find_own_property(&pr, p, atom))) {
++            if ((desc->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE | JS_PROP_LENGTH)) != JS_PROP_WRITABLE) {
++                ST_EVENT(d, reject_descriptor); return 0;
++            }
++            found = 1;
++        }
++        p = p->shape->proto;
++    }
++    return 1;
++}
++
++/* Called ONLY inside add_property's already selected reuse/no-resize arm,
++ * immediately before that arm changes the object's shape. No reference to the
++ * old shape was retained before the original path made this decision. */
++static void st_capture(JSContext *ctx, StoreObservation *o, JSObject *p,
++                       JSShape *from, JSShape *to, JSAtom atom, int flags)
++{
++    StoreSite s = {0};
++    uint32_t array_index;
++    if (!o) return;
++    ST_EVENT(o->diag, reuse_shape);
++    if (from->prop_size != to->prop_size) { ST_EVENT(o->diag, needs_resize); return; }
++    ST_EVENT(o->diag, reuse_no_resize);
++    if (p->class_id != JS_CLASS_OBJECT || p->is_exotic || !p->extensible ||
++        JS_AtomIsArrayIndex(ctx, &array_index, atom) || !from->is_hashed || !to->is_hashed ||
++        flags != JS_PROP_C_W_E || from->deleted_prop_count || to->deleted_prop_count ||
++        to->proto != from->proto || to->prop_count != from->prop_count + 1 ||
++        to->prop_count > from->prop_size) {
++        ST_EVENT(o->diag, reject_transition); return;
++    }
++    JSShapeProperty *a = get_shape_prop(from), *b = get_shape_prop(to);
++    for (uint32_t i = 0; i < from->prop_count; i++) {
++        if (a[i].atom == atom || a[i].atom != b[i].atom || a[i].flags != b[i].flags) {
++            ST_EVENT(o->diag, reject_transition); return;
++        }
++    }
++    if (b[from->prop_count].atom != atom || b[from->prop_count].flags != JS_PROP_C_W_E) {
++        ST_EVENT(o->diag, reject_transition); return;
++    }
++    if (!st_chain(&s, from, atom, o->diag)) return;
++    ST_EVENT(o->diag, learn_candidates);
++#if STORE_TRANSITION_ENABLED
++    if (!o->target) return;
++    s.from = js_dup_shape(from); s.to = js_dup_shape(to);
++    s.atom = atom; s.offset = from->prop_count; s.pc = o->target->pc;
++    for (int i = 0; i < s.depth; i++) js_dup_shape(s.chain[i]);
++    assert(!o->learned.from);
++    o->learned = s;
++#endif
++}
++
++static int st_try(JSContext *ctx, StoreSite *s, JSValueConst obj, JSValue val, StDiag *d)
++{
++    JSObject *p, *proto;
++    if (JS_VALUE_GET_TAG(obj) != JS_TAG_OBJECT) { ST_EVENT(d, miss_not_object); return 0; }
++    p = JS_VALUE_GET_OBJ(obj);
++    if (p->class_id != JS_CLASS_OBJECT || p->is_exotic || !p->extensible) {
++        ST_EVENT(d, miss_receiver); return 0;
++    }
++    if (!s->from) { ST_EVENT(d, miss_empty); return 0; }
++    if (p->shape != s->from) { ST_EVENT(d, miss_shape); return 0; }
++    if (s->offset >= p->shape->prop_size) { ST_EVENT(d, miss_capacity); return 0; }
++    proto = p->shape->proto;
++    for (int i = 0; i < s->depth; i++) {
++        if (!proto || proto->class_id != JS_CLASS_OBJECT || proto->is_exotic ||
++            proto->shape != s->chain[i]) { ST_EVENT(d, miss_proto); return 0; }
++        proto = proto->shape->proto;
++    }
++    if (proto) { ST_EVENT(d, miss_proto); return 0; }
++    JSShape *old = p->shape;
++    /* Both layout and the newly visible value are consistent before any free. */
++    p->shape = js_dup_shape(s->to);
++    p->prop[s->offset].u.value = val; /* transfer, not duplicate */
++    ST_EVENT(d, transition_hits);
++    js_free_shape(ctx->rt, old);
++    return 1;
++}
++
++static int js_set_property_observed(JSContext *ctx, JSValueConst obj, JSAtom prop,
++    JSValue val, JSValueConst this_obj, int flags, StoreObservation *observation);
++
++/* Large temporary is on the cold helper's C frame, never in the hit handler. */
++static int st_slow(JSContext *ctx, StoreSite *site, StDiag *d,
++                   JSValueConst obj, JSAtom atom, JSValue val)
++{
++    StoreObservation o = {0};
++    o.target = site; o.diag = d;
++    int ret = js_set_property_observed(ctx, obj, atom, val, obj, JS_PROP_THROW_STRICT, &o);
++#if STORE_TRANSITION_ENABLED
++    if (o.learned.from) {
++        if (ret > 0) {
++            StoreSite old = *site;
++            *site = o.learned;
++            ST_EVENT(d, publications);
++            if (old.from) ST_EVENT(d, replacements);
++            /* Publish complete plan before releasing previous references. */
++            st_drop(ctx->rt, &old);
++        } else st_drop(ctx->rt, &o.learned);
++    }
++#endif
++    return ret;
++}
++
++static void st_free(JSRuntime *rt, JSFunctionBytecode *b)
++{
++    StoreSite *sites = b->store_sites; uint32_t count = b->store_count;
++    b->store_sites = NULL; b->store_count = 0;
++    for (uint32_t i = 0; i < count; i++) {
++        st_drop(rt, &sites[i]); JS_FreeAtomRT(rt, sites[i].atom);
++    }
++    if (sites) { ST_RELEASE(count); js_free_rt(rt, sites); }
++}
+--- /dev/null
++++ b/store_transition_prepare.inc
+@@ -0,0 +1,41 @@
++/* Runs after the original read/four preparation, leaving shared writes alone.
++ * Same-length replacement keeps every branch/exception/debug entry valid. */
++static void st_prepare(JSContext *ctx, JSFunctionBytecode *b)
++{
++    /* Keep every body understood by the frozen whole-constructor parser in
++     * its original representation. The store IC supplements other bodies. */
++    FourRecipe recipe;
++    if (plan_recipe(b, &recipe)) { ST_SKIP_CTOR(); return; }
++    uint32_t count = 0, index = 0;
++    for (int pos = 0, op; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
++        op = b->byte_code_buf[pos]; if (op == OP_put_field) count++;
++    }
++    if (!count) return;
++    StoreSite *sites = js_mallocz_rt(ctx->rt, (size_t)count * sizeof(*sites));
++    if (!sites) return; /* optional, no pending exception */
++    if (!b->read_ic_sites) {
++        size_t size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
++        uint8_t *copy = js_mallocz_rt(ctx->rt, size);
++        if (!copy) { js_free_rt(ctx->rt, sites); return; }
++        memcpy(copy, b->byte_code_buf, b->byte_code_len);
++        b->byte_code_buf = copy;
++        b->read_ic_sites = (ReadICSite *)(copy + size); /* zero read records */
++        ST_CODE_COPY(size);
++    }
++    b->store_sites = sites; b->store_count = count; ST_PREPARE(count);
++    for (int pos = 0, op; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
++        uint8_t *pc = b->byte_code_buf + pos; op = *pc;
++        if (op == OP_put_field) {
++            /* Transfer this opcode's existing atom reference to its record. */
++            sites[index].atom = get_u32(pc + 1); sites[index].pc = pos;
++            *pc = OP_put_field_sti; put_u32(pc + 1, index++);
++        }
++    }
++    assert(index == count);
++}
++static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b)
++{
++    int ret = rdi_prepare_inner(ctx, b);
++    if (ret == 0) st_prepare(ctx, b);
++    return ret;
++}

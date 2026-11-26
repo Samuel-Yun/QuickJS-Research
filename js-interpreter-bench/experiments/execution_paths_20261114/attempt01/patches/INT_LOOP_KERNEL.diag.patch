@@ -1,0 +1,360 @@
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4095,6 +4095,9 @@
+     return ret;
+ }
+ 
++extern void ex_begin(void);extern void ex_end(void);
++static JSValue js_ex_begin(JSContext *ctx, JSValueConst t, int n, JSValueConst *v) { ex_begin();return JS_UNDEFINED; }
++static JSValue js_ex_end(JSContext *ctx, JSValueConst t, int n, JSValueConst *v) { ex_end();return JS_UNDEFINED; }
+ void js_std_add_helpers(JSContext *ctx, int argc, char **argv)
+ {
+     JSValue global_obj, console, args, performance;
+@@ -4111,7 +4114,9 @@
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));
+-    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx,global_obj,"__ex_begin",JS_NewCFunction(ctx,js_ex_begin,"__ex_begin",0));
++    JS_SetPropertyStr(ctx,global_obj,"__ex_end",JS_NewCFunction(ctx,js_ex_end,"__ex_end",0));
+ 
+     /* same methods as the mozilla JS shell */
+     if (argc >= 0) {
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -368,6 +368,7 @@
+ DEF(v6_get_loc0, 1, 0, 1, none)
+ DEF(v6_get_arg0, 1, 0, 1, none)
+ DEF(put_field_shared, 5, 2, 0, u32)
++DEF(int_loop_kernel, 1, 0, 1, none)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -17781,6 +17781,44 @@
+ #pragma GCC diagnostic ignored "-Wunused-label"
+ #endif
+ 
++#define EX_LOOP 1
++#define EX_DIAGNOSTIC 1
++
++static int ex_load(const uint8_t *, int *, int *);
++static int ex_integer(const uint8_t *, int32_t *);
++static int ex_plain_load(const uint8_t *);
++static int ex_has_candidates(JSFunctionBytecode *);
++static void ex_prepare(JSFunctionBytecode *);
++typedef struct ExLoop { int i,s,barg,bi,bsize; int32_t bound; const uint8_t *body,*end; } ExLoop;
++static int ex_loop_match(JSFunctionBytecode *, const uint8_t *, ExLoop *);
++#ifdef EX_DIAGNOSTIC
++static int ex_active;
++static uint64_t ex_rmw_attempts,ex_rmw_hits,ex_rmw_guard,ex_rmw_type,ex_rmw_overflow;
++static uint64_t ex_rmw_const_other,ex_loop_entries,ex_loop_iters,ex_loop_guard;
++static uint64_t ex_loop_overflow,ex_loop_checkpoints,ex_edge_queries,ex_edge_hits;
++static uint64_t ex_rmw_constants[33];
++#define EX_COUNT(x) do { if(ex_active) ++ex_##x; } while(0)
++void ex_begin(void) { ex_active=1; }
++void ex_end(void)
++{
++    ex_active=0;
++    fprintf(stderr,"EXECUTION_COUNTS:{\"rmw_attempts\":%llu,\"rmw_hits\":%llu,\"rmw_guard\":%llu,"
++        "\"rmw_type\":%llu,\"rmw_overflow\":%llu,\"rmw_const_other\":%llu,"
++        "\"loop_entries\":%llu,\"loop_iters\":%llu,\"loop_guard\":%llu,\"loop_overflow\":%llu,"
++        "\"loop_checkpoints\":%llu,\"edge_queries\":%llu,\"edge_hits\":%llu,\"constants\":[",
++        (unsigned long long)ex_rmw_attempts,(unsigned long long)ex_rmw_hits,
++        (unsigned long long)ex_rmw_guard,(unsigned long long)ex_rmw_type,(unsigned long long)ex_rmw_overflow,
++        (unsigned long long)ex_rmw_const_other,(unsigned long long)ex_loop_entries,
++        (unsigned long long)ex_loop_iters,(unsigned long long)ex_loop_guard,(unsigned long long)ex_loop_overflow,
++        (unsigned long long)ex_loop_checkpoints,(unsigned long long)ex_edge_queries,(unsigned long long)ex_edge_hits);
++    for(int i=0;i<33;i++) fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)ex_rmw_constants[i]);
++    fprintf(stderr,"]}\n");
++}
++#else
++#define EX_COUNT(x) ((void)0)
++#endif
++
++
+ /* argv[] is modified if (flags & JS_CALL_FLAG_COPY_ARGV) = 0. */
+ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,
+                                JSValueConst this_obj, JSValueConst new_target,
+@@ -19220,6 +19258,8 @@
+ 
+             
+ #include "read_ic_opcodes.inc"
++
++#include "execution_handlers.inc"
+ 
+         CASE(OP_get_field):
+             GET_FIELD_INLINE(get_field, 0, 0);
+@@ -22297,6 +22337,10 @@
+ #else
+ #define short_opcode_info(op) opcode_info[op]
+ #endif
++
++#define EX_LOOP 1
++#define EX_DIAGNOSTIC 1
++#include "execution_helpers.inc"
+ 
+ static __exception int next_token(JSParseState *s);
+ 
+@@ -37861,6 +37905,10 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if (op == OP_int_loop_kernel) {
++            ExLoop loop;assert(ex_loop_match(b,b->byte_code_buf+pos,&loop));
++            op=OP_get_loc0+loop.i;bc_buf[pos]=op;
++        }
+         if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
+         if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_put_field_shared) {
+@@ -38771,7 +38819,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++        if (op == OP_int_loop_kernel || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
+             op == OP_v6_get_loc0 || op == OP_v6_get_arg0) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -15,7 +15,7 @@
+         op = b->byte_code_buf[pos];
+         if (op == OP_get_field || op == OP_get_field2) count++;
+     }
+-    if (!count) return 0;
++    if (!count && !ex_has_candidates(b)) return 0;
+     code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+     if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+         return 0; /* optional optimization, retain ordinary image */
+@@ -56,5 +56,6 @@
+         }
+     }
+     assert(index == count);
++    ex_prepare(b);
+     return 0;
+ }
+--- a/execution_helpers.inc
++++ b/execution_helpers.inc
+@@ -0,0 +1,111 @@
++/* All recognition is post-final-bytecode. No JavaScript source matching. */
++static int ex_load(const uint8_t *p, int *arg, int *idx)
++{
++    int op = *p;
++    if (op >= OP_get_loc0 && op <= OP_get_loc3) { *arg=0; *idx=op-OP_get_loc0; return 1; }
++    if (op >= OP_get_arg0 && op <= OP_get_arg3) { *arg=1; *idx=op-OP_get_arg0; return 1; }
++    if (op == OP_v6_get_loc0) { *arg=0; *idx=0; return 1; }
++    if (op == OP_v6_get_arg0) { *arg=1; *idx=0; return 1; }
++    if (op == OP_get_loc || op == OP_get_arg) { *arg=op==OP_get_arg; *idx=get_u16(p+1); return 3; }
++    return 0;
++}
++static int ex_integer(const uint8_t *p, int32_t *value)
++{
++    if (*p >= OP_push_minus1 && *p <= OP_push_7) { *value=*p-OP_push_0; return 1; }
++    if (*p == OP_push_i8) { *value=(int8_t)p[1]; return 2; }
++    if (*p == OP_push_i16) { *value=(int16_t)get_u16(p+1); return 3; }
++    if (*p == OP_push_i32) { *value=(int32_t)get_u32(p+1); return 5; }
++    return 0;
++}
++static int ex_plain_load(const uint8_t *p)
++{
++    if (*p == OP_v6_get_loc0) return OP_get_loc0;
++    if (*p == OP_v6_get_arg0) return OP_get_arg0;
++    return *p;
++}
++
++
++#ifdef EX_RMW
++static int ex_rmw_match(JSFunctionBytecode *b, uint8_t *p, int profiling)
++{
++    int a,i,a2,i2,n,n2,k;
++    int32_t c;
++    uint8_t *r,*q,*end=b->byte_code_buf+b->byte_code_len;
++    ReadICSite *read,*write;
++    if(end-p<14 || !(n=ex_load(p,&a,&i))) return 0;
++    if(!(n2=ex_load(p+n,&a2,&i2)) || n!=n2 || a!=a2 || i!=i2) return 0;
++    r=p+n+n2;
++    if(r+12>end || *r!=OP_get_field_rdi) return 0;
++    k=ex_integer(r+5,&c);
++    if(!k || (!profiling && c!=1
++#ifdef EX_RMW_CONST
++              && 0
++#endif
++              )) return 0;
++    q=r+5+k;
++    if(q+6>end || q[0]!=OP_add || q[1]!=OP_put_field_shared) return 0;
++    read=(ReadICSite *)(r+1+get_u32(r+1));
++    write=(ReadICSite *)(q+2+get_u32(q+2));
++    if(read!=write) return 0;
++    return n;
++}
++#endif
++
++#ifdef EX_LOOP
++static int ex_loop_match(JSFunctionBytecode *b, const uint8_t *p, ExLoop *out)
++{
++    const uint8_t *end=b->byte_code_buf+b->byte_code_len,*q,*body;
++    int n,a=0,idx=0; int32_t c=0;
++    if(end-p<12) return 0;
++    n=ex_load(p+1,&a,&idx);
++    if(!n) { n=ex_integer(p+1,&c); a=2; }
++    if(!n) return 0;
++    q=p+1+n;
++    if(q+10>end || q[0]!=OP_lt || q[1]!=OP_if_false8) return 0;
++    body=q+3;
++    if(body[0]<OP_get_loc0 || body[0]>OP_get_loc3 || body[1]!=OP_add_loc || body[3]!=OP_inc_loc || body[5]!=OP_goto8) return 0;
++    out->i=body[0]-OP_get_loc0; out->s=body[2];
++    if(body[4]!=out->i || body+6+(int8_t)body[6]!=p || q+2+(int8_t)q[2]!=body+7) return 0;
++    if(*p!=OP_get_loc0+out->i && *p!=OP_int_loop_kernel) return 0;
++    if(out->i==out->s || out->s>=b->var_count || !b->vardefs) return 0;
++    if(a==0 && (idx==out->i || idx==out->s)) return 0;
++    if(a<2 && (idx>=(a?b->arg_count:b->var_count) || b->vardefs[(a?0:b->arg_count)+idx].is_captured)) return 0;
++    if(b->vardefs[b->arg_count+out->i].is_captured || b->vardefs[b->arg_count+out->s].is_captured) return 0;
++    out->barg=a;out->bi=idx;out->bound=c;out->bsize=n;out->body=body;out->end=body+7;
++    return 1;
++}
++#endif
++
++static int ex_has_candidates(JSFunctionBytecode *b)
++{
++#ifdef EX_LOOP
++    ExLoop loop;
++    for(int pos=0;pos<b->byte_code_len;) {
++        int op=b->byte_code_buf[pos];
++        if(ex_loop_match(b,b->byte_code_buf+pos,&loop)) return 1;
++        pos+=short_opcode_info(op).size;
++    }
++#endif
++    return 0;
++}
++static void ex_prepare(JSFunctionBytecode *b)
++{
++    for(int pos=0;pos<b->byte_code_len;) {
++        uint8_t *p=b->byte_code_buf+pos; int op=*p,n=short_opcode_info(op).size;
++#ifdef EX_RMW
++        int entry=ex_rmw_match(b,p,
++#ifdef EX_DIAGNOSTIC
++            1
++#else
++            0
++#endif
++            );
++        if(entry) *p=entry==1?OP_field_rmw_i32:OP_field_rmw_i32_wide;
++#endif
++#ifdef EX_LOOP
++        ExLoop loop;
++        if(ex_loop_match(b,p,&loop)) *p=OP_int_loop_kernel;
++#endif
++        pos+=n;
++    }
++}
+--- a/execution_handlers.inc
++++ b/execution_handlers.inc
+@@ -0,0 +1,105 @@
++#ifdef EX_RMW
++        CASE(OP_field_rmw_i32):
++        CASE(OP_field_rmw_i32_wide):
++        {
++            int n=pc[-1]==OP_field_rmw_i32?1:3,a=0,i=0,k;
++            const uint8_t *load=pc+n-1,*read=load+n;
++            ReadICSite *site=(ReadICSite *)(read+1+get_u32(read+1));
++            JSValue receiver; JSObject *object; JSShapeProperty *descriptor; JSProperty *property;
++            int32_t constant; int64_t result;
++            ex_load(load,&a,&i);
++            receiver=a?arg_buf[i]:var_buf[i];
++            k=ex_integer(read+5,&constant);
++            EX_COUNT(rmw_attempts);
++#ifdef EX_DIAGNOSTIC
++            if(ex_active) ex_rmw_constants[(constant>=-16 && constant<=15)?constant+16:32]++;
++#endif
++#ifndef EX_RMW_CONST
++            if(constant!=1) { EX_COUNT(rmw_const_other); goto rmw_fallback; }
++#endif
++            if(JS_VALUE_GET_TAG(receiver)!=JS_TAG_OBJECT) { EX_COUNT(rmw_guard); goto rmw_fallback; }
++            object=JS_VALUE_GET_OBJ(receiver);
++            if(object->class_id!=JS_CLASS_OBJECT || object->is_exotic || site->holder_shape || site->shape!=object->shape) {
++                EX_COUNT(rmw_guard); goto rmw_fallback;
++            }
++            descriptor=&get_shape_prop(object->shape)[site->prop_offset];
++            if((descriptor->flags&(JS_PROP_TMASK|JS_PROP_WRITABLE|JS_PROP_LENGTH))!=JS_PROP_WRITABLE) {
++                EX_COUNT(rmw_guard); goto rmw_fallback;
++            }
++            property=&object->prop[site->prop_offset];
++            if(JS_VALUE_GET_TAG(property->u.value)!=JS_TAG_INT) { EX_COUNT(rmw_type); goto rmw_fallback; }
++            result=(int64_t)JS_VALUE_GET_INT(property->u.value)+constant;
++            if(result<INT32_MIN || result>INT32_MAX) { EX_COUNT(rmw_overflow); goto rmw_fallback; }
++            /* Only int32 values: no finalizer/callback or allocation. No stack
++             * changes before this commit. All original interior entries remain.
++             */
++            property->u.value=JS_NewInt32(ctx,(int32_t)result);
++            pc=read+5+k+1+5;
++            EX_COUNT(rmw_hits);
++            BREAK;
++rmw_fallback:
++            *sp++=JS_DupValue(ctx,receiver); /* original first load only */
++            pc=load;
++        }
++        BREAK;
++#endif
++
++#ifdef EX_LOOP
++        CASE(OP_int_loop_kernel):
++        {
++            ExLoop loop; const uint8_t *head=pc-1; JSValue bound;
++            int32_t counter,sum,limit; int64_t result;
++            int matched=ex_loop_match(b,head,&loop);
++            assert(matched);
++            EX_COUNT(loop_entries);
++            bound=loop.barg==2?JS_NewInt32(ctx,loop.bound):(loop.barg?arg_buf[loop.bi]:var_buf[loop.bi]);
++            if(JS_VALUE_GET_TAG(var_buf[loop.i])!=JS_TAG_INT ||
++               JS_VALUE_GET_TAG(var_buf[loop.s])!=JS_TAG_INT || JS_VALUE_GET_TAG(bound)!=JS_TAG_INT) {
++                EX_COUNT(loop_guard);
++                /* Deopt this optional entry permanently; remaining bytecode is
++                 * untouched, including every legal interior branch target. */
++                b->byte_code_buf[head-b->byte_code_buf]=OP_get_loc0+loop.i;
++                *sp++=JS_DupValue(ctx,var_buf[loop.i]);
++                BREAK;
++            }
++            counter=JS_VALUE_GET_INT(var_buf[loop.i]);sum=JS_VALUE_GET_INT(var_buf[loop.s]);limit=JS_VALUE_GET_INT(bound);
++            for(;;) {
++                int condition=counter<limit;
++                /* Original if_false8 polls on BOTH true and false conditions. */
++                if(unlikely(ctx->interrupt_counter<=1)) {
++                    var_buf[loop.i]=JS_NewInt32(ctx,counter);var_buf[loop.s]=JS_NewInt32(ctx,sum);
++                    pc=condition?loop.body:loop.end;
++                    EX_COUNT(loop_checkpoints);
++                    if(js_poll_interrupts(ctx)) goto exception;
++                    BREAK;
++                }
++                --ctx->interrupt_counter;
++                if(!condition) {
++                    var_buf[loop.i]=JS_NewInt32(ctx,counter);var_buf[loop.s]=JS_NewInt32(ctx,sum);
++                    pc=loop.end;
++                    BREAK;
++                }
++                result=(int64_t)sum+counter;
++                if(result<INT32_MIN || result>INT32_MAX) {
++                    var_buf[loop.i]=JS_NewInt32(ctx,counter);var_buf[loop.s]=JS_NewInt32(ctx,sum);
++                    pc=loop.body; /* condition was already consumed and polled */
++                    EX_COUNT(loop_overflow);
++                    BREAK;
++                }
++                sum=(int32_t)result;
++                /* Strict counter<an int32 bound proves increment cannot overflow. */
++                ++counter;
++                EX_COUNT(loop_iters);
++                /* Original backward goto8 also polls once per iteration. */
++                if(unlikely(ctx->interrupt_counter<=1)) {
++                    var_buf[loop.i]=JS_NewInt32(ctx,counter);var_buf[loop.s]=JS_NewInt32(ctx,sum);
++                    pc=head;
++                    EX_COUNT(loop_checkpoints);
++                    if(js_poll_interrupts(ctx)) goto exception;
++                    BREAK;
++                }
++                --ctx->interrupt_counter;
++            }
++        }
++        BREAK;
++#endif

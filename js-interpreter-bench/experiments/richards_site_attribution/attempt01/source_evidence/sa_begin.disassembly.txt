@@ -1,0 +1,92 @@
+
+/home/mzyx/richards_site_attribution_attempt01_diag/qjs:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+0000000000015ed0 <sa_begin>:
+sa_begin():
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:67
+}
+typedef struct { int previous; } SAScope;
+static SAScope sa_begin(unsigned fid, const uint8_t *op, JSFunctionBytecode *b) {
+    SAScope s={sa_current};
+    unsigned sid=0;
+    if(sa_context) {
+   15ed0:	44 8b 05 65 72 0f 00 	mov    r8d,DWORD PTR [rip+0xf7265]        # 10d13c <sa_context>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:65
+    SAScope s={sa_current};
+   15ed7:	8b 05 6f 72 0f 00    	mov    eax,DWORD PTR [rip+0xf726f]        # 10d14c <sa_current>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:67
+    if(sa_context) {
+   15edd:	45 85 c0             	test   r8d,r8d
+   15ee0:	74 7c                	je     15f5e <sa_begin+0x8e>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:68
+        sa_current=-1;
+   15ee2:	c7 05 60 72 0f 00 ff 	mov    DWORD PTR [rip+0xf7260],0xffffffff        # 10d14c <sa_current>
+   15ee9:	ff ff ff 
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:69
+        if(fid && op>=b->byte_code_buf && op<b->byte_code_buf+b->byte_code_len)
+   15eec:	31 c9                	xor    ecx,ecx
+   15eee:	85 ff                	test   edi,edi
+   15ef0:	74 66                	je     15f58 <sa_begin+0x88>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:69 (discriminator 1)
+   15ef2:	4c 8b 42 18          	mov    r8,QWORD PTR [rdx+0x18]
+   15ef6:	4c 39 c6             	cmp    rsi,r8
+   15ef9:	72 5d                	jb     15f58 <sa_begin+0x88>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:69 (discriminator 2)
+   15efb:	48 63 52 20          	movsxd rdx,DWORD PTR [rdx+0x20]
+   15eff:	4c 01 c2             	add    rdx,r8
+   15f02:	48 39 d6             	cmp    rsi,rdx
+   15f05:	73 51                	jae    15f58 <sa_begin+0x88>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:70
+            sid=sa_fun[fid].sites[op-b->byte_code_buf];
+   15f07:	89 ff                	mov    edi,edi
+   15f09:	48 8d 15 70 d0 dc 00 	lea    rdx,[rip+0xdcd070]        # de2f80 <sa_fun>
+   15f10:	4c 29 c6             	sub    rsi,r8
+   15f13:	48 8d 3c ff          	lea    rdi,[rdi+rdi*8]
+   15f17:	48 8b 54 fa 10       	mov    rdx,QWORD PTR [rdx+rdi*8+0x10]
+   15f1c:	8b 14 b2             	mov    edx,DWORD PTR [rdx+rsi*4]
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:71
+        if(sid && sa_count && sa_run_depth) sa_site[sid].ops++;
+   15f1f:	85 d2                	test   edx,edx
+   15f21:	74 35                	je     15f58 <sa_begin+0x88>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:71 (discriminator 1)
+   15f23:	8b 35 0f 72 0f 00    	mov    esi,DWORD PTR [rip+0xf720f]        # 10d138 <sa_count>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:72
+        sa_current=(sig_atomic_t)sid;
+   15f29:	89 d1                	mov    ecx,edx
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:71 (discriminator 1)
+        if(sid && sa_count && sa_run_depth) sa_site[sid].ops++;
+   15f2b:	85 f6                	test   esi,esi
+   15f2d:	74 29                	je     15f58 <sa_begin+0x88>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:71 (discriminator 2)
+   15f2f:	8b 15 ff 71 0f 00    	mov    edx,DWORD PTR [rip+0xf71ff]        # 10d134 <sa_run_depth>
+   15f35:	85 d2                	test   edx,edx
+   15f37:	74 1f                	je     15f58 <sa_begin+0x88>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:71 (discriminator 3)
+   15f39:	89 ca                	mov    edx,ecx
+   15f3b:	48 8d 35 3e d0 70 00 	lea    rsi,[rip+0x70d03e]        # 722f80 <sa_site>
+   15f42:	48 8d 14 52          	lea    rdx,[rdx+rdx*2]
+   15f46:	48 8d 14 d2          	lea    rdx,[rdx+rdx*8]
+   15f4a:	48 c1 e2 04          	shl    rdx,0x4
+   15f4e:	48 83 44 16 28 01    	add    QWORD PTR [rsi+rdx*1+0x28],0x1
+   15f54:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:72
+        sa_current=(sig_atomic_t)sid;
+   15f58:	89 0d ee 71 0f 00    	mov    DWORD PTR [rip+0xf71ee],ecx        # 10d14c <sa_current>
+/home/mzyx/richards_site_attribution_attempt01_diag/site_hooks.h:75
+    }
+    return s;
+}
+   15f5e:	c3                   	ret
+
+Disassembly of section .fini:

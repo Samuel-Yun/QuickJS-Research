@@ -1,0 +1,16 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/call_path_followup/attempt01/generated/dump/direct_call_N1.js:1:1: function: stepPlain
+  args: obj x
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function stepPlain(obj, x) {
+;;     return x + obj.bias;
+
+        get_arg1 1: x
+        get_arg0 0: obj
+        get_field bias
+        add
+        return
+
+;; }
+

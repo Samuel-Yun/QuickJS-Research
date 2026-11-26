@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "source_snapshots": [
+    {
+      "label": "INSTANCE",
+      "parent": "frozen SPARSE 06aada4",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/SPARSE-to-INSTANCE.patch",
+      "patch_sha256": "276ce8ebebd6e929acf84e5bf7b8d1e7d5675b17d3f7c2da82ffb9aa1b7e3688",
+      "source_archive": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/source.tar.gz",
+      "source_archive_sha256": "abd92f28a57b5e8f06d9483e930d6ad126e8e4b090504221547c3193e54b67de",
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.release/qjs",
+      "binary_sha256": "4a8c6d62db996962e421592f2ba9b85f37b0773df417a11e65e32a08c844ad81",
+      "all_source_hashes_valid": true,
+      "patch_reconstructs_measured_source": true
+    },
+    {
+      "label": "CALL",
+      "parent": "frozen SPARSE 06aada4",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/SPARSE-to-CALL.patch",
+      "patch_sha256": "bf5456b2aabcad762b1eef036dba3eadf0a31446137aba87282adf59b53a1776",
+      "source_archive": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/source.tar.gz",
+      "source_archive_sha256": "97907bf522cbec486c77011dec151f92102e675a76a0946c5c719b93505dd5d8",
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/02_call_adapter/work/CALL.release.rev03/qjs",
+      "binary_sha256": "f2697297c9b5a354ae1df74ac3bfac6ce967b29f5be5393e4df4e91dc07b3290",
+      "all_source_hashes_valid": true,
+      "patch_reconstructs_measured_source": true
+    },
+    {
+      "label": "NESTED",
+      "parent": "measured NUMERIC_PLAN (ic_execution_plans_20261125/attempt01/01_forward_numeric)",
+      "patch": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/NUMERIC_PLAN-to-NESTED.patch",
+      "patch_sha256": "3aec69d5fcd05acd55776242556798fc374a27de0757aba86e0687a9086727ba",
+      "source_archive": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/source.tar.gz",
+      "source_archive_sha256": "d526b269cb4cdb3b4c96b17a28c45e17fb7ba018402f50cd8c720dbc441d6743",
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/03_nested_plan/work/NESTED.release/qjs",
+      "binary_sha256": "fc9febfa7ba9127edad0759c5a4a7a086d4d8c8005fb2f444f3b4d56f67927f0",
+      "all_source_hashes_valid": true,
+      "patch_reconstructs_measured_source": true
+    }
+  ],
+  "full_release_processes": 344,
+  "all_original_inputs_and_checksums_valid": true,
+  "branches_not_changed": true
+}

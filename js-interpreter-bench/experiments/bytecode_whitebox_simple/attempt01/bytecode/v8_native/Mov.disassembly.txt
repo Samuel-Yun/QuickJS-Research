@@ -1,0 +1,19 @@
+
+/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000001d5ca00 <Builtins_MovHandler>:
+ 1d5ca00:	4b 0f be 5c 0c 01    	movsx  rbx,BYTE PTR [r12+r9*1+0x1]
+ 1d5ca06:	48 8b d5             	mov    rdx,rbp
+ 1d5ca09:	4b 0f be 74 0c 02    	movsx  rsi,BYTE PTR [r12+r9*1+0x2]
+ 1d5ca0f:	48 8b 1c da          	mov    rbx,QWORD PTR [rdx+rbx*8]
+ 1d5ca13:	48 89 1c f2          	mov    QWORD PTR [rdx+rsi*8],rbx
+ 1d5ca17:	49 8d 59 03          	lea    rbx,[r9+0x3]
+ 1d5ca1b:	43 0f b6 54 0c 03    	movzx  edx,BYTE PTR [r12+r9*1+0x3]
+ 1d5ca21:	49 8b 0c d7          	mov    rcx,QWORD PTR [r15+rdx*8]
+ 1d5ca25:	4c 8b cb             	mov    r9,rbx
+ 1d5ca28:	ff e1                	jmp    rcx
+ 1d5ca2a:	90                   	nop
+ 1d5ca2b:	90                   	nop

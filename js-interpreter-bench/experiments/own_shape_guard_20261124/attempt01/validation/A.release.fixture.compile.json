@@ -1,0 +1,26 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DHAVE_CLOSEFROM",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/fixture.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/.obj/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/validation/A.release.fixture"
+  ],
+  "source_sha256": "f07c0bab3295190863f394332daf97b8be96eab45817487d8f5524046abf5076",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "In file included from /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/fixture.c:2:\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/quickjs.c: In function ‘js_default_module_normalize_name’:\n/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/quickjs.c:29952:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]\n29952 |     p = strrchr(base_name, '/');\n      |       ^\n"
+}

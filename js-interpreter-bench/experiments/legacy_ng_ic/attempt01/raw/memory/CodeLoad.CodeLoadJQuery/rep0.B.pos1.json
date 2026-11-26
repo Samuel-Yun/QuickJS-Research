@@ -1,0 +1,29 @@
+{
+  "case": "CodeLoad.CodeLoadJQuery",
+  "variant": "B",
+  "rep": 0,
+  "order": 1,
+  "N": 128,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/raw/memory/CodeLoad.CodeLoadJQuery/rep0.B.pos1.time.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/CodeLoad.CodeLoadJQuery.N128.measure.js"
+  ],
+  "binary_sha256": "aedb704e6d38aa48414357911446e47b0b05ef9f35b9c244589b7d36e5318802",
+  "script_sha256": "8db6ffddc09bc6e659ce9cf4eab3340307e7101cf888b18e2400ea686119440b",
+  "valid": true,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"CodeLoad.CodeLoadJQuery\",\"suite\":\"CodeLoad\",\"subbenchmark\":\"CodeLoadJQuery\",\"mode\":\"LEGACY_NG_IC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":128,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":172826.638558,\"stop_ms\":174254.40253,\"elapsed_ms\":1427.763971999986,\"elapsed_per_call_ms\":11.154406031249891,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "peak_rss_kib": 8648,
+  "outer_wall_ns": 1441977229,
+  "timestamp": "2026-10-22T17:12:40.690314+00:00",
+  "method": "GNU time 1 fresh small launcher -> qjs; KiB",
+  "performance_sample": false,
+  "instrumented_binary": false
+}

@@ -1,0 +1,190 @@
+{
+  "status": "PASS",
+  "new_release_processes": 129,
+  "labels": [
+    "SPARSE",
+    "RELAX_CLASS",
+    "SHAPE_ONLY"
+  ],
+  "aggregates": {
+    "octane": {
+      "SPARSE": {
+        "GM_percent": 0.0,
+        "GM_ms": 47.41307189303798,
+        "sum_ms": 8192.421178399178,
+        "best": {
+          "suite": "octane",
+          "name": "Richards",
+          "case": "Richards.Richards",
+          "N": 1024,
+          "SPARSE_ms": 2.248373379930854,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 2.2382250253576785,
+          "RELAX_CLASS_percent": -0.45136429134770006,
+          "SHAPE_ONLY_ms": 2.217676532221958,
+          "SHAPE_ONLY_percent": -1.3652913694361501
+        },
+        "worst": {
+          "suite": "octane",
+          "name": "Richards",
+          "case": "Richards.Richards",
+          "N": 1024,
+          "SPARSE_ms": 2.248373379930854,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 2.2382250253576785,
+          "RELAX_CLASS_percent": -0.45136429134770006,
+          "SHAPE_ONLY_ms": 2.217676532221958,
+          "SHAPE_ONLY_percent": -1.3652913694361501
+        }
+      },
+      "RELAX_CLASS": {
+        "GM_percent": -0.1532065479783351,
+        "GM_ms": 47.34043196230017,
+        "sum_ms": 8137.319033625012,
+        "best": {
+          "suite": "octane",
+          "name": "Gameboy",
+          "case": "Gameboy.Gameboy",
+          "N": 8,
+          "SPARSE_ms": 214.5384170114994,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 210.8755246400833,
+          "RELAX_CLASS_percent": -1.7073363467670966,
+          "SHAPE_ONLY_ms": 215.14037397503853,
+          "SHAPE_ONLY_percent": 0.280582364652604
+        },
+        "worst": {
+          "suite": "octane",
+          "name": "Crypto.Decrypt",
+          "case": "Crypto.Decrypt",
+          "N": 32,
+          "SPARSE_ms": 70.60955330729485,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 72.03959266096354,
+          "RELAX_CLASS_percent": 2.025277440072615,
+          "SHAPE_ONLY_ms": 70.53332497179508,
+          "SHAPE_ONLY_percent": -0.10795753822151477
+        }
+      },
+      "SHAPE_ONLY": {
+        "GM_percent": -0.025037760133539422,
+        "GM_ms": 47.401200721825454,
+        "sum_ms": 8330.947946809058,
+        "best": {
+          "suite": "octane",
+          "name": "Splay",
+          "case": "Splay.Splay",
+          "N": 2048,
+          "SPARSE_ms": 1.359660750022158,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 1.3510176435811445,
+          "RELAX_CLASS_percent": -0.635681102133212,
+          "SHAPE_ONLY_ms": 1.3212323231855407,
+          "SHAPE_ONLY_percent": -2.8263246428192446
+        },
+        "worst": {
+          "suite": "octane",
+          "name": "NavierStokes",
+          "case": "NavierStokes.NavierStokes",
+          "N": 32,
+          "SPARSE_ms": 40.40071731060743,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 40.61120191216469,
+          "RELAX_CLASS_percent": 0.5209922386749,
+          "SHAPE_ONLY_ms": 41.53462602943182,
+          "SHAPE_ONLY_percent": 2.8066549168092925
+        }
+      }
+    },
+    "sunspider": {
+      "SPARSE": {
+        "GM_percent": 0.0,
+        "GM_ms": 11.870890758557206,
+        "sum_ms": 390.247915931046,
+        "best": {
+          "suite": "sunspider",
+          "name": "3d-cube",
+          "case": "3d-cube",
+          "N": 128,
+          "SPARSE_ms": 13.76428715698421,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 13.968989092856646,
+          "RELAX_CLASS_percent": 1.4871960569971643,
+          "SHAPE_ONLY_ms": 14.343221789225936,
+          "SHAPE_ONLY_percent": 4.206063311807373
+        },
+        "worst": {
+          "suite": "sunspider",
+          "name": "3d-cube",
+          "case": "3d-cube",
+          "N": 128,
+          "SPARSE_ms": 13.76428715698421,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 13.968989092856646,
+          "RELAX_CLASS_percent": 1.4871960569971643,
+          "SHAPE_ONLY_ms": 14.343221789225936,
+          "SHAPE_ONLY_percent": 4.206063311807373
+        }
+      },
+      "RELAX_CLASS": {
+        "GM_percent": -0.054367725903370356,
+        "GM_ms": 11.864436825207305,
+        "sum_ms": 390.2409510463476,
+        "best": {
+          "suite": "sunspider",
+          "name": "access-nbody",
+          "case": "access-nbody",
+          "N": 128,
+          "SPARSE_ms": 10.41532045416534,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 10.271630492061377,
+          "RELAX_CLASS_percent": -1.3796019309852081,
+          "SHAPE_ONLY_ms": 10.509062547236681,
+          "SHAPE_ONLY_percent": 0.9000404114676286
+        },
+        "worst": {
+          "suite": "sunspider",
+          "name": "3d-cube",
+          "case": "3d-cube",
+          "N": 128,
+          "SPARSE_ms": 13.76428715698421,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 13.968989092856646,
+          "RELAX_CLASS_percent": 1.4871960569971643,
+          "SHAPE_ONLY_ms": 14.343221789225936,
+          "SHAPE_ONLY_percent": 4.206063311807373
+        }
+      },
+      "SHAPE_ONLY": {
+        "GM_percent": 0.7178492953334947,
+        "GM_ms": 11.956105864217317,
+        "sum_ms": 393.01797475805506,
+        "best": {
+          "suite": "sunspider",
+          "name": "math-spectral-norm",
+          "case": "math-spectral-norm",
+          "N": 256,
+          "SPARSE_ms": 5.857796644791961,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 5.820621785707772,
+          "RELAX_CLASS_percent": -0.6346218781295598,
+          "SHAPE_ONLY_ms": 5.782063613645732,
+          "SHAPE_ONLY_percent": -1.2928586589560198
+        },
+        "worst": {
+          "suite": "sunspider",
+          "name": "3d-cube",
+          "case": "3d-cube",
+          "N": 128,
+          "SPARSE_ms": 13.76428715698421,
+          "SPARSE_percent": 0.0,
+          "RELAX_CLASS_ms": 13.968989092856646,
+          "RELAX_CLASS_percent": 1.4871960569971643,
+          "SHAPE_ONLY_ms": 14.343221789225936,
+          "SHAPE_ONLY_percent": 4.206063311807373
+        }
+      }
+    }
+  },
+  "regressions_over_5pct": []
+}

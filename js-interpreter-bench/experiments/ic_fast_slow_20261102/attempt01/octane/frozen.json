@@ -1,0 +1,355 @@
+{
+  "boot_id": "1068b14c-57e2-45ad-834a-ead7c847e439",
+  "timestamp": "2026-11-02T17:53:58.836457+00:00",
+  "target": 2040,
+  "schedule_count": 2040,
+  "artifacts": {
+    "A": {
+      "path": "/home/mzyx/read_ic_dequickening_attempt01/A/qjs",
+      "sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "expected_sha256": "584335adb82c6052395e5a9526ca1be05480d5d8e60469fd14403156b62a8dd1",
+      "matches": true,
+      "size_bytes": 5090704
+    },
+    "M": {
+      "path": "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs",
+      "sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "expected_sha256": "7b6fa1e896e31988b9d8a5276581477776fbd01ab079a64394b6111def7d87ef",
+      "matches": true,
+      "size_bytes": 5102680
+    },
+    "U": {
+      "path": "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/qjs",
+      "source": "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03",
+      "sha256": "b07d3ca8a3347a5acfb744c9452f31f2d78f79255c04aaa2c27cf4954ae80842",
+      "size_bytes": 5103464,
+      "source_hashes": {
+        ".github/workflows/ci.yml": "91fe57826693797d4351c3c592e4acf49f170d04958ed30e9590484424fd3869",
+        ".gitignore": "4eab41c4a2a1489a15f28fa85b4a2ae78505777c79654d1931cb08afbf383f6b",
+        "Changelog": "43969be5db51dd7917b00330517dac3ba541b1e0e647fccd96c85bd850b030c8",
+        "LICENSE": "2f2a9e35fbaa43435fad0cb8253a1f1d284282ba75b9ce5988bb9b10a5eac94f",
+        "Makefile": "524447ac542b40d3a7de85b89889f6df05e72bca1adbef450cdf4b0ac5c8a448",
+        "TODO": "1065e7f25c4d72f402943418875d0f0cbe702cfb32e27ba1c6a3c4f475148815",
+        "VERSION": "c8e0b2c47552fb218d2d7ac56c60be2d2cf9a3b567223e9477a8eb2423755ad2",
+        "compat/test-closefrom.c": "6cd3fc4b77a33b7d496d9d51f32e7a2d62ab00cd604462fd2a8f70ceba52b813",
+        "cutils.c": "406fa69b7262e6a66df9594acbc619ba973668f37086b4acbaf3ef486776582a",
+        "cutils.h": "2728d27c361d2f13df45550e549e2a3ead9e1326396a54e7dcd1737cf9628afb",
+        "doc/quickjs.texi": "3beaddd4b40f739565d71656cd91656667f62d9535eac282523c25fdba870da7",
+        "dtoa.c": "bed2995924a6427a065e75e924a5ea6f8a9cbba3b53a857f25dfd28a2138c1b1",
+        "dtoa.h": "964ab3aa8abb307818fd4450f0159994da15d9aa2ee51db1a4dbbbeb8a4872cc",
+        "examples/fib.c": "10abb9208119d2e83c7460ce946cbc77730447457e42ff97b0686603f4cd6b1f",
+        "examples/fib_module.js": "c4d285444cfce755587da2a6a14651666b1a0016165bca03f621273ff1bd0fc8",
+        "examples/hello.js": "54c112db94c206e1d289fe73ca4ccf5edbb2166f21f7195d10b6ac9e59be9a5a",
+        "examples/hello_module.js": "656ad9f4dd484c77d55c4febb21c1ab83b6e69215109d81dc6b2cdcbd11f4a9a",
+        "examples/message.json": "80eafa0a5c82afec9b9a3ee04f481554ee2bdc2c51b3749d686efc1e786b6d99",
+        "examples/pi_bigint.js": "324a08da2f764f5310587998cef711556380755ba46ddeb21a95530e20c2b28c",
+        "examples/point.c": "d3b05690f5d9c180db4b3b57e01b0e658048ce9a65dab0d3a9b6d5589ab66097",
+        "examples/test_fib.js": "879d1b5d2184fc2f93c5254815c1f20b3e0f365e27e6355c3e6d1b9f07bd2729",
+        "examples/test_point.js": "6c1b5b9c4191b5d4a11d890babe24099c33ea3498c714a47725a336cf0d11552",
+        "fuzz/README": "c31521fa9f2c10b3a299b14295401a66777ceafdd249055a9f56af13d201c7fa",
+        "fuzz/fuzz.dict": "f69c72bdc48ad1d6f49bf38d159adc471b7e43cc29098ef497a46d2339aae81d",
+        "fuzz/fuzz_bytecode.c": "b8ba4d694a1301949bc510084b56f608c41f4d0a2f08305e8c2d93f313bc5b27",
+        "fuzz/fuzz_common.c": "993baa6aab8932445a016a47faac6ab8f96a67f1db97d0cd35d823ce19e28d28",
+        "fuzz/fuzz_common.h": "70789c76c14f05a8a042f89645a9c3148139d2d39d55f93d62e93c254a6c2570",
+        "fuzz/fuzz_compile.c": "b4eece9d13142fc0a139307edc364ac6389eb801eb3e234ff9e40929356d374d",
+        "fuzz/fuzz_eval.c": "684de47998e652bf3a28e370439139aaa63a75c5c557b548c2f4f9c9deae5807",
+        "fuzz/fuzz_json.c": "e40a7facf20d321676f0ec40242789a907ccb7c16b83f3c052ed8a492e2a5723",
+        "fuzz/fuzz_module_export.c": "1f16e49ca5baceabe976181778e974999472ad7a4ee4af300afac8963496244c",
+        "fuzz/fuzz_regexp.c": "464caa3b1f394e9eb7df737cbdfd8f66fc350b71ed35587358e95bb0cf083724",
+        "fuzz/fuzz_regexp_compile.c": "7e3a95a8d54ec2fe02986d93656642ce8df3b5537c3a591430b23b381a9e8d7c",
+        "fuzz/generate_dict.js": "516da98a66a7708bcdb74c1525d365fb6a3b9fb76c8009506a2b6b429c97d785",
+        "libregexp-opcode.h": "00701bc29a1db2bd82cb965530204a08b9e193edebe1a15247b13b4a6ff28f07",
+        "libregexp.c": "fe69bb1d64eb8e7358f6727039d7e1781771efef16ce41767a67bff33f1f8756",
+        "libregexp.h": "255be608b75a2eaf5695daf655030c411906fd4f459930cac07031b59259a3fb",
+        "libunicode-table.h": "bebaa1ae50d340fb5d5910fb29aa470f169c9465414a08f009612bd87d3f33f2",
+        "libunicode.c": "d465891ef08f08f0def5f7906259cb693a9cfbe1213756bf59e3cbb322c91c8a",
+        "libunicode.h": "3846ec865adabbb829d45871d604ba5d4a224482a7d16ffb01ad478ab28c39b4",
+        "list.h": "158d26196fcd1da2d57c38aac5830f4512f4b567d4b3a220052223d75a7bd0c7",
+        "qjs.c": "78fc6d76bea453c827f923cf62d554c666f5840ceea9740214b5b2d7374e9370",
+        "qjsc.c": "9753e17348042217ee58986cbe0f364e3d9794140d73d8275a0a9798b5917b7d",
+        "quickjs-atom.h": "5ed7922b60ce95d9ee912c2c496f44f1864c6b264d3c916d242e30164b70ed3e",
+        "quickjs-libc.c": "dfc182fe471c59994ad7b7e1464ac805a2cb5801eac0a3cfc7a2405b285349aa",
+        "quickjs-libc.h": "c1e98643e903c1f9daea7edcc043ebc1497448c7a49cd679fb3f10b706f58dd9",
+        "quickjs-opcode.h": "a2a69dabaf91e2212c90c90723dd9023ab2c05f16c30e46cd1be00cb2053064b",
+        "quickjs.c": "4ae38cd41f83f2954924791a17dafb0f4fa8e3650774c3b8ef98588687b51ddd",
+        "quickjs.h": "4db04a6723dd837bd832e8e48d5f596e0eca82a8f04eef822095711cab908bd8",
+        "read_ic_config.h": "0fa10092c6af9444020f1f0bf3f6933c0b32cb0603d15047076737010caeec3f",
+        "read_ic_opcodes.inc": "c650b31eaa757a53e490687efdad54e096dd3b4d15a235a2c147fd29ca1afe11",
+        "read_ic_prepare.inc": "6c0918de10801c641279e20af9e5295e726675dbe821c3c86e71c0ee8e273b19",
+        "read_ic_runtime.inc": "68e0703e4b6c4cfc06c984f8041462e066aa0e2fdedefe9c1f83f74a4d7c3376",
+        "read_ic_types.h": "d4c54c346becb5bffd6c71bdcf6c417788fe765b2bc4976811b5c080fe3f9b55",
+        "readme-cosmo.txt": "4bd96c54647ec1f995e1f0ec418fab9f9a7699187eec4634b29171b43d6c6393",
+        "readme.txt": "c131aa57e45c2a6efc1a5abf626708de28c6d0810a570a7bd710f9429045479f",
+        "release.sh": "5d58be9ddbd3d46b397cb2bf9dd72260c0b3a5fbab1536063fb9776c28dbff75",
+        "repl.js": "5a0e434c4e42132b7b1a22eb0cf31b12109cd303ff0184a000ef6eb903542b76",
+        "run-test262.c": "34199306a16f2dc295526a94d0f5bd2981cf57d843bd746a9b68c8bbf26eee01",
+        "test262.conf": "2dbce74772b73277c02d12bb7149a5279c377808136607022f9e482efd83b516",
+        "test262_errors.txt": "282e00214880bdb2af9a2a472a3f800f0de033fcc4bd2f61fc87b3f3cd8a2743",
+        "test262o.conf": "ae541efe59f5958451375666d4ffc0c7bf48cea707fceadd82498421bb9a8c2f",
+        "test262o_errors.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/assert.js": "eb855c61c6c63fb025c24c1b54966955c0944aac70799119580b24143dbcd537",
+        "tests/bjson.c": "8866739b84ab1dfc2929fb5e90c1105aef10ff127b47ddcf903e9cc754b9b8f4",
+        "tests/fixture_cyclic_import.js": "327dd0593d0acd15e7e07ed4a34e900f8f97fa18d01ead6fa3a9ad01b83fb995",
+        "tests/microbench.js": "1ddbec9a4a04f25418dac2ef62b96a8aedfcea5d72d9b9c61bde8025470fd9c3",
+        "tests/test262.patch": "7aa1deb7d2caa001dec08c5b64e484cbc384f9a87c66670443d37473f8d94ab2",
+        "tests/test_bigint.js": "0a369c708d5d0042f1162b00243a8506e4538e0d90f7b0dc57b7017a187ef8c6",
+        "tests/test_bjson.js": "eef0d44d6b2a6e3c10ce13971e5e01889c5e8840a93baa2bfcc2bbac87e4b8f8",
+        "tests/test_builtin.js": "8c7b2ff258313dd4cf401dcbc4dd383a802dc90644fd5d4d918c688810299893",
+        "tests/test_closure.js": "5eebef577be5aacc54467ce2424dbaf02216112874b17836b481db37d866dab8",
+        "tests/test_cyclic_import.js": "c0c5729db8564cd3f2e752dc67d169e452ffcaa6470dcac2ae4c3f9b3a3d8390",
+        "tests/test_language.js": "47006ce2089c3152bf7a7ba79b026f6b134275405196450f6948b3ba578ac3dd",
+        "tests/test_loop.js": "6d27e2f39dfd72a6770241ac9cd49c7b1042915cc9dceaa087c6154b45d895aa",
+        "tests/test_rw_handler.js": "a488cccdbc726d6bff5ccb0b6e59865925bd168d15083b3c7d972bcbf249165b",
+        "tests/test_std.js": "645efbf4e1eb16b2d4769994ca7af56d0d3b82c498784cdeb456fea815375b26",
+        "tests/test_worker.js": "4655fec5e74cc5ee34b4d24401d9c3bf27cc6591bb85970d6db46f41cda4aeda",
+        "tests/test_worker_module.js": "40dbd9ad905c08aac732d9899c55b78004f8647cfa454a7d5f74d9050d2f49e3",
+        "unicode_download.sh": "1ac5230010d572a86c6dabc4d084c2ac8e0d53ab75387a3d9ca50c20942626b7",
+        "unicode_gen.c": "2f5882b1fdfd622b9aebc0b49c4df5f6f2800243a0e2dd7664fd9a4dbb8dabcd",
+        "unicode_gen_def.h": "aa1134a4fdb3afe219fbb248614802691576ccd225f1158518a01015f909f9e3"
+      },
+      "changed_from_M": [
+        "read_ic_opcodes.inc",
+        "read_ic_runtime.inc",
+        "read_ic_types.h"
+      ],
+      "diagnostic": false,
+      "sanitizer": false,
+      "patch_sha256": "88a218fbb103175fcb37970816758af09b1cb6c5c26744a0930ff6910dfc7931",
+      "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "command": [
+        "make",
+        "-j2",
+        "qjs",
+        "qjsc"
+      ]
+    },
+    "V8_ON": {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8",
+      "sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "expected_sha256": "83b744a5953d2662ea723564d4035a333782a0cc85232d1025929a925150b133",
+      "matches": true,
+      "size_bytes": 53498016
+    }
+  },
+  "dependencies": [
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin",
+      "sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749",
+      "size_bytes": 374368,
+      "actual_sha256": "5af8f6d23e18aca97e3d89b1cab0815a56235c29f37728ffe10255fdea035749"
+    },
+    {
+      "path": "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat",
+      "sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1",
+      "size_bytes": 10819840,
+      "actual_sha256": "495c45cc7a65562ec461f860c310c6b66e006acd96833f61d1aa31f77fe18cf1"
+    }
+  ],
+  "script_hashes": {
+    "Richards.Richards": "c9f1add297e2f72cf536804601c83a627323d9d866c9cee00e33048a62ab0cde",
+    "DeltaBlue.DeltaBlue": "c8c1619977b87a1a591b3963ef58fc879b51278d406ef7fa3bbe64b255f879de",
+    "Crypto.Encrypt": "59824ac67296b8ad39ecbdeec1c5f0c7b458c87f8a5b838f430906cd151e0563",
+    "Crypto.Decrypt": "60e0090a43662f491aa23cbc904482a24e0e4c8a2018f477e2a6ee06e28e6842",
+    "RayTrace.RayTrace": "194970c3987bebd3ac917b26ea7f4a2e95eef837b9f40f614501c5a3be0ae338",
+    "EarleyBoyer.Earley": "d7b1be5310235c45a2fcad17b56651c3e62ee44c1e286956c8c420f6b8780ba3",
+    "EarleyBoyer.Boyer": "95234c7676b9308dc8cef90e9defa4e88beb04d236abdd900f3b5e9b908e5950",
+    "RegExp.RegExp": "bfb90149a25272e706f531fa4e2d5d838cf8ae5fb291fc9e032b6b245d48b84e",
+    "Splay.Splay": "b5f8984c3df8cc1afdfd5e14d4488cd9a223471907a68857e5d88779b1008d9c",
+    "NavierStokes.NavierStokes": "5044063d5ec530ab61f19cb36c6985a0962732fc0700a42476a16095856011b4",
+    "PdfJS.PdfJS": "ecf3a56437f6acb67c169a0f20d791f3285113c9fefefb0b4d9bc14287fcb223",
+    "Mandreel.Mandreel": "c76a026b99c1fc1bdf3f6be75d80c2e1c4bb3672cfb58a5cc1f8d7151d11b4b8",
+    "Gameboy.Gameboy": "76787d1857a887a9aac9f5f4b269e6e3769314a4f1598d9c26f8b3b3db9f998c",
+    "CodeLoad.CodeLoadClosure": "e74bb9902cdc892a942d4aeffef09ab495d1fe91a61afd01ea9d69e78017fdde",
+    "CodeLoad.CodeLoadJQuery": "562ca6e0ad7c353cf2ac53b9be2cdf175123deb6a7187d5fe41010859ed497d0",
+    "Typescript.Typescript": "5a4c7ca06c0013ad1a82af6f4ea8e71cea8491ae7f588fd04fbb26e62d1b2acf",
+    "zlib.zlib": "3d9b415bab802909fe82cbda155dd73afface92dd6db52e304b4ec6a39b0cf6c"
+  },
+  "input_sha256": {
+    "octane/inputs/octane/base.js": "216612c2e7096a02b3e52b57e9cf9351bbaf180d60938d5c60b85fd756232733",
+    "octane/inputs/octane/LICENSE": "cf853177951c6de1b17c029b66edf71f8b194cca1722339a7b5def4e8165aaaa",
+    "octane/inputs/octane/richards.js": "1246a64a24b931158bf01c24640343259fa74b0226e73bad630bd1f686aa0fa7",
+    "octane/inputs/octane/deltablue.js": "6c4784e82f3e8f5c18306d289653d08b17b38838f1bac16b38611d7318fa5a36",
+    "octane/inputs/octane/crypto.js": "b01b6b3fe534327fdef05131162927bc5508f100a3208e185d0c5a4efb200a39",
+    "octane/inputs/octane/raytrace.js": "64b8ff90969966dd69659100e28754976dfc3e9a4f8ee55b9232f974c66ed08c",
+    "octane/inputs/octane/earley-boyer.js": "8dd28a505f7e705642f86816232b012fd3c770ec8afc9f719ce89ce772dab347",
+    "octane/inputs/octane/regexp.js": "a292d6047900c5296ea9e2628453832cc3bfe397e49fddade8aff7b5876c8263",
+    "octane/inputs/octane/splay.js": "f9a6a60d8f205908f5542ad1180abc1902dcdab3dcb4278017c5ce179ee123f7",
+    "octane/inputs/octane/navier-stokes.js": "27926de809451c60b0c49a4185c08f97081310d0db166a30c1d202fb656556a2",
+    "octane/inputs/octane/pdfjs.js": "ced89e66a178a4b63a69ea33fc6f47d405bf9bd379817be25f060a4b2dcce351",
+    "octane/inputs/octane/mandreel.js": "fc4a9516e8899bb33df63a69db30797959a138d33233e9fb1ccc57cb91dcd164",
+    "octane/inputs/octane/gbemu-part1.js": "67ae8c639b7acc5ebbcf0995c8b68821251a629f72c604e74cae8526c8e85965",
+    "octane/inputs/octane/gbemu-part2.js": "acd923e085cf70fce8a15b1420d1fa489bd8315e4a8c066775aeaa7104e609d3",
+    "octane/inputs/octane/code-load.js": "32fd38d49bb8794b40e947c70c0c51276bfc2588833a8451a25b1b2bfccad96c",
+    "octane/inputs/octane/typescript.js": "fbc5ec16d9c60b1bdcca7e7b9f66fba2fe46c0e04da64088203052e47922ff21",
+    "octane/inputs/octane/typescript-input.js": "e23d2fe7b3df9dc069c720ab3fb112006c235d0eb416556ecde7c3a2766a0396",
+    "octane/inputs/octane/typescript-compiler.js": "9e99fe0ddfe48a2462eca622ade1e1ddd13bf49f8e461a6c53463bbbc1d5363a",
+    "octane/inputs/octane/box2d.js": "83b10c280f004e7b156a9e04d09ce4109892ea92788f7c6c963f7fadf29c7bd4",
+    "octane/inputs/octane/zlib.js": "d8c4bca32e84b38f573d3ee50a38b194afc9fb4e2f79754d952524bff01a898c",
+    "octane/inputs/octane/zlib-data.js": "b8d093321289574f36116e933e2b3b211bb98df9fe3e761ffb1be550d0e82aed",
+    "octane/inputs/adapter.js": "6195a404ab66ae760b011d5b59592d310a56bf6817f3822ddb89e6f806580fc0",
+    "octane/inputs/driver.js": "2b6fabc10aab3254350549d6cdd8d55657ab533ec3b3e03b5a19634735ff91dd",
+    "octane/inputs/crypto_preload.js": "9a2d7e66510589c7621417fffd75225e7a41eb6fd2cdcccff3033f16cb69362e",
+    "octane/inputs/zlib_read.js": "8240f6d0f5d2a8037f87b08c1f2dcf2518d100d0f5e57b6277ae7a885b771caa"
+  },
+  "protocol_sha256": "c8aa16ed7b01ff514b1ccd35c7374b9754a7cd9d733bc50e71a335dba4beca75",
+  "schedule_sha256": "fed9a86c993be75c6177bed53ed99f8bc89f7824873b4beb908d0c26f0bc2172",
+  "runner_sha256": "96891cd464625a25051b203ff025d3a68dd963166ec25798971fb2bd6438a6e9",
+  "identity_check": "full SHA256 before/after campaign; size/mtime_ns/inode before every formal child",
+  "file_stats": {
+    "/home/mzyx/read_ic_dequickening_attempt01/A/qjs": [
+      5090704,
+      1792841166597652100,
+      110116
+    ],
+    "/home/mzyx/ic_mechanism_audit_attempt01/M/qjs": [
+      5102680,
+      1793181355560296244,
+      112004
+    ],
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/d8": [
+      53498016,
+      1791122581618474193,
+      44051
+    ],
+    "/home/mzyx/ic_fast_slow_20261102_attempt01/U_build03/qjs": [
+      5103464,
+      1793626599813302930,
+      116301
+    ],
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/snapshot_blob.bin": [
+      374368,
+      1791122581748474194,
+      44054
+    ],
+    "/home/mzyx/three_engine_20261004/v8-linux64-rel-15.6.21/icudtl.dat": [
+      10819840,
+      1791122581748474194,
+      44053
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/base.js": [
+      12998,
+      1793640266381016500,
+      1970324838064603
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/LICENSE": [
+      1523,
+      1793640266429930500,
+      1970324838064604
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/richards.js": [
+      15797,
+      1793640266476082500,
+      1970324838064605
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/deltablue.js": [
+      25726,
+      1793640266536357400,
+      1970324838064606
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/crypto.js": [
+      48052,
+      1793640266600528700,
+      1970324838064607
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/raytrace.js": [
+      28016,
+      1793640266676724900,
+      1970324838064608
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/earley-boyer.js": [
+      195234,
+      1793640266798948400,
+      1970324838064609
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/regexp.js": [
+      126705,
+      1793640266962411500,
+      1970324838064610
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/splay.js": [
+      11557,
+      1793640267036826300,
+      1970324838064611
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/navier-stokes.js": [
+      13431,
+      1793640267098649800,
+      1970324838064612
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/pdfjs.js": [
+      1466204,
+      1793640267307263200,
+      1970324838064613
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/mandreel.js": [
+      5000408,
+      1793640268233031200,
+      2251799814775270
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/gbemu-part1.js": [
+      51345,
+      1793640268932511200,
+      2251799814775271
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/gbemu-part2.js": [
+      464771,
+      1793640269046908800,
+      1970324838064616
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/code-load.js": [
+      115891,
+      1793640269151145600,
+      1970324838064617
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/typescript.js": [
+      6441,
+      1793640269229147000,
+      1970324838064618
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/typescript-input.js": [
+      1275283,
+      1793640269321451600,
+      1970324838064619
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/typescript-compiler.js": [
+      1232383,
+      1793640269520761200,
+      1970324838064620
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/box2d.js": [
+      228894,
+      1793640269718129800,
+      1970324838064621
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/zlib.js": [
+      3693,
+      1793640269804075600,
+      1970324838064622
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/octane/zlib-data.js": [
+      192056,
+      1793640269869519200,
+      1970324838064623
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/adapter.js": [
+      308,
+      1793640269907534200,
+      1970324838064624
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/driver.js": [
+      1293,
+      1793640269936631100,
+      1970324838064625
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/crypto_preload.js": [
+      353,
+      1793640269984927800,
+      1970324838064626
+    ],
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/ic_fast_slow_20261102/attempt01/octane/inputs/zlib_read.js": [
+      594,
+      1793640270033655700,
+      1970324838064627
+    ]
+  }
+}

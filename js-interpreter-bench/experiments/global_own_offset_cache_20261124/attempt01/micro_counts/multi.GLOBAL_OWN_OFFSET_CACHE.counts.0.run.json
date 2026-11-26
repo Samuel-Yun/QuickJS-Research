@@ -1,0 +1,18 @@
+{
+  "label": "GLOBAL_OWN_OFFSET_CACHE",
+  "mode": "counts",
+  "case": "multi",
+  "phase": "micro_counts",
+  "rep": 0,
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/work/GLOBAL_OWN_OFFSET_CACHE.counts/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/global_own_offset_cache_20261124/attempt01/micro.js",
+    "multi",
+    "65536"
+  ],
+  "binary_sha256": "555c9cee36f7463c4fb54cc661e6a406832eab2d339fcf0527704db4ef96051f",
+  "exit_code": 0,
+  "stdout": "{\"case\":\"multi\",\"iterations\":65536,\"checksum\":393216,\"elapsed_ms\":2.7904289960861206,\"warmup_calls\":0}\n",
+  "stderr": "GO_LAYOUT id=1 read=1 shape=0x5997d21338a0 hashed=1 class=1 exotic=0 cached=(nil) off=0 props=0:x(flags=7),1:a(flags=7)\nGO_LAYOUT id=1 read=2 shape=0x5997d2133900 hashed=1 class=1 exotic=0 cached=0x5997d21338a0 off=0 props=0:pad(flags=7),1:x(flags=7)\nGO_LAYOUT id=1 read=3 shape=0x5997d2144188 hashed=1 class=1 exotic=0 cached=0x5997d2133900 off=1 props=0:p0(flags=7),1:p1(flags=7),2:x(flags=7)\nGO_LAYOUT id=1 read=4 shape=0x5997d212e2e0 hashed=1 class=1 exotic=0 cached=0x5997d2144188 off=2 props=0:p0(flags=7),1:p1(flags=7),2:p2(flags=7),3:x(flags=7)\nGO_LAYOUT id=1 read=5 shape=0x5997d21338a0 hashed=1 class=1 exotic=0 cached=0x5997d212e2e0 off=3 props=0:x(flags=7),1:a(flags=7)\nGO_LAYOUT id=1 read=6 shape=0x5997d2133900 hashed=1 class=1 exotic=0 cached=0x5997d212e2e0 off=3 props=0:pad(flags=7),1:x(flags=7)\nGO_LAYOUT id=1 read=7 shape=0x5997d2144188 hashed=1 class=1 exotic=0 cached=0x5997d212e2e0 off=3 props=0:p0(flags=7),1:p1(flags=7),2:x(flags=7)\nGO_LAYOUT id=1 read=8 shape=0x5997d212e2e0 hashed=1 class=1 exotic=0 cached=0x5997d212e2e0 off=3 props=0:p0(flags=7),1:p1(flags=7),2:p2(flags=7),3:x(flags=7)\n",
+  "external_wall_ms": 8.433127077296376
+}

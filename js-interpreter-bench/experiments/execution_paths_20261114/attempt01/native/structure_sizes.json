@@ -1,0 +1,38 @@
+[
+  {
+    "label": "EVAL_COLD",
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "-ex",
+      "p sizeof(JSRuntime)",
+      "-ex",
+      "p sizeof(JSShape)",
+      "js-interpreter-bench/experiments/native_octane_20261108/attempt11/work/EVAL_COLD/qjs"
+    ],
+    "returncode": 0,
+    "stdout": "$1 = 1440\n$2 = 56\n",
+    "stderr": ""
+  },
+  {
+    "label": "TRANSITION_EDGE_STRONG",
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "-ex",
+      "p sizeof(JSRuntime)",
+      "-ex",
+      "p sizeof(JSShape)",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/execution_paths_20261114/attempt01/work/TRANSITION_EDGE_STRONG.release/qjs"
+    ],
+    "returncode": 0,
+    "stdout": "$1 = 2216\n$2 = 56\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,257 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -365,6 +365,9 @@
+ DEF(get_field_rdi, 5, 1, 1, u32)
+ DEF(get_field2_rdi, 5, 1, 2, u32)
+ 
++DEF(get_field_aq, 5, 1, 1, u32)
++DEF(get_field2_aq, 5, 1, 2, u32)
++
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -718,6 +718,8 @@
+     ReadICSite *read_ic_sites;
+     uint32_t read_ic_count;
+     uint8_t read_ic_ready;
++    uint8_t aq_pending;
++    uint32_t aq_entries;
+ #ifdef READ_IC_DIAGNOSTIC
+     RDIFunctionDiag *read_ic_diag;
+ #endif
+@@ -17886,6 +17888,7 @@
+     for(i = 0; i < b->var_ref_count; i++)
+         sf->var_refs[i] = NULL;
+     sp = stack_buf;
++    aq_entry(caller_ctx,b);
+     pc = b->byte_code_buf;
+     sf->prev_frame = rt->current_stack_frame;
+     rt->current_stack_frame = sf;
+@@ -37760,11 +37763,11 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_get_field_aq || op == OP_get_field2_aq) {
+             uint32_t delta = get_u32(bc_buf + pos + 1);
+             ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
+             assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
+-            op = (op == OP_get_field_rdi) ? OP_get_field : OP_get_field2;
++            op = (op == OP_get_field_rdi || op == OP_get_field_aq) ? OP_get_field : OP_get_field2;
+             bc_buf[pos] = op;
+             put_u32(bc_buf + pos + 1, site->atom);
+         }
+@@ -38668,7 +38671,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_get_field_rdi || op == OP_get_field2_rdi) {
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_get_field_aq || op == OP_get_field2_aq) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+             return -1;
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -1,5 +1,5 @@
+ /* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
+-#define GET_READ_IC(name, keep)                                          \
++#define GET_READ_IC(name, keep, observe)                                          \
+     {                                                                   \
+         uint32_t delta = get_u32(pc), offset;                            \
+         ReadICSite *site = (ReadICSite *)(pc + delta);                   \
+@@ -10,20 +10,23 @@
+         JSShapeProperty *prs;                                           \
+         RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+-        RDI_QUERY();                                                    \
++        RDI_QUERY();v7_stat_read_queries++; \
++        if((observe) && site->observed<8) site->observed++;                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+-                offset = rdi_probe(site, p->shape RDI_DARG(d));           \
++                offset = (observe) ? UINT32_MAX : rdi_probe(site,p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+-                    RDI_COUNT(hits);                                   \
++                    RDI_COUNT(hits);v7_stat_read_hits++; if(site->misses) site->misses=0;                                   \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+-        RDI_COUNT(fallback);                                            \
++        if(!(observe) && site->state==AQ_MONO && ++site->misses>=4) \
++            aq_exit(ctx,b,site,(uint8_t *)pc-5); \
++        RDI_COUNT(fallback);v7_stat_read_fallback++;                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+@@ -40,7 +43,11 @@
+                     else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
+                     else {                                              \
+                         RDI_REASON(own_miss);                           \
+-                        rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
++                        if(site->state==AQ_MONO || (site->state==AQ_OBSERVE && site->observed==8)) { \
++                            rdi_update(ctx,site,p->shape,pr-p->prop RDI_DARG(d)); \
++                            if(site->state!=AQ_MONO)v7_stat_specializations++;site->state=AQ_MONO; \
++                            *((uint8_t *)pc-5)=(keep)?OP_get_field2_rdi:OP_get_field_rdi; \
++                        } \
+                     }                                                   \
+                     break;                                              \
+                 }                                                       \
+@@ -59,14 +66,22 @@
+             val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0);     \
+             if (unlikely(JS_IsException(val))) goto exception;          \
+         }                                                               \
+-    name ## _done:                                                      \
++    name ## _done: \
++        if(site->state==AQ_OBSERVE && site->observed==8) \
++            aq_exit(ctx,b,site,(uint8_t *)pc-5);                                                      \
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
+     }
+         CASE(OP_get_field_rdi):
+-            GET_READ_IC(get_field_rdi, 0);
++            GET_READ_IC(get_field_rdi, 0, 0);
+             BREAK;
+         CASE(OP_get_field2_rdi):
+-            GET_READ_IC(get_field2_rdi, 1);
++            GET_READ_IC(get_field2_rdi, 1, 0);
++            BREAK;
++        CASE(OP_get_field_aq):
++            GET_READ_IC(get_field_aq, 0, 1);
++            BREAK;
++        CASE(OP_get_field2_aq):
++            GET_READ_IC(get_field2_aq, 1, 1);
+             BREAK;
+ #undef GET_READ_IC
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -30,7 +30,7 @@
+     memcpy(linked, b->byte_code_buf, b->byte_code_len);
+     b->byte_code_buf = linked;
+     b->read_ic_sites = (ReadICSite *)(linked + code_size);
+-    b->read_ic_count = count;
++    b->read_ic_count = count;v7_stat_sites_total+=count;
+ #ifdef READ_IC_DIAGNOSTIC
+     rdi_diag_prepare(ctx, b);
+ #endif
+@@ -38,8 +38,9 @@
+         uint8_t *pc = b->byte_code_buf + pos;
+         op = *pc;
+         if (op == OP_get_field || op == OP_get_field2) {
++            b->read_ic_sites[index].pc_offset = pos;
+             b->read_ic_sites[index].atom = get_u32(pc + 1);
+-            *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
++            *pc = (op == OP_get_field) ? OP_get_field_aq : OP_get_field2_aq;
+             put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
+         }
+     }
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -1,21 +1,26 @@
++static uint64_t v7_stat_read_queries,v7_stat_read_hits,v7_stat_read_fallback,v7_stat_updates,v7_stat_comparisons,v7_stat_sites_total,v7_stat_mono_probes,v7_stat_poly_probes,v7_stat_mono_installed,v7_stat_mono_active,v7_stat_mono_peak,v7_stat_alloc2,v7_stat_alloc4,v7_stat_requested_bytes,v7_stat_live_bytes,v7_stat_peak_bytes,v7_stat_blocks_live,v7_stat_blocks_peak,v7_stat_entry_checks,v7_stat_pending_entries,v7_stat_specializations,v7_stat_exits,v7_stat_reentries,v7_stat_store_queries,v7_stat_transition_hits,v7_stat_transition_oom,v7_stat_existing_own_fast,v7_stat_generic_set,v7_stat_eligible_snapshot,v7_stat_transition_fills,v7_stat_hash_shape_searches;
++static void __attribute__((destructor)) v7_policy_report(void) {
++fprintf(stderr,"V7_POLICY AQ read_queries=%llu read_hits=%llu read_fallback=%llu updates=%llu comparisons=%llu sites_total=%llu mono_probes=%llu poly_probes=%llu mono_installed=%llu mono_active=%llu mono_peak=%llu alloc2=%llu alloc4=%llu requested_bytes=%llu live_bytes=%llu peak_bytes=%llu blocks_live=%llu blocks_peak=%llu entry_checks=%llu pending_entries=%llu specializations=%llu exits=%llu reentries=%llu store_queries=%llu transition_hits=%llu transition_oom=%llu existing_own_fast=%llu generic_set=%llu eligible_snapshot=%llu transition_fills=%llu hash_shape_searches=%llu\n",(unsigned long long)v7_stat_read_queries,(unsigned long long)v7_stat_read_hits,(unsigned long long)v7_stat_read_fallback,(unsigned long long)v7_stat_updates,(unsigned long long)v7_stat_comparisons,(unsigned long long)v7_stat_sites_total,(unsigned long long)v7_stat_mono_probes,(unsigned long long)v7_stat_poly_probes,(unsigned long long)v7_stat_mono_installed,(unsigned long long)v7_stat_mono_active,(unsigned long long)v7_stat_mono_peak,(unsigned long long)v7_stat_alloc2,(unsigned long long)v7_stat_alloc4,(unsigned long long)v7_stat_requested_bytes,(unsigned long long)v7_stat_live_bytes,(unsigned long long)v7_stat_peak_bytes,(unsigned long long)v7_stat_blocks_live,(unsigned long long)v7_stat_blocks_peak,(unsigned long long)v7_stat_entry_checks,(unsigned long long)v7_stat_pending_entries,(unsigned long long)v7_stat_specializations,(unsigned long long)v7_stat_exits,(unsigned long long)v7_stat_reentries,(unsigned long long)v7_stat_store_queries,(unsigned long long)v7_stat_transition_hits,(unsigned long long)v7_stat_transition_oom,(unsigned long long)v7_stat_existing_own_fast,(unsigned long long)v7_stat_generic_set,(unsigned long long)v7_stat_eligible_snapshot,(unsigned long long)v7_stat_transition_fills,(unsigned long long)v7_stat_hash_shape_searches);
++}
+ /* Included after upstream find_own_property, with shape helpers available. */
+ #ifdef READ_IC_DIAGNOSTIC
+ #include "read_ic_diag.h"
+ #endif
+ static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+ {
++    v7_stat_mono_probes++;
+ #if RDI_CAPACITY == 1
+-    RDI_COUNT(comparisons);
++    RDI_COUNT(comparisons);v7_stat_comparisons++;
+     if (s->shape == shape)
+         return s->prop_offset;
+ #else
+     unsigned i, first = s->recent;
+-    RDI_COUNT(comparisons);
++    RDI_COUNT(comparisons);v7_stat_comparisons++;
+     if (s->shape[first] == shape)
+         return s->prop_offset[first];
+     for (unsigned k = 1; k < 4; k++) {
+         i = (first + k) & 3;
+-        RDI_COUNT(comparisons);
++        RDI_COUNT(comparisons);v7_stat_comparisons++;
+         if (s->shape[i] == shape) {
+             s->recent = i;
+             return s->prop_offset[i];
+@@ -27,17 +32,17 @@
+ static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+-    RDI_COUNT(updates);
++    RDI_COUNT(updates);v7_stat_updates++;
+ #if RDI_CAPACITY == 1
+     if (s->shape == shape) {
+         s->prop_offset = offset;
+         return;
+     }
+     if (s->shape) { RDI_REPLACE(); } else { RDI_OCCUPY(); }
++    JSShape *old=s->shape;
+     js_dup_shape(shape);
+-    js_free_shape_null(ctx->rt, s->shape);
+-    s->shape = shape;
+-    s->prop_offset = offset;
++    s->shape=shape;s->prop_offset=offset;
++    js_free_shape_null(ctx->rt,old);
+ #else
+     unsigned i, empty = 4;
+     for (i = 0; i < 4; i++) {
+@@ -65,6 +70,39 @@
+     s->recent = i;
+ #endif
+ }
++
++enum { AQ_OBSERVE, AQ_MONO, AQ_EXIT };
++static void aq_exit(JSContext *ctx, JSFunctionBytecode *b, ReadICSite *s, uint8_t *opcode)
++{
++    JSShape *old=s->shape;v7_stat_exits++;
++    JS_DupAtom(ctx,s->atom);
++    *opcode=(*opcode==OP_get_field_rdi || *opcode==OP_get_field_aq)?OP_get_field:OP_get_field2;
++    put_u32(opcode+1,s->atom);
++    s->state=AQ_EXIT;s->shape=NULL;s->prop_offset=0;s->exit_entry=b->aq_entries;
++    if(!s->retried) b->aq_pending=1;
++    js_free_shape_null(ctx->rt,old);
++}
++static force_inline void aq_entry(JSContext *ctx, JSFunctionBytecode *b)
++{
++    v7_stat_entry_checks++;
++    if(unlikely(b->aq_pending)) {
++        v7_stat_pending_entries++;b->aq_entries++; /* cooldown clock advances at every pending function entry */
++        unsigned pending=0;
++        for(uint32_t i=0;i<b->read_ic_count;i++) {
++            ReadICSite *s=&b->read_ic_sites[i];
++            if(s->state!=AQ_EXIT || s->retried) continue;
++            if((uint32_t)(b->aq_entries-s->exit_entry)<32) { pending=1;continue; }
++            uint8_t *op=b->byte_code_buf+s->pc_offset;
++            assert(*op==OP_get_field || *op==OP_get_field2);
++            *op=(*op==OP_get_field)?OP_get_field_aq:OP_get_field2_aq;
++            put_u32(op+1,(uint8_t *)s-(op+1));
++            s->state=AQ_OBSERVE;s->observed=s->misses=0;s->retried=1;v7_stat_reentries++;
++            JS_FreeAtom(ctx,s->atom); /* ordinary operand's extra ownership */
++        }
++        b->aq_pending=pending;
++    }
++}
++
+ static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
+ {
+     uint32_t i;
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -5,6 +5,8 @@
+     JSShape *shape;
+     uint32_t prop_offset;
+     JSAtom atom;
++    uint32_t pc_offset, exit_entry;
++    uint8_t observed, misses, state, retried;
+ } ReadICSite;
+ #elif RDI_CAPACITY == 4
+ typedef struct ReadICSite {

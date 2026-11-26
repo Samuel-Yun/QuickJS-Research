@@ -1,0 +1,18 @@
+Primary source identities rechecked locally during this task (native git, read-only):
+
+git -C js-interpreter-bench/engines/quickjs-upstream rev-parse HEAD
+04be246001599f5995fa2f2d8c91a0f198d3f34c
+
+git --git-dir=js-interpreter-bench/experiments/legacy_ng_ic/attempt01/source_history.git rev-parse 7de6d467ebc3598b5e10169f7be3de5b46ff0245^1
+e1b5978775f75f9637c624fc45e69b92d2c15f42
+
+git -C js-interpreter-bench/benchmarks/octane/upstream rev-parse HEAD
+570ad1ccfe86e3eecba0636c8f932ac08edec517
+
+git -C js-interpreter-bench/benchmarks/octane/upstream ls-files --eol -- crypto.js mandreel.js
+i/lf w/crlf crypto.js
+i/lf w/crlf mandreel.js
+
+Per-call safe.directory was explicitly supplied for the Windows owner boundary.
+The original terminal outputs are in the task tool record; archive byte identities and LF normalized identities are separately stored in JSON.
+The bare history is local provenance only, not a required ordinary-Git deliverable.

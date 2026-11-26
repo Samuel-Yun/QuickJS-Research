@@ -1,0 +1,27 @@
+{
+  "status": "PASS_TARGETED",
+  "checks": [
+    "semantic/OWN2/experiments/ic_search_lab/checks.js",
+    "semantic/OWN2/experiments/ic_search_lab/v3_mass_search/semantic.js",
+    "semantic/OWN2/experiments/ic_search_lab/v6_targeted_ic/targeted.js",
+    "semantic/OWN2/experiments/native_octane_20261107/attempt02/combined.js",
+    "semantic/OWN2/experiments/native_octane_20261108/attempt04/extra.js",
+    "semantic/OWN2/experiments/native_octane_20261108/attempt04/old_layout.js",
+    "semantic/OWN2/experiments/native_octane_20261108/attempt08/targeted.js",
+    "native_check/OWN2/read_roundtrip",
+    "native_check/OWN2/gc_cycles",
+    "native_check/OWN2/reentrant_store",
+    "sanitizer/OWN2/experiments/native_octane_20261107/attempt02/combined.js",
+    "sanitizer/OWN2/experiments/native_octane_20261108/attempt04/extra.js",
+    "sanitizer/OWN2/experiments/native_octane_20261108/attempt08/targeted.js",
+    "sanitizer/OWN2/experiments/ic_search_lab/v3_mass_search/semantic.js",
+    "sanitizer_native/OWN2/read_roundtrip",
+    "sanitizer_native/OWN2/gc_cycles",
+    "sanitizer_native/OWN2/reentrant_store",
+    "mechanism_probe/OWN2"
+  ],
+  "ASan": true,
+  "UBSan": true,
+  "LSan": false,
+  "full_test262": false
+}

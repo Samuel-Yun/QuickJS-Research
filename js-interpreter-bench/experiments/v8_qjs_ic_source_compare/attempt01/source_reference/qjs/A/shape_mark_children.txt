@@ -1,0 +1,49 @@
+6612:         break;
+6613:     case JS_GC_OBJ_TYPE_FUNCTION_BYTECODE:
+6614:         /* the template objects can be part of a cycle */
+6615:         {
+6616:             JSFunctionBytecode *b = (JSFunctionBytecode *)gp;
+6617:             int i;
+6618:             for(i = 0; i < b->cpool_count; i++) {
+6619:                 JS_MarkValue(rt, b->cpool[i], mark_func);
+6620:             }
+6621:             if (b->realm)
+6622:                 mark_func(rt, &b->realm->header);
+6623:         }
+6624:         break;
+6625:     case JS_GC_OBJ_TYPE_VAR_REF:
+6626:         {
+6627:             JSVarRef *var_ref = (JSVarRef *)gp;
+6628:             if (var_ref->is_detached) {
+6629:                 JS_MarkValue(rt, *var_ref->pvalue, mark_func);
+6630:             } else {
+6631:                 JSStackFrame *sf = var_ref->stack_frame;
+6632:                 if (sf->js_mode & JS_MODE_ASYNC) {
+6633:                     JSAsyncFunctionState *async_func = container_of(sf, JSAsyncFunctionState, frame);
+6634:                     mark_func(rt, &async_func->header);
+6635:                 }
+6636:             }
+6637:         }
+6638:         break;
+6639:     case JS_GC_OBJ_TYPE_ASYNC_FUNCTION:
+6640:         {
+6641:             JSAsyncFunctionState *s = (JSAsyncFunctionState *)gp;
+6642:             JSStackFrame *sf = &s->frame;
+6643:             JSValue *sp;
+6644: 
+6645:             if (!s->is_completed) {
+6646:                 JS_MarkValue(rt, sf->cur_func, mark_func);
+6647:                 JS_MarkValue(rt, s->this_val, mark_func);
+6648:                 /* sf->cur_sp = NULL if the function is running */
+6649:                 if (sf->cur_sp) {
+6650:                     /* if the function is running, cur_sp is not known so we
+6651:                        cannot mark the stack. Marking the variables is not needed
+6652:                        because a running function cannot be part of a removable
+6653:                        cycle */
+6654:                     for(sp = sf->arg_buf; sp < sf->cur_sp; sp++)
+6655:                         JS_MarkValue(rt, *sp, mark_func);
+6656:                 }
+6657:             }
+6658:             JS_MarkValue(rt, s->resolving_funcs[0], mark_func);
+6659:             JS_MarkValue(rt, s->resolving_funcs[1], mark_func);
+6660:         }

@@ -1,0 +1,37 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -8229,8 +8229,22 @@
+     return p->class_id == JS_CLASS_C_FUNCTION && p->u.cfunc.cproto == JS_CFUNC_generic &&
+            p->u.cfunc.c_function.generic == fn;
+ }
++typedef struct CallLocation {int line, column, pc, argc; uint64_t count;} CallLocation;
++static CallLocation call_locations[4096];
++static void note_call_location(JSContext *ctx, JSFunctionBytecode *b, const uint8_t *pc, int argc)
++{
++    int pos=(int)(pc-b->byte_code_buf), col=-1, line=find_line_num(ctx,b,pos,&col);
++    unsigned i=((unsigned)line*31u+(unsigned)pos)&4095;
++    while (call_locations[i].count && (call_locations[i].line!=line || call_locations[i].column!=col ||
++           call_locations[i].pc!=pos || call_locations[i].argc!=argc)) i=(i+1)&4095;
++    CallLocation *r=&call_locations[i]; r->line=line;r->column=col;r->pc=pos;r->argc=argc;r->count++;
++}
+ JSValue round_census_toggle(JSContext *ctx, JSValueConst self, int argc, JSValueConst *argv) {
+     census_run = argc && JS_ToBool(ctx, argv[0]);
++    if (!census_run) for(unsigned i=0;i<4096;i++) {
++        CallLocation *r=&call_locations[i]; if(r->count) fprintf(stderr,"CALLSITE,%d,%d,%d,%d,%llu\n",
++           r->line,r->column,r->pc,r->argc,(unsigned long long)r->count);
++    }
+     if (!census_run) fprintf(stderr,"ROUND,%llu,%llu,%llu,%llu,%llu,%llu,%llu,%llu\n",
+       (unsigned long long)census_instance_op,(unsigned long long)census_helper,(unsigned long long)census_default,
+       (unsigned long long)census_primitive,(unsigned long long)census_direct,(unsigned long long)census_call,
+@@ -18420,7 +18434,10 @@
+                     census_method_sites_call++;
+                     if (JS_IsObject(call_argv[-2])) {
+                         JSClassID k = JS_VALUE_GET_OBJ(call_argv[-2])->class_id;
+-                        if (k == JS_CLASS_BYTECODE_FUNCTION || k == JS_CLASS_COLD_BYTECODE_FUNCTION) census_call_js++;
++                        if (k == JS_CLASS_BYTECODE_FUNCTION || k == JS_CLASS_COLD_BYTECODE_FUNCTION) {
++                            census_call_js++;
++                            note_call_location(ctx,b,pc-3,call_argc);
++                        }
+                     }
+                 }
+                 ret_val = JS_CallInternal(ctx, call_argv[-1], call_argv[-2],

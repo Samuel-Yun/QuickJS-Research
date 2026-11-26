@@ -1,0 +1,25 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:693:44: function: <null>
+  locals:
+    0: var this
+  closure vars:
+    0: var STATE_NOT_HELD [global_ref25]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.state = this.state & STATE_NOT_HELD;
+
+        get_loc0 0: this
+        get_loc0 0: this
+        get_field state
+        get_var 0: STATE_NOT_HELD
+        and
+        put_field state
+        return_undef
+
+;; }
+

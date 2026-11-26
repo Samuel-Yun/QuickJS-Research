@@ -1,0 +1,17 @@
+case,engine,function,instructions,bytes,method,raw
+arithmetic,quickjs,wbArithmetic,22,23,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_arithmetic.json
+arithmetic,v8,wbArithmetic,16,34,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbArithmetic_v8_arithmetic.json
+numeric_loop,quickjs,wbNumericLoop,14,18,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_numeric_loop.json
+numeric_loop,v8,wbNumericLoop,17,32,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbNumericLoop_v8_numeric_loop.json
+branches,quickjs,wbBranches,31,36,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_branches.json
+branches,v8,wbBranches,29,60,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbBranches_v8_branches.json
+direct_call,quickjs,wbDirectCall,18,23,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_direct_call.json
+direct_call,v8,wbDirectCall,19,38,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbDirectCall_v8_direct_call.json
+direct_call,quickjs,wbSmallFunction,6,6,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_direct_call.json
+direct_call,v8,wbSmallFunction,4,9,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbSmallFunction_v8_direct_call.json
+own_property,quickjs,wbOwnProperty,17,24,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_own_property.json
+own_property,v8,wbOwnProperty,17,34,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbOwnProperty_v8_own_property.json
+prototype_method,quickjs,wbPrototypeMethod,19,28,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_prototype_method.json
+prototype_method,v8,wbPrototypeMethod,19,40,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbPrototypeMethod_v8_prototype_method.json
+prototype_method,quickjs,wbStep,7,11,decoded opcode widths; printed branch PCs cross-checked,raw/dump/final_quickjs_prototype_method.json
+prototype_method,v8,wbStep,3,8,instruction hex widths and offsets validated against Bytecode length,raw/dump/wbStep_v8_prototype_method.json

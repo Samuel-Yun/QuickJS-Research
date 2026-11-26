@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "source": "lifetime.c",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/SPARSE.release.lifetime"
+      ],
+      "exit_code": 0,
+      "stdout": "LIFETIME_PASS\n",
+      "stderr": "",
+      "binary_sha256": "d259698f2363fde47ab7869619bd4a8a72979878fd35c290e4843f07b76daf7d",
+      "fixture_only": false
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "source": "ownership_realms.c",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/SPARSE.release.ownership_realms"
+      ],
+      "exit_code": 0,
+      "stdout": "OWNERSHIP_GC_TWO_REALMS_PASS\n",
+      "stderr": "",
+      "binary_sha256": "990612c24d72663701b029e9d9e591a0ff6792a95e260455a00dc13f98a221fd",
+      "fixture_only": false
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "source": "class_lifetime.c",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/SPARSE.release.class_lifetime"
+      ],
+      "exit_code": 0,
+      "stdout": "CLASS_GUARD_GC_TWO_REALMS_PASS\n",
+      "stderr": "",
+      "binary_sha256": "05b3912a45dc08b114c37e234d74ae8ce8e7bc3c854da7d9b9f770e23cb7a8d9",
+      "fixture_only": false
+    },
+    {
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "source": "lifetime.c",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/CTOR_LOCAL_SHAPE_GUARD.release.lifetime"
+      ],
+      "exit_code": 0,
+      "stdout": "LIFETIME_PASS\n",
+      "stderr": "",
+      "binary_sha256": "8ced82ee27a4be50ef8c1fee4ad0c3bbf05c910fbf57ced9f6b799a218d55db3",
+      "fixture_only": false
+    },
+    {
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "source": "ownership_realms.c",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/CTOR_LOCAL_SHAPE_GUARD.release.ownership_realms"
+      ],
+      "exit_code": 0,
+      "stdout": "OWNERSHIP_GC_TWO_REALMS_PASS\n",
+      "stderr": "",
+      "binary_sha256": "ad67027f4200038a07161c3b028ebbbe578316b51001eaf02e47cd99faf3694c",
+      "fixture_only": false
+    },
+    {
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "mode": "release",
+      "source": "class_lifetime.c",
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/CTOR_LOCAL_SHAPE_GUARD.release.class_lifetime"
+      ],
+      "exit_code": 0,
+      "stdout": "CLASS_GUARD_GC_TWO_REALMS_PASS\n",
+      "stderr": "",
+      "binary_sha256": "60683849710b72617d8f1b16284905426dc973bd5367c49782577cfc40f68af6",
+      "fixture_only": false
+    }
+  ]
+}

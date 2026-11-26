@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/d8",
+    "--snapshot_blob=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/V8_ON/snapshot_blob.bin",
+    "--jitless",
+    "--no-lazy",
+    "--use-ic",
+    "--allow-natives-syntax",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_microbench_20261109/v8_gdb04/marked.js"
+  ],
+  "LD_PRELOAD": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/octane_ic_rates_20261109/attempt01/v8_native_counts.so",
+  "returncode": 0
+}

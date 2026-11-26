@@ -1,0 +1,52 @@
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -1,7 +1,17 @@
+ /* Included after upstream find_own_property, with shape helpers available. */
+ #ifdef READ_IC_DIAGNOSTIC
+ #include "read_ic_diag.h"
+ #endif
++#if RDI_CAPACITY != 1
++#error byte-offset candidate is restricted to original M single-slot IC
++#endif
++/* UINT32_MAX remains the miss sentinel; never truncate a large index. */
++static force_inline uint32_t rdi_byte_offset(uint32_t index)
++{
++    if (index > UINT32_MAX / sizeof(JSProperty))
++        return UINT32_MAX;
++    return index * sizeof(JSProperty);
++}
+ static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
+ {
+ #if RDI_CAPACITY == 1
+@@ -28,6 +38,9 @@
+ static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
++    offset = rdi_byte_offset(offset);
++    if (offset == UINT32_MAX)
++        return;
+     RDI_COUNT(updates);
+ #if RDI_CAPACITY == 1
+     if (s->shape == shape) {
+--- a/read_ic_types.h
++++ b/read_ic_types.h
+@@ -4,7 +4,7 @@
+ #if RDI_CAPACITY == 1
+ typedef struct ReadICSite {
+     JSShape *shape;
+-    uint32_t prop_offset;
++    uint32_t prop_offset; /* byte displacement from current p->prop in U */
+     JSAtom atom;
+ } ReadICSite;
+ #elif RDI_CAPACITY == 4
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -18,7 +18,7 @@
+                 offset = rdi_probe(site, p->shape RDI_DARG(d));           \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
+-                    val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    val = JS_DupValue(ctx, ((JSProperty *)((uint8_t *)p->prop + offset))->u.value); \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \

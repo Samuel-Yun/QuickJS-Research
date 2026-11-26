@@ -1,0 +1,59 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -8231,6 +8231,16 @@
+ /* return TRUE, FALSE or (-1) in case of exception */
+ static JSValue js_function_hasInstance(JSContext *, JSValueConst, int, JSValueConst *);
+ 
++static uint64_t slot_hits, slot_fills, instance_primitive_hits, instance_object_hits;
++static int instance_active;
++JSValue instance_count_toggle(JSContext *ctx, JSValueConst self, int argc, JSValueConst *argv)
++{
++    instance_active = argc && JS_ToBool(ctx, argv[0]);
++    if (!instance_active)
++        fprintf(stderr, "IC_HITS,%llu,%llu,%llu,%llu\n", (unsigned long long)instance_primitive_hits,
++                (unsigned long long)instance_object_hits, (unsigned long long)slot_hits, (unsigned long long)slot_fills);
++    return JS_UNDEFINED;
++}
+ /* Always validate the current descriptor. A recycled PC can at most suggest
+    the wrong offset. No entry owns or dereferences an old function or shape. */
+ static JSProperty *instance_proto_property(JSContext *ctx, JSObject *ctor, uintptr_t site)
+@@ -8244,14 +8254,17 @@
+         entry = &ctx->rt->instance_slots[(site ^ (site >> 9)) & 63];
+         if (entry->site == site && entry->offset < (uint32_t)shape->prop_count) {
+             desc = &get_shape_prop(shape)[entry->offset];
+-            if (desc->atom == JS_ATOM_prototype && !(desc->flags & JS_PROP_TMASK))
++            if (desc->atom == JS_ATOM_prototype && !(desc->flags & JS_PROP_TMASK)) {
++                slot_hits += instance_active;
+                 return &ctor->prop[entry->offset];
++            }
+         }
+     }
+     desc = find_own_property(&prop, ctor, JS_ATOM_prototype);
+     if (!desc || (desc->flags & JS_PROP_TMASK))
+         return NULL;
+     if (entry) {
++        slot_fills += instance_active;
+         entry->offset = (uint32_t)(prop - ctor->prop);
+         entry->site = site;
+     }
+@@ -8291,6 +8304,8 @@
+     if (site && ctx->rt->instance_mode) {
+         int answer = instance_fast_result(ctx, val, JS_VALUE_GET_OBJ(obj), method, site);
+         if (answer >= 0) {
++            if (answer) instance_object_hits += instance_active;
++            else instance_primitive_hits += instance_active;
+             int interrupted = js_poll_interrupts(ctx);
+             JS_FreeValue(ctx, method);
+             return interrupted ? -1 : answer;
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4108,6 +4108,9 @@
+                       JS_NewCFunction(ctx, js_console_log, "log", 1));
+     JS_SetPropertyStr(ctx, global_obj, "console", console);
+ 
++    extern JSValue instance_count_toggle(JSContext *, JSValueConst, int, JSValueConst *);
++    JS_SetPropertyStr(ctx, global_obj, "__roundCensus",
++                      JS_NewCFunction(ctx, instance_count_toggle, "__roundCensus", 1));
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));

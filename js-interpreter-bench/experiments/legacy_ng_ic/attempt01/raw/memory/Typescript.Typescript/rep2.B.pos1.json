@@ -1,0 +1,29 @@
+{
+  "case": "Typescript.Typescript",
+  "variant": "B",
+  "rep": 2,
+  "order": 1,
+  "N": 1,
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "%M",
+    "-o",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/raw/memory/Typescript.Typescript/rep2.B.pos1.time.txt",
+    "--",
+    "/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic/attempt01/generated/Typescript.Typescript.N1.measure.js"
+  ],
+  "binary_sha256": "aedb704e6d38aa48414357911446e47b0b05ef9f35b9c244589b7d36e5318802",
+  "script_sha256": "568f3170f3908f3e8b8157935b24ed96776175d3c96f7e6f50910656b766ca13",
+  "valid": true,
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"Octane\",\"case\":\"Typescript.Typescript\",\"suite\":\"Typescript\",\"subbenchmark\":\"Typescript\",\"mode\":\"LEGACY_NG_IC_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":1,\"correctness\":\"PASS\",\"extra_validation_calls\":0,\"checksum\":null,\"timer\":\"benchNow\",\"start_ms\":192147.908087,\"stop_ms\":194397.851859,\"elapsed_ms\":2249.9437719999987,\"elapsed_per_call_ms\":2249.9437719999987,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "peak_rss_kib": 104324,
+  "outer_wall_ns": 2442912218,
+  "timestamp": "2026-10-22T17:13:00.960603+00:00",
+  "method": "GNU time 1 fresh small launcher -> qjs; KiB",
+  "performance_sample": false,
+  "instrumented_binary": false
+}

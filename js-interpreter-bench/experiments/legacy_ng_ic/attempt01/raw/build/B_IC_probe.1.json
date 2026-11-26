@@ -1,0 +1,16 @@
+{
+  "command": [
+    "objdump",
+    "-d",
+    "-M",
+    "intel",
+    "--disassemble=get_ic_prop_offset.isra.0",
+    "/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "exit_code": 0,
+  "stdout": "\n/home/mzyx/legacy_ng_ic_attempt01/B_port2/qjs:     file format elf64-x86-64\n\n\nDisassembly of section .init:\n\nDisassembly of section .plt:\n\nDisassembly of section .plt.got:\n\nDisassembly of section .plt.sec:\n\nDisassembly of section .text:\n\n0000000000017f40 <get_ic_prop_offset.isra.0>:\n   17f40:\t3b 77 04             \tcmp    esi,DWORD PTR [rdi+0x4]\n   17f43:\t73 3b                \tjae    17f80 <get_ic_prop_offset.isra.0+0x40>\n   17f45:\t89 f6                \tmov    esi,esi\n   17f47:\t48 8b 4f 18          \tmov    rcx,QWORD PTR [rdi+0x18]\n   17f4b:\t48 8d 04 f5 00 00 00 \tlea    rax,[rsi*8+0x0]\n   17f52:\t00 \n   17f53:\t48 29 f0             \tsub    rax,rsi\n   17f56:\t48 8d 04 c1          \tlea    rax,[rcx+rax*8]\n   17f5a:\t0f b6 78 34          \tmovzx  edi,BYTE PTR [rax+0x34]\n   17f5e:\t89 f9                \tmov    ecx,edi\n   17f60:\t89 ce                \tmov    esi,ecx\n   17f62:\t48 39 14 f0          \tcmp    QWORD PTR [rax+rsi*8],rdx\n   17f66:\t75 08                \tjne    17f70 <get_ic_prop_offset.isra.0+0x30>\n   17f68:\t88 48 34             \tmov    BYTE PTR [rax+0x34],cl\n   17f6b:\t8b 44 b0 20          \tmov    eax,DWORD PTR [rax+rsi*4+0x20]\n   17f6f:\tc3                   \tret\n   17f70:\t83 c1 01             \tadd    ecx,0x1\n   17f73:\t83 e1 03             \tand    ecx,0x3\n   17f76:\t39 cf                \tcmp    edi,ecx\n   17f78:\t75 e6                \tjne    17f60 <get_ic_prop_offset.isra.0+0x20>\n   17f7a:\tb8 ff ff ff ff       \tmov    eax,0xffffffff\n   17f7f:\tc3                   \tret\n   17f80:\t50                   \tpush   rax\n   17f81:\t48 8d 0d 48 13 0c 00 \tlea    rcx,[rip+0xc1348]        # d92d0 <__PRETTY_FUNCTION__.63>\n   17f88:\tba dd 02 00 00       \tmov    edx,0x2dd\n   17f8d:\t48 8d 35 df 51 0b 00 \tlea    rsi,[rip+0xb51df]        # cd173 <_IO_stdin_used+0x173>\n   17f94:\t48 8d 3d c5 52 0b 00 \tlea    rdi,[rip+0xb52c5]        # cd260 <_IO_stdin_used+0x260>\n   17f9b:\te8 00 9b ff ff       \tcall   11aa0 <__assert_fail@plt>\n\nDisassembly of section .fini:\n",
+  "stderr": "",
+  "wall_ns": 3925046,
+  "timestamp": "2026-10-22T17:15:34.785646+00:00"
+}

@@ -1,0 +1,39 @@
+{
+  "files": {
+    "common.py": "2605a300ca22b6ae4da70f77bc17480e06fb0b2a9f414b048780e9405e9d6483",
+    "run.py": "06e00d22cfa936136ebbc78e3f84cd22625536f8fb177f1cf29233978e7deb0b",
+    "protocol.json": "32d6505a033ee3c6669cb829acec0ab1cae75e8bd0bd027fe4f6c72db76a21ab",
+    "manifest.json": "87133af29b3b5bc129e1e8977ca6c9b1b57e81de8c6ec93e5bcf08f81bfd8006",
+    "inputs.json": "38088728980d39809462a0dc9ea95fff4d688088229e738b8f8977429f2c9e59",
+    "inputs/M1.own_integer.js": "9ea2ffec1b6b6549cd2a1f898fe25a6da9c0afcbcf619c393ae3e13039149355",
+    "inputs/M4.numeric_control.js": "97a55b65f46c7ae09324666cbb9204ff7d4ae0f4b4e7ba13b22542ce2498df67",
+    "inputs/adapter.js": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7",
+    "inputs/base.js": "216612c2e7096a02b3e52b57e9cf9351bbaf180d60938d5c60b85fd756232733",
+    "inputs/micro_driver.js": "3ecaaa56506a96e06545cca541e5570da6f302ce9d53a0f917611f1198882127",
+    "inputs/richards.js": "1246a64a24b931158bf01c24640343259fa74b0226e73bad630bd1f686aa0fa7",
+    "inputs/richards_driver.js": "ad5990874e44b4ecf068615cdc1232c126ad821a18198a73871f65d938efb90d",
+    "inputs/timer_probe.js": "f0622bce687394fb1391f7aa76a57d6f9d3fe3114a79e54af32a1d44f3e27587",
+    "inputs/v8_m1_diagnostic.js": "547968580964142cb0d516d0f881c483af8549bb6f0d46bc731cfea5f14b412b"
+  },
+  "schedule_sha256": "3024f51e32e7dd6fb6197e1b656c2bdd1fa481809048f9a78d55ce5fdf35fafb",
+  "formal_scripts": {
+    "M1.own_integer": {
+      "path": "scripts/M1.own_integer/N32768.measure.js",
+      "sha256": "775a817c0834ab13549d023f7c0e60c0fa3fe546fd37c5ab02655316be732068"
+    },
+    "M4.numeric_control": {
+      "path": "scripts/M4.numeric_control/N32768.measure.js",
+      "sha256": "ab34f74ee82431c5da28198f3f9bed52cee93479f2f6d82dbecdc9962f1bc0de"
+    },
+    "Richards.Richards": {
+      "path": "scripts/Richards.Richards/N512.measure.js",
+      "sha256": "7e8744a0ce5adf44b24bb143eb1935a6e3b47a0a8fd45b7737250d6bff6b17e0"
+    }
+  },
+  "eligible": [
+    "M1.own_integer",
+    "M4.numeric_control",
+    "Richards.Richards"
+  ],
+  "timestamp": "2026-10-28T10:38:06.716911+00:00"
+}

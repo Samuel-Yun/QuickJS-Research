@@ -1,0 +1,30 @@
+{
+  "command": [
+    "gcc",
+    "-g",
+    "-O2",
+    "-fwrapv",
+    "-D_GNU_SOURCE",
+    "-DHAVE_CLOSEFROM",
+    "-DCONFIG_VERSION=\"2026-06-04\"",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-I/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.sanitize",
+    "-DLSG_TEST_LOCAL=1",
+    "-DLSG_TEST_SPARSE=1",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ownership_realms.c",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.sanitize/.obj/asan/ubsan/quickjs.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.sanitize/.obj/asan/ubsan/dtoa.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.sanitize/.obj/asan/ubsan/libregexp.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.sanitize/.obj/asan/ubsan/libunicode.o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.sanitize/.obj/asan/ubsan/cutils.o",
+    "-lm",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/validation/CTOR_LOCAL_SHAPE_GUARD.sanitize.ownership_realms"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

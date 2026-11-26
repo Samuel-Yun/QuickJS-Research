@@ -1,0 +1,17 @@
+{
+  "positions": {
+    "PdfJS.PdfJS.M.N2": {
+      "status":"BLOCKED_DIAGNOSTIC_PROCESS_DISAPPEARANCE",
+      "reason":"Both long collect invocations disappeared while this was the next unsaved position; WSL boot changed and no child completion/exit record was obtained. Cause UNKNOWN, not asserted to be an engine correctness failure or OOM.",
+      "formal_exclusion":false,
+      "evidence":["jobs/05_collect_phases.started.json","diagnostic_v3/raw/PdfJS.PdfJS.A.N2.process.json","engineering_notes.md"]
+    },
+    "Mandreel.Mandreel.M.N1": {
+      "status":"BLOCKED_DIAGNOSTIC_PROCESS_DISAPPEARANCE",
+      "reason":"The bounded foreground chunk ended without a captured child completion after Mandreel A.N1 was saved; next pending position M.N1. No claim that M itself crashed; exact cause UNKNOWN.",
+      "formal_exclusion":false,
+      "evidence":["diagnostic_v3/raw/Mandreel.Mandreel.A.N1.process.json","engineering_notes.md"]
+    }
+  },
+  "policy":"Preserve diagnostics and failed starts. Continue bounded independent diagnostics on remaining cases; do not convert this missing count into a valid observation. Frozen formal M is separately executable and unchanged."
+}

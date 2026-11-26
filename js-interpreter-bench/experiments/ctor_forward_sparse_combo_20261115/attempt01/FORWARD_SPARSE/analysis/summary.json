@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "formal_samples": 43,
+  "independent_count_processes": 43,
+  "new_baseline_full_runs": 0,
+  "comparison": "cross-batch single pass vs historical standalone R3/FORWARD/SPARSE; A/EVAL_COLD/V8 historical30 medians",
+  "aggregates": {
+    "octane": {
+      "A": -7.849875319359445,
+      "EVAL_COLD": -2.2688047675758605,
+      "C": -1.5101306387626745,
+      "R3": -0.8756289033511444,
+      "FORWARD": 0.023652318666655958,
+      "SPARSE": 0.010609889393609073,
+      "V8_ON": 53.07638802658183,
+      "standalone_vs_R3_pct": {
+        "FORWARD": -0.8990685714542535,
+        "SPARSE": -0.8861447737643968
+      },
+      "sum_ms": {
+        "A": 8753.443533238169,
+        "EVAL_COLD": 8113.9236723789945,
+        "C": 8149.78952291813,
+        "R3": 8289.348012797964,
+        "FORWARD": 8132.247021128955,
+        "SPARSE": 8210.082200228593,
+        "combo": 8281.670760047913,
+        "V8_ON": 6980.745217285156
+      },
+      "max_regression_vs_R3": {
+        "case": "EarleyBoyer.Earley",
+        "N": 512,
+        "A_ms": 5.509533365257084,
+        "EVAL_COLD_ms": 5.310246441396885,
+        "C_ms": 5.192619000037666,
+        "R3_ms": 4.591700789052993,
+        "FORWARD_ms": 4.605608773417771,
+        "SPARSE_ms": 4.576851564459503,
+        "combo_ms": 4.67787781637162,
+        "V8_ON_ms": 1.713443359375,
+        "vs_A_pct": -15.09484549326544,
+        "vs_EVAL_COLD_pct": -11.908460972649648,
+        "vs_C_pct": -9.91293957177125,
+        "vs_R3_pct": 1.8767997149134796,
+        "vs_FORWARD_pct": 1.5691528853029046,
+        "vs_SPARSE_pct": 2.207330748862679,
+        "vs_V8_ON_pct": 173.0103560632395,
+        "FORWARD_vs_R3_pct": 0.3028939602932157,
+        "SPARSE_vs_R3_pct": -0.32339268771371943
+      },
+      "faster_than_both_cases": [
+        "Richards.Richards",
+        "RayTrace.RayTrace",
+        "CodeLoad.CodeLoadClosure",
+        "CodeLoad.CodeLoadJQuery"
+      ],
+      "slower_than_both_cases": [
+        "EarleyBoyer.Earley",
+        "NavierStokes.NavierStokes",
+        "Mandreel.Mandreel",
+        "zlib.zlib"
+      ]
+    },
+    "sunspider": {
+      "A": -2.7090353017826696,
+      "EVAL_COLD": -1.2405135289376257,
+      "C": -1.159559887836492,
+      "R3": 0.9671423467580098,
+      "FORWARD": 1.3713707917780038,
+      "SPARSE": 1.8179139724982196,
+      "V8_ON": 40.993335772123494,
+      "standalone_vs_R3_pct": {
+        "FORWARD": -0.39875996729915597,
+        "SPARSE": -0.8355814733839617
+      },
+      "sum_ms": {
+        "A": 401.84999168262584,
+        "EVAL_COLD": 396.6749892469961,
+        "C": 398.20031219284283,
+        "R3": 393.04693526995834,
+        "FORWARD": 391.4414129567449,
+        "SPARSE": 389.57281946984585,
+        "combo": 393.8915127130458,
+        "V8_ON": 250.257126953125
+      },
+      "max_regression_vs_R3": {
+        "case": "access-binary-trees",
+        "N": 256,
+        "A_ms": 9.188603435643017,
+        "EVAL_COLD_ms": 8.550005411962047,
+        "C_ms": 8.455853988300078,
+        "R3_ms": 4.776233703130856,
+        "FORWARD_ms": 4.820785941439681,
+        "SPARSE_ms": 6.091568062431179,
+        "combo_ms": 6.221754097612575,
+        "V8_ON_ms": 4.897763671875,
+        "vs_A_pct": -32.28835980146773,
+        "vs_EVAL_COLD_pct": -27.230992287935727,
+        "vs_C_pct": -26.42074820330046,
+        "vs_R3_pct": 30.264858973173148,
+        "vs_FORWARD_pct": 29.06099074281876,
+        "vs_SPARSE_pct": 2.137151450121655,
+        "vs_V8_ON_pct": 27.032550250239296,
+        "FORWARD_vs_R3_pct": 0.9327901664363702,
+        "SPARSE_vs_R3_pct": 27.53915409202259
+      },
+      "faster_than_both_cases": [
+        "bitops-bits-in-byte",
+        "bitops-bitwise-and",
+        "date-format-tofte",
+        "regexp-dna"
+      ],
+      "slower_than_both_cases": [
+        "3d-cube",
+        "3d-raytrace",
+        "access-binary-trees",
+        "access-nbody",
+        "access-nsieve",
+        "bitops-nsieve-bits",
+        "crypto-sha1",
+        "math-cordic",
+        "math-partial-sums",
+        "math-spectral-norm",
+        "string-base64",
+        "string-fasta",
+        "string-tagcloud",
+        "string-unpack-code",
+        "string-validate-input"
+      ]
+    }
+  },
+  "reference_files_sha256": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_four_rounds_20261115/attempt01/03_constructor_plan/analysis/octane.csv": "31b51d12b50f4dd20a978d6f45abb25a8ae108ca550b8a116780cb48c7d261c6",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/analysis/octane.csv": "8fb7af40a299e74eb4af3d3ac5152f9a384984efa02bf50cb9c350fde8757070",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/03_sparse_ctor/analysis/octane.csv": "f3fc80dc2880c96f28587ef35fd872bfaf1a1bcc4a6a9a67e367854780c6465a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_four_rounds_20261115/attempt01/03_constructor_plan/analysis/sunspider.csv": "a11e04a477d6f8248c31ddef6aeb5d88ab0bf45fa95e5022a9a0410fdcce59b3",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/01_forward_ctor/analysis/sunspider.csv": "c7ec13e7f228ce79b1cf2b7441c327b3f561a4b0fe952bb91c2ab02177482330",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_ic_followups_20261115/attempt01/03_sparse_ctor/analysis/sunspider.csv": "c319858ab74aa285a9c8e0f004b2defa493d2e04eb4c83d33acb424510a27125"
+  }
+}

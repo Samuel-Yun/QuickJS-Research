@@ -1,0 +1,117 @@
+--- a/qjs.c
++++ b/qjs.c
+@@ -311,6 +311,7 @@
+     exit(1);
+ }
+ 
++extern void audit_report(void);
+ int main(int argc, char **argv)
+ {
+     JSRuntime *rt;
+@@ -559,10 +560,12 @@
+                best[1] + best[2] + best[3] + best[4],
+                best[1], best[2], best[3], best[4]);
+     }
++    audit_report();
+     return 0;
+  fail:
+     js_std_free_handlers(rt);
+     JS_FreeContext(ctx);
+     JS_FreeRuntime(rt);
++    audit_report();
+     return 1;
+ }
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,5 @@
++#define DUMP_BYTECODE 0
++#define AUDIT_VARIANT 0
+ /*
+  * QuickJS Javascript Engine
+  *
+@@ -6132,6 +6134,8 @@
+     return NULL;
+ }
+ 
++#include "audit_hooks.h"
++
+ static force_inline JSShapeProperty *find_own_property(JSProperty **ppr,
+                                                        JSObject *p,
+                                                        JSAtom atom)
+@@ -6139,11 +6143,14 @@
+     JSShape *sh;
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
++    audit_lookup(0);
+     sh = p->shape;
+     h = (uintptr_t)atom & sh->prop_hash_mask;
++    audit_bucket();
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);
+     while (h) {
++        audit_chain();
+         pr = &prop[h - 1];
+         if (likely(pr->atom == atom)) {
+             *ppr = &p->prop[h - 1];
+@@ -8211,6 +8218,7 @@
+                                JSAtom prop, JSValueConst this_obj,
+                                BOOL throw_ref_error)
+ {
++    audit_generic();
+     JSObject *p;
+     JSProperty *pr;
+     JSShapeProperty *prs;
+@@ -17747,6 +17755,7 @@
+                                JSValueConst this_obj, JSValueConst new_target,
+                                int argc, JSValue *argv, int flags)
+ {
++    AuditScope audit_frame __attribute__((cleanup(audit_end)))=audit_pause();
+     JSRuntime *rt = caller_ctx->rt;
+     JSContext *ctx;
+     JSObject *p;
+@@ -19106,6 +19115,7 @@
+ 
+ #define GET_FIELD_INLINE(name, keep, is_length)                         \
+             {                                                           \
++                AUDIT_SCOPE(b,pc-1);                                    \
+                 JSValue val, obj;                                       \
+                 JSAtom atom;                                            \
+                 JSObject *p;                                            \
+@@ -19151,6 +19161,7 @@
+                     if (unlikely(JS_IsException(val)))                  \
+                         goto exception;                                 \
+                 }                                                       \
++                audit_value(val);                                       \
+                 if (keep) {                                             \
+                     *sp++ = val;                                        \
+                 } else {                                                \
+@@ -19176,6 +19187,7 @@
+             
+         CASE(OP_put_field):
+             {
++                AUDIT_SCOPE(b,pc-1);
+                 int ret;
+                 JSValue obj;
+                 JSAtom atom;
+@@ -36274,6 +36286,7 @@
+     }
+ 
+     js_free(ctx, fd);
++    audit_register(ctx,b);
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -36282,6 +36295,7 @@
+ 
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b)
+ {
++    audit_free(b);
+     int i;
+ 
+ #if 0
+@@ -61422,3 +61436,5 @@
+     JS_FreeValue(ctx, obj);
+     return 0;
+ }
++
++#include "audit_tail.inc"

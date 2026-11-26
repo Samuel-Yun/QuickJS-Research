@@ -1,0 +1,5 @@
+static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,unsigned n)
+{
+    if(sparse_same(s,c)){FOLLOW(2);return 0;}
+    return plan_slow_eligible(ctx,c,t,n);
+}

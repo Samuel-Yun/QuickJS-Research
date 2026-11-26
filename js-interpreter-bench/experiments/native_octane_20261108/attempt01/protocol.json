@@ -1,0 +1,284 @@
+{
+  "cohort_id": "native-ubuntu2604-p1-b2-costs-20261108-attempt01",
+  "labels": [
+    "PREP2",
+    "SPLIT16"
+  ],
+  "repetitions": 5,
+  "seed": 2026110801,
+  "affinity": [
+    2
+  ],
+  "cases": [
+    "Richards.Richards",
+    "DeltaBlue.DeltaBlue",
+    "Crypto.Encrypt",
+    "Crypto.Decrypt",
+    "RayTrace.RayTrace",
+    "EarleyBoyer.Earley",
+    "EarleyBoyer.Boyer",
+    "RegExp.RegExp",
+    "Splay.Splay",
+    "NavierStokes.NavierStokes",
+    "PdfJS.PdfJS",
+    "Mandreel.Mandreel",
+    "Gameboy.Gameboy",
+    "CodeLoad.CodeLoadClosure",
+    "CodeLoad.CodeLoadJQuery",
+    "Typescript.Typescript",
+    "zlib.zlib"
+  ],
+  "N": {
+    "Richards.Richards": 1024,
+    "DeltaBlue.DeltaBlue": 512,
+    "Crypto.Encrypt": 512,
+    "Crypto.Decrypt": 32,
+    "RayTrace.RayTrace": 128,
+    "EarleyBoyer.Earley": 512,
+    "EarleyBoyer.Boyer": 32,
+    "RegExp.RegExp": 64,
+    "Splay.Splay": 2048,
+    "NavierStokes.NavierStokes": 32,
+    "PdfJS.PdfJS": 16,
+    "Mandreel.Mandreel": 1,
+    "Gameboy.Gameboy": 8,
+    "CodeLoad.CodeLoadClosure": 4096,
+    "CodeLoad.CodeLoadJQuery": 512,
+    "Typescript.Typescript": 1,
+    "zlib.zlib": 1
+  },
+  "scripts": {
+    "Richards.Richards": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Richards.Richards.N1.correctness.js",
+        "sha256": "a3c1395c7e28710a1099074548000e822f8da2846edcff001e62d8ef05889cb8",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Richards.Richards.N1024.measure.js",
+        "sha256": "790695226cd463de8fb270ffcbabede92c02053c89fb224c935ff33f7e96f392",
+        "N": 1024
+      }
+    },
+    "DeltaBlue.DeltaBlue": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.DeltaBlue.DeltaBlue.N1.correctness.js",
+        "sha256": "324087e54b48dc8ee8caa17b41246c0b2533216dcba95a24866e545078c329bd",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.DeltaBlue.DeltaBlue.N512.measure.js",
+        "sha256": "b2bf40f5825ef62c392a2ca96627e57a090807195190d87b66162dfb7c37aba0",
+        "N": 512
+      }
+    },
+    "Crypto.Encrypt": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Encrypt.N1.correctness.js",
+        "sha256": "478e142f3253c66d1528650a148a78fcce4de7e82db9dafcc8170eecefbe876d",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Encrypt.N512.measure.js",
+        "sha256": "11bbc6c43459be5e0df7242d10feccdebf0ba87e2119670fdaf5c7626af0a51f",
+        "N": 512
+      }
+    },
+    "Crypto.Decrypt": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Decrypt.N1.correctness.js",
+        "sha256": "6306c0fd1d825d305acdd9e4d9d81e333fb977a4ad1ec06011ad06580deaed18",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Crypto.Decrypt.N32.measure.js",
+        "sha256": "4807566ce50b64d2c310caada2f088e953395a37081541997c2720b6a9fcf843",
+        "N": 32
+      }
+    },
+    "RayTrace.RayTrace": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RayTrace.RayTrace.N1.correctness.js",
+        "sha256": "c89d6fef6c64fd403a0c883e00e3057493ba2c625453df1244ebe45c8bcea933",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RayTrace.RayTrace.N128.measure.js",
+        "sha256": "4385bec139189ac905a18744bd116ac1dbc28a8de0bd469e7f5e92cfe37fd91d",
+        "N": 128
+      }
+    },
+    "EarleyBoyer.Earley": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Earley.N1.correctness.js",
+        "sha256": "861ad1b10ccee0d98d69ed30a14efab8091269de64c708d3a4f852a3d12929d5",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Earley.N512.measure.js",
+        "sha256": "c575554c5b3e630772d692fa2ab1fa4f1dc45e930b1a428131bb6fad834aacf0",
+        "N": 512
+      }
+    },
+    "EarleyBoyer.Boyer": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Boyer.N1.correctness.js",
+        "sha256": "965f24e05c40f6cf884a485e64e17b34ba182324f8fdf2707229e8e222b1b66e",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.EarleyBoyer.Boyer.N32.measure.js",
+        "sha256": "5346c8b8ee27d8f15f5d04dcdceead3c63eead03584b28b6f25bc33e6c6388d0",
+        "N": 32
+      }
+    },
+    "RegExp.RegExp": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RegExp.RegExp.N1.correctness.js",
+        "sha256": "00fd2f3229281154fe650d5ff572c257f3ed5a42fbc2610fcd54281fa0b27c2e",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.RegExp.RegExp.N64.measure.js",
+        "sha256": "b1cf4c1cced1733bffa63b2ed777b640ec3b1017e44ecf57827780e5b48bed26",
+        "N": 64
+      }
+    },
+    "Splay.Splay": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Splay.Splay.N1.correctness.js",
+        "sha256": "3319715201b9758dc9d507e99f7c0875029ad1122fec18ef40b9669cfd6f1155",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Splay.Splay.N2048.measure.js",
+        "sha256": "0a71ed4eb9e7950c4d80b0d328e07f72c16d1d8e7d3b6e2bd9b97df56504dcf9",
+        "N": 2048
+      }
+    },
+    "NavierStokes.NavierStokes": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.NavierStokes.NavierStokes.N1.correctness.js",
+        "sha256": "413db48309c33b6e65ef73f924347c3f855a733c055707c7d39a25051f8414f3",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.NavierStokes.NavierStokes.N32.measure.js",
+        "sha256": "3acaaa9a4a3474891552e81dd2a0b1ee9dfd1370baaa063a4c0c98983ddd0e1d",
+        "N": 32
+      }
+    },
+    "PdfJS.PdfJS": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.PdfJS.PdfJS.N1.correctness.js",
+        "sha256": "1afccf77417bde732b48d0d37fc955253db0bba2704ad737e1a5d782c5d71f6b",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.PdfJS.PdfJS.N16.measure.js",
+        "sha256": "ca27adc436ad0fd33d924a91ad05e18f6996c6872fde2c07586541724707f5b0",
+        "N": 16
+      }
+    },
+    "Mandreel.Mandreel": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Mandreel.Mandreel.N1.correctness.js",
+        "sha256": "3233e65563bac81c1ab92fac092631f6364204b6e8fa04c526429358130b4cda",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Mandreel.Mandreel.N1.measure.js",
+        "sha256": "da05e2303dbba99fd3ab297ce8c7fcba8b6035000c078b20be4040316b014a24",
+        "N": 1
+      }
+    },
+    "Gameboy.Gameboy": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Gameboy.Gameboy.N1.correctness.js",
+        "sha256": "41141a9acf97022cf76b739f0b2a25b31fd2a2cc6b01131cc3732a953424b99b",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Gameboy.Gameboy.N8.measure.js",
+        "sha256": "382ab53feefb1c40961fe7cfbdad01574398299630f14c78e8ae2ca1b94ab562",
+        "N": 8
+      }
+    },
+    "CodeLoad.CodeLoadClosure": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadClosure.N1.correctness.js",
+        "sha256": "a7686d55e54e81fa6414335b6c5b18f2c72d056937ff5338bb2a9838adc59f64",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadClosure.N4096.measure.js",
+        "sha256": "6c5b38d1b94a0400761c0f47a075b39a611d201e4862c30947320bd3e9907b99",
+        "N": 4096
+      }
+    },
+    "CodeLoad.CodeLoadJQuery": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadJQuery.N1.correctness.js",
+        "sha256": "d3528c0778be857c66ffbfd30197f45ce47a45b1a3fd31a61db09d545426b22b",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.CodeLoad.CodeLoadJQuery.N512.measure.js",
+        "sha256": "c26db87d8e536496c16e6c1f2af4f0b4e5191eae4e66e5aa6a9f49b923fda338",
+        "N": 512
+      }
+    },
+    "Typescript.Typescript": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Typescript.Typescript.N1.correctness.js",
+        "sha256": "2406ae2a0d5d38b30ff0692ddcd4e4d076aa6be246916777238506389e15e978",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.Typescript.Typescript.N1.measure.js",
+        "sha256": "12f179f34bb0612007bb6c36e59db2752b8738546705ea8b74e68e9f45f3f690",
+        "N": 1
+      }
+    },
+    "zlib.zlib": {
+      "correctness": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.zlib.zlib.N1.correctness.js",
+        "sha256": "426cace255f13e426cbfb959aeee0caff819334d6aca85163a662628d93d1ffc",
+        "N": 1
+      },
+      "measure": {
+        "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/scripts/octane.zlib.zlib.N1.measure.js",
+        "sha256": "cfecdfe58f13df5fb7714e88b08b1531fd8bf6ea09780768371d3c4f9bd63991",
+        "N": 1
+      }
+    }
+  },
+  "metric": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1, ms per complete Run",
+  "warmup_calls": 0,
+  "frozen_files": {
+    "experiments/native_octane_20261108/attempt01/run.py": "9c2de4462d92e60f8c13e540b4fc8b46503d405fea24b644faedcdf216729232",
+    "experiments/native_octane_20261108/attempt01/variants.py": "4482b468667e78de2c967086b4d9a705cc83ab66e839a1204a7c76d422ea528f",
+    "experiments/native_octane_20261108/attempt01/probe.c": "6ab4a491ede29894b938644bba43b6d30bd7ee1f07bf58321c45ac5d133ef064",
+    "experiments/native_octane_20261108/attempt01/extra.js": "5d3d66b32911dd50638e3321f3fa030b9c2dc35ff08eb22e5cec3945387e4430",
+    "experiments/native_octane_20261107/attempt01/run.py": "f7efbdeacd99e849730f90044d8d92067bba712320f906c0bb55eb3d0bd4aa5f",
+    "experiments/native_octane_20261107/attempt01/protocol.json": "2a8d384bc55fc8dc0abce07aa449dcd146b7c6bc4ae689aace1623860ec3a7d2",
+    "experiments/native_octane_20261107/attempt01/runtime_manifest.json": "d4d22ca890b037e88add591b00c25bdb04df44d5eaf9de67e1f354fe68b2dab5",
+    "experiments/native_octane_20261107/attempt01/raw/archive.json": "3a1efe3cebbdf9263bd20289b9442eb7ecbe5553faa631aaea58948a24cd4c4c",
+    "experiments/native_octane_20261107/attempt02/source_manifest.json": "798b6a713beb8b0d014c39829e1b3365035b479160ee3880c9741ba74683caad",
+    "experiments/native_octane_20261107/attempt02/runtime_manifest.json": "60eb009f37c79d78a9ed235e727f2330852faa6b02b0d8d13d15cf43cbc57201",
+    "experiments/native_octane_20261107/attempt02/raw/archive.json": "dc6a23e98bc8ea252ab8103a1048d678b26a3e28d1f5ca29cf4ea3b3ac4e41c9",
+    "experiments/native_octane_20261107/attempt02/combined.js": "4c0dab492b2773931fd040e9c7ca9e43378c122af264a941e95264a9757bcf02",
+    "experiments/ic_search_lab/v3_mass_search/generate.py": "45082590bb7752c7bc2f2ea29a12957cea412a45ae7a6a57985a58493f9fc1dc",
+    "experiments/ic_search_lab/v6_targeted_ic/variants.py": "9243b7f3ed7f4dc9febf25e2fae3758b5139a9c9e738e6da0917a843eb426757"
+  },
+  "new_performance_samples": 170,
+  "new_control_samples": 0,
+  "controls_reused_at_user_request": true,
+  "same_boot_as_parent": true,
+  "interpretation": "cross-batch exploratory vs parent/old controls; bootstrap does not cover unobserved batch drift",
+  "independent_variants": true,
+  "combined_new_variant_not_authorized_by_positive_signal_yet": true,
+  "LSan": "previously unavailable in current sandbox; disabled in ASan/UBSan builds and tests",
+  "SunSpider": false,
+  "V8_OFF": false
+}

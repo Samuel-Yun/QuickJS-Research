@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "validation_runs": [
+    {
+      "path": "test_runs/20261116_162400_750187",
+      "processes": 2,
+      "rows": 2,
+      "status": "PASS",
+      "protocol_sha256": "d61f3d603a1283a4cb170a64af5a1d33633f52e71a276e0b6e7ffe948a93093f"
+    },
+    {
+      "path": "test_runs/20261116_162432_028425",
+      "processes": 43,
+      "rows": 43,
+      "status": "PASS",
+      "protocol_sha256": "e3d249e3e0ea958c3e22cef11af27e096cb732b4990a2fd0a4838918ccb00041"
+    },
+    {
+      "path": "test_runs/20261116_162715_756746",
+      "processes": 4,
+      "rows": 2,
+      "status": "PASS",
+      "protocol_sha256": "dfb2b8da6a43adf6610a45f97f66e2d44ab20e7934c65de49102b7856337dbd3"
+    }
+  ],
+  "full_method_suite_cases": {
+    "octane": 17,
+    "sunspider": 26
+  },
+  "frozen_inputs_byte_identical": true,
+  "support_zlib": "PASS",
+  "paired_A_method": "PASS",
+  "two_repetition_order": "A/method then method/A",
+  "median_and_range": "PASS",
+  "fourteen_suite_GM_weighting": "PASS: independent known-ratio check",
+  "timeout": "PASS: failed process retained, incomplete report, exit 1, no retry",
+  "runner_sha256": "7dee36f645c276937ab2d16e79ddcb16f0e695678ef35db6fe1af8b0686a317b",
+  "note": "Runner integration checks; historical performance CSV files unchanged. Full-suite run preceded the argument-intermixing-only adjustment; later paired repeat/timeout checks used the final runner."
+}

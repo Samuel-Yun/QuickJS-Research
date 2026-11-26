@@ -1,0 +1,49 @@
+{
+  "labels": [
+    "SPARSE",
+    "BODY",
+    "SHAM",
+    "SITE"
+  ],
+  "cases": [
+    [
+      "external",
+      "Acorn"
+    ],
+    [
+      "external",
+      "MarkdownIt"
+    ]
+  ],
+  "reps": 20,
+  "start": 11,
+  "external_N": {
+    "Acorn": 1,
+    "MarkdownIt": 256
+  },
+  "CPU": 2,
+  "TZ": "Asia/Shanghai",
+  "locale": "C",
+  "order": "rotate labels by (rep+case_index-1) mod 4",
+  "first_Run_included": true,
+  "extra_warmup": 0,
+  "diagnostics": false,
+  "engines": {
+    "SPARSE": {
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SPARSE.release/qjs",
+      "sha256": "1973423771789e85e7a64f58be9147a8064b3ed795a603388d2a594a9c9eab7a"
+    },
+    "BODY": {
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/BODY.release.rev02/qjs",
+      "sha256": "545520468623c95c07beb43568084cf81d624a6620df56589cb3359b9a5e5a14"
+    },
+    "SHAM": {
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.release/qjs",
+      "sha256": "3e14f186e064a67ecc3b47521f730b2bbbc1b405c6865d59afe6be21cd5a313e"
+    },
+    "SITE": {
+      "binary": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/candidate/work/SITE.release/qjs",
+      "sha256": "3e14f186e064a67ecc3b47521f730b2bbbc1b405c6865d59afe6be21cd5a313e"
+    }
+  }
+}

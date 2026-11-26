@@ -1,0 +1,249 @@
+Source: /home/mzyx/jsc_webkit_fd3406f/Source/JavaScriptCore/runtime/Options.cpp
+SHA256: 415852d28e3a279281ef1952150c35906326e2d18365d2ef04700c3d042b8fbe
+854:     if (!Options::allowDoubleShape())
+855:         Options::useJIT() = false; // We don't support JIT with !allowDoubleShape. So disable it.
+856: 
+857:     if (!Options::useWasm())
+858:         disableAllWasmOptions();
+859: 
+860:     if (!Options::useJIT())
+861:         disableAllWasmJITOptions();
+862: 
+863:     if (!Options::useWasmIPInt())
+864:         Options::thresholdForBBQOptimizeAfterWarmUp() = 0; // Trigger immediate BBQ tier up.
+865: 
+866: #if ENABLE(WEBASSEMBLY)
+867: #if CPU(ARM64)
+868:     if (Options::enableWasmDebugger()) [[unlikely]] {
+869:         Options::useBBQJIT() = false;
+870:         Options::useOMGJIT() = false;
+871:     }
+872: #else
+873:     Options::enableWasmDebugger() = false;
+874: #endif
+875: #endif
+876: 
+877:     // At initialization time, we may decide that useJIT should be false for any
+878:     // number of reasons (including failing to allocate JIT memory), and therefore,
+879:     // will / should not be able to enable any JIT related services.
+880:     if (!Options::useJIT()) {
+881:         disableAllJITOptions();
+882: #if OS(DARWIN)
+883:         // If we don't know what the sandbox policy is on mach exception handler use is, we'll
+884:         // take the default behavior of blocking its use if the JIT is disabled. JIT disablement
+885:         // is a good proxy indicator for when mach exception handler use would also be blocked.
+886:         if (machExceptionHandlerSandboxPolicy == SandboxPolicy::Unknown)
+887:             disableAllSignalHandlerBasedOptions();
+888: #endif
+889:     } else {
+890:         if (WTF::isX86BinaryRunningOnARM()) {
+891:             Options::useBaselineJIT() = false;
+892:             Options::useDFGJIT() = false;
+893:             Options::useFTLJIT() = false;
+894:         }
+895: 
+896:         if (Options::dumpDisassembly()
+897:             || Options::dumpBaselineDisassembly()
+898:             || Options::dumpDFGDisassembly()
+899:             || Options::dumpFTLDisassembly()
+900:             || Options::dumpCSSJITDisassembly()
+901:             || Options::dumpRegExpDisassembly()
+902:             || Options::dumpWasmDisassembly()
+903:             || Options::dumpBBQDisassembly()
+904:             || Options::dumpOMGDisassembly()
+905:             || Options::useProfiler()) // For JIT comments in the profile.
+906:             Options::needDisassemblySupport() = true;
+907: 
+908:         if (Options::useIRDump() && !Options::useJITDump())
+909:             Options::useIRDump() = false;
+910: 
+911:         if (Options::useSourceCodeDump() && !Options::useJITDump())
+912:             Options::useSourceCodeDump() = false;
+913:         if (Options::useSourceCodeDump() && Options::useIRDump())
+914:             Options::useSourceCodeDump() = false;
+
+874: #endif
+875: #endif
+876: 
+877:     // At initialization time, we may decide that useJIT should be false for any
+878:     // number of reasons (including failing to allocate JIT memory), and therefore,
+879:     // will / should not be able to enable any JIT related services.
+880:     if (!Options::useJIT()) {
+881:         disableAllJITOptions();
+882: #if OS(DARWIN)
+883:         // If we don't know what the sandbox policy is on mach exception handler use is, we'll
+884:         // take the default behavior of blocking its use if the JIT is disabled. JIT disablement
+885:         // is a good proxy indicator for when mach exception handler use would also be blocked.
+886:         if (machExceptionHandlerSandboxPolicy == SandboxPolicy::Unknown)
+887:             disableAllSignalHandlerBasedOptions();
+888: #endif
+889:     } else {
+890:         if (WTF::isX86BinaryRunningOnARM()) {
+891:             Options::useBaselineJIT() = false;
+892:             Options::useDFGJIT() = false;
+893:             Options::useFTLJIT() = false;
+894:         }
+895: 
+896:         if (Options::dumpDisassembly()
+897:             || Options::dumpBaselineDisassembly()
+898:             || Options::dumpDFGDisassembly()
+899:             || Options::dumpFTLDisassembly()
+900:             || Options::dumpCSSJITDisassembly()
+901:             || Options::dumpRegExpDisassembly()
+902:             || Options::dumpWasmDisassembly()
+903:             || Options::dumpBBQDisassembly()
+904:             || Options::dumpOMGDisassembly()
+905:             || Options::useProfiler()) // For JIT comments in the profile.
+906:             Options::needDisassemblySupport() = true;
+907: 
+908:         if (Options::useIRDump() && !Options::useJITDump())
+909:             Options::useIRDump() = false;
+910: 
+911:         if (Options::useSourceCodeDump() && !Options::useJITDump())
+912:             Options::useSourceCodeDump() = false;
+913:         if (Options::useSourceCodeDump() && Options::useIRDump())
+914:             Options::useSourceCodeDump() = false;
+915: 
+916:         if (OptionsHelper::wasOverridden(jitPolicyScaleID))
+917:             scaleJITPolicy();
+918: 
+919:         if (Options::forceEagerCompilation()) {
+920:             Options::thresholdForJITAfterWarmUp() = 10;
+921:             Options::thresholdForJITSoon() = 10;
+922:             Options::thresholdForOptimizeAfterWarmUp() = 20;
+923:             Options::thresholdForOptimizeAfterLongWarmUp() = 20;
+924:             Options::thresholdForOptimizeSoon() = 20;
+925:             Options::thresholdForFTLOptimizeAfterWarmUp() = 20;
+926:             Options::thresholdForFTLOptimizeSoon() = 20;
+927:             Options::maximumEvalCacheableSourceLength() = 150000;
+928:             Options::useConcurrentJIT() = false;
+929:         }
+930: 
+931:         // Compute the maximum value of the reoptimization retry counter. This is simply
+932:         // the largest value at which we don't overflow the execute counter, when using it
+933:         // to left-shift the execution counter by this amount. Currently the value ends
+934:         // up being 18, so this loop is not so terrible; it probably takes up ~100 cycles
+
+902:             || Options::dumpWasmDisassembly()
+903:             || Options::dumpBBQDisassembly()
+904:             || Options::dumpOMGDisassembly()
+905:             || Options::useProfiler()) // For JIT comments in the profile.
+906:             Options::needDisassemblySupport() = true;
+907: 
+908:         if (Options::useIRDump() && !Options::useJITDump())
+909:             Options::useIRDump() = false;
+910: 
+911:         if (Options::useSourceCodeDump() && !Options::useJITDump())
+912:             Options::useSourceCodeDump() = false;
+913:         if (Options::useSourceCodeDump() && Options::useIRDump())
+914:             Options::useSourceCodeDump() = false;
+915: 
+916:         if (OptionsHelper::wasOverridden(jitPolicyScaleID))
+917:             scaleJITPolicy();
+918: 
+919:         if (Options::forceEagerCompilation()) {
+920:             Options::thresholdForJITAfterWarmUp() = 10;
+921:             Options::thresholdForJITSoon() = 10;
+922:             Options::thresholdForOptimizeAfterWarmUp() = 20;
+923:             Options::thresholdForOptimizeAfterLongWarmUp() = 20;
+924:             Options::thresholdForOptimizeSoon() = 20;
+925:             Options::thresholdForFTLOptimizeAfterWarmUp() = 20;
+926:             Options::thresholdForFTLOptimizeSoon() = 20;
+927:             Options::maximumEvalCacheableSourceLength() = 150000;
+928:             Options::useConcurrentJIT() = false;
+929:         }
+930: 
+931:         // Compute the maximum value of the reoptimization retry counter. This is simply
+932:         // the largest value at which we don't overflow the execute counter, when using it
+933:         // to left-shift the execution counter by this amount. Currently the value ends
+934:         // up being 18, so this loop is not so terrible; it probably takes up ~100 cycles
+935:         // total on a 32-bit processor.
+936:         Options::reoptimizationRetryCounterMax() = 0;
+937:         while ((static_cast<int64_t>(Options::thresholdForOptimizeAfterLongWarmUp()) << (Options::reoptimizationRetryCounterMax() + 1)) <= static_cast<int64_t>(std::numeric_limits<int32_t>::max()))
+938:             Options::reoptimizationRetryCounterMax()++;
+939: 
+940:         ASSERT((static_cast<int64_t>(Options::thresholdForOptimizeAfterLongWarmUp()) << Options::reoptimizationRetryCounterMax()) > 0);
+941:         ASSERT((static_cast<int64_t>(Options::thresholdForOptimizeAfterLongWarmUp()) << Options::reoptimizationRetryCounterMax()) <= static_cast<int64_t>(std::numeric_limits<int32_t>::max()));
+942: 
+943:         if (isX86_64() && !isX86_64_AVX())
+944:             Options::useWasmSIMD() = false;
+945: 
+946:         if (Options::forceAllFunctionsToUseSIMD() && !Options::useWasmSIMD())
+947:             Options::forceAllFunctionsToUseSIMD() = false;
+948: 
+949:         if (Options::useWasmSIMD() && !Options::useWasmIPInt()) {
+950:             // The LLInt is responsible for discovering if functions use SIMD.
+951:             // If we can't run using it, then we should be conservative.
+952:             Options::forceAllFunctionsToUseSIMD() = true;
+953:         }
+954:     }
+955: 
+956:     // TODO
+957:     if (Options::useLOLJIT())
+958:         Options::forceOSRExitToLLInt() = true;
+959: 
+960:     if (!Options::useConcurrentGC())
+961:         Options::collectContinuously() = false;
+962: 
+
+905:             || Options::useProfiler()) // For JIT comments in the profile.
+906:             Options::needDisassemblySupport() = true;
+907: 
+908:         if (Options::useIRDump() && !Options::useJITDump())
+909:             Options::useIRDump() = false;
+910: 
+911:         if (Options::useSourceCodeDump() && !Options::useJITDump())
+912:             Options::useSourceCodeDump() = false;
+913:         if (Options::useSourceCodeDump() && Options::useIRDump())
+914:             Options::useSourceCodeDump() = false;
+915: 
+916:         if (OptionsHelper::wasOverridden(jitPolicyScaleID))
+917:             scaleJITPolicy();
+918: 
+919:         if (Options::forceEagerCompilation()) {
+920:             Options::thresholdForJITAfterWarmUp() = 10;
+921:             Options::thresholdForJITSoon() = 10;
+922:             Options::thresholdForOptimizeAfterWarmUp() = 20;
+923:             Options::thresholdForOptimizeAfterLongWarmUp() = 20;
+924:             Options::thresholdForOptimizeSoon() = 20;
+925:             Options::thresholdForFTLOptimizeAfterWarmUp() = 20;
+926:             Options::thresholdForFTLOptimizeSoon() = 20;
+927:             Options::maximumEvalCacheableSourceLength() = 150000;
+928:             Options::useConcurrentJIT() = false;
+929:         }
+930: 
+931:         // Compute the maximum value of the reoptimization retry counter. This is simply
+932:         // the largest value at which we don't overflow the execute counter, when using it
+933:         // to left-shift the execution counter by this amount. Currently the value ends
+934:         // up being 18, so this loop is not so terrible; it probably takes up ~100 cycles
+935:         // total on a 32-bit processor.
+936:         Options::reoptimizationRetryCounterMax() = 0;
+937:         while ((static_cast<int64_t>(Options::thresholdForOptimizeAfterLongWarmUp()) << (Options::reoptimizationRetryCounterMax() + 1)) <= static_cast<int64_t>(std::numeric_limits<int32_t>::max()))
+938:             Options::reoptimizationRetryCounterMax()++;
+939: 
+940:         ASSERT((static_cast<int64_t>(Options::thresholdForOptimizeAfterLongWarmUp()) << Options::reoptimizationRetryCounterMax()) > 0);
+941:         ASSERT((static_cast<int64_t>(Options::thresholdForOptimizeAfterLongWarmUp()) << Options::reoptimizationRetryCounterMax()) <= static_cast<int64_t>(std::numeric_limits<int32_t>::max()));
+942: 
+943:         if (isX86_64() && !isX86_64_AVX())
+944:             Options::useWasmSIMD() = false;
+945: 
+946:         if (Options::forceAllFunctionsToUseSIMD() && !Options::useWasmSIMD())
+947:             Options::forceAllFunctionsToUseSIMD() = false;
+948: 
+949:         if (Options::useWasmSIMD() && !Options::useWasmIPInt()) {
+950:             // The LLInt is responsible for discovering if functions use SIMD.
+951:             // If we can't run using it, then we should be conservative.
+952:             Options::forceAllFunctionsToUseSIMD() = true;
+953:         }
+954:     }
+955: 
+956:     // TODO
+957:     if (Options::useLOLJIT())
+958:         Options::forceOSRExitToLLInt() = true;
+959: 
+960:     if (!Options::useConcurrentGC())
+961:         Options::collectContinuously() = false;
+962: 
+963:     if (Options::useProfiler())
+964:         Options::useConcurrentJIT() = false;
+965: 

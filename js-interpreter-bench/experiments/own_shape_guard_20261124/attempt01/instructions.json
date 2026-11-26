@@ -1,0 +1,143 @@
+{
+  "rows": [
+    {
+      "label": "SPARSE",
+      "mode": "fused",
+      "command": [
+        "valgrind",
+        "--tool=callgrind",
+        "--cache-sim=no",
+        "--branch-sim=no",
+        "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/SPARSE.fused.out",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+        "object",
+        "fused",
+        "65536"
+      ],
+      "binary_sha256": "08f6b1f64982e6b19664cd9dc2399357f6ca89e262bf5f1dd63ccac95e81ff27",
+      "exit_code": 0,
+      "stdout": "{\"kind\":\"object\",\"mode\":\"fused\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":57.6711061000824}\n",
+      "stderr": "==3== Callgrind, a call-graph generating cache profiler\n==3== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==3== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==3== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SPARSE.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object fused 65536\n==3== \n==3== For interactive control, run 'callgrind_control -h'.\n==3== \n==3== Events    : Ir\n==3== Collected : 32158110\n==3== \n==3== I   refs:      32,158,110\n",
+      "events": {
+        "Ir": 32158110
+      }
+    },
+    {
+      "label": "RELAX_CLASS",
+      "mode": "fused",
+      "command": [
+        "valgrind",
+        "--tool=callgrind",
+        "--cache-sim=no",
+        "--branch-sim=no",
+        "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/RELAX_CLASS.fused.out",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/RELAX_CLASS.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+        "object",
+        "fused",
+        "65536"
+      ],
+      "binary_sha256": "0b7fa7fed2bed35a9affb6c2b92359c0217a8413316addc3fa8a6f2065ac6736",
+      "exit_code": 0,
+      "stdout": "{\"kind\":\"object\",\"mode\":\"fused\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":56.66301608085632}\n",
+      "stderr": "==6== Callgrind, a call-graph generating cache profiler\n==6== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==6== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==6== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/RELAX_CLASS.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object fused 65536\n==6== \n==6== For interactive control, run 'callgrind_control -h'.\n==6== \n==6== Events    : Ir\n==6== Collected : 31896265\n==6== \n==6== I   refs:      31,896,265\n",
+      "events": {
+        "Ir": 31896265
+      }
+    },
+    {
+      "label": "SHAPE_ONLY",
+      "mode": "fused",
+      "command": [
+        "valgrind",
+        "--tool=callgrind",
+        "--cache-sim=no",
+        "--branch-sim=no",
+        "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/SHAPE_ONLY.fused.out",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SHAPE_ONLY.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+        "object",
+        "fused",
+        "65536"
+      ],
+      "binary_sha256": "8909b5447dfaf118c5b7435bba5a52e29689b4518b1c714f2d38a0d432517971",
+      "exit_code": 0,
+      "stdout": "{\"kind\":\"object\",\"mode\":\"fused\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":55.80373501777649}\n",
+      "stderr": "==9== Callgrind, a call-graph generating cache profiler\n==9== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==9== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==9== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SHAPE_ONLY.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object fused 65536\n==9== \n==9== For interactive control, run 'callgrind_control -h'.\n==9== \n==9== Events    : Ir\n==9== Collected : 31830779\n==9== \n==9== I   refs:      31,830,779\n",
+      "events": {
+        "Ir": 31830779
+      }
+    },
+    {
+      "label": "SPARSE",
+      "mode": "plain",
+      "command": [
+        "valgrind",
+        "--tool=callgrind",
+        "--cache-sim=no",
+        "--branch-sim=no",
+        "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/SPARSE.plain.out",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+        "object",
+        "plain",
+        "65536"
+      ],
+      "binary_sha256": "08f6b1f64982e6b19664cd9dc2399357f6ca89e262bf5f1dd63ccac95e81ff27",
+      "exit_code": 0,
+      "stdout": "{\"kind\":\"object\",\"mode\":\"plain\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":66.07969093322754}\n",
+      "stderr": "==12== Callgrind, a call-graph generating cache profiler\n==12== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==12== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==12== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SPARSE.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object plain 65536\n==12== \n==12== For interactive control, run 'callgrind_control -h'.\n==12== \n==12== Events    : Ir\n==12== Collected : 35107461\n==12== \n==12== I   refs:      35,107,461\n",
+      "events": {
+        "Ir": 35107461
+      }
+    },
+    {
+      "label": "RELAX_CLASS",
+      "mode": "plain",
+      "command": [
+        "valgrind",
+        "--tool=callgrind",
+        "--cache-sim=no",
+        "--branch-sim=no",
+        "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/RELAX_CLASS.plain.out",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/RELAX_CLASS.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+        "object",
+        "plain",
+        "65536"
+      ],
+      "binary_sha256": "0b7fa7fed2bed35a9affb6c2b92359c0217a8413316addc3fa8a6f2065ac6736",
+      "exit_code": 0,
+      "stdout": "{\"kind\":\"object\",\"mode\":\"plain\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":64.74220108985901}\n",
+      "stderr": "==15== Callgrind, a call-graph generating cache profiler\n==15== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==15== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==15== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/RELAX_CLASS.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object plain 65536\n==15== \n==15== For interactive control, run 'callgrind_control -h'.\n==15== \n==15== Events    : Ir\n==15== Collected : 34976419\n==15== \n==15== I   refs:      34,976,419\n",
+      "events": {
+        "Ir": 34976419
+      }
+    },
+    {
+      "label": "SHAPE_ONLY",
+      "mode": "plain",
+      "command": [
+        "valgrind",
+        "--tool=callgrind",
+        "--cache-sim=no",
+        "--branch-sim=no",
+        "--callgrind-out-file=/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/callgrind/SHAPE_ONLY.plain.out",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SHAPE_ONLY.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js",
+        "object",
+        "plain",
+        "65536"
+      ],
+      "binary_sha256": "8909b5447dfaf118c5b7435bba5a52e29689b4518b1c714f2d38a0d432517971",
+      "exit_code": 0,
+      "stdout": "{\"kind\":\"object\",\"mode\":\"plain\",\"iterations\":65536,\"checksum\":196608,\"elapsed_ms\":64.17993998527527}\n",
+      "stderr": "==18== Callgrind, a call-graph generating cache profiler\n==18== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.\n==18== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info\n==18== Command: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/work/SHAPE_ONLY.release/qjs /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/own_shape_guard_20261124/attempt01/micro.js object plain 65536\n==18== \n==18== For interactive control, run 'callgrind_control -h'.\n==18== \n==18== Events    : Ir\n==18== Collected : 34910923\n==18== \n==18== I   refs:      34,910,923\n",
+      "events": {
+        "Ir": 34910923
+      }
+    }
+  ],
+  "note": "Ir is whole process, including setup/compiler/runtime; Callgrind elapsed is not used as Release timing."
+}

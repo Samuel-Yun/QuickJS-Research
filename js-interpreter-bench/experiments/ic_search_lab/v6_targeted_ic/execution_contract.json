@@ -1,0 +1,17 @@
+{
+  "name": "FIRST_CALL_INCLUSIVE_NATIVE_MONOTONIC_V1",
+  "platform": "same host WSL2 Ubuntu24.04.2 x86_64",
+  "runtime": "frozen upstream QuickJS2026-06-04 derivatives, no JIT",
+  "static_source_loading_and_required_setup": "outside internal timer",
+  "timed_region": "the first and subsequent N complete original Run calls",
+  "extra_workload_warmup_calls": 0,
+  "included": ["GC", "runtime helpers", "builtins", "RegExp", "Run dynamic compilation", "Run original assertions", "L1 deferred prepare when reached"],
+  "clock": "native CLOCK_MONOTONIC, no Date.now fallback",
+  "reported_value": "internal elapsed_ms / common N, then process-sample statistics",
+  "scope_warning": "Not pure interpreter-loop self time. Repetition naturally changes IC and runtime state.",
+  "performance_diagnostics": false,
+  "clock_failures": "preserve STOP and records; never continue the same failed campaign",
+  "actual_new_short_samples": 0,
+  "new_net_benefits": null,
+  "status": "BLOCKED_PERFORMANCE_ENVIRONMENT"
+}

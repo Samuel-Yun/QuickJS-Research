@@ -1,0 +1,2876 @@
+[
+  {
+    "id": "P001",
+    "family": "P",
+    "status": "SCREENED",
+    "slots": 2,
+    "probe": "fixed",
+    "eviction": "rr",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 2,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 2, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "341194459cf03f4892c20016aeb22571228aa168e63b7b2b242fa4142b35c2c2",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 40.908730859,
+    "screen_sun": 0.9977048103319436,
+    "screen_octane": 1.0943868889402093,
+    "short_block": "longer_pilot.block0",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "P002",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 2,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P003",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 2,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P004",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 2,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P005",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 2,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P006",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 2,
+    "probe": "mru",
+    "eviction": "clock"
+  },
+  {
+    "id": "P007",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 3,
+    "probe": "fixed",
+    "eviction": "rr"
+  },
+  {
+    "id": "P008",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 3,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P009",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 3,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P010",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 3,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P011",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 3,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P012",
+    "family": "P",
+    "status": "SCREENED",
+    "slots": 3,
+    "probe": "mru",
+    "eviction": "clock",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 3,
+      "mru": 1,
+      "eviction": 2,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 2, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 1, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 3, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "fd99619ea76aa27af9516a0ca34b78d432cce8994317eb7f4dc29f4e00200bc2",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.614732678999985,
+    "screen_sun": 1.0124226946460808,
+    "screen_octane": 0.9996653382171923,
+    "short_block": "longer_pilot.block0",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "P013",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 4,
+    "probe": "fixed",
+    "eviction": "rr"
+  },
+  {
+    "id": "P014",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 4,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P015",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 4,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P016",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 4,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P017",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 4,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P018",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 4,
+    "probe": "mru",
+    "eviction": "clock"
+  },
+  {
+    "id": "P019",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 5,
+    "probe": "fixed",
+    "eviction": "rr"
+  },
+  {
+    "id": "P020",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 5,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P021",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 5,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P022",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 5,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P023",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 5,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P024",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 5,
+    "probe": "mru",
+    "eviction": "clock"
+  },
+  {
+    "id": "P025",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 6,
+    "probe": "fixed",
+    "eviction": "rr"
+  },
+  {
+    "id": "P026",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 6,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P027",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 6,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P028",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 6,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P029",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 6,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P030",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 6,
+    "probe": "mru",
+    "eviction": "clock"
+  },
+  {
+    "id": "P031",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 8,
+    "probe": "fixed",
+    "eviction": "rr"
+  },
+  {
+    "id": "P032",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 8,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P033",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 8,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P034",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 8,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P035",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 8,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P036",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 8,
+    "probe": "mru",
+    "eviction": "clock"
+  },
+  {
+    "id": "P037",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 12,
+    "probe": "fixed",
+    "eviction": "rr"
+  },
+  {
+    "id": "P038",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 12,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P039",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 12,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P040",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 12,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P041",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 12,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P042",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 12,
+    "probe": "mru",
+    "eviction": "clock"
+  },
+  {
+    "id": "P043",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 16,
+    "probe": "fixed",
+    "eviction": "rr"
+  },
+  {
+    "id": "P044",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 16,
+    "probe": "fixed",
+    "eviction": "lru"
+  },
+  {
+    "id": "P045",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 16,
+    "probe": "fixed",
+    "eviction": "clock"
+  },
+  {
+    "id": "P046",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 16,
+    "probe": "mru",
+    "eviction": "rr"
+  },
+  {
+    "id": "P047",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 16,
+    "probe": "mru",
+    "eviction": "lru"
+  },
+  {
+    "id": "P048",
+    "family": "P",
+    "status": "PLANNED",
+    "slots": 16,
+    "probe": "mru",
+    "eviction": "clock"
+  },
+  {
+    "id": "L001",
+    "family": "L",
+    "status": "SCREENED",
+    "slots": 2,
+    "locate": "index",
+    "layout": "soa",
+    "parent": "M",
+    "effective_config": {
+      "slots": 2,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 1,
+      "pc_rel": 0,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 1, \"mru\": 0, \"pc_rel\": 0, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 2, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"M\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "c0ec344eacd1e7a1de0a52bcac6d6facde8df810547796aee13d5ef8e553dcdd",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.24322166100001,
+    "screen_sun": 1.0296782298534037,
+    "screen_octane": 1.068185152437662,
+    "short_block": "longer_pilot.block0",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "L002",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 2,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L003",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 2,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L004",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 2,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L005",
+    "family": "L",
+    "status": "SCREENED",
+    "slots": 2,
+    "locate": "pc_rel",
+    "layout": "hot_cold",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 2,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 2,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 2, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 2, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "a02007b4745929c5dc09361ceb26ff17c6372c73d5288dd0ba6c39f3f0eff249",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.22527628599994,
+    "screen_sun": 1.0413889539357069,
+    "screen_octane": 0.9986281431133021,
+    "short_block": "longer_pilot.block0",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "L006",
+    "family": "L",
+    "status": "SCREENED",
+    "slots": 2,
+    "locate": "pc_rel",
+    "layout": "u16_checked",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 2,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 3,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 3, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 2, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "c6e15afbd8fe3f2fb4e5be7abe4eaa27ffaad447ee67afe24050352ab610e9c9",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.12498536800001,
+    "screen_sun": 0.9794844847762388,
+    "screen_octane": 0.9630170077661094,
+    "short_block": "longer_pilot.block0",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "L007",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 3,
+    "locate": "index",
+    "layout": "soa"
+  },
+  {
+    "id": "L008",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 3,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L009",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 3,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L010",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 3,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L011",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 3,
+    "locate": "pc_rel",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L012",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 3,
+    "locate": "pc_rel",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L013",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 4,
+    "locate": "index",
+    "layout": "soa"
+  },
+  {
+    "id": "L014",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 4,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L015",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 4,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L016",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 4,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L017",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 4,
+    "locate": "pc_rel",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L018",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 4,
+    "locate": "pc_rel",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L019",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 5,
+    "locate": "index",
+    "layout": "soa"
+  },
+  {
+    "id": "L020",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 5,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L021",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 5,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L022",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 5,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L023",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 5,
+    "locate": "pc_rel",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L024",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 5,
+    "locate": "pc_rel",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L025",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 6,
+    "locate": "index",
+    "layout": "soa"
+  },
+  {
+    "id": "L026",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 6,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L027",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 6,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L028",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 6,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L029",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 6,
+    "locate": "pc_rel",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L030",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 6,
+    "locate": "pc_rel",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L031",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 8,
+    "locate": "index",
+    "layout": "soa"
+  },
+  {
+    "id": "L032",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 8,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L033",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 8,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L034",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 8,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L035",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 8,
+    "locate": "pc_rel",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L036",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 8,
+    "locate": "pc_rel",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L037",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 12,
+    "locate": "index",
+    "layout": "soa"
+  },
+  {
+    "id": "L038",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 12,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L039",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 12,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L040",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 12,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L041",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 12,
+    "locate": "pc_rel",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L042",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 12,
+    "locate": "pc_rel",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L043",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 16,
+    "locate": "index",
+    "layout": "soa"
+  },
+  {
+    "id": "L044",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 16,
+    "locate": "index",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L045",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 16,
+    "locate": "index",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "L046",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 16,
+    "locate": "pc_rel",
+    "layout": "soa"
+  },
+  {
+    "id": "L047",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 16,
+    "locate": "pc_rel",
+    "layout": "hot_cold"
+  },
+  {
+    "id": "L048",
+    "family": "L",
+    "status": "PLANNED",
+    "slots": 16,
+    "locate": "pc_rel",
+    "layout": "u16_checked"
+  },
+  {
+    "id": "T001",
+    "family": "T",
+    "status": "SCREENED",
+    "entries": 8,
+    "ways": 1,
+    "admission": 1,
+    "scope": "function",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 8,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 8, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "ce373dd514052888e1fe418bbdf2b53ff4831416b1745c15eb56960d1658b21c",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.875719944000025,
+    "screen_sun": 1.0203438287659214,
+    "screen_octane": 1.0157439735701592,
+    "short_block": "longer_pilot.block0",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "T002",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 8,
+    "ways": 1,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T003",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 8,
+    "ways": 1,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T004",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 8,
+    "ways": 1,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T005",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 8,
+    "ways": 2,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T006",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 8,
+    "ways": 2,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T007",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 8,
+    "ways": 2,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T008",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 8,
+    "ways": 2,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T009",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 8,
+    "ways": 4,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T010",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 8,
+    "ways": 4,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T011",
+    "family": "T",
+    "status": "SCREENED",
+    "entries": 8,
+    "ways": 4,
+    "admission": 2,
+    "scope": "function",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 8,
+      "table_ways": 4,
+      "table_admission": 2,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 2, \"table_entries\": 8, \"table_ways\": 4, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "97eee7831a86bf2c0ecdf8f7ab944834d31ff256e892b1fa250c9376e953f8cf",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.42469423599994,
+    "screen_sun": 1.082136664915427,
+    "screen_octane": 1.0398947149344921,
+    "short_block": "pilot.block1",
+    "short_drift": "OK"
+  },
+  {
+    "id": "T012",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 8,
+    "ways": 4,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T013",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 16,
+    "ways": 1,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T014",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 16,
+    "ways": 1,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T015",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 16,
+    "ways": 1,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T016",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 16,
+    "ways": 1,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T017",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 16,
+    "ways": 2,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T018",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 16,
+    "ways": 2,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T019",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 16,
+    "ways": 2,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T020",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 16,
+    "ways": 2,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T021",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 16,
+    "ways": 4,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T022",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 16,
+    "ways": 4,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T023",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 16,
+    "ways": 4,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T024",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 16,
+    "ways": 4,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T025",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 32,
+    "ways": 1,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T026",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 32,
+    "ways": 1,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T027",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 32,
+    "ways": 1,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T028",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 32,
+    "ways": 1,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T029",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 32,
+    "ways": 2,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T030",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 32,
+    "ways": 2,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T031",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 32,
+    "ways": 2,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T032",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 32,
+    "ways": 2,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T033",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 32,
+    "ways": 4,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T034",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 32,
+    "ways": 4,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T035",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 32,
+    "ways": 4,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T036",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 32,
+    "ways": 4,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T037",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 64,
+    "ways": 1,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T038",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 64,
+    "ways": 1,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T039",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 64,
+    "ways": 1,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T040",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 64,
+    "ways": 1,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T041",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 64,
+    "ways": 2,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T042",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 64,
+    "ways": 2,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T043",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 64,
+    "ways": 2,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T044",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 64,
+    "ways": 2,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T045",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 64,
+    "ways": 4,
+    "admission": 1,
+    "scope": "function"
+  },
+  {
+    "id": "T046",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 64,
+    "ways": 4,
+    "admission": 1,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "T047",
+    "family": "T",
+    "status": "PLANNED",
+    "entries": 64,
+    "ways": 4,
+    "admission": 2,
+    "scope": "function"
+  },
+  {
+    "id": "T048",
+    "family": "T",
+    "status": "UNSUPPORTED",
+    "entries": 64,
+    "ways": 4,
+    "admission": 2,
+    "scope": "runtime",
+    "reason": "runtime table has no proven context-independent GC root / release-reentry protocol; function scope is implemented separately",
+    "parent": "s001"
+  },
+  {
+    "id": "Q001",
+    "family": "Q",
+    "status": "SCREENED",
+    "slots": 1,
+    "warm": 2,
+    "policy": "miss_streak",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 1,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 1, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "CONTROL_VARIANT",
+    "binary_sha256": "2f05ded26925a20c07268f7d919c175deaf50a4f69a4dbc20b8cbfe3ef757c00",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.25106632899997,
+    "screen_sun": 1.0540771312845962,
+    "screen_octane": 1.020692608951926,
+    "short_block": "pilot.block1",
+    "short_drift": "OK"
+  },
+  {
+    "id": "Q002",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 2,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q003",
+    "family": "Q",
+    "status": "SCREENED",
+    "slots": 1,
+    "warm": 2,
+    "policy": "confidence",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 3,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 3, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "b68a6ade570422e177a03fe293495d133d42dd8cdbc547cd873338156aaa9d57",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.292918336999946,
+    "screen_sun": 1.0612733254548916,
+    "screen_octane": 1.0212675527905644,
+    "short_block": "pilot.block1",
+    "short_drift": "OK"
+  },
+  {
+    "id": "Q004",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 2,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q005",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 4,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q006",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 4,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q007",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 4,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q008",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 4,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q009",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 8,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q010",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 8,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q011",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 8,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q012",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 1,
+    "warm": 8,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q013",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 2,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q014",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 2,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q015",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 2,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q016",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 2,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q017",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 4,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q018",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 4,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q019",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 4,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q020",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 4,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q021",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 8,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q022",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 8,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q023",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 8,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q024",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 2,
+    "warm": 8,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q025",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 2,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q026",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 2,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q027",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 2,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q028",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 2,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q029",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 4,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q030",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 4,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q031",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 4,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q032",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 4,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q033",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 8,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q034",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 8,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q035",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 8,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q036",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 4,
+    "warm": 8,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q037",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 2,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q038",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 2,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q039",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 2,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q040",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 2,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q041",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 4,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q042",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 4,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q043",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 4,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q044",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 4,
+    "policy": "cooldown"
+  },
+  {
+    "id": "Q045",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 8,
+    "policy": "miss_streak"
+  },
+  {
+    "id": "Q046",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 8,
+    "policy": "sampled_rate"
+  },
+  {
+    "id": "Q047",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 8,
+    "policy": "confidence"
+  },
+  {
+    "id": "Q048",
+    "family": "Q",
+    "status": "PLANNED",
+    "slots": 8,
+    "warm": 8,
+    "policy": "cooldown"
+  },
+  {
+    "id": "H001",
+    "family": "H",
+    "status": "SCREENED",
+    "scope": "site",
+    "hints": 1,
+    "update": "rr",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 1,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 1, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "9c9370084d4b7f7e20b02f494a896f939c43c7ddbb4bbaead045e177a2bf5cd2",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 32.73862643899997,
+    "screen_sun": 1.0838377571908966,
+    "screen_octane": 0.9848701864130933,
+    "short_block": "pilot.block1",
+    "short_drift": "OK"
+  },
+  {
+    "id": "H002",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 1,
+    "update": "second_observation"
+  },
+  {
+    "id": "H003",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 1,
+    "update": "fill_only"
+  },
+  {
+    "id": "H004",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 2,
+    "update": "rr"
+  },
+  {
+    "id": "H005",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 2,
+    "update": "second_observation"
+  },
+  {
+    "id": "H006",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 2,
+    "update": "fill_only"
+  },
+  {
+    "id": "H007",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 3,
+    "update": "rr"
+  },
+  {
+    "id": "H008",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 3,
+    "update": "second_observation"
+  },
+  {
+    "id": "H009",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 3,
+    "update": "fill_only"
+  },
+  {
+    "id": "H010",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 4,
+    "update": "rr"
+  },
+  {
+    "id": "H011",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 4,
+    "update": "second_observation"
+  },
+  {
+    "id": "H012",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "site",
+    "hints": 4,
+    "update": "fill_only"
+  },
+  {
+    "id": "H013",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 1,
+    "update": "rr"
+  },
+  {
+    "id": "H014",
+    "family": "H",
+    "status": "SCREENED",
+    "scope": "shape",
+    "hints": 1,
+    "update": "second_observation",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 2,
+      "hints": 1,
+      "hint_update": 1,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 2, \"hint_update\": 1, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "8551f650e5018bebb92961b1751b6ceeb8273369fb50d0cb220fa1b5411e1db8",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 33.630262765,
+    "screen_sun": 0.9858716940158351,
+    "screen_octane": 1.002578479019431,
+    "short_block": "pilot.block1",
+    "short_drift": "OK"
+  },
+  {
+    "id": "H015",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 1,
+    "update": "fill_only"
+  },
+  {
+    "id": "H016",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 2,
+    "update": "rr"
+  },
+  {
+    "id": "H017",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 2,
+    "update": "second_observation"
+  },
+  {
+    "id": "H018",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 2,
+    "update": "fill_only"
+  },
+  {
+    "id": "H019",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 3,
+    "update": "rr"
+  },
+  {
+    "id": "H020",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 3,
+    "update": "second_observation"
+  },
+  {
+    "id": "H021",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 3,
+    "update": "fill_only"
+  },
+  {
+    "id": "H022",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 4,
+    "update": "rr"
+  },
+  {
+    "id": "H023",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 4,
+    "update": "second_observation"
+  },
+  {
+    "id": "H024",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "shape",
+    "hints": 4,
+    "update": "fill_only"
+  },
+  {
+    "id": "H025",
+    "family": "H",
+    "status": "SCREENED",
+    "scope": "function_atom",
+    "hints": 1,
+    "update": "rr",
+    "parent": "s001",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 3,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 3, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "e8600d7d5f13f8dac58bcbc511aa4cf672fefe9c22c8227ad4d4e1a0141c555e",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 34.274597159999985,
+    "screen_sun": 1.0099608548461974,
+    "screen_octane": 1.0275672767484874,
+    "short_block": "pilot.block1",
+    "short_drift": "OK"
+  },
+  {
+    "id": "H026",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 1,
+    "update": "second_observation"
+  },
+  {
+    "id": "H027",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 1,
+    "update": "fill_only"
+  },
+  {
+    "id": "H028",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 2,
+    "update": "rr"
+  },
+  {
+    "id": "H029",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 2,
+    "update": "second_observation"
+  },
+  {
+    "id": "H030",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 2,
+    "update": "fill_only"
+  },
+  {
+    "id": "H031",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 3,
+    "update": "rr"
+  },
+  {
+    "id": "H032",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 3,
+    "update": "second_observation"
+  },
+  {
+    "id": "H033",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 3,
+    "update": "fill_only"
+  },
+  {
+    "id": "H034",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 4,
+    "update": "rr"
+  },
+  {
+    "id": "H035",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 4,
+    "update": "second_observation"
+  },
+  {
+    "id": "H036",
+    "family": "H",
+    "status": "PLANNED",
+    "scope": "function_atom",
+    "hints": 4,
+    "update": "fill_only"
+  },
+  {
+    "id": "F001",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "loc_read",
+    "parent": "M",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F002",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "loc_read",
+    "parent": "M",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F003",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "loc_read",
+    "parent": "s001",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F004",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "loc_read",
+    "parent": "s001",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F005",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "arg_read",
+    "parent": "M",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F006",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "arg_read",
+    "parent": "M",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F007",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "arg_read",
+    "parent": "s001",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F008",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "arg_read",
+    "parent": "s001",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F009",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_read",
+    "parent": "M",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F010",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_read",
+    "parent": "M",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F011",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_read",
+    "parent": "s001",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F012",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_read",
+    "parent": "s001",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F013",
+    "family": "F",
+    "status": "PLANNED",
+    "pattern": "read_drop",
+    "parent": "M",
+    "fallback": "shared"
+  },
+  {
+    "id": "F014",
+    "family": "F",
+    "status": "PLANNED",
+    "pattern": "read_drop",
+    "parent": "M",
+    "fallback": "inline"
+  },
+  {
+    "id": "F015",
+    "family": "F",
+    "status": "PLANNED",
+    "pattern": "read_drop",
+    "parent": "s001",
+    "fallback": "shared"
+  },
+  {
+    "id": "F016",
+    "family": "F",
+    "status": "SCREENED",
+    "pattern": "read_drop",
+    "parent": "s001",
+    "fallback": "inline",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 0,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 1,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 1, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 0, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"s001\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "0d8564b3e6ac2ff0b9de1e06d33fd1a6119bbaf7efce127121e322694e300daa",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 36.659808182999996,
+    "screen_sun": 1.0158063602417922,
+    "screen_octane": 1.0167262070077423,
+    "short_block": "pilot.block2",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "F017",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_method0",
+    "parent": "M",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F018",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_method0",
+    "parent": "M",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F019",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_method0",
+    "parent": "s001",
+    "fallback": "shared",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "F020",
+    "family": "F",
+    "status": "UNSUPPORTED",
+    "pattern": "read_method0",
+    "parent": "s001",
+    "fallback": "inline",
+    "reason": "Producer/receiver/call fusion has no completed operand, exception-entry and serialization proof; original bytecodes remain untouched"
+  },
+  {
+    "id": "S001",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 2,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S002",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 2,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S003",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 2,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S004",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 2,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S005",
+    "family": "S",
+    "status": "SCREENED",
+    "parent": "A",
+    "max_props": 3,
+    "scan": "forward",
+    "coverage": "own_data",
+    "effective_config": {
+      "slots": 1,
+      "mru": 0,
+      "eviction": 0,
+      "layout": 0,
+      "pc_rel": 1,
+      "table_entries": 0,
+      "table_ways": 1,
+      "table_admission": 1,
+      "policy": 0,
+      "warm": 2,
+      "hint_scope": 0,
+      "hints": 1,
+      "hint_update": 0,
+      "scan_max": 3,
+      "scan_reverse": 0,
+      "scan_all": 0,
+      "fuse_drop": 0,
+      "shared_fallback": 0
+    },
+    "effective_key": "{\"config\": {\"eviction\": 0, \"fuse_drop\": 0, \"hint_scope\": 0, \"hint_update\": 0, \"hints\": 1, \"layout\": 0, \"mru\": 0, \"pc_rel\": 1, \"policy\": 0, \"scan_all\": 0, \"scan_max\": 3, \"scan_reverse\": 0, \"shared_fallback\": 0, \"slots\": 1, \"table_admission\": 1, \"table_entries\": 0, \"table_ways\": 1, \"warm\": 2}, \"parent\": \"A\"}",
+    "classification": "EXPLORATORY_CONFIGURATION",
+    "binary_sha256": "fdebc897dc9cad3bb498ca63a2e6ea5dadc99d1a99f06f47ea978e4c45cc41b0",
+    "correctness": "7020 reused assertions + 9013 targeted assertions; counts are not independent scenarios",
+    "build_seconds": 35.419273702000055,
+    "screen_sun": 1.1657557578289097,
+    "screen_octane": 1.1961533667677,
+    "short_block": "pilot.block2",
+    "short_drift": "UNSTABLE"
+  },
+  {
+    "id": "S006",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 3,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S007",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 3,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S008",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 3,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S009",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 4,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S010",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 4,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S011",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 4,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S012",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 4,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S013",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 6,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S014",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 6,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S015",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 6,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S016",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 6,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S017",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 8,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S018",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 8,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S019",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 8,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S020",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "A",
+    "max_props": 8,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S021",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 2,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S022",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 2,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S023",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 2,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S024",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 2,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S025",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 3,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S026",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 3,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S027",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 3,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S028",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 3,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S029",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 4,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S030",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 4,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S031",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 4,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S032",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 4,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S033",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 6,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S034",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 6,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S035",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 6,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S036",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 6,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S037",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 8,
+    "scan": "forward",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S038",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 8,
+    "scan": "forward",
+    "coverage": "all_own_descriptors"
+  },
+  {
+    "id": "S039",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 8,
+    "scan": "reverse",
+    "coverage": "own_data"
+  },
+  {
+    "id": "S040",
+    "family": "S",
+    "status": "PLANNED",
+    "parent": "s001",
+    "max_props": 8,
+    "scan": "reverse",
+    "coverage": "all_own_descriptors"
+  }
+]

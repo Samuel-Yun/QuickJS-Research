@@ -1,0 +1,36 @@
+CHECK SPARSE release semantics
+CHECK SPARSE counts semantics
+CHECK BODY release semantics
+CHECK BODY counts semantics
+CHECK BODY sanitize semantics
+CHECK SHAM release semantics
+CHECK SHAM counts semantics
+CHECK SHAM sanitize semantics
+CHECK SITE release semantics
+CHECK SITE counts semantics
+CHECK SITE sanitize semantics
+CHECK SPARSE release property_reads
+CHECK SPARSE counts property_reads
+CHECK BODY release property_reads
+CHECK BODY counts property_reads
+CHECK BODY sanitize property_reads
+CHECK SHAM release property_reads
+CHECK SHAM counts property_reads
+CHECK SHAM sanitize property_reads
+CHECK SITE release property_reads
+CHECK SITE counts property_reads
+CHECK SITE sanitize property_reads
+CHECK SPARSE release safety
+CHECK SPARSE counts safety
+CHECK BODY release safety
+CHECK BODY counts safety
+CHECK BODY sanitize safety
+CHECK SHAM release safety
+CHECK SHAM counts safety
+CHECK SHAM sanitize safety
+CHECK SITE release safety
+CHECK SITE counts safety
+CHECK SITE sanitize safety
+PATCHED_EXECUTION_IMAGE SHAM [('readChanged', 16, 3, 'fa0000')]
+PATCHED_EXECUTION_IMAGE SITE [('readChanged', 16, 3, 'fa0000')]
+VALIDATED /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/builtin_site_ic_20261126/attempt01/validation02

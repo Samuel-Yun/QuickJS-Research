@@ -1,0 +1,14 @@
+#define V6_PREPARED_BORROW(slot) do {                                    \
+    JSValueConst receiver = (slot);                                    \
+    if (JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) {                   \
+        JSObject *object = JS_VALUE_GET_OBJ(receiver);                  \
+        ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
+        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
+            site->shape == object->shape) {                            \
+            *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
+            pc += 5;                                                   \
+            break;                                                     \
+        }                                                              \
+    }                                                                  \
+    *sp++ = JS_DupValue(ctx, receiver);                                 \
+} while (0)

@@ -1,0 +1,329 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:5:57: function: <null>
+  closure vars:
+    0: var __clockFunction [loc1]
+    1: var __clockObject [loc0]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function () {
+;;     return __clockFunction.call(__clockObject);
+
+        get_var_ref0 0: __clockFunction
+        get_field2 call
+        get_var_ref1 1: __clockObject
+        tail_call_method 1
+
+;;   }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:2:3: function: <null>
+  locals:
+    0: var __clockObject
+    1: var __clockFunction
+  closure vars:
+    0: var performance [global_ref5]
+    1: var Error [global_ref6]
+    2: var Object [global_ref7]
+    3: var globalThis [global_ref8]
+  stack_size: 6
+  var_ref_count: 2
+  opcodes:
+;; function () {
+;;   var __clockObject = performance, __clockFunction = performance.now;
+
+        get_var 0: performance
+        put_loc0 0: __clockObject
+        get_var 0: performance
+        get_field now
+
+;;   if (typeof __clockFunction !== 'function') throw new Error('native clock missing');
+
+        set_loc1 1: __clockFunction
+        typeof_is_function
+        if_true8 29
+        get_var 1: Error
+        dup
+        push_atom_value "native clock missing"
+        call_constructor 1
+        throw
+
+;;   Object.defineProperty(globalThis, 'benchNow', {value: function () {
+
+   29:  get_var 2: Object
+        get_field2 defineProperty
+        get_var 3: globalThis
+        push_atom_value benchNow
+        object
+        fclosure8 0: [bytecode <null>]
+        set_name value
+        define_field value
+        push_false
+        define_field writable
+        push_false
+        define_field configurable
+        call_method 3
+        return_undef
+
+;;     return __clockFunction.call(__clockObject);
+;;   }, writable: false, configurable: false});
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:11:1: function: m2Read
+  args: obj anchor
+  locals:
+    0: var count
+    1: var i
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function m2Read(obj,anchor) {
+
+        push_0 0
+
+;;   var count=0;
+
+        put_loc0 0: count
+        push_0 0
+
+;;   for(var i=0;i<4096;i++) if(obj.x===anchor)count++;
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        push_i16 4096
+        lt
+        if_false8 27
+        get_arg0 0: obj
+        get_field x
+        get_arg1 1: anchor
+        strict_eq
+        if_false8 23
+        inc_loc 0: count
+   23:  inc_loc 1: i
+        goto8 4
+
+;;   return count;
+
+   27:  get_loc0 0: count
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:17:1: function: microRun
+  closure vars:
+    0: var m2Read [global_ref0]
+    1: var microObject [global_ref2]
+    2: var microAnchor [global_ref1]
+  stack_size: 3
+  var_ref_count: 0
+  opcodes:
+;; function microRun(){return m2Read(microObject,microAnchor);}
+
+        get_var 0: m2Read
+        get_var 1: microObject
+        get_var 2: microAnchor
+        tail_call 2
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:18:1: function: microValidate
+  args: result
+  closure vars:
+    0: var Error [global_ref6]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function microValidate(result){if(result!==4096)throw Error('M2 expected 4096');}
+
+        get_arg0 0: result
+        push_i16 4096
+        strict_neq
+        if_false8 17
+        get_var 0: Error
+        push_atom_value "M2 expected 4096"
+        call1 1
+        throw
+   17:  return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:20:3: function: <null>
+  locals:
+    0: var count
+    1: var last
+    2: var checksum
+    3: var start
+    4: var stop
+    5: var j
+  closure vars:
+    0: var microRun [global_ref3]
+    1: var microValidate [global_ref4]
+    2: var benchNow [global_ref9]
+    3: var Number [global_ref10]
+    4: var Error [global_ref6]
+    5: var console [global_ref11]
+    6: var JSON [global_ref12]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function(){
+
+        push_2 2
+
+;;  var count=2,last,checksum=0,start=null,stop=null;
+
+        put_loc0 0: count
+        push_0 0
+        put_loc2 2: checksum
+        null
+        put_loc3 3: start
+        null
+        put_loc8 4: stop
+        push_0 0
+
+;;  if(true){for(var j=0;j<count;j++){last=microRun();microValidate(last);checksum+=last;}}
+
+        put_loc8 5: j
+   12:  get_loc8 5: j
+        get_loc0 0: count
+        lt
+        if_false8 66
+        get_var 0: microRun
+        call0 0
+        put_loc1 1: last
+        get_var 1: microValidate
+        get_loc1 1: last
+        call1 1
+        drop
+        get_loc1 1: last
+        add_loc 2: checksum
+        inc_loc 5: j
+        goto8 12
+
+;;  else{start=benchNow();for(var j=0;j<count;j++){last=microRun();checksum+=last;}stop=benchNow();microValidate(last);}
+
+   36:  get_loc8 5: j
+        get_loc0 0: count
+        lt
+        if_false8 54
+        get_var 0: microRun
+        call0 0
+        put_loc1 1: last
+        get_loc1 1: last
+        add_loc 2: checksum
+        inc_loc 5: j
+        goto8 36
+   54:  get_var 2: benchNow
+        call0 0
+        put_loc8 4: stop
+        get_var 1: microValidate
+        get_loc1 1: last
+        call1 1
+        drop
+
+;;  if(!Number.isFinite(checksum)||checksum!==count*4096)throw Error('checksum');
+
+   66:  get_var 3: Number
+        get_field2 isFinite
+        get_loc2 2: checksum
+        call_method 1
+        lnot
+        dup
+        if_true8 90
+        drop
+        get_loc2 2: checksum
+        get_loc0 0: count
+        push_i16 4096
+        mul
+        strict_neq
+   90:  if_false8 102
+        get_var 4: Error
+        push_atom_value checksum
+        call1 1
+        throw
+
+;;  console.log('TEB_RESULT:'+JSON.stringify({case:"M2.own_reference",N:count,mode:"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1",phase:"correctness",
+
+  102:  get_var 5: console
+        get_field2 log
+        push_atom_value "TEB_RESULT:"
+        get_var 6: JSON
+        get_field2 stringify
+        object
+        push_atom_value "M2.own_reference"
+        define_field case
+        get_loc0 0: count
+        define_field N
+        push_atom_value LEGACY_NG_IC_READ_WRAPPER_INLINE_V1
+        define_field mode
+        push_atom_value correctness
+        define_field phase
+        push_atom_value PASS
+        define_field correctness
+
+;;  correctness:'PASS',checksum:checksum,last:last,elapsed_ms:start===null?null:stop-start,
+
+        get_loc2 2: checksum
+        define_field checksum
+        get_loc1 1: last
+        define_field last
+        get_loc3 3: start
+        is_null
+        if_false8 189
+        null
+        goto8 193
+  189:  get_loc8 4: stop
+        get_loc3 3: start
+        sub
+  193:  define_field elapsed_ms
+        push_0 0
+        define_field warmup_calls
+        push_i16 4096
+        define_field inner_iterations
+        push_true
+        define_field first_Run_included
+        call_method 1
+        add
+        call_method 1
+        return_undef
+
+;;  warmup_calls:0,inner_iterations:4096,first_Run_included:true}));
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M2.own_reference.N2.check.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var m2Read [global_decl]
+    1: var microAnchor [global_decl]
+    2: var microObject [global_decl]
+    3: var microRun [global_decl]
+    4: var microValidate [global_decl]
+    5: var performance [global]
+    6: var Error [global]
+    7: var Object [global]
+    8: var globalThis [global]
+    9: var benchNow [global]
+   10: var Number [global]
+   11: var console [global]
+   12: var JSON [global]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+        fclosure8 1: [bytecode m2Read]
+        put_var_ref0 0: m2Read
+        fclosure8 2: [bytecode microRun]
+        put_var_ref3 3: microRun
+        fclosure8 3: [bytecode microValidate]
+        put_var_ref 4: microValidate
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        put_loc0 0: "<ret>"
+        object
+        put_var 1: microAnchor
+        object
+        get_var 1: microAnchor
+        define_field x
+        put_var 2: microObject
+        fclosure8 4: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+TEB_RESULT:{"case":"M2.own_reference","N":2,"mode":"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1","phase":"correctness","correctness":"PASS","checksum":8192,"last":4096,"elapsed_ms":null,"warmup_calls":0,"inner_iterations":4096,"first_Run_included":true}

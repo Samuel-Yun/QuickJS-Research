@@ -1,0 +1,62 @@
+[
+  {
+    "line": 776,
+    "text": "    b.nextBytes(x);"
+  },
+  {
+    "line": 1391,
+    "text": "// <body onClick='rng_seed_time();' onKeyPress='rng_seed_time();'>"
+  },
+  {
+    "line": 1399,
+    "text": "function rng_seed_int(x) {"
+  },
+  {
+    "line": 1408,
+    "text": "function rng_seed_time() {"
+  },
+  {
+    "line": 1411,
+    "text": "  rng_seed_int(1122926989487);"
+  },
+  {
+    "line": 1419,
+    "text": "  while(rng_pptr < rng_psize) {  // extract some randomness from Math.random()"
+  },
+  {
+    "line": 1420,
+    "text": "    t = Math.floor(65536 * Math.random());"
+  },
+  {
+    "line": 1425,
+    "text": "  rng_seed_time();"
+  },
+  {
+    "line": 1426,
+    "text": "  //rng_seed_int(window.screenX);"
+  },
+  {
+    "line": 1427,
+    "text": "  //rng_seed_int(window.screenY);"
+  },
+  {
+    "line": 1432,
+    "text": "    rng_seed_time();"
+  },
+  {
+    "line": 1451,
+    "text": "SecureRandom.prototype.nextBytes = rng_get_bytes;"
+  },
+  {
+    "line": 1486,
+    "text": "  var rng = new SecureRandom();"
+  },
+  {
+    "line": 1490,
+    "text": "    while(x[0] == 0) rng.nextBytes(x);"
+  },
+  {
+    "line": 1595,
+    "text": "  var rng = new SecureRandom();"
+  }
+]

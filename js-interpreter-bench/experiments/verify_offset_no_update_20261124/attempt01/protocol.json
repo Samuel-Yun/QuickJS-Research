@@ -1,0 +1,169 @@
+{
+  "iterations": 134217728,
+  "repeats": 5,
+  "CPU": 2,
+  "timezone": "Asia/Shanghai",
+  "locale": "C",
+  "timer": "Date.now around run(sequence,n,plain); same scaffold as read_shape_miss",
+  "input_setup_timed": false,
+  "warmup_calls": 0,
+  "first_Run_included": true,
+  "pilot": [
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "phase": "pilot",
+      "case": "stable",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/micro.js",
+        "stable",
+        "1048576",
+        "fused"
+      ],
+      "binary_sha256": "c127efeb122fb40afdb398648384e95346e2bb413e15458b20b6789d3b252d3d",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"stable\",\"plain\":false,\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":24}\n",
+      "stderr": "",
+      "external_wall_ms": 31.41759685240686,
+      "payload": {
+        "case": "stable",
+        "plain": false,
+        "iterations": 1048576,
+        "checksum": 3145728,
+        "elapsed_ms": 24
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "mode": "release",
+      "phase": "pilot",
+      "case": "stable",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/VERIFY_OFFSET_NO_UPDATE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/micro.js",
+        "stable",
+        "1048576",
+        "fused"
+      ],
+      "binary_sha256": "06eeffe6e778aedd4699613ccdcdd80b32fee7636866916c436e13ee2558f7c4",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"stable\",\"plain\":false,\"iterations\":1048576,\"checksum\":3145728,\"elapsed_ms\":25}\n",
+      "stderr": "",
+      "external_wall_ms": 30.413060914725065,
+      "payload": {
+        "case": "stable",
+        "plain": false,
+        "iterations": 1048576,
+        "checksum": 3145728,
+        "elapsed_ms": 25
+      }
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "phase": "pilot",
+      "case": "same_slot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/micro.js",
+        "same_slot",
+        "1048576",
+        "fused"
+      ],
+      "binary_sha256": "c127efeb122fb40afdb398648384e95346e2bb413e15458b20b6789d3b252d3d",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"same_slot\",\"plain\":false,\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":30}\n",
+      "stderr": "",
+      "external_wall_ms": 35.17537307925522,
+      "payload": {
+        "case": "same_slot",
+        "plain": false,
+        "iterations": 1048576,
+        "checksum": 4194304,
+        "elapsed_ms": 30
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "mode": "release",
+      "phase": "pilot",
+      "case": "same_slot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/VERIFY_OFFSET_NO_UPDATE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/micro.js",
+        "same_slot",
+        "1048576",
+        "fused"
+      ],
+      "binary_sha256": "06eeffe6e778aedd4699613ccdcdd80b32fee7636866916c436e13ee2558f7c4",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"same_slot\",\"plain\":false,\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":26}\n",
+      "stderr": "",
+      "external_wall_ms": 31.868828926235437,
+      "payload": {
+        "case": "same_slot",
+        "plain": false,
+        "iterations": 1048576,
+        "checksum": 4194304,
+        "elapsed_ms": 26
+      }
+    },
+    {
+      "label": "SPARSE",
+      "mode": "release",
+      "phase": "pilot",
+      "case": "different_slot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/SPARSE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/micro.js",
+        "different_slot",
+        "1048576",
+        "fused"
+      ],
+      "binary_sha256": "c127efeb122fb40afdb398648384e95346e2bb413e15458b20b6789d3b252d3d",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"different_slot\",\"plain\":false,\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":30}\n",
+      "stderr": "",
+      "external_wall_ms": 34.653465962037444,
+      "payload": {
+        "case": "different_slot",
+        "plain": false,
+        "iterations": 1048576,
+        "checksum": 4194304,
+        "elapsed_ms": 30
+      }
+    },
+    {
+      "label": "VERIFY_OFFSET_NO_UPDATE",
+      "mode": "release",
+      "phase": "pilot",
+      "case": "different_slot",
+      "rep": 0,
+      "command": [
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/work/VERIFY_OFFSET_NO_UPDATE.release/qjs",
+        "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/verify_offset_no_update_20261124/attempt01/micro.js",
+        "different_slot",
+        "1048576",
+        "fused"
+      ],
+      "binary_sha256": "06eeffe6e778aedd4699613ccdcdd80b32fee7636866916c436e13ee2558f7c4",
+      "exit_code": 0,
+      "stdout": "{\"case\":\"different_slot\",\"plain\":false,\"iterations\":1048576,\"checksum\":4194304,\"elapsed_ms\":30}\n",
+      "stderr": "",
+      "external_wall_ms": 35.28824797831476,
+      "payload": {
+        "case": "different_slot",
+        "plain": false,
+        "iterations": 1048576,
+        "checksum": 4194304,
+        "elapsed_ms": 30
+      }
+    }
+  ]
+}

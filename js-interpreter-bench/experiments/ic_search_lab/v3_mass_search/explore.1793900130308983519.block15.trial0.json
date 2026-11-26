@@ -1,0 +1,673 @@
+{
+  "status": "UNSTABLE",
+  "block": "explore.1793900130308983519.block15.trial0",
+  "candidates": [
+    "Q042",
+    "Q037",
+    "H028",
+    "L023",
+    "L047",
+    "S022",
+    "CTRL000"
+  ],
+  "campaign": "v3.explore.1793900130308983519.block15.trial0",
+  "endpoint_drift": [
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "label": "A",
+      "max_over_min": 1.3225097976966798
+    },
+    {
+      "kind": "octane",
+      "case": "Richards.Richards",
+      "label": "s001",
+      "max_over_min": 1.4579789822524487
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bitwise-and",
+      "label": "A",
+      "max_over_min": 1.6244774458505684
+    },
+    {
+      "kind": "sunspider",
+      "case": "bitops-bitwise-and",
+      "label": "s001",
+      "max_over_min": 1.6098944703423712
+    },
+    {
+      "kind": "octane",
+      "case": "Splay.Splay",
+      "label": "A",
+      "max_over_min": 1.2444246696815413
+    }
+  ],
+  "results": [
+    {
+      "candidate": "Q042",
+      "ratios": {
+        "sunspider/A": {
+          "gm": 1.282316710876311,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.623463867649921
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.6189321809462194
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.9503452368478968
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.0825015381152108
+            }
+          ]
+        },
+        "sunspider/s001": {
+          "gm": 1.2861008425273945,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.6946163171159443
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.6403664886707388
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.9293620336555316
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.0590169031506889
+            }
+          ]
+        },
+        "octane/A": {
+          "gm": 1.3659862443964788,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.9094310886169112
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9301199435775604
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 2.099611924694209
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.9603676191279178
+            }
+          ]
+        },
+        "octane/s001": {
+          "gm": 1.32437028220292,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8771516694925843
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9617884106041596
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.9159000282528873
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.903314824157381
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "Q037",
+      "ratios": {
+        "sunspider/A": {
+          "gm": 1.1333092032013754,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.5646333067198008
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.042581006935263
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.9163374006872735
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.1036106158505279
+            }
+          ]
+        },
+        "sunspider/s001": {
+          "gm": 1.1366536119499504,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.63320735663099
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.0563845512673848
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.8961050755007348
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.0796680240447485
+            }
+          ]
+        },
+        "octane/A": {
+          "gm": 1.0053727902047453,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8820256657834449
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9616394892021048
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.08819995309174
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.1068946641293487
+            }
+          ]
+        },
+        "octane/s001": {
+          "gm": 0.9747432313792253,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.850718976908824
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9943811250153715
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 0.9929846065133683
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.0746805866724651
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "H028",
+      "ratios": {
+        "sunspider/A": {
+          "gm": 0.9243883378210068,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 0.9242302770529813
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 0.9995418336698435
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7755265666199904
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.0191544014061718
+            }
+          ]
+        },
+        "sunspider/s001": {
+          "gm": 0.9271162186459011,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 0.9647370289391045
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.0127755487683276
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7584032824728114
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 0.9970440687675843
+            }
+          ]
+        },
+        "octane/A": {
+          "gm": 1.3577437702107022,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8473088862785968
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 1.8271648742569762
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 2.113616704575543
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.0385455366664407
+            }
+          ]
+        },
+        "octane/s001": {
+          "gm": 1.3163789221813629,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8172344375267412
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 1.8893756794032506
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.9286794175556183
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.0083206314023172
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "L023",
+      "ratios": {
+        "sunspider/A": {
+          "gm": 0.9374505660595203,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 0.9473768030094949
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.039541065575491
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7713757079673497
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.0166305302614067
+            }
+          ]
+        },
+        "sunspider/s001": {
+          "gm": 0.9402169936731227,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 0.9888980104996216
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.0533043617493907
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7543440729463556
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 0.9945749524572888
+            }
+          ]
+        },
+        "octane/A": {
+          "gm": 0.9810167476061719,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8437339855936328
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9617660250414908
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.062448043982644
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.0742936554590372
+            }
+          ]
+        },
+        "octane/s001": {
+          "gm": 0.9511292168589907,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8137864246499709
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9945119691120794
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 0.9694859385884048
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.0430283687520883
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "L047",
+      "ratios": {
+        "sunspider/A": {
+          "gm": 1.0534042986362493,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 0.9143540104710912
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.0062646773294006
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 1.1836882675703166
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.1306193134409441
+            }
+          ]
+        },
+        "sunspider/s001": {
+          "gm": 1.0565129070744355,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 0.9544279097555126
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.019587401406444
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 1.157552953295235
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.1060907738268295
+            }
+          ]
+        },
+        "octane/A": {
+          "gm": 1.0512324528505248,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.9533634504942468
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9324146303122229
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.2018187069617525
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.143111256226356
+            }
+          ]
+        },
+        "octane/s001": {
+          "gm": 1.0192057394089131,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.9195246926361661
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9641612261991855
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.0966619438295577
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.1098431632964147
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "S022",
+      "ratios": {
+        "sunspider/A": {
+          "gm": 1.1188071221261924,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.1526333256640973
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.5386744280958204
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7970114301643654
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.1084559309407676
+            }
+          ]
+        },
+        "sunspider/s001": {
+          "gm": 1.1221087350634538,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.2031504243759328
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 1.5590461407393845
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7794137697170461
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.0844082210800239
+            }
+          ]
+        },
+        "octane/A": {
+          "gm": 0.9946465031074919,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8798248619071849
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9357248129584181
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.0235972872065322
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.1614527276223188
+            }
+          ]
+        },
+        "octane/s001": {
+          "gm": 0.9643437299726386,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8485962885397437
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9675841130301549
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 0.9340345462955936
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.1276508408280017
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "CTRL000",
+      "ratios": {
+        "sunspider/A": {
+          "gm": 0.9714591202183479,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.188021475280346
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 0.9802106528582071
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7506124242328187
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 1.018916655676347
+            }
+          ]
+        },
+        "sunspider/s001": {
+          "gm": 0.9743259074740797,
+          "cases": [
+            {
+              "case": "regexp-dna",
+              "ratio": 1.2400895500116915
+            },
+            {
+              "case": "access-binary-trees",
+              "ratio": 0.993188427353946
+            },
+            {
+              "case": "bitops-bitwise-and",
+              "ratio": 0.7340392333483865
+            },
+            {
+              "case": "3d-raytrace",
+              "ratio": 0.9968114808795571
+            }
+          ]
+        },
+        "octane/A": {
+          "gm": 1.150855851962251,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.9038552199898999
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 0.9807019880850744
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 1.0061369545718395
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.9669381089696298
+            }
+          ]
+        },
+        "octane/s001": {
+          "gm": 1.1157940247864895,
+          "cases": [
+            {
+              "case": "Richards.Richards",
+              "ratio": 0.8717737111884619
+            },
+            {
+              "case": "Splay.Splay",
+              "ratio": 1.014092658597025
+            },
+            {
+              "case": "RayTrace.RayTrace",
+              "ratio": 0.9181019582803183
+            },
+            {
+              "case": "CodeLoad.CodeLoadClosure",
+              "ratio": 1.9096940923087644
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "baseline_shared": true,
+  "short_ms_note": "common fixed N, some samples can fall outside100-300ms; no input scaling"
+}

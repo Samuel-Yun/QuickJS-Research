@@ -1,0 +1,12 @@
+static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
+                                    JSShape *shape, uint32_t offset RDI_DPARAM)
+{
+    RDI_COUNT(updates);
+    JSShape *old = s->shape, *old_holder = s->holder_shape;
+    js_dup_shape(shape);
+    s->shape = shape;
+    s->holder_shape = NULL;
+    s->prop_offset = offset;
+    js_free_shape_null(ctx->rt, old_holder);
+    js_free_shape_null(ctx->rt, old);
+}

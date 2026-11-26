@@ -1,0 +1,46 @@
+{
+  "labels": [
+    "SPARSE",
+    "COALLOC",
+    "COALLOC_OFF"
+  ],
+  "cases": [
+    [
+      "octane",
+      "EarleyBoyer.Boyer"
+    ],
+    [
+      "octane",
+      "Splay"
+    ],
+    [
+      "sunspider",
+      "access-binary-trees"
+    ],
+    [
+      "octane",
+      "CodeLoad.Closure"
+    ]
+  ],
+  "repeats": 5,
+  "CPU": 2,
+  "TZ": "Asia/Shanghai",
+  "locale": "C",
+  "first_Run_included": true,
+  "extra_warmup": 0,
+  "driver_sha256": "7f3acaff2a9f1d1908a2e92ed9760f8497163dece17ae931f8a80e933facd15d",
+  "binaries": {
+    "SPARSE": {
+      "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2"
+    },
+    "COALLOC": {
+      "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843"
+    },
+    "COALLOC_OFF": {
+      "path": "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843"
+    }
+  }
+}

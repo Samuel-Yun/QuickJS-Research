@@ -1,0 +1,33 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:760:1: function: IdleTask
+  args: scheduler v1 count
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function IdleTask(scheduler, v1, count) {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.scheduler = scheduler;
+
+        get_loc0 0: this
+        get_arg0 0: scheduler
+        put_field scheduler
+
+;;   this.v1 = v1;
+
+        get_loc0 0: this
+        get_arg1 1: v1
+        put_field v1
+
+;;   this.count = count;
+
+        get_loc0 0: this
+        get_arg2 2: count
+        put_field count
+        return_undef
+
+;; }
+

@@ -1,0 +1,38 @@
+{
+  "files": {
+    "common.py": "e5a958a1ac4a77302306871a2e8397b6b456041fcb506628c80fa57ebbcb192d",
+    "run.py": "b29fbc7e70397569f25d1b4ddad7efb2d531fe1f746f491d9c3d4311671aae9f",
+    "protocol.json": "24f5df48291a7e3d05b3eeca147dc3f96f1a88619b2d776873f27c76b3f1a87d",
+    "manifest.json": "0336088c6b6299da59bf888acc1892efc398968acfa430a4554bd7423eab20a1",
+    "inputs.json": "682a954f9fe75dd1220cc03eac15af7eaf36764bb3dd09b824fabc31915594de",
+    "cases/shared.js": "a8a637d5233364a3e2baa25699217c5e2b4c91260d1092901bf5d57d34e0508e",
+    "inputs/adapter.js": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7",
+    "inputs/micro_driver.js": "3ecaaa56506a96e06545cca541e5570da6f302ce9d53a0f917611f1198882127"
+  },
+  "scripts": {
+    "number_value_read": {
+      "path": "scripts/number_value_read/N16384.measure.js",
+      "sha256": "1e1b2fe16bdc47584e0579f53e87eca853c826e0dd074115dd288cea04100921"
+    },
+    "function_value_read": {
+      "path": "scripts/function_value_read/N16384.measure.js",
+      "sha256": "31e29f4f92c002a9ef0da6d4d5fe3eeb36a69686211579021490ca8925eeeddc"
+    },
+    "own_method_call": {
+      "path": "scripts/own_method_call/N16384.measure.js",
+      "sha256": "602aa44a212113f529a08e4284aa6b3fd74e21d46bf15ae241e6d4313f16d8c4"
+    },
+    "local_function_call": {
+      "path": "scripts/local_function_call/N16384.measure.js",
+      "sha256": "ae62d40186a5565a5ae06b79d01c77af529b051853a224b1670ac82ee9c6e21f"
+    }
+  },
+  "schedule_sha256": "9e66d0fe5f3be27cc441f0143040903e40f007bcb6c3143ccfdc9b1a55a6658b",
+  "eligible": [
+    "number_value_read",
+    "function_value_read",
+    "own_method_call",
+    "local_function_call"
+  ],
+  "timestamp": "2026-10-28T15:11:26.709011+00:00"
+}

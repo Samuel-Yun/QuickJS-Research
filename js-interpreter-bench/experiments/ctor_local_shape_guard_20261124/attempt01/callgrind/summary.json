@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "label": "SPARSE",
+      "instructions_Ir": 93351382,
+      "scope": "whole script; target functions separately attributed",
+      "iterations": 65536,
+      "positive_hits_expected": 65534,
+      "target_function_lines": [
+        "35,198,166 (37.71%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/quickjs.c:JS_CallInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs]",
+        " 7,930,612 ( 8.50%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/quickjs.h:JS_CallInternal'2",
+        " 6,553,479 ( 7.02%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/four_runtime.inc:JS_CallInternal'2",
+        " 3,866,624 ( 4.14%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/four_runtime.inc:plan_chain [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs]",
+        " 2,883,584 ( 3.09%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/quickjs.c:plan_chain",
+        " 1,900,828 ( 2.04%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/read_ic_opcodes.inc:JS_CallInternal'2",
+        "   983,040 ( 1.05%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/quickjs.c:plan_proto [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs]",
+        "   851,968 ( 0.91%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/four_runtime.inc:plan_proto",
+        "   262,217 ( 0.28%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/sparse_runtime.inc:JS_CallInternal'2",
+        "   196,634 ( 0.21%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/read_ic_runtime.inc:JS_CallInternal'2",
+        "       388 ( 0.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/quickjs.c:JS_CallInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs]",
+        "        36 ( 0.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/quickjs.h:JS_CallInternal",
+        "        12 ( 0.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/cutils.h:JS_CallInternal'2"
+      ]
+    },
+    {
+      "label": "CTOR_LOCAL_SHAPE_GUARD",
+      "instructions_Ir": 94925909,
+      "scope": "whole script; target functions separately attributed",
+      "iterations": 65536,
+      "positive_hits_expected": 65534,
+      "target_function_lines": [
+        "35,460,231 (37.36%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.c:JS_CallInternal'2 [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs]",
+        " 7,668,472 ( 8.08%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.h:JS_CallInternal'2",
+        " 6,881,070 ( 7.25%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/four_runtime.inc:plan_try [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs]",
+        " 3,866,624 ( 4.07%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/four_runtime.inc:plan_chain [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs]",
+        " 2,883,584 ( 3.04%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.c:plan_chain",
+        " 1,900,833 ( 2.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/read_ic_opcodes.inc:JS_CallInternal'2",
+        " 1,310,754 ( 1.38%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/sparse_runtime.inc:JS_CallInternal'2",
+        "   983,040 ( 1.04%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.c:plan_proto [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs]",
+        "   851,968 ( 0.90%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/four_runtime.inc:plan_proto",
+        "   851,942 ( 0.90%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.c:plan_try",
+        "   262,136 ( 0.28%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.h:plan_try",
+        "   196,634 ( 0.21%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/read_ic_runtime.inc:JS_CallInternal'2",
+        "       376 ( 0.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.c:JS_CallInternal [/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs]",
+        "        70 ( 0.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/four_runtime.inc:JS_CallInternal'2",
+        "        36 ( 0.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/quickjs.h:JS_CallInternal",
+        "        18 ( 0.00%)  js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/cutils.h:JS_CallInternal'2"
+      ]
+    }
+  ],
+  "instruction_change_percent": 1.6866670490212954,
+  "scope": "whole script plus plan_proto/plan_chain source attribution; native SPARSE plan_try is inlined, so no common native toggle entry",
+  "instructions_not_native_elapsed_time": true
+}

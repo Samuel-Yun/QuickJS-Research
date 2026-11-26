@@ -1,0 +1,176 @@
+[
+  {
+    "offset": 0,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [0:\"list\"], FBV[0]"
+  },
+  {
+    "offset": 4,
+    "size": 4,
+    "opcode": "SetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[2]"
+  },
+  {
+    "offset": 8,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[4]"
+  },
+  {
+    "offset": 12,
+    "size": 1,
+    "opcode": "TestUndetectable",
+    "operands": ""
+  },
+  {
+    "offset": 13,
+    "size": 2,
+    "opcode": "JumpIfTrue",
+    "operands": "[68] (0x30a401001401 @ 81)"
+  },
+  {
+    "offset": 15,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[6]"
+  },
+  {
+    "offset": 19,
+    "size": 1,
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 20,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "r1, [2:\"isHeldOrSuspended\"], FBV[8]"
+  },
+  {
+    "offset": 24,
+    "size": 1,
+    "opcode": "Star0",
+    "operands": ""
+  },
+  {
+    "offset": 25,
+    "size": 4,
+    "opcode": "CallProperty0",
+    "operands": "r0, r1, FBV[10]"
+  },
+  {
+    "offset": 29,
+    "size": 2,
+    "opcode": "JumpIfToBooleanFalse",
+    "operands": "[17] (0x30a4010013de @ 46)"
+  },
+  {
+    "offset": 31,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[12]"
+  },
+  {
+    "offset": 35,
+    "size": 1,
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 36,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "r1, [3:\"link\"], FBV[14]"
+  },
+  {
+    "offset": 40,
+    "size": 4,
+    "opcode": "SetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[16]"
+  },
+  {
+    "offset": 44,
+    "size": 2,
+    "opcode": "Jump",
+    "operands": "[33] (0x30a4010013fd @ 77)"
+  },
+  {
+    "offset": 46,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[18]"
+  },
+  {
+    "offset": 50,
+    "size": 1,
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 51,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "r1, [4:\"id\"], FBV[20]"
+  },
+  {
+    "offset": 55,
+    "size": 4,
+    "opcode": "SetNamedProperty",
+    "operands": "<this>, [5:\"currentId\"], FBV[22]"
+  },
+  {
+    "offset": 59,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[24]"
+  },
+  {
+    "offset": 63,
+    "size": 1,
+    "opcode": "Star2",
+    "operands": ""
+  },
+  {
+    "offset": 64,
+    "size": 4,
+    "opcode": "GetNamedProperty",
+    "operands": "r2, [6:\"run\"], FBV[26]"
+  },
+  {
+    "offset": 68,
+    "size": 1,
+    "opcode": "Star1",
+    "operands": ""
+  },
+  {
+    "offset": 69,
+    "size": 4,
+    "opcode": "CallProperty0",
+    "operands": "r1, r2, FBV[28]"
+  },
+  {
+    "offset": 73,
+    "size": 4,
+    "opcode": "SetNamedProperty",
+    "operands": "<this>, [1:\"currentTcb\"], FBV[30]"
+  },
+  {
+    "offset": 77,
+    "size": 4,
+    "opcode": "JumpLoop",
+    "operands": "[69], [0], FBV[32] (0x30a4010013b8 @ 8)"
+  },
+  {
+    "offset": 81,
+    "size": 1,
+    "opcode": "LdaUndefined",
+    "operands": ""
+  },
+  {
+    "offset": 82,
+    "size": 1,
+    "opcode": "Return",
+    "operands": ""
+  }
+]

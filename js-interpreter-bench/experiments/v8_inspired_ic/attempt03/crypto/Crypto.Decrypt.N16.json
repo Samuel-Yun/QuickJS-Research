@@ -1,0 +1,34 @@
+{
+  "status": "PASS_BOUNDED_INPUT_IDENTITY",
+  "case": "Crypto.Decrypt",
+  "N": 16,
+  "seed": 305419896,
+  "scope": "only current frozen source/keys/seed/N/three conditions; not security RNG",
+  "processes": 6,
+  "core_sha256": "8df1c7429117fe04fb45a481cdb674ecc45e6bfb731149b47d5a682428fc9afe",
+  "observed_event_counts": [
+    {
+      "core": 20,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    },
+    {
+      "core": 20,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    },
+    {
+      "core": 20,
+      "seed": 1,
+      "init": 1,
+      "byte": 14,
+      "padding": 1
+    }
+  ],
+  "final_ciphertext": "73be293fe54b9fc1af0cab261d4307883f70dfb21390d3de779e061f39e084fee1072606b0979db989ab21a288e16c2644af3842ccbd8f540eb66d61c44253d9b5ebe30dbd5dfe9ee81038baf4912ab3de44cfe2a401ff0363c720713889b1d31f21f32a1d68bee95b19f767d52c0ed1fd8ff2ab66d88e68dffaadb9826aed24",
+  "plain_observed_and_conditions_match": true
+}

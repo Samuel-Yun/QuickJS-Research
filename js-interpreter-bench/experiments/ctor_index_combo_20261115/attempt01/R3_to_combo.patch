@@ -1,0 +1,190 @@
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -369,6 +369,7 @@
+ DEF(v6_get_arg0, 1, 0, 1, none)
+ DEF(put_field_shared, 5, 2, 0, u32)
+ DEF(four_ctor,3,0,0,u16)
++DEF(four_index,1,2,1,none)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -691,6 +691,7 @@
+ #include "read_ic_types.h"
+ 
+ typedef struct FourSite FourSite;
++typedef struct IndexSite IndexSite;
+ typedef struct JSFunctionBytecode {
+     JSGCObjectHeader header; /* must come first */
+     uint8_t js_mode;
+@@ -727,6 +728,8 @@
+     uint8_t read_ic_ready;
+     FourSite *four_sites;
+     uint32_t four_count;
++    IndexSite *index_sites;
++    uint32_t index_count;
+ #ifdef READ_IC_DIAGNOSTIC
+     RDIFunctionDiag *read_ic_diag;
+ #endif
+@@ -6230,6 +6233,7 @@
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
++#include "index_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -19620,6 +19624,17 @@
+                 }                                                       \
+             }
+             
++        CASE(OP_four_index):
++            {
++                IndexSite*s=four_index_site(b,pc-b->byte_code_buf-1);JSValue result;
++                if(four_index_try(ctx,s,sp,var_buf,&result)){
++                    /* ref_count>1 excludes finalization on this release. */
++                    JS_FreeValue(ctx,sp[-2]);sp-=3;var_buf[s->local]=result;
++                    pc=b->byte_code_buf+s->end;BREAK;
++                }
++            }
++            GET_ARRAY_EL_INLINE(four_index_fallback,0);
++            BREAK;
+         CASE(OP_get_array_el):
+             GET_ARRAY_EL_INLINE(get_array_el, 0);
+             BREAK;
+@@ -32339,6 +32354,7 @@
+ }
+ 
+ #include "four_prepare.inc"
++#include "index_prepare.inc"
+ #include "read_ic_prepare.inc"
+ 
+ static void free_bytecode_atoms(JSRuntime *rt,
+@@ -37965,6 +37981,7 @@
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+         if(op==OP_four_ctor){FourSite*fs=&b->four_sites[get_u16(bc_buf+pos+1)];op=OP_call_constructor;bc_buf[pos]=op;put_u16(bc_buf+pos+1,fs->argc);}
++        if(op==OP_four_index){op=OP_get_array_el;bc_buf[pos]=op;}
+         if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
+         if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
+         if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_put_field_shared) {
+@@ -38875,7 +38892,7 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
+-        if (op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++        if (op == OP_four_index || op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
+             op == OP_v6_get_loc0 || op == OP_v6_get_arg0) {
+             b->byte_code_len = pos;
+             JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
+--- a/read_ic_prepare.inc
++++ b/read_ic_prepare.inc
+@@ -15,12 +15,12 @@
+         op = b->byte_code_buf[pos];
+         if (op == OP_get_field || op == OP_get_field2) count++;
+     }
+-    if (!count && !four_extra_size(b)) return 0;
++    if (!count && !four_extra_size(b) && !index_extra_size(b)) return 0;
+     code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
+     if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
+         return 0; /* optional optimization, retain ordinary image */
+     }
+-    total = code_size + count * sizeof(ReadICSite) + four_extra_size(b);
++    total = code_size + count * sizeof(ReadICSite) + four_extra_size(b) + index_extra_size(b);
+     if (total > UINT32_MAX) {
+         return 0; /* optional optimization, retain ordinary image */
+     }
+@@ -57,5 +57,6 @@
+     }
+     assert(index == count);
+     four_prepare(ctx,b);
++    index_prepare(ctx,b);
+     return 0;
+ }
+--- a/index_runtime.inc
++++ b/index_runtime.inc
+@@ -0,0 +1,40 @@
++typedef struct IndexSite {
++    uint32_t pc,end;
++    uint16_t class_id;
++    uint8_t local,kind,index_tag,value_tag,acc_tag,reserved;
++#ifdef FOUR_DIAG
++    FourDiag*diag;
++#endif
++} IndexSite;
++/* Per-function move-to-front lookup; each record remains bound to its own PC.
++ * Neither an element address nor array length is retained. */
++static IndexSite*four_index_site(JSFunctionBytecode*b,unsigned pc)
++{
++    IndexSite*s=b->index_sites;
++    if(s->pc!=pc){unsigned i=1;while(i<b->index_count && s[i].pc!=pc)i++;
++        assert(i<b->index_count);IndexSite tmp=s[0];s[0]=s[i];s[i]=tmp;
++    }return s;
++}
++static int four_index_try(JSContext*ctx,IndexSite*s,JSValue*sp,JSValue*vars,JSValue*out)
++{
++    FOUR_COUNT(s,q);
++    if(JS_VALUE_GET_TAG(sp[-2])!=JS_TAG_OBJECT || JS_VALUE_GET_TAG(sp[-1])!=JS_TAG_INT ||
++       JS_VALUE_GET_TAG(sp[-3])!=JS_TAG_INT || JS_VALUE_GET_TAG(vars[s->local])!=JS_TAG_INT)goto fail;
++    JSObject*o=JS_VALUE_GET_OBJ(sp[-2]);
++    if(o->class_id!=(s->kind?s->class_id:JS_CLASS_ARRAY) || !o->fast_array ||
++       js_rc(o)->ref_count<=1 || (uint32_t)JS_VALUE_GET_INT(sp[-1])>=o->u.array.count)goto fail;
++    JSValue value=o->u.array.u.values[(uint32_t)JS_VALUE_GET_INT(sp[-1])];
++    if(JS_VALUE_GET_TAG(value)!=JS_TAG_INT)goto fail;
++    int64_t n=(int64_t)JS_VALUE_GET_INT(sp[-3])+JS_VALUE_GET_INT(value);
++    if(n<INT32_MIN || n>INT32_MAX){FOUR_COUNT(s,overflow);goto fail;}
++    if(!s->kind){
++        s->class_id=o->class_id;s->kind=1;
++        s->index_tag=JS_VALUE_GET_TAG(sp[-1]);s->value_tag=JS_VALUE_GET_TAG(value);s->acc_tag=JS_VALUE_GET_TAG(sp[-3]);
++        FOUR_COUNT(s,eligible);FOUR_COUNT(s,fill);goto fail;
++    }
++    *out=JS_NewInt32(ctx,n);FOUR_COUNT(s,h);FOUR_ADD(s,work1,2);FOUR_ADD(s,work2,2);return 1;
++fail:
++    FOUR_COUNT(s,guard);return 0;
++}
++static size_t index_extra_size(JSFunctionBytecode*b);
++static void index_prepare(JSContext*ctx,JSFunctionBytecode*b);
+--- a/index_prepare.inc
++++ b/index_prepare.inc
+@@ -0,0 +1,40 @@
++static int four_interior_target(JSFunctionBytecode*b,int begin,int end)
++{
++    for(int p=0;p<b->byte_code_len;){
++        int op=b->byte_code_buf[p],fmt=short_opcode_info(op).fmt,target=-1;
++        const uint8_t *v=b->byte_code_buf+p;
++        if(fmt==OP_FMT_label)target=p+1+(int32_t)get_u32(v+1);
++        else if(fmt==OP_FMT_label8)target=p+1+(int8_t)v[1];
++        else if(fmt==OP_FMT_label16)target=p+1+(int16_t)get_u16(v+1);
++        else if(fmt==OP_FMT_atom_label_u8)target=p+5+(int32_t)get_u32(v+5);
++        if(target>begin && target<end)return 1;
++        p+=short_opcode_info(op).size;
++    }return 0;
++}
++
++static int four_index_match(JSFunctionBytecode*b,int pc,int*local,int*end)
++{
++    uint8_t*p=b->byte_code_buf+pc;
++    if(pc+3>b->byte_code_len || p[0]!=OP_get_array_el || p[1]!=OP_add)return 0;
++    if(p[2]>=OP_put_loc0 && p[2]<=OP_put_loc3){*local=p[2]-OP_put_loc0;*end=pc+3;}
++    else if(pc+4<=b->byte_code_len && p[2]==OP_put_loc8){*local=p[3];*end=pc+4;}
++    else return 0;
++    return *local<b->var_count && !four_interior_target(b,pc,*end);
++}
++static size_t index_extra_size(JSFunctionBytecode*b)
++{
++    unsigned n=0;for(int p=0;p<b->byte_code_len;){int op=b->byte_code_buf[p],local,end;n+=four_index_match(b,p,&local,&end);p+=short_opcode_info(op).size;}
++    return n*sizeof(IndexSite);
++}
++static void index_prepare(JSContext*ctx,JSFunctionBytecode*b)
++{
++    b->index_sites=(IndexSite*)((uint8_t*)(b->read_ic_sites+b->read_ic_count)+b->four_count*sizeof(FourSite));
++    for(int p=0;p<b->byte_code_len;){int op=b->byte_code_buf[p],local,end,n=short_opcode_info(op).size;
++        if(four_index_match(b,p,&local,&end)){IndexSite*s=&b->index_sites[b->index_count++];s->pc=p;s->end=end;s->local=local;
++#ifdef FOUR_DIAG
++            s->diag=four_dnew(ctx,b,p);
++#endif
++            b->byte_code_buf[p]=OP_four_index;
++        }p+=n;
++    }
++}

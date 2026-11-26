@@ -1,0 +1,79 @@
+{
+  "parent": "PREP2",
+  "labels": [
+    "CHAIN2",
+    "READ_STORE"
+  ],
+  "independent": true,
+  "repetitions": 5,
+  "new_performance_samples": 170,
+  "performance_samples_seen": 0,
+  "old_controls_reused": true,
+  "SunSpider": false,
+  "V8_OFF": false,
+  "CHAIN2": {
+    "change": "Prepared arg0/loc0 + get_field + get_field fusion; borrow intermediate only while original root remains owned by slot; ordinary exact own-data hits only",
+    "new_header_fields": 0,
+    "new_read_records": 0,
+    "miss": "original B2 first-read or original owning-load behavior",
+    "N1_Run_counts": {
+      "Richards.Richards": {
+        "queries": 11599,
+        "hits": 11596
+      },
+      "DeltaBlue.DeltaBlue": {
+        "queries": 9693,
+        "hits": 9655
+      },
+      "RayTrace.RayTrace": {
+        "queries": 7730,
+        "hits": 5044
+      },
+      "EarleyBoyer.Boyer": {
+        "queries": 296,
+        "hits": 284
+      },
+      "Splay.Splay": {
+        "queries": 320,
+        "hits": 144
+      },
+      "CodeLoad.CodeLoadClosure": {
+        "queries": 0,
+        "hits": 0
+      }
+    }
+  },
+  "READ_STORE": {
+    "change": "Map put_field only when atom matches nearest preceding static read; reuse that read record; no store updates, no extra records/shape edges; guard receiver shape, own state, ordinary class and writable non-length data descriptor",
+    "new_header_fields": 0,
+    "new_write_records": 0,
+    "miss": "JS_SetPropertyInternal with original receiver and strict flags",
+    "N1_Run_counts": {
+      "Richards.Richards": {
+        "queries": 17607,
+        "hits": 17607
+      },
+      "DeltaBlue.DeltaBlue": {
+        "queries": 14445,
+        "hits": 14445
+      },
+      "RayTrace.RayTrace": {
+        "queries": 39314,
+        "hits": 38275
+      },
+      "EarleyBoyer.Boyer": {
+        "queries": 0,
+        "hits": 0
+      },
+      "Splay.Splay": {
+        "queries": 3362,
+        "hits": 2216
+      },
+      "CodeLoad.CodeLoadClosure": {
+        "queries": 1,
+        "hits": 0
+      }
+    }
+  },
+  "interpretation": "Coverage counts are not native time; retain all five rounds even without improvement; no broad parameter sweep or combination"
+}

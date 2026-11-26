@@ -1,0 +1,56 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/richards_site_attribution/attempt01/scripts/original.N1.js:491:1: function: Scheduler
+  locals:
+    0: var this
+  closure vars:
+    0: var Array [global_ref37]
+    1: var NUMBER_OF_IDS [global_ref16]
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function Scheduler() {
+
+        push_this
+        put_loc0 0: this
+
+;;   this.queueCount = 0;
+
+        get_loc0 0: this
+        push_0 0
+        put_field queueCount
+
+;;   this.holdCount = 0;
+
+        get_loc0 0: this
+        push_0 0
+        put_field holdCount
+
+;;   this.blocks = new Array(NUMBER_OF_IDS);
+
+        get_loc0 0: this
+        get_var 0: Array
+        dup
+        get_var 1: NUMBER_OF_IDS
+        call_constructor 1
+        put_field blocks
+
+;;   this.list = null;
+
+        get_loc0 0: this
+        null
+        put_field list
+
+;;   this.currentTcb = null;
+
+        get_loc0 0: this
+        null
+        put_field currentTcb
+
+;;   this.currentId = null;
+
+        get_loc0 0: this
+        null
+        put_field currentId
+        return_undef
+
+;; }
+

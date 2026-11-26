@@ -1,0 +1,79 @@
+--- a/four_diag.inc
++++ b/four_diag.inc
+@@ -11,6 +11,9 @@
+ } FourDiag;
+ static FourDiag *four_dlist;
+ static int four_active;
++static uint64_t follow_stats[24];
++#define FOLLOW(i) do{if(four_active)follow_stats[i]++;}while(0)
++#define FOLLOW_ADD(i,n) do{if(four_active)follow_stats[i]+=(n);}while(0)
+ static FourDiag *four_dnew(JSContext *ctx,JSFunctionBytecode *b,unsigned pc)
+ {
+     FourDiag *d=calloc(1,sizeof(*d));assert(d);d->pc=pc;
+@@ -45,10 +48,12 @@
+             (unsigned long long)d->work1,(unsigned long long)d->work2,(unsigned long long)d->work3,(unsigned long long)d->work4,(unsigned long long)d->work5,(unsigned long long)d->work6);
+         fprintf(stderr,",\"pc\":%u,\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"bytecode_hex\":\"%s\"}",d->pc,
+             (unsigned long long)d->q,(unsigned long long)d->h,(unsigned long long)d->eligible,(unsigned long long)d->fill,(unsigned long long)d->guard,(unsigned long long)d->overflow,d->bytes);
+-    }fprintf(stderr,"]}\n");
++    }fprintf(stderr,"],\"follow\":[");for(int i=0;i<24;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)follow_stats[i]);fprintf(stderr,"]}\n");
+ }
+ #pragma pop_macro("free")
+ #else
++#define FOLLOW(i) ((void)0)
++#define FOLLOW_ADD(i,n) ((void)0)
+ #define FOUR_COUNT(s,k) ((void)0)
+ #define FOUR_ADD(s,k,n) ((void)0)
+ #endif
+--- a/four_prepare.inc
++++ b/four_prepare.inc
+@@ -9,6 +9,9 @@
+     for(int p=0;p<b->byte_code_len;){uint8_t*pc=b->byte_code_buf+p;int op=*pc,n=short_opcode_info(op).size;
+         if(op==OP_call_constructor){FourSite*s=&b->four_sites[b->four_count];s->pc=p;s->argc=get_u16(pc+1);
+ #ifdef FOUR_DIAG
++            follow_stats[8]++;follow_stats[11]+=sizeof(FourSite);
++#endif
++#ifdef FOUR_DIAG
+             s->diag=four_dnew(ctx,b,p);
+ #endif
+             *pc=OP_four_ctor;put_u16(pc+1,b->four_count++);
+--- a/four_runtime.inc
++++ b/four_runtime.inc
+@@ -19,6 +19,7 @@
+ #endif
+ static int four_ctor_recipe(JSFunctionBytecode*b,FourRecipe*r)
+ {
++    FOLLOW(0);
+     const uint8_t*p=b->byte_code_buf,*end=p+b->byte_code_len;
+     if(b->func_kind!=JS_FUNC_NORMAL || b->var_count!=1 || b->var_ref_count || b->closure_var_count ||
+        b->need_home_object || b->is_derived_class_constructor || !b->has_simple_parameter_list ||
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4095,6 +4095,9 @@
+     return ret;
+ }
+ 
++extern void four_begin(void);extern void four_end(void);
++static JSValue js_four_begin(JSContext*c,JSValueConst t,int n,JSValueConst*v){four_begin();return JS_UNDEFINED;}
++static JSValue js_four_end(JSContext*c,JSValueConst t,int n,JSValueConst*v){four_end();return JS_UNDEFINED;}
+ void js_std_add_helpers(JSContext *ctx, int argc, char **argv)
+ {
+     JSValue global_obj, console, args, performance;
+@@ -4111,7 +4114,9 @@
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));
+-    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx,global_obj,"__four_begin",JS_NewCFunction(ctx,js_four_begin,"__four_begin",0));
++    JS_SetPropertyStr(ctx,global_obj,"__four_end",JS_NewCFunction(ctx,js_four_end,"__four_end",0));
+ 
+     /* same methods as the mozilla JS shell */
+     if (argc >= 0) {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -1,3 +1,5 @@
++#define FOUR_DIAG 1
++#define FOLLOW_PROBE 1
+ /*
+  * QuickJS Javascript Engine
+  *

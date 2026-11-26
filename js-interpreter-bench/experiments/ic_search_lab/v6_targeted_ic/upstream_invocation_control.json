@@ -1,0 +1,38 @@
+[
+  {
+    "condition": "A",
+    "flags": [],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ReferenceError: 'std' is not defined\n    at test_weak_map (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/quickjs-upstream/tests/test_builtin.js:929:5)\n    at <eval> (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/quickjs-upstream/tests/test_builtin.js:1187:14)\n",
+    "token": "2026-11-06T13:10:24.449474+00:00:A/[]"
+  },
+  {
+    "condition": "A",
+    "flags": [
+      "--std"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "token": "2026-11-06T13:10:24.531978+00:00:A/['--std']"
+  },
+  {
+    "condition": "B2",
+    "flags": [],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "ReferenceError: 'std' is not defined\n    at test_weak_map (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/quickjs-upstream/tests/test_builtin.js:929:5)\n    at <eval> (/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/engines/quickjs-upstream/tests/test_builtin.js:1187:14)\n",
+    "token": "2026-11-06T13:10:24.650888+00:00:B2/[]"
+  },
+  {
+    "condition": "B2",
+    "flags": [
+      "--std"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "token": "2026-11-06T13:10:24.734693+00:00:B2/['--std']"
+  }
+]

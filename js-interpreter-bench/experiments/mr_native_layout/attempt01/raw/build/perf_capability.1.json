@@ -1,0 +1,13 @@
+{
+  "command": [
+    "sh",
+    "-c",
+    "command -v perf && perf stat -e cycles:u,instructions:u,branches:u,branch-misses:u -- true"
+  ],
+  "cwd": "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench",
+  "timestamp": "2026-10-24T15:00:00.262561+00:00",
+  "exit_code": 127,
+  "stdout": "",
+  "stderr": "",
+  "wall_ns": 74899948
+}

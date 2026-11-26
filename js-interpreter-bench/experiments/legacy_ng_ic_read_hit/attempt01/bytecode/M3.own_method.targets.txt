@@ -1,0 +1,540 @@
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:12:1: function: m3Call
+  args: obj
+  locals:
+    0: var sum
+    1: var i
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function m3Call(obj) {
+
+        push_0 0
+
+;;   var sum=0;
+
+        put_loc0 0: sum
+        push_0 0
+
+;;   for(var i=0;i<4096;i++)sum+=obj.step(i);
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        push_i16 4096
+        lt
+        if_false8 28
+        get_loc0 0: sum
+        get_arg0 0: obj
+        get_field2 step
+        get_loc1 1: i
+        call_method 1
+        add
+        put_loc0 0: sum
+        inc_loc 1: i
+        goto8 4
+
+;;   return sum;
+
+   28:  get_loc0 0: sum
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:18:1: function: microRun
+  closure vars:
+    0: var m3Call [global_ref1]
+    1: var microObject [global_ref2]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function microRun(){return m3Call(microObject);}
+
+        get_var 0: m3Call
+        get_var 1: microObject
+        tail_call 1
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:19:1: function: microValidate
+  args: result
+  closure vars:
+    0: var Error [global_ref6]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function microValidate(result){if(result!==8398848)throw Error('M3 expected 8398848');}
+
+        get_arg0 0: result
+        push_i32 8398848
+        strict_neq
+        if_false8 19
+        get_var 0: Error
+        push_atom_value "M3 expected 8398848"
+        call1 1
+        throw
+   19:  return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:21:3: function: <null>
+  locals:
+    0: var count
+    1: var last
+    2: var checksum
+    3: var start
+    4: var stop
+    5: var j
+  closure vars:
+    0: var microRun [global_ref3]
+    1: var microValidate [global_ref4]
+    2: var benchNow [global_ref9]
+    3: var Number [global_ref10]
+    4: var Error [global_ref6]
+    5: var console [global_ref11]
+    6: var JSON [global_ref12]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function(){
+
+        push_2 2
+
+;;  var count=2,last,checksum=0,start=null,stop=null;
+
+        put_loc0 0: count
+        push_0 0
+        put_loc2 2: checksum
+        null
+        put_loc3 3: start
+        null
+        put_loc8 4: stop
+        push_0 0
+
+;;  if(true){for(var j=0;j<count;j++){last=microRun();microValidate(last);checksum+=last;}}
+
+        put_loc8 5: j
+   12:  get_loc8 5: j
+        get_loc0 0: count
+        lt
+        if_false8 66
+        get_var 0: microRun
+        call0 0
+        put_loc1 1: last
+        get_var 1: microValidate
+        get_loc1 1: last
+        call1 1
+        drop
+        get_loc1 1: last
+        add_loc 2: checksum
+        inc_loc 5: j
+        goto8 12
+
+;;  else{start=benchNow();for(var j=0;j<count;j++){last=microRun();checksum+=last;}stop=benchNow();microValidate(last);}
+
+   36:  get_loc8 5: j
+        get_loc0 0: count
+        lt
+        if_false8 54
+        get_var 0: microRun
+        call0 0
+        put_loc1 1: last
+        get_loc1 1: last
+        add_loc 2: checksum
+        inc_loc 5: j
+        goto8 36
+   54:  get_var 2: benchNow
+        call0 0
+        put_loc8 4: stop
+        get_var 1: microValidate
+        get_loc1 1: last
+        call1 1
+        drop
+
+;;  if(!Number.isFinite(checksum)||checksum!==count*8398848)throw Error('checksum');
+
+   66:  get_var 3: Number
+        get_field2 isFinite
+        get_loc2 2: checksum
+        call_method 1
+        lnot
+        dup
+        if_true8 92
+        drop
+        get_loc2 2: checksum
+        get_loc0 0: count
+        push_i32 8398848
+        mul
+        strict_neq
+   92:  if_false8 104
+        get_var 4: Error
+        push_atom_value checksum
+        call1 1
+        throw
+
+;;  console.log('TEB_RESULT:'+JSON.stringify({case:"M3.own_method",N:count,mode:"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1",phase:"correctness",
+
+  104:  get_var 5: console
+        get_field2 log
+        push_atom_value "TEB_RESULT:"
+        get_var 6: JSON
+        get_field2 stringify
+        object
+        push_atom_value "M3.own_method"
+        define_field case
+        get_loc0 0: count
+        define_field N
+        push_atom_value LEGACY_NG_IC_READ_WRAPPER_INLINE_V1
+        define_field mode
+        push_atom_value correctness
+        define_field phase
+        push_atom_value PASS
+        define_field correctness
+
+;;  correctness:'PASS',checksum:checksum,last:last,elapsed_ms:start===null?null:stop-start,
+
+        get_loc2 2: checksum
+        define_field checksum
+        get_loc1 1: last
+        define_field last
+        get_loc3 3: start
+        is_null
+        if_false8 191
+        null
+        goto8 195
+  191:  get_loc8 4: stop
+        get_loc3 3: start
+        sub
+  195:  define_field elapsed_ms
+        push_0 0
+        define_field warmup_calls
+        push_i16 4096
+        define_field inner_iterations
+        push_true
+        define_field first_Run_included
+        call_method 1
+        add
+        call_method 1
+        return_undef
+
+;;  warmup_calls:0,inner_iterations:4096,first_Run_included:true}));
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var m3Step [global_decl]
+    1: var m3Call [global_decl]
+    2: var microObject [global_decl]
+    3: var microRun [global_decl]
+    4: var microValidate [global_decl]
+    5: var performance [global]
+    6: var Error [global]
+    7: var Object [global]
+    8: var globalThis [global]
+    9: var benchNow [global]
+   10: var Number [global]
+   11: var console [global]
+   12: var JSON [global]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+        fclosure8 1: [bytecode m3Step]
+        put_var_ref0 0: m3Step
+        fclosure8 2: [bytecode m3Call]
+        put_var_ref1 1: m3Call
+        fclosure8 3: [bytecode microRun]
+        put_var_ref3 3: microRun
+        fclosure8 4: [bytecode microValidate]
+        put_var_ref 4: microValidate
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        put_loc0 0: "<ret>"
+        object
+        push_3 3
+        define_field bias
+        get_var 0: m3Step
+        define_field step
+        put_var 2: microObject
+        fclosure8 5: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+TEB_RESULT:{"case":"M3.own_method","N":2,"mode":"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1","phase":"correctness","correctness":"PASS","checksum":16797696,"last":8398848,"elapsed_ms":null,"warmup_calls":0,"inner_iterations":4096,"first_Run_included":true}
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:11:1: function: m3Step
+  args: x
+  locals:
+    0: var this
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function m3Step(x){return x+this.bias;}
+
+        push_this
+        put_loc0 0: this
+        get_arg0 0: x
+        get_loc0 0: this
+        get_field bias
+        add
+        return
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:12:1: function: m3Call
+  args: obj
+  locals:
+    0: var sum
+    1: var i
+  stack_size: 4
+  var_ref_count: 0
+  opcodes:
+;; function m3Call(obj) {
+
+        push_0 0
+
+;;   var sum=0;
+
+        put_loc0 0: sum
+        push_0 0
+
+;;   for(var i=0;i<4096;i++)sum+=obj.step(i);
+
+        put_loc1 1: i
+    4:  get_loc1 1: i
+        push_i16 4096
+        lt
+        if_false8 28
+        get_loc0 0: sum
+        get_arg0 0: obj
+        get_field2 step
+        get_loc1 1: i
+        call_method 1
+        add
+        put_loc0 0: sum
+        inc_loc 1: i
+        goto8 4
+
+;;   return sum;
+
+   28:  get_loc0 0: sum
+        return
+
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:18:1: function: microRun
+  closure vars:
+    0: var m3Call [global_ref1]
+    1: var microObject [global_ref2]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function microRun(){return m3Call(microObject);}
+
+        get_var 0: m3Call
+        get_var 1: microObject
+        tail_call 1
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:19:1: function: microValidate
+  args: result
+  closure vars:
+    0: var Error [global_ref6]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+;; function microValidate(result){if(result!==8398848)throw Error('M3 expected 8398848');}
+
+        get_arg0 0: result
+        push_i32 8398848
+        strict_neq
+        if_false8 19
+        get_var 0: Error
+        push_atom_value "M3 expected 8398848"
+        call1 1
+        throw
+   19:  return_undef
+
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:21:3: function: <null>
+  locals:
+    0: var count
+    1: var last
+    2: var checksum
+    3: var start
+    4: var stop
+    5: var j
+  closure vars:
+    0: var microRun [global_ref3]
+    1: var microValidate [global_ref4]
+    2: var benchNow [global_ref9]
+    3: var Number [global_ref10]
+    4: var Error [global_ref6]
+    5: var console [global_ref11]
+    6: var JSON [global_ref12]
+  stack_size: 8
+  var_ref_count: 0
+  opcodes:
+;; function(){
+
+        push_2 2
+
+;;  var count=2,last,checksum=0,start=null,stop=null;
+
+        put_loc0 0: count
+        push_0 0
+        put_loc2 2: checksum
+        null
+        put_loc3 3: start
+        null
+        put_loc8 4: stop
+        push_0 0
+
+;;  if(true){for(var j=0;j<count;j++){last=microRun();microValidate(last);checksum+=last;}}
+
+        put_loc8 5: j
+   12:  get_loc8 5: j
+        get_loc0 0: count
+        lt
+        if_false8 66
+        get_var 0: microRun
+        call0 0
+        put_loc1 1: last
+        get_var 1: microValidate
+        get_loc1 1: last
+        call1 1
+        drop
+        get_loc1 1: last
+        add_loc 2: checksum
+        inc_loc 5: j
+        goto8 12
+
+;;  else{start=benchNow();for(var j=0;j<count;j++){last=microRun();checksum+=last;}stop=benchNow();microValidate(last);}
+
+   36:  get_loc8 5: j
+        get_loc0 0: count
+        lt
+        if_false8 54
+        get_var 0: microRun
+        call0 0
+        put_loc1 1: last
+        get_loc1 1: last
+        add_loc 2: checksum
+        inc_loc 5: j
+        goto8 36
+   54:  get_var 2: benchNow
+        call0 0
+        put_loc8 4: stop
+        get_var 1: microValidate
+        get_loc1 1: last
+        call1 1
+        drop
+
+;;  if(!Number.isFinite(checksum)||checksum!==count*8398848)throw Error('checksum');
+
+   66:  get_var 3: Number
+        get_field2 isFinite
+        get_loc2 2: checksum
+        call_method 1
+        lnot
+        dup
+        if_true8 92
+        drop
+        get_loc2 2: checksum
+        get_loc0 0: count
+        push_i32 8398848
+        mul
+        strict_neq
+   92:  if_false8 104
+        get_var 4: Error
+        push_atom_value checksum
+        call1 1
+        throw
+
+;;  console.log('TEB_RESULT:'+JSON.stringify({case:"M3.own_method",N:count,mode:"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1",phase:"correctness",
+
+  104:  get_var 5: console
+        get_field2 log
+        push_atom_value "TEB_RESULT:"
+        get_var 6: JSON
+        get_field2 stringify
+        object
+        push_atom_value "M3.own_method"
+        define_field case
+        get_loc0 0: count
+        define_field N
+        push_atom_value LEGACY_NG_IC_READ_WRAPPER_INLINE_V1
+        define_field mode
+        push_atom_value correctness
+        define_field phase
+        push_atom_value PASS
+        define_field correctness
+
+;;  correctness:'PASS',checksum:checksum,last:last,elapsed_ms:start===null?null:stop-start,
+
+        get_loc2 2: checksum
+        define_field checksum
+        get_loc1 1: last
+        define_field last
+        get_loc3 3: start
+        is_null
+        if_false8 191
+        null
+        goto8 195
+  191:  get_loc8 4: stop
+        get_loc3 3: start
+        sub
+  195:  define_field elapsed_ms
+        push_0 0
+        define_field warmup_calls
+        push_i16 4096
+        define_field inner_iterations
+        push_true
+        define_field first_Run_included
+        call_method 1
+        add
+        call_method 1
+        return_undef
+
+;;  warmup_calls:0,inner_iterations:4096,first_Run_included:true}));
+;; }
+
+/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/legacy_ng_ic_read_hit/attempt01/generated/M3.own_method.N2.check.js:1:1: function: <eval>
+  locals:
+    0: var <ret>
+  closure vars:
+    0: var m3Step [global_decl]
+    1: var m3Call [global_decl]
+    2: var microObject [global_decl]
+    3: var microRun [global_decl]
+    4: var microValidate [global_decl]
+    5: var performance [global]
+    6: var Error [global]
+    7: var Object [global]
+    8: var globalThis [global]
+    9: var benchNow [global]
+   10: var Number [global]
+   11: var console [global]
+   12: var JSON [global]
+  stack_size: 2
+  var_ref_count: 0
+  opcodes:
+        fclosure8 1: [bytecode m3Step]
+        put_var_ref0 0: m3Step
+        fclosure8 2: [bytecode m3Call]
+        put_var_ref1 1: m3Call
+        fclosure8 3: [bytecode microRun]
+        put_var_ref3 3: microRun
+        fclosure8 4: [bytecode microValidate]
+        put_var_ref 4: microValidate
+        fclosure8 0: [bytecode <null>]
+        call0 0
+        put_loc0 0: "<ret>"
+        object
+        push_3 3
+        define_field bias
+        get_var 0: m3Step
+        define_field step
+        put_var 2: microObject
+        fclosure8 5: [bytecode <null>]
+        call0 0
+        set_loc0 0: "<ret>"
+        return
+
+TEB_RESULT:{"case":"M3.own_method","N":2,"mode":"LEGACY_NG_IC_READ_WRAPPER_INLINE_V1","phase":"correctness","correctness":"PASS","checksum":16797696,"last":8398848,"elapsed_ms":null,"warmup_calls":0,"inner_iterations":4096,"first_Run_included":true}

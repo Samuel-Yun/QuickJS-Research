@@ -1,0 +1,123 @@
+[
+  {
+    "label": "SPARSE",
+    "sizes": {
+      "JSObject": 64,
+      "JSRuntime": 2216,
+      "JSFunctionBytecode": 160,
+      "FourSite": 32,
+      "FullPlan": 96
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/SPARSE.release/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSRuntime)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(FullPlan)"
+    ],
+    "binary_sha256": "b2c707e629ee60957797b3dc9eacd3c773778a57ec27f884666a5922f42ad6b2",
+    "stdout": "$1 = 64\n$2 = 2216\n$3 = 160\n$4 = 32\n$5 = 96\n",
+    "stderr": ""
+  },
+  {
+    "label": "NUMERIC_PLAN",
+    "sizes": {
+      "JSObject": 64,
+      "JSFunctionBytecode": 160,
+      "FourSite": 40,
+      "FullPlan": 96,
+      "NumericPlan": 168,
+      "NumericRecipe": 104
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/01_forward_numeric/work/NUMERIC_PLAN.release.rev04/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(FullPlan)",
+      "-ex",
+      "p/d sizeof(NumericPlan)",
+      "-ex",
+      "p/d sizeof(NumericRecipe)"
+    ],
+    "binary_sha256": "dd78a34c324b1af1f3dfebe472ac30606b1bfb8955703893b84a2c9331322396",
+    "stdout": "$1 = 64\n$2 = 160\n$3 = 40\n$4 = 96\n$5 = 168\n$6 = 104\n",
+    "stderr": ""
+  },
+  {
+    "label": "COMPARE_FULL",
+    "sizes": {
+      "JSObject": 64,
+      "JSFunctionBytecode": 184,
+      "FourSite": 32,
+      "CompareSite": 48
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/02_compare_branch/work/COMPARE_FULL.release/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(CompareSite)"
+    ],
+    "binary_sha256": "9ff4fbbef98b3c18b0111c03110dc30a91882fdd10d4b8060946f2a73c32bd37",
+    "stdout": "$1 = 64\n$2 = 184\n$3 = 32\n$4 = 48\n",
+    "stderr": ""
+  },
+  {
+    "label": "COALLOC",
+    "sizes": {
+      "JSObject": 64,
+      "JSFunctionBytecode": 160,
+      "FourSite": 32,
+      "FullPlan": 96
+    },
+    "command": [
+      "gdb",
+      "-nx",
+      "-batch",
+      "-ex",
+      "set debuginfod enabled off",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC.release.rev02/qjs",
+      "-ex",
+      "p/d sizeof(JSObject)",
+      "-ex",
+      "p/d sizeof(JSFunctionBytecode)",
+      "-ex",
+      "p/d sizeof(FourSite)",
+      "-ex",
+      "p/d sizeof(FullPlan)"
+    ],
+    "binary_sha256": "f05d149ec4b5c833c4f21bb397bac596898752eb7fb28f984409c04507d6b843",
+    "stdout": "$1 = 64\n$2 = 160\n$3 = 32\n$4 = 96\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "case": "arithmetic",
+      "serialized_bytes_equal": true,
+      "length_bytes": 292,
+      "release_C_sha256": "bcad5f4bb7731edf2e2480cf31b541bf12e1aae58ba67856d047e57bd81100df",
+      "diagnostic_C_sha256": "bcad5f4bb7731edf2e2480cf31b541bf12e1aae58ba67856d047e57bd81100df"
+    },
+    {
+      "case": "numeric_loop",
+      "serialized_bytes_equal": true,
+      "length_bytes": 254,
+      "release_C_sha256": "7706724ecdf5dec635c5279f7c4187e3c05ebc1bbe44e48715108a37906a4a9d",
+      "diagnostic_C_sha256": "7706724ecdf5dec635c5279f7c4187e3c05ebc1bbe44e48715108a37906a4a9d"
+    },
+    {
+      "case": "branches",
+      "serialized_bytes_equal": true,
+      "length_bytes": 337,
+      "release_C_sha256": "0000fffb499eef23013b1603bd3a0e768d08f55d4012c162858db80be3089e55",
+      "diagnostic_C_sha256": "0000fffb499eef23013b1603bd3a0e768d08f55d4012c162858db80be3089e55"
+    },
+    {
+      "case": "direct_call",
+      "serialized_bytes_equal": true,
+      "length_bytes": 336,
+      "release_C_sha256": "b98ca40c99ad93aafbc79aba3b28f9dd85a68f28560c745e2490f79c28067f03",
+      "diagnostic_C_sha256": "b98ca40c99ad93aafbc79aba3b28f9dd85a68f28560c745e2490f79c28067f03"
+    },
+    {
+      "case": "own_property",
+      "serialized_bytes_equal": true,
+      "length_bytes": 306,
+      "release_C_sha256": "91b67f4c03cb91aacfacf377857bfd3db5f8a22747043eb678acf8f135bfcf86",
+      "diagnostic_C_sha256": "91b67f4c03cb91aacfacf377857bfd3db5f8a22747043eb678acf8f135bfcf86"
+    },
+    {
+      "case": "prototype_method",
+      "serialized_bytes_equal": true,
+      "length_bytes": 550,
+      "release_C_sha256": "f1ef66f05c67282b14148cf4d418e21527f7674e50e45a3698fa78eaf0dc5b3e",
+      "diagnostic_C_sha256": "f1ef66f05c67282b14148cf4d418e21527f7674e50e45a3698fa78eaf0dc5b3e"
+    }
+  ],
+  "release_qjsc": {
+    "path": "/home/mzyx/three_engine_20261004/quickjs-04be246001599f5995fa2f2d8c91a0f198d3f34c/qjsc",
+    "sha256": "aa65a473e6ddafcfe1deb1c69477f88b6991c5feee6ca442b39bc08847183d75"
+  },
+  "diagnostic_qjsc": {
+    "path": "/home/mzyx/bytecode_whitebox_simple_attempt01_diag/qjsc",
+    "sha256": "71eb90e02f8cae56816f5a6140d6c8eda36da72b724be9bbec02a03db73ce80c"
+  },
+  "boundary": "Same revision/compiler representation corroboration; not a live memory dump of the frozen qjs process"
+}

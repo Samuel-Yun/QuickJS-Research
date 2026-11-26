@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "Release_change": "only OP_four_ctor handler in quickjs.c",
+  "helper_functions_and_record_layout_unchanged": true,
+  "same_target_old_path_preserved": true,
+  "semantic_tests": "target switches, setter/read-only/prototype changes, exceptions and non-object target",
+  "alternating_JS_identical_to_previous": true,
+  "all_C_uses_previous_script": true,
+  "switch_uses_identical_ctorLoop": true,
+  "switch_is_one_C_block_then_one_D_block": true,
+  "total_calls_per_input": 67108864,
+  "fresh_Release_processes": 45,
+  "processes_per_cell": 5,
+  "diagnostic_processes": 9,
+  "diagnostics_excluded_from_time": true,
+  "all_samples_retained": true,
+  "full_benchmarks_run": false,
+  "artifacts": {
+    "KEEP_PLAN.release.patch": "1bbacc9db99961858094550f38ebf4d20827bc0626f765a21ce13275a9f839ee",
+    "ctor.js": "a3a4530a041865de459e856654fcaeea9555dcae716f8abc162203aa12882e19",
+    "switch.js": "44b8a11a9061997d5fc6fc0997aa2c5439b497e9b58d3c09450e73c8ead1a8cd",
+    "semantics.js": "a654d23d6ea841895cbe93bf804ee106f6fcd135ffc3909f952952ad65d8e9e1",
+    "results.md": "d10abf49d9c1b329f1814426a554955804abf979fe466a806f74d434f5441c98",
+    "analysis/samples.csv": "b8a820c0622a59b5c1f8526dcb66cb242ba8e047d8de54925711de627abfc242",
+    "analysis/summary.csv": "5f09df1dbb622e3196a4284b6c09ff265e836bdc05d96b4499cd54b263f05428",
+    "analysis/switch_phases.csv": "b892abf0b3ec86031bddb236cd1ea2b4eafc417d5a37ba3d922642870c1f170b",
+    "analysis/counts.csv": "8d47db2a0b8fd83544be7213b113a8da799d9e50d0c3853755d8b66aef24cd64"
+  }
+}

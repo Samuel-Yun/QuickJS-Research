@@ -1,0 +1,32 @@
+{
+  "files": {
+    "common.py": "fd7291e874962061763cbba13ddc1faeef91200b4a4751a25f31bcdd2247e058",
+    "run.py": "37ff08b46d0d11567315b5ed9deb7c3d47333343a8c0684d80238ab3b1c8fcc9",
+    "protocol.json": "fdb4cc87ccded21a04792dc9e6ecf2b4c5a063a4fae41177360aa375f10cbffa",
+    "manifest.json": "2a323155174c1fb47754125ce6721e06f86cef98b8a71e1ec810a95c00190830",
+    "inputs.json": "579c57bd80c4e8114a5a3d0823df5b7711246f6ff825265f819a20133e3d1ca8",
+    "cases/method_control.js": "8bd7bcd60096c55999a66276b6448d637fe149a184e3b6c7980b8fb1af90d155",
+    "inputs/adapter.js": "cd393c275173f20526562a008951f65a332deffed85e7c804519788b8ebffab7",
+    "inputs/base.js": "216612c2e7096a02b3e52b57e9cf9351bbaf180d60938d5c60b85fd756232733",
+    "inputs/micro_driver.js": "3ecaaa56506a96e06545cca541e5570da6f302ce9d53a0f917611f1198882127",
+    "inputs/richards.js": "1246a64a24b931158bf01c24640343259fa74b0226e73bad630bd1f686aa0fa7",
+    "inputs/richards_driver.js": "ad5990874e44b4ecf068615cdc1232c126ad821a18198a73871f65d938efb90d",
+    "inputs/richards_inspect.js": "494cdf90bf3302e7c1d4fe6176f0139da698cc36ea536f663c4382a854237d42"
+  },
+  "scripts": {
+    "own_method_control": {
+      "path": "scripts/own_method_control/N16384.measure.js",
+      "sha256": "ffc799ad90329c05ee71314e336d4877e822265d3b71de25ff231644cbce0df9"
+    },
+    "inherited_method": {
+      "path": "scripts/inherited_method/N16384.measure.js",
+      "sha256": "e4313b93173667da75f738c06d1bfb90d0abf625e1582c3fc9f7deb385dc316c"
+    }
+  },
+  "schedule_sha256": "91bf4ef6b466b1216bea0bc9a021148b65115b9012ad60cb3fd3a5cf2ce470d8",
+  "eligible": [
+    "own_method_control",
+    "inherited_method"
+  ],
+  "timestamp": "2026-10-28T13:02:49.810342+00:00"
+}

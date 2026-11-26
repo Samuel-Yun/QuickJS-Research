@@ -1,0 +1,19 @@
+{
+  "label": "INSTANCE_HOOK",
+  "case": "crypto-aes",
+  "rep": 1,
+  "mode": "release",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_round2_20261125/attempt01/01_instance_hook/work/INSTANCE.release/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/sunspider/crypto-aes.js"
+  ],
+  "script_sha256": "21e1ec9a5de1c535cbc57b2579d83eb1ddf0200501db8bd379f717b86d7a0472",
+  "binary_sha256": "4a8c6d62db996962e421592f2ba9b85f37b0773df417a11e65e32a08c844ad81",
+  "control": {
+    "QJS_INSTANCE_MODE": "hook"
+  },
+  "exit_code": 0,
+  "stdout": "TEB_RESULT:{\"benchmark\":\"SunSpider\",\"case\":\"crypto-aes\",\"mode\":\"MAIN_MONOTONIC_V1\",\"phase\":\"measure\",\"N\":128,\"checksum\":\"1343\",\"correctness\":\"PASS\",\"timer\":\"benchNow\",\"start_ms\":1159920967.141935,\"stop_ms\":1159922188.41655,\"elapsed_ms\":1221.2746148109436,\"elapsed_per_call_ms\":9.541207928210497,\"warmup_calls\":0}\n",
+  "stderr": "",
+  "wall_ms": 1227.1761058364064
+}

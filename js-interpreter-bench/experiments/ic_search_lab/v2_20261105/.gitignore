@@ -1,0 +1,9 @@
+active/
+artifacts/
+__pycache__/
+*.pending
+final_collector.lock
+# Keep the uncompressed append-only original locally; publish its lossless archive.
+/runs.jsonl
+!runs.jsonl.gz
+!seed_M.tar.gz

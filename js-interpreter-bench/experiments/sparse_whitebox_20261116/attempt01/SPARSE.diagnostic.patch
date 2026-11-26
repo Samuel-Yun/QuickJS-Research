@@ -1,0 +1,339 @@
+--- a/four_diag.inc
++++ b/four_diag.inc
+@@ -1,59 +1,16 @@
+-#ifdef FOUR_DIAG
+-#pragma push_macro("free")
+-#undef free
+-typedef struct FourDiag {
+-    uint64_t q,h,eligible,fill,guard,overflow;
+-    uint64_t work1,work2,work3,work4,work5,work6;
+-    unsigned pc;
+-    char *name,*target;
+-    char bytes[257];
+-    struct FourDiag *next;
+-} FourDiag;
+-static FourDiag *four_dlist;
+-static int four_active;
+-static uint64_t follow_stats[24];
+-#define FOLLOW(i) do{if(four_active)follow_stats[i]++;}while(0)
+-#define FOLLOW_ADD(i,n) do{if(four_active)follow_stats[i]+=(n);}while(0)
+-static FourDiag *four_dnew(JSContext *ctx,JSFunctionBytecode *b,unsigned pc)
+-{
+-    FourDiag *d=calloc(1,sizeof(*d));assert(d);d->pc=pc;
+-    const char *n=JS_AtomToCString(ctx,b->func_name);assert(n);
+-    d->name=strdup(n);assert(d->name);JS_FreeCString(ctx,n);
+-    unsigned count=min_int(128,b->byte_code_len-pc);
+-    for(unsigned i=0;i<count;i++)snprintf(d->bytes+2*i,3,"%02x",b->byte_code_buf[pc+i]);
+-    d->next=four_dlist;four_dlist=d;return d;
+-}
+-#define FOUR_COUNT(s,k) do{if(four_active)(s)->diag->k++;}while(0)
+-#define FOUR_ADD(s,k,n) do{if(four_active)(s)->diag->k+=(n);}while(0)
+-static void four_json_string(const char *s)
+-{
+-    fputc('"',stderr);
+-    for(const unsigned char *p=(const unsigned char*)s;*p;p++) {
+-        if(*p=='"'||*p=='\\'){fputc('\\',stderr);fputc(*p,stderr);}
+-        else if(*p<32)fprintf(stderr,"\\u%04x",*p);else fputc(*p,stderr);
+-    }
+-    fputc('"',stderr);
+-}
+-void four_begin(void){four_active=1;}
+-void four_end(void)
+-{
+-    four_active=0;uint64_t q=0,h=0,e=0,f=0,g=0,o=0;
+-    for(FourDiag*d=four_dlist;d;d=d->next){q+=d->q;h+=d->h;e+=d->eligible;f+=d->fill;g+=d->guard;o+=d->overflow;}
+-    fprintf(stderr,"FOUR_COUNTS:{\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"sites\":[",
+-        (unsigned long long)q,(unsigned long long)h,(unsigned long long)e,(unsigned long long)f,(unsigned long long)g,(unsigned long long)o);
+-    unsigned k=0;for(FourDiag*d=four_dlist;d;d=d->next)if(d->q){
+-        fprintf(stderr,"%s{\"function\":",k++?",":"");four_json_string(d->name);
+-        if(d->target){fprintf(stderr,",\"target\":");four_json_string(d->target);}
+-        fprintf(stderr,",\"site_id\":%u,\"work\":[%llu,%llu,%llu,%llu,%llu,%llu]",k-1,
+-            (unsigned long long)d->work1,(unsigned long long)d->work2,(unsigned long long)d->work3,(unsigned long long)d->work4,(unsigned long long)d->work5,(unsigned long long)d->work6);
+-        fprintf(stderr,",\"pc\":%u,\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"bytecode_hex\":\"%s\"}",d->pc,
+-            (unsigned long long)d->q,(unsigned long long)d->h,(unsigned long long)d->eligible,(unsigned long long)d->fill,(unsigned long long)d->guard,(unsigned long long)d->overflow,d->bytes);
+-    }fprintf(stderr,"],\"follow\":[");for(int i=0;i<24;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)follow_stats[i]);fprintf(stderr,"]}\n");
+-}
+-#pragma pop_macro("free")
+-#else
+-#define FOLLOW(i) ((void)0)
+-#define FOLLOW_ADD(i,n) ((void)0)
+-#define FOUR_COUNT(s,k) ((void)0)
+-#define FOUR_ADD(s,k,n) ((void)0)
+-#endif
++#define WB_q 0
++#define WB_h 1
++#define WB_eligible 2
++#define WB_fill 3
++#define WB_guard 4
++#define WB_overflow 5
++#define WB_work1 6
++#define WB_work2 7
++#define WB_work3 8
++#define WB_work4 9
++#define WB_work5 10
++#define WB_work6 11
++#define FOUR_COUNT(s,k) do{if(wb_active && wb_kind==2)wb_ctor[WB_##k]++;}while(0)
++#define FOUR_ADD(s,k,n) do{if(wb_active && wb_kind==2)wb_ctor[WB_##k]+=(n);}while(0)
++#define FOLLOW(i) do{if(wb_active && wb_kind==2)wb_sparse[i]++;}while(0)
++#define FOLLOW_ADD(i,n) do{if(wb_active && wb_kind==2)wb_sparse[i]+=(n);}while(0)
+--- a/quickjs-libc.c
++++ b/quickjs-libc.c
+@@ -4095,6 +4095,8 @@
+     return ret;
+ }
+ 
++extern JSValue qjs_snapshot(JSContext*,JSValueConst,int,JSValueConst*);
++extern JSValue wb_begin(JSContext*,JSValueConst,int,JSValueConst*);extern JSValue wb_end(JSContext*,JSValueConst,int,JSValueConst*);
+ void js_std_add_helpers(JSContext *ctx, int argc, char **argv)
+ {
+     JSValue global_obj, console, args, performance;
+@@ -4111,7 +4113,10 @@
+     performance = JS_NewObject(ctx);
+     JS_SetPropertyStr(ctx, performance, "now",
+                       JS_NewCFunction(ctx, js_os_now, "now", 0));
+-    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx, global_obj, "performance", performance);
++    JS_SetPropertyStr(ctx,global_obj,"__snapshot",JS_NewCFunction(ctx,qjs_snapshot,"__snapshot",3));
++    JS_SetPropertyStr(ctx,global_obj,"__wb_begin",JS_NewCFunction(ctx,wb_begin,"__wb_begin",2));
++    JS_SetPropertyStr(ctx,global_obj,"__wb_end",JS_NewCFunction(ctx,wb_end,"__wb_end",0));
+ 
+     /* same methods as the mozilla JS shell */
+     if (argc >= 0) {
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6227,6 +6227,7 @@
+     return NULL;
+ }
+ 
++#include "wb_diag.inc"
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
+@@ -17876,6 +17877,7 @@
+         ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
+         if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
+             site->shape == object->shape) {                            \
++            wb_hit(site,1); \
+             *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
+             pc += 5;                                                   \
+             break;                                                     \
+@@ -61667,3 +61669,7 @@
+     JS_FreeValue(ctx, obj);
+     return 0;
+ }
++
++#define SNAPSHOT_EVAL_COLD 1
++#include "snapshot.inc"
++#include "wb_api.inc"
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -10,7 +10,8 @@
+         JSShapeProperty *prs;                                           \
+         RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
+         pc += 4;                                                        \
+-        RDI_QUERY();                                                    \
++        RDI_QUERY(); \
++        wb_query(site);                                                    \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = JS_VALUE_GET_OBJ(obj);                                  \
+             if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
+@@ -19,6 +20,7 @@
+                     if (site->shape == p->shape && holder &&            \
+                         holder->class_id == JS_CLASS_OBJECT && !holder->is_exotic && \
+                         site->holder_shape == holder->shape) {          \
++                        wb_hit(site,0); \
+                         val = JS_DupValue(ctx, holder->prop[site->prop_offset].u.value); \
+                         goto name ## _done;                            \
+                     }                                                  \
+@@ -28,13 +30,15 @@
+                 }                                                      \
+                 if (offset != UINT32_MAX) {                             \
+                     RDI_COUNT(hits);                                   \
++                    wb_hit(site,0); \
+                     val = JS_DupValue(ctx, p->prop[offset].u.value);     \
+                     goto name ## _done;                                \
+                 }                                                       \
+                 RDI_COUNT(shape_misses);                               \
+             }                                                           \
+         }                                                               \
+-        RDI_COUNT(fallback);                                            \
++        RDI_COUNT(fallback); \
++        wb_miss(site);                                            \
+         atom = site->atom;                                              \
+         if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
+             p = origin = JS_VALUE_GET_OBJ(obj);                         \
+--- a/read_ic_runtime.inc
++++ b/read_ic_runtime.inc
+@@ -28,6 +28,7 @@
+                                     JSShape *shape, uint32_t offset RDI_DPARAM)
+ {
+     RDI_COUNT(updates);
++    wb_fill(s);
+     JSShape *old = s->shape, *old_holder = s->holder_shape;
+     js_dup_shape(shape);
+     s->shape = shape;
+--- a/wb_diag.inc
++++ b/wb_diag.inc
+@@ -0,0 +1,8 @@
++/* Diagnostic only. No per-site allocation or cache-policy change. */
++static ReadICSite*wb_read_site;
++static int wb_active,wb_kind;
++static uint64_t wb_read[8],wb_ctor[12],wb_sparse[24];
++static force_inline void wb_query(ReadICSite*s){if(wb_active && wb_kind==1 && s==wb_read_site){wb_read[0]++;wb_read[5]++;}}
++static force_inline void wb_hit(ReadICSite*s,int fused){if(wb_active && wb_kind==1 && s==wb_read_site){wb_read[1]++;if(fused){wb_read[0]++;wb_read[3]++;}else wb_read[4]++;}}
++static force_inline void wb_miss(ReadICSite*s){if(wb_active && wb_kind==1 && s==wb_read_site)wb_read[2]++;}
++static force_inline void wb_fill(ReadICSite*s){if(wb_active && wb_kind==1 && s==wb_read_site)wb_read[6]++;}
+--- a/wb_api.inc
++++ b/wb_api.inc
+@@ -0,0 +1,11 @@
++JSValue wb_begin(JSContext*c,JSValueConst t,int n,JSValueConst*v){
++ JSFunctionBytecode*b=JS_GetFunctionBytecode(v[0]);const char*kind=JS_ToCString(c,v[1]);assert(b && kind && b->read_ic_ready);
++ memset(wb_read,0,sizeof(wb_read));memset(wb_ctor,0,sizeof(wb_ctor));memset(wb_sparse,0,sizeof(wb_sparse));
++ wb_kind=!strcmp(kind,"read")?1:2;
++ if(wb_kind==1){assert(b->read_ic_count==1);wb_read_site=&b->read_ic_sites[0];const char*a=JS_AtomToCString(c,wb_read_site->atom);assert(!strcmp(a,"x"));JS_FreeCString(c,a);}
++ else assert(b->four_count==1);
++ JS_FreeCString(c,kind);wb_active=1;return JS_UNDEFINED;
++}
++JSValue wb_end(JSContext*c,JSValueConst t,int n,JSValueConst*v){
++ wb_active=0;fprintf(stderr,"WHITEBOX_COUNTS:{\"read\":[");for(int i=0;i<8;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)wb_read[i]);fprintf(stderr,"],\"ctor\":[");for(int i=0;i<12;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)wb_ctor[i]);fprintf(stderr,"],\"sparse\":[");for(int i=0;i<24;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)wb_sparse[i]);fprintf(stderr,"]}\n");return JS_UNDEFINED;
++}
+--- a/snapshot.inc
++++ b/snapshot.inc
+@@ -0,0 +1,137 @@
++/* Diagnostic inspection only. The compiler, preparer and opcode handlers are
++ * unchanged. Decode the live bytecode image rather than the compiler's earlier
++ * DUMP_BYTECODE output. The opcode/format names use the SAME tables/header as
++ * the interpreter, without enabling DUMP_BYTECODE or changing JSOpCode layout.
++ */
++static const char *const snapshot_opcode_names[] = {
++#define FMT(f)
++#define DEF(id, size, n_pop, n_push, f) #id,
++#include "quickjs-opcode.h"
++#undef DEF
++#undef FMT
++};
++static const char *const snapshot_format_names[] = {
++#define FMT(f) #f,
++#define DEF(id, size, n_pop, n_push, f)
++#include "quickjs-opcode.h"
++#undef DEF
++#undef FMT
++};
++_Static_assert(countof(snapshot_opcode_names) == countof(opcode_info), "opcode name table");
++
++static void snapshot_string(const char *s)
++{
++    const unsigned char *p = (const unsigned char *)s;
++    fputc('"', stdout);
++    for (; *p; ++p) {
++        if (*p == '"' || *p == '\\') { fputc('\\', stdout); fputc(*p, stdout); }
++        else if (*p < 32) printf("\\u%04x", (unsigned)*p);
++        else fputc(*p, stdout);
++    }
++    fputc('"', stdout);
++}
++
++static void snapshot_atom(JSContext *ctx, JSAtom atom)
++{
++    const char *s = JS_AtomToCString(ctx, atom);
++    assert(s);
++    snapshot_string(s);
++    JS_FreeCString(ctx, s);
++}
++
++static void snapshot_shape(JSShape *shape)
++{
++    if (!shape) { printf("null"); return; }
++    printf("{\"address\":\"%p\",\"is_hashed\":%s,\"prop_count\":%u}",
++           (void *)shape, shape->is_hashed ? "true" : "false", shape->prop_count);
++}
++
++JSValue qjs_snapshot(JSContext *ctx, JSValueConst this_val,
++                     int argc, JSValueConst *argv)
++{
++    JSFunctionBytecode *b;
++    JSObject *fn, *receiver;
++    const char *label;
++    int pos;
++    if (argc != 3 || !(b = JS_GetFunctionBytecode(argv[0])) ||
++        JS_VALUE_GET_TAG(argv[2]) != JS_TAG_OBJECT)
++        return JS_ThrowTypeError(ctx, "snapshot requires function, label, receiver");
++    label = JS_ToCString(ctx, argv[1]);
++    if (!label) return JS_EXCEPTION;
++    fn = JS_VALUE_GET_OBJ(argv[0]);
++    receiver = JS_VALUE_GET_OBJ(argv[2]);
++    printf("BYTECODE_SNAPSHOT:{\"label\":"); snapshot_string(label);
++    printf(",\"function\":"); snapshot_atom(ctx, b->func_name);
++    printf(",\"function_class\":%u,\"byte_code_len\":%d,\"arg_count\":%u,"
++           "\"var_count\":%u,\"stack_size\":%u", fn->class_id,
++           b->byte_code_len, b->arg_count, b->var_count, b->stack_size);
++#ifdef SNAPSHOT_EVAL_COLD
++    printf(",\"ic_ready\":%s,\"ic_count\":%u,\"site_size\":%zu",
++           b->read_ic_ready ? "true" : "false", b->read_ic_count, sizeof(ReadICSite));
++#else
++    printf(",\"ic_ready\":null,\"ic_count\":0,\"site_size\":0");
++#endif
++    printf(",\"receiver\":{\"class\":%u,\"is_exotic\":%s,\"shape\":",
++           receiver->class_id, receiver->is_exotic ? "true" : "false");
++    snapshot_shape(receiver->shape);
++    printf(",\"prototype_shape\":");
++    snapshot_shape(receiver->shape->proto ? receiver->shape->proto->shape : NULL);
++    printf("},\"opcodes\":[");
++    for (pos = 0; pos < b->byte_code_len;) {
++        int op = b->byte_code_buf[pos], i, index;
++        const JSOpCode *oi;
++        JSAtom atom = JS_ATOM_NULL;
++        assert(op < OP_COUNT);
++        oi = &short_opcode_info(op);
++        assert(oi->size && pos + oi->size <= b->byte_code_len);
++#if SHORT_OPCODES
++        index = op >= OP_TEMP_START ? op + (OP_TEMP_END - OP_TEMP_START) : op;
++#else
++        index = op;
++#endif
++        if (pos) printf(",");
++        printf("{\"pc\":%d,\"op\":%d,\"name\":", pos, op);
++        snapshot_string(snapshot_opcode_names[index]);
++        printf(",\"size\":%u,\"pop\":%u,\"push\":%u,\"format\":", oi->size, oi->n_pop, oi->n_push);
++        snapshot_string(snapshot_format_names[oi->fmt]);
++        printf(",\"raw\":\"");
++        for (i = 0; i < oi->size; ++i) printf("%02x", b->byte_code_buf[pos+i]);
++        printf("\"");
++        if (oi->fmt == OP_FMT_atom) atom = get_u32(b->byte_code_buf + pos + 1);
++        if (oi->fmt == OP_FMT_label8)
++            printf(",\"target\":%d", pos + 1 + (int8_t)b->byte_code_buf[pos+1]);
++        else if (oi->fmt == OP_FMT_label16)
++            printf(",\"target\":%d", pos + 1 + (int16_t)get_u16(b->byte_code_buf+pos+1));
++        else if (oi->fmt == OP_FMT_label)
++            printf(",\"target\":%d", pos + 1 + (int32_t)get_u32(b->byte_code_buf+pos+1));
++#ifdef SNAPSHOT_EVAL_COLD
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_put_field_shared) {
++            ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + get_u32(b->byte_code_buf+pos+1));
++            assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
++            atom = site->atom;
++            printf(",\"site_index\":%u,\"site_delta\":%u", (unsigned)(site-b->read_ic_sites), get_u32(b->byte_code_buf+pos+1));
++        }
++#endif
++        if(op==OP_four_ctor){FourSite*s=&b->four_sites[get_u16(b->byte_code_buf+pos+1)];printf(",\"constructor_index\":%u,\"argc\":%u",get_u16(b->byte_code_buf+pos+1),s->argc);}
++        if (atom) { printf(",\"atom\":"); snapshot_atom(ctx, atom); }
++        printf("}");
++        pos += oi->size;
++    }
++    printf("],\"sites\":[");
++#ifdef SNAPSHOT_EVAL_COLD
++    for (uint32_t i = 0; i < b->read_ic_count; ++i) {
++        ReadICSite *site = &b->read_ic_sites[i];
++        if (i) printf(",");
++        printf("{\"index\":%u,\"atom\":", i); snapshot_atom(ctx, site->atom);
++        printf(",\"prop_offset\":%u,\"shape\":", site->prop_offset);
++        snapshot_shape(site->shape);
++        printf(",\"holder_shape\":"); snapshot_shape(site->holder_shape);
++        printf("}");
++    }
++#endif
++    printf("],\"construct_sites\":[");
++    for(uint32_t i=0;i<b->four_count;i++){FourSite*s=&b->four_sites[i];if(i)printf(",");printf("{\"index\":%u,\"pc\":%u,\"argc\":%u,\"has_positive_plan\":%s,\"has_negative_target\":%s}",i,s->pc,s->argc,s->plan?"true":"false",JS_IsObject(s->negative)?"true":"false");}
++    printf("]}\n");
++    JS_FreeCString(ctx, label);
++    return JS_UNDEFINED;
++}

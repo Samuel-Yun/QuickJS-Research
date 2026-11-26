@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "differential_builds": [
+    "C",
+    "release",
+    "counts",
+    "san"
+  ],
+  "outputs_equal": true,
+  "counts_micro_hits": 11999999,
+  "micro": {
+    "C": {
+      "elapsed_ms": 682.4276699721813,
+      "sum": 204000000,
+      "N": 12000000
+    },
+    "release": {
+      "elapsed_ms": 416.39632800221443,
+      "sum": 204000000,
+      "N": 12000000
+    }
+  },
+  "micro_vs_C_pct": -38.98308255595959,
+  "frozen_files": {
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_four_rounds_20261115/attempt01/02_call_recipe/safety.js": "699f566a3088f8c4d7c8f56654b553432c1c583bddaf1dab0cb2e14503221ac0",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_four_rounds_20261115/attempt01/02_call_recipe/micro.js": "cf6e5e8cbbde9d819a132225f328ce6d7330c18ff9b3dc88e58fc518e494f35a",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_four_rounds_20261115/attempt01/qualify.py": "06f9c018e6ef25a0d844b475365c19646403880fee0dfb11089abdedd783810f"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "status": "PASS_WITH_DISCLOSED_UNKNOWNS",
+  "completed_status": "COMPLETED_VERIFIED_IN_PROCESS_CROSS_ISOLATE",
+  "cohort": "wsl2-ubuntu2404-x64-20261004",
+  "engine": "V8/d8 15.6.21",
+  "target_valid": 240,
+  "target_expected": 240,
+  "producer_records": 120,
+  "stage_records": {
+    "calibration": 66,
+    "correctness": 16,
+    "formal": 240,
+    "selected_correctness": 8
+  },
+  "stage_valid": {
+    "calibration": 66,
+    "correctness": 16,
+    "formal": 240,
+    "selected_correctness": 8
+  },
+  "correctness_segments": 24,
+  "selected_correctness_segments": 12,
+  "history_files_verified": 9095,
+  "history_inventory_unchanged": true,
+  "runtime_hashes_verified": true,
+  "same_frozen_generator_bytes": true,
+  "all_original_payload_identities_preserved": true,
+  "segmentation_independently_reparsed": true,
+  "both_cache_passes_checked": true,
+  "cache_mechanism": "PROVEN_TARGET_SERIALIZATION_DESERIALIZATION",
+  "per_formal_invocation_acceptance_direct_observation": null,
+  "cache_rejected_field": null,
+  "same_selected_target_trace_evidence": true,
+  "monotonic_chain_all_segments": true,
+  "B_outer_enclosure_only_weak": true,
+  "groups_30": true,
+  "balanced_order_15_each": true,
+  "statistics_independently_recomputed": true,
+  "median_ratio_gm": 0.9990269776679327,
+  "boot_ids_formal": [
+    "c2785139-8903-4d92-88d0-300aa853d4e5"
+  ],
+  "formal_below_pilot_threshold": 0,
+  "failures": [],
+  "source_compile_metric_ms": null,
+  "cache_validation_deserialization_metric_ms": null,
+  "cross_process_cache_verified": null,
+  "old_windows_data_mixed": false,
+  "concurrency_gate_evidence": "pre_sampling_processes.json",
+  "old_main_and_whitebox_results_unchanged": true,
+  "analysis_sha256": "222c7bcb6269caf397650596fd025b65a5848f69dd43144527754b061b307059"
+}

@@ -1,0 +1,9 @@
+0000  cf             get_arg0
+0001  f7             v6_get_arg0
+0002  f415000000     get_field_rdi x [IC0; delta=21]
+0007  b4             push_1
+0008  9b             add
+0009  f80e000000     put_field_shared x [IC0; delta=14]
+0014  f7             v6_get_arg0
+0015  f420000000     get_field_rdi x [IC1; delta=32]
+0020  28             return

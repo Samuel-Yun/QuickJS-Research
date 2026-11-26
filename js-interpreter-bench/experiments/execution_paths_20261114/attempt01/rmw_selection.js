@@ -1,0 +1,1 @@
+function post(o){o.x++;}function plus(o){o.x+=1;}function plain(o){o.x=o.x+1;}function thiz(){this.x++;} __snapshot(post,"post",{});__snapshot(plus,"plus",{});__snapshot(plain,"plain",{});__snapshot(thiz,"this",{});

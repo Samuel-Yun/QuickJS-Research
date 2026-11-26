@@ -1,0 +1,15 @@
+{
+  "label": "A",
+  "mode": "release",
+  "phase": "gate",
+  "case": "0.semantics",
+  "rep": 0,
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/build/A/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/semantics.js"
+  ],
+  "exit_code": 0,
+  "stdout": "[[\"warm\",[3,4,true]],[\"new_prototype\",[3,4,true],true],[\"own_setter\",null,4,13,1],[\"delete_setter\",3,4,null,1],[\"own_readonly\",99,4,null,1],[\"delete_readonly\",3,4,null,1],[\"parent_warm\",[3,4,true]],[\"parent_setter\",null,4,23,2],[\"parent_readonly\",3,88,null,2],[\"parent_delete\",3,4,null,2],[\"chain_changed\",66,4,null,2],[\"nearest_writable\",3,4,null,2],[\"nearest_deleted\",66,4,null,2],[\"strict_warm\",[3,4,true]],[\"strict_throw\",\"TypeError\",\"'x' is read-only\",2],[\"unhashed\",[3,4,true]],[\"proxy_proto\",3,4,null,4],[\"deep\",[3,4,true]]]\n",
+  "stderr": "",
+  "external_wall_ms": 2.430786844342947
+}

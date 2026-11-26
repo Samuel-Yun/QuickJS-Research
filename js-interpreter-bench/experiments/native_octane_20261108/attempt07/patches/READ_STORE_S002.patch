@@ -1,0 +1,18 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6149,6 +6149,15 @@
+     JSShapeProperty *pr, *prop;
+     intptr_t h;
+     sh = p->shape;
++    if (sh->is_hashed && sh->deleted_prop_count == 0 && atom != JS_ATOM_NULL &&
++        sh->prop_count <= 2 && p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {
++        prop = get_shape_prop(sh);
++        for (uint32_t k = 0; k < (uint32_t)sh->prop_count; k++) {
++            pr = &prop[k];
++            if (pr->atom == atom) { *ppr = &p->prop[k]; return pr; }
++        }
++        *ppr = NULL; return NULL;
++    }
+     h = (uintptr_t)atom & sh->prop_hash_mask;
+     h = sh->hash_table[h];
+     prop = get_shape_prop(sh);

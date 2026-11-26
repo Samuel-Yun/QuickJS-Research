@@ -1,0 +1,77 @@
+Linux LAPTOP-QPKCPDCB 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+PRETTY_NAME="Ubuntu 24.04.2 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.2 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        48 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               16
+On-line CPU(s) list:                  0-15
+Vendor ID:                            AuthenticAMD
+Model name:                           AMD Ryzen 7 5800H with Radeon Graphics
+CPU family:                           25
+Model:                                80
+Thread(s) per core:                   2
+Core(s) per socket:                   8
+Socket(s):                            1
+Stepping:                             0
+BogoMIPS:                             6387.82
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr arat umip vaes vpclmulqdq rdpid fsrm
+Hypervisor vendor:                    Microsoft
+Virtualization type:                  full
+L1d cache:                            256 KiB (8 instances)
+L1i cache:                            256 KiB (8 instances)
+L2 cache:                             4 MiB (8 instances)
+L3 cache:                             16 MiB (1 instance)
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Mitigation; safe RET
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+               total        used        free      shared  buff/cache   available
+Mem:      8252637184   725770240  7239389184     3321856   529403904  7526866944
+Swap:     2147483648           0  2147483648
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc       1007G   22G  935G   3% /
+ 23:00:00 up 1 min,  1 user,  load average: 0.16, 0.03, 0.01
+    PID COMMAND         %CPU %MEM
+    550 systemd         15.9  0.1
+    255 dockerd         13.4  1.0
+    516 python3         13.4  0.2
+      1 systemd          6.7  0.1
+    178 containerd       3.4  0.6
+     55 systemd-journal  3.1  0.1
+    154 snapd            3.1  0.4
+    562 bash             2.9  0.0
+    187 unattended-upgr  2.3  0.2
+    134 systemd-resolve  1.9  0.1
+     97 systemd-udevd    1.8  0.0
+    155 systemd-logind   1.7  0.1
+    175 rsyslogd         1.4  0.0
+    135 systemd-timesyn  1.3  0.0
+
+Compiler/tools: {"gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0", "as": "GNU assembler (GNU Binutils for Ubuntu) 2.42", "ld": "GNU ld (GNU Binutils for Ubuntu) 2.42", "ar": "GNU ar (GNU Binutils for Ubuntu) 2.42", "make": "GNU Make 4.3", "objdump": "GNU objdump (GNU Binutils for Ubuntu) 2.42", "gdb": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1"}
+flags: -O2 -g -fwrapv; asserts on; no LTO/PGO; PIE/ASLR retained.
+Power/frequency/Windows-host background: UNKNOWN/uncontrolled.
+Measured affinity: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Frozen relevant subprocess environment: environment.json (whitelist; no unrelated session secrets).

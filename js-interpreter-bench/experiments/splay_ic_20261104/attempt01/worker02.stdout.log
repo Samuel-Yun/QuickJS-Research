@@ -1,0 +1,61 @@
+START 02_build_diagnostic.json ['python3', '/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py', 'build']
+DONE 02_build_diagnostic.json 1  Traceback (most recent call last):
+  File "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py", line 131, in <module>
+    if __name__=='__main__':globals()[sys.argv[1]]()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py", line 70, in build
+    save(HERE/'raw/build'/f'{label}.diagnostic.json',r);assert r['exit_code']==0,r['stderr'][-4000:]
+                                                               ^^^^^^^^^^^^^^^^^
+AssertionError: make: *** No rule to make target 'repl.js', needed by 'repl.c'.  Stop.
+make: *** Waiting for unfinished jobs....
+
+
+JOB_FAILED_RETAINED_IDLE_FOR_EXPLICIT_NEXT_JOB
+START 03_build_diagnostic.json ['python3', '/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py', 'build']
+DONE 03_build_diagnostic.json 1     ^~~~~~~~~~~
+audit_tail.inc: In function ‘sp_shape_birth’:
+quickjs.c:2235:19: warning: implicit declaration of function ‘malloc_is_forbidden’ [-Wimplicit-function-declaration]
+ 2235 | #define malloc(s) malloc_is_forbidden(s)
+      |                   ^~~~~~~~~~~~~~~~~~~
+audit_tail.inc:99:7: note: in expansion of macro ‘malloc’
+   99 |     e=malloc(sizeof(*e));if(!e)abort();*e=(SPBirth){ptr,++sp_next_shape,sp_births[h]};sp_births[h]=e;
+      |       ^~~~~~
+audit_tail.inc:99:6: warning: assignment to ‘SPBirth *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   99 |     e=malloc(sizeof(*e));if(!e)abort();*e=(SPBirth){ptr,++sp_next_shape,sp_births[h]};sp_births[h]=e;
+      |      ^
+audit_tail.inc: In function ‘sp_stage’:
+audit_tail.inc:114:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  114 |     if(audit_active)abort();sp_phase=n;return JS_UNDEFINED;
+      |     ^~
+audit_tail.inc:114:29: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  114 |     if(audit_active)abort();sp_phase=n;return JS_UNDEFINED;
+      |                             ^~~~~~~~
+audit_tail.inc: At top level:
+audit_tail.inc:106:13: warning: ‘sp_reason’ defined but not used [-Wunused-function]
+  106 | static void sp_reason(const char *name) {
+      |             ^~~~~~~~~
+In file included from quickjs.c:6138:
+audit_hooks.h:58:13: warning: ‘sp_maint’ defined but not used [-Wunused-function]
+   58 | static void sp_maint(int k){if(k){sp_all_releases[sp_phase]++;if(audit_active)audit_active->releases++;}else{sp_all_retains[sp_phase]++;if(audit_active)audit_active->retains++;}}
+      |             ^~~~~~~~
+audit_hooks.h:41:13: warning: ‘audit_change’ defined but not used [-Wunused-function]
+   41 | static void audit_change(int k) {
+      |             ^~~~~~~~~~~~
+audit_hooks.h:39:13: warning: ‘audit_miss’ defined but not used [-Wunused-function]
+   39 | static void audit_miss(void) { if(audit_active)audit_active->misses++; }
+      |             ^~~~~~~~~~
+audit_hooks.h:38:13: warning: ‘audit_hit’ defined but not used [-Wunused-function]
+   38 | static void audit_hit(void) { if(audit_active)audit_active->hits++; }
+      |             ^~~~~~~~~
+audit_hooks.h:37:13: warning: ‘audit_probe’ defined but not used [-Wunused-function]
+   37 | static void audit_probe(void) { if(audit_active)audit_active->cache_probes++; }
+      |             ^~~~~~~~~~~
+make: *** [Makefile:339: .obj/quickjs.o] Error 1
+
+
+JOB_FAILED_RETAINED_IDLE_FOR_EXPLICIT_NEXT_JOB
+START 04_build_diagnostic.json ['python3', '/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py', 'build']
+DONE 04_build_diagnostic.json 0 DIAGNOSTIC_BUILT A
+DIAGNOSTIC_BUILT M
+ 
+START 05_collect_phases.json ['python3', '/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt01/diagnose.py', 'collect']

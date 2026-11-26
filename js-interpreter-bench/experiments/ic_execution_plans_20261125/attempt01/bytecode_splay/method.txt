@@ -1,0 +1,2443 @@
+函数 [0] <eval>  parent=-1  args=0 locals=1 bytes=673
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  fclosure8                  2
+000002  put_var_ref1                (Benchmark)
+000003  fclosure8                  3
+000005  put_var_ref2                (BenchmarkResult)
+000006  fclosure8                  5
+000008  put_var_ref3                (BenchmarkSuite)
+000009  fclosure8                  21
+000011  put_var_ref                10 (GeneratePayloadTree)
+000014  fclosure8                  22
+000016  put_var_ref                11 (GenerateKey)
+000019  fclosure8                  23
+000021  put_var_ref                14 (SplayRMS)
+000024  fclosure8                  24
+000026  put_var_ref                15 (SplayUpdateStats)
+000029  fclosure8                  25
+000031  put_var_ref                16 (InsertNewNode)
+000034  fclosure8                  26
+000036  put_var_ref                17 (SplaySetup)
+000039  fclosure8                  27
+000041  put_var_ref                18 (SplayTearDown)
+000044  fclosure8                  28
+000046  put_var_ref                19 (SplayRun)
+000049  fclosure8                  29
+000051  put_var_ref                20 (SplayTree)
+000054  fclosure8                  0
+000056  call0                      argc=0
+000057  put_loc0                    (<ret>)
+000058  get_var                    0 (performance)
+000061  dup                        
+000062  if_true8                   ->66
+000064  drop                       
+000065  object                     
+000066  put_var                    0 (performance)
+000069  get_var                    0 (performance)
+000072  fclosure8                  1
+000074  call0                      argc=0
+000075  insert2                    
+000076  put_field                  now
+000081  put_loc0                    (<ret>)
+000082  get_var                    2 (BenchmarkResult)
+000085  get_field_rdi              prototype  IC[0] delta=594
+000090  fclosure8                  4
+000092  insert2                    
+000093  put_field                  valueOf
+000098  put_loc0                    (<ret>)
+000099  get_var                    3 (BenchmarkSuite)
+000102  array_from                 0
+000105  insert2                    
+000106  put_field                  suites
+000111  put_loc0                    (<ret>)
+000112  get_var                    3 (BenchmarkSuite)
+000115  push_const8                6
+000117  insert2                    
+000118  put_field                  version
+000123  put_loc0                    (<ret>)
+000124  get_var                    3 (BenchmarkSuite)
+000127  object                     
+000128  get_var                    27 (undefined)
+000131  define_field               doWarmup
+000136  get_var                    27 (undefined)
+000139  define_field               doDeterministic
+000144  insert2                    
+000145  put_field                  config
+000150  put_loc0                    (<ret>)
+000151  fclosure8                  7
+000153  set_name                   alert
+000158  dup                        
+000159  put_var                    38 (alert)
+000162  put_loc0                    (<ret>)
+000163  get_var                    3 (BenchmarkSuite)
+000166  fclosure8                  8
+000168  insert2                    
+000169  put_field                  ResetRNG
+000174  put_loc0                    (<ret>)
+000175  get_var                    3 (BenchmarkSuite)
+000178  fclosure8                  9
+000180  insert2                    
+000181  put_field                  RunSuites
+000186  put_loc0                    (<ret>)
+000187  get_var                    3 (BenchmarkSuite)
+000190  fclosure8                  10
+000192  insert2                    
+000193  put_field                  CountBenchmarks
+000198  put_loc0                    (<ret>)
+000199  get_var                    3 (BenchmarkSuite)
+000202  fclosure8                  11
+000204  insert2                    
+000205  put_field                  GeometricMean
+000210  put_loc0                    (<ret>)
+000211  get_var                    3 (BenchmarkSuite)
+000214  fclosure8                  12
+000216  insert2                    
+000217  put_field                  GeometricMeanTime
+000222  put_loc0                    (<ret>)
+000223  get_var                    3 (BenchmarkSuite)
+000226  fclosure8                  13
+000228  insert2                    
+000229  put_field                  GeometricMeanLatency
+000234  put_loc0                    (<ret>)
+000235  get_var                    3 (BenchmarkSuite)
+000238  fclosure8                  14
+000240  insert2                    
+000241  put_field                  FormatScore
+000246  put_loc0                    (<ret>)
+000247  get_var                    3 (BenchmarkSuite)
+000250  get_field_rdi              prototype  IC[1] delta=453
+000255  fclosure8                  15
+000257  insert2                    
+000258  put_field                  NotifyStep
+000263  put_loc0                    (<ret>)
+000264  get_var                    3 (BenchmarkSuite)
+000267  get_field_rdi              prototype  IC[2] delta=460
+000272  fclosure8                  16
+000274  insert2                    
+000275  put_field                  NotifyResult
+000280  put_loc0                    (<ret>)
+000281  get_var                    3 (BenchmarkSuite)
+000284  get_field_rdi              prototype  IC[3] delta=467
+000289  fclosure8                  17
+000291  insert2                    
+000292  put_field                  NotifySkipped
+000297  put_loc0                    (<ret>)
+000298  get_var                    3 (BenchmarkSuite)
+000301  get_field_rdi              prototype  IC[4] delta=474
+000306  fclosure8                  18
+000308  insert2                    
+000309  put_field                  NotifyError
+000314  put_loc0                    (<ret>)
+000315  get_var                    3 (BenchmarkSuite)
+000318  get_field_rdi              prototype  IC[5] delta=481
+000323  fclosure8                  19
+000325  insert2                    
+000326  put_field                  RunSingleBenchmark
+000331  put_loc0                    (<ret>)
+000332  get_var                    3 (BenchmarkSuite)
+000335  get_field_rdi              prototype  IC[6] delta=488
+000340  fclosure8                  20
+000342  insert2                    
+000343  put_field                  RunStep
+000348  put_loc0                    (<ret>)
+000349  get_var                    3 (BenchmarkSuite)
+000352  dup                        
+000353  push_atom_value            Splay
+000358  push_i32                   81491
+000363  push_i32                   2739514
+000368  array_from                 2
+000371  get_var                    1 (Benchmark)
+000374  dup                        
+000375  push_atom_value            Splay
+000380  push_true                  
+000381  push_false                 
+000382  push_i16                   1400
+000385  get_var                    19 (SplayRun)
+000388  get_var                    17 (SplaySetup)
+000391  get_var                    18 (SplayTearDown)
+000394  get_var                    14 (SplayRMS)
+000397  four_ctor                  record[0] argc=8
+000400  array_from                 1
+000403  four_ctor                  record[1] argc=3
+000406  put_var                    4 (Splay)
+000409  push_i16                   8000
+000412  put_var                    5 (kSplayTreeSize)
+000415  push_i8                    80
+000417  put_var                    6 (kSplayTreeModifications)
+000420  push_5                     5
+000421  put_var                    7 (kSplayTreePayloadDepth)
+000424  null                       
+000425  put_var                    8 (splayTree)
+000428  push_0                     0
+000429  put_var                    9 (splaySampleTimeStart)
+000432  push_0                     0
+000433  put_var                    12 (splaySamples)
+000436  push_0                     0
+000437  put_var                    13 (splaySumOfSquaredPauses)
+000440  get_var                    20 (SplayTree)
+000443  get_field_rdi              prototype  IC[7] delta=404
+000448  null                       
+000449  insert2                    
+000450  put_field                  root_
+000455  put_loc0                    (<ret>)
+000456  get_var                    20 (SplayTree)
+000459  get_field_rdi              prototype  IC[8] delta=412
+000464  fclosure8                  30
+000466  insert2                    
+000467  put_field                  isEmpty
+000472  put_loc0                    (<ret>)
+000473  get_var                    20 (SplayTree)
+000476  get_field_rdi              prototype  IC[9] delta=419
+000481  fclosure8                  31
+000483  insert2                    
+000484  put_field                  insert
+000489  put_loc0                    (<ret>)
+000490  get_var                    20 (SplayTree)
+000493  get_field_rdi              prototype  IC[10] delta=426
+000498  fclosure8                  32
+000500  insert2                    
+000501  put_field                  remove
+000506  put_loc0                    (<ret>)
+000507  get_var                    20 (SplayTree)
+000510  get_field_rdi              prototype  IC[11] delta=433
+000515  fclosure8                  33
+000517  insert2                    
+000518  put_field                  find
+000523  put_loc0                    (<ret>)
+000524  get_var                    20 (SplayTree)
+000527  get_field_rdi              prototype  IC[12] delta=440
+000532  fclosure8                  34
+000534  insert2                    
+000535  put_field                  findMax
+000540  put_loc0                    (<ret>)
+000541  get_var                    20 (SplayTree)
+000544  get_field_rdi              prototype  IC[13] delta=447
+000549  fclosure8                  35
+000551  insert2                    
+000552  put_field                  findGreatestLessThan
+000557  put_loc0                    (<ret>)
+000558  get_var                    20 (SplayTree)
+000561  get_field_rdi              prototype  IC[14] delta=454
+000566  fclosure8                  36
+000568  insert2                    
+000569  put_field                  exportKeys
+000574  put_loc0                    (<ret>)
+000575  get_var                    20 (SplayTree)
+000578  get_field_rdi              prototype  IC[15] delta=461
+000583  fclosure8                  37
+000585  insert2                    
+000586  put_field                  splay_
+000591  put_loc0                    (<ret>)
+000592  get_var                    20 (SplayTree)
+000595  fclosure8                  38
+000597  insert2                    
+000598  put_field                  Node
+000603  put_loc0                    (<ret>)
+000604  get_var                    20 (SplayTree)
+000607  get_field_rdi              Node  IC[16] delta=456
+000612  get_field_rdi              prototype  IC[17] delta=475
+000617  null                       
+000618  insert2                    
+000619  put_field                  left
+000624  put_loc0                    (<ret>)
+000625  get_var                    20 (SplayTree)
+000628  get_field_rdi              Node  IC[18] delta=483
+000633  get_field_rdi              prototype  IC[19] delta=502
+000638  null                       
+000639  insert2                    
+000640  put_field                  right
+000645  put_loc0                    (<ret>)
+000646  get_var                    20 (SplayTree)
+000649  get_field_rdi              Node  IC[20] delta=510
+000654  get_field_rdi              prototype  IC[21] delta=529
+000659  fclosure8                  39
+000661  insert2                    
+000662  put_field                  traverse_
+000667  put_loc0                    (<ret>)
+000668  fclosure8                  40
+000670  call0                      argc=0
+000671  set_loc0                    (<ret>)
+000672  return                     
+  IC[0] prototype: 未填充, offset=0
+  IC[1] prototype: 未填充, offset=0
+  IC[2] prototype: 未填充, offset=0
+  IC[3] prototype: 未填充, offset=0
+  IC[4] prototype: 未填充, offset=0
+  IC[5] prototype: 未填充, offset=0
+  IC[6] prototype: 未填充, offset=0
+  IC[7] prototype: 未填充, offset=0
+  IC[8] prototype: 未填充, offset=0
+  IC[9] prototype: 未填充, offset=0
+  IC[10] prototype: 未填充, offset=0
+  IC[11] prototype: 未填充, offset=0
+  IC[12] prototype: 未填充, offset=0
+  IC[13] prototype: 未填充, offset=0
+  IC[14] prototype: 未填充, offset=0
+  IC[15] prototype: 未填充, offset=0
+  IC[16] Node: 未填充, offset=0
+  IC[17] prototype: 未填充, offset=0
+  IC[18] Node: 未填充, offset=0
+  IC[19] prototype: 未填充, offset=0
+  IC[20] Node: 未填充, offset=0
+  IC[21] prototype: 未填充, offset=0
+  record[0] pc=397, argc=8, 正计划=False, 负目标=True
+  record[1] pc=403, argc=3, 正计划=False, 负目标=True
+
+函数 [1] <anonymous>  parent=0  args=0 locals=2 bytes=62
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (performance)
+000003  put_loc0                    (object)
+000004  get_var                    0 (performance)
+000007  get_field_rdi              now  IC[0] delta=56
+000012  set_loc1                    (method)
+000013  typeof_is_function         
+000014  if_true8                   ->26
+000016  get_var                    1 (Error)
+000019  push_atom_value            native performance.now missing
+000024  call1                      argc=1
+000025  throw                      
+000026  get_var                    2 (Object)
+000029  get_field2_rdi             defineProperty  IC[1] delta=58
+000034  get_var                    3 (globalThis)
+000037  push_atom_value            __icoNow
+000042  object                     
+000043  get_loc1                    (method)
+000044  get_field2_rdi             bind  IC[2] delta=67
+000049  get_loc0                    (object)
+000050  call_method                1
+000053  define_field               value
+000058  call_method                3
+000061  return_undef               
+  IC[0] now: 自有字段, offset=0
+  IC[1] defineProperty: 未填充, offset=0
+  IC[2] bind: 未填充, offset=0
+
+函数 [2] <anonymous>  parent=0  args=0 locals=0 bytes=69
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (performance)
+000003  get_field_rdi              now  IC[0] delta=68
+000008  dup                        
+000009  if_true8                   ->68
+000011  drop                       
+000012  get_var                    0 (performance)
+000015  get_field_rdi              mozNow  IC[1] delta=80
+000020  dup                        
+000021  if_true8                   ->68
+000023  drop                       
+000024  get_var                    0 (performance)
+000027  get_field_rdi              msNow  IC[2] delta=92
+000032  dup                        
+000033  if_true8                   ->68
+000035  drop                       
+000036  get_var                    0 (performance)
+000039  get_field_rdi              oNow  IC[3] delta=104
+000044  dup                        
+000045  if_true8                   ->68
+000047  drop                       
+000048  get_var                    0 (performance)
+000051  get_field_rdi              webkitNow  IC[4] delta=116
+000056  dup                        
+000057  if_true8                   ->68
+000059  drop                       
+000060  get_var                    1 (Date)
+000063  get_field_rdi              now  IC[5] delta=128
+000068  return                     
+  IC[0] now: 自有字段, offset=0
+  IC[1] mozNow: 未填充, offset=0
+  IC[2] msNow: 未填充, offset=0
+  IC[3] oNow: 未填充, offset=0
+  IC[4] webkitNow: 未填充, offset=0
+  IC[5] now: 未填充, offset=0
+
+函数 [3] Benchmark  parent=0  args=9 locals=1 bytes=111
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_arg0                    (name)
+000004  put_field                  name
+000009  get_loc0                    (this)
+000010  get_arg1                    (doWarmup)
+000011  put_field                  doWarmup
+000016  get_loc0                    (this)
+000017  get_arg2                    (doDeterministic)
+000018  put_field                  doDeterministic
+000023  get_loc0                    (this)
+000024  get_arg3                    (deterministicIterations)
+000025  put_field                  deterministicIterations
+000030  get_loc0                    (this)
+000031  get_arg                    4 (run)
+000034  put_field                  run
+000039  get_loc0                    (this)
+000040  get_arg                    5 (setup)
+000043  if_false8                  ->50
+000045  get_arg                    5 (setup)
+000048  goto8                      ->52
+000050  fclosure8                  0
+000052  put_field                  Setup
+000057  get_loc0                    (this)
+000058  get_arg                    6 (tearDown)
+000061  if_false8                  ->68
+000063  get_arg                    6 (tearDown)
+000066  goto8                      ->70
+000068  fclosure8                  1
+000070  put_field                  TearDown
+000075  get_loc0                    (this)
+000076  get_arg                    7 (rmsResult)
+000079  if_false8                  ->86
+000081  get_arg                    7 (rmsResult)
+000084  goto8                      ->87
+000086  null                       
+000087  put_field                  rmsResult
+000092  get_loc0                    (this)
+000093  get_arg                    8 (minIterations)
+000096  if_false8                  ->103
+000098  get_arg                    8 (minIterations)
+000101  goto8                      ->105
+000103  push_i8                    32
+000105  put_field                  minIterations
+000110  return_undef               
+
+函数 [4] <anonymous>  parent=3  args=0 locals=0 bytes=1
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  return_undef               
+
+函数 [5] <anonymous>  parent=3  args=0 locals=0 bytes=1
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  return_undef               
+
+函数 [6] BenchmarkResult  parent=0  args=3 locals=1 bytes=24
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_arg0                    (benchmark)
+000004  put_field                  benchmark
+000009  get_loc0                    (this)
+000010  get_arg1                    (time)
+000011  put_field                  time
+000016  get_loc0                    (this)
+000017  get_arg2                    (latency)
+000018  put_field                  latency
+000023  return_undef               
+
+函数 [7] <anonymous>  parent=0  args=0 locals=1 bytes=9
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  v6_get_loc0                
+000003  get_field_rdi              time  IC[0] delta=12
+000008  return                     
+  IC[0] time: 未填充, offset=0
+
+函数 [8] BenchmarkSuite  parent=0  args=3 locals=1 bytes=41
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_arg0                    (name)
+000004  put_field                  name
+000009  get_loc0                    (this)
+000010  get_arg1                    (reference)
+000011  put_field                  reference
+000016  get_loc0                    (this)
+000017  get_arg2                    (benchmarks)
+000018  put_field                  benchmarks
+000023  get_var                    0 (BenchmarkSuite)
+000026  get_field_rdi              suites  IC[0] delta=21
+000031  get_field2_rdi             push  IC[1] delta=40
+000036  get_loc0                    (this)
+000037  call_method                1
+000040  return_undef               
+  IC[0] suites: 未填充, offset=0
+  IC[1] push: 未填充, offset=0
+
+函数 [9] <anonymous>  parent=0  args=1 locals=0 bytes=8
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_atom_value            Alert called with argument: 
+000005  get_arg0                    (s)
+000006  add                        
+000007  throw                      
+
+函数 [10] <anonymous>  parent=0  args=0 locals=0 bytes=12
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (Math)
+000003  fclosure8                  0
+000005  call0                      argc=0
+000006  put_field                  random
+000011  return_undef               
+
+函数 [11] <anonymous>  parent=10  args=0 locals=1 bytes=9
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_i32                   49734321
+000005  put_loc0                    (seed)
+000006  fclosure8                  0
+000008  return                     
+
+函数 [12] <anonymous>  parent=11  args=0 locals=0 bytes=90
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var_ref0                (seed)
+000001  push_i32                   2127912214
+000006  add                        
+000007  get_var_ref0                (seed)
+000008  push_i8                    12
+000010  shl                        
+000011  add                        
+000012  push_const8                0
+000014  and                        
+000015  set_var_ref0                (seed)
+000016  push_const8                1
+000018  xor                        
+000019  get_var_ref0                (seed)
+000020  push_i8                    19
+000022  shr                        
+000023  xor                        
+000024  push_const8                2
+000026  and                        
+000027  set_var_ref0                (seed)
+000028  push_i32                   374761393
+000033  add                        
+000034  get_var_ref0                (seed)
+000035  push_5                     5
+000036  shl                        
+000037  add                        
+000038  push_const8                3
+000040  and                        
+000041  set_var_ref0                (seed)
+000042  push_const8                4
+000044  add                        
+000045  get_var_ref0                (seed)
+000046  push_i8                    9
+000048  shl                        
+000049  xor                        
+000050  push_const8                5
+000052  and                        
+000053  set_var_ref0                (seed)
+000054  push_const8                6
+000056  add                        
+000057  get_var_ref0                (seed)
+000058  push_3                     3
+000059  shl                        
+000060  add                        
+000061  push_const8                7
+000063  and                        
+000064  set_var_ref0                (seed)
+000065  push_const8                8
+000067  xor                        
+000068  get_var_ref0                (seed)
+000069  push_i8                    16
+000071  shr                        
+000072  xor                        
+000073  push_const8                9
+000075  and                        
+000076  set_var_ref0                (seed)
+000077  push_i32                   268435455
+000082  and                        
+000083  push_i32                   268435456
+000088  div                        
+000089  return                     
+
+函数 [13] <anonymous>  parent=0  args=2 locals=5 bytes=45
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  fclosure8                  0
+000002  put_loc8                   4 (RunStep)
+000004  get_arg1                    (skipBenchmarks)
+000005  typeof_is_undefined        
+000006  if_false8                  ->13
+000008  array_from                 0
+000011  goto8                      ->14
+000013  get_arg1                    (skipBenchmarks)
+000014  put_arg1                    (skipBenchmarks)
+000015  null                       
+000016  put_loc0                    (continuation)
+000017  get_var                    1 (BenchmarkSuite)
+000020  get_field_rdi              suites  IC[0] delta=27
+000025  set_loc1                    (suites)
+000026  get_length                 
+000027  put_loc2                    (length)
+000028  get_var                    1 (BenchmarkSuite)
+000031  array_from                 0
+000034  put_field                  scores
+000039  push_0                     0
+000040  put_loc3                    (index)
+000041  get_loc8                   4 (RunStep)
+000043  call0                      argc=0
+000044  return_undef               
+  IC[0] suites: 未填充, offset=0
+
+函数 [14] RunStep  parent=13  args=0 locals=3 bytes=203
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var_ref0                (continuation)
+000001  dup                        
+000002  if_true8                   ->8
+000004  drop                       
+000005  get_var_ref1                (index)
+000006  get_var_ref2                (length)
+000007  lt                         
+000008  if_false                   ->143
+000013  get_var_ref0                (continuation)
+000014  if_false8                  ->21
+000016  get_var_ref0                (continuation)
+000017  call0                      argc=0
+000018  put_var_ref0                (continuation)
+000019  goto8                      ->104
+000021  get_var_ref3                (suites)
+000022  get_var_ref1                (index)
+000023  post_inc                   
+000024  put_var_ref1                (index)
+000025  get_array_el               
+000026  put_loc0                    (suite)
+000027  get_var_ref                4 (runner)
+000030  get_field_rdi              NotifyStart  IC[0] delta=177
+000035  if_false8                  ->55
+000037  get_var_ref                4 (runner)
+000040  get_field2_rdi             NotifyStart  IC[1] delta=191
+000045  v6_get_loc0                
+000046  get_field_rdi              name  IC[2] delta=209
+000051  call_method                1
+000054  drop                       
+000055  get_var_ref                5 (skipBenchmarks)
+000058  get_field2_rdi             indexOf  IC[3] delta=221
+000063  v6_get_loc0                
+000064  get_field_rdi              name  IC[4] delta=239
+000069  call_method                1
+000072  push_minus1                -1
+000073  gt                         
+000074  if_false8                  ->91
+000076  get_loc0                    (suite)
+000077  get_field2_rdi             NotifySkipped  IC[5] delta=250
+000082  get_var_ref                4 (runner)
+000085  call_method                1
+000088  drop                       
+000089  goto8                      ->104
+000091  get_loc0                    (suite)
+000092  get_field2_rdi             RunStep  IC[6] delta=259
+000097  get_var_ref                4 (runner)
+000100  call_method                1
+000103  put_var_ref0                (continuation)
+000104  get_var_ref0                (continuation)
+000105  if_false8                  ->0
+000107  get_var_undef              6 (window)
+000110  typeof_is_undefined        
+000111  if_true8                   ->140
+000113  get_var                    6 (window)
+000116  get_field_rdi              setTimeout  IC[7] delta=259
+000121  if_false8                  ->0
+000123  get_var                    6 (window)
+000126  get_field2_rdi             setTimeout  IC[8] delta=273
+000131  get_var_ref                7 (RunStep)
+000134  push_i8                    25
+000136  call_method                2
+000139  return_undef               
+000140  goto16                     ->0
+000143  get_var_ref                4 (runner)
+000146  get_field_rdi              NotifyScore  IC[9] delta=277
+000151  if_false8                  ->202
+000153  get_var                    8 (BenchmarkSuite)
+000156  get_field2_rdi             GeometricMean  IC[10] delta=291
+000161  get_var                    8 (BenchmarkSuite)
+000164  get_field_rdi              scores  IC[11] delta=307
+000169  call_method                1
+000172  put_loc1                    (score)
+000173  get_var                    8 (BenchmarkSuite)
+000176  get_field2_rdi             FormatScore  IC[12] delta=319
+000181  push_i8                    100
+000183  get_loc1                    (score)
+000184  mul                        
+000185  call_method                1
+000188  put_loc2                    (formatted)
+000189  get_var_ref                4 (runner)
+000192  get_field2_rdi             NotifyScore  IC[13] delta=327
+000197  get_loc2                    (formatted)
+000198  call_method                1
+000201  drop                       
+000202  return_undef               
+  IC[0] NotifyStart: 未填充, offset=0
+  IC[1] NotifyStart: 未填充, offset=0
+  IC[2] name: 未填充, offset=0
+  IC[3] indexOf: 未填充, offset=0
+  IC[4] name: 未填充, offset=0
+  IC[5] NotifySkipped: 未填充, offset=0
+  IC[6] RunStep: 未填充, offset=0
+  IC[7] setTimeout: 未填充, offset=0
+  IC[8] setTimeout: 未填充, offset=0
+  IC[9] NotifyScore: 未填充, offset=0
+  IC[10] GeometricMean: 未填充, offset=0
+  IC[11] scores: 未填充, offset=0
+  IC[12] FormatScore: 未填充, offset=0
+  IC[13] NotifyScore: 未填充, offset=0
+
+函数 [15] <anonymous>  parent=0  args=0 locals=3 bytes=37
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_0                     0
+000001  put_loc0                    (result)
+000002  get_var                    0 (BenchmarkSuite)
+000005  get_field_rdi              suites  IC[0] delta=34
+000010  put_loc1                    (suites)
+000011  push_0                     0
+000012  put_loc2                    (i)
+000013  get_loc2                    (i)
+000014  get_loc1                    (suites)
+000015  get_length                 
+000016  lt                         
+000017  if_false8                  ->35
+000019  get_loc0                    (result)
+000020  get_loc1                    (suites)
+000021  get_loc2                    (i)
+000022  get_array_el               
+000023  get_field_rdi              benchmarks  IC[1] delta=40
+000028  get_length                 
+000029  add                        
+000030  put_loc0                    (result)
+000031  inc_loc                    2 (i)
+000033  goto8                      ->13
+000035  get_loc0                    (result)
+000036  return                     
+  IC[0] suites: 未填充, offset=0
+  IC[1] benchmarks: 未填充, offset=0
+
+函数 [16] <anonymous>  parent=0  args=1 locals=2 bytes=54
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_0                     0
+000001  put_loc0                    (log)
+000002  push_0                     0
+000003  put_loc1                    (i)
+000004  get_loc1                    (i)
+000005  get_arg0                    (numbers)
+000006  get_length                 
+000007  lt                         
+000008  if_false8                  ->31
+000010  get_loc0                    (log)
+000011  get_var                    0 (Math)
+000014  get_field2_rdi             log  IC[0] delta=41
+000019  get_arg0                    (numbers)
+000020  get_loc1                    (i)
+000021  get_array_el               
+000022  call_method                1
+000025  add                        
+000026  put_loc0                    (log)
+000027  inc_loc                    1 (i)
+000029  goto8                      ->4
+000031  get_var                    0 (Math)
+000034  get_field2_rdi             pow  IC[1] delta=45
+000039  get_var                    0 (Math)
+000042  get_field_rdi              E  IC[2] delta=61
+000047  get_loc0                    (log)
+000048  get_arg0                    (numbers)
+000049  get_length                 
+000050  div                        
+000051  tail_call_method           2
+  IC[0] log: 未填充, offset=0
+  IC[1] pow: 未填充, offset=0
+  IC[2] E: 未填充, offset=0
+
+函数 [17] <anonymous>  parent=0  args=1 locals=2 bytes=59
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_0                     0
+000001  put_loc0                    (log)
+000002  push_0                     0
+000003  put_loc1                    (i)
+000004  get_loc1                    (i)
+000005  get_arg0                    (measurements)
+000006  get_length                 
+000007  lt                         
+000008  if_false8                  ->36
+000010  get_loc0                    (log)
+000011  get_var                    0 (Math)
+000014  get_field2_rdi             log  IC[0] delta=49
+000019  get_arg0                    (measurements)
+000020  get_loc1                    (i)
+000021  get_array_el               
+000022  get_field_rdi              time  IC[1] delta=65
+000027  call_method                1
+000030  add                        
+000031  put_loc0                    (log)
+000032  inc_loc                    1 (i)
+000034  goto8                      ->4
+000036  get_var                    0 (Math)
+000039  get_field2_rdi             pow  IC[2] delta=72
+000044  get_var                    0 (Math)
+000047  get_field_rdi              E  IC[3] delta=88
+000052  get_loc0                    (log)
+000053  get_arg0                    (measurements)
+000054  get_length                 
+000055  div                        
+000056  tail_call_method           2
+  IC[0] log: 未填充, offset=0
+  IC[1] time: 未填充, offset=0
+  IC[2] pow: 未填充, offset=0
+  IC[3] E: 未填充, offset=0
+
+函数 [18] <anonymous>  parent=0  args=1 locals=3 bytes=80
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_0                     0
+000001  put_loc0                    (log)
+000002  push_false                 
+000003  put_loc1                    (hasLatencyResult)
+000004  push_0                     0
+000005  put_loc2                    (i)
+000006  get_loc2                    (i)
+000007  get_arg0                    (measurements)
+000008  get_length                 
+000009  lt                         
+000010  if_false8                  ->52
+000012  get_arg0                    (measurements)
+000013  get_loc2                    (i)
+000014  get_array_el               
+000015  get_field_rdi              latency  IC[0] delta=64
+000020  push_0                     0
+000021  neq                        
+000022  if_false8                  ->48
+000024  get_loc0                    (log)
+000025  get_var                    0 (Math)
+000028  get_field2_rdi             log  IC[1] delta=75
+000033  get_arg0                    (measurements)
+000034  get_loc2                    (i)
+000035  get_array_el               
+000036  get_field_rdi              latency  IC[2] delta=91
+000041  call_method                1
+000044  add                        
+000045  put_loc0                    (log)
+000046  push_true                  
+000047  put_loc1                    (hasLatencyResult)
+000048  inc_loc                    2 (i)
+000050  goto8                      ->6
+000052  get_loc1                    (hasLatencyResult)
+000053  if_false8                  ->78
+000055  get_var                    0 (Math)
+000058  get_field2_rdi             pow  IC[3] delta=93
+000063  get_var                    0 (Math)
+000066  get_field_rdi              E  IC[4] delta=109
+000071  get_loc0                    (log)
+000072  get_arg0                    (measurements)
+000073  get_length                 
+000074  div                        
+000075  tail_call_method           2
+000078  push_0                     0
+000079  return                     
+  IC[0] latency: 未填充, offset=0
+  IC[1] log: 未填充, offset=0
+  IC[2] latency: 未填充, offset=0
+  IC[3] pow: 未填充, offset=0
+  IC[4] E: 未填充, offset=0
+
+函数 [19] <anonymous>  parent=0  args=1 locals=0 bytes=26
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_arg0                    (value)
+000001  push_i8                    100
+000003  gt                         
+000004  if_false8                  ->16
+000006  get_arg0                    (value)
+000007  get_field2_rdi             toFixed  IC[0] delta=24
+000012  push_0                     0
+000013  tail_call_method           1
+000016  get_arg0                    (value)
+000017  get_field2_rdi             toPrecision  IC[1] delta=38
+000022  push_3                     3
+000023  tail_call_method           1
+  IC[0] toFixed: 未填充, offset=0
+  IC[1] toPrecision: 未填充, offset=0
+
+函数 [20] <anonymous>  parent=0  args=1 locals=1 bytes=58
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  v6_get_loc0                
+000003  get_field_rdi              results  IC[0] delta=60
+000008  get_field2_rdi             push  IC[1] delta=79
+000013  get_arg0                    (result)
+000014  call_method                1
+000017  drop                       
+000018  v6_get_loc0                
+000019  get_field_rdi              runner  IC[2] delta=92
+000024  get_field_rdi              NotifyStep  IC[3] delta=111
+000029  if_false8                  ->57
+000031  v6_get_loc0                
+000032  get_field_rdi              runner  IC[4] delta=127
+000037  get_field2_rdi             NotifyStep  IC[5] delta=146
+000042  v6_get_arg0                
+000043  get_field_rdi              benchmark  IC[6] delta=164
+000048  get_field_rdi              name  IC[7] delta=183
+000053  call_method                1
+000056  drop                       
+000057  return_undef               
+  IC[0] results: 未填充, offset=0
+  IC[1] push: 未填充, offset=0
+  IC[2] runner: 未填充, offset=0
+  IC[3] NotifyStep: 未填充, offset=0
+  IC[4] runner: 未填充, offset=0
+  IC[5] NotifyStep: 未填充, offset=0
+  IC[6] benchmark: 未填充, offset=0
+  IC[7] name: 未填充, offset=0
+
+函数 [21] <anonymous>  parent=0  args=0 locals=7 bytes=237
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc8                   6 (this)
+000003  get_var                    0 (BenchmarkSuite)
+000006  get_field2_rdi             GeometricMeanTime  IC[0] delta=233
+000011  get_loc8                   6 (this)
+000013  get_field_rdi              results  IC[1] delta=250
+000018  call_method                1
+000021  put_loc0                    (mean)
+000022  get_loc8                   6 (this)
+000024  get_field_rdi              reference  IC[2] delta=263
+000029  push_0                     0
+000030  get_array_el               
+000031  get_loc0                    (mean)
+000032  div                        
+000033  put_loc1                    (score)
+000034  get_var                    0 (BenchmarkSuite)
+000037  get_field_rdi              scores  IC[3] delta=274
+000042  get_field2_rdi             push  IC[4] delta=293
+000047  get_loc1                    (score)
+000048  call_method                1
+000051  drop                       
+000052  get_loc8                   6 (this)
+000054  get_field_rdi              runner  IC[5] delta=305
+000059  get_field_rdi              NotifyResult  IC[6] delta=324
+000064  if_false8                  ->106
+000066  get_var                    0 (BenchmarkSuite)
+000069  get_field2_rdi             FormatScore  IC[7] delta=338
+000074  push_i8                    100
+000076  get_loc1                    (score)
+000077  mul                        
+000078  call_method                1
+000081  put_loc2                    (formatted)
+000082  get_loc8                   6 (this)
+000084  get_field_rdi              runner  IC[8] delta=347
+000089  get_field2_rdi             NotifyResult  IC[9] delta=366
+000094  get_loc8                   6 (this)
+000096  get_field_rdi              name  IC[10] delta=383
+000101  get_loc2                    (formatted)
+000102  call_method                2
+000105  drop                       
+000106  get_loc8                   6 (this)
+000108  get_field_rdi              reference  IC[11] delta=395
+000113  get_length                 
+000114  push_2                     2
+000115  eq                         
+000116  if_false8                  ->236
+000118  get_var                    0 (BenchmarkSuite)
+000121  get_field2_rdi             GeometricMeanLatency  IC[12] delta=406
+000126  get_loc8                   6 (this)
+000128  get_field_rdi              results  IC[13] delta=423
+000133  call_method                1
+000136  set_loc3                    (meanLatency)
+000137  push_0                     0
+000138  neq                        
+000139  if_false8                  ->236
+000141  get_loc8                   6 (this)
+000143  get_field_rdi              reference  IC[14] delta=432
+000148  push_1                     1
+000149  get_array_el               
+000150  get_loc3                    (meanLatency)
+000151  div                        
+000152  put_loc8                   4 (scoreLatency)
+000154  get_var                    0 (BenchmarkSuite)
+000157  get_field_rdi              scores  IC[15] delta=442
+000162  get_field2_rdi             push  IC[16] delta=461
+000167  get_loc8                   4 (scoreLatency)
+000169  call_method                1
+000172  drop                       
+000173  get_loc8                   6 (this)
+000175  get_field_rdi              runner  IC[17] delta=472
+000180  get_field_rdi              NotifyResult  IC[18] delta=491
+000185  if_false8                  ->236
+000187  get_var                    0 (BenchmarkSuite)
+000190  get_field2_rdi             FormatScore  IC[19] delta=505
+000195  push_i8                    100
+000197  get_loc8                   4 (scoreLatency)
+000199  mul                        
+000200  call_method                1
+000203  put_loc8                   5 (formattedLatency)
+000205  get_loc8                   6 (this)
+000207  get_field_rdi              runner  IC[20] delta=512
+000212  get_field2_rdi             NotifyResult  IC[21] delta=531
+000217  get_loc8                   6 (this)
+000219  get_field_rdi              name  IC[22] delta=548
+000224  push_atom_value            Latency
+000229  add                        
+000230  get_loc8                   5 (formattedLatency)
+000232  call_method                2
+000235  drop                       
+000236  return_undef               
+  IC[0] GeometricMeanTime: 未填充, offset=0
+  IC[1] results: 未填充, offset=0
+  IC[2] reference: 未填充, offset=0
+  IC[3] scores: 未填充, offset=0
+  IC[4] push: 未填充, offset=0
+  IC[5] runner: 未填充, offset=0
+  IC[6] NotifyResult: 未填充, offset=0
+  IC[7] FormatScore: 未填充, offset=0
+  IC[8] runner: 未填充, offset=0
+  IC[9] NotifyResult: 未填充, offset=0
+  IC[10] name: 未填充, offset=0
+  IC[11] reference: 未填充, offset=0
+  IC[12] GeometricMeanLatency: 未填充, offset=0
+  IC[13] results: 未填充, offset=0
+  IC[14] reference: 未填充, offset=0
+  IC[15] scores: 未填充, offset=0
+  IC[16] push: 未填充, offset=0
+  IC[17] runner: 未填充, offset=0
+  IC[18] NotifyResult: 未填充, offset=0
+  IC[19] FormatScore: 未填充, offset=0
+  IC[20] runner: 未填充, offset=0
+  IC[21] NotifyResult: 未填充, offset=0
+  IC[22] name: 未填充, offset=0
+
+函数 [22] <anonymous>  parent=0  args=1 locals=1 bytes=50
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_var                    0 (BenchmarkSuite)
+000005  get_field_rdi              scores  IC[0] delta=50
+000010  get_field2_rdi             push  IC[1] delta=69
+000015  push_1                     1
+000016  call_method                1
+000019  drop                       
+000020  v6_get_arg0                
+000021  get_field_rdi              NotifyResult  IC[2] delta=82
+000026  if_false8                  ->49
+000028  get_arg0                    (runner)
+000029  get_field2_rdi             NotifyResult  IC[3] delta=98
+000034  v6_get_loc0                
+000035  get_field_rdi              name  IC[4] delta=116
+000040  push_atom_value            Skipped
+000045  call_method                2
+000048  drop                       
+000049  return_undef               
+  IC[0] scores: 未填充, offset=0
+  IC[1] push: 未填充, offset=0
+  IC[2] NotifyResult: 未填充, offset=0
+  IC[3] NotifyResult: 未填充, offset=0
+  IC[4] name: 未填充, offset=0
+
+函数 [23] <anonymous>  parent=0  args=1 locals=1 bytes=72
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  v6_get_loc0                
+000003  get_field_rdi              runner  IC[0] delta=68
+000008  get_field_rdi              NotifyError  IC[1] delta=87
+000013  if_false8                  ->37
+000015  v6_get_loc0                
+000016  get_field_rdi              runner  IC[2] delta=103
+000021  get_field2_rdi             NotifyError  IC[3] delta=122
+000026  v6_get_loc0                
+000027  get_field_rdi              name  IC[4] delta=140
+000032  get_arg0                    (error)
+000033  call_method                2
+000036  drop                       
+000037  v6_get_loc0                
+000038  get_field_rdi              runner  IC[5] delta=153
+000043  get_field_rdi              NotifyStep  IC[6] delta=172
+000048  if_false8                  ->71
+000050  v6_get_loc0                
+000051  get_field_rdi              runner  IC[7] delta=188
+000056  get_field2_rdi             NotifyStep  IC[8] delta=207
+000061  v6_get_loc0                
+000062  get_field_rdi              name  IC[9] delta=225
+000067  call_method                1
+000070  drop                       
+000071  return_undef               
+  IC[0] runner: 未填充, offset=0
+  IC[1] NotifyError: 未填充, offset=0
+  IC[2] runner: 未填充, offset=0
+  IC[3] NotifyError: 未填充, offset=0
+  IC[4] name: 未填充, offset=0
+  IC[5] runner: 未填充, offset=0
+  IC[6] NotifyStep: 未填充, offset=0
+  IC[7] runner: 未填充, offset=0
+  IC[8] NotifyStep: 未填充, offset=0
+  IC[9] name: 未填充, offset=0
+
+函数 [24] <anonymous>  parent=0  args=2 locals=7 bytes=203
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc8                   6 (this)
+000003  fclosure8                  0
+000005  put_loc3                    (Measure)
+000006  get_var                    1 (BenchmarkSuite)
+000009  get_field_rdi              config  IC[0] delta=198
+000014  set_loc0                    (config)
+000015  get_field_rdi              doWarmup  IC[1] delta=216
+000020  get_var                    2 (undefined)
+000023  strict_neq                 
+000024  if_false8                  ->34
+000026  v6_get_loc0                
+000027  get_field_rdi              doWarmup  IC[2] delta=228
+000032  goto8                      ->40
+000034  v6_get_arg0                
+000035  get_field_rdi              doWarmup  IC[3] delta=244
+000040  put_loc1                    (doWarmup)
+000041  v6_get_loc0                
+000042  get_field_rdi              doDeterministic  IC[4] delta=261
+000047  get_var                    2 (undefined)
+000050  strict_neq                 
+000051  if_false8                  ->61
+000053  v6_get_loc0                
+000054  get_field_rdi              doDeterministic  IC[5] delta=273
+000059  goto8                      ->67
+000061  v6_get_arg0                
+000062  get_field_rdi              doDeterministic  IC[6] delta=289
+000067  put_loc2                    (doDeterministic)
+000068  get_loc1                    (doWarmup)
+000069  lnot                       
+000070  if_false8                  ->91
+000072  get_arg1                    (data)
+000073  null                       
+000074  eq                         
+000075  if_false8                  ->91
+000077  object                     
+000078  push_0                     0
+000079  define_field               runs
+000084  push_0                     0
+000085  define_field               elapsed
+000090  put_arg1                    (data)
+000091  get_arg1                    (data)
+000092  null                       
+000093  eq                         
+000094  if_false8                  ->114
+000096  get_loc3                    (Measure)
+000097  null                       
+000098  call1                      argc=1
+000099  drop                       
+000100  object                     
+000101  push_0                     0
+000102  define_field               runs
+000107  push_0                     0
+000108  define_field               elapsed
+000113  return                     
+000114  get_loc3                    (Measure)
+000115  get_arg1                    (data)
+000116  call1                      argc=1
+000117  drop                       
+000118  get_arg1                    (data)
+000119  get_field_rdi              runs  IC[7] delta=256
+000124  v6_get_arg0                
+000125  get_field_rdi              minIterations  IC[8] delta=274
+000130  lt                         
+000131  if_false8                  ->135
+000133  get_arg1                    (data)
+000134  return                     
+000135  get_arg1                    (data)
+000136  get_field_rdi              elapsed  IC[9] delta=287
+000141  push_i16                   1000
+000144  mul                        
+000145  get_arg1                    (data)
+000146  get_field_rdi              runs  IC[10] delta=301
+000151  div                        
+000152  put_loc8                   4 (usec)
+000154  v6_get_arg0                
+000155  get_field_rdi              rmsResult  IC[11] delta=316
+000160  null                       
+000161  neq                        
+000162  if_false8                  ->175
+000164  get_arg0                    (benchmark)
+000165  get_field2_rdi             rmsResult  IC[12] delta=330
+000170  call_method                0
+000173  goto8                      ->176
+000175  push_0                     0
+000176  put_loc8                   5 (rms)
+000178  get_loc8                   6 (this)
+000180  get_field2_rdi             NotifyStep  IC[13] delta=339
+000185  get_var                    3 (BenchmarkResult)
+000188  dup                        
+000189  get_arg0                    (benchmark)
+000190  get_loc8                   4 (usec)
+000192  get_loc8                   5 (rms)
+000194  four_ctor                  record[0] argc=3
+000197  call_method                1
+000200  drop                       
+000201  null                       
+000202  return                     
+  IC[0] config: 未填充, offset=0
+  IC[1] doWarmup: 未填充, offset=0
+  IC[2] doWarmup: 未填充, offset=0
+  IC[3] doWarmup: 未填充, offset=0
+  IC[4] doDeterministic: 未填充, offset=0
+  IC[5] doDeterministic: 未填充, offset=0
+  IC[6] doDeterministic: 未填充, offset=0
+  IC[7] runs: 未填充, offset=0
+  IC[8] minIterations: 未填充, offset=0
+  IC[9] elapsed: 未填充, offset=0
+  IC[10] runs: 未填充, offset=0
+  IC[11] rmsResult: 未填充, offset=0
+  IC[12] rmsResult: 未填充, offset=0
+  IC[13] NotifyStep: 未填充, offset=0
+  record[0] pc=194, argc=3, 正计划=False, 负目标=False
+
+函数 [25] Measure  parent=24  args=1 locals=3 bytes=88
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_0                     0
+000001  put_loc0                    (elapsed)
+000002  get_var                    0 (Date)
+000005  dup                        
+000006  four_ctor                  record[0] argc=0
+000009  put_loc1                    (start)
+000010  push_0                     0
+000011  put_loc2                    (i)
+000012  get_var_ref1                (doDeterministic)
+000013  if_false8                  ->25
+000015  get_loc2                    (i)
+000016  get_var_ref2                (benchmark)
+000017  get_field_rdi              deterministicIterations  IC[0] delta=70
+000022  lt                         
+000023  goto8                      ->30
+000025  get_loc0                    (elapsed)
+000026  push_i16                   1000
+000029  lt                         
+000030  if_false8                  ->56
+000032  get_var_ref2                (benchmark)
+000033  get_field2_rdi             run  IC[1] delta=78
+000038  call_method                0
+000041  drop                       
+000042  get_var                    0 (Date)
+000045  dup                        
+000046  four_ctor                  record[1] argc=0
+000049  get_loc1                    (start)
+000050  sub                        
+000051  put_loc0                    (elapsed)
+000052  inc_loc                    2 (i)
+000054  goto8                      ->12
+000056  get_arg0                    (data)
+000057  null                       
+000058  neq                        
+000059  if_false8                  ->87
+000061  get_arg0                    (data)
+000062  get_field2_rdi             runs  IC[2] delta=73
+000067  get_loc2                    (i)
+000068  add                        
+000069  put_field_shared           runs  IC[2] delta=66
+000074  get_arg0                    (data)
+000075  get_field2_rdi             elapsed  IC[3] delta=84
+000080  get_loc0                    (elapsed)
+000081  add                        
+000082  put_field_shared           elapsed  IC[3] delta=77
+000087  return_undef               
+  IC[0] deterministicIterations: 未填充, offset=0
+  IC[1] run: 未填充, offset=0
+  IC[2] runs: 未填充, offset=0
+  IC[3] elapsed: 未填充, offset=0
+  record[0] pc=6, argc=0, 正计划=False, 负目标=False
+  record[1] pc=46, argc=0, 正计划=False, 负目标=False
+
+函数 [26] <anonymous>  parent=0  args=1 locals=8 bytes=64
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc8                   7 (this)
+000003  fclosure8                  0
+000005  put_loc8                   4 (RunNextSetup)
+000007  fclosure8                  1
+000009  put_loc8                   5 (RunNextBenchmark)
+000011  fclosure8                  2
+000013  put_loc8                   6 (RunNextTearDown)
+000015  get_var                    0 (BenchmarkSuite)
+000018  get_field2_rdi             ResetRNG  IC[0] delta=45
+000023  call_method                0
+000026  drop                       
+000027  get_loc8                   7 (this)
+000029  array_from                 0
+000032  put_field                  results
+000037  get_loc8                   7 (this)
+000039  get_arg0                    (runner)
+000040  put_field                  runner
+000045  get_loc8                   7 (this)
+000047  get_field_rdi              benchmarks  IC[1] delta=40
+000052  get_length                 
+000053  put_loc0                    (length)
+000054  push_0                     0
+000055  put_loc1                    (index)
+000056  get_loc8                   7 (this)
+000058  put_loc2                    (suite)
+000059  get_loc8                   4 (RunNextSetup)
+000061  tail_call                  0
+  IC[0] ResetRNG: 未填充, offset=0
+  IC[1] benchmarks: 未填充, offset=0
+
+函数 [27] RunNextSetup  parent=26  args=0 locals=1 bytes=65
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var_ref0                (index)
+000001  get_var_ref1                (length)
+000002  lt                         
+000003  if_false8                  ->53
+000005  catch                      ->30
+000010  get_var_ref2                (suite)
+000011  get_field_rdi              benchmarks  IC[0] delta=60
+000016  get_var_ref0                (index)
+000017  get_array_el               
+000018  get_field2_rdi             Setup  IC[1] delta=77
+000023  call_method                0
+000026  drop                       
+000027  drop                       
+000028  goto8                      ->51
+000030  put_loc0                    (e)
+000031  catch                      ->50
+000036  get_var_ref2                (suite)
+000037  get_field2_rdi             NotifyError  IC[2] delta=82
+000042  get_loc0                    (e)
+000043  call_method                1
+000046  drop                       
+000047  null                       
+000048  nip_catch                  
+000049  return                     
+000050  throw                      
+000051  get_var_ref3                (RunNextBenchmark)
+000052  return                     
+000053  get_var_ref2                (suite)
+000054  get_field2_rdi             NotifyResult  IC[3] delta=89
+000059  call_method                0
+000062  drop                       
+000063  null                       
+000064  return                     
+  IC[0] benchmarks: 未填充, offset=0
+  IC[1] Setup: 未填充, offset=0
+  IC[2] NotifyError: 未填充, offset=0
+  IC[3] NotifyResult: 未填充, offset=0
+
+函数 [28] RunNextBenchmark  parent=26  args=0 locals=1 bytes=60
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  catch                      ->27
+000005  get_var_ref0                (suite)
+000006  get_field2_rdi             RunSingleBenchmark  IC[0] delta=57
+000011  get_var_ref0                (suite)
+000012  get_field_rdi              benchmarks  IC[1] delta=75
+000017  get_var_ref1                (index)
+000018  get_array_el               
+000019  get_var_ref2                (data)
+000020  call_method                2
+000023  put_var_ref2                (data)
+000024  drop                       
+000025  goto8                      ->48
+000027  put_loc0                    (e)
+000028  catch                      ->47
+000033  get_var_ref0                (suite)
+000034  get_field2_rdi             NotifyError  IC[2] delta=77
+000039  get_loc0                    (e)
+000040  call_method                1
+000043  drop                       
+000044  null                       
+000045  nip_catch                  
+000046  return                     
+000047  throw                      
+000048  get_var_ref2                (data)
+000049  null                       
+000050  eq                         
+000051  if_false8                  ->55
+000053  get_var_ref3                (RunNextTearDown)
+000054  return                     
+000055  get_var_ref                4 (RunNextBenchmark)
+000058  call0                      argc=0
+000059  return                     
+  IC[0] RunSingleBenchmark: 未填充, offset=0
+  IC[1] benchmarks: 未填充, offset=0
+  IC[2] NotifyError: 未填充, offset=0
+
+函数 [29] RunNextTearDown  parent=26  args=0 locals=1 bytes=50
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  catch                      ->27
+000005  get_var_ref0                (suite)
+000006  get_field_rdi              benchmarks  IC[0] delta=49
+000011  get_var_ref1                (index)
+000012  post_inc                   
+000013  put_var_ref1                (index)
+000014  get_array_el               
+000015  get_field2_rdi             TearDown  IC[1] delta=64
+000020  call_method                0
+000023  drop                       
+000024  drop                       
+000025  goto8                      ->48
+000027  put_loc0                    (e)
+000028  catch                      ->47
+000033  get_var_ref0                (suite)
+000034  get_field2_rdi             NotifyError  IC[2] delta=69
+000039  get_loc0                    (e)
+000040  call_method                1
+000043  drop                       
+000044  null                       
+000045  nip_catch                  
+000046  return                     
+000047  throw                      
+000048  get_var_ref2                (RunNextSetup)
+000049  return                     
+  IC[0] benchmarks: 未填充, offset=0
+  IC[1] TearDown: 未填充, offset=0
+  IC[2] NotifyError: 未填充, offset=0
+
+函数 [30] GeneratePayloadTree  parent=0  args=2 locals=0 bytes=73
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_arg0                    (depth)
+000001  push_0                     0
+000002  eq                         
+000003  if_false8                  ->45
+000005  object                     
+000006  push_0                     0
+000007  push_1                     1
+000008  push_2                     2
+000009  push_3                     3
+000010  push_4                     4
+000011  push_5                     5
+000012  push_6                     6
+000013  push_7                     7
+000014  push_i8                    8
+000016  push_i8                    9
+000018  array_from                 10
+000021  define_field               array
+000026  push_atom_value            String for key 
+000031  get_arg1                    (tag)
+000032  add                        
+000033  push_atom_value             in leaf node
+000038  add                        
+000039  define_field               string
+000044  return                     
+000045  object                     
+000046  get_var                    0 (GeneratePayloadTree)
+000049  get_arg0                    (depth)
+000050  push_1                     1
+000051  sub                        
+000052  get_arg1                    (tag)
+000053  call2                      argc=2
+000054  define_field               left
+000059  get_var                    0 (GeneratePayloadTree)
+000062  get_arg0                    (depth)
+000063  push_1                     1
+000064  sub                        
+000065  get_arg1                    (tag)
+000066  call2                      argc=2
+000067  define_field               right
+000072  return                     
+
+函数 [31] GenerateKey  parent=0  args=0 locals=0 bytes=11
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (Math)
+000003  get_field2_rdi             random  IC[0] delta=12
+000008  tail_call_method           0
+  IC[0] random: 未填充, offset=0
+
+函数 [32] SplayRMS  parent=0  args=0 locals=0 bytes=33
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (Math)
+000003  get_field2_rdi             round  IC[0] delta=36
+000008  get_var                    0 (Math)
+000011  get_field2_rdi             sqrt  IC[1] delta=52
+000016  get_var                    1 (splaySumOfSquaredPauses)
+000019  get_var                    2 (splaySamples)
+000022  div                        
+000023  call_method                1
+000026  push_i16                   10000
+000029  mul                        
+000030  tail_call_method           1
+  IC[0] round: 未填充, offset=0
+  IC[1] sqrt: 未填充, offset=0
+
+函数 [33] SplayUpdateStats  parent=0  args=1 locals=1 bytes=32
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_arg0                    (time)
+000001  get_var                    0 (splaySampleTimeStart)
+000004  sub                        
+000005  put_loc0                    (pause)
+000006  get_arg0                    (time)
+000007  dup                        
+000008  put_var                    0 (splaySampleTimeStart)
+000011  drop                       
+000012  get_var                    1 (splaySamples)
+000015  post_inc                   
+000016  put_var                    1 (splaySamples)
+000019  drop                       
+000020  get_var                    2 (splaySumOfSquaredPauses)
+000023  get_loc0                    (pause)
+000024  get_loc0                    (pause)
+000025  mul                        
+000026  add                        
+000027  dup                        
+000028  put_var                    2 (splaySumOfSquaredPauses)
+000031  return_undef               
+
+函数 [34] InsertNewNode  parent=0  args=0 locals=2 bytes=50
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (GenerateKey)
+000003  call0                      argc=0
+000004  put_loc0                    (key)
+000005  get_var                    1 (splayTree)
+000008  get_field2_rdi             find  IC[0] delta=47
+000013  get_loc0                    (key)
+000014  call_method                1
+000017  null                       
+000018  neq                        
+000019  if_true8                   ->0
+000021  get_var                    2 (GeneratePayloadTree)
+000024  get_var                    3 (kSplayTreePayloadDepth)
+000027  get_var                    4 (String)
+000030  get_loc0                    (key)
+000031  call1                      argc=1
+000032  call2                      argc=2
+000033  put_loc1                    (payload)
+000034  get_var                    1 (splayTree)
+000037  get_field2_rdi             insert  IC[1] delta=42
+000042  get_loc0                    (key)
+000043  get_loc1                    (payload)
+000044  call_method                2
+000047  drop                       
+000048  get_loc0                    (key)
+000049  return                     
+  IC[0] find: 直接原型, offset=5
+  IC[1] insert: 直接原型, offset=3
+
+函数 [35] SplaySetup  parent=0  args=0 locals=1 bytes=91
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (performance)
+000003  get_field_rdi              now  IC[0] delta=92
+000008  lnot                       
+000009  if_false8                  ->17
+000011  push_atom_value            PerformanceNowUnsupported
+000016  throw                      
+000017  get_var                    1 (SplayTree)
+000020  dup                        
+000021  four_ctor                  record[0] argc=0
+000024  dup                        
+000025  put_var                    2 (splayTree)
+000028  drop                       
+000029  get_var                    0 (performance)
+000032  get_field2_rdi             now  IC[1] delta=87
+000037  call_method                0
+000040  dup                        
+000041  put_var                    3 (splaySampleTimeStart)
+000044  drop                       
+000045  push_0                     0
+000046  put_loc0                    (i)
+000047  get_loc0                    (i)
+000048  get_var                    4 (kSplayTreeSize)
+000051  lt                         
+000052  if_false8                  ->90
+000054  get_var                    5 (InsertNewNode)
+000057  call0                      argc=0
+000058  drop                       
+000059  get_loc0                    (i)
+000060  push_1                     1
+000061  add                        
+000062  push_i8                    20
+000064  mod                        
+000065  push_i8                    19
+000067  eq                         
+000068  if_false8                  ->86
+000070  get_var                    6 (SplayUpdateStats)
+000073  get_var                    0 (performance)
+000076  get_field2_rdi             now  IC[2] delta=67
+000081  call_method                0
+000084  call1                      argc=1
+000085  drop                       
+000086  inc_loc                    0 (i)
+000088  goto8                      ->47
+000090  return_undef               
+  IC[0] now: 自有字段, offset=0
+  IC[1] now: 自有字段, offset=0
+  IC[2] now: 自有字段, offset=0
+  record[0] pc=21, argc=0, 正计划=False, 负目标=True
+
+函数 [36] SplayTearDown  parent=0  args=0 locals=3 bytes=90
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var                    0 (splayTree)
+000003  get_field2_rdi             exportKeys  IC[0] delta=92
+000008  call_method                0
+000011  put_loc0                    (keys)
+000012  null                       
+000013  dup                        
+000014  put_var                    0 (splayTree)
+000017  drop                       
+000018  push_0                     0
+000019  dup                        
+000020  put_var                    1 (splaySamples)
+000023  drop                       
+000024  push_0                     0
+000025  dup                        
+000026  put_var                    2 (splaySumOfSquaredPauses)
+000029  drop                       
+000030  get_loc0                    (keys)
+000031  get_length                 
+000032  set_loc1                    (length)
+000033  get_var                    3 (kSplayTreeSize)
+000036  neq                        
+000037  if_false8                  ->52
+000039  get_var                    4 (Error)
+000042  dup                        
+000043  push_atom_value            Splay tree has wrong size
+000048  four_ctor                  record[0] argc=1
+000051  throw                      
+000052  push_0                     0
+000053  put_loc2                    (i)
+000054  get_loc2                    (i)
+000055  get_loc1                    (length)
+000056  push_1                     1
+000057  sub                        
+000058  lt                         
+000059  if_false8                  ->89
+000061  get_loc0                    (keys)
+000062  get_loc2                    (i)
+000063  get_array_el               
+000064  get_loc0                    (keys)
+000065  get_loc2                    (i)
+000066  push_1                     1
+000067  add                        
+000068  get_array_el               
+000069  gte                        
+000070  if_false8                  ->85
+000072  get_var                    4 (Error)
+000075  dup                        
+000076  push_atom_value            Splay tree not sorted
+000081  four_ctor                  record[1] argc=1
+000084  throw                      
+000085  inc_loc                    2 (i)
+000087  goto8                      ->54
+000089  return_undef               
+  IC[0] exportKeys: 直接原型, offset=8
+  record[0] pc=48, argc=1, 正计划=False, 负目标=False
+  record[1] pc=81, argc=1, 正计划=False, 负目标=False
+
+函数 [37] SplayRun  parent=0  args=0 locals=3 bytes=84
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_0                     0
+000001  put_loc0                    (i)
+000002  get_loc0                    (i)
+000003  get_var                    0 (kSplayTreeModifications)
+000006  lt                         
+000007  if_false8                  ->68
+000009  get_var                    1 (InsertNewNode)
+000012  call0                      argc=0
+000013  put_loc1                    (key)
+000014  get_var                    2 (splayTree)
+000017  get_field2_rdi             findGreatestLessThan  IC[0] delta=70
+000022  get_loc1                    (key)
+000023  call_method                1
+000026  set_loc2                    (greatest)
+000027  null                       
+000028  eq                         
+000029  if_false8                  ->46
+000031  get_var                    2 (splayTree)
+000034  get_field2_rdi             remove  IC[1] delta=77
+000039  get_loc1                    (key)
+000040  call_method                1
+000043  drop                       
+000044  goto8                      ->64
+000046  get_var                    2 (splayTree)
+000049  get_field2_rdi             remove  IC[2] delta=86
+000054  get_loc2                    (greatest)
+000055  get_field_rdi              key  IC[3] delta=104
+000060  call_method                1
+000063  drop                       
+000064  inc_loc                    0 (i)
+000066  goto8                      ->2
+000068  get_var                    3 (SplayUpdateStats)
+000071  get_var                    4 (performance)
+000074  get_field2_rdi             now  IC[4] delta=109
+000079  call_method                0
+000082  call1                      argc=1
+000083  return_undef               
+  IC[0] findGreatestLessThan: 直接原型, offset=7
+  IC[1] remove: 直接原型, offset=4
+  IC[2] remove: 直接原型, offset=4
+  IC[3] key: 自有字段, offset=0
+  IC[4] now: 自有字段, offset=0
+
+函数 [38] SplayTree  parent=0  args=0 locals=0 bytes=1
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  return_undef               
+
+函数 [39] <anonymous>  parent=0  args=0 locals=1 bytes=10
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  v6_get_loc0                
+000003  get_field_rdi              root_  IC[0] delta=12
+000008  lnot                       
+000009  return                     
+  IC[0] root_: 自有字段, offset=0
+
+函数 [40] <anonymous>  parent=0  args=2 locals=2 bytes=183
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc1                    (this)
+000002  get_loc1                    (this)
+000003  get_field2_rdi             isEmpty  IC[0] delta=180
+000008  call_method                0
+000011  if_false8                  ->34
+000013  get_loc1                    (this)
+000014  get_var                    0 (SplayTree)
+000017  get_field_rdi              Node  IC[1] delta=190
+000022  dup                        
+000023  get_arg0                    (key)
+000024  get_arg1                    (value)
+000025  four_ctor                  record[0] argc=2
+000028  put_field                  root_
+000033  return_undef               
+000034  get_loc1                    (this)
+000035  get_field2_rdi             splay_  IC[2] delta=196
+000040  get_arg0                    (key)
+000041  call_method                1
+000044  drop                       
+000045  get_loc1                    (this)
+000046  get_field_rdi              root_  IC[3] delta=209
+000051  get_field_rdi              key  IC[4] delta=228
+000056  get_arg0                    (key)
+000057  eq                         
+000058  if_false8                  ->61
+000060  return_undef               
+000061  get_var                    0 (SplayTree)
+000064  get_field_rdi              Node  IC[5] delta=239
+000069  dup                        
+000070  get_arg0                    (key)
+000071  get_arg1                    (value)
+000072  four_ctor                  record[1] argc=2
+000075  put_loc0                    (node)
+000076  get_arg0                    (key)
+000077  get_loc1                    (this)
+000078  get_field_rdi              root_  IC[6] delta=249
+000083  get_field_rdi              key  IC[7] delta=268
+000088  gt                         
+000089  if_false8                  ->134
+000091  get_loc0                    (node)
+000092  get_loc1                    (this)
+000093  get_field_rdi              root_  IC[8] delta=282
+000098  put_field                  left
+000103  get_loc0                    (node)
+000104  get_loc1                    (this)
+000105  get_field_rdi              root_  IC[9] delta=294
+000110  get_field_rdi              right  IC[10] delta=313
+000115  put_field_shared           right  IC[10] delta=308
+000120  get_loc1                    (this)
+000121  get_field_rdi              root_  IC[11] delta=326
+000126  null                       
+000127  put_field                  right
+000132  goto8                      ->175
+000134  get_loc0                    (node)
+000135  get_loc1                    (this)
+000136  get_field_rdi              root_  IC[12] delta=335
+000141  put_field                  right
+000146  get_loc0                    (node)
+000147  get_loc1                    (this)
+000148  get_field_rdi              root_  IC[13] delta=347
+000153  get_field_rdi              left  IC[14] delta=366
+000158  put_field_shared           left  IC[14] delta=361
+000163  get_loc1                    (this)
+000164  get_field_rdi              root_  IC[15] delta=379
+000169  null                       
+000170  put_field                  left
+000175  get_loc1                    (this)
+000176  get_loc0                    (node)
+000177  put_field_shared           root_  IC[15] delta=366
+000182  return_undef               
+  IC[0] isEmpty: 直接原型, offset=2
+  IC[1] Node: 未填充, offset=0
+  IC[2] splay_: 直接原型, offset=9
+  IC[3] root_: 自有字段, offset=0
+  IC[4] key: 自有字段, offset=0
+  IC[5] Node: 未填充, offset=0
+  IC[6] root_: 自有字段, offset=0
+  IC[7] key: 自有字段, offset=0
+  IC[8] root_: 自有字段, offset=0
+  IC[9] root_: 自有字段, offset=0
+  IC[10] right: 自有字段, offset=3
+  IC[11] root_: 自有字段, offset=0
+  IC[12] root_: 自有字段, offset=0
+  IC[13] root_: 自有字段, offset=0
+  IC[14] left: 自有字段, offset=3
+  IC[15] root_: 自有字段, offset=0
+  record[0] pc=25, argc=2, 正计划=False, 负目标=False
+  record[1] pc=72, argc=2, 正计划=True, 负目标=False
+
+函数 [41] <anonymous>  parent=0  args=1 locals=3 bytes=157
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc2                    (this)
+000002  get_loc2                    (this)
+000003  get_field2_rdi             isEmpty  IC[0] delta=156
+000008  call_method                0
+000011  if_false8                  ->25
+000013  get_var                    0 (Error)
+000016  push_atom_value            Key not found: 
+000021  get_arg0                    (key)
+000022  add                        
+000023  call1                      argc=1
+000024  throw                      
+000025  get_loc2                    (this)
+000026  get_field2_rdi             splay_  IC[1] delta=157
+000031  get_arg0                    (key)
+000032  call_method                1
+000035  drop                       
+000036  get_loc2                    (this)
+000037  get_field_rdi              root_  IC[2] delta=170
+000042  get_field_rdi              key  IC[3] delta=189
+000047  get_arg0                    (key)
+000048  neq                        
+000049  if_false8                  ->63
+000051  get_var                    0 (Error)
+000054  push_atom_value            Key not found: 
+000059  get_arg0                    (key)
+000060  add                        
+000061  call1                      argc=1
+000062  throw                      
+000063  get_loc2                    (this)
+000064  get_field_rdi              root_  IC[4] delta=191
+000069  put_loc0                    (removed)
+000070  get_loc2                    (this)
+000071  get_field_rdi              root_  IC[5] delta=208
+000076  get_field_rdi              left  IC[6] delta=227
+000081  lnot                       
+000082  if_false8                  ->103
+000084  get_loc2                    (this)
+000085  get_loc2                    (this)
+000086  get_field_rdi              root_  IC[7] delta=241
+000091  get_field_rdi              right  IC[8] delta=260
+000096  put_field                  root_
+000101  goto8                      ->155
+000103  get_loc2                    (this)
+000104  get_field_rdi              root_  IC[9] delta=271
+000109  get_field_rdi              right  IC[10] delta=290
+000114  put_loc1                    (right)
+000115  get_loc2                    (this)
+000116  get_loc2                    (this)
+000117  get_field_rdi              root_  IC[11] delta=306
+000122  get_field_rdi              left  IC[12] delta=325
+000127  put_field                  root_
+000132  get_loc2                    (this)
+000133  get_field2_rdi             splay_  IC[13] delta=338
+000138  get_arg0                    (key)
+000139  call_method                1
+000142  drop                       
+000143  get_loc2                    (this)
+000144  get_field_rdi              root_  IC[14] delta=351
+000149  get_loc1                    (right)
+000150  put_field                  right
+000155  get_loc0                    (removed)
+000156  return                     
+  IC[0] isEmpty: 直接原型, offset=2
+  IC[1] splay_: 直接原型, offset=9
+  IC[2] root_: 自有字段, offset=0
+  IC[3] key: 自有字段, offset=0
+  IC[4] root_: 自有字段, offset=0
+  IC[5] root_: 自有字段, offset=0
+  IC[6] left: 自有字段, offset=2
+  IC[7] root_: 自有字段, offset=0
+  IC[8] right: 自有字段, offset=2
+  IC[9] root_: 自有字段, offset=0
+  IC[10] right: 自有字段, offset=3
+  IC[11] root_: 自有字段, offset=0
+  IC[12] left: 自有字段, offset=2
+  IC[13] splay_: 直接原型, offset=9
+  IC[14] root_: 自有字段, offset=0
+
+函数 [42] <anonymous>  parent=0  args=1 locals=1 bytes=50
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_field2_rdi             isEmpty  IC[0] delta=52
+000008  call_method                0
+000011  if_false8                  ->15
+000013  null                       
+000014  return                     
+000015  get_loc0                    (this)
+000016  get_field2_rdi             splay_  IC[1] delta=63
+000021  get_arg0                    (key)
+000022  call_method                1
+000025  drop                       
+000026  v6_get_loc0                
+000027  get_field_rdi              root_  IC[2] delta=76
+000032  get_field_rdi              key  IC[3] delta=95
+000037  get_arg0                    (key)
+000038  eq                         
+000039  if_false8                  ->48
+000041  v6_get_loc0                
+000042  get_field_rdi              root_  IC[4] delta=109
+000047  return                     
+000048  null                       
+000049  return                     
+  IC[0] isEmpty: 直接原型, offset=2
+  IC[1] splay_: 直接原型, offset=9
+  IC[2] root_: 自有字段, offset=0
+  IC[3] key: 自有字段, offset=0
+  IC[4] root_: 自有字段, offset=0
+
+函数 [43] <anonymous>  parent=0  args=1 locals=2 bytes=46
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc1                    (this)
+000002  get_loc1                    (this)
+000003  get_field2_rdi             isEmpty  IC[0] delta=44
+000008  call_method                0
+000011  if_false8                  ->15
+000013  null                       
+000014  return                     
+000015  get_arg0                    (opt_startNode)
+000016  dup                        
+000017  if_true8                   ->26
+000019  drop                       
+000020  get_loc1                    (this)
+000021  get_field_rdi              root_  IC[1] delta=50
+000026  put_loc0                    (current)
+000027  v6_get_loc0                
+000028  get_field_rdi              right  IC[2] delta=67
+000033  if_false8                  ->44
+000035  v6_get_loc0                
+000036  get_field_rdi              right  IC[3] delta=83
+000041  put_loc0                    (current)
+000042  goto8                      ->27
+000044  get_loc0                    (current)
+000045  return                     
+  IC[0] isEmpty: 直接原型, offset=2
+  IC[1] root_: 未填充, offset=0
+  IC[2] right: 自有字段, offset=3
+  IC[3] right: 未填充, offset=0
+
+函数 [44] <anonymous>  parent=0  args=1 locals=1 bytes=83
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_field2_rdi             isEmpty  IC[0] delta=84
+000008  call_method                0
+000011  if_false8                  ->15
+000013  null                       
+000014  return                     
+000015  get_loc0                    (this)
+000016  get_field2_rdi             splay_  IC[1] delta=95
+000021  get_arg0                    (key)
+000022  call_method                1
+000025  drop                       
+000026  v6_get_loc0                
+000027  get_field_rdi              root_  IC[2] delta=108
+000032  get_field_rdi              key  IC[3] delta=127
+000037  get_arg0                    (key)
+000038  lt                         
+000039  if_false8                  ->48
+000041  v6_get_loc0                
+000042  get_field_rdi              root_  IC[4] delta=141
+000047  return                     
+000048  v6_get_loc0                
+000049  get_field_rdi              root_  IC[5] delta=158
+000054  get_field_rdi              left  IC[6] delta=177
+000059  if_false8                  ->81
+000061  get_loc0                    (this)
+000062  get_field2_rdi             findMax  IC[7] delta=193
+000067  v6_get_loc0                
+000068  get_field_rdi              root_  IC[8] delta=211
+000073  get_field_rdi              left  IC[9] delta=230
+000078  tail_call_method           1
+000081  null                       
+000082  return                     
+  IC[0] isEmpty: 直接原型, offset=2
+  IC[1] splay_: 直接原型, offset=9
+  IC[2] root_: 自有字段, offset=0
+  IC[3] key: 自有字段, offset=0
+  IC[4] root_: 未填充, offset=0
+  IC[5] root_: 自有字段, offset=0
+  IC[6] left: 自有字段, offset=3
+  IC[7] findMax: 直接原型, offset=6
+  IC[8] root_: 自有字段, offset=0
+  IC[9] left: 自有字段, offset=3
+
+函数 [45] <anonymous>  parent=0  args=0 locals=2 bytes=37
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc1                    (this)
+000002  array_from                 0
+000005  put_loc0                    (result)
+000006  get_loc1                    (this)
+000007  get_field2_rdi             isEmpty  IC[0] delta=32
+000012  call_method                0
+000015  lnot                       
+000016  if_false8                  ->35
+000018  get_loc1                    (this)
+000019  get_field_rdi              root_  IC[1] delta=44
+000024  get_field2_rdi             traverse_  IC[2] delta=63
+000029  fclosure8                  0
+000031  call_method                1
+000034  drop                       
+000035  get_loc0                    (result)
+000036  return                     
+  IC[0] isEmpty: 直接原型, offset=2
+  IC[1] root_: 自有字段, offset=0
+  IC[2] traverse_: 直接原型, offset=3
+
+函数 [46] <anonymous>  parent=45  args=1 locals=0 bytes=16
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  get_var_ref0                (result)
+000001  get_field2_rdi             push  IC[0] delta=14
+000006  v6_get_arg0                
+000007  get_field_rdi              key  IC[1] delta=32
+000012  call_method                1
+000015  return_undef               
+  IC[0] push: 未填充, offset=0
+  IC[1] key: 自有字段, offset=0
+
+函数 [47] <anonymous>  parent=0  args=1 locals=6 bytes=286
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc8                   5 (this)
+000003  get_loc8                   5 (this)
+000005  get_field2_rdi             isEmpty  IC[0] delta=282
+000010  call_method                0
+000013  if_false8                  ->16
+000015  return_undef               
+000016  get_var                    0 (SplayTree)
+000019  get_field_rdi              Node  IC[1] delta=292
+000024  dup                        
+000025  null                       
+000026  null                       
+000027  four_ctor                  record[0] argc=2
+000030  set_loc2                    (right)
+000031  set_loc1                    (left)
+000032  put_loc0                    (dummy)
+000033  get_loc8                   5 (this)
+000035  get_field_rdi              root_  IC[2] delta=300
+000040  put_loc3                    (current)
+000041  get_arg0                    (key)
+000042  get_loc3                    (current)
+000043  get_field_rdi              key  IC[3] delta=316
+000048  lt                         
+000049  if_false8                  ->136
+000051  get_loc3                    (current)
+000052  get_field_rdi              left  IC[4] delta=331
+000057  lnot                       
+000058  if_true                    ->229
+000063  get_arg0                    (key)
+000064  get_loc3                    (current)
+000065  get_field_rdi              left  IC[5] delta=342
+000070  get_field_rdi              key  IC[6] delta=361
+000075  lt                         
+000076  if_false8                  ->118
+000078  get_loc3                    (current)
+000079  get_field_rdi              left  IC[7] delta=376
+000084  put_loc8                   4 (tmp)
+000086  get_loc3                    (current)
+000087  get_loc8                   4 (tmp)
+000089  get_field_rdi              right  IC[8] delta=390
+000094  put_field                  left
+000099  get_loc8                   4 (tmp)
+000101  get_loc3                    (current)
+000102  put_field_shared           right  IC[8] delta=377
+000107  get_loc8                   4 (tmp)
+000109  set_loc3                    (current)
+000110  get_field_rdi              left  IC[9] delta=393
+000115  lnot                       
+000116  if_true8                   ->229
+000118  get_loc2                    (right)
+000119  get_loc3                    (current)
+000120  put_field_shared           left  IC[9] delta=383
+000125  get_loc3                    (current)
+000126  put_loc2                    (right)
+000127  get_loc3                    (current)
+000128  get_field_rdi              left  IC[10] delta=399
+000133  put_loc3                    (current)
+000134  goto8                      ->41
+000136  get_arg0                    (key)
+000137  get_loc3                    (current)
+000138  get_field_rdi              key  IC[11] delta=413
+000143  gt                         
+000144  if_false8                  ->229
+000146  get_loc3                    (current)
+000147  get_field_rdi              right  IC[12] delta=428
+000152  lnot                       
+000153  if_true8                   ->229
+000155  get_arg0                    (key)
+000156  get_loc3                    (current)
+000157  get_field_rdi              right  IC[13] delta=442
+000162  get_field_rdi              key  IC[14] delta=461
+000167  gt                         
+000168  if_false8                  ->210
+000170  get_loc3                    (current)
+000171  get_field_rdi              right  IC[15] delta=476
+000176  put_loc8                   4 (tmp)
+000178  get_loc3                    (current)
+000179  get_loc8                   4 (tmp)
+000181  get_field_rdi              left  IC[16] delta=490
+000186  put_field                  right
+000191  get_loc8                   4 (tmp)
+000193  get_loc3                    (current)
+000194  put_field_shared           left  IC[16] delta=477
+000199  get_loc8                   4 (tmp)
+000201  set_loc3                    (current)
+000202  get_field_rdi              right  IC[17] delta=493
+000207  lnot                       
+000208  if_true8                   ->229
+000210  get_loc1                    (left)
+000211  get_loc3                    (current)
+000212  put_field_shared           right  IC[17] delta=483
+000217  get_loc3                    (current)
+000218  put_loc1                    (left)
+000219  get_loc3                    (current)
+000220  get_field_rdi              right  IC[18] delta=499
+000225  put_loc3                    (current)
+000226  goto16                     ->41
+000229  get_loc1                    (left)
+000230  get_loc3                    (current)
+000231  get_field_rdi              left  IC[19] delta=512
+000236  put_field                  right
+000241  get_loc2                    (right)
+000242  get_loc3                    (current)
+000243  get_field_rdi              right  IC[20] delta=524
+000248  put_field                  left
+000253  get_loc3                    (current)
+000254  v6_get_loc0                
+000255  get_field_rdi              right  IC[21] delta=536
+000260  put_field                  left
+000265  get_loc3                    (current)
+000266  v6_get_loc0                
+000267  get_field_rdi              left  IC[22] delta=548
+000272  put_field                  right
+000277  get_loc8                   5 (this)
+000279  get_loc3                    (current)
+000280  put_field                  root_
+000285  return_undef               
+  IC[0] isEmpty: 直接原型, offset=2
+  IC[1] Node: 未填充, offset=0
+  IC[2] root_: 自有字段, offset=0
+  IC[3] key: 自有字段, offset=0
+  IC[4] left: 自有字段, offset=3
+  IC[5] left: 自有字段, offset=3
+  IC[6] key: 自有字段, offset=0
+  IC[7] left: 自有字段, offset=2
+  IC[8] right: 自有字段, offset=2
+  IC[9] left: 自有字段, offset=3
+  IC[10] left: 自有字段, offset=3
+  IC[11] key: 自有字段, offset=0
+  IC[12] right: 自有字段, offset=3
+  IC[13] right: 自有字段, offset=2
+  IC[14] key: 自有字段, offset=0
+  IC[15] right: 自有字段, offset=2
+  IC[16] left: 自有字段, offset=2
+  IC[17] right: 自有字段, offset=3
+  IC[18] right: 自有字段, offset=3
+  IC[19] left: 自有字段, offset=2
+  IC[20] right: 自有字段, offset=3
+  IC[21] right: 自有字段, offset=2
+  IC[22] left: 自有字段, offset=3
+  record[0] pc=27, argc=2, 正计划=True, 负目标=False
+
+函数 [48] <anonymous>  parent=0  args=2 locals=1 bytes=17
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc0                    (this)
+000002  get_loc0                    (this)
+000003  get_arg0                    (key)
+000004  put_field                  key
+000009  get_loc0                    (this)
+000010  get_arg1                    (value)
+000011  put_field                  value
+000016  return_undef               
+
+函数 [49] <anonymous>  parent=0  args=1 locals=3 bytes=41
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  push_this                  
+000001  put_loc2                    (this)
+000002  get_loc2                    (this)
+000003  put_loc0                    (current)
+000004  get_loc0                    (current)
+000005  if_false8                  ->40
+000007  v6_get_loc0                
+000008  get_field_rdi              left  IC[0] delta=39
+000013  set_loc1                    (left)
+000014  if_false8                  ->27
+000016  get_loc1                    (left)
+000017  get_field2_rdi             traverse_  IC[1] delta=54
+000022  get_arg0                    (f)
+000023  call_method                1
+000026  drop                       
+000027  get_arg0                    (f)
+000028  get_loc0                    (current)
+000029  call1                      argc=1
+000030  drop                       
+000031  v6_get_loc0                
+000032  get_field_rdi              right  IC[2] delta=63
+000037  put_loc0                    (current)
+000038  goto8                      ->4
+000040  return_undef               
+  IC[0] left: 自有字段, offset=2
+  IC[1] traverse_: 直接原型, offset=3
+  IC[2] right: 自有字段, offset=3
+
+函数 [50] <anonymous>  parent=0  args=0 locals=12 bytes=528
+offset  opcode                     操作数
+------------------------------------------------------------------------
+000000  object                     
+000001  push_atom_value            Splay.Splay
+000006  define_field               case
+000011  push_i16                   2048
+000014  define_field               N
+000019  push_atom_value            measure
+000024  define_field               phase
+000029  put_loc0                    (config)
+000030  get_var                    0 (BenchmarkSuite)
+000033  get_field_rdi              suites  IC[0] delta=494
+000038  push_0                     0
+000039  get_array_el               
+000040  put_loc1                    (suite)
+000041  get_var                    0 (BenchmarkSuite)
+000044  get_field_rdi              suites  IC[1] delta=507
+000049  get_length                 
+000050  push_1                     1
+000051  strict_neq                 
+000052  dup                        
+000053  if_true8                   ->68
+000055  drop                       
+000056  get_loc1                    (suite)
+000057  get_field_rdi              name  IC[2] delta=518
+000062  push_atom_value            Splay
+000067  strict_neq                 
+000068  if_false8                  ->80
+000070  get_var                    1 (Error)
+000073  push_atom_value            suite registration
+000078  call1                      argc=1
+000079  throw                      
+000080  get_loc1                    (suite)
+000081  get_field_rdi              benchmarks  IC[3] delta=518
+000086  push_0                     0
+000087  get_array_el               
+000088  set_loc2                    (test)
+000089  get_field_rdi              name  IC[4] delta=534
+000094  push_atom_value            Splay
+000099  strict_neq                 
+000100  if_false8                  ->112
+000102  get_var                    1 (Error)
+000105  push_atom_value            benchmark registration
+000110  call1                      argc=1
+000111  throw                      
+000112  get_loc1                    (suite)
+000113  get_field_rdi              name  IC[5] delta=534
+000118  push_atom_value            Crypto
+000123  strict_neq                 
+000124  if_false8                  ->138
+000126  get_var                    0 (BenchmarkSuite)
+000129  get_field2_rdi             ResetRNG  IC[6] delta=542
+000134  call_method                0
+000137  drop                       
+000138  get_loc1                    (suite)
+000139  get_field_rdi              name  IC[7] delta=556
+000144  push_atom_value            RegExp
+000149  strict_eq                  
+000150  if_false8                  ->166
+000152  get_var                    2 (RegExpBenchmark)
+000155  dup                        
+000156  four_ctor                  record[0] argc=0
+000159  dup                        
+000160  put_var                    3 (regExpBenchmark)
+000163  drop                       
+000164  goto8                      ->176
+000166  get_loc2                    (test)
+000167  get_field2_rdi             Setup  IC[8] delta=552
+000172  call_method                0
+000175  drop                       
+000176  get_loc1                    (suite)
+000177  get_field_rdi              name  IC[9] delta=566
+000182  push_atom_value            Crypto
+000187  strict_eq                  
+000188  if_false8                  ->209
+000190  get_loc2                    (test)
+000191  get_field_rdi              name  IC[10] delta=576
+000196  push_atom_value            Decrypt
+000201  strict_eq                  
+000202  if_false8                  ->209
+000204  get_var                    4 (encrypt)
+000207  call0                      argc=0
+000208  drop                       
+000209  get_loc2                    (test)
+000210  get_field_rdi              run  IC[11] delta=581
+000215  put_loc3                    (run)
+000216  get_var                    5 (__icoNow)
+000219  put_loc8                   4 (now)
+000221  v6_get_loc0                
+000222  get_field_rdi              N  IC[12] delta=593
+000227  put_loc8                   5 (count)
+000229  v6_get_loc0                
+000230  get_field_rdi              phase  IC[13] delta=609
+000235  push_atom_value            correctness
+000240  strict_eq                  
+000241  if_false8                  ->250
+000243  get_var                    6 (String)
+000246  get_loc3                    (run)
+000247  call1                      argc=1
+000248  goto8                      ->251
+000250  null                       
+000251  put_loc8                   6 (runSource)
+000253  get_loc8                   4 (now)
+000255  call0                      argc=0
+000256  put_loc8                   7 (started)
+000258  push_0                     0
+000259  put_loc8                   8 (iteration)
+000261  get_loc8                   8 (iteration)
+000263  get_loc8                   5 (count)
+000265  lt                         
+000266  if_false8                  ->275
+000268  get_loc3                    (run)
+000269  call0                      argc=0
+000270  drop                       
+000271  inc_loc                    8 (iteration)
+000273  goto8                      ->261
+000275  get_loc8                   4 (now)
+000277  call0                      argc=0
+000278  put_loc8                   9 (stopped)
+000280  get_loc1                    (suite)
+000281  get_field_rdi              name  IC[14] delta=582
+000286  push_atom_value            Crypto
+000291  strict_eq                  
+000292  if_false8                  ->313
+000294  get_loc2                    (test)
+000295  get_field_rdi              name  IC[15] delta=592
+000300  push_atom_value            Encrypt
+000305  strict_eq                  
+000306  if_false8                  ->313
+000308  get_var                    7 (decrypt)
+000311  call0                      argc=0
+000312  drop                       
+000313  push_0                     0
+000314  put_loc8                   10 (extra)
+000316  get_loc1                    (suite)
+000317  get_field_rdi              name  IC[16] delta=594
+000322  push_atom_value            NavierStokes
+000327  strict_eq                  
+000328  if_false8                  ->345
+000330  get_var                    8 (nsFrameCounter)
+000333  push_i8                    15
+000335  lt                         
+000336  if_false8                  ->345
+000338  get_loc3                    (run)
+000339  call0                      argc=0
+000340  drop                       
+000341  inc_loc                    10 (extra)
+000343  goto8                      ->330
+000345  get_loc1                    (suite)
+000346  get_field_rdi              name  IC[17] delta=589
+000351  push_atom_value            Crypto
+000356  strict_eq                  
+000357  if_false8                  ->364
+000359  get_var                    9 (encrypted)
+000362  goto8                      ->365
+000364  null                       
+000365  put_loc8                   11 (checksum)
+000367  get_loc2                    (test)
+000368  get_field2_rdi             TearDown  IC[18] delta=591
+000373  call_method                0
+000376  drop                       
+000377  get_var                    10 (console)
+000380  get_field2_rdi             log  IC[19] delta=603
+000385  push_atom_value            OCTANE_IC_RESULT:
+000390  get_var                    11 (JSON)
+000393  get_field2_rdi             stringify  IC[20] delta=614
+000398  object                     
+000399  v6_get_loc0                
+000400  get_field_rdi              case  IC[21] delta=631
+000405  define_field               case
+000410  v6_get_loc0                
+000411  get_field_rdi              N  IC[22] delta=644
+000416  define_field               N
+000421  push_atom_value            USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1
+000426  define_field               mode
+000431  v6_get_loc0                
+000432  get_field_rdi              phase  IC[23] delta=647
+000437  define_field               phase
+000442  get_loc8                   7 (started)
+000444  define_field               start_ms
+000449  get_loc8                   9 (stopped)
+000451  define_field               stop_ms
+000456  get_loc8                   9 (stopped)
+000458  get_loc8                   7 (started)
+000460  sub                        
+000461  define_field               elapsed_ms
+000466  get_loc8                   9 (stopped)
+000468  get_loc8                   7 (started)
+000470  sub                        
+000471  v6_get_loc0                
+000472  get_field_rdi              N  IC[24] delta=631
+000477  div                        
+000478  define_field               elapsed_per_Run_ms
+000483  get_loc8                   11 (checksum)
+000485  define_field               checksum
+000490  get_loc8                   10 (extra)
+000492  define_field               extra_validation_calls
+000497  get_loc8                   6 (runSource)
+000499  define_field               run_source
+000504  push_atom_value            PASS
+000509  define_field               correctness
+000514  push_0                     0
+000515  define_field               warmup_calls
+000520  call_method                1
+000523  add                        
+000524  call_method                1
+000527  return_undef               
+  IC[0] suites: 未填充, offset=0
+  IC[1] suites: 未填充, offset=0
+  IC[2] name: 自有字段, offset=0
+  IC[3] benchmarks: 自有字段, offset=2
+  IC[4] name: 自有字段, offset=0
+  IC[5] name: 自有字段, offset=0
+  IC[6] ResetRNG: 未填充, offset=0
+  IC[7] name: 自有字段, offset=0
+  IC[8] Setup: 自有字段, offset=5
+  IC[9] name: 自有字段, offset=0
+  IC[10] name: 未填充, offset=0
+  IC[11] run: 自有字段, offset=4
+  IC[12] N: 自有字段, offset=1
+  IC[13] phase: 自有字段, offset=2
+  IC[14] name: 自有字段, offset=0
+  IC[15] name: 未填充, offset=0
+  IC[16] name: 自有字段, offset=0
+  IC[17] name: 自有字段, offset=0
+  IC[18] TearDown: 自有字段, offset=6
+  IC[19] log: 自有字段, offset=0
+  IC[20] stringify: 未填充, offset=0
+  IC[21] case: 自有字段, offset=0
+  IC[22] N: 自有字段, offset=1
+  IC[23] phase: 自有字段, offset=2
+  IC[24] N: 自有字段, offset=1
+  record[0] pc=156, argc=0, 正计划=False, 负目标=False
+

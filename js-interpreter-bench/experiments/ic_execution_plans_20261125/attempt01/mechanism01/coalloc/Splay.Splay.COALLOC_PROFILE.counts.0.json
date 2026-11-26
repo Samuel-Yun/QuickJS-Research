@@ -1,0 +1,17 @@
+{
+  "label": "COALLOC_PROFILE",
+  "case": "Splay.Splay",
+  "rep": 0,
+  "mode": "counts",
+  "command": [
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/03_ctor_coalloc/work/COALLOC_PROFILE.counts/qjs",
+    "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ic_execution_plans_20261125/attempt01/mechanism01/coalloc/Splay.Splay.js"
+  ],
+  "script_sha256": "edbe75ac1e34ca70ea2b0e473c4a161c46f38299044425f7f381bee790295e92",
+  "binary_sha256": "934c79eaea30b2ab3773446b3c07d943197e2aafdb41eb0028953587eeeb87e0",
+  "control": {},
+  "exit_code": 0,
+  "stdout": "OCTANE_IC_RESULT:{\"case\":\"Splay.Splay\",\"N\":2048,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1149151083.911723,\"stop_ms\":1149153835.866736,\"elapsed_ms\":2751.955013036728,\"elapsed_per_Run_ms\":1.3437280337093398,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+  "stderr": "CO_WORK:{\"hits\":982620,\"combined_requests\":0,\"ordinary_requests\":1965240,\"requested_bytes\":94331520,\"resizes\":1965240,\"migrations\":0,\"migration_bytes\":0,\"gc\":0,\"capacity_histogram\":[0,0,982620,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}\nFOUR_COUNTS:{\"attempts\":982620,\"hits\":982620,\"eligible\":0,\"fills\":0,\"fallbacks\":0,\"overflow\":0,\"sites\":[{\"function\":\"\",\"site_id\":0,\"work\":[0,0,818780,0,1637560,818780],\"pc\":27,\"attempts\":818780,\"hits\":818780,\"eligible\":0,\"fills\":0,\"fallbacks\":0,\"overflow\":0,\"bytecode_hex\":\"210200cdccc7c005f42c010000cacfc6f43c010000a1e856c6f44b0100009469aa000000cfc6f456010000f469010000a1e829c6f478010000c104c6c004f4860100003fce020000c004c6f879010000c004cef48901000094e970c5c6f87f010000c6c9c6f48f010000caeaa2cfc6f49d010000a3e854c6f4ac01000094e94b\"},{\"function\":\"\",\"site_id\":1,\"work\":[0,0,163840,0,327680,163840],\"pc\":72,\"attempts\":163840,\"hits\":163840,\"eligible\":0,\"fills\":0,\"fallbacks\":0,\"overflow\":0,\"bytecode_hex\":\"210200c7cfc4f4f9000000f40c010000a3e82cc3c4f41a0100003fce020000c3c4f426010000f439010000f834010000c4f446010000073fcf020000ea2ac3c4f44f0100003fcf020000c3c4f45b010000f46e010000f869010000c4f47b010000073fce020000c4c3f86e01000029\"}],\"follow\":[0,0,0,0,0,0,0,0,12,2,208,480,0,0,0,0,0,0,0,0,0,0,0,0]}\n",
+  "wall_ms": 3047.3147542215884
+}

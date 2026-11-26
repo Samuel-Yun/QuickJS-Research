@@ -1,0 +1,392 @@
+[
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3676.2518709897995,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3679.800179088488,
+    "ms": 3676.2518709897995
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3770.3032310009003,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3773.7481088843197,
+    "ms": 3770.3032310009003
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065813660.116366,\"stop_ms\":1065815497.209976,\"elapsed_ms\":1837.0936099290848,\"elapsed_per_Run_ms\":57.4091753102839,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1850.4015360958874,
+    "ms": 57.4091753102839,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 1,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065815514.744113,\"stop_ms\":1065817270.038785,\"elapsed_ms\":1755.294672012329,\"elapsed_per_Run_ms\":54.852958500385284,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1768.6034799553454,
+    "ms": 54.852958500385284,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3784.143643975258,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3787.666584132239,
+    "ms": 3784.143643975258
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3691.049486041069,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3694.402359891683,
+    "ms": 3691.049486041069
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065824776.791872,\"stop_ms\":1065826523.251715,\"elapsed_ms\":1746.4598429203033,\"elapsed_per_Run_ms\":54.57687009125948,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1758.9423430617899,
+    "ms": 54.57687009125948,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 2,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065826539.930917,\"stop_ms\":1065828371.83051,\"elapsed_ms\":1831.8995929956436,\"elapsed_per_Run_ms\":57.24686228111386,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1844.4118599873036,
+    "ms": 57.24686228111386,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3686.456866979599,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3689.903327031061,
+    "ms": 3686.456866979599
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3778.0540429353714,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3781.730170827359,
+    "ms": 3778.0540429353714
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065835868.503471,\"stop_ms\":1065837703.984381,\"elapsed_ms\":1835.4809099435806,\"elapsed_per_Run_ms\":57.358778435736895,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1848.0343450792134,
+    "ms": 57.358778435736895,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 3,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065837720.774447,\"stop_ms\":1065839479.306746,\"elapsed_ms\":1758.532299041748,\"elapsed_per_Run_ms\":54.95413434505463,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1771.20422385633,
+    "ms": 54.95413434505463,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3776.4036350250244,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3779.9434987828135,
+    "ms": 3776.4036350250244
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3690.9611109495163,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3694.4425529800355,
+    "ms": 3690.9611109495163
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065846978.929108,\"stop_ms\":1065848728.397514,\"elapsed_ms\":1749.4684059619904,\"elapsed_per_Run_ms\":54.6708876863122,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1762.0162761304528,
+    "ms": 54.6708876863122,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 4,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065848745.180823,\"stop_ms\":1065850579.207771,\"elapsed_ms\":1834.0269479751587,\"elapsed_per_Run_ms\":57.31334212422371,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1846.47952998057,
+    "ms": 57.31334212422371,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3674.4751930236816,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3677.8183351270854,
+    "ms": 3674.4751930236816
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "whitebox",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/ctor.js",
+      "positive",
+      "100",
+      "67108864"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"ctor\",\"mode\":\"positive\",\"target\":100,\"iterations\":67108864,\"checksum\":201326592,\"elapsed_ms\":3950.1259520053864,\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 3953.6179648712277,
+    "ms": 3950.1259520053864
+  },
+  {
+    "label": "CTOR_LOCAL_SHAPE_GUARD",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/CTOR_LOCAL_SHAPE_GUARD.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065858235.687754,\"stop_ms\":1065860066.154575,\"elapsed_ms\":1830.4668209552765,\"elapsed_per_Run_ms\":57.20208815485239,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1842.903528129682,
+    "ms": 57.20208815485239,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  },
+  {
+    "label": "SPARSE",
+    "mode": "release",
+    "phase": "timing",
+    "case": "EarleyBoyer.Boyer",
+    "rep": 5,
+    "command": [
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/ctor_local_shape_guard_20261124/attempt01/work/SPARSE.release/qjs",
+      "/home/wssy/workspace/QuickJS-Research/js-interpreter-bench/on_demand_ctor_cache/tests/octane/EarleyBoyer.Boyer.js"
+    ],
+    "exit_code": 0,
+    "stdout": "OCTANE_IC_RESULT:{\"case\":\"EarleyBoyer.Boyer\",\"N\":32,\"mode\":\"USE_IC_OCTANE_FIRST_CALL_INCLUSIVE_V1\",\"phase\":\"measure\",\"start_ms\":1065860082.836969,\"stop_ms\":1065861831.755931,\"elapsed_ms\":1748.9189620018005,\"elapsed_per_Run_ms\":54.65371756255627,\"checksum\":null,\"extra_validation_calls\":0,\"run_source\":null,\"correctness\":\"PASS\",\"warmup_calls\":0}\n",
+    "stderr": "",
+    "external_wall_ms": 1761.5172010846436,
+    "ms": 54.65371756255627,
+    "suite": "octane",
+    "name": "EarleyBoyer.Boyer",
+    "group": "EarleyBoyer",
+    "N": 32
+  }
+]

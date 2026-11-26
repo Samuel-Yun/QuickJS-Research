@@ -1,0 +1,518 @@
+[
+  {
+    "offset": 0,
+    "opcode": "push_this",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 1,
+    "opcode": "put_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 2,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 3,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 4,
+    "opcode": "neq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 5,
+    "opcode": "if_false8",
+    "operands": "63",
+    "size": 2
+  },
+  {
+    "offset": 7,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 8,
+    "opcode": "get_field",
+    "operands": "kind",
+    "size": 5
+  },
+  {
+    "offset": 13,
+    "opcode": "get_var",
+    "operands": "0: KIND_WORK",
+    "size": 3
+  },
+  {
+    "offset": 16,
+    "opcode": "eq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 17,
+    "opcode": "if_false8",
+    "operands": "42",
+    "size": 2
+  },
+  {
+    "offset": 19,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 20,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 21,
+    "opcode": "get_field2",
+    "operands": "addTo",
+    "size": 5
+  },
+  {
+    "offset": 26,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 27,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 32,
+    "opcode": "call_method",
+    "operands": "1",
+    "size": 3
+  },
+  {
+    "offset": 35,
+    "opcode": "put_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 40,
+    "opcode": "goto8",
+    "operands": "63",
+    "size": 2
+  },
+  {
+    "offset": 42,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 43,
+    "opcode": "get_arg0",
+    "operands": "0: packet",
+    "size": 1
+  },
+  {
+    "offset": 44,
+    "opcode": "get_field2",
+    "operands": "addTo",
+    "size": 5
+  },
+  {
+    "offset": 49,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 50,
+    "opcode": "get_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 55,
+    "opcode": "call_method",
+    "operands": "1",
+    "size": 3
+  },
+  {
+    "offset": 58,
+    "opcode": "put_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 63,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 64,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 69,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 70,
+    "opcode": "neq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 71,
+    "opcode": "if_false",
+    "operands": "215",
+    "size": 5
+  },
+  {
+    "offset": 76,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 77,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 82,
+    "opcode": "get_field",
+    "operands": "a1",
+    "size": 5
+  },
+  {
+    "offset": 87,
+    "opcode": "set_loc0",
+    "operands": "0: count",
+    "size": 1
+  },
+  {
+    "offset": 88,
+    "opcode": "get_var",
+    "operands": "1: DATA_SIZE",
+    "size": 3
+  },
+  {
+    "offset": 91,
+    "opcode": "lt",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 92,
+    "opcode": "if_false8",
+    "operands": "176",
+    "size": 2
+  },
+  {
+    "offset": 94,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 95,
+    "opcode": "get_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 100,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 101,
+    "opcode": "neq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 102,
+    "opcode": "if_false8",
+    "operands": "215",
+    "size": 2
+  },
+  {
+    "offset": 104,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 105,
+    "opcode": "get_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 110,
+    "opcode": "put_loc1",
+    "operands": "1: v",
+    "size": 1
+  },
+  {
+    "offset": 111,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 112,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 113,
+    "opcode": "get_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 118,
+    "opcode": "get_field",
+    "operands": "link",
+    "size": 5
+  },
+  {
+    "offset": 123,
+    "opcode": "put_field",
+    "operands": "v2",
+    "size": 5
+  },
+  {
+    "offset": 128,
+    "opcode": "get_loc1",
+    "operands": "1: v",
+    "size": 1
+  },
+  {
+    "offset": 129,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 130,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 135,
+    "opcode": "get_field",
+    "operands": "a2",
+    "size": 5
+  },
+  {
+    "offset": 140,
+    "opcode": "get_loc0",
+    "operands": "0: count",
+    "size": 1
+  },
+  {
+    "offset": 141,
+    "opcode": "get_array_el",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 142,
+    "opcode": "put_field",
+    "operands": "a1",
+    "size": 5
+  },
+  {
+    "offset": 147,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 148,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 153,
+    "opcode": "get_loc0",
+    "operands": "0: count",
+    "size": 1
+  },
+  {
+    "offset": 154,
+    "opcode": "push_1",
+    "operands": "1",
+    "size": 1
+  },
+  {
+    "offset": 155,
+    "opcode": "add",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 156,
+    "opcode": "put_field",
+    "operands": "a1",
+    "size": 5
+  },
+  {
+    "offset": 161,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 162,
+    "opcode": "get_field",
+    "operands": "scheduler",
+    "size": 5
+  },
+  {
+    "offset": 167,
+    "opcode": "get_field2",
+    "operands": "queue",
+    "size": 5
+  },
+  {
+    "offset": 172,
+    "opcode": "get_loc1",
+    "operands": "1: v",
+    "size": 1
+  },
+  {
+    "offset": 173,
+    "opcode": "tail_call_method",
+    "operands": "1",
+    "size": 3
+  },
+  {
+    "offset": 176,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 177,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 182,
+    "opcode": "put_loc1",
+    "operands": "1: v",
+    "size": 1
+  },
+  {
+    "offset": 183,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 184,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 185,
+    "opcode": "get_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 190,
+    "opcode": "get_field",
+    "operands": "link",
+    "size": 5
+  },
+  {
+    "offset": 195,
+    "opcode": "put_field",
+    "operands": "v1",
+    "size": 5
+  },
+  {
+    "offset": 200,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 201,
+    "opcode": "get_field",
+    "operands": "scheduler",
+    "size": 5
+  },
+  {
+    "offset": 206,
+    "opcode": "get_field2",
+    "operands": "queue",
+    "size": 5
+  },
+  {
+    "offset": 211,
+    "opcode": "get_loc1",
+    "operands": "1: v",
+    "size": 1
+  },
+  {
+    "offset": 212,
+    "opcode": "tail_call_method",
+    "operands": "1",
+    "size": 3
+  },
+  {
+    "offset": 215,
+    "opcode": "get_loc2",
+    "operands": "2: this",
+    "size": 1
+  },
+  {
+    "offset": 216,
+    "opcode": "get_field",
+    "operands": "scheduler",
+    "size": 5
+  },
+  {
+    "offset": 221,
+    "opcode": "get_field2",
+    "operands": "suspendCurrent",
+    "size": 5
+  },
+  {
+    "offset": 226,
+    "opcode": "tail_call_method",
+    "operands": "0",
+    "size": 3
+  }
+]

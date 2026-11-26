@@ -1,0 +1,55 @@
+{
+  "command": [
+    "C:\\Windows\\system32\\wsl.exe",
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/",
+    "--exec",
+    "python3",
+    "/mnt/c/Users/mzyx/Desktop/0921/js-interpreter-bench/experiments/splay_ic_20261104/attempt02/preflight.py",
+    "check02"
+  ],
+  "timestamp": "2026-11-04T09:05:23.979541+00:00",
+  "host_pid": 123132,
+  "cwd": "C:\\Users\\mzyx\\Desktop\\0921",
+  "hypothesis": "Explicit Linux cwd works; validate actual artifacts and small child resource records before diagnosing Splay.",
+  "changed_factor": "Bounded verified preflight with corrected dependency metadata merge; no heavy diagnostic runs.",
+  "timeout_s": 60.0,
+  "host_platform": "win32",
+  "disk": {
+    "C:/": {
+      "total": 214748360704,
+      "used": 204101398528,
+      "free": 10646962176
+    },
+    "F:/": {
+      "total": 81273024512,
+      "used": 12357685248,
+      "free": 68915339264
+    }
+  },
+  "completed_at": "2026-11-04T09:05:29.508356+00:00",
+  "host_child_pid": 124700,
+  "wsl_exit_code": 0,
+  "wsl_exit_u32": 0,
+  "host_terminated_client": false,
+  "external_wall_ms": 5526.434,
+  "stdout": {
+    "encoding": "utf-8",
+    "text": "ARTIFACT A 5090704 True True\nARTIFACT M 5102680 True True\nARTIFACT V8_ON 53498016 True True\nARTIFACT A_diagnostic_v3 5143024 True True\nARTIFACT M_diagnostic_v3 5162216 True True\nARTIFACT A_diag5_known_invalid 0 None None\nPREFLIGHT_PASS 99b425bb-edc6-401e-92ac-634ace13a13a\n"
+  },
+  "stderr": {
+    "encoding": "utf-16-le",
+    "text": "wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。\r\n"
+  },
+  "stdout_sha256": "eaa0b27f3ac1912d2b5a2baaf6b9547e1f9ee567049de03ed4134d11e6cb9cab",
+  "stderr_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+  "linux_child_exit_code": null,
+  "linux_child_signal": null,
+  "linux_boot_before": null,
+  "linux_boot_after": null,
+  "linux_child_cpu_ms": null,
+  "linux_single_process_peak_rss_kib": null,
+  "missing_linux_evidence": "UNKNOWN unless child JSON is actually produced"
+}

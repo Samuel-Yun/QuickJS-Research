@@ -1,0 +1,41 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -18242,6 +18242,7 @@
+             BREAK;
+         CASE(OP_call_method):
+         CASE(OP_tail_call_method):
++        v6_call_method_entry:
+             {
+                 call_argc = get_u16(pc);
+                 pc += 2;
+--- a/read_ic_opcodes.inc
++++ b/read_ic_opcodes.inc
+@@ -4,6 +4,7 @@
+         uint32_t delta = get_u32(pc), offset;                            \
+         ReadICSite *site = (ReadICSite *)(pc + delta);                   \
+         JSValue obj = sp[-1], val;                                      \
++        int v6_prototype_hit = 0;                                      \
+         JSAtom atom;                                                    \
+         JSObject *p, *origin;                                           \
+         JSProperty *pr;                                                 \
+@@ -19,6 +20,7 @@
+                     if (site->shape == p->shape && holder &&            \
+                         holder->class_id == JS_CLASS_OBJECT && !holder->is_exotic && \
+                         site->holder_shape == holder->shape) {          \
++                        v6_prototype_hit = 1;                           \
+                         val = JS_DupValue(ctx, holder->prop[site->prop_offset].u.value); \
+                         goto name ## _done;                            \
+                     }                                                  \
+@@ -80,6 +82,12 @@
+     name ## _done:                                                      \
+         if (keep) { *sp++ = val; }                                      \
+         else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
++        if (keep && v6_prototype_hit && pc[0] == OP_call_method &&       \
++            get_u16(pc + 1) == 0) {                                    \
++            /* Stack already owns receiver and the current callee. */   \
++            opcode = OP_call_method; pc++;                             \
++            goto v6_call_method_entry;                                 \
++        }                                                              \
+     }
+         CASE(OP_get_field_rdi):
+             GET_READ_IC(get_field_rdi, 0);

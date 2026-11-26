@@ -1,0 +1,73 @@
+Original frozen Release ELF: /home/wssy/workspace/QuickJS-Research/js-interpreter-bench/experiments/native_octane_20261107/attempt01/work/A/qjs
+Selected blocks only. Other branch destinations remain in the full dump.
+These are static instructions, not measured cycles or retired-instruction counts.
+
+get_arg0 entry
+   26f91:	f3 0f 1e fa          	endbr64
+   26f95:	48 8b 85 80 fe ff ff 	mov    -0x180(%rbp),%rax
+   26f9c:	48 8d 4b 10          	lea    0x10(%rbx),%rcx
+   26fa0:	48 8b 10             	mov    (%rax),%rdx
+   26fa3:	48 8b 40 08          	mov    0x8(%rax),%rax
+   26fa7:	83 f8 f6             	cmp    $0xfffffff6,%eax
+   26faa:	76 04                	jbe    26fb0 <JS_CallInternal+0x2500>
+   26fac:	83 42 fc 01          	addl   $0x1,-0x4(%rdx)
+   26fb0:	48 89 13             	mov    %rdx,(%rbx)
+   26fb3:	49 83 c5 01          	add    $0x1,%r13
+   26fb7:	48 89 43 08          	mov    %rax,0x8(%rbx)
+   26fbb:	41 0f b6 45 ff       	movzbl -0x1(%r13),%eax
+   26fc0:	48 89 cb             	mov    %rcx,%rbx
+   26fc3:	49 89 c2             	mov    %rax,%r10
+   26fc6:	49 8b 04 c6          	mov    (%r14,%rax,8),%rax
+   26fca:	ff e0                	jmp    *%rax
+
+get_field body
+   295a6:	f3 0f 1e fa          	endbr64
+   295aa:	48 8b 43 f8          	mov    -0x8(%rbx),%rax
+   295ae:	41 8b 4d 00          	mov    0x0(%r13),%ecx
+   295b2:	4d 8d 7d 04          	lea    0x4(%r13),%r15
+   295b6:	4c 8b 4b f0          	mov    -0x10(%rbx),%r9
+   295ba:	83 f8 ff             	cmp    $0xffffffff,%eax
+   295bd:	0f 85 1b 1a 00 00    	jne    2afde <JS_CallInternal+0x652e>
+   295c3:	4d 89 c8             	mov    %r9,%r8
+   295c6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+   295cd:	00 00 00 
+   295d0:	49 8b 78 18          	mov    0x18(%r8),%rdi
+   295d4:	8b 77 18             	mov    0x18(%rdi),%esi
+   295d7:	89 f2                	mov    %esi,%edx
+   295d9:	21 ca                	and    %ecx,%edx
+   295db:	8b 54 97 38          	mov    0x38(%rdi,%rdx,4),%edx
+   295df:	48 85 d2             	test   %rdx,%rdx
+   295e2:	0f 84 76 14 00 00    	je     2aa5e <JS_CallInternal+0x5fae>
+   295e8:	4c 8d 14 b5 3c 00 00 	lea    0x3c(,%rsi,4),%r10
+   295ef:	00 
+   295f0:	48 83 ea 01          	sub    $0x1,%rdx
+   295f4:	49 8d 34 d2          	lea    (%r10,%rdx,8),%rsi
+   295f8:	48 01 fe             	add    %rdi,%rsi
+   295fb:	3b 4e 04             	cmp    0x4(%rsi),%ecx
+   295fe:	0f 85 4c 14 00 00    	jne    2aa50 <JS_CallInternal+0x5fa0>
+   29604:	49 8b 78 20          	mov    0x20(%r8),%rdi
+   29608:	80 7e 03 3f          	cmpb   $0x3f,0x3(%rsi)
+   2960c:	0f 87 cc 19 00 00    	ja     2afde <JS_CallInternal+0x652e>
+   29612:	48 c1 e2 04          	shl    $0x4,%rdx
+   29616:	48 01 d7             	add    %rdx,%rdi
+   29619:	48 8b 47 08          	mov    0x8(%rdi),%rax
+   2961d:	4c 8b 3f             	mov    (%rdi),%r15
+   29620:	83 f8 f6             	cmp    $0xfffffff6,%eax
+   29623:	76 05                	jbe    2962a <JS_CallInternal+0x4b7a>
+   29625:	41 83 47 fc 01       	addl   $0x1,-0x4(%r15)
+   2962a:	48 8b 73 f8          	mov    -0x8(%rbx),%rsi
+   2962e:	83 fe f6             	cmp    $0xfffffff6,%esi
+   29631:	76 15                	jbe    29648 <JS_CallInternal+0x4b98>
+   29633:	48 8b 4b f0          	mov    -0x10(%rbx),%rcx
+   29637:	8b 51 fc             	mov    -0x4(%rcx),%edx
+   2963a:	83 ea 01             	sub    $0x1,%edx
+   2963d:	89 51 fc             	mov    %edx,-0x4(%rcx)
+   29640:	85 d2                	test   %edx,%edx
+   29642:	0f 8e 6d 2e 00 00    	jle    2c4b5 <JS_CallInternal+0x7a05>
+   29648:	4c 89 7b f0          	mov    %r15,-0x10(%rbx)
+   2964c:	49 83 c5 05          	add    $0x5,%r13
+   29650:	48 89 43 f8          	mov    %rax,-0x8(%rbx)
+   29654:	41 0f b6 45 ff       	movzbl -0x1(%r13),%eax
+   29659:	49 89 c2             	mov    %rax,%r10
+   2965c:	49 8b 04 c6          	mov    (%r14,%rax,8),%rax
+   29660:	ff e0                	jmp    *%rax

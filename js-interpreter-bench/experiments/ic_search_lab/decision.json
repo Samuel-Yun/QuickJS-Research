@@ -1,0 +1,113 @@
+{
+  "status": "BOUNDED_SEARCH_COMPLETE_NO_ACCEPTED_CANDIDATE",
+  "actual_candidates": 12,
+  "matching_full26_screens": 12,
+  "matching_full17_coarse_candidates": [
+    "c004",
+    "c006",
+    "c008"
+  ],
+  "provisional_shortlist": [
+    "c004"
+  ],
+  "promoted_candidate": null,
+  "decision_basis": "Predeclared shortlist gate: all three exploratory recheck intervals versus A cross1; round directions are not consistently faster. Stop after12, not after a chosen positive sample.",
+  "c004_recheck_aggregates": [
+    {
+      "kind": "sunspider",
+      "scope": "all26_case_equal",
+      "comparison": "c004/A",
+      "ratio": 0.9976609730272329,
+      "low95": 0.9966737585597656,
+      "high95": 1.0016832831388625,
+      "cases": "26",
+      "rounds": "3",
+      "bootstrap_draws": "10000",
+      "seed": "20261104",
+      "CI": "exploratory shared-round blocks; not final confirmation"
+    },
+    {
+      "kind": "sunspider",
+      "scope": "all26_case_equal",
+      "comparison": "c004/c002",
+      "ratio": 0.9876041239931637,
+      "low95": 0.9763093647744565,
+      "high95": 0.9949354628556447,
+      "cases": "26",
+      "rounds": "3",
+      "bootstrap_draws": "10000",
+      "seed": "20261104",
+      "CI": "exploratory shared-round blocks; not final confirmation"
+    },
+    {
+      "kind": "octane",
+      "scope": "core16_13suite",
+      "comparison": "c004/A",
+      "ratio": 0.9938929204454967,
+      "low95": 0.992559251316548,
+      "high95": 1.0041584174029057,
+      "cases": "16",
+      "rounds": "3",
+      "bootstrap_draws": "10000",
+      "seed": "20261104",
+      "CI": "exploratory shared-round blocks; not final confirmation"
+    },
+    {
+      "kind": "octane",
+      "scope": "expanded17_14suite",
+      "comparison": "c004/A",
+      "ratio": 0.9899851858296511,
+      "low95": 0.9883710629579303,
+      "high95": 1.0001852401461202,
+      "cases": "17",
+      "rounds": "3",
+      "bootstrap_draws": "10000",
+      "seed": "20261104",
+      "CI": "exploratory shared-round blocks; not final confirmation"
+    },
+    {
+      "kind": "octane",
+      "scope": "core16_13suite",
+      "comparison": "c004/c002",
+      "ratio": 0.9672233913499325,
+      "low95": 0.9638271710513457,
+      "high95": 0.9768427312476035,
+      "cases": "16",
+      "rounds": "3",
+      "bootstrap_draws": "10000",
+      "seed": "20261104",
+      "CI": "exploratory shared-round blocks; not final confirmation"
+    },
+    {
+      "kind": "octane",
+      "scope": "expanded17_14suite",
+      "comparison": "c004/c002",
+      "ratio": 0.9684377794524369,
+      "low95": 0.9640400142275388,
+      "high95": 0.9773780730372725,
+      "cases": "17",
+      "rounds": "3",
+      "bootstrap_draws": "10000",
+      "seed": "20261104",
+      "CI": "exploratory shared-round blocks; not final confirmation"
+    }
+  ],
+  "verified_improvement_over_A": false,
+  "small_effect_excluded": false,
+  "small_effect_direction": "UNKNOWN",
+  "formal_samples": 0,
+  "V8_samples": 0,
+  "full_final_safety_gate": "NOT_RUN_NOT_TRIGGERED",
+  "strict_random_input_pairing": "NOT_ESTABLISHED; input_control_limitations.json",
+  "measurement_counts": {
+    "legacy_excluded": 471,
+    "environment_only": 4,
+    "matched": 1512
+  },
+  "all_measurements": 1987,
+  "valid_measurements": 1987,
+  "historical_incomplete_build": "Preserved, not treated as a completed process or performance regression",
+  "next_candidate_allowed": false,
+  "default_implementation_changed": false,
+  "next_step": "No automatic experiment. Discuss whether to resolve frozen random-input policy and seek a larger, mechanism-targeted effect before another separately specified campaign."
+}

@@ -1,0 +1,7 @@
+static JSObject*plan_proto(JSObject*f)
+{
+    JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,f,JS_ATOM_prototype);
+    if(!d || (d->flags&JS_PROP_TMASK) || JS_VALUE_GET_TAG(pr->u.value)!=JS_TAG_OBJECT)return NULL;
+    JSObject*p=JS_VALUE_GET_OBJ(pr->u.value);
+    return p->class_id==JS_CLASS_OBJECT && !p->is_exotic?p:NULL;
+}

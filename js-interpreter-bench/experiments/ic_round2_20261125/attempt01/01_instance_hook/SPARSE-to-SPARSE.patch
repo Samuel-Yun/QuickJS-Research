@@ -1,0 +1,35 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -6230,6 +6230,7 @@
+ #include "read_ic_runtime.inc"
+ #include "four_diag.inc"
+ #include "four_runtime.inc"
++#include "r2_counts.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+--- a/r2_counts.inc
++++ b/r2_counts.inc
+@@ -0,0 +1,22 @@
++#ifdef FOUR_DIAG
++/* Diagnostics have no ownership of VM values; names/locations are copied. */
++typedef struct R2Count {uintptr_t pc;unsigned offset;int line;char name[96];uint64_t c[32];} R2Count;
++static R2Count r2_counts[1024];
++static int find_line_num(JSContext*,JSFunctionBytecode*,uint32_t,int*);
++static R2Count*r2_count(JSContext*ctx,uintptr_t pc){
++ if(!four_active)return NULL;
++ unsigned h=(pc^(pc>>12))&1023;
++ for(unsigned n=0;n<1024;n++,h=(h+1)&1023){
++  R2Count*r=&r2_counts[h];if(r->pc==pc)return r;
++  if(!r->pc){r->pc=pc;JSStackFrame*sf=ctx->rt->current_stack_frame;
++   if(sf&&JS_VALUE_GET_TAG(sf->cur_func)==JS_TAG_OBJECT){JSObject*f=JS_VALUE_GET_OBJ(sf->cur_func);
++    if(f->class_id==JS_CLASS_BYTECODE_FUNCTION){JSFunctionBytecode*b=f->u.func.function_bytecode;int col;
++     r->offset=pc-(uintptr_t)b->byte_code_buf;r->line=find_line_num(ctx,b,r->offset,&col);char tmp[96];snprintf(r->name,sizeof(r->name),"%s",JS_AtomGetStr(ctx,tmp,sizeof(tmp),b->func_name));}}
++   return r;}
++ }abort();
++}
++#define R2C(ctx,pc,k) do{R2Count*rr=r2_count(ctx,(uintptr_t)(pc));if(rr)rr->c[k]++;}while(0)
++static void r2_report(void){fprintf(stderr,"R2_COUNTS:[");unsigned j=0;for(unsigned n=0;n<1024;n++){R2Count*r=&r2_counts[n];if(!r->pc)continue;fprintf(stderr,"%s{\"pc\":%u,\"line\":%d,\"function\":",j++?",":"",r->offset,r->line);four_json_string(r->name);fprintf(stderr,",\"c\":[");for(unsigned k=0;k<32;k++)fprintf(stderr,"%s%"PRIu64,k?",":"",r->c[k]);fprintf(stderr,"]}");}fprintf(stderr,"]\n");}
++#else
++#define R2C(ctx,pc,k) ((void)0)
++#endif

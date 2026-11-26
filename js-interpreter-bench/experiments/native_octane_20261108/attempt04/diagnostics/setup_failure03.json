@@ -1,0 +1,9 @@
+{
+  "failed_token": "probe_preflight/CHAIN2",
+  "exit_code": 11,
+  "error": "The local-load fixture allowed the compiler to fold put_loc0/get_loc0 into set_loc0, so the assertion expecting two chain entry forms was too strong for that fixture.",
+  "semantic_result_checks_passed_before_counter_assertion": true,
+  "fix": "Add an identity check between assignment and return to force an actual get_loc0 entry; require both entries to be statically marked.",
+  "engine_source_changed": false,
+  "formal_performance_samples": 0
+}

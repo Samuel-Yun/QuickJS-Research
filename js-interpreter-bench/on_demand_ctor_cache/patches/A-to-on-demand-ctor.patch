@@ -1,0 +1,1193 @@
+--- /dev/null
++++ b/edge_strong_helpers.inc
+@@ -0,0 +1,39 @@
++/* Bounded strong references keep intermediate transition layouts available.
++ * Shape RC forces the original COW paths on mutation; cached shapes therefore
++ * stay immutable and hashed. Entries are external GC roots through their RC,
++ * not GC objects, and are cleared before runtime's final cycle collection.
++ */
++_Static_assert(sizeof(JSShape)==56,"shape layout unchanged");
++_Static_assert(sizeof(ExEdge)==24,"entry size");
++static JSShape *ex_edge_lookup(JSRuntime *rt,JSShape *from,JSAtom atom,int flags)
++{
++    uint32_t i=(((uintptr_t)from>>4)^atom^((uint32_t)flags<<3))&31;
++    ExEdge *e=&rt->transition_edges[i];
++    EX_COUNT(edge_queries);
++    if(!rt->transition_edges_disabled && e->from==from && e->atom==atom && e->flags==flags) {
++        assert(from->is_hashed && e->to && e->to->is_hashed);
++        EX_COUNT(edge_hits);return e->to;
++    }
++    return NULL;
++}
++static void ex_edge_fill(JSRuntime *rt,JSShape *from,JSAtom atom,int flags,JSShape *to)
++{
++    JSShape *old_from,*old_to;
++    uint32_t i=(((uintptr_t)from>>4)^atom^((uint32_t)flags<<3))&31;
++    ExEdge *e=&rt->transition_edges[i];
++    if(rt->transition_edges_disabled) return;
++    old_from=e->from;old_to=e->to;
++    js_dup_shape(from);js_dup_shape(to);
++    e->from=from;e->to=to;e->atom=atom;e->flags=flags;
++    /* Publish before releasing any root that might run a native finalizer. */
++    js_free_shape_null(rt,old_from);js_free_shape_null(rt,old_to);
++}
++static void ex_edge_clear(JSRuntime *rt)
++{
++    rt->transition_edges_disabled=1;
++    for(int i=0;i<32;i++) {
++        ExEdge *e=&rt->transition_edges[i];JSShape *a=e->from,*b=e->to;
++        e->from=NULL;e->to=NULL;
++        js_free_shape_null(rt,a);js_free_shape_null(rt,b);
++    }
++}
+--- /dev/null
++++ b/four_diag.inc
+@@ -0,0 +1,59 @@
++#ifdef FOUR_DIAG
++#pragma push_macro("free")
++#undef free
++typedef struct FourDiag {
++    uint64_t q,h,eligible,fill,guard,overflow;
++    uint64_t work1,work2,work3,work4,work5,work6;
++    unsigned pc;
++    char *name,*target;
++    char bytes[257];
++    struct FourDiag *next;
++} FourDiag;
++static FourDiag *four_dlist;
++static int four_active;
++static uint64_t follow_stats[24];
++#define FOLLOW(i) do{if(four_active)follow_stats[i]++;}while(0)
++#define FOLLOW_ADD(i,n) do{if(four_active)follow_stats[i]+=(n);}while(0)
++static FourDiag *four_dnew(JSContext *ctx,JSFunctionBytecode *b,unsigned pc)
++{
++    FourDiag *d=calloc(1,sizeof(*d));assert(d);d->pc=pc;
++    const char *n=JS_AtomToCString(ctx,b->func_name);assert(n);
++    d->name=strdup(n);assert(d->name);JS_FreeCString(ctx,n);
++    unsigned count=min_int(128,b->byte_code_len-pc);
++    for(unsigned i=0;i<count;i++)snprintf(d->bytes+2*i,3,"%02x",b->byte_code_buf[pc+i]);
++    d->next=four_dlist;four_dlist=d;return d;
++}
++#define FOUR_COUNT(s,k) do{if(four_active)(s)->diag->k++;}while(0)
++#define FOUR_ADD(s,k,n) do{if(four_active)(s)->diag->k+=(n);}while(0)
++static void four_json_string(const char *s)
++{
++    fputc('"',stderr);
++    for(const unsigned char *p=(const unsigned char*)s;*p;p++) {
++        if(*p=='"'||*p=='\\'){fputc('\\',stderr);fputc(*p,stderr);}
++        else if(*p<32)fprintf(stderr,"\\u%04x",*p);else fputc(*p,stderr);
++    }
++    fputc('"',stderr);
++}
++void four_begin(void){four_active=1;}
++void four_end(void)
++{
++    four_active=0;uint64_t q=0,h=0,e=0,f=0,g=0,o=0;
++    for(FourDiag*d=four_dlist;d;d=d->next){q+=d->q;h+=d->h;e+=d->eligible;f+=d->fill;g+=d->guard;o+=d->overflow;}
++    fprintf(stderr,"FOUR_COUNTS:{\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"sites\":[",
++        (unsigned long long)q,(unsigned long long)h,(unsigned long long)e,(unsigned long long)f,(unsigned long long)g,(unsigned long long)o);
++    unsigned k=0;for(FourDiag*d=four_dlist;d;d=d->next)if(d->q){
++        fprintf(stderr,"%s{\"function\":",k++?",":"");four_json_string(d->name);
++        if(d->target){fprintf(stderr,",\"target\":");four_json_string(d->target);}
++        fprintf(stderr,",\"site_id\":%u,\"work\":[%llu,%llu,%llu,%llu,%llu,%llu]",k-1,
++            (unsigned long long)d->work1,(unsigned long long)d->work2,(unsigned long long)d->work3,(unsigned long long)d->work4,(unsigned long long)d->work5,(unsigned long long)d->work6);
++        fprintf(stderr,",\"pc\":%u,\"attempts\":%llu,\"hits\":%llu,\"eligible\":%llu,\"fills\":%llu,\"fallbacks\":%llu,\"overflow\":%llu,\"bytecode_hex\":\"%s\"}",d->pc,
++            (unsigned long long)d->q,(unsigned long long)d->h,(unsigned long long)d->eligible,(unsigned long long)d->fill,(unsigned long long)d->guard,(unsigned long long)d->overflow,d->bytes);
++    }fprintf(stderr,"],\"follow\":[");for(int i=0;i<24;i++)fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)follow_stats[i]);fprintf(stderr,"]}\n");
++}
++#pragma pop_macro("free")
++#else
++#define FOLLOW(i) ((void)0)
++#define FOLLOW_ADD(i,n) ((void)0)
++#define FOUR_COUNT(s,k) ((void)0)
++#define FOUR_ADD(s,k,n) ((void)0)
++#endif
+--- /dev/null
++++ b/four_prepare.inc
+@@ -0,0 +1,20 @@
++static size_t four_extra_size(JSFunctionBytecode*b)
++{
++    unsigned n=0;for(int p=0;p<b->byte_code_len;){int op=b->byte_code_buf[p];n+=op==OP_call_constructor;p+=short_opcode_info(op).size;}
++    return n>65535?0:n*sizeof(FourSite);
++}
++static void four_prepare(JSContext*ctx,JSFunctionBytecode*b)
++{
++    if(!four_extra_size(b))return;b->four_sites=(FourSite*)(b->read_ic_sites+b->read_ic_count);
++    for(int p=0;p<b->byte_code_len;){uint8_t*pc=b->byte_code_buf+p;int op=*pc,n=short_opcode_info(op).size;
++        if(op==OP_call_constructor){FourSite*s=&b->four_sites[b->four_count];s->pc=p;s->argc=get_u16(pc+1);
++#ifdef FOUR_DIAG
++            follow_stats[8]++;follow_stats[11]+=sizeof(FourSite);
++#endif
++#ifdef FOUR_DIAG
++            s->diag=four_dnew(ctx,b,p);
++#endif
++            *pc=OP_four_ctor;put_u16(pc+1,b->four_count++);
++        }p+=n;
++    }
++}
+--- /dev/null
++++ b/four_runtime.inc
+@@ -0,0 +1,148 @@
++typedef struct FourRecipe {JSAtom atom[8];uint16_t arg[8];uint16_t n;} FourRecipe;
++typedef struct FullPlan FullPlan;
++struct FourSite {
++    FullPlan *plan;
++    JSValue negative;
++    uint32_t pc;
++    uint16_t argc;
++#ifdef FOUR_DIAG
++    FourDiag *diag;
++#endif
++};
++struct FullPlan {
++    JSValue callee;
++    JSShape *initial,*final;
++    FourRecipe recipe;
++    uint32_t pc;
++    uint16_t argc;
++#ifdef FOUR_DIAG
++    FourDiag *diag;
++#endif
++};
++static inline __exception int js_poll_interrupts(JSContext*ctx);
++#ifdef FOUR_DIAG
++static FourSite *four_ctor_observer;
++static void four_ctor_alloc(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work3);}
++static void four_ctor_resize(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work4);}
++static void four_ctor_search(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work1);}
++static void four_ctor_switch(void){if(four_ctor_observer)FOUR_COUNT(four_ctor_observer,work2);}
++#endif
++static int plan_recipe(JSFunctionBytecode*b,FourRecipe*r)
++{
++    FOLLOW(0);
++    const uint8_t*p=b->byte_code_buf,*end=p+b->byte_code_len;
++    if(b->func_kind!=JS_FUNC_NORMAL || b->var_count!=1 || b->var_ref_count || b->closure_var_count ||
++       b->need_home_object || b->is_derived_class_constructor || !b->has_simple_parameter_list ||
++       end-p<10 || p[0]!=OP_push_this || p[1]!=OP_put_loc0)return 0;
++    p+=2;r->n=0;
++    while(p<end && *p==OP_get_loc0){
++        if(r->n==8 || end-p<7)return 0;p++;
++        unsigned index;
++        if(*p>=OP_get_arg0 && *p<=OP_get_arg3){index=*p-OP_get_arg0;p++;}
++        else if(*p==OP_get_arg && end-p>=3){index=get_u16(p+1);p+=3;}
++        else return 0;
++        if(end-p<5 || *p!=OP_put_field || index>=b->arg_count)return 0;
++        JSAtom atom=get_u32(p+1);for(unsigned i=0;i<r->n;i++)if(r->atom[i]==atom)return 0;
++        r->atom[r->n]=atom;r->arg[r->n++]=index;p+=5;
++    }
++    return r->n && p+1==end && *p==OP_return_undef;
++}
++static JSObject*plan_proto(JSObject*f)
++{
++    JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,f,JS_ATOM_prototype);
++    if(!d || (d->flags&JS_PROP_TMASK) || JS_VALUE_GET_TAG(pr->u.value)!=JS_TAG_OBJECT)return NULL;
++    JSObject*p=JS_VALUE_GET_OBJ(pr->u.value);
++    return p->class_id==JS_CLASS_OBJECT && !p->is_exotic?p:NULL;
++}
++/* Unhashed prototypes are NOT trusted by pointer identity. Check the current
++ * descriptors along the current entire chain before performing any write. */
++static int plan_chain(JSObject*proto,const FourRecipe*r)
++{
++    for(unsigned i=0;i<r->n;i++){
++        JSObject*p=proto;unsigned depth=0;
++        while(p){
++            if(++depth>32 || p->class_id!=JS_CLASS_OBJECT || p->is_exotic)return 0;
++            JSProperty*pr;JSShapeProperty*d=find_own_property(&pr,p,r->atom[i]);
++            if(d){if((d->flags&JS_PROP_TMASK) || !(d->flags&JS_PROP_WRITABLE))return 0;break;}
++            p=p->shape->proto;
++        }
++    }return 1;
++}
++static int plan_base(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc,JSObject**f)
++{
++    if(ctx->rt->interrupt_handler || JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT ||
++       JS_VALUE_GET_TAG(target)!=JS_TAG_OBJECT || JS_VALUE_GET_OBJ(callee)!=JS_VALUE_GET_OBJ(target))return 0;
++    *f=JS_VALUE_GET_OBJ(callee);
++    if((*f)->class_id!=JS_CLASS_BYTECODE_FUNCTION || !(*f)->is_constructor || (*f)->is_exotic)return 0;
++    JSFunctionBytecode*b=(*f)->u.func.function_bytecode;
++    if(argc<b->arg_count)return 0;
++    size_t size=sizeof(JSValue)*(b->var_count+b->stack_size)+sizeof(JSVarRef*)*b->var_ref_count;
++    if(js_check_stack_overflow(ctx->rt,size+sizeof(JSStackFrame)+512))return 0;
++#ifdef FORCE_GC_AT_MALLOC
++    return 0;
++#else
++    /* JS_NewObjectFromShape's GC could run a native finalizer after guards.
++     * Leave that construction to the original path; never redo it afterward. */
++    return ctx->rt->malloc_ctx.malloc_state.malloc_size<=SIZE_MAX-sizeof(JSObject) &&
++           ctx->rt->malloc_ctx.malloc_state.malloc_size+sizeof(JSObject)<=ctx->rt->malloc_gc_threshold;
++#endif
++}
++static int plan_slow_eligible(JSContext*ctx,JSValueConst callee,JSValueConst target,unsigned argc)
++{
++    JSObject*f,*proto;FourRecipe r;
++    if(!plan_base(ctx,callee,target,argc,&f) || !plan_recipe(f->u.func.function_bytecode,&r) ||
++       !(proto=plan_proto(f)) || !find_hashed_shape_proto(ctx->rt,proto))return 0;
++    return plan_chain(proto,&r);
++}
++static void plan_learn(JSContext*ctx,FourSite*slot,JSValueConst callee,JSValueConst result)
++{
++    if(JS_VALUE_GET_TAG(callee)!=JS_TAG_OBJECT || JS_VALUE_GET_TAG(result)!=JS_TAG_OBJECT)return;
++    JSObject*f=JS_VALUE_GET_OBJ(callee),*o=JS_VALUE_GET_OBJ(result),*proto;FourRecipe r;
++    if(f->class_id!=JS_CLASS_BYTECODE_FUNCTION || !plan_recipe(f->u.func.function_bytecode,&r) ||
++       !(proto=plan_proto(f)) || !plan_chain(proto,&r) || o->class_id!=JS_CLASS_OBJECT || o->is_exotic ||
++       !o->shape->is_hashed || o->shape->proto!=proto || o->shape->prop_count!=r.n || o->shape->deleted_prop_count)return;
++    JSShapeProperty*d=get_shape_prop(o->shape);
++    for(unsigned i=0;i<r.n;i++)if(d[i].atom!=r.atom[i] || d[i].flags!=JS_PROP_C_W_E)return;
++    JSShape*initial=find_hashed_shape_proto(ctx->rt,proto);if(!initial)return;
++    FOUR_COUNT(slot,eligible);
++#ifndef FOUR_PROBE
++    FullPlan*s=slot->plan;
++    if(!s){
++        s=js_mallocz_rt(ctx->rt,sizeof(*s));
++        if(!s){FOLLOW(4);return;}
++        s->pc=slot->pc;s->argc=slot->argc;
++#ifdef FOUR_DIAG
++        s->diag=slot->diag;follow_stats[9]++;follow_stats[10]+=sizeof(*s);
++#endif
++        slot->plan=s;FOLLOW(1);
++    }
++    JSValue old=s->callee;JSShape*oldinitial=s->initial,*oldfinal=s->final;
++    s->callee=JS_DupValue(ctx,callee);s->initial=js_dup_shape(initial);s->final=js_dup_shape(o->shape);s->recipe=r;
++    JSValue negative=slot->negative;slot->negative=JS_UNDEFINED;
++    FOUR_COUNT(s,fill);
++    JS_FreeValue(ctx,negative);
++    JS_FreeValue(ctx,old);js_free_shape_null(ctx->rt,oldinitial);js_free_shape_null(ctx->rt,oldfinal);
++#endif
++}
++static int plan_try(JSContext*ctx,FullPlan*s,JSValueConst callee,JSValueConst target,JSValue*args,JSValue*out)
++{
++    FOUR_COUNT(s,q);
++#ifndef FOUR_PROBE
++    JSObject*f;
++    if(s->final && JS_VALUE_GET_TAG(s->callee)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(callee)==JS_TAG_OBJECT &&
++       JS_VALUE_GET_OBJ(s->callee)==JS_VALUE_GET_OBJ(callee) && plan_base(ctx,callee,target,s->argc,&f) &&
++       plan_proto(f)==s->final->proto && plan_chain(s->final->proto,&s->recipe)){
++        /* The two old entries each poll once. Hooks were excluded above. */
++        if(js_poll_interrupts(ctx) || js_poll_interrupts(ctx))return 0;
++        *out=JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
++        if(JS_IsException(*out)){FOUR_COUNT(s,h);FOUR_COUNT(s,overflow);return 1;} /* no retry after allocation */
++        JSObject*o=JS_VALUE_GET_OBJ(*out);
++        for(unsigned i=0;i<s->recipe.n;i++)o->prop[i].u.value=JS_DupValue(ctx,args[s->recipe.arg[i]]);
++        FOUR_COUNT(s,h);FOUR_ADD(s,work5,s->recipe.n);FOUR_COUNT(s,work6);FOUR_COUNT(s,work3);return 1;
++    }
++#endif
++    FOUR_COUNT(s,guard);return 0;
++}
++#include "sparse_runtime.inc"
++static size_t four_extra_size(JSFunctionBytecode*b);
++static void four_prepare(JSContext*ctx,JSFunctionBytecode*b);
+--- a/quickjs-opcode.h
++++ b/quickjs-opcode.h
+@@ -361,6 +361,14 @@
+ DEF( typeof_is_function, 1, 1, 1, none)
+ #endif
+ 
++/* Post-finalization runtime opcodes; prior opcode values unchanged. */
++DEF(get_field_rdi, 5, 1, 1, u32)
++DEF(get_field2_rdi, 5, 1, 2, u32)
++
++DEF(v6_get_loc0, 1, 0, 1, none)
++DEF(v6_get_arg0, 1, 0, 1, none)
++DEF(put_field_shared, 5, 2, 0, u32)
++DEF(four_ctor,3,0,0,u16)
+ #undef DEF
+ #undef def
+ #endif  /* DEF */
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -184,6 +184,7 @@
+     JS_CLASS_WEAK_REF,
+     JS_CLASS_FINALIZATION_REGISTRY,
+     
++    JS_CLASS_COLD_BYTECODE_FUNCTION, /* same u.func, one-time entry trampoline */
+     JS_CLASS_INIT_COUNT, /* last entry for predefined classes */
+ };
+ 
+@@ -222,6 +223,7 @@
+ #define __exception __attribute__((warn_unused_result))
+ 
+ typedef struct JSShape JSShape;
++typedef struct ExEdge { JSShape *from,*to; JSAtom atom; int flags; } ExEdge;
+ typedef struct JSString JSString;
+ typedef struct JSString JSAtomStruct;
+ typedef struct JSObject JSObject;
+@@ -388,7 +390,11 @@
+     int shape_hash_count; /* number of hashed shapes */
+     JSShape **shape_hash;
+     void *user_opaque;
++    ExEdge transition_edges[32];
++    uint8_t transition_edges_disabled;
+ };
++
++static void ex_edge_clear(JSRuntime *rt);
+ 
+ struct JSClass {
+     uint32_t class_id; /* 0 means free entry */
+@@ -682,6 +688,9 @@
+     JS_FUNC_ASYNC_GENERATOR = (JS_FUNC_GENERATOR | JS_FUNC_ASYNC),
+ } JSFunctionKindEnum;
+ 
++#include "read_ic_types.h"
++
++typedef struct FourSite FourSite;
+ typedef struct JSFunctionBytecode {
+     JSGCObjectHeader header; /* must come first */
+     uint8_t js_mode;
+@@ -713,6 +722,14 @@
+     JSValue *cpool; /* constant pool (self pointer) */
+     int cpool_count;
+     int closure_var_count;
++    ReadICSite *read_ic_sites;
++    uint32_t read_ic_count;
++    uint8_t read_ic_ready;
++    FourSite *four_sites;
++    uint32_t four_count;
++#ifdef READ_IC_DIAGNOSTIC
++    RDIFunctionDiag *read_ic_diag;
++#endif
+     struct {
+         /* debug info, move to separate structure to save memory? */
+         JSAtom filename;
+@@ -1148,6 +1165,10 @@
+                                int atom_type);
+ static void JS_FreeAtomStruct(JSRuntime *rt, JSAtomStruct *p);
+ static void free_function_bytecode(JSRuntime *rt, JSFunctionBytecode *b);
++static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b);
++static JSValue js_cold_entry_call(JSContext *ctx, JSValueConst func_obj,
++                                  JSValueConst this_obj, int argc,
++                                  JSValueConst *argv, int flags);
+ static JSValue js_call_c_function(JSContext *ctx, JSValueConst func_obj,
+                                   JSValueConst this_obj,
+                                   int argc, JSValueConst *argv, int flags);
+@@ -1359,6 +1380,9 @@
+ static int js_shape_prepare_update(JSContext *ctx, JSObject *p,
+                                    JSShapeProperty **pprs);
+ static int init_shape_hash(JSRuntime *rt);
++#ifdef FOUR_DIAG
++static void four_ctor_alloc(void);static void four_ctor_resize(void);static void four_ctor_search(void);static void four_ctor_switch(void);
++#endif
+ static __exception int js_get_length32(JSContext *ctx, uint32_t *pres,
+                                        JSValueConst obj);
+ static __exception int js_get_length64(JSContext *ctx, int64_t *pres,
+@@ -2021,6 +2045,10 @@
+     { JS_ATOM_Object, NULL, NULL }, /* JS_CLASS_RAWJSON */
+ };
+ 
++static JSClassShortDef const cold_bytecode_class = {
++    JS_ATOM_Function, js_bytecode_function_finalizer, js_bytecode_function_mark
++};
++
+ static int init_class_range(JSRuntime *rt, JSClassShortDef const *tab,
+                             int start, int count)
+ {
+@@ -2105,6 +2133,9 @@
+     rt->class_array[JS_CLASS_STRING].exotic = &js_string_exotic_methods;
+     rt->class_array[JS_CLASS_MODULE_NS].exotic = &js_module_ns_exotic_methods;
+ 
++    if (init_class_range(rt, &cold_bytecode_class, JS_CLASS_COLD_BYTECODE_FUNCTION, 1) < 0)
++        goto fail;
++    rt->class_array[JS_CLASS_COLD_BYTECODE_FUNCTION].call = js_cold_entry_call;
+     rt->class_array[JS_CLASS_C_FUNCTION].call = js_call_c_function;
+     rt->class_array[JS_CLASS_C_FUNCTION_DATA].call = js_c_function_data_call;
+     rt->class_array[JS_CLASS_BOUND_FUNCTION].call = js_call_bound_function;
+@@ -2407,6 +2438,7 @@
+     struct list_head *el, *el1;
+     int i;
+ 
++    ex_edge_clear(rt);
+     JS_FreeValueRT(rt, rt->current_exception);
+ 
+     list_for_each_safe(el, el1, &rt->job_list) {
+@@ -5330,6 +5362,35 @@
+         js_free_shape(rt, sh);
+ }
+ 
++#ifdef EX_DIAGNOSTIC
++static int ex_active;
++static uint64_t ex_rmw_attempts,ex_rmw_hits,ex_rmw_guard,ex_rmw_type,ex_rmw_overflow;
++static uint64_t ex_rmw_const_other,ex_loop_entries,ex_loop_iters,ex_loop_guard;
++static uint64_t ex_loop_overflow,ex_loop_checkpoints,ex_edge_queries,ex_edge_hits;
++static uint64_t ex_rmw_constants[33];
++#define EX_COUNT(x) do { if(ex_active) ++ex_##x; } while(0)
++void ex_begin(void) { ex_active=1; }
++void ex_end(void)
++{
++    ex_active=0;
++    fprintf(stderr,"EXECUTION_COUNTS:{\"rmw_attempts\":%llu,\"rmw_hits\":%llu,\"rmw_guard\":%llu,"
++        "\"rmw_type\":%llu,\"rmw_overflow\":%llu,\"rmw_const_other\":%llu,"
++        "\"loop_entries\":%llu,\"loop_iters\":%llu,\"loop_guard\":%llu,\"loop_overflow\":%llu,"
++        "\"loop_checkpoints\":%llu,\"edge_queries\":%llu,\"edge_hits\":%llu,\"constants\":[",
++        (unsigned long long)ex_rmw_attempts,(unsigned long long)ex_rmw_hits,
++        (unsigned long long)ex_rmw_guard,(unsigned long long)ex_rmw_type,(unsigned long long)ex_rmw_overflow,
++        (unsigned long long)ex_rmw_const_other,(unsigned long long)ex_loop_entries,
++        (unsigned long long)ex_loop_iters,(unsigned long long)ex_loop_guard,(unsigned long long)ex_loop_overflow,
++        (unsigned long long)ex_loop_checkpoints,(unsigned long long)ex_edge_queries,(unsigned long long)ex_edge_hits);
++    for(int i=0;i<33;i++) fprintf(stderr,"%s%llu",i?",":"",(unsigned long long)ex_rmw_constants[i]);
++    fprintf(stderr,"]}\n");
++}
++#else
++#define EX_COUNT(x) ((void)0)
++#endif
++
++#include "edge_strong_helpers.inc"
++
+ /* make space to hold at least 'count' properties */
+ static no_inline int resize_properties(JSContext *ctx, JSShape **psh,
+                                        JSObject *p, uint32_t count)
+@@ -5346,6 +5407,9 @@
+        in case of memory allocation failure */
+     if (p) {
+         JSProperty *new_prop;
++#ifdef FOUR_DIAG
++    four_ctor_resize();
++#endif
+         new_prop = js_realloc(ctx, p->prop, sizeof(new_prop[0]) * new_size);
+         if (unlikely(!new_prop))
+             return -1;
+@@ -5392,6 +5456,9 @@
+                sizeof(JSShapeProperty) * old_sh->prop_count);
+     }
+     js_free(ctx, old_sh);
++#ifdef FOUR_DIAG
++    four_ctor_switch();
++#endif
+     *psh = sh;
+     sh->prop_size = new_size;
+     return 0;
+@@ -5633,6 +5700,9 @@
+     p->weakref_count = 0;
+     p->u.opaque = NULL;
+     p->shape = sh;
++#ifdef FOUR_DIAG
++    four_ctor_alloc();
++#endif
+     p->prop = js_malloc(ctx, sizeof(JSProperty) * sh->prop_size);
+     if (unlikely(!p->prop)) {
+         js_free(ctx, p);
+@@ -5863,6 +5933,7 @@
+ static BOOL js_class_has_bytecode(JSClassID class_id)
+ {
+     return (class_id == JS_CLASS_BYTECODE_FUNCTION ||
++            class_id == JS_CLASS_COLD_BYTECODE_FUNCTION ||
+             class_id == JS_CLASS_GENERATOR_FUNCTION ||
+             class_id == JS_CLASS_ASYNC_FUNCTION ||
+             class_id == JS_CLASS_ASYNC_GENERATOR_FUNCTION);
+@@ -6155,6 +6226,10 @@
+     *ppr = NULL;
+     return NULL;
+ }
++
++#include "read_ic_runtime.inc"
++#include "four_diag.inc"
++#include "four_runtime.inc"
+ 
+ /* indicate that the object may be part of a function prototype cycle */
+ static void set_cycle_flag(JSContext *ctx, JSValueConst obj)
+@@ -6618,6 +6693,19 @@
+             for(i = 0; i < b->cpool_count; i++) {
+                 JS_MarkValue(rt, b->cpool[i], mark_func);
+             }
++            for (uint32_t ri = 0; ri < b->read_ic_count; ri++) {
++#if RDI_CAPACITY == 1
++                if (b->read_ic_sites[ri].shape)
++                    mark_func(rt, &b->read_ic_sites[ri].shape->header);
++                if (b->read_ic_sites[ri].holder_shape)
++                    mark_func(rt, &b->read_ic_sites[ri].holder_shape->header);
++#else
++                for (unsigned rj = 0; rj < 4; rj++)
++                    if (b->read_ic_sites[ri].shape[rj])
++                        mark_func(rt, &b->read_ic_sites[ri].shape[rj]->header);
++#endif
++            }
++            for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_MarkValue(rt,ss->negative,mark_func);FullPlan*fs=ss->plan;if(fs){JS_MarkValue(rt,fs->callee,mark_func);if(fs->initial)mark_func(rt,&fs->initial->header);if(fs->final)mark_func(rt,&fs->final->header);}}
+             if (b->realm)
+                 mark_func(rt, &b->realm->header);
+         }
+@@ -7065,6 +7153,7 @@
+         case JS_CLASS_C_FUNCTION:        /* u.cfunc */
+             s->c_func_count++;
+             break;
++        case JS_CLASS_COLD_BYTECODE_FUNCTION:
+         case JS_CLASS_BYTECODE_FUNCTION: /* u.func */
+             {
+                 JSFunctionBytecode *b = p->u.func.function_bytecode;
+@@ -9205,18 +9294,31 @@
+     sh = p->shape;
+     if (sh->is_hashed) {
+         /* try to find an existing shape */
+-        new_sh = find_hashed_shape_prop(ctx->rt, sh, prop, prop_flags);
++        new_sh = ex_edge_lookup(ctx->rt,sh,prop,prop_flags);
++        if (!new_sh) {
++#ifdef FOUR_DIAG
++    four_ctor_search();
++#endif
++            new_sh = find_hashed_shape_prop(ctx->rt, sh, prop, prop_flags);
++            if (new_sh) ex_edge_fill(ctx->rt,sh,prop,prop_flags,new_sh);
++        }
+         if (new_sh) {
+             /* matching shape found: use it */
+             /*  the property array may need to be resized */
+             if (new_sh->prop_size != sh->prop_size) {
+                 JSProperty *new_prop;
++#ifdef FOUR_DIAG
++    four_ctor_resize();
++#endif
+                 new_prop = js_realloc(ctx, p->prop, sizeof(p->prop[0]) *
+                                       new_sh->prop_size);
+                 if (!new_prop)
+                     return NULL;
+                 p->prop = new_prop;
+             }
++#ifdef FOUR_DIAG
++    four_ctor_switch();
++#endif
+             p->shape = js_dup_shape(new_sh);
+             js_free_shape(ctx->rt, sh);
+             return &p->prop[new_sh->prop_count - 1];
+@@ -9229,6 +9331,9 @@
+             new_sh->is_hashed = TRUE;
+             js_shape_hash_link(ctx->rt, new_sh);
+             js_free_shape(ctx->rt, p->shape);
++#ifdef FOUR_DIAG
++    four_ctor_switch();
++#endif
+             p->shape = new_sh;
+         }
+     }
+@@ -10963,6 +11068,7 @@
+         return FALSE;
+     p = JS_VALUE_GET_OBJ(val);
+     switch(p->class_id) {
++    case JS_CLASS_COLD_BYTECODE_FUNCTION:
+     case JS_CLASS_BYTECODE_FUNCTION:
+         return TRUE;
+     case JS_CLASS_PROXY:
+@@ -17331,6 +17437,8 @@
+             var_refs[i] = var_ref;
+         }
+     }
++    if (b->func_kind == JS_FUNC_NORMAL && !b->read_ic_ready)
++        p->class_id = JS_CLASS_COLD_BYTECODE_FUNCTION;
+     return func_obj;
+  fail:
+     /* bfunc is freed when func_obj is freed */
+@@ -17757,6 +17865,24 @@
+     JSValue *local_buf, *stack_buf, *var_buf, *arg_buf, *sp, ret_val, *pval;
+     JSVarRef **var_refs;
+     size_t alloca_size;
++
++/* Prepared-only borrowed load. Preparation proved the next instruction;
++   the execution image is not rewritten after prepare. The original owning
++   argument/local slot is untouched and no callback/allocation occurs here. */
++#define V6_PREPARED_BORROW(slot) do {                                    \
++    JSValueConst receiver = (slot);                                    \
++    if (JS_VALUE_GET_TAG(receiver) == JS_TAG_OBJECT) {                   \
++        JSObject *object = JS_VALUE_GET_OBJ(receiver);                  \
++        ReadICSite *site = (ReadICSite *)(pc + 1 + get_u32(pc + 1));      \
++        if (object->class_id == JS_CLASS_OBJECT && !object->is_exotic && \
++            site->shape == object->shape) {                            \
++            *sp++ = JS_DupValue(ctx, object->prop[site->prop_offset].u.value); \
++            pc += 5;                                                   \
++            break;                                                     \
++        }                                                              \
++    }                                                                  \
++    *sp++ = JS_DupValue(ctx, receiver);                                 \
++} while (0)
+ 
+ #if !DIRECT_DISPATCH
+ #define SWITCH(pc)      switch (opcode = *pc++)
+@@ -18200,6 +18326,38 @@
+                 *sp++ = ret_val;
+             }
+             BREAK;
++        CASE(OP_four_ctor):
++            {
++                FourSite*s=&b->four_sites[get_u16(pc)];call_argc=s->argc;pc+=2;
++                call_argv=sp-call_argc;sf->cur_pc=pc;
++                int fast=four_ctor_try(ctx,s,call_argv[-2],call_argv[-1],call_argv,&ret_val);
++                if(!fast){
++                    int eligible=four_ctor_slow_eligible(ctx,s,call_argv[-2],call_argv[-1],call_argc);
++#ifdef FOUR_DIAG
++                    FourSite*oldscope=four_ctor_observer;four_ctor_observer=eligible?s:NULL;
++#endif
++                    ret_val=JS_CallConstructorInternal(ctx,call_argv[-2],call_argv[-1],call_argc,call_argv,0);
++#ifdef FOUR_DIAG
++                    four_ctor_observer=oldscope;
++#endif
++                    if(eligible && !JS_IsException(ret_val))four_ctor_learn(ctx,s,call_argv[-2],ret_val);
++                    else if(!JS_IsException(ret_val))sparse_remember(ctx,s,call_argv[-2]);
++                }
++                if(unlikely(JS_IsException(ret_val))){
++                    if(fast){
++                        /* Own the original OOM value while formatting a trace:
++                         * formatting may itself replace current_exception. */
++                        JSValue error=JS_GetException(ctx);
++                        if(is_backtrace_needed(ctx,error))build_backtrace(ctx,error,NULL,0,0,0);
++                        JS_Throw(ctx,error);
++                        goto four_ctor_exception_cleanup;
++                    }
++                    goto exception;
++                }
++                for(i=-2;i<call_argc;i++)JS_FreeValue(ctx,call_argv[i]);
++                sp-=call_argc+2;*sp++=ret_val;
++            }
++            BREAK;
+         CASE(OP_call_constructor):
+             {
+                 call_argc = get_u16(pc);
+@@ -18587,6 +18745,7 @@
+         CASE(OP_set_loc8): set_value(ctx, &var_buf[*pc++], JS_DupValue(ctx, sp[-1])); BREAK;
+ 
+         CASE(OP_get_loc0): *sp++ = JS_DupValue(ctx, var_buf[0]); BREAK;
++        CASE(OP_v6_get_loc0): V6_PREPARED_BORROW(var_buf[0]); BREAK;
+         CASE(OP_get_loc1): *sp++ = JS_DupValue(ctx, var_buf[1]); BREAK;
+         CASE(OP_get_loc2): *sp++ = JS_DupValue(ctx, var_buf[2]); BREAK;
+         CASE(OP_get_loc3): *sp++ = JS_DupValue(ctx, var_buf[3]); BREAK;
+@@ -18599,6 +18758,7 @@
+         CASE(OP_set_loc2): set_value(ctx, &var_buf[2], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_set_loc3): set_value(ctx, &var_buf[3], JS_DupValue(ctx, sp[-1])); BREAK;
+         CASE(OP_get_arg0): *sp++ = JS_DupValue(ctx, arg_buf[0]); BREAK;
++        CASE(OP_v6_get_arg0): V6_PREPARED_BORROW(arg_buf[0]); BREAK;
+         CASE(OP_get_arg1): *sp++ = JS_DupValue(ctx, arg_buf[1]); BREAK;
+         CASE(OP_get_arg2): *sp++ = JS_DupValue(ctx, arg_buf[2]); BREAK;
+         CASE(OP_get_arg3): *sp++ = JS_DupValue(ctx, arg_buf[3]); BREAK;
+@@ -19160,6 +19320,8 @@
+             }
+ 
+             
++#include "read_ic_opcodes.inc"
++
+         CASE(OP_get_field):
+             GET_FIELD_INLINE(get_field, 0, 0);
+             BREAK;
+@@ -19174,6 +19336,34 @@
+             BREAK;
+ #endif
+             
++        CASE(OP_put_field_shared):
++            {
++                ReadICSite *site = (ReadICSite *)(pc + get_u32(pc));
++                JSValue obj = sp[-2];
++                pc += 4;
++                if (JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT) {
++                    JSObject *p = JS_VALUE_GET_OBJ(obj);
++                    if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic &&
++                        site->shape == p->shape && !site->holder_shape) {
++                        uint32_t offset = site->prop_offset;
++                        JSShapeProperty *prs = &get_shape_prop(p->shape)[offset];
++                        if ((prs->flags & (JS_PROP_TMASK | JS_PROP_WRITABLE | JS_PROP_LENGTH)) == JS_PROP_WRITABLE) {
++                            set_value(ctx, &p->prop[offset].u.value, sp[-1]);
++                            JS_FreeValue(ctx, obj);
++                            sp -= 2;
++                            BREAK;
++                        }
++                    }
++                }
++                sf->cur_pc = pc;
++                int ret = JS_SetPropertyInternal(ctx, obj, site->atom, sp[-1], obj,
++                                                JS_PROP_THROW_STRICT);
++                JS_FreeValue(ctx, obj);
++                sp -= 2;
++                if (unlikely(ret < 0)) goto exception;
++            }
++            BREAK;
++
+         CASE(OP_put_field):
+             {
+                 int ret;
+@@ -20667,6 +20857,7 @@
+         sf->cur_pc = pc;
+         build_backtrace(ctx, rt->current_exception, NULL, 0, 0, 0);
+     }
++four_ctor_exception_cleanup:
+     if (!rt->current_exception_is_uncatchable) {
+         while (sp > stack_buf) {
+             JSValue val = *--sp;
+@@ -20714,6 +20905,29 @@
+ #pragma GCC diagnostic pop
+ #endif
+ 
++/* This class is used only before a function object's first call. Once the
++   shared bytecode has been prepared (or declined), the object rejoins BASE.
++   Normal warm calls therefore retain the parent's interpreter entry. */
++static JSValue js_cold_entry_call(JSContext *ctx, JSValueConst func_obj,
++                                  JSValueConst this_obj, int argc,
++                                  JSValueConst *argv, int flags)
++{
++    JSObject *p = JS_VALUE_GET_OBJ(func_obj);
++    JSFunctionBytecode *b = p->u.func.function_bytecode;
++    if (js_check_stack_overflow(ctx->rt, 0))
++        return JS_ThrowStackOverflow(ctx);
++    if (!b->read_ic_ready)
++        rdi_prepare(ctx, b);
++    p->class_id = JS_CLASS_BYTECODE_FUNCTION;
++    /* The existing class-call dispatchers supply writable argv whenever
++       COPY_ARGV is clear. Preserve that ownership contract exactly. */
++    if (flags & JS_CALL_FLAG_CONSTRUCTOR)
++        return JS_CallConstructorInternal(ctx, func_obj, this_obj, argc,
++                                          (JSValue *)argv, flags);
++    return JS_CallInternal(ctx, func_obj, this_obj, JS_UNDEFINED, argc,
++                           (JSValue *)argv, flags);
++}
++
+ JSValue JS_Call(JSContext *ctx, JSValueConst func_obj, JSValueConst this_obj,
+                 int argc, JSValueConst *argv)
+ {
+@@ -20744,6 +20958,7 @@
+     case JS_CLASS_C_FUNCTION:
+         realm = p->u.cfunc.realm;
+         break;
++    case JS_CLASS_COLD_BYTECODE_FUNCTION:
+     case JS_CLASS_BYTECODE_FUNCTION:
+     case JS_CLASS_GENERATOR_FUNCTION:
+     case JS_CLASS_ASYNC_FUNCTION:
+@@ -32124,6 +32339,9 @@
+     return fd;
+ }
+ 
++#include "four_prepare.inc"
++#include "read_ic_prepare.inc"
++
+ static void free_bytecode_atoms(JSRuntime *rt,
+                                 const uint8_t *bc_buf, int bc_len,
+                                 BOOL use_short_opcodes)
+@@ -36273,7 +36491,22 @@
+         list_del(&fd->link);
+     }
+ 
++    BOOL from_eval = FALSE;
++    for (JSFunctionDef *origin = fd; origin; origin = origin->parent) {
++        if (origin->is_eval &&
++            (origin->eval_type == JS_EVAL_TYPE_DIRECT ||
++             origin->eval_type == JS_EVAL_TYPE_INDIRECT)) {
++            from_eval = TRUE;
++            break;
++        }
++    }
+     js_free(ctx, fd);
++    /* Static/module code keeps eager preparation. Only ordinary eval-origin
++       functions use the cold trampoline; suspended images remain eager. */
++    if ((b->func_kind != JS_FUNC_NORMAL || !from_eval) && rdi_prepare(ctx, b) < 0) {
++        JS_FreeValue(ctx, JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b));
++        return JS_EXCEPTION;
++    }
+     return JS_MKPTR(JS_TAG_FUNCTION_BYTECODE, b);
+  fail:
+     js_free_function_def(ctx, fd);
+@@ -36293,6 +36526,8 @@
+ #endif
+     if (b->byte_code_buf)
+         free_bytecode_atoms(rt, b->byte_code_buf, b->byte_code_len, TRUE);
++    for(uint32_t fi=0;fi<b->four_count;fi++){FourSite*ss=&b->four_sites[fi];JS_FreeValueRT(rt,ss->negative);FullPlan*fs=ss->plan;if(fs){JS_FreeValueRT(rt,fs->callee);js_free_shape_null(rt,fs->initial);js_free_shape_null(rt,fs->final);js_free_rt(rt,fs);}}
++    rdi_free(rt, b);
+ 
+     if (b->vardefs) {
+         for(i = 0; i < b->arg_count + b->var_count; i++) {
+@@ -37715,7 +37950,7 @@
+ }
+ 
+ static int JS_WriteFunctionBytecode(BCWriterState *s,
+-                                    const uint8_t *bc_buf1, int bc_len)
++                                    const uint8_t *bc_buf1, int bc_len, JSFunctionBytecode *b)
+ {
+     int pos, len, op;
+     JSAtom atom;
+@@ -37730,6 +37965,17 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if(op==OP_four_ctor){FourSite*fs=&b->four_sites[get_u16(bc_buf+pos+1)];op=OP_call_constructor;bc_buf[pos]=op;put_u16(bc_buf+pos+1,fs->argc);}
++        if (op == OP_v6_get_loc0) { op = OP_get_loc0; bc_buf[pos] = op; }
++        if (op == OP_v6_get_arg0) { op = OP_get_arg0; bc_buf[pos] = op; }
++        if (op == OP_get_field_rdi || op == OP_get_field2_rdi || op == OP_put_field_shared) {
++            uint32_t delta = get_u32(bc_buf + pos + 1);
++            ReadICSite *site = (ReadICSite *)(b->byte_code_buf + pos + 1 + delta);
++            assert(site >= b->read_ic_sites && site < b->read_ic_sites + b->read_ic_count);
++            op = op == OP_put_field_shared ? OP_put_field : (op == OP_get_field_rdi ? OP_get_field : OP_get_field2);
++            bc_buf[pos] = op;
++            put_u32(bc_buf + pos + 1, site->atom);
++        }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+         case OP_FMT_atom:
+@@ -37888,7 +38134,7 @@
+         bc_put_u16(s, flags);
+     }
+ 
+-    if (JS_WriteFunctionBytecode(s, b->byte_code_buf, b->byte_code_len))
++    if (JS_WriteFunctionBytecode(s, b->byte_code_buf, b->byte_code_len, b))
+         goto fail;
+ 
+     if (b->has_debug) {
+@@ -38620,17 +38866,8 @@
+     JSAtom atom;
+     uint32_t idx;
+ 
+-    if (s->is_rom_data) {
+-        /* directly use the input buffer */
+-        if (unlikely(s->buf_end - s->ptr < bc_len))
+-            return bc_read_error_end(s);
+-        bc_buf = (uint8_t *)s->ptr;
+-        s->ptr += bc_len;
+-    } else {
+-        bc_buf = (void *)((uint8_t*)b + byte_code_offset);
+-        if (bc_get_buf(s, bc_buf, bc_len))
+-            return -1;
+-    }
++    bc_buf = (void *)((uint8_t*)b + byte_code_offset);
++    if (bc_get_buf(s, bc_buf, bc_len)) return -1;
+     b->byte_code_buf = bc_buf;
+ 
+     if (is_be())
+@@ -38639,6 +38876,12 @@
+     pos = 0;
+     while (pos < bc_len) {
+         op = bc_buf[pos];
++        if (op == OP_four_ctor || op == OP_get_field_rdi || op == OP_get_field2_rdi ||
++            op == OP_v6_get_loc0 || op == OP_v6_get_arg0) {
++            b->byte_code_len = pos;
++            JS_ThrowSyntaxError(s->ctx, "runtime read IC opcode in serialized bytecode");
++            return -1;
++        }
+         len = short_opcode_info(op).size;
+         switch(short_opcode_info(op).fmt) {
+         case OP_FMT_atom:
+@@ -38769,7 +39012,7 @@
+     bc.arguments_allowed = bc_get_flags(v16, &idx, 1);
+     bc.has_debug = bc_get_flags(v16, &idx, 1);
+     bc.is_direct_or_indirect_eval = bc_get_flags(v16, &idx, 1);
+-    bc.read_only_bytecode = s->is_rom_data;
++    bc.read_only_bytecode = FALSE; /* IC: own writable copy even for ROM input */
+     if (bc_get_u8(s, &v8))
+         goto fail;
+     bc.js_mode = v8;
+@@ -38937,6 +39180,7 @@
+         bc_read_trace(s, "}\n");
+     }
+     b->realm = JS_DupContext(ctx);
++    if (rdi_prepare(ctx, b) < 0) goto fail;
+     return obj;
+  fail:
+     JS_FreeValue(ctx, obj);
+@@ -56398,6 +56642,7 @@
+     if (JS_IsException(ctx->function_proto))
+         return -1;
+     ctx->class_proto[JS_CLASS_BYTECODE_FUNCTION] = JS_DupValue(ctx, ctx->function_proto);
++    ctx->class_proto[JS_CLASS_COLD_BYTECODE_FUNCTION] = JS_DupValue(ctx, ctx->function_proto);
+ 
+     ctx->global_obj = JS_NewObjectProtoClassAlloc(ctx, ctx->class_proto[JS_CLASS_OBJECT],
+                                                   JS_CLASS_GLOBAL_OBJECT, 64);
+--- /dev/null
++++ b/read_ic_config.h
+@@ -0,0 +1 @@
++#define RDI_CAPACITY 1
+--- /dev/null
++++ b/read_ic_opcodes.inc
+@@ -0,0 +1,90 @@
++/* The miss body below retains upstream GET_FIELD_INLINE's normal search. */
++#define GET_READ_IC(name, keep)                                          \
++    {                                                                   \
++        uint32_t delta = get_u32(pc), offset;                            \
++        ReadICSite *site = (ReadICSite *)(pc + delta);                   \
++        JSValue obj = sp[-1], val;                                      \
++        JSAtom atom;                                                    \
++        JSObject *p, *origin;                                           \
++        JSProperty *pr;                                                 \
++        JSShapeProperty *prs;                                           \
++        RDI_DLOCAL((uint32_t)(site - b->read_ic_sites));                  \
++        pc += 4;                                                        \
++        RDI_QUERY();                                                    \
++        if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
++            p = JS_VALUE_GET_OBJ(obj);                                  \
++            if (p->class_id == JS_CLASS_OBJECT && !p->is_exotic) {        \
++                if (keep && site->holder_shape) {                       \
++                    JSObject *holder = p->shape->proto;                 \
++                    if (site->shape == p->shape && holder &&            \
++                        holder->class_id == JS_CLASS_OBJECT && !holder->is_exotic && \
++                        site->holder_shape == holder->shape) {          \
++                        val = JS_DupValue(ctx, holder->prop[site->prop_offset].u.value); \
++                        goto name ## _done;                            \
++                    }                                                  \
++                    offset = UINT32_MAX;                               \
++                } else {                                               \
++                    offset = rdi_probe(site, p->shape RDI_DARG(d));      \
++                }                                                      \
++                if (offset != UINT32_MAX) {                             \
++                    RDI_COUNT(hits);                                   \
++                    val = JS_DupValue(ctx, p->prop[offset].u.value);     \
++                    goto name ## _done;                                \
++                }                                                       \
++                RDI_COUNT(shape_misses);                               \
++            }                                                           \
++        }                                                               \
++        RDI_COUNT(fallback);                                            \
++        atom = site->atom;                                              \
++        if (likely(JS_VALUE_GET_TAG(obj) == JS_TAG_OBJECT)) {            \
++            p = origin = JS_VALUE_GET_OBJ(obj);                         \
++            for (;;) {                                                  \
++                prs = find_own_property(&pr, p, atom);                   \
++                if (prs) {                                              \
++                    if (unlikely(prs->flags & JS_PROP_TMASK)) {          \
++                        RDI_REASON(descriptor);                        \
++                        goto name ## _slow;                            \
++                    }                                                   \
++                    val = JS_DupValue(ctx, pr->u.value);                \
++                    if (p != origin) {                                 \
++                        RDI_REASON(inherited);                         \
++                        if (keep && p == origin->shape->proto &&       \
++                            origin->class_id == JS_CLASS_OBJECT && !origin->is_exotic && \
++                            p->class_id == JS_CLASS_OBJECT && !p->is_exotic && \
++                            origin->shape->is_hashed && p->shape->is_hashed) \
++                            v6_proto_update(ctx, site, origin->shape, p->shape, pr - p->prop); \
++                    }                                                  \
++                    else if (p->class_id != JS_CLASS_OBJECT || p->is_exotic) { RDI_REASON(special); } \
++                    else if (!p->shape->is_hashed) { RDI_REASON(unhashed); } \
++                    else {                                              \
++                        RDI_REASON(own_miss);                           \
++                        rdi_update(ctx, site, p->shape, pr - p->prop RDI_DARG(d)); \
++                    }                                                   \
++                    break;                                              \
++                }                                                       \
++                if (unlikely(p->is_exotic)) {                           \
++                    RDI_REASON(special);                               \
++                    obj = JS_MKPTR(JS_TAG_OBJECT, p);                   \
++                    goto name ## _slow;                                \
++                }                                                       \
++                p = p->shape->proto;                                    \
++                if (!p) { RDI_REASON(missing); val = JS_UNDEFINED; break; } \
++            }                                                           \
++        } else {                                                        \
++            RDI_REASON(primitive);                                     \
++        name ## _slow:                                                  \
++            sf->cur_pc = pc;                                            \
++            val = JS_GetPropertyInternal(ctx, obj, atom, sp[-1], 0);     \
++            if (unlikely(JS_IsException(val))) goto exception;          \
++        }                                                               \
++    name ## _done:                                                      \
++        if (keep) { *sp++ = val; }                                      \
++        else { JS_FreeValue(ctx, sp[-1]); sp[-1] = val; }                \
++    }
++        CASE(OP_get_field_rdi):
++            GET_READ_IC(get_field_rdi, 0);
++            BREAK;
++        CASE(OP_get_field2_rdi):
++            GET_READ_IC(get_field2_rdi, 1);
++            BREAK;
++#undef GET_READ_IC
+--- /dev/null
++++ b/read_ic_prepare.inc
+@@ -0,0 +1,61 @@
++/* Called only for fully built b, after all compiler passes / atom fixups. */
++static int rdi_prepare(JSContext *ctx, JSFunctionBytecode *b)
++{
++    uint32_t count = 0, index = 0;
++    size_t code_size, total;
++    uint8_t *linked;
++    int pos, op;
++    ReadICSite *last_read = NULL;
++    assert(!b->read_ic_ready && !b->read_ic_sites);
++    b->read_ic_ready = 1;
++#ifdef READ_IC_DIAGNOSTIC
++    rdi_diag_header_init();
++#endif
++    for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
++        op = b->byte_code_buf[pos];
++        if (op == OP_get_field || op == OP_get_field2) count++;
++    }
++    if (!count && !four_extra_size(b)) return 0;
++    code_size = ((size_t)b->byte_code_len + 7) & ~(size_t)7;
++    if (count > (SIZE_MAX - code_size) / sizeof(ReadICSite)) {
++        return 0; /* optional optimization, retain ordinary image */
++    }
++    total = code_size + count * sizeof(ReadICSite) + four_extra_size(b);
++    if (total > UINT32_MAX) {
++        return 0; /* optional optimization, retain ordinary image */
++    }
++    linked = js_mallocz_rt(ctx->rt, total);
++    if (!linked) return 0; /* no pending-exception mutation, no retry */
++    memcpy(linked, b->byte_code_buf, b->byte_code_len);
++    b->byte_code_buf = linked;
++    b->read_ic_sites = (ReadICSite *)(linked + code_size);
++    b->read_ic_count = count;
++#ifdef READ_IC_DIAGNOSTIC
++    rdi_diag_prepare(ctx, b);
++#endif
++    for (pos = 0; pos < b->byte_code_len; pos += short_opcode_info(op).size) {
++        uint8_t *pc = b->byte_code_buf + pos;
++        op = *pc;
++        /* The following instruction is still ordinary, not rewritten yet.
++           Both replacements preserve instruction lengths and branch entries. */
++        if ((op == OP_get_loc0 || op == OP_get_arg0) &&
++            pos + 1 < b->byte_code_len && pc[1] == OP_get_field) {
++            *pc = (op == OP_get_loc0) ? OP_v6_get_loc0 : OP_v6_get_arg0;
++        }
++        if (op == OP_get_field || op == OP_get_field2) {
++            b->read_ic_sites[index].atom = get_u32(pc + 1);
++            *pc = (op == OP_get_field) ? OP_get_field_rdi : OP_get_field2_rdi;
++            last_read = &b->read_ic_sites[index];
++            put_u32(pc + 1, (uint8_t *)&b->read_ic_sites[index++] - (pc + 1));
++        } else if (op == OP_put_field && last_read &&
++                   get_u32(pc + 1) == last_read->atom) {
++            /* The read site retains this atom. The rewritten write no longer does. */
++            JS_FreeAtom(ctx, get_u32(pc + 1));
++            *pc = OP_put_field_shared;
++            put_u32(pc + 1, (uint8_t *)last_read - (pc + 1));
++        }
++    }
++    assert(index == count);
++    four_prepare(ctx,b);
++    return 0;
++}
+--- /dev/null
++++ b/read_ic_runtime.inc
+@@ -0,0 +1,76 @@
++/* Included after upstream find_own_property, with shape helpers available. */
++#ifdef READ_IC_DIAGNOSTIC
++#include "read_ic_diag.h"
++#endif
++static force_inline uint32_t rdi_probe(ReadICSite *s, JSShape *shape RDI_DPARAM)
++{
++#if RDI_CAPACITY == 1
++    RDI_COUNT(comparisons);
++    if (s->shape == shape)
++        return s->prop_offset;
++#else
++    unsigned i, first = s->recent;
++    RDI_COUNT(comparisons);
++    if (s->shape[first] == shape)
++        return s->prop_offset[first];
++    for (unsigned k = 1; k < 4; k++) {
++        i = (first + k) & 3;
++        RDI_COUNT(comparisons);
++        if (s->shape[i] == shape) {
++            s->recent = i;
++            return s->prop_offset[i];
++        }
++    }
++#endif
++    return UINT32_MAX;
++}
++static force_inline void rdi_update(JSContext *ctx, ReadICSite *s,
++                                    JSShape *shape, uint32_t offset RDI_DPARAM)
++{
++    RDI_COUNT(updates);
++    JSShape *old = s->shape, *old_holder = s->holder_shape;
++    js_dup_shape(shape);
++    s->shape = shape;
++    s->holder_shape = NULL;
++    s->prop_offset = offset;
++    js_free_shape_null(ctx->rt, old_holder);
++    js_free_shape_null(ctx->rt, old);
++}
++static void v6_proto_update(JSContext *ctx, ReadICSite *s, JSShape *receiver,
++                            JSShape *holder, uint32_t offset)
++{
++    JSShape *old = s->shape, *old_holder = s->holder_shape;
++    js_dup_shape(receiver);
++    js_dup_shape(holder);
++    /* Publish before releases that can enter native finalizers. */
++    s->shape = receiver;
++    s->holder_shape = holder;
++    s->prop_offset = offset;
++    js_free_shape_null(ctx->rt, old_holder);
++    js_free_shape_null(ctx->rt, old);
++}
++
++static void rdi_free(JSRuntime *rt, JSFunctionBytecode *b)
++{
++    uint32_t i;
++    for (i = 0; i < b->read_ic_count; i++) {
++        ReadICSite *s = &b->read_ic_sites[i];
++        JS_FreeAtomRT(rt, s->atom);
++#if RDI_CAPACITY == 1
++        js_free_shape_null(rt, s->holder_shape);
++        js_free_shape_null(rt, s->shape);
++#else
++        for (unsigned j = 0; j < 4; j++)
++            js_free_shape_null(rt, s->shape[j]);
++#endif
++    }
++#ifdef READ_IC_DIAGNOSTIC
++    rdi_diag_release(b);
++#endif
++    if (b->read_ic_sites) {
++        js_free_rt(rt, b->byte_code_buf);
++        b->byte_code_buf = NULL;
++    }
++    b->read_ic_sites = NULL;
++    b->read_ic_count = 0;
++}
+--- /dev/null
++++ b/read_ic_types.h
+@@ -0,0 +1,39 @@
++/* Experimental per-final-read-site IC. No QuickJS-NG runtime code imported. */
++#include "read_ic_config.h"
++#if RDI_CAPACITY == 1
++typedef struct ReadICSite {
++    JSShape *shape;
++    JSShape *holder_shape;
++    uint32_t prop_offset;
++    JSAtom atom;
++} ReadICSite;
++#elif RDI_CAPACITY == 4
++typedef struct ReadICSite {
++    JSShape *shape[4];
++    uint32_t prop_offset[4];
++    JSAtom atom;
++    uint8_t recent, victim;
++} ReadICSite;
++#else
++#error unsupported read IC capacity
++#endif
++typedef struct RDIFunctionDiag RDIFunctionDiag;
++#ifdef READ_IC_DIAGNOSTIC
++#define RDI_DPARAM , RDICounters *d
++#define RDI_DARG(x) , (x)
++#define RDI_COUNT(field) (++d->field)
++#define RDI_REASON(field) (++d->field)
++#define RDI_DLOCAL(index) RDICounters *d = &b->read_ic_diag->sites[index]
++#define RDI_QUERY() rdi_diag_query(d)
++#define RDI_OCCUPY() rdi_diag_occupy(d)
++#define RDI_REPLACE() (++rdi_diag_shape_unref, ++rdi_diag_shape_ref, ++d->replacements)
++#else
++#define RDI_DPARAM
++#define RDI_DARG(x)
++#define RDI_COUNT(field) ((void)0)
++#define RDI_REASON(field) ((void)0)
++#define RDI_DLOCAL(index)
++#define RDI_QUERY() ((void)0)
++#define RDI_OCCUPY() ((void)0)
++#define RDI_REPLACE() ((void)0)
++#endif
+--- /dev/null
++++ b/sparse_runtime.inc
+@@ -0,0 +1,29 @@
++/* The negative entry owns its target. Only immutable, definitely unsupported
++ * bytecode/class is remembered, never prototype/GC/argc-dependent failure. */
++static int sparse_same(FourSite*s,JSValueConst c)
++{
++    return JS_VALUE_GET_TAG(c)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(s->negative)==JS_TAG_OBJECT &&
++        JS_VALUE_GET_OBJ(c)==JS_VALUE_GET_OBJ(s->negative);
++}
++static int four_ctor_try(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,JSValue*a,JSValue*out)
++{
++    if(!s->plan){FOUR_COUNT(s,q);FOUR_COUNT(s,guard);return 0;}
++    return plan_try(ctx,s->plan,c,t,a,out);
++}
++static int four_ctor_slow_eligible(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst t,unsigned n)
++{
++    if(sparse_same(s,c)){FOLLOW(2);return 0;}
++    return plan_slow_eligible(ctx,c,t,n);
++}
++static void four_ctor_learn(JSContext*ctx,FourSite*s,JSValueConst c,JSValueConst result)
++{
++    plan_learn(ctx,s,c,result);
++}
++static void sparse_remember(JSContext*ctx,FourSite*s,JSValueConst c)
++{
++    if(sparse_same(s,c) || JS_VALUE_GET_TAG(c)!=JS_TAG_OBJECT)return;
++    JSObject*f=JS_VALUE_GET_OBJ(c);FourRecipe r;
++    if(f->class_id==JS_CLASS_COLD_BYTECODE_FUNCTION)return;
++    if(f->class_id==JS_CLASS_BYTECODE_FUNCTION && plan_recipe(f->u.func.function_bytecode,&r))return;
++    JSValue old=s->negative;s->negative=JS_DupValue(ctx,c);FOLLOW(3);JS_FreeValue(ctx,old);
++}

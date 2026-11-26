@@ -1,0 +1,818 @@
+[
+  {
+    "offset": 0,
+    "opcode": "get_var",
+    "operands": "0: Scheduler",
+    "size": 3
+  },
+  {
+    "offset": 3,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 4,
+    "opcode": "call_constructor",
+    "operands": "0",
+    "size": 3
+  },
+  {
+    "offset": 7,
+    "opcode": "set_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 8,
+    "opcode": "get_field2",
+    "operands": "addIdleTask",
+    "size": 5
+  },
+  {
+    "offset": 13,
+    "opcode": "get_var",
+    "operands": "1: ID_IDLE",
+    "size": 3
+  },
+  {
+    "offset": 16,
+    "opcode": "push_0",
+    "operands": "0",
+    "size": 1
+  },
+  {
+    "offset": 17,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 18,
+    "opcode": "get_var",
+    "operands": "2: COUNT",
+    "size": 3
+  },
+  {
+    "offset": 21,
+    "opcode": "call_method",
+    "operands": "4",
+    "size": 3
+  },
+  {
+    "offset": 24,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 25,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 28,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 29,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 30,
+    "opcode": "get_var",
+    "operands": "4: ID_WORKER",
+    "size": 3
+  },
+  {
+    "offset": 33,
+    "opcode": "get_var",
+    "operands": "5: KIND_WORK",
+    "size": 3
+  },
+  {
+    "offset": 36,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 39,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 40,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 43,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 44,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 45,
+    "opcode": "get_var",
+    "operands": "4: ID_WORKER",
+    "size": 3
+  },
+  {
+    "offset": 48,
+    "opcode": "get_var",
+    "operands": "5: KIND_WORK",
+    "size": 3
+  },
+  {
+    "offset": 51,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 54,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 55,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 56,
+    "opcode": "get_field2",
+    "operands": "addWorkerTask",
+    "size": 5
+  },
+  {
+    "offset": 61,
+    "opcode": "get_var",
+    "operands": "4: ID_WORKER",
+    "size": 3
+  },
+  {
+    "offset": 64,
+    "opcode": "push_i16",
+    "operands": "1000",
+    "size": 3
+  },
+  {
+    "offset": 67,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 68,
+    "opcode": "call_method",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 71,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 72,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 75,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 76,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 77,
+    "opcode": "get_var",
+    "operands": "6: ID_DEVICE_A",
+    "size": 3
+  },
+  {
+    "offset": 80,
+    "opcode": "get_var",
+    "operands": "7: KIND_DEVICE",
+    "size": 3
+  },
+  {
+    "offset": 83,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 86,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 87,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 90,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 91,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 92,
+    "opcode": "get_var",
+    "operands": "6: ID_DEVICE_A",
+    "size": 3
+  },
+  {
+    "offset": 95,
+    "opcode": "get_var",
+    "operands": "7: KIND_DEVICE",
+    "size": 3
+  },
+  {
+    "offset": 98,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 101,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 102,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 105,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 106,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 107,
+    "opcode": "get_var",
+    "operands": "6: ID_DEVICE_A",
+    "size": 3
+  },
+  {
+    "offset": 110,
+    "opcode": "get_var",
+    "operands": "7: KIND_DEVICE",
+    "size": 3
+  },
+  {
+    "offset": 113,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 116,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 117,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 118,
+    "opcode": "get_field2",
+    "operands": "addHandlerTask",
+    "size": 5
+  },
+  {
+    "offset": 123,
+    "opcode": "get_var",
+    "operands": "8: ID_HANDLER_A",
+    "size": 3
+  },
+  {
+    "offset": 126,
+    "opcode": "push_i16",
+    "operands": "2000",
+    "size": 3
+  },
+  {
+    "offset": 129,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 130,
+    "opcode": "call_method",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 133,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 134,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 137,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 138,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 139,
+    "opcode": "get_var",
+    "operands": "9: ID_DEVICE_B",
+    "size": 3
+  },
+  {
+    "offset": 142,
+    "opcode": "get_var",
+    "operands": "7: KIND_DEVICE",
+    "size": 3
+  },
+  {
+    "offset": 145,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 148,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 149,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 152,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 153,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 154,
+    "opcode": "get_var",
+    "operands": "9: ID_DEVICE_B",
+    "size": 3
+  },
+  {
+    "offset": 157,
+    "opcode": "get_var",
+    "operands": "7: KIND_DEVICE",
+    "size": 3
+  },
+  {
+    "offset": 160,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 163,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 164,
+    "opcode": "get_var",
+    "operands": "3: Packet",
+    "size": 3
+  },
+  {
+    "offset": 167,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 168,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 169,
+    "opcode": "get_var",
+    "operands": "9: ID_DEVICE_B",
+    "size": 3
+  },
+  {
+    "offset": 172,
+    "opcode": "get_var",
+    "operands": "7: KIND_DEVICE",
+    "size": 3
+  },
+  {
+    "offset": 175,
+    "opcode": "call_constructor",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 178,
+    "opcode": "put_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 179,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 180,
+    "opcode": "get_field2",
+    "operands": "addHandlerTask",
+    "size": 5
+  },
+  {
+    "offset": 185,
+    "opcode": "get_var",
+    "operands": "10: ID_HANDLER_B",
+    "size": 3
+  },
+  {
+    "offset": 188,
+    "opcode": "push_i16",
+    "operands": "3000",
+    "size": 3
+  },
+  {
+    "offset": 191,
+    "opcode": "get_loc1",
+    "operands": "1: queue",
+    "size": 1
+  },
+  {
+    "offset": 192,
+    "opcode": "call_method",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 195,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 196,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 197,
+    "opcode": "get_field2",
+    "operands": "addDeviceTask",
+    "size": 5
+  },
+  {
+    "offset": 202,
+    "opcode": "get_var",
+    "operands": "6: ID_DEVICE_A",
+    "size": 3
+  },
+  {
+    "offset": 205,
+    "opcode": "push_i16",
+    "operands": "4000",
+    "size": 3
+  },
+  {
+    "offset": 208,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 209,
+    "opcode": "call_method",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 212,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 213,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 214,
+    "opcode": "get_field2",
+    "operands": "addDeviceTask",
+    "size": 5
+  },
+  {
+    "offset": 219,
+    "opcode": "get_var",
+    "operands": "9: ID_DEVICE_B",
+    "size": 3
+  },
+  {
+    "offset": 222,
+    "opcode": "push_i16",
+    "operands": "5000",
+    "size": 3
+  },
+  {
+    "offset": 225,
+    "opcode": "null",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 226,
+    "opcode": "call_method",
+    "operands": "3",
+    "size": 3
+  },
+  {
+    "offset": 229,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 230,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 231,
+    "opcode": "get_field2",
+    "operands": "schedule",
+    "size": 5
+  },
+  {
+    "offset": 236,
+    "opcode": "call_method",
+    "operands": "0",
+    "size": 3
+  },
+  {
+    "offset": 239,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 240,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 241,
+    "opcode": "get_field",
+    "operands": "queueCount",
+    "size": 5
+  },
+  {
+    "offset": 246,
+    "opcode": "get_var",
+    "operands": "11: EXPECTED_QUEUE_COUNT",
+    "size": 3
+  },
+  {
+    "offset": 249,
+    "opcode": "neq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 250,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 251,
+    "opcode": "if_true8",
+    "operands": "264",
+    "size": 2
+  },
+  {
+    "offset": 253,
+    "opcode": "drop",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 254,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 255,
+    "opcode": "get_field",
+    "operands": "holdCount",
+    "size": 5
+  },
+  {
+    "offset": 260,
+    "opcode": "get_var",
+    "operands": "12: EXPECTED_HOLD_COUNT",
+    "size": 3
+  },
+  {
+    "offset": 263,
+    "opcode": "neq",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 264,
+    "opcode": "if_false8",
+    "operands": "307",
+    "size": 2
+  },
+  {
+    "offset": 266,
+    "opcode": "push_atom_value",
+    "operands": "\"Error during execution: queueCount = \"",
+    "size": 5
+  },
+  {
+    "offset": 271,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 272,
+    "opcode": "get_field",
+    "operands": "queueCount",
+    "size": 5
+  },
+  {
+    "offset": 277,
+    "opcode": "add",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 278,
+    "opcode": "push_atom_value",
+    "operands": "\", holdCount = \"",
+    "size": 5
+  },
+  {
+    "offset": 283,
+    "opcode": "add",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 284,
+    "opcode": "get_loc0",
+    "operands": "0: scheduler",
+    "size": 1
+  },
+  {
+    "offset": 285,
+    "opcode": "get_field",
+    "operands": "holdCount",
+    "size": 5
+  },
+  {
+    "offset": 290,
+    "opcode": "add",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 291,
+    "opcode": "push_atom_value",
+    "operands": "\".\"",
+    "size": 5
+  },
+  {
+    "offset": 296,
+    "opcode": "add",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 297,
+    "opcode": "put_loc2",
+    "operands": "2: msg",
+    "size": 1
+  },
+  {
+    "offset": 298,
+    "opcode": "get_var",
+    "operands": "13: Error",
+    "size": 3
+  },
+  {
+    "offset": 301,
+    "opcode": "dup",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 302,
+    "opcode": "get_loc2",
+    "operands": "2: msg",
+    "size": 1
+  },
+  {
+    "offset": 303,
+    "opcode": "call_constructor",
+    "operands": "1",
+    "size": 3
+  },
+  {
+    "offset": 306,
+    "opcode": "throw",
+    "operands": "",
+    "size": 1
+  },
+  {
+    "offset": 307,
+    "opcode": "return_undef",
+    "operands": "",
+    "size": 1
+  }
+]

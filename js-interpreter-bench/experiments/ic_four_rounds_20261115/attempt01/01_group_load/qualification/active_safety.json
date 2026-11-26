@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "source_sha256": "de2e8c3ad9672efaf4f3db85bce267d48a5c88fb2ee8c8a05eb2b560031c4947",
+  "binary_sha256": "b5957ced0ed9605c9c28ddbb0b2fd5384a2615f6909c2839d8f116be98784b63",
+  "counts": {
+    "attempts": 132,
+    "hits": 23,
+    "eligible": 101,
+    "fills": 101,
+    "fallbacks": 109,
+    "overflow": 0,
+    "sites": [
+      {
+        "function": "wide",
+        "pc": 3,
+        "attempts": 1,
+        "hits": 0,
+        "eligible": 1,
+        "fills": 1,
+        "fallbacks": 1,
+        "overflow": 0,
+        "bytecode_hex": "f414000000580400f4240000009b28"
+      },
+      {
+        "function": "f",
+        "pc": 1,
+        "attempts": 131,
+        "hits": 23,
+        "eligible": 100,
+        "fills": 100,
+        "fallbacks": 108,
+        "overflow": 0,
+        "bytecode_hex": "f40e000000f7f4200000009828"
+      }
+    ]
+  },
+  "returncode": 0,
+  "stdout": "[12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,56,56,40,\"NaN\",48,22,1,44,27,18,\"x,y\",19,6,0,2,6,6,12,10,18,14,24,18,30,22,36,26,42,30,48,34,54,38,60,42,66,46,72,50,78,54,84,58,90,62,96,66,102,70,108,74,114,78,120,82,126,86,132,90,138,94,144,98,150,102,156,106,162,110,168,114,174,118,180,122,186,126,192,130,198,134,204,138,210,142,216,146,222,150,228,154,234,158,240,162,246,166,252,170,258,174,264,178,270,182,276,186,282,190,288,194,294,198,true,44]\n",
+  "stderr": "FOUR_COUNTS:{\"attempts\":132,\"hits\":23,\"eligible\":101,\"fills\":101,\"fallbacks\":109,\"overflow\":0,\"sites\":[{\"function\":\"wide\",\"pc\":3,\"attempts\":1,\"hits\":0,\"eligible\":1,\"fills\":1,\"fallbacks\":1,\"overflow\":0,\"bytecode_hex\":\"f414000000580400f4240000009b28\"},{\"function\":\"f\",\"pc\":1,\"attempts\":131,\"hits\":23,\"eligible\":100,\"fills\":100,\"fallbacks\":108,\"overflow\":0,\"bytecode_hex\":\"f40e000000f7f4200000009828\"}]}\n",
+  "output_equal_to_parent_C": true
+}

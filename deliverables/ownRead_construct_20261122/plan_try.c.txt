@@ -1,0 +1,19 @@
+static int plan_try(JSContext*ctx,FullPlan*s,JSValueConst callee,JSValueConst target,JSValue*args,JSValue*out)
+{
+    FOUR_COUNT(s,q);
+#ifndef FOUR_PROBE
+    JSObject*f;
+    if(s->final && JS_VALUE_GET_TAG(s->callee)==JS_TAG_OBJECT && JS_VALUE_GET_TAG(callee)==JS_TAG_OBJECT &&
+       JS_VALUE_GET_OBJ(s->callee)==JS_VALUE_GET_OBJ(callee) && plan_base(ctx,callee,target,s->argc,&f) &&
+       plan_proto(f)==s->final->proto && plan_chain(s->final->proto,&s->recipe)){
+        /* The two old entries each poll once. Hooks were excluded above. */
+        if(js_poll_interrupts(ctx) || js_poll_interrupts(ctx))return 0;
+        *out=JS_NewObjectFromShape(ctx,js_dup_shape(s->final),JS_CLASS_OBJECT,NULL);
+        if(JS_IsException(*out)){FOUR_COUNT(s,h);FOUR_COUNT(s,overflow);return 1;} /* no retry after allocation */
+        JSObject*o=JS_VALUE_GET_OBJ(*out);
+        for(unsigned i=0;i<s->recipe.n;i++)o->prop[i].u.value=JS_DupValue(ctx,args[s->recipe.arg[i]]);
+        FOUR_COUNT(s,h);FOUR_ADD(s,work5,s->recipe.n);FOUR_COUNT(s,work6);FOUR_COUNT(s,work3);return 1;
+    }
+#endif
+    FOUR_COUNT(s,guard);return 0;
+}

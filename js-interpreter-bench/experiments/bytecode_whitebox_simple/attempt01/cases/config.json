@@ -1,0 +1,8 @@
+{
+  "arithmetic": {"function": "wbArithmetic", "call": "wbArithmetic(7, 3, 4)", "expected": 15, "functions": ["wbArithmetic"], "timed": false},
+  "numeric_loop": {"function": "wbNumericLoop", "call": "wbNumericLoop(4096)", "expected": 8386560, "functions": ["wbNumericLoop"], "timed": true},
+  "branches": {"function": "wbBranches", "call": "wbBranches(wbBranchInput)", "expected": 28, "functions": ["wbBranches"], "timed": false},
+  "direct_call": {"function": "wbDirectCall", "call": "wbDirectCall(4096)", "expected": 16777216, "functions": ["wbDirectCall", "wbSmallFunction"], "timed": false},
+  "own_property": {"function": "wbOwnProperty", "call": "wbOwnProperty(wbOwnObject, 4096)", "expected": 12288, "functions": ["wbOwnProperty"], "timed": true},
+  "prototype_method": {"function": "wbPrototypeMethod", "call": "wbPrototypeMethod(wbPrototypeObject, 4096)", "expected": 8398848, "functions": ["wbPrototypeMethod", "wbStep"], "timed": true}
+}

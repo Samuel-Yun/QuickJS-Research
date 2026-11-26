@@ -1,0 +1,13 @@
+static void v6_proto_update(JSContext *ctx, ReadICSite *s, JSShape *receiver,
+                            JSShape *holder, uint32_t offset)
+{
+    JSShape *old = s->shape, *old_holder = s->holder_shape;
+    js_dup_shape(receiver);
+    js_dup_shape(holder);
+    /* Publish before releases that can enter native finalizers. */
+    s->shape = receiver;
+    s->holder_shape = holder;
+    s->prop_offset = offset;
+    js_free_shape_null(ctx->rt, old_holder);
+    js_free_shape_null(ctx->rt, old);
+}
